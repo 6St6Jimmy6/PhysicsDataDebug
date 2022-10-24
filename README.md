@@ -16,5 +16,7 @@ Physics data debugger for Wreckfest October 2022 build.
 
 - The Start Logging won't create new files if old ones exist. They just get recorded in the existing files then at the end of the file.
 
-Lateral Friction = (Lateral Load)/(Vertical Load)
-Longitudinal Friction = (Longitudinal Load)/(Vertical Load)
+- Here's for example how you can calculate the Lat/Lon fricitons from the log files:
+
+- Lateral Friction = (Lateral Load)/(Vertical Load)
+- Longitudinal Friction = (Longitudinal Load)/(Vertical Load)
