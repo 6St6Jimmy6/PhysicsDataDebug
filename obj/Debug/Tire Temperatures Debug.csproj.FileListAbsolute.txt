@@ -1,0 +1,12 @@
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Debug\Tire Temperatures Debug.exe.config
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Debug\Tire Temperatures Debug.exe
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Debug\Tire Temperatures Debug.pdb
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\Tire Temperatures Debug.csprojAssemblyReference.cache
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\MemHelperExample.Form1.resources
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\Tire_Temperatures_Debug.Properties.Resources.resources
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\Tire Temperatures Debug.csproj.GenerateResource.cache
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\Tire Temperatures Debug.csproj.CoreCompileInputs.cache
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\Tire Temperatures Debug.csproj.CopyComplete
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\Tire Temperatures Debug.exe
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Debug\Tire Temperatures Debug.pdb

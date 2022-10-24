@@ -1,0 +1,24 @@
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Release\MemHelperExample.exe.config
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Release\MemHelperExample.exe
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Release\MemHelperExample.pdb
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Release\System.ComponentModel.Annotations.dll
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\Tire Temperatures Debug.csprojAssemblyReference.cache
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\MemHelperExample.Form1.resources
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\MemHelperExample.Properties.Resources.resources
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\Tire Temperatures Debug.csproj.GenerateResource.cache
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\Tire Temperatures Debug.csproj.CoreCompileInputs.cache
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\Tire Temperatures Debug.csproj.CopyComplete
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\MemHelperExample.exe
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Release\MemHelperExample.pdb
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Release\System.ComponentModel.Annotations.dll
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\Tire Temperatures Debug.csprojAssemblyReference.cache
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\MemHelperExample.Form1.resources
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\Tire_Temperatures_Debug.Properties.Resources.resources
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\Tire Temperatures Debug.csproj.GenerateResource.cache
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\Tire Temperatures Debug.csproj.CoreCompileInputs.cache
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\Tire Temperatures Debug.csproj.CopyComplete
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Release\Physics Data Debug October 2022.exe.config
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Release\Physics Data Debug October 2022.exe
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\bin\Release\Physics Data Debug October 2022.pdb
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\Physics Data Debug October 2022.exe
+C:\Users\zimbo\source\repos\Tire Temperatures Debug\obj\Release\Physics Data Debug October 2022.pdb

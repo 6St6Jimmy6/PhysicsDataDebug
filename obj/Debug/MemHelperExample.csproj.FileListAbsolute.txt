@@ -1,0 +1,12 @@
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Debug\MemHelperExample.exe.config
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Debug\MemHelperExample.exe
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Debug\MemHelperExample.pdb
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.csprojAssemblyReference.cache
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.Form1.resources
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.Properties.Resources.resources
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.csproj.GenerateResource.cache
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.csproj.CoreCompileInputs.cache
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.exe
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.pdb
+C:\Users\zimbo\source\repos\MemHelperExample\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\zimbo\source\repos\MemHelperExample\obj\Debug\MemHelperExample.csproj.CopyComplete
