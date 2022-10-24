@@ -15,3 +15,6 @@ Physics data debugger for Wreckfest October 2022 build.
 - You can copy the text from the .txt files and they should be pasted correctly in Excel or whatever other program you use. ; are separators for columns
 
 - The Start Logging won't create new files if old ones exist. They just get recorded in the existing files then at the end of the file.
+
+Lateral Friction = (Lateral Load)/(Vertical Load)
+Longitudinal Friction = (Longitudinal Load)/(Vertical Load)
