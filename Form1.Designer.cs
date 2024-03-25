@@ -29,47 +29,31 @@ namespace MemHelperExample
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.temperaturesFL = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.temperaturesFR = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.temperaturesRL = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.temperaturesRR = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tempCorrectionBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.setTempCorr = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tempCorrectionA = new System.Windows.Forms.TextBox();
-            this.tempCorrectionB = new System.Windows.Forms.TextBox();
-            this.tempCorrectionC = new System.Windows.Forms.TextBox();
-            this.tempCorrectionD = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.BFGoodrich168Button = new System.Windows.Forms.Button();
-            this.PirelliSButton = new System.Windows.Forms.Button();
-            this.BFGoodrich376Button = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.CurrentSpeed = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -156,281 +140,107 @@ namespace MemHelperExample
             // 
             // temperaturesFL
             // 
-            chartArea1.Name = "ChartArea1";
-            this.temperaturesFL.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.temperaturesFL.Legends.Add(legend1);
-            this.temperaturesFL.Location = new System.Drawing.Point(928, 60);
+            chartArea5.Name = "ChartArea1";
+            this.temperaturesFL.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.temperaturesFL.Legends.Add(legend5);
+            this.temperaturesFL.Location = new System.Drawing.Point(793, 10);
             this.temperaturesFL.Name = "temperaturesFL";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "FLSeriesSurface";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "FLSeriesInner";
-            this.temperaturesFL.Series.Add(series1);
-            this.temperaturesFL.Series.Add(series2);
-            this.temperaturesFL.Size = new System.Drawing.Size(346, 199);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.Legend = "Legend1";
+            series9.Name = "Tread °C";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Legend = "Legend1";
+            series10.Name = "Inner °C";
+            this.temperaturesFL.Series.Add(series9);
+            this.temperaturesFL.Series.Add(series10);
+            this.temperaturesFL.Size = new System.Drawing.Size(346, 228);
             this.temperaturesFL.TabIndex = 3;
             this.temperaturesFL.Text = "chart1";
-            this.temperaturesFL.Click += new System.EventHandler(this.temperatures_Click);
+            title5.Name = "FLTempTitle";
+            title5.Text = "Front Left Temperatures";
+            this.temperaturesFL.Titles.Add(title5);
+            this.temperaturesFL.Click += new System.EventHandler(this.temperaturesFL_Click);
             // 
             // temperaturesFR
             // 
-            chartArea2.Name = "ChartArea1";
-            this.temperaturesFR.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.temperaturesFR.Legends.Add(legend2);
-            this.temperaturesFR.Location = new System.Drawing.Point(1280, 60);
+            chartArea6.Name = "ChartArea1";
+            this.temperaturesFR.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.temperaturesFR.Legends.Add(legend6);
+            this.temperaturesFR.Location = new System.Drawing.Point(1145, 10);
             this.temperaturesFR.Name = "temperaturesFR";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "FRSeriesSurface";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "FRSeriesInner";
-            this.temperaturesFR.Series.Add(series3);
-            this.temperaturesFR.Series.Add(series4);
-            this.temperaturesFR.Size = new System.Drawing.Size(339, 201);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series11.Legend = "Legend1";
+            series11.Name = "Tread °C";
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series12.Legend = "Legend1";
+            series12.Name = "Inner °C";
+            this.temperaturesFR.Series.Add(series11);
+            this.temperaturesFR.Series.Add(series12);
+            this.temperaturesFR.Size = new System.Drawing.Size(346, 228);
             this.temperaturesFR.TabIndex = 4;
             this.temperaturesFR.Text = "chart1";
+            title6.Name = "FRTempTitle";
+            title6.Text = "Front Right Temperatures";
+            this.temperaturesFR.Titles.Add(title6);
+            this.temperaturesFR.Click += new System.EventHandler(this.temperaturesFR_Click);
             // 
             // temperaturesRL
             // 
-            chartArea3.Name = "ChartArea1";
-            this.temperaturesRL.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.temperaturesRL.Legends.Add(legend3);
-            this.temperaturesRL.Location = new System.Drawing.Point(928, 286);
+            chartArea7.Name = "ChartArea1";
+            this.temperaturesRL.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.temperaturesRL.Legends.Add(legend7);
+            this.temperaturesRL.Location = new System.Drawing.Point(793, 244);
             this.temperaturesRL.Name = "temperaturesRL";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.Legend = "Legend1";
-            series5.Name = "RLSeriesSurface";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.Legend = "Legend1";
-            series6.Name = "RLSeriesInner";
-            this.temperaturesRL.Series.Add(series5);
-            this.temperaturesRL.Series.Add(series6);
-            this.temperaturesRL.Size = new System.Drawing.Size(346, 199);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series13.Legend = "Legend1";
+            series13.Name = "Tread °C";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series14.Legend = "Legend1";
+            series14.Name = "Inner °C";
+            this.temperaturesRL.Series.Add(series13);
+            this.temperaturesRL.Series.Add(series14);
+            this.temperaturesRL.Size = new System.Drawing.Size(346, 228);
             this.temperaturesRL.TabIndex = 5;
             this.temperaturesRL.Text = "chart1";
+            title7.Name = "RLTempTitle";
+            title7.Text = "Rear Left Temperatures";
+            this.temperaturesRL.Titles.Add(title7);
+            this.temperaturesRL.Click += new System.EventHandler(this.temperaturesRL_Click);
             // 
             // temperaturesRR
             // 
-            chartArea4.Name = "ChartArea1";
-            this.temperaturesRR.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.temperaturesRR.Legends.Add(legend4);
-            this.temperaturesRR.Location = new System.Drawing.Point(1280, 286);
+            chartArea8.Name = "ChartArea1";
+            this.temperaturesRR.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.temperaturesRR.Legends.Add(legend8);
+            this.temperaturesRR.Location = new System.Drawing.Point(1145, 244);
             this.temperaturesRR.Name = "temperaturesRR";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Legend = "Legend1";
-            series7.Name = "RRSeriesSurface";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.Name = "RRSeriesInner";
-            this.temperaturesRR.Series.Add(series7);
-            this.temperaturesRR.Series.Add(series8);
-            this.temperaturesRR.Size = new System.Drawing.Size(339, 199);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series15.Legend = "Legend1";
+            series15.Name = "Tread °C";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series16.Legend = "Legend1";
+            series16.Name = "Inner °C";
+            this.temperaturesRR.Series.Add(series15);
+            this.temperaturesRR.Series.Add(series16);
+            this.temperaturesRR.Size = new System.Drawing.Size(346, 228);
             this.temperaturesRR.TabIndex = 6;
             this.temperaturesRR.Text = "chart1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1020, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Front Left";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1372, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Front Right";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1372, 270);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Rear Right";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1020, 270);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Rear Left";
-            // 
-            // tempCorrectionBox
-            // 
-            this.tempCorrectionBox.Location = new System.Drawing.Point(804, 86);
-            this.tempCorrectionBox.Name = "tempCorrectionBox";
-            this.tempCorrectionBox.Size = new System.Drawing.Size(114, 20);
-            this.tempCorrectionBox.TabIndex = 11;
-            this.tempCorrectionBox.TextChanged += new System.EventHandler(this.tempCorrectionBox_TextChanged);
-            this.tempCorrectionBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tempCorrectionBox_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(801, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Temperature correction";
-            // 
-            // setTempCorr
-            // 
-            this.setTempCorr.Location = new System.Drawing.Point(804, 4);
-            this.setTempCorr.Name = "setTempCorr";
-            this.setTempCorr.Size = new System.Drawing.Size(114, 58);
-            this.setTempCorr.TabIndex = 13;
-            this.setTempCorr.Text = "Set Temperature Correction";
-            this.setTempCorr.UseVisualStyleBackColor = true;
-            this.setTempCorr.Click += new System.EventHandler(this.setTempCorr_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(924, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Blue = Tread Temperature";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(924, 27);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(141, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Orange = Inner Temperature";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // tempCorrectionA
-            // 
-            this.tempCorrectionA.Location = new System.Drawing.Point(804, 125);
-            this.tempCorrectionA.Name = "tempCorrectionA";
-            this.tempCorrectionA.Size = new System.Drawing.Size(114, 20);
-            this.tempCorrectionA.TabIndex = 16;
-            this.tempCorrectionA.TextChanged += new System.EventHandler(this.tempCorrectionA_TextChanged);
-            this.tempCorrectionA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tempCorrectionA_KeyPress);
-            // 
-            // tempCorrectionB
-            // 
-            this.tempCorrectionB.Location = new System.Drawing.Point(804, 164);
-            this.tempCorrectionB.Name = "tempCorrectionB";
-            this.tempCorrectionB.Size = new System.Drawing.Size(114, 20);
-            this.tempCorrectionB.TabIndex = 17;
-            this.tempCorrectionB.TextChanged += new System.EventHandler(this.tempCorrectionB_TextChanged);
-            this.tempCorrectionB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tempCorrectionB_KeyPress);
-            // 
-            // tempCorrectionC
-            // 
-            this.tempCorrectionC.Location = new System.Drawing.Point(804, 203);
-            this.tempCorrectionC.Name = "tempCorrectionC";
-            this.tempCorrectionC.Size = new System.Drawing.Size(114, 20);
-            this.tempCorrectionC.TabIndex = 18;
-            this.tempCorrectionC.TextChanged += new System.EventHandler(this.tempCorrectionC_TextChanged);
-            this.tempCorrectionC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tempCorrectionC_KeyPress);
-            // 
-            // tempCorrectionD
-            // 
-            this.tempCorrectionD.Location = new System.Drawing.Point(804, 242);
-            this.tempCorrectionD.Name = "tempCorrectionD";
-            this.tempCorrectionD.Size = new System.Drawing.Size(114, 20);
-            this.tempCorrectionD.TabIndex = 19;
-            this.tempCorrectionD.TextChanged += new System.EventHandler(this.tempCorrectionD_TextChanged);
-            this.tempCorrectionD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tempCorrectionD_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(801, 109);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "A";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(801, 148);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(14, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "B";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(801, 187);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(14, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "C";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(800, 226);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(15, 13);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "D";
-            // 
-            // BFGoodrich168Button
-            // 
-            this.BFGoodrich168Button.Location = new System.Drawing.Point(803, 268);
-            this.BFGoodrich168Button.Name = "BFGoodrich168Button";
-            this.BFGoodrich168Button.Size = new System.Drawing.Size(115, 61);
-            this.BFGoodrich168Button.TabIndex = 24;
-            this.BFGoodrich168Button.Text = "Load BFGoodrich -2C-168C Values";
-            this.BFGoodrich168Button.UseVisualStyleBackColor = true;
-            this.BFGoodrich168Button.Click += new System.EventHandler(this.BFGoodrich168Button_Click);
-            // 
-            // PirelliSButton
-            // 
-            this.PirelliSButton.Location = new System.Drawing.Point(803, 413);
-            this.PirelliSButton.Name = "PirelliSButton";
-            this.PirelliSButton.Size = new System.Drawing.Size(115, 72);
-            this.PirelliSButton.TabIndex = 25;
-            this.PirelliSButton.Text = "Load Pirelli S Values";
-            this.PirelliSButton.UseVisualStyleBackColor = true;
-            this.PirelliSButton.Click += new System.EventHandler(this.PirelliSButton_Click);
-            // 
-            // BFGoodrich376Button
-            // 
-            this.BFGoodrich376Button.Location = new System.Drawing.Point(803, 335);
-            this.BFGoodrich376Button.Name = "BFGoodrich376Button";
-            this.BFGoodrich376Button.Size = new System.Drawing.Size(115, 72);
-            this.BFGoodrich376Button.TabIndex = 26;
-            this.BFGoodrich376Button.Text = "Load BFGoodrich 7C-376C Values";
-            this.BFGoodrich376Button.UseVisualStyleBackColor = true;
-            this.BFGoodrich376Button.Click += new System.EventHandler(this.BFGoodrich376Button_Click);
+            title8.Name = "RRTempTitle";
+            title8.Text = "Rear Right Temperatures";
+            this.temperaturesRR.Titles.Add(title8);
+            this.temperaturesRR.Click += new System.EventHandler(this.temperaturesRR_Click);
             // 
             // label12
             // 
@@ -491,14 +301,14 @@ namespace MemHelperExample
             // 
             this.richTextBox1.Location = new System.Drawing.Point(121, 1);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(330, 430);
+            this.richTextBox1.Size = new System.Drawing.Size(330, 437);
             this.richTextBox1.TabIndex = 45;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // textBox_FL_AngularVelocity
             // 
-            this.textBox_FL_AngularVelocity.Location = new System.Drawing.Point(307, 17);
+            this.textBox_FL_AngularVelocity.Location = new System.Drawing.Point(307, 121);
             this.textBox_FL_AngularVelocity.Name = "textBox_FL_AngularVelocity";
             this.textBox_FL_AngularVelocity.ReadOnly = true;
             this.textBox_FL_AngularVelocity.Size = new System.Drawing.Size(100, 20);
@@ -507,7 +317,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_TreadTemperature
             // 
-            this.textBox_FL_TreadTemperature.Location = new System.Drawing.Point(307, 43);
+            this.textBox_FL_TreadTemperature.Location = new System.Drawing.Point(307, 17);
             this.textBox_FL_TreadTemperature.Name = "textBox_FL_TreadTemperature";
             this.textBox_FL_TreadTemperature.ReadOnly = true;
             this.textBox_FL_TreadTemperature.Size = new System.Drawing.Size(100, 20);
@@ -516,7 +326,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_InnerTemperature
             // 
-            this.textBox_FL_InnerTemperature.Location = new System.Drawing.Point(307, 69);
+            this.textBox_FL_InnerTemperature.Location = new System.Drawing.Point(307, 43);
             this.textBox_FL_InnerTemperature.Name = "textBox_FL_InnerTemperature";
             this.textBox_FL_InnerTemperature.ReadOnly = true;
             this.textBox_FL_InnerTemperature.Size = new System.Drawing.Size(100, 20);
@@ -525,7 +335,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_Deflection
             // 
-            this.textBox_FL_Deflection.Location = new System.Drawing.Point(307, 95);
+            this.textBox_FL_Deflection.Location = new System.Drawing.Point(307, 70);
             this.textBox_FL_Deflection.Name = "textBox_FL_Deflection";
             this.textBox_FL_Deflection.ReadOnly = true;
             this.textBox_FL_Deflection.Size = new System.Drawing.Size(100, 20);
@@ -534,7 +344,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_LoadedRadius
             // 
-            this.textBox_FL_LoadedRadius.Location = new System.Drawing.Point(307, 121);
+            this.textBox_FL_LoadedRadius.Location = new System.Drawing.Point(307, 173);
             this.textBox_FL_LoadedRadius.Name = "textBox_FL_LoadedRadius";
             this.textBox_FL_LoadedRadius.ReadOnly = true;
             this.textBox_FL_LoadedRadius.Size = new System.Drawing.Size(100, 20);
@@ -543,7 +353,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_EffectiveRadius
             // 
-            this.textBox_FL_EffectiveRadius.Location = new System.Drawing.Point(307, 147);
+            this.textBox_FL_EffectiveRadius.Location = new System.Drawing.Point(307, 198);
             this.textBox_FL_EffectiveRadius.Name = "textBox_FL_EffectiveRadius";
             this.textBox_FL_EffectiveRadius.ReadOnly = true;
             this.textBox_FL_EffectiveRadius.Size = new System.Drawing.Size(100, 20);
@@ -552,7 +362,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_CurrentContactBrakeTorque
             // 
-            this.textBox_FL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(307, 173);
+            this.textBox_FL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(307, 95);
             this.textBox_FL_CurrentContactBrakeTorque.Name = "textBox_FL_CurrentContactBrakeTorque";
             this.textBox_FL_CurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_FL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(100, 20);
@@ -561,7 +371,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_VerticalLoad
             // 
-            this.textBox_FL_VerticalLoad.Location = new System.Drawing.Point(307, 199);
+            this.textBox_FL_VerticalLoad.Location = new System.Drawing.Point(307, 251);
             this.textBox_FL_VerticalLoad.Name = "textBox_FL_VerticalLoad";
             this.textBox_FL_VerticalLoad.ReadOnly = true;
             this.textBox_FL_VerticalLoad.Size = new System.Drawing.Size(100, 20);
@@ -570,7 +380,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_LateralLoad
             // 
-            this.textBox_FL_LateralLoad.Location = new System.Drawing.Point(307, 225);
+            this.textBox_FL_LateralLoad.Location = new System.Drawing.Point(307, 277);
             this.textBox_FL_LateralLoad.Name = "textBox_FL_LateralLoad";
             this.textBox_FL_LateralLoad.ReadOnly = true;
             this.textBox_FL_LateralLoad.Size = new System.Drawing.Size(100, 20);
@@ -579,7 +389,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_LongitudinalLoad
             // 
-            this.textBox_FL_LongitudinalLoad.Location = new System.Drawing.Point(307, 251);
+            this.textBox_FL_LongitudinalLoad.Location = new System.Drawing.Point(307, 355);
             this.textBox_FL_LongitudinalLoad.Name = "textBox_FL_LongitudinalLoad";
             this.textBox_FL_LongitudinalLoad.ReadOnly = true;
             this.textBox_FL_LongitudinalLoad.Size = new System.Drawing.Size(100, 20);
@@ -588,7 +398,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_SlipAngleDeg
             // 
-            this.textBox_FL_SlipAngleDeg.Location = new System.Drawing.Point(307, 277);
+            this.textBox_FL_SlipAngleDeg.Location = new System.Drawing.Point(307, 303);
             this.textBox_FL_SlipAngleDeg.Name = "textBox_FL_SlipAngleDeg";
             this.textBox_FL_SlipAngleDeg.ReadOnly = true;
             this.textBox_FL_SlipAngleDeg.Size = new System.Drawing.Size(100, 20);
@@ -597,7 +407,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_SlipRatio
             // 
-            this.textBox_FL_SlipRatio.Location = new System.Drawing.Point(307, 303);
+            this.textBox_FL_SlipRatio.Location = new System.Drawing.Point(307, 381);
             this.textBox_FL_SlipRatio.Name = "textBox_FL_SlipRatio";
             this.textBox_FL_SlipRatio.ReadOnly = true;
             this.textBox_FL_SlipRatio.Size = new System.Drawing.Size(100, 20);
@@ -606,7 +416,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_ContactLength
             // 
-            this.textBox_FL_ContactLength.Location = new System.Drawing.Point(307, 329);
+            this.textBox_FL_ContactLength.Location = new System.Drawing.Point(307, 224);
             this.textBox_FL_ContactLength.Name = "textBox_FL_ContactLength";
             this.textBox_FL_ContactLength.ReadOnly = true;
             this.textBox_FL_ContactLength.Size = new System.Drawing.Size(100, 20);
@@ -615,7 +425,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_TravelSpeed
             // 
-            this.textBox_FL_TravelSpeed.Location = new System.Drawing.Point(307, 355);
+            this.textBox_FL_TravelSpeed.Location = new System.Drawing.Point(307, 147);
             this.textBox_FL_TravelSpeed.Name = "textBox_FL_TravelSpeed";
             this.textBox_FL_TravelSpeed.ReadOnly = true;
             this.textBox_FL_TravelSpeed.Size = new System.Drawing.Size(100, 20);
@@ -624,7 +434,7 @@ namespace MemHelperExample
             // 
             // textBox_FL_LateralFriction
             // 
-            this.textBox_FL_LateralFriction.Location = new System.Drawing.Point(307, 381);
+            this.textBox_FL_LateralFriction.Location = new System.Drawing.Point(307, 329);
             this.textBox_FL_LateralFriction.Name = "textBox_FL_LateralFriction";
             this.textBox_FL_LateralFriction.ReadOnly = true;
             this.textBox_FL_LateralFriction.Size = new System.Drawing.Size(100, 20);
@@ -650,7 +460,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_LateralFriction
             // 
-            this.textBox_FR_LateralFriction.Location = new System.Drawing.Point(643, 381);
+            this.textBox_FR_LateralFriction.Location = new System.Drawing.Point(643, 329);
             this.textBox_FR_LateralFriction.Name = "textBox_FR_LateralFriction";
             this.textBox_FR_LateralFriction.ReadOnly = true;
             this.textBox_FR_LateralFriction.Size = new System.Drawing.Size(100, 20);
@@ -658,7 +468,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_TravelSpeed
             // 
-            this.textBox_FR_TravelSpeed.Location = new System.Drawing.Point(643, 355);
+            this.textBox_FR_TravelSpeed.Location = new System.Drawing.Point(643, 69);
             this.textBox_FR_TravelSpeed.Name = "textBox_FR_TravelSpeed";
             this.textBox_FR_TravelSpeed.ReadOnly = true;
             this.textBox_FR_TravelSpeed.Size = new System.Drawing.Size(100, 20);
@@ -666,7 +476,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_ContactLength
             // 
-            this.textBox_FR_ContactLength.Location = new System.Drawing.Point(643, 329);
+            this.textBox_FR_ContactLength.Location = new System.Drawing.Point(643, 224);
             this.textBox_FR_ContactLength.Name = "textBox_FR_ContactLength";
             this.textBox_FR_ContactLength.ReadOnly = true;
             this.textBox_FR_ContactLength.Size = new System.Drawing.Size(100, 20);
@@ -674,7 +484,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_SlipRatio
             // 
-            this.textBox_FR_SlipRatio.Location = new System.Drawing.Point(643, 303);
+            this.textBox_FR_SlipRatio.Location = new System.Drawing.Point(643, 381);
             this.textBox_FR_SlipRatio.Name = "textBox_FR_SlipRatio";
             this.textBox_FR_SlipRatio.ReadOnly = true;
             this.textBox_FR_SlipRatio.Size = new System.Drawing.Size(100, 20);
@@ -682,7 +492,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_SlipAngleDeg
             // 
-            this.textBox_FR_SlipAngleDeg.Location = new System.Drawing.Point(643, 277);
+            this.textBox_FR_SlipAngleDeg.Location = new System.Drawing.Point(643, 303);
             this.textBox_FR_SlipAngleDeg.Name = "textBox_FR_SlipAngleDeg";
             this.textBox_FR_SlipAngleDeg.ReadOnly = true;
             this.textBox_FR_SlipAngleDeg.Size = new System.Drawing.Size(100, 20);
@@ -690,7 +500,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_LongitudinalLoad
             // 
-            this.textBox_FR_LongitudinalLoad.Location = new System.Drawing.Point(643, 251);
+            this.textBox_FR_LongitudinalLoad.Location = new System.Drawing.Point(643, 355);
             this.textBox_FR_LongitudinalLoad.Name = "textBox_FR_LongitudinalLoad";
             this.textBox_FR_LongitudinalLoad.ReadOnly = true;
             this.textBox_FR_LongitudinalLoad.Size = new System.Drawing.Size(100, 20);
@@ -698,7 +508,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_LateralLoad
             // 
-            this.textBox_FR_LateralLoad.Location = new System.Drawing.Point(643, 225);
+            this.textBox_FR_LateralLoad.Location = new System.Drawing.Point(643, 277);
             this.textBox_FR_LateralLoad.Name = "textBox_FR_LateralLoad";
             this.textBox_FR_LateralLoad.ReadOnly = true;
             this.textBox_FR_LateralLoad.Size = new System.Drawing.Size(100, 20);
@@ -706,7 +516,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_VerticalLoad
             // 
-            this.textBox_FR_VerticalLoad.Location = new System.Drawing.Point(643, 199);
+            this.textBox_FR_VerticalLoad.Location = new System.Drawing.Point(643, 251);
             this.textBox_FR_VerticalLoad.Name = "textBox_FR_VerticalLoad";
             this.textBox_FR_VerticalLoad.ReadOnly = true;
             this.textBox_FR_VerticalLoad.Size = new System.Drawing.Size(100, 20);
@@ -714,7 +524,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_CurrentContactBrakeTorque
             // 
-            this.textBox_FR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(643, 173);
+            this.textBox_FR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(643, 95);
             this.textBox_FR_CurrentContactBrakeTorque.Name = "textBox_FR_CurrentContactBrakeTorque";
             this.textBox_FR_CurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_FR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(100, 20);
@@ -722,7 +532,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_EffectiveRadius
             // 
-            this.textBox_FR_EffectiveRadius.Location = new System.Drawing.Point(643, 147);
+            this.textBox_FR_EffectiveRadius.Location = new System.Drawing.Point(643, 198);
             this.textBox_FR_EffectiveRadius.Name = "textBox_FR_EffectiveRadius";
             this.textBox_FR_EffectiveRadius.ReadOnly = true;
             this.textBox_FR_EffectiveRadius.Size = new System.Drawing.Size(100, 20);
@@ -730,7 +540,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_LoadedRadius
             // 
-            this.textBox_FR_LoadedRadius.Location = new System.Drawing.Point(643, 121);
+            this.textBox_FR_LoadedRadius.Location = new System.Drawing.Point(643, 173);
             this.textBox_FR_LoadedRadius.Name = "textBox_FR_LoadedRadius";
             this.textBox_FR_LoadedRadius.ReadOnly = true;
             this.textBox_FR_LoadedRadius.Size = new System.Drawing.Size(100, 20);
@@ -738,7 +548,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_Deflection
             // 
-            this.textBox_FR_Deflection.Location = new System.Drawing.Point(643, 95);
+            this.textBox_FR_Deflection.Location = new System.Drawing.Point(643, 147);
             this.textBox_FR_Deflection.Name = "textBox_FR_Deflection";
             this.textBox_FR_Deflection.ReadOnly = true;
             this.textBox_FR_Deflection.Size = new System.Drawing.Size(100, 20);
@@ -746,7 +556,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_InnerTemperature
             // 
-            this.textBox_FR_InnerTemperature.Location = new System.Drawing.Point(643, 69);
+            this.textBox_FR_InnerTemperature.Location = new System.Drawing.Point(643, 17);
             this.textBox_FR_InnerTemperature.Name = "textBox_FR_InnerTemperature";
             this.textBox_FR_InnerTemperature.ReadOnly = true;
             this.textBox_FR_InnerTemperature.Size = new System.Drawing.Size(100, 20);
@@ -762,7 +572,7 @@ namespace MemHelperExample
             // 
             // textBox_FR_AngularVelocity
             // 
-            this.textBox_FR_AngularVelocity.Location = new System.Drawing.Point(643, 17);
+            this.textBox_FR_AngularVelocity.Location = new System.Drawing.Point(643, 121);
             this.textBox_FR_AngularVelocity.Name = "textBox_FR_AngularVelocity";
             this.textBox_FR_AngularVelocity.ReadOnly = true;
             this.textBox_FR_AngularVelocity.Size = new System.Drawing.Size(100, 20);
@@ -772,9 +582,10 @@ namespace MemHelperExample
             // 
             this.richTextBox2.Location = new System.Drawing.Point(457, 1);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(330, 430);
+            this.richTextBox2.Size = new System.Drawing.Size(330, 437);
             this.richTextBox2.TabIndex = 64;
             this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // textBox_RL_LongitudinalFriction
             // 
@@ -786,7 +597,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_LateralFriction
             // 
-            this.textBox_RL_LateralFriction.Location = new System.Drawing.Point(307, 812);
+            this.textBox_RL_LateralFriction.Location = new System.Drawing.Point(307, 760);
             this.textBox_RL_LateralFriction.Name = "textBox_RL_LateralFriction";
             this.textBox_RL_LateralFriction.ReadOnly = true;
             this.textBox_RL_LateralFriction.Size = new System.Drawing.Size(100, 20);
@@ -794,7 +605,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_TravelSpeed
             // 
-            this.textBox_RL_TravelSpeed.Location = new System.Drawing.Point(307, 786);
+            this.textBox_RL_TravelSpeed.Location = new System.Drawing.Point(307, 501);
             this.textBox_RL_TravelSpeed.Name = "textBox_RL_TravelSpeed";
             this.textBox_RL_TravelSpeed.ReadOnly = true;
             this.textBox_RL_TravelSpeed.Size = new System.Drawing.Size(100, 20);
@@ -802,7 +613,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_ContactLength
             // 
-            this.textBox_RL_ContactLength.Location = new System.Drawing.Point(307, 760);
+            this.textBox_RL_ContactLength.Location = new System.Drawing.Point(307, 657);
             this.textBox_RL_ContactLength.Name = "textBox_RL_ContactLength";
             this.textBox_RL_ContactLength.ReadOnly = true;
             this.textBox_RL_ContactLength.Size = new System.Drawing.Size(100, 20);
@@ -810,7 +621,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_SlipRatio
             // 
-            this.textBox_RL_SlipRatio.Location = new System.Drawing.Point(307, 734);
+            this.textBox_RL_SlipRatio.Location = new System.Drawing.Point(307, 812);
             this.textBox_RL_SlipRatio.Name = "textBox_RL_SlipRatio";
             this.textBox_RL_SlipRatio.ReadOnly = true;
             this.textBox_RL_SlipRatio.Size = new System.Drawing.Size(100, 20);
@@ -818,7 +629,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_SlipAngleDeg
             // 
-            this.textBox_RL_SlipAngleDeg.Location = new System.Drawing.Point(307, 708);
+            this.textBox_RL_SlipAngleDeg.Location = new System.Drawing.Point(307, 734);
             this.textBox_RL_SlipAngleDeg.Name = "textBox_RL_SlipAngleDeg";
             this.textBox_RL_SlipAngleDeg.ReadOnly = true;
             this.textBox_RL_SlipAngleDeg.Size = new System.Drawing.Size(100, 20);
@@ -826,7 +637,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_LongitudinalLoad
             // 
-            this.textBox_RL_LongitudinalLoad.Location = new System.Drawing.Point(307, 682);
+            this.textBox_RL_LongitudinalLoad.Location = new System.Drawing.Point(307, 786);
             this.textBox_RL_LongitudinalLoad.Name = "textBox_RL_LongitudinalLoad";
             this.textBox_RL_LongitudinalLoad.ReadOnly = true;
             this.textBox_RL_LongitudinalLoad.Size = new System.Drawing.Size(100, 20);
@@ -834,7 +645,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_LateralLoad
             // 
-            this.textBox_RL_LateralLoad.Location = new System.Drawing.Point(307, 657);
+            this.textBox_RL_LateralLoad.Location = new System.Drawing.Point(307, 708);
             this.textBox_RL_LateralLoad.Name = "textBox_RL_LateralLoad";
             this.textBox_RL_LateralLoad.ReadOnly = true;
             this.textBox_RL_LateralLoad.Size = new System.Drawing.Size(100, 20);
@@ -842,7 +653,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_VerticalLoad
             // 
-            this.textBox_RL_VerticalLoad.Location = new System.Drawing.Point(307, 631);
+            this.textBox_RL_VerticalLoad.Location = new System.Drawing.Point(307, 682);
             this.textBox_RL_VerticalLoad.Name = "textBox_RL_VerticalLoad";
             this.textBox_RL_VerticalLoad.ReadOnly = true;
             this.textBox_RL_VerticalLoad.Size = new System.Drawing.Size(100, 20);
@@ -850,7 +661,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_CurrentContactBrakeTorque
             // 
-            this.textBox_RL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(307, 605);
+            this.textBox_RL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(307, 527);
             this.textBox_RL_CurrentContactBrakeTorque.Name = "textBox_RL_CurrentContactBrakeTorque";
             this.textBox_RL_CurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_RL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(100, 20);
@@ -858,7 +669,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_EffectiveRadius
             // 
-            this.textBox_RL_EffectiveRadius.Location = new System.Drawing.Point(307, 579);
+            this.textBox_RL_EffectiveRadius.Location = new System.Drawing.Point(307, 631);
             this.textBox_RL_EffectiveRadius.Name = "textBox_RL_EffectiveRadius";
             this.textBox_RL_EffectiveRadius.ReadOnly = true;
             this.textBox_RL_EffectiveRadius.Size = new System.Drawing.Size(100, 20);
@@ -866,7 +677,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_LoadedRadius
             // 
-            this.textBox_RL_LoadedRadius.Location = new System.Drawing.Point(307, 553);
+            this.textBox_RL_LoadedRadius.Location = new System.Drawing.Point(307, 605);
             this.textBox_RL_LoadedRadius.Name = "textBox_RL_LoadedRadius";
             this.textBox_RL_LoadedRadius.ReadOnly = true;
             this.textBox_RL_LoadedRadius.Size = new System.Drawing.Size(100, 20);
@@ -874,7 +685,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_Deflection
             // 
-            this.textBox_RL_Deflection.Location = new System.Drawing.Point(307, 527);
+            this.textBox_RL_Deflection.Location = new System.Drawing.Point(307, 579);
             this.textBox_RL_Deflection.Name = "textBox_RL_Deflection";
             this.textBox_RL_Deflection.ReadOnly = true;
             this.textBox_RL_Deflection.Size = new System.Drawing.Size(100, 20);
@@ -882,7 +693,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_InnerTemperature
             // 
-            this.textBox_RL_InnerTemperature.Location = new System.Drawing.Point(307, 501);
+            this.textBox_RL_InnerTemperature.Location = new System.Drawing.Point(307, 475);
             this.textBox_RL_InnerTemperature.Name = "textBox_RL_InnerTemperature";
             this.textBox_RL_InnerTemperature.ReadOnly = true;
             this.textBox_RL_InnerTemperature.Size = new System.Drawing.Size(100, 20);
@@ -890,7 +701,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_TreadTemperature
             // 
-            this.textBox_RL_TreadTemperature.Location = new System.Drawing.Point(307, 475);
+            this.textBox_RL_TreadTemperature.Location = new System.Drawing.Point(307, 449);
             this.textBox_RL_TreadTemperature.Name = "textBox_RL_TreadTemperature";
             this.textBox_RL_TreadTemperature.ReadOnly = true;
             this.textBox_RL_TreadTemperature.Size = new System.Drawing.Size(100, 20);
@@ -898,7 +709,7 @@ namespace MemHelperExample
             // 
             // textBox_RL_AngularVelocity
             // 
-            this.textBox_RL_AngularVelocity.Location = new System.Drawing.Point(307, 449);
+            this.textBox_RL_AngularVelocity.Location = new System.Drawing.Point(307, 553);
             this.textBox_RL_AngularVelocity.Name = "textBox_RL_AngularVelocity";
             this.textBox_RL_AngularVelocity.ReadOnly = true;
             this.textBox_RL_AngularVelocity.Size = new System.Drawing.Size(100, 20);
@@ -922,7 +733,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_LateralFriction
             // 
-            this.textBox_RR_LateralFriction.Location = new System.Drawing.Point(643, 812);
+            this.textBox_RR_LateralFriction.Location = new System.Drawing.Point(643, 760);
             this.textBox_RR_LateralFriction.Name = "textBox_RR_LateralFriction";
             this.textBox_RR_LateralFriction.ReadOnly = true;
             this.textBox_RR_LateralFriction.Size = new System.Drawing.Size(100, 20);
@@ -930,7 +741,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_TravelSpeed
             // 
-            this.textBox_RR_TravelSpeed.Location = new System.Drawing.Point(643, 786);
+            this.textBox_RR_TravelSpeed.Location = new System.Drawing.Point(643, 501);
             this.textBox_RR_TravelSpeed.Name = "textBox_RR_TravelSpeed";
             this.textBox_RR_TravelSpeed.ReadOnly = true;
             this.textBox_RR_TravelSpeed.Size = new System.Drawing.Size(100, 20);
@@ -938,7 +749,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_ContactLength
             // 
-            this.textBox_RR_ContactLength.Location = new System.Drawing.Point(643, 760);
+            this.textBox_RR_ContactLength.Location = new System.Drawing.Point(643, 657);
             this.textBox_RR_ContactLength.Name = "textBox_RR_ContactLength";
             this.textBox_RR_ContactLength.ReadOnly = true;
             this.textBox_RR_ContactLength.Size = new System.Drawing.Size(100, 20);
@@ -946,7 +757,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_SlipRatio
             // 
-            this.textBox_RR_SlipRatio.Location = new System.Drawing.Point(643, 734);
+            this.textBox_RR_SlipRatio.Location = new System.Drawing.Point(643, 812);
             this.textBox_RR_SlipRatio.Name = "textBox_RR_SlipRatio";
             this.textBox_RR_SlipRatio.ReadOnly = true;
             this.textBox_RR_SlipRatio.Size = new System.Drawing.Size(100, 20);
@@ -954,7 +765,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_SlipAngleDeg
             // 
-            this.textBox_RR_SlipAngleDeg.Location = new System.Drawing.Point(643, 708);
+            this.textBox_RR_SlipAngleDeg.Location = new System.Drawing.Point(643, 734);
             this.textBox_RR_SlipAngleDeg.Name = "textBox_RR_SlipAngleDeg";
             this.textBox_RR_SlipAngleDeg.ReadOnly = true;
             this.textBox_RR_SlipAngleDeg.Size = new System.Drawing.Size(100, 20);
@@ -962,7 +773,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_LongitudinalLoad
             // 
-            this.textBox_RR_LongitudinalLoad.Location = new System.Drawing.Point(643, 682);
+            this.textBox_RR_LongitudinalLoad.Location = new System.Drawing.Point(643, 786);
             this.textBox_RR_LongitudinalLoad.Name = "textBox_RR_LongitudinalLoad";
             this.textBox_RR_LongitudinalLoad.ReadOnly = true;
             this.textBox_RR_LongitudinalLoad.Size = new System.Drawing.Size(100, 20);
@@ -970,7 +781,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_LateralLoad
             // 
-            this.textBox_RR_LateralLoad.Location = new System.Drawing.Point(643, 657);
+            this.textBox_RR_LateralLoad.Location = new System.Drawing.Point(643, 708);
             this.textBox_RR_LateralLoad.Name = "textBox_RR_LateralLoad";
             this.textBox_RR_LateralLoad.ReadOnly = true;
             this.textBox_RR_LateralLoad.Size = new System.Drawing.Size(100, 20);
@@ -978,7 +789,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_VerticalLoad
             // 
-            this.textBox_RR_VerticalLoad.Location = new System.Drawing.Point(643, 631);
+            this.textBox_RR_VerticalLoad.Location = new System.Drawing.Point(643, 682);
             this.textBox_RR_VerticalLoad.Name = "textBox_RR_VerticalLoad";
             this.textBox_RR_VerticalLoad.ReadOnly = true;
             this.textBox_RR_VerticalLoad.Size = new System.Drawing.Size(100, 20);
@@ -986,7 +797,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_CurrentContactBrakeTorque
             // 
-            this.textBox_RR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(643, 605);
+            this.textBox_RR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(643, 527);
             this.textBox_RR_CurrentContactBrakeTorque.Name = "textBox_RR_CurrentContactBrakeTorque";
             this.textBox_RR_CurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_RR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(100, 20);
@@ -994,7 +805,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_EffectiveRadius
             // 
-            this.textBox_RR_EffectiveRadius.Location = new System.Drawing.Point(643, 579);
+            this.textBox_RR_EffectiveRadius.Location = new System.Drawing.Point(643, 631);
             this.textBox_RR_EffectiveRadius.Name = "textBox_RR_EffectiveRadius";
             this.textBox_RR_EffectiveRadius.ReadOnly = true;
             this.textBox_RR_EffectiveRadius.Size = new System.Drawing.Size(100, 20);
@@ -1002,7 +813,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_LoadedRadius
             // 
-            this.textBox_RR_LoadedRadius.Location = new System.Drawing.Point(643, 553);
+            this.textBox_RR_LoadedRadius.Location = new System.Drawing.Point(643, 605);
             this.textBox_RR_LoadedRadius.Name = "textBox_RR_LoadedRadius";
             this.textBox_RR_LoadedRadius.ReadOnly = true;
             this.textBox_RR_LoadedRadius.Size = new System.Drawing.Size(100, 20);
@@ -1010,7 +821,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_Deflection
             // 
-            this.textBox_RR_Deflection.Location = new System.Drawing.Point(643, 527);
+            this.textBox_RR_Deflection.Location = new System.Drawing.Point(643, 579);
             this.textBox_RR_Deflection.Name = "textBox_RR_Deflection";
             this.textBox_RR_Deflection.ReadOnly = true;
             this.textBox_RR_Deflection.Size = new System.Drawing.Size(100, 20);
@@ -1018,7 +829,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_InnerTemperature
             // 
-            this.textBox_RR_InnerTemperature.Location = new System.Drawing.Point(643, 501);
+            this.textBox_RR_InnerTemperature.Location = new System.Drawing.Point(643, 475);
             this.textBox_RR_InnerTemperature.Name = "textBox_RR_InnerTemperature";
             this.textBox_RR_InnerTemperature.ReadOnly = true;
             this.textBox_RR_InnerTemperature.Size = new System.Drawing.Size(100, 20);
@@ -1026,7 +837,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_TreadTemperature
             // 
-            this.textBox_RR_TreadTemperature.Location = new System.Drawing.Point(643, 475);
+            this.textBox_RR_TreadTemperature.Location = new System.Drawing.Point(643, 449);
             this.textBox_RR_TreadTemperature.Name = "textBox_RR_TreadTemperature";
             this.textBox_RR_TreadTemperature.ReadOnly = true;
             this.textBox_RR_TreadTemperature.Size = new System.Drawing.Size(100, 20);
@@ -1034,7 +845,7 @@ namespace MemHelperExample
             // 
             // textBox_RR_AngularVelocity
             // 
-            this.textBox_RR_AngularVelocity.Location = new System.Drawing.Point(643, 449);
+            this.textBox_RR_AngularVelocity.Location = new System.Drawing.Point(643, 553);
             this.textBox_RR_AngularVelocity.Name = "textBox_RR_AngularVelocity";
             this.textBox_RR_AngularVelocity.ReadOnly = true;
             this.textBox_RR_AngularVelocity.Size = new System.Drawing.Size(100, 20);
@@ -1092,7 +903,7 @@ namespace MemHelperExample
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1629, 881);
+            this.ClientSize = new System.Drawing.Size(1501, 881);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.logInterval_textBox);
             this.Controls.Add(this.Stop_Log);
@@ -1170,26 +981,6 @@ namespace MemHelperExample
             this.Controls.Add(this.label13);
             this.Controls.Add(this.CurrentSpeed);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.BFGoodrich376Button);
-            this.Controls.Add(this.PirelliSButton);
-            this.Controls.Add(this.BFGoodrich168Button);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.tempCorrectionD);
-            this.Controls.Add(this.tempCorrectionC);
-            this.Controls.Add(this.tempCorrectionB);
-            this.Controls.Add(this.tempCorrectionA);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.setTempCorr);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tempCorrectionBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.temperaturesRR);
             this.Controls.Add(this.temperaturesRL);
             this.Controls.Add(this.temperaturesFR);
@@ -1208,21 +999,6 @@ namespace MemHelperExample
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button setTempCorr;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button BFGoodrich168Button;
-        private System.Windows.Forms.Button PirelliSButton;
-        private System.Windows.Forms.Button BFGoodrich376Button;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -1296,11 +1072,6 @@ namespace MemHelperExample
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Button Start_Log;
         private System.Windows.Forms.Button Stop_Log;
-        public System.Windows.Forms.TextBox tempCorrectionBox;
-        public System.Windows.Forms.TextBox tempCorrectionA;
-        public System.Windows.Forms.TextBox tempCorrectionB;
-        public System.Windows.Forms.TextBox tempCorrectionC;
-        public System.Windows.Forms.TextBox tempCorrectionD;
         public System.Windows.Forms.DataVisualization.Charting.Chart temperaturesFL;
         public System.Windows.Forms.DataVisualization.Charting.Chart temperaturesFR;
         public System.Windows.Forms.DataVisualization.Charting.Chart temperaturesRL;

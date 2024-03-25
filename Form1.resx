@@ -118,12 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>		FRONT LEFT DATA
-Angular Velocity					km/h
-
+    <value>		  FRONT LEFT DATA
 Tread Temperature					°C
 
 Inner Temperature					°C
+
+Tire Travel Speed					m/s
+
+Current Tire Contact Braking Torque			Nm
+
+Angular Velocity					km/h
 
 Tire Deflection					m
 
@@ -131,33 +135,33 @@ RL Loaded Radius					m
 
 Re Effective Radius					m
 
-Current Tire Contact Braking Torque			Nm
+Tire Contact Length					m
 
 Verical Load					N
 
 Lateral Load					N
 
-Longitudinal Load					N
-
 Slip Angle Degrees					°
 
-Slip Ratio
-
-Tire Contact Length					m
-
-Tire Travel Speed					m/s
-
 Lateral Friction					μ
+
+Longitudinal Load					N
+
+Slip Ratio						0-1
 
 Longitudinal Friction					μ</value>
   </data>
   <data name="richTextBox2.Text" xml:space="preserve">
     <value>		FRONT RIGHT DATA
-Angular Velocity					km/h
-
 Tread Temperature					°C
 
 Inner Temperature					°C
+
+Tire Travel Speed					m/s
+
+Current Tire Contact Braking Torque			Nm
+
+Angular Velocity					km/h
 
 Tire Deflection					m
 
@@ -165,33 +169,33 @@ RL Loaded Radius					m
 
 Re Effective Radius					m
 
-Current Tire Contact Braking Torque			Nm
+Tire Contact Length					m
 
 Verical Load					N
 
 Lateral Load					N
 
-Longitudinal Load					N
-
 Slip Angle Degrees					°
 
-Slip Ratio
-
-Tire Contact Length					m
-
-Tire Travel Speed					m/s
-
 Lateral Friction					μ
+
+Longitudinal Load					N
+
+Slip Ratio						0-1
 
 Longitudinal Friction					μ</value>
   </data>
   <data name="richTextBox3.Text" xml:space="preserve">
-    <value>		REAR LEFT DATA
-Angular Velocity					km/h
-
+    <value>		     REAR LEFT DATA
 Tread Temperature					°C
 
 Inner Temperature					°C
+
+Tire Travel Speed					m/s
+
+Current Tire Contact Braking Torque			Nm
+
+Angular Velocity					km/h
 
 Tire Deflection					m
 
@@ -199,33 +203,33 @@ RL Loaded Radius					m
 
 Re Effective Radius					m
 
-Current Tire Contact Braking Torque			Nm
+Tire Contact Length					m
 
 Verical Load					N
 
 Lateral Load					N
 
-Longitudinal Load					N
-
 Slip Angle Degrees					°
 
-Slip Ratio
-
-Tire Contact Length					m
-
-Tire Travel Speed					m/s
-
 Lateral Friction					μ
+
+Longitudinal Load					N
+
+Slip Ratio						0-1
 
 Longitudinal Friction					μ</value>
   </data>
   <data name="richTextBox4.Text" xml:space="preserve">
-    <value>		REAR RIGHT DATA
-Angular Velocity					km/h
-
+    <value>		  REAR RIGHT DATA
 Tread Temperature					°C
 
 Inner Temperature					°C
+
+Tire Travel Speed					m/s
+
+Current Tire Contact Braking Torque			Nm
+
+Angular Velocity					km/h
 
 Tire Deflection					m
 
@@ -233,23 +237,19 @@ RL Loaded Radius					m
 
 Re Effective Radius					m
 
-Current Tire Contact Braking Torque			Nm
+Tire Contact Length					m
 
 Verical Load					N
 
 Lateral Load					N
 
-Longitudinal Load					N
-
 Slip Angle Degrees					°
 
-Slip Ratio
-
-Tire Contact Length					m
-
-Tire Travel Speed					m/s
-
 Lateral Friction					μ
+
+Longitudinal Load					N
+
+Slip Ratio						0-1
 
 Longitudinal Friction					μ</value>
   </data>

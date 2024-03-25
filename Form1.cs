@@ -30,14 +30,12 @@ namespace MemHelperExample
             update.Start(); 
         }
 
-        private void temperatures_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private Thread update;
 
         private bool logging = false;
+
+        private double radToDeg = 180/Math.PI;
 
         private int sleep = 50;
 
@@ -49,13 +47,13 @@ namespace MemHelperExample
         private readonly double[] rliTempArray = new double[300];
         private readonly double[] rrsTempArray = new double[300];
         private readonly double[] rriTempArray = new double[300];
-        
+        /*
         private double TempCorrectionValue = 0.0000000000;
         private double TempCorrectionValueA = 0.0000000000;
         private double TempCorrectionValueB = 0.0000000000;
         private double TempCorrectionValueC = 0.0000000000;
         private double TempCorrectionValueD = 0.0000000000;
-
+        */
         
         private double speed = 0.00;
         private double frontLift = 0.00;
@@ -163,10 +161,13 @@ namespace MemHelperExample
         private double RR_TravelSpeed;
 
         //Every update offsets the base address of the memory points. 99% of the time forwards.
-        ulong baseAddrUpdt = 0x5710;
+        ulong baseAddrUpdt = 0x9E00;
         //0x0;// April 2022
         //0x4650;// May 2022
         //0x5710// October 2022
+        // 0x67A0 November 2022 1838680 vs 1831EE0
+        // 0x7DF0 April 2023
+        // 0x9E00; March 2024 = 7DF0+2010 = 9E00
 
         // Older builds go backwards, so this is for them. Above should be 0x0 then.
         ulong baseAddrDodt = 0x0;//0x6DF8D8
@@ -352,7 +353,7 @@ namespace MemHelperExample
                 FL_LateralLoad = Math.Round(helper.ReadMemory<float>(FL_LateralLoad_TargetAddr), 2);
                 FL_LongitudinalLoad = Math.Round(helper.ReadMemory<float>(FL_LongitudinalLoad_TargetAddr), 2);
                 FL_SlipAngleRad = Math.Round(helper.ReadMemory<float>(FL_SlipAngleRad_TargetAddr), 5);
-                FL_SlipAngleDeg = Math.Round(FL_SlipAngleRad, 5);
+                FL_SlipAngleDeg = Math.Round(FL_SlipAngleRad * radToDeg, 2);
                 FL_SlipRatio = Math.Round(helper.ReadMemory<float>(FL_SlipRatio_TargetAddr), 5);
                 FL_ContactLength = Math.Round(helper.ReadMemory<float>(FL_ContactLength_TargetAddr), 5);
                 FL_TravelSpeed = Math.Round(helper.ReadMemory<float>(FL_TravelSpeed_TargetAddr), 2);
@@ -367,7 +368,7 @@ namespace MemHelperExample
                 FR_LateralLoad = Math.Round(helper.ReadMemory<float>(FR_LateralLoad_TargetAddr), 2);
                 FR_LongitudinalLoad = Math.Round(helper.ReadMemory<float>(FR_LongitudinalLoad_TargetAddr), 2);
                 FR_SlipAngleRad = Math.Round(helper.ReadMemory<float>(FR_SlipAngleRad_TargetAddr), 5);
-                FR_SlipAngleDeg = Math.Round(FR_SlipAngleRad, 5);
+                FR_SlipAngleDeg = Math.Round(FR_SlipAngleRad * radToDeg, 2);
                 FR_SlipRatio = Math.Round(helper.ReadMemory<float>(FR_SlipRatio_TargetAddr), 5);
                 FR_ContactLength = Math.Round(helper.ReadMemory<float>(FR_ContactLength_TargetAddr), 2);
                 FR_TravelSpeed = Math.Round(helper.ReadMemory<float>(FR_TravelSpeed_TargetAddr), 2);
@@ -382,7 +383,7 @@ namespace MemHelperExample
                 RL_LateralLoad = Math.Round(helper.ReadMemory<float>(RL_LateralLoad_TargetAddr), 2);
                 RL_LongitudinalLoad = Math.Round(helper.ReadMemory<float>(RL_LongitudinalLoad_TargetAddr), 2);
                 RL_SlipAngleRad = Math.Round(helper.ReadMemory<float>(RL_SlipAngleRad_TargetAddr), 5);
-                RL_SlipAngleDeg = Math.Round(RL_SlipAngleRad, 5);
+                RL_SlipAngleDeg = Math.Round(RL_SlipAngleRad * radToDeg, 2);
                 RL_SlipRatio = Math.Round(helper.ReadMemory<float>(RL_SlipRatio_TargetAddr), 5);
                 RL_ContactLength = Math.Round(helper.ReadMemory<float>(RL_ContactLength_TargetAddr), 2);
                 RL_TravelSpeed = Math.Round(helper.ReadMemory<float>(RL_TravelSpeed_TargetAddr), 2);
@@ -397,7 +398,7 @@ namespace MemHelperExample
                 RR_LateralLoad = Math.Round(helper.ReadMemory<float>(RR_LateralLoad_TargetAddr), 2);
                 RR_LongitudinalLoad = Math.Round(helper.ReadMemory<float>(RR_LongitudinalLoad_TargetAddr), 2);
                 RR_SlipAngleRad = Math.Round(helper.ReadMemory<float>(RR_SlipAngleRad_TargetAddr), 5);
-                RR_SlipAngleDeg = Math.Round(RR_SlipAngleRad, 5);
+                RR_SlipAngleDeg = Math.Round(RR_SlipAngleRad * radToDeg, 2);
                 RR_SlipRatio = Math.Round(helper.ReadMemory<float>(RR_SlipRatio_TargetAddr), 5);
                 RR_ContactLength = Math.Round(helper.ReadMemory<float>(RR_ContactLength_TargetAddr), 2);
                 RR_TravelSpeed = Math.Round(helper.ReadMemory<float>(RR_TravelSpeed_TargetAddr), 2);
@@ -413,7 +414,7 @@ namespace MemHelperExample
                 var rliTempHelper = helper.ReadMemory<float>(rliTargetAddr);
                 var rrsTempHelper = helper.ReadMemory<float>(rrsTargetAddr);
                 var rriTempHelper = helper.ReadMemory<float>(rriTargetAddr);
-
+                /*
                 // y = (Ax^3 + Bx^2 + Cx + D) - Temperature correction
 
                 var flsTempFit = ((((flsTempHelper * flsTempHelper * flsTempHelper) * TempCorrectionValueA) + ((flsTempHelper * flsTempHelper) * TempCorrectionValueB) + (flsTempHelper * TempCorrectionValueC) + TempCorrectionValueD) - TempCorrectionValue);
@@ -451,8 +452,18 @@ namespace MemHelperExample
                     rrsTemp = rrsTempFit;
                     rriTemp = rriTempFit;
                 }
+                */
 
-                flsTempArray[flsTempArray.Length - 1] = Math.Round(flsTemp, 10);//roundi oli 0. Saa sulavemman kuvaajan isommalla luvulla
+                flsTemp = Convert.ToDouble(flsTempHelper);
+                fliTemp = Convert.ToDouble(fliTempHelper);
+                frsTemp = Convert.ToDouble(frsTempHelper);
+                friTemp = Convert.ToDouble(friTempHelper);
+                rlsTemp = Convert.ToDouble(rlsTempHelper);
+                rliTemp = Convert.ToDouble(rliTempHelper);
+                rrsTemp = Convert.ToDouble(rrsTempHelper);
+                rriTemp = Convert.ToDouble(rriTempHelper);
+
+                flsTempArray[flsTempArray.Length - 1] = Math.Round(flsTemp, 10);//Bigger round value gives smoother drawing.
                 fliTempArray[fliTempArray.Length - 1] = Math.Round(fliTemp, 10);
                 frsTempArray[frsTempArray.Length - 1] = Math.Round(frsTemp, 10);
                 friTempArray[friTempArray.Length - 1] = Math.Round(friTemp, 10);
@@ -476,14 +487,14 @@ namespace MemHelperExample
                     {
                         using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine("Race Time;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load");
+                            sw.WriteLine("Race Time;Tread Temperature;Inner Temperature;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load;Lateral Friction;Logitudinal Friction");
                         }
                     }
                     else
                     {
                         using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine(RaceTime.ToString() + ";" + FL_AngularVelocity.ToString() + ";" + FL_ContactLength.ToString() + ";" + FL_CurrentContactBrakeTorque.ToString() + ";" + FL_CurrentContactBrakeTorqueMax + ";" + FL_Deflection.ToString() + ";" + FL_EffectiveRadius.ToString() + ";" + FL_LateralLoad.ToString() + ";" + FL_LoadedRadius.ToString() + ";" + FL_LongitudinalLoad.ToString() + ";" + FL_SlipAngleRad.ToString() + ";" + FL_SlipAngleDeg.ToString() + ";" + FL_SlipRatio.ToString() + ";" + FL_TravelSpeed.ToString() + ";" + FL_VerticalLoad.ToString());
+                            sw.WriteLine(RaceTime.ToString() + ";" + flsTempHelper.ToString() + ";" + fliTempHelper.ToString() + ";" + FL_AngularVelocity.ToString() + ";" + FL_ContactLength.ToString() + ";" + FL_CurrentContactBrakeTorque.ToString() + ";" + FL_CurrentContactBrakeTorqueMax + ";" + FL_Deflection.ToString() + ";" + FL_EffectiveRadius.ToString() + ";" + FL_LateralLoad.ToString() + ";" + FL_LoadedRadius.ToString() + ";" + FL_LongitudinalLoad.ToString() + ";" + FL_SlipAngleRad.ToString() + ";" + FL_SlipAngleDeg.ToString() + ";" + FL_SlipRatio.ToString() + ";" + FL_TravelSpeed.ToString() + ";" + FL_VerticalLoad.ToString() + ";" + Math.Round((FL_LateralLoad / FL_VerticalLoad), 5) + ";" + Math.Round((FL_LongitudinalLoad / FL_VerticalLoad), 5));
                         }
                     }
 
@@ -491,14 +502,14 @@ namespace MemHelperExample
                     {
                         using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine("Race Time;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load");
+                            sw.WriteLine("Race Time;Tread Temperature;Inner Temperature;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load;Lateral Friction; Logitudinal Friction");
                         }
                     }
                     else
                     {
                         using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine(RaceTime.ToString() + ";" + FR_AngularVelocity.ToString() + ";" + FR_ContactLength.ToString() + ";" + FR_CurrentContactBrakeTorque.ToString() + ";" + FR_CurrentContactBrakeTorqueMax + ";" + FR_Deflection.ToString() + ";" + FR_EffectiveRadius.ToString() + ";" + FR_LateralLoad.ToString() + ";" + FR_LoadedRadius.ToString() + ";" + FR_LongitudinalLoad.ToString() + ";" + FR_SlipAngleRad.ToString() + ";" + FR_SlipAngleDeg.ToString() + ";" + FR_SlipRatio.ToString() + ";" + FR_TravelSpeed.ToString() + ";" + FR_VerticalLoad.ToString());
+                            sw.WriteLine(RaceTime.ToString() + ";" + frsTempHelper.ToString() + ";" + friTempHelper.ToString() + ";" + FR_AngularVelocity.ToString() + ";" + FR_ContactLength.ToString() + ";" + FR_CurrentContactBrakeTorque.ToString() + ";" + FR_CurrentContactBrakeTorqueMax + ";" + FR_Deflection.ToString() + ";" + FR_EffectiveRadius.ToString() + ";" + FR_LateralLoad.ToString() + ";" + FR_LoadedRadius.ToString() + ";" + FR_LongitudinalLoad.ToString() + ";" + FR_SlipAngleRad.ToString() + ";" + FR_SlipAngleDeg.ToString() + ";" + FR_SlipRatio.ToString() + ";" + FR_TravelSpeed.ToString() + ";" + FR_VerticalLoad.ToString() + ";" + Math.Round((FR_LateralLoad / FR_VerticalLoad), 5) + ";" + Math.Round((FR_LongitudinalLoad / FR_VerticalLoad), 5));
                         }
                     }
 
@@ -506,14 +517,14 @@ namespace MemHelperExample
                     {
                         using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine("Race Time;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load");
+                            sw.WriteLine("Race Time;Tread Temperature;Inner Temperature;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load;Lateral Friction;Logitudinal Friction");
                         }
                     }
                     else
                     {
                         using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine(RaceTime.ToString() + ";" + RL_AngularVelocity.ToString() + ";" + RL_ContactLength.ToString() + ";" + RL_CurrentContactBrakeTorque.ToString() + ";" + RL_CurrentContactBrakeTorqueMax + ";" + RL_Deflection.ToString() + ";" + RL_EffectiveRadius.ToString() + ";" + RL_LateralLoad.ToString() + ";" + RL_LoadedRadius.ToString() + ";" + RL_LongitudinalLoad.ToString() + ";" + RL_SlipAngleRad.ToString() + ";" + RL_SlipAngleDeg.ToString() + ";" + RL_SlipRatio.ToString() + ";" + RL_TravelSpeed.ToString() + ";" + RL_VerticalLoad.ToString());
+                            sw.WriteLine(RaceTime.ToString() + ";" + rlsTempHelper.ToString() + ";" + rliTempHelper.ToString() + ";" + RL_AngularVelocity.ToString() + ";" + RL_ContactLength.ToString() + ";" + RL_CurrentContactBrakeTorque.ToString() + ";" + RL_CurrentContactBrakeTorqueMax + ";" + RL_Deflection.ToString() + ";" + RL_EffectiveRadius.ToString() + ";" + RL_LateralLoad.ToString() + ";" + RL_LoadedRadius.ToString() + ";" + RL_LongitudinalLoad.ToString() + ";" + RL_SlipAngleRad.ToString() + ";" + RL_SlipAngleDeg.ToString() + ";" + RL_SlipRatio.ToString() + ";" + RL_TravelSpeed.ToString() + ";" + RL_VerticalLoad.ToString() + ";" + Math.Round((RL_LateralLoad / RL_VerticalLoad), 5) + ";" + Math.Round((RL_LongitudinalLoad / RL_VerticalLoad), 5));
                         }
                     }
 
@@ -521,14 +532,14 @@ namespace MemHelperExample
                     {
                         using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine("Race Time;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load");
+                            sw.WriteLine("Race Time;Tread Temperature;Inner Temperature;Angular Velocity;Contact Length;Current Contact Brake Torque;Max Current Contact Brake Torque;Vertical Deflection;Effective Radius;Lateral Load;Loaded Radius;Longitudinal Load;Slip Angle Radians;Slip Angle Degrees;Slip Ratio;Travel Speed;Vertical Load;Lateral Friction;Logitudinal Friction");
                         }
                     }
                     else
                     {
                         using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
                         {
-                            sw.WriteLine(RaceTime.ToString() + ";" + RR_AngularVelocity.ToString() + ";" + RR_ContactLength.ToString() + ";" + RR_CurrentContactBrakeTorque.ToString() + ";" + RR_CurrentContactBrakeTorqueMax + ";" + RR_Deflection.ToString() + ";" + RR_EffectiveRadius.ToString() + ";" + RR_LateralLoad.ToString() + ";" + RR_LoadedRadius.ToString() + ";" + RR_LongitudinalLoad.ToString() + ";" + RR_SlipAngleRad.ToString() + ";" + RR_SlipAngleDeg.ToString() + ";" + RR_SlipRatio.ToString() + ";" + RR_TravelSpeed.ToString() + ";" + RR_VerticalLoad.ToString());
+                            sw.WriteLine(RaceTime.ToString() + ";" + rrsTempHelper.ToString() + ";" + rriTempHelper.ToString() + ";" + RR_AngularVelocity.ToString() + ";" + RR_ContactLength.ToString() + ";" + RR_CurrentContactBrakeTorque.ToString() + ";" + RR_CurrentContactBrakeTorqueMax + ";" + RR_Deflection.ToString() + ";" + RR_EffectiveRadius.ToString() + ";" + RR_LateralLoad.ToString() + ";" + RR_LoadedRadius.ToString() + ";" + RR_LongitudinalLoad.ToString() + ";" + RR_SlipAngleRad.ToString() + ";" + RR_SlipAngleDeg.ToString() + ";" + RR_SlipRatio.ToString() + ";" + RR_TravelSpeed.ToString() + ";" + RR_VerticalLoad.ToString() + ";" + Math.Round((RR_LateralLoad / RR_VerticalLoad), 5) + ";" + Math.Round((RR_LongitudinalLoad / RR_VerticalLoad), 5));
                         }
                     }
                 }
@@ -556,60 +567,60 @@ namespace MemHelperExample
         private void UpdateData()
         {
             
-            temperaturesFL.Series["FLSeriesSurface"].Points.Clear();
+            temperaturesFL.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < flsTempArray.Length - 1; ++i)
             {
-                temperaturesFL.Series["FLSeriesSurface"].Points.AddY(flsTempArray[i]);
+                temperaturesFL.Series["Tread °C"].Points.AddY(flsTempArray[i]);
             }
 
-            temperaturesFL.Series["FLSeriesInner"].Points.Clear();
+            temperaturesFL.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < fliTempArray.Length - 1; ++i)
             {
-                temperaturesFL.Series["FLSeriesInner"].Points.AddY(fliTempArray[i]);
+                temperaturesFL.Series["Inner °C"].Points.AddY(fliTempArray[i]);
             }
 
-            temperaturesFR.Series["FRSeriesSurface"].Points.Clear();
+            temperaturesFR.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < frsTempArray.Length - 1; ++i)
             {
-                temperaturesFR.Series["FRSeriesSurface"].Points.AddY(frsTempArray[i]);
+                temperaturesFR.Series["Tread °C"].Points.AddY(frsTempArray[i]);
             }
 
-            temperaturesFR.Series["FRSeriesInner"].Points.Clear();
+            temperaturesFR.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < friTempArray.Length - 1; ++i)
             {
-                temperaturesFR.Series["FRSeriesInner"].Points.AddY(friTempArray[i]);
+                temperaturesFR.Series["Inner °C"].Points.AddY(friTempArray[i]);
             }
 
-            temperaturesRL.Series["RLSeriesSurface"].Points.Clear();
+            temperaturesRL.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < rlsTempArray.Length - 1; ++i)
             {
-                temperaturesRL.Series["RLSeriesSurface"].Points.AddY(rlsTempArray[i]);
+                temperaturesRL.Series["Tread °C"].Points.AddY(rlsTempArray[i]);
             }
 
-            temperaturesRL.Series["RLSeriesInner"].Points.Clear();
+            temperaturesRL.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < rliTempArray.Length - 1; ++i)
             {
-                temperaturesRL.Series["RLSeriesInner"].Points.AddY(rliTempArray[i]);
+                temperaturesRL.Series["Inner °C"].Points.AddY(rliTempArray[i]);
             }
 
-            temperaturesRR.Series["RRSeriesSurface"].Points.Clear();
+            temperaturesRR.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < rrsTempArray.Length - 1; ++i)
             {
-                temperaturesRR.Series["RRSeriesSurface"].Points.AddY(rrsTempArray[i]);
+                temperaturesRR.Series["Tread °C"].Points.AddY(rrsTempArray[i]);
             }
 
-            temperaturesRR.Series["RRSeriesInner"].Points.Clear();
+            temperaturesRR.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < rriTempArray.Length - 1; ++i)
             {
-                temperaturesRR.Series["RRSeriesInner"].Points.AddY(rriTempArray[i]);
+                temperaturesRR.Series["Inner °C"].Points.AddY(rriTempArray[i]);
             }
             
             // Chassis stuff
@@ -636,7 +647,7 @@ namespace MemHelperExample
             textBox_FL_LongitudinalFriction.Text = Math.Round((FL_LongitudinalLoad / FL_VerticalLoad),5).ToString();
             textBox_FL_TreadTemperature.Text = Math.Round(flsTemp,2).ToString();
             textBox_FL_InnerTemperature.Text = Math.Round(fliTemp,2).ToString();
-            textBox_FL_SlipAngleDeg.Text = Math.Round((FL_SlipAngleRad * (180 / 3.14159)),5).ToString();
+            textBox_FL_SlipAngleDeg.Text = Math.Round((FL_SlipAngleRad * radToDeg),2).ToString();
 
             //Front right
             textBox_FR_AngularVelocity.Text = FR_AngularVelocity.ToString();
@@ -656,7 +667,7 @@ namespace MemHelperExample
             textBox_FR_LongitudinalFriction.Text = Math.Round((FR_LongitudinalLoad / FR_VerticalLoad), 5).ToString();
             textBox_FR_TreadTemperature.Text = Math.Round(frsTemp, 2).ToString();
             textBox_FR_InnerTemperature.Text = Math.Round(friTemp, 2).ToString();
-            textBox_FR_SlipAngleDeg.Text = Math.Round((FR_SlipAngleRad * (180 / 3.14159)), 5).ToString();
+            textBox_FR_SlipAngleDeg.Text = Math.Round((FR_SlipAngleRad * radToDeg), 2).ToString();
 
             //Rear left
             textBox_RL_AngularVelocity.Text = RL_AngularVelocity.ToString();
@@ -676,7 +687,7 @@ namespace MemHelperExample
             textBox_RL_LongitudinalFriction.Text = Math.Round((RL_LongitudinalLoad / RL_VerticalLoad), 5).ToString();
             textBox_RL_TreadTemperature.Text = Math.Round(rlsTemp, 2).ToString();
             textBox_RL_InnerTemperature.Text = Math.Round(rliTemp, 2).ToString();
-            textBox_RL_SlipAngleDeg.Text = Math.Round((RL_SlipAngleRad * (180 / 3.14159)), 5).ToString();
+            textBox_RL_SlipAngleDeg.Text = Math.Round((RL_SlipAngleRad * radToDeg), 2).ToString();
 
             //Rear right
             textBox_RR_AngularVelocity.Text = RR_AngularVelocity.ToString();
@@ -696,7 +707,7 @@ namespace MemHelperExample
             textBox_RR_LongitudinalFriction.Text = Math.Round((RR_LongitudinalLoad / RR_VerticalLoad), 5).ToString();
             textBox_RR_TreadTemperature.Text = Math.Round(rrsTemp, 2).ToString();
             textBox_RR_InnerTemperature.Text = Math.Round(rriTemp, 2).ToString();
-            textBox_RR_SlipAngleDeg.Text = Math.Round((RR_SlipAngleRad * (180 / 3.14159)), 5).ToString();
+            textBox_RR_SlipAngleDeg.Text = Math.Round((RR_SlipAngleRad * radToDeg), 2).ToString();
 
             
 
@@ -709,7 +720,7 @@ namespace MemHelperExample
         {
 
         }
-
+        /*
         private void setTemperatureCorrection_Click(object sender, EventArgs e)
         {
            
@@ -780,7 +791,7 @@ namespace MemHelperExample
             }
             
         }
-
+        */
         private void label6_Click(object sender, EventArgs e)
         {
 
@@ -812,7 +823,7 @@ namespace MemHelperExample
                 sleep = Convert.ToInt32(logInterval_textBox.Text);
             }
         }
-
+        /**********************************OUTDATED SUFF*****************************************
         private void tempCorrectionBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch1 = e.KeyChar;
@@ -1017,7 +1028,7 @@ namespace MemHelperExample
             TempCorrectionValueC = 2.7767;
             TempCorrectionValueD = -38.779;
         }
-
+        */
         private void Start_Log_Click(object sender, EventArgs e)
         {
             logging = true;
@@ -1044,92 +1055,12 @@ namespace MemHelperExample
 
         }
 
-        private void SpeedPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox17_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox14_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox15_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox16_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox18_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -1174,11 +1105,6 @@ namespace MemHelperExample
 
         }
 
-        private void textBox_FL_MaxContactBrakeTorque_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox_FL_VerticalLoad_TextChanged(object sender, EventArgs e)
         {
 
@@ -1190,11 +1116,6 @@ namespace MemHelperExample
         }
 
         private void textBox_FL_LongitudinalLoad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_FL_SlipAngleRad_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -1225,6 +1146,46 @@ namespace MemHelperExample
         }
 
         private void textBox_FL_LongitudinalFriction_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void temperaturesFL_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void temperaturesRL_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void temperaturesRR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void temperaturesFR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
         {
 
         }
