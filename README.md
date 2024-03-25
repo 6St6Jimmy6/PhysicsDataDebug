@@ -8,7 +8,7 @@ Physics data debugger for Wreckfest.
 
     You can monitor the tire physics and there's also option for logging the data
 
-    Press Start Logging when the race timer has started. That way you get timestamps for better analyze. It will log until you press the Stop Logging or close the program. You can also change the interval to be shorter or longer. By default it's 50ms, but that's not how fast the actual code runs ;)
+    Press Start Logging when the race timer has started. That way you get timestamps for better analyze. It will log until you press the Stop Logging or close the program. You can also change the interval to be shorter or longer. By default it's 5ms, but that's not how fast the actual code runs... Minimum of 1 it likely runs about 30-50ms.
 
     Each of the four tires will have separate files
 
