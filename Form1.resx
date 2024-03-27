@@ -118,139 +118,135 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>		  FRONT LEFT DATA
-Tread Temperature					°C
+    <value>			FRONT LEFT DATA
 
-Inner Temperature					°C
+Tire Travel Speed					    m/s
 
-Tire Travel Speed					m/s
+Angular Velocity					    km/h
 
-Current Tire Contact Braking Torque			Nm
+Verical Load/Deflection		  N /		    m
 
-Angular Velocity					km/h
+Loaded/Effective Radius		  m /		    m
 
-Tire Deflection					m
+Tire Contact Length					    m
 
-RL Loaded Radius					m
+Tire Braking Torque					    Nm
 
-Re Effective Radius					m
+Steer/Camber Angle		  ° /		    °
 
-Tire Contact Length					m
+Lateral Load					    N
 
-Verical Load					N
+Slip Angle						    °
 
-Lateral Load					N
+Lat Friction/Slip			  μ /		    m/s
 
-Slip Angle Degrees					°
+Longitudinal Load					    N
 
-Lateral Friction					μ
+Slip Ratio						    0-1
 
-Longitudinal Load					N
+Lon Friction/Slip			  μ /		    m/s
 
-Slip Ratio						0-1
+Tread/Inner Temps			  °C /		    °C
 
-Longitudinal Friction					μ</value>
+Total Friction/Angle			  μ /		    °</value>
   </data>
   <data name="richTextBox2.Text" xml:space="preserve">
-    <value>		FRONT RIGHT DATA
-Tread Temperature					°C
+    <value>			REAR LEFT DATA
 
-Inner Temperature					°C
+Tire Travel Speed					    m/s
 
-Tire Travel Speed					m/s
+Angular Velocity					    km/h
 
-Current Tire Contact Braking Torque			Nm
+Verical Load/Deflection		  N /		    m
 
-Angular Velocity					km/h
+Loaded/Effective Radius		  m /		    m
 
-Tire Deflection					m
+Tire Contact Length					    m
 
-RL Loaded Radius					m
+Tire Braking Torque					    Nm
 
-Re Effective Radius					m
+Steer/Camber Angle		  ° /		    °
 
-Tire Contact Length					m
+Lateral Load					    N
 
-Verical Load					N
+Slip Angle						    °
 
-Lateral Load					N
+Lat Friction/Slip			  μ /		    m/s
 
-Slip Angle Degrees					°
+Longitudinal Load					    N
 
-Lateral Friction					μ
+Slip Ratio						    0-1
 
-Longitudinal Load					N
+Lon Friction/Slip			  μ /		    m/s
 
-Slip Ratio						0-1
+Tread/Inner Temps			  °C /		    °C
 
-Longitudinal Friction					μ</value>
+Total Friction/Angle			  μ /		    °</value>
   </data>
   <data name="richTextBox3.Text" xml:space="preserve">
-    <value>		     REAR LEFT DATA
-Tread Temperature					°C
+    <value>			FRONT RIGHT DATA
 
-Inner Temperature					°C
+Tire Travel Speed					    m/s
 
-Tire Travel Speed					m/s
+Angular Velocity					    km/h
 
-Current Tire Contact Braking Torque			Nm
+Verical Load/Deflection		  N /		    m
 
-Angular Velocity					km/h
+Loaded/Effective Radius		  m /		    m
 
-Tire Deflection					m
+Tire Contact Length					    m
 
-RL Loaded Radius					m
+Tire Braking Torque					    Nm
 
-Re Effective Radius					m
+Steer/Camber Angle		  ° /		    °
 
-Tire Contact Length					m
+Lateral Load					    N
 
-Verical Load					N
+Slip Angle						    °
 
-Lateral Load					N
+Lat Friction/Slip			  μ /		    m/s
 
-Slip Angle Degrees					°
+Longitudinal Load					    N
 
-Lateral Friction					μ
+Slip Ratio						    0-1
 
-Longitudinal Load					N
+Lon Friction/Slip			  μ /		    m/s
 
-Slip Ratio						0-1
+Tread/Inner Temps			  °C /		    °C
 
-Longitudinal Friction					μ</value>
+Total Friction/Angle			  μ /		    °</value>
   </data>
   <data name="richTextBox4.Text" xml:space="preserve">
-    <value>		  REAR RIGHT DATA
-Tread Temperature					°C
+    <value>			REAR RIGHT DATA
 
-Inner Temperature					°C
+Tire Travel Speed					    m/s
 
-Tire Travel Speed					m/s
+Angular Velocity					    km/h
 
-Current Tire Contact Braking Torque			Nm
+Verical Load/Deflection		  N /		    m
 
-Angular Velocity					km/h
+Loaded/Effective Radius		  m /		    m
 
-Tire Deflection					m
+Tire Contact Length					    m
 
-RL Loaded Radius					m
+Tire Braking Torque					    Nm
 
-Re Effective Radius					m
+Steer/Camber Angle		  ° /		    °
 
-Tire Contact Length					m
+Lateral Load					    N
 
-Verical Load					N
+Slip Angle						    °
 
-Lateral Load					N
+Lat Friction/Slip			  μ /		    m/s
 
-Slip Angle Degrees					°
+Longitudinal Load					    N
 
-Lateral Friction					μ
+Slip Ratio						    0-1
 
-Longitudinal Load					N
+Lon Friction/Slip			  μ /		    m/s
 
-Slip Ratio						0-1
+Tread/Inner Temps			  °C /		    °C
 
-Longitudinal Friction					μ</value>
+Total Friction/Angle			  μ /		    °</value>
   </data>
 </root>
