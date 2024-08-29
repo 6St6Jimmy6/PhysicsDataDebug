@@ -663,7 +663,7 @@ namespace Physics_Data_Debug
 
         //Rear Left
         int[] rlsOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRLTire };
-        int[] rliOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRLTire };
+        int[] rliOffsets = { OffsetTireData, OffsetInnerTemperature + OffsetRLTire };
         int[] RL_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetRLTire };
         int[] RL_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetRLTire };
         int[] RL_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetRLTire };
@@ -696,7 +696,7 @@ namespace Physics_Data_Debug
 
         //Rear Right
         int[] rrsOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRRTire };
-        int[] rriOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRRTire };
+        int[] rriOffsets = { OffsetTireData, OffsetInnerTemperature + OffsetRRTire };
         int[] RR_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetRRTire };
         int[] RR_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetRRTire };
         int[] RR_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetRRTire };
