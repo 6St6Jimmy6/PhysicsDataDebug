@@ -2,15 +2,13 @@ Physics data debugger for Wreckfest.
 
     Launch the game
 
-    Launch the debugger executable file
+    Launch the debugger executable file after the game is on.
 
     Go in singleplayer and go in Banger Race alone without AI drivers
 
-    You can monitor the tire physics and there's also option for logging the data
+    You can monitor the tire physics and aero lift. There's also option for logging the data, tune what you log and you can also change some tire parameters on the fly.
 
-    Press Start Logging when the race timer has started. That way you get timestamps for better analyze. It will log until you press the Stop Logging or close the program. You can also change the interval to be shorter or longer. By default it's 5ms, but that's not how fast the actual code runs... Minimum of 1 it likely runs about 30-50ms.
-
-    Each of the four tires will have separate files
+    Press Start Logging and the debugger makes log files for each tire. It will log until you press the Stop Logging or close the program. You can also change the interval to be shorter or longer. By default it's 5ms, but that's not how fast the actual code runs... Minimum of 1 it likely runs about 30-50ms.
 
     Log files are located in C:\Users\USER_NAME\AppData\
 
