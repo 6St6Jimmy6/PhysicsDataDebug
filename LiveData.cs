@@ -13,12 +13,65 @@ using System.Windows.Forms;
 using System.Threading;
 using System.ComponentModel.DataAnnotations;
 
-namespace MemHelperExample
+namespace Physics_Data_Debug
 {
-    public partial class Form1 : Form
+    public partial class Live_Data : Form
     {
+        public static bool SettingsOpen = false;
+        public static bool TireSettingsOpen = false;
 
-        public Form1()
+        public static bool FiltersOn = false;
+
+        public static bool TireTravelSpeedLogEnabled;//0
+        public static bool AngularVelocityLogEnabled;//1
+        public static bool VerticalLoadLogEnabled;//2
+        public static bool VerticalDeflectionLogEnabled;//3
+        public static bool LoadedRadiusLogEnabled;//4
+        public static bool EffectiveRadiusLogEnabled;//5
+        public static bool ContactLengthLogEnabled;//6
+        public static bool BrakeTorqueLogEnabled;//7
+        public static bool SteerAngleLogEnabled;//8
+        public static bool CamberAngleLogEnabled;//9
+        public static bool LateralLoadLogEnabled;//10
+        public static bool SlipAngleLogEnabled;//11
+        public static bool LateralFrictionLogEnabled;//12
+        public static bool LateralSlipSpeedLogEnabled;//13
+        public static bool LongitudinalLoadLogEnabled;//14
+        public static bool SlipRatioLogEnabled;//15
+        public static bool LongitudinalFrictionLogEnabled;//16
+        public static bool LongitudinalSlipSpeedLogEnabled;//17
+        public static bool TreadTemperatureLogEnabled;//18
+        public static bool InnerTemperatureLogEnabled;//19
+        public static bool RaceTimeLogEnabled;//20
+        public static bool TotalFrictionLogEnabled;//21
+        public static bool TotalFrictionAngleLogEnabled;//22
+
+        public static string sTireTravelSpeed = "Tire Travel Speed";
+        public static string sAngularVelocity = "Angular Velocity";
+        public static string sVerticalLoad = "Vertical Load";
+        public static string sVerticalDeflection = "Vertical Deflection";
+        public static string sLoadedRadius = "Loaded Radius";
+        public static string sEffectiveRadius = "Effective Radius";
+        public static string sContactLength = "Contact Length";
+        public static string sBrakeTorque = "Brake Torque";
+        public static string sMaxBrakeTorque = "Max Brake Torque";
+        public static string sSteerAngle = "Steer Angle";
+        public static string sCamberAngle = "Camber Angle";
+        public static string sLateralLoad = "Lateral Load";
+        public static string sSlipAngle = "Slip Angle";
+        public static string sLateralFriction = "Lateral Friction";
+        public static string sLateralSlipSpeed = "Lateral Slip Speed";
+        public static string sLongitudinalLoad = "Longitudinal Load";
+        public static string sSlipRatio = "Slip Ratio";
+        public static string sLongitudinalFriction = "Longitudinal Friction";
+        public static string sLongitudinalSlipSpeed = "Longitudinal Slip Speed";
+        public static string sTreadTemperature = "Tread Temperature";
+        public static string sInnerTemperature = "Inner Temperature";
+        public static string sRaceTime = "Race Time";
+        public static string sTotalFriction = "Total Friction";
+        public static string sTotalFrictionAngle = "Total Friction Angle";
+
+        public Live_Data()
         {
             InitializeComponent();
         }
@@ -31,8 +84,11 @@ namespace MemHelperExample
 
         bool drawing = true;
         ***************************/
-        private void Form1_Load(object sender, EventArgs e)
+        private void FirstAllDataLoggerPage_Load(object sender, EventArgs e)
         {
+            //toSettingsButton.Hide();
+            //toTireSettingsButton.Hide();
+
             /*CODE FOR DRAWING G-Forces*
             btm = new Bitmap(360, 360);
             g = Graphics.FromImage(btm);
@@ -43,6 +99,10 @@ namespace MemHelperExample
             th.IsBackground = true;
             th.Start();
             ***************************/
+            /*
+            // Load saved settings
+            RegistryTools.LoadAllSettings(Application.ProductName, this);
+            */
 
             update = new Thread(new ThreadStart(getData));
             update.IsBackground = true;
@@ -149,222 +209,373 @@ namespace MemHelperExample
         private double rearLift = 0.00;
 
         //Time offsets
-        private int OffsetRaceTime = 0x14;
+        public static int OffsetRaceTime = 0x14;
 
         //0x3E4
         //0xAE8
 
-
-
         //Tire data offsets
-        private int OffsetTireData = 0xE78;
-        private int OffsetFRTire = 0xC50;//Next tire offset from FL
-        private int OffsetRLTire = 0xC50 + 0xC50;//Next tire offset from FL
-        private int OffsetRRTire = 0xC50 + 0xC50 + 0xC50;//Next tire offset from FL
+        public static int OffsetTireData = 0xE78;
+        public static int OffsetFRTire = 0xC50;//Next tire offset from FL
+        public static int OffsetRLTire = 0xC50 + 0xC50;//Next tire offset from FL
+        public static int OffsetRRTire = 0xC50 + 0xC50 + 0xC50;//Next tire offset from FL
 
-        private int OffsetMomentOfInertia = 0x28;//
-        private int OffsetAngularVelocity = 0x2C;
-        private int OffsetCamberAngleRad = 0x394;//
-        private int OffsetTireSteerAngleRad = 0x398;//
-        private int OffsetTireMass = 0x410;//
-        private int OffsetTireRadius = 0x414;//
-        private int OffsetTireWidth = 0x418;//
-        private int OffsetTireSpringRate = 0x41C;//
-        private int OffsetTireDamperRate = 0x420;//
-        private int OffsetTireMaxDeflection = 0x424;//
-        private int OffsetThermalAirTransfer = 0x428;//
-        private int OffsetThermalInnerTransfer = 0x42C;//
-        private int OffsetTreadTemperature = 0x434;
-        private int OffsetInnerTemperature = 0x438;
-        private int OffsetDeflection = 0x43C;
-        private int OffsetLoadedRadius = 0x44C;
-        private int OffsetEffectiveRadius = 0x450;
-        private int OffsetLongitudinalSlipSpeed = 0x454;//
-        private int OffsetLateralSlipSpeed = 0x458;//
-        private int OffsetRadOfTireMoved = 0x45C;//Not angular but compared to the contact surface.
-        private int OffsetCurrentContactBrakeTorque = 0x484;
-        private int OffsetCurrentContactBrakeTorqueMax = 0x48C;
-        private int OffsetVerticalLoad = 0x490;
-        private int OffsetLateralLoad = 0x4B8;
-        private int OffsetLongitudinalLoad = 0x4C0;
-        private int OffsetSlipAngleRad = 0xBF0;
-        private int OffsetSlipRatio = 0xBF4;
-        private int OffsetLateralResistance = 0xBF8;//
-        private int OffsetLongitudinalResistance = 0xBFC; //
-        private int OffsetContactLength = 0xC1C;
-        private int OffsetTravelSpeed = 0xC20;
+        public static int OffsetMomentOfInertia = 0x28;//
+        public static int OffsetAngularVelocity = 0x2C;
+        public static int OffsetCamberAngleRad = 0x394;
+        public static int OffsetTireSteerAngleRad = 0x398;
+        public static int OffsetTireMass = 0x410;//
+        public static int OffsetTireRadius = 0x414;//
+        public static int OffsetTireWidth = 0x418;//
+        public static int OffsetTireSpringRate = 0x41C;//
+        public static int OffsetTireDamperRate = 0x420;//
+        public static int OffsetTireMaxDeflection = 0x424;//
+        public static int OffsetThermalAirTransfer = 0x428;//
+        public static int OffsetThermalInnerTransfer = 0x42C;//
+        public static int OffsetTreadTemperature = 0x434;
+        public static int OffsetInnerTemperature = 0x438;
+        public static int OffsetDeflection = 0x43C;
+        public static int OffsetLoadedRadius = 0x44C;
+        public static int OffsetEffectiveRadius = 0x450;
+        public static int OffsetLongitudinalSlipSpeed = 0x454;
+        public static int OffsetLateralSlipSpeed = 0x458;
+        public static int OffsetRadOfTireMoved = 0x45C;//Not angular but compared to the contact surface.
+        public static int OffsetCurrentContactBrakeTorque = 0x484;
+        public static int OffsetCurrentContactBrakeTorqueMax = 0x48C;
+        public static int OffsetVerticalLoad = 0x490;
+
+        public static int OffsetLateralLoad = 0x4B8;
+        public static int OffsetLongitudinalLoad = 0x4C0;
+        public static int OffsetSlipAngleRad = 0xBF0;
+        public static int OffsetSlipRatio = 0xBF4;
+        public static int OffsetLateralResistance = 0xBF8;//
+        public static int OffsetLongitudinalResistance = 0xBFC;//
+
+        public static int OffsetContactLength = 0xC1C;
+        public static int OffsetTravelSpeed = 0xC20;
         /*
                  
                  */
 
         //Time Data
-        private int RaceTime;
+        public static int RaceTime;
 
         //Tire Data
-        private double flsTemp = 0.0;
-        private double fliTemp = 0.0;
-        private double frsTemp = 0.0;
-        private double friTemp = 0.0;
-        private double rlsTemp = 0.0;
-        private double rliTemp = 0.0;
-        private double rrsTemp = 0.0;
-        private double rriTemp = 0.0;
+
         //Font Left
+        public static double FL_MomentOfInertia;//
         private double FL_AngularVelocity;
-        private double FL_Deflection;
+        private double FL_CamberAngleRad;//
+        private double FL_CamberAngleDeg;//
+        private double FL_SteerAngleRad;//
+        private double FL_SteerAngleDeg;//
+        public static double FL_TireMass;//
+        public static double FL_TireRadius;//
+        public static double FL_TireWidth;//
+        public static double FL_TireSpringRate;//
+        public static double FL_TireDamperRate;//
+        public static double FL_TireMaxDeflection;//
+        public static double FL_ThermalAirTransfer;
+        public static double FL_ThermalInnerTransfer;
+        private double FL_TreadTemperature = 0.0;
+        private double FL_InnerTemperature = 0.0;
+        private double FL_VerticalDeflection;
         private double FL_LoadedRadius;
         private double FL_EffectiveRadius;
+        private double FL_LongitudinalSlipSpeed;//
+        private double FL_LateralSlipSpeed;//
+        private double FL_RadOfTireMoved;//
         private double FL_CurrentContactBrakeTorque;
         private double FL_CurrentContactBrakeTorqueMax;
         private double FL_VerticalLoad;
+
         private double FL_LateralLoad;
         private double FL_LongitudinalLoad;
         private double FL_SlipAngleRad;
         private double FL_SlipAngleDeg;
         private double FL_SlipRatio;
+        private double FL_LateralResistance;//
+        private double FL_LongitudinalResistance;//
+
         private double FL_ContactLength;
         private double FL_TravelSpeed;
+        //----------------------------------------//
         private double FL_LateralFriction;
         private double FL_LongitudinalFriction;
-        private double FL_LateralSlipSpeed;//
-        private double FL_LongitudinalSlipSpeed;//
         private double FL_TotalFriction;//
         private double FL_TotalFrictionAngle;//
-        private double FL_MomentOfInertia;//
-        private double FL_CamberAngleRad;//
-        private double FL_TireSteerAngleRad;//
-        private double FL_CamberAngleDeg;//
-        private double FL_TireSteerAngleDeg;//
-        private double FL_TireMass;//
-        private double FL_TireRadius;//
-        private double FL_TireWidth;//
-        private double FL_TireSpringRate;//
-        private double FL_TireDamperRate;//
-        private double FL_TireMaxDeflection;//
-        private double FL_ThermalAirTransfer;
-        private double FL_ThermalInnerTransfer;
 
         /*
                  
                  */
 
-        //Font Right
+        //Front Right
+        public static double FR_MomentOfInertia;//
         private double FR_AngularVelocity;
-        private double FR_Deflection;
+        private double FR_CamberAngleRad;//
+        private double FR_CamberAngleDeg;//
+        private double FR_SteerAngleRad;//
+        private double FR_SteerAngleDeg;//
+        public static double FR_TireMass;//
+        public static double FR_TireRadius;//
+        public static double FR_TireWidth;//
+        public static double FR_TireSpringRate;//
+        public static double FR_TireDamperRate;//
+        public static double FR_TireMaxDeflection;//
+        public static double FR_ThermalAirTransfer;
+        public static double FR_ThermalInnerTransfer;
+        private double FR_TreadTemperature = 0.0;
+        private double FR_InnerTemperature = 0.0;
+        private double FR_VerticalDeflection;
         private double FR_LoadedRadius;
         private double FR_EffectiveRadius;
+        private double FR_LongitudinalSlipSpeed;//
+        private double FR_LateralSlipSpeed;//
+        private double FR_RadOfTireMoved;//
         private double FR_CurrentContactBrakeTorque;
         private double FR_CurrentContactBrakeTorqueMax;
         private double FR_VerticalLoad;
+
         private double FR_LateralLoad;
         private double FR_LongitudinalLoad;
         private double FR_SlipAngleRad;
         private double FR_SlipAngleDeg;
         private double FR_SlipRatio;
+        private double FR_LateralResistance;//
+        private double FR_LongitudinalResistance;//
+
         private double FR_ContactLength;
         private double FR_TravelSpeed;
+        //----------------------------------------//
         private double FR_LateralFriction;
         private double FR_LongitudinalFriction;
-        private double FR_LateralSlipSpeed;//
-        private double FR_LongitudinalSlipSpeed;//
         private double FR_TotalFriction;//
         private double FR_TotalFrictionAngle;//
-        private double FR_MomentOfInertia;//
-        private double FR_CamberAngleRad;//
-        private double FR_TireSteerAngleRad;//
-        private double FR_CamberAngleDeg;//
-        private double FR_TireSteerAngleDeg;//
-        private double FR_TireMass;//
-        private double FR_TireRadius;//
-        private double FR_TireWidth;//
-        private double FR_TireSpringRate;//
-        private double FR_TireDamperRate;//
-        private double FR_TireMaxDeflection;//
-        private double FR_ThermalAirTransfer;
-        private double FR_ThermalInnerTransfer;
         /*
                  
                  */
 
         //Rear Left
+        public static double RL_MomentOfInertia;//
         private double RL_AngularVelocity;
-        private double RL_Deflection;
+        private double RL_CamberAngleRad;//
+        private double RL_CamberAngleDeg;//
+        private double RL_SteerAngleRad;//
+        private double RL_SteerAngleDeg;//
+        public static double RL_TireMass;//
+        public static double RL_TireRadius;//
+        public static double RL_TireWidth;//
+        public static double RL_TireSpringRate;//
+        public static double RL_TireDamperRate;//
+        public static double RL_TireMaxDeflection;//
+        public static double RL_ThermalAirTransfer;
+        public static double RL_ThermalInnerTransfer;
+        private double RL_TreadTemperature = 0.0;
+        private double RL_InnerTemperature = 0.0;
+        private double RL_VerticalDeflection;
         private double RL_LoadedRadius;
         private double RL_EffectiveRadius;
+        private double RL_LongitudinalSlipSpeed;//
+        private double RL_LateralSlipSpeed;//
+        private double RL_RadOfTireMoved;//
         private double RL_CurrentContactBrakeTorque;
         private double RL_CurrentContactBrakeTorqueMax;
         private double RL_VerticalLoad;
+
         private double RL_LateralLoad;
         private double RL_LongitudinalLoad;
         private double RL_SlipAngleRad;
         private double RL_SlipAngleDeg;
         private double RL_SlipRatio;
+        private double RL_LateralResistance;//
+        private double RL_LongitudinalResistance;//
+
         private double RL_ContactLength;
         private double RL_TravelSpeed;
+        //----------------------------------------//
         private double RL_LateralFriction;
         private double RL_LongitudinalFriction;
-        private double RL_LateralSlipSpeed;//
-        private double RL_LongitudinalSlipSpeed;//
         private double RL_TotalFriction;//
         private double RL_TotalFrictionAngle;//
-        private double RL_MomentOfInertia;//
-        private double RL_CamberAngleRad;//
-        private double RL_TireSteerAngleRad;//
-        private double RL_CamberAngleDeg;//
-        private double RL_TireSteerAngleDeg;//
-        private double RL_TireMass;//
-        private double RL_TireRadius;//
-        private double RL_TireWidth;//
-        private double RL_TireSpringRate;//
-        private double RL_TireDamperRate;//
-        private double RL_TireMaxDeflection;//
-        private double RL_ThermalAirTransfer;
-        private double RL_ThermalInnerTransfer;
         /*
                  
                  */
 
         //Rear Right
+        public static double RR_MomentOfInertia;//
         private double RR_AngularVelocity;
-        private double RR_Deflection;
+        private double RR_CamberAngleRad;//
+        private double RR_CamberAngleDeg;//
+        private double RR_SteerAngleRad;//
+        private double RR_SteerAngleDeg;//
+        public static double RR_TireMass;//
+        public static double RR_TireRadius;//
+        public static double RR_TireWidth;//
+        public static double RR_TireSpringRate;//
+        public static double RR_TireDamperRate;//
+        public static double RR_TireMaxDeflection;//
+        public static double RR_ThermalAirTransfer;
+        public static double RR_ThermalInnerTransfer;
+        private double RR_TreadTemperature = 0.0;
+        private double RR_InnerTemperature = 0.0;
+        private double RR_VerticalDeflection;
         private double RR_LoadedRadius;
         private double RR_EffectiveRadius;
+        private double RR_LongitudinalSlipSpeed;//
+        private double RR_LateralSlipSpeed;//
+        private double RR_RadOfTireMoved;//
         private double RR_CurrentContactBrakeTorque;
         private double RR_CurrentContactBrakeTorqueMax;
         private double RR_VerticalLoad;
+
         private double RR_LateralLoad;
         private double RR_LongitudinalLoad;
         private double RR_SlipAngleRad;
         private double RR_SlipAngleDeg;
         private double RR_SlipRatio;
+        private double RR_LateralResistance;//
+        private double RR_LongitudinalResistance;//
+
         private double RR_ContactLength;
         private double RR_TravelSpeed;
+        //----------------------------------------//
         private double RR_LateralFriction;
         private double RR_LongitudinalFriction;
-        private double RR_LateralSlipSpeed;//
-        private double RR_LongitudinalSlipSpeed;//
         private double RR_TotalFriction;//
         private double RR_TotalFrictionAngle;//
-        private double RR_MomentOfInertia;//
-        private double RR_CamberAngleRad;//
-        private double RR_TireSteerAngleRad;//
-        private double RR_CamberAngleDeg;//
-        private double RR_TireSteerAngleDeg;//
-        private double RR_TireMass;//
-        private double RR_TireRadius;//
-        private double RR_TireWidth;//
-        private double RR_TireSpringRate;//
-        private double RR_TireDamperRate;//
-        private double RR_TireMaxDeflection;//
-        private double RR_ThermalAirTransfer;
-        private double RR_ThermalInnerTransfer;
         /*
                  
                  */
+        
+        string Header0;
+        string Header1;
+        string Header2;
+        string Header3;
+        string Header4;
+        string Header5;
+        string Header6;
+        string Header7;
+        string Header7_1;
+        string Header8;
+        string Header9;
+        string Header10;
+        string Header11;
+        string Header12;
+        string Header13;
+        string Header14;
+        string Header15;
+        string Header16;
+        string Header17;
+        string Header18;
+        string Header19;
+        string Header20;
+        string Header21;
+        string Header22;
+        
+        string flParameter0;
+        string flParameter1;        
+        string flParameter2;        
+        string flParameter3;        
+        string flParameter4;        
+        string flParameter5;        
+        string flParameter6;        
+        string flParameter7;
+        string flParameter7_1;
+        string flParameter8;        
+        string flParameter9;        
+        string flParameter10;        
+        string flParameter11;        
+        string flParameter12;        
+        string flParameter13;        
+        string flParameter14;        
+        string flParameter15;
+        string flParameter16;
+        string flParameter17;
+        string flParameter18;
+        string flParameter19;
+        string flParameter20;
+        string flParameter21;
+        string flParameter22;
 
+        string frParameter0;       
+        string frParameter1;        
+        string frParameter2;       
+        string frParameter3;       
+        string frParameter4;       
+        string frParameter5;        
+        string frParameter6;        
+        string frParameter7;
+        string frParameter7_1;
+        string frParameter8;
+        string frParameter9;
+        string frParameter10;
+        string frParameter11;
+        string frParameter12;
+        string frParameter13;
+        string frParameter14;
+        string frParameter15;
+        string frParameter16;
+        string frParameter17;
+        string frParameter18;
+        string frParameter19;
+        string frParameter20;
+        string frParameter21;
+        string frParameter22;
 
+        string rlParameter0;
+        string rlParameter1;
+        string rlParameter2;
+        string rlParameter3;
+        string rlParameter4;
+        string rlParameter5;
+        string rlParameter6;
+        string rlParameter7;
+        string rlParameter7_1;
+        string rlParameter8;
+        string rlParameter9;
+        string rlParameter10;
+        string rlParameter11;
+        string rlParameter12;
+        string rlParameter13;
+        string rlParameter14;
+        string rlParameter15;
+        string rlParameter16;
+        string rlParameter17;
+        string rlParameter18;
+        string rlParameter19;
+        string rlParameter20;
+        string rlParameter21;
+        string rlParameter22;
+
+        string rrParameter0;
+        string rrParameter1;
+        string rrParameter2;
+        string rrParameter3;
+        string rrParameter4;
+        string rrParameter5;
+        string rrParameter6;
+        string rrParameter7;
+        string rrParameter7_1;
+        string rrParameter8;
+        string rrParameter9;
+        string rrParameter10;
+        string rrParameter11;
+        string rrParameter12;
+        string rrParameter13;
+        string rrParameter14;
+        string rrParameter15;
+        string rrParameter16;
+        string rrParameter17;
+        string rrParameter18;
+        string rrParameter19;
+        string rrParameter20;
+        string rrParameter21;
+        string rrParameter22;
+
+        //Basest of the basest
+        public static ulong baseAddrTire = 0x1831EE0;
         //Every update offsets the base address of the memory points. 99% of the time forwards.
-        ulong baseAddrUpdt = 0x9E00;
+        public static ulong baseAddrUpdt = 0x9E00;
         //0x0;// April 2022
         //0x4650;// May 2022
         //0x5710// October 2022
@@ -373,7 +584,148 @@ namespace MemHelperExample
         // 0x9E00; March 2024 = 7DF0+2010 = 9E00
 
         // Older builds go backwards, so this is for them. Above should be 0x0 then.
-        ulong baseAddrDodt = 0x0;//0x6DF8D8
+        public static ulong baseAddrDodt = 0x0;//0x6DF8D8
+
+        //Speed and Lift pointers
+        int[] speedOffsets = { 0x70 };
+        int[] frontLiftOffsets = { 0xAACF2C };
+        int[] rearLiftOffsets = { 0xAACF30 };
+        //Race time pointer
+        int[] raceTimerOffsets = { OffsetRaceTime };
+
+        //Tire Data pointers
+        //Front Left
+        int[] flsOffsets = { OffsetTireData, OffsetTreadTemperature };
+        int[] fliOffsets = { OffsetTireData, OffsetInnerTemperature };
+        int[] FL_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity };
+        int[] FL_DeflectionOffsets = { OffsetTireData, OffsetDeflection };
+        int[] FL_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius };
+        int[] FL_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius };
+        int[] FL_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque };
+        int[] FL_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax };
+        int[] FL_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad };
+        int[] FL_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad };
+        int[] FL_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad };
+        int[] FL_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad };
+        int[] FL_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio };
+        int[] FL_ContactLengthOffsets = { OffsetTireData, OffsetContactLength };
+        int[] FL_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed };
+        int[] FL_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed };//
+        int[] FL_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed };// 
+        int[] FL_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad };//
+        int[] FL_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad };//
+
+        int[] FL_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia };//
+        int[] FL_TireMassOffsets = { OffsetTireData, OffsetTireMass };//
+        int[] FL_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius };//
+        int[] FL_TireWidthOffsets = { OffsetTireData, OffsetTireWidth };//
+        int[] FL_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate };//
+        int[] FL_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate };//
+        int[] FL_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection };//
+        int[] FL_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer };
+        int[] FL_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer };
+        /*
+
+         */
+
+        //Front Right
+        int[] frsOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetFRTire };
+        int[] friOffsets = { OffsetTireData, OffsetInnerTemperature + OffsetFRTire };
+        int[] FR_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetFRTire };
+        int[] FR_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetFRTire };
+        int[] FR_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetFRTire };
+        int[] FR_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius + OffsetFRTire };
+        int[] FR_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque + OffsetFRTire };
+        int[] FR_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax + OffsetFRTire };
+        int[] FR_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad + OffsetFRTire };
+        int[] FR_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad + OffsetFRTire };
+        int[] FR_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad + OffsetFRTire };
+        int[] FR_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad + OffsetFRTire };
+        int[] FR_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio + OffsetFRTire };
+        int[] FR_ContactLengthOffsets = { OffsetTireData, OffsetContactLength + OffsetFRTire };
+        int[] FR_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed + OffsetFRTire };
+        int[] FR_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed + OffsetFRTire };//
+        int[] FR_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed + OffsetFRTire };//
+        int[] FR_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia + OffsetFRTire };//
+        int[] FR_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad + OffsetFRTire };//
+        int[] FR_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad + OffsetFRTire };//
+        int[] FR_TireMassOffsets = { OffsetTireData, OffsetTireMass + OffsetFRTire };//
+        int[] FR_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius + OffsetFRTire };//
+        int[] FR_TireWidthOffsets = { OffsetTireData, OffsetTireWidth + OffsetFRTire };//
+        int[] FR_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate + OffsetFRTire };//
+        int[] FR_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate + OffsetFRTire };//
+        int[] FR_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection + OffsetFRTire };//
+        int[] FR_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer + OffsetFRTire };
+        int[] FR_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer + OffsetFRTire };
+        /*
+
+         */
+
+        //Rear Left
+        int[] rlsOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRLTire };
+        int[] rliOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRLTire };
+        int[] RL_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetRLTire };
+        int[] RL_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetRLTire };
+        int[] RL_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetRLTire };
+        int[] RL_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius + OffsetRLTire };
+        int[] RL_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque + OffsetRLTire };
+        int[] RL_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax + OffsetRLTire };
+        int[] RL_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad + OffsetRLTire };
+        int[] RL_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad + OffsetRLTire };
+        int[] RL_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad + OffsetRLTire };
+        int[] RL_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad + OffsetRLTire };
+        int[] RL_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio + OffsetRLTire };
+        int[] RL_ContactLengthOffsets = { OffsetTireData, OffsetContactLength + OffsetRLTire };
+        int[] RL_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed + OffsetRLTire };
+        int[] RL_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed + OffsetRLTire };//
+        int[] RL_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed + OffsetRLTire };//
+        int[] RL_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia + OffsetRLTire };//
+        int[] RL_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad + OffsetRLTire };//
+        int[] RL_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad + OffsetRLTire };//
+        int[] RL_TireMassOffsets = { OffsetTireData, OffsetTireMass + OffsetRLTire };//
+        int[] RL_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius + OffsetRLTire };//
+        int[] RL_TireWidthOffsets = { OffsetTireData, OffsetTireWidth + OffsetRLTire };//
+        int[] RL_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate + OffsetRLTire };//
+        int[] RL_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate + OffsetRLTire };//
+        int[] RL_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection + OffsetRLTire };//
+        int[] RL_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer + OffsetRLTire };//
+        int[] RL_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer + OffsetRLTire };//
+        /*
+
+         */
+
+        //Rear Right
+        int[] rrsOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRRTire };
+        int[] rriOffsets = { OffsetTireData, OffsetTreadTemperature + OffsetRRTire };
+        int[] RR_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetRRTire };
+        int[] RR_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetRRTire };
+        int[] RR_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetRRTire };
+        int[] RR_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius + OffsetRRTire };
+        int[] RR_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque + OffsetRRTire };
+        int[] RR_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax + OffsetRRTire };
+        int[] RR_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad + OffsetRRTire };
+        int[] RR_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad + OffsetRRTire };
+        int[] RR_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad + OffsetRRTire };
+        int[] RR_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad + OffsetRRTire };
+        int[] RR_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio + OffsetRRTire };
+        int[] RR_ContactLengthOffsets = { OffsetTireData, OffsetContactLength + OffsetRRTire };
+        int[] RR_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed + OffsetRRTire };
+        int[] RR_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed + OffsetRRTire };//
+        int[] RR_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed + OffsetRRTire };//
+        int[] RR_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia + OffsetRRTire };//
+        int[] RR_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad + OffsetRRTire };//
+        int[] RR_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad + OffsetRRTire };//
+        int[] RR_TireMassOffsets = { OffsetTireData, OffsetTireMass + OffsetRRTire };//
+        int[] RR_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius + OffsetRRTire };//
+        int[] RR_TireWidthOffsets = { OffsetTireData, OffsetTireWidth + OffsetRRTire };//
+        int[] RR_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate + OffsetRRTire };//
+        int[] RR_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate + OffsetRRTire };//
+        int[] RR_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection + OffsetRRTire };//
+        int[] RR_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer + OffsetRRTire };//
+        int[] RR_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer + OffsetRRTire };//
+        /*
+
+         */
 
         private void getData()
         {
@@ -385,39 +737,16 @@ namespace MemHelperExample
                 Memory.Win64.MemoryHelper64 helper = new Memory.Win64.MemoryHelper64(p);
 
                 //Base Addres for Tire data
-                ulong baseAddr = helper.GetBaseAddress(0x1831EE0 + baseAddrUpdt - baseAddrDodt);
+                ulong baseAddr = helper.GetBaseAddress(baseAddrTire + baseAddrUpdt - baseAddrDodt);
                 //Base Address for Speed and Lifts
                 ulong baseAddrSpeed = helper.GetBaseAddress(0x18327C8 + baseAddrUpdt - baseAddrDodt);
                 ulong baseAddrLifts = helper.GetBaseAddress(0x184B118 + baseAddrUpdt - baseAddrDodt);
                 //Base Address for Race Timer
-                ulong BaseAddrRacetimer = helper.GetBaseAddress(0x1832648 + baseAddrUpdt - baseAddrDodt);
+                ulong baseAddrRacetimer = helper.GetBaseAddress(0x1832648 + baseAddrUpdt - baseAddrDodt);
+                
                 //Race time pointer reader
-                int[] RaceTimerOffsets = { OffsetRaceTime };
-                ulong RaceTimer_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, BaseAddrRacetimer, RaceTimerOffsets);
-
-
-                //Temperature pointers
-                int[] flsOffsets = { OffsetTireData, OffsetTreadTemperature };
-                int[] fliOffsets = { OffsetTireData, OffsetInnerTemperature };
-                int[] frsOffsets = { OffsetTireData, 0x1084 };
-                int[] friOffsets = { OffsetTireData, 0x1088 };
-                int[] rlsOffsets = { OffsetTireData, 0x1CD4 };
-                int[] rliOffsets = { OffsetTireData, 0x1CD8 };
-                int[] rrsOffsets = { OffsetTireData, 0x2924 };
-                int[] rriOffsets = { OffsetTireData, 0x2928 };
-                //Temperature pointer reader
-                ulong flsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, flsOffsets);
-                ulong fliTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, fliOffsets);
-                ulong frsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, frsOffsets);
-                ulong friTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, friOffsets);
-                ulong rlsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rlsOffsets);
-                ulong rliTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rliOffsets);
-                ulong rrsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rrsOffsets);
-                ulong rriTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rriOffsets);
-                //Speed and Lift pointers
-                int[] speedOffsets = { 0x70 };
-                int[] frontLiftOffsets = { 0xAACF2C };
-                int[] rearLiftOffsets = { 0xAACF30 };
+                
+                ulong raceTimerTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddrRacetimer, raceTimerOffsets);
                 //Speed and Lift pointer reader
                 ulong speedTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddrSpeed, speedOffsets);
                 ulong frontLiftTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddrLifts, frontLiftOffsets);
@@ -426,135 +755,13 @@ namespace MemHelperExample
                 speed = Math.Round(helper.ReadMemory<float>(speedTargetAddr), 2);
                 frontLift = Math.Round(helper.ReadMemory<float>(frontLiftTargetAddr), 2);
                 rearLift = Math.Round(helper.ReadMemory<float>(rearLiftTargetAddr), 2);
-
-                //Tire Data pointers
-                //Front Left
-                int[] FL_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity };
-                int[] FL_DeflectionOffsets = { OffsetTireData, OffsetDeflection };
-                int[] FL_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius };
-                int[] FL_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius };
-                int[] FL_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque };
-                int[] FL_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax };
-                int[] FL_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad };
-                int[] FL_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad };
-                int[] FL_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad };
-                int[] FL_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad };
-                int[] FL_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio };
-                int[] FL_ContactLengthOffsets = { OffsetTireData, OffsetContactLength };
-                int[] FL_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed };
-                int[] FL_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed };//
-                int[] FL_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed };//
-                int[] FL_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia };//
-                int[] FL_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad };//
-                int[] FL_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad };//
-                int[] FL_TireMassOffsets = { OffsetTireData, OffsetTireMass };//
-                int[] FL_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius };//
-                int[] FL_TireWidthOffsets = { OffsetTireData, OffsetTireWidth };//
-                int[] FL_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate };//
-                int[] FL_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate };//
-                int[] FL_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection };//
-                int[] FL_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer };
-                int[] FL_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer };
-                /*
-
-                 */
-
-                 //Front Right
-                int[] FR_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetFRTire };
-                int[] FR_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetFRTire };
-                int[] FR_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetFRTire };
-                int[] FR_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius + OffsetFRTire };
-                int[] FR_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque + OffsetFRTire };
-                int[] FR_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax + OffsetFRTire };
-                int[] FR_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad + OffsetFRTire };
-                int[] FR_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad + OffsetFRTire };
-                int[] FR_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad + OffsetFRTire };
-                int[] FR_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad + OffsetFRTire };
-                int[] FR_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio + OffsetFRTire };
-                int[] FR_ContactLengthOffsets = { OffsetTireData, OffsetContactLength + OffsetFRTire };
-                int[] FR_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed + OffsetFRTire };
-                int[] FR_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed + OffsetFRTire };//
-                int[] FR_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed + OffsetFRTire };//
-                int[] FR_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia + OffsetFRTire };//
-                int[] FR_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad + OffsetFRTire };//
-                int[] FR_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad + OffsetFRTire };//
-                int[] FR_TireMassOffsets = { OffsetTireData, OffsetTireMass + OffsetFRTire };//
-                int[] FR_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius + OffsetFRTire };//
-                int[] FR_TireWidthOffsets = { OffsetTireData, OffsetTireWidth + OffsetFRTire };//
-                int[] FR_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate + OffsetFRTire };//
-                int[] FR_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate + OffsetFRTire };//
-                int[] FR_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection + OffsetFRTire };//
-                int[] FR_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer + OffsetFRTire };
-                int[] FR_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer + OffsetFRTire };
-                /*
-                 
-                 */
-
-                //Rear Left
-                int[] RL_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetRLTire };
-                int[] RL_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetRLTire };
-                int[] RL_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetRLTire };
-                int[] RL_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius + OffsetRLTire };
-                int[] RL_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque + OffsetRLTire };
-                int[] RL_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax + OffsetRLTire };
-                int[] RL_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad + OffsetRLTire };
-                int[] RL_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad + OffsetRLTire };
-                int[] RL_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad + OffsetRLTire };
-                int[] RL_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad + OffsetRLTire };
-                int[] RL_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio + OffsetRLTire };
-                int[] RL_ContactLengthOffsets = { OffsetTireData, OffsetContactLength + OffsetRLTire };
-                int[] RL_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed + OffsetRLTire };
-                int[] RL_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed + OffsetRLTire };//
-                int[] RL_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed + OffsetRLTire };//
-                int[] RL_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia + OffsetRLTire };//
-                int[] RL_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad + OffsetRLTire };//
-                int[] RL_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad + OffsetRLTire };//
-                int[] RL_TireMassOffsets = { OffsetTireData, OffsetTireMass + OffsetRLTire };//
-                int[] RL_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius + OffsetRLTire };//
-                int[] RL_TireWidthOffsets = { OffsetTireData, OffsetTireWidth + OffsetRLTire };//
-                int[] RL_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate + OffsetRLTire };//
-                int[] RL_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate + OffsetRLTire };//
-                int[] RL_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection + OffsetRLTire };//
-                int[] RL_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer + OffsetRLTire };//
-                int[] RL_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer + OffsetRLTire };//
-                /*
-                 
-                 */
-
-                //Rear Right
-                int[] RR_AngularVelocityOffsets = { OffsetTireData, OffsetAngularVelocity + OffsetRRTire };
-                int[] RR_DeflectionOffsets = { OffsetTireData, OffsetDeflection + OffsetRRTire };
-                int[] RR_LoadedRadiusOffsets = { OffsetTireData, OffsetLoadedRadius + OffsetRRTire };
-                int[] RR_EffectiveRadiusOffsets = { OffsetTireData, OffsetEffectiveRadius + OffsetRRTire };
-                int[] RR_CurrentContactBrakeTorqueOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorque + OffsetRRTire };
-                int[] RR_CurrentContactBrakeTorqueMaxOffsets = { OffsetTireData, OffsetCurrentContactBrakeTorqueMax + OffsetRRTire };
-                int[] RR_VerticalLoadOffsets = { OffsetTireData, OffsetVerticalLoad + OffsetRRTire };
-                int[] RR_LateralLoadOffsets = { OffsetTireData, OffsetLateralLoad + OffsetRRTire };
-                int[] RR_LongitudinalLoadOffsets = { OffsetTireData, OffsetLongitudinalLoad + OffsetRRTire };
-                int[] RR_SlipAngleRadOffsets = { OffsetTireData, OffsetSlipAngleRad + OffsetRRTire };
-                int[] RR_SlipRatioOffsets = { OffsetTireData, OffsetSlipRatio + OffsetRRTire };
-                int[] RR_ContactLengthOffsets = { OffsetTireData, OffsetContactLength + OffsetRRTire };
-                int[] RR_TravelSpeedOffsets = { OffsetTireData, OffsetTravelSpeed + OffsetRRTire };
-                int[] RR_LateralSlipSpeedOffsets = { OffsetTireData, OffsetLateralSlipSpeed + OffsetRRTire };//
-                int[] RR_LongitudinalSlipSpeedOffsets = { OffsetTireData, OffsetLongitudinalSlipSpeed + OffsetRRTire };//
-                int[] RR_MomentOfInertiaOffsets = { OffsetTireData, OffsetMomentOfInertia + OffsetRRTire };//
-                int[] RR_CamberAngleRadOffsets = { OffsetTireData, OffsetCamberAngleRad + OffsetRRTire };//
-                int[] RR_TireSteerAngleRadOffsets = { OffsetTireData, OffsetTireSteerAngleRad + OffsetRRTire };//
-                int[] RR_TireMassOffsets = { OffsetTireData, OffsetTireMass + OffsetRRTire };//
-                int[] RR_TireRadiusOffsets = { OffsetTireData, OffsetTireRadius + OffsetRRTire };//
-                int[] RR_TireWidthOffsets = { OffsetTireData, OffsetTireWidth + OffsetRRTire };//
-                int[] RR_TireSpringRateOffsets = { OffsetTireData, OffsetTireSpringRate + OffsetRRTire };//
-                int[] RR_TireDamperRateOffsets = { OffsetTireData, OffsetTireDamperRate + OffsetRRTire };//
-                int[] RR_TireMaxDeflectionOffsets = { OffsetTireData, OffsetTireMaxDeflection + OffsetRRTire };//
-                int[] RR_ThermalAirTransferOffsets = { OffsetTireData, OffsetThermalAirTransfer + OffsetRRTire };//
-                int[] RR_ThermalInnerTransferOffsets = { OffsetTireData, OffsetThermalInnerTransfer + OffsetRRTire };//
-                /*
-                 
-                 */
-
+                //Read race time
+                RaceTime = helper.ReadMemory<int>(raceTimerTargetAddr);
 
                 //Tire Data pointer readers
                 //Front Left
+                ulong flsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, flsOffsets);
+                ulong fliTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, fliOffsets);
                 ulong FL_AngularVelocity_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_AngularVelocityOffsets);
                 ulong FL_Deflection_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_DeflectionOffsets);
                 ulong FL_LoadedRadius_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_LoadedRadiusOffsets);
@@ -570,9 +777,9 @@ namespace MemHelperExample
                 ulong FL_TravelSpeed_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TravelSpeedOffsets);
                 ulong FL_LateralSlipSpeed_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_LateralSlipSpeedOffsets);//
                 ulong FL_LongitudinalSlipSpeed_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_LongitudinalSlipSpeedOffsets);//
-                ulong FL_MomentOfInertia_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_MomentOfInertiaOffsets);//
                 ulong FL_CamberAngleRad_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_CamberAngleRadOffsets);//
                 ulong FL_TireSteerAngleRad_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireSteerAngleRadOffsets);//
+
                 ulong FL_TireMass_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireMassOffsets);//
                 ulong FL_TireRadius_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireRadiusOffsets);//
                 ulong FL_TireWidth_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireWidthOffsets);//
@@ -581,11 +788,14 @@ namespace MemHelperExample
                 ulong FL_TireMaxDeflection_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireMaxDeflectionOffsets);//
                 ulong FL_ThermalAirTransfer_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_ThermalAirTransferOffsets);//
                 ulong FL_ThermalInnerTransfer_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_ThermalInnerTransferOffsets);//
+                ulong FL_MomentOfInertia_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_MomentOfInertiaOffsets);//
                 /*
                  
                  */
 
                 //Front Right
+                ulong frsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, frsOffsets);
+                ulong friTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, friOffsets);
                 ulong FR_AngularVelocity_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FR_AngularVelocityOffsets);
                 ulong FR_Deflection_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FR_DeflectionOffsets);
                 ulong FR_LoadedRadius_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FR_LoadedRadiusOffsets);
@@ -617,6 +827,8 @@ namespace MemHelperExample
                  */
 
                 //Rear Left
+                ulong rlsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rlsOffsets);
+                ulong rliTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rliOffsets);
                 ulong RL_AngularVelocity_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, RL_AngularVelocityOffsets);
                 ulong RL_Deflection_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, RL_DeflectionOffsets);
                 ulong RL_LoadedRadius_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, RL_LoadedRadiusOffsets);
@@ -648,6 +860,8 @@ namespace MemHelperExample
                  */
 
                 //Rear Right
+                ulong rrsTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rrsOffsets);
+                ulong rriTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, rriOffsets);
                 ulong RR_AngularVelocity_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, RR_AngularVelocityOffsets);
                 ulong RR_Deflection_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, RR_DeflectionOffsets);
                 ulong RR_LoadedRadius_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, RR_LoadedRadiusOffsets);
@@ -681,7 +895,7 @@ namespace MemHelperExample
                 //Read Tire Data
                 //Font Left
                 FL_AngularVelocity = Math.Round(helper.ReadMemory<float>(FL_AngularVelocity_TargetAddr), 2);
-                FL_Deflection = Math.Round(helper.ReadMemory<float>(FL_Deflection_TargetAddr), 5);
+                FL_VerticalDeflection = Math.Round(helper.ReadMemory<float>(FL_Deflection_TargetAddr), 5);
                 FL_LoadedRadius = Math.Round(helper.ReadMemory<float>(FL_LoadedRadius_TargetAddr), 5);
                 FL_EffectiveRadius = Math.Round(helper.ReadMemory<float>(FL_EffectiveRadius_TargetAddr), 5);
                 FL_CurrentContactBrakeTorque = Math.Round(helper.ReadMemory<float>(FL_CurrentContactBrakeTorque_TargetAddr), 2);
@@ -762,11 +976,13 @@ namespace MemHelperExample
                         FL_TotalFrictionAngle = 0;
                     }
                 }
-                FL_MomentOfInertia = Math.Round(helper.ReadMemory<float>(FL_MomentOfInertia_TargetAddr), 3);//
+                
                 FL_CamberAngleRad = Math.Round(helper.ReadMemory<float>(FL_CamberAngleRad_TargetAddr), 5);//
-                FL_TireSteerAngleRad = Math.Round(helper.ReadMemory<float>(FL_TireSteerAngleRad_TargetAddr), 5);//
+                FL_SteerAngleRad = Math.Round(helper.ReadMemory<float>(FL_TireSteerAngleRad_TargetAddr), 5);//
                 FL_CamberAngleDeg = Math.Round(FL_CamberAngleRad * radToDeg, 2);//
-                FL_TireSteerAngleDeg = Math.Round(FL_TireSteerAngleRad * radToDeg, 2);//
+                FL_SteerAngleDeg = Math.Round(FL_SteerAngleRad * radToDeg, 2);//
+
+                FL_MomentOfInertia = Math.Round(helper.ReadMemory<float>(FL_MomentOfInertia_TargetAddr), 3);//
                 FL_TireMass = Math.Round(helper.ReadMemory<float>(FL_TireMass_TargetAddr), 3);//
                 FL_TireRadius = Math.Round(helper.ReadMemory<float>(FL_TireRadius_TargetAddr), 3);//
                 FL_TireWidth = Math.Round(helper.ReadMemory<float>(FL_TireWidth_TargetAddr), 3);//
@@ -781,7 +997,7 @@ namespace MemHelperExample
 
                 //Font Right
                 FR_AngularVelocity = Math.Round(helper.ReadMemory<float>(FR_AngularVelocity_TargetAddr), 2);
-                FR_Deflection = Math.Round(helper.ReadMemory<float>(FR_Deflection_TargetAddr), 5);
+                FR_VerticalDeflection = Math.Round(helper.ReadMemory<float>(FR_Deflection_TargetAddr), 5);
                 FR_LoadedRadius = Math.Round(helper.ReadMemory<float>(FR_LoadedRadius_TargetAddr), 5);
                 FR_EffectiveRadius = Math.Round(helper.ReadMemory<float>(FR_EffectiveRadius_TargetAddr), 5);
                 FR_CurrentContactBrakeTorque = Math.Round(helper.ReadMemory<float>(FR_CurrentContactBrakeTorque_TargetAddr), 2);
@@ -863,9 +1079,9 @@ namespace MemHelperExample
                 }
                 FR_MomentOfInertia = Math.Round(helper.ReadMemory<float>(FR_MomentOfInertia_TargetAddr), 3);//
                 FR_CamberAngleRad = Math.Round(helper.ReadMemory<float>(FR_CamberAngleRad_TargetAddr), 5);//
-                FR_TireSteerAngleRad = Math.Round(helper.ReadMemory<float>(FR_TireSteerAngleRad_TargetAddr), 5);//
+                FR_SteerAngleRad = Math.Round(helper.ReadMemory<float>(FR_TireSteerAngleRad_TargetAddr), 5);//
                 FR_CamberAngleDeg = Math.Round(FR_CamberAngleRad * radToDeg, 2);//
-                FR_TireSteerAngleDeg = Math.Round(FR_TireSteerAngleRad * radToDeg, 2);//
+                FR_SteerAngleDeg = Math.Round(FR_SteerAngleRad * radToDeg, 2);//
                 FR_TireMass = Math.Round(helper.ReadMemory<float>(FR_TireMass_TargetAddr), 3);//
                 FR_TireRadius = Math.Round(helper.ReadMemory<float>(FR_TireRadius_TargetAddr), 3);//
                 FR_TireWidth = Math.Round(helper.ReadMemory<float>(FR_TireWidth_TargetAddr), 3);//
@@ -881,7 +1097,7 @@ namespace MemHelperExample
 
                 //Rear Left
                 RL_AngularVelocity = Math.Round(helper.ReadMemory<float>(RL_AngularVelocity_TargetAddr), 2);
-                RL_Deflection = Math.Round(helper.ReadMemory<float>(RL_Deflection_TargetAddr), 5);
+                RL_VerticalDeflection = Math.Round(helper.ReadMemory<float>(RL_Deflection_TargetAddr), 5);
                 RL_LoadedRadius = Math.Round(helper.ReadMemory<float>(RL_LoadedRadius_TargetAddr), 5);
                 RL_EffectiveRadius = Math.Round(helper.ReadMemory<float>(RL_EffectiveRadius_TargetAddr), 5);
                 RL_CurrentContactBrakeTorque = Math.Round(helper.ReadMemory<float>(RL_CurrentContactBrakeTorque_TargetAddr), 2);
@@ -963,9 +1179,9 @@ namespace MemHelperExample
                 }
                 RL_MomentOfInertia = Math.Round(helper.ReadMemory<float>(RL_MomentOfInertia_TargetAddr), 3);//
                 RL_CamberAngleRad = Math.Round(helper.ReadMemory<float>(RL_CamberAngleRad_TargetAddr), 5);//
-                RL_TireSteerAngleRad = Math.Round(helper.ReadMemory<float>(RL_TireSteerAngleRad_TargetAddr), 5);//
+                RL_SteerAngleRad = Math.Round(helper.ReadMemory<float>(RL_TireSteerAngleRad_TargetAddr), 5);//
                 RL_CamberAngleDeg = Math.Round(RL_CamberAngleRad * radToDeg, 2);//
-                RL_TireSteerAngleDeg = Math.Round(RL_TireSteerAngleRad * radToDeg, 2);//
+                RL_SteerAngleDeg = Math.Round(RL_SteerAngleRad * radToDeg, 2);//
                 RL_TireMass = Math.Round(helper.ReadMemory<float>(RL_TireMass_TargetAddr), 3);//
                 RL_TireRadius = Math.Round(helper.ReadMemory<float>(RL_TireRadius_TargetAddr), 3);//
                 RL_TireWidth = Math.Round(helper.ReadMemory<float>(RL_TireWidth_TargetAddr), 3);//
@@ -980,7 +1196,7 @@ namespace MemHelperExample
 
                 //Rear Right
                 RR_AngularVelocity = Math.Round(helper.ReadMemory<float>(RR_AngularVelocity_TargetAddr), 2);
-                RR_Deflection = Math.Round(helper.ReadMemory<float>(RR_Deflection_TargetAddr), 5);
+                RR_VerticalDeflection = Math.Round(helper.ReadMemory<float>(RR_Deflection_TargetAddr), 5);
                 RR_LoadedRadius = Math.Round(helper.ReadMemory<float>(RR_LoadedRadius_TargetAddr), 5);
                 RR_EffectiveRadius = Math.Round(helper.ReadMemory<float>(RR_EffectiveRadius_TargetAddr), 5);
                 RR_CurrentContactBrakeTorque = Math.Round(helper.ReadMemory<float>(RR_CurrentContactBrakeTorque_TargetAddr), 2);
@@ -1063,9 +1279,9 @@ namespace MemHelperExample
                 }
                 RR_MomentOfInertia = Math.Round(helper.ReadMemory<float>(RR_MomentOfInertia_TargetAddr), 3);//
                 RR_CamberAngleRad = Math.Round(helper.ReadMemory<float>(RR_CamberAngleRad_TargetAddr), 5);//
-                RR_TireSteerAngleRad = Math.Round(helper.ReadMemory<float>(RR_TireSteerAngleRad_TargetAddr), 5);//
+                RR_SteerAngleRad = Math.Round(helper.ReadMemory<float>(RR_TireSteerAngleRad_TargetAddr), 5);//
                 RR_CamberAngleDeg = Math.Round(RR_CamberAngleRad * radToDeg, 2);//
-                RR_TireSteerAngleDeg = Math.Round(RR_TireSteerAngleRad * radToDeg, 2);//
+                RR_SteerAngleDeg = Math.Round(RR_SteerAngleRad * radToDeg, 2);//
                 RR_TireMass = Math.Round(helper.ReadMemory<float>(RR_TireMass_TargetAddr), 3);//
                 RR_TireRadius = Math.Round(helper.ReadMemory<float>(RR_TireRadius_TargetAddr), 3);//
                 RR_TireWidth = Math.Round(helper.ReadMemory<float>(RR_TireWidth_TargetAddr), 3);//
@@ -1077,9 +1293,6 @@ namespace MemHelperExample
                 /*
                  
                  */
-
-
-                RaceTime = helper.ReadMemory<int>(RaceTimer_TargetAddr);
 
                 
                 //Read Temperatures
@@ -1131,24 +1344,24 @@ namespace MemHelperExample
                     rriTemp = rriTempFit;
                 }
                 */
-                flsTemp = Convert.ToDouble(flsTempHelper);
-                fliTemp = Convert.ToDouble(fliTempHelper);
-                frsTemp = Convert.ToDouble(frsTempHelper);
-                friTemp = Convert.ToDouble(friTempHelper);
-                rlsTemp = Convert.ToDouble(rlsTempHelper);
-                rliTemp = Convert.ToDouble(rliTempHelper);
-                rrsTemp = Convert.ToDouble(rrsTempHelper);
-                rriTemp = Convert.ToDouble(rriTempHelper);
+                FL_TreadTemperature = Convert.ToDouble(flsTempHelper);
+                FL_InnerTemperature = Convert.ToDouble(fliTempHelper);
+                FR_TreadTemperature = Convert.ToDouble(frsTempHelper);
+                FR_InnerTemperature = Convert.ToDouble(friTempHelper);
+                RL_TreadTemperature = Convert.ToDouble(rlsTempHelper);
+                RL_InnerTemperature = Convert.ToDouble(rliTempHelper);
+                RR_TreadTemperature = Convert.ToDouble(rrsTempHelper);
+                RR_InnerTemperature = Convert.ToDouble(rriTempHelper);
                 
 
-                flsTempArray[flsTempArray.Length - 1] = Math.Round(flsTemp, 10);//Bigger round value gives smoother drawing.
-                fliTempArray[fliTempArray.Length - 1] = Math.Round(fliTemp, 10);
-                frsTempArray[frsTempArray.Length - 1] = Math.Round(frsTemp, 10);
-                friTempArray[friTempArray.Length - 1] = Math.Round(friTemp, 10);
-                rlsTempArray[rlsTempArray.Length - 1] = Math.Round(rlsTemp, 10);
-                rliTempArray[rliTempArray.Length - 1] = Math.Round(rliTemp, 10);
-                rrsTempArray[rrsTempArray.Length - 1] = Math.Round(rrsTemp, 10);
-                rriTempArray[rriTempArray.Length - 1] = Math.Round(rriTemp, 10);
+                flsTempArray[flsTempArray.Length - 1] = Math.Round(FL_TreadTemperature, 10);//Bigger round value gives smoother drawing.
+                fliTempArray[fliTempArray.Length - 1] = Math.Round(FL_InnerTemperature, 10);
+                frsTempArray[frsTempArray.Length - 1] = Math.Round(FR_TreadTemperature, 10);
+                friTempArray[friTempArray.Length - 1] = Math.Round(FR_InnerTemperature, 10);
+                rlsTempArray[rlsTempArray.Length - 1] = Math.Round(RL_TreadTemperature, 10);
+                rliTempArray[rliTempArray.Length - 1] = Math.Round(RL_InnerTemperature, 10);
+                rrsTempArray[rrsTempArray.Length - 1] = Math.Round(RR_TreadTemperature, 10);
+                rriTempArray[rriTempArray.Length - 1] = Math.Round(RR_InnerTemperature, 10);
 
                 Array.Copy(flsTempArray, 1, flsTempArray, 0, flsTempArray.Length - 1);
                 Array.Copy(fliTempArray, 1, fliTempArray, 0, fliTempArray.Length - 1);
@@ -1159,71 +1372,64 @@ namespace MemHelperExample
                 Array.Copy(rrsTempArray, 1, rrsTempArray, 0, rrsTempArray.Length - 1);
                 Array.Copy(rriTempArray, 1, rriTempArray, 0, rriTempArray.Length - 1);
 
+
+                CheckWhatToLogInFile();
+
                 if (logging == true)
                 {
-                    if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
+                    // SA, SR, Speed and Vertical Load filters for logging
+                    
+                    if(FiltersOn == true)
                     {
-                        using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
+                        if( (FL_SlipRatio <= (0 + Log_Settings.Z1) && FL_SlipRatio >= (0 - Log_Settings.Z1)) 
+                            && (FL_SlipAngleDeg <= (0 + Log_Settings.Z2) && FL_SlipAngleDeg >= (0 - Log_Settings.Z2))
+                            && (FL_TravelSpeed >= (0  + Log_Settings.Z3) || FL_TravelSpeed <= (0 - Log_Settings.Z3))
+                            && (FL_VerticalLoad <= (Log_Settings.W4 + Log_Settings.Z4) && FL_VerticalLoad >= (Log_Settings.W4 - Log_Settings.Z4)) )
                         {
-                            sw.WriteLine("Race Time;Tire Travel Speed;Angular Velocity;Vertical Load;Vertical Deflection;Loaded Radius;Effective Radius;Tire Contact Length;Tire Braking Torque;Tire Max Braking Torque;Streer Angle;Camber Angle;Lateral Load;Slip Angle Deg;Lateral Friction;Lateral Slip Speed;Longitudinal Load;Slip Ratio;Longitudinal Friction;Longitudinal Slip Speed;Tread Temperature;Inner Temperature;Total Friction;Total Friction Angle Deg");
+                            FLLogWriter();
+                        }
+                        if ( (FR_SlipRatio <= (0 + Log_Settings.Z1) && FR_SlipRatio >= (0 - Log_Settings.Z1))
+                            && (FR_SlipAngleDeg <= (0 + Log_Settings.Z2) && FR_SlipAngleDeg >= (0 - Log_Settings.Z2))
+                            && (FR_TravelSpeed >= (0 + Log_Settings.Z3) || FR_TravelSpeed <= (0 - Log_Settings.Z3))
+                            && (FR_VerticalLoad <= (Log_Settings.W4 + Log_Settings.Z4) && FR_VerticalLoad >= (Log_Settings.W4 - Log_Settings.Z4)) )
+                        {
+                            FRLogWriter();
+                        }
+                        if ( (RL_SlipRatio <= (0 + Log_Settings.Z1) && RL_SlipRatio >= (0 - Log_Settings.Z1))
+                            && (RL_SlipAngleDeg <= (0 + Log_Settings.Z2) && RL_SlipAngleDeg >= (0 - Log_Settings.Z2))
+                            && (RL_TravelSpeed >= (0 + Log_Settings.Z3) || RL_TravelSpeed <= (0 - Log_Settings.Z3))
+                            && (RL_VerticalLoad <= (Log_Settings.W4 + Log_Settings.Z4) && RL_VerticalLoad >= (Log_Settings.W4 - Log_Settings.Z4)) )
+                        {
+                            RLLogWriter();
+                        }
+                        if  ( (RR_SlipRatio <= (0 + Log_Settings.Z1) && RR_SlipRatio >= (0 - Log_Settings.Z1))
+                            && (RR_SlipAngleDeg <= (0 + Log_Settings.Z2) && RR_SlipAngleDeg >= (0 - Log_Settings.Z2))
+                            && (RR_TravelSpeed >= (0 + Log_Settings.Z3) || RR_TravelSpeed <= (0 - Log_Settings.Z3))
+                            && (RR_VerticalLoad <= (Log_Settings.W4 + Log_Settings.Z4) && RR_VerticalLoad >= (Log_Settings.W4 - Log_Settings.Z4)) )
+                        {
+                            RRLogWriter();
                         }
                     }
                     else
                     {
-                        using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
-                        {
-                            sw.WriteLine(RaceTime.ToString() + ";" + FL_TravelSpeed.ToString() + ";" + FL_AngularVelocity.ToString() + ";" + FL_VerticalLoad.ToString() + ";" + FL_Deflection.ToString() + ";" + FL_LoadedRadius.ToString() + ";" + FL_EffectiveRadius.ToString() + ";" + FL_ContactLength.ToString() + ";" + FL_CurrentContactBrakeTorque.ToString() + ";" + FL_CurrentContactBrakeTorqueMax.ToString() + ";" + FL_TireSteerAngleDeg.ToString() + ";" + FL_CamberAngleDeg.ToString() + ";" + FL_LateralLoad.ToString() + ";" + FL_SlipAngleDeg.ToString() + ";" + FL_LateralFriction.ToString() + ";" + FL_LateralSlipSpeed.ToString() + ";" + FL_LongitudinalLoad.ToString() + ";" + FL_SlipRatio.ToString() + ";" + FL_LongitudinalFriction.ToString() + ";" + FL_LongitudinalSlipSpeed + ";" + flsTempHelper.ToString() + ";" + fliTempHelper.ToString() + ";" + FL_TotalFriction.ToString() + ";" + FL_TotalFrictionAngle.ToString());
-                        }
+                        FLLogWriter();
+                        FRLogWriter();
+                        RLLogWriter();
+                        RRLogWriter();
                     }
-
-                    if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
-                    {
-                        using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
-                        {
-                            sw.WriteLine("Race Time;Tire Travel Speed;Angular Velocity;Vertical Load;Vertical Deflection;Loaded Radius;Effective Radius;Tire Contact Length;Tire Braking Torque;Tire Max Braking Torque;Streer Angle;Camber Angle;Lateral Load;Slip Angle;Lateral Friction;Lateral Slip Speed;Longitudinal Load;Slip Ratio;Longitudinal Friction;Longitudinal Slip Speed;Tread Temperature;Inner Temperature;Total Friction;Total Friction Angle");
-                        }
-                    }
-                    else
-                    {
-                        using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
-                        {
-                            sw.WriteLine(RaceTime.ToString() + ";" + FR_TravelSpeed.ToString() + ";" + FR_AngularVelocity.ToString() + ";" + FR_VerticalLoad.ToString() + ";" + FR_Deflection.ToString() + ";" + FR_LoadedRadius.ToString() + ";" + FR_EffectiveRadius.ToString() + ";" + FR_ContactLength.ToString() + ";" + FR_CurrentContactBrakeTorque.ToString() + ";" + FR_CurrentContactBrakeTorqueMax.ToString() + ";" + FR_TireSteerAngleDeg.ToString() + ";" + FR_CamberAngleDeg.ToString() + ";" + FR_LateralLoad.ToString() + ";" + FR_SlipAngleDeg.ToString() + ";" + FR_LateralFriction.ToString() + ";" + FR_LateralSlipSpeed.ToString() + ";" + FR_LongitudinalLoad.ToString() + ";" + FR_SlipRatio.ToString() + ";" + FR_LongitudinalFriction.ToString() + ";" + FR_LongitudinalSlipSpeed + ";" + frsTempHelper.ToString() + ";" + friTempHelper.ToString() + ";" + FR_TotalFriction.ToString() + ";" + FR_TotalFrictionAngle.ToString());
-                        }
-                    }
-
-                    if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
-                    {
-                        using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
-                        {
-                            sw.WriteLine("Race Time;Tire Travel Speed;Angular Velocity;Vertical Load;Vertical Deflection;Loaded Radius;Effective Radius;Tire Contact Length;Tire Braking Torque;Tire Max Braking Torque;Streer Angle;Camber Angle;Lateral Load;Slip Angle;Lateral Friction;Lateral Slip Speed;Longitudinal Load;Slip Ratio;Longitudinal Friction;Longitudinal Slip Speed;Tread Temperature;Inner Temperature;Total Friction;Total Friction Angle");
-                        }
-                    }
-                    else
-                    {
-                        using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
-                        {
-                            sw.WriteLine(RaceTime.ToString() + ";" + RL_TravelSpeed.ToString() + ";" + RL_AngularVelocity.ToString() + ";" + RL_VerticalLoad.ToString() + ";" + RL_Deflection.ToString() + ";" + RL_LoadedRadius.ToString() + ";" + RL_EffectiveRadius.ToString() + ";" + RL_ContactLength.ToString() + ";" + RL_CurrentContactBrakeTorque.ToString() + ";" + RL_CurrentContactBrakeTorqueMax.ToString() + ";" + RL_TireSteerAngleDeg.ToString() + ";" + RL_CamberAngleDeg.ToString() + ";" + RL_LateralLoad.ToString() + ";" + RL_SlipAngleDeg.ToString() + ";" + RL_LateralFriction.ToString() + ";" + RL_LateralSlipSpeed.ToString() + ";" + RL_LongitudinalLoad.ToString() + ";" + RL_SlipRatio.ToString() + ";" + RL_LongitudinalFriction.ToString() + ";" + RL_LongitudinalSlipSpeed + ";" + rlsTempHelper.ToString() + ";" + rliTempHelper.ToString() + ";" + RL_TotalFriction.ToString() + ";" + RL_TotalFrictionAngle.ToString());
-                        }
-                    }
-
-                    if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
-                    {
-                        using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
-                        {
-                            sw.WriteLine("Race Time;Tire Travel Speed;Angular Velocity;Vertical Load;Vertical Deflection;Loaded Radius;Effective Radius;Tire Contact Length;Tire Braking Torque;Tire Max Braking Torque;Streer Angle;Camber Angle;Lateral Load;Slip Angle;Lateral Friction;Lateral Slip Speed;Longitudinal Load;Slip Ratio;Longitudinal Friction;Longitudinal Slip Speed;Tread Temperature;Inner Temperature;Total Friction;Total Friction Angle");
-                        }
-                    }
-                    else
-                    {
-                        using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
-                        {
-                            sw.WriteLine(RaceTime.ToString() + ";" + RR_TravelSpeed.ToString() + ";" + RR_AngularVelocity.ToString() + ";" + RR_VerticalLoad.ToString() + ";" + RR_Deflection.ToString() + ";" + RR_LoadedRadius.ToString() + ";" + RR_EffectiveRadius.ToString() + ";" + RR_ContactLength.ToString() + ";" + RR_CurrentContactBrakeTorque.ToString() + ";" + RR_CurrentContactBrakeTorqueMax.ToString() + ";" + RR_TireSteerAngleDeg.ToString() + ";" + RR_CamberAngleDeg.ToString() + ";" + RR_LateralLoad.ToString() + ";" + RR_SlipAngleDeg.ToString() + ";" + RR_LateralFriction.ToString() + ";" + RR_LateralSlipSpeed.ToString() + ";" + RR_LongitudinalLoad.ToString() + ";" + RR_SlipRatio.ToString() + ";" + RR_LongitudinalFriction.ToString() + ";" + RR_LongitudinalSlipSpeed + ";" + rrsTempHelper.ToString() + ";" + rriTempHelper.ToString() + ";" + RR_TotalFriction.ToString() + ";" + RR_TotalFrictionAngle.ToString());
-                        }
-                    }
+                    ////Take thse out when upper part is ready
+                    /*
+                    FLLogWriter();
+                    FRLogWriter();
+                    RLLogWriter();
+                    RRLogWriter();
+                    */
+                    ////
                 }
+                
                 if (temperaturesFL.IsHandleCreated)
                 {
-                    this.Invoke((MethodInvoker)delegate { UpdateData(); });
+                    this.Invoke((MethodInvoker)delegate { UpdateFormData(); });
                 }
                 else
                 {
@@ -1233,9 +1439,489 @@ namespace MemHelperExample
             }
         }
 
-        private void UpdateData()
+        private void CheckWhatToLogInFile()
         {
-            
+            if (/*Settings1.*/TireTravelSpeedLogEnabled == true)
+            {
+                Header0 = /*Settings1.*/sTireTravelSpeed + ";";
+                flParameter0 = FL_TravelSpeed.ToString() + ";";
+                frParameter0 = FR_TravelSpeed.ToString() + ";";
+                rlParameter0 = RL_TravelSpeed.ToString() + ";";
+                rrParameter0 = RR_TravelSpeed.ToString() + ";";
+            }
+            else
+            {
+                Header0 = "";
+                flParameter0 = "";
+                frParameter0 = "";
+                rlParameter0 = "";
+                rrParameter0 = "";
+            }
+            if (/*Settings1.*/AngularVelocityLogEnabled == true)
+            {
+                Header1 = /*Settings1.*/sAngularVelocity + ";";
+                flParameter1 = FL_AngularVelocity.ToString() + ";";
+                frParameter1 = FR_AngularVelocity.ToString() + ";";
+                rlParameter1 = RL_AngularVelocity.ToString() + ";";
+                rrParameter1 = RR_AngularVelocity.ToString() + ";";
+            }
+            else
+            {
+                Header1 = "";
+                flParameter1 = "";
+                frParameter1 = "";
+                rlParameter1 = "";
+                rrParameter1 = "";
+            }
+            if (/*Settings1.*/VerticalLoadLogEnabled == true)
+            {
+                Header2 = /*Settings1.*/sVerticalLoad + ";";
+                flParameter2 = FL_VerticalLoad.ToString() + ";";
+                frParameter2 = FR_VerticalLoad.ToString() + ";";
+                rlParameter2 = RL_VerticalLoad.ToString() + ";";
+                rrParameter2 = RR_VerticalLoad.ToString() + ";";
+            }
+            else
+            {
+                Header2 = "";
+                flParameter2 = "";
+                frParameter2 = "";
+                rlParameter2 = "";
+                rrParameter2 = "";
+            }
+            if (/*Settings1.*/VerticalDeflectionLogEnabled == true)
+            {
+                Header3 = /*Settings1.*/sVerticalDeflection + ";";
+                flParameter3 = FL_VerticalDeflection.ToString() + ";";
+                frParameter3 = FR_VerticalDeflection.ToString() + ";";
+                rlParameter3 = RL_VerticalDeflection.ToString() + ";";
+                rrParameter3 = RR_VerticalDeflection.ToString() + ";";
+            }
+            else
+            {
+                Header3 = "";
+                flParameter3 = "";
+                frParameter3 = "";
+                rlParameter3 = "";
+                rrParameter3 = "";
+            }
+            if (/*Settings1.*/LoadedRadiusLogEnabled == true)
+            {
+                Header4 = /*Settings1.*/sLoadedRadius + ";";
+                flParameter4 = FL_LoadedRadius.ToString() + ";";
+                frParameter4 = FR_LoadedRadius.ToString() + ";";
+                rlParameter4 = RL_LoadedRadius.ToString() + ";";
+                rrParameter4 = RR_LoadedRadius.ToString() + ";";
+            }
+            else
+            {
+                Header4 = "";
+                flParameter4 = "";
+                frParameter4 = "";
+                rlParameter4 = "";
+                rrParameter4 = "";
+            }
+            if (/*Settings1.*/EffectiveRadiusLogEnabled == true)
+            {
+                Header5 = /*Settings1.*/sEffectiveRadius + ";";
+                flParameter5 = FL_EffectiveRadius.ToString() + ";";
+                frParameter5 = FR_EffectiveRadius.ToString() + ";";
+                rlParameter5 = RL_EffectiveRadius.ToString() + ";";
+                rrParameter5 = RR_EffectiveRadius.ToString() + ";";
+            }
+            else
+            {
+                Header5 = "";
+                flParameter5 = "";
+                frParameter5 = "";
+                rlParameter5 = "";
+                rrParameter5 = "";
+            }
+            if (/*Settings1.*/ContactLengthLogEnabled == true)
+            {
+                Header6 = /*Settings1.*/sContactLength + ";";
+                flParameter6 = FL_ContactLength.ToString() + ";";
+                frParameter6 = FR_ContactLength.ToString() + ";";
+                rlParameter6 = RL_ContactLength.ToString() + ";";
+                rrParameter6 = RR_ContactLength.ToString() + ";";
+            }
+            else
+            {
+                Header6 = "";
+                flParameter6 = "";
+                frParameter6 = "";
+                rlParameter6 = "";
+                rrParameter6 = "";
+            }
+            if (/*Settings1.*/BrakeTorqueLogEnabled == true)
+            {
+                Header7 = /*Settings1.*/sBrakeTorque + ";";
+                flParameter7 = FL_CurrentContactBrakeTorque.ToString() + ";";
+                frParameter7 = FR_CurrentContactBrakeTorque.ToString() + ";";
+                rlParameter7 = RL_CurrentContactBrakeTorque.ToString() + ";";
+                rrParameter7 = RR_CurrentContactBrakeTorque.ToString() + ";";
+
+                Header7_1 = /*Settings1.*/sMaxBrakeTorque + ";";
+                flParameter7_1 = FL_CurrentContactBrakeTorqueMax.ToString() + ";";
+                frParameter7_1 = FR_CurrentContactBrakeTorqueMax.ToString() + ";";
+                rlParameter7_1 = RL_CurrentContactBrakeTorqueMax.ToString() + ";";
+                rrParameter7_1 = RR_CurrentContactBrakeTorqueMax.ToString() + ";";
+            }
+            else
+            {
+                Header7 = "";
+                flParameter7 = "";
+                frParameter7 = "";
+                rlParameter7 = "";
+                rrParameter7 = "";
+
+                Header7_1 = "";
+                flParameter7_1 = "";
+                frParameter7_1 = "";
+                rlParameter7_1 = "";
+                rrParameter7_1 = "";
+            }
+            if (/*Settings1.*/SteerAngleLogEnabled == true)
+            {
+                Header8 = /*Settings1.*/sSteerAngle + ";";
+                flParameter8 = FL_SteerAngleDeg.ToString() + ";";
+                frParameter8 = FR_SteerAngleDeg.ToString() + ";";
+                rlParameter8 = RL_SteerAngleDeg.ToString() + ";";
+                rrParameter8 = RR_SteerAngleDeg.ToString() + ";";
+            }
+            else
+            {
+                Header8 = "";
+                flParameter8 = "";
+                frParameter8 = "";
+                rlParameter8 = "";
+                rrParameter8 = "";
+            }
+            if (/*Settings1.*/CamberAngleLogEnabled == true)
+            {
+                Header9 = /*Settings1.*/sCamberAngle + ";";
+                flParameter9 = FL_CamberAngleDeg.ToString() + ";";
+                frParameter9 = FR_CamberAngleDeg.ToString() + ";";
+                rlParameter9 = RL_CamberAngleDeg.ToString() + ";";
+                rrParameter9 = RR_CamberAngleDeg.ToString() + ";";
+            }
+            else
+            {
+                Header9 = "";
+                flParameter9 = "";
+                frParameter9 = "";
+                rlParameter9 = "";
+                rrParameter9 = "";
+            }
+            if (/*Settings1.*/LateralLoadLogEnabled == true)
+            {
+                Header10 = /*Settings1.*/sLateralLoad + ";";
+                flParameter10 = FL_LateralLoad.ToString() + ";";
+                frParameter10 = FR_LateralLoad.ToString() + ";";
+                rlParameter10 = RL_LateralLoad.ToString() + ";";
+                rrParameter10 = RR_LateralLoad.ToString() + ";";
+            }
+            else
+            {
+                Header10 = "";
+                flParameter10 = "";
+                frParameter10 = "";
+                rlParameter10 = "";
+                rrParameter10 = "";
+            }
+            if (/*Settings1.*/SlipAngleLogEnabled == true)
+            {
+                Header11 = /*Settings1.*/sSlipAngle + ";";
+                flParameter11 = FL_SlipAngleDeg.ToString() + ";";
+                frParameter11 = FR_SlipAngleDeg.ToString() + ";";
+                rlParameter11 = RL_SlipAngleDeg.ToString() + ";";
+                rrParameter11 = RR_SlipAngleDeg.ToString() + ";";
+            }
+            else
+            {
+                Header11 = "";
+                flParameter11 = "";
+                frParameter11 = "";
+                rlParameter11 = "";
+                rrParameter11 = "";
+            }
+            if (/*Settings1.*/LateralFrictionLogEnabled == true)
+            {
+                Header12 = /*Settings1.*/sLateralFriction + ";";
+                flParameter12 = FL_LateralFriction.ToString() + ";";
+                frParameter12 = FR_LateralFriction.ToString() + ";";
+                rlParameter12 = RL_LateralFriction.ToString() + ";";
+                rrParameter12 = RR_LateralFriction.ToString() + ";";
+            }
+            else
+            {
+                Header12 = "";
+                flParameter12 = "";
+                frParameter12 = "";
+                rlParameter12 = "";
+                rrParameter12 = "";
+            }
+            if (/*Settings1.*/LateralSlipSpeedLogEnabled == true)
+            {
+                Header13 = /*Settings1.*/sLateralSlipSpeed + ";";
+                flParameter13 = FL_LateralSlipSpeed.ToString() + ";";
+                frParameter13 = FR_LateralSlipSpeed.ToString() + ";";
+                rlParameter13 = RL_LateralSlipSpeed.ToString() + ";";
+                rrParameter13 = RR_LateralSlipSpeed.ToString() + ";";
+            }
+            else
+            {
+                Header13 = "";
+                flParameter13 = "";
+                frParameter13 = "";
+                rlParameter13 = "";
+                rrParameter13 = "";
+            }
+            if (/*Settings1.*/LongitudinalLoadLogEnabled == true)
+            {
+                Header14 = /*Settings1.*/sLongitudinalLoad + ";";
+                flParameter14 = FL_LongitudinalLoad.ToString() + ";";
+                frParameter14 = FR_LongitudinalLoad.ToString() + ";";
+                rlParameter14 = RL_LongitudinalLoad.ToString() + ";";
+                rrParameter14 = RR_LongitudinalLoad.ToString() + ";";
+            }
+            else
+            {
+                Header14 = "";
+                flParameter14 = "";
+                frParameter14 = "";
+                rlParameter14 = "";
+                rrParameter14 = "";
+            }
+            if (/*Settings1.*/SlipRatioLogEnabled == true)
+            {
+                Header15 = /*Settings1.*/sSlipRatio + ";";
+                flParameter15 = FL_SlipRatio.ToString() + ";";
+                frParameter15 = FR_SlipRatio.ToString() + ";";
+                rlParameter15 = RL_SlipRatio.ToString() + ";";
+                rrParameter15 = RR_SlipRatio.ToString() + ";";
+            }
+            else
+            {
+                Header15 = "";
+                flParameter15 = "";
+                frParameter15 = "";
+                rlParameter15 = "";
+                rrParameter15 = "";
+            }
+            if (/*Settings1.*/LongitudinalFrictionLogEnabled == true)
+            {
+                Header16 = /*Settings1.*/sLongitudinalFriction + ";";
+                flParameter16 = FL_LongitudinalFriction.ToString() + ";";
+                frParameter16 = FR_LongitudinalFriction.ToString() + ";";
+                rlParameter16 = RL_LongitudinalFriction.ToString() + ";";
+                rrParameter16 = RR_LongitudinalFriction.ToString() + ";";
+            }
+            else
+            {
+                Header16 = "";
+                flParameter16 = "";
+                frParameter16 = "";
+                rlParameter16 = "";
+                rrParameter16 = "";
+            }
+            if (/*Settings1.*/LongitudinalSlipSpeedLogEnabled == true)
+            {
+                Header17 = /*Settings1.*/sLongitudinalSlipSpeed + ";";
+                flParameter17 = FL_LongitudinalSlipSpeed.ToString() + ";";
+                frParameter17 = FR_LongitudinalSlipSpeed.ToString() + ";";
+                rlParameter17 = RL_LongitudinalSlipSpeed.ToString() + ";";
+                rrParameter17 = RR_LongitudinalSlipSpeed.ToString() + ";";
+            }
+            else
+            {
+                Header17 = "";
+                flParameter17 = "";
+                frParameter17 = "";
+                rlParameter17 = "";
+                rrParameter17 = "";
+            }
+            if (/*Settings1.*/TreadTemperatureLogEnabled == true)
+            {
+                Header18 = /*Settings1.*/sTreadTemperature + ";";
+                flParameter18 = FL_TreadTemperature.ToString() + ";";
+                frParameter18 = FR_TreadTemperature.ToString() + ";";
+                rlParameter18 = RL_TreadTemperature.ToString() + ";";
+                rrParameter18 = RR_TreadTemperature.ToString() + ";";
+            }
+            else
+            {
+                Header18 = "";
+                flParameter18 = "";
+                frParameter18 = "";
+                rlParameter18 = "";
+                rrParameter18 = "";
+            }
+            if (/*Settings1.*/InnerTemperatureLogEnabled == true)
+            {
+                Header19 = /*Settings1.*/sInnerTemperature + ";";
+                flParameter19 = FL_InnerTemperature.ToString() + ";";
+                frParameter19 = FR_InnerTemperature.ToString() + ";";
+                rlParameter19 = RL_InnerTemperature.ToString() + ";";
+                rrParameter19 = RR_InnerTemperature.ToString() + ";";
+            }
+            else
+            {
+                Header19 = "";
+                flParameter19 = "";
+                frParameter19 = "";
+                rlParameter19 = "";
+                rrParameter19 = "";
+            }
+            if (/*Settings1.*/RaceTimeLogEnabled == true)
+            {
+                Header20 = /*Settings1.*/sRaceTime + ";";
+                flParameter20 = RaceTime.ToString().ToString() + ";";
+                frParameter20 = RaceTime.ToString().ToString() + ";";
+                rlParameter20 = RaceTime.ToString().ToString() + ";";
+                rrParameter20 = RaceTime.ToString().ToString() + ";";
+            }
+            else
+            {
+                Header20 = "";
+                flParameter20 = "";
+                frParameter20 = "";
+                rlParameter20 = "";
+                rrParameter20 = "";
+            }
+            if (/*Settings1.*/TotalFrictionLogEnabled == true)
+            {
+                Header21 = /*Settings1.*/sTotalFriction + ";";
+                flParameter21 = FL_TotalFriction.ToString() + ";";
+                frParameter21 = FL_TotalFriction.ToString() + ";";
+                rlParameter21 = FL_TotalFriction.ToString() + ";";
+                rrParameter21 = FL_TotalFriction.ToString() + ";";
+            }
+            else
+            {
+                Header21 = "";
+                flParameter21 = "";
+                frParameter21 = "";
+                rlParameter21 = "";
+                rrParameter21 = "";
+            }
+            if (/*Settings1.*/TotalFrictionAngleLogEnabled == true)
+            {
+                Header22 = /*Settings1.*/sTotalFrictionAngle + ";";
+                flParameter22 = FL_TotalFrictionAngle.ToString() + ";";
+                frParameter22 = FL_TotalFrictionAngle.ToString() + ";";
+                rlParameter22 = FL_TotalFrictionAngle.ToString() + ";";
+                rrParameter22 = FL_TotalFrictionAngle.ToString() + ";";
+            }
+            else
+            {
+                Header22 = "";
+                flParameter22 = "";
+                frParameter22 = "";
+                rlParameter22 = "";
+                rrParameter22 = "";
+            }
+        }
+
+        private void FLLogWriter()
+        {
+            if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
+            {
+                using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(Header20 + Header0 + Header1 + Header2 + Header3 + Header4 + Header5 + Header6 + Header7 + Header7_1 + Header8 + Header9 + Header10 + Header11 + Header12 + Header13 + Header14 + Header15 + Header16 + Header17 + Header18 + Header19 + Header21 + Header22);
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontLeftWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(flParameter20 + flParameter0 + flParameter1 + flParameter2 + flParameter3 + flParameter4 + flParameter5 + flParameter6 + flParameter7 + flParameter7_1 + flParameter8 + flParameter9 + flParameter10 + flParameter11 + flParameter12 + flParameter13 + flParameter14 + flParameter15 + flParameter16 + flParameter17 + flParameter18 + flParameter19 + flParameter21 + flParameter22);
+                }
+            }
+        }
+
+        private void FRLogWriter()
+        {
+            if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
+            {
+                using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(Header20 + Header0 + Header1 + Header2 + Header3 + Header4 + Header5 + Header6 + Header7 + Header7_1 + Header8 + Header9 + Header10 + Header11 + Header12 + Header13 + Header14 + Header15 + Header16 + Header17 + Header18 + Header19 + Header21 + Header22);
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "FrontRightWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(frParameter20 + frParameter0 + frParameter1 + frParameter2 + frParameter3 + frParameter4 + frParameter5 + frParameter6 + frParameter7 + frParameter7_1 + frParameter8 + frParameter9 + frParameter10 + frParameter11 + frParameter12 + frParameter13 + frParameter14 + frParameter15 + frParameter16 + frParameter17 + frParameter18 + frParameter19 + frParameter21 + frParameter22);
+                }
+            }
+        }
+
+        private void RLLogWriter()
+        {
+            if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
+            {
+                using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(Header20 + Header0 + Header1 + Header2 + Header3 + Header4 + Header5 + Header6 + Header7 + Header7_1 + Header8 + Header9 + Header10 + Header11 + Header12 + Header13 + Header14 + Header15 + Header16 + Header17 + Header18 + Header19 + Header21 + Header22);
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearLeftWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(rlParameter20 + rlParameter0 + rlParameter1 + rlParameter2 + rlParameter3 + rlParameter4 + rlParameter5 + rlParameter6 + rlParameter7 + rlParameter7_1 + rlParameter8 + rlParameter9 + rlParameter10 + rlParameter11 + rlParameter12 + rlParameter13 + rlParameter14 + rlParameter15 + rlParameter16 + rlParameter17 + rlParameter18 + rlParameter19 + rlParameter21 + rlParameter22);
+                }
+            }
+        }
+        private void RRLogWriter()
+        {
+            if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
+            {
+                using (StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(Header20 + Header0 + Header1 + Header2 + Header3 + Header4 + Header5 + Header6 + Header7 + Header7_1 + Header8 + Header9 + Header10 + Header11 + Header12 + Header13 + Header14 + Header15 + Header16 + Header17 + Header18 + Header19 + Header21 + Header22);
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "RearRightWreckfestDebugLog.txt"))
+                {
+                    sw.WriteLine(rrParameter20 + rrParameter0 + rrParameter1 + rrParameter2 + rrParameter3 + rrParameter4 + rrParameter5 + rrParameter6 + rrParameter7 + rrParameter7_1 + rrParameter8 + rrParameter9 + rrParameter10 + rrParameter11 + rrParameter12 + rrParameter13 + rrParameter14 + rrParameter15 + rrParameter16 + rrParameter17 + rrParameter18 + rrParameter19 + rrParameter21 + rrParameter22);
+                }
+            }
+        }
+
+        private void UpdateFormData()
+        {
+            if (logging == true)
+            {
+                toLogSettingsButton.Visible = false;
+            }
+            if (SettingsOpen == false && logging == false)
+            {
+                toLogSettingsButton.Visible = true;
+            }
+            if (SettingsOpen == true)
+            {
+                toLogSettingsButton.Visible = false;
+                Start_Log.Visible = false;
+            }
+            if (SettingsOpen == false)
+            {
+                Start_Log.Visible = true;
+            }
+            if (TireSettingsOpen == true)
+            {
+                toTireSettingsButton.Visible = false;
+            }
+            if (TireSettingsOpen == false)
+            {
+                toTireSettingsButton.Visible = true;
+            }
+
             temperaturesFL.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < flsTempArray.Length - 1; ++i)
@@ -1302,8 +1988,8 @@ namespace MemHelperExample
             textBox_FL_AngularVelocity.Text = FL_AngularVelocity.ToString();
             textBox_FL_ContactLength.Text = FL_ContactLength.ToString();
             textBox_FL_CurrentContactBrakeTorque.Text = FL_CurrentContactBrakeTorque.ToString();
-            //textBox_FL_MaxContactBrakeTorque.Text = FL_CurrentContactBrakeTorqueMax.ToString();
-            textBox_FL_Deflection.Text = FL_Deflection.ToString();
+            textBox_FL_MaxCurrentContactBrakeTorque.Text = FL_CurrentContactBrakeTorqueMax.ToString();
+            textBox_FL_Deflection.Text = FL_VerticalDeflection.ToString();
             textBox_FL_EffectiveRadius.Text = FL_EffectiveRadius.ToString();
             textBox_FL_LateralLoad.Text = FL_LateralLoad.ToString();
             textBox_FL_LoadedRadius.Text = FL_LoadedRadius.ToString();
@@ -1314,22 +2000,22 @@ namespace MemHelperExample
             textBox_FL_VerticalLoad.Text = FL_VerticalLoad.ToString();
             textBox_FL_LateralFriction.Text = FL_LateralFriction.ToString();
             textBox_FL_LongitudinalFriction.Text = FL_LongitudinalFriction.ToString();
-            textBox_FL_TreadTemperature.Text = Math.Round(flsTemp,2).ToString();
-            textBox_FL_InnerTemperature.Text = Math.Round(fliTemp,2).ToString();
+            textBox_FL_TreadTemperature.Text = Math.Round(FL_TreadTemperature,2).ToString();
+            textBox_FL_InnerTemperature.Text = Math.Round(FL_InnerTemperature,2).ToString();
             textBox_FL_SlipAngleDeg.Text = FL_SlipAngleDeg.ToString();
             textBox_FL_TotalFriction.Text = FL_TotalFriction.ToString();//
             textBox_FL_TotalFrictionAngle.Text = FL_TotalFrictionAngle.ToString();//
             textBox_FL_LateralSlipSpeed.Text = FL_LateralSlipSpeed.ToString();//
             textBox_FL_LongitudinalSlipSpeed.Text = FL_LongitudinalSlipSpeed.ToString();//
             textBox_FL_CamberAngle.Text = FL_CamberAngleDeg.ToString();//
-            textBox_FL_TireSteerAngle.Text = FL_TireSteerAngleDeg.ToString();//
+            textBox_FL_TireSteerAngle.Text = FL_SteerAngleDeg.ToString();//
 
             //Front right
             textBox_FR_AngularVelocity.Text = FR_AngularVelocity.ToString();
             textBox_FR_ContactLength.Text = FR_ContactLength.ToString();
             textBox_FR_CurrentContactBrakeTorque.Text = FR_CurrentContactBrakeTorque.ToString();
-            //textBox_FR_MaxContactBrakeTorque.Text = FR_CurrentContactBrakeTorqueMax.ToString();
-            textBox_FR_Deflection.Text = FR_Deflection.ToString();
+            textBox_FR_MaxCurrentContactBrakeTorque.Text = FR_CurrentContactBrakeTorqueMax.ToString();
+            textBox_FR_Deflection.Text = FR_VerticalDeflection.ToString();
             textBox_FR_EffectiveRadius.Text = FR_EffectiveRadius.ToString();
             textBox_FR_LateralLoad.Text = FR_LateralLoad.ToString();
             textBox_FR_LoadedRadius.Text = FR_LoadedRadius.ToString();
@@ -1340,22 +2026,22 @@ namespace MemHelperExample
             textBox_FR_VerticalLoad.Text = FR_VerticalLoad.ToString();
             textBox_FR_LateralFriction.Text = FR_LateralFriction.ToString();
             textBox_FR_LongitudinalFriction.Text = FR_LongitudinalFriction.ToString();
-            textBox_FR_TreadTemperature.Text = Math.Round(frsTemp, 2).ToString();
-            textBox_FR_InnerTemperature.Text = Math.Round(friTemp, 2).ToString();
+            textBox_FR_TreadTemperature.Text = Math.Round(FR_TreadTemperature, 2).ToString();
+            textBox_FR_InnerTemperature.Text = Math.Round(FR_InnerTemperature, 2).ToString();
             textBox_FR_SlipAngleDeg.Text = FR_SlipAngleDeg.ToString();
             textBox_FR_TotalFriction.Text = FR_TotalFriction.ToString();//
             textBox_FR_TotalFrictionAngle.Text = FR_TotalFrictionAngle.ToString();//
             textBox_FR_LateralSlipSpeed.Text = FR_LateralSlipSpeed.ToString();//
             textBox_FR_LongitudinalSlipSpeed.Text = FR_LongitudinalSlipSpeed.ToString();//
             textBox_FR_CamberAngle.Text = FR_CamberAngleDeg.ToString();//
-            textBox_FR_TireSteerAngle.Text = FR_TireSteerAngleDeg.ToString();//
+            textBox_FR_TireSteerAngle.Text = FR_SteerAngleDeg.ToString();//
 
             //Rear left
             textBox_RL_AngularVelocity.Text = RL_AngularVelocity.ToString();
             textBox_RL_ContactLength.Text = RL_ContactLength.ToString();
             textBox_RL_CurrentContactBrakeTorque.Text = RL_CurrentContactBrakeTorque.ToString();
-            //textBox_RL_MaxContactBrakeTorque.Text = RL_CurrentContactBrakeTorqueMax.ToString();
-            textBox_RL_Deflection.Text = RL_Deflection.ToString();
+            textBox_RL_MaxCurrentContactBrakeTorque.Text = RL_CurrentContactBrakeTorqueMax.ToString();
+            textBox_RL_Deflection.Text = RL_VerticalDeflection.ToString();
             textBox_RL_EffectiveRadius.Text = RL_EffectiveRadius.ToString();
             textBox_RL_LateralLoad.Text = RL_LateralLoad.ToString();
             textBox_RL_LoadedRadius.Text = RL_LoadedRadius.ToString();
@@ -1366,22 +2052,22 @@ namespace MemHelperExample
             textBox_RL_VerticalLoad.Text = RL_VerticalLoad.ToString();
             textBox_RL_LateralFriction.Text = RL_LateralFriction.ToString();
             textBox_RL_LongitudinalFriction.Text = RL_LongitudinalFriction.ToString();
-            textBox_RL_TreadTemperature.Text = Math.Round(rlsTemp, 2).ToString();
-            textBox_RL_InnerTemperature.Text = Math.Round(rliTemp, 2).ToString();
+            textBox_RL_TreadTemperature.Text = Math.Round(RL_TreadTemperature, 2).ToString();
+            textBox_RL_InnerTemperature.Text = Math.Round(RL_InnerTemperature, 2).ToString();
             textBox_RL_SlipAngleDeg.Text = RL_SlipAngleDeg.ToString();
             textBox_RL_TotalFriction.Text = RL_TotalFriction.ToString();//
             textBox_RL_TotalFrictionAngle.Text = RL_TotalFrictionAngle.ToString();//
             textBox_RL_LateralSlipSpeed.Text = RL_LateralSlipSpeed.ToString();//
             textBox_RL_LongitudinalSlipSpeed.Text = RL_LongitudinalSlipSpeed.ToString();//
             textBox_RL_CamberAngle.Text = RL_CamberAngleDeg.ToString();//
-            textBox_RL_TireSteerAngle.Text = RL_TireSteerAngleDeg.ToString();//
+            textBox_RL_TireSteerAngle.Text = RL_SteerAngleDeg.ToString();//
 
             //Rear right
             textBox_RR_AngularVelocity.Text = RR_AngularVelocity.ToString();
             textBox_RR_ContactLength.Text = RR_ContactLength.ToString();
             textBox_RR_CurrentContactBrakeTorque.Text = RR_CurrentContactBrakeTorque.ToString();
-            //textBox_RR_MaxContactBrakeTorque.Text = RR_CurrentContactBrakeTorqueMax.ToString();
-            textBox_RR_Deflection.Text = RR_Deflection.ToString();
+            textBox_RR_MaxCurrentContactBrakeTorque.Text = RR_CurrentContactBrakeTorqueMax.ToString();
+            textBox_RR_Deflection.Text = RR_VerticalDeflection.ToString();
             textBox_RR_EffectiveRadius.Text = RR_EffectiveRadius.ToString();
             textBox_RR_LateralLoad.Text = RR_LateralLoad.ToString();
             textBox_RR_LoadedRadius.Text = RR_LoadedRadius.ToString();
@@ -1392,15 +2078,15 @@ namespace MemHelperExample
             textBox_RR_VerticalLoad.Text = RR_VerticalLoad.ToString();
             textBox_RR_LateralFriction.Text = RR_LateralFriction.ToString();
             textBox_RR_LongitudinalFriction.Text = RR_LongitudinalFriction.ToString();
-            textBox_RR_TreadTemperature.Text = Math.Round(rrsTemp, 2).ToString();
-            textBox_RR_InnerTemperature.Text = Math.Round(rriTemp, 2).ToString();
+            textBox_RR_TreadTemperature.Text = Math.Round(RR_TreadTemperature, 2).ToString();
+            textBox_RR_InnerTemperature.Text = Math.Round(RR_InnerTemperature, 2).ToString();
             textBox_RR_SlipAngleDeg.Text = RR_SlipAngleDeg.ToString();
             textBox_RR_TotalFriction.Text = RR_TotalFriction.ToString();//
             textBox_RR_TotalFrictionAngle.Text = RR_TotalFrictionAngle.ToString();//
             textBox_RR_LateralSlipSpeed.Text = RR_LateralSlipSpeed.ToString();//
             textBox_RR_LongitudinalSlipSpeed.Text = RR_LongitudinalSlipSpeed.ToString();//
             textBox_RR_CamberAngle.Text = RR_CamberAngleDeg.ToString();//
-            textBox_RR_TireSteerAngle.Text = RR_TireSteerAngleDeg.ToString();//
+            textBox_RR_TireSteerAngle.Text = RR_SteerAngleDeg.ToString();//
 
 
 
@@ -1725,11 +2411,19 @@ namespace MemHelperExample
             {
                 logging = false;
                 Start_Log.Text = "Start Logging";
+                //checkedListBoxFLLogging.Show();
+                //selectFLAll.Show();
+                //FLApplyLogSettings.Show();
+                //LoggingSelectionsLabel.Show();
             }
             else
             {
                 logging = true;
                 Start_Log.Text = "Stop Logging";
+                //checkedListBoxFLLogging.Hide();
+                //selectFLAll.Hide();
+                //FLApplyLogSettings.Hide();
+                //LoggingSelectionsLabel.Hide();
             }
         }
 
@@ -1854,6 +2548,42 @@ namespace MemHelperExample
         }
 
         private void temperaturesFR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toSettingsButton_Click(object sender, EventArgs e)
+        {
+            
+            Log_Settings s1 = new Log_Settings();
+            s1.Show();
+
+            //Start_Log.Visible = false;
+            /*
+            this.Hide();
+            */
+        }
+
+        private void exitApplication_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void toTireSettingsButton_Click(object sender, EventArgs e)
+        {
+            
+            TireSettings s = new TireSettings();
+            s.Show();
+            //this.Hide();
+            
+        }
+
+        private void FirstAllDataLoggerPage_Closing(object sender, FormClosingEventArgs e)
+        {
+            //RegistryTools.SaveAllSettings(Application.ProductName, this);
+        }
+
+        private void CurrentSpeed_Click(object sender, EventArgs e)
         {
 
         }

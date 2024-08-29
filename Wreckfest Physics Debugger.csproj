@@ -7,7 +7,7 @@
     <ProjectGuid>{9B846937-B82F-4FD4-9F92-F379FB3A9E2C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Physics_Data_Debug</RootNamespace>
-    <AssemblyName>Physics Data Debug March 2024</AssemblyName>
+    <AssemblyName>Physics Data Debug August 2024</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -67,17 +67,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Registry Tools.cs" />
+    <Compile Include="LiveData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LiveData.Designer.cs">
+      <DependentUpon>LiveData.cs</DependentUpon>
     </Compile>
     <Compile Include="MemoryHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LogSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogSettings.Designer.cs">
+      <DependentUpon>LogSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TireSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TireSettings.Designer.cs">
+      <DependentUpon>TireSettings.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="LiveData.resx">
+      <DependentUpon>LiveData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +102,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="LogSettings.resx">
+      <DependentUpon>LogSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TireSettings.resx">
+      <DependentUpon>TireSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

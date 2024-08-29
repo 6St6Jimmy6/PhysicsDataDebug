@@ -14,7 +14,7 @@ using System.Diagnostics;
 
 
 
-namespace MemHelperExample
+namespace Physics_Data_Debug
 {
 
 
@@ -30,7 +30,7 @@ namespace MemHelperExample
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Live_Data());
         }
     }
 }
