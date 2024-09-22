@@ -1,7 +1,7 @@
 ﻿
 namespace Physics_Data_Debug
 {
-    partial class TireSettings
+    partial class FormTireSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Physics_Data_Debug
         private void InitializeComponent()
         {
             this.textBox_FL_Radius = new System.Windows.Forms.TextBox();
-            this.closeTireSettingsButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.flRadius = new System.Windows.Forms.Label();
             this.flWidth = new System.Windows.Forms.Label();
             this.flThermalAirTransfer = new System.Windows.Forms.Label();
@@ -118,15 +118,15 @@ namespace Physics_Data_Debug
             this.textBox_FL_Radius.TabIndex = 0;
             this.textBox_FL_Radius.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_Radius_KeyPress);
             // 
-            // closeTireSettingsButton
+            // closeButton
             // 
-            this.closeTireSettingsButton.Location = new System.Drawing.Point(12, 12);
-            this.closeTireSettingsButton.Name = "closeTireSettingsButton";
-            this.closeTireSettingsButton.Size = new System.Drawing.Size(75, 46);
-            this.closeTireSettingsButton.TabIndex = 1;
-            this.closeTireSettingsButton.Text = "Close Tire Settings";
-            this.closeTireSettingsButton.UseVisualStyleBackColor = true;
-            this.closeTireSettingsButton.Click += new System.EventHandler(this.backButton_Click);
+            this.closeButton.Location = new System.Drawing.Point(12, 12);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 46);
+            this.closeButton.TabIndex = 1;
+            this.closeButton.Text = "Close Tire Settings";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // flRadius
             // 
@@ -788,11 +788,11 @@ namespace Physics_Data_Debug
             this.textBox_RR_Radius.TabIndex = 64;
             this.textBox_RR_Radius.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_Radius_KeyPress);
             // 
-            // TireSettings
+            // FormTireSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 594);
+            this.ClientSize = new System.Drawing.Size(611, 581);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textBox_RR_MomentOfInertia);
             this.Controls.Add(this.textBox_RR_Mass);
@@ -870,9 +870,9 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.flThermalAirTransfer);
             this.Controls.Add(this.flWidth);
             this.Controls.Add(this.flRadius);
-            this.Controls.Add(this.closeTireSettingsButton);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.textBox_FL_Radius);
-            this.Name = "TireSettings";
+            this.Name = "FormTireSettings";
             this.Text = "Tire Settings";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TireSettings_Close);
             this.Load += new System.EventHandler(this.TireSettings_Load);
@@ -884,7 +884,7 @@ namespace Physics_Data_Debug
         #endregion
 
         private System.Windows.Forms.TextBox textBox_FL_Radius;
-        private System.Windows.Forms.Button closeTireSettingsButton;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label flRadius;
         private System.Windows.Forms.Label flWidth;
         private System.Windows.Forms.Label flThermalAirTransfer;

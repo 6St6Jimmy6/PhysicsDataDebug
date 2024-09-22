@@ -3,7 +3,9 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
- 
+
+//Taken from https://pastebin.com/0nCpkrit by NATANM. Check his github httpS://n4t4nm.github.io even though he doesn't have this anymore in there.
+//Usage tutorial https://www.youtube.com/watch?v=aXKEWa0_YJg but not used for malicious intents in this program.
 namespace Memory.Win32
 {
     class MemoryHelper32

@@ -1,7 +1,7 @@
 ﻿
 namespace Physics_Data_Debug
 {
-    partial class Live_Data
+    partial class FormLiveData
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,6 @@ namespace Physics_Data_Debug
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            this.temperaturesFL = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.temperaturesFR = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.temperaturesRL = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.temperaturesRR = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label12 = new System.Windows.Forms.Label();
             this.CurrentSpeed = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -123,7 +99,7 @@ namespace Physics_Data_Debug
             this.textBox_RR_InnerTemperature = new System.Windows.Forms.TextBox();
             this.textBox_RR_TreadTemperature = new System.Windows.Forms.TextBox();
             this.textBox_RR_AngularVelocity = new System.Windows.Forms.TextBox();
-            this.Start_Log = new System.Windows.Forms.Button();
+            this.startFileLoggingButton = new System.Windows.Forms.Button();
             this.logInterval_textBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox_FL_LateralSlipSpeed = new System.Windows.Forms.TextBox();
@@ -226,144 +202,54 @@ namespace Physics_Data_Debug
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label69 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesFL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesFR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesRL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesRR)).BeginInit();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox_FL_SuspensionVelocity = new System.Windows.Forms.TextBox();
+            this.textBox_FL_SuspensionLength = new System.Windows.Forms.TextBox();
+            this.textBox_FR_SuspensionVelocity = new System.Windows.Forms.TextBox();
+            this.textBox_FR_SuspensionLength = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.textBox_RL_SuspensionVelocity = new System.Windows.Forms.TextBox();
+            this.textBox_RL_SuspensionLength = new System.Windows.Forms.TextBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.textBox_RR_SuspensionVelocity = new System.Windows.Forms.TextBox();
+            this.textBox_RR_SuspensionLength = new System.Windows.Forms.TextBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.toSuspensionSettingsButton = new System.Windows.Forms.Button();
+            this.OpenTemperaturesChart = new System.Windows.Forms.Button();
+            this.CurrentEngineTorque = new System.Windows.Forms.Label();
+            this.CurrentEnginePower = new System.Windows.Forms.Label();
+            this.CurrentDifferentialOpen = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.CurrentDifferentialSpeedRad = new System.Windows.Forms.Label();
+            this.CurrentDifferentialTorque = new System.Windows.Forms.Label();
+            this.CurrentEngineRPM = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.CurrentEngineRPMAxle = new System.Windows.Forms.Label();
+            this.toTestChartPageButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // temperaturesFL
-            // 
-            this.temperaturesFL.BackColor = System.Drawing.Color.Transparent;
-            chartArea9.Name = "ChartArea1";
-            this.temperaturesFL.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            this.temperaturesFL.Legends.Add(legend9);
-            this.temperaturesFL.Location = new System.Drawing.Point(825, 10);
-            this.temperaturesFL.Name = "temperaturesFL";
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series17.Legend = "Legend1";
-            series17.Name = "Tread °C";
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series18.Legend = "Legend1";
-            series18.Name = "Inner °C";
-            this.temperaturesFL.Series.Add(series17);
-            this.temperaturesFL.Series.Add(series18);
-            this.temperaturesFL.Size = new System.Drawing.Size(314, 228);
-            this.temperaturesFL.TabIndex = 3;
-            this.temperaturesFL.Text = "chart1";
-            title9.Name = "FLTempTitle";
-            title9.Text = "Front Left Temperatures";
-            this.temperaturesFL.Titles.Add(title9);
-            this.temperaturesFL.Click += new System.EventHandler(this.temperaturesFL_Click);
-            // 
-            // temperaturesFR
-            // 
-            this.temperaturesFR.BackColor = System.Drawing.Color.Transparent;
-            chartArea10.Name = "ChartArea1";
-            this.temperaturesFR.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.temperaturesFR.Legends.Add(legend10);
-            this.temperaturesFR.Location = new System.Drawing.Point(1145, 10);
-            this.temperaturesFR.Name = "temperaturesFR";
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Legend = "Legend1";
-            series19.Name = "Tread °C";
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Legend = "Legend1";
-            series20.Name = "Inner °C";
-            this.temperaturesFR.Series.Add(series19);
-            this.temperaturesFR.Series.Add(series20);
-            this.temperaturesFR.Size = new System.Drawing.Size(314, 228);
-            this.temperaturesFR.TabIndex = 4;
-            this.temperaturesFR.Text = "chart1";
-            title10.Name = "FRTempTitle";
-            title10.Text = "Front Right Temperatures";
-            this.temperaturesFR.Titles.Add(title10);
-            this.temperaturesFR.Click += new System.EventHandler(this.temperaturesFR_Click);
-            // 
-            // temperaturesRL
-            // 
-            this.temperaturesRL.BackColor = System.Drawing.Color.Transparent;
-            chartArea11.Name = "ChartArea1";
-            this.temperaturesRL.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.temperaturesRL.Legends.Add(legend11);
-            this.temperaturesRL.Location = new System.Drawing.Point(825, 241);
-            this.temperaturesRL.Name = "temperaturesRL";
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series21.Legend = "Legend1";
-            series21.Name = "Tread °C";
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series22.Legend = "Legend1";
-            series22.Name = "Inner °C";
-            this.temperaturesRL.Series.Add(series21);
-            this.temperaturesRL.Series.Add(series22);
-            this.temperaturesRL.Size = new System.Drawing.Size(314, 228);
-            this.temperaturesRL.TabIndex = 5;
-            this.temperaturesRL.Text = "chart1";
-            title11.Name = "RLTempTitle";
-            title11.Text = "Rear Left Temperatures";
-            this.temperaturesRL.Titles.Add(title11);
-            this.temperaturesRL.Click += new System.EventHandler(this.temperaturesRL_Click);
-            // 
-            // temperaturesRR
-            // 
-            this.temperaturesRR.BackColor = System.Drawing.Color.Transparent;
-            chartArea12.Name = "ChartArea1";
-            this.temperaturesRR.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.temperaturesRR.Legends.Add(legend12);
-            this.temperaturesRR.Location = new System.Drawing.Point(1145, 241);
-            this.temperaturesRR.Name = "temperaturesRR";
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series23.Legend = "Legend1";
-            series23.Name = "Tread °C";
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series24.Legend = "Legend1";
-            series24.Name = "Inner °C";
-            this.temperaturesRR.Series.Add(series23);
-            this.temperaturesRR.Series.Add(series24);
-            this.temperaturesRR.Size = new System.Drawing.Size(314, 228);
-            this.temperaturesRR.TabIndex = 6;
-            this.temperaturesRR.Text = "chart1";
-            title12.Name = "RRTempTitle";
-            title12.Text = "Rear Right Temperatures";
-            this.temperaturesRR.Titles.Add(title12);
-            this.temperaturesRR.Click += new System.EventHandler(this.temperaturesRR_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 4);
+            this.label12.Location = new System.Drawing.Point(0, 5);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 27;
             this.label12.Text = "Speed (km/h)";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // CurrentSpeed
             // 
             this.CurrentSpeed.AutoSize = true;
-            this.CurrentSpeed.Location = new System.Drawing.Point(22, 17);
+            this.CurrentSpeed.Location = new System.Drawing.Point(1, 18);
             this.CurrentSpeed.Name = "CurrentSpeed";
             this.CurrentSpeed.Size = new System.Drawing.Size(73, 13);
             this.CurrentSpeed.TabIndex = 28;
             this.CurrentSpeed.Text = "Current speed";
-            this.CurrentSpeed.Click += new System.EventHandler(this.CurrentSpeed_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 36);
+            this.label13.Location = new System.Drawing.Point(0, 37);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 13);
             this.label13.TabIndex = 29;
@@ -372,7 +258,7 @@ namespace Physics_Data_Debug
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 70);
+            this.label14.Location = new System.Drawing.Point(0, 71);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 13);
             this.label14.TabIndex = 30;
@@ -381,7 +267,7 @@ namespace Physics_Data_Debug
             // CurrentFrontLift
             // 
             this.CurrentFrontLift.AutoSize = true;
-            this.CurrentFrontLift.Location = new System.Drawing.Point(21, 49);
+            this.CurrentFrontLift.Location = new System.Drawing.Point(0, 50);
             this.CurrentFrontLift.Name = "CurrentFrontLift";
             this.CurrentFrontLift.Size = new System.Drawing.Size(85, 13);
             this.CurrentFrontLift.TabIndex = 31;
@@ -390,7 +276,7 @@ namespace Physics_Data_Debug
             // CurrentRearLift
             // 
             this.CurrentRearLift.AutoSize = true;
-            this.CurrentRearLift.Location = new System.Drawing.Point(22, 83);
+            this.CurrentRearLift.Location = new System.Drawing.Point(1, 84);
             this.CurrentRearLift.Name = "CurrentRearLift";
             this.CurrentRearLift.Size = new System.Drawing.Size(84, 13);
             this.CurrentRearLift.TabIndex = 32;
@@ -404,27 +290,24 @@ namespace Physics_Data_Debug
             this.textBox_FL_AngularVelocity.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_AngularVelocity.TabIndex = 46;
             this.textBox_FL_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_AngularVelocity.TextChanged += new System.EventHandler(this.textBox_FL_AngularVelocity_TextChanged);
             // 
             // textBox_FL_TreadTemperature
             // 
-            this.textBox_FL_TreadTemperature.Location = new System.Drawing.Point(238, 367);
+            this.textBox_FL_TreadTemperature.Location = new System.Drawing.Point(238, 341);
             this.textBox_FL_TreadTemperature.Name = "textBox_FL_TreadTemperature";
             this.textBox_FL_TreadTemperature.ReadOnly = true;
             this.textBox_FL_TreadTemperature.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_TreadTemperature.TabIndex = 47;
             this.textBox_FL_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_TreadTemperature.TextChanged += new System.EventHandler(this.textBox_FL_TreadTemperature_TextChanged);
             // 
             // textBox_FL_InnerTemperature
             // 
-            this.textBox_FL_InnerTemperature.Location = new System.Drawing.Point(339, 367);
+            this.textBox_FL_InnerTemperature.Location = new System.Drawing.Point(339, 341);
             this.textBox_FL_InnerTemperature.Name = "textBox_FL_InnerTemperature";
             this.textBox_FL_InnerTemperature.ReadOnly = true;
             this.textBox_FL_InnerTemperature.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_InnerTemperature.TabIndex = 48;
             this.textBox_FL_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_InnerTemperature.TextChanged += new System.EventHandler(this.textBox_FL_InnerTemperature_TextChanged);
             // 
             // textBox_FL_Deflection
             // 
@@ -434,7 +317,6 @@ namespace Physics_Data_Debug
             this.textBox_FL_Deflection.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_Deflection.TabIndex = 49;
             this.textBox_FL_Deflection.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_Deflection.TextChanged += new System.EventHandler(this.textBox_FL_TireDeflection_TextChanged);
             // 
             // textBox_FL_LoadedRadius
             // 
@@ -444,7 +326,6 @@ namespace Physics_Data_Debug
             this.textBox_FL_LoadedRadius.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_LoadedRadius.TabIndex = 50;
             this.textBox_FL_LoadedRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_LoadedRadius.TextChanged += new System.EventHandler(this.textBox_FL_LoadedRadius_TextChanged);
             // 
             // textBox_FL_EffectiveRadius
             // 
@@ -454,7 +335,6 @@ namespace Physics_Data_Debug
             this.textBox_FL_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_EffectiveRadius.TabIndex = 51;
             this.textBox_FL_EffectiveRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_EffectiveRadius.TextChanged += new System.EventHandler(this.textBox_FL_EffectiveRadius_TextChanged);
             // 
             // textBox_FL_CurrentContactBrakeTorque
             // 
@@ -464,7 +344,6 @@ namespace Physics_Data_Debug
             this.textBox_FL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_CurrentContactBrakeTorque.TabIndex = 52;
             this.textBox_FL_CurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_CurrentContactBrakeTorque.TextChanged += new System.EventHandler(this.textBox_FL_CurrentContactBrakeTorque_TextChanged);
             // 
             // textBox_FL_VerticalLoad
             // 
@@ -474,47 +353,42 @@ namespace Physics_Data_Debug
             this.textBox_FL_VerticalLoad.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_VerticalLoad.TabIndex = 54;
             this.textBox_FL_VerticalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_VerticalLoad.TextChanged += new System.EventHandler(this.textBox_FL_VerticalLoad_TextChanged);
             // 
             // textBox_FL_LateralLoad
             // 
-            this.textBox_FL_LateralLoad.Location = new System.Drawing.Point(238, 211);
+            this.textBox_FL_LateralLoad.Location = new System.Drawing.Point(238, 185);
             this.textBox_FL_LateralLoad.Name = "textBox_FL_LateralLoad";
             this.textBox_FL_LateralLoad.ReadOnly = true;
             this.textBox_FL_LateralLoad.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_LateralLoad.TabIndex = 55;
             this.textBox_FL_LateralLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_LateralLoad.TextChanged += new System.EventHandler(this.textBox_FL_LateralLoad_TextChanged);
             // 
             // textBox_FL_LongitudinalLoad
             // 
-            this.textBox_FL_LongitudinalLoad.Location = new System.Drawing.Point(238, 289);
+            this.textBox_FL_LongitudinalLoad.Location = new System.Drawing.Point(238, 263);
             this.textBox_FL_LongitudinalLoad.Name = "textBox_FL_LongitudinalLoad";
             this.textBox_FL_LongitudinalLoad.ReadOnly = true;
             this.textBox_FL_LongitudinalLoad.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_LongitudinalLoad.TabIndex = 56;
             this.textBox_FL_LongitudinalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_LongitudinalLoad.TextChanged += new System.EventHandler(this.textBox_FL_LongitudinalLoad_TextChanged);
             // 
             // textBox_FL_SlipAngleDeg
             // 
-            this.textBox_FL_SlipAngleDeg.Location = new System.Drawing.Point(238, 237);
+            this.textBox_FL_SlipAngleDeg.Location = new System.Drawing.Point(238, 211);
             this.textBox_FL_SlipAngleDeg.Name = "textBox_FL_SlipAngleDeg";
             this.textBox_FL_SlipAngleDeg.ReadOnly = true;
             this.textBox_FL_SlipAngleDeg.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_SlipAngleDeg.TabIndex = 58;
             this.textBox_FL_SlipAngleDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_SlipAngleDeg.TextChanged += new System.EventHandler(this.textBox_FL_SlipAngleDeg_TextChanged);
             // 
             // textBox_FL_SlipRatio
             // 
-            this.textBox_FL_SlipRatio.Location = new System.Drawing.Point(238, 315);
+            this.textBox_FL_SlipRatio.Location = new System.Drawing.Point(238, 289);
             this.textBox_FL_SlipRatio.Name = "textBox_FL_SlipRatio";
             this.textBox_FL_SlipRatio.ReadOnly = true;
             this.textBox_FL_SlipRatio.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_SlipRatio.TabIndex = 59;
             this.textBox_FL_SlipRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_SlipRatio.TextChanged += new System.EventHandler(this.textBox_FL_SlipRatio_TextChanged);
             // 
             // textBox_FL_ContactLength
             // 
@@ -524,7 +398,6 @@ namespace Physics_Data_Debug
             this.textBox_FL_ContactLength.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_ContactLength.TabIndex = 60;
             this.textBox_FL_ContactLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_ContactLength.TextChanged += new System.EventHandler(this.textBox_FL_ContactLength_TextChanged);
             // 
             // textBox_FL_TravelSpeed
             // 
@@ -534,31 +407,28 @@ namespace Physics_Data_Debug
             this.textBox_FL_TravelSpeed.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_TravelSpeed.TabIndex = 61;
             this.textBox_FL_TravelSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_TravelSpeed.TextChanged += new System.EventHandler(this.textBox_FL_TravelSpeed_TextChanged);
             // 
             // textBox_FL_LateralFriction
             // 
-            this.textBox_FL_LateralFriction.Location = new System.Drawing.Point(238, 263);
+            this.textBox_FL_LateralFriction.Location = new System.Drawing.Point(238, 237);
             this.textBox_FL_LateralFriction.Name = "textBox_FL_LateralFriction";
             this.textBox_FL_LateralFriction.ReadOnly = true;
             this.textBox_FL_LateralFriction.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_LateralFriction.TabIndex = 62;
             this.textBox_FL_LateralFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_LateralFriction.TextChanged += new System.EventHandler(this.textBox_FL_LateralFriction_TextChanged);
             // 
             // textBox_FL_LongitudinalFriction
             // 
-            this.textBox_FL_LongitudinalFriction.Location = new System.Drawing.Point(238, 341);
+            this.textBox_FL_LongitudinalFriction.Location = new System.Drawing.Point(238, 315);
             this.textBox_FL_LongitudinalFriction.Name = "textBox_FL_LongitudinalFriction";
             this.textBox_FL_LongitudinalFriction.ReadOnly = true;
             this.textBox_FL_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
             this.textBox_FL_LongitudinalFriction.TabIndex = 63;
             this.textBox_FL_LongitudinalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_FL_LongitudinalFriction.TextChanged += new System.EventHandler(this.textBox_FL_LongitudinalFriction_TextChanged);
             // 
             // textBox_FR_LongitudinalFriction
             // 
-            this.textBox_FR_LongitudinalFriction.Location = new System.Drawing.Point(585, 341);
+            this.textBox_FR_LongitudinalFriction.Location = new System.Drawing.Point(592, 315);
             this.textBox_FR_LongitudinalFriction.Name = "textBox_FR_LongitudinalFriction";
             this.textBox_FR_LongitudinalFriction.ReadOnly = true;
             this.textBox_FR_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
@@ -567,7 +437,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_LateralFriction
             // 
-            this.textBox_FR_LateralFriction.Location = new System.Drawing.Point(585, 263);
+            this.textBox_FR_LateralFriction.Location = new System.Drawing.Point(592, 237);
             this.textBox_FR_LateralFriction.Name = "textBox_FR_LateralFriction";
             this.textBox_FR_LateralFriction.ReadOnly = true;
             this.textBox_FR_LateralFriction.Size = new System.Drawing.Size(76, 20);
@@ -576,7 +446,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_TravelSpeed
             // 
-            this.textBox_FR_TravelSpeed.Location = new System.Drawing.Point(585, 29);
+            this.textBox_FR_TravelSpeed.Location = new System.Drawing.Point(592, 29);
             this.textBox_FR_TravelSpeed.Name = "textBox_FR_TravelSpeed";
             this.textBox_FR_TravelSpeed.ReadOnly = true;
             this.textBox_FR_TravelSpeed.Size = new System.Drawing.Size(177, 20);
@@ -585,7 +455,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_ContactLength
             // 
-            this.textBox_FR_ContactLength.Location = new System.Drawing.Point(585, 133);
+            this.textBox_FR_ContactLength.Location = new System.Drawing.Point(592, 133);
             this.textBox_FR_ContactLength.Name = "textBox_FR_ContactLength";
             this.textBox_FR_ContactLength.ReadOnly = true;
             this.textBox_FR_ContactLength.Size = new System.Drawing.Size(177, 20);
@@ -594,7 +464,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_SlipRatio
             // 
-            this.textBox_FR_SlipRatio.Location = new System.Drawing.Point(585, 315);
+            this.textBox_FR_SlipRatio.Location = new System.Drawing.Point(592, 289);
             this.textBox_FR_SlipRatio.Name = "textBox_FR_SlipRatio";
             this.textBox_FR_SlipRatio.ReadOnly = true;
             this.textBox_FR_SlipRatio.Size = new System.Drawing.Size(177, 20);
@@ -603,7 +473,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_SlipAngleDeg
             // 
-            this.textBox_FR_SlipAngleDeg.Location = new System.Drawing.Point(585, 237);
+            this.textBox_FR_SlipAngleDeg.Location = new System.Drawing.Point(592, 211);
             this.textBox_FR_SlipAngleDeg.Name = "textBox_FR_SlipAngleDeg";
             this.textBox_FR_SlipAngleDeg.ReadOnly = true;
             this.textBox_FR_SlipAngleDeg.Size = new System.Drawing.Size(177, 20);
@@ -612,7 +482,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_LongitudinalLoad
             // 
-            this.textBox_FR_LongitudinalLoad.Location = new System.Drawing.Point(585, 289);
+            this.textBox_FR_LongitudinalLoad.Location = new System.Drawing.Point(592, 263);
             this.textBox_FR_LongitudinalLoad.Name = "textBox_FR_LongitudinalLoad";
             this.textBox_FR_LongitudinalLoad.ReadOnly = true;
             this.textBox_FR_LongitudinalLoad.Size = new System.Drawing.Size(177, 20);
@@ -621,7 +491,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_LateralLoad
             // 
-            this.textBox_FR_LateralLoad.Location = new System.Drawing.Point(585, 211);
+            this.textBox_FR_LateralLoad.Location = new System.Drawing.Point(592, 185);
             this.textBox_FR_LateralLoad.Name = "textBox_FR_LateralLoad";
             this.textBox_FR_LateralLoad.ReadOnly = true;
             this.textBox_FR_LateralLoad.Size = new System.Drawing.Size(177, 20);
@@ -630,7 +500,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_VerticalLoad
             // 
-            this.textBox_FR_VerticalLoad.Location = new System.Drawing.Point(585, 81);
+            this.textBox_FR_VerticalLoad.Location = new System.Drawing.Point(592, 81);
             this.textBox_FR_VerticalLoad.Name = "textBox_FR_VerticalLoad";
             this.textBox_FR_VerticalLoad.ReadOnly = true;
             this.textBox_FR_VerticalLoad.Size = new System.Drawing.Size(76, 20);
@@ -639,7 +509,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_CurrentContactBrakeTorque
             // 
-            this.textBox_FR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(585, 159);
+            this.textBox_FR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(592, 159);
             this.textBox_FR_CurrentContactBrakeTorque.Name = "textBox_FR_CurrentContactBrakeTorque";
             this.textBox_FR_CurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_FR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
@@ -648,7 +518,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_EffectiveRadius
             // 
-            this.textBox_FR_EffectiveRadius.Location = new System.Drawing.Point(686, 107);
+            this.textBox_FR_EffectiveRadius.Location = new System.Drawing.Point(693, 107);
             this.textBox_FR_EffectiveRadius.Name = "textBox_FR_EffectiveRadius";
             this.textBox_FR_EffectiveRadius.ReadOnly = true;
             this.textBox_FR_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
@@ -657,7 +527,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_LoadedRadius
             // 
-            this.textBox_FR_LoadedRadius.Location = new System.Drawing.Point(585, 107);
+            this.textBox_FR_LoadedRadius.Location = new System.Drawing.Point(592, 107);
             this.textBox_FR_LoadedRadius.Name = "textBox_FR_LoadedRadius";
             this.textBox_FR_LoadedRadius.ReadOnly = true;
             this.textBox_FR_LoadedRadius.Size = new System.Drawing.Size(76, 20);
@@ -666,7 +536,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_Deflection
             // 
-            this.textBox_FR_Deflection.Location = new System.Drawing.Point(686, 81);
+            this.textBox_FR_Deflection.Location = new System.Drawing.Point(693, 81);
             this.textBox_FR_Deflection.Name = "textBox_FR_Deflection";
             this.textBox_FR_Deflection.ReadOnly = true;
             this.textBox_FR_Deflection.Size = new System.Drawing.Size(76, 20);
@@ -675,7 +545,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_InnerTemperature
             // 
-            this.textBox_FR_InnerTemperature.Location = new System.Drawing.Point(686, 367);
+            this.textBox_FR_InnerTemperature.Location = new System.Drawing.Point(693, 341);
             this.textBox_FR_InnerTemperature.Name = "textBox_FR_InnerTemperature";
             this.textBox_FR_InnerTemperature.ReadOnly = true;
             this.textBox_FR_InnerTemperature.Size = new System.Drawing.Size(76, 20);
@@ -684,7 +554,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_TreadTemperature
             // 
-            this.textBox_FR_TreadTemperature.Location = new System.Drawing.Point(585, 367);
+            this.textBox_FR_TreadTemperature.Location = new System.Drawing.Point(592, 341);
             this.textBox_FR_TreadTemperature.Name = "textBox_FR_TreadTemperature";
             this.textBox_FR_TreadTemperature.ReadOnly = true;
             this.textBox_FR_TreadTemperature.Size = new System.Drawing.Size(76, 20);
@@ -693,7 +563,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_AngularVelocity
             // 
-            this.textBox_FR_AngularVelocity.Location = new System.Drawing.Point(585, 55);
+            this.textBox_FR_AngularVelocity.Location = new System.Drawing.Point(592, 55);
             this.textBox_FR_AngularVelocity.Name = "textBox_FR_AngularVelocity";
             this.textBox_FR_AngularVelocity.ReadOnly = true;
             this.textBox_FR_AngularVelocity.Size = new System.Drawing.Size(177, 20);
@@ -702,7 +572,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_LongitudinalFriction
             // 
-            this.textBox_RL_LongitudinalFriction.Location = new System.Drawing.Point(238, 776);
+            this.textBox_RL_LongitudinalFriction.Location = new System.Drawing.Point(238, 772);
             this.textBox_RL_LongitudinalFriction.Name = "textBox_RL_LongitudinalFriction";
             this.textBox_RL_LongitudinalFriction.ReadOnly = true;
             this.textBox_RL_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
@@ -711,7 +581,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_LateralFriction
             // 
-            this.textBox_RL_LateralFriction.Location = new System.Drawing.Point(238, 698);
+            this.textBox_RL_LateralFriction.Location = new System.Drawing.Point(238, 694);
             this.textBox_RL_LateralFriction.Name = "textBox_RL_LateralFriction";
             this.textBox_RL_LateralFriction.ReadOnly = true;
             this.textBox_RL_LateralFriction.Size = new System.Drawing.Size(76, 20);
@@ -720,7 +590,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_TravelSpeed
             // 
-            this.textBox_RL_TravelSpeed.Location = new System.Drawing.Point(238, 464);
+            this.textBox_RL_TravelSpeed.Location = new System.Drawing.Point(238, 486);
             this.textBox_RL_TravelSpeed.Name = "textBox_RL_TravelSpeed";
             this.textBox_RL_TravelSpeed.ReadOnly = true;
             this.textBox_RL_TravelSpeed.Size = new System.Drawing.Size(177, 20);
@@ -729,7 +599,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_ContactLength
             // 
-            this.textBox_RL_ContactLength.Location = new System.Drawing.Point(238, 568);
+            this.textBox_RL_ContactLength.Location = new System.Drawing.Point(238, 590);
             this.textBox_RL_ContactLength.Name = "textBox_RL_ContactLength";
             this.textBox_RL_ContactLength.ReadOnly = true;
             this.textBox_RL_ContactLength.Size = new System.Drawing.Size(177, 20);
@@ -738,7 +608,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_SlipRatio
             // 
-            this.textBox_RL_SlipRatio.Location = new System.Drawing.Point(238, 750);
+            this.textBox_RL_SlipRatio.Location = new System.Drawing.Point(238, 746);
             this.textBox_RL_SlipRatio.Name = "textBox_RL_SlipRatio";
             this.textBox_RL_SlipRatio.ReadOnly = true;
             this.textBox_RL_SlipRatio.Size = new System.Drawing.Size(177, 20);
@@ -747,7 +617,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_SlipAngleDeg
             // 
-            this.textBox_RL_SlipAngleDeg.Location = new System.Drawing.Point(238, 672);
+            this.textBox_RL_SlipAngleDeg.Location = new System.Drawing.Point(238, 668);
             this.textBox_RL_SlipAngleDeg.Name = "textBox_RL_SlipAngleDeg";
             this.textBox_RL_SlipAngleDeg.ReadOnly = true;
             this.textBox_RL_SlipAngleDeg.Size = new System.Drawing.Size(177, 20);
@@ -756,7 +626,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_LongitudinalLoad
             // 
-            this.textBox_RL_LongitudinalLoad.Location = new System.Drawing.Point(238, 724);
+            this.textBox_RL_LongitudinalLoad.Location = new System.Drawing.Point(238, 720);
             this.textBox_RL_LongitudinalLoad.Name = "textBox_RL_LongitudinalLoad";
             this.textBox_RL_LongitudinalLoad.ReadOnly = true;
             this.textBox_RL_LongitudinalLoad.Size = new System.Drawing.Size(177, 20);
@@ -765,7 +635,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_LateralLoad
             // 
-            this.textBox_RL_LateralLoad.Location = new System.Drawing.Point(238, 646);
+            this.textBox_RL_LateralLoad.Location = new System.Drawing.Point(238, 642);
             this.textBox_RL_LateralLoad.Name = "textBox_RL_LateralLoad";
             this.textBox_RL_LateralLoad.ReadOnly = true;
             this.textBox_RL_LateralLoad.Size = new System.Drawing.Size(177, 20);
@@ -774,7 +644,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_VerticalLoad
             // 
-            this.textBox_RL_VerticalLoad.Location = new System.Drawing.Point(238, 516);
+            this.textBox_RL_VerticalLoad.Location = new System.Drawing.Point(238, 538);
             this.textBox_RL_VerticalLoad.Name = "textBox_RL_VerticalLoad";
             this.textBox_RL_VerticalLoad.ReadOnly = true;
             this.textBox_RL_VerticalLoad.Size = new System.Drawing.Size(76, 20);
@@ -783,7 +653,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_CurrentContactBrakeTorque
             // 
-            this.textBox_RL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(238, 594);
+            this.textBox_RL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(238, 616);
             this.textBox_RL_CurrentContactBrakeTorque.Name = "textBox_RL_CurrentContactBrakeTorque";
             this.textBox_RL_CurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_RL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
@@ -792,7 +662,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_EffectiveRadius
             // 
-            this.textBox_RL_EffectiveRadius.Location = new System.Drawing.Point(339, 542);
+            this.textBox_RL_EffectiveRadius.Location = new System.Drawing.Point(339, 564);
             this.textBox_RL_EffectiveRadius.Name = "textBox_RL_EffectiveRadius";
             this.textBox_RL_EffectiveRadius.ReadOnly = true;
             this.textBox_RL_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
@@ -801,7 +671,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_LoadedRadius
             // 
-            this.textBox_RL_LoadedRadius.Location = new System.Drawing.Point(238, 542);
+            this.textBox_RL_LoadedRadius.Location = new System.Drawing.Point(238, 564);
             this.textBox_RL_LoadedRadius.Name = "textBox_RL_LoadedRadius";
             this.textBox_RL_LoadedRadius.ReadOnly = true;
             this.textBox_RL_LoadedRadius.Size = new System.Drawing.Size(76, 20);
@@ -810,7 +680,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_Deflection
             // 
-            this.textBox_RL_Deflection.Location = new System.Drawing.Point(339, 516);
+            this.textBox_RL_Deflection.Location = new System.Drawing.Point(339, 538);
             this.textBox_RL_Deflection.Name = "textBox_RL_Deflection";
             this.textBox_RL_Deflection.ReadOnly = true;
             this.textBox_RL_Deflection.Size = new System.Drawing.Size(76, 20);
@@ -819,7 +689,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_InnerTemperature
             // 
-            this.textBox_RL_InnerTemperature.Location = new System.Drawing.Point(339, 802);
+            this.textBox_RL_InnerTemperature.Location = new System.Drawing.Point(339, 798);
             this.textBox_RL_InnerTemperature.Name = "textBox_RL_InnerTemperature";
             this.textBox_RL_InnerTemperature.ReadOnly = true;
             this.textBox_RL_InnerTemperature.Size = new System.Drawing.Size(76, 20);
@@ -828,7 +698,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_TreadTemperature
             // 
-            this.textBox_RL_TreadTemperature.Location = new System.Drawing.Point(238, 802);
+            this.textBox_RL_TreadTemperature.Location = new System.Drawing.Point(238, 798);
             this.textBox_RL_TreadTemperature.Name = "textBox_RL_TreadTemperature";
             this.textBox_RL_TreadTemperature.ReadOnly = true;
             this.textBox_RL_TreadTemperature.Size = new System.Drawing.Size(76, 20);
@@ -837,7 +707,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_AngularVelocity
             // 
-            this.textBox_RL_AngularVelocity.Location = new System.Drawing.Point(238, 490);
+            this.textBox_RL_AngularVelocity.Location = new System.Drawing.Point(238, 512);
             this.textBox_RL_AngularVelocity.Name = "textBox_RL_AngularVelocity";
             this.textBox_RL_AngularVelocity.ReadOnly = true;
             this.textBox_RL_AngularVelocity.Size = new System.Drawing.Size(177, 20);
@@ -846,7 +716,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_LongitudinalFriction
             // 
-            this.textBox_RR_LongitudinalFriction.Location = new System.Drawing.Point(585, 776);
+            this.textBox_RR_LongitudinalFriction.Location = new System.Drawing.Point(592, 772);
             this.textBox_RR_LongitudinalFriction.Name = "textBox_RR_LongitudinalFriction";
             this.textBox_RR_LongitudinalFriction.ReadOnly = true;
             this.textBox_RR_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
@@ -855,7 +725,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_LateralFriction
             // 
-            this.textBox_RR_LateralFriction.Location = new System.Drawing.Point(585, 698);
+            this.textBox_RR_LateralFriction.Location = new System.Drawing.Point(592, 694);
             this.textBox_RR_LateralFriction.Name = "textBox_RR_LateralFriction";
             this.textBox_RR_LateralFriction.ReadOnly = true;
             this.textBox_RR_LateralFriction.Size = new System.Drawing.Size(76, 20);
@@ -864,7 +734,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_TravelSpeed
             // 
-            this.textBox_RR_TravelSpeed.Location = new System.Drawing.Point(585, 464);
+            this.textBox_RR_TravelSpeed.Location = new System.Drawing.Point(592, 486);
             this.textBox_RR_TravelSpeed.Name = "textBox_RR_TravelSpeed";
             this.textBox_RR_TravelSpeed.ReadOnly = true;
             this.textBox_RR_TravelSpeed.Size = new System.Drawing.Size(177, 20);
@@ -873,7 +743,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_ContactLength
             // 
-            this.textBox_RR_ContactLength.Location = new System.Drawing.Point(585, 568);
+            this.textBox_RR_ContactLength.Location = new System.Drawing.Point(592, 590);
             this.textBox_RR_ContactLength.Name = "textBox_RR_ContactLength";
             this.textBox_RR_ContactLength.ReadOnly = true;
             this.textBox_RR_ContactLength.Size = new System.Drawing.Size(177, 20);
@@ -882,7 +752,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_SlipRatio
             // 
-            this.textBox_RR_SlipRatio.Location = new System.Drawing.Point(585, 750);
+            this.textBox_RR_SlipRatio.Location = new System.Drawing.Point(592, 746);
             this.textBox_RR_SlipRatio.Name = "textBox_RR_SlipRatio";
             this.textBox_RR_SlipRatio.ReadOnly = true;
             this.textBox_RR_SlipRatio.Size = new System.Drawing.Size(177, 20);
@@ -891,7 +761,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_SlipAngleDeg
             // 
-            this.textBox_RR_SlipAngleDeg.Location = new System.Drawing.Point(585, 672);
+            this.textBox_RR_SlipAngleDeg.Location = new System.Drawing.Point(592, 668);
             this.textBox_RR_SlipAngleDeg.Name = "textBox_RR_SlipAngleDeg";
             this.textBox_RR_SlipAngleDeg.ReadOnly = true;
             this.textBox_RR_SlipAngleDeg.Size = new System.Drawing.Size(177, 20);
@@ -900,7 +770,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_LongitudinalLoad
             // 
-            this.textBox_RR_LongitudinalLoad.Location = new System.Drawing.Point(585, 724);
+            this.textBox_RR_LongitudinalLoad.Location = new System.Drawing.Point(592, 720);
             this.textBox_RR_LongitudinalLoad.Name = "textBox_RR_LongitudinalLoad";
             this.textBox_RR_LongitudinalLoad.ReadOnly = true;
             this.textBox_RR_LongitudinalLoad.Size = new System.Drawing.Size(177, 20);
@@ -909,7 +779,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_LateralLoad
             // 
-            this.textBox_RR_LateralLoad.Location = new System.Drawing.Point(585, 646);
+            this.textBox_RR_LateralLoad.Location = new System.Drawing.Point(592, 642);
             this.textBox_RR_LateralLoad.Name = "textBox_RR_LateralLoad";
             this.textBox_RR_LateralLoad.ReadOnly = true;
             this.textBox_RR_LateralLoad.Size = new System.Drawing.Size(177, 20);
@@ -918,7 +788,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_VerticalLoad
             // 
-            this.textBox_RR_VerticalLoad.Location = new System.Drawing.Point(585, 516);
+            this.textBox_RR_VerticalLoad.Location = new System.Drawing.Point(592, 538);
             this.textBox_RR_VerticalLoad.Name = "textBox_RR_VerticalLoad";
             this.textBox_RR_VerticalLoad.ReadOnly = true;
             this.textBox_RR_VerticalLoad.Size = new System.Drawing.Size(76, 20);
@@ -927,7 +797,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_CurrentContactBrakeTorque
             // 
-            this.textBox_RR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(585, 594);
+            this.textBox_RR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(592, 616);
             this.textBox_RR_CurrentContactBrakeTorque.Name = "textBox_RR_CurrentContactBrakeTorque";
             this.textBox_RR_CurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_RR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
@@ -936,7 +806,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_EffectiveRadius
             // 
-            this.textBox_RR_EffectiveRadius.Location = new System.Drawing.Point(686, 542);
+            this.textBox_RR_EffectiveRadius.Location = new System.Drawing.Point(693, 564);
             this.textBox_RR_EffectiveRadius.Name = "textBox_RR_EffectiveRadius";
             this.textBox_RR_EffectiveRadius.ReadOnly = true;
             this.textBox_RR_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
@@ -945,7 +815,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_LoadedRadius
             // 
-            this.textBox_RR_LoadedRadius.Location = new System.Drawing.Point(585, 542);
+            this.textBox_RR_LoadedRadius.Location = new System.Drawing.Point(592, 564);
             this.textBox_RR_LoadedRadius.Name = "textBox_RR_LoadedRadius";
             this.textBox_RR_LoadedRadius.ReadOnly = true;
             this.textBox_RR_LoadedRadius.Size = new System.Drawing.Size(76, 20);
@@ -954,7 +824,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_Deflection
             // 
-            this.textBox_RR_Deflection.Location = new System.Drawing.Point(686, 516);
+            this.textBox_RR_Deflection.Location = new System.Drawing.Point(693, 538);
             this.textBox_RR_Deflection.Name = "textBox_RR_Deflection";
             this.textBox_RR_Deflection.ReadOnly = true;
             this.textBox_RR_Deflection.Size = new System.Drawing.Size(76, 20);
@@ -963,7 +833,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_InnerTemperature
             // 
-            this.textBox_RR_InnerTemperature.Location = new System.Drawing.Point(686, 802);
+            this.textBox_RR_InnerTemperature.Location = new System.Drawing.Point(693, 798);
             this.textBox_RR_InnerTemperature.Name = "textBox_RR_InnerTemperature";
             this.textBox_RR_InnerTemperature.ReadOnly = true;
             this.textBox_RR_InnerTemperature.Size = new System.Drawing.Size(76, 20);
@@ -972,7 +842,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_TreadTemperature
             // 
-            this.textBox_RR_TreadTemperature.Location = new System.Drawing.Point(585, 802);
+            this.textBox_RR_TreadTemperature.Location = new System.Drawing.Point(592, 798);
             this.textBox_RR_TreadTemperature.Name = "textBox_RR_TreadTemperature";
             this.textBox_RR_TreadTemperature.ReadOnly = true;
             this.textBox_RR_TreadTemperature.Size = new System.Drawing.Size(76, 20);
@@ -981,29 +851,28 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_AngularVelocity
             // 
-            this.textBox_RR_AngularVelocity.Location = new System.Drawing.Point(585, 490);
+            this.textBox_RR_AngularVelocity.Location = new System.Drawing.Point(592, 512);
             this.textBox_RR_AngularVelocity.Name = "textBox_RR_AngularVelocity";
             this.textBox_RR_AngularVelocity.ReadOnly = true;
             this.textBox_RR_AngularVelocity.Size = new System.Drawing.Size(177, 20);
             this.textBox_RR_AngularVelocity.TabIndex = 103;
             this.textBox_RR_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox_RR_AngularVelocity.TextChanged += new System.EventHandler(this.textBox72_TextChanged);
             // 
-            // Start_Log
+            // startFileLoggingButton
             // 
-            this.Start_Log.Location = new System.Drawing.Point(7, 173);
-            this.Start_Log.Name = "Start_Log";
-            this.Start_Log.Size = new System.Drawing.Size(93, 43);
-            this.Start_Log.TabIndex = 121;
-            this.Start_Log.Text = "Start Logging";
-            this.Start_Log.UseVisualStyleBackColor = true;
-            this.Start_Log.Click += new System.EventHandler(this.Start_Log_Click);
+            this.startFileLoggingButton.Location = new System.Drawing.Point(3, 380);
+            this.startFileLoggingButton.Name = "startFileLoggingButton";
+            this.startFileLoggingButton.Size = new System.Drawing.Size(90, 45);
+            this.startFileLoggingButton.TabIndex = 121;
+            this.startFileLoggingButton.Text = "Start File Logging";
+            this.startFileLoggingButton.UseVisualStyleBackColor = true;
+            this.startFileLoggingButton.Click += new System.EventHandler(this.Start_Log_Click);
             // 
             // logInterval_textBox
             // 
-            this.logInterval_textBox.Location = new System.Drawing.Point(7, 259);
+            this.logInterval_textBox.Location = new System.Drawing.Point(3, 466);
             this.logInterval_textBox.Name = "logInterval_textBox";
-            this.logInterval_textBox.Size = new System.Drawing.Size(93, 20);
+            this.logInterval_textBox.Size = new System.Drawing.Size(90, 20);
             this.logInterval_textBox.TabIndex = 123;
             this.logInterval_textBox.TextChanged += new System.EventHandler(this.logInterval_textBox_TextChanged);
             this.logInterval_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInterval_textBox_Keypress);
@@ -1011,7 +880,7 @@ namespace Physics_Data_Debug
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(21, 225);
+            this.label15.Location = new System.Drawing.Point(17, 432);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 124;
@@ -1019,7 +888,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_LateralSlipSpeed
             // 
-            this.textBox_FL_LateralSlipSpeed.Location = new System.Drawing.Point(339, 263);
+            this.textBox_FL_LateralSlipSpeed.Location = new System.Drawing.Point(339, 237);
             this.textBox_FL_LateralSlipSpeed.Name = "textBox_FL_LateralSlipSpeed";
             this.textBox_FL_LateralSlipSpeed.ReadOnly = true;
             this.textBox_FL_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1028,7 +897,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_LongitudinalSlipSpeed
             // 
-            this.textBox_FL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(339, 341);
+            this.textBox_FL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(339, 315);
             this.textBox_FL_LongitudinalSlipSpeed.Name = "textBox_FL_LongitudinalSlipSpeed";
             this.textBox_FL_LongitudinalSlipSpeed.ReadOnly = true;
             this.textBox_FL_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1037,7 +906,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_TireSteerAngle
             // 
-            this.textBox_FL_TireSteerAngle.Location = new System.Drawing.Point(238, 185);
+            this.textBox_FL_TireSteerAngle.Location = new System.Drawing.Point(238, 419);
             this.textBox_FL_TireSteerAngle.Name = "textBox_FL_TireSteerAngle";
             this.textBox_FL_TireSteerAngle.ReadOnly = true;
             this.textBox_FL_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
@@ -1046,7 +915,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_CamberAngle
             // 
-            this.textBox_FL_CamberAngle.Location = new System.Drawing.Point(339, 185);
+            this.textBox_FL_CamberAngle.Location = new System.Drawing.Point(339, 419);
             this.textBox_FL_CamberAngle.Name = "textBox_FL_CamberAngle";
             this.textBox_FL_CamberAngle.ReadOnly = true;
             this.textBox_FL_CamberAngle.Size = new System.Drawing.Size(76, 20);
@@ -1055,7 +924,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_CamberAngle
             // 
-            this.textBox_FR_CamberAngle.Location = new System.Drawing.Point(686, 185);
+            this.textBox_FR_CamberAngle.Location = new System.Drawing.Point(693, 419);
             this.textBox_FR_CamberAngle.Name = "textBox_FR_CamberAngle";
             this.textBox_FR_CamberAngle.ReadOnly = true;
             this.textBox_FR_CamberAngle.Size = new System.Drawing.Size(76, 20);
@@ -1064,7 +933,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_TireSteerAngle
             // 
-            this.textBox_FR_TireSteerAngle.Location = new System.Drawing.Point(585, 185);
+            this.textBox_FR_TireSteerAngle.Location = new System.Drawing.Point(592, 419);
             this.textBox_FR_TireSteerAngle.Name = "textBox_FR_TireSteerAngle";
             this.textBox_FR_TireSteerAngle.ReadOnly = true;
             this.textBox_FR_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
@@ -1073,7 +942,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_LongitudinalSlipSpeed
             // 
-            this.textBox_FR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(686, 341);
+            this.textBox_FR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(693, 315);
             this.textBox_FR_LongitudinalSlipSpeed.Name = "textBox_FR_LongitudinalSlipSpeed";
             this.textBox_FR_LongitudinalSlipSpeed.ReadOnly = true;
             this.textBox_FR_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1082,7 +951,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_LateralSlipSpeed
             // 
-            this.textBox_FR_LateralSlipSpeed.Location = new System.Drawing.Point(686, 263);
+            this.textBox_FR_LateralSlipSpeed.Location = new System.Drawing.Point(693, 237);
             this.textBox_FR_LateralSlipSpeed.Name = "textBox_FR_LateralSlipSpeed";
             this.textBox_FR_LateralSlipSpeed.ReadOnly = true;
             this.textBox_FR_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1091,7 +960,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_CamberAngle
             // 
-            this.textBox_RL_CamberAngle.Location = new System.Drawing.Point(339, 620);
+            this.textBox_RL_CamberAngle.Location = new System.Drawing.Point(339, 876);
             this.textBox_RL_CamberAngle.Name = "textBox_RL_CamberAngle";
             this.textBox_RL_CamberAngle.ReadOnly = true;
             this.textBox_RL_CamberAngle.Size = new System.Drawing.Size(76, 20);
@@ -1100,7 +969,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_TireSteerAngle
             // 
-            this.textBox_RL_TireSteerAngle.Location = new System.Drawing.Point(238, 620);
+            this.textBox_RL_TireSteerAngle.Location = new System.Drawing.Point(238, 876);
             this.textBox_RL_TireSteerAngle.Name = "textBox_RL_TireSteerAngle";
             this.textBox_RL_TireSteerAngle.ReadOnly = true;
             this.textBox_RL_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
@@ -1109,7 +978,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_LongitudinalSlipSpeed
             // 
-            this.textBox_RL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(339, 776);
+            this.textBox_RL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(339, 772);
             this.textBox_RL_LongitudinalSlipSpeed.Name = "textBox_RL_LongitudinalSlipSpeed";
             this.textBox_RL_LongitudinalSlipSpeed.ReadOnly = true;
             this.textBox_RL_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1118,7 +987,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_LateralSlipSpeed
             // 
-            this.textBox_RL_LateralSlipSpeed.Location = new System.Drawing.Point(339, 698);
+            this.textBox_RL_LateralSlipSpeed.Location = new System.Drawing.Point(339, 694);
             this.textBox_RL_LateralSlipSpeed.Name = "textBox_RL_LateralSlipSpeed";
             this.textBox_RL_LateralSlipSpeed.ReadOnly = true;
             this.textBox_RL_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1127,7 +996,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_CamberAngle
             // 
-            this.textBox_RR_CamberAngle.Location = new System.Drawing.Point(686, 620);
+            this.textBox_RR_CamberAngle.Location = new System.Drawing.Point(693, 876);
             this.textBox_RR_CamberAngle.Name = "textBox_RR_CamberAngle";
             this.textBox_RR_CamberAngle.ReadOnly = true;
             this.textBox_RR_CamberAngle.Size = new System.Drawing.Size(76, 20);
@@ -1136,7 +1005,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_TireSteerAngle
             // 
-            this.textBox_RR_TireSteerAngle.Location = new System.Drawing.Point(585, 620);
+            this.textBox_RR_TireSteerAngle.Location = new System.Drawing.Point(592, 876);
             this.textBox_RR_TireSteerAngle.Name = "textBox_RR_TireSteerAngle";
             this.textBox_RR_TireSteerAngle.ReadOnly = true;
             this.textBox_RR_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
@@ -1145,7 +1014,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_LongitudinalSlipSpeed
             // 
-            this.textBox_RR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(686, 776);
+            this.textBox_RR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(693, 772);
             this.textBox_RR_LongitudinalSlipSpeed.Name = "textBox_RR_LongitudinalSlipSpeed";
             this.textBox_RR_LongitudinalSlipSpeed.ReadOnly = true;
             this.textBox_RR_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1154,7 +1023,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_LateralSlipSpeed
             // 
-            this.textBox_RR_LateralSlipSpeed.Location = new System.Drawing.Point(686, 698);
+            this.textBox_RR_LateralSlipSpeed.Location = new System.Drawing.Point(693, 694);
             this.textBox_RR_LateralSlipSpeed.Name = "textBox_RR_LateralSlipSpeed";
             this.textBox_RR_LateralSlipSpeed.ReadOnly = true;
             this.textBox_RR_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
@@ -1163,7 +1032,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_TotalFrictionAngle
             // 
-            this.textBox_FL_TotalFrictionAngle.Location = new System.Drawing.Point(339, 393);
+            this.textBox_FL_TotalFrictionAngle.Location = new System.Drawing.Point(339, 363);
             this.textBox_FL_TotalFrictionAngle.Name = "textBox_FL_TotalFrictionAngle";
             this.textBox_FL_TotalFrictionAngle.ReadOnly = true;
             this.textBox_FL_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
@@ -1172,7 +1041,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_TotalFriction
             // 
-            this.textBox_FL_TotalFriction.Location = new System.Drawing.Point(238, 393);
+            this.textBox_FL_TotalFriction.Location = new System.Drawing.Point(238, 367);
             this.textBox_FL_TotalFriction.Name = "textBox_FL_TotalFriction";
             this.textBox_FL_TotalFriction.ReadOnly = true;
             this.textBox_FL_TotalFriction.Size = new System.Drawing.Size(76, 20);
@@ -1181,7 +1050,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_TotalFrictionAngle
             // 
-            this.textBox_FR_TotalFrictionAngle.Location = new System.Drawing.Point(686, 393);
+            this.textBox_FR_TotalFrictionAngle.Location = new System.Drawing.Point(693, 367);
             this.textBox_FR_TotalFrictionAngle.Name = "textBox_FR_TotalFrictionAngle";
             this.textBox_FR_TotalFrictionAngle.ReadOnly = true;
             this.textBox_FR_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
@@ -1190,7 +1059,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_TotalFriction
             // 
-            this.textBox_FR_TotalFriction.Location = new System.Drawing.Point(585, 393);
+            this.textBox_FR_TotalFriction.Location = new System.Drawing.Point(592, 367);
             this.textBox_FR_TotalFriction.Name = "textBox_FR_TotalFriction";
             this.textBox_FR_TotalFriction.ReadOnly = true;
             this.textBox_FR_TotalFriction.Size = new System.Drawing.Size(76, 20);
@@ -1199,7 +1068,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_TotalFrictionAngle
             // 
-            this.textBox_RL_TotalFrictionAngle.Location = new System.Drawing.Point(339, 828);
+            this.textBox_RL_TotalFrictionAngle.Location = new System.Drawing.Point(339, 824);
             this.textBox_RL_TotalFrictionAngle.Name = "textBox_RL_TotalFrictionAngle";
             this.textBox_RL_TotalFrictionAngle.ReadOnly = true;
             this.textBox_RL_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
@@ -1208,7 +1077,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_TotalFriction
             // 
-            this.textBox_RL_TotalFriction.Location = new System.Drawing.Point(238, 828);
+            this.textBox_RL_TotalFriction.Location = new System.Drawing.Point(238, 824);
             this.textBox_RL_TotalFriction.Name = "textBox_RL_TotalFriction";
             this.textBox_RL_TotalFriction.ReadOnly = true;
             this.textBox_RL_TotalFriction.Size = new System.Drawing.Size(76, 20);
@@ -1217,7 +1086,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_TotalFrictionAngle
             // 
-            this.textBox_RR_TotalFrictionAngle.Location = new System.Drawing.Point(686, 828);
+            this.textBox_RR_TotalFrictionAngle.Location = new System.Drawing.Point(693, 824);
             this.textBox_RR_TotalFrictionAngle.Name = "textBox_RR_TotalFrictionAngle";
             this.textBox_RR_TotalFrictionAngle.ReadOnly = true;
             this.textBox_RR_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
@@ -1226,7 +1095,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_TotalFriction
             // 
-            this.textBox_RR_TotalFriction.Location = new System.Drawing.Point(585, 828);
+            this.textBox_RR_TotalFriction.Location = new System.Drawing.Point(592, 824);
             this.textBox_RR_TotalFriction.Name = "textBox_RR_TotalFriction";
             this.textBox_RR_TotalFriction.ReadOnly = true;
             this.textBox_RR_TotalFriction.Size = new System.Drawing.Size(76, 20);
@@ -1235,9 +1104,9 @@ namespace Physics_Data_Debug
             // 
             // toLogSettingsButton
             // 
-            this.toLogSettingsButton.Location = new System.Drawing.Point(7, 285);
+            this.toLogSettingsButton.Location = new System.Drawing.Point(3, 492);
             this.toLogSettingsButton.Name = "toLogSettingsButton";
-            this.toLogSettingsButton.Size = new System.Drawing.Size(93, 35);
+            this.toLogSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toLogSettingsButton.TabIndex = 149;
             this.toLogSettingsButton.Text = "Log Settings";
             this.toLogSettingsButton.UseVisualStyleBackColor = true;
@@ -1245,9 +1114,9 @@ namespace Physics_Data_Debug
             // 
             // exitApplication
             // 
-            this.exitApplication.Location = new System.Drawing.Point(7, 563);
+            this.exitApplication.Location = new System.Drawing.Point(4, 861);
             this.exitApplication.Name = "exitApplication";
-            this.exitApplication.Size = new System.Drawing.Size(93, 50);
+            this.exitApplication.Size = new System.Drawing.Size(90, 45);
             this.exitApplication.TabIndex = 150;
             this.exitApplication.Text = "Exit Application";
             this.exitApplication.UseVisualStyleBackColor = true;
@@ -1264,7 +1133,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_MaxCurrentContactBrakeTorque
             // 
-            this.textBox_FR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(686, 159);
+            this.textBox_FR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(693, 159);
             this.textBox_FR_MaxCurrentContactBrakeTorque.Name = "textBox_FR_MaxCurrentContactBrakeTorque";
             this.textBox_FR_MaxCurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_FR_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
@@ -1273,7 +1142,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_MaxCurrentContactBrakeTorque
             // 
-            this.textBox_RL_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(339, 594);
+            this.textBox_RL_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(339, 616);
             this.textBox_RL_MaxCurrentContactBrakeTorque.Name = "textBox_RL_MaxCurrentContactBrakeTorque";
             this.textBox_RL_MaxCurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_RL_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
@@ -1282,7 +1151,7 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_MaxCurrentContactBrakeTorque
             // 
-            this.textBox_RR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(686, 594);
+            this.textBox_RR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(693, 616);
             this.textBox_RR_MaxCurrentContactBrakeTorque.Name = "textBox_RR_MaxCurrentContactBrakeTorque";
             this.textBox_RR_MaxCurrentContactBrakeTorque.ReadOnly = true;
             this.textBox_RR_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
@@ -1291,9 +1160,9 @@ namespace Physics_Data_Debug
             // 
             // toTireSettingsButton
             // 
-            this.toTireSettingsButton.Location = new System.Drawing.Point(7, 333);
+            this.toTireSettingsButton.Location = new System.Drawing.Point(3, 543);
             this.toTireSettingsButton.Name = "toTireSettingsButton";
-            this.toTireSettingsButton.Size = new System.Drawing.Size(93, 35);
+            this.toTireSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toTireSettingsButton.TabIndex = 155;
             this.toTireSettingsButton.Text = "Tire Settings";
             this.toTireSettingsButton.UseVisualStyleBackColor = true;
@@ -1362,17 +1231,17 @@ namespace Physics_Data_Debug
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(111, 188);
+            this.label7.Location = new System.Drawing.Point(111, 422);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(328, 13);
+            this.label7.Size = new System.Drawing.Size(316, 13);
             this.label7.TabIndex = 168;
             this.label7.Text = "Steer/Camber Angle                                      /                        " +
-    "      Nm";
+    "      °";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(111, 214);
+            this.label8.Location = new System.Drawing.Point(111, 188);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(320, 13);
             this.label8.TabIndex = 169;
@@ -1382,7 +1251,7 @@ namespace Physics_Data_Debug
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(111, 240);
+            this.label9.Location = new System.Drawing.Point(111, 214);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(316, 13);
             this.label9.TabIndex = 170;
@@ -1392,7 +1261,7 @@ namespace Physics_Data_Debug
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(109, 266);
+            this.label10.Location = new System.Drawing.Point(109, 240);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(333, 13);
             this.label10.TabIndex = 171;
@@ -1402,7 +1271,7 @@ namespace Physics_Data_Debug
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(111, 292);
+            this.label11.Location = new System.Drawing.Point(111, 266);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(321, 13);
             this.label11.TabIndex = 172;
@@ -1412,7 +1281,7 @@ namespace Physics_Data_Debug
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(111, 318);
+            this.label16.Location = new System.Drawing.Point(111, 292);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(328, 13);
             this.label16.TabIndex = 173;
@@ -1422,7 +1291,7 @@ namespace Physics_Data_Debug
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(110, 344);
+            this.label17.Location = new System.Drawing.Point(110, 318);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(333, 13);
             this.label17.TabIndex = 174;
@@ -1432,7 +1301,7 @@ namespace Physics_Data_Debug
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(110, 370);
+            this.label18.Location = new System.Drawing.Point(110, 344);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(327, 13);
             this.label18.TabIndex = 175;
@@ -1442,7 +1311,7 @@ namespace Physics_Data_Debug
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(111, 396);
+            this.label19.Location = new System.Drawing.Point(111, 370);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(319, 13);
             this.label19.TabIndex = 176;
@@ -1452,7 +1321,7 @@ namespace Physics_Data_Debug
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(458, 396);
+            this.label20.Location = new System.Drawing.Point(465, 370);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(319, 13);
             this.label20.TabIndex = 191;
@@ -1462,7 +1331,7 @@ namespace Physics_Data_Debug
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(457, 370);
+            this.label21.Location = new System.Drawing.Point(464, 344);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(327, 13);
             this.label21.TabIndex = 190;
@@ -1472,7 +1341,7 @@ namespace Physics_Data_Debug
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(457, 344);
+            this.label22.Location = new System.Drawing.Point(464, 318);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(333, 13);
             this.label22.TabIndex = 189;
@@ -1482,7 +1351,7 @@ namespace Physics_Data_Debug
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(458, 318);
+            this.label23.Location = new System.Drawing.Point(465, 292);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(328, 13);
             this.label23.TabIndex = 188;
@@ -1492,7 +1361,7 @@ namespace Physics_Data_Debug
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(458, 292);
+            this.label24.Location = new System.Drawing.Point(465, 266);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(321, 13);
             this.label24.TabIndex = 187;
@@ -1502,7 +1371,7 @@ namespace Physics_Data_Debug
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(456, 266);
+            this.label25.Location = new System.Drawing.Point(463, 240);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(333, 13);
             this.label25.TabIndex = 186;
@@ -1512,7 +1381,7 @@ namespace Physics_Data_Debug
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(458, 240);
+            this.label26.Location = new System.Drawing.Point(465, 214);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(316, 13);
             this.label26.TabIndex = 185;
@@ -1522,7 +1391,7 @@ namespace Physics_Data_Debug
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(458, 214);
+            this.label27.Location = new System.Drawing.Point(465, 188);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(320, 13);
             this.label27.TabIndex = 184;
@@ -1532,17 +1401,17 @@ namespace Physics_Data_Debug
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(458, 188);
+            this.label28.Location = new System.Drawing.Point(465, 422);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(328, 13);
+            this.label28.Size = new System.Drawing.Size(316, 13);
             this.label28.TabIndex = 183;
             this.label28.Text = "Steer/Camber Angle                                      /                        " +
-    "      Nm";
+    "      °";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(457, 162);
+            this.label29.Location = new System.Drawing.Point(464, 162);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(329, 13);
             this.label29.TabIndex = 182;
@@ -1552,7 +1421,7 @@ namespace Physics_Data_Debug
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(458, 136);
+            this.label30.Location = new System.Drawing.Point(465, 136);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(322, 13);
             this.label30.TabIndex = 181;
@@ -1562,7 +1431,7 @@ namespace Physics_Data_Debug
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(456, 110);
+            this.label31.Location = new System.Drawing.Point(463, 110);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(324, 13);
             this.label31.TabIndex = 180;
@@ -1572,7 +1441,7 @@ namespace Physics_Data_Debug
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(457, 84);
+            this.label32.Location = new System.Drawing.Point(464, 84);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(323, 13);
             this.label32.TabIndex = 179;
@@ -1582,7 +1451,7 @@ namespace Physics_Data_Debug
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(457, 58);
+            this.label33.Location = new System.Drawing.Point(464, 58);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(339, 13);
             this.label33.TabIndex = 178;
@@ -1592,7 +1461,7 @@ namespace Physics_Data_Debug
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(457, 32);
+            this.label34.Location = new System.Drawing.Point(464, 32);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(332, 13);
             this.label34.TabIndex = 177;
@@ -1602,7 +1471,7 @@ namespace Physics_Data_Debug
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(112, 831);
+            this.label35.Location = new System.Drawing.Point(112, 827);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(319, 13);
             this.label35.TabIndex = 206;
@@ -1612,7 +1481,7 @@ namespace Physics_Data_Debug
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(111, 805);
+            this.label36.Location = new System.Drawing.Point(111, 801);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(327, 13);
             this.label36.TabIndex = 205;
@@ -1622,7 +1491,7 @@ namespace Physics_Data_Debug
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(111, 779);
+            this.label37.Location = new System.Drawing.Point(111, 775);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(333, 13);
             this.label37.TabIndex = 204;
@@ -1632,7 +1501,7 @@ namespace Physics_Data_Debug
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(112, 753);
+            this.label38.Location = new System.Drawing.Point(112, 749);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(328, 13);
             this.label38.TabIndex = 203;
@@ -1642,7 +1511,7 @@ namespace Physics_Data_Debug
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(112, 727);
+            this.label39.Location = new System.Drawing.Point(112, 723);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(321, 13);
             this.label39.TabIndex = 202;
@@ -1652,7 +1521,7 @@ namespace Physics_Data_Debug
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(110, 701);
+            this.label40.Location = new System.Drawing.Point(110, 697);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(333, 13);
             this.label40.TabIndex = 201;
@@ -1662,7 +1531,7 @@ namespace Physics_Data_Debug
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(112, 675);
+            this.label41.Location = new System.Drawing.Point(112, 671);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(316, 13);
             this.label41.TabIndex = 200;
@@ -1672,7 +1541,7 @@ namespace Physics_Data_Debug
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(112, 649);
+            this.label42.Location = new System.Drawing.Point(112, 645);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(320, 13);
             this.label42.TabIndex = 199;
@@ -1682,17 +1551,17 @@ namespace Physics_Data_Debug
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(112, 623);
+            this.label43.Location = new System.Drawing.Point(112, 879);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(328, 13);
+            this.label43.Size = new System.Drawing.Size(316, 13);
             this.label43.TabIndex = 198;
             this.label43.Text = "Steer/Camber Angle                                      /                        " +
-    "      Nm";
+    "      °";
             // 
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(111, 597);
+            this.label44.Location = new System.Drawing.Point(111, 619);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(329, 13);
             this.label44.TabIndex = 197;
@@ -1702,7 +1571,7 @@ namespace Physics_Data_Debug
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(112, 571);
+            this.label45.Location = new System.Drawing.Point(112, 593);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(322, 13);
             this.label45.TabIndex = 196;
@@ -1712,7 +1581,7 @@ namespace Physics_Data_Debug
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(110, 545);
+            this.label46.Location = new System.Drawing.Point(110, 567);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(324, 13);
             this.label46.TabIndex = 195;
@@ -1722,7 +1591,7 @@ namespace Physics_Data_Debug
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(111, 519);
+            this.label47.Location = new System.Drawing.Point(111, 541);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(323, 13);
             this.label47.TabIndex = 194;
@@ -1732,7 +1601,7 @@ namespace Physics_Data_Debug
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(111, 493);
+            this.label48.Location = new System.Drawing.Point(111, 515);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(339, 13);
             this.label48.TabIndex = 193;
@@ -1742,7 +1611,7 @@ namespace Physics_Data_Debug
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(111, 467);
+            this.label49.Location = new System.Drawing.Point(111, 489);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(332, 13);
             this.label49.TabIndex = 192;
@@ -1752,7 +1621,7 @@ namespace Physics_Data_Debug
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(458, 831);
+            this.label50.Location = new System.Drawing.Point(465, 827);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(319, 13);
             this.label50.TabIndex = 221;
@@ -1762,7 +1631,7 @@ namespace Physics_Data_Debug
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(457, 805);
+            this.label51.Location = new System.Drawing.Point(464, 801);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(327, 13);
             this.label51.TabIndex = 220;
@@ -1772,7 +1641,7 @@ namespace Physics_Data_Debug
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(457, 779);
+            this.label52.Location = new System.Drawing.Point(464, 775);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(333, 13);
             this.label52.TabIndex = 219;
@@ -1782,7 +1651,7 @@ namespace Physics_Data_Debug
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(458, 753);
+            this.label53.Location = new System.Drawing.Point(465, 749);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(328, 13);
             this.label53.TabIndex = 218;
@@ -1792,7 +1661,7 @@ namespace Physics_Data_Debug
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(458, 727);
+            this.label54.Location = new System.Drawing.Point(465, 723);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(321, 13);
             this.label54.TabIndex = 217;
@@ -1802,7 +1671,7 @@ namespace Physics_Data_Debug
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(456, 701);
+            this.label55.Location = new System.Drawing.Point(463, 697);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(333, 13);
             this.label55.TabIndex = 216;
@@ -1812,7 +1681,7 @@ namespace Physics_Data_Debug
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(458, 675);
+            this.label56.Location = new System.Drawing.Point(465, 671);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(316, 13);
             this.label56.TabIndex = 215;
@@ -1822,7 +1691,7 @@ namespace Physics_Data_Debug
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(458, 649);
+            this.label57.Location = new System.Drawing.Point(465, 645);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(320, 13);
             this.label57.TabIndex = 214;
@@ -1832,17 +1701,17 @@ namespace Physics_Data_Debug
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(458, 623);
+            this.label58.Location = new System.Drawing.Point(465, 879);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(328, 13);
+            this.label58.Size = new System.Drawing.Size(316, 13);
             this.label58.TabIndex = 213;
             this.label58.Text = "Steer/Camber Angle                                      /                        " +
-    "      Nm";
+    "      °";
             // 
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(457, 597);
+            this.label59.Location = new System.Drawing.Point(464, 619);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(329, 13);
             this.label59.TabIndex = 212;
@@ -1852,7 +1721,7 @@ namespace Physics_Data_Debug
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(458, 571);
+            this.label60.Location = new System.Drawing.Point(465, 593);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(322, 13);
             this.label60.TabIndex = 211;
@@ -1862,7 +1731,7 @@ namespace Physics_Data_Debug
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(456, 545);
+            this.label61.Location = new System.Drawing.Point(463, 567);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(324, 13);
             this.label61.TabIndex = 210;
@@ -1872,7 +1741,7 @@ namespace Physics_Data_Debug
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(457, 519);
+            this.label62.Location = new System.Drawing.Point(464, 541);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(323, 13);
             this.label62.TabIndex = 209;
@@ -1882,7 +1751,7 @@ namespace Physics_Data_Debug
             // label63
             // 
             this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(457, 493);
+            this.label63.Location = new System.Drawing.Point(464, 515);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(339, 13);
             this.label63.TabIndex = 208;
@@ -1892,7 +1761,7 @@ namespace Physics_Data_Debug
             // label64
             // 
             this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(457, 467);
+            this.label64.Location = new System.Drawing.Point(464, 489);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(332, 13);
             this.label64.TabIndex = 207;
@@ -1911,7 +1780,7 @@ namespace Physics_Data_Debug
             // label66
             // 
             this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(601, 4);
+            this.label66.Location = new System.Drawing.Point(608, 4);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(113, 13);
             this.label66.TabIndex = 223;
@@ -1920,7 +1789,7 @@ namespace Physics_Data_Debug
             // label67
             // 
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(250, 440);
+            this.label67.Location = new System.Drawing.Point(250, 462);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(98, 13);
             this.label67.TabIndex = 224;
@@ -1929,7 +1798,7 @@ namespace Physics_Data_Debug
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(601, 440);
+            this.label68.Location = new System.Drawing.Point(608, 462);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(106, 13);
             this.label68.TabIndex = 225;
@@ -1938,28 +1807,30 @@ namespace Physics_Data_Debug
             // richTextBox4
             // 
             this.richTextBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox4.Location = new System.Drawing.Point(450, 437);
+            this.richTextBox4.Location = new System.Drawing.Point(459, 456);
+            this.richTextBox4.MaxLength = 0;
             this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(352, 430);
+            this.richTextBox4.Size = new System.Drawing.Size(350, 450);
             this.richTextBox4.TabIndex = 102;
             this.richTextBox4.Text = "";
             // 
             // richTextBox2
             // 
             this.richTextBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox2.Location = new System.Drawing.Point(106, 437);
+            this.richTextBox2.Location = new System.Drawing.Point(106, 456);
+            this.richTextBox2.MaxLength = 0;
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(345, 431);
+            this.richTextBox2.Size = new System.Drawing.Size(350, 450);
             this.richTextBox2.TabIndex = 64;
             this.richTextBox2.Text = "";
-            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // richTextBox3
             // 
             this.richTextBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox3.Location = new System.Drawing.Point(450, 1);
+            this.richTextBox3.Location = new System.Drawing.Point(459, 1);
+            this.richTextBox3.MaxLength = 0;
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(352, 430);
+            this.richTextBox3.Size = new System.Drawing.Size(350, 450);
             this.richTextBox3.TabIndex = 83;
             this.richTextBox3.Text = "";
             // 
@@ -1967,27 +1838,274 @@ namespace Physics_Data_Debug
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.richTextBox1.Location = new System.Drawing.Point(106, 1);
+            this.richTextBox1.MaxLength = 0;
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(343, 430);
+            this.richTextBox1.Size = new System.Drawing.Size(350, 450);
             this.richTextBox1.TabIndex = 45;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(22, 243);
+            this.label69.Location = new System.Drawing.Point(18, 450);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(56, 13);
             this.label69.TabIndex = 226;
             this.label69.Text = "Sleep (ms)";
             // 
-            // Live_Data
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(112, 396);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(332, 13);
+            this.label70.TabIndex = 227;
+            this.label70.Text = "Susp Length/Velocity                                  m /                        " +
+    "     m/s";
+            // 
+            // textBox_FL_SuspensionVelocity
+            // 
+            this.textBox_FL_SuspensionVelocity.Location = new System.Drawing.Point(339, 393);
+            this.textBox_FL_SuspensionVelocity.Name = "textBox_FL_SuspensionVelocity";
+            this.textBox_FL_SuspensionVelocity.ReadOnly = true;
+            this.textBox_FL_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_SuspensionVelocity.TabIndex = 229;
+            this.textBox_FL_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_FL_SuspensionLength
+            // 
+            this.textBox_FL_SuspensionLength.Location = new System.Drawing.Point(238, 393);
+            this.textBox_FL_SuspensionLength.Name = "textBox_FL_SuspensionLength";
+            this.textBox_FL_SuspensionLength.ReadOnly = true;
+            this.textBox_FL_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_SuspensionLength.TabIndex = 228;
+            this.textBox_FL_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_FR_SuspensionVelocity
+            // 
+            this.textBox_FR_SuspensionVelocity.Location = new System.Drawing.Point(693, 393);
+            this.textBox_FR_SuspensionVelocity.Name = "textBox_FR_SuspensionVelocity";
+            this.textBox_FR_SuspensionVelocity.ReadOnly = true;
+            this.textBox_FR_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_SuspensionVelocity.TabIndex = 232;
+            this.textBox_FR_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_FR_SuspensionLength
+            // 
+            this.textBox_FR_SuspensionLength.Location = new System.Drawing.Point(592, 393);
+            this.textBox_FR_SuspensionLength.Name = "textBox_FR_SuspensionLength";
+            this.textBox_FR_SuspensionLength.ReadOnly = true;
+            this.textBox_FR_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_SuspensionLength.TabIndex = 231;
+            this.textBox_FR_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(466, 396);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(332, 13);
+            this.label71.TabIndex = 230;
+            this.label71.Text = "Susp Length/Velocity                                  m /                        " +
+    "     m/s";
+            // 
+            // textBox_RL_SuspensionVelocity
+            // 
+            this.textBox_RL_SuspensionVelocity.Location = new System.Drawing.Point(339, 850);
+            this.textBox_RL_SuspensionVelocity.Name = "textBox_RL_SuspensionVelocity";
+            this.textBox_RL_SuspensionVelocity.ReadOnly = true;
+            this.textBox_RL_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_SuspensionVelocity.TabIndex = 235;
+            this.textBox_RL_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_RL_SuspensionLength
+            // 
+            this.textBox_RL_SuspensionLength.Location = new System.Drawing.Point(238, 850);
+            this.textBox_RL_SuspensionLength.Name = "textBox_RL_SuspensionLength";
+            this.textBox_RL_SuspensionLength.ReadOnly = true;
+            this.textBox_RL_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_SuspensionLength.TabIndex = 234;
+            this.textBox_RL_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(112, 853);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(332, 13);
+            this.label72.TabIndex = 233;
+            this.label72.Text = "Susp Length/Velocity                                  m /                        " +
+    "     m/s";
+            // 
+            // textBox_RR_SuspensionVelocity
+            // 
+            this.textBox_RR_SuspensionVelocity.Location = new System.Drawing.Point(693, 850);
+            this.textBox_RR_SuspensionVelocity.Name = "textBox_RR_SuspensionVelocity";
+            this.textBox_RR_SuspensionVelocity.ReadOnly = true;
+            this.textBox_RR_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_SuspensionVelocity.TabIndex = 238;
+            this.textBox_RR_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_RR_SuspensionLength
+            // 
+            this.textBox_RR_SuspensionLength.Location = new System.Drawing.Point(592, 850);
+            this.textBox_RR_SuspensionLength.Name = "textBox_RR_SuspensionLength";
+            this.textBox_RR_SuspensionLength.ReadOnly = true;
+            this.textBox_RR_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_SuspensionLength.TabIndex = 237;
+            this.textBox_RR_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(466, 853);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(332, 13);
+            this.label73.TabIndex = 236;
+            this.label73.Text = "Susp Length/Velocity                                  m /                        " +
+    "     m/s";
+            // 
+            // toSuspensionSettingsButton
+            // 
+            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(3, 655);
+            this.toSuspensionSettingsButton.Name = "toSuspensionSettingsButton";
+            this.toSuspensionSettingsButton.Size = new System.Drawing.Size(90, 45);
+            this.toSuspensionSettingsButton.TabIndex = 239;
+            this.toSuspensionSettingsButton.Text = "Suspension Settings";
+            this.toSuspensionSettingsButton.UseVisualStyleBackColor = true;
+            this.toSuspensionSettingsButton.Click += new System.EventHandler(this.toSuspensionSettingsButton_Click);
+            // 
+            // OpenTemperaturesChart
+            // 
+            this.OpenTemperaturesChart.Location = new System.Drawing.Point(3, 594);
+            this.OpenTemperaturesChart.Name = "OpenTemperaturesChart";
+            this.OpenTemperaturesChart.Size = new System.Drawing.Size(90, 55);
+            this.OpenTemperaturesChart.TabIndex = 240;
+            this.OpenTemperaturesChart.Text = "Tire Temperatures Chart";
+            this.OpenTemperaturesChart.UseVisualStyleBackColor = true;
+            this.OpenTemperaturesChart.Click += new System.EventHandler(this.OpenTemperaturesChart_Click);
+            // 
+            // CurrentEngineTorque
+            // 
+            this.CurrentEngineTorque.AutoSize = true;
+            this.CurrentEngineTorque.Location = new System.Drawing.Point(1, 146);
+            this.CurrentEngineTorque.Name = "CurrentEngineTorque";
+            this.CurrentEngineTorque.Size = new System.Drawing.Size(99, 13);
+            this.CurrentEngineTorque.TabIndex = 242;
+            this.CurrentEngineTorque.Text = "Current torque (Nm)";
+            // 
+            // CurrentEnginePower
+            // 
+            this.CurrentEnginePower.AutoSize = true;
+            this.CurrentEnginePower.Location = new System.Drawing.Point(1, 159);
+            this.CurrentEnginePower.Name = "CurrentEnginePower";
+            this.CurrentEnginePower.Size = new System.Drawing.Size(99, 13);
+            this.CurrentEnginePower.TabIndex = 244;
+            this.CurrentEnginePower.Text = "Current power (kW)";
+            // 
+            // CurrentDifferentialOpen
+            // 
+            this.CurrentDifferentialOpen.AutoSize = true;
+            this.CurrentDifferentialOpen.Location = new System.Drawing.Point(1, 214);
+            this.CurrentDifferentialOpen.Name = "CurrentDifferentialOpen";
+            this.CurrentDifferentialOpen.Size = new System.Drawing.Size(86, 13);
+            this.CurrentDifferentialOpen.TabIndex = 246;
+            this.CurrentDifferentialOpen.Text = "Differential Open";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(-2, 200);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(57, 13);
+            this.label77.TabIndex = 245;
+            this.label77.Text = "Differential";
+            // 
+            // CurrentDifferentialSpeedRad
+            // 
+            this.CurrentDifferentialSpeedRad.AutoSize = true;
+            this.CurrentDifferentialSpeedRad.Location = new System.Drawing.Point(1, 227);
+            this.CurrentDifferentialSpeedRad.Name = "CurrentDifferentialSpeedRad";
+            this.CurrentDifferentialSpeedRad.Size = new System.Drawing.Size(66, 13);
+            this.CurrentDifferentialSpeedRad.TabIndex = 247;
+            this.CurrentDifferentialSpeedRad.Text = "Speed rad/s";
+            // 
+            // CurrentDifferentialTorque
+            // 
+            this.CurrentDifferentialTorque.AutoSize = true;
+            this.CurrentDifferentialTorque.Location = new System.Drawing.Point(1, 240);
+            this.CurrentDifferentialTorque.Name = "CurrentDifferentialTorque";
+            this.CurrentDifferentialTorque.Size = new System.Drawing.Size(66, 13);
+            this.CurrentDifferentialTorque.TabIndex = 248;
+            this.CurrentDifferentialTorque.Text = "Torque (Nm)";
+            // 
+            // CurrentEngineRPM
+            // 
+            this.CurrentEngineRPM.AutoSize = true;
+            this.CurrentEngineRPM.Location = new System.Drawing.Point(1, 120);
+            this.CurrentEngineRPM.Name = "CurrentEngineRPM";
+            this.CurrentEngineRPM.Size = new System.Drawing.Size(68, 13);
+            this.CurrentEngineRPM.TabIndex = 250;
+            this.CurrentEngineRPM.Text = "Current RPM";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(-2, 107);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(40, 13);
+            this.label78.TabIndex = 249;
+            this.label78.Text = "Engine";
+            // 
+            // CurrentEngineRPMAxle
+            // 
+            this.CurrentEngineRPMAxle.AutoSize = true;
+            this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(1, 133);
+            this.CurrentEngineRPMAxle.Name = "CurrentEngineRPMAxle";
+            this.CurrentEngineRPMAxle.Size = new System.Drawing.Size(91, 13);
+            this.CurrentEngineRPMAxle.TabIndex = 251;
+            this.CurrentEngineRPMAxle.Text = "Current RPM Axle";
+            // 
+            // toTestChartPageButton
+            // 
+            this.toTestChartPageButton.Location = new System.Drawing.Point(4, 706);
+            this.toTestChartPageButton.Name = "toTestChartPageButton";
+            this.toTestChartPageButton.Size = new System.Drawing.Size(90, 55);
+            this.toTestChartPageButton.TabIndex = 252;
+            this.toTestChartPageButton.Text = "Open Chart Plotter";
+            this.toTestChartPageButton.UseVisualStyleBackColor = true;
+            this.toTestChartPageButton.Click += new System.EventHandler(this.toTestChartPageButton_Click);
+            // 
+            // FormLiveData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1501, 971);
+            this.ClientSize = new System.Drawing.Size(820, 919);
+            this.Controls.Add(this.toTestChartPageButton);
+            this.Controls.Add(this.CurrentEngineRPMAxle);
+            this.Controls.Add(this.CurrentEngineRPM);
+            this.Controls.Add(this.label78);
+            this.Controls.Add(this.CurrentDifferentialTorque);
+            this.Controls.Add(this.CurrentDifferentialSpeedRad);
+            this.Controls.Add(this.CurrentDifferentialOpen);
+            this.Controls.Add(this.label77);
+            this.Controls.Add(this.CurrentEnginePower);
+            this.Controls.Add(this.CurrentEngineTorque);
+            this.Controls.Add(this.OpenTemperaturesChart);
+            this.Controls.Add(this.toSuspensionSettingsButton);
+            this.Controls.Add(this.textBox_RR_SuspensionVelocity);
+            this.Controls.Add(this.textBox_RR_SuspensionLength);
+            this.Controls.Add(this.label73);
+            this.Controls.Add(this.textBox_RL_SuspensionVelocity);
+            this.Controls.Add(this.textBox_RL_SuspensionLength);
+            this.Controls.Add(this.label72);
+            this.Controls.Add(this.textBox_FR_SuspensionVelocity);
+            this.Controls.Add(this.textBox_FR_SuspensionLength);
+            this.Controls.Add(this.label71);
+            this.Controls.Add(this.textBox_FL_SuspensionVelocity);
+            this.Controls.Add(this.textBox_FL_SuspensionLength);
+            this.Controls.Add(this.label70);
             this.Controls.Add(this.label69);
             this.Controls.Add(this.label68);
             this.Controls.Add(this.label67);
@@ -2150,7 +2268,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.toLogSettingsButton);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.logInterval_textBox);
-            this.Controls.Add(this.Start_Log);
+            this.Controls.Add(this.startFileLoggingButton);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.CurrentRearLift);
@@ -2159,20 +2277,12 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label13);
             this.Controls.Add(this.CurrentSpeed);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.temperaturesRR);
-            this.Controls.Add(this.temperaturesRL);
-            this.Controls.Add(this.temperaturesFR);
-            this.Controls.Add(this.temperaturesFL);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.richTextBox3);
-            this.Name = "Live_Data";
+            this.Name = "FormLiveData";
             this.Text = "Live Data";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstAllDataLoggerPage_Closing);
             this.Load += new System.EventHandler(this.FirstAllDataLoggerPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesFL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesFR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesRL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperaturesRR)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2246,11 +2356,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TextBox textBox_RR_InnerTemperature;
         private System.Windows.Forms.TextBox textBox_RR_TreadTemperature;
         private System.Windows.Forms.TextBox textBox_RR_AngularVelocity;
-        private System.Windows.Forms.Button Start_Log;
-        public System.Windows.Forms.DataVisualization.Charting.Chart temperaturesFL;
-        public System.Windows.Forms.DataVisualization.Charting.Chart temperaturesFR;
-        public System.Windows.Forms.DataVisualization.Charting.Chart temperaturesRL;
-        public System.Windows.Forms.DataVisualization.Charting.Chart temperaturesRR;
+        private System.Windows.Forms.Button startFileLoggingButton;
         public System.Windows.Forms.Label CurrentSpeed;
         public System.Windows.Forms.Label CurrentFrontLift;
         public System.Windows.Forms.Label CurrentRearLift;
@@ -2356,6 +2462,30 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox textBox_FL_SuspensionVelocity;
+        private System.Windows.Forms.TextBox textBox_FL_SuspensionLength;
+        private System.Windows.Forms.TextBox textBox_FR_SuspensionVelocity;
+        private System.Windows.Forms.TextBox textBox_FR_SuspensionLength;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox textBox_RL_SuspensionVelocity;
+        private System.Windows.Forms.TextBox textBox_RL_SuspensionLength;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.TextBox textBox_RR_SuspensionVelocity;
+        private System.Windows.Forms.TextBox textBox_RR_SuspensionLength;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Button toSuspensionSettingsButton;
+        private System.Windows.Forms.Button OpenTemperaturesChart;
+        public System.Windows.Forms.Label CurrentEngineTorque;
+        public System.Windows.Forms.Label CurrentEnginePower;
+        public System.Windows.Forms.Label CurrentDifferentialOpen;
+        private System.Windows.Forms.Label label77;
+        public System.Windows.Forms.Label CurrentDifferentialSpeedRad;
+        public System.Windows.Forms.Label CurrentDifferentialTorque;
+        public System.Windows.Forms.Label CurrentEngineRPM;
+        private System.Windows.Forms.Label label78;
+        public System.Windows.Forms.Label CurrentEngineRPMAxle;
+        private System.Windows.Forms.Button toTestChartPageButton;
     }
 }
 

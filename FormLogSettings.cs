@@ -1,34 +1,16 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.IO;
 using System.Globalization;
-using System.Threading;
-using System.ComponentModel.DataAnnotations;
 
 namespace Physics_Data_Debug
 {
-    public partial class Log_Settings : Form
+    public partial class FormLogSettings : Form
     {
-        public Log_Settings()
-        {
-            InitializeComponent();
-            // Sets up the initial objects in the CheckedListBox.
-            //string[] loggedParameters = { };//"Apples", "Oranges", "Tomato" };
-            //checkedListBoxFLLogging.Items.AddRange(loggedParameters);
-
-            // Changes the selection mode from double-click to single click.
-            checkedListBoxLogging.CheckOnClick = true;
-        }
+        #region Fields variables
+        public static char DefaultDelimiter { get; set; } = ';';
+        public static char Delimiter { get; set; } = DefaultDelimiter;
         /*
         public static bool TireTravelSpeedLogEnabled;//0
         public static bool AngularVelocityLogEnabled;//1
@@ -93,307 +75,33 @@ namespace Physics_Data_Debug
         public static double W4 = 2500d; // vertical load filter
 
         //public static float Z5; // camber angle when finding the actual camber angle related to the ground
-
-        private void Settings_Closing(object sender, FormClosingEventArgs e)
+        #endregion
+        public FormLogSettings()
         {
-            RegistryTools.SaveAllSettings(Application.ProductName, this);
+            InitializeComponent();
+            // Sets up the initial objects in the CheckedListBox.
+            //string[] loggedParameters = { };//"Apples", "Oranges", "Tomato" };
+            //checkedListBoxFLLogging.Items.AddRange(loggedParameters);
+            DelimiterSet();
+            // Changes the selection mode from double-click to single click.
+            checkedListBoxLogging.CheckOnClick = true;
+            DelimiterTextBox.MaxLength = 1;
         }
-
-        private void Settings_Closed(object sender, FormClosedEventArgs e)
+        #region Methods
+        private void DelimiterSet()
         {
-            Live_Data.SettingsOpen = false;
-        }
+            char[] charArray = DelimiterTextBox.Text.ToCharArray();
 
-        private void ChecklistBoxLoggingCheckedCheck()
-        {
-            if (checkedListBoxLogging.GetItemChecked(0) == true)
+            if (DelimiterTextBox.Text == "")
             {
-                Live_Data.TireTravelSpeedLogEnabled = true;
+                Delimiter = DefaultDelimiter;
+                DelimiterTextBox.Text = Delimiter.ToString();
             }
             else
             {
-                Live_Data.TireTravelSpeedLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(1) == true)
-            {
-                Live_Data.AngularVelocityLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.AngularVelocityLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(2) == true)
-            {
-                Live_Data.VerticalLoadLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.VerticalLoadLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(3) == true)
-            {
-                Live_Data.VerticalDeflectionLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.VerticalDeflectionLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(4) == true)
-            {
-                Live_Data.LoadedRadiusLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.LoadedRadiusLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(5) == true)
-            {
-                Live_Data.EffectiveRadiusLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.EffectiveRadiusLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(6) == true)
-            {
-                Live_Data.ContactLengthLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.ContactLengthLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(7) == true)
-            {
-                Live_Data.BrakeTorqueLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.BrakeTorqueLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(8) == true)
-            {
-                Live_Data.SteerAngleLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.SteerAngleLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(9) == true)
-            {
-                Live_Data.CamberAngleLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.CamberAngleLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(10) == true)
-            {
-                Live_Data.LateralLoadLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.LateralLoadLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(11) == true)
-            {
-                Live_Data.SlipAngleLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.SlipAngleLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(12) == true)
-            {
-                Live_Data.LateralFrictionLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.LateralFrictionLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(13) == true)
-            {
-                Live_Data.LateralSlipSpeedLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.LateralSlipSpeedLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(14) == true)
-            {
-                Live_Data.LongitudinalLoadLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.LongitudinalLoadLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(15) == true)
-            {
-                Live_Data.SlipRatioLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.SlipRatioLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(16) == true)
-            {
-                Live_Data.LongitudinalFrictionLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.LongitudinalFrictionLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(17) == true)
-            {
-                Live_Data.LongitudinalSlipSpeedLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.LongitudinalSlipSpeedLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(18) == true)
-            {
-                Live_Data.TreadTemperatureLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.TreadTemperatureLogEnabled = false;
-            }
-
-            if (checkedListBoxLogging.GetItemChecked(19) == true)
-            {
-                Live_Data.InnerTemperatureLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.InnerTemperatureLogEnabled = false;
-            }
-            if (checkedListBoxLogging.GetItemChecked(20) == true)
-            {
-                Live_Data.RaceTimeLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.RaceTimeLogEnabled = false;
-            }
-            if (checkedListBoxLogging.GetItemChecked(21) == true)
-            {
-                Live_Data.TotalFrictionLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.TotalFrictionLogEnabled = false;
-            }
-            if (checkedListBoxLogging.GetItemChecked(22) == true)
-            {
-                Live_Data.TotalFrictionAngleLogEnabled = true;
-            }
-            else
-            {
-                Live_Data.TotalFrictionAngleLogEnabled = false;
-            }
-            if (checkBoxFiltersOn.Checked == true)
-            {
-                Live_Data.FiltersOn = true;
-            }
-            else
-            {
-                Live_Data.FiltersOn = false;
+                Delimiter = charArray[0];
             }
         }
-
-        private void ListBoxClearAndWriters()
-        {
-            SelectedListBox.Items.Clear();
-            SelectedIndeciesListBox.Items.Clear();
-
-            foreach (string s in checkedListBoxLogging.CheckedItems)
-            {
-                SelectedListBox.Items.Add(s);
-            }
-            for (int i = 0; i < checkedListBoxLogging.CheckedIndices.Count; i++)
-            {
-                SelectedIndeciesListBox.Items.Add(checkedListBoxLogging.CheckedIndices[i]);
-
-            }
-        }
-
-        private void TextBoxesToString()
-        {
-            textBox_Z1.Text = Z1.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_W1.Text = W1.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_Z2.Text = Z2.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_W2.Text = W2.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_Z3.Text = Z3.ToString(CultureInfo.GetCultureInfo("en-US"));
-            //textBox_W3.Text = W3.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_Z4.Text = Z4.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_W4.Text = W4.ToString(CultureInfo.GetCultureInfo("en-US"));
-        }
-
-        private void Settings_Load(object sender, EventArgs e)
-        {
-            SelectedListBox.Visible = false;
-            SelectedIndeciesListBox.Visible = false;
-
-            Live_Data.SettingsOpen = true;
-            // Load saved settings
-            RegistryTools.LoadAllSettings(Application.ProductName, this);
-
-            ChecklistBoxLoggingCheckedCheck();
-            //ListBoxClearAndWriters();
-
-            TextBoxesToString();
-        }
-
-        private void selectFLAll_CheckedChanged(object sender, EventArgs e)
-        {
-            
-            if (selectAll.Checked == true)
-            {
-                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
-                {
-                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
-                {
-                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
-                }
-            }
-            
-        }
-
-        private void backToFirstAllDataLoggerPage_Click(object sender, EventArgs e)
-        {
-            //First_All_Data_Logger_Page fadlp = new First_All_Data_Logger_Page();
-            //fadlp.Show();
-            this.Close();
-        }
-
-        private void checkedListBoxFLLogging_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void ReadTextBoxes()
         {
             double z1;
@@ -415,20 +123,310 @@ namespace Physics_Data_Debug
                 && double.TryParse(textBox_Z4.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out z4) == true
                 && double.TryParse(textBox_W4.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out w4) == true)
             {
-                Z1 = double.Parse(textBox_Z1.Text, CultureInfo.GetCultureInfo("en-US") );
-                Z2 = double.Parse(textBox_Z2.Text, CultureInfo.GetCultureInfo("en-US") );
-                Z3 = double.Parse(textBox_Z3.Text, CultureInfo.GetCultureInfo("en-US") );
-                Z4 = double.Parse(textBox_Z4.Text, CultureInfo.GetCultureInfo("en-US") );
-                W4 = double.Parse(textBox_W4.Text, CultureInfo.GetCultureInfo("en-US") );
+                Z1 = double.Parse(textBox_Z1.Text, CultureInfo.GetCultureInfo("en-US"));
+                Z2 = double.Parse(textBox_Z2.Text, CultureInfo.GetCultureInfo("en-US"));
+                Z3 = double.Parse(textBox_Z3.Text, CultureInfo.GetCultureInfo("en-US"));
+                Z4 = double.Parse(textBox_Z4.Text, CultureInfo.GetCultureInfo("en-US"));
+                W4 = double.Parse(textBox_W4.Text, CultureInfo.GetCultureInfo("en-US"));
             }
 
-            
+
+        }
+        private void ChecklistBoxLoggingCheckedCheck()
+        {
+            if (checkedListBoxLogging.GetItemChecked(0) == true)
+            {
+                FormLiveData.TireTravelSpeedLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.TireTravelSpeedLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(1) == true)
+            {
+                FormLiveData.AngularVelocityLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.AngularVelocityLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(2) == true)
+            {
+                FormLiveData.VerticalLoadLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.VerticalLoadLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(3) == true)
+            {
+                FormLiveData.VerticalDeflectionLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.VerticalDeflectionLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(4) == true)
+            {
+                FormLiveData.LoadedRadiusLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.LoadedRadiusLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(5) == true)
+            {
+                FormLiveData.EffectiveRadiusLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.EffectiveRadiusLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(6) == true)
+            {
+                FormLiveData.ContactLengthLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.ContactLengthLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(7) == true)
+            {
+                FormLiveData.BrakeTorqueLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.BrakeTorqueLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(8) == true)
+            {
+                FormLiveData.SteerAngleLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.SteerAngleLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(9) == true)
+            {
+                FormLiveData.CamberAngleLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.CamberAngleLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(10) == true)
+            {
+                FormLiveData.LateralLoadLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.LateralLoadLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(11) == true)
+            {
+                FormLiveData.SlipAngleLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.SlipAngleLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(12) == true)
+            {
+                FormLiveData.LateralFrictionLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.LateralFrictionLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(13) == true)
+            {
+                FormLiveData.LateralSlipSpeedLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.LateralSlipSpeedLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(14) == true)
+            {
+                FormLiveData.LongitudinalLoadLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.LongitudinalLoadLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(15) == true)
+            {
+                FormLiveData.SlipRatioLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.SlipRatioLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(16) == true)
+            {
+                FormLiveData.LongitudinalFrictionLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.LongitudinalFrictionLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(17) == true)
+            {
+                FormLiveData.LongitudinalSlipSpeedLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.LongitudinalSlipSpeedLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(18) == true)
+            {
+                FormLiveData.TreadTemperatureLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.TreadTemperatureLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(19) == true)
+            {
+                FormLiveData.InnerTemperatureLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.InnerTemperatureLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(20) == true)
+            {
+                FormLiveData.RaceTimeLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.RaceTimeLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(21) == true)
+            {
+                FormLiveData.TotalFrictionLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.TotalFrictionLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(22) == true)
+            {
+                FormLiveData.TotalFrictionAngleLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.TotalFrictionAngleLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(23) == true)
+            {
+                FormLiveData.SuspensionLengthLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.SuspensionLengthLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(24) == true)
+            {
+                FormLiveData.SuspensionVelocityLogEnabled = true;
+            }
+            else
+            {
+                FormLiveData.SuspensionVelocityLogEnabled = false;
+            }
+            if (checkBoxFiltersOn.Checked == true)
+            {
+                FormLiveData.FiltersOn = true;
+            }
+            else
+            {
+                FormLiveData.FiltersOn = false;
+            }
+        }
+        private void ListBoxClearAndWriters()
+        {
+            SelectedListBox.Items.Clear();
+            SelectedIndeciesListBox.Items.Clear();
+
+            foreach (string s in checkedListBoxLogging.CheckedItems)
+            {
+                SelectedListBox.Items.Add(s);
+            }
+            for (int i = 0; i < checkedListBoxLogging.CheckedIndices.Count; i++)
+            {
+                SelectedIndeciesListBox.Items.Add(checkedListBoxLogging.CheckedIndices[i]);
+
+            }
+        }
+        private void TextBoxesToString()
+        {
+            textBox_Z1.Text = Z1.ToString(CultureInfo.GetCultureInfo("en-US"));
+            textBox_W1.Text = W1.ToString(CultureInfo.GetCultureInfo("en-US"));
+            textBox_Z2.Text = Z2.ToString(CultureInfo.GetCultureInfo("en-US"));
+            textBox_W2.Text = W2.ToString(CultureInfo.GetCultureInfo("en-US"));
+            textBox_Z3.Text = Z3.ToString(CultureInfo.GetCultureInfo("en-US"));
+            //textBox_W3.Text = W3.ToString(CultureInfo.GetCultureInfo("en-US"));
+            textBox_Z4.Text = Z4.ToString(CultureInfo.GetCultureInfo("en-US"));
+            textBox_W4.Text = W4.ToString(CultureInfo.GetCultureInfo("en-US"));
+        }
+        #endregion
+        #region Form Buttons etc.
+        private void Settings_Closing(object sender, FormClosingEventArgs e)
+        {
+            RegistryTools.SaveAllSettings(Application.ProductName, this);
         }
 
-       
+        private void Settings_Closed(object sender, FormClosedEventArgs e)
+        {
+            FormLiveData.SettingsOpen = false;
+        }
+        private void Settings_Load(object sender, EventArgs e)
+        {
+            SelectedListBox.Visible = false;
+            SelectedIndeciesListBox.Visible = false;
 
+            FormLiveData.SettingsOpen = true;
+            // Load saved settings
+            RegistryTools.LoadAllSettings(Application.ProductName, this);
+            DelimiterSet();
+            ChecklistBoxLoggingCheckedCheck();
+            //ListBoxClearAndWriters();
+
+            TextBoxesToString();
+        }
+        private void selectFLAll_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (selectAll.Checked == true)
+            {
+                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
+                {
+                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
+                {
+                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
+                }
+            }
+            
+        }
+        private void backToFirstAllDataLoggerPage_Click(object sender, EventArgs e)
+        {
+            //First_All_Data_Logger_Page fadlp = new First_All_Data_Logger_Page();
+            //fadlp.Show();
+            this.Close();
+        }
+        private void checkedListBoxFLLogging_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
         private void ApplyLogSettings_Click(object sender, EventArgs e)
         {
+            DelimiterSet();
+
             ChecklistBoxLoggingCheckedCheck();
             //ListBoxClearAndWriters();
 
@@ -436,7 +434,6 @@ namespace Physics_Data_Debug
 
             TextBoxesToString();
         }
-
         private void CheckKeyIsNumberOrDecimalPoint(KeyPressEventArgs e)
         {
             char ch1 = e.KeyChar;
@@ -446,57 +443,49 @@ namespace Physics_Data_Debug
                 e.Handled = true;
             }
         }
-
         private void textBox_Z1_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void textBox_W1_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void textBox_Z2_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void textBox_W2_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void textBox_Z3_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void textBox_W3_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void textBox_Z4_KeyPress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void textBox_W4_Keypress(object sender, KeyPressEventArgs e)
         {
             CheckKeyIsNumberOrDecimalPoint(e);
         }
-
         private void checkBoxFiltersOn_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxFiltersOn.Checked == true)
             {
-                Live_Data.FiltersOn = true;
+                FormLiveData.FiltersOn = true;
             }
             else
             {
-                Live_Data.FiltersOn = false;
+                FormLiveData.FiltersOn = false;
             }
         }
+        #endregion
     }
 }

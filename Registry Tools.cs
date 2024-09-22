@@ -10,6 +10,7 @@ using Microsoft.Win32;
 namespace Physics_Data_Debug
 {
     // Source code http://www.csharphelper.com/howtos/howto_save_checkedlistbox_values.html
+    // Example code by Rod Stephens licensed under CC-BY 4.0.
     class RegistryTools
     {
         // Remove all settings for this app.

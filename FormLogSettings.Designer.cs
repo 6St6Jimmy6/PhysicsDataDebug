@@ -1,7 +1,7 @@
 ﻿
 namespace Physics_Data_Debug
 {
-    partial class Log_Settings
+    partial class FormLogSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,8 @@ namespace Physics_Data_Debug
             this.label12 = new System.Windows.Forms.Label();
             this.textBox_W1 = new System.Windows.Forms.TextBox();
             this.textBox_W2 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.DelimiterTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // closeLogSettings
@@ -112,7 +114,9 @@ namespace Physics_Data_Debug
             "Inner Temperature",
             "Race Time",
             "Total Friction",
-            "Total Friction Angle"});
+            "Total Friction Angle",
+            "Suspension Length",
+            "Suspension Velocity"});
             this.checkedListBoxLogging.Location = new System.Drawing.Point(126, 62);
             this.checkedListBoxLogging.Name = "checkedListBoxLogging";
             this.checkedListBoxLogging.Size = new System.Drawing.Size(203, 349);
@@ -302,11 +306,31 @@ namespace Physics_Data_Debug
             this.textBox_W2.TabIndex = 42;
             this.textBox_W2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_W2_KeyPress);
             // 
-            // Log_Settings
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label10.Location = new System.Drawing.Point(9, 113);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 260;
+            this.label10.Text = "Delimiter";
+            // 
+            // DelimiterTextBox
+            // 
+            this.DelimiterTextBox.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DelimiterTextBox.Location = new System.Drawing.Point(12, 129);
+            this.DelimiterTextBox.Name = "DelimiterTextBox";
+            this.DelimiterTextBox.Size = new System.Drawing.Size(36, 21);
+            this.DelimiterTextBox.TabIndex = 259;
+            // 
+            // FormLogSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 512);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.DelimiterTextBox);
             this.Controls.Add(this.textBox_W2);
             this.Controls.Add(this.textBox_W1);
             this.Controls.Add(this.label12);
@@ -332,7 +356,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.selectAll);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.closeLogSettings);
-            this.Name = "Log_Settings";
+            this.Name = "FormLogSettings";
             this.Text = "Log Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_Closing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Settings_Closed);
@@ -369,5 +393,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox_W1;
         private System.Windows.Forms.TextBox textBox_W2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox DelimiterTextBox;
     }
 }

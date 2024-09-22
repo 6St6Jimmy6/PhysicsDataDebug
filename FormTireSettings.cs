@@ -15,9 +15,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Physics_Data_Debug
 {
-    public partial class TireSettings : Form
+    public partial class FormTireSettings : Form
     {
-        public TireSettings()
+        public FormTireSettings()
         {
             InitializeComponent();
         }
@@ -65,7 +65,7 @@ namespace Physics_Data_Debug
 
         private void TireSettings_Load(object sender, EventArgs e)
         {
-            Live_Data.TireSettingsOpen = true;
+            FormLiveData.TireSettingsOpen = true;
             readAndWriteData();
         }
 
@@ -77,49 +77,49 @@ namespace Physics_Data_Debug
             Memory.Win64.MemoryHelper64 helper = new Memory.Win64.MemoryHelper64(p);
 
             //Base Addres for Tire data
-            ulong baseAddr = helper.GetBaseAddress(Live_Data.baseAddrTire + Live_Data.baseAddrUpdt - Live_Data.baseAddrDodt);
+            ulong baseAddr = helper.GetBaseAddress(FormLiveData.baseAddrTiresSuspensionLiftsDifferential + FormLiveData.baseAddrUpdt - FormLiveData.baseAddrDodt);
 
             //Tire Data pointers
             //Front Left
-            int[] FL_MomentOfInertiaOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetMomentOfInertia };
-            int[] FL_TireMassOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMass };
-            int[] FL_TireRadiusOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireRadius };
-            int[] FL_TireWidthOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireWidth };
-            int[] FL_TireSpringRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireSpringRate };
-            int[] FL_TireDamperRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireDamperRate };
-            int[] FL_TireMaxDeflectionOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMaxDeflection };
-            int[] FL_ThermalAirTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalAirTransfer };
-            int[] FL_ThermalInnerTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalInnerTransfer };
+            int[] FL_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia };
+            int[] FL_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass };
+            int[] FL_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius };
+            int[] FL_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth };
+            int[] FL_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate };
+            int[] FL_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate };
+            int[] FL_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection };
+            int[] FL_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer };
+            int[] FL_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer };
 
-            int[] FR_MomentOfInertiaOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetMomentOfInertia + Live_Data.OffsetFRTire };
-            int[] FR_TireMassOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMass + Live_Data.OffsetFRTire };
-            int[] FR_TireRadiusOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireRadius + Live_Data.OffsetFRTire };
-            int[] FR_TireWidthOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireWidth + Live_Data.OffsetFRTire };
-            int[] FR_TireSpringRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireSpringRate + Live_Data.OffsetFRTire };
-            int[] FR_TireDamperRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireDamperRate + Live_Data.OffsetFRTire };
-            int[] FR_TireMaxDeflectionOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMaxDeflection + Live_Data.OffsetFRTire };
-            int[] FR_ThermalAirTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalAirTransfer + Live_Data.OffsetFRTire };
-            int[] FR_ThermalInnerTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalInnerTransfer + Live_Data.OffsetFRTire };
+            int[] FR_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia + FormLiveData.OffsetFRTire };
+            int[] FR_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass + FormLiveData.OffsetFRTire };
+            int[] FR_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius + FormLiveData.OffsetFRTire };
+            int[] FR_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth + FormLiveData.OffsetFRTire };
+            int[] FR_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate + FormLiveData.OffsetFRTire };
+            int[] FR_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate + FormLiveData.OffsetFRTire };
+            int[] FR_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection + FormLiveData.OffsetFRTire };
+            int[] FR_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer + FormLiveData.OffsetFRTire };
+            int[] FR_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer + FormLiveData.OffsetFRTire };
 
-            int[] RL_MomentOfInertiaOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetMomentOfInertia + Live_Data.OffsetRLTire };
-            int[] RL_TireMassOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMass + Live_Data.OffsetRLTire };
-            int[] RL_TireRadiusOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireRadius + Live_Data.OffsetRLTire };
-            int[] RL_TireWidthOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireWidth + Live_Data.OffsetRLTire };
-            int[] RL_TireSpringRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireSpringRate + Live_Data.OffsetRLTire };
-            int[] RL_TireDamperRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireDamperRate + Live_Data.OffsetRLTire };
-            int[] RL_TireMaxDeflectionOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMaxDeflection + Live_Data.OffsetRLTire };
-            int[] RL_ThermalAirTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalAirTransfer + Live_Data.OffsetRLTire };
-            int[] RL_ThermalInnerTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalInnerTransfer + Live_Data.OffsetRLTire };
+            int[] RL_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia + FormLiveData.OffsetRLTire };
+            int[] RL_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass + FormLiveData.OffsetRLTire };
+            int[] RL_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius + FormLiveData.OffsetRLTire };
+            int[] RL_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth + FormLiveData.OffsetRLTire };
+            int[] RL_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate + FormLiveData.OffsetRLTire };
+            int[] RL_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate + FormLiveData.OffsetRLTire };
+            int[] RL_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection + FormLiveData.OffsetRLTire };
+            int[] RL_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer + FormLiveData.OffsetRLTire };
+            int[] RL_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer + FormLiveData.OffsetRLTire };
 
-            int[] RR_MomentOfInertiaOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetMomentOfInertia + Live_Data.OffsetRRTire };
-            int[] RR_TireMassOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMass + Live_Data.OffsetRRTire };
-            int[] RR_TireRadiusOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireRadius + Live_Data.OffsetRRTire };
-            int[] RR_TireWidthOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireWidth + Live_Data.OffsetRRTire };
-            int[] RR_TireSpringRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireSpringRate + Live_Data.OffsetRRTire };
-            int[] RR_TireDamperRateOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireDamperRate + Live_Data.OffsetRRTire };
-            int[] RR_TireMaxDeflectionOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetTireMaxDeflection + Live_Data.OffsetRRTire };
-            int[] RR_ThermalAirTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalAirTransfer + Live_Data.OffsetRRTire };
-            int[] RR_ThermalInnerTransferOffsets = { Live_Data.OffsetTireData, Live_Data.OffsetThermalInnerTransfer + Live_Data.OffsetRRTire };
+            int[] RR_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia + FormLiveData.OffsetRRTire };
+            int[] RR_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass + FormLiveData.OffsetRRTire };
+            int[] RR_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius + FormLiveData.OffsetRRTire };
+            int[] RR_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth + FormLiveData.OffsetRRTire };
+            int[] RR_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate + FormLiveData.OffsetRRTire };
+            int[] RR_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate + FormLiveData.OffsetRRTire };
+            int[] RR_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection + FormLiveData.OffsetRRTire };
+            int[] RR_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer + FormLiveData.OffsetRRTire };
+            int[] RR_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer + FormLiveData.OffsetRRTire };
 
             ulong FL_TireMass_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireMassOffsets);
             ulong FL_TireRadius_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireRadiusOffsets);
@@ -204,45 +204,45 @@ namespace Physics_Data_Debug
 
         private void readAndWriteData()
         {
-            FL_MomentOfInertia = Convert.ToSingle(Live_Data.FL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireMass = Convert.ToSingle(Live_Data.FL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireRadius = Convert.ToSingle(Live_Data.FL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireWidth = Convert.ToSingle(Live_Data.FL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireSpringRate = Convert.ToSingle(Live_Data.FL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireDamperRate = Convert.ToSingle(Live_Data.FL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireMaxDeflection = Convert.ToSingle(Live_Data.FL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_ThermalAirTransfer = Convert.ToSingle(Live_Data.FL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_ThermalInnerTransfer = Convert.ToSingle(Live_Data.FL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_MomentOfInertia = Convert.ToSingle(FormLiveData.FL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireMass = Convert.ToSingle(FormLiveData.FL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireRadius = Convert.ToSingle(FormLiveData.FL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireWidth = Convert.ToSingle(FormLiveData.FL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireSpringRate = Convert.ToSingle(FormLiveData.FL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireDamperRate = Convert.ToSingle(FormLiveData.FL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireMaxDeflection = Convert.ToSingle(FormLiveData.FL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_ThermalAirTransfer = Convert.ToSingle(FormLiveData.FL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.FL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
-            FR_MomentOfInertia = Convert.ToSingle(Live_Data.FR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireMass = Convert.ToSingle(Live_Data.FR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireRadius = Convert.ToSingle(Live_Data.FR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireWidth = Convert.ToSingle(Live_Data.FR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireSpringRate = Convert.ToSingle(Live_Data.FR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireDamperRate = Convert.ToSingle(Live_Data.FR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireMaxDeflection = Convert.ToSingle(Live_Data.FR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_ThermalAirTransfer = Convert.ToSingle(Live_Data.FR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_ThermalInnerTransfer = Convert.ToSingle(Live_Data.FR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_MomentOfInertia = Convert.ToSingle(FormLiveData.FR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireMass = Convert.ToSingle(FormLiveData.FR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireRadius = Convert.ToSingle(FormLiveData.FR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireWidth = Convert.ToSingle(FormLiveData.FR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireSpringRate = Convert.ToSingle(FormLiveData.FR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireDamperRate = Convert.ToSingle(FormLiveData.FR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireMaxDeflection = Convert.ToSingle(FormLiveData.FR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_ThermalAirTransfer = Convert.ToSingle(FormLiveData.FR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.FR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
-            RL_MomentOfInertia = Convert.ToSingle(Live_Data.RL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireMass = Convert.ToSingle(Live_Data.RL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireRadius = Convert.ToSingle(Live_Data.RL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireWidth = Convert.ToSingle(Live_Data.RL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireSpringRate = Convert.ToSingle(Live_Data.RL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireDamperRate = Convert.ToSingle(Live_Data.RL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireMaxDeflection = Convert.ToSingle(Live_Data.RL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_ThermalAirTransfer = Convert.ToSingle(Live_Data.RL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_ThermalInnerTransfer = Convert.ToSingle(Live_Data.RL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_MomentOfInertia = Convert.ToSingle(FormLiveData.RL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireMass = Convert.ToSingle(FormLiveData.RL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireRadius = Convert.ToSingle(FormLiveData.RL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireWidth = Convert.ToSingle(FormLiveData.RL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireSpringRate = Convert.ToSingle(FormLiveData.RL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireDamperRate = Convert.ToSingle(FormLiveData.RL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireMaxDeflection = Convert.ToSingle(FormLiveData.RL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_ThermalAirTransfer = Convert.ToSingle(FormLiveData.RL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.RL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
-            RR_MomentOfInertia = Convert.ToSingle(Live_Data.RR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireMass = Convert.ToSingle(Live_Data.RR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireRadius = Convert.ToSingle(Live_Data.RR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireWidth = Convert.ToSingle(Live_Data.RR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireSpringRate = Convert.ToSingle(Live_Data.RR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireDamperRate = Convert.ToSingle(Live_Data.RR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireMaxDeflection = Convert.ToSingle(Live_Data.RR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_ThermalAirTransfer = Convert.ToSingle(Live_Data.RR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_ThermalInnerTransfer = Convert.ToSingle(Live_Data.RR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_MomentOfInertia = Convert.ToSingle(FormLiveData.RR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireMass = Convert.ToSingle(FormLiveData.RR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireRadius = Convert.ToSingle(FormLiveData.RR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireWidth = Convert.ToSingle(FormLiveData.RR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireSpringRate = Convert.ToSingle(FormLiveData.RR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireDamperRate = Convert.ToSingle(FormLiveData.RR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireMaxDeflection = Convert.ToSingle(FormLiveData.RR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_ThermalAirTransfer = Convert.ToSingle(FormLiveData.RR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.RR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
             textBoxFLTireWrite();
             textBoxFRTireWrite();
@@ -299,7 +299,7 @@ namespace Physics_Data_Debug
             textBox_RR_MomentOfInertia.Text = RR_MomentOfInertia.ToString(CultureInfo.GetCultureInfo("en-US"));
         }
 
-        private void backButton_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
         {
             //First_All_Data_Logger_Page fadlp = new First_All_Data_Logger_Page();
             //fadlp.Show();
@@ -665,7 +665,7 @@ namespace Physics_Data_Debug
 
         private void TireSettings_Close(object sender, FormClosedEventArgs e)
         {
-            Live_Data.TireSettingsOpen = false;
+            FormLiveData.TireSettingsOpen = false;
         }
     }
 }
