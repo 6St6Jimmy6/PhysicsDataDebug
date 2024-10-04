@@ -1,10 +1,6 @@
 Physics data debugger for Wreckfest.
 
-    Launch the game
-
-    Launch the debugger executable file after the game is on.
-
-    Go in singleplayer and go in Banger Race alone without AI drivers
+![alt text](https://private-user-images.githubusercontent.com/116525579/373574969-02d4c93b-d451-45c8-8d68-ab394e079281.PNG?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjgwMzI0ODUsIm5iZiI6MTcyODAzMjE4NSwicGF0aCI6Ii8xMTY1MjU1NzkvMzczNTc0OTY5LTAyZDRjOTNiLWQ0NTEtNDVjOC04ZDY4LWFiMzk0ZTA3OTI4MS5QTkc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMDA0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTAwNFQwODU2MjVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xYTUxNGEyZmZhMTRlYmNkMDcwZGM3ZjFiYjhkOTBlNjc3NzE3MTAwNWY4OWZjMzk5NWQ5OGI0YTg5YzA4MTBkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.fgQJa6imn1ovqrbHpVBukByAb11thl7K3gW00FrAjG0)
 
     You can monitor many kind of physics. There's also option for logging the data, tune what you log and you can also change some tire parameters on the fly.
 
