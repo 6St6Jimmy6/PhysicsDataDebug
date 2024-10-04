@@ -382,6 +382,20 @@ namespace Physics_Data_Debug
             LiveData.YAcceleration = Helper.ReadMemory<float>(LiveData.YAccelerationTargetAddr);
             LiveData.ZAcceleration = Helper.ReadMemory<float>(LiveData.ZAccelerationTargetAddr);
 
+            // Getting rid of too big or low values when the pointr is changing or something odd happens, so it won't crash the math for Int32 later.
+            if(LiveData.XAcceleration > 1000 || LiveData.XAcceleration < -1000)
+            {
+                LiveData.XAcceleration = 0;
+            }
+            if (LiveData.YAcceleration > 1000 || LiveData.YAcceleration < -1000)
+            {
+                LiveData.YAcceleration = 0;
+            }
+            if (LiveData.ZAcceleration > 1000 || LiveData.ZAcceleration < -1000)
+            {
+                LiveData.ZAcceleration = 0;
+            }
+
             // Getting the XZ direction where in the world the car is going.
 
             if (LiveData.XAcceleration > 0)
@@ -1738,7 +1752,7 @@ namespace Physics_Data_Debug
                 y2 = 208 - Convert.ToInt32(Math.Round((Math.Cos(LiveData.XZGAngleRad) * LiveData.XZG) * GScale, 0));
             }
             y3 = 193 - Convert.ToInt32(Math.Round(LiveData.YG * GScale, 0));
-
+            
             //pictureBox1.Location = new Point(x, y);
             CurrentGForceXZMoving.Location = new Point(x2, y2);
             CurrentGForceXZMoving.Text = Math.Round(LiveData.XZG, 2).ToString() + " G";
