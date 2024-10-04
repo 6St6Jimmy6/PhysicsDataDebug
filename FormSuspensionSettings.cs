@@ -19,7 +19,7 @@ namespace Physics_Data_Debug
 
         private void SuspensionSettings_Load(object sender, EventArgs e)
         {
-            FormLiveData.SuspensionSettingsOpen = true;
+            LiveData.SuspensionSettingsOpen = true;
             //readAndWriteData();
         }
 
@@ -30,7 +30,7 @@ namespace Physics_Data_Debug
 
         private void SuspensionSettings_Closing(object sender, FormClosingEventArgs e)
         {
-            FormLiveData.SuspensionSettingsOpen = false;
+            LiveData.SuspensionSettingsOpen = false;
         }
     }
 }

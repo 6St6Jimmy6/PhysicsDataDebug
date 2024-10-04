@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
 
 namespace Physics_Data_Debug
@@ -7,13 +8,13 @@ namespace Physics_Data_Debug
     public partial class FormTireTemperatures : Form
     {
         #region Fields variables
-        private Thread update;
-        private int sleep = 50;
+        //private readonly Thread update;
         private bool updatedStartedOnce = false;
 
+
         // How long array is.
-        private readonly double[] flsTempArray = new double[300];
-        private readonly double[] fliTempArray = new double[300];
+        private readonly double[] flsTempArray = new double[600];
+        private readonly double[] fliTempArray = new double[600];
         private readonly double[] frsTempArray = new double[300];
         private readonly double[] friTempArray = new double[300];
         private readonly double[] rlsTempArray = new double[300];
@@ -25,38 +26,25 @@ namespace Physics_Data_Debug
         public FormTireTemperatures()
         {
             InitializeComponent();
-            update = new Thread(new ThreadStart(getData));
-            update.IsBackground = true;
+            timer1.Interval = LiveData.tickInterval;
+            //update = new Thread(new ThreadStart(getData));
+            //update.IsBackground = true;
         }
 
         #region Methods
-        private void getData()
-        {
-            while (true)
-            {
-                
-
-                if (temperaturesFL.IsHandleCreated)
-                {
-                    this.Invoke((MethodInvoker)delegate { TemperatureSeries(); });
-                }
-                else
-                {
-                    //....
-                }
-                Thread.Sleep(sleep);
-            }
-        }
         private void TemperatureSeries()
         {
-            flsTempArray[flsTempArray.Length - 1] = Math.Round(FormLiveData.FL_TreadTemperature, 10);//Bigger round value gives smoother drawing.
-            fliTempArray[fliTempArray.Length - 1] = Math.Round(FormLiveData.FL_InnerTemperature, 10);
-            frsTempArray[frsTempArray.Length - 1] = Math.Round(FormLiveData.FR_TreadTemperature, 10);
-            friTempArray[friTempArray.Length - 1] = Math.Round(FormLiveData.FR_InnerTemperature, 10);
-            rlsTempArray[rlsTempArray.Length - 1] = Math.Round(FormLiveData.RL_TreadTemperature, 10);
-            rliTempArray[rliTempArray.Length - 1] = Math.Round(FormLiveData.RL_InnerTemperature, 10);
-            rrsTempArray[rrsTempArray.Length - 1] = Math.Round(FormLiveData.RR_TreadTemperature, 10);
-            rriTempArray[rriTempArray.Length - 1] = Math.Round(FormLiveData.RR_InnerTemperature, 10);
+            //temperaturesFL.ChartAreas["ChartArea1"].AxisX.IntervalType = DateTimeIntervalType.Seconds;
+            //temperaturesFL.ChartAreas["ChartArea1"].AxisX.IntervalAutoMode = IntervalAutoMode.FixedCount;
+            temperaturesFL.ChartAreas["ChartArea1"].AxisX.Interval = 100;
+            flsTempArray[flsTempArray.Length - 1] = Math.Round(LiveData.FL_TreadTemperature, 3);// Rounding values to 3 decimals
+            fliTempArray[fliTempArray.Length - 1] = Math.Round(LiveData.FL_InnerTemperature, 3);
+            frsTempArray[frsTempArray.Length - 1] = Math.Round(LiveData.FR_TreadTemperature, 2);
+            friTempArray[friTempArray.Length - 1] = Math.Round(LiveData.FR_InnerTemperature, 2);
+            rlsTempArray[rlsTempArray.Length - 1] = Math.Round(LiveData.RL_TreadTemperature, 2);
+            rliTempArray[rliTempArray.Length - 1] = Math.Round(LiveData.RL_InnerTemperature, 2);
+            rrsTempArray[rrsTempArray.Length - 1] = Math.Round(LiveData.RR_TreadTemperature, 2);
+            rriTempArray[rriTempArray.Length - 1] = Math.Round(LiveData.RR_InnerTemperature, 2);
 
             Array.Copy(flsTempArray, 1, flsTempArray, 0, flsTempArray.Length - 1);
             Array.Copy(fliTempArray, 1, fliTempArray, 0, fliTempArray.Length - 1);
@@ -122,14 +110,14 @@ namespace Physics_Data_Debug
             {
                 temperaturesRR.Series["Inner °C"].Points.AddY(rriTempArray[i]);
             }
-            textBox_FL_TreadTemperature.Text = Math.Round(FormLiveData.FL_TreadTemperature, 2).ToString();
-            textBox_FL_InnerTemperature.Text = Math.Round(FormLiveData.FL_InnerTemperature, 2).ToString();
-            textBox_FR_TreadTemperature.Text = Math.Round(FormLiveData.FR_TreadTemperature, 2).ToString();
-            textBox_FR_InnerTemperature.Text = Math.Round(FormLiveData.FR_InnerTemperature, 2).ToString();
-            textBox_RL_TreadTemperature.Text = Math.Round(FormLiveData.RL_TreadTemperature, 2).ToString();
-            textBox_RL_InnerTemperature.Text = Math.Round(FormLiveData.RL_InnerTemperature, 2).ToString();
-            textBox_RR_TreadTemperature.Text = Math.Round(FormLiveData.RR_TreadTemperature, 2).ToString();
-            textBox_RR_InnerTemperature.Text = Math.Round(FormLiveData.RR_InnerTemperature, 2).ToString();
+            textBox_FL_TreadTemperature.Text = Math.Round(LiveData.FL_TreadTemperature, 2).ToString();
+            textBox_FL_InnerTemperature.Text = Math.Round(LiveData.FL_InnerTemperature, 2).ToString();
+            textBox_FR_TreadTemperature.Text = Math.Round(LiveData.FR_TreadTemperature, 2).ToString();
+            textBox_FR_InnerTemperature.Text = Math.Round(LiveData.FR_InnerTemperature, 2).ToString();
+            textBox_RL_TreadTemperature.Text = Math.Round(LiveData.RL_TreadTemperature, 2).ToString();
+            textBox_RL_InnerTemperature.Text = Math.Round(LiveData.RL_InnerTemperature, 2).ToString();
+            textBox_RR_TreadTemperature.Text = Math.Round(LiveData.RR_TreadTemperature, 2).ToString();
+            textBox_RR_InnerTemperature.Text = Math.Round(LiveData.RR_InnerTemperature, 2).ToString();
         }
         #endregion
 
@@ -143,7 +131,7 @@ namespace Physics_Data_Debug
         {
             if (updatedStartedOnce == true)
             {
-                update.Suspend();
+                //update.Suspend();
             }
             updatedStartedOnce = false;
 
@@ -156,26 +144,32 @@ namespace Physics_Data_Debug
         }
         private void startButton_Click(object sender, EventArgs e)
         {
-            if(updatedStartedOnce == false)
+            if (updatedStartedOnce == false)
             {
-                update.Start();
-                updatedStartedOnce = true;
+                //update.Start();
+                //updatedStartedOnce = true;
             }
             else
             {
-                update.Resume();
+                //update.Resume();
             }
-            
+
         }
         private void stopButton_Click(object sender, EventArgs e)
         {
-            if(updatedStartedOnce == true)
+            if (updatedStartedOnce == true)
             {
-                update.Suspend();
+                //update.Suspend();
             }
-            
+
             //update.Abort();
         }
         #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            TemperatureSeries();
+        }
     }
 }

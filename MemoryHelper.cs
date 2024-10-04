@@ -10,7 +10,7 @@ namespace Memory.Win32
 {
     class MemoryHelper32
     {
-        Process process;
+        readonly Process process;
         public MemoryHelper32(Process TargetProcess)
         {
             process = TargetProcess;
@@ -84,7 +84,7 @@ namespace Memory.Win64
 {
     class MemoryHelper64
     {
-        Process process;
+        readonly Process process;
  
         public MemoryHelper64(Process TargetProcess)
         {

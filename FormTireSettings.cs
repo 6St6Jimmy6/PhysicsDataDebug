@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
-using System.Threading;
-using System.ComponentModel.DataAnnotations;
 
 namespace Physics_Data_Debug
 {
@@ -65,7 +56,7 @@ namespace Physics_Data_Debug
 
         private void TireSettings_Load(object sender, EventArgs e)
         {
-            FormLiveData.TireSettingsOpen = true;
+            LiveData.TireSettingsOpen = true;
             readAndWriteData();
         }
 
@@ -77,49 +68,49 @@ namespace Physics_Data_Debug
             Memory.Win64.MemoryHelper64 helper = new Memory.Win64.MemoryHelper64(p);
 
             //Base Addres for Tire data
-            ulong baseAddr = helper.GetBaseAddress(FormLiveData.baseAddrTiresSuspensionLiftsDifferential + FormLiveData.baseAddrUpdt - FormLiveData.baseAddrDodt);
+            ulong baseAddr = helper.GetBaseAddress(LiveData.baseAddrTiresSuspensionLiftsDifferentialLocation + LiveData.baseAddrUpdt - LiveData.baseAddrDodt);
 
             //Tire Data pointers
             //Front Left
-            int[] FL_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia };
-            int[] FL_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass };
-            int[] FL_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius };
-            int[] FL_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth };
-            int[] FL_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate };
-            int[] FL_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate };
-            int[] FL_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection };
-            int[] FL_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer };
-            int[] FL_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer };
+            int[] FL_MomentOfInertiaOffsets = { LiveData.OffsetTireData, LiveData.OffsetMomentOfInertia };
+            int[] FL_TireMassOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMass };
+            int[] FL_TireRadiusOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireRadius };
+            int[] FL_TireWidthOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireWidth };
+            int[] FL_TireSpringRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireSpringRate };
+            int[] FL_TireDamperRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireDamperRate };
+            int[] FL_TireMaxDeflectionOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMaxDeflection };
+            int[] FL_ThermalAirTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalAirTransfer };
+            int[] FL_ThermalInnerTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalInnerTransfer };
 
-            int[] FR_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia + FormLiveData.OffsetFRTire };
-            int[] FR_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass + FormLiveData.OffsetFRTire };
-            int[] FR_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius + FormLiveData.OffsetFRTire };
-            int[] FR_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth + FormLiveData.OffsetFRTire };
-            int[] FR_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate + FormLiveData.OffsetFRTire };
-            int[] FR_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate + FormLiveData.OffsetFRTire };
-            int[] FR_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection + FormLiveData.OffsetFRTire };
-            int[] FR_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer + FormLiveData.OffsetFRTire };
-            int[] FR_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer + FormLiveData.OffsetFRTire };
+            int[] FR_MomentOfInertiaOffsets = { LiveData.OffsetTireData, LiveData.OffsetMomentOfInertia + LiveData.OffsetFRTire };
+            int[] FR_TireMassOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMass + LiveData.OffsetFRTire };
+            int[] FR_TireRadiusOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireRadius + LiveData.OffsetFRTire };
+            int[] FR_TireWidthOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireWidth + LiveData.OffsetFRTire };
+            int[] FR_TireSpringRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireSpringRate + LiveData.OffsetFRTire };
+            int[] FR_TireDamperRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireDamperRate + LiveData.OffsetFRTire };
+            int[] FR_TireMaxDeflectionOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMaxDeflection + LiveData.OffsetFRTire };
+            int[] FR_ThermalAirTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalAirTransfer + LiveData.OffsetFRTire };
+            int[] FR_ThermalInnerTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalInnerTransfer + LiveData.OffsetFRTire };
 
-            int[] RL_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia + FormLiveData.OffsetRLTire };
-            int[] RL_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass + FormLiveData.OffsetRLTire };
-            int[] RL_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius + FormLiveData.OffsetRLTire };
-            int[] RL_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth + FormLiveData.OffsetRLTire };
-            int[] RL_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate + FormLiveData.OffsetRLTire };
-            int[] RL_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate + FormLiveData.OffsetRLTire };
-            int[] RL_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection + FormLiveData.OffsetRLTire };
-            int[] RL_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer + FormLiveData.OffsetRLTire };
-            int[] RL_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer + FormLiveData.OffsetRLTire };
+            int[] RL_MomentOfInertiaOffsets = { LiveData.OffsetTireData, LiveData.OffsetMomentOfInertia + LiveData.OffsetRLTire };
+            int[] RL_TireMassOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMass + LiveData.OffsetRLTire };
+            int[] RL_TireRadiusOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireRadius + LiveData.OffsetRLTire };
+            int[] RL_TireWidthOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireWidth + LiveData.OffsetRLTire };
+            int[] RL_TireSpringRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireSpringRate + LiveData.OffsetRLTire };
+            int[] RL_TireDamperRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireDamperRate + LiveData.OffsetRLTire };
+            int[] RL_TireMaxDeflectionOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMaxDeflection + LiveData.OffsetRLTire };
+            int[] RL_ThermalAirTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalAirTransfer + LiveData.OffsetRLTire };
+            int[] RL_ThermalInnerTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalInnerTransfer + LiveData.OffsetRLTire };
 
-            int[] RR_MomentOfInertiaOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetMomentOfInertia + FormLiveData.OffsetRRTire };
-            int[] RR_TireMassOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMass + FormLiveData.OffsetRRTire };
-            int[] RR_TireRadiusOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireRadius + FormLiveData.OffsetRRTire };
-            int[] RR_TireWidthOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireWidth + FormLiveData.OffsetRRTire };
-            int[] RR_TireSpringRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireSpringRate + FormLiveData.OffsetRRTire };
-            int[] RR_TireDamperRateOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireDamperRate + FormLiveData.OffsetRRTire };
-            int[] RR_TireMaxDeflectionOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetTireMaxDeflection + FormLiveData.OffsetRRTire };
-            int[] RR_ThermalAirTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalAirTransfer + FormLiveData.OffsetRRTire };
-            int[] RR_ThermalInnerTransferOffsets = { FormLiveData.OffsetTireData, FormLiveData.OffsetThermalInnerTransfer + FormLiveData.OffsetRRTire };
+            int[] RR_MomentOfInertiaOffsets = { LiveData.OffsetTireData, LiveData.OffsetMomentOfInertia + LiveData.OffsetRRTire };
+            int[] RR_TireMassOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMass + LiveData.OffsetRRTire };
+            int[] RR_TireRadiusOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireRadius + LiveData.OffsetRRTire };
+            int[] RR_TireWidthOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireWidth + LiveData.OffsetRRTire };
+            int[] RR_TireSpringRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireSpringRate + LiveData.OffsetRRTire };
+            int[] RR_TireDamperRateOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireDamperRate + LiveData.OffsetRRTire };
+            int[] RR_TireMaxDeflectionOffsets = { LiveData.OffsetTireData, LiveData.OffsetTireMaxDeflection + LiveData.OffsetRRTire };
+            int[] RR_ThermalAirTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalAirTransfer + LiveData.OffsetRRTire };
+            int[] RR_ThermalInnerTransferOffsets = { LiveData.OffsetTireData, LiveData.OffsetThermalInnerTransfer + LiveData.OffsetRRTire };
 
             ulong FL_TireMass_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireMassOffsets);
             ulong FL_TireRadius_TargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(helper, baseAddr, FL_TireRadiusOffsets);
@@ -204,45 +195,45 @@ namespace Physics_Data_Debug
 
         private void readAndWriteData()
         {
-            FL_MomentOfInertia = Convert.ToSingle(FormLiveData.FL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireMass = Convert.ToSingle(FormLiveData.FL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireRadius = Convert.ToSingle(FormLiveData.FL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireWidth = Convert.ToSingle(FormLiveData.FL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireSpringRate = Convert.ToSingle(FormLiveData.FL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireDamperRate = Convert.ToSingle(FormLiveData.FL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_TireMaxDeflection = Convert.ToSingle(FormLiveData.FL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_ThermalAirTransfer = Convert.ToSingle(FormLiveData.FL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FL_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.FL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_MomentOfInertia = Convert.ToSingle(LiveData.FL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireMass = Convert.ToSingle(LiveData.FL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireRadius = Convert.ToSingle(LiveData.FL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireWidth = Convert.ToSingle(LiveData.FL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireSpringRate = Convert.ToSingle(LiveData.FL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireDamperRate = Convert.ToSingle(LiveData.FL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_TireMaxDeflection = Convert.ToSingle(LiveData.FL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_ThermalAirTransfer = Convert.ToSingle(LiveData.FL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FL_ThermalInnerTransfer = Convert.ToSingle(LiveData.FL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
-            FR_MomentOfInertia = Convert.ToSingle(FormLiveData.FR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireMass = Convert.ToSingle(FormLiveData.FR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireRadius = Convert.ToSingle(FormLiveData.FR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireWidth = Convert.ToSingle(FormLiveData.FR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireSpringRate = Convert.ToSingle(FormLiveData.FR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireDamperRate = Convert.ToSingle(FormLiveData.FR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_TireMaxDeflection = Convert.ToSingle(FormLiveData.FR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_ThermalAirTransfer = Convert.ToSingle(FormLiveData.FR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            FR_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.FR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_MomentOfInertia = Convert.ToSingle(LiveData.FR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireMass = Convert.ToSingle(LiveData.FR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireRadius = Convert.ToSingle(LiveData.FR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireWidth = Convert.ToSingle(LiveData.FR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireSpringRate = Convert.ToSingle(LiveData.FR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireDamperRate = Convert.ToSingle(LiveData.FR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_TireMaxDeflection = Convert.ToSingle(LiveData.FR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_ThermalAirTransfer = Convert.ToSingle(LiveData.FR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            FR_ThermalInnerTransfer = Convert.ToSingle(LiveData.FR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
-            RL_MomentOfInertia = Convert.ToSingle(FormLiveData.RL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireMass = Convert.ToSingle(FormLiveData.RL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireRadius = Convert.ToSingle(FormLiveData.RL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireWidth = Convert.ToSingle(FormLiveData.RL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireSpringRate = Convert.ToSingle(FormLiveData.RL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireDamperRate = Convert.ToSingle(FormLiveData.RL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_TireMaxDeflection = Convert.ToSingle(FormLiveData.RL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_ThermalAirTransfer = Convert.ToSingle(FormLiveData.RL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RL_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.RL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_MomentOfInertia = Convert.ToSingle(LiveData.RL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireMass = Convert.ToSingle(LiveData.RL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireRadius = Convert.ToSingle(LiveData.RL_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireWidth = Convert.ToSingle(LiveData.RL_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireSpringRate = Convert.ToSingle(LiveData.RL_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireDamperRate = Convert.ToSingle(LiveData.RL_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_TireMaxDeflection = Convert.ToSingle(LiveData.RL_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_ThermalAirTransfer = Convert.ToSingle(LiveData.RL_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RL_ThermalInnerTransfer = Convert.ToSingle(LiveData.RL_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
-            RR_MomentOfInertia = Convert.ToSingle(FormLiveData.RR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireMass = Convert.ToSingle(FormLiveData.RR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireRadius = Convert.ToSingle(FormLiveData.RR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireWidth = Convert.ToSingle(FormLiveData.RR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireSpringRate = Convert.ToSingle(FormLiveData.RR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireDamperRate = Convert.ToSingle(FormLiveData.RR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_TireMaxDeflection = Convert.ToSingle(FormLiveData.RR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_ThermalAirTransfer = Convert.ToSingle(FormLiveData.RR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
-            RR_ThermalInnerTransfer = Convert.ToSingle(FormLiveData.RR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_MomentOfInertia = Convert.ToSingle(LiveData.RR_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireMass = Convert.ToSingle(LiveData.RR_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireRadius = Convert.ToSingle(LiveData.RR_TireRadius/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireWidth = Convert.ToSingle(LiveData.RR_TireWidth/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireSpringRate = Convert.ToSingle(LiveData.RR_TireSpringRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireDamperRate = Convert.ToSingle(LiveData.RR_TireDamperRate/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_TireMaxDeflection = Convert.ToSingle(LiveData.RR_TireMaxDeflection/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_ThermalAirTransfer = Convert.ToSingle(LiveData.RR_ThermalAirTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
+            RR_ThermalInnerTransfer = Convert.ToSingle(LiveData.RR_ThermalInnerTransfer/*, System.Globalization.CultureInfo.InvariantCulture*/);
 
             textBoxFLTireWrite();
             textBoxFRTireWrite();
@@ -313,55 +304,17 @@ namespace Physics_Data_Debug
 
         private void ParseTireValues()
         {
-            float fls1;
-            float fls2;
-            float fls3;
-            float fls4;
-            float fls5;
-            float fls6;
-            float fls7;
-            float fls8;
-            float fls9;
+            float fls1;//left as an example
 
-            float frs1;
-            float frs2;
-            float frs3;
-            float frs4;
-            float frs5;
-            float frs6;
-            float frs7;
-            float frs8;
-            float frs9;
-
-            float rls1;
-            float rls2;
-            float rls3;
-            float rls4;
-            float rls5;
-            float rls6;
-            float rls7;
-            float rls8;
-            float rls9;
-
-            float rrs1;
-            float rrs2;
-            float rrs3;
-            float rrs4;
-            float rrs5;
-            float rrs6;
-            float rrs7;
-            float rrs8;
-            float rrs9;
-
-            if (float.TryParse(textBox_FL_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls1) == true
-                && float.TryParse(textBox_FL_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls2) == true
-                && float.TryParse(textBox_FL_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls3) == true
-                && float.TryParse(textBox_FL_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls4) == true
-                && float.TryParse(textBox_FL_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls5) == true
-                && float.TryParse(textBox_FL_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls6) == true
-                && float.TryParse(textBox_FL_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls7) == true
-                && float.TryParse(textBox_FL_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls8) == true
-                && float.TryParse(textBox_FL_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls9) == true)
+            if (float.TryParse(textBox_FL_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out fls1) == true//left as an example
+                && float.TryParse(textBox_FL_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FL_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FL_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FL_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FL_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FL_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FL_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FL_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true)
             {
                 FL_TireRadius = float.Parse(textBox_FL_Radius.Text, CultureInfo.GetCultureInfo("en-US"));
                 FL_TireWidth = float.Parse(textBox_FL_Width.Text, CultureInfo.GetCultureInfo("en-US"));
@@ -377,15 +330,15 @@ namespace Physics_Data_Debug
                 textBoxFLTireWrite();
             }
 
-            if (float.TryParse(textBox_FR_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs1) == true
-                && float.TryParse(textBox_FR_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs2) == true
-                && float.TryParse(textBox_FR_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs3) == true
-                && float.TryParse(textBox_FR_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs4) == true
-                && float.TryParse(textBox_FR_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs5) == true
-                && float.TryParse(textBox_FR_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs6) == true
-                && float.TryParse(textBox_FR_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs7) == true
-                && float.TryParse(textBox_FR_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs8) == true
-                && float.TryParse(textBox_FR_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frs9) == true)
+            if (float.TryParse(textBox_FR_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_FR_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true)
             {
                 FR_TireRadius = float.Parse(textBox_FR_Radius.Text, CultureInfo.GetCultureInfo("en-US"));
                 FR_TireWidth = float.Parse(textBox_FR_Width.Text, CultureInfo.GetCultureInfo("en-US"));
@@ -401,15 +354,15 @@ namespace Physics_Data_Debug
                 textBoxFRTireWrite();
             }
 
-            if (float.TryParse(textBox_RL_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls1) == true
-                && float.TryParse(textBox_RL_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls2) == true
-                && float.TryParse(textBox_RL_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls3) == true
-                && float.TryParse(textBox_RL_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls4) == true
-                && float.TryParse(textBox_RL_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls5) == true
-                && float.TryParse(textBox_RL_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls6) == true
-                && float.TryParse(textBox_RL_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls7) == true
-                && float.TryParse(textBox_RL_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls8) == true
-                && float.TryParse(textBox_RL_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rls9) == true)
+            if (float.TryParse(textBox_RL_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RL_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true)
             {
                 RL_TireRadius = float.Parse(textBox_RL_Radius.Text, CultureInfo.GetCultureInfo("en-US"));
                 RL_TireWidth = float.Parse(textBox_RL_Width.Text, CultureInfo.GetCultureInfo("en-US"));
@@ -425,15 +378,15 @@ namespace Physics_Data_Debug
                 textBoxRLTireWrite();
             }
 
-            if (float.TryParse(textBox_RR_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs1) == true
-                && float.TryParse(textBox_RR_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs2) == true
-                && float.TryParse(textBox_RR_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs3) == true
-                && float.TryParse(textBox_RR_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs4) == true
-                && float.TryParse(textBox_RR_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs5) == true
-                && float.TryParse(textBox_RR_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs6) == true
-                && float.TryParse(textBox_RR_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs7) == true
-                && float.TryParse(textBox_RR_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs8) == true
-                && float.TryParse(textBox_RR_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out rrs9) == true)
+            if (float.TryParse(textBox_RR_Radius.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_Width.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_ThermalAirTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_ThermalInnerTransfer.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_SpringRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_DamperRate.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_MaxDeflection.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_Mass.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
+                && float.TryParse(textBox_RR_MomentOfInertia.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true)
             {
                 RR_TireRadius = float.Parse(textBox_RR_Radius.Text, CultureInfo.GetCultureInfo("en-US"));
                 RR_TireWidth = float.Parse(textBox_RR_Width.Text, CultureInfo.GetCultureInfo("en-US"));
@@ -665,7 +618,7 @@ namespace Physics_Data_Debug
 
         private void TireSettings_Close(object sender, FormClosedEventArgs e)
         {
-            FormLiveData.TireSettingsOpen = false;
+            LiveData.TireSettingsOpen = false;
         }
     }
 }

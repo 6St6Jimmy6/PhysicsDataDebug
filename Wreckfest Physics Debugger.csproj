@@ -7,7 +7,7 @@
     <ProjectGuid>{9B846937-B82F-4FD4-9F92-F379FB3A9E2C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Physics_Data_Debug</RootNamespace>
-    <AssemblyName>Physics Data Debug September 2024</AssemblyName>
+    <AssemblyName>Physics_Data_Debug_September_2024</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -71,8 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Angle3D.cs" />
     <Compile Include="CSVReadWrite.cs" />
+    <Compile Include="LiveData.cs" />
     <Compile Include="LogData.cs" />
+    <Compile Include="LogSettings.cs" />
     <Compile Include="Registry Tools.cs" />
     <Compile Include="FormLiveData.cs">
       <SubType>Form</SubType>
