@@ -13,8 +13,8 @@ namespace Physics_Data_Debug
 
 
         // How long array is.
-        private readonly double[] flsTempArray = new double[600];
-        private readonly double[] fliTempArray = new double[600];
+        private readonly double[] flsTempArray = new double[300];
+        private readonly double[] fliTempArray = new double[300];
         private readonly double[] frsTempArray = new double[300];
         private readonly double[] friTempArray = new double[300];
         private readonly double[] rlsTempArray = new double[300];
@@ -26,7 +26,7 @@ namespace Physics_Data_Debug
         public FormTireTemperatures()
         {
             InitializeComponent();
-            timer1.Interval = LiveData.tickInterval;
+            timer1.Interval = 94;
             //update = new Thread(new ThreadStart(getData));
             //update.IsBackground = true;
         }
@@ -36,9 +36,9 @@ namespace Physics_Data_Debug
         {
             //temperaturesFL.ChartAreas["ChartArea1"].AxisX.IntervalType = DateTimeIntervalType.Seconds;
             //temperaturesFL.ChartAreas["ChartArea1"].AxisX.IntervalAutoMode = IntervalAutoMode.FixedCount;
-            temperaturesFL.ChartAreas["ChartArea1"].AxisX.Interval = 100;
-            flsTempArray[flsTempArray.Length - 1] = Math.Round(LiveData.FL_TreadTemperature, 3);// Rounding values to 3 decimals
-            fliTempArray[fliTempArray.Length - 1] = Math.Round(LiveData.FL_InnerTemperature, 3);
+            //temperaturesFL.ChartAreas["ChartArea1"].AxisX.Interval = 100;
+            flsTempArray[flsTempArray.Length - 1] = Math.Round(LiveData.FL_TreadTemperature, 2);// Rounding values to 2 decimals
+            fliTempArray[fliTempArray.Length - 1] = Math.Round(LiveData.FL_InnerTemperature, 2);
             frsTempArray[frsTempArray.Length - 1] = Math.Round(LiveData.FR_TreadTemperature, 2);
             friTempArray[friTempArray.Length - 1] = Math.Round(LiveData.FR_InnerTemperature, 2);
             rlsTempArray[rlsTempArray.Length - 1] = Math.Round(LiveData.RL_TreadTemperature, 2);
@@ -164,12 +164,10 @@ namespace Physics_Data_Debug
 
             //update.Abort();
         }
-        #endregion
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             TemperatureSeries();
         }
+        #endregion
     }
 }

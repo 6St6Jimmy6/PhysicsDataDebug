@@ -116,7 +116,11 @@ namespace Physics_Data_Debug
             "Total Friction",
             "Total Friction Angle",
             "Suspension Length",
-            "Suspension Velocity"});
+            "Suspension Velocity",
+            "Lateral G-Force",
+            "Longitudinal G-Force",
+            "Vertical G-Force",
+            "G-Force"});
             this.checkedListBoxLogging.Location = new System.Drawing.Point(126, 62);
             this.checkedListBoxLogging.Name = "checkedListBoxLogging";
             this.checkedListBoxLogging.Size = new System.Drawing.Size(203, 349);

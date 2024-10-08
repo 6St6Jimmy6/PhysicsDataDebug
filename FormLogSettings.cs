@@ -277,6 +277,38 @@ namespace Physics_Data_Debug
             {
                 LogSettings.SuspensionVelocityLogEnabled = false;
             }
+            if (checkedListBoxLogging.GetItemChecked(25) == true)
+            {
+                LogSettings.XGRotatedLogEnabled = true;
+            }
+            else
+            {
+                LogSettings.XGRotatedLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(26) == true)
+            {
+                LogSettings.ZGRotatedLogEnabled = true;
+            }
+            else
+            {
+                LogSettings.ZGRotatedLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(27) == true)
+            {
+                LogSettings.YGRotatedLogEnabled = true;
+            }
+            else
+            {
+                LogSettings.YGRotatedLogEnabled = false;
+            }
+            if (checkedListBoxLogging.GetItemChecked(28) == true)
+            {
+                LogSettings.XYZGLogEnabled = true;
+            }
+            else
+            {
+                LogSettings.XYZGLogEnabled = false;
+            }
             if (checkBoxFiltersOn.Checked == true)
             {
                 LogSettings.FiltersOn = true;

@@ -15,11 +15,14 @@ namespace Physics_Data_Debug
         public FormSuspensionSettings()
         {
             InitializeComponent();
+
+            setValuesButton.Hide(); // Might not work at all at any point
         }
 
         private void SuspensionSettings_Load(object sender, EventArgs e)
         {
             LiveData.SuspensionSettingsOpen = true;
+
             //readAndWriteData();
         }
 
@@ -31,6 +34,16 @@ namespace Physics_Data_Debug
         private void SuspensionSettings_Closing(object sender, FormClosingEventArgs e)
         {
             LiveData.SuspensionSettingsOpen = false;
+        }
+
+        private void readValuesButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void setValuesButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

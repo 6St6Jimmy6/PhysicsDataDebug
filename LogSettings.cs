@@ -37,6 +37,10 @@ namespace Physics_Data_Debug
         public static bool TotalFrictionAngleLogEnabled { get; set; } = true;//22
         public static bool SuspensionLengthLogEnabled { get; set; } = true;//23
         public static bool SuspensionVelocityLogEnabled { get; set; } = true;//24
+        public static bool XGRotatedLogEnabled { get; set; } = true;//25
+        public static bool ZGRotatedLogEnabled { get; set; } = true;//26
+        public static bool YGRotatedLogEnabled { get; set; } = true;//27
+        public static bool XYZGLogEnabled { get; set; } = true;//28
 
         public static string sTireTravelSpeed { get; set; } = "Tire Travel Speed";
         public static string sAngularVelocity { get; set; } = "Angular Velocity";
@@ -64,6 +68,10 @@ namespace Physics_Data_Debug
         public static string sTotalFrictionAngle { get; set; } = "Total Friction Angle";
         public static string sSuspensionLength { get; set; } = "Suspension Length";
         public static string sSuspensionVelocity { get; set; } = "Suspension Velocity";
+        public static string sXGRotated { get; set; } = "Lateral G-Force";
+        public static string sZGRotated { get; set; } = "Longitudinal G-Force";
+        public static string sYGRotated { get; set; } = "Vertical G-Force";
+        public static string sXYZG { get; set; } = "G-Force";
 
         public static string Header0 { get; set; }
         public static string Header1 { get; set; }
@@ -91,6 +99,10 @@ namespace Physics_Data_Debug
         public static string Header22 { get; set; }
         public static string Header23 { get; set; }
         public static string Header24 { get; set; }
+        public static string Header25 { get; set; }
+        public static string Header26 { get; set; }
+        public static string Header27 { get; set; }
+        public static string Header28 { get; set; }
 
         public static string flParameter0 { get; set; }
         public static string flParameter1 { get; set; }
@@ -118,6 +130,10 @@ namespace Physics_Data_Debug
         public static string flParameter22 { get; set; }
         public static string flParameter23 { get; set; }
         public static string flParameter24 { get; set; }
+        public static string flParameter25 { get; set; }
+        public static string flParameter26 { get; set; }
+        public static string flParameter27 { get; set; }
+        public static string flParameter28 { get; set; }
 
         public static string frParameter0 { get; set; }
         public static string frParameter1 { get; set; }
@@ -145,6 +161,10 @@ namespace Physics_Data_Debug
         public static string frParameter22 { get; set; }
         public static string frParameter23 { get; set; }
         public static string frParameter24 { get; set; }
+        public static string frParameter25 { get; set; }
+        public static string frParameter26 { get; set; }
+        public static string frParameter27 { get; set; }
+        public static string frParameter28 { get; set; }
 
         public static string rlParameter0 { get; set; }
         public static string rlParameter1 { get; set; }
@@ -172,6 +192,10 @@ namespace Physics_Data_Debug
         public static string rlParameter22 { get; set; }
         public static string rlParameter23 { get; set; }
         public static string rlParameter24 { get; set; }
+        public static string rlParameter25 { get; set; }
+        public static string rlParameter26 { get; set; }
+        public static string rlParameter27 { get; set; }
+        public static string rlParameter28 { get; set; }
 
         public static string rrParameter0 { get; set; }
         public static string rrParameter1 { get; set; }
@@ -199,6 +223,9 @@ namespace Physics_Data_Debug
         public static string rrParameter22 { get; set; }
         public static string rrParameter23 { get; set; }
         public static string rrParameter24 { get; set; }
-
+        public static string rrParameter25 { get; set; }
+        public static string rrParameter26 { get; set; }
+        public static string rrParameter27 { get; set; }
+        public static string rrParameter28 { get; set; }
     }
 }

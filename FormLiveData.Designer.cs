@@ -236,35 +236,7 @@ namespace Physics_Data_Debug
             this.label23 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.CurrentGForceXZMoving = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.CurrentGForceYMoving = new System.Windows.Forms.Label();
-            this.G0 = new System.Windows.Forms.Label();
-            this.G1 = new System.Windows.Forms.Label();
-            this.G2 = new System.Windows.Forms.Label();
-            this.G3 = new System.Windows.Forms.Label();
-            this.G4 = new System.Windows.Forms.Label();
-            this.G5 = new System.Windows.Forms.Label();
-            this.G6 = new System.Windows.Forms.Label();
-            this.G7 = new System.Windows.Forms.Label();
-            this.G7m = new System.Windows.Forms.Label();
-            this.G6m = new System.Windows.Forms.Label();
-            this.G5m = new System.Windows.Forms.Label();
-            this.G4m = new System.Windows.Forms.Label();
-            this.G3m = new System.Windows.Forms.Label();
-            this.G2m = new System.Windows.Forms.Label();
-            this.G1m = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.toGForceButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label12
@@ -1344,7 +1316,7 @@ namespace Physics_Data_Debug
             // 
             this.exitApplication.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.exitApplication.ForeColor = System.Drawing.Color.White;
-            this.exitApplication.Location = new System.Drawing.Point(3, 745);
+            this.exitApplication.Location = new System.Drawing.Point(2, 798);
             this.exitApplication.Name = "exitApplication";
             this.exitApplication.Size = new System.Drawing.Size(88, 45);
             this.exitApplication.TabIndex = 150;
@@ -2505,285 +2477,17 @@ namespace Physics_Data_Debug
             this.textBox6.TabIndex = 268;
             this.textBox6.Visible = false;
             // 
-            // pictureBox1
+            // toGForceButton
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(197, 197);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(0, 6);
-            this.pictureBox1.TabIndex = 269;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.label52);
-            this.panel1.Controls.Add(this.label38);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.CurrentGForceXZMoving);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(815, 1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 400);
-            this.panel1.TabIndex = 270;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Red;
-            this.pictureBox2.Location = new System.Drawing.Point(199, 199);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(0, 2);
-            this.pictureBox2.TabIndex = 271;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
-            // CurrentGForceXZMoving
-            // 
-            this.CurrentGForceXZMoving.AutoSize = true;
-            this.CurrentGForceXZMoving.BackColor = System.Drawing.Color.Transparent;
-            this.CurrentGForceXZMoving.ForeColor = System.Drawing.Color.White;
-            this.CurrentGForceXZMoving.Location = new System.Drawing.Point(192, 208);
-            this.CurrentGForceXZMoving.Name = "CurrentGForceXZMoving";
-            this.CurrentGForceXZMoving.Size = new System.Drawing.Size(45, 13);
-            this.CurrentGForceXZMoving.TabIndex = 270;
-            this.CurrentGForceXZMoving.Text = "G Force";
-            // 
-            // textBox7
-            // 
-            this.textBox7.AcceptsReturn = true;
-            this.textBox7.AcceptsTab = true;
-            this.textBox7.Location = new System.Drawing.Point(109, 86);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(103, 147);
-            this.textBox7.TabIndex = 271;
-            this.textBox7.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.label53);
-            this.panel2.Controls.Add(this.G7m);
-            this.panel2.Controls.Add(this.G6m);
-            this.panel2.Controls.Add(this.G5m);
-            this.panel2.Controls.Add(this.G4m);
-            this.panel2.Controls.Add(this.G3m);
-            this.panel2.Controls.Add(this.G2m);
-            this.panel2.Controls.Add(this.G1m);
-            this.panel2.Controls.Add(this.G7);
-            this.panel2.Controls.Add(this.G6);
-            this.panel2.Controls.Add(this.G5);
-            this.panel2.Controls.Add(this.G4);
-            this.panel2.Controls.Add(this.G3);
-            this.panel2.Controls.Add(this.G2);
-            this.panel2.Controls.Add(this.G1);
-            this.panel2.Controls.Add(this.G0);
-            this.panel2.Controls.Add(this.CurrentGForceYMoving);
-            this.panel2.Location = new System.Drawing.Point(1221, 1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(101, 400);
-            this.panel2.TabIndex = 272;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // CurrentGForceYMoving
-            // 
-            this.CurrentGForceYMoving.AutoSize = true;
-            this.CurrentGForceYMoving.BackColor = System.Drawing.Color.Transparent;
-            this.CurrentGForceYMoving.ForeColor = System.Drawing.Color.White;
-            this.CurrentGForceYMoving.Location = new System.Drawing.Point(60, 193);
-            this.CurrentGForceYMoving.Name = "CurrentGForceYMoving";
-            this.CurrentGForceYMoving.Size = new System.Drawing.Size(45, 13);
-            this.CurrentGForceYMoving.TabIndex = 272;
-            this.CurrentGForceYMoving.Text = "G Force";
-            // 
-            // G0
-            // 
-            this.G0.AutoSize = true;
-            this.G0.ForeColor = System.Drawing.Color.White;
-            this.G0.Location = new System.Drawing.Point(4, 193);
-            this.G0.Name = "G0";
-            this.G0.Size = new System.Drawing.Size(13, 13);
-            this.G0.TabIndex = 273;
-            this.G0.Text = "0";
-            // 
-            // G1
-            // 
-            this.G1.AutoSize = true;
-            this.G1.ForeColor = System.Drawing.Color.White;
-            this.G1.Location = new System.Drawing.Point(4, 165);
-            this.G1.Name = "G1";
-            this.G1.Size = new System.Drawing.Size(13, 13);
-            this.G1.TabIndex = 274;
-            this.G1.Text = "1";
-            // 
-            // G2
-            // 
-            this.G2.AutoSize = true;
-            this.G2.ForeColor = System.Drawing.Color.White;
-            this.G2.Location = new System.Drawing.Point(4, 135);
-            this.G2.Name = "G2";
-            this.G2.Size = new System.Drawing.Size(13, 13);
-            this.G2.TabIndex = 275;
-            this.G2.Text = "2";
-            // 
-            // G3
-            // 
-            this.G3.AutoSize = true;
-            this.G3.ForeColor = System.Drawing.Color.White;
-            this.G3.Location = new System.Drawing.Point(4, 106);
-            this.G3.Name = "G3";
-            this.G3.Size = new System.Drawing.Size(13, 13);
-            this.G3.TabIndex = 276;
-            this.G3.Text = "3";
-            // 
-            // G4
-            // 
-            this.G4.AutoSize = true;
-            this.G4.ForeColor = System.Drawing.Color.White;
-            this.G4.Location = new System.Drawing.Point(3, 77);
-            this.G4.Name = "G4";
-            this.G4.Size = new System.Drawing.Size(13, 13);
-            this.G4.TabIndex = 277;
-            this.G4.Text = "4";
-            // 
-            // G5
-            // 
-            this.G5.AutoSize = true;
-            this.G5.ForeColor = System.Drawing.Color.White;
-            this.G5.Location = new System.Drawing.Point(4, 54);
-            this.G5.Name = "G5";
-            this.G5.Size = new System.Drawing.Size(13, 13);
-            this.G5.TabIndex = 278;
-            this.G5.Text = "5";
-            // 
-            // G6
-            // 
-            this.G6.AutoSize = true;
-            this.G6.ForeColor = System.Drawing.Color.White;
-            this.G6.Location = new System.Drawing.Point(3, 28);
-            this.G6.Name = "G6";
-            this.G6.Size = new System.Drawing.Size(13, 13);
-            this.G6.TabIndex = 279;
-            this.G6.Text = "6";
-            // 
-            // G7
-            // 
-            this.G7.AutoSize = true;
-            this.G7.ForeColor = System.Drawing.Color.White;
-            this.G7.Location = new System.Drawing.Point(3, 4);
-            this.G7.Name = "G7";
-            this.G7.Size = new System.Drawing.Size(13, 13);
-            this.G7.TabIndex = 280;
-            this.G7.Text = "7";
-            // 
-            // G7m
-            // 
-            this.G7m.AutoSize = true;
-            this.G7m.ForeColor = System.Drawing.Color.White;
-            this.G7m.Location = new System.Drawing.Point(4, 369);
-            this.G7m.Name = "G7m";
-            this.G7m.Size = new System.Drawing.Size(13, 13);
-            this.G7m.TabIndex = 287;
-            this.G7m.Text = "7";
-            // 
-            // G6m
-            // 
-            this.G6m.AutoSize = true;
-            this.G6m.ForeColor = System.Drawing.Color.White;
-            this.G6m.Location = new System.Drawing.Point(4, 340);
-            this.G6m.Name = "G6m";
-            this.G6m.Size = new System.Drawing.Size(13, 13);
-            this.G6m.TabIndex = 286;
-            this.G6m.Text = "6";
-            // 
-            // G5m
-            // 
-            this.G5m.AutoSize = true;
-            this.G5m.ForeColor = System.Drawing.Color.White;
-            this.G5m.Location = new System.Drawing.Point(4, 309);
-            this.G5m.Name = "G5m";
-            this.G5m.Size = new System.Drawing.Size(13, 13);
-            this.G5m.TabIndex = 285;
-            this.G5m.Text = "5";
-            // 
-            // G4m
-            // 
-            this.G4m.AutoSize = true;
-            this.G4m.ForeColor = System.Drawing.Color.White;
-            this.G4m.Location = new System.Drawing.Point(4, 288);
-            this.G4m.Name = "G4m";
-            this.G4m.Size = new System.Drawing.Size(13, 13);
-            this.G4m.TabIndex = 284;
-            this.G4m.Text = "4";
-            // 
-            // G3m
-            // 
-            this.G3m.AutoSize = true;
-            this.G3m.ForeColor = System.Drawing.Color.White;
-            this.G3m.Location = new System.Drawing.Point(4, 262);
-            this.G3m.Name = "G3m";
-            this.G3m.Size = new System.Drawing.Size(13, 13);
-            this.G3m.TabIndex = 283;
-            this.G3m.Text = "3";
-            // 
-            // G2m
-            // 
-            this.G2m.AutoSize = true;
-            this.G2m.ForeColor = System.Drawing.Color.White;
-            this.G2m.Location = new System.Drawing.Point(4, 239);
-            this.G2m.Name = "G2m";
-            this.G2m.Size = new System.Drawing.Size(13, 13);
-            this.G2m.TabIndex = 282;
-            this.G2m.Text = "2";
-            // 
-            // G1m
-            // 
-            this.G1m.AutoSize = true;
-            this.G1m.ForeColor = System.Drawing.Color.White;
-            this.G1m.Location = new System.Drawing.Point(4, 217);
-            this.G1m.Name = "G1m";
-            this.G1m.Size = new System.Drawing.Size(13, 13);
-            this.G1m.TabIndex = 281;
-            this.G1m.Text = "1";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.ForeColor = System.Drawing.Color.White;
-            this.label38.Location = new System.Drawing.Point(160, -1);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(77, 13);
-            this.label38.TabIndex = 272;
-            this.label38.Text = "G-Force Graph";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.ForeColor = System.Drawing.Color.White;
-            this.label52.Location = new System.Drawing.Point(290, 0);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(21, 13);
-            this.label52.TabIndex = 273;
-            this.label52.Text = "XZ";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.ForeColor = System.Drawing.Color.White;
-            this.label53.Location = new System.Drawing.Point(31, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(14, 13);
-            this.label53.TabIndex = 274;
-            this.label53.Text = "Y";
+            this.toGForceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toGForceButton.ForeColor = System.Drawing.Color.White;
+            this.toGForceButton.Location = new System.Drawing.Point(3, 745);
+            this.toGForceButton.Name = "toGForceButton";
+            this.toGForceButton.Size = new System.Drawing.Size(87, 47);
+            this.toGForceButton.TabIndex = 273;
+            this.toGForceButton.Text = "Open G-Force Page";
+            this.toGForceButton.UseVisualStyleBackColor = false;
+            this.toGForceButton.Click += new System.EventHandler(this.toGForceButton_Click);
             // 
             // FormLiveData
             // 
@@ -2791,8 +2495,8 @@ namespace Physics_Data_Debug
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1333, 821);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(821, 872);
+            this.Controls.Add(this.toGForceButton);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label23);
@@ -2998,17 +2702,10 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label12);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.richTextBox3);
-            this.Controls.Add(this.panel1);
             this.Name = "FormLiveData";
             this.Text = "Live Data";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstAllDataLoggerPage_Closing);
             this.Load += new System.EventHandler(this.FirstAllDataLoggerPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3221,31 +2918,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label CurrentGForceXZMoving;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label CurrentGForceYMoving;
-        private System.Windows.Forms.Label G7m;
-        private System.Windows.Forms.Label G6m;
-        private System.Windows.Forms.Label G5m;
-        private System.Windows.Forms.Label G4m;
-        private System.Windows.Forms.Label G3m;
-        private System.Windows.Forms.Label G2m;
-        private System.Windows.Forms.Label G1m;
-        private System.Windows.Forms.Label G7;
-        private System.Windows.Forms.Label G6;
-        private System.Windows.Forms.Label G5;
-        private System.Windows.Forms.Label G4;
-        private System.Windows.Forms.Label G3;
-        private System.Windows.Forms.Label G2;
-        private System.Windows.Forms.Label G1;
-        private System.Windows.Forms.Label G0;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Button toGForceButton;
     }
 }
 

@@ -12,6 +12,7 @@ namespace Physics_Data_Debug
         public static bool SettingsOpen { get; set; } = false;
         public static bool TireSettingsOpen { get; set; } = false;
         public static bool SuspensionSettingsOpen { get; set; } = false;
+        public static bool GForceOpen { get; set; } = false;
         public static string sTireTravelSpeed { get; set; } = "Tire Travel Speed";
         public static string sAngularVelocity { get; set; } = "Angular Velocity";
         public static string sVerticalLoad { get; set; } = "Vertical Load";
@@ -56,7 +57,7 @@ namespace Physics_Data_Debug
         public static ulong baseAddrRacetime { get; set; } = 0x1832648;
         public static ulong baseAddrLocationHeading { get; set; } = 0x1832B88;
         //Every update offsets the base address of the memory points. 99% of the time forwards.
-        public static ulong baseAddrUpdt { get; set; } = 0x9E00;
+        public static ulong baseAddrUpdt { get; set; } = 0x0;//0x9E00;
         //0x0;// April 2022
         //0x4650;// May 2022
         //0x5710// October 2022
@@ -80,6 +81,7 @@ namespace Physics_Data_Debug
         public static int OffsetDifferentialOpen { get; set; } = 0xD94;
         public static int OffsetDifferentialVelocityRad { get; set; } = 0xD98;
         public static int OffsetDifferentialTorque { get; set; } = 0xD9C;
+        // Offset for secondary axle is + 0x60
 
         public static int OffsetTX { get; set; } = 0x0;
         public static int OffsetTY { get; set; } = 0x4;
@@ -247,12 +249,17 @@ namespace Physics_Data_Debug
         //public static double rotationZ { get; set; }
         public static float XAcceleration { get; set; }
         public static float XG { get; set; }
+        public static double XGRotated { get; set; }
         public static float YAcceleration { get; set; }
         public static float YG { get; set; }
+        public static double YGRotated { get; set; }
         public static float ZAcceleration { get; set; }
         public static float ZG { get; set; }
+        public static double ZGRotated { get; set; }
         public static double XZAcceleration { get; set; }
         public static double XZG { get; set; }
+        public static double XYZAcceleration { get; set; }
+        public static double XYZG { get; set; }
 
         public static Matrix4x4 playerRotation;
         public static Quaternion playerQuaternion = new Quaternion(Q1, Q2, Q3, Q4);

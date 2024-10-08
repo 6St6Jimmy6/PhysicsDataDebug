@@ -30,26 +30,26 @@ namespace Physics_Data_Debug
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.temperaturesRR = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.temperaturesRL = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.temperaturesFR = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -79,106 +79,106 @@ namespace Physics_Data_Debug
             // temperaturesRR
             // 
             this.temperaturesRR.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.temperaturesRR.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.temperaturesRR.Legends.Add(legend1);
+            chartArea9.Name = "ChartArea1";
+            this.temperaturesRR.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.temperaturesRR.Legends.Add(legend9);
             this.temperaturesRR.Location = new System.Drawing.Point(333, 315);
             this.temperaturesRR.Name = "temperaturesRR";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Tread °C";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Inner °C";
-            this.temperaturesRR.Series.Add(series1);
-            this.temperaturesRR.Series.Add(series2);
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series17.Legend = "Legend1";
+            series17.Name = "Tread °C";
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series18.Legend = "Legend1";
+            series18.Name = "Inner °C";
+            this.temperaturesRR.Series.Add(series17);
+            this.temperaturesRR.Series.Add(series18);
             this.temperaturesRR.Size = new System.Drawing.Size(314, 228);
             this.temperaturesRR.TabIndex = 10;
             this.temperaturesRR.Text = "chart1";
-            title1.Name = "RRTempTitle";
-            title1.Text = "Rear Right Temperatures";
-            this.temperaturesRR.Titles.Add(title1);
+            title9.Name = "RRTempTitle";
+            title9.Text = "Rear Right Temperatures";
+            this.temperaturesRR.Titles.Add(title9);
             // 
             // temperaturesRL
             // 
             this.temperaturesRL.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.temperaturesRL.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.temperaturesRL.Legends.Add(legend2);
+            chartArea10.Name = "ChartArea1";
+            this.temperaturesRL.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.temperaturesRL.Legends.Add(legend10);
             this.temperaturesRL.Location = new System.Drawing.Point(13, 315);
             this.temperaturesRL.Name = "temperaturesRL";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Tread °C";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Inner °C";
-            this.temperaturesRL.Series.Add(series3);
-            this.temperaturesRL.Series.Add(series4);
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series19.Legend = "Legend1";
+            series19.Name = "Tread °C";
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series20.Legend = "Legend1";
+            series20.Name = "Inner °C";
+            this.temperaturesRL.Series.Add(series19);
+            this.temperaturesRL.Series.Add(series20);
             this.temperaturesRL.Size = new System.Drawing.Size(314, 228);
             this.temperaturesRL.TabIndex = 9;
             this.temperaturesRL.Text = "chart1";
-            title2.Name = "RLTempTitle";
-            title2.Text = "Rear Left Temperatures";
-            this.temperaturesRL.Titles.Add(title2);
+            title10.Name = "RLTempTitle";
+            title10.Text = "Rear Left Temperatures";
+            this.temperaturesRL.Titles.Add(title10);
             // 
             // temperaturesFR
             // 
             this.temperaturesFR.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            this.temperaturesFR.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.temperaturesFR.Legends.Add(legend3);
+            chartArea11.Name = "ChartArea1";
+            this.temperaturesFR.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.temperaturesFR.Legends.Add(legend11);
             this.temperaturesFR.Location = new System.Drawing.Point(333, 42);
             this.temperaturesFR.Name = "temperaturesFR";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.Legend = "Legend1";
-            series5.Name = "Tread °C";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.Legend = "Legend1";
-            series6.Name = "Inner °C";
-            this.temperaturesFR.Series.Add(series5);
-            this.temperaturesFR.Series.Add(series6);
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series21.Legend = "Legend1";
+            series21.Name = "Tread °C";
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series22.Legend = "Legend1";
+            series22.Name = "Inner °C";
+            this.temperaturesFR.Series.Add(series21);
+            this.temperaturesFR.Series.Add(series22);
             this.temperaturesFR.Size = new System.Drawing.Size(314, 228);
             this.temperaturesFR.TabIndex = 8;
             this.temperaturesFR.Text = "chart1";
-            title3.Name = "FRTempTitle";
-            title3.Text = "Front Right Temperatures";
-            this.temperaturesFR.Titles.Add(title3);
+            title11.Name = "FRTempTitle";
+            title11.Text = "Front Right Temperatures";
+            this.temperaturesFR.Titles.Add(title11);
             // 
             // temperaturesFL
             // 
             this.temperaturesFL.BackColor = System.Drawing.Color.Transparent;
-            chartArea4.Name = "ChartArea1";
-            this.temperaturesFL.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.temperaturesFL.Legends.Add(legend4);
+            chartArea12.Name = "ChartArea1";
+            this.temperaturesFL.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.temperaturesFL.Legends.Add(legend12);
             this.temperaturesFL.Location = new System.Drawing.Point(13, 42);
             this.temperaturesFL.Name = "temperaturesFL";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series7.Legend = "Legend1";
-            series7.Name = "Tread °C";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.Name = "Inner °C";
-            this.temperaturesFL.Series.Add(series7);
-            this.temperaturesFL.Series.Add(series8);
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series23.Legend = "Legend1";
+            series23.Name = "Tread °C";
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series24.Legend = "Legend1";
+            series24.Name = "Inner °C";
+            this.temperaturesFL.Series.Add(series23);
+            this.temperaturesFL.Series.Add(series24);
             this.temperaturesFL.Size = new System.Drawing.Size(314, 228);
             this.temperaturesFL.TabIndex = 7;
             this.temperaturesFL.Text = "chart1";
-            title4.Name = "FLTempTitle";
-            title4.Text = "Front Left Temperatures";
-            this.temperaturesFL.Titles.Add(title4);
+            title12.Name = "FLTempTitle";
+            title12.Text = "Front Left Temperatures";
+            this.temperaturesFL.Titles.Add(title12);
             // 
             // closeButton
             // 
@@ -323,7 +323,7 @@ namespace Physics_Data_Debug
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 90;
+            this.timer1.Interval = 94;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormTireTemperatures

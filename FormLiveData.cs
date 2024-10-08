@@ -25,88 +25,6 @@ namespace Physics_Data_Debug
 
         public static int GScale = 25;
 
-        /*CODE FOR DRAWING G-Forces*
-        Thread th;
-        Graphics g;
-        Graphics fG;
-        Bitmap btm;
-
-        bool drawing = true;
-        ***************************/
-
-        /*CODE FOR DRAWING G-Forces*
-        public void Draw()
-        {
-            float angleInDegreesFL = 0.0f;
-            float angleInDegreesRR = 0.0f;
-            PointF orgFL = new PointF(75, 75);
-            PointF orgRR = new PointF(75, 75);
-            float radFL = 75;
-            float radRR = 75;
-            Pen pen = new Pen(Brushes.Azure, 3.0f);//Draw white
-            RectangleF areaFL = new RectangleF(15, 15, 150, 150);
-            RectangleF areaRR = new RectangleF(195, 195, 150, 150);
-            RectangleF circleFL = new RectangleF(0, 0, 10, 10);//Small Line
-            RectangleF circleRR = new RectangleF(0, 0, 10, 10);//Small Line
-
-            PointF locFL = PointF.Empty;
-            PointF locRR = PointF.Empty;
-            PointF img = new PointF(0, 0);// Move picture more from draw point. Basically nothing because can already do that through translate.
-
-            fG.Clear(Color.Black);
-
-            while(drawing)
-            {
-                g.Clear(Color.Black);
-
-                g.DrawEllipse(pen, areaFL);
-                g.DrawEllipse(pen, areaRR);
-
-                locFL = LinePoint(radFL, angleInDegreesFL, orgFL);
-                locRR = LinePoint(radRR, angleInDegreesRR, orgRR);
-
-                circleFL.X = locFL.X - (circleFL.Width / 2) + areaFL.X;
-                circleFL.Y = locFL.Y - (circleFL.Width / 2) + areaFL.Y;
-                circleRR.X = locRR.X - (circleRR.Width / 2) + areaRR.X;
-                circleRR.Y = locRR.Y - (circleRR.Width / 2) + areaRR.Y;
-
-                g.DrawEllipse(pen, circleFL);
-                g.DrawEllipse(pen, circleRR);
-
-                fG.DrawImage(btm, img);
-
-                if (angleInDegreesFL < 360)
-                {
-                    angleInDegreesFL += 0.5f;
-                }
-                else
-                {
-                    angleInDegreesFL = 0;
-                }
-                if (angleInDegreesRR < 360)
-                {
-                    angleInDegreesRR += 1.0f;
-                }
-                else
-                {
-                    angleInDegreesRR = 0;
-                }
-                Thread.Sleep(50);
-            }
-        }
-
-        public PointF LinePoint(float radius, float angleInDegrees, PointF origin)
-        {
-            float x = (float)(radius * Math.Cos(angleInDegrees * Math.PI / 180F)) + origin.X;
-            float y = (float)(radius * Math.Sin(angleInDegrees * Math.PI / 180F)) + origin.Y;
-
-            return new PointF(x, y);
-        }
-
-        ***************************/
-
-        //private Thread update;
-
         public static bool logging = false;
 
         private bool processGet = false;
@@ -117,9 +35,12 @@ namespace Physics_Data_Debug
         public FormLiveData()
         {
             InitializeComponent();
+
+            toSuspensionSettingsButton.Hide();// Not yet implemented
+
             logInterval_textBox.Text = LiveData.tickInterval.ToString();
-            panel1.Paint += new PaintEventHandler(panel1_Paint);
-            panel2.Paint += new PaintEventHandler(panel2_Paint);
+            //panel1.Paint += new PaintEventHandler(panel1_Paint);
+            //panel2.Paint += new PaintEventHandler(panel2_Paint);
 
         }
         #region Methods
@@ -402,16 +323,11 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.ZAcceleration > 0)
                 {
-                    //LiveData.RR_TotalFrictionAngle = (float)(270 - (Math.Atan(LiveData.ZAcceleration / LiveData.XAcceleration) * LiveData.fRadToDeg));// Opposite
-                    //LiveData.XZAccelerationAngleDeg = (float)(90 - (Math.Atan(LiveData.ZAcceleration / LiveData.XAcceleration) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleDeg = (float)(180 + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleRad = (Math.PI + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration)));
                 }
                 else if (LiveData.ZAcceleration < 0)
                 {
-                    //LiveData.RR_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.ZAcceleration / LiveData.XAcceleration) * LiveData.fRadToDeg));// Opposite
-                    //LiveData.RR_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / LiveData.RR_LateralFriction) * LiveData.radToDeg);//Same as below
-                    //LiveData.XZAccelerationAngleDeg = (float)(90 - (Math.Atan(LiveData.ZAcceleration / LiveData.XAcceleration) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleDeg = (360 + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleRad = (2 * Math.PI + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration)));
                 }
@@ -425,17 +341,11 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.ZAcceleration > 0)
                 {
-                    //LiveData.XZAccelerationAngleDeg = (float)(90 + (Math.Atan(LiveData.ZAcceleration / LiveData.XAcceleration) * LiveData.fRadToDeg));// Opposite
-                    //LiveData.RR_TotalFrictionAngle = 270 + (Math.Atan(LiveData.RR_LongitudinalFriction / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg);//Same as below
-                    //LiveData.XZAccelerationAngleDeg = (float)(270 + (Math.Atan(LiveData.ZAcceleration / Math.Abs(LiveData.XAcceleration)) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleDeg = (float)(180 + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleRad = (Math.PI + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration)));
                 }
                 else if (LiveData.ZAcceleration < 0)
                 {
-                    //LiveData.RR_TotalFrictionAngle = (float)(270 + (Math.Atan(LiveData.ZAcceleration / LiveData.XAcceleration) * LiveData.fRadToDeg));// Opposite
-                    //LiveData.RR_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg);//Same as below
-                    //LiveData.XZAccelerationAngleDeg = (float)(270 - (Math.Atan(LiveData.ZAcceleration / LiveData.XAcceleration) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleDeg = (float)(0d + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration) * LiveData.fRadToDeg));
                     LiveData.XZAccelerationAngleRad = (0d + (Math.Atan(LiveData.XAcceleration / LiveData.ZAcceleration)));
                 }
@@ -465,6 +375,7 @@ namespace Physics_Data_Debug
             }
 
             LiveData.XZAcceleration = Math.Sqrt(Math.Pow(LiveData.XAcceleration, 2) + Math.Pow(LiveData.ZAcceleration, 2));
+            LiveData.XYZAcceleration = Math.Sqrt(Math.Pow(LiveData.XZAcceleration, 2) + Math.Pow(LiveData.YAcceleration, 2));
 
             LiveData.XG = LiveData.XAcceleration / LiveData.g;
             LiveData.YG = LiveData.YAcceleration / LiveData.g;
@@ -473,7 +384,8 @@ namespace Physics_Data_Debug
             // Get normalized heading, so it's easy to draw for example the g-forces in the right direction compared to the car pivot point.
             LiveData.playerRotation = new Matrix4x4(LiveData.R11, LiveData.R12, LiveData.R13, 0, LiveData.R21, LiveData.R22, LiveData.R23, 0, LiveData.R31, LiveData.R32, LiveData.R33, 0, 0, 0, 0, 1);
             Angle3D.GetAngles(LiveData.playerRotation);
-            LiveData.XZG = /*Math.Sqrt(Math.Pow(LiveData.YG, 2) + Math.Pow*/(Math.Sqrt(Math.Pow(LiveData.XG, 2) + Math.Pow(LiveData.ZG, 2))/*, 2)*/); // Commented out would be XYZG length.
+            LiveData.XZG = Math.Sqrt(Math.Pow(LiveData.XG, 2) + Math.Pow(LiveData.ZG, 2));
+            LiveData.XYZG = Math.Sqrt(Math.Pow(LiveData.YG, 2) + Math.Pow(LiveData.XZG, 2));
 
             if (LiveData.rotationYRad < 3 * Math.PI &&
                 LiveData.rotationYRad > -3 * Math.PI &&
@@ -504,6 +416,12 @@ namespace Physics_Data_Debug
                 }
             }
             LiveData.XZGAngleDeg = LiveData.XZGAngleRad * LiveData.dRadToDeg; // radians to degrees if needed.
+
+            // These are rotated to the heading, so you want to use these likely
+
+            LiveData.XGRotated = Math.Sin(LiveData.XZGAngleRad) * LiveData.XZG;
+            LiveData.ZGRotated = Math.Cos(LiveData.XZGAngleRad) * LiveData.XZG;
+            LiveData.YGRotated = LiveData.YG;// Y axis isn't ever rotated
             #endregion
 
             //Read Tire Data
@@ -549,13 +467,10 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.FL_LongitudinalFriction > 0)
                 {
-                    // LiveData.FL_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.FL_LongitudinalFriction) / Math.Abs(LiveData.FL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
                     LiveData.FL_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.FL_LongitudinalFriction / LiveData.FL_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.FL_LongitudinalFriction < 0)
                 {
-                    //LiveData.FL_TotalFrictionAngle = 90 - (Math.Atan(Math.Abs(LiveData.FL_LongitudinalFriction) / Math.Abs(LiveData.FL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.FL_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.FL_LongitudinalFriction) / LiveData.FL_LateralFriction) * LiveData.radToDeg), 2);//Same as below
                     LiveData.FL_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.FL_LongitudinalFriction / LiveData.FL_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
@@ -567,14 +482,10 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.FL_LongitudinalFriction > 0)
                 {
-                    //LiveData.FL_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.FL_LongitudinalFriction) / Math.Abs(LiveData.FL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.FL_TotalFrictionAngle = 270 + (Math.Atan(LiveData.FL_LongitudinalFriction / Math.Abs(LiveData.FL_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.FL_TotalFrictionAngle = (float)(270 + (Math.Atan(LiveData.FL_LongitudinalFriction / Math.Abs(LiveData.FL_LateralFriction)) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.FL_LongitudinalFriction < 0)
                 {
-                    //LiveData.FL_TotalFrictionAngle = 270 + (Math.Atan(Math.Abs(LiveData.FL_LongitudinalFriction) / Math.Abs(LiveData.FL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.FL_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.FL_LongitudinalFriction) / Math.Abs(LiveData.FL_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.FL_TotalFrictionAngle = (float)(270 - (Math.Atan(LiveData.FL_LongitudinalFriction / LiveData.FL_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
@@ -660,13 +571,10 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.FR_LongitudinalFriction > 0)
                 {
-                    // LiveData.FR_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.FR_LongitudinalFriction) / Math.Abs(LiveData.FR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
                     LiveData.FR_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.FR_LongitudinalFriction / LiveData.FR_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.FR_LongitudinalFriction < 0)
                 {
-                    //LiveData.FR_TotalFrictionAngle = 90 - (Math.Atan(Math.Abs(LiveData.FR_LongitudinalFriction) / Math.Abs(LiveData.FR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.FR_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.FR_LongitudinalFriction) / LiveData.FR_LateralFriction) * LiveData.radToDeg), 2);//Same as below
                     LiveData.FR_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.FR_LongitudinalFriction / LiveData.FR_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
@@ -678,19 +586,15 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.FR_LongitudinalFriction > 0)
                 {
-                    //LiveData.FR_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.FR_LongitudinalFriction) / Math.Abs(LiveData.FR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.FR_TotalFrictionAngle = 270 + (Math.Atan(LiveData.FR_LongitudinalFriction / Math.Abs(LiveData.FR_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.FR_TotalFrictionAngle = (float)(270 + (Math.Atan(LiveData.FR_LongitudinalFriction / Math.Abs(LiveData.FR_LateralFriction)) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.FR_LongitudinalFriction < 0)
                 {
-                    //LiveData.FR_TotalFrictionAngle = 270 + (Math.Atan(Math.Abs(LiveData.FR_LongitudinalFriction) / Math.Abs(LiveData.FR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.FR_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.FR_LongitudinalFriction) / Math.Abs(LiveData.FR_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.FR_TotalFrictionAngle = (float)(270 - (Math.Atan(LiveData.FR_LongitudinalFriction / LiveData.FR_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
                 {
-                    LiveData.FR_TotalFrictionAngle = 270;// G-Force
+                    LiveData.FR_TotalFrictionAngle = 270;
                 }
             }
             else
@@ -769,13 +673,10 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.RL_LongitudinalFriction > 0)
                 {
-                    // LiveData.RL_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.RL_LongitudinalFriction) / Math.Abs(LiveData.RL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
                     LiveData.RL_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.RL_LongitudinalFriction / LiveData.RL_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.RL_LongitudinalFriction < 0)
                 {
-                    //LiveData.RL_TotalFrictionAngle = 90 - (Math.Atan(Math.Abs(LiveData.RL_LongitudinalFriction) / Math.Abs(LiveData.RL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.RL_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.RL_LongitudinalFriction) / LiveData.RL_LateralFriction) * LiveData.radToDeg), 2);//Same as below
                     LiveData.RL_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.RL_LongitudinalFriction / LiveData.RL_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
@@ -787,14 +688,10 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.RL_LongitudinalFriction > 0)
                 {
-                    //LiveData.RL_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.RL_LongitudinalFriction) / Math.Abs(LiveData.RL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.RL_TotalFrictionAngle = 270 + (Math.Atan(LiveData.RL_LongitudinalFriction / Math.Abs(LiveData.RL_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.RL_TotalFrictionAngle = (float)(270 + (Math.Atan(LiveData.RL_LongitudinalFriction / Math.Abs(LiveData.RL_LateralFriction)) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.RL_LongitudinalFriction < 0)
                 {
-                    //LiveData.RL_TotalFrictionAngle = 270 + (Math.Atan(Math.Abs(LiveData.RL_LongitudinalFriction) / Math.Abs(LiveData.RL_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.RL_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.RL_LongitudinalFriction) / Math.Abs(LiveData.RL_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.RL_TotalFrictionAngle = (float)(270 - (Math.Atan(LiveData.RL_LongitudinalFriction / LiveData.RL_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
@@ -879,13 +776,10 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.RR_LongitudinalFriction > 0)
                 {
-                    // LiveData.RR_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
                     LiveData.RR_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.RR_LongitudinalFriction / LiveData.RR_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.RR_LongitudinalFriction < 0)
                 {
-                    //LiveData.RR_TotalFrictionAngle = 90 - (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.RR_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / LiveData.RR_LateralFriction) * LiveData.radToDeg), 2);//Same as below
                     LiveData.RR_TotalFrictionAngle = (float)(90 - (Math.Atan(LiveData.RR_LongitudinalFriction / LiveData.RR_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
@@ -897,14 +791,10 @@ namespace Physics_Data_Debug
             {
                 if (LiveData.RR_LongitudinalFriction > 0)
                 {
-                    //LiveData.RR_TotalFrictionAngle = 90 + (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.RR_TotalFrictionAngle = 270 + (Math.Atan(LiveData.RR_LongitudinalFriction / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.RR_TotalFrictionAngle = (float)(270 + (Math.Atan(LiveData.RR_LongitudinalFriction / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.fRadToDeg));
                 }
                 else if (LiveData.RR_LongitudinalFriction < 0)
                 {
-                    //LiveData.RR_TotalFrictionAngle = 270 + (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg), 2);// Opposite
-                    //LiveData.RR_TotalFrictionAngle = 270 - (Math.Atan(Math.Abs(LiveData.RR_LongitudinalFriction) / Math.Abs(LiveData.RR_LateralFriction)) * LiveData.radToDeg), 2);//Same as below
                     LiveData.RR_TotalFrictionAngle = (float)(270 - (Math.Atan(LiveData.RR_LongitudinalFriction / LiveData.RR_LateralFriction) * LiveData.fRadToDeg));
                 }
                 else
@@ -1368,6 +1258,70 @@ namespace Physics_Data_Debug
                 LogSettings.rlParameter24 = "";
                 LogSettings.rrParameter24 = "";
             }
+            if (LogSettings.XGRotatedLogEnabled == true)
+            {
+                LogSettings.Header25 = LogSettings.sXGRotated + FormLogSettings.Delimiter;
+                LogSettings.flParameter25 = LiveData.XGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.frParameter25 = LiveData.XGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rlParameter25 = LiveData.XGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rrParameter25 = LiveData.XGRotated.ToString() + FormLogSettings.Delimiter;
+            }
+            else
+            {
+                LogSettings.Header25 = "";
+                LogSettings.flParameter25 = "";
+                LogSettings.frParameter25 = "";
+                LogSettings.rlParameter25 = "";
+                LogSettings.rrParameter25 = "";
+            }
+            if (LogSettings.ZGRotatedLogEnabled == true)
+            {
+                LogSettings.Header26 = LogSettings.sZGRotated + FormLogSettings.Delimiter;
+                LogSettings.flParameter26 = LiveData.ZGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.frParameter26 = LiveData.ZGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rlParameter26 = LiveData.ZGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rrParameter26 = LiveData.ZGRotated.ToString() + FormLogSettings.Delimiter;
+            }
+            else
+            {
+                LogSettings.Header26 = "";
+                LogSettings.flParameter26 = "";
+                LogSettings.frParameter26 = "";
+                LogSettings.rlParameter26 = "";
+                LogSettings.rrParameter26 = "";
+            }
+            if (LogSettings.YGRotatedLogEnabled == true)
+            {
+                LogSettings.Header27 = LogSettings.sYGRotated + FormLogSettings.Delimiter;
+                LogSettings.flParameter27 = LiveData.YGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.frParameter27 = LiveData.YGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rlParameter27 = LiveData.YGRotated.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rrParameter27 = LiveData.YGRotated.ToString() + FormLogSettings.Delimiter;
+            }
+            else
+            {
+                LogSettings.Header27 = "";
+                LogSettings.flParameter27 = "";
+                LogSettings.frParameter27 = "";
+                LogSettings.rlParameter27 = "";
+                LogSettings.rrParameter27 = "";
+            }
+            if (LogSettings.XYZGLogEnabled == true)
+            {
+                LogSettings.Header28 = LogSettings.sXYZG + FormLogSettings.Delimiter;
+                LogSettings.flParameter28 = LiveData.XYZG.ToString() + FormLogSettings.Delimiter;
+                LogSettings.frParameter28 = LiveData.XYZG.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rlParameter28 = LiveData.XYZG.ToString() + FormLogSettings.Delimiter;
+                LogSettings.rrParameter28 = LiveData.XYZG.ToString() + FormLogSettings.Delimiter;
+            }
+            else
+            {
+                LogSettings.Header28 = "";
+                LogSettings.flParameter28 = "";
+                LogSettings.frParameter28 = "";
+                LogSettings.rlParameter28 = "";
+                LogSettings.rrParameter28 = "";
+            }
         }
         private void LogToFile()
         {
@@ -1419,7 +1373,36 @@ namespace Physics_Data_Debug
 
         private string WriteHeaderLine()
         {
-            return LogSettings.Header20 + LogSettings.Header0 + LogSettings.Header1 + LogSettings.Header2 + LogSettings.Header3 + LogSettings.Header4 + LogSettings.Header5 + LogSettings.Header6 + LogSettings.Header7 + LogSettings.Header7_1 + LogSettings.Header8 + LogSettings.Header9 + LogSettings.Header10 + LogSettings.Header11 + LogSettings.Header12 + LogSettings.Header13 + LogSettings.Header14 + LogSettings.Header15 + LogSettings.Header16 + LogSettings.Header17 + LogSettings.Header18 + LogSettings.Header19 + LogSettings.Header21 + LogSettings.Header22 + LogSettings.Header23 + LogSettings.Header24;
+            return LogSettings.Header20 + 
+                LogSettings.Header0 + 
+                LogSettings.Header1 + 
+                LogSettings.Header2 + 
+                LogSettings.Header3 + 
+                LogSettings.Header4 + 
+                LogSettings.Header5 + 
+                LogSettings.Header6 + 
+                LogSettings.Header7 + 
+                LogSettings.Header7_1 + 
+                LogSettings.Header8 + 
+                LogSettings.Header9 + 
+                LogSettings.Header10 + 
+                LogSettings.Header11 + 
+                LogSettings.Header12 + 
+                LogSettings.Header13 + 
+                LogSettings.Header14 + 
+                LogSettings.Header15 + 
+                LogSettings.Header16 + 
+                LogSettings.Header17 + 
+                LogSettings.Header18 + 
+                LogSettings.Header19 + 
+                LogSettings.Header21 + 
+                LogSettings.Header22 + 
+                LogSettings.Header23 + 
+                LogSettings.Header24 + 
+                LogSettings.Header25 + 
+                LogSettings.Header26 + 
+                LogSettings.Header27 +
+                LogSettings.Header28;
         }
         private void WriteFLHeadersLine()
         {
@@ -1453,28 +1436,144 @@ namespace Physics_Data_Debug
         {
             using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontLeftWreckfestDebugLog.txt"))
             {
-                sw.WriteLine(LogSettings.flParameter20 + LogSettings.flParameter0 + LogSettings.flParameter1 + LogSettings.flParameter2 + LogSettings.flParameter3 + LogSettings.flParameter4 + LogSettings.flParameter5 + LogSettings.flParameter6 + LogSettings.flParameter7 + LogSettings.flParameter7_1 + LogSettings.flParameter8 + LogSettings.flParameter9 + LogSettings.flParameter10 + LogSettings.flParameter11 + LogSettings.flParameter12 + LogSettings.flParameter13 + LogSettings.flParameter14 + LogSettings.flParameter15 + LogSettings.flParameter16 + LogSettings.flParameter17 + LogSettings.flParameter18 + LogSettings.flParameter19 + LogSettings.flParameter21 + LogSettings.flParameter22 + LogSettings.flParameter23 + LogSettings.flParameter24);
+                sw.WriteLine(LogSettings.flParameter20 + 
+                    LogSettings.flParameter0 + 
+                    LogSettings.flParameter1 + 
+                    LogSettings.flParameter2 + 
+                    LogSettings.flParameter3 + 
+                    LogSettings.flParameter4 + 
+                    LogSettings.flParameter5 + 
+                    LogSettings.flParameter6 + 
+                    LogSettings.flParameter7 + 
+                    LogSettings.flParameter7_1 + 
+                    LogSettings.flParameter8 + 
+                    LogSettings.flParameter9 + 
+                    LogSettings.flParameter10 + 
+                    LogSettings.flParameter11 + 
+                    LogSettings.flParameter12 + 
+                    LogSettings.flParameter13 + 
+                    LogSettings.flParameter14 + 
+                    LogSettings.flParameter15 + 
+                    LogSettings.flParameter16 + 
+                    LogSettings.flParameter17 + 
+                    LogSettings.flParameter18 + 
+                    LogSettings.flParameter19 + 
+                    LogSettings.flParameter21 + 
+                    LogSettings.flParameter22 + 
+                    LogSettings.flParameter23 + 
+                    LogSettings.flParameter24 + 
+                    LogSettings.flParameter25 + 
+                    LogSettings.flParameter26 + 
+                    LogSettings.flParameter27 +
+                    LogSettings.flParameter28);
             }
         }
         private void WriteFRParametersLine()
         {
             using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontRightWreckfestDebugLog.txt"))
             {
-                sw.WriteLine(LogSettings.frParameter20 + LogSettings.frParameter0 + LogSettings.frParameter1 + LogSettings.frParameter2 + LogSettings.frParameter3 + LogSettings.frParameter4 + LogSettings.frParameter5 + LogSettings.frParameter6 + LogSettings.frParameter7 + LogSettings.frParameter7_1 + LogSettings.frParameter8 + LogSettings.frParameter9 + LogSettings.frParameter10 + LogSettings.frParameter11 + LogSettings.frParameter12 + LogSettings.frParameter13 + LogSettings.frParameter14 + LogSettings.frParameter15 + LogSettings.frParameter16 + LogSettings.frParameter17 + LogSettings.frParameter18 + LogSettings.frParameter19 + LogSettings.frParameter21 + LogSettings.frParameter22 + LogSettings.frParameter23 + LogSettings.frParameter24);
+                sw.WriteLine(LogSettings.frParameter20 + 
+                    LogSettings.frParameter0 + 
+                    LogSettings.frParameter1 + 
+                    LogSettings.frParameter2 + 
+                    LogSettings.frParameter3 + 
+                    LogSettings.frParameter4 + 
+                    LogSettings.frParameter5 + 
+                    LogSettings.frParameter6 + 
+                    LogSettings.frParameter7 + 
+                    LogSettings.frParameter7_1 + 
+                    LogSettings.frParameter8 + 
+                    LogSettings.frParameter9 + 
+                    LogSettings.frParameter10 + 
+                    LogSettings.frParameter11 + 
+                    LogSettings.frParameter12 + 
+                    LogSettings.frParameter13 + 
+                    LogSettings.frParameter14 + 
+                    LogSettings.frParameter15 + 
+                    LogSettings.frParameter16 + 
+                    LogSettings.frParameter17 + 
+                    LogSettings.frParameter18 + 
+                    LogSettings.frParameter19 + 
+                    LogSettings.frParameter21 + 
+                    LogSettings.frParameter22 + 
+                    LogSettings.frParameter23 + 
+                    LogSettings.frParameter24 + 
+                    LogSettings.frParameter25 + 
+                    LogSettings.frParameter26 + 
+                    LogSettings.frParameter27 +
+                    LogSettings.frParameter28);
             }
         }
         private void WriteRLParametersLine()
         {
             using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearLeftWreckfestDebugLog.txt"))
             {
-                sw.WriteLine(LogSettings.rlParameter20 + LogSettings.rlParameter0 + LogSettings.rlParameter1 + LogSettings.rlParameter2 + LogSettings.rlParameter3 + LogSettings.rlParameter4 + LogSettings.rlParameter5 + LogSettings.rlParameter6 + LogSettings.rlParameter7 + LogSettings.rlParameter7_1 + LogSettings.rlParameter8 + LogSettings.rlParameter9 + LogSettings.rlParameter10 + LogSettings.rlParameter11 + LogSettings.rlParameter12 + LogSettings.rlParameter13 + LogSettings.rlParameter14 + LogSettings.rlParameter15 + LogSettings.rlParameter16 + LogSettings.rlParameter17 + LogSettings.rlParameter18 + LogSettings.rlParameter19 + LogSettings.rlParameter21 + LogSettings.rlParameter22 + LogSettings.rlParameter23 + LogSettings.rlParameter24);
+                sw.WriteLine(LogSettings.rlParameter20 + 
+                    LogSettings.rlParameter0 + 
+                    LogSettings.rlParameter1 + 
+                    LogSettings.rlParameter2 + 
+                    LogSettings.rlParameter3 + 
+                    LogSettings.rlParameter4 + 
+                    LogSettings.rlParameter5 + 
+                    LogSettings.rlParameter6 + 
+                    LogSettings.rlParameter7 + 
+                    LogSettings.rlParameter7_1 + 
+                    LogSettings.rlParameter8 + 
+                    LogSettings.rlParameter9 + 
+                    LogSettings.rlParameter10 + 
+                    LogSettings.rlParameter11 + 
+                    LogSettings.rlParameter12 + 
+                    LogSettings.rlParameter13 + 
+                    LogSettings.rlParameter14 + 
+                    LogSettings.rlParameter15 + 
+                    LogSettings.rlParameter16 + 
+                    LogSettings.rlParameter17 + 
+                    LogSettings.rlParameter18 + 
+                    LogSettings.rlParameter19 + 
+                    LogSettings.rlParameter21 + 
+                    LogSettings.rlParameter22 + 
+                    LogSettings.rlParameter23 + 
+                    LogSettings.rlParameter24 + 
+                    LogSettings.rlParameter25 + 
+                    LogSettings.rlParameter26 + 
+                    LogSettings.rlParameter27 +
+                    LogSettings.rlParameter28);
             }
         }
         private void WriteRRParametersLine()
         {
             using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearRightWreckfestDebugLog.txt"))
             {
-                sw.WriteLine(LogSettings.rrParameter20 + LogSettings.rrParameter0 + LogSettings.rrParameter1 + LogSettings.rrParameter2 + LogSettings.rrParameter3 + LogSettings.rrParameter4 + LogSettings.rrParameter5 + LogSettings.rrParameter6 + LogSettings.rrParameter7 + LogSettings.rrParameter7_1 + LogSettings.rrParameter8 + LogSettings.rrParameter9 + LogSettings.rrParameter10 + LogSettings.rrParameter11 + LogSettings.rrParameter12 + LogSettings.rrParameter13 + LogSettings.rrParameter14 + LogSettings.rrParameter15 + LogSettings.rrParameter16 + LogSettings.rrParameter17 + LogSettings.rrParameter18 + LogSettings.rrParameter19 + LogSettings.rrParameter21 + LogSettings.rrParameter22 + LogSettings.rrParameter23 + LogSettings.rrParameter24);
+                sw.WriteLine(LogSettings.rrParameter20 + 
+                    LogSettings.rrParameter0 + 
+                    LogSettings.rrParameter1 + 
+                    LogSettings.rrParameter2 + 
+                    LogSettings.rrParameter3 + 
+                    LogSettings.rrParameter4 + 
+                    LogSettings.rrParameter5 + 
+                    LogSettings.rrParameter6 + 
+                    LogSettings.rrParameter7 + 
+                    LogSettings.rrParameter7_1 + 
+                    LogSettings.rrParameter8 + 
+                    LogSettings.rrParameter9 + 
+                    LogSettings.rrParameter10 + 
+                    LogSettings.rrParameter11 + 
+                    LogSettings.rrParameter12 + 
+                    LogSettings.rrParameter13 + 
+                    LogSettings.rrParameter14 + 
+                    LogSettings.rrParameter15 + 
+                    LogSettings.rrParameter16 + 
+                    LogSettings.rrParameter17 + 
+                    LogSettings.rrParameter18 + 
+                    LogSettings.rrParameter19 + 
+                    LogSettings.rrParameter21 + 
+                    LogSettings.rrParameter22 + 
+                    LogSettings.rrParameter23 + 
+                    LogSettings.rrParameter24 + 
+                    LogSettings.rrParameter25 + 
+                    LogSettings.rrParameter26 + 
+                    LogSettings.rrParameter27 +
+                    LogSettings.rrParameter28);
             }
         }
         private void FLLogFileWriter()
@@ -1548,6 +1647,14 @@ namespace Physics_Data_Debug
             {
                 toTireSettingsButton.Visible = true;
             }
+            if (LiveData.GForceOpen == true)
+            {
+                toGForceButton.Visible = false;
+            }
+            if (LiveData.GForceOpen == false)
+            {
+                toGForceButton.Visible = true;
+            }
         }
 
         private void TextBoxUpdates()
@@ -1563,8 +1670,8 @@ namespace Physics_Data_Debug
             */
             // Chassis, Engine and Differential stuff
             CurrentSpeed.Text = Math.Round(LiveData.speed, 2).ToString();
-            CurrentAcceleration.Text = Math.Round(LiveData.XZAcceleration, 2).ToString();
-            CurrentGForce.Text = Math.Round(LiveData.XZG, 2).ToString();
+            CurrentAcceleration.Text = Math.Round(LiveData.XYZAcceleration, 2).ToString();
+            CurrentGForce.Text = Math.Round(LiveData.XYZG, 2).ToString();
             CurrentFrontLift.Text = Math.Round(LiveData.frontLift, 2).ToString();
             CurrentRearLift.Text = Math.Round(LiveData.rearLift, 2).ToString();
             CurrentEngineRPM.Text = Math.Round(LiveData.engineRPM, 0).ToString() + " RPM";
@@ -1707,6 +1814,7 @@ namespace Physics_Data_Debug
             //TextBoxUpdates();
             //string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
+        /*
         private void pictureBoxMove()
         {
             int x = 197;
@@ -1737,6 +1845,7 @@ namespace Physics_Data_Debug
                 x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
                 y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
             }*/
+        /*
             if ((LiveData.XZG >= -0.001 && LiveData.XZG <= 0.001) || LiveData.XZG == double.NaN)
             {
                 x = 197;
@@ -1746,10 +1855,10 @@ namespace Physics_Data_Debug
             }
             else
             {
-                x = 197 + Convert.ToInt32(Math.Round((Math.Sin(LiveData.XZGAngleRad) * LiveData.XZG) * GScale, 0));
-                y = 197 - Convert.ToInt32(Math.Round((Math.Cos(LiveData.XZGAngleRad) * LiveData.XZG) * GScale, 0));
-                x2 = 192 + Convert.ToInt32(Math.Round((Math.Sin(LiveData.XZGAngleRad) * LiveData.XZG) * GScale, 0));
-                y2 = 208 - Convert.ToInt32(Math.Round((Math.Cos(LiveData.XZGAngleRad) * LiveData.XZG) * GScale, 0));
+                x = 197 + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
+                y = 197 - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
+                x2 = 192 + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
+                y2 = 208 - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
             }
             y3 = 193 - Convert.ToInt32(Math.Round(LiveData.YG * GScale, 0));
             
@@ -1758,8 +1867,9 @@ namespace Physics_Data_Debug
             CurrentGForceXZMoving.Text = Math.Round(LiveData.XZG, 2).ToString() + " G";
             //textBox7.Text = "x: " + x.ToString() +"\r\n" + "y: " + y.ToString();
             CurrentGForceYMoving.Location = new Point(x3, y3);
-            CurrentGForceYMoving.Text = Math.Round(Math.Abs(LiveData.YG), 2).ToString() + " G";
+            CurrentGForceYMoving.Text = Math.Round(Math.Abs(LiveData.YGRotated), 2).ToString() + " G";
         }
+*/
         private void ProcessStart()
         {
 
@@ -1940,19 +2050,6 @@ namespace Physics_Data_Debug
         }
         private void FirstAllDataLoggerPage_Load(object sender, EventArgs e)
         {
-            //toSettingsButton.Hide();
-            //toTireSettingsButton.Hide();
-
-            /*CODE FOR DRAWING G-Forces*
-            btm = new Bitmap(360, 360);
-            g = Graphics.FromImage(btm);
-            fG = CreateGraphics();
-            fG.TranslateTransform(795, 475);//Move the picture
-
-            th = new Thread(Draw);
-            th.IsBackground = true;
-            th.Start();
-            ***************************/
             /*
             // Load saved settings
             RegistryTools.LoadAllSettings(Application.ProductName, this);
@@ -1985,20 +2082,15 @@ namespace Physics_Data_Debug
                 return;
             }
         }
-        #endregion
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             getData();
             TextBoxUpdates();
-            pictureBoxMove();
-            panel1.Refresh();
-            panel2.Refresh();
+            //pictureBoxMove();
+            //panel1.Refresh();
+            //panel2.Refresh();
             timer1.Interval = LiveData.tickInterval;
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -2020,7 +2112,8 @@ namespace Physics_Data_Debug
         {
 
         }
-
+        /*
+        private readonly RectangleF[] rectfGArray = new RectangleF[10];
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Pen myPenWhite = new Pen(Color.White, 1);
@@ -2104,9 +2197,29 @@ namespace Physics_Data_Debug
             }
             else
             {
-                xG = 197 + Convert.ToSingle((Math.Sin(LiveData.XZGAngleRad) * LiveData.XZG) * GScale);
-                zG = 197 - Convert.ToSingle((Math.Cos(LiveData.XZGAngleRad) * LiveData.XZG) * GScale);
+                xG = 197 + Convert.ToSingle(LiveData.XGRotated * GScale);
+                zG = 197 - Convert.ToSingle(LiveData.ZGRotated * GScale);
             }
+            // Array of points before the current one
+            // Too slow to be used well¨like this. Lags the page. Need to later see what's better way.
+            /*
+            Color gArrayColor = Color.DarkGray;
+            Pen myPenGArray = new Pen(gArrayColor, 1);
+            Brush brushArray = new SolidBrush(gArrayColor);
+            float widthGArray = 2;
+            float heightGArray = 2;
+            RectangleF rectfGSmall = new RectangleF(xG+2, zG+2, widthGArray, heightGArray);
+            rectfGArray[rectfGArray.Length - 1] = rectfGSmall;
+            Array.Copy(rectfGArray, 1, rectfGArray, 0, rectfGArray.Length - 1);
+            for (int i = 0; i < rectfGArray.Length - 1; ++i)
+            {
+                //temperaturesFL.Series["Tread °C"].Points.AddY(flsTempArray[i]);
+                e.Graphics.DrawEllipse(myPenGArray, rectfGArray[i]);
+                e.Graphics.FillEllipse(brushArray, rectfGArray[i]);
+            }
+            */
+        /*
+            // The current point
             RectangleF rectfG = new RectangleF(xG, zG, widthG, heightG);
             e.Graphics.DrawEllipse(myPenG, rectfG);
             e.Graphics.FillEllipse(brush, rectfG);
@@ -2117,14 +2230,14 @@ namespace Physics_Data_Debug
         {
             // YG location
 
-            float x1 = 12;
-            float x2 = 55;
-            float yG = 199;
+            float x1 = 12f;
+            float x2 = 55f;
+            float yG = 199f;
             Color gColor = Color.Gray;
             Pen myPenG = new Pen(gColor, 3);
             Brush brush = new SolidBrush(gColor);
 
-            yG = 199f - Convert.ToSingle(LiveData.YG) * GScale;
+            yG = 199f - Convert.ToSingle(LiveData.YGRotated * GScale);
             e.Graphics.DrawLine(myPenG, x1, yG, x2, yG);
 
             Pen myPenWhite = new Pen(Color.White, 3);
@@ -2201,5 +2314,13 @@ namespace Physics_Data_Debug
             e.Graphics.DrawLine(myPenDarkRed, xStart, yG7, xEnd, yG7);
             e.Graphics.DrawLine(myPenDarkRed, xStart, yG7b, xEnd, yG7b);
         }
+    */
+        private void toGForceButton_Click(object sender, EventArgs e)
+        {
+            FormGForce s1 = new FormGForce();
+            s1.Show();
+        }
+        #endregion
+
     }
 }

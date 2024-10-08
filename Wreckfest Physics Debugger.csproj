@@ -72,7 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Angle3D.cs" />
-    <Compile Include="CSVReadWrite.cs" />
+    <Compile Include="FormGForce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGForce.Designer.cs">
+      <DependentUpon>FormGForce.cs</DependentUpon>
+    </Compile>
     <Compile Include="LiveData.cs" />
     <Compile Include="LogData.cs" />
     <Compile Include="LogSettings.cs" />
@@ -110,6 +115,9 @@
     <Compile Include="FormTireTemperatures.Designer.cs">
       <DependentUpon>FormTireTemperatures.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormGForce.resx">
+      <DependentUpon>FormGForce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLiveData.resx">
       <DependentUpon>FormLiveData.cs</DependentUpon>
     </EmbeddedResource>
