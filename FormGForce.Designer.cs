@@ -61,6 +61,8 @@ namespace Physics_Data_Debug
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.closeButton = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -91,6 +93,7 @@ namespace Physics_Data_Debug
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(101, 400);
             this.panel2.TabIndex = 285;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label53
             // 
@@ -398,11 +401,32 @@ namespace Physics_Data_Debug
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Enabled = false;
+            this.panel3.Location = new System.Drawing.Point(12, 12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(400, 400);
+            this.panel3.TabIndex = 287;
+            this.panel3.Visible = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Enabled = false;
+            this.panel4.Location = new System.Drawing.Point(418, 12);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(101, 400);
+            this.panel4.TabIndex = 287;
+            this.panel4.Visible = false;
+            // 
             // FormGForce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = global::Physics_Data_Debug.Properties.Resources.gforceBackground;
             this.ClientSize = new System.Drawing.Size(584, 474);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.panel2);
@@ -412,6 +436,8 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Name = "FormGForce";
             this.Text = "FormGForce";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGForce_FormClosed);
@@ -460,5 +486,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
