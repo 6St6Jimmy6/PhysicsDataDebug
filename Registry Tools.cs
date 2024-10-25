@@ -64,9 +64,17 @@ namespace Physics_Data_Debug
                 switch (child.GetType().Name)
                 {
                     case "TextBox":
+                        TextBox tb = child as TextBox;
+                        child.Text = GetSetting(app_name, child.Name, tb.Text).ToString();
+                        break;
+                    case "MaskedTextBox":
+                        MaskedTextBox mtb = child as MaskedTextBox;
+                        child.Text = GetSetting(app_name, child.Name, mtb.Text).ToString();
+                        break;
                     case "ListBox":
                     case "ComboBox":
-                        child.Text = GetSetting(app_name, child.Name, child.Text).ToString();
+                        ComboBox cb = child as ComboBox;
+                        child.Text = GetSetting(app_name, child.Name, cb.Text).ToString();
                         break;
                     case "CheckBox":
                         CheckBox chk = child as CheckBox;
@@ -149,9 +157,17 @@ namespace Physics_Data_Debug
                 switch (child.GetType().Name)
                 {
                     case "TextBox":
+                        TextBox tb = child as TextBox;
+                        SaveSetting(app_name, child.Name, tb.Text);
+                        break;
+                    case "MaskedTextBox":
+                        MaskedTextBox mtb = child as MaskedTextBox;
+                        SaveSetting(app_name, child.Name, mtb.Text);
+                        break;
                     case "ListBox":
                     case "ComboBox":
-                        SaveSetting(app_name, child.Name, child.Text);
+                        ComboBox cb = child as ComboBox;
+                        SaveSetting(app_name, child.Name, cb.Text);
                         break;
                     case "CheckBox":
                         CheckBox chk = child as CheckBox;

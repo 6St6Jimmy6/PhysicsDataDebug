@@ -7,30 +7,103 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Physics_Data_Debug
 {
     public partial class FormGForce : Form
     {
-        private readonly RectangleF[] rectfGArray = new RectangleF[100];
+        //private readonly RectangleF[] rectfGArray = new RectangleF[100];
 
-        public static int GScale = 25;
+        //private double maxY = 2;
 
-        private static int xy = 197;
-        private float xzG = xy;
+        //private int intervalDivider = 5;
+
+        //public static int GScale = 25;
+
+        //private static int xy = 197;
+        //private float xzG = xy;
+
+        //int u = 2;
+
+
         public FormGForce()
         {
             InitializeComponent();
             timer1.Interval = 100;
+            timer2.Interval = timer1.Interval * GForceSettings.HistoryAmountPoints;
+            GForce.SetPolarChart(chart1);
+            GForce.SetUpDownChart(chart2);
+
+
+
+            /*
             //panel3.Paint += new PaintEventHandler(panel3_Paint);
             //panel4.Paint += new PaintEventHandler(panel4_Paint);
             panel1.Paint += new PaintEventHandler(panel1_Paint);
             panel2.Paint += new PaintEventHandler(panel2_Paint);
+            */
         }
+        /*
+        private void X1CheckIfCBSelectionsTextIsHeaderAndChooseItsValues()
+        {
+            if (FormGForceSettings.X1ComboBox.Text == csv.header001) // Degrees
+            {
+                X1ValuesChart1Array[X1ValuesChart1Array.Length - 1] = LiveData.XZGAngleDeg;
+            }
+            else if (FormGForceSettings.X1ComboBox.Text == csv.header002) // Radians
+            {
+                X1ValuesChart1Array[X1ValuesChart1Array.Length - 1] = LiveData.XZGAngleRad;
+            }
+            else if (FormGForceSettings.X1ComboBox.Text == csv.header003) // Angular Velocity
+            {
+                GForceSettings.X1Values = csv.dVals003;
+                //textBox2.AppendText(comboBox1.SelectedItem + " is equal " + csv.header003 + "\r\n");
+            }
+            else if (FormGForceSettings.X1ComboBox.Text == csv.header004) // Vertical Load
+            {
+                GForceSettings.X1Values = csv.dVals004;
+                //textBox2.AppendText(comboBox1.SelectedItem + " is equal " + csv.header004 + "\r\n");
+            }
+            else
+            {
+                GForceSettings.X1Values = csv.dVals001;
+                //textBox2.AppendText("No item found. Default " + csv.header001 + " chosen for X1" + "\r\n");
+            }
+        }
+        private void Y1CheckIfCBSelectionsTextIsHeaderAndChooseItsValues()
+        {
+            if (FormGForceSettings.Y1ComboBox.Text == csv.header001)
+            {
+                GForceSettings.Y1Values = csv.dVals001;
+                //textBox2.AppendText(csv.header001 + " values selected" + "\r\n");
+            }
+            else if (FormGForceSettings.Y1ComboBox.Text == csv.header002)
+            {
+                GForceSettings.Y1Values = csv.dVals002;
+            }
+            else if (FormGForceSettings.Y1ComboBox.Text == csv.header003)
+            {
+                GForceSettings.Y1Values = csv.dVals003;
+            }
+            else if (FormGForceSettings.Y1ComboBox.Text == csv.header004)
+            {
+                GForceSettings.Y1Values = csv.dVals004;
+            }
+            else
+            {
+                GForceSettings.Y1Values = csv.dVals002;
+                //textBox2.AppendText("No item found. Default " + csv.header002 + " chosen for Y1" + "\r\n");
+            }
+        }
+        */
 
         private void FormGForce_Load(object sender, EventArgs e)
         {
+
             LiveData.GForceOpen = true;
+            #region ignore old drawing
+            /*
             //panel3.Refresh();
             //panel4.Refresh();
             //Label Locations
@@ -72,7 +145,11 @@ namespace Physics_Data_Debug
             float yG7b = (panel2.Size.Height / 2 + heightG7 / 2);
             G7.Location = new Point(0, Convert.ToInt32(yG7) - 7);
             G7m.Location = new Point(0, Convert.ToInt32(yG7b) - 7);
+            */
+            #endregion
         }
+        #region ignore old drawing
+        /*
         private void pictureBoxMove()
         {
             int x = xy;
@@ -81,7 +158,7 @@ namespace Physics_Data_Debug
             int y2 = 208;
             int x3 = 60;
             int y3 = 208;
-
+            */
             /*
             if(LiveData.XZGAngleDeg <= 90d)
             {
@@ -103,6 +180,7 @@ namespace Physics_Data_Debug
                 x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
                 y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
             }*/
+            /*
             if ((LiveData.XZG >= -0.001 && LiveData.XZG <= 0.001) || LiveData.XZG == double.NaN)
             {
                 x = xy;
@@ -126,12 +204,16 @@ namespace Physics_Data_Debug
             CurrentGForceYMoving.Location = new Point(x3, y3);
             CurrentGForceYMoving.Text = Math.Round(Math.Abs(LiveData.YGRotated), 2).ToString() + " G";
         }
+            
+        */
+        /*
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+            
             float xG = xzG;
             float zG = xzG;
             Color gColor = Color.White;
-            Pen myPenG = new Pen(gColor, 1);
+            //Pen myPenG = new Pen(gColor, 1);// No need to draw borders, when fill does the same filled.
             Brush brush = new SolidBrush(gColor);
             float widthG = 6;
             float heightG = 6;
@@ -148,8 +230,8 @@ namespace Physics_Data_Debug
             }
             // Array of points before the current one
             // Too slow to be used well like this. Lags the page. Need to later see what's better way.
-            /*
-            Color gArrayColor = Color.DarkGray;
+
+            Color gArrayColor = Color.FromArgb(255, 60, 60, 60);
             Pen myPenGArray = new Pen(gArrayColor, 1);
             Brush brushArray = new SolidBrush(gArrayColor);
             float widthGArray = 2;
@@ -159,18 +241,19 @@ namespace Physics_Data_Debug
             Array.Copy(rectfGArray, 1, rectfGArray, 0, rectfGArray.Length - 1);
             for (int i = 0; i < rectfGArray.Length - 1; ++i)
             {
-                //temperaturesFL.Series["Tread °C"].Points.AddY(flsTempArray[i]);
-                e.Graphics.DrawEllipse(myPenGArray, rectfGArray[i]);
+                //e.Graphics.DrawEllipse(myPenGArray, rectfGArray[i]);
                 e.Graphics.FillEllipse(brushArray, rectfGArray[i]);
             }
-            */
+            
             // The current point
             RectangleF rectfG = new RectangleF(xG, zG, widthG, heightG);
-            e.Graphics.DrawEllipse(myPenG, rectfG);
+            //e.Graphics.DrawEllipse(myPenG, rectfG);// No need to draw borders, when fill does the same filled.
             e.Graphics.FillEllipse(brush, rectfG);
             //textBox7.Text = "x: " + xG.ToString() + "\r\n" + "y: " + zG.ToString();
+            
         }
-
+        */
+        /*
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             // YG location
@@ -183,8 +266,10 @@ namespace Physics_Data_Debug
 
             yG = 199f - Convert.ToSingle(LiveData.YGRotated * GScale);
             e.Graphics.DrawLine(myPenG, x1, yG, x2, yG);
-        }
 
+        }
+        */
+        #endregion
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -197,12 +282,55 @@ namespace Physics_Data_Debug
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer2.Interval = timer1.Interval * GForceSettings.HistoryAmountPoints;
+            /*
             pictureBoxMove();
             panel1.Refresh();
             panel2.Refresh();
+            */
+            GForce.PlotPolarChart(chart1);
+            GForce.PlotUpDownChart(chart2);
         }
 
+        private void chart1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void FormGForce_SizeChanged(object sender, EventArgs e)
+        {
+            //16 + 440 + 110;
+            int formBorders = 16;
+            double sizeWithoutFormBorders = this.Size.Width - formBorders;
+            double chart1Multi = 4;
+            double chart2Multi = 1;
+            double chart1Plu2Multi = chart1Multi + chart2Multi;
+            double asd = sizeWithoutFormBorders / chart1Plu2Multi;
+            int newHeightWidthChart1 = Convert.ToInt32(asd * chart1Multi);
+            int newWidthChart2 = Convert.ToInt32(asd * chart2Multi);
+
+            chart1.Size = new Size(newHeightWidthChart1, newHeightWidthChart1);
+            chart2.Location = new Point(0, 0);
+            chart2.Size = new Size(newWidthChart2, newHeightWidthChart1);
+            chart2.Location = new Point(newHeightWidthChart1, 0);
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            GForce.InfiniteHistoryPolarChart(chart1);
+        }
+
+        private void toSettingsButton_Click(object sender, EventArgs e)
+        {
+            FormGForceSettings s1 = new FormGForceSettings();
+            s1.Show();
+        }
+        #region ignore old drawing
+        /*
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
             Pen myPenWhite = new Pen(Color.White, 1);
@@ -333,6 +461,24 @@ namespace Physics_Data_Debug
             float yG7b = (panel2.Size.Height / 2 + heightG7 / 2);
             e.Graphics.DrawLine(myPenDarkRed, xStart, yG7, xEnd, yG7);
             e.Graphics.DrawLine(myPenDarkRed, xStart, yG7b, xEnd, yG7b);
+        }
+        */
+        #endregion
+
+        private void refreshAndApplyButton_Click(object sender, EventArgs e)
+        {
+            
+            timer1.Enabled = false;
+            timer2.Enabled = false;
+            GForce.ClearSeriesHistory(chart1);
+            GForce.SetArrays();
+
+            // Not needed anymore these because chart settings are applied in the settings.
+            //GForce.SetPolarChart(chart1);
+            //GForce.SetUpDownChart(chart2);
+
+            timer1.Enabled = true;
+            timer2.Enabled = true;
         }
     }
 }

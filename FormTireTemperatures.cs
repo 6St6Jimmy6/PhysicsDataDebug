@@ -55,60 +55,60 @@ namespace Physics_Data_Debug
             Array.Copy(rrsTempArray, 1, rrsTempArray, 0, rrsTempArray.Length - 1);
             Array.Copy(rriTempArray, 1, rriTempArray, 0, rriTempArray.Length - 1);
 
-            temperaturesFL.Series["Tread °C"].Points.Clear();
+            chartFL.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < flsTempArray.Length - 1; ++i)
             {
-                temperaturesFL.Series["Tread °C"].Points.AddY(flsTempArray[i]);
+                chartFL.Series["Tread °C"].Points.AddY(flsTempArray[i]);
             }
 
-            temperaturesFL.Series["Inner °C"].Points.Clear();
+            chartFL.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < fliTempArray.Length - 1; ++i)
             {
-                temperaturesFL.Series["Inner °C"].Points.AddY(fliTempArray[i]);
+                chartFL.Series["Inner °C"].Points.AddY(fliTempArray[i]);
             }
 
-            temperaturesFR.Series["Tread °C"].Points.Clear();
+            chartFR.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < frsTempArray.Length - 1; ++i)
             {
-                temperaturesFR.Series["Tread °C"].Points.AddY(frsTempArray[i]);
+                chartFR.Series["Tread °C"].Points.AddY(frsTempArray[i]);
             }
 
-            temperaturesFR.Series["Inner °C"].Points.Clear();
+            chartFR.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < friTempArray.Length - 1; ++i)
             {
-                temperaturesFR.Series["Inner °C"].Points.AddY(friTempArray[i]);
+                chartFR.Series["Inner °C"].Points.AddY(friTempArray[i]);
             }
 
-            temperaturesRL.Series["Tread °C"].Points.Clear();
+            chartRL.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < rlsTempArray.Length - 1; ++i)
             {
-                temperaturesRL.Series["Tread °C"].Points.AddY(rlsTempArray[i]);
+                chartRL.Series["Tread °C"].Points.AddY(rlsTempArray[i]);
             }
 
-            temperaturesRL.Series["Inner °C"].Points.Clear();
+            chartRL.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < rliTempArray.Length - 1; ++i)
             {
-                temperaturesRL.Series["Inner °C"].Points.AddY(rliTempArray[i]);
+                chartRL.Series["Inner °C"].Points.AddY(rliTempArray[i]);
             }
 
-            temperaturesRR.Series["Tread °C"].Points.Clear();
+            chartRR.Series["Tread °C"].Points.Clear();
 
             for (int i = 0; i < rrsTempArray.Length - 1; ++i)
             {
-                temperaturesRR.Series["Tread °C"].Points.AddY(rrsTempArray[i]);
+                chartRR.Series["Tread °C"].Points.AddY(rrsTempArray[i]);
             }
 
-            temperaturesRR.Series["Inner °C"].Points.Clear();
+            chartRR.Series["Inner °C"].Points.Clear();
 
             for (int i = 0; i < rriTempArray.Length - 1; ++i)
             {
-                temperaturesRR.Series["Inner °C"].Points.AddY(rriTempArray[i]);
+                chartRR.Series["Inner °C"].Points.AddY(rriTempArray[i]);
             }
             textBox_FL_TreadTemperature.Text = Math.Round(LiveData.FL_TreadTemperature, 2).ToString();
             textBox_FL_InnerTemperature.Text = Math.Round(LiveData.FL_InnerTemperature, 2).ToString();
@@ -118,6 +118,10 @@ namespace Physics_Data_Debug
             textBox_RL_InnerTemperature.Text = Math.Round(LiveData.RL_InnerTemperature, 2).ToString();
             textBox_RR_TreadTemperature.Text = Math.Round(LiveData.RR_TreadTemperature, 2).ToString();
             textBox_RR_InnerTemperature.Text = Math.Round(LiveData.RR_InnerTemperature, 2).ToString();
+        }
+        private void XYSeries()
+        {
+
         }
         #endregion
 
@@ -131,6 +135,7 @@ namespace Physics_Data_Debug
         {
             if (updatedStartedOnce == true)
             {
+                timer1.Enabled = false;
                 //update.Suspend();
             }
             updatedStartedOnce = false;
@@ -146,8 +151,9 @@ namespace Physics_Data_Debug
         {
             if (updatedStartedOnce == false)
             {
+                timer1.Enabled = true;
                 //update.Start();
-                //updatedStartedOnce = true;
+                updatedStartedOnce = true;
             }
             else
             {
@@ -161,7 +167,7 @@ namespace Physics_Data_Debug
             {
                 //update.Suspend();
             }
-
+            timer1.Enabled = false;
             //update.Abort();
         }
         private void timer1_Tick(object sender, EventArgs e)

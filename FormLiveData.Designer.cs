@@ -237,6 +237,7 @@ namespace Physics_Data_Debug
             this.label37 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.toGForceButton = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label12
@@ -2489,6 +2490,21 @@ namespace Physics_Data_Debug
             this.toGForceButton.UseVisualStyleBackColor = false;
             this.toGForceButton.Click += new System.EventHandler(this.toGForceButton_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.DimGray;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(106, 813);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(124, 17);
+            this.checkBox1.TabIndex = 274;
+            this.checkBox1.Text = "Text Box updates on";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // FormLiveData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2496,6 +2512,7 @@ namespace Physics_Data_Debug
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(821, 872);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.toGForceButton);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label37);
@@ -2919,6 +2936,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button toGForceButton;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
