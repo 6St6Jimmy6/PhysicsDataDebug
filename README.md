@@ -3,6 +3,9 @@ Physics data debugger for Wreckfest.
 (Bit outdated picture now but close)
 ![alt text](https://i.imgur.com/4ao4dbR.png)
 
+This is how roughly the G-Force graph looks by default:
+![jhFm6aV](https://github.com/user-attachments/assets/be766e5a-404a-404c-96a3-642e001d8890)
+
 You can monitor many kind of physics. There's also option for logging the data, tune what you log and you can also change some tire parameters on the fly.
 
 Press Start Logging and the debugger makes log files for each tire. It will log until you press the Stop Logging or close the program. You can also change the interval to be shorter or longer. By default it's 50ms, but that's not how fast the updates happen. You can see the tick speed under the box in milliseconds.
