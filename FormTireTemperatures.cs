@@ -128,11 +128,13 @@ namespace Physics_Data_Debug
         #region Form buttons etc
         private void TireTemperatures_Load(object sender, EventArgs e)
         {
+            LiveData.TemperaturesChartOpen = true;
             updatedStartedOnce = false;
             //update.Start();
         }
         private void TireTemperatures_FormClosing(object sender, FormClosingEventArgs e)
         {
+            LiveData.TemperaturesChartOpen = false;
             if (updatedStartedOnce == true)
             {
                 timer1.Enabled = false;

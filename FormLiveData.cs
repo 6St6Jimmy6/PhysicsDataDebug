@@ -50,22 +50,22 @@ namespace Physics_Data_Debug
 
         }
         #region Methods
-        private void ButtonVisibilities()
+        public void ButtonVisibilities()
         {
             if (LiveData.logging == true)
             {
                 toLogSettingsButton.Visible = false;
             }
-            if (LiveData.SettingsOpen == false && LiveData.logging == false)
+            if (LiveData.LogSettingsOpen == false && LiveData.logging == false)
             {
                 toLogSettingsButton.Visible = true;
             }
-            if (LiveData.SettingsOpen == true)
+            if (LiveData.LogSettingsOpen == true)
             {
                 toLogSettingsButton.Visible = false;
                 startFileLoggingButton.Visible = false;
             }
-            if (LiveData.SettingsOpen == false)
+            if (LiveData.LogSettingsOpen == false)
             {
                 startFileLoggingButton.Visible = true;
             }
@@ -76,6 +76,14 @@ namespace Physics_Data_Debug
             if (LiveData.TireSettingsOpen == false)
             {
                 toTireSettingsButton.Visible = true;
+            }
+            if (LiveData.TemperaturesChartOpen == true)
+            {
+                OpenTemperaturesChart.Visible = false;
+            }
+            if (LiveData.TemperaturesChartOpen == false)
+            {
+                OpenTemperaturesChart.Visible = true;
             }
             if (LiveData.GForceOpen == true)
             {
@@ -356,7 +364,8 @@ namespace Physics_Data_Debug
         }
         private void toSettingsButton_Click(object sender, EventArgs e)
         {
-
+            toLogSettingsButton.Visible = false;
+            LiveData.LogSettingsOpen = true;
             FormLogSettings s1 = new FormLogSettings();
             s1.Show();
 
@@ -371,7 +380,8 @@ namespace Physics_Data_Debug
         }
         private void toTireSettingsButton_Click(object sender, EventArgs e)
         {
-
+            toTireSettingsButton.Visible = false;
+            LiveData.TireSettingsOpen = true;
             FormTireSettings s = new FormTireSettings();
             s.Show();
             //this.Hide();
@@ -389,11 +399,15 @@ namespace Physics_Data_Debug
         }
         private void OpenTemperaturesChart_Click(object sender, EventArgs e)
         {
+            OpenTemperaturesChart.Visible = false;
+            LiveData.TemperaturesChartOpen = true;
             FormTireTemperatures s = new FormTireTemperatures();
             s.Show();
         }
         private void toSuspensionSettingsButton_Click(object sender, EventArgs e)
         {
+            toSuspensionSettingsButton.Visible = false;
+            LiveData.SuspensionSettingsOpen = true;
             FormSuspensionSettings s = new FormSuspensionSettings();
             s.Show();
         }
@@ -457,7 +471,7 @@ namespace Physics_Data_Debug
             LiveData.GetData();
             //getData();
 
-            UpdateFormData();
+            //ButtonVisibilities();
             if (checkBox1.Checked == true)
             {
                 TextBoxUpdates();
@@ -468,6 +482,11 @@ namespace Physics_Data_Debug
             sTickTime = "Tick time " + LiveData.elapsedTime + " ms";
             TickTime.Text = sTickTime;
             timer1.Interval = LiveData.tickInterval;
+        }
+
+        private void buttonUpdates_Tick(object sender, EventArgs e)
+        {
+            UpdateFormData();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -491,8 +510,11 @@ namespace Physics_Data_Debug
         }
         private void toGForceButton_Click(object sender, EventArgs e)
         {
+            toGForceButton.Visible = false;
+            LiveData.GForceOpen = true;
             FormGForce s1 = new FormGForce();
             s1.Show();
+
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {

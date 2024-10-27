@@ -64,17 +64,14 @@ namespace Physics_Data_Debug
                 switch (child.GetType().Name)
                 {
                     case "TextBox":
-                        TextBox tb = child as TextBox;
-                        child.Text = GetSetting(app_name, child.Name, tb.Text).ToString();
+                        child.Text = GetSetting(app_name, child.Name, child.Text).ToString();
                         break;
                     case "MaskedTextBox":
-                        MaskedTextBox mtb = child as MaskedTextBox;
-                        child.Text = GetSetting(app_name, child.Name, mtb.Text).ToString();
+                        child.Text = GetSetting(app_name, child.Name, child.Text).ToString();
                         break;
                     case "ListBox":
                     case "ComboBox":
-                        ComboBox cb = child as ComboBox;
-                        child.Text = GetSetting(app_name, child.Name, cb.Text).ToString();
+                        child.Text = GetSetting(app_name, child.Name, child.Text).ToString();
                         break;
                     case "CheckBox":
                         CheckBox chk = child as CheckBox;
@@ -157,17 +154,14 @@ namespace Physics_Data_Debug
                 switch (child.GetType().Name)
                 {
                     case "TextBox":
-                        TextBox tb = child as TextBox;
-                        SaveSetting(app_name, child.Name, tb.Text);
+                        SaveSetting(app_name, child.Name, child.Text);
                         break;
                     case "MaskedTextBox":
-                        MaskedTextBox mtb = child as MaskedTextBox;
-                        SaveSetting(app_name, child.Name, mtb.Text);
+                        SaveSetting(app_name, child.Name, child.Text);
                         break;
                     case "ListBox":
                     case "ComboBox":
-                        ComboBox cb = child as ComboBox;
-                        SaveSetting(app_name, child.Name, cb.Text);
+                        SaveSetting(app_name, child.Name, child.Text);
                         break;
                     case "CheckBox":
                         CheckBox chk = child as CheckBox;

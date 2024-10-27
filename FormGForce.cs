@@ -97,7 +97,17 @@ namespace Physics_Data_Debug
             }
         }
         */
-
+        private void ButtonVisibilities()
+        {
+            if (GForceSettings.SettingsOpen == true)
+            {
+                toSettingsButton.Visible = false;
+            }
+            if (GForceSettings.SettingsOpen == false)
+            {
+                toSettingsButton.Visible = true;
+            }
+        }
         private void FormGForce_Load(object sender, EventArgs e)
         {
 
@@ -282,6 +292,7 @@ namespace Physics_Data_Debug
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            ButtonVisibilities();
             timer2.Interval = timer1.Interval * GForceSettings.HistoryAmountPoints;
             /*
             pictureBoxMove();
@@ -326,6 +337,8 @@ namespace Physics_Data_Debug
 
         private void toSettingsButton_Click(object sender, EventArgs e)
         {
+            toSettingsButton.Visible = false;
+            GForceSettings.SettingsOpen = true;
             FormGForceSettings s1 = new FormGForceSettings();
             s1.Show();
         }

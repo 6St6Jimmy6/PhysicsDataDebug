@@ -882,11 +882,13 @@ namespace Physics_Data_Debug
 
         private void FormGForceSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
+            GForceSettings.SettingsOpen = false;
             RegistryTools.SaveAllSettings(Application.ProductName, this);
         }
 
         private void FormGForceSettings_Load(object sender, EventArgs e)
         {
+            GForceSettings.SettingsOpen = true;
             RegistryTools.LoadAllSettings(Application.ProductName, this);
         }
     }

@@ -14,8 +14,9 @@ namespace Physics_Data_Debug
 
         public static bool logging { get; set; } = false;
 
-        public static bool SettingsOpen { get; set; } = false;
+        public static bool LogSettingsOpen { get; set; } = false;
         public static bool TireSettingsOpen { get; set; } = false;
+        public static bool TemperaturesChartOpen { get; set; } = false;
         public static bool SuspensionSettingsOpen { get; set; } = false;
         public static bool GForceOpen { get; set; } = false;
         public static string sTireTravelSpeed { get; set; } = "Tire Travel Speed";
@@ -2283,6 +2284,27 @@ namespace Physics_Data_Debug
                 LogSettings.Header27 +
                 LogSettings.Header28;
         }
+        private static void WriteAllTiresHeadersLine()
+        {
+            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "AllTiresWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(HeadersLine());
+            }
+        }
+        private static void WriteFrontTiresHeadersLine()
+        {
+            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "FrontTiresWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(HeadersLine());
+            }
+        }
+        private static void WriteRearTiresHeadersLine()
+        {
+            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "RearTiresWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(HeadersLine());
+            }
+        }
         private static void WriteFLHeadersLine()
         {
             using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "FrontLeftWreckfestDebugLog.txt"))
@@ -2311,11 +2333,9 @@ namespace Physics_Data_Debug
                 sw.WriteLine(HeadersLine());
             }
         }
-        private static void WriteFLParametersLine()
+        private static string FLParametersLine()
         {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontLeftWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(LogSettings.flParameter20 +
+            return LogSettings.flParameter20 +
                     LogSettings.flParameter0 +
                     LogSettings.flParameter1 +
                     LogSettings.flParameter2 +
@@ -2344,14 +2364,11 @@ namespace Physics_Data_Debug
                     LogSettings.flParameter25 +
                     LogSettings.flParameter26 +
                     LogSettings.flParameter27 +
-                    LogSettings.flParameter28);
-            }
+                    LogSettings.flParameter28;
         }
-        private static void WriteFRParametersLine()
+        private static string FRParametersLine()
         {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontRightWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(LogSettings.frParameter20 +
+            return LogSettings.frParameter20 +
                     LogSettings.frParameter0 +
                     LogSettings.frParameter1 +
                     LogSettings.frParameter2 +
@@ -2380,14 +2397,11 @@ namespace Physics_Data_Debug
                     LogSettings.frParameter25 +
                     LogSettings.frParameter26 +
                     LogSettings.frParameter27 +
-                    LogSettings.frParameter28);
-            }
+                    LogSettings.frParameter28;
         }
-        private static void WriteRLParametersLine()
+        private static string RLParametersLine()
         {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearLeftWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(LogSettings.rlParameter20 +
+            return LogSettings.rlParameter20 +
                     LogSettings.rlParameter0 +
                     LogSettings.rlParameter1 +
                     LogSettings.rlParameter2 +
@@ -2416,14 +2430,11 @@ namespace Physics_Data_Debug
                     LogSettings.rlParameter25 +
                     LogSettings.rlParameter26 +
                     LogSettings.rlParameter27 +
-                    LogSettings.rlParameter28);
-            }
+                    LogSettings.rlParameter28;
         }
-        private static void WriteRRParametersLine()
+        private static string RRParametersLine()
         {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearRightWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(LogSettings.rrParameter20 +
+            return LogSettings.rrParameter20 +
                     LogSettings.rrParameter0 +
                     LogSettings.rrParameter1 +
                     LogSettings.rrParameter2 +
@@ -2452,7 +2463,93 @@ namespace Physics_Data_Debug
                     LogSettings.rrParameter25 +
                     LogSettings.rrParameter26 +
                     LogSettings.rrParameter27 +
-                    LogSettings.rrParameter28);
+                    LogSettings.rrParameter28;
+        }
+        private static void WriteAllTiresParametersLine()
+        {
+            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "AllTiresWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(FLParametersLine());
+                sw.WriteLine(FRParametersLine());
+                sw.WriteLine(RLParametersLine());
+                sw.WriteLine(RRParametersLine());
+            }
+        }
+        private static void WriteFrontTiresParametersLine()
+        {
+            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontTiresWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(FLParametersLine());
+                sw.WriteLine(FRParametersLine());
+            }
+        }
+        private static void WriteRearTiresParametersLine()
+        {
+            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearTiresWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(RLParametersLine());
+                sw.WriteLine(RRParametersLine());
+            }
+        }
+        private static void WriteFLParametersLine()
+        {
+            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontLeftWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(FLParametersLine());
+            }
+        }
+        private static void WriteFRParametersLine()
+        {
+            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontRightWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(FRParametersLine());
+            }
+        }
+        private static void WriteRLParametersLine()
+        {
+            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearLeftWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(RLParametersLine());
+            }
+        }
+        private static void WriteRRParametersLine()
+        {
+            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearRightWreckfestDebugLog.txt"))
+            {
+                sw.WriteLine(RRParametersLine());
+            }
+        }
+        private static void AllTireLogFileWriter()
+        {
+            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "AllTiresWreckfestDebugLog.txt"))
+            {
+                WriteAllTiresHeadersLine();
+            }
+            else
+            {
+                WriteAllTiresParametersLine();
+            }
+        }
+        private static void FrontTiresLogFileWriter()
+        {
+            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "FrontTiresWreckfestDebugLog.txt"))
+            {
+                WriteFrontTiresHeadersLine();
+            }
+            else
+            {
+                WriteFrontTiresParametersLine();
+            }
+        }
+        private static void RearTiresLogFileWriter()
+        {
+            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "RearTiresWreckfestDebugLog.txt"))
+            {
+                WriteRearTiresHeadersLine();
+            }
+            else
+            {
+                WriteRearTiresParametersLine();
             }
         }
         private static void FLLogFileWriter()

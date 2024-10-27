@@ -814,6 +814,7 @@ namespace Physics_Data_Debug
             this.Name = "FormGForceSettings";
             this.Text = "FormGForceSettings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGForceSettings_FormClosing);
+            this.Load += new System.EventHandler(this.FormGForceSettings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

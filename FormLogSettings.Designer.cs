@@ -80,13 +80,16 @@ namespace Physics_Data_Debug
             // selectAll
             // 
             this.selectAll.AutoSize = true;
+            this.selectAll.Checked = true;
+            this.selectAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.selectAll.Location = new System.Drawing.Point(126, 39);
             this.selectAll.Name = "selectAll";
             this.selectAll.Size = new System.Drawing.Size(70, 17);
             this.selectAll.TabIndex = 18;
             this.selectAll.Text = "Select All";
             this.selectAll.UseVisualStyleBackColor = true;
-            this.selectAll.CheckedChanged += new System.EventHandler(this.selectFLAll_CheckedChanged);
+            this.selectAll.CheckedChanged += new System.EventHandler(this.selectAll_CheckedChanged);
+            this.selectAll.Click += new System.EventHandler(this.selectAll_Click);
             // 
             // checkedListBoxLogging
             // 
@@ -125,7 +128,7 @@ namespace Physics_Data_Debug
             this.checkedListBoxLogging.Name = "checkedListBoxLogging";
             this.checkedListBoxLogging.Size = new System.Drawing.Size(203, 349);
             this.checkedListBoxLogging.TabIndex = 19;
-            this.checkedListBoxLogging.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxFLLogging_SelectedIndexChanged);
+            this.checkedListBoxLogging.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxLogging_SelectedIndexChanged);
             // 
             // SelectedListBox
             // 

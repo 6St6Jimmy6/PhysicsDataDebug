@@ -10,7 +10,8 @@ namespace Physics_Data_Debug
     {
         public static string ChartPlotterLocation { get; set; } = "";
         public static string LogFileSaveLocationFolder { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\PhysicsDebugger\";
-        public static bool FiltersOn { get; set; } = false;
+        public static bool selectAll { get; set; } = true;
+        public static bool FiltersOn { get; set; } = false;//
 
         public static bool TireTravelSpeedLogEnabled { get; set; } = true;//0
         public static bool AngularVelocityLogEnabled { get; set; } = true;//1

@@ -330,7 +330,28 @@ namespace Physics_Data_Debug
             for (int i = 0; i < checkedListBoxLogging.CheckedIndices.Count; i++)
             {
                 SelectedIndeciesListBox.Items.Add(checkedListBoxLogging.CheckedIndices[i]);
-
+            }
+        }
+        private void CheckAllOffListBoxStates()
+        {
+            if (selectAll.Checked == false)
+            {
+                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
+                {
+                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
+                }
+                LogSettings.selectAll = false;
+            }
+        }
+        private void CheckAllOnListBoxStates()
+        {
+            if (selectAll.Checked == true)
+            {
+                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
+                {
+                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
+                }
+                LogSettings.selectAll = true;
             }
         }
         private void TextBoxesToString()
@@ -353,14 +374,15 @@ namespace Physics_Data_Debug
 
         private void Settings_Closed(object sender, FormClosedEventArgs e)
         {
-            LiveData.SettingsOpen = false;
+            LiveData.LogSettingsOpen = false;
         }
         private void Settings_Load(object sender, EventArgs e)
         {
+            LiveData.LogSettingsOpen = true;
+
             SelectedListBox.Visible = false;
             SelectedIndeciesListBox.Visible = false;
 
-            LiveData.SettingsOpen = true;
             // Load saved settings
             RegistryTools.LoadAllSettings(Application.ProductName, this);
             DelimiterSet();
@@ -368,25 +390,16 @@ namespace Physics_Data_Debug
             //ListBoxClearAndWriters();
 
             TextBoxesToString();
+            CheckAllOnListBoxStates();
         }
-        private void selectFLAll_CheckedChanged(object sender, EventArgs e)
+        private void selectAll_CheckedChanged(object sender, EventArgs e)
         {
-
-            if (selectAll.Checked == true)
-            {
-                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
-                {
-                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
-                {
-                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
-                }
-            }
-
+            CheckAllOnListBoxStates();
+        }
+        private void selectAll_Click(object sender, EventArgs e)
+        {
+            CheckAllOnListBoxStates();
+            CheckAllOffListBoxStates();
         }
         private void backToFirstAllDataLoggerPage_Click(object sender, EventArgs e)
         {
@@ -394,9 +407,16 @@ namespace Physics_Data_Debug
             //fadlp.Show();
             this.Close();
         }
-        private void checkedListBoxFLLogging_SelectedIndexChanged(object sender, EventArgs e)
+        private void checkedListBoxLogging_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
+            {
+                if (checkedListBoxLogging.GetItemChecked(i) == false)
+                {
+                    LogSettings.selectAll = false;
+                    selectAll.Checked = false;
+                }
+            }
         }
         private void ApplyLogSettings_Click(object sender, EventArgs e)
         {
@@ -462,5 +482,6 @@ namespace Physics_Data_Debug
             }
         }
         #endregion
+
     }
 }

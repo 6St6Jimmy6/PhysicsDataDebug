@@ -10,6 +10,7 @@ namespace Physics_Data_Debug
 {
     class GForceSettings
     {
+        public static bool SettingsOpen { get; set; } = false;
         /// <summary>
         /// X and Y values
         /// </summary>
