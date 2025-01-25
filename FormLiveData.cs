@@ -93,6 +93,14 @@ namespace Physics_Data_Debug
             {
                 toGForceButton.Visible = true;
             }
+            if (LiveData._4WheelsOpen == true)
+            {
+                to4WheelsButton.Visible = false;
+            }
+            if (LiveData._4WheelsOpen == false)
+            {
+                to4WheelsButton.Visible = true;
+            }
         }
 
         private void TextBoxUpdates()
@@ -514,7 +522,6 @@ namespace Physics_Data_Debug
             LiveData.GForceOpen = true;
             FormGForce s1 = new FormGForce();
             s1.Show();
-
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -522,5 +529,12 @@ namespace Physics_Data_Debug
         }
         #endregion
 
+        private void to4WheelsButton_Click(object sender, EventArgs e)
+        {
+            to4WheelsButton.Visible = false;
+            LiveData._4WheelsOpen = true;
+            Form4Wheels s1 = new Form4Wheels();
+            s1.Show();
+        }
     }
 }

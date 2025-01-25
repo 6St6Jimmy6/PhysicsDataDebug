@@ -106,6 +106,7 @@ namespace Physics_Data_Debug
             this.MarkerColorComboBox.Size = new System.Drawing.Size(129, 21);
             this.MarkerColorComboBox.TabIndex = 369;
             this.MarkerColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MarkerColorComboBox_DrawItem);
+            this.MarkerColorComboBox.SelectedIndexChanged += new System.EventHandler(this.MarkerColorComboBox_SelectedIndexChanged);
             this.MarkerColorComboBox.SelectionChangeCommitted += new System.EventHandler(this.MarkerColorComboBox_SelectionChangeCommitted);
             // 
             // label37
@@ -116,6 +117,7 @@ namespace Physics_Data_Debug
             this.label37.Size = new System.Drawing.Size(67, 13);
             this.label37.TabIndex = 368;
             this.label37.Text = "Marker Color";
+            this.label37.Click += new System.EventHandler(this.label37_Click);
             // 
             // LoadCurrentValuesButton
             // 
@@ -148,6 +150,7 @@ namespace Physics_Data_Debug
             this.BackgroundColorComboBox.Size = new System.Drawing.Size(129, 21);
             this.BackgroundColorComboBox.TabIndex = 365;
             this.BackgroundColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.BackgroundColorComboBox_DrawItem);
+            this.BackgroundColorComboBox.SelectedIndexChanged += new System.EventHandler(this.BackgroundColorComboBox_SelectedIndexChanged);
             this.BackgroundColorComboBox.SelectionChangeCommitted += new System.EventHandler(this.BackgroundColorComboBox_SelectionChangeCommitted);
             // 
             // label8
@@ -158,6 +161,7 @@ namespace Physics_Data_Debug
             this.label8.Size = new System.Drawing.Size(92, 13);
             this.label8.TabIndex = 364;
             this.label8.Text = "Background Color";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // applyAndClearChartsButton
             // 
@@ -186,6 +190,7 @@ namespace Physics_Data_Debug
             this.X1MajorIntervalFractionTextBox.Size = new System.Drawing.Size(71, 20);
             this.X1MajorIntervalFractionTextBox.TabIndex = 399;
             this.X1MajorIntervalFractionTextBox.Visible = false;
+            this.X1MajorIntervalFractionTextBox.TextChanged += new System.EventHandler(this.X1MajorIntervalFractionTextBox_TextChanged);
             // 
             // X1MinorLineWidthComboBox
             // 
@@ -196,6 +201,7 @@ namespace Physics_Data_Debug
             this.X1MinorLineWidthComboBox.Size = new System.Drawing.Size(129, 21);
             this.X1MinorLineWidthComboBox.TabIndex = 398;
             this.X1MinorLineWidthComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1MinorLineWidthComboBox_DrawItem);
+            this.X1MinorLineWidthComboBox.SelectedIndexChanged += new System.EventHandler(this.X1MinorLineWidthComboBox_SelectedIndexChanged);
             // 
             // X1MajorColorComboBox
             // 
@@ -217,6 +223,7 @@ namespace Physics_Data_Debug
             this.X1MajorLineWidthComboBox.Size = new System.Drawing.Size(52, 21);
             this.X1MajorLineWidthComboBox.TabIndex = 394;
             this.X1MajorLineWidthComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1MajorLineWidthComboBox_DrawItem);
+            this.X1MajorLineWidthComboBox.SelectedIndexChanged += new System.EventHandler(this.X1MajorLineWidthComboBox_SelectedIndexChanged);
             // 
             // X1MinorEnabledCheckBox
             // 
@@ -227,6 +234,7 @@ namespace Physics_Data_Debug
             this.X1MinorEnabledCheckBox.TabIndex = 393;
             this.X1MinorEnabledCheckBox.Text = "Enabled";
             this.X1MinorEnabledCheckBox.UseVisualStyleBackColor = true;
+            this.X1MinorEnabledCheckBox.CheckedChanged += new System.EventHandler(this.X1MinorEnabledCheckBox_CheckedChanged);
             // 
             // X1MinorDashStyleComboBox
             // 
@@ -237,6 +245,7 @@ namespace Physics_Data_Debug
             this.X1MinorDashStyleComboBox.Size = new System.Drawing.Size(129, 21);
             this.X1MinorDashStyleComboBox.TabIndex = 392;
             this.X1MinorDashStyleComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1MinorDashStyleComboBox_DrawItem);
+            this.X1MinorDashStyleComboBox.SelectedIndexChanged += new System.EventHandler(this.X1MinorDashStyleComboBox_SelectedIndexChanged);
             // 
             // X1MinorColorComboBox
             // 
@@ -258,6 +267,7 @@ namespace Physics_Data_Debug
             this.X1MinorIntervalComboBox.Size = new System.Drawing.Size(44, 21);
             this.X1MinorIntervalComboBox.TabIndex = 390;
             this.X1MinorIntervalComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1MinorIntervalComboBox_DrawItem);
+            this.X1MinorIntervalComboBox.SelectedIndexChanged += new System.EventHandler(this.X1MinorIntervalComboBox_SelectedIndexChanged);
             // 
             // X1FontColorComboBox
             // 
@@ -278,6 +288,7 @@ namespace Physics_Data_Debug
             this.label16.Size = new System.Drawing.Size(183, 13);
             this.label16.TabIndex = 385;
             this.label16.Text = "Line Width  / Interval Fraction / Color";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // label15
             // 
@@ -287,6 +298,7 @@ namespace Physics_Data_Debug
             this.label15.Size = new System.Drawing.Size(54, 13);
             this.label15.TabIndex = 384;
             this.label15.Text = "Font Style";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label14
             // 
@@ -296,6 +308,7 @@ namespace Physics_Data_Debug
             this.label14.Size = new System.Drawing.Size(102, 13);
             this.label14.TabIndex = 383;
             this.label14.Text = "Major Grid Font Size";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // X1FontStyleComboBox
             // 
@@ -337,6 +350,7 @@ namespace Physics_Data_Debug
             this.label13.Size = new System.Drawing.Size(58, 13);
             this.label13.TabIndex = 379;
             this.label13.Text = "Dash Style";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label12
             // 
@@ -346,6 +360,7 @@ namespace Physics_Data_Debug
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 378;
             this.label12.Text = "Minor Grid Color";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label11
             // 
@@ -355,6 +370,7 @@ namespace Physics_Data_Debug
             this.label11.Size = new System.Drawing.Size(202, 13);
             this.label11.TabIndex = 377;
             this.label11.Text = "Minor Grid Enable / Fraction / Line Width";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label5
             // 
@@ -364,6 +380,7 @@ namespace Physics_Data_Debug
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 373;
             this.label5.Text = "Font Color";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -373,6 +390,7 @@ namespace Physics_Data_Debug
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 372;
             this.label4.Text = "Font Name";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label1
             // 
@@ -382,6 +400,7 @@ namespace Physics_Data_Debug
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 371;
             this.label1.Text = "X Axis (Round)";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // X1DefaultsCheckBox
             // 
@@ -404,6 +423,7 @@ namespace Physics_Data_Debug
             this.label9.Size = new System.Drawing.Size(157, 13);
             this.label9.TabIndex = 376;
             this.label9.Text = "Angle Type (degrees or radians)";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // X1AngleTypeComboBox
             // 
@@ -414,6 +434,7 @@ namespace Physics_Data_Debug
             this.X1AngleTypeComboBox.Size = new System.Drawing.Size(129, 21);
             this.X1AngleTypeComboBox.TabIndex = 400;
             this.X1AngleTypeComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.AngleTypeComboBox_DrawItem);
+            this.X1AngleTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.X1AngleTypeComboBox_SelectedIndexChanged);
             // 
             // Y1IntervalDividerTextBox
             // 
@@ -422,6 +443,7 @@ namespace Physics_Data_Debug
             this.Y1IntervalDividerTextBox.Size = new System.Drawing.Size(44, 20);
             this.Y1IntervalDividerTextBox.TabIndex = 430;
             this.Y1IntervalDividerTextBox.Visible = false;
+            this.Y1IntervalDividerTextBox.TextChanged += new System.EventHandler(this.Y1IntervalDividerTextBox_TextChanged);
             // 
             // Y1MinorLineWidthComboBox
             // 
@@ -432,6 +454,7 @@ namespace Physics_Data_Debug
             this.Y1MinorLineWidthComboBox.Size = new System.Drawing.Size(129, 21);
             this.Y1MinorLineWidthComboBox.TabIndex = 429;
             this.Y1MinorLineWidthComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1MinorLineWidthComboBox_DrawItem);
+            this.Y1MinorLineWidthComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MinorLineWidthComboBox_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -441,6 +464,7 @@ namespace Physics_Data_Debug
             this.label10.Size = new System.Drawing.Size(51, 13);
             this.label10.TabIndex = 428;
             this.label10.Text = "Maximum";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // Y1MaxMaskedTextBox
             // 
@@ -448,6 +472,7 @@ namespace Physics_Data_Debug
             this.Y1MaxMaskedTextBox.Name = "Y1MaxMaskedTextBox";
             this.Y1MaxMaskedTextBox.Size = new System.Drawing.Size(129, 20);
             this.Y1MaxMaskedTextBox.TabIndex = 427;
+            this.Y1MaxMaskedTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Y1MaxMaskedTextBox_MaskInputRejected);
             // 
             // Y1MajorColorComboBox
             // 
@@ -469,6 +494,7 @@ namespace Physics_Data_Debug
             this.Y1MajorLineWidthComboBox.Size = new System.Drawing.Size(44, 21);
             this.Y1MajorLineWidthComboBox.TabIndex = 425;
             this.Y1MajorLineWidthComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1MajorLineWidthComboBox_DrawItem);
+            this.Y1MajorLineWidthComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MajorLineWidthComboBox_SelectedIndexChanged);
             // 
             // Y1MinorEnabledCheckBox
             // 
@@ -479,6 +505,7 @@ namespace Physics_Data_Debug
             this.Y1MinorEnabledCheckBox.TabIndex = 424;
             this.Y1MinorEnabledCheckBox.Text = "Enabled";
             this.Y1MinorEnabledCheckBox.UseVisualStyleBackColor = true;
+            this.Y1MinorEnabledCheckBox.CheckedChanged += new System.EventHandler(this.Y1MinorEnabledCheckBox_CheckedChanged);
             // 
             // Y1MinorDashStyleComboBox
             // 
@@ -489,6 +516,7 @@ namespace Physics_Data_Debug
             this.Y1MinorDashStyleComboBox.Size = new System.Drawing.Size(129, 21);
             this.Y1MinorDashStyleComboBox.TabIndex = 423;
             this.Y1MinorDashStyleComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1MinorDashStyleComboBox_DrawItem);
+            this.Y1MinorDashStyleComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MinorDashStyleComboBox_SelectedIndexChanged);
             // 
             // Y1MinorColorComboBox
             // 
@@ -510,6 +538,7 @@ namespace Physics_Data_Debug
             this.Y1MinorIntervalComboBox.Size = new System.Drawing.Size(44, 21);
             this.Y1MinorIntervalComboBox.TabIndex = 421;
             this.Y1MinorIntervalComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1MinorIntervalComboBox_DrawItem);
+            this.Y1MinorIntervalComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MinorIntervalComboBox_SelectedIndexChanged);
             // 
             // Y1MajorDecimalsComboBox
             // 
@@ -520,6 +549,7 @@ namespace Physics_Data_Debug
             this.Y1MajorDecimalsComboBox.Size = new System.Drawing.Size(44, 21);
             this.Y1MajorDecimalsComboBox.TabIndex = 420;
             this.Y1MajorDecimalsComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1MajorDecimalsComboBox_DrawItem);
+            this.Y1MajorDecimalsComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MajorDecimalsComboBox_SelectedIndexChanged);
             // 
             // Y1MinMaskedTextBox
             // 
@@ -527,6 +557,7 @@ namespace Physics_Data_Debug
             this.Y1MinMaskedTextBox.Name = "Y1MinMaskedTextBox";
             this.Y1MinMaskedTextBox.Size = new System.Drawing.Size(129, 20);
             this.Y1MinMaskedTextBox.TabIndex = 419;
+            this.Y1MinMaskedTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.Y1MinMaskedTextBox_MaskInputRejected);
             // 
             // Y1FontColorComboBox
             // 
@@ -547,6 +578,7 @@ namespace Physics_Data_Debug
             this.label17.Size = new System.Drawing.Size(193, 13);
             this.label17.TabIndex = 416;
             this.label17.Text = "Line Width / Decimals / Interval / Color";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18
             // 
@@ -556,6 +588,7 @@ namespace Physics_Data_Debug
             this.label18.Size = new System.Drawing.Size(54, 13);
             this.label18.TabIndex = 415;
             this.label18.Text = "Font Style";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // label19
             // 
@@ -565,6 +598,7 @@ namespace Physics_Data_Debug
             this.label19.Size = new System.Drawing.Size(102, 13);
             this.label19.TabIndex = 414;
             this.label19.Text = "Major Grid Font Size";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // Y1FontStyleComboBox
             // 
@@ -606,6 +640,7 @@ namespace Physics_Data_Debug
             this.label20.Size = new System.Drawing.Size(58, 13);
             this.label20.TabIndex = 410;
             this.label20.Text = "Dash Style";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // label21
             // 
@@ -615,6 +650,7 @@ namespace Physics_Data_Debug
             this.label21.Size = new System.Drawing.Size(82, 13);
             this.label21.TabIndex = 409;
             this.label21.Text = "Minor Grid Color";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // label22
             // 
@@ -624,6 +660,7 @@ namespace Physics_Data_Debug
             this.label22.Size = new System.Drawing.Size(202, 13);
             this.label22.TabIndex = 408;
             this.label22.Text = "Minor Grid Enable / Fraction / Line Width";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // label23
             // 
@@ -633,6 +670,7 @@ namespace Physics_Data_Debug
             this.label23.Size = new System.Drawing.Size(48, 13);
             this.label23.TabIndex = 407;
             this.label23.Text = "Minimum";
+            this.label23.Click += new System.EventHandler(this.label23_Click);
             // 
             // label25
             // 
@@ -642,6 +680,7 @@ namespace Physics_Data_Debug
             this.label25.Size = new System.Drawing.Size(55, 13);
             this.label25.TabIndex = 404;
             this.label25.Text = "Font Color";
+            this.label25.Click += new System.EventHandler(this.label25_Click);
             // 
             // label26
             // 
@@ -651,6 +690,7 @@ namespace Physics_Data_Debug
             this.label26.Size = new System.Drawing.Size(59, 13);
             this.label26.TabIndex = 403;
             this.label26.Text = "Font Name";
+            this.label26.Click += new System.EventHandler(this.label26_Click);
             // 
             // label2
             // 
@@ -660,6 +700,7 @@ namespace Physics_Data_Debug
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 402;
             this.label2.Text = "Y Axis (Slice)";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Y1DefaultsCheckBox
             // 
@@ -680,6 +721,7 @@ namespace Physics_Data_Debug
             this.HistoryAmountPointsMaskedTextBox.Name = "HistoryAmountPointsMaskedTextBox";
             this.HistoryAmountPointsMaskedTextBox.Size = new System.Drawing.Size(129, 20);
             this.HistoryAmountPointsMaskedTextBox.TabIndex = 436;
+            this.HistoryAmountPointsMaskedTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.HistoryAmountPointsMaskedTextBox_MaskInputRejected);
             // 
             // label7
             // 
@@ -689,6 +731,7 @@ namespace Physics_Data_Debug
             this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 435;
             this.label7.Text = "History Points";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // InfiniteHistoryCheckBox
             // 
@@ -699,6 +742,7 @@ namespace Physics_Data_Debug
             this.InfiniteHistoryCheckBox.TabIndex = 437;
             this.InfiniteHistoryCheckBox.Text = "Infinite History Enabled";
             this.InfiniteHistoryCheckBox.UseVisualStyleBackColor = true;
+            this.InfiniteHistoryCheckBox.CheckedChanged += new System.EventHandler(this.InfiniteHistoryCheckBox_CheckedChanged);
             // 
             // SchemeComboBox
             // 
@@ -710,6 +754,7 @@ namespace Physics_Data_Debug
             this.SchemeComboBox.Size = new System.Drawing.Size(129, 21);
             this.SchemeComboBox.TabIndex = 439;
             this.SchemeComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.GreenRedSchemeComboBox_DrawItem);
+            this.SchemeComboBox.SelectedIndexChanged += new System.EventHandler(this.SchemeComboBox_SelectedIndexChanged);
             this.SchemeComboBox.SelectionChangeCommitted += new System.EventHandler(this.SchemeComboBox_SelectionChangeCommitted);
             // 
             // label3
@@ -720,6 +765,7 @@ namespace Physics_Data_Debug
             this.label3.Size = new System.Drawing.Size(101, 13);
             this.label3.TabIndex = 438;
             this.label3.Text = "Chart Color Scheme";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Y1MajorIntervalDividerComboBox
             // 
@@ -730,6 +776,7 @@ namespace Physics_Data_Debug
             this.Y1MajorIntervalDividerComboBox.Size = new System.Drawing.Size(44, 21);
             this.Y1MajorIntervalDividerComboBox.TabIndex = 440;
             this.Y1MajorIntervalDividerComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1IntervalDividerComboBox_DrawItem);
+            this.Y1MajorIntervalDividerComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MajorIntervalDividerComboBox_SelectedIndexChanged);
             // 
             // X1MajorIntervalFractionComboBox
             // 
@@ -739,6 +786,7 @@ namespace Physics_Data_Debug
             this.X1MajorIntervalFractionComboBox.Name = "X1MajorIntervalFractionComboBox";
             this.X1MajorIntervalFractionComboBox.Size = new System.Drawing.Size(71, 21);
             this.X1MajorIntervalFractionComboBox.TabIndex = 441;
+            this.X1MajorIntervalFractionComboBox.SelectedIndexChanged += new System.EventHandler(this.X1MajorIntervalFractionComboBox_SelectedIndexChanged);
             // 
             // FormGForceSettings
             // 

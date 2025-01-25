@@ -891,5 +891,245 @@ namespace Physics_Data_Debug
             GForceSettings.SettingsOpen = true;
             RegistryTools.LoadAllSettings(Application.ProductName, this);
         }
+
+        private void Y1MajorIntervalDividerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SchemeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InfiniteHistoryCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HistoryAmountPointsMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1IntervalDividerTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1MinorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1MaxMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void Y1MajorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1MinorEnabledCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1MinorDashStyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1MinorIntervalComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1MajorDecimalsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Y1MinMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1AngleTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1MajorIntervalFractionTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1MinorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1MajorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1MinorEnabledCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1MinorDashStyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1MinorIntervalComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MarkerColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackgroundColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void X1MajorIntervalFractionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

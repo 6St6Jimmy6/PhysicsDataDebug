@@ -239,6 +239,7 @@ namespace Physics_Data_Debug
             this.toGForceButton = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.buttonUpdates = new System.Windows.Forms.Timer(this.components);
+            this.to4WheelsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label12
@@ -265,7 +266,7 @@ namespace Physics_Data_Debug
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(2, 107);
+            this.label13.Location = new System.Drawing.Point(3, 107);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 13);
             this.label13.TabIndex = 29;
@@ -275,7 +276,7 @@ namespace Physics_Data_Debug
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(2, 141);
+            this.label14.Location = new System.Drawing.Point(3, 141);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 13);
             this.label14.TabIndex = 30;
@@ -1306,7 +1307,7 @@ namespace Physics_Data_Debug
             // 
             this.toLogSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toLogSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toLogSettingsButton.Location = new System.Drawing.Point(2, 470);
+            this.toLogSettingsButton.Location = new System.Drawing.Point(3, 470);
             this.toLogSettingsButton.Name = "toLogSettingsButton";
             this.toLogSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toLogSettingsButton.TabIndex = 149;
@@ -1318,9 +1319,9 @@ namespace Physics_Data_Debug
             // 
             this.exitApplication.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.exitApplication.ForeColor = System.Drawing.Color.White;
-            this.exitApplication.Location = new System.Drawing.Point(2, 798);
+            this.exitApplication.Location = new System.Drawing.Point(3, 849);
             this.exitApplication.Name = "exitApplication";
-            this.exitApplication.Size = new System.Drawing.Size(88, 45);
+            this.exitApplication.Size = new System.Drawing.Size(90, 45);
             this.exitApplication.TabIndex = 150;
             this.exitApplication.Text = "Exit Application";
             this.exitApplication.UseVisualStyleBackColor = false;
@@ -1374,7 +1375,7 @@ namespace Physics_Data_Debug
             // 
             this.toTireSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTireSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toTireSettingsButton.Location = new System.Drawing.Point(2, 521);
+            this.toTireSettingsButton.Location = new System.Drawing.Point(3, 633);
             this.toTireSettingsButton.Name = "toTireSettingsButton";
             this.toTireSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toTireSettingsButton.TabIndex = 155;
@@ -2180,9 +2181,9 @@ namespace Physics_Data_Debug
             // 
             this.toSuspensionSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toSuspensionSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(2, 633);
+            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(3, 798);
             this.toSuspensionSettingsButton.Name = "toSuspensionSettingsButton";
-            this.toSuspensionSettingsButton.Size = new System.Drawing.Size(89, 45);
+            this.toSuspensionSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toSuspensionSettingsButton.TabIndex = 239;
             this.toSuspensionSettingsButton.Text = "Suspension Settings";
             this.toSuspensionSettingsButton.UseVisualStyleBackColor = false;
@@ -2192,9 +2193,9 @@ namespace Physics_Data_Debug
             // 
             this.OpenTemperaturesChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.OpenTemperaturesChart.ForeColor = System.Drawing.Color.White;
-            this.OpenTemperaturesChart.Location = new System.Drawing.Point(2, 572);
+            this.OpenTemperaturesChart.Location = new System.Drawing.Point(3, 572);
             this.OpenTemperaturesChart.Name = "OpenTemperaturesChart";
-            this.OpenTemperaturesChart.Size = new System.Drawing.Size(89, 55);
+            this.OpenTemperaturesChart.Size = new System.Drawing.Size(90, 55);
             this.OpenTemperaturesChart.TabIndex = 240;
             this.OpenTemperaturesChart.Text = "Tire Temperatures Chart";
             this.OpenTemperaturesChart.UseVisualStyleBackColor = false;
@@ -2296,7 +2297,7 @@ namespace Physics_Data_Debug
             this.toTestChartPageButton.ForeColor = System.Drawing.Color.White;
             this.toTestChartPageButton.Location = new System.Drawing.Point(3, 684);
             this.toTestChartPageButton.Name = "toTestChartPageButton";
-            this.toTestChartPageButton.Size = new System.Drawing.Size(88, 55);
+            this.toTestChartPageButton.Size = new System.Drawing.Size(90, 55);
             this.toTestChartPageButton.TabIndex = 252;
             this.toTestChartPageButton.Text = "Open Chart Plotter";
             this.toTestChartPageButton.UseVisualStyleBackColor = false;
@@ -2346,9 +2347,9 @@ namespace Physics_Data_Debug
             // 
             this.getProcessButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.getProcessButton.ForeColor = System.Drawing.Color.White;
-            this.getProcessButton.Location = new System.Drawing.Point(3, 310);
+            this.getProcessButton.Location = new System.Drawing.Point(3, 313);
             this.getProcessButton.Name = "getProcessButton";
-            this.getProcessButton.Size = new System.Drawing.Size(90, 48);
+            this.getProcessButton.Size = new System.Drawing.Size(90, 45);
             this.getProcessButton.TabIndex = 257;
             this.getProcessButton.Text = "Get Process";
             this.getProcessButton.UseVisualStyleBackColor = false;
@@ -2485,7 +2486,7 @@ namespace Physics_Data_Debug
             this.toGForceButton.ForeColor = System.Drawing.Color.White;
             this.toGForceButton.Location = new System.Drawing.Point(3, 745);
             this.toGForceButton.Name = "toGForceButton";
-            this.toGForceButton.Size = new System.Drawing.Size(87, 47);
+            this.toGForceButton.Size = new System.Drawing.Size(90, 47);
             this.toGForceButton.TabIndex = 273;
             this.toGForceButton.Text = "Open G-Force Page";
             this.toGForceButton.UseVisualStyleBackColor = false;
@@ -2512,13 +2513,26 @@ namespace Physics_Data_Debug
             this.buttonUpdates.Interval = 500;
             this.buttonUpdates.Tick += new System.EventHandler(this.buttonUpdates_Tick);
             // 
+            // to4WheelsButton
+            // 
+            this.to4WheelsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.to4WheelsButton.ForeColor = System.Drawing.Color.White;
+            this.to4WheelsButton.Location = new System.Drawing.Point(3, 521);
+            this.to4WheelsButton.Name = "to4WheelsButton";
+            this.to4WheelsButton.Size = new System.Drawing.Size(90, 45);
+            this.to4WheelsButton.TabIndex = 275;
+            this.to4WheelsButton.Text = "Open Four Wheels Page";
+            this.to4WheelsButton.UseVisualStyleBackColor = false;
+            this.to4WheelsButton.Click += new System.EventHandler(this.to4WheelsButton_Click);
+            // 
             // FormLiveData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(821, 906);
+            this.ClientSize = new System.Drawing.Size(821, 917);
+            this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.toGForceButton);
             this.Controls.Add(this.textBox6);
@@ -2945,6 +2959,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Button toGForceButton;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Timer buttonUpdates;
+        private System.Windows.Forms.Button to4WheelsButton;
     }
 }
 

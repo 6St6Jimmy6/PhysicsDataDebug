@@ -19,6 +19,7 @@ namespace Physics_Data_Debug
         public static bool TemperaturesChartOpen { get; set; } = false;
         public static bool SuspensionSettingsOpen { get; set; } = false;
         public static bool GForceOpen { get; set; } = false;
+        public static bool _4WheelsOpen { get; set; } = false;
         public static string sTireTravelSpeed { get; set; } = "Tire Travel Speed";
         public static string sAngularVelocity { get; set; } = "Angular Velocity";
         public static string sVerticalLoad { get; set; } = "Vertical Load";
@@ -70,7 +71,7 @@ namespace Physics_Data_Debug
         // 0x9E00; March 2024 { get; set; } = 7DF0+2010 { get; set; } = 9E00
 
         // Older builds go backwards, so this is for them. Above should be 0x0 then.
-        public static ulong baseAddrDodt { get; set; } = 0x0;//0x6DF8D8
+        public static ulong baseAddrDodt { get; set; } = 0x0;//0x6DF8D8;
 
         //Time offsets
         public static int OffsetRaceTime { get; set; } = 0x14;

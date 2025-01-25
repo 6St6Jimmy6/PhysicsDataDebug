@@ -3,6 +3,9 @@ Physics data debugger for Wreckfest.
 (Bit outdated picture now but close)
 ![alt text](https://i.imgur.com/4ao4dbR.png)
 
+This is how Four Wheels Page looks:
+![asdsad](https://github.com/user-attachments/assets/)
+
 This is how roughly the G-Force graph looks by default:
 ![jhFm6aV](https://github.com/user-attachments/assets/be766e5a-404a-404c-96a3-642e001d8890)
 
