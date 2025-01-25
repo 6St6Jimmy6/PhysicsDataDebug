@@ -1,6 +1,6 @@
 Physics data debugger for Wreckfest.
 
-Main page
+Main page:
 ![LiveData page](https://github.com/user-attachments/assets/c68f05b9-0a75-47ca-88be-779a9ff533a7)
 
 
