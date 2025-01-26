@@ -1170,7 +1170,7 @@ namespace Physics_Data_Debug
             chartName.ChartAreas["ChartArea1"].CursorY.LineColor = _4WheelsSettings.MarkerColor;
 
             // Series marker stuff
-            chartName.Series["Series1"].MarkerSize = 5;
+            chartName.Series["Series1"].MarkerSize = 4;
             chartName.Series["Series1"].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
             chartName.Series["Series1"].SmartLabelStyle.Enabled = false;
             chartName.Series["Series1"].LabelBackColor = chartName.ChartAreas["ChartArea1"].BackColor;
