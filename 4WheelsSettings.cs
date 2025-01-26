@@ -40,6 +40,7 @@ namespace Physics_Data_Debug
         public static Color DefaultBackgroundColor { get; set; } = Color.Black;
         public static Color DefaultLegendColor { get; set; } = Color.White;
         public static bool OtherDefaults { get; set; } = true;
+        public static bool AbsoluteValues { get; set; } = false;
 
         /// <summary>
         /// Something
@@ -123,8 +124,10 @@ namespace Physics_Data_Debug
         public static ChartDashStyle Y1DefaultMinorDashStyle { get; set; } = ChartDashStyle.Dash;
 
         //Z
+        public static bool Z1Defaults { get; set; } = true;
         public static string Z1DefaultType { get; set; } = LiveData.sVerticalLoad;
-        public static double Z1DefaultMax { get; set; } = 10000;//
+        public static double Z1DefaultMax { get; set; } = 11000;//
+        public static double Z1DefaultMin { get; set; } = 1000;//
         ///////////////////////////////////////////////////////////////////////////////////
 
         // Changable values
@@ -212,5 +215,6 @@ namespace Physics_Data_Debug
         //Z
         public static string Z1Selection { get; set; } = Z1DefaultType;
         public static double Z1Max { get; set; } = Z1DefaultMax;
+        public static double Z1Min { get; set; } = Z1DefaultMin;
     }
 }

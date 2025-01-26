@@ -76,6 +76,7 @@ namespace Physics_Data_Debug
             AddInComboBoxes();
             LoadX1Defaults();
             LoadY1Defaults();
+            LoadZ1Defaults();
             LoadOtherDefaults();
         }
 
@@ -211,6 +212,33 @@ namespace Physics_Data_Debug
             Y1SelectionComboBox.Items.Add(LiveData.sTotalFrictionAngle);
             Y1SelectionComboBox.Items.Add(LiveData.sSuspensionLength);
             Y1SelectionComboBox.Items.Add(LiveData.sSuspensionVelocity);
+            // Add Z axis selections in the combobox
+            Z1SelectionComboBox.Items.Add(LiveData.sTireTravelSpeed);
+            Z1SelectionComboBox.Items.Add(LiveData.sAngularVelocity);
+            Z1SelectionComboBox.Items.Add(LiveData.sVerticalLoad);
+            Z1SelectionComboBox.Items.Add(LiveData.sVerticalDeflection);
+            Z1SelectionComboBox.Items.Add(LiveData.sLoadedRadius);
+            Z1SelectionComboBox.Items.Add(LiveData.sEffectiveRadius);
+            Z1SelectionComboBox.Items.Add(LiveData.sContactLength);
+            Z1SelectionComboBox.Items.Add(LiveData.sBrakeTorque);
+            Z1SelectionComboBox.Items.Add(LiveData.sMaxBrakeTorque);
+            Z1SelectionComboBox.Items.Add(LiveData.sSteerAngle);
+            Z1SelectionComboBox.Items.Add(LiveData.sCamberAngle);
+            Z1SelectionComboBox.Items.Add(LiveData.sLateralLoad);
+            Z1SelectionComboBox.Items.Add(LiveData.sSlipAngle);
+            Z1SelectionComboBox.Items.Add(LiveData.sLateralFriction);
+            Z1SelectionComboBox.Items.Add(LiveData.sLateralSlipSpeed);
+            Z1SelectionComboBox.Items.Add(LiveData.sLongitudinalLoad);
+            Z1SelectionComboBox.Items.Add(LiveData.sSlipRatio);
+            Z1SelectionComboBox.Items.Add(LiveData.sLongitudinalFriction);
+            Z1SelectionComboBox.Items.Add(LiveData.sLongitudinalSlipSpeed);
+            Z1SelectionComboBox.Items.Add(LiveData.sTreadTemperature);
+            Z1SelectionComboBox.Items.Add(LiveData.sInnerTemperature);
+            Z1SelectionComboBox.Items.Add(LiveData.sRaceTime);
+            Z1SelectionComboBox.Items.Add(LiveData.sTotalFriction);
+            Z1SelectionComboBox.Items.Add(LiveData.sTotalFrictionAngle);
+            Z1SelectionComboBox.Items.Add(LiveData.sSuspensionLength);
+            Z1SelectionComboBox.Items.Add(LiveData.sSuspensionVelocity);
         }
         private void LoadOtherDefaults()
         {
@@ -345,6 +373,62 @@ namespace Physics_Data_Debug
                 Y1MinorLineWidthComboBox.SelectedItem = _4WheelsSettings.Y1MinorLineWidth;
             }
         }
+        private void LoadZ1Defaults()
+        {
+            Z1SelectionComboBox.SelectedItem = _4WheelsSettings.Z1Selection;
+
+            // Default Z1 selections
+            if (Z1DefaultsCheckBox.Checked == true)
+            {
+                Z1MaxMaskedTextBox.Text = _4WheelsSettings.Z1DefaultMax.ToString();
+                Z1MinMaskedTextBox.Text = _4WheelsSettings.Z1DefaultMin.ToString();
+
+                //Z1ComboBoxFonts.SelectedItem = _4WheelsSettings.Z1DefaultFontFamily;//Z1ComboBoxFonts.Items[_4WheelsSettings.Z1DefaultFontIndex];//Sets default SelectedItem to Microsoft Sans Serif
+
+                //_4WheelsSettings.Z1DefaultFontString = Z1ComboBoxFonts.SelectedItem.ToString();//Gets default SelectedItem's string "Microsoft Sans Serif"
+
+                //Z1FontSizeComboBox.SelectedItem = _4WheelsSettings.Z1DefaultFontSize;
+
+                //Z1FontStyleComboBox.SelectedItem = _4WheelsSettings.Z1DefaultFontStyle;
+
+                //Z1FontColorComboBox.SelectedItem = _4WheelsSettings.Z1DefaultFontColor;
+
+                //Z1MajorColorComboBox.SelectedItem = _4WheelsSettings.Z1DefaultMajorColor;
+                //Z1MajorDecimalsComboBox.SelectedItem = _4WheelsSettings.Z1DefaultMajorDecimals;
+                //Z1IntervalDividerTextBox.Text = _4WheelsSettings.Z1DefaultMajorInterval.ToString();
+                //Z1MajorLineWidthComboBox.SelectedItem = _4WheelsSettings.Z1DefaultMajorLineWidth;
+                //Z1MinorColorComboBox.SelectedItem = _4WheelsSettings.Z1DefaultMinorColor;
+                //Z1MinorDashStyleComboBox.SelectedItem = _4WheelsSettings.Z1DefaultMinorDashStyle;
+                //Z1MinorEnabledCheckBox.Checked = _4WheelsSettings.Z1DefaultMinorEnabled;
+                //Z1MinorIntervalComboBox.SelectedItem = _4WheelsSettings.Z1DefaultMinorIntervalFraction;
+                //Z1MinorLineWidthComboBox.SelectedItem = _4WheelsSettings.Z1DefaultMinorLineWidth;
+            }
+            else
+            {
+                Z1MaxMaskedTextBox.Text = _4WheelsSettings.Z1Max.ToString();
+                Z1MinMaskedTextBox.Text = _4WheelsSettings.Z1Min.ToString();
+
+                //Z1ComboBoxFonts.SelectedItem = _4WheelsSettings.Z1FontFamily;//Z1ComboBoxFonts.Items[_4WheelsSettings.Z1FontIndex];//Sets default SelectedItem to Microsoft Sans Serif
+
+                //_4WheelsSettings.Z1FontString = Z1ComboBoxFonts.SelectedItem.ToString();//Gets default SelectedItem's string "Microsoft Sans Serif"
+
+                //Z1FontSizeComboBox.SelectedItem = _4WheelsSettings.Z1FontSize;
+
+                //Z1FontStyleComboBox.SelectedItem = _4WheelsSettings.Z1FontStyle;
+
+                //Z1FontColorComboBox.SelectedItem = _4WheelsSettings.Z1FontColor;
+
+                //Z1MajorColorComboBox.SelectedItem = _4WheelsSettings.Z1MajorColor;
+                //Z1MajorDecimalsComboBox.SelectedItem = _4WheelsSettings.Z1MajorDecimals;
+                //Z1IntervalDividerTextBox.Text = _4WheelsSettings.Z1MajorInterval.ToString();
+                //Z1MajorLineWidthComboBox.SelectedItem = _4WheelsSettings.Z1MajorLineWidth;
+                //Z1MinorColorComboBox.SelectedItem = _4WheelsSettings.Z1MinorColor;
+                //Z1MinorDashStyleComboBox.SelectedItem = _4WheelsSettings.Z1MinorDashStyle;
+                //Z1MinorEnabledCheckBox.Checked = _4WheelsSettings.Z1MinorEnabled;
+                //Z1MinorIntervalComboBox.SelectedItem = _4WheelsSettings.Z1MinorIntervalFraction;
+                //Z1MinorLineWidthComboBox.SelectedItem = _4WheelsSettings.Z1MinorLineWidth;
+            }
+        }
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -469,6 +553,53 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.Y1MinorColor = (Color)Y1MinorColorComboBox.SelectedItem;
                 _4WheelsSettings.Y1MinorDashStyle = (ChartDashStyle)Y1MinorDashStyleComboBox.SelectedItem;
             }
+            // Z-Axis
+            _4WheelsSettings.Z1Selection = Z1SelectionComboBox.Text;
+            if (Z1DefaultsCheckBox.Checked == true)
+            {
+                _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
+                _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
+
+                //_4WheelsSettings.Z1FontFamily = _4WheelsSettings.Z1DefaultFontFamily;
+                //_4WheelsSettings.Z1FontSize = _4WheelsSettings.Z1DefaultFontSize;
+                //_4WheelsSettings.Z1FontStyle = _4WheelsSettings.Z1DefaultFontStyle;
+                //_4WheelsSettings.Z1FontColor = _4WheelsSettings.Z1DefaultFontColor;
+
+
+                //_4WheelsSettings.Z1MajorLineWidth = _4WheelsSettings.Z1DefaultMajorLineWidth;
+                //_4WheelsSettings.Z1MajorDecimals = _4WheelsSettings.Z1DefaultMajorDecimals;
+                //_4WheelsSettings.Z1MajorInterval = _4WheelsSettings.Z1DefaultMajorInterval;
+                //_4WheelsSettings.Z1MajorColor = _4WheelsSettings.Z1DefaultMajorColor;
+
+                //_4WheelsSettings.Z1MinorEnabled = _4WheelsSettings.Z1DefaultMinorEnabled;
+                //_4WheelsSettings.Z1MinorIntervalFraction = _4WheelsSettings.Z1DefaultMinorIntervalFraction;
+                //_4WheelsSettings.Z1MinorLineWidth = _4WheelsSettings.Z1DefaultMinorLineWidth;
+                //_4WheelsSettings.Z1MinorColor = _4WheelsSettings.Z1DefaultMinorColor;
+                //_4WheelsSettings.Z1MinorDashStyle = _4WheelsSettings.Z1DefaultMinorDashStyle;
+            }
+            else
+            {
+                //_4WheelsSettings.Z1FontIndex = Z1ComboBoxFonts.SelectedIndex;
+                //_4WheelsSettings.Z1FontString = Z1ComboBoxFonts.Text;
+                //_4WheelsSettings.Z1FontFamily = (FontFamily)Z1ComboBoxFonts.SelectedItem;
+                //_4WheelsSettings.Z1FontColor = (Color)Z1FontColorComboBox.SelectedItem;
+                //_4WheelsSettings.Z1FontSize = (float)Z1FontSizeComboBox.SelectedItem;
+                //_4WheelsSettings.Z1FontStyle = (FontStyle)Z1FontStyleComboBox.SelectedItem;
+
+                _4WheelsSettings.Z1Min = Parsers.MaskedTextBoxParserDouble(Z1MinMaskedTextBox, _4WheelsSettings.Z1Min, _4WheelsSettings.Z1DefaultMin, true);
+                _4WheelsSettings.Z1Max = Parsers.MaskedTextBoxParserDouble(Z1MaxMaskedTextBox, _4WheelsSettings.Z1Max, _4WheelsSettings.Z1DefaultMax, true);
+
+                //_4WheelsSettings.Z1MajorLineWidth = (int)Z1MajorLineWidthComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MajorDecimals = (int)Z1MajorDecimalsComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MajorInterval = Parsers.TextBoxParserDouble(Z1IntervalDividerTextBox, _4WheelsSettings.Z1MajorInterval, _4WheelsSettings.Z1DefaultMajorInterval, true);
+                //_4WheelsSettings.Z1MajorColor = (Color)Z1MajorColorComboBox.SelectedItem;
+
+                //_4WheelsSettings.Z1MinorEnabled = Z1MinorEnabledCheckBox.Checked;
+                //_4WheelsSettings.Z1MinorIntervalFraction = (int)Z1MinorIntervalComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MinorLineWidth = (int)Z1MinorLineWidthComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MinorColor = (Color)Z1MinorColorComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MinorDashStyle = (ChartDashStyle)Z1MinorDashStyleComboBox.SelectedItem;
+            }
             // Updating and clearing the charts from old data
             Form4Wheels form = (Form4Wheels)Application.OpenForms["Form4Wheels"];
             var chart1 = form.chart1;
@@ -499,6 +630,7 @@ namespace Physics_Data_Debug
         {
             LoadX1Defaults();
             LoadY1Defaults();
+            LoadZ1Defaults();
             LoadOtherDefaults();
         }
 
@@ -893,7 +1025,21 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(Y1MinorColorComboBox, (Color)color);
         }
-
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///Z1 STUFF
+        ///
+        private void Z1DefaultsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Z1DefaultsCheckBox.Checked == true)
+            {
+                _4WheelsSettings.Z1Defaults = true;
+            }
+            else
+            {
+                _4WheelsSettings.Z1Defaults = false;
+            }
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////
         private void Form_4WheelsSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
             _4WheelsSettings.SettingsOpen = false;
@@ -904,6 +1050,18 @@ namespace Physics_Data_Debug
         {
             _4WheelsSettings.SettingsOpen = true;
             RegistryTools.LoadAllSettings(Application.ProductName, this);
+        }
+
+        private void AbsoluteValuesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AbsoluteValuesCheckBox.Checked == true)
+            {
+                _4WheelsSettings.AbsoluteValues = true;
+            }
+            else
+            {
+                _4WheelsSettings.AbsoluteValues = false;
+            }
         }
     }
 }

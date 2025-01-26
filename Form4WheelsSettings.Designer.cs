@@ -98,6 +98,14 @@ namespace Physics_Data_Debug
             this.X1MinMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.X1MajorDecimalsComboBox = new System.Windows.Forms.ComboBox();
+            this.Z1DefaultsCheckBox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Z1SelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Z1MaxMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.Z1MinMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.AbsoluteValuesCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // SchemeComboBox
@@ -105,7 +113,7 @@ namespace Physics_Data_Debug
             this.SchemeComboBox.BackColor = System.Drawing.SystemColors.Window;
             this.SchemeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SchemeComboBox.FormattingEnabled = true;
-            this.SchemeComboBox.Location = new System.Drawing.Point(12, 335);
+            this.SchemeComboBox.Location = new System.Drawing.Point(12, 399);
             this.SchemeComboBox.Name = "SchemeComboBox";
             this.SchemeComboBox.Size = new System.Drawing.Size(129, 21);
             this.SchemeComboBox.TabIndex = 505;
@@ -114,7 +122,7 @@ namespace Physics_Data_Debug
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 319);
+            this.label3.Location = new System.Drawing.Point(9, 383);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 13);
             this.label3.TabIndex = 504;
@@ -123,7 +131,7 @@ namespace Physics_Data_Debug
             // InfiniteHistoryCheckBox
             // 
             this.InfiniteHistoryCheckBox.AutoSize = true;
-            this.InfiniteHistoryCheckBox.Location = new System.Drawing.Point(12, 299);
+            this.InfiniteHistoryCheckBox.Location = new System.Drawing.Point(12, 363);
             this.InfiniteHistoryCheckBox.Name = "InfiniteHistoryCheckBox";
             this.InfiniteHistoryCheckBox.Size = new System.Drawing.Size(134, 17);
             this.InfiniteHistoryCheckBox.TabIndex = 503;
@@ -132,7 +140,7 @@ namespace Physics_Data_Debug
             // 
             // HistoryAmountPointsMaskedTextBox
             // 
-            this.HistoryAmountPointsMaskedTextBox.Location = new System.Drawing.Point(12, 273);
+            this.HistoryAmountPointsMaskedTextBox.Location = new System.Drawing.Point(12, 337);
             this.HistoryAmountPointsMaskedTextBox.Name = "HistoryAmountPointsMaskedTextBox";
             this.HistoryAmountPointsMaskedTextBox.Size = new System.Drawing.Size(129, 20);
             this.HistoryAmountPointsMaskedTextBox.TabIndex = 502;
@@ -140,7 +148,7 @@ namespace Physics_Data_Debug
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 257);
+            this.label7.Location = new System.Drawing.Point(9, 321);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 501;
@@ -615,7 +623,7 @@ namespace Physics_Data_Debug
             // 
             this.MarkerColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MarkerColorComboBox.FormattingEnabled = true;
-            this.MarkerColorComboBox.Location = new System.Drawing.Point(12, 233);
+            this.MarkerColorComboBox.Location = new System.Drawing.Point(12, 297);
             this.MarkerColorComboBox.Name = "MarkerColorComboBox";
             this.MarkerColorComboBox.Size = new System.Drawing.Size(129, 21);
             this.MarkerColorComboBox.TabIndex = 449;
@@ -625,7 +633,7 @@ namespace Physics_Data_Debug
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(9, 217);
+            this.label37.Location = new System.Drawing.Point(9, 281);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(67, 13);
             this.label37.TabIndex = 448;
@@ -646,7 +654,7 @@ namespace Physics_Data_Debug
             this.DefaultsCheckBox.AutoSize = true;
             this.DefaultsCheckBox.Checked = true;
             this.DefaultsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DefaultsCheckBox.Location = new System.Drawing.Point(12, 157);
+            this.DefaultsCheckBox.Location = new System.Drawing.Point(12, 221);
             this.DefaultsCheckBox.Name = "DefaultsCheckBox";
             this.DefaultsCheckBox.Size = new System.Drawing.Size(65, 17);
             this.DefaultsCheckBox.TabIndex = 446;
@@ -657,7 +665,7 @@ namespace Physics_Data_Debug
             // BackgroundColorComboBox
             // 
             this.BackgroundColorComboBox.FormattingEnabled = true;
-            this.BackgroundColorComboBox.Location = new System.Drawing.Point(12, 193);
+            this.BackgroundColorComboBox.Location = new System.Drawing.Point(12, 257);
             this.BackgroundColorComboBox.Name = "BackgroundColorComboBox";
             this.BackgroundColorComboBox.Size = new System.Drawing.Size(129, 21);
             this.BackgroundColorComboBox.TabIndex = 445;
@@ -667,7 +675,7 @@ namespace Physics_Data_Debug
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 177);
+            this.label8.Location = new System.Drawing.Point(9, 241);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 13);
             this.label8.TabIndex = 444;
@@ -752,11 +760,93 @@ namespace Physics_Data_Debug
             this.X1MajorDecimalsComboBox.Size = new System.Drawing.Size(44, 21);
             this.X1MajorDecimalsComboBox.TabIndex = 514;
             // 
+            // Z1DefaultsCheckBox
+            // 
+            this.Z1DefaultsCheckBox.AutoSize = true;
+            this.Z1DefaultsCheckBox.Checked = true;
+            this.Z1DefaultsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Z1DefaultsCheckBox.Location = new System.Drawing.Point(770, 89);
+            this.Z1DefaultsCheckBox.Name = "Z1DefaultsCheckBox";
+            this.Z1DefaultsCheckBox.Size = new System.Drawing.Size(65, 17);
+            this.Z1DefaultsCheckBox.TabIndex = 515;
+            this.Z1DefaultsCheckBox.Text = "Defaults";
+            this.Z1DefaultsCheckBox.UseVisualStyleBackColor = true;
+            this.Z1DefaultsCheckBox.CheckedChanged += new System.EventHandler(this.Z1DefaultsCheckBox_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(767, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 516;
+            this.label1.Text = "Z axis selection";
+            // 
+            // Z1SelectionComboBox
+            // 
+            this.Z1SelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Z1SelectionComboBox.FormattingEnabled = true;
+            this.Z1SelectionComboBox.Location = new System.Drawing.Point(770, 22);
+            this.Z1SelectionComboBox.Name = "Z1SelectionComboBox";
+            this.Z1SelectionComboBox.Size = new System.Drawing.Size(129, 21);
+            this.Z1SelectionComboBox.TabIndex = 517;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(902, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 26);
+            this.label2.TabIndex = 521;
+            this.label2.Text = "Maximum\r\n(only positive values)\r\n";
+            // 
+            // Z1MaxMaskedTextBox
+            // 
+            this.Z1MaxMaskedTextBox.Location = new System.Drawing.Point(905, 138);
+            this.Z1MaxMaskedTextBox.Name = "Z1MaxMaskedTextBox";
+            this.Z1MaxMaskedTextBox.Size = new System.Drawing.Size(129, 20);
+            this.Z1MaxMaskedTextBox.TabIndex = 520;
+            // 
+            // Z1MinMaskedTextBox
+            // 
+            this.Z1MinMaskedTextBox.Location = new System.Drawing.Point(770, 138);
+            this.Z1MinMaskedTextBox.Name = "Z1MinMaskedTextBox";
+            this.Z1MinMaskedTextBox.Size = new System.Drawing.Size(129, 20);
+            this.Z1MinMaskedTextBox.TabIndex = 519;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(767, 109);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(105, 26);
+            this.label28.TabIndex = 518;
+            this.label28.Text = "Minimum\r\n(only positive values)";
+            // 
+            // AbsoluteValuesCheckBox
+            // 
+            this.AbsoluteValuesCheckBox.AutoSize = true;
+            this.AbsoluteValuesCheckBox.Location = new System.Drawing.Point(11, 179);
+            this.AbsoluteValuesCheckBox.Name = "AbsoluteValuesCheckBox";
+            this.AbsoluteValuesCheckBox.Size = new System.Drawing.Size(124, 30);
+            this.AbsoluteValuesCheckBox.TabIndex = 522;
+            this.AbsoluteValuesCheckBox.Text = "Absolute values\r\n(only positive values)\r\n";
+            this.AbsoluteValuesCheckBox.UseVisualStyleBackColor = true;
+            this.AbsoluteValuesCheckBox.CheckedChanged += new System.EventHandler(this.AbsoluteValuesCheckBox_CheckedChanged);
+            // 
             // Form4WheelsSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1047, 450);
+            this.Controls.Add(this.AbsoluteValuesCheckBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Z1MaxMaskedTextBox);
+            this.Controls.Add(this.Z1MinMaskedTextBox);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.Z1SelectionComboBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Z1DefaultsCheckBox);
             this.Controls.Add(this.X1MajorDecimalsComboBox);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.X1MaxMaskedTextBox);
@@ -905,5 +995,13 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.MaskedTextBox X1MinMaskedTextBox;
         public System.Windows.Forms.Label label27;
         public System.Windows.Forms.ComboBox X1MajorDecimalsComboBox;
+        public System.Windows.Forms.CheckBox Z1DefaultsCheckBox;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ComboBox Z1SelectionComboBox;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.MaskedTextBox Z1MaxMaskedTextBox;
+        public System.Windows.Forms.MaskedTextBox Z1MinMaskedTextBox;
+        public System.Windows.Forms.Label label28;
+        public System.Windows.Forms.CheckBox AbsoluteValuesCheckBox;
     }
 }
