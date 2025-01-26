@@ -4,10 +4,9 @@ Main page:
 
 ![LiveData page](https://github.com/user-attachments/assets/c68f05b9-0a75-47ca-88be-779a9ff533a7)
 
-
 This is how Four Wheels Page looks:
 
-![4Wheels Page](https://github.com/user-attachments/assets/41565559-1510-49c7-ba4e-6e4ff3c5ddb0)
+![4wheels_gradient](https://github.com/user-attachments/assets/b9b06097-d5fb-41b0-ab7a-59061e778523)
 
 This is how the G-Force graph looks by default:
 
