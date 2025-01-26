@@ -20,6 +20,7 @@ namespace Physics_Data_Debug
 
         private static double[] FL_X1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
         private static double[] FL_Y1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
+        private static double[] FL_Z1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
 
         private static double[] FR_X1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
         private static double[] FR_Y1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
@@ -49,6 +50,7 @@ namespace Physics_Data_Debug
         {
             FL_X1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
             FL_Y1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
+            FL_Z1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
             FR_X1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
             FR_Y1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
             RL_X1ValuesChartArray = new double[_4WheelsSettings.RL_HistoryAmountPoints];
@@ -1232,7 +1234,7 @@ namespace Physics_Data_Debug
             }
             else if (_4WheelsSettings.X1Selection == LiveData.sLateralFriction)
             {
-                FL_Y1ValuesChartArray[FL_Y1ValuesChartArray.Length - 1] = LiveData.FL_LateralFriction;
+                FL_X1ValuesChartArray[FL_X1ValuesChartArray.Length - 1] = LiveData.FL_LateralFriction;
             }
             else if (_4WheelsSettings.X1Selection == LiveData.sLateralSlipSpeed)
             {
@@ -1248,7 +1250,7 @@ namespace Physics_Data_Debug
             }
             else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalFriction)
             {
-                FL_Y1ValuesChartArray[FL_Y1ValuesChartArray.Length - 1] = LiveData.FL_LongitudinalFriction;
+                FL_X1ValuesChartArray[FL_X1ValuesChartArray.Length - 1] = LiveData.FL_LongitudinalFriction;
             }
             else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalSlipSpeed)
             {
@@ -1285,7 +1287,6 @@ namespace Physics_Data_Debug
             else//fallback to slip angle
             {
                 FL_X1ValuesChartArray[FL_X1ValuesChartArray.Length - 1] = LiveData.FL_SlipAngleDeg;
-                FL_Y1ValuesChartArray[FL_Y1ValuesChartArray.Length - 1] = Math.Round(LiveData.FL_LateralFriction, 2);
             }
             //Y
             if (_4WheelsSettings.Y1Selection == LiveData.sTireTravelSpeed)
@@ -1394,8 +1395,116 @@ namespace Physics_Data_Debug
             }
             else//fallback to slip angle
             {
-                FL_Y1ValuesChartArray[FL_Y1ValuesChartArray.Length - 1] = LiveData.FL_SlipAngleDeg;
                 FL_Y1ValuesChartArray[FL_Y1ValuesChartArray.Length - 1] = Math.Round(LiveData.FL_LateralFriction, 2);
+            }
+            //Z
+            if (_4WheelsSettings.Z1Selection == LiveData.sTireTravelSpeed)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_TravelSpeed;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sAngularVelocity)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_AngularVelocity;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalLoad)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_VerticalLoad;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalDeflection)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_VerticalDeflection;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sLoadedRadius)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_LoadedRadius;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sEffectiveRadius)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_EffectiveRadius;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sContactLength)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_ContactLength;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sBrakeTorque)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_CurrentContactBrakeTorque;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sMaxBrakeTorque)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_CurrentContactBrakeTorqueMax;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sSteerAngle)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_SteerAngleDeg;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sCamberAngle)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_CamberAngleDeg;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralLoad)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_LateralLoad;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipAngle)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_SlipAngleDeg;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralFriction)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_LateralFriction;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralSlipSpeed)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_LateralSlipSpeed;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalLoad)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_LongitudinalLoad;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipRatio)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_SlipRatio;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalFriction)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_LongitudinalFriction;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalSlipSpeed)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_LongitudinalSlipSpeed;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sTreadTemperature)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_TreadTemperature;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sInnerTemperature)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_InnerTemperature;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sRaceTime)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.RaceTime;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFriction)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_TotalFriction;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFrictionAngle)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_TotalFrictionAngle;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionLength)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_SuspensionLength;
+            }
+            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionVelocity)
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_SuspensionVelocity;
+            }
+            else//fallback to slip angle
+            {
+                FL_Z1ValuesChartArray[FL_Z1ValuesChartArray.Length - 1] = LiveData.FL_VerticalLoad;
             }
         }
         private static void FR_XYArraySelections()
@@ -2178,6 +2287,123 @@ namespace Physics_Data_Debug
                 }
             }
         }
+        private static void ZColorGradientRG(Chart chartName, double array, int i, int u)
+        {
+            double minus = _4WheelsSettings.Z1Max / steps;
+            double ten = _4WheelsSettings.Z1Max;
+            double nine = ten - minus;
+            double eight = nine - minus;
+            double seven = eight - minus;
+            double six = seven - minus;
+            double five = six - minus;
+            double four = five - minus;
+            double three = four - minus;
+            double two = three - minus;
+            double one = two - minus;
+            double zero = one - minus;
+            if (_4WheelsSettings.InfiniteHistoryEnabled == false)
+            {
+                if (array >= ten)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < nine && array >= eight)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < eight && array >= seven)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < seven && array >= six)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < six && array >= five)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < five && array >= four)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < four && array >= three)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < three && array >= two)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < two && array >= one)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < one && array >= zero)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+            }
+            else
+            {
+                if (array >= ten)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < nine && array >= eight)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < eight && array >= seven)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < seven && array >= six)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < six && array >= five)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < five && array >= four)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < four && array >= three)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < three && array >= two)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < two && array >= one)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else if (array < one && array >= zero)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+                else
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                }
+            }
+        }
         private static void ColorGradientRB(Chart chartName, double array, int i, int u)
         {
             double minus = _4WheelsSettings.Y1Max / steps;
@@ -2297,8 +2523,9 @@ namespace Physics_Data_Debug
         }
         private static void FL_ColorGradientRG(Chart chartName, int i, int u)
         {
-            double array = Math.Abs(FL_Y1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
+            double array = Math.Abs(FL_Z1ValuesChartArray[i]);
+            //ColorGradientRG(chartName, array, i, u);
+            ZColorGradientRG(chartName, array, i, u);
         }
         private static void FL_ColorGradientRB(Chart chartName, int i, int u)
         {

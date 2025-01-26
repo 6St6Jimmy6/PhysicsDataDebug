@@ -122,7 +122,9 @@ namespace Physics_Data_Debug
         public static Color Y1DefaultMinorColor { get; set; } = Color.Maroon;
         public static ChartDashStyle Y1DefaultMinorDashStyle { get; set; } = ChartDashStyle.Dash;
 
-
+        //Z
+        public static string Z1DefaultType { get; set; } = LiveData.sVerticalLoad;
+        public static double Z1DefaultMax { get; set; } = 10000;//
         ///////////////////////////////////////////////////////////////////////////////////
 
         // Changable values
@@ -207,5 +209,8 @@ namespace Physics_Data_Debug
         public static Color Y1MinorColor { get; set; } = Y1DefaultMinorColor;
         public static ChartDashStyle Y1MinorDashStyle { get; set; } = Y1DefaultMinorDashStyle;
 
+        //Z
+        public static string Z1Selection { get; set; } = Z1DefaultType;
+        public static double Z1Max { get; set; } = Z1DefaultMax;
     }
 }
