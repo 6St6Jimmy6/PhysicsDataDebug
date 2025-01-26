@@ -151,6 +151,7 @@ namespace Physics_Data_Debug
                 Y1MajorDecimalsComboBox.Items.Add(i);
             }
             // Add Color Scheme Options in the combobox
+            SchemeComboBox.Items.Add("Colorblind");
             SchemeComboBox.Items.Add("Green Red");
             SchemeComboBox.Items.Add("Blue Red");
             // Add Degree/Radian in the combobox

@@ -1138,8 +1138,8 @@ namespace Physics_Data_Debug
             }
             else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalLoad)
             {
-                _4WheelsSettings.Z1DefaultMax = 11000;
-                _4WheelsSettings.Z1DefaultMin = 1000;
+                _4WheelsSettings.Z1DefaultMax = 10000;
+                _4WheelsSettings.Z1DefaultMin = 0;
 
                 if (_4WheelsSettings.Z1Defaults == true)
                 {
@@ -1238,8 +1238,8 @@ namespace Physics_Data_Debug
             }
             else if (_4WheelsSettings.Z1Selection == LiveData.sLateralLoad)
             {
-                _4WheelsSettings.Z1DefaultMax = 11000;
-                _4WheelsSettings.Z1DefaultMin = 1000;
+                _4WheelsSettings.Z1DefaultMax = 10000;
+                _4WheelsSettings.Z1DefaultMin = 0;
 
                 if (_4WheelsSettings.Z1Defaults == true)
                 {
@@ -1282,8 +1282,8 @@ namespace Physics_Data_Debug
             }
             else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalLoad)
             {
-                _4WheelsSettings.Z1DefaultMax = 11000;
-                _4WheelsSettings.Z1DefaultMin = 1000;
+                _4WheelsSettings.Z1DefaultMax = 10000;
+                _4WheelsSettings.Z1DefaultMin = 0;
 
                 if (_4WheelsSettings.Z1Defaults == true)
                 {
@@ -2839,11 +2839,15 @@ namespace Physics_Data_Debug
             double zero = one - minus;
             if (_4WheelsSettings.InfiniteHistoryEnabled == false)
             {
-                if (array >= ten)
+                /*if (array >= ten)
                 {
                     chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
                 else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }*/
+                if (array >= nine)
                 {
                     chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
@@ -2890,11 +2894,15 @@ namespace Physics_Data_Debug
             }
             else
             {
-                if (array >= ten)
+                /*if (array >= ten)
                 {
                     chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
                 else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }*/
+                if (array >= nine)
                 {
                     chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
@@ -2958,11 +2966,15 @@ namespace Physics_Data_Debug
             double zero = one - minus;
             if (_4WheelsSettings.InfiniteHistoryEnabled == false)
             {
-                if (array >= ten)
+                /*if (array >= ten)
                 {
                     chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
                 else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }*/
+                if (array >= nine)
                 {
                     chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
@@ -3009,11 +3021,15 @@ namespace Physics_Data_Debug
             }
             else
             {
-                if (array >= ten)
+                /*if (array >= ten)
                 {
                     chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
                 else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                }*/
+                if (array >= nine)
                 {
                     chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
                 }
@@ -3059,10 +3075,170 @@ namespace Physics_Data_Debug
                 }
             }
         }
+        private static void ColorGradientSet1(Chart chartName, double array, int i, int u)
+        {
+            //double minus = _4WheelsSettings.Y1Max / steps;
+            //double ten = _4WheelsSettings.Y1Max;
+            double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / steps;
+            double ten = _4WheelsSettings.Z1Max;
+            double nine = ten - minus;
+            double eight = nine - minus;
+            double seven = eight - minus;
+            double six = seven - minus;
+            double five = six - minus;
+            double four = five - minus;
+            double three = four - minus;
+            double two = three - minus;
+            double one = two - minus;
+            double zero = one - minus;
+
+            Color color2 = Color.FromArgb(historyalpha, 0, 73, 73);
+            Color color3 = Color.FromArgb(historyalpha, 0, 146, 146);
+            Color color4 = Color.FromArgb(historyalpha, 255, 109, 182);
+            //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);
+            Color color6 = Color.FromArgb(historyalpha, 73, 0, 146);
+            Color color7 = Color.FromArgb(historyalpha, 0, 109, 219);
+            Color color8 = Color.FromArgb(historyalpha, 182, 109, 255);
+            Color color9 = Color.FromArgb(historyalpha, 109, 182, 255);
+            Color color15 = Color.FromArgb(historyalpha, 255, 255, 109);
+            Color color14 = Color.FromArgb(historyalpha, 36, 255, 36);
+            Color color13 = Color.FromArgb(historyalpha, 219, 109, 0);
+
+            if (_4WheelsSettings.InfiniteHistoryEnabled == false)
+            {
+                /*
+                if (array >= ten)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color13;
+                }
+                else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color14;
+                }
+                */
+                if (array >= nine)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color13;
+                }
+                else if (array < nine && array >= eight)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color14;
+                }
+                else if (array < eight && array >= seven)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color15;
+                }
+                else if (array < seven && array >= six)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color9;
+                }
+                else if (array < six && array >= five)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color8;
+                }
+                else if (array < five && array >= four)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color7;
+                }
+                else if (array < four && array >= three)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color6;
+                }
+                else if (array < three && array >= two)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color4;
+                }
+                else if (array < two && array >= one)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color3;
+                }
+                else if (array < one && array >= zero)
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color2;
+                }
+                else
+                {
+                    chartName.Series["Series1"].Points[i].MarkerColor = color2;
+                }
+            }
+            else
+            {
+                /*if (array >= ten)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
+                }
+                else if (array < ten && array >= nine)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
+                }*/
+                if (array >= nine)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
+                }
+                else if (array < nine && array >= eight)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
+                }
+                else if (array < eight && array >= seven)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color15;
+                }
+                else if (array < seven && array >= six)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color9;
+                }
+                else if (array < six && array >= five)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color8;
+                }
+                else if (array < five && array >= four)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color7;
+                }
+                else if (array < four && array >= three)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color6;
+                }
+                else if (array < three && array >= two)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color4;
+                }
+                else if (array < two && array >= one)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color3;
+                }
+                else if (array < one && array >= zero)
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
+                }
+                else
+                {
+                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
+                }
+            }
+        }
         private static void FL_ColorGradientRG(Chart chartName, int i, int u)
         {
             //double array = Math.Abs(FL_Y1ValuesChartArray[i]);
             double array = Math.Abs(FL_Z1ValuesChartArray[i]);
+            ColorGradientRG(chartName, array, i, u);
+        }
+        private static void FR_ColorGradientRG(Chart chartName, int i, int u)
+        {
+            //double array = Math.Abs(FR_Y1ValuesChartArray[i]);
+            double array = Math.Abs(FR_Z1ValuesChartArray[i]);
+            ColorGradientRG(chartName, array, i, u);
+        }
+        private static void RL_ColorGradientRG(Chart chartName, int i, int u)
+        {
+            //double array = Math.Abs(RL_Y1ValuesChartArray[i]);
+            double array = Math.Abs(RL_Z1ValuesChartArray[i]);
+            ColorGradientRG(chartName, array, i, u);
+        }
+        private static void RR_ColorGradientRG(Chart chartName, int i, int u)
+        {
+            //double array = Math.Abs(RR_Y1ValuesChartArray[i]);
+            double array = Math.Abs(RR_Z1ValuesChartArray[i]);
             ColorGradientRG(chartName, array, i, u);
         }
         private static void FL_ColorGradientRB(Chart chartName, int i, int u)
@@ -3071,23 +3247,11 @@ namespace Physics_Data_Debug
             double array = Math.Abs(FL_Z1ValuesChartArray[i]);
             ColorGradientRB(chartName, array, i, u);
         }
-        private static void FR_ColorGradientRG(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(FR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(FR_Z1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
-        }
         private static void FR_ColorGradientRB(Chart chartName, int i, int u)
         {
             //double array = Math.Abs(FR_Y1ValuesChartArray[i]);
             double array = Math.Abs(FR_Z1ValuesChartArray[i]);
             ColorGradientRB(chartName, array, i, u);
-        }
-        private static void RL_ColorGradientRG(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RL_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RL_Z1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
         }
         private static void RL_ColorGradientRB(Chart chartName, int i, int u)
         {
@@ -3095,17 +3259,35 @@ namespace Physics_Data_Debug
             double array = Math.Abs(RL_Z1ValuesChartArray[i]);
             ColorGradientRB(chartName, array, i, u);
         }
-        private static void RR_ColorGradientRG(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RR_Z1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
-        }
         private static void RR_ColorGradientRB(Chart chartName, int i, int u)
         {
             //double array = Math.Abs(RR_Y1ValuesChartArray[i]);
             double array = Math.Abs(RR_Z1ValuesChartArray[i]);
             ColorGradientRB(chartName, array, i, u);
+        }
+        private static void FL_ColorGradientSet1(Chart chartName, int i, int u)
+        {
+            //double array = Math.Abs(FL_Y1ValuesChartArray[i]);
+            double array = Math.Abs(FL_Z1ValuesChartArray[i]);
+            ColorGradientSet1(chartName, array, i, u);
+        }
+        private static void FR_ColorGradientSet1(Chart chartName, int i, int u)
+        {
+            //double array = Math.Abs(FR_Y1ValuesChartArray[i]);
+            double array = Math.Abs(FR_Z1ValuesChartArray[i]);
+            ColorGradientSet1(chartName, array, i, u);
+        }
+        private static void RL_ColorGradientSet1(Chart chartName, int i, int u)
+        {
+            //double array = Math.Abs(RL_Y1ValuesChartArray[i]);
+            double array = Math.Abs(RL_Z1ValuesChartArray[i]);
+            ColorGradientSet1(chartName, array, i, u);
+        }
+        private static void RR_ColorGradientSet1(Chart chartName, int i, int u)
+        {
+            //double array = Math.Abs(RR_Y1ValuesChartArray[i]);
+            double array = Math.Abs(RR_Z1ValuesChartArray[i]);
+            ColorGradientSet1(chartName, array, i, u);
         }
         public static void PlotFLChart(Chart chartName)
         {
@@ -3123,6 +3305,14 @@ namespace Physics_Data_Debug
                 {
                     chartName.Series["Series1"].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
                     FL_ColorGradientRG(chartName, i, 1);
+                }
+            }
+            else if(_4WheelsSettings.Scheme == "Colorblind")
+            {
+                for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
+                {
+                    chartName.Series["Series1"].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
+                    FL_ColorGradientSet1(chartName, i, 1);
                 }
             }
             else
@@ -3156,6 +3346,14 @@ namespace Physics_Data_Debug
                     FR_ColorGradientRG(chartName, i, 1);
                 }
             }
+            else if (_4WheelsSettings.Scheme == "Colorblind")
+            {
+                for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
+                {
+                    chartName.Series["Series1"].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
+                    FR_ColorGradientSet1(chartName, i, 1);
+                }
+            }
             else
             {
                 for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
@@ -3187,6 +3385,14 @@ namespace Physics_Data_Debug
                     RL_ColorGradientRG(chartName, i, 1);
                 }
             }
+            else if (_4WheelsSettings.Scheme == "Colorblind")
+            {
+                for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
+                {
+                    chartName.Series["Series1"].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
+                    RL_ColorGradientSet1(chartName, i, 1);
+                }
+            }
             else
             {
                 for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
@@ -3216,6 +3422,14 @@ namespace Physics_Data_Debug
                 {
                     chartName.Series["Series1"].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
                     RR_ColorGradientRG(chartName, i, 1);
+                }
+            }
+            else if (_4WheelsSettings.Scheme == "Colorblind")
+            {
+                for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
+                {
+                    chartName.Series["Series1"].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
+                    RR_ColorGradientSet1(chartName, i, 1);
                 }
             }
             else
@@ -3254,6 +3468,15 @@ namespace Physics_Data_Debug
                     }
                     u++;
                 }
+                else if (_4WheelsSettings.Scheme == "Colorblind")
+                {
+                    for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
+                    {
+                        chartName.Series["Series" + u.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
+                        FL_ColorGradientSet1(chartName, i, u);
+                    }
+                    u++;
+                }
                 else
                 {
                     for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
@@ -3286,6 +3509,15 @@ namespace Physics_Data_Debug
                     {
                         chartName.Series["Series" + u.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
                         FR_ColorGradientRG(chartName, i, u);
+                    }
+                    u++;
+                }
+                else if (_4WheelsSettings.Scheme == "Colorblind")
+                {
+                    for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
+                    {
+                        chartName.Series["Series" + u.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
+                        FR_ColorGradientSet1(chartName, i, u);
                     }
                     u++;
                 }
@@ -3324,6 +3556,15 @@ namespace Physics_Data_Debug
                     }
                     u++;
                 }
+                else if (_4WheelsSettings.Scheme == "Colorblind")
+                {
+                    for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
+                    {
+                        chartName.Series["Series" + u.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
+                        RL_ColorGradientSet1(chartName, i, u);
+                    }
+                    u++;
+                }
                 else
                 {
                     for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
@@ -3359,6 +3600,15 @@ namespace Physics_Data_Debug
                     }
                     u++;
                 }
+                else if (_4WheelsSettings.Scheme == "Colorblind")
+                {
+                    for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
+                    {
+                        chartName.Series["Series" + u.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
+                        RR_ColorGradientSet1(chartName, i, u);
+                    }
+                    u++;
+                }
                 else
                 {
                     for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
@@ -3370,6 +3620,227 @@ namespace Physics_Data_Debug
                 }
 
             }
+        }
+        public static void SetUpDownChart(Chart chartName)
+        {
+
+            double maxmin = _4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min;
+            double interval = maxmin / steps;
+            chartName.ChartAreas["ChartArea1"].AxisY.Minimum = _4WheelsSettings.Z1Min;
+
+            chartName.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
+            chartName.ChartAreas["ChartArea1"].AxisX.Maximum = 1;
+            chartName.ChartAreas["ChartArea1"].AxisY.Maximum = _4WheelsSettings.Z1Max;
+            chartName.ChartAreas["ChartArea1"].AxisY.MajorGrid.Interval = interval;
+            chartName.ChartAreas["ChartArea1"].AxisY.Interval = interval;
+            chartName.Series["Series1"].Color = Color.Transparent;
+            chartName.Series["Series1"].LabelBackColor = Color.Transparent;
+
+            chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Clear();
+            if (_4WheelsSettings.Scheme == "Green Red")
+            {
+                for (double i = _4WheelsSettings.Z1Min * steps; i <= _4WheelsSettings.Z1Max * steps; i += maxmin)
+                {
+
+                    double iminsteps = i - _4WheelsSettings.Z1Min * steps;
+                    StripLine sl = new StripLine();
+                    if (Math.Abs(iminsteps) == maxmin * 10)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 9)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 8)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 7)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 64 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 6)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 128 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 5)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 192 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 4)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 192 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 3)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 192 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 2)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 64 / divider, 192 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 1)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 0 / divider, 192 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 0)
+                    {
+
+                    }
+                    if (i < 0)
+                    {
+                        sl.StripWidth = interval;
+                        sl.IntervalOffset = ((double)i) / steps;
+                    }
+                    else if (i > 0)
+                    {
+                        sl.StripWidth = interval;
+                        sl.IntervalOffset = ((double)i) / steps - interval;
+                    }
+                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
+                }
+            }
+            else if (_4WheelsSettings.Scheme == "Colorblind")
+            {
+                Color color2 = Color.FromArgb(historyalpha, 0, 73, 73);
+                Color color3 = Color.FromArgb(historyalpha, 0, 146, 146);
+                Color color4 = Color.FromArgb(historyalpha, 255, 109, 182);
+                //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);
+                Color color6 = Color.FromArgb(historyalpha, 73, 0, 146);
+                Color color7 = Color.FromArgb(historyalpha, 0, 109, 219);
+                Color color8 = Color.FromArgb(historyalpha, 182, 109, 255);
+                Color color9 = Color.FromArgb(historyalpha, 109, 182, 255);
+                Color color15 = Color.FromArgb(historyalpha, 255, 255, 109);
+                Color color14 = Color.FromArgb(historyalpha, 36, 255, 36);
+                Color color13 = Color.FromArgb(historyalpha, 219, 109, 0);
+
+                for (double i = _4WheelsSettings.Z1Min * steps; i <= _4WheelsSettings.Z1Max * steps; i += maxmin)
+                {
+
+                    double iminsteps = i - _4WheelsSettings.Z1Min * steps;
+                    StripLine sl = new StripLine();
+                    if (Math.Abs(iminsteps) == maxmin * 10)
+                    {
+                        sl.BackColor = color13;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 9)
+                    {
+                        sl.BackColor = color14;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 8)
+                    {
+                        sl.BackColor = color15;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 7)
+                    {
+                        sl.BackColor = color9;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 6)
+                    {
+                        sl.BackColor = color8;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 5)
+                    {
+                        sl.BackColor = color7;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 4)
+                    {
+                        sl.BackColor = color6;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 3)
+                    {
+                        sl.BackColor = color4;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 2)
+                    {
+                        sl.BackColor = color3;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 1)
+                    {
+                        sl.BackColor = color2;
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 0)
+                    {
+
+                    }
+                    if (i < 0)
+                    {
+                        sl.StripWidth = interval;
+                        sl.IntervalOffset = ((double)i) / steps;
+                    }
+                    else if (i > 0)
+                    {
+                        sl.StripWidth = interval;
+                        sl.IntervalOffset = ((double)i) / steps - interval;
+                    }
+                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
+                }
+            }
+            else
+            {
+                for (double i = _4WheelsSettings.Z1Min * steps; i <= _4WheelsSettings.Z1Max * steps; i += maxmin)
+                {
+                    double iminsteps = i - _4WheelsSettings.Z1Min * steps;
+                    StripLine sl = new StripLine();
+                    if (Math.Abs(iminsteps) == _4WheelsSettings.Z1Max * 10)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 9)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 8)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 0 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 7)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 64 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 6)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 128 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 5)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 192 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 4)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 192 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 3)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 192 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 2)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 64 / divider, 0 / divider, 192 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 1)
+                    {
+                        sl.BackColor = Color.FromArgb(alpha, 0 / divider, 0 / divider, 192 / divider);
+                    }
+                    if (Math.Abs(iminsteps) == maxmin * 0)
+                    {
+
+                    }
+                    if (i < 0)
+                    {
+                        sl.StripWidth = interval;
+                        sl.IntervalOffset = ((double)i) / steps;
+                    }
+                    else if (i > 0)
+                    {
+                        sl.StripWidth = interval;
+                        sl.IntervalOffset = ((double)i) / steps - interval;
+                    }
+                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
+                }
+            }
+
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Physics_Data_Debug
             _4Wheels.SetChart(chart3);
             _4Wheels.SetChart(chart4);
             //_4Wheels.SetUpDownChart(chart2);
-
+            _4Wheels.SetUpDownChart(GradientChart);
 
 
             /*
@@ -493,11 +493,12 @@ namespace Physics_Data_Debug
             _4Wheels.ClearSeriesHistory(chart3);
             _4Wheels.ClearSeriesHistory(chart4);
             _4Wheels.SetArrays();
+            _4Wheels.SetUpDownChart(GradientChart);
 
             // Not needed anymore these because chart settings are applied in the settings.
             //GForce.SetPolarChart(chart1);
             //GForce.SetUpDownChart(chart2);
-            if(PauseUpdate == false)
+            if (PauseUpdate == false)
             {
                 timer1.Enabled = true;
                 timer2.Enabled = true;

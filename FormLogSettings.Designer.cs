@@ -335,6 +335,7 @@ namespace Physics_Data_Debug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(941, 512);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.DelimiterTextBox);

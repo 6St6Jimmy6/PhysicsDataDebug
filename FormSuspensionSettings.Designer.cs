@@ -1306,6 +1306,7 @@ namespace Physics_Data_Debug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1084, 861);
             this.Controls.Add(this.label68);
             this.Controls.Add(this.label62);

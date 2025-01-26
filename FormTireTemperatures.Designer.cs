@@ -76,7 +76,7 @@ namespace Physics_Data_Debug
             ((System.ComponentModel.ISupportInitialize)(this.chartFL)).BeginInit();
             this.SuspendLayout();
             // 
-            // temperaturesRR
+            // chartRR
             // 
             this.chartRR.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
@@ -84,7 +84,7 @@ namespace Physics_Data_Debug
             legend1.Name = "Legend1";
             this.chartRR.Legends.Add(legend1);
             this.chartRR.Location = new System.Drawing.Point(333, 315);
-            this.chartRR.Name = "temperaturesRR";
+            this.chartRR.Name = "chartRR";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
@@ -102,7 +102,7 @@ namespace Physics_Data_Debug
             title1.Text = "Rear Right Temperatures";
             this.chartRR.Titles.Add(title1);
             // 
-            // temperaturesRL
+            // chartRL
             // 
             this.chartRL.BackColor = System.Drawing.Color.Transparent;
             chartArea2.Name = "ChartArea1";
@@ -110,7 +110,7 @@ namespace Physics_Data_Debug
             legend2.Name = "Legend1";
             this.chartRL.Legends.Add(legend2);
             this.chartRL.Location = new System.Drawing.Point(13, 315);
-            this.chartRL.Name = "temperaturesRL";
+            this.chartRL.Name = "chartRL";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series3.Legend = "Legend1";
@@ -128,7 +128,7 @@ namespace Physics_Data_Debug
             title2.Text = "Rear Left Temperatures";
             this.chartRL.Titles.Add(title2);
             // 
-            // temperaturesFR
+            // chartFR
             // 
             this.chartFR.BackColor = System.Drawing.Color.Transparent;
             chartArea3.Name = "ChartArea1";
@@ -136,7 +136,7 @@ namespace Physics_Data_Debug
             legend3.Name = "Legend1";
             this.chartFR.Legends.Add(legend3);
             this.chartFR.Location = new System.Drawing.Point(333, 42);
-            this.chartFR.Name = "temperaturesFR";
+            this.chartFR.Name = "chartFR";
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series5.Legend = "Legend1";
@@ -154,7 +154,7 @@ namespace Physics_Data_Debug
             title3.Text = "Front Right Temperatures";
             this.chartFR.Titles.Add(title3);
             // 
-            // temperaturesFL
+            // chartFL
             // 
             this.chartFL.BackColor = System.Drawing.Color.Transparent;
             chartArea4.Name = "ChartArea1";
@@ -162,7 +162,7 @@ namespace Physics_Data_Debug
             legend4.Name = "Legend1";
             this.chartFL.Legends.Add(legend4);
             this.chartFL.Location = new System.Drawing.Point(13, 42);
-            this.chartFL.Name = "temperaturesFL";
+            this.chartFL.Name = "chartFL";
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series7.Legend = "Legend1";
@@ -329,6 +329,7 @@ namespace Physics_Data_Debug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(657, 588);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);

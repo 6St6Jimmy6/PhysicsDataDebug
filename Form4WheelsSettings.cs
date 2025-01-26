@@ -156,6 +156,7 @@ namespace Physics_Data_Debug
                 Y1MajorDecimalsComboBox.Items.Add(i);
             }
             // Add Color Scheme Options in the combobox
+            SchemeComboBox.Items.Add("Colorblind");
             SchemeComboBox.Items.Add("Green Red");
             SchemeComboBox.Items.Add("Blue Red");
             // Add X axis selections in the combobox
@@ -606,6 +607,7 @@ namespace Physics_Data_Debug
             var chart2 = form.chart2;
             var chart3 = form.chart3;
             var chart4 = form.chart4;
+            var gradientChart = form.GradientChart;
             //var chart2 = form.chart2;
             var timer1 = form.timer1;
             var timer2 = form.timer1;
@@ -621,7 +623,7 @@ namespace Physics_Data_Debug
             _4Wheels.SetChart(chart2);
             _4Wheels.SetChart(chart3);
             _4Wheels.SetChart(chart4);
-            //_4Wheels.SetUpDownChart(chart2);
+            _4Wheels.SetUpDownChart(gradientChart);
             timer1.Enabled = true;
             timer2.Enabled = true;
         }
@@ -720,7 +722,7 @@ namespace Physics_Data_Debug
             {
                 color = Color.Blue;
             }
-            else
+            else if ((string)color == "Colorblind")
             {
                 color = Color.Black;
             }
@@ -730,7 +732,14 @@ namespace Physics_Data_Debug
             string colorRemovePart2 = colorRemovePart1.Replace("]", "");
             string colorName = colorRemovePart2 + " Red";
             e.DrawBackground();
-            e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
+            if(colorRemovePart2 == "Black")
+            {
+                e.Graphics.DrawString("Colorblind", font, brush, e.Bounds.X, e.Bounds.Y);
+            }
+            else
+            {
+                e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
+            }
         }
         private void SchemeComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {

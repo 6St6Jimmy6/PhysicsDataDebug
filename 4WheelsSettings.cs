@@ -51,7 +51,7 @@ namespace Physics_Data_Debug
         public static int DefaultRR_HistoryAmountPoints { get; set; } = 100;
         public static bool DefaultInfiniteHistoryEnabled { get; set; } = false;
         public static int DefaultMarkerSize { get; set; } = 4;
-        public static string DefaultScheme { get; set; } = "Green Red";
+        public static string DefaultScheme { get; set; } = "Colorblind";
         public static Color DefaultMarkerColor { get; set; } = Color.Red;
 
 
@@ -126,8 +126,8 @@ namespace Physics_Data_Debug
         //Z
         public static bool Z1Defaults { get; set; } = true;
         public static string Z1DefaultType { get; set; } = LiveData.sVerticalLoad;
-        public static double Z1DefaultMax { get; set; } = 11000;//
-        public static double Z1DefaultMin { get; set; } = 1000;//
+        public static double Z1DefaultMax { get; set; } = 10000;//
+        public static double Z1DefaultMin { get; set; } = 0;//
         ///////////////////////////////////////////////////////////////////////////////////
 
         // Changable values
