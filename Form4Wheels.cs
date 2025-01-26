@@ -40,7 +40,6 @@ namespace Physics_Data_Debug
             //_4Wheels.SetUpDownChart(chart2);
             _4Wheels.SetUpDownChart(GradientChart);
 
-
             /*
             //panel3.Paint += new PaintEventHandler(panel3_Paint);
             //panel4.Paint += new PaintEventHandler(panel4_Paint);

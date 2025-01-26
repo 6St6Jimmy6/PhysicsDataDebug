@@ -434,7 +434,6 @@ namespace Physics_Data_Debug
         {
             this.Close();
         }
-
         private void applyButton_Click(object sender, EventArgs e)
         {
             // Other stuff
