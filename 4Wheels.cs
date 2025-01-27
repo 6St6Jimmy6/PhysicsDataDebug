@@ -94,7 +94,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sTireTravelSpeed)
             {
                 _4WheelsSettings.X1DefaultMax = 400;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax / 2;
+                if(_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax / 2;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 100;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -113,7 +120,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sAngularVelocity)
             {
                 _4WheelsSettings.X1DefaultMax = 400;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax / 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax / 2;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 100;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -266,7 +280,14 @@ namespace Physics_Data_Debug
             {
                 // Default Axis values
                 _4WheelsSettings.X1DefaultMax = 45;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 15;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -285,7 +306,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sCamberAngle)
             {
                 _4WheelsSettings.X1DefaultMax = 10;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 4;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -304,7 +332,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sLateralLoad)
             {
                 _4WheelsSettings.X1DefaultMax = 10000;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 1000;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -323,7 +358,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sSlipAngle)
             {
                 _4WheelsSettings.X1DefaultMax = 45;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 15;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -342,7 +384,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sLateralFriction)
             {
                 _4WheelsSettings.X1DefaultMax = 2;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 0.5;
                 _4WheelsSettings.X1DefaultMajorDecimals = 2;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -361,7 +410,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sLateralSlipSpeed)
             {
                 _4WheelsSettings.X1DefaultMax = 20;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 5;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -380,7 +436,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalLoad)
             {
                 _4WheelsSettings.X1DefaultMax = 10000;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 1000;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -399,7 +462,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sSlipRatio)
             {
                 _4WheelsSettings.X1DefaultMax = 1;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 0.2;
                 _4WheelsSettings.X1DefaultMajorDecimals = 2;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -418,7 +488,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalFriction)
             {
                 _4WheelsSettings.X1DefaultMax = 2;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 0.5;
                 _4WheelsSettings.X1DefaultMajorDecimals = 2;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -437,7 +514,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalSlipSpeed)
             {
                 _4WheelsSettings.X1DefaultMax = 20;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 5;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -456,7 +540,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sTreadTemperature)
             {
                 _4WheelsSettings.X1DefaultMax = 380;
-                _4WheelsSettings.X1DefaultMin = -20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -20;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 20;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -475,7 +566,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sInnerTemperature)
             {
                 _4WheelsSettings.X1DefaultMax = 380;
-                _4WheelsSettings.X1DefaultMin = -20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -20;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 20;
                 _4WheelsSettings.X1DefaultMajorDecimals = 0;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -494,8 +592,8 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sTotalFriction)
             {
                 _4WheelsSettings.X1DefaultMax = 2;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
-                _4WheelsSettings.X1DefaultMajorInterval = 0.5;
+                 _4WheelsSettings.X1DefaultMin = 0;
+                _4WheelsSettings.X1DefaultMajorInterval = 0.25;
                 _4WheelsSettings.X1DefaultMajorDecimals = 2;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
                 _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
@@ -551,7 +649,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionVelocity)
             {
                 _4WheelsSettings.X1DefaultMax = 10;
-                _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.X1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                }
                 _4WheelsSettings.X1DefaultMajorInterval = 2;
                 _4WheelsSettings.X1DefaultMajorDecimals = 4;
                 _4WheelsSettings.X1DefaultMinorEnabled = true;
@@ -589,12 +694,12 @@ namespace Physics_Data_Debug
 
             if (_4WheelsSettings.Y1Selection == LiveData.sRaceTime)
             {
-                _4WheelsSettings.Y1DefaultMax = 100000;
+                _4WheelsSettings.Y1DefaultMax = double.NaN;
                 _4WheelsSettings.Y1DefaultMin = 0;
                 _4WheelsSettings.Y1DefaultMajorInterval = 1000;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = false;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 1;
+                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 60;
 
                 if (_4WheelsSettings.Y1Defaults == true)
                 {
@@ -609,7 +714,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sTireTravelSpeed)
             {
                 _4WheelsSettings.Y1DefaultMax = 400;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax / 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax / 2;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 100;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -628,7 +740,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sAngularVelocity)
             {
                 _4WheelsSettings.Y1DefaultMax = 400;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax / 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax / 2;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 100;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -781,7 +900,14 @@ namespace Physics_Data_Debug
             {
                 // Default Axis values
                 _4WheelsSettings.Y1DefaultMax = 45;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 15;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -800,7 +926,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sCamberAngle)
             {
                 _4WheelsSettings.Y1DefaultMax = 10;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 4;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -819,7 +952,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sLateralLoad)
             {
                 _4WheelsSettings.Y1DefaultMax = 10000;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 1000;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -838,7 +978,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sSlipAngle)
             {
                 _4WheelsSettings.Y1DefaultMax = 45;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 15;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -857,7 +1004,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sLateralFriction)
             {
                 _4WheelsSettings.Y1DefaultMax = 2;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 0.5;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 2;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -876,7 +1030,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sLateralSlipSpeed)
             {
                 _4WheelsSettings.Y1DefaultMax = 20;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 5;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -895,7 +1056,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalLoad)
             {
                 _4WheelsSettings.Y1DefaultMax = 10000;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 1000;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -914,7 +1082,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sSlipRatio)
             {
                 _4WheelsSettings.Y1DefaultMax = 1;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 0.2;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 2;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -933,7 +1108,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalFriction)
             {
                 _4WheelsSettings.Y1DefaultMax = 2;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 0.5;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 2;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -952,7 +1134,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalSlipSpeed)
             {
                 _4WheelsSettings.Y1DefaultMax = 20;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 5;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -971,7 +1160,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sTreadTemperature)
             {
                 _4WheelsSettings.Y1DefaultMax = 380;
-                _4WheelsSettings.Y1DefaultMin = -20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -20;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 20;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -990,7 +1186,14 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sInnerTemperature)
             {
                 _4WheelsSettings.Y1DefaultMax = 380;
-                _4WheelsSettings.Y1DefaultMin = -20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -20;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 20;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
@@ -1009,8 +1212,8 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFriction)
             {
                 _4WheelsSettings.Y1DefaultMax = 2;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.5;
+                _4WheelsSettings.Y1DefaultMin = 0;
+                _4WheelsSettings.Y1DefaultMajorInterval = 0.25;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 2;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
                 _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
@@ -1032,7 +1235,7 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.Y1DefaultMajorInterval = 90;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 0;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 5;
+                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
 
                 if (_4WheelsSettings.Y1Defaults == true)
                 {
@@ -1051,7 +1254,7 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.Y1DefaultMajorInterval = 0.1;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 4;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 5;
+                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
 
                 if (_4WheelsSettings.Y1Defaults == true)
                 {
@@ -1066,11 +1269,18 @@ namespace Physics_Data_Debug
             else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionVelocity)
             {
                 _4WheelsSettings.Y1DefaultMax = 10;
-                _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    _4WheelsSettings.Y1DefaultMin = 0;
+                }
+                else
+                {
+                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
+                }
                 _4WheelsSettings.Y1DefaultMajorInterval = 2;
                 _4WheelsSettings.Y1DefaultMajorDecimals = 4;
                 _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 5;
+                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
 
                 if (_4WheelsSettings.Y1Defaults == true)
                 {
@@ -1083,7 +1293,7 @@ namespace Physics_Data_Debug
                 }
             }
             /*
-            else if (comboBox2.Text == "")
+            else if (comboBox1.Text == "")
             {
 
             }*/
@@ -1098,7 +1308,6 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.Y1DefaultMinorEnabled = false;
                 _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
             }
-
         }
         private static void Z1AxisDefaults()
         {
