@@ -37,7 +37,7 @@ namespace Physics_Data_Debug
         //private static double[] Y1ValuesChart2Array = new double[2];
 
 
-        private static int u = 2;
+        private static int uHistoryHelper = 2;
 
         private void HistoryPointsColorFromMarkerColor() // Not used
         {
@@ -2837,115 +2837,58 @@ namespace Physics_Data_Debug
             double two = three - minus;
             double one = two - minus;
             double zero = one - minus;
-            if (_4WheelsSettings.InfiniteHistoryEnabled == false)
+
+            /*if (array >= ten)
             {
-                /*if (array >= ten)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < ten && array >= nine)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }*/
-                if (array >= nine)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < nine && array >= eight)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < eight && array >= seven)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < seven && array >= six)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < six && array >= five)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < five && array >= four)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < four && array >= three)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < three && array >= two)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < two && array >= one)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < one && array >= zero)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < ten && array >= nine)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }*/
+            if (array >= nine)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < nine && array >= eight)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < eight && array >= seven)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < seven && array >= six)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < six && array >= five)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < five && array >= four)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < four && array >= three)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < three && array >= two)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < two && array >= one)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < one && array >= zero)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
             }
             else
             {
-                /*if (array >= ten)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < ten && array >= nine)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }*/
-                if (array >= nine)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < nine && array >= eight)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < eight && array >= seven)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < seven && array >= six)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < six && array >= five)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < five && array >= four)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < four && array >= three)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < three && array >= two)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < two && array >= one)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < one && array >= zero)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
-                else
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                }
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
             }
         }
         private static void ColorGradientRB(Chart chartName, double array, int i, int u)
@@ -2964,115 +2907,58 @@ namespace Physics_Data_Debug
             double two = three - minus;
             double one = two - minus;
             double zero = one - minus;
-            if (_4WheelsSettings.InfiniteHistoryEnabled == false)
+
+            /*if (array >= ten)
             {
-                /*if (array >= ten)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < ten && array >= nine)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }*/
-                if (array >= nine)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < nine && array >= eight)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < eight && array >= seven)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < seven && array >= six)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
-                }
-                else if (array < six && array >= five)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
-                }
-                else if (array < five && array >= four)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < four && array >= three)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < three && array >= two)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < two && array >= one)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < one && array >= zero)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < ten && array >= nine)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }*/
+            if (array >= nine)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < nine && array >= eight)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < eight && array >= seven)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+            }
+            else if (array < seven && array >= six)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
+            }
+            else if (array < six && array >= five)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
+            }
+            else if (array < five && array >= four)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+            }
+            else if (array < four && array >= three)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+            }
+            else if (array < three && array >= two)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+            }
+            else if (array < two && array >= one)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+            }
+            else if (array < one && array >= zero)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
             }
             else
             {
-                /*if (array >= ten)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < ten && array >= nine)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }*/
-                if (array >= nine)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < nine && array >= eight)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < eight && array >= seven)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                }
-                else if (array < seven && array >= six)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
-                }
-                else if (array < six && array >= five)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
-                }
-                else if (array < five && array >= four)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < four && array >= three)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < three && array >= two)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < two && array >= one)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else if (array < one && array >= zero)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
-                else
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                }
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
             }
         }
         private static void ColorGradientSet1(Chart chartName, double array, int i, int u)
@@ -3091,7 +2977,7 @@ namespace Physics_Data_Debug
             double two = three - minus;
             double one = two - minus;
             double zero = one - minus;
-
+            // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
             Color color2 = Color.FromArgb(historyalpha, 0, 73, 73);
             Color color3 = Color.FromArgb(historyalpha, 0, 146, 146);
             Color color4 = Color.FromArgb(historyalpha, 255, 109, 182);
@@ -3104,117 +2990,57 @@ namespace Physics_Data_Debug
             Color color14 = Color.FromArgb(historyalpha, 36, 255, 36);
             Color color13 = Color.FromArgb(historyalpha, 219, 109, 0);
 
-            if (_4WheelsSettings.InfiniteHistoryEnabled == false)
+            /*if (array >= ten)
             {
-                /*
-                if (array >= ten)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color13;
-                }
-                else if (array < ten && array >= nine)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color14;
-                }
-                */
-                if (array >= nine)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color13;
-                }
-                else if (array < nine && array >= eight)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color14;
-                }
-                else if (array < eight && array >= seven)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color15;
-                }
-                else if (array < seven && array >= six)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color9;
-                }
-                else if (array < six && array >= five)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color8;
-                }
-                else if (array < five && array >= four)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color7;
-                }
-                else if (array < four && array >= three)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color6;
-                }
-                else if (array < three && array >= two)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color4;
-                }
-                else if (array < two && array >= one)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color3;
-                }
-                else if (array < one && array >= zero)
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color2;
-                }
-                else
-                {
-                    chartName.Series["Series1"].Points[i].MarkerColor = color2;
-                }
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
+            }
+            else if (array < ten && array >= nine)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
+            }*/
+            if (array >= nine)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
+            }
+            else if (array < nine && array >= eight)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
+            }
+            else if (array < eight && array >= seven)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color15;
+            }
+            else if (array < seven && array >= six)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color9;
+            }
+            else if (array < six && array >= five)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color8;
+            }
+            else if (array < five && array >= four)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color7;
+            }
+            else if (array < four && array >= three)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color6;
+            }
+            else if (array < three && array >= two)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color4;
+            }
+            else if (array < two && array >= one)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color3;
+            }
+            else if (array < one && array >= zero)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
             }
             else
             {
-                /*if (array >= ten)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
-                }
-                else if (array < ten && array >= nine)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
-                }*/
-                if (array >= nine)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
-                }
-                else if (array < nine && array >= eight)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
-                }
-                else if (array < eight && array >= seven)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color15;
-                }
-                else if (array < seven && array >= six)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color9;
-                }
-                else if (array < six && array >= five)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color8;
-                }
-                else if (array < five && array >= four)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color7;
-                }
-                else if (array < four && array >= three)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color6;
-                }
-                else if (array < three && array >= two)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color4;
-                }
-                else if (array < two && array >= one)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color3;
-                }
-                else if (array < one && array >= zero)
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
-                }
-                else
-                {
-                    chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
-                }
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
             }
         }
         private static void FL_ColorGradientRG(Chart chartName, int i, int u)
@@ -3449,42 +3275,42 @@ namespace Physics_Data_Debug
         {
             if (_4WheelsSettings.InfiniteHistoryEnabled == true)
             {
-                chartName.Series.Insert(0, new Series("Series" + u.ToString()));
-                chartName.Series["Series" + u].ChartType = SeriesChartType.Point;
-                chartName.Series["Series" + u.ToString()].Color = Color.Transparent;
-                chartName.Series["Series" + u.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + u.ToString()].MarkerSize = 2;
-                chartName.Series["Series" + u.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-                chartName.Series["Series" + u.ToString()].IsValueShownAsLabel = false;
-                chartName.Series["Series" + u.ToString()].SmartLabelStyle.Enabled = false;
-                chartName.Series["Series" + u.ToString()].LabelBackColor = Color.Transparent;
+                chartName.Series.Insert(0, new Series("Series" + uHistoryHelper.ToString()));
+                chartName.Series["Series" + uHistoryHelper].ChartType = SeriesChartType.Point;
+                chartName.Series["Series" + uHistoryHelper.ToString()].Color = Color.Transparent;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerStyle = MarkerStyle.Circle;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerSize = 2;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
+                chartName.Series["Series" + uHistoryHelper.ToString()].IsValueShownAsLabel = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
 
                 if (_4WheelsSettings.Scheme == "Green Red")
                 {
                     for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                        FL_ColorGradientRG(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
+                        FL_ColorGradientRG(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else if (_4WheelsSettings.Scheme == "Colorblind")
                 {
                     for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                        FL_ColorGradientSet1(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
+                        FL_ColorGradientSet1(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else
                 {
                     for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                        FL_ColorGradientRB(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
+                        FL_ColorGradientRB(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
 
             }
@@ -3493,42 +3319,42 @@ namespace Physics_Data_Debug
         {
             if (_4WheelsSettings.InfiniteHistoryEnabled == true)
             {
-                chartName.Series.Insert(0, new Series("Series" + u.ToString()));
-                chartName.Series["Series" + u].ChartType = SeriesChartType.Point;
-                chartName.Series["Series" + u.ToString()].Color = Color.Transparent;
-                chartName.Series["Series" + u.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + u.ToString()].MarkerSize = 2;
-                chartName.Series["Series" + u.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-                chartName.Series["Series" + u.ToString()].IsValueShownAsLabel = false;
-                chartName.Series["Series" + u.ToString()].SmartLabelStyle.Enabled = false;
-                chartName.Series["Series" + u.ToString()].LabelBackColor = Color.Transparent;
+                chartName.Series.Insert(0, new Series("Series" + uHistoryHelper.ToString()));
+                chartName.Series["Series" + uHistoryHelper].ChartType = SeriesChartType.Point;
+                chartName.Series["Series" + uHistoryHelper.ToString()].Color = Color.Transparent;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerStyle = MarkerStyle.Circle;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerSize = 2;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
+                chartName.Series["Series" + uHistoryHelper.ToString()].IsValueShownAsLabel = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
 
                 if (_4WheelsSettings.Scheme == "Green Red")
                 {
                     for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                        FR_ColorGradientRG(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
+                        FR_ColorGradientRG(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else if (_4WheelsSettings.Scheme == "Colorblind")
                 {
                     for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                        FR_ColorGradientSet1(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
+                        FR_ColorGradientSet1(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else
                 {
                     for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                        FR_ColorGradientRB(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
+                        FR_ColorGradientRB(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
 
             }
@@ -3537,42 +3363,42 @@ namespace Physics_Data_Debug
         {
             if (_4WheelsSettings.InfiniteHistoryEnabled == true)
             {
-                chartName.Series.Insert(0, new Series("Series" + u.ToString()));
-                chartName.Series["Series" + u].ChartType = SeriesChartType.Point;
-                chartName.Series["Series" + u.ToString()].Color = Color.Transparent;
-                chartName.Series["Series" + u.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + u.ToString()].MarkerSize = 2;
-                chartName.Series["Series" + u.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-                chartName.Series["Series" + u.ToString()].IsValueShownAsLabel = false;
-                chartName.Series["Series" + u.ToString()].SmartLabelStyle.Enabled = false;
-                chartName.Series["Series" + u.ToString()].LabelBackColor = Color.Transparent;
+                chartName.Series.Insert(0, new Series("Series" + uHistoryHelper.ToString()));
+                chartName.Series["Series" + uHistoryHelper].ChartType = SeriesChartType.Point;
+                chartName.Series["Series" + uHistoryHelper.ToString()].Color = Color.Transparent;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerStyle = MarkerStyle.Circle;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerSize = 2;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
+                chartName.Series["Series" + uHistoryHelper.ToString()].IsValueShownAsLabel = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
 
                 if (_4WheelsSettings.Scheme == "Green Red")
                 {
                     for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                        RL_ColorGradientRG(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
+                        RL_ColorGradientRG(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else if (_4WheelsSettings.Scheme == "Colorblind")
                 {
                     for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                        RL_ColorGradientSet1(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
+                        RL_ColorGradientSet1(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else
                 {
                     for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                        RL_ColorGradientRB(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
+                        RL_ColorGradientRB(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
 
             }
@@ -3581,42 +3407,42 @@ namespace Physics_Data_Debug
         {
             if (_4WheelsSettings.InfiniteHistoryEnabled == true)
             {
-                chartName.Series.Insert(0, new Series("Series" + u.ToString()));
-                chartName.Series["Series" + u].ChartType = SeriesChartType.Point;
-                chartName.Series["Series" + u.ToString()].Color = Color.Transparent;
-                chartName.Series["Series" + u.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + u.ToString()].MarkerSize = 2;
-                chartName.Series["Series" + u.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-                chartName.Series["Series" + u.ToString()].IsValueShownAsLabel = false;
-                chartName.Series["Series" + u.ToString()].SmartLabelStyle.Enabled = false;
-                chartName.Series["Series" + u.ToString()].LabelBackColor = Color.Transparent;
+                chartName.Series.Insert(0, new Series("Series" + uHistoryHelper.ToString()));
+                chartName.Series["Series" + uHistoryHelper].ChartType = SeriesChartType.Point;
+                chartName.Series["Series" + uHistoryHelper.ToString()].Color = Color.Transparent;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerStyle = MarkerStyle.Circle;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerSize = 2;
+                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
+                chartName.Series["Series" + uHistoryHelper.ToString()].IsValueShownAsLabel = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
+                chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
 
                 if (_4WheelsSettings.Scheme == "Green Red")
                 {
                     for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                        RR_ColorGradientRG(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
+                        RR_ColorGradientRG(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else if (_4WheelsSettings.Scheme == "Colorblind")
                 {
                     for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                        RR_ColorGradientSet1(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
+                        RR_ColorGradientSet1(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
                 else
                 {
                     for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
                     {
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                        RR_ColorGradientRB(chartName, i, u);
+                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
+                        RR_ColorGradientRB(chartName, i, uHistoryHelper);
                     }
-                    u++;
+                    uHistoryHelper++;
                 }
 
             }
