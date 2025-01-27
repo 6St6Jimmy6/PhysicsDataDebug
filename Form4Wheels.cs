@@ -12,19 +12,6 @@ namespace Physics_Data_Debug
 {
     public partial class Form4Wheels : Form
     {
-        //private readonly RectangleF[] rectfGArray = new RectangleF[100];
-
-        //private double maxY = 2;
-
-        //private int intervalDivider = 5;
-
-        //public static int GScale = 25;
-
-        //private static int xy = 197;
-        //private float xzG = xy;
-
-        //int u = 2;
-
         bool PauseUpdate;
 
         public Form4Wheels()
