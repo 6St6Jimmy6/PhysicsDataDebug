@@ -434,7 +434,187 @@ namespace Physics_Data_Debug
         {
             this.Close();
         }
-        private void applyButton_Click(object sender, EventArgs e)
+        // Adjust chart min/max/lines etc., just not touching and refreshing data.
+        private void applyChartSettingsButton_Click(object sender, EventArgs e)
+        {
+            // Other stuff
+            if (DefaultsCheckBox.Checked == true)
+            {
+                _4WheelsSettings.BackgroundColor = _4WheelsSettings.DefaultBackgroundColor;
+                _4WheelsSettings.MarkerColor = _4WheelsSettings.DefaultMarkerColor;
+                _4WheelsSettings.FL_HistoryAmountPoints = _4WheelsSettings.DefaultFL_HistoryAmountPoints;
+                _4WheelsSettings.FR_HistoryAmountPoints = _4WheelsSettings.DefaultFR_HistoryAmountPoints;
+                _4WheelsSettings.RL_HistoryAmountPoints = _4WheelsSettings.DefaultRL_HistoryAmountPoints;
+                _4WheelsSettings.RR_HistoryAmountPoints = _4WheelsSettings.DefaultRR_HistoryAmountPoints;
+                _4WheelsSettings.InfiniteHistoryEnabled = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
+                _4WheelsSettings.Scheme = _4WheelsSettings.DefaultScheme;
+            }
+            else
+            {
+                _4WheelsSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
+                _4WheelsSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
+                _4WheelsSettings.FL_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.FL_HistoryAmountPoints, _4WheelsSettings.DefaultFL_HistoryAmountPoints, true);
+                _4WheelsSettings.FR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.FR_HistoryAmountPoints, _4WheelsSettings.DefaultFR_HistoryAmountPoints, true);
+                _4WheelsSettings.RL_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RL_HistoryAmountPoints, _4WheelsSettings.DefaultRL_HistoryAmountPoints, true);
+                _4WheelsSettings.RR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RR_HistoryAmountPoints, _4WheelsSettings.DefaultRR_HistoryAmountPoints, true);
+                _4WheelsSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
+                _4WheelsSettings.Scheme = SchemeComboBox.Text;
+            }
+
+            // X-Axis
+            _4WheelsSettings.X1Selection = X1SelectionComboBox.Text;
+            if (X1DefaultsCheckBox.Checked == true)
+            {
+                _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
+                _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
+
+                _4WheelsSettings.X1FontFamily = _4WheelsSettings.X1DefaultFontFamily;
+                _4WheelsSettings.X1FontSize = _4WheelsSettings.X1DefaultFontSize;
+                _4WheelsSettings.X1FontStyle = _4WheelsSettings.X1DefaultFontStyle;
+                _4WheelsSettings.X1FontColor = _4WheelsSettings.X1DefaultFontColor;
+
+                _4WheelsSettings.X1MajorLineWidth = _4WheelsSettings.X1DefaultMajorLineWidth;
+                _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
+                _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
+                _4WheelsSettings.X1MajorColor = _4WheelsSettings.X1DefaultMajorColor;
+
+                _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
+                _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
+                _4WheelsSettings.X1MinorLineWidth = _4WheelsSettings.X1DefaultMinorLineWidth;
+                _4WheelsSettings.X1MinorColor = _4WheelsSettings.X1DefaultMinorColor;
+                _4WheelsSettings.X1MinorDashStyle = _4WheelsSettings.X1DefaultMinorDashStyle;
+            }
+            else
+            {
+                _4WheelsSettings.X1FontIndex = X1ComboBoxFonts.SelectedIndex;
+                _4WheelsSettings.X1FontFamily = (FontFamily)X1ComboBoxFonts.SelectedItem;
+                _4WheelsSettings.X1FontColor = (Color)X1FontColorComboBox.SelectedItem;
+                _4WheelsSettings.X1FontSize = (float)X1FontSizeComboBox.SelectedItem;
+                _4WheelsSettings.X1FontStyle = (FontStyle)X1FontStyleComboBox.SelectedItem;
+
+                _4WheelsSettings.X1Min = Parsers.MaskedTextBoxParserDouble(X1MinMaskedTextBox, _4WheelsSettings.X1Min, _4WheelsSettings.X1DefaultMin, false);
+                _4WheelsSettings.X1Max = Parsers.MaskedTextBoxParserDouble(X1MaxMaskedTextBox, _4WheelsSettings.X1Max, _4WheelsSettings.X1DefaultMax, false);
+
+                _4WheelsSettings.X1MajorLineWidth = (int)X1MajorLineWidthComboBox.SelectedItem;
+                _4WheelsSettings.X1MajorDecimals = (int)X1MajorDecimalsComboBox.SelectedItem;
+                _4WheelsSettings.X1MajorInterval = Parsers.TextBoxParserDouble(X1MajorIntervalFractionTextBox, _4WheelsSettings.X1MajorInterval, _4WheelsSettings.X1DefaultMajorInterval, false);
+                _4WheelsSettings.X1MajorColor = (Color)X1MajorColorComboBox.SelectedItem;
+
+                _4WheelsSettings.X1MinorEnabled = X1MinorEnabledCheckBox.Checked;
+                _4WheelsSettings.X1MinorIntervalFraction = (int)X1MinorIntervalComboBox.SelectedItem;
+                _4WheelsSettings.X1MinorLineWidth = (int)X1MinorLineWidthComboBox.SelectedItem;
+                _4WheelsSettings.X1MinorColor = (Color)X1MinorColorComboBox.SelectedItem;
+                _4WheelsSettings.X1MinorDashStyle = (ChartDashStyle)X1MinorDashStyleComboBox.SelectedItem;
+            }
+
+            // Y-Axis
+            _4WheelsSettings.Y1Selection = Y1SelectionComboBox.Text;
+            if (Y1DefaultsCheckBox.Checked == true)
+            {
+                _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
+                _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
+
+                _4WheelsSettings.Y1FontFamily = _4WheelsSettings.Y1DefaultFontFamily;
+                _4WheelsSettings.Y1FontSize = _4WheelsSettings.Y1DefaultFontSize;
+                _4WheelsSettings.Y1FontStyle = _4WheelsSettings.Y1DefaultFontStyle;
+                _4WheelsSettings.Y1FontColor = _4WheelsSettings.Y1DefaultFontColor;
+
+
+                _4WheelsSettings.Y1MajorLineWidth = _4WheelsSettings.Y1DefaultMajorLineWidth;
+                _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
+                _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
+                _4WheelsSettings.Y1MajorColor = _4WheelsSettings.Y1DefaultMajorColor;
+
+                _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
+                _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
+                _4WheelsSettings.Y1MinorLineWidth = _4WheelsSettings.Y1DefaultMinorLineWidth;
+                _4WheelsSettings.Y1MinorColor = _4WheelsSettings.Y1DefaultMinorColor;
+                _4WheelsSettings.Y1MinorDashStyle = _4WheelsSettings.Y1DefaultMinorDashStyle;
+            }
+            else
+            {
+                _4WheelsSettings.Y1FontIndex = Y1ComboBoxFonts.SelectedIndex;
+                //_4WheelsSettings.Y1FontString = Y1ComboBoxFonts.Text;
+                _4WheelsSettings.Y1FontFamily = (FontFamily)Y1ComboBoxFonts.SelectedItem;
+                _4WheelsSettings.Y1FontColor = (Color)Y1FontColorComboBox.SelectedItem;
+                _4WheelsSettings.Y1FontSize = (float)Y1FontSizeComboBox.SelectedItem;
+                _4WheelsSettings.Y1FontStyle = (FontStyle)Y1FontStyleComboBox.SelectedItem;
+
+                _4WheelsSettings.Y1Min = Parsers.MaskedTextBoxParserDouble(Y1MinMaskedTextBox, _4WheelsSettings.Y1Min, _4WheelsSettings.Y1DefaultMin, false);
+                _4WheelsSettings.Y1Max = Parsers.MaskedTextBoxParserDouble(Y1MaxMaskedTextBox, _4WheelsSettings.Y1Max, _4WheelsSettings.Y1DefaultMax, false);
+
+                _4WheelsSettings.Y1MajorLineWidth = (int)Y1MajorLineWidthComboBox.SelectedItem;
+                _4WheelsSettings.Y1MajorDecimals = (int)Y1MajorDecimalsComboBox.SelectedItem;
+                _4WheelsSettings.Y1MajorInterval = Parsers.TextBoxParserDouble(Y1IntervalDividerTextBox, _4WheelsSettings.Y1MajorInterval, _4WheelsSettings.Y1DefaultMajorInterval, true);
+                _4WheelsSettings.Y1MajorColor = (Color)Y1MajorColorComboBox.SelectedItem;
+
+                _4WheelsSettings.Y1MinorEnabled = Y1MinorEnabledCheckBox.Checked;
+                _4WheelsSettings.Y1MinorIntervalFraction = (int)Y1MinorIntervalComboBox.SelectedItem;
+                _4WheelsSettings.Y1MinorLineWidth = (int)Y1MinorLineWidthComboBox.SelectedItem;
+                _4WheelsSettings.Y1MinorColor = (Color)Y1MinorColorComboBox.SelectedItem;
+                _4WheelsSettings.Y1MinorDashStyle = (ChartDashStyle)Y1MinorDashStyleComboBox.SelectedItem;
+            }
+            // Z-Axis
+            _4WheelsSettings.Z1Selection = Z1SelectionComboBox.Text;
+            if (Z1DefaultsCheckBox.Checked == true)
+            {
+                _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
+                _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
+
+                //_4WheelsSettings.Z1FontFamily = _4WheelsSettings.Z1DefaultFontFamily;
+                //_4WheelsSettings.Z1FontSize = _4WheelsSettings.Z1DefaultFontSize;
+                //_4WheelsSettings.Z1FontStyle = _4WheelsSettings.Z1DefaultFontStyle;
+                //_4WheelsSettings.Z1FontColor = _4WheelsSettings.Z1DefaultFontColor;
+
+
+                //_4WheelsSettings.Z1MajorLineWidth = _4WheelsSettings.Z1DefaultMajorLineWidth;
+                //_4WheelsSettings.Z1MajorDecimals = _4WheelsSettings.Z1DefaultMajorDecimals;
+                //_4WheelsSettings.Z1MajorInterval = _4WheelsSettings.Z1DefaultMajorInterval;
+                //_4WheelsSettings.Z1MajorColor = _4WheelsSettings.Z1DefaultMajorColor;
+
+                //_4WheelsSettings.Z1MinorEnabled = _4WheelsSettings.Z1DefaultMinorEnabled;
+                //_4WheelsSettings.Z1MinorIntervalFraction = _4WheelsSettings.Z1DefaultMinorIntervalFraction;
+                //_4WheelsSettings.Z1MinorLineWidth = _4WheelsSettings.Z1DefaultMinorLineWidth;
+                //_4WheelsSettings.Z1MinorColor = _4WheelsSettings.Z1DefaultMinorColor;
+                //_4WheelsSettings.Z1MinorDashStyle = _4WheelsSettings.Z1DefaultMinorDashStyle;
+            }
+            else
+            {
+                //_4WheelsSettings.Z1FontIndex = Z1ComboBoxFonts.SelectedIndex;
+                //_4WheelsSettings.Z1FontString = Z1ComboBoxFonts.Text;
+                //_4WheelsSettings.Z1FontFamily = (FontFamily)Z1ComboBoxFonts.SelectedItem;
+                //_4WheelsSettings.Z1FontColor = (Color)Z1FontColorComboBox.SelectedItem;
+                //_4WheelsSettings.Z1FontSize = (float)Z1FontSizeComboBox.SelectedItem;
+                //_4WheelsSettings.Z1FontStyle = (FontStyle)Z1FontStyleComboBox.SelectedItem;
+
+                _4WheelsSettings.Z1Min = Parsers.MaskedTextBoxParserDouble(Z1MinMaskedTextBox, _4WheelsSettings.Z1Min, _4WheelsSettings.Z1DefaultMin, true);
+                _4WheelsSettings.Z1Max = Parsers.MaskedTextBoxParserDouble(Z1MaxMaskedTextBox, _4WheelsSettings.Z1Max, _4WheelsSettings.Z1DefaultMax, true);
+
+                //_4WheelsSettings.Z1MajorLineWidth = (int)Z1MajorLineWidthComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MajorDecimals = (int)Z1MajorDecimalsComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MajorInterval = Parsers.TextBoxParserDouble(Z1IntervalDividerTextBox, _4WheelsSettings.Z1MajorInterval, _4WheelsSettings.Z1DefaultMajorInterval, true);
+                //_4WheelsSettings.Z1MajorColor = (Color)Z1MajorColorComboBox.SelectedItem;
+
+                //_4WheelsSettings.Z1MinorEnabled = Z1MinorEnabledCheckBox.Checked;
+                //_4WheelsSettings.Z1MinorIntervalFraction = (int)Z1MinorIntervalComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MinorLineWidth = (int)Z1MinorLineWidthComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MinorColor = (Color)Z1MinorColorComboBox.SelectedItem;
+                //_4WheelsSettings.Z1MinorDashStyle = (ChartDashStyle)Z1MinorDashStyleComboBox.SelectedItem;
+            }
+            // Updating chart settings
+            Form4Wheels form = (Form4Wheels)Application.OpenForms["Form4Wheels"];
+            var chart1 = form.chart1;
+            var chart2 = form.chart2;
+            var chart3 = form.chart3;
+            var chart4 = form.chart4;
+            var gradientChart = form.GradientChart;
+            _4Wheels.SetChart(chart1);
+            _4Wheels.SetChart(chart2);
+            _4Wheels.SetChart(chart3);
+            _4Wheels.SetChart(chart4);
+            _4Wheels.SetUpDownChart(gradientChart);
+        }
+        private void applyAndClearButton_Click(object sender, EventArgs e)
         {
             // Other stuff
             if (DefaultsCheckBox.Checked == true)
