@@ -37,69 +37,8 @@ namespace Physics_Data_Debug
             _4Wheels.SetChart(chart2);
             _4Wheels.SetChart(chart3);
             _4Wheels.SetChart(chart4);
-            //_4Wheels.SetUpDownChart(chart2);
             _4Wheels.SetUpDownChart(GradientChart);
-
-            /*
-            //panel3.Paint += new PaintEventHandler(panel3_Paint);
-            //panel4.Paint += new PaintEventHandler(panel4_Paint);
-            panel1.Paint += new PaintEventHandler(panel1_Paint);
-            panel2.Paint += new PaintEventHandler(panel2_Paint);
-            */
         }
-        /*
-        private void X1CheckIfCBSelectionsTextIsHeaderAndChooseItsValues()
-        {
-            if (FormGForceSettings.X1ComboBox.Text == csv.header001) // Degrees
-            {
-                X1ValuesChart1Array[X1ValuesChart1Array.Length - 1] = LiveData.XZGAngleDeg;
-            }
-            else if (FormGForceSettings.X1ComboBox.Text == csv.header002) // Radians
-            {
-                X1ValuesChart1Array[X1ValuesChart1Array.Length - 1] = LiveData.XZGAngleRad;
-            }
-            else if (FormGForceSettings.X1ComboBox.Text == csv.header003) // Angular Velocity
-            {
-                GForceSettings.X1Values = csv.dVals003;
-                //textBox2.AppendText(comboBox1.SelectedItem + " is equal " + csv.header003 + "\r\n");
-            }
-            else if (FormGForceSettings.X1ComboBox.Text == csv.header004) // Vertical Load
-            {
-                GForceSettings.X1Values = csv.dVals004;
-                //textBox2.AppendText(comboBox1.SelectedItem + " is equal " + csv.header004 + "\r\n");
-            }
-            else
-            {
-                GForceSettings.X1Values = csv.dVals001;
-                //textBox2.AppendText("No item found. Default " + csv.header001 + " chosen for X1" + "\r\n");
-            }
-        }
-        private void Y1CheckIfCBSelectionsTextIsHeaderAndChooseItsValues()
-        {
-            if (FormGForceSettings.Y1ComboBox.Text == csv.header001)
-            {
-                GForceSettings.Y1Values = csv.dVals001;
-                //textBox2.AppendText(csv.header001 + " values selected" + "\r\n");
-            }
-            else if (FormGForceSettings.Y1ComboBox.Text == csv.header002)
-            {
-                GForceSettings.Y1Values = csv.dVals002;
-            }
-            else if (FormGForceSettings.Y1ComboBox.Text == csv.header003)
-            {
-                GForceSettings.Y1Values = csv.dVals003;
-            }
-            else if (FormGForceSettings.Y1ComboBox.Text == csv.header004)
-            {
-                GForceSettings.Y1Values = csv.dVals004;
-            }
-            else
-            {
-                GForceSettings.Y1Values = csv.dVals002;
-                //textBox2.AppendText("No item found. Default " + csv.header002 + " chosen for Y1" + "\r\n");
-            }
-        }
-        */
         private void ButtonVisibilities()
         {
             if (_4WheelsSettings.SettingsOpen == true)
@@ -115,174 +54,7 @@ namespace Physics_Data_Debug
         {
 
             LiveData._4WheelsOpen = true;
-            #region ignore old drawing
-            /*
-            //panel3.Refresh();
-            //panel4.Refresh();
-            //Label Locations
-            float heightG0 = 2;
-            float yG0 = (panel2.Size.Height / 2 - heightG0 / 2);
-            G0.Location = new Point(0, Convert.ToInt32(yG0) - 7);
-            float heightG1 = GScale * 2;
-            float yG1 = (panel2.Size.Height / 2 - heightG1 / 2);
-            float yG1b = (panel2.Size.Height / 2 + heightG1 / 2);
-            G1.Location = new Point(0, Convert.ToInt32(yG1) - 7);
-            G1m.Location = new Point(0, Convert.ToInt32(yG1b) - 7);
-            float heightG2 = heightG1 * 2;
-            float yG2 = (panel2.Size.Height / 2 - heightG2 / 2);
-            float yG2b = (panel2.Size.Height / 2 + heightG2 / 2);
-            G2.Location = new Point(0, Convert.ToInt32(yG2) - 7);
-            G2m.Location = new Point(0, Convert.ToInt32(yG2b) - 7);
-            float heightG3 = heightG1 * 3;
-            float yG3 = (panel2.Size.Height / 2 - heightG3 / 2);
-            float yG3b = (panel2.Size.Height / 2 + heightG3 / 2);
-            G3.Location = new Point(0, Convert.ToInt32(yG3) - 7);
-            G3m.Location = new Point(0, Convert.ToInt32(yG3b) - 7);
-            float heightG4 = heightG1 * 4;
-            float yG4 = (panel2.Size.Height / 2 - heightG4 / 2);
-            float yG4b = (panel2.Size.Height / 2 + heightG4 / 2);
-            G4.Location = new Point(0, Convert.ToInt32(yG4) - 7);
-            G4m.Location = new Point(0, Convert.ToInt32(yG4b) - 7);
-            float heightG5 = heightG1 * 5;
-            float yG5 = (panel2.Size.Height / 2 - heightG5 / 2);
-            float yG5b = (panel2.Size.Height / 2 + heightG5 / 2);
-            G5.Location = new Point(0, Convert.ToInt32(yG5) - 7);
-            G5m.Location = new Point(0, Convert.ToInt32(yG5b) - 7);
-            float heightG6 = heightG1 * 6;
-            float yG6 = (panel2.Size.Height / 2 - heightG6 / 2);
-            float yG6b = (panel2.Size.Height / 2 + heightG6 / 2);
-            G6.Location = new Point(0, Convert.ToInt32(yG6) - 7);
-            G6m.Location = new Point(0, Convert.ToInt32(yG6b) - 7);
-            float heightG7 = heightG1 * 7;
-            float yG7 = (panel2.Size.Height / 2 - heightG7 / 2);
-            float yG7b = (panel2.Size.Height / 2 + heightG7 / 2);
-            G7.Location = new Point(0, Convert.ToInt32(yG7) - 7);
-            G7m.Location = new Point(0, Convert.ToInt32(yG7b) - 7);
-            */
-            #endregion
         }
-        #region ignore old drawing
-        /*
-        private void pictureBoxMove()
-        {
-            int x = xy;
-            int y = xy;
-            int x2 = 192;
-            int y2 = 208;
-            int x3 = 60;
-            int y3 = 208;
-            */
-        /*
-        if(LiveData.XZGAngleDeg <= 90d)
-        {
-            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-        }
-        else if(LiveData.XZGAngleDeg <= 180d)
-        {
-            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-        }
-        else if (LiveData.XZGAngleDeg <= 270d)
-        {
-            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-        }
-        else if (LiveData.XZGAngleDeg <= 360d)
-        {
-            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-        }*/
-        /*
-        if ((LiveData.XZG >= -0.001 && LiveData.XZG <= 0.001) || LiveData.XZG == double.NaN)
-        {
-            x = xy;
-            y = xy;
-            x2 = 192;
-            y2 = 208;
-        }
-        else
-        {
-            x = xy + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
-            y = xy - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
-            x2 = 192 + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
-            y2 = 208 - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
-        }
-        y3 = 193 - Convert.ToInt32(Math.Round(LiveData.YG * GScale, 0));
-
-        //pictureBox1.Location = new Point(x, y);
-        CurrentGForceXZMoving.Location = new Point(x2, y2);
-        CurrentGForceXZMoving.Text = Math.Round(LiveData.XZG, 2).ToString() + " G";
-        //textBox7.Text = "x: " + x.ToString() +"\r\n" + "y: " + y.ToString();
-        CurrentGForceYMoving.Location = new Point(x3, y3);
-        CurrentGForceYMoving.Text = Math.Round(Math.Abs(LiveData.YGRotated), 2).ToString() + " G";
-    }
-
-    */
-        /*
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            
-            float xG = xzG;
-            float zG = xzG;
-            Color gColor = Color.White;
-            //Pen myPenG = new Pen(gColor, 1);// No need to draw borders, when fill does the same filled.
-            Brush brush = new SolidBrush(gColor);
-            float widthG = 6;
-            float heightG = 6;
-
-            if ((LiveData.XZG >= -0.001 && LiveData.XZG <= 0.001) || LiveData.XZG == double.NaN)
-            {
-                xG = xzG;
-                zG = xzG;
-            }
-            else
-            {
-                xG = xzG + Convert.ToSingle(LiveData.XGRotated * GScale);
-                zG = xzG - Convert.ToSingle(LiveData.ZGRotated * GScale);
-            }
-            // Array of points before the current one
-            // Too slow to be used well like this. Lags the page. Need to later see what's better way.
-
-            Color gArrayColor = Color.FromArgb(255, 60, 60, 60);
-            Pen myPenGArray = new Pen(gArrayColor, 1);
-            Brush brushArray = new SolidBrush(gArrayColor);
-            float widthGArray = 2;
-            float heightGArray = 2;
-            RectangleF rectfGSmall = new RectangleF(xG+2, zG+2, widthGArray, heightGArray);
-            rectfGArray[rectfGArray.Length - 1] = rectfGSmall;
-            Array.Copy(rectfGArray, 1, rectfGArray, 0, rectfGArray.Length - 1);
-            for (int i = 0; i < rectfGArray.Length - 1; ++i)
-            {
-                //e.Graphics.DrawEllipse(myPenGArray, rectfGArray[i]);
-                e.Graphics.FillEllipse(brushArray, rectfGArray[i]);
-            }
-            
-            // The current point
-            RectangleF rectfG = new RectangleF(xG, zG, widthG, heightG);
-            //e.Graphics.DrawEllipse(myPenG, rectfG);// No need to draw borders, when fill does the same filled.
-            e.Graphics.FillEllipse(brush, rectfG);
-            //textBox7.Text = "x: " + xG.ToString() + "\r\n" + "y: " + zG.ToString();
-            
-        }
-        */
-        /*
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            // YG location
-            float x1 = 12f;
-            float x2 = 55f;
-            float yG = 199f;
-            Color gColor = Color.Gray;
-            Pen myPenG = new Pen(gColor, 3);
-            Brush brush = new SolidBrush(gColor);
-
-            yG = 199f - Convert.ToSingle(LiveData.YGRotated * GScale);
-            e.Graphics.DrawLine(myPenG, x1, yG, x2, yG);
-
-        }
-        */
-        #endregion
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -297,16 +69,10 @@ namespace Physics_Data_Debug
         {
             ButtonVisibilities();
             timer2.Interval = timer1.Interval * _4WheelsSettings.FL_HistoryAmountPoints;
-            /*
-            pictureBoxMove();
-            panel1.Refresh();
-            panel2.Refresh();
-            */
             _4Wheels.PlotFLChart(chart1);
             _4Wheels.PlotFRChart(chart2);
             _4Wheels.PlotRLChart(chart3);
             _4Wheels.PlotRRChart(chart4);
-            //_4Wheels.PlotUpDownChart(chart2);
         }
         private void Form4Wheels_SizeChanged(object sender, EventArgs e)
         {
@@ -484,7 +250,6 @@ namespace Physics_Data_Debug
 
         private void refreshAndApplyButton_Click(object sender, EventArgs e)
         {
-
             timer1.Enabled = false;
             timer2.Enabled = false;
             _4Wheels.ClearSeriesHistory(chart1);
@@ -494,9 +259,6 @@ namespace Physics_Data_Debug
             _4Wheels.SetArrays();
             _4Wheels.SetUpDownChart(GradientChart);
 
-            // Not needed anymore these because chart settings are applied in the settings.
-            //GForce.SetPolarChart(chart1);
-            //GForce.SetUpDownChart(chart2);
             if (PauseUpdate == false)
             {
                 timer1.Enabled = true;
