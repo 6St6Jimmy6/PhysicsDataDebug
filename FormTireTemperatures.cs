@@ -174,7 +174,10 @@ namespace Physics_Data_Debug
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            TemperatureSeries();
+            if (LiveData.elapsedTime > 0)
+            {
+                TemperatureSeries();
+            }
         }
         #endregion
     }

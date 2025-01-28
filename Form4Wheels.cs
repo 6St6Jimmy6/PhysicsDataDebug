@@ -56,10 +56,14 @@ namespace Physics_Data_Debug
         {
             ButtonVisibilities();
             timer2.Interval = timer1.Interval * _4WheelsSettings.FL_HistoryAmountPoints;
-            _4Wheels.PlotFLChart(chart1);
-            _4Wheels.PlotFRChart(chart2);
-            _4Wheels.PlotRLChart(chart3);
-            _4Wheels.PlotRRChart(chart4);
+
+            if (LiveData.elapsedTime > 0)
+            {
+                _4Wheels.PlotFLChart(chart1);
+                _4Wheels.PlotFRChart(chart2);
+                _4Wheels.PlotRLChart(chart3);
+                _4Wheels.PlotRRChart(chart4);
+            }
         }
         private void Form4Wheels_SizeChanged(object sender, EventArgs e)
         {
@@ -86,10 +90,13 @@ namespace Physics_Data_Debug
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            _4Wheels.InfiniteHistoryFLChart(chart1);
-            _4Wheels.InfiniteHistoryFRChart(chart2);
-            _4Wheels.InfiniteHistoryRLChart(chart3);
-            _4Wheels.InfiniteHistoryRRChart(chart4);
+            if (LiveData.elapsedTime > 0)
+            {
+                _4Wheels.InfiniteHistoryFLChart(chart1);
+                _4Wheels.InfiniteHistoryFRChart(chart2);
+                _4Wheels.InfiniteHistoryRLChart(chart3);
+                _4Wheels.InfiniteHistoryRRChart(chart4);
+            }
         }
 
         private void toSettingsButton_Click(object sender, EventArgs e)

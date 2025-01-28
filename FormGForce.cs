@@ -299,8 +299,11 @@ namespace Physics_Data_Debug
             panel1.Refresh();
             panel2.Refresh();
             */
-            GForce.PlotPolarChart(chart1);
-            GForce.PlotUpDownChart(chart2);
+            if (LiveData.elapsedTime > 0)
+            {
+                GForce.PlotPolarChart(chart1);
+                GForce.PlotUpDownChart(chart2);
+            }
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -332,7 +335,10 @@ namespace Physics_Data_Debug
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            GForce.InfiniteHistoryPolarChart(chart1);
+            if (LiveData.elapsedTime > 0)
+            {
+                GForce.InfiniteHistoryPolarChart(chart1);
+            }
         }
 
         private void toSettingsButton_Click(object sender, EventArgs e)
