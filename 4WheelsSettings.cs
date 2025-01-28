@@ -45,7 +45,7 @@ namespace Physics_Data_Debug
         /// <summary>
         /// Something
         /// </summary>
-        public static int DefaultFL_HistoryAmountPoints { get; set; } = 100;
+        public static int DefaultHistoryAmountPoints { get; set; } = 100;
         public static int DefaultFR_HistoryAmountPoints { get; set; } = 100;
         public static int DefaultRL_HistoryAmountPoints { get; set; } = 100;
         public static int DefaultRR_HistoryAmountPoints { get; set; } = 100;
@@ -141,10 +141,7 @@ namespace Physics_Data_Debug
         /// <summary>
         /// Something
         /// </summary>
-        public static int FL_HistoryAmountPoints { get; set; } = DefaultFL_HistoryAmountPoints;
-        public static int FR_HistoryAmountPoints { get; set; } = DefaultFR_HistoryAmountPoints;
-        public static int RL_HistoryAmountPoints { get; set; } = DefaultRL_HistoryAmountPoints;
-        public static int RR_HistoryAmountPoints { get; set; } = DefaultRR_HistoryAmountPoints;
+        public static int HistoryAmountPoints { get; set; } = DefaultHistoryAmountPoints;
         public static bool InfiniteHistoryEnabled { get; set; } = DefaultInfiniteHistoryEnabled;
         public static int MarkerSize { get; set; } = DefaultMarkerSize;
         public static string Scheme { get; set; } = DefaultScheme;

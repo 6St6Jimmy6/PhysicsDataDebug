@@ -248,7 +248,7 @@ namespace Physics_Data_Debug
             {
                 BackgroundColorComboBox.SelectedItem = _4WheelsSettings.DefaultBackgroundColor;
                 MarkerColorComboBox.SelectedItem = _4WheelsSettings.DefaultMarkerColor;
-                HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.DefaultFL_HistoryAmountPoints.ToString();
+                HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.DefaultHistoryAmountPoints.ToString();
                 InfiniteHistoryCheckBox.Checked = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 SchemeComboBox.SelectedItem = _4WheelsSettings.DefaultScheme;
             }
@@ -256,7 +256,7 @@ namespace Physics_Data_Debug
             {
                 BackgroundColorComboBox.SelectedItem = _4WheelsSettings.BackgroundColor;
                 MarkerColorComboBox.SelectedItem = _4WheelsSettings.MarkerColor;
-                HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.FL_HistoryAmountPoints.ToString();
+                HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.HistoryAmountPoints.ToString();
                 InfiniteHistoryCheckBox.Checked = _4WheelsSettings.InfiniteHistoryEnabled;
                 SchemeComboBox.SelectedItem = _4WheelsSettings.Scheme;
             }
@@ -442,10 +442,7 @@ namespace Physics_Data_Debug
             {
                 _4WheelsSettings.BackgroundColor = _4WheelsSettings.DefaultBackgroundColor;
                 _4WheelsSettings.MarkerColor = _4WheelsSettings.DefaultMarkerColor;
-                _4WheelsSettings.FL_HistoryAmountPoints = _4WheelsSettings.DefaultFL_HistoryAmountPoints;
-                _4WheelsSettings.FR_HistoryAmountPoints = _4WheelsSettings.DefaultFR_HistoryAmountPoints;
-                _4WheelsSettings.RL_HistoryAmountPoints = _4WheelsSettings.DefaultRL_HistoryAmountPoints;
-                _4WheelsSettings.RR_HistoryAmountPoints = _4WheelsSettings.DefaultRR_HistoryAmountPoints;
+                _4WheelsSettings.HistoryAmountPoints = _4WheelsSettings.DefaultHistoryAmountPoints;
                 _4WheelsSettings.InfiniteHistoryEnabled = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 _4WheelsSettings.Scheme = _4WheelsSettings.DefaultScheme;
             }
@@ -453,10 +450,7 @@ namespace Physics_Data_Debug
             {
                 _4WheelsSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
                 _4WheelsSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
-                _4WheelsSettings.FL_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.FL_HistoryAmountPoints, _4WheelsSettings.DefaultFL_HistoryAmountPoints, true);
-                _4WheelsSettings.FR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.FR_HistoryAmountPoints, _4WheelsSettings.DefaultFR_HistoryAmountPoints, true);
-                _4WheelsSettings.RL_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RL_HistoryAmountPoints, _4WheelsSettings.DefaultRL_HistoryAmountPoints, true);
-                _4WheelsSettings.RR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RR_HistoryAmountPoints, _4WheelsSettings.DefaultRR_HistoryAmountPoints, true);
+                _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
                 _4WheelsSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
             }
@@ -621,10 +615,10 @@ namespace Physics_Data_Debug
             {
                 _4WheelsSettings.BackgroundColor = _4WheelsSettings.DefaultBackgroundColor;
                 _4WheelsSettings.MarkerColor = _4WheelsSettings.DefaultMarkerColor;
-                _4WheelsSettings.FL_HistoryAmountPoints = _4WheelsSettings.DefaultFL_HistoryAmountPoints;
-                _4WheelsSettings.FR_HistoryAmountPoints = _4WheelsSettings.DefaultFR_HistoryAmountPoints;
-                _4WheelsSettings.RL_HistoryAmountPoints = _4WheelsSettings.DefaultRL_HistoryAmountPoints;
-                _4WheelsSettings.RR_HistoryAmountPoints = _4WheelsSettings.DefaultRR_HistoryAmountPoints;
+                _4WheelsSettings.HistoryAmountPoints = _4WheelsSettings.DefaultHistoryAmountPoints;
+                //_4WheelsSettings.FR_HistoryAmountPoints = _4WheelsSettings.DefaultFR_HistoryAmountPoints;
+                //_4WheelsSettings.RL_HistoryAmountPoints = _4WheelsSettings.DefaultRL_HistoryAmountPoints;
+                //_4WheelsSettings.RR_HistoryAmountPoints = _4WheelsSettings.DefaultRR_HistoryAmountPoints;
                 _4WheelsSettings.InfiniteHistoryEnabled = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 _4WheelsSettings.Scheme = _4WheelsSettings.DefaultScheme;
             }
@@ -632,10 +626,10 @@ namespace Physics_Data_Debug
             {
                 _4WheelsSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
                 _4WheelsSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
-                _4WheelsSettings.FL_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.FL_HistoryAmountPoints, _4WheelsSettings.DefaultFL_HistoryAmountPoints, true);
-                _4WheelsSettings.FR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.FR_HistoryAmountPoints, _4WheelsSettings.DefaultFR_HistoryAmountPoints, true);
-                _4WheelsSettings.RL_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RL_HistoryAmountPoints, _4WheelsSettings.DefaultRL_HistoryAmountPoints, true);
-                _4WheelsSettings.RR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RR_HistoryAmountPoints, _4WheelsSettings.DefaultRR_HistoryAmountPoints, true);
+                _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
+                //_4WheelsSettings.FR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.FR_HistoryAmountPoints, _4WheelsSettings.DefaultFR_HistoryAmountPoints, true);
+                //_4WheelsSettings.RL_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RL_HistoryAmountPoints, _4WheelsSettings.DefaultRL_HistoryAmountPoints, true);
+                //_4WheelsSettings.RR_HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.RR_HistoryAmountPoints, _4WheelsSettings.DefaultRR_HistoryAmountPoints, true);
                 _4WheelsSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
             }

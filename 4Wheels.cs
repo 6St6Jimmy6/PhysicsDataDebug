@@ -17,21 +17,21 @@ namespace Physics_Data_Debug
         private readonly static int historycolordivider = 2;
         private readonly static int steps = 10;
 
-        private static double[] FL_X1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
-        private static double[] FL_Y1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
-        private static double[] FL_Z1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
+        private static double[] FL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] FL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] FL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-        private static double[] FR_X1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
-        private static double[] FR_Y1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
-        private static double[] FR_Z1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
+        private static double[] FR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] FR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] FR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-        private static double[] RL_X1ValuesChartArray = new double[_4WheelsSettings.RL_HistoryAmountPoints];
-        private static double[] RL_Y1ValuesChartArray = new double[_4WheelsSettings.RL_HistoryAmountPoints];
-        private static double[] RL_Z1ValuesChartArray = new double[_4WheelsSettings.RL_HistoryAmountPoints];
+        private static double[] RL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] RL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] RL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-        private static double[] RR_X1ValuesChartArray = new double[_4WheelsSettings.RR_HistoryAmountPoints];
-        private static double[] RR_Y1ValuesChartArray = new double[_4WheelsSettings.RR_HistoryAmountPoints];
-        private static double[] RR_Z1ValuesChartArray = new double[_4WheelsSettings.RR_HistoryAmountPoints];
+        private static double[] RR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] RR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        private static double[] RR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
         //private static double[] X1ValuesChart2Array = new double[2];
         //private static double[] Y1ValuesChart2Array = new double[2];
@@ -50,21 +50,21 @@ namespace Physics_Data_Debug
 
         public static void SetArrays()
         {
-            FL_X1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
-            FL_Y1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
-            FL_Z1ValuesChartArray = new double[_4WheelsSettings.FL_HistoryAmountPoints];
+            FL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            FL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            FL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-            FR_X1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
-            FR_Y1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
-            FR_Z1ValuesChartArray = new double[_4WheelsSettings.FR_HistoryAmountPoints];
+            FR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            FR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            FR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-            RL_X1ValuesChartArray = new double[_4WheelsSettings.RL_HistoryAmountPoints];
-            RL_Y1ValuesChartArray = new double[_4WheelsSettings.RL_HistoryAmountPoints];
-            RL_Z1ValuesChartArray = new double[_4WheelsSettings.RL_HistoryAmountPoints];
+            RL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            RL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            RL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-            RR_X1ValuesChartArray = new double[_4WheelsSettings.RR_HistoryAmountPoints];
-            RR_Y1ValuesChartArray = new double[_4WheelsSettings.RR_HistoryAmountPoints];
-            RR_Z1ValuesChartArray = new double[_4WheelsSettings.RR_HistoryAmountPoints];
+            RR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            RR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+            RR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
             //X1ValuesChart2Array = new double[2];
             //Y1ValuesChart2Array = new double[2];
 

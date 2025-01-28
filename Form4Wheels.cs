@@ -19,7 +19,7 @@ namespace Physics_Data_Debug
             InitializeComponent();
             PauseUpdate = false;
             timer1.Interval = 100;
-            timer2.Interval = timer1.Interval * _4WheelsSettings.FL_HistoryAmountPoints;
+            timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
             _4Wheels.SetChart(chart1);
             _4Wheels.SetChart(chart2);
             _4Wheels.SetChart(chart3);
@@ -55,7 +55,7 @@ namespace Physics_Data_Debug
         private void timer1_Tick(object sender, EventArgs e)
         {
             ButtonVisibilities();
-            timer2.Interval = timer1.Interval * _4WheelsSettings.FL_HistoryAmountPoints;
+            timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
 
             if (LiveData.elapsedTime > 0 && PauseUpdate == false)
             {
