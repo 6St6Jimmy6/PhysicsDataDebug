@@ -9,7 +9,7 @@ namespace Physics_Data_Debug
     {
         #region Fields variables
         //private readonly Thread update;
-        private bool updatedStartedOnce = false;
+        private bool updatedEnabled;
 
 
         // How long array is.
@@ -27,6 +27,7 @@ namespace Physics_Data_Debug
         {
             InitializeComponent();
             timer1.Interval = 94;
+            updatedEnabled = false;
             //update = new Thread(new ThreadStart(getData));
             //update.IsBackground = true;
         }
@@ -129,18 +130,13 @@ namespace Physics_Data_Debug
         private void TireTemperatures_Load(object sender, EventArgs e)
         {
             LiveData.TemperaturesChartOpen = true;
-            updatedStartedOnce = false;
             //update.Start();
         }
         private void TireTemperatures_FormClosing(object sender, FormClosingEventArgs e)
         {
             LiveData.TemperaturesChartOpen = false;
-            if (updatedStartedOnce == true)
-            {
-                timer1.Enabled = false;
-                //update.Suspend();
-            }
-            updatedStartedOnce = false;
+            timer1.Enabled = false;
+            updatedEnabled = false;
 
         }
         private void closeButton_Click(object sender, EventArgs e)
@@ -151,30 +147,21 @@ namespace Physics_Data_Debug
         }
         private void startButton_Click(object sender, EventArgs e)
         {
-            if (updatedStartedOnce == false)
+            if (updatedEnabled == false)
             {
-                timer1.Enabled = true;
-                //update.Start();
-                updatedStartedOnce = true;
+                updatedEnabled = true;
             }
-            else
-            {
-                //update.Resume();
-            }
-
         }
         private void stopButton_Click(object sender, EventArgs e)
         {
-            if (updatedStartedOnce == true)
+            if (updatedEnabled == true)
             {
-                //update.Suspend();
+                updatedEnabled = false;
             }
-            timer1.Enabled = false;
-            //update.Abort();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (LiveData.elapsedTime > 0)
+            if (LiveData.elapsedTime > 0 && updatedEnabled == true)
             {
                 TemperatureSeries();
             }

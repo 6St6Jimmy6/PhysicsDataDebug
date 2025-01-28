@@ -689,7 +689,7 @@ namespace Physics_Data_Debug
             this.applyAndClearChartsButton.Name = "applyAndClearChartsButton";
             this.applyAndClearChartsButton.Size = new System.Drawing.Size(129, 59);
             this.applyAndClearChartsButton.TabIndex = 443;
-            this.applyAndClearChartsButton.Text = "Apply\r\nAxis Selections and Clear Charts";
+            this.applyAndClearChartsButton.Text = " Clear Charts and Apply\r\nAxis Selections";
             this.applyAndClearChartsButton.UseVisualStyleBackColor = true;
             this.applyAndClearChartsButton.Click += new System.EventHandler(this.applyAndClearButton_Click);
             // 

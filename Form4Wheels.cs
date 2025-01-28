@@ -57,7 +57,7 @@ namespace Physics_Data_Debug
             ButtonVisibilities();
             timer2.Interval = timer1.Interval * _4WheelsSettings.FL_HistoryAmountPoints;
 
-            if (LiveData.elapsedTime > 0)
+            if (LiveData.elapsedTime > 0 && PauseUpdate == false)
             {
                 _4Wheels.PlotFLChart(chart1);
                 _4Wheels.PlotFRChart(chart2);
@@ -263,15 +263,11 @@ namespace Physics_Data_Debug
         {
             if(PauseUpdate == false)
             {
-                timer1.Stop();
-                timer2.Stop();
                 PauseUpdate = true;
                 buttonPause.Text = "Continue Update";
             }
             else
             {
-                timer1.Start();
-                timer2.Start();
                 PauseUpdate = false;
                 buttonPause.Text = "Pause Update";
             }
