@@ -789,7 +789,7 @@ namespace Physics_Data_Debug
             var gradientChart = form.GradientChart;
             //var chart2 = form.chart2;
             var timer1 = form.timer1;
-            var timer2 = form.timer1;
+            var timer2 = form.timer2;
 
             timer1.Enabled = false;
             timer2.Enabled = false;

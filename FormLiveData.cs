@@ -484,12 +484,37 @@ namespace Physics_Data_Debug
             {
                 TextBoxUpdates();
             }
-            //pictureBoxMove();
-            //panel1.Refresh();
-            //panel2.Refresh();
+            //No chart update for Form4Wheels and G-Force charts if race timer isn't ticking
+            FormLiveData formlivedata = (FormLiveData)Application.OpenForms["FormLiveData"];
+            Form4Wheels form4wheels = (Form4Wheels)Application.OpenForms["Form4Wheels"];
+            FormGForce formgforce = (FormGForce)Application.OpenForms["FormGForce"];
+            FormTireTemperatures formtiretemps = (FormTireTemperatures)Application.OpenForms["FormTireTemperatures"];
+            var timerlivedata = formlivedata.timer1;
+            var timer4wheels1 = form4wheels.timer1;
+            var timer4wheels2 = form4wheels.timer2;
+            var timergforce1 = formgforce.timer1;
+            var timergforce2 = formgforce.timer2;
+            var timertiretemps1 = formtiretemps.timer1;
+            if (LiveData.elapsedTime == 0)
+            {
+                timer4wheels1.Enabled = false;
+                timer4wheels2.Enabled = false;
+                timergforce1.Enabled = false;
+                timergforce2.Enabled = false;
+                timertiretemps1.Enabled = false;
+            }
+            else
+            {
+                timer4wheels1.Enabled = true;
+                timer4wheels2.Enabled = true;
+                timergforce1.Enabled = true;
+                timergforce2.Enabled = true;
+                timertiretemps1.Enabled = true;
+            }
+
             sTickTime = "Tick time " + LiveData.elapsedTime + " ms";
             TickTime.Text = sTickTime;
-            timer1.Interval = LiveData.tickInterval;
+            timerlivedata.Interval = LiveData.tickInterval;
         }
 
         private void buttonUpdates_Tick(object sender, EventArgs e)

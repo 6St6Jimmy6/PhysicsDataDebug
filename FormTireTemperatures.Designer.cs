@@ -384,6 +384,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;
-        private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Timer timer1;
     }
 }
