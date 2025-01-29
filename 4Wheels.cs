@@ -40,19 +40,7 @@ namespace Physics_Data_Debug
             for (int i = 0; i < arrayX.Length - 1; ++i)
             {
                 chartName.Series["Series" + u.ToString()].Points.AddXY(arrayX[i], arrayY[i]);
-                if (_4WheelsSettings.Scheme == "Green Red")
-                {
-                    ColorGradientRG(chartName, Math.Abs(arrayZ[i]), i, u);
-                }
-                else if (_4WheelsSettings.Scheme == "Colorblind")
-                {
-                    //FL_ColorGradientSet1(chartName, i, u);
-                    ColorGradientSet1(chartName, Math.Abs(arrayZ[i]), i, u);
-                }
-                else
-                {
-                    ColorGradientRB(chartName, Math.Abs(arrayZ[i]), i, u);
-                }
+                ColorGradient(chartName, Math.Abs(arrayZ[i]), i, u);
             }
         }
         public static void SetArrays()
@@ -846,7 +834,10 @@ namespace Physics_Data_Debug
                 array[array.Length - 1] = data;
             }
         }
-        private static void XYZArraySelections(string xAxisSelection, double[] arrayX, string yAxisSelection, double[] arrayY, string zAxisSelection, double[] arrayZ,
+        private static void XYZArraySelections(string xAxisSelection, double[] arrayX, 
+                                                string yAxisSelection, double[] arrayY, 
+                                                string zAxisSelection, double[] arrayZ,
+
                                                 int raceTime, float travelSpeed, float angVel,
                                                 float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
                                                 float currContBrakeTorq, float currContBrakeTorqMax,
@@ -1185,7 +1176,7 @@ namespace Physics_Data_Debug
                 AbsoluteValuesFloat(arrayZ, verLoad);
             }
         }
-        private static void ColorGradientRG(Chart chartName, double array, int i, int u)
+        private static void ColorGradient(Chart chartName, double array, int i, int u)
         {
             array = Math.Abs(array);
 
@@ -1202,143 +1193,58 @@ namespace Physics_Data_Debug
             double one = two - minus;
             double zero = one - minus;
 
-            if (array >= nine)
+            Color color10;
+            Color color9;
+            Color color8;
+            Color color7;
+            Color color6;
+            Color color5;
+            Color color4;
+            Color color3;
+            Color color2;
+            Color color1;
+
+            if (_4WheelsSettings.Scheme == "Colorblind")
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
+                //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);// color5
+                color10 = Color.FromArgb(historyalpha, 219, 109, 0);// color 13
+                color9 = Color.FromArgb(historyalpha, 36, 255, 36);// color 14
+                color8 = Color.FromArgb(historyalpha, 255, 255, 109);// color 15
+                color7 = Color.FromArgb(historyalpha, 109, 182, 255);// color 9
+                color6 = Color.FromArgb(historyalpha, 182, 109, 255);// color 8
+                color5 = Color.FromArgb(historyalpha, 0, 109, 219);// color 7
+                color4 = Color.FromArgb(historyalpha, 73, 0, 146);// color 6
+                color3 = Color.FromArgb(historyalpha, 255, 109, 182);// color 4
+                color2 = Color.FromArgb(historyalpha, 0, 146, 146);// color 3
+                color1 = Color.FromArgb(historyalpha, 0, 73, 73);// color 2
             }
-            else if (array < nine && array >= eight)
+            else if (_4WheelsSettings.Scheme == "Green Red")
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < eight && array >= seven)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < seven && array >= six)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < six && array >= five)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < five && array >= four)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < four && array >= three)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < three && array >= two)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < two && array >= one)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < one && array >= zero)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
+                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
+                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
             }
             else
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
+                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
+                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
             }
-        }
-        private static void ColorGradientRB(Chart chartName, double array, int i, int u)
-        {
-            array = Math.Abs(array);
-
-            double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Max) / steps;
-            double ten = _4WheelsSettings.Z1Max;
-            double nine = ten - minus;
-            double eight = nine - minus;
-            double seven = eight - minus;
-            double six = seven - minus;
-            double five = six - minus;
-            double four = five - minus;
-            double three = four - minus;
-            double two = three - minus;
-            double one = two - minus;
-            double zero = one - minus;
-
-            if (array >= nine)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < nine && array >= eight)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < eight && array >= seven)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < seven && array >= six)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
-            }
-            else if (array < six && array >= five)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
-            }
-            else if (array < five && array >= four)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-            }
-            else if (array < four && array >= three)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-            }
-            else if (array < three && array >= two)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-            }
-            else if (array < two && array >= one)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-            }
-            else if (array < one && array >= zero)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-            }
-            else
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-            }
-        }
-        private static void ColorGradientSet1(Chart chartName, double array, int i, int u)
-        {
-            array = Math.Abs(array);
-
-            double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / steps;
-            double ten = _4WheelsSettings.Z1Max;
-            double nine = ten - minus;
-            double eight = nine - minus;
-            double seven = eight - minus;
-            double six = seven - minus;
-            double five = six - minus;
-            double four = five - minus;
-            double three = four - minus;
-            double two = three - minus;
-            double one = two - minus;
-            double zero = one - minus;
-
-            // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
-            //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);// color5
-            Color color10 = Color.FromArgb(historyalpha, 219, 109, 0);// color 13
-            Color color9 = Color.FromArgb(historyalpha, 36, 255, 36);// color 14
-            Color color8 = Color.FromArgb(historyalpha, 255, 255, 109);// color 15
-            Color color7 = Color.FromArgb(historyalpha, 109, 182, 255);// color 9
-            Color color6 = Color.FromArgb(historyalpha, 182, 109, 255);// color 8
-            Color color5 = Color.FromArgb(historyalpha, 0, 109, 219);// color 7
-            Color color4 = Color.FromArgb(historyalpha, 73, 0, 146);// color 6
-            Color color3 = Color.FromArgb(historyalpha, 255, 109, 182);// color 4
-            Color color2 = Color.FromArgb(historyalpha, 0, 146, 146);// color 3
-            Color color1 = Color.FromArgb(historyalpha, 0, 73, 73);// color 2
-
             if (array >= nine)
             {
                 chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color10;
