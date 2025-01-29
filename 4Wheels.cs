@@ -17,37 +17,44 @@ namespace Physics_Data_Debug
         private readonly static int historycolordivider = 2;
         private readonly static int steps = 10;
 
-        private static double[] FL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] FL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] FL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] FL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] FL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] FL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-        private static double[] FR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] FR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] FR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] FR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] FR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] FR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-        private static double[] RL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] RL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] RL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] RL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] RL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] RL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
-        private static double[] RR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] RR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        private static double[] RR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-        //private static double[] X1ValuesChart2Array = new double[2];
-        //private static double[] Y1ValuesChart2Array = new double[2];
-
+        public static double[] RR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] RR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
+        public static double[] RR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
 
         private static int uHistoryHelper = 2;
 
-        private void HistoryPointsColorFromMarkerColor() // Not used
+        private static void ForLoopAxisArrays(Chart chartName, int u, double[] arrayX, double[] arrayY, double[] arrayZ)
         {
-            int a = _4WheelsSettings.MarkerColor.A;
-            int r = _4WheelsSettings.MarkerColor.R;
-            int g = _4WheelsSettings.MarkerColor.G;
-            int B = _4WheelsSettings.MarkerColor.B;
-
+            for (int i = 0; i < arrayX.Length - 1; ++i)
+            {
+                chartName.Series["Series" + u.ToString()].Points.AddXY(arrayX[i], arrayY[i]);
+                if (_4WheelsSettings.Scheme == "Green Red")
+                {
+                    ColorGradientRG(chartName, Math.Abs(arrayZ[i]), i, u);
+                }
+                else if (_4WheelsSettings.Scheme == "Colorblind")
+                {
+                    //FL_ColorGradientSet1(chartName, i, u);
+                    ColorGradientSet1(chartName, Math.Abs(arrayZ[i]), i, u);
+                }
+                else
+                {
+                    ColorGradientRB(chartName, Math.Abs(arrayZ[i]), i, u);
+                }
+            }
         }
-
         public static void SetArrays()
         {
             FL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
@@ -65,1553 +72,675 @@ namespace Physics_Data_Debug
             RR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
             RR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
             RR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            //X1ValuesChart2Array = new double[2];
-            //Y1ValuesChart2Array = new double[2];
-
         }
-        private static void X1AxisDefaults()
+        private static void XYAxisDefaultsSelected(string XorY, bool dAxis, double dMax, double dMin, double dMajorInterval, int dDecimals, bool dMinorEnabled, int dMinorIntervalFraction)
         {
-
-            if (_4WheelsSettings.X1Selection == LiveData.sRaceTime)
+            if (dAxis == true)
             {
-                _4WheelsSettings.X1DefaultMax = double.NaN;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 1000;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = false;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 60;
-
-                if (_4WheelsSettings.X1Defaults == true)
+                if (XorY == "X")
                 {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTireTravelSpeed)
-            {
-                _4WheelsSettings.X1DefaultMax = 400;
-                if(_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    _4WheelsSettings.X1Max = dMax;
+                    _4WheelsSettings.X1Min = dMin;
+                    _4WheelsSettings.X1MajorInterval = dMajorInterval;
+                    _4WheelsSettings.X1MajorDecimals = dDecimals;
+                    _4WheelsSettings.X1MinorEnabled = dMinorEnabled;
+                    _4WheelsSettings.X1MinorIntervalFraction = dMinorIntervalFraction;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax / 2;
-                }
-                _4WheelsSettings.X1DefaultMajorInterval = 100;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
+                    _4WheelsSettings.Y1Max = dMax;
+                    _4WheelsSettings.Y1Min = dMin;
+                    _4WheelsSettings.Y1MajorInterval = dMajorInterval;
+                    _4WheelsSettings.Y1MajorDecimals = dDecimals;
+                    _4WheelsSettings.Y1MinorEnabled = dMinorEnabled;
+                    _4WheelsSettings.Y1MinorIntervalFraction = dMinorIntervalFraction;
                 }
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sAngularVelocity)
+        }
+        private static void XYAxisDefaults(string XorY, string axisSelection, bool dAxis)
+        {
+            double dMax; double dMin; double dMajorInterval; int dDecimals; bool dMinorEnabled; int dMinorIntervalFraction;
+            if (axisSelection == LiveData.sRaceTime)
             {
-                _4WheelsSettings.X1DefaultMax = 400;
+                dMax = double.NaN;
+                dMin = 0;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = false;
+                dMinorIntervalFraction = 60;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sTireTravelSpeed)
+            {
+                dMax = 400;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax / 2;
+                    dMin = -dMax / 2;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 100;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalLoad)
+            else if (axisSelection == LiveData.sAngularVelocity)
             {
-                _4WheelsSettings.X1DefaultMax = 10000;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 1000;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalDeflection)
-            {
-                _4WheelsSettings.X1DefaultMax = 0.15;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 0.03;
-                _4WheelsSettings.X1DefaultMajorDecimals = 3;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLoadedRadius)
-            {
-                _4WheelsSettings.X1DefaultMax = 0.5;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.X1DefaultMajorDecimals = 3;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sEffectiveRadius)
-            {
-                _4WheelsSettings.X1DefaultMax = 0.5;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.X1DefaultMajorDecimals = 3;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sContactLength)
-            {
-                _4WheelsSettings.X1DefaultMax = 0.5;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.X1DefaultMajorDecimals = 3;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sBrakeTorque)
-            {
-                _4WheelsSettings.X1DefaultMax = 5000;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 500;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sMaxBrakeTorque)
-            {
-                _4WheelsSettings.X1DefaultMax = 5000;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 500;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSteerAngle)
-            {
-                // Default Axis values
-                _4WheelsSettings.X1DefaultMax = 45;
+                dMax = 400;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax / 2;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 15;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sCamberAngle)
+            else if (axisSelection == LiveData.sVerticalLoad)
             {
-                _4WheelsSettings.X1DefaultMax = 10;
+                dMax = 10000;
+                dMin = 0;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sVerticalDeflection)
+            {
+                dMax = 0.15;
+                dMin = 0;
+                dMajorInterval = 0.03;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sLoadedRadius)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sEffectiveRadius)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sContactLength)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sBrakeTorque)
+            {
+                dMax = 5000;
+                dMin = 0;
+                dMajorInterval = 500;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sMaxBrakeTorque)
+            {
+                dMax = 5000;
+                dMin = 0;
+                dMajorInterval = 500;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sSteerAngle)
+            {
+                dMax = 45;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 4;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 15;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralLoad)
+            else if (axisSelection == LiveData.sCamberAngle)
             {
-                _4WheelsSettings.X1DefaultMax = 10000;
+                dMax = 10;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 1000;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 4;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipAngle)
+            else if (axisSelection == LiveData.sLateralLoad)
             {
-                _4WheelsSettings.X1DefaultMax = 45;
+                dMax = 10000;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 15;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralFriction)
+            else if (axisSelection == LiveData.sSlipAngle)
             {
-                _4WheelsSettings.X1DefaultMax = 2;
+                dMax = 45;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 0.5;
-                _4WheelsSettings.X1DefaultMajorDecimals = 2;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 15;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralSlipSpeed)
+            else if (axisSelection == LiveData.sLateralFriction)
             {
-                _4WheelsSettings.X1DefaultMax = 20;
+                dMax = 2;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 5;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalLoad)
+            else if (axisSelection == LiveData.sLateralSlipSpeed)
             {
-                _4WheelsSettings.X1DefaultMax = 10000;
+                dMax = 20;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 1000;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 5;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipRatio)
+            else if (axisSelection == LiveData.sLongitudinalLoad)
             {
-                _4WheelsSettings.X1DefaultMax = 1;
+                dMax = 10000;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 0.2;
-                _4WheelsSettings.X1DefaultMajorDecimals = 2;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalFriction)
+            else if (axisSelection == LiveData.sSlipRatio)
             {
-                _4WheelsSettings.X1DefaultMax = 2;
+                dMax = 1;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 0.5;
-                _4WheelsSettings.X1DefaultMajorDecimals = 2;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 0.2;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalSlipSpeed)
+            else if (axisSelection == LiveData.sLongitudinalFriction)
             {
-                _4WheelsSettings.X1DefaultMax = 20;
+                dMax = 2;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 5;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTreadTemperature)
+            else if (axisSelection == LiveData.sLongitudinalSlipSpeed)
             {
-                _4WheelsSettings.X1DefaultMax = 380;
+                dMax = 20;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -20;
+                    dMin = -dMax;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 20;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 5;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sInnerTemperature)
+            else if (axisSelection == LiveData.sTreadTemperature)
             {
-                _4WheelsSettings.X1DefaultMax = 380;
+                dMax = 380;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -20;
+                    dMin = -20;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 20;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 20;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFriction)
+            else if (axisSelection == LiveData.sInnerTemperature)
             {
-                _4WheelsSettings.X1DefaultMax = 2;
-                 _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 0.25;
-                _4WheelsSettings.X1DefaultMajorDecimals = 2;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFrictionAngle)
-            {
-                _4WheelsSettings.X1DefaultMax = 360;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 90;
-                _4WheelsSettings.X1DefaultMajorDecimals = 0;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionLength)
-            {
-                _4WheelsSettings.X1DefaultMax = 1;
-                _4WheelsSettings.X1DefaultMin = 0;
-                _4WheelsSettings.X1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.X1DefaultMajorDecimals = 4;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
-
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionVelocity)
-            {
-                _4WheelsSettings.X1DefaultMax = 10;
+                dMax = 380;
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    _4WheelsSettings.X1DefaultMin = 0;
+                    dMin = 0;
                 }
                 else
                 {
-                    _4WheelsSettings.X1DefaultMin = -_4WheelsSettings.X1DefaultMax;
+                    dMin = -20;
                 }
-                _4WheelsSettings.X1DefaultMajorInterval = 2;
-                _4WheelsSettings.X1DefaultMajorDecimals = 4;
-                _4WheelsSettings.X1DefaultMinorEnabled = true;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMajorInterval = 20;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-                if (_4WheelsSettings.X1Defaults == true)
-                {
-                    _4WheelsSettings.X1Max = _4WheelsSettings.X1DefaultMax;
-                    _4WheelsSettings.X1Min = _4WheelsSettings.X1DefaultMin;
-                    _4WheelsSettings.X1MajorInterval = _4WheelsSettings.X1DefaultMajorInterval;
-                    _4WheelsSettings.X1MajorDecimals = _4WheelsSettings.X1DefaultMajorDecimals;
-                    _4WheelsSettings.X1MinorEnabled = _4WheelsSettings.X1DefaultMinorEnabled;
-                    _4WheelsSettings.X1MinorIntervalFraction = _4WheelsSettings.X1DefaultMinorIntervalFraction;
-                }
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            /*
-            else if (comboBox1.Text == "")
+            else if (axisSelection == LiveData.sTotalFriction)
             {
+                dMax = 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
-            }*/
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sTotalFrictionAngle)
+            {
+                dMax = 360;
+                dMin = 0;
+                dMajorInterval = 90;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
 
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sSuspensionLength)
+            {
+                dMax = 1;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 4;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LiveData.sSuspensionVelocity)
+            {
+                dMax = 10;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 2;
+                dDecimals = 4;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
             else
             {
                 // Defaults auto scale
-                _4WheelsSettings.X1DefaultMax = double.NaN;
-                _4WheelsSettings.X1DefaultMin = double.NaN;
-                _4WheelsSettings.X1DefaultMajorInterval = 0;
-                _4WheelsSettings.X1DefaultMajorDecimals = 2;
-                _4WheelsSettings.X1DefaultMinorEnabled = false;
-                _4WheelsSettings.X1DefaultMinorIntervalFraction = 2;
+                dMax = double.NaN;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = double.NaN;
+                }
+                dMajorInterval = 0;
+                dDecimals = 2;
+                dMinorEnabled = false;
+                dMinorIntervalFraction = 2;
+            }
+            //The most important part at the end
+            if (XorY == "X")
+            {
+                _4WheelsSettings.X1Selection = axisSelection;
+                _4WheelsSettings.X1DefaultMax = dMax;
+                _4WheelsSettings.X1DefaultMin = dMin;
+                _4WheelsSettings.X1DefaultMajorInterval = dMajorInterval;
+                _4WheelsSettings.X1DefaultMajorDecimals = dDecimals;
+                _4WheelsSettings.X1DefaultMinorEnabled = dMinorEnabled;
+                _4WheelsSettings.X1DefaultMinorIntervalFraction = dMinorIntervalFraction;
+            }
+            else
+            {
+                _4WheelsSettings.Y1Selection = axisSelection;
+                _4WheelsSettings.Y1DefaultMax = dMax;
+                _4WheelsSettings.Y1DefaultMin = dMin;
+                _4WheelsSettings.Y1DefaultMajorInterval = dMajorInterval;
+                _4WheelsSettings.Y1DefaultMajorDecimals = dDecimals;
+                _4WheelsSettings.Y1DefaultMinorEnabled = dMinorEnabled;
+                _4WheelsSettings.Y1DefaultMinorIntervalFraction = dMinorIntervalFraction;
             }
         }
-        private static void Y1AxisDefaults()
+        private static void ZAxisDefaultsSelected(bool dAxis, double dMax, double dMin)
         {
-
-            if (_4WheelsSettings.Y1Selection == LiveData.sRaceTime)
+            if (dAxis == true)
             {
-                _4WheelsSettings.Y1DefaultMax = double.NaN;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 1000;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = false;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 60;
-
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                _4WheelsSettings.Z1Max = dMax;
+                _4WheelsSettings.Z1Min = dMin;
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTireTravelSpeed)
-            {
-                _4WheelsSettings.Y1DefaultMax = 400;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax / 2;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 100;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+        }
+        private static void ZAxisDefaults(string axisSelection, bool dAxis)
+        {
+            double dMax; double dMin;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+            if (axisSelection == LiveData.sRaceTime)
+            {
+                dMax = double.NaN;
+                dMin = 0;
+
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sAngularVelocity)
+            else if (axisSelection == LiveData.sTireTravelSpeed)
             {
-                _4WheelsSettings.Y1DefaultMax = 400;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax / 2;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 100;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 400;
+                dMin = -dMax / 2;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalLoad)
+            else if (axisSelection == LiveData.sAngularVelocity)
             {
-                _4WheelsSettings.Y1DefaultMax = 10000;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 1000;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 400;
+                dMin = -dMax / 2;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalDeflection)
+            else if (axisSelection == LiveData.sVerticalLoad)
             {
-                _4WheelsSettings.Y1DefaultMax = 0.15;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.03;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 3;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 10000;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLoadedRadius)
+            else if (axisSelection == LiveData.sVerticalDeflection)
             {
-                _4WheelsSettings.Y1DefaultMax = 0.5;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 3;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 0.15;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sEffectiveRadius)
+            else if (axisSelection == LiveData.sLoadedRadius)
             {
-                _4WheelsSettings.Y1DefaultMax = 0.5;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 3;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 0.5;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sContactLength)
+            else if (axisSelection == LiveData.sEffectiveRadius)
             {
-                _4WheelsSettings.Y1DefaultMax = 0.5;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 3;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 0.5;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sBrakeTorque)
+            else if (axisSelection == LiveData.sContactLength)
             {
-                _4WheelsSettings.Y1DefaultMax = 5000;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 500;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 0.5;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sMaxBrakeTorque)
+            else if (axisSelection == LiveData.sBrakeTorque)
             {
-                _4WheelsSettings.Y1DefaultMax = 5000;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 500;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 5000;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSteerAngle)
+            else if (axisSelection == LiveData.sMaxBrakeTorque)
             {
-                // Default Axis values
-                _4WheelsSettings.Y1DefaultMax = 45;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 15;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 5000;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sCamberAngle)
+            else if (axisSelection == LiveData.sSteerAngle)
             {
-                _4WheelsSettings.Y1DefaultMax = 10;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 4;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 45;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralLoad)
+            else if (axisSelection == LiveData.sCamberAngle)
             {
-                _4WheelsSettings.Y1DefaultMax = 10000;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 1000;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 10;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipAngle)
+            else if (axisSelection == LiveData.sLateralLoad)
             {
-                _4WheelsSettings.Y1DefaultMax = 45;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 15;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 10000;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralFriction)
+            else if (axisSelection == LiveData.sSlipAngle)
             {
-                _4WheelsSettings.Y1DefaultMax = 2;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.5;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 2;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 45;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralSlipSpeed)
+            else if (axisSelection == LiveData.sLateralFriction)
             {
-                _4WheelsSettings.Y1DefaultMax = 20;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 5;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 2;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalLoad)
+            else if (axisSelection == LiveData.sLateralSlipSpeed)
             {
-                _4WheelsSettings.Y1DefaultMax = 10000;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 1000;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 20;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipRatio)
+            else if (axisSelection == LiveData.sLongitudinalLoad)
             {
-                _4WheelsSettings.Y1DefaultMax = 1;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.2;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 2;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 10000;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalFriction)
+            else if (axisSelection == LiveData.sSlipRatio)
             {
-                _4WheelsSettings.Y1DefaultMax = 2;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.5;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 2;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 1;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalSlipSpeed)
+            else if (axisSelection == LiveData.sLongitudinalFriction)
             {
-                _4WheelsSettings.Y1DefaultMax = 20;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 5;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 2;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTreadTemperature)
+            else if (axisSelection == LiveData.sLongitudinalSlipSpeed)
             {
-                _4WheelsSettings.Y1DefaultMax = 380;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -20;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 20;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 20;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sInnerTemperature)
+            else if (axisSelection == LiveData.sTreadTemperature)
             {
-                _4WheelsSettings.Y1DefaultMax = 380;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -20;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 20;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 380;
+                dMin = -20;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFriction)
+            else if (axisSelection == LiveData.sInnerTemperature)
             {
-                _4WheelsSettings.Y1DefaultMax = 2;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.25;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 2;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 380;
+                dMin = -20;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFrictionAngle)
+            else if (axisSelection == LiveData.sTotalFriction)
             {
-                _4WheelsSettings.Y1DefaultMax = 360;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 90;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 0;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 2;
+                dMin = -dMax;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionLength)
+            else if (axisSelection == LiveData.sTotalFrictionAngle)
             {
-                _4WheelsSettings.Y1DefaultMax = 1;
-                _4WheelsSettings.Y1DefaultMin = 0;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0.1;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 4;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 360;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionVelocity)
+            else if (axisSelection == LiveData.sSuspensionLength)
             {
-                _4WheelsSettings.Y1DefaultMax = 10;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    _4WheelsSettings.Y1DefaultMin = 0;
-                }
-                else
-                {
-                    _4WheelsSettings.Y1DefaultMin = -_4WheelsSettings.Y1DefaultMax;
-                }
-                _4WheelsSettings.Y1DefaultMajorInterval = 2;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 4;
-                _4WheelsSettings.Y1DefaultMinorEnabled = true;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
+                dMax = 1;
+                dMin = 0;
 
-                if (_4WheelsSettings.Y1Defaults == true)
-                {
-                    _4WheelsSettings.Y1Max = _4WheelsSettings.Y1DefaultMax;
-                    _4WheelsSettings.Y1Min = _4WheelsSettings.Y1DefaultMin;
-                    _4WheelsSettings.Y1MajorInterval = _4WheelsSettings.Y1DefaultMajorInterval;
-                    _4WheelsSettings.Y1MajorDecimals = _4WheelsSettings.Y1DefaultMajorDecimals;
-                    _4WheelsSettings.Y1MinorEnabled = _4WheelsSettings.Y1DefaultMinorEnabled;
-                    _4WheelsSettings.Y1MinorIntervalFraction = _4WheelsSettings.Y1DefaultMinorIntervalFraction;
-                }
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            /*
-            else if (comboBox1.Text == "")
+            else if (axisSelection == LiveData.sSuspensionVelocity)
             {
+                dMax = 10;
+                dMin = -dMax;
 
-            }*/
-
+                ZAxisDefaultsSelected(dAxis, dMax, dMin);
+            }
             else
             {
                 // Defaults auto scale
-                _4WheelsSettings.Y1DefaultMax = double.NaN;
-                _4WheelsSettings.Y1DefaultMin = double.NaN;
-                _4WheelsSettings.Y1DefaultMajorInterval = 0;
-                _4WheelsSettings.Y1DefaultMajorDecimals = 2;
-                _4WheelsSettings.Y1DefaultMinorEnabled = false;
-                _4WheelsSettings.Y1DefaultMinorIntervalFraction = 2;
-            }
-        }
-        private static void Z1AxisDefaults()
-        {
-
-            if (_4WheelsSettings.Z1Selection == LiveData.sRaceTime)
-            {
-                _4WheelsSettings.Z1DefaultMax = 100000;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTireTravelSpeed)
-            {
-                _4WheelsSettings.Z1DefaultMax = 400;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sAngularVelocity)
-            {
-                _4WheelsSettings.Z1DefaultMax = 400;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalLoad)
-            {
-                _4WheelsSettings.Z1DefaultMax = 10000;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalDeflection)
-            {
-                _4WheelsSettings.Z1DefaultMax = 0.15;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLoadedRadius)
-            {
-                _4WheelsSettings.Z1DefaultMax = 0.5;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sEffectiveRadius)
-            {
-                _4WheelsSettings.Z1DefaultMax = 0.5;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sContactLength)
-            {
-                _4WheelsSettings.Z1DefaultMax = 0.5;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sBrakeTorque)
-            {
-                _4WheelsSettings.Z1DefaultMax = 5000;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sMaxBrakeTorque)
-            {
-                _4WheelsSettings.Z1DefaultMax = 5000;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSteerAngle)
-            {
-                // Default Axis values
-                _4WheelsSettings.Z1DefaultMax = 45;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sCamberAngle)
-            {
-                _4WheelsSettings.Z1DefaultMax = 10;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralLoad)
-            {
-                _4WheelsSettings.Z1DefaultMax = 10000;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipAngle)
-            {
-                _4WheelsSettings.Z1DefaultMax = 45;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralFriction)
-            {
-                _4WheelsSettings.Z1DefaultMax = 2;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralSlipSpeed)
-            {
-                _4WheelsSettings.Z1DefaultMax = 20;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalLoad)
-            {
-                _4WheelsSettings.Z1DefaultMax = 10000;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipRatio)
-            {
-                _4WheelsSettings.Z1DefaultMax = 1;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalFriction)
-            {
-                _4WheelsSettings.Z1DefaultMax = 2;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                _4WheelsSettings.Z1DefaultMax = 20;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTreadTemperature)
-            {
-                _4WheelsSettings.Z1DefaultMax = 425;
-                _4WheelsSettings.Z1DefaultMin = 25;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sInnerTemperature)
-            {
-                _4WheelsSettings.Z1DefaultMax = 425;
-                _4WheelsSettings.Z1DefaultMin = 25;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFriction)
-            {
-                _4WheelsSettings.Z1DefaultMax = 2;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFrictionAngle)
-            {
-                _4WheelsSettings.Z1DefaultMax = 360;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionLength)
-            {
-                _4WheelsSettings.Z1DefaultMax = 1;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionVelocity)
-            {
-                _4WheelsSettings.Z1DefaultMax = 10;
-                _4WheelsSettings.Z1DefaultMin = 0;
-
-                if (_4WheelsSettings.Z1Defaults == true)
-                {
-                    _4WheelsSettings.Z1Max = _4WheelsSettings.Z1DefaultMax;
-                    _4WheelsSettings.Z1Min = _4WheelsSettings.Z1DefaultMin;
-                }
-            }
-            /*
-            else if (comboBox2.Text == "")
-            {
-
-            }*/
-
-            else
-            {
-                // Defaults auto scale
-                _4WheelsSettings.Z1DefaultMax = double.NaN;
-                _4WheelsSettings.Z1DefaultMin = double.NaN;
+                dMax = double.NaN;
+                dMin = double.NaN;
             }
 
+            //The most important part at the end
+            _4WheelsSettings.Z1DefaultMax = dMax;
+            _4WheelsSettings.Z1DefaultMin = dMin;
         }
         public static void ClearSeriesHistory(Chart chartName)
         {
@@ -1619,9 +748,16 @@ namespace Physics_Data_Debug
         }
         public static void SetChart(Chart chartName)
         {
-            X1AxisDefaults();
-            Y1AxisDefaults();
-            Z1AxisDefaults();
+            XYAxisDefaults("X", 
+                         _4WheelsSettings.X1Selection,
+                         _4WheelsSettings.X1Defaults);
+
+            XYAxisDefaults("Y",
+                         _4WheelsSettings.Y1Selection,
+                         _4WheelsSettings.Y1Defaults);
+
+            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
+
             chartName.Series["Series1"].ChartType = SeriesChartType.Point;
             chartName.Series["Series1"].MarkerStyle = MarkerStyle.Circle;
 
@@ -1649,7 +785,7 @@ namespace Physics_Data_Debug
             chartName.ChartAreas["ChartArea1"].AxisX.MinorGrid.LineColor = _4WheelsSettings.X1MinorColor;
 
             chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.BackColor = Color.Empty;
-            chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonColor =_4WheelsSettings.X1MajorColor;
+            chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonColor = _4WheelsSettings.X1MajorColor;
             chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.LineColor = _4WheelsSettings.X1FontColor;
             chartName.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = true;
             chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
@@ -1710,1330 +846,349 @@ namespace Physics_Data_Debug
                 array[array.Length - 1] = data;
             }
         }
-        private static void FL_XYZArraySelections()
+        private static void XYZArraySelections(string xAxisSelection, double[] arrayX, string yAxisSelection, double[] arrayY, string zAxisSelection, double[] arrayZ,
+                                                int raceTime, float travelSpeed, float angVel,
+                                                float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
+                                                float currContBrakeTorq, float currContBrakeTorqMax,
+                                                float steerAngDeg, float cambAngDeg,
+                                                float latLoad, float slipAngleDeg, float latFrict, float latSlipSpeed,
+                                                float lonLoad, float slipRatio, float lonFrict, float lonSlipSpeed,
+                                                float treadTemp, float innerTemp,
+                                                float totalFrict, float totalFrictAngle,
+                                                float suspLength, float suspVel)
         {
             //X
-            if (_4WheelsSettings.X1Selection == LiveData.sTireTravelSpeed)
+            if (xAxisSelection == LiveData.sTireTravelSpeed)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_TravelSpeed);
+                AbsoluteValuesFloat(arrayX, travelSpeed);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sAngularVelocity)
+            else if (xAxisSelection == LiveData.sAngularVelocity)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_AngularVelocity);
+                AbsoluteValuesFloat(arrayX, angVel);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalLoad)
+            else if (xAxisSelection == LiveData.sVerticalLoad)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_VerticalLoad);
+                AbsoluteValuesFloat(arrayX, verLoad);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalDeflection)
+            else if (xAxisSelection == LiveData.sVerticalDeflection)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_VerticalDeflection);
+                AbsoluteValuesFloat(arrayX, verDefl);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLoadedRadius)
+            else if (xAxisSelection == LiveData.sLoadedRadius)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_LoadedRadius);
+                AbsoluteValuesFloat(arrayX, loadRadius);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sEffectiveRadius)
+            else if (xAxisSelection == LiveData.sEffectiveRadius)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_EffectiveRadius);
+                AbsoluteValuesFloat(arrayX, effRadius);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sContactLength)
+            else if (xAxisSelection == LiveData.sContactLength)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_ContactLength);
+                AbsoluteValuesFloat(arrayX, contLength);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sBrakeTorque)
+            else if (xAxisSelection == LiveData.sBrakeTorque)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_CurrentContactBrakeTorque);
+                AbsoluteValuesFloat(arrayX, currContBrakeTorq);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sMaxBrakeTorque)
+            else if (xAxisSelection == LiveData.sMaxBrakeTorque)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_CurrentContactBrakeTorqueMax);
+                AbsoluteValuesFloat(arrayX, currContBrakeTorqMax);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSteerAngle)
+            else if (xAxisSelection == LiveData.sSteerAngle)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_SteerAngleDeg);
+                AbsoluteValuesFloat(arrayX, steerAngDeg);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sCamberAngle)
+            else if (xAxisSelection == LiveData.sCamberAngle)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_CamberAngleDeg);
+                AbsoluteValuesFloat(arrayX, cambAngDeg);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralLoad)
+            else if (xAxisSelection == LiveData.sLateralLoad)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_LateralLoad);
+                AbsoluteValuesFloat(arrayX, latLoad);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipAngle)
+            else if (xAxisSelection == LiveData.sSlipAngle)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_SlipAngleDeg);
+                AbsoluteValuesFloat(arrayX, slipAngleDeg);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralFriction)
+            else if (xAxisSelection == LiveData.sLateralFriction)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_LateralFriction);
+                AbsoluteValuesFloat(arrayX, latFrict);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralSlipSpeed)
+            else if (xAxisSelection == LiveData.sLateralSlipSpeed)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_LateralSlipSpeed);
+                AbsoluteValuesFloat(arrayX, latSlipSpeed);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalLoad)
+            else if (xAxisSelection == LiveData.sLongitudinalLoad)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_LongitudinalLoad);
+                AbsoluteValuesFloat(arrayX, lonLoad);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipRatio)
+            else if (xAxisSelection == LiveData.sSlipRatio)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_SlipRatio);
+                AbsoluteValuesFloat(arrayX, slipRatio);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalFriction)
+            else if (xAxisSelection == LiveData.sLongitudinalFriction)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_LongitudinalFriction);
+                AbsoluteValuesFloat(arrayX, lonFrict);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalSlipSpeed)
+            else if (xAxisSelection == LiveData.sLongitudinalSlipSpeed)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_LongitudinalSlipSpeed);
+                AbsoluteValuesFloat(arrayX, lonSlipSpeed);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTreadTemperature)
+            else if (xAxisSelection == LiveData.sTreadTemperature)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_TreadTemperature);
+                AbsoluteValuesFloat(arrayX, treadTemp);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sInnerTemperature)
+            else if (xAxisSelection == LiveData.sInnerTemperature)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_InnerTemperature);
+                AbsoluteValuesFloat(arrayX, innerTemp);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sRaceTime)
+            else if (xAxisSelection == LiveData.sRaceTime)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.RaceTime);
+                AbsoluteValuesFloat(arrayX, raceTime);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFriction)
+            else if (xAxisSelection == LiveData.sTotalFriction)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_TotalFriction);
+                AbsoluteValuesFloat(arrayX, totalFrict);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFrictionAngle)
+            else if (xAxisSelection == LiveData.sTotalFrictionAngle)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_TotalFrictionAngle);
+                AbsoluteValuesFloat(arrayX, totalFrictAngle);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionLength)
+            else if (xAxisSelection == LiveData.sSuspensionLength)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_SuspensionLength);
+                AbsoluteValuesFloat(arrayX, suspLength);
             }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionVelocity)
+            else if (xAxisSelection == LiveData.sSuspensionVelocity)
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_SuspensionVelocity);
+                AbsoluteValuesFloat(arrayX, suspVel);
             }
             else//fallback to slip angle
             {
-                AbsoluteValuesFloat(FL_X1ValuesChartArray, LiveData.FL_SlipAngleDeg);
+                AbsoluteValuesFloat(arrayX, slipAngleDeg);
             }
             //Y
-            if (_4WheelsSettings.Y1Selection == LiveData.sTireTravelSpeed)
+            if (yAxisSelection == LiveData.sTireTravelSpeed)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_TravelSpeed);
+                AbsoluteValuesFloat(arrayY, travelSpeed);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sAngularVelocity)
+            else if (yAxisSelection == LiveData.sAngularVelocity)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_AngularVelocity);
+                AbsoluteValuesFloat(arrayY, angVel);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalLoad)
+            else if (yAxisSelection == LiveData.sVerticalLoad)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_VerticalLoad);
+                AbsoluteValuesFloat(arrayY, verLoad);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalDeflection)
+            else if (yAxisSelection == LiveData.sVerticalDeflection)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_VerticalDeflection);
+                AbsoluteValuesFloat(arrayY, verDefl);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLoadedRadius)
+            else if (yAxisSelection == LiveData.sLoadedRadius)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LoadedRadius);
+                AbsoluteValuesFloat(arrayY, loadRadius);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sEffectiveRadius)
+            else if (yAxisSelection == LiveData.sEffectiveRadius)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_EffectiveRadius);
+                AbsoluteValuesFloat(arrayY, effRadius);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sContactLength)
+            else if (yAxisSelection == LiveData.sContactLength)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_ContactLength);
+                AbsoluteValuesFloat(arrayY, contLength);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sBrakeTorque)
+            else if (yAxisSelection == LiveData.sBrakeTorque)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_CurrentContactBrakeTorque);
+                AbsoluteValuesFloat(arrayY, currContBrakeTorq);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sMaxBrakeTorque)
+            else if (yAxisSelection == LiveData.sMaxBrakeTorque)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_CurrentContactBrakeTorqueMax);
+                AbsoluteValuesFloat(arrayY, currContBrakeTorqMax);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSteerAngle)
+            else if (yAxisSelection == LiveData.sSteerAngle)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_SteerAngleDeg);
+                AbsoluteValuesFloat(arrayY, steerAngDeg);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sCamberAngle)
+            else if (yAxisSelection == LiveData.sCamberAngle)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_CamberAngleDeg);
+                AbsoluteValuesFloat(arrayY, cambAngDeg);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralLoad)
+            else if (yAxisSelection == LiveData.sLateralLoad)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LateralLoad);
+                AbsoluteValuesFloat(arrayY, latLoad);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipAngle)
+            else if (yAxisSelection == LiveData.sSlipAngle)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_SlipAngleDeg);
+                AbsoluteValuesFloat(arrayY, slipAngleDeg);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralFriction)
+            else if (yAxisSelection == LiveData.sLateralFriction)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LateralFriction);
+                AbsoluteValuesFloat(arrayY, latFrict);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralSlipSpeed)
+            else if (yAxisSelection == LiveData.sLateralSlipSpeed)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LateralSlipSpeed);
+                AbsoluteValuesFloat(arrayY, latSlipSpeed);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalLoad)
+            else if (yAxisSelection == LiveData.sLongitudinalLoad)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LongitudinalLoad);
+                AbsoluteValuesFloat(arrayY, lonLoad);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipRatio)
+            else if (yAxisSelection == LiveData.sSlipRatio)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_SlipRatio);
+                AbsoluteValuesFloat(arrayY, slipRatio);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalFriction)
+            else if (yAxisSelection == LiveData.sLongitudinalFriction)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LongitudinalFriction);
+                AbsoluteValuesFloat(arrayY, lonFrict);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalSlipSpeed)
+            else if (yAxisSelection == LiveData.sLongitudinalSlipSpeed)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LongitudinalSlipSpeed);
+                AbsoluteValuesFloat(arrayY, lonSlipSpeed);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTreadTemperature)
+            else if (yAxisSelection == LiveData.sTreadTemperature)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_TreadTemperature);
+                AbsoluteValuesFloat(arrayY, treadTemp);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sInnerTemperature)
+            else if (yAxisSelection == LiveData.sInnerTemperature)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_InnerTemperature);
+                AbsoluteValuesFloat(arrayY, innerTemp);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sRaceTime)
+            else if (yAxisSelection == LiveData.sRaceTime)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.RaceTime);
+                AbsoluteValuesFloat(arrayY, raceTime);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFriction)
+            else if (yAxisSelection == LiveData.sTotalFriction)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_TotalFriction);
+                AbsoluteValuesFloat(arrayY, totalFrict);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFrictionAngle)
+            else if (yAxisSelection == LiveData.sTotalFrictionAngle)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_TotalFrictionAngle);
+                AbsoluteValuesFloat(arrayY, totalFrictAngle);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionLength)
+            else if (yAxisSelection == LiveData.sSuspensionLength)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_SuspensionLength);
+                AbsoluteValuesFloat(arrayY, suspLength);
             }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionVelocity)
+            else if (yAxisSelection == LiveData.sSuspensionVelocity)
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_SuspensionVelocity);
+                AbsoluteValuesFloat(arrayY, suspVel);
             }
             else//fallback to lateral friction
             {
-                AbsoluteValuesFloat(FL_Y1ValuesChartArray, LiveData.FL_LateralFriction);
+                AbsoluteValuesFloat(arrayY, latFrict);
             }
             //Z
-            if (_4WheelsSettings.Z1Selection == LiveData.sTireTravelSpeed)
+            if (zAxisSelection == LiveData.sTireTravelSpeed)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_TravelSpeed);
+                AbsoluteValuesFloat(arrayZ, travelSpeed);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sAngularVelocity)
+            else if (zAxisSelection == LiveData.sAngularVelocity)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_AngularVelocity);
+                AbsoluteValuesFloat(arrayZ, angVel);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalLoad)
+            else if (zAxisSelection == LiveData.sVerticalLoad)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_VerticalLoad);
+                AbsoluteValuesFloat(arrayZ, verLoad);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalDeflection)
+            else if (zAxisSelection == LiveData.sVerticalDeflection)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_VerticalDeflection);
+                AbsoluteValuesFloat(arrayZ, verDefl);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLoadedRadius)
+            else if (zAxisSelection == LiveData.sLoadedRadius)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_LoadedRadius);
+                AbsoluteValuesFloat(arrayZ, loadRadius);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sEffectiveRadius)
+            else if (zAxisSelection == LiveData.sEffectiveRadius)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_EffectiveRadius);
+                AbsoluteValuesFloat(arrayZ, effRadius);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sContactLength)
+            else if (zAxisSelection == LiveData.sContactLength)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_ContactLength);
+                AbsoluteValuesFloat(arrayZ, contLength);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sBrakeTorque)
+            else if (zAxisSelection == LiveData.sBrakeTorque)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_CurrentContactBrakeTorque);
+                AbsoluteValuesFloat(arrayZ, currContBrakeTorq);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sMaxBrakeTorque)
+            else if (zAxisSelection == LiveData.sMaxBrakeTorque)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_CurrentContactBrakeTorqueMax);
+                AbsoluteValuesFloat(arrayZ, currContBrakeTorqMax);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSteerAngle)
+            else if (zAxisSelection == LiveData.sSteerAngle)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_SteerAngleDeg);
+                AbsoluteValuesFloat(arrayZ, steerAngDeg);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sCamberAngle)
+            else if (zAxisSelection == LiveData.sCamberAngle)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_CamberAngleDeg);
+                AbsoluteValuesFloat(arrayZ, cambAngDeg);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralLoad)
+            else if (zAxisSelection == LiveData.sLateralLoad)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_LateralLoad);
+                AbsoluteValuesFloat(arrayZ, latLoad);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipAngle)
+            else if (zAxisSelection == LiveData.sSlipAngle)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_SlipAngleDeg);
+                AbsoluteValuesFloat(arrayZ, slipAngleDeg);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralFriction)
+            else if (zAxisSelection == LiveData.sLateralFriction)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_LateralFriction);
+                AbsoluteValuesFloat(arrayZ, latFrict);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralSlipSpeed)
+            else if (zAxisSelection == LiveData.sLateralSlipSpeed)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_LateralSlipSpeed);
+                AbsoluteValuesFloat(arrayZ, latSlipSpeed);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalLoad)
+            else if (zAxisSelection == LiveData.sLongitudinalLoad)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_LongitudinalLoad);
+                AbsoluteValuesFloat(arrayZ, lonLoad);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipRatio)
+            else if (zAxisSelection == LiveData.sSlipRatio)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_SlipRatio);
+                AbsoluteValuesFloat(arrayZ, slipRatio);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalFriction)
+            else if (zAxisSelection == LiveData.sLongitudinalFriction)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_LongitudinalFriction);
+                AbsoluteValuesFloat(arrayZ, lonFrict);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalSlipSpeed)
+            else if (zAxisSelection == LiveData.sLongitudinalSlipSpeed)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_LongitudinalSlipSpeed);
+                AbsoluteValuesFloat(arrayZ, lonSlipSpeed);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTreadTemperature)
+            else if (zAxisSelection == LiveData.sTreadTemperature)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_TreadTemperature);
+                AbsoluteValuesFloat(arrayZ, treadTemp);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sInnerTemperature)
+            else if (zAxisSelection == LiveData.sInnerTemperature)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_InnerTemperature);
+                AbsoluteValuesFloat(arrayZ, innerTemp);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sRaceTime)
+            else if (zAxisSelection == LiveData.sRaceTime)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.RaceTime);
+                AbsoluteValuesFloat(arrayZ, raceTime);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFriction)
+            else if (zAxisSelection == LiveData.sTotalFriction)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_TotalFriction);
+                AbsoluteValuesFloat(arrayZ, totalFrict);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFrictionAngle)
+            else if (zAxisSelection == LiveData.sTotalFrictionAngle)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_TotalFrictionAngle);
+                AbsoluteValuesFloat(arrayZ, totalFrictAngle);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionLength)
+            else if (zAxisSelection == LiveData.sSuspensionLength)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_SuspensionLength);
+                AbsoluteValuesFloat(arrayZ, suspLength);
             }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionVelocity)
+            else if (zAxisSelection == LiveData.sSuspensionVelocity)
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_SuspensionVelocity);
+                AbsoluteValuesFloat(arrayZ, suspVel);
             }
             else//fallback to vertical load
             {
-                AbsoluteValuesFloat(FL_Z1ValuesChartArray, LiveData.FL_VerticalLoad);
-            }
-        }
-        private static void FR_XYZArraySelections()
-        {
-            //X
-            if (_4WheelsSettings.X1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_TravelSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_AngularVelocity);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_VerticalLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_LoadedRadius);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_ContactLength);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_LateralLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_LateralFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_SlipRatio);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_TreadTemperature);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_InnerTemperature);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_TotalFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_SuspensionLength);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_SuspensionVelocity);
-            }
-            else//fallback to slip angle
-            {
-                AbsoluteValuesFloat(FR_X1ValuesChartArray, LiveData.FR_SlipAngleDeg);
-            }
-            //Y
-            if (_4WheelsSettings.Y1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_TravelSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_AngularVelocity);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_VerticalLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LoadedRadius);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_ContactLength);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LateralLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LateralFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_SlipRatio);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_TreadTemperature);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_InnerTemperature);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_TotalFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_SuspensionLength);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_SuspensionVelocity);
-            }
-            else//fallback to lateral friction
-            {
-                AbsoluteValuesFloat(FR_Y1ValuesChartArray, LiveData.FR_LateralFriction);
-            }
-            //Z
-            if (_4WheelsSettings.Z1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_TravelSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_AngularVelocity);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_VerticalLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_LoadedRadius);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_ContactLength);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_LateralLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_LateralFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_SlipRatio);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_TreadTemperature);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_InnerTemperature);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_TotalFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_SuspensionLength);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_SuspensionVelocity);
-            }
-            else//fallback to vertical load
-            {
-                AbsoluteValuesFloat(FR_Z1ValuesChartArray, LiveData.FR_VerticalLoad);
-            }
-        }
-        private static void RL_XYZArraySelections()
-        {
-            //X
-            if (_4WheelsSettings.X1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_TravelSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_AngularVelocity);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_VerticalLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_LoadedRadius);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_ContactLength);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_LateralLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_LateralFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_SlipRatio);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_TreadTemperature);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_InnerTemperature);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_TotalFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_SuspensionLength);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_SuspensionVelocity);
-            }
-            else//fallback to slip angle
-            {
-                AbsoluteValuesFloat(RL_X1ValuesChartArray, LiveData.RL_SlipAngleDeg);
-            }
-            //Y
-            if (_4WheelsSettings.Y1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_TravelSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_AngularVelocity);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_VerticalLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LoadedRadius);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_ContactLength);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LateralLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LateralFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_SlipRatio);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_TreadTemperature);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_InnerTemperature);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_TotalFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_SuspensionLength);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_SuspensionVelocity);
-            }
-            else//fallback to lateral friction
-            {
-                AbsoluteValuesFloat(RL_Y1ValuesChartArray, LiveData.RL_LateralFriction);
-            }
-            //Z
-            if (_4WheelsSettings.Z1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_TravelSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_AngularVelocity);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_VerticalLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_LoadedRadius);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_ContactLength);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_LateralLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_LateralFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_SlipRatio);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_TreadTemperature);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_InnerTemperature);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_TotalFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_SuspensionLength);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_SuspensionVelocity);
-            }
-            else//fallback to vertical load
-            {
-                AbsoluteValuesFloat(RL_Z1ValuesChartArray, LiveData.RL_VerticalLoad);
-            }
-        }
-        private static void RR_XYZArraySelections()
-        {
-            //X
-            if (_4WheelsSettings.X1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_TravelSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_AngularVelocity);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_VerticalLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_LoadedRadius);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_ContactLength);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_LateralLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_LateralFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_SlipRatio);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_TreadTemperature);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_InnerTemperature);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_TotalFriction);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_SuspensionLength);
-            }
-            else if (_4WheelsSettings.X1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_SuspensionVelocity);
-            }
-            else//fallback to slip angle
-            {
-                AbsoluteValuesFloat(RR_X1ValuesChartArray, LiveData.RR_SlipAngleDeg);
-            }
-            //Y
-            if (_4WheelsSettings.Y1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_TravelSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_AngularVelocity);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_VerticalLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LoadedRadius);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_ContactLength);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LateralLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LateralFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_SlipRatio);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_TreadTemperature);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_InnerTemperature);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_TotalFriction);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_SuspensionLength);
-            }
-            else if (_4WheelsSettings.Y1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_SuspensionVelocity);
-            }
-            else//fallback to lateral friction
-            {
-                AbsoluteValuesFloat(RR_Y1ValuesChartArray, LiveData.RR_LateralFriction);
-            }
-            //Z
-            if (_4WheelsSettings.Z1Selection == LiveData.sTireTravelSpeed)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_TravelSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sAngularVelocity)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_AngularVelocity);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalLoad)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_VerticalLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sVerticalDeflection)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_VerticalDeflection);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLoadedRadius)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_LoadedRadius);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sEffectiveRadius)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_EffectiveRadius);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sContactLength)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_ContactLength);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sBrakeTorque)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_CurrentContactBrakeTorque);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sMaxBrakeTorque)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_CurrentContactBrakeTorqueMax);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSteerAngle)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_SteerAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sCamberAngle)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_CamberAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralLoad)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_LateralLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipAngle)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_SlipAngleDeg);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralFriction)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_LateralFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLateralSlipSpeed)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_LateralSlipSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalLoad)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_LongitudinalLoad);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSlipRatio)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_SlipRatio);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalFriction)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_LongitudinalFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sLongitudinalSlipSpeed)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_LongitudinalSlipSpeed);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTreadTemperature)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_TreadTemperature);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sInnerTemperature)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_InnerTemperature);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sRaceTime)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RaceTime);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFriction)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_TotalFriction);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sTotalFrictionAngle)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_TotalFrictionAngle);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionLength)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_SuspensionLength);
-            }
-            else if (_4WheelsSettings.Z1Selection == LiveData.sSuspensionVelocity)
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_SuspensionVelocity);
-            }
-            else//fallback to vertical load
-            {
-                AbsoluteValuesFloat(RR_Z1ValuesChartArray, LiveData.RR_VerticalLoad);
+                AbsoluteValuesFloat(arrayZ, verLoad);
             }
         }
         private static void ColorGradientRG(Chart chartName, double array, int i, int u)
         {
-            //double minus = _4WheelsSettings.Y1Max / steps;
-            //double ten = _4WheelsSettings.Y1Max;
+            array = Math.Abs(array);
+
             double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / steps;
             double ten = _4WheelsSettings.Z1Max;
             double nine = ten - minus;
@@ -3047,14 +1202,6 @@ namespace Physics_Data_Debug
             double one = two - minus;
             double zero = one - minus;
 
-            /*if (array >= ten)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < ten && array >= nine)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }*/
             if (array >= nine)
             {
                 chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
@@ -3102,8 +1249,8 @@ namespace Physics_Data_Debug
         }
         private static void ColorGradientRB(Chart chartName, double array, int i, int u)
         {
-            //double minus = _4WheelsSettings.Y1Max / steps;
-            //double ten = _4WheelsSettings.Y1Max;
+            array = Math.Abs(array);
+
             double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Max) / steps;
             double ten = _4WheelsSettings.Z1Max;
             double nine = ten - minus;
@@ -3117,14 +1264,6 @@ namespace Physics_Data_Debug
             double one = two - minus;
             double zero = one - minus;
 
-            /*if (array >= ten)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }
-            else if (array < ten && array >= nine)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-            }*/
             if (array >= nine)
             {
                 chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
@@ -3172,8 +1311,8 @@ namespace Physics_Data_Debug
         }
         private static void ColorGradientSet1(Chart chartName, double array, int i, int u)
         {
-            //double minus = _4WheelsSettings.Y1Max / steps;
-            //double ten = _4WheelsSettings.Y1Max;
+            array = Math.Abs(array);
+
             double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / steps;
             double ten = _4WheelsSettings.Z1Max;
             double nine = ten - minus;
@@ -3186,301 +1325,144 @@ namespace Physics_Data_Debug
             double two = three - minus;
             double one = two - minus;
             double zero = one - minus;
-            // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
-            Color color2 = Color.FromArgb(historyalpha, 0, 73, 73);
-            Color color3 = Color.FromArgb(historyalpha, 0, 146, 146);
-            Color color4 = Color.FromArgb(historyalpha, 255, 109, 182);
-            //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);
-            Color color6 = Color.FromArgb(historyalpha, 73, 0, 146);
-            Color color7 = Color.FromArgb(historyalpha, 0, 109, 219);
-            Color color8 = Color.FromArgb(historyalpha, 182, 109, 255);
-            Color color9 = Color.FromArgb(historyalpha, 109, 182, 255);
-            Color color15 = Color.FromArgb(historyalpha, 255, 255, 109);
-            Color color14 = Color.FromArgb(historyalpha, 36, 255, 36);
-            Color color13 = Color.FromArgb(historyalpha, 219, 109, 0);
 
-            /*if (array >= ten)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
-            }
-            else if (array < ten && array >= nine)
-            {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
-            }*/
+            // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
+            //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);// color5
+            Color color10 = Color.FromArgb(historyalpha, 219, 109, 0);// color 13
+            Color color9 = Color.FromArgb(historyalpha, 36, 255, 36);// color 14
+            Color color8 = Color.FromArgb(historyalpha, 255, 255, 109);// color 15
+            Color color7 = Color.FromArgb(historyalpha, 109, 182, 255);// color 9
+            Color color6 = Color.FromArgb(historyalpha, 182, 109, 255);// color 8
+            Color color5 = Color.FromArgb(historyalpha, 0, 109, 219);// color 7
+            Color color4 = Color.FromArgb(historyalpha, 73, 0, 146);// color 6
+            Color color3 = Color.FromArgb(historyalpha, 255, 109, 182);// color 4
+            Color color2 = Color.FromArgb(historyalpha, 0, 146, 146);// color 3
+            Color color1 = Color.FromArgb(historyalpha, 0, 73, 73);// color 2
+
             if (array >= nine)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color13;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color10;
             }
             else if (array < nine && array >= eight)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color14;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color9;
             }
             else if (array < eight && array >= seven)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color15;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color8;
             }
             else if (array < seven && array >= six)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color9;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color7;
             }
             else if (array < six && array >= five)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color8;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color6;
             }
             else if (array < five && array >= four)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color7;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color5;
             }
             else if (array < four && array >= three)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color6;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color4;
             }
             else if (array < three && array >= two)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color4;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color3;
             }
             else if (array < two && array >= one)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color3;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
             }
             else if (array < one && array >= zero)
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color1;
             }
             else
             {
-                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color1;
             }
         }
-        private static void FL_ColorGradientRG(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(FL_Y1ValuesChartArray[i]);
-            double array = Math.Abs(FL_Z1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
-        }
-        private static void FR_ColorGradientRG(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(FR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(FR_Z1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
-        }
-        private static void RL_ColorGradientRG(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RL_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RL_Z1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
-        }
-        private static void RR_ColorGradientRG(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RR_Z1ValuesChartArray[i]);
-            ColorGradientRG(chartName, array, i, u);
-        }
-        private static void FL_ColorGradientRB(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(FL_Y1ValuesChartArray[i]);
-            double array = Math.Abs(FL_Z1ValuesChartArray[i]);
-            ColorGradientRB(chartName, array, i, u);
-        }
-        private static void FR_ColorGradientRB(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(FR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(FR_Z1ValuesChartArray[i]);
-            ColorGradientRB(chartName, array, i, u);
-        }
-        private static void RL_ColorGradientRB(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RL_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RL_Z1ValuesChartArray[i]);
-            ColorGradientRB(chartName, array, i, u);
-        }
-        private static void RR_ColorGradientRB(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RR_Z1ValuesChartArray[i]);
-            ColorGradientRB(chartName, array, i, u);
-        }
-        private static void FL_ColorGradientSet1(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(FL_Y1ValuesChartArray[i]);
-            double array = Math.Abs(FL_Z1ValuesChartArray[i]);
-            ColorGradientSet1(chartName, array, i, u);
-        }
-        private static void FR_ColorGradientSet1(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(FR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(FR_Z1ValuesChartArray[i]);
-            ColorGradientSet1(chartName, array, i, u);
-        }
-        private static void RL_ColorGradientSet1(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RL_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RL_Z1ValuesChartArray[i]);
-            ColorGradientSet1(chartName, array, i, u);
-        }
-        private static void RR_ColorGradientSet1(Chart chartName, int i, int u)
-        {
-            //double array = Math.Abs(RR_Y1ValuesChartArray[i]);
-            double array = Math.Abs(RR_Z1ValuesChartArray[i]);
-            ColorGradientSet1(chartName, array, i, u);
-        }
-        public static void PlotFLChart(Chart chartName)
+        public static void PlotChart(Chart chartName, double[] arrayX, double[] arrayY, double[] arrayZ)
         {
             chartName.Series["Series1"].Points.Clear();
 
-            FL_XYZArraySelections();
+            XYZArraySelections(_4WheelsSettings.X1Selection, arrayX, _4WheelsSettings.Y1Selection, arrayY, _4WheelsSettings.Z1Selection, arrayZ,
+                                                LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
+                                                LiveData.FL_VerticalLoad, LiveData.FL_VerticalDeflection, LiveData.FL_LoadedRadius, LiveData.FL_EffectiveRadius, LiveData.FL_ContactLength,
+                                                LiveData.FL_CurrentContactBrakeTorque, LiveData.FL_CurrentContactBrakeTorqueMax,
+                                                LiveData.FL_SteerAngleDeg, LiveData.FL_CamberAngleDeg,
+                                                LiveData.FL_LateralLoad, LiveData.FL_SlipAngleDeg, LiveData.FL_LateralFriction, LiveData.FL_LateralSlipSpeed,
+                                                LiveData.FL_LongitudinalLoad, LiveData.FL_SlipRatio, LiveData.FL_LongitudinalFriction, LiveData.FL_LongitudinalSlipSpeed,
+                                                LiveData.FL_TreadTemperature, LiveData.FL_InnerTemperature,
+                                                LiveData.FL_TotalFriction, LiveData.FL_TotalFrictionAngle,
+                                                LiveData.FL_SuspensionLength, LiveData.FL_SuspensionVelocity);
 
-            Array.Copy(FL_X1ValuesChartArray, 1, FL_X1ValuesChartArray, 0, FL_X1ValuesChartArray.Length - 1);
-            Array.Copy(FL_Y1ValuesChartArray, 1, FL_Y1ValuesChartArray, 0, FL_Y1ValuesChartArray.Length - 1);
-            Array.Copy(FL_Z1ValuesChartArray, 1, FL_Z1ValuesChartArray, 0, FL_Z1ValuesChartArray.Length - 1);
+            XYZArraySelections(_4WheelsSettings.X1Selection, arrayX, _4WheelsSettings.Y1Selection, arrayY, _4WheelsSettings.Z1Selection, arrayZ,
+                                                LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
+                                                LiveData.FR_VerticalLoad, LiveData.FR_VerticalDeflection, LiveData.FR_LoadedRadius, LiveData.FR_EffectiveRadius, LiveData.FR_ContactLength,
+                                                LiveData.FR_CurrentContactBrakeTorque, LiveData.FR_CurrentContactBrakeTorqueMax,
+                                                LiveData.FR_SteerAngleDeg, LiveData.FR_CamberAngleDeg,
+                                                LiveData.FR_LateralLoad, LiveData.FR_SlipAngleDeg, LiveData.FR_LateralFriction, LiveData.FR_LateralSlipSpeed,
+                                                LiveData.FR_LongitudinalLoad, LiveData.FR_SlipRatio, LiveData.FR_LongitudinalFriction, LiveData.FR_LongitudinalSlipSpeed,
+                                                LiveData.FR_TreadTemperature, LiveData.FR_InnerTemperature,
+                                                LiveData.FR_TotalFriction, LiveData.FR_TotalFrictionAngle,
+                                                LiveData.FR_SuspensionLength, LiveData.FR_SuspensionVelocity);
 
-            if (_4WheelsSettings.Scheme == "Green Red")
+            XYZArraySelections(_4WheelsSettings.X1Selection, arrayX, _4WheelsSettings.Y1Selection, arrayY, _4WheelsSettings.Z1Selection, arrayZ,
+                                                LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
+                                                LiveData.RL_VerticalLoad, LiveData.RL_VerticalDeflection, LiveData.RL_LoadedRadius, LiveData.RL_EffectiveRadius, LiveData.RL_ContactLength,
+                                                LiveData.RL_CurrentContactBrakeTorque, LiveData.RL_CurrentContactBrakeTorqueMax,
+                                                LiveData.RL_SteerAngleDeg, LiveData.RL_CamberAngleDeg,
+                                                LiveData.RL_LateralLoad, LiveData.RL_SlipAngleDeg, LiveData.RL_LateralFriction, LiveData.RL_LateralSlipSpeed,
+                                                LiveData.RL_LongitudinalLoad, LiveData.RL_SlipRatio, LiveData.RL_LongitudinalFriction, LiveData.RL_LongitudinalSlipSpeed,
+                                                LiveData.RL_TreadTemperature, LiveData.RL_InnerTemperature,
+                                                LiveData.RL_TotalFriction, LiveData.RL_TotalFrictionAngle,
+                                                LiveData.RL_SuspensionLength, LiveData.RL_SuspensionVelocity);
+
+            XYZArraySelections(_4WheelsSettings.X1Selection, arrayX, _4WheelsSettings.Y1Selection, arrayY, _4WheelsSettings.Z1Selection, arrayZ,
+                                                LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
+                                                LiveData.RR_VerticalLoad, LiveData.RR_VerticalDeflection, LiveData.RR_LoadedRadius, LiveData.RR_EffectiveRadius, LiveData.RR_ContactLength,
+                                                LiveData.RR_CurrentContactBrakeTorque, LiveData.RR_CurrentContactBrakeTorqueMax,
+                                                LiveData.RR_SteerAngleDeg, LiveData.RR_CamberAngleDeg,
+                                                LiveData.RR_LateralLoad, LiveData.RR_SlipAngleDeg, LiveData.RR_LateralFriction, LiveData.RR_LateralSlipSpeed,
+                                                LiveData.RR_LongitudinalLoad, LiveData.RR_SlipRatio, LiveData.RR_LongitudinalFriction, LiveData.RR_LongitudinalSlipSpeed,
+                                                LiveData.RR_TreadTemperature, LiveData.RR_InnerTemperature,
+                                                LiveData.RR_TotalFriction, LiveData.RR_TotalFrictionAngle,
+                                                LiveData.RR_SuspensionLength, LiveData.RR_SuspensionVelocity);
+            /*if (wheelXY == "FL")
             {
-                for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                    FL_ColorGradientRG(chartName, i, 1);
-                }
+                FL_XYZArraySelections();
             }
-            else if(_4WheelsSettings.Scheme == "Colorblind")
+            else if (wheelXY == "FR")
             {
-                for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                    FL_ColorGradientSet1(chartName, i, 1);
-                }
+                FR_XYZArraySelections();
+            }
+            else if (wheelXY == "RL")
+            {
+                RL_XYZArraySelections();
+            }
+            else if (wheelXY == "RR")
+            {
+                RR_XYZArraySelections();
             }
             else
             {
-                for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                    FL_ColorGradientRB(chartName, i, 1);
-                }
+                return;
             }
+            */
+            Array.Copy(arrayX, 1, arrayX, 0, arrayX.Length - 1);
+            Array.Copy(arrayY, 1, arrayY, 0, arrayY.Length - 1);
+            Array.Copy(arrayZ, 1, arrayZ, 0, arrayZ.Length - 1);
+
+            ForLoopAxisArrays(chartName, 1, arrayX, arrayY, arrayZ);
 
             chartName.Series["Series1"].Points.Last().MarkerSize = 8;
             chartName.Series["Series1"].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
             chartName.Series["Series1"].Points.Last().IsValueShownAsLabel = false;//true;
         }
-        public static void PlotFRChart(Chart chartName)
-        {
-            chartName.Series["Series1"].Points.Clear();
-
-            FR_XYZArraySelections();
-
-            Array.Copy(FR_X1ValuesChartArray, 1, FR_X1ValuesChartArray, 0, FR_X1ValuesChartArray.Length - 1);
-            Array.Copy(FR_Y1ValuesChartArray, 1, FR_Y1ValuesChartArray, 0, FR_Y1ValuesChartArray.Length - 1);
-            Array.Copy(FR_Z1ValuesChartArray, 1, FR_Z1ValuesChartArray, 0, FR_Z1ValuesChartArray.Length - 1);
-
-            if (_4WheelsSettings.Scheme == "Green Red")
-            {
-                for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                    FR_ColorGradientRG(chartName, i, 1);
-                }
-            }
-            else if (_4WheelsSettings.Scheme == "Colorblind")
-            {
-                for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                    FR_ColorGradientSet1(chartName, i, 1);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                    FR_ColorGradientRB(chartName, i, 1);
-                }
-            }
-
-            chartName.Series["Series1"].Points.Last().MarkerSize = 8;
-            chartName.Series["Series1"].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
-            chartName.Series["Series1"].Points.Last().IsValueShownAsLabel = false;//true;
-        }
-        public static void PlotRLChart(Chart chartName)
-        {
-            chartName.Series["Series1"].Points.Clear();
-
-            RL_XYZArraySelections();
-
-            Array.Copy(RL_X1ValuesChartArray, 1, RL_X1ValuesChartArray, 0, RL_X1ValuesChartArray.Length - 1);
-            Array.Copy(RL_Y1ValuesChartArray, 1, RL_Y1ValuesChartArray, 0, RL_Y1ValuesChartArray.Length - 1);
-            Array.Copy(RL_Z1ValuesChartArray, 1, RL_Z1ValuesChartArray, 0, RL_Z1ValuesChartArray.Length - 1);
-
-            if (_4WheelsSettings.Scheme == "Green Red")
-            {
-                for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                    RL_ColorGradientRG(chartName, i, 1);
-                }
-            }
-            else if (_4WheelsSettings.Scheme == "Colorblind")
-            {
-                for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                    RL_ColorGradientSet1(chartName, i, 1);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                    RL_ColorGradientRB(chartName, i, 1);
-                }
-            }
-
-            chartName.Series["Series1"].Points.Last().MarkerSize = 8;
-            chartName.Series["Series1"].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.RLomArgb(255, 255, 0, 0);
-            chartName.Series["Series1"].Points.Last().IsValueShownAsLabel = false;//true;
-        }
-        public static void PlotRRChart(Chart chartName)
-        {
-            chartName.Series["Series1"].Points.Clear();
-
-            RR_XYZArraySelections();
-
-            Array.Copy(RR_X1ValuesChartArray, 1, RR_X1ValuesChartArray, 0, RR_X1ValuesChartArray.Length - 1);
-            Array.Copy(RR_Y1ValuesChartArray, 1, RR_Y1ValuesChartArray, 0, RR_Y1ValuesChartArray.Length - 1);
-            Array.Copy(RR_Z1ValuesChartArray, 1, RR_Z1ValuesChartArray, 0, RR_Z1ValuesChartArray.Length - 1);
-
-            if (_4WheelsSettings.Scheme == "Green Red")
-            {
-                for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                    RR_ColorGradientRG(chartName, i, 1);
-                }
-            }
-            else if (_4WheelsSettings.Scheme == "Colorblind")
-            {
-                for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                    RR_ColorGradientSet1(chartName, i, 1);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
-                {
-                    chartName.Series["Series1"].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                    RR_ColorGradientRB(chartName, i, 1);
-                }
-            }
-
-            chartName.Series["Series1"].Points.Last().MarkerSize = 8;
-            chartName.Series["Series1"].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.RRomArgb(255, 255, 0, 0);
-            chartName.Series["Series1"].Points.Last().IsValueShownAsLabel = false;//true;
-        }
-        public static void InfiniteHistoryFLChart(Chart chartName)
+        public static void InfiniteHistoryChart(Chart chartName, double[] arrayX, double[] arrayY, double[] arrayZ)
         {
             if (_4WheelsSettings.InfiniteHistoryEnabled == true)
             {
@@ -3494,166 +1476,8 @@ namespace Physics_Data_Debug
                 chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
                 chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
 
-                if (_4WheelsSettings.Scheme == "Green Red")
-                {
-                    for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                        FL_ColorGradientRG(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else if (_4WheelsSettings.Scheme == "Colorblind")
-                {
-                    for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                        FL_ColorGradientSet1(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else
-                {
-                    for (int i = 0; i < FL_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FL_X1ValuesChartArray[i], FL_Y1ValuesChartArray[i]);
-                        FL_ColorGradientRB(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-
-            }
-        }
-        public static void InfiniteHistoryFRChart(Chart chartName)
-        {
-            if (_4WheelsSettings.InfiniteHistoryEnabled == true)
-            {
-                chartName.Series.Insert(0, new Series("Series" + uHistoryHelper.ToString()));
-                chartName.Series["Series" + uHistoryHelper].ChartType = SeriesChartType.Point;
-                chartName.Series["Series" + uHistoryHelper.ToString()].Color = Color.Transparent;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerSize = 2;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-                chartName.Series["Series" + uHistoryHelper.ToString()].IsValueShownAsLabel = false;
-                chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
-                chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
-
-                if (_4WheelsSettings.Scheme == "Green Red")
-                {
-                    for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                        FR_ColorGradientRG(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else if (_4WheelsSettings.Scheme == "Colorblind")
-                {
-                    for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                        FR_ColorGradientSet1(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else
-                {
-                    for (int i = 0; i < FR_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(FR_X1ValuesChartArray[i], FR_Y1ValuesChartArray[i]);
-                        FR_ColorGradientRB(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-
-            }
-        }
-        public static void InfiniteHistoryRLChart(Chart chartName)
-        {
-            if (_4WheelsSettings.InfiniteHistoryEnabled == true)
-            {
-                chartName.Series.Insert(0, new Series("Series" + uHistoryHelper.ToString()));
-                chartName.Series["Series" + uHistoryHelper].ChartType = SeriesChartType.Point;
-                chartName.Series["Series" + uHistoryHelper.ToString()].Color = Color.Transparent;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerSize = 2;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-                chartName.Series["Series" + uHistoryHelper.ToString()].IsValueShownAsLabel = false;
-                chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
-                chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
-
-                if (_4WheelsSettings.Scheme == "Green Red")
-                {
-                    for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                        RL_ColorGradientRG(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else if (_4WheelsSettings.Scheme == "Colorblind")
-                {
-                    for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                        RL_ColorGradientSet1(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else
-                {
-                    for (int i = 0; i < RL_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RL_X1ValuesChartArray[i], RL_Y1ValuesChartArray[i]);
-                        RL_ColorGradientRB(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-
-            }
-        }
-        public static void InfiniteHistoryRRChart(Chart chartName)
-        {
-            if (_4WheelsSettings.InfiniteHistoryEnabled == true)
-            {
-                chartName.Series.Insert(0, new Series("Series" + uHistoryHelper.ToString()));
-                chartName.Series["Series" + uHistoryHelper].ChartType = SeriesChartType.Point;
-                chartName.Series["Series" + uHistoryHelper.ToString()].Color = Color.Transparent;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerSize = 2;
-                chartName.Series["Series" + uHistoryHelper.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-                chartName.Series["Series" + uHistoryHelper.ToString()].IsValueShownAsLabel = false;
-                chartName.Series["Series" + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = false;
-                chartName.Series["Series" + uHistoryHelper.ToString()].LabelBackColor = Color.Transparent;
-
-                if (_4WheelsSettings.Scheme == "Green Red")
-                {
-                    for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                        RR_ColorGradientRG(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else if (_4WheelsSettings.Scheme == "Colorblind")
-                {
-                    for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                        RR_ColorGradientSet1(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-                else
-                {
-                    for (int i = 0; i < RR_X1ValuesChartArray.Length - 1; ++i)
-                    {
-                        chartName.Series["Series" + uHistoryHelper.ToString()].Points.AddXY(RR_X1ValuesChartArray[i], RR_Y1ValuesChartArray[i]);
-                        RR_ColorGradientRB(chartName, i, uHistoryHelper);
-                    }
-                    uHistoryHelper++;
-                }
-
+                ForLoopAxisArrays(chartName, uHistoryHelper, arrayX, arrayY, arrayZ);
+                uHistoryHelper++;
             }
         }
         public static void SetUpDownChart(Chart chartName)
