@@ -10,8 +10,28 @@ namespace Physics_Data_Debug
     {
         public static string ChartPlotterLocation { get; set; } = "";
         public static string LogFileSaveLocationFolder { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\PhysicsDebugger\";
+        public static string FileNameFLTire { get; set; } = "FrontLeft";
+        public static string FileNameFRTire { get; set; } = "FrontRight";
+        public static string FileNameRLTire { get; set; } = "RearLeft";
+        public static string FileNameRRTire { get; set; } = "RearRight";
+        public static string SaveFileName { get; set; } = "WreckfestDebugLog";
+        public static string Extension { get; set; } = ".txt";
+        public static char DefaultDelimiter { get; set; } = ';';
+        public static char Delimiter { get; set; } = DefaultDelimiter;
         public static bool selectAll { get; set; } = true;
         public static bool FiltersOn { get; set; } = false;//
+
+        public static double Z1 { get; set; } = 1d; // +/- from W1 slip ratio
+        public static double W1 { get; set; } = 0d;
+
+        public static double Z2 { get; set; } = 45d; // +/- from W2 slip angle degrees
+        public static double W2 { get; set; } = 0d;
+
+        public static double Z3 { get; set; } = 0d; // +/- from W3 speed filtered off (m/s)
+        //public static double W3 = 0d;
+
+        public static double Z4 { get; set; } = 500; // +/- from W4
+        public static double W4 { get; set; } = 2500d; // vertical load filter
 
         public static bool TireTravelSpeedLogEnabled { get; set; } = true;//0
         public static bool AngularVelocityLogEnabled { get; set; } = true;//1

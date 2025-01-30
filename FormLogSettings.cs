@@ -9,20 +9,6 @@ namespace Physics_Data_Debug
     public partial class FormLogSettings : Form
     {
         #region Fields variables
-        public static char DefaultDelimiter { get; set; } = ';';
-        public static char Delimiter { get; set; } = DefaultDelimiter;
-
-        public static double Z1 = 1d; // +/- from W1 slip ratio
-        public static double W1 = 0d;
-
-        public static double Z2 = 45d; // +/- from W2 slip angle degrees
-        public static double W2 = 0d;
-
-        public static double Z3 = 0d; // +/- from W3 speed filtered off (m/s)
-        //public static double W3 = 0d;
-
-        public static double Z4 = 500; // +/- from W4
-        public static double W4 = 2500d; // vertical load filter
 
         //public static float Z5; // camber angle when finding the actual camber angle related to the ground
         #endregion
@@ -44,33 +30,33 @@ namespace Physics_Data_Debug
 
             if (DelimiterTextBox.Text == "")
             {
-                Delimiter = DefaultDelimiter;
-                DelimiterTextBox.Text = Delimiter.ToString();
+                LogSettings.Delimiter = LogSettings.DefaultDelimiter;
+                DelimiterTextBox.Text = LogSettings.Delimiter.ToString();
             }
             else
             {
-                Delimiter = charArray[0];
+                LogSettings.Delimiter = charArray[0];
             }
         }
         private void ReadTextBoxes()
         {
             //double W3;
             double w4;// left as an example
-
-            if (double.TryParse(textBox_Z1.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
-                && double.TryParse(textBox_W1.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
-                && double.TryParse(textBox_Z2.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
-                && double.TryParse(textBox_W2.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
-                && double.TryParse(textBox_Z3.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
-                //&& double.TryParse(textBox_W3.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out w3) == true
-                && double.TryParse(textBox_Z4.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out _) == true
-                && double.TryParse(textBox_W4.Text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out w4) == true)
+            var c = CultureInfo.GetCultureInfo("en-US");
+            if (double.TryParse(textBox_Z1.Text, NumberStyles.Any, c, out _) == true
+                && double.TryParse(textBox_W1.Text, NumberStyles.Any, c, out _) == true
+                && double.TryParse(textBox_Z2.Text, NumberStyles.Any, c, out _) == true
+                && double.TryParse(textBox_W2.Text, NumberStyles.Any, c, out _) == true
+                && double.TryParse(textBox_Z3.Text, NumberStyles.Any, c, out _) == true
+                //&& double.TryParse(textBox_W3.Text, NumberStyles.Any, c, out w3) == true
+                && double.TryParse(textBox_Z4.Text, NumberStyles.Any, c, out _) == true
+                && double.TryParse(textBox_W4.Text, NumberStyles.Any, c, out w4) == true)
             {
-                Z1 = double.Parse(textBox_Z1.Text, CultureInfo.GetCultureInfo("en-US"));
-                Z2 = double.Parse(textBox_Z2.Text, CultureInfo.GetCultureInfo("en-US"));
-                Z3 = double.Parse(textBox_Z3.Text, CultureInfo.GetCultureInfo("en-US"));
-                Z4 = double.Parse(textBox_Z4.Text, CultureInfo.GetCultureInfo("en-US"));
-                W4 = double.Parse(textBox_W4.Text, CultureInfo.GetCultureInfo("en-US"));
+                LogSettings.Z1 = double.Parse(textBox_Z1.Text, c);
+                LogSettings.Z2 = double.Parse(textBox_Z2.Text, c);
+                LogSettings.Z3 = double.Parse(textBox_Z3.Text, c);
+                LogSettings.Z4 = double.Parse(textBox_Z4.Text, c);
+                LogSettings.W4 = double.Parse(textBox_W4.Text, c);
             }
 
 
@@ -356,14 +342,15 @@ namespace Physics_Data_Debug
         }
         private void TextBoxesToString()
         {
-            textBox_Z1.Text = Z1.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_W1.Text = W1.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_Z2.Text = Z2.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_W2.Text = W2.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_Z3.Text = Z3.ToString(CultureInfo.GetCultureInfo("en-US"));
-            //textBox_W3.Text = W3.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_Z4.Text = Z4.ToString(CultureInfo.GetCultureInfo("en-US"));
-            textBox_W4.Text = W4.ToString(CultureInfo.GetCultureInfo("en-US"));
+            var c = CultureInfo.GetCultureInfo("en-US");
+            textBox_Z1.Text = LogSettings.Z1.ToString(c);
+            textBox_W1.Text = LogSettings.W1.ToString(c);
+            textBox_Z2.Text = LogSettings.Z2.ToString(c);
+            textBox_W2.Text = LogSettings.W2.ToString(c);
+            textBox_Z3.Text = LogSettings.Z3.ToString(c);
+            //textBox_W3.Text = W3.ToString(c);
+            textBox_Z4.Text = LogSettings.Z4.ToString(c);
+            textBox_W4.Text = LogSettings.W4.ToString(c);
         }
         #endregion
         #region Form Buttons etc.

@@ -88,7 +88,7 @@ namespace Physics_Data_Debug
         private static void XYAxisDefaults(string XorY, string axisSelection, bool dAxis)
         {
             double dMax; double dMin; double dMajorInterval; int dDecimals; bool dMinorEnabled; int dMinorIntervalFraction;
-            if (axisSelection == LiveData.sRaceTime)
+            if (axisSelection == LogSettings.sRaceTime)
             {
                 dMax = double.NaN;
                 dMin = 0;
@@ -99,7 +99,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sTireTravelSpeed)
+            else if (axisSelection == LogSettings.sTireTravelSpeed)
             {
                 dMax = 400;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -117,7 +117,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sAngularVelocity)
+            else if (axisSelection == LogSettings.sAngularVelocity)
             {
                 dMax = 400;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -135,7 +135,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sVerticalLoad)
+            else if (axisSelection == LogSettings.sVerticalLoad)
             {
                 dMax = 10000;
                 dMin = 0;
@@ -146,7 +146,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sVerticalDeflection)
+            else if (axisSelection == LogSettings.sVerticalDeflection)
             {
                 dMax = 0.15;
                 dMin = 0;
@@ -157,7 +157,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sLoadedRadius)
+            else if (axisSelection == LogSettings.sLoadedRadius)
             {
                 dMax = 0.5;
                 dMin = 0;
@@ -168,7 +168,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sEffectiveRadius)
+            else if (axisSelection == LogSettings.sEffectiveRadius)
             {
                 dMax = 0.5;
                 dMin = 0;
@@ -179,7 +179,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sContactLength)
+            else if (axisSelection == LogSettings.sContactLength)
             {
                 dMax = 0.5;
                 dMin = 0;
@@ -190,7 +190,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sBrakeTorque)
+            else if (axisSelection == LogSettings.sBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
@@ -201,7 +201,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sMaxBrakeTorque)
+            else if (axisSelection == LogSettings.sMaxBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
@@ -212,7 +212,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sSteerAngle)
+            else if (axisSelection == LogSettings.sSteerAngle)
             {
                 dMax = 45;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -230,7 +230,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sCamberAngle)
+            else if (axisSelection == LogSettings.sCamberAngle)
             {
                 dMax = 10;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -248,7 +248,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sLateralLoad)
+            else if (axisSelection == LogSettings.sLateralLoad)
             {
                 dMax = 10000;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -266,7 +266,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sSlipAngle)
+            else if (axisSelection == LogSettings.sSlipAngle)
             {
                 dMax = 45;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -284,7 +284,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sLateralFriction)
+            else if (axisSelection == LogSettings.sLateralFriction)
             {
                 dMax = 2;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -302,7 +302,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sLateralSlipSpeed)
+            else if (axisSelection == LogSettings.sLateralSlipSpeed)
             {
                 dMax = 20;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -320,7 +320,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sLongitudinalLoad)
+            else if (axisSelection == LogSettings.sLongitudinalLoad)
             {
                 dMax = 10000;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -338,7 +338,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sSlipRatio)
+            else if (axisSelection == LogSettings.sSlipRatio)
             {
                 dMax = 1;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -356,7 +356,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sLongitudinalFriction)
+            else if (axisSelection == LogSettings.sLongitudinalFriction)
             {
                 dMax = 2;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -374,7 +374,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sLongitudinalSlipSpeed)
+            else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
             {
                 dMax = 20;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -392,7 +392,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sTreadTemperature)
+            else if (axisSelection == LogSettings.sTreadTemperature)
             {
                 dMax = 380;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -410,7 +410,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sInnerTemperature)
+            else if (axisSelection == LogSettings.sInnerTemperature)
             {
                 dMax = 380;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -428,7 +428,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sTotalFriction)
+            else if (axisSelection == LogSettings.sTotalFriction)
             {
                 dMax = 2;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -446,7 +446,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sTotalFrictionAngle)
+            else if (axisSelection == LogSettings.sTotalFrictionAngle)
             {
                 dMax = 360;
                 dMin = 0;
@@ -457,7 +457,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sSuspensionLength)
+            else if (axisSelection == LogSettings.sSuspensionLength)
             {
                 dMax = 1;
                 dMin = 0;
@@ -468,7 +468,7 @@ namespace Physics_Data_Debug
 
                 XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
-            else if (axisSelection == LiveData.sSuspensionVelocity)
+            else if (axisSelection == LogSettings.sSuspensionVelocity)
             {
                 dMax = 10;
                 if (_4WheelsSettings.AbsoluteValues == true)
@@ -537,182 +537,182 @@ namespace Physics_Data_Debug
         {
             double dMax; double dMin;
 
-            if (axisSelection == LiveData.sRaceTime)
+            if (axisSelection == LogSettings.sRaceTime)
             {
                 dMax = double.NaN;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sTireTravelSpeed)
+            else if (axisSelection == LogSettings.sTireTravelSpeed)
             {
                 dMax = 400;
                 dMin = -dMax / 2;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sAngularVelocity)
+            else if (axisSelection == LogSettings.sAngularVelocity)
             {
                 dMax = 400;
                 dMin = -dMax / 2;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sVerticalLoad)
+            else if (axisSelection == LogSettings.sVerticalLoad)
             {
                 dMax = 10000;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sVerticalDeflection)
+            else if (axisSelection == LogSettings.sVerticalDeflection)
             {
                 dMax = 0.15;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sLoadedRadius)
+            else if (axisSelection == LogSettings.sLoadedRadius)
             {
                 dMax = 0.5;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sEffectiveRadius)
+            else if (axisSelection == LogSettings.sEffectiveRadius)
             {
                 dMax = 0.5;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sContactLength)
+            else if (axisSelection == LogSettings.sContactLength)
             {
                 dMax = 0.5;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sBrakeTorque)
+            else if (axisSelection == LogSettings.sBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sMaxBrakeTorque)
+            else if (axisSelection == LogSettings.sMaxBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sSteerAngle)
+            else if (axisSelection == LogSettings.sSteerAngle)
             {
                 dMax = 45;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sCamberAngle)
+            else if (axisSelection == LogSettings.sCamberAngle)
             {
                 dMax = 10;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sLateralLoad)
+            else if (axisSelection == LogSettings.sLateralLoad)
             {
                 dMax = 10000;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sSlipAngle)
+            else if (axisSelection == LogSettings.sSlipAngle)
             {
                 dMax = 45;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sLateralFriction)
+            else if (axisSelection == LogSettings.sLateralFriction)
             {
                 dMax = 2;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sLateralSlipSpeed)
+            else if (axisSelection == LogSettings.sLateralSlipSpeed)
             {
                 dMax = 20;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sLongitudinalLoad)
+            else if (axisSelection == LogSettings.sLongitudinalLoad)
             {
                 dMax = 10000;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sSlipRatio)
+            else if (axisSelection == LogSettings.sSlipRatio)
             {
                 dMax = 1;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sLongitudinalFriction)
+            else if (axisSelection == LogSettings.sLongitudinalFriction)
             {
                 dMax = 2;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sLongitudinalSlipSpeed)
+            else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
             {
                 dMax = 20;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sTreadTemperature)
+            else if (axisSelection == LogSettings.sTreadTemperature)
             {
                 dMax = 380;
                 dMin = -20;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sInnerTemperature)
+            else if (axisSelection == LogSettings.sInnerTemperature)
             {
                 dMax = 380;
                 dMin = -20;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sTotalFriction)
+            else if (axisSelection == LogSettings.sTotalFriction)
             {
                 dMax = 2;
                 dMin = -dMax;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sTotalFrictionAngle)
+            else if (axisSelection == LogSettings.sTotalFrictionAngle)
             {
                 dMax = 360;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sSuspensionLength)
+            else if (axisSelection == LogSettings.sSuspensionLength)
             {
                 dMax = 1;
                 dMin = 0;
 
                 ZAxisDefaultsSelected(dAxis, dMax, dMin);
             }
-            else if (axisSelection == LiveData.sSuspensionVelocity)
+            else if (axisSelection == LogSettings.sSuspensionVelocity)
             {
                 dMax = 10;
                 dMin = -dMax;
@@ -736,7 +736,7 @@ namespace Physics_Data_Debug
         }
         public static void SetChart(Chart chartName)
         {
-            XYAxisDefaults("X", 
+            XYAxisDefaults("X",
                          _4WheelsSettings.X1Selection,
                          _4WheelsSettings.X1Defaults);
 
@@ -834,8 +834,8 @@ namespace Physics_Data_Debug
                 array[array.Length - 1] = data;
             }
         }
-        private static void XYZArraySelections(string xAxisSelection, double[] arrayX, 
-                                                string yAxisSelection, double[] arrayY, 
+        private static void XYZArraySelections(string xAxisSelection, double[] arrayX,
+                                                string yAxisSelection, double[] arrayY,
                                                 string zAxisSelection, double[] arrayZ,
 
                                                 int raceTime, float travelSpeed, float angVel,
@@ -849,107 +849,107 @@ namespace Physics_Data_Debug
                                                 float suspLength, float suspVel)
         {
             //X
-            if (xAxisSelection == LiveData.sTireTravelSpeed)
+            if (xAxisSelection == LogSettings.sTireTravelSpeed)
             {
                 AbsoluteValuesFloat(arrayX, travelSpeed);
             }
-            else if (xAxisSelection == LiveData.sAngularVelocity)
+            else if (xAxisSelection == LogSettings.sAngularVelocity)
             {
                 AbsoluteValuesFloat(arrayX, angVel);
             }
-            else if (xAxisSelection == LiveData.sVerticalLoad)
+            else if (xAxisSelection == LogSettings.sVerticalLoad)
             {
                 AbsoluteValuesFloat(arrayX, verLoad);
             }
-            else if (xAxisSelection == LiveData.sVerticalDeflection)
+            else if (xAxisSelection == LogSettings.sVerticalDeflection)
             {
                 AbsoluteValuesFloat(arrayX, verDefl);
             }
-            else if (xAxisSelection == LiveData.sLoadedRadius)
+            else if (xAxisSelection == LogSettings.sLoadedRadius)
             {
                 AbsoluteValuesFloat(arrayX, loadRadius);
             }
-            else if (xAxisSelection == LiveData.sEffectiveRadius)
+            else if (xAxisSelection == LogSettings.sEffectiveRadius)
             {
                 AbsoluteValuesFloat(arrayX, effRadius);
             }
-            else if (xAxisSelection == LiveData.sContactLength)
+            else if (xAxisSelection == LogSettings.sContactLength)
             {
                 AbsoluteValuesFloat(arrayX, contLength);
             }
-            else if (xAxisSelection == LiveData.sBrakeTorque)
+            else if (xAxisSelection == LogSettings.sBrakeTorque)
             {
                 AbsoluteValuesFloat(arrayX, currContBrakeTorq);
             }
-            else if (xAxisSelection == LiveData.sMaxBrakeTorque)
+            else if (xAxisSelection == LogSettings.sMaxBrakeTorque)
             {
                 AbsoluteValuesFloat(arrayX, currContBrakeTorqMax);
             }
-            else if (xAxisSelection == LiveData.sSteerAngle)
+            else if (xAxisSelection == LogSettings.sSteerAngle)
             {
                 AbsoluteValuesFloat(arrayX, steerAngDeg);
             }
-            else if (xAxisSelection == LiveData.sCamberAngle)
+            else if (xAxisSelection == LogSettings.sCamberAngle)
             {
                 AbsoluteValuesFloat(arrayX, cambAngDeg);
             }
-            else if (xAxisSelection == LiveData.sLateralLoad)
+            else if (xAxisSelection == LogSettings.sLateralLoad)
             {
                 AbsoluteValuesFloat(arrayX, latLoad);
             }
-            else if (xAxisSelection == LiveData.sSlipAngle)
+            else if (xAxisSelection == LogSettings.sSlipAngle)
             {
                 AbsoluteValuesFloat(arrayX, slipAngleDeg);
             }
-            else if (xAxisSelection == LiveData.sLateralFriction)
+            else if (xAxisSelection == LogSettings.sLateralFriction)
             {
                 AbsoluteValuesFloat(arrayX, latFrict);
             }
-            else if (xAxisSelection == LiveData.sLateralSlipSpeed)
+            else if (xAxisSelection == LogSettings.sLateralSlipSpeed)
             {
                 AbsoluteValuesFloat(arrayX, latSlipSpeed);
             }
-            else if (xAxisSelection == LiveData.sLongitudinalLoad)
+            else if (xAxisSelection == LogSettings.sLongitudinalLoad)
             {
                 AbsoluteValuesFloat(arrayX, lonLoad);
             }
-            else if (xAxisSelection == LiveData.sSlipRatio)
+            else if (xAxisSelection == LogSettings.sSlipRatio)
             {
                 AbsoluteValuesFloat(arrayX, slipRatio);
             }
-            else if (xAxisSelection == LiveData.sLongitudinalFriction)
+            else if (xAxisSelection == LogSettings.sLongitudinalFriction)
             {
                 AbsoluteValuesFloat(arrayX, lonFrict);
             }
-            else if (xAxisSelection == LiveData.sLongitudinalSlipSpeed)
+            else if (xAxisSelection == LogSettings.sLongitudinalSlipSpeed)
             {
                 AbsoluteValuesFloat(arrayX, lonSlipSpeed);
             }
-            else if (xAxisSelection == LiveData.sTreadTemperature)
+            else if (xAxisSelection == LogSettings.sTreadTemperature)
             {
                 AbsoluteValuesFloat(arrayX, treadTemp);
             }
-            else if (xAxisSelection == LiveData.sInnerTemperature)
+            else if (xAxisSelection == LogSettings.sInnerTemperature)
             {
                 AbsoluteValuesFloat(arrayX, innerTemp);
             }
-            else if (xAxisSelection == LiveData.sRaceTime)
+            else if (xAxisSelection == LogSettings.sRaceTime)
             {
                 AbsoluteValuesFloat(arrayX, raceTime);
             }
-            else if (xAxisSelection == LiveData.sTotalFriction)
+            else if (xAxisSelection == LogSettings.sTotalFriction)
             {
                 AbsoluteValuesFloat(arrayX, totalFrict);
             }
-            else if (xAxisSelection == LiveData.sTotalFrictionAngle)
+            else if (xAxisSelection == LogSettings.sTotalFrictionAngle)
             {
                 AbsoluteValuesFloat(arrayX, totalFrictAngle);
             }
-            else if (xAxisSelection == LiveData.sSuspensionLength)
+            else if (xAxisSelection == LogSettings.sSuspensionLength)
             {
                 AbsoluteValuesFloat(arrayX, suspLength);
             }
-            else if (xAxisSelection == LiveData.sSuspensionVelocity)
+            else if (xAxisSelection == LogSettings.sSuspensionVelocity)
             {
                 AbsoluteValuesFloat(arrayX, suspVel);
             }
@@ -958,107 +958,107 @@ namespace Physics_Data_Debug
                 AbsoluteValuesFloat(arrayX, slipAngleDeg);
             }
             //Y
-            if (yAxisSelection == LiveData.sTireTravelSpeed)
+            if (yAxisSelection == LogSettings.sTireTravelSpeed)
             {
                 AbsoluteValuesFloat(arrayY, travelSpeed);
             }
-            else if (yAxisSelection == LiveData.sAngularVelocity)
+            else if (yAxisSelection == LogSettings.sAngularVelocity)
             {
                 AbsoluteValuesFloat(arrayY, angVel);
             }
-            else if (yAxisSelection == LiveData.sVerticalLoad)
+            else if (yAxisSelection == LogSettings.sVerticalLoad)
             {
                 AbsoluteValuesFloat(arrayY, verLoad);
             }
-            else if (yAxisSelection == LiveData.sVerticalDeflection)
+            else if (yAxisSelection == LogSettings.sVerticalDeflection)
             {
                 AbsoluteValuesFloat(arrayY, verDefl);
             }
-            else if (yAxisSelection == LiveData.sLoadedRadius)
+            else if (yAxisSelection == LogSettings.sLoadedRadius)
             {
                 AbsoluteValuesFloat(arrayY, loadRadius);
             }
-            else if (yAxisSelection == LiveData.sEffectiveRadius)
+            else if (yAxisSelection == LogSettings.sEffectiveRadius)
             {
                 AbsoluteValuesFloat(arrayY, effRadius);
             }
-            else if (yAxisSelection == LiveData.sContactLength)
+            else if (yAxisSelection == LogSettings.sContactLength)
             {
                 AbsoluteValuesFloat(arrayY, contLength);
             }
-            else if (yAxisSelection == LiveData.sBrakeTorque)
+            else if (yAxisSelection == LogSettings.sBrakeTorque)
             {
                 AbsoluteValuesFloat(arrayY, currContBrakeTorq);
             }
-            else if (yAxisSelection == LiveData.sMaxBrakeTorque)
+            else if (yAxisSelection == LogSettings.sMaxBrakeTorque)
             {
                 AbsoluteValuesFloat(arrayY, currContBrakeTorqMax);
             }
-            else if (yAxisSelection == LiveData.sSteerAngle)
+            else if (yAxisSelection == LogSettings.sSteerAngle)
             {
                 AbsoluteValuesFloat(arrayY, steerAngDeg);
             }
-            else if (yAxisSelection == LiveData.sCamberAngle)
+            else if (yAxisSelection == LogSettings.sCamberAngle)
             {
                 AbsoluteValuesFloat(arrayY, cambAngDeg);
             }
-            else if (yAxisSelection == LiveData.sLateralLoad)
+            else if (yAxisSelection == LogSettings.sLateralLoad)
             {
                 AbsoluteValuesFloat(arrayY, latLoad);
             }
-            else if (yAxisSelection == LiveData.sSlipAngle)
+            else if (yAxisSelection == LogSettings.sSlipAngle)
             {
                 AbsoluteValuesFloat(arrayY, slipAngleDeg);
             }
-            else if (yAxisSelection == LiveData.sLateralFriction)
+            else if (yAxisSelection == LogSettings.sLateralFriction)
             {
                 AbsoluteValuesFloat(arrayY, latFrict);
             }
-            else if (yAxisSelection == LiveData.sLateralSlipSpeed)
+            else if (yAxisSelection == LogSettings.sLateralSlipSpeed)
             {
                 AbsoluteValuesFloat(arrayY, latSlipSpeed);
             }
-            else if (yAxisSelection == LiveData.sLongitudinalLoad)
+            else if (yAxisSelection == LogSettings.sLongitudinalLoad)
             {
                 AbsoluteValuesFloat(arrayY, lonLoad);
             }
-            else if (yAxisSelection == LiveData.sSlipRatio)
+            else if (yAxisSelection == LogSettings.sSlipRatio)
             {
                 AbsoluteValuesFloat(arrayY, slipRatio);
             }
-            else if (yAxisSelection == LiveData.sLongitudinalFriction)
+            else if (yAxisSelection == LogSettings.sLongitudinalFriction)
             {
                 AbsoluteValuesFloat(arrayY, lonFrict);
             }
-            else if (yAxisSelection == LiveData.sLongitudinalSlipSpeed)
+            else if (yAxisSelection == LogSettings.sLongitudinalSlipSpeed)
             {
                 AbsoluteValuesFloat(arrayY, lonSlipSpeed);
             }
-            else if (yAxisSelection == LiveData.sTreadTemperature)
+            else if (yAxisSelection == LogSettings.sTreadTemperature)
             {
                 AbsoluteValuesFloat(arrayY, treadTemp);
             }
-            else if (yAxisSelection == LiveData.sInnerTemperature)
+            else if (yAxisSelection == LogSettings.sInnerTemperature)
             {
                 AbsoluteValuesFloat(arrayY, innerTemp);
             }
-            else if (yAxisSelection == LiveData.sRaceTime)
+            else if (yAxisSelection == LogSettings.sRaceTime)
             {
                 AbsoluteValuesFloat(arrayY, raceTime);
             }
-            else if (yAxisSelection == LiveData.sTotalFriction)
+            else if (yAxisSelection == LogSettings.sTotalFriction)
             {
                 AbsoluteValuesFloat(arrayY, totalFrict);
             }
-            else if (yAxisSelection == LiveData.sTotalFrictionAngle)
+            else if (yAxisSelection == LogSettings.sTotalFrictionAngle)
             {
                 AbsoluteValuesFloat(arrayY, totalFrictAngle);
             }
-            else if (yAxisSelection == LiveData.sSuspensionLength)
+            else if (yAxisSelection == LogSettings.sSuspensionLength)
             {
                 AbsoluteValuesFloat(arrayY, suspLength);
             }
-            else if (yAxisSelection == LiveData.sSuspensionVelocity)
+            else if (yAxisSelection == LogSettings.sSuspensionVelocity)
             {
                 AbsoluteValuesFloat(arrayY, suspVel);
             }
@@ -1067,107 +1067,107 @@ namespace Physics_Data_Debug
                 AbsoluteValuesFloat(arrayY, latFrict);
             }
             //Z
-            if (zAxisSelection == LiveData.sTireTravelSpeed)
+            if (zAxisSelection == LogSettings.sTireTravelSpeed)
             {
                 AbsoluteValuesFloat(arrayZ, travelSpeed);
             }
-            else if (zAxisSelection == LiveData.sAngularVelocity)
+            else if (zAxisSelection == LogSettings.sAngularVelocity)
             {
                 AbsoluteValuesFloat(arrayZ, angVel);
             }
-            else if (zAxisSelection == LiveData.sVerticalLoad)
+            else if (zAxisSelection == LogSettings.sVerticalLoad)
             {
                 AbsoluteValuesFloat(arrayZ, verLoad);
             }
-            else if (zAxisSelection == LiveData.sVerticalDeflection)
+            else if (zAxisSelection == LogSettings.sVerticalDeflection)
             {
                 AbsoluteValuesFloat(arrayZ, verDefl);
             }
-            else if (zAxisSelection == LiveData.sLoadedRadius)
+            else if (zAxisSelection == LogSettings.sLoadedRadius)
             {
                 AbsoluteValuesFloat(arrayZ, loadRadius);
             }
-            else if (zAxisSelection == LiveData.sEffectiveRadius)
+            else if (zAxisSelection == LogSettings.sEffectiveRadius)
             {
                 AbsoluteValuesFloat(arrayZ, effRadius);
             }
-            else if (zAxisSelection == LiveData.sContactLength)
+            else if (zAxisSelection == LogSettings.sContactLength)
             {
                 AbsoluteValuesFloat(arrayZ, contLength);
             }
-            else if (zAxisSelection == LiveData.sBrakeTorque)
+            else if (zAxisSelection == LogSettings.sBrakeTorque)
             {
                 AbsoluteValuesFloat(arrayZ, currContBrakeTorq);
             }
-            else if (zAxisSelection == LiveData.sMaxBrakeTorque)
+            else if (zAxisSelection == LogSettings.sMaxBrakeTorque)
             {
                 AbsoluteValuesFloat(arrayZ, currContBrakeTorqMax);
             }
-            else if (zAxisSelection == LiveData.sSteerAngle)
+            else if (zAxisSelection == LogSettings.sSteerAngle)
             {
                 AbsoluteValuesFloat(arrayZ, steerAngDeg);
             }
-            else if (zAxisSelection == LiveData.sCamberAngle)
+            else if (zAxisSelection == LogSettings.sCamberAngle)
             {
                 AbsoluteValuesFloat(arrayZ, cambAngDeg);
             }
-            else if (zAxisSelection == LiveData.sLateralLoad)
+            else if (zAxisSelection == LogSettings.sLateralLoad)
             {
                 AbsoluteValuesFloat(arrayZ, latLoad);
             }
-            else if (zAxisSelection == LiveData.sSlipAngle)
+            else if (zAxisSelection == LogSettings.sSlipAngle)
             {
                 AbsoluteValuesFloat(arrayZ, slipAngleDeg);
             }
-            else if (zAxisSelection == LiveData.sLateralFriction)
+            else if (zAxisSelection == LogSettings.sLateralFriction)
             {
                 AbsoluteValuesFloat(arrayZ, latFrict);
             }
-            else if (zAxisSelection == LiveData.sLateralSlipSpeed)
+            else if (zAxisSelection == LogSettings.sLateralSlipSpeed)
             {
                 AbsoluteValuesFloat(arrayZ, latSlipSpeed);
             }
-            else if (zAxisSelection == LiveData.sLongitudinalLoad)
+            else if (zAxisSelection == LogSettings.sLongitudinalLoad)
             {
                 AbsoluteValuesFloat(arrayZ, lonLoad);
             }
-            else if (zAxisSelection == LiveData.sSlipRatio)
+            else if (zAxisSelection == LogSettings.sSlipRatio)
             {
                 AbsoluteValuesFloat(arrayZ, slipRatio);
             }
-            else if (zAxisSelection == LiveData.sLongitudinalFriction)
+            else if (zAxisSelection == LogSettings.sLongitudinalFriction)
             {
                 AbsoluteValuesFloat(arrayZ, lonFrict);
             }
-            else if (zAxisSelection == LiveData.sLongitudinalSlipSpeed)
+            else if (zAxisSelection == LogSettings.sLongitudinalSlipSpeed)
             {
                 AbsoluteValuesFloat(arrayZ, lonSlipSpeed);
             }
-            else if (zAxisSelection == LiveData.sTreadTemperature)
+            else if (zAxisSelection == LogSettings.sTreadTemperature)
             {
                 AbsoluteValuesFloat(arrayZ, treadTemp);
             }
-            else if (zAxisSelection == LiveData.sInnerTemperature)
+            else if (zAxisSelection == LogSettings.sInnerTemperature)
             {
                 AbsoluteValuesFloat(arrayZ, innerTemp);
             }
-            else if (zAxisSelection == LiveData.sRaceTime)
+            else if (zAxisSelection == LogSettings.sRaceTime)
             {
                 AbsoluteValuesFloat(arrayZ, raceTime);
             }
-            else if (zAxisSelection == LiveData.sTotalFriction)
+            else if (zAxisSelection == LogSettings.sTotalFriction)
             {
                 AbsoluteValuesFloat(arrayZ, totalFrict);
             }
-            else if (zAxisSelection == LiveData.sTotalFrictionAngle)
+            else if (zAxisSelection == LogSettings.sTotalFrictionAngle)
             {
                 AbsoluteValuesFloat(arrayZ, totalFrictAngle);
             }
-            else if (zAxisSelection == LiveData.sSuspensionLength)
+            else if (zAxisSelection == LogSettings.sSuspensionLength)
             {
                 AbsoluteValuesFloat(arrayZ, suspLength);
             }
-            else if (zAxisSelection == LiveData.sSuspensionVelocity)
+            else if (zAxisSelection == LogSettings.sSuspensionVelocity)
             {
                 AbsoluteValuesFloat(arrayZ, suspVel);
             }

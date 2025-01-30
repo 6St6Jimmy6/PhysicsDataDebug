@@ -11,15 +11,15 @@ namespace Physics_Data_Debug
 {
     class LiveData
     {
-
         public static bool logging { get; set; } = false;
-
         public static bool LogSettingsOpen { get; set; } = false;
         public static bool TireSettingsOpen { get; set; } = false;
         public static bool TemperaturesChartOpen { get; set; } = false;
         public static bool SuspensionSettingsOpen { get; set; } = false;
         public static bool GForceOpen { get; set; } = false;
         public static bool _4WheelsOpen { get; set; } = false;
+        #region Data Name Strings Reference
+        /*
         public static string sTireTravelSpeed { get; set; } = "Tire Travel Speed";
         public static string sAngularVelocity { get; set; } = "Angular Velocity";
         public static string sVerticalLoad { get; set; } = "Vertical Load";
@@ -45,8 +45,8 @@ namespace Physics_Data_Debug
         public static string sTotalFriction { get; set; } = "Total Friction";
         public static string sTotalFrictionAngle { get; set; } = "Total Friction Angle";
         public static string sSuspensionLength { get; set; } = "Suspension Length";
-        public static string sSuspensionVelocity { get; set; } = "Suspension Velocity";
-
+        public static string sSuspensionVelocity { get; set; } = "Suspension Velocity";*/
+        #endregion
         public static float fRadToDeg { get; } = Convert.ToSingle(180 / Math.PI);
         public static double dRadToDeg { get; } = 180 / Math.PI;
 
@@ -55,8 +55,7 @@ namespace Physics_Data_Debug
 
         public static int tickInterval = 50;
 
-
-        //Basest of the basest
+        #region Basest of the basest adresses
         public static ulong baseAddrTiresSuspensionLiftsDifferentialLocation { get; set; } = 0x18324C8;//0x1831EE0;//this was changing between cars, the new adrdess is only for the player
         public static ulong baseAddrEngineSpeed { get; set; } = 0x18327C8;
         public static ulong baseAddrRacetime { get; set; } = 0x1832648;
@@ -72,7 +71,8 @@ namespace Physics_Data_Debug
 
         // Older builds go backwards, so this is for them. Above should be 0x0 then.
         public static ulong baseAddrDodt { get; set; } = 0x0;//0x6DF8D8;
-
+        #endregion
+        #region Offsets
         //Time offsets
         public static int OffsetRaceTime { get; set; } = 0x14;
 
@@ -186,9 +186,7 @@ namespace Physics_Data_Debug
 
         public static int OffsetContactLength { get; set; } = 0xC1C;
         public static int OffsetTravelSpeed { get; set; } = 0xC20;
-        /*
-                 
-                 */
+        #endregion
 
         //Time Data
         public static int RaceTime;
@@ -274,9 +272,8 @@ namespace Physics_Data_Debug
         public static double XZGAngleDeg { get; set; }
 
 
-        //Tire Data
-
-        //Font Left
+        #region Tire Data
+        #region Font Left data
         public static float FL_MomentOfInertia { get; set; }//
         public static float FL_AngularVelocity { get; set; }
         public static float FL_CamberAngleRad { get; set; }//
@@ -325,11 +322,8 @@ namespace Physics_Data_Debug
 
         public static float FL_SuspensionLength { get; set; }
         public static float FL_SuspensionVelocity { get; set; }
-        /*
-                 
-                 */
-
-        //Front Right
+#endregion
+        #region Front Right data
         public static float FR_MomentOfInertia { get; set; }//
         public static float FR_AngularVelocity { get; set; }
         public static float FR_CamberAngleRad { get; set; }//
@@ -378,11 +372,8 @@ namespace Physics_Data_Debug
 
         public static float FR_SuspensionLength { get; set; }
         public static float FR_SuspensionVelocity { get; set; }
-        /*
-                 
-                 */
-
-        //Rear Left
+#endregion
+        #region Rear Left data
         public static float RL_MomentOfInertia { get; set; }//
         public static float RL_AngularVelocity { get; set; }
         public static float RL_CamberAngleRad { get; set; }//
@@ -431,11 +422,8 @@ namespace Physics_Data_Debug
 
         public static float RL_SuspensionLength { get; set; }
         public static float RL_SuspensionVelocity { get; set; }
-        /*
-                 
-                 */
-
-        //Rear Right
+#endregion
+        #region Rear Right data
         public static float RR_MomentOfInertia { get; set; }//
         public static float RR_AngularVelocity { get; set; }
         public static float RR_CamberAngleRad { get; set; }//
@@ -484,9 +472,9 @@ namespace Physics_Data_Debug
 
         public static float RR_SuspensionLength { get; set; }
         public static float RR_SuspensionVelocity { get; set; }
-        /*
-                 
-                 */
+#endregion
+#endregion
+        #region Base Addresses
         //Base Addres for Tire data
         public static ulong baseAddrUpdtTiresSuspensionLiftsDifferential { get; set; }
         //Base Address for Speed and Lifts
@@ -495,12 +483,13 @@ namespace Physics_Data_Debug
         public static ulong baseAddrUpdtRacetimer { get; set; }
         //Base Address for Location and heading
         public static ulong baseAddrUpdtLocationHeading { get; set; }
-
-        //Race time pointer reader
+        #endregion
+        #region Pointer readers
+        #region Race time pointer reader
         public static ulong raceTimerTargetAddr { get; set; }
-
-        //Speed, Lifts, Engine Torque and DIfferential pointer reader
-        public static ulong speedTargetAddr { get; set; }
+#endregion
+        #region Speed, Lifts, Engine Torque and DIfferential pointer reader
+        //public static ulong speedTargetAddr { get; set; }
         public static ulong frontLiftTargetAddr { get; set; }
         public static ulong rearLiftTargetAddr { get; set; }
         public static ulong engineRPMTargetAddr { get; set; }
@@ -509,8 +498,8 @@ namespace Physics_Data_Debug
         public static ulong differentialOpenTargetAddr { get; set; }
         public static ulong differentialVelocityRadTargetAddr { get; set; }
         public static ulong differentialTorqueTargetAddr { get; set; }
-
-        //Location and heading pointer reader
+#endregion
+        #region Location and heading pointer reader
         public static ulong TXTargetAddr { get; set; }
         public static ulong TYTargetAddr { get; set; }
         public static ulong TZTargetAddr { get; set; }
@@ -530,9 +519,9 @@ namespace Physics_Data_Debug
         public static ulong XAccelerationTargetAddr { get; set; }
         public static ulong YAccelerationTargetAddr { get; set; }
         public static ulong ZAccelerationTargetAddr { get; set; }
-
-        //Tire Data pointer readers
-        //Front Left
+        #endregion
+        #region Tire Data pointer readers
+        #region Front Left pointers reader
         public static ulong FL_TreadTemperatureTargetAddr { get; set; }
         public static ulong FL_InnerTemperatureTargetAddr { get; set; }
         public static ulong FL_AngularVelocity_TargetAddr { get; set; }
@@ -568,11 +557,8 @@ namespace Physics_Data_Debug
 
         public static ulong FL_SuspensionLenght_TargetAddr { get; set; }
         public static ulong FL_SuspensionVelocity_TargetAddr { get; set; }
-        /*
-
-         */
-
-        //Front Right
+#endregion
+        #region Front Right pointers reader
         public static ulong FR_TreadTemperatureTargetAddr { get; set; }
         public static ulong FR_InnerTemperatureTargetAddr { get; set; }
         public static ulong FR_AngularVelocity_TargetAddr { get; set; }
@@ -607,11 +593,8 @@ namespace Physics_Data_Debug
 
         public static ulong FR_SuspensionLenght_TargetAddr { get; set; }
         public static ulong FR_SuspensionVelocity_TargetAddr { get; set; }
-        /*
-
-         */
-
-        //Rear Left
+#endregion
+        #region Rear Left pointer reader
         public static ulong RL_TreadTemperatureTargetAddr { get; set; }
         public static ulong RL_InnerTemperatureTargetAddr { get; set; }
         public static ulong RL_AngularVelocity_TargetAddr { get; set; }
@@ -646,11 +629,8 @@ namespace Physics_Data_Debug
 
         public static ulong RL_SuspensionLenght_TargetAddr { get; set; }
         public static ulong RL_SuspensionVelocity_TargetAddr { get; set; }
-        /*
-
-         */
-
-        //Rear Right
+#endregion
+        #region Rear Right pointer reader
         public static ulong RR_TreadTemperatureTargetAddr { get; set; }
         public static ulong RR_InnerTemperatureTargetAddr { get; set; }
         public static ulong RR_AngularVelocity_TargetAddr { get; set; }
@@ -685,27 +665,27 @@ namespace Physics_Data_Debug
 
         public static ulong RR_SuspensionLenght_TargetAddr { get; set; }
         public static ulong RR_SuspensionVelocity_TargetAddr { get; set; }
-        /*
-
-         */
-
-        //Speed and Lift pointers
+        #endregion
+        #endregion
+        #endregion
+        #region Pointers
+        #region Speed and Lift pointers
         public static int[] speedOffsets { get; set; } = { OffsetSpeed };
         public static int[] frontLiftOffsets { get; set; } = { OffsetFrontLift };
         public static int[] rearLiftOffsets { get; set; } = { OffsetRearLift };
-
-        //Engine and diff pointers 
+#endregion
+        #region Engine and diff pointers 
         public static int[] engineRPMOffests { get; set; } = { OffsetEngineRPM };
         public static int[] engineRPMAxleOffests { get; set; } = { OffsetEngineRPMAxle };
         public static int[] engineTorqueOffsets { get; set; } = { OffsetEngineTorque };
         public static int[] differentialOpenOffsets { get; set; } = { OffsetDifferentialOpen };
         public static int[] differentialVelocityRadOffsets { get; set; } = { OffsetDifferentialVelocityRad };
         public static int[] differentialTorqueOffsets { get; set; } = { OffsetDifferentialTorque };
-
-        //Race time pointer
+#endregion
+        #region Race time pointer
         public static int[] raceTimerOffsets { get; set; } = { OffsetRaceTime };
-
-        // Location and heading offsets
+#endregion
+        #region Location and heading pointers
         public static int[] TXOffsets { get; set; } = { OffsetTX };
         public static int[] TYOffsets { get; set; } = { OffsetTY };
         public static int[] TZOffsets { get; set; } = { OffsetTZ };
@@ -725,9 +705,9 @@ namespace Physics_Data_Debug
         public static int[] XAccelerationOffsets { get; set; } = { OffsetXAcceleration };
         public static int[] YAccelerationOffsets { get; set; } = { OffsetYAcceleration };
         public static int[] ZAccelerationOffsets { get; set; } = { OffsetZAcceleration };
-
-        //Tire & Suspension Data pointers
-        //Front Left
+#endregion
+        #region Tire & Suspension Data pointers
+        #region Front Left
         public static int[] flsOffsets { get; set; } = { OffsetTireData, OffsetTreadTemperature };
         public static int[] fliOffsets { get; set; } = { OffsetTireData, OffsetInnerTemperature };
         public static int[] FL_AngularVelocityOffsets { get; set; } = { OffsetTireData, OffsetAngularVelocity };
@@ -765,11 +745,8 @@ namespace Physics_Data_Debug
 
         public static int[] FL_SuspensionLengthOffsets { get; set; } = { OffsetSuspensionLength };
         public static int[] FL_SuspensionVelocityOffsets { get; set; } = { OffsetSuspensionVelocity };
-        /*
-
-         */
-
-        //Front Right
+        #endregion
+        #region Front Right
         public static int[] frsOffsets { get; set; } = { OffsetTireData, OffsetTreadTemperature + OffsetFRTire };
         public static int[] friOffsets { get; set; } = { OffsetTireData, OffsetInnerTemperature + OffsetFRTire };
         public static int[] FR_AngularVelocityOffsets { get; set; } = { OffsetTireData, OffsetAngularVelocity + OffsetFRTire };
@@ -806,11 +783,8 @@ namespace Physics_Data_Debug
 
         public static int[] FR_SuspensionLengthOffsets { get; set; } = { OffsetSuspensionLength + OffsetFRSuspension };
         public static int[] FR_SuspensionVelocityOffsets { get; set; } = { OffsetSuspensionVelocity + OffsetFRSuspension };
-        /*
-
-         */
-
-        //Rear Left
+#endregion
+        #region Rear Left
         public static int[] rlsOffsets { get; set; } = { OffsetTireData, OffsetTreadTemperature + OffsetRLTire };
         public static int[] rliOffsets { get; set; } = { OffsetTireData, OffsetInnerTemperature + OffsetRLTire };
         public static int[] RL_AngularVelocityOffsets { get; set; } = { OffsetTireData, OffsetAngularVelocity + OffsetRLTire };
@@ -847,11 +821,8 @@ namespace Physics_Data_Debug
 
         public static int[] RL_SuspensionLengthOffsets { get; set; } = { OffsetSuspensionLength + OffsetRLSuspension };
         public static int[] RL_SuspensionVelocityOffsets { get; set; } = { OffsetSuspensionVelocity + OffsetRLSuspension };
-        /*
-
-         */
-
-        //Rear Right
+#endregion
+        #region Rear Right
         public static int[] rrsOffsets { get; set; } = { OffsetTireData, OffsetTreadTemperature + OffsetRRTire };
         public static int[] rriOffsets { get; set; } = { OffsetTireData, OffsetInnerTemperature + OffsetRRTire };
         public static int[] RR_AngularVelocityOffsets { get; set; } = { OffsetTireData, OffsetAngularVelocity + OffsetRRTire };
@@ -888,12 +859,9 @@ namespace Physics_Data_Debug
 
         public static int[] RR_SuspensionLengthOffsets { get; set; } = { OffsetSuspensionLength + OffsetRRSuspension };
         public static int[] RR_SuspensionVelocityOffsets { get; set; } = { OffsetSuspensionVelocity + OffsetRRSuspension };
-        /*
-
-         */
-
-
-
+        #endregion
+        #endregion
+        #endregion
         public static Process process;
         public static Memory.Win64.MemoryHelper64 Helper { get; set; }
 
@@ -902,16 +870,24 @@ namespace Physics_Data_Debug
         public static readonly int[] tickTimeArray = new int[3];
         public static int elapsedTime = 0;
 
+        public static float GetFloatData(ulong baseAddr, int[] offsets)
+        {
+            Helper = new Memory.Win64.MemoryHelper64(process);
+
+            ulong bAU = Helper.GetBaseAddress(baseAddr + baseAddrUpdt - baseAddrDodt);
+
+            return Helper.ReadMemory<float>(Memory.Utils.MemoryUtils.OffsetCalculator(Helper, bAU, offsets));
+        }
+        public static int GetIntData(ulong baseAddr, int[] offsets)
+        {
+            Helper = new Memory.Win64.MemoryHelper64(process);
+
+            ulong bAU = Helper.GetBaseAddress(baseAddr + baseAddrUpdt - baseAddrDodt);
+
+            return Helper.ReadMemory<int>(Memory.Utils.MemoryUtils.OffsetCalculator(Helper, bAU, offsets));
+        }
         public static void GetData()
         {
-
-            //Stopwatch stopwatch = new Stopwatch();
-            //stopwatch.Start();
-            //stopwatch.Stop();
-            //TimeSpan elapsed = stopwatch.Elapsed;
-            //dTickTime = stopwatch.ElapsedMilliseconds;
-            //sTickTime = "Tick time " + dTickTime + " ms";
-
             if (process == null) return;
 
             Helper = new Memory.Win64.MemoryHelper64(process);
@@ -930,7 +906,7 @@ namespace Physics_Data_Debug
             //Race time pointer reader
             raceTimerTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(Helper, baseAddrUpdtRacetimer, raceTimerOffsets);
             //Speed, Lifts, Engine Torque and DIfferential pointer reader
-            speedTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(Helper, baseAddrUpdtEngineSpeed, speedOffsets);
+            //speedTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(Helper, baseAddrUpdtEngineSpeed, speedOffsets);
             frontLiftTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(Helper, baseAddrUpdtTiresSuspensionLiftsDifferential, frontLiftOffsets);
             rearLiftTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(Helper, baseAddrUpdtTiresSuspensionLiftsDifferential, rearLiftOffsets);
             engineRPMTargetAddr = Memory.Utils.MemoryUtils.OffsetCalculator(Helper, baseAddrUpdtEngineSpeed, engineRPMOffests);
@@ -1127,16 +1103,7 @@ namespace Physics_Data_Debug
             //Read race time
             #region Race Time
             RaceTime = Helper.ReadMemory<int>(raceTimerTargetAddr);
-
-            //Time interval between the last tick. Some interruption between every second, so might not be that precise to the game time.
-            /*
-            tickTimeArray[tickTimeArray.Length - 1] = DateTime.Now.Millisecond;
-            Array.Copy(tickTimeArray, 1, tickTimeArray, 0, tickTimeArray.Length - 1);
-            elapsedTickTime = tickTimeArray[1] - tickTimeArray[0];
-            */
-
-            // Same from RaceTime. It only naturally works when the race is going but pretty accurate then and no interference every second.
-
+            //Time interval between the last tick. It only naturally works when the race is going but pretty accurate then and no interference every second.
             raceTimeArray[raceTimeArray.Length - 1] = RaceTime;
             Array.Copy(raceTimeArray, 1, raceTimeArray, 0, raceTimeArray.Length - 1);
             elapsedTime = raceTimeArray[1] - raceTimeArray[0];
@@ -1145,7 +1112,9 @@ namespace Physics_Data_Debug
 
             //Read Speed, Lifts, Engine Torque and Differential stuff
             #region Speed, Lifts, Engine Torque and Differential
-            speed = Helper.ReadMemory<float>(speedTargetAddr);
+            speed = GetFloatData(baseAddrEngineSpeed, speedOffsets);
+
+            //speed = Helper.ReadMemory<float>(speedTargetAddr);
             frontLift = Helper.ReadMemory<float>(frontLiftTargetAddr);
             rearLift = Helper.ReadMemory<float>(rearLiftTargetAddr);
             engineRPM = Helper.ReadMemory<float>(engineRPMTargetAddr);
@@ -1719,542 +1688,260 @@ namespace Physics_Data_Debug
             #endregion
             #endregion
 
-            CheckWhatToLogInFile();
+            CheckWhatToLogInFile(LogSettings.Delimiter);
             LogToFile();
-            //UpdateFormData(); // in the timer instead
         }
-
-        private static void CheckWhatToLogInFile()
+        private static void CheckWhatToLogInFile(char delimiter)
         {
-            if (LogSettings.TireTravelSpeedLogEnabled == true)
-            {
-                LogSettings.Header0 = LogSettings.sTireTravelSpeed + FormLogSettings.Delimiter;
-                LogSettings.flParameter0 = FL_TravelSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter0 = FR_TravelSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter0 = RL_TravelSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter0 = RR_TravelSpeed.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header0 = "";
-                LogSettings.flParameter0 = "";
-                LogSettings.frParameter0 = "";
-                LogSettings.rlParameter0 = "";
-                LogSettings.rrParameter0 = "";
-            }
-            if (LogSettings.AngularVelocityLogEnabled == true)
-            {
-                LogSettings.Header1 = LogSettings.sAngularVelocity + FormLogSettings.Delimiter;
-                LogSettings.flParameter1 = FL_AngularVelocity.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter1 = FR_AngularVelocity.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter1 = RL_AngularVelocity.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter1 = RR_AngularVelocity.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header1 = "";
-                LogSettings.flParameter1 = "";
-                LogSettings.frParameter1 = "";
-                LogSettings.rlParameter1 = "";
-                LogSettings.rrParameter1 = "";
-            }
-            if (LogSettings.VerticalLoadLogEnabled == true)
-            {
-                LogSettings.Header2 = LogSettings.sVerticalLoad + FormLogSettings.Delimiter;
-                LogSettings.flParameter2 = FL_VerticalLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter2 = FR_VerticalLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter2 = RL_VerticalLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter2 = RR_VerticalLoad.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header2 = "";
-                LogSettings.flParameter2 = "";
-                LogSettings.frParameter2 = "";
-                LogSettings.rlParameter2 = "";
-                LogSettings.rrParameter2 = "";
-            }
-            if (LogSettings.VerticalDeflectionLogEnabled == true)
-            {
-                LogSettings.Header3 = LogSettings.sVerticalDeflection + FormLogSettings.Delimiter;
-                LogSettings.flParameter3 = FL_VerticalDeflection.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter3 = FR_VerticalDeflection.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter3 = RL_VerticalDeflection.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter3 = RR_VerticalDeflection.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header3 = "";
-                LogSettings.flParameter3 = "";
-                LogSettings.frParameter3 = "";
-                LogSettings.rlParameter3 = "";
-                LogSettings.rrParameter3 = "";
-            }
-            if (LogSettings.LoadedRadiusLogEnabled == true)
-            {
-                LogSettings.Header4 = LogSettings.sLoadedRadius + FormLogSettings.Delimiter;
-                LogSettings.flParameter4 = FL_LoadedRadius.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter4 = FR_LoadedRadius.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter4 = RL_LoadedRadius.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter4 = RR_LoadedRadius.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header4 = "";
-                LogSettings.flParameter4 = "";
-                LogSettings.frParameter4 = "";
-                LogSettings.rlParameter4 = "";
-                LogSettings.rrParameter4 = "";
-            }
-            if (LogSettings.EffectiveRadiusLogEnabled == true)
-            {
-                LogSettings.Header5 = LogSettings.sEffectiveRadius + FormLogSettings.Delimiter;
-                LogSettings.flParameter5 = FL_EffectiveRadius.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter5 = FR_EffectiveRadius.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter5 = RL_EffectiveRadius.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter5 = RR_EffectiveRadius.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header5 = "";
-                LogSettings.flParameter5 = "";
-                LogSettings.frParameter5 = "";
-                LogSettings.rlParameter5 = "";
-                LogSettings.rrParameter5 = "";
-            }
-            if (LogSettings.ContactLengthLogEnabled == true)
-            {
-                LogSettings.Header6 = LogSettings.sContactLength + FormLogSettings.Delimiter;
-                LogSettings.flParameter6 = FL_ContactLength.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter6 = FR_ContactLength.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter6 = RL_ContactLength.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter6 = RR_ContactLength.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header6 = "";
-                LogSettings.flParameter6 = "";
-                LogSettings.frParameter6 = "";
-                LogSettings.rlParameter6 = "";
-                LogSettings.rrParameter6 = "";
-            }
-            if (LogSettings.BrakeTorqueLogEnabled == true)
-            {
-                LogSettings.Header7 = LogSettings.sBrakeTorque + FormLogSettings.Delimiter;
-                LogSettings.flParameter7 = FL_CurrentContactBrakeTorque.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter7 = FR_CurrentContactBrakeTorque.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter7 = RL_CurrentContactBrakeTorque.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter7 = RR_CurrentContactBrakeTorque.ToString() + FormLogSettings.Delimiter;
+                LogSettings.Header0 = LogSettings.sTireTravelSpeed + delimiter;
+                LogSettings.flParameter0 = FL_TravelSpeed.ToString() + delimiter;
+                LogSettings.frParameter0 = FR_TravelSpeed.ToString() + delimiter;
+                LogSettings.rlParameter0 = RL_TravelSpeed.ToString() + delimiter;
+                LogSettings.rrParameter0 = RR_TravelSpeed.ToString() + delimiter;
 
-                LogSettings.Header7_1 = LogSettings.sMaxBrakeTorque + FormLogSettings.Delimiter;
-                LogSettings.flParameter7_1 = FL_CurrentContactBrakeTorqueMax.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter7_1 = FR_CurrentContactBrakeTorqueMax.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter7_1 = RL_CurrentContactBrakeTorqueMax.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter7_1 = RR_CurrentContactBrakeTorqueMax.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header7 = "";
-                LogSettings.flParameter7 = "";
-                LogSettings.frParameter7 = "";
-                LogSettings.rlParameter7 = "";
-                LogSettings.rrParameter7 = "";
+                LogSettings.Header1 = LogSettings.sAngularVelocity + delimiter;
+                LogSettings.flParameter1 = FL_AngularVelocity.ToString() + delimiter;
+                LogSettings.frParameter1 = FR_AngularVelocity.ToString() + delimiter;
+                LogSettings.rlParameter1 = RL_AngularVelocity.ToString() + delimiter;
+                LogSettings.rrParameter1 = RR_AngularVelocity.ToString() + delimiter;
 
-                LogSettings.Header7_1 = "";
-                LogSettings.flParameter7_1 = "";
-                LogSettings.frParameter7_1 = "";
-                LogSettings.rlParameter7_1 = "";
-                LogSettings.rrParameter7_1 = "";
-            }
-            if (LogSettings.SteerAngleLogEnabled == true)
-            {
-                LogSettings.Header8 = LogSettings.sSteerAngle + FormLogSettings.Delimiter;
-                LogSettings.flParameter8 = FL_SteerAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter8 = FR_SteerAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter8 = RL_SteerAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter8 = RR_SteerAngleDeg.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header8 = "";
-                LogSettings.flParameter8 = "";
-                LogSettings.frParameter8 = "";
-                LogSettings.rlParameter8 = "";
-                LogSettings.rrParameter8 = "";
-            }
-            if (LogSettings.CamberAngleLogEnabled == true)
-            {
-                LogSettings.Header9 = LogSettings.sCamberAngle + FormLogSettings.Delimiter;
-                LogSettings.flParameter9 = FL_CamberAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter9 = FR_CamberAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter9 = RL_CamberAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter9 = RR_CamberAngleDeg.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header9 = "";
-                LogSettings.flParameter9 = "";
-                LogSettings.frParameter9 = "";
-                LogSettings.rlParameter9 = "";
-                LogSettings.rrParameter9 = "";
-            }
-            if (LogSettings.LateralLoadLogEnabled == true)
-            {
-                LogSettings.Header10 = LogSettings.sLateralLoad + FormLogSettings.Delimiter;
-                LogSettings.flParameter10 = FL_LateralLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter10 = FR_LateralLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter10 = RL_LateralLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter10 = RR_LateralLoad.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header10 = "";
-                LogSettings.flParameter10 = "";
-                LogSettings.frParameter10 = "";
-                LogSettings.rlParameter10 = "";
-                LogSettings.rrParameter10 = "";
-            }
-            if (LogSettings.SlipAngleLogEnabled == true)
-            {
-                LogSettings.Header11 = LogSettings.sSlipAngle + FormLogSettings.Delimiter;
-                LogSettings.flParameter11 = FL_SlipAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter11 = FR_SlipAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter11 = RL_SlipAngleDeg.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter11 = RR_SlipAngleDeg.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header11 = "";
-                LogSettings.flParameter11 = "";
-                LogSettings.frParameter11 = "";
-                LogSettings.rlParameter11 = "";
-                LogSettings.rrParameter11 = "";
-            }
-            if (LogSettings.LateralFrictionLogEnabled == true)
-            {
-                LogSettings.Header12 = LogSettings.sLateralFriction + FormLogSettings.Delimiter;
-                LogSettings.flParameter12 = FL_LateralFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter12 = FR_LateralFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter12 = RL_LateralFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter12 = RR_LateralFriction.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header12 = "";
-                LogSettings.flParameter12 = "";
-                LogSettings.frParameter12 = "";
-                LogSettings.rlParameter12 = "";
-                LogSettings.rrParameter12 = "";
-            }
-            if (LogSettings.LateralSlipSpeedLogEnabled == true)
-            {
-                LogSettings.Header13 = LogSettings.sLateralSlipSpeed + FormLogSettings.Delimiter;
-                LogSettings.flParameter13 = FL_LateralSlipSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter13 = FR_LateralSlipSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter13 = RL_LateralSlipSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter13 = RR_LateralSlipSpeed.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header13 = "";
-                LogSettings.flParameter13 = "";
-                LogSettings.frParameter13 = "";
-                LogSettings.rlParameter13 = "";
-                LogSettings.rrParameter13 = "";
-            }
-            if (LogSettings.LongitudinalLoadLogEnabled == true)
-            {
-                LogSettings.Header14 = LogSettings.sLongitudinalLoad + FormLogSettings.Delimiter;
-                LogSettings.flParameter14 = FL_LongitudinalLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter14 = FR_LongitudinalLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter14 = RL_LongitudinalLoad.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter14 = RR_LongitudinalLoad.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header14 = "";
-                LogSettings.flParameter14 = "";
-                LogSettings.frParameter14 = "";
-                LogSettings.rlParameter14 = "";
-                LogSettings.rrParameter14 = "";
-            }
-            if (LogSettings.SlipRatioLogEnabled == true)
-            {
-                LogSettings.Header15 = LogSettings.sSlipRatio + FormLogSettings.Delimiter;
-                LogSettings.flParameter15 = FL_SlipRatio.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter15 = FR_SlipRatio.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter15 = RL_SlipRatio.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter15 = RR_SlipRatio.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header15 = "";
-                LogSettings.flParameter15 = "";
-                LogSettings.frParameter15 = "";
-                LogSettings.rlParameter15 = "";
-                LogSettings.rrParameter15 = "";
-            }
-            if (LogSettings.LongitudinalFrictionLogEnabled == true)
-            {
-                LogSettings.Header16 = LogSettings.sLongitudinalFriction + FormLogSettings.Delimiter;
-                LogSettings.flParameter16 = FL_LongitudinalFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter16 = FR_LongitudinalFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter16 = RL_LongitudinalFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter16 = RR_LongitudinalFriction.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header16 = "";
-                LogSettings.flParameter16 = "";
-                LogSettings.frParameter16 = "";
-                LogSettings.rlParameter16 = "";
-                LogSettings.rrParameter16 = "";
-            }
-            if (LogSettings.LongitudinalSlipSpeedLogEnabled == true)
-            {
-                LogSettings.Header17 = LogSettings.sLongitudinalSlipSpeed + FormLogSettings.Delimiter;
-                LogSettings.flParameter17 = FL_LongitudinalSlipSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter17 = FR_LongitudinalSlipSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter17 = RL_LongitudinalSlipSpeed.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter17 = RR_LongitudinalSlipSpeed.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header17 = "";
-                LogSettings.flParameter17 = "";
-                LogSettings.frParameter17 = "";
-                LogSettings.rlParameter17 = "";
-                LogSettings.rrParameter17 = "";
-            }
-            if (LogSettings.TreadTemperatureLogEnabled == true)
-            {
-                LogSettings.Header18 = LogSettings.sTreadTemperature + FormLogSettings.Delimiter;
-                LogSettings.flParameter18 = FL_TreadTemperature.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter18 = FR_TreadTemperature.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter18 = RL_TreadTemperature.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter18 = RR_TreadTemperature.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header18 = "";
-                LogSettings.flParameter18 = "";
-                LogSettings.frParameter18 = "";
-                LogSettings.rlParameter18 = "";
-                LogSettings.rrParameter18 = "";
-            }
-            if (LogSettings.InnerTemperatureLogEnabled == true)
-            {
-                LogSettings.Header19 = LogSettings.sInnerTemperature + FormLogSettings.Delimiter;
-                LogSettings.flParameter19 = FL_InnerTemperature.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter19 = FR_InnerTemperature.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter19 = RL_InnerTemperature.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter19 = RR_InnerTemperature.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header19 = "";
-                LogSettings.flParameter19 = "";
-                LogSettings.frParameter19 = "";
-                LogSettings.rlParameter19 = "";
-                LogSettings.rrParameter19 = "";
-            }
-            if (LogSettings.RaceTimeLogEnabled == true)
-            {
-                LogSettings.Header20 = LogSettings.sRaceTime + FormLogSettings.Delimiter;
-                LogSettings.flParameter20 = RaceTime.ToString().ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter20 = RaceTime.ToString().ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter20 = RaceTime.ToString().ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter20 = RaceTime.ToString().ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header20 = "";
-                LogSettings.flParameter20 = "";
-                LogSettings.frParameter20 = "";
-                LogSettings.rlParameter20 = "";
-                LogSettings.rrParameter20 = "";
-            }
-            if (LogSettings.TotalFrictionLogEnabled == true)
-            {
-                LogSettings.Header21 = LogSettings.sTotalFriction + FormLogSettings.Delimiter;
-                LogSettings.flParameter21 = FL_TotalFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter21 = FR_TotalFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter21 = RL_TotalFriction.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter21 = RR_TotalFriction.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header21 = "";
-                LogSettings.flParameter21 = "";
-                LogSettings.frParameter21 = "";
-                LogSettings.rlParameter21 = "";
-                LogSettings.rrParameter21 = "";
-            }
-            if (LogSettings.TotalFrictionAngleLogEnabled == true)
-            {
-                LogSettings.Header22 = LogSettings.sTotalFrictionAngle + FormLogSettings.Delimiter;
-                LogSettings.flParameter22 = FL_TotalFrictionAngle.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter22 = FR_TotalFrictionAngle.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter22 = RL_TotalFrictionAngle.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter22 = RR_TotalFrictionAngle.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header22 = "";
-                LogSettings.flParameter22 = "";
-                LogSettings.frParameter22 = "";
-                LogSettings.rlParameter22 = "";
-                LogSettings.rrParameter22 = "";
-            }
-            if (LogSettings.SuspensionLengthLogEnabled == true)
-            {
-                LogSettings.Header23 = LogSettings.sSuspensionLength + FormLogSettings.Delimiter;
-                LogSettings.flParameter23 = FL_SuspensionLength.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter23 = FR_SuspensionLength.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter23 = RL_SuspensionLength.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter23 = RR_SuspensionLength.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header23 = "";
-                LogSettings.flParameter23 = "";
-                LogSettings.frParameter23 = "";
-                LogSettings.rlParameter23 = "";
-                LogSettings.rrParameter23 = "";
-            }
-            if (LogSettings.SuspensionVelocityLogEnabled == true)
-            {
-                LogSettings.Header24 = LogSettings.sSuspensionVelocity + FormLogSettings.Delimiter;
-                LogSettings.flParameter24 = FL_SuspensionVelocity.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter24 = FR_SuspensionVelocity.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter24 = RL_SuspensionVelocity.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter24 = RR_SuspensionVelocity.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header24 = "";
-                LogSettings.flParameter24 = "";
-                LogSettings.frParameter24 = "";
-                LogSettings.rlParameter24 = "";
-                LogSettings.rrParameter24 = "";
-            }
-            if (LogSettings.XGRotatedLogEnabled == true)
-            {
-                LogSettings.Header25 = LogSettings.sXGRotated + FormLogSettings.Delimiter;
-                LogSettings.flParameter25 = XGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter25 = XGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter25 = XGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter25 = XGRotated.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header25 = "";
-                LogSettings.flParameter25 = "";
-                LogSettings.frParameter25 = "";
-                LogSettings.rlParameter25 = "";
-                LogSettings.rrParameter25 = "";
-            }
-            if (LogSettings.ZGRotatedLogEnabled == true)
-            {
-                LogSettings.Header26 = LogSettings.sZGRotated + FormLogSettings.Delimiter;
-                LogSettings.flParameter26 = ZGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter26 = ZGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter26 = ZGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter26 = ZGRotated.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header26 = "";
-                LogSettings.flParameter26 = "";
-                LogSettings.frParameter26 = "";
-                LogSettings.rlParameter26 = "";
-                LogSettings.rrParameter26 = "";
-            }
-            if (LogSettings.YGRotatedLogEnabled == true)
-            {
-                LogSettings.Header27 = LogSettings.sYGRotated + FormLogSettings.Delimiter;
-                LogSettings.flParameter27 = YGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter27 = YGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter27 = YGRotated.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter27 = YGRotated.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header27 = "";
-                LogSettings.flParameter27 = "";
-                LogSettings.frParameter27 = "";
-                LogSettings.rlParameter27 = "";
-                LogSettings.rrParameter27 = "";
-            }
-            if (LogSettings.XYZGLogEnabled == true)
-            {
-                LogSettings.Header28 = LogSettings.sXYZG + FormLogSettings.Delimiter;
-                LogSettings.flParameter28 = XYZG.ToString() + FormLogSettings.Delimiter;
-                LogSettings.frParameter28 = XYZG.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rlParameter28 = XYZG.ToString() + FormLogSettings.Delimiter;
-                LogSettings.rrParameter28 = XYZG.ToString() + FormLogSettings.Delimiter;
-            }
-            else
-            {
-                LogSettings.Header28 = "";
-                LogSettings.flParameter28 = "";
-                LogSettings.frParameter28 = "";
-                LogSettings.rlParameter28 = "";
-                LogSettings.rrParameter28 = "";
-            }
+                LogSettings.Header2 = LogSettings.sVerticalLoad + delimiter;
+                LogSettings.flParameter2 = FL_VerticalLoad.ToString() + delimiter;
+                LogSettings.frParameter2 = FR_VerticalLoad.ToString() + delimiter;
+                LogSettings.rlParameter2 = RL_VerticalLoad.ToString() + delimiter;
+                LogSettings.rrParameter2 = RR_VerticalLoad.ToString() + delimiter;
+
+                LogSettings.Header3 = LogSettings.sVerticalDeflection + delimiter;
+                LogSettings.flParameter3 = FL_VerticalDeflection.ToString() + delimiter;
+                LogSettings.frParameter3 = FR_VerticalDeflection.ToString() + delimiter;
+                LogSettings.rlParameter3 = RL_VerticalDeflection.ToString() + delimiter;
+                LogSettings.rrParameter3 = RR_VerticalDeflection.ToString() + delimiter;
+            
+                LogSettings.Header4 = LogSettings.sLoadedRadius + delimiter;
+                LogSettings.flParameter4 = FL_LoadedRadius.ToString() + delimiter;
+                LogSettings.frParameter4 = FR_LoadedRadius.ToString() + delimiter;
+                LogSettings.rlParameter4 = RL_LoadedRadius.ToString() + delimiter;
+                LogSettings.rrParameter4 = RR_LoadedRadius.ToString() + delimiter;
+            
+                LogSettings.Header5 = LogSettings.sEffectiveRadius + delimiter;
+                LogSettings.flParameter5 = FL_EffectiveRadius.ToString() + delimiter;
+                LogSettings.frParameter5 = FR_EffectiveRadius.ToString() + delimiter;
+                LogSettings.rlParameter5 = RL_EffectiveRadius.ToString() + delimiter;
+                LogSettings.rrParameter5 = RR_EffectiveRadius.ToString() + delimiter;
+
+                LogSettings.Header6 = LogSettings.sContactLength + delimiter;
+                LogSettings.flParameter6 = FL_ContactLength.ToString() + delimiter;
+                LogSettings.frParameter6 = FR_ContactLength.ToString() + delimiter;
+                LogSettings.rlParameter6 = RL_ContactLength.ToString() + delimiter;
+                LogSettings.rrParameter6 = RR_ContactLength.ToString() + delimiter;
+
+                LogSettings.Header7 = LogSettings.sBrakeTorque + delimiter;
+                LogSettings.flParameter7 = FL_CurrentContactBrakeTorque.ToString() + delimiter;
+                LogSettings.frParameter7 = FR_CurrentContactBrakeTorque.ToString() + delimiter;
+                LogSettings.rlParameter7 = RL_CurrentContactBrakeTorque.ToString() + delimiter;
+                LogSettings.rrParameter7 = RR_CurrentContactBrakeTorque.ToString() + delimiter;
+
+                LogSettings.Header7_1 = LogSettings.sMaxBrakeTorque + delimiter;
+                LogSettings.flParameter7_1 = FL_CurrentContactBrakeTorqueMax.ToString() + delimiter;
+                LogSettings.frParameter7_1 = FR_CurrentContactBrakeTorqueMax.ToString() + delimiter;
+                LogSettings.rlParameter7_1 = RL_CurrentContactBrakeTorqueMax.ToString() + delimiter;
+                LogSettings.rrParameter7_1 = RR_CurrentContactBrakeTorqueMax.ToString() + delimiter;
+
+                LogSettings.Header8 = LogSettings.sSteerAngle + delimiter;
+                LogSettings.flParameter8 = FL_SteerAngleDeg.ToString() + delimiter;
+                LogSettings.frParameter8 = FR_SteerAngleDeg.ToString() + delimiter;
+                LogSettings.rlParameter8 = RL_SteerAngleDeg.ToString() + delimiter;
+                LogSettings.rrParameter8 = RR_SteerAngleDeg.ToString() + delimiter;
+
+                LogSettings.Header9 = LogSettings.sCamberAngle + delimiter;
+                LogSettings.flParameter9 = FL_CamberAngleDeg.ToString() + delimiter;
+                LogSettings.frParameter9 = FR_CamberAngleDeg.ToString() + delimiter;
+                LogSettings.rlParameter9 = RL_CamberAngleDeg.ToString() + delimiter;
+                LogSettings.rrParameter9 = RR_CamberAngleDeg.ToString() + delimiter;
+
+                LogSettings.Header10 = LogSettings.sLateralLoad + delimiter;
+                LogSettings.flParameter10 = FL_LateralLoad.ToString() + delimiter;
+                LogSettings.frParameter10 = FR_LateralLoad.ToString() + delimiter;
+                LogSettings.rlParameter10 = RL_LateralLoad.ToString() + delimiter;
+                LogSettings.rrParameter10 = RR_LateralLoad.ToString() + delimiter;
+
+                LogSettings.Header11 = LogSettings.sSlipAngle + delimiter;
+                LogSettings.flParameter11 = FL_SlipAngleDeg.ToString() + delimiter;
+                LogSettings.frParameter11 = FR_SlipAngleDeg.ToString() + delimiter;
+                LogSettings.rlParameter11 = RL_SlipAngleDeg.ToString() + delimiter;
+                LogSettings.rrParameter11 = RR_SlipAngleDeg.ToString() + delimiter;
+
+                LogSettings.Header12 = LogSettings.sLateralFriction + delimiter;
+                LogSettings.flParameter12 = FL_LateralFriction.ToString() + delimiter;
+                LogSettings.frParameter12 = FR_LateralFriction.ToString() + delimiter;
+                LogSettings.rlParameter12 = RL_LateralFriction.ToString() + delimiter;
+                LogSettings.rrParameter12 = RR_LateralFriction.ToString() + delimiter;
+
+                LogSettings.Header13 = LogSettings.sLateralSlipSpeed + delimiter;
+                LogSettings.flParameter13 = FL_LateralSlipSpeed.ToString() + delimiter;
+                LogSettings.frParameter13 = FR_LateralSlipSpeed.ToString() + delimiter;
+                LogSettings.rlParameter13 = RL_LateralSlipSpeed.ToString() + delimiter;
+                LogSettings.rrParameter13 = RR_LateralSlipSpeed.ToString() + delimiter;
+
+                LogSettings.Header14 = LogSettings.sLongitudinalLoad + delimiter;
+                LogSettings.flParameter14 = FL_LongitudinalLoad.ToString() + delimiter;
+                LogSettings.frParameter14 = FR_LongitudinalLoad.ToString() + delimiter;
+                LogSettings.rlParameter14 = RL_LongitudinalLoad.ToString() + delimiter;
+                LogSettings.rrParameter14 = RR_LongitudinalLoad.ToString() + delimiter;
+
+                LogSettings.Header15 = LogSettings.sSlipRatio + delimiter;
+                LogSettings.flParameter15 = FL_SlipRatio.ToString() + delimiter;
+                LogSettings.frParameter15 = FR_SlipRatio.ToString() + delimiter;
+                LogSettings.rlParameter15 = RL_SlipRatio.ToString() + delimiter;
+                LogSettings.rrParameter15 = RR_SlipRatio.ToString() + delimiter;
+
+                LogSettings.Header16 = LogSettings.sLongitudinalFriction + delimiter;
+                LogSettings.flParameter16 = FL_LongitudinalFriction.ToString() + delimiter;
+                LogSettings.frParameter16 = FR_LongitudinalFriction.ToString() + delimiter;
+                LogSettings.rlParameter16 = RL_LongitudinalFriction.ToString() + delimiter;
+                LogSettings.rrParameter16 = RR_LongitudinalFriction.ToString() + delimiter;
+
+                LogSettings.Header17 = LogSettings.sLongitudinalSlipSpeed + delimiter;
+                LogSettings.flParameter17 = FL_LongitudinalSlipSpeed.ToString() + delimiter;
+                LogSettings.frParameter17 = FR_LongitudinalSlipSpeed.ToString() + delimiter;
+                LogSettings.rlParameter17 = RL_LongitudinalSlipSpeed.ToString() + delimiter;
+                LogSettings.rrParameter17 = RR_LongitudinalSlipSpeed.ToString() + delimiter;
+
+                LogSettings.Header18 = LogSettings.sTreadTemperature + delimiter;
+                LogSettings.flParameter18 = FL_TreadTemperature.ToString() + delimiter;
+                LogSettings.frParameter18 = FR_TreadTemperature.ToString() + delimiter;
+                LogSettings.rlParameter18 = RL_TreadTemperature.ToString() + delimiter;
+                LogSettings.rrParameter18 = RR_TreadTemperature.ToString() + delimiter;
+
+                LogSettings.Header19 = LogSettings.sInnerTemperature + delimiter;
+                LogSettings.flParameter19 = FL_InnerTemperature.ToString() + delimiter;
+                LogSettings.frParameter19 = FR_InnerTemperature.ToString() + delimiter;
+                LogSettings.rlParameter19 = RL_InnerTemperature.ToString() + delimiter;
+                LogSettings.rrParameter19 = RR_InnerTemperature.ToString() + delimiter;
+
+                LogSettings.Header20 = LogSettings.sRaceTime + delimiter;
+                LogSettings.flParameter20 = RaceTime.ToString().ToString() + delimiter;
+                LogSettings.frParameter20 = RaceTime.ToString().ToString() + delimiter;
+                LogSettings.rlParameter20 = RaceTime.ToString().ToString() + delimiter;
+                LogSettings.rrParameter20 = RaceTime.ToString().ToString() + delimiter;
+
+                LogSettings.Header21 = LogSettings.sTotalFriction + delimiter;
+                LogSettings.flParameter21 = FL_TotalFriction.ToString() + delimiter;
+                LogSettings.frParameter21 = FR_TotalFriction.ToString() + delimiter;
+                LogSettings.rlParameter21 = RL_TotalFriction.ToString() + delimiter;
+                LogSettings.rrParameter21 = RR_TotalFriction.ToString() + delimiter;
+
+                LogSettings.Header22 = LogSettings.sTotalFrictionAngle + delimiter;
+                LogSettings.flParameter22 = FL_TotalFrictionAngle.ToString() + delimiter;
+                LogSettings.frParameter22 = FR_TotalFrictionAngle.ToString() + delimiter;
+                LogSettings.rlParameter22 = RL_TotalFrictionAngle.ToString() + delimiter;
+                LogSettings.rrParameter22 = RR_TotalFrictionAngle.ToString() + delimiter;
+
+                LogSettings.Header23 = LogSettings.sSuspensionLength + delimiter;
+                LogSettings.flParameter23 = FL_SuspensionLength.ToString() + delimiter;
+                LogSettings.frParameter23 = FR_SuspensionLength.ToString() + delimiter;
+                LogSettings.rlParameter23 = RL_SuspensionLength.ToString() + delimiter;
+                LogSettings.rrParameter23 = RR_SuspensionLength.ToString() + delimiter;
+
+                LogSettings.Header24 = LogSettings.sSuspensionVelocity + delimiter;
+                LogSettings.flParameter24 = FL_SuspensionVelocity.ToString() + delimiter;
+                LogSettings.frParameter24 = FR_SuspensionVelocity.ToString() + delimiter;
+                LogSettings.rlParameter24 = RL_SuspensionVelocity.ToString() + delimiter;
+                LogSettings.rrParameter24 = RR_SuspensionVelocity.ToString() + delimiter;
+
+                LogSettings.Header25 = LogSettings.sXGRotated + delimiter;
+                LogSettings.flParameter25 = XGRotated.ToString() + delimiter;
+                LogSettings.frParameter25 = XGRotated.ToString() + delimiter;
+                LogSettings.rlParameter25 = XGRotated.ToString() + delimiter;
+                LogSettings.rrParameter25 = XGRotated.ToString() + delimiter;
+
+                LogSettings.Header26 = LogSettings.sZGRotated + delimiter;
+                LogSettings.flParameter26 = ZGRotated.ToString() + delimiter;
+                LogSettings.frParameter26 = ZGRotated.ToString() + delimiter;
+                LogSettings.rlParameter26 = ZGRotated.ToString() + delimiter;
+                LogSettings.rrParameter26 = ZGRotated.ToString() + delimiter;
+
+                LogSettings.Header27 = LogSettings.sYGRotated + delimiter;
+                LogSettings.flParameter27 = YGRotated.ToString() + delimiter;
+                LogSettings.frParameter27 = YGRotated.ToString() + delimiter;
+                LogSettings.rlParameter27 = YGRotated.ToString() + delimiter;
+                LogSettings.rrParameter27 = YGRotated.ToString() + delimiter;
+
+                LogSettings.Header28 = LogSettings.sXYZG + delimiter;
+                LogSettings.flParameter28 = XYZG.ToString() + delimiter;
+                LogSettings.frParameter28 = XYZG.ToString() + delimiter;
+                LogSettings.rlParameter28 = XYZG.ToString() + delimiter;
+                LogSettings.rrParameter28 = XYZG.ToString() + delimiter;
         }
-
         private static void LogToFile()
         {
 
             if (logging == true)
             {
                 // SA, SR, Speed and Vertical Load filters for logging
-
                 if (LogSettings.FiltersOn == true)
                 {
-                    if ((FL_SlipRatio <= (0 + FormLogSettings.Z1) && FL_SlipRatio >= (0 - FormLogSettings.Z1))
-                        && (FL_SlipAngleDeg <= (0 + FormLogSettings.Z2) && FL_SlipAngleDeg >= (0 - FormLogSettings.Z2))
-                        && (FL_TravelSpeed >= (0 + FormLogSettings.Z3) || FL_TravelSpeed <= (0 - FormLogSettings.Z3))
-                        && (FL_VerticalLoad <= (FormLogSettings.W4 + FormLogSettings.Z4) && FL_VerticalLoad >= (FormLogSettings.W4 - FormLogSettings.Z4)))
+                    if ((FL_SlipRatio <= (0 + LogSettings.Z1) && FL_SlipRatio >= (0 - LogSettings.Z1))
+                        && (FL_SlipAngleDeg <= (0 + LogSettings.Z2) && FL_SlipAngleDeg >= (0 - LogSettings.Z2))
+                        && (FL_TravelSpeed >= (0 + LogSettings.Z3) || FL_TravelSpeed <= (0 - LogSettings.Z3))
+                        && (FL_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && FL_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
                     {
-                        FLLogFileWriter();
+                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFLTire, LogSettings.SaveFileName, LogSettings.Extension);
                     }
-                    if ((FR_SlipRatio <= (0 + FormLogSettings.Z1) && FR_SlipRatio >= (0 - FormLogSettings.Z1))
-                        && (FR_SlipAngleDeg <= (0 + FormLogSettings.Z2) && FR_SlipAngleDeg >= (0 - FormLogSettings.Z2))
-                        && (FR_TravelSpeed >= (0 + FormLogSettings.Z3) || FR_TravelSpeed <= (0 - FormLogSettings.Z3))
-                        && (FR_VerticalLoad <= (FormLogSettings.W4 + FormLogSettings.Z4) && FR_VerticalLoad >= (FormLogSettings.W4 - FormLogSettings.Z4)))
+                    if ((FR_SlipRatio <= (0 + LogSettings.Z1) && FR_SlipRatio >= (0 - LogSettings.Z1))
+                        && (FR_SlipAngleDeg <= (0 + LogSettings.Z2) && FR_SlipAngleDeg >= (0 - LogSettings.Z2))
+                        && (FR_TravelSpeed >= (0 + LogSettings.Z3) || FR_TravelSpeed <= (0 - LogSettings.Z3))
+                        && (FR_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && FR_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
                     {
-                        FRLogFileWriter();
+                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFRTire, LogSettings.SaveFileName, LogSettings.Extension);
                     }
-                    if ((RL_SlipRatio <= (0 + FormLogSettings.Z1) && RL_SlipRatio >= (0 - FormLogSettings.Z1))
-                        && (RL_SlipAngleDeg <= (0 + FormLogSettings.Z2) && RL_SlipAngleDeg >= (0 - FormLogSettings.Z2))
-                        && (RL_TravelSpeed >= (0 + FormLogSettings.Z3) || RL_TravelSpeed <= (0 - FormLogSettings.Z3))
-                        && (RL_VerticalLoad <= (FormLogSettings.W4 + FormLogSettings.Z4) && RL_VerticalLoad >= (FormLogSettings.W4 - FormLogSettings.Z4)))
+                    if ((RL_SlipRatio <= (0 + LogSettings.Z1) && RL_SlipRatio >= (0 - LogSettings.Z1))
+                        && (RL_SlipAngleDeg <= (0 + LogSettings.Z2) && RL_SlipAngleDeg >= (0 - LogSettings.Z2))
+                        && (RL_TravelSpeed >= (0 + LogSettings.Z3) || RL_TravelSpeed <= (0 - LogSettings.Z3))
+                        && (RL_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && RL_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
                     {
-                        RLLogFileWriter();
+                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRLTire, LogSettings.SaveFileName, LogSettings.Extension);
                     }
-                    if ((RR_SlipRatio <= (0 + FormLogSettings.Z1) && RR_SlipRatio >= (0 - FormLogSettings.Z1))
-                        && (RR_SlipAngleDeg <= (0 + FormLogSettings.Z2) && RR_SlipAngleDeg >= (0 - FormLogSettings.Z2))
-                        && (RR_TravelSpeed >= (0 + FormLogSettings.Z3) || RR_TravelSpeed <= (0 - FormLogSettings.Z3))
-                        && (RR_VerticalLoad <= (FormLogSettings.W4 + FormLogSettings.Z4) && RR_VerticalLoad >= (FormLogSettings.W4 - FormLogSettings.Z4)))
+                    if ((RR_SlipRatio <= (0 + LogSettings.Z1) && RR_SlipRatio >= (0 - LogSettings.Z1))
+                        && (RR_SlipAngleDeg <= (0 + LogSettings.Z2) && RR_SlipAngleDeg >= (0 - LogSettings.Z2))
+                        && (RR_TravelSpeed >= (0 + LogSettings.Z3) || RR_TravelSpeed <= (0 - LogSettings.Z3))
+                        && (RR_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && RR_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
                     {
-                        RRLogFileWriter();
+                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRRTire, LogSettings.SaveFileName, LogSettings.Extension);
                     }
                 }
                 else
                 {
-                    FLLogFileWriter();
-                    FRLogFileWriter();
-                    RLLogFileWriter();
-                    RRLogFileWriter();
+                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFLTire, LogSettings.SaveFileName, LogSettings.Extension);
+                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFRTire, LogSettings.SaveFileName, LogSettings.Extension);
+                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRLTire, LogSettings.SaveFileName, LogSettings.Extension);
+                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRRTire, LogSettings.SaveFileName, LogSettings.Extension);
                 }
             }
         }
-
+        private static void LogFileWriter(string saveLocationFolder, string chooseTire, string saveFileName, string extension)
+        {
+            if (!File.Exists(saveLocationFolder + chooseTire + saveFileName + extension))
+            {
+                WriteHeadersLine(saveLocationFolder, chooseTire, saveFileName, extension);
+            }
+            else
+            {
+                WriteParametersLineEachTire(saveLocationFolder, chooseTire, saveFileName, extension);
+            }
+        }
+        private static void WriteHeadersLine(string saveLocationFolder, string chooseTire, string saveFileName, string extension)
+        {
+            using (StreamWriter sw = File.CreateText(saveLocationFolder + chooseTire + saveFileName + extension))
+            {
+                sw.WriteLine(HeadersLine());
+            }
+        }
         private static string HeadersLine()
         {
-            return LogSettings.Header20 +
+            if (LogSettings.TireTravelSpeedLogEnabled == true)
+            {
+                return LogSettings.Header20 +
                 LogSettings.Header0 +
                 LogSettings.Header1 +
                 LogSettings.Header2 +
@@ -2284,158 +1971,124 @@ namespace Physics_Data_Debug
                 LogSettings.Header26 +
                 LogSettings.Header27 +
                 LogSettings.Header28;
-        }
-        private static void WriteAllTiresHeadersLine()
-        {
-            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "AllTiresWreckfestDebugLog.txt"))
+            }
+            else
             {
-                sw.WriteLine(HeadersLine());
+                return "";
             }
         }
-        private static void WriteFrontTiresHeadersLine()
+        private static void WriteParametersLineEachTire(string saveLocationFolder, string chooseTire, string saveFileName, string extension)
         {
-            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "FrontTiresWreckfestDebugLog.txt"))
+            using (StreamWriter sw = File.AppendText(saveLocationFolder + chooseTire + saveFileName + extension))
             {
-                sw.WriteLine(HeadersLine());
+                sw.WriteLine(ParametersLine(chooseTire));
             }
         }
-        private static void WriteRearTiresHeadersLine()
+        private static string ParametersLine(string chooseTire)
         {
-            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "RearTiresWreckfestDebugLog.txt"))
+
+            if (chooseTire == "FrontLeft" && LogSettings.TireTravelSpeedLogEnabled == true)
             {
-                sw.WriteLine(HeadersLine());
+                return LogSettings.flParameter20 +
+                        LogSettings.flParameter0 +
+                        LogSettings.flParameter1 +
+                        LogSettings.flParameter2 +
+                        LogSettings.flParameter3 +
+                        LogSettings.flParameter4 +
+                        LogSettings.flParameter5 +
+                        LogSettings.flParameter6 +
+                        LogSettings.flParameter7 +
+                        LogSettings.flParameter7_1 +
+                        LogSettings.flParameter8 +
+                        LogSettings.flParameter9 +
+                        LogSettings.flParameter10 +
+                        LogSettings.flParameter11 +
+                        LogSettings.flParameter12 +
+                        LogSettings.flParameter13 +
+                        LogSettings.flParameter14 +
+                        LogSettings.flParameter15 +
+                        LogSettings.flParameter16 +
+                        LogSettings.flParameter17 +
+                        LogSettings.flParameter18 +
+                        LogSettings.flParameter19 +
+                        LogSettings.flParameter21 +
+                        LogSettings.flParameter22 +
+                        LogSettings.flParameter23 +
+                        LogSettings.flParameter24 +
+                        LogSettings.flParameter25 +
+                        LogSettings.flParameter26 +
+                        LogSettings.flParameter27 +
+                        LogSettings.flParameter28;
             }
-        }
-        private static void WriteFLHeadersLine()
-        {
-            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "FrontLeftWreckfestDebugLog.txt"))
+            else if(chooseTire == "FrontRight" && LogSettings.TireTravelSpeedLogEnabled == true)
             {
-                sw.WriteLine(HeadersLine());
+                return LogSettings.frParameter20 +
+                       LogSettings.frParameter0 +
+                       LogSettings.frParameter1 +
+                       LogSettings.frParameter2 +
+                       LogSettings.frParameter3 +
+                       LogSettings.frParameter4 +
+                       LogSettings.frParameter5 +
+                       LogSettings.frParameter6 +
+                       LogSettings.frParameter7 +
+                       LogSettings.frParameter7_1 +
+                       LogSettings.frParameter8 +
+                       LogSettings.frParameter9 +
+                       LogSettings.frParameter10 +
+                       LogSettings.frParameter11 +
+                       LogSettings.frParameter12 +
+                       LogSettings.frParameter13 +
+                       LogSettings.frParameter14 +
+                       LogSettings.frParameter15 +
+                       LogSettings.frParameter16 +
+                       LogSettings.frParameter17 +
+                       LogSettings.frParameter18 +
+                       LogSettings.frParameter19 +
+                       LogSettings.frParameter21 +
+                       LogSettings.frParameter22 +
+                       LogSettings.frParameter23 +
+                       LogSettings.frParameter24 +
+                       LogSettings.frParameter25 +
+                       LogSettings.frParameter26 +
+                       LogSettings.frParameter27 +
+                       LogSettings.frParameter28;
             }
-        }
-        private static void WriteFRHeadersLine()
-        {
-            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "FrontRightWreckfestDebugLog.txt"))
+            else if (chooseTire == "RearLeft" && LogSettings.TireTravelSpeedLogEnabled == true)
             {
-                sw.WriteLine(HeadersLine());
+                return LogSettings.rlParameter20 +
+                        LogSettings.rlParameter0 +
+                        LogSettings.rlParameter1 +
+                        LogSettings.rlParameter2 +
+                        LogSettings.rlParameter3 +
+                        LogSettings.rlParameter4 +
+                        LogSettings.rlParameter5 +
+                        LogSettings.rlParameter6 +
+                        LogSettings.rlParameter7 +
+                        LogSettings.rlParameter7_1 +
+                        LogSettings.rlParameter8 +
+                        LogSettings.rlParameter9 +
+                        LogSettings.rlParameter10 +
+                        LogSettings.rlParameter11 +
+                        LogSettings.rlParameter12 +
+                        LogSettings.rlParameter13 +
+                        LogSettings.rlParameter14 +
+                        LogSettings.rlParameter15 +
+                        LogSettings.rlParameter16 +
+                        LogSettings.rlParameter17 +
+                        LogSettings.rlParameter18 +
+                        LogSettings.rlParameter19 +
+                        LogSettings.rlParameter21 +
+                        LogSettings.rlParameter22 +
+                        LogSettings.rlParameter23 +
+                        LogSettings.rlParameter24 +
+                        LogSettings.rlParameter25 +
+                        LogSettings.rlParameter26 +
+                        LogSettings.rlParameter27 +
+                        LogSettings.rlParameter28;
             }
-        }
-        private static void WriteRLHeadersLine()
-        {
-            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "RearLeftWreckfestDebugLog.txt"))
+            else if (chooseTire == "RearRight" && LogSettings.TireTravelSpeedLogEnabled == true)
             {
-                sw.WriteLine(HeadersLine());
-            }
-        }
-        private static void WriteRRHeadersLine()
-        {
-            using (StreamWriter sw = File.CreateText(LogSettings.LogFileSaveLocationFolder + "RearRightWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(HeadersLine());
-            }
-        }
-        private static string FLParametersLine()
-        {
-            return LogSettings.flParameter20 +
-                    LogSettings.flParameter0 +
-                    LogSettings.flParameter1 +
-                    LogSettings.flParameter2 +
-                    LogSettings.flParameter3 +
-                    LogSettings.flParameter4 +
-                    LogSettings.flParameter5 +
-                    LogSettings.flParameter6 +
-                    LogSettings.flParameter7 +
-                    LogSettings.flParameter7_1 +
-                    LogSettings.flParameter8 +
-                    LogSettings.flParameter9 +
-                    LogSettings.flParameter10 +
-                    LogSettings.flParameter11 +
-                    LogSettings.flParameter12 +
-                    LogSettings.flParameter13 +
-                    LogSettings.flParameter14 +
-                    LogSettings.flParameter15 +
-                    LogSettings.flParameter16 +
-                    LogSettings.flParameter17 +
-                    LogSettings.flParameter18 +
-                    LogSettings.flParameter19 +
-                    LogSettings.flParameter21 +
-                    LogSettings.flParameter22 +
-                    LogSettings.flParameter23 +
-                    LogSettings.flParameter24 +
-                    LogSettings.flParameter25 +
-                    LogSettings.flParameter26 +
-                    LogSettings.flParameter27 +
-                    LogSettings.flParameter28;
-        }
-        private static string FRParametersLine()
-        {
-            return LogSettings.frParameter20 +
-                    LogSettings.frParameter0 +
-                    LogSettings.frParameter1 +
-                    LogSettings.frParameter2 +
-                    LogSettings.frParameter3 +
-                    LogSettings.frParameter4 +
-                    LogSettings.frParameter5 +
-                    LogSettings.frParameter6 +
-                    LogSettings.frParameter7 +
-                    LogSettings.frParameter7_1 +
-                    LogSettings.frParameter8 +
-                    LogSettings.frParameter9 +
-                    LogSettings.frParameter10 +
-                    LogSettings.frParameter11 +
-                    LogSettings.frParameter12 +
-                    LogSettings.frParameter13 +
-                    LogSettings.frParameter14 +
-                    LogSettings.frParameter15 +
-                    LogSettings.frParameter16 +
-                    LogSettings.frParameter17 +
-                    LogSettings.frParameter18 +
-                    LogSettings.frParameter19 +
-                    LogSettings.frParameter21 +
-                    LogSettings.frParameter22 +
-                    LogSettings.frParameter23 +
-                    LogSettings.frParameter24 +
-                    LogSettings.frParameter25 +
-                    LogSettings.frParameter26 +
-                    LogSettings.frParameter27 +
-                    LogSettings.frParameter28;
-        }
-        private static string RLParametersLine()
-        {
-            return LogSettings.rlParameter20 +
-                    LogSettings.rlParameter0 +
-                    LogSettings.rlParameter1 +
-                    LogSettings.rlParameter2 +
-                    LogSettings.rlParameter3 +
-                    LogSettings.rlParameter4 +
-                    LogSettings.rlParameter5 +
-                    LogSettings.rlParameter6 +
-                    LogSettings.rlParameter7 +
-                    LogSettings.rlParameter7_1 +
-                    LogSettings.rlParameter8 +
-                    LogSettings.rlParameter9 +
-                    LogSettings.rlParameter10 +
-                    LogSettings.rlParameter11 +
-                    LogSettings.rlParameter12 +
-                    LogSettings.rlParameter13 +
-                    LogSettings.rlParameter14 +
-                    LogSettings.rlParameter15 +
-                    LogSettings.rlParameter16 +
-                    LogSettings.rlParameter17 +
-                    LogSettings.rlParameter18 +
-                    LogSettings.rlParameter19 +
-                    LogSettings.rlParameter21 +
-                    LogSettings.rlParameter22 +
-                    LogSettings.rlParameter23 +
-                    LogSettings.rlParameter24 +
-                    LogSettings.rlParameter25 +
-                    LogSettings.rlParameter26 +
-                    LogSettings.rlParameter27 +
-                    LogSettings.rlParameter28;
-        }
-        private static string RRParametersLine()
-        {
-            return LogSettings.rrParameter20 +
+                return LogSettings.rrParameter20 +
                     LogSettings.rrParameter0 +
                     LogSettings.rrParameter1 +
                     LogSettings.rrParameter2 +
@@ -2465,138 +2118,37 @@ namespace Physics_Data_Debug
                     LogSettings.rrParameter26 +
                     LogSettings.rrParameter27 +
                     LogSettings.rrParameter28;
-        }
-        private static void WriteAllTiresParametersLine()
-        {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "AllTiresWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(FLParametersLine());
-                sw.WriteLine(FRParametersLine());
-                sw.WriteLine(RLParametersLine());
-                sw.WriteLine(RRParametersLine());
-            }
-        }
-        private static void WriteFrontTiresParametersLine()
-        {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontTiresWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(FLParametersLine());
-                sw.WriteLine(FRParametersLine());
-            }
-        }
-        private static void WriteRearTiresParametersLine()
-        {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearTiresWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(RLParametersLine());
-                sw.WriteLine(RRParametersLine());
-            }
-        }
-        private static void WriteFLParametersLine()
-        {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontLeftWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(FLParametersLine());
-            }
-        }
-        private static void WriteFRParametersLine()
-        {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "FrontRightWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(FRParametersLine());
-            }
-        }
-        private static void WriteRLParametersLine()
-        {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearLeftWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(RLParametersLine());
-            }
-        }
-        private static void WriteRRParametersLine()
-        {
-            using (StreamWriter sw = File.AppendText(LogSettings.LogFileSaveLocationFolder + "RearRightWreckfestDebugLog.txt"))
-            {
-                sw.WriteLine(RRParametersLine());
-            }
-        }
-        private static void AllTireLogFileWriter()
-        {
-            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "AllTiresWreckfestDebugLog.txt"))
-            {
-                WriteAllTiresHeadersLine();
             }
             else
             {
-                WriteAllTiresParametersLine();
+                return "";
             }
         }
-        private static void FrontTiresLogFileWriter()
+        /*private static void WriteAllTiresParametersLine(string saveLocationFolder, string chooseTireFrontLeft, string chooseTireFrontRight, string chooseTireRearLeft, string chooseTireRearRight, string saveFileName)
         {
-            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "FrontTiresWreckfestDebugLog.txt"))
+            using (StreamWriter sw = File.AppendText(saveLocationFolder + saveFileName))
             {
-                WriteFrontTiresHeadersLine();
+                sw.WriteLine(ParametersLine(chooseTireFrontLeft));
+                sw.WriteLine(ParametersLine(chooseTireFrontRight));
+                sw.WriteLine(ParametersLine(chooseTireRearLeft));
+                sw.WriteLine(ParametersLine(chooseTireRearRight));
             }
-            else
-            {
-                WriteFrontTiresParametersLine();
-            }
-        }
-        private static void RearTiresLogFileWriter()
+        }*/
+        /*private static void WriteFrontTiresParametersLine(string saveLocationFolder, string chooseTireFrontLeft, string chooseTireFrontRight, string saveFileName)
         {
-            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "RearTiresWreckfestDebugLog.txt"))
+            using (StreamWriter sw = File.AppendText(saveLocationFolder + saveFileName))
             {
-                WriteRearTiresHeadersLine();
+                sw.WriteLine(ParametersLine(chooseTireFrontLeft));
+                sw.WriteLine(ParametersLine(chooseTireFrontRight));
             }
-            else
-            {
-                WriteRearTiresParametersLine();
-            }
-        }
-        private static void FLLogFileWriter()
+        }*/
+        /*private static void WriteRearTiresParametersLine(string saveLocationFolder, string chooseTireRearLeft, string chooseTireRearRight, string saveFileName)
         {
-            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "FrontLeftWreckfestDebugLog.txt"))
+            using (StreamWriter sw = File.AppendText(saveLocationFolder + saveFileName))
             {
-                WriteFLHeadersLine();
+                sw.WriteLine(ParametersLine(chooseTireRearLeft));
+                sw.WriteLine(ParametersLine(chooseTireRearRight));
             }
-            else
-            {
-                WriteFLParametersLine();
-            }
-        }
-        private static void FRLogFileWriter()
-        {
-            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "FrontRightWreckfestDebugLog.txt"))
-            {
-                WriteFRHeadersLine();
-            }
-            else
-            {
-                WriteFRParametersLine();
-            }
-        }
-        private static void RLLogFileWriter()
-        {
-            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "RearLeftWreckfestDebugLog.txt"))
-            {
-                WriteRLHeadersLine();
-            }
-            else
-            {
-                WriteRLParametersLine();
-            }
-        }
-        private static void RRLogFileWriter()
-        {
-            if (!File.Exists(LogSettings.LogFileSaveLocationFolder + "RearRightWreckfestDebugLog.txt"))
-            {
-                WriteRRHeadersLine();
-            }
-            else
-            {
-                WriteRRParametersLine();
-            }
-        }
-
+        }*/
     }
 }

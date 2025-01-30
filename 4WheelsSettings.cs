@@ -63,7 +63,7 @@ namespace Physics_Data_Debug
         /// </summary>
         public static bool X1Defaults { get; set; } = true;
         // Angle Type
-        public static string X1DefaultType { get; set; } = LiveData.sSlipRatio;
+        public static string X1DefaultType { get; set; } = LogSettings.sSlipRatio;
         // Font
         public static int X1DefaultFontIndex { get; set; } = 153;//"Microsoft Sans Serif";
         public static FontFamily X1DefaultFontFamily { get; set; } = FontFamily.Families[X1DefaultFontIndex];
@@ -93,7 +93,7 @@ namespace Physics_Data_Debug
         /// </summary>
         // Marker stuff
         // Angle Type
-        public static string Y1DefaultType { get; set; } = LiveData.sLongitudinalFriction;
+        public static string Y1DefaultType { get; set; } = LogSettings.sLongitudinalFriction;
         public static MarkerStyle Y1DefaultMarkerStyle { get; set; } = MarkerStyle.Circle;
         public static int Y1DefaultMarkerSize { get; set; } = 3;
         public static Color Y1DefaultMarkerColor { get; set; } = Color.Blue;
@@ -125,7 +125,7 @@ namespace Physics_Data_Debug
 
         //Z
         public static bool Z1Defaults { get; set; } = true;
-        public static string Z1DefaultType { get; set; } = LiveData.sVerticalLoad;
+        public static string Z1DefaultType { get; set; } = LogSettings.sVerticalLoad;
         public static double Z1DefaultMax { get; set; } = 10000;//
         public static double Z1DefaultMin { get; set; } = 0;//
         ///////////////////////////////////////////////////////////////////////////////////
