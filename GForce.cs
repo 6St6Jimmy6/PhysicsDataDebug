@@ -10,30 +10,16 @@ namespace Physics_Data_Debug
 {
     public class GForce
     {
-
-        private readonly static int alpha = 255;
-        private readonly static int divider = 2;
         private readonly static int historyalpha = 255;
         private readonly static int historycolordivider = 2;
         private readonly static int steps = 10;
-
 
         private static double[] X1ValuesPolarChartArray = new double[GForceSettings.HistoryAmountPoints];
         private static double[] Y1ValuesPolarChartArray = new double[GForceSettings.HistoryAmountPoints];
         private static double[] X1ValuesChart2Array = new double[2];
         private static double[] Y1ValuesChart2Array = new double[2];
 
-
         private static int u = 2;
-
-        private void HistoryPointsColorFromMarkerColor() // Not used
-        {
-            int a = GForceSettings.MarkerColor.A;
-            int r = GForceSettings.MarkerColor.R;
-            int g = GForceSettings.MarkerColor.G;
-            int B = GForceSettings.MarkerColor.B;
-
-        }
 
         public static void SetArrays()
         {
@@ -43,12 +29,10 @@ namespace Physics_Data_Debug
             Y1ValuesChart2Array = new double[2];
 
         }
-
         public static void ClearSeriesHistory(Chart chartName)
         {
             while (chartName.Series.Count > 1) { chartName.Series.RemoveAt(0); }
         }
-
         public static void SetPolarChart(Chart chartName)
         {
             double interval = GForceSettings.Y1Max / steps;
@@ -113,13 +97,10 @@ namespace Physics_Data_Debug
             chartName.Series["Series1"].SmartLabelStyle.Enabled = false;
             chartName.Series["Series1"].LabelBackColor = chartName.ChartAreas["ChartArea1"].BackColor;
         }
-
         public static void PlotPolarChart(Chart chartName)
         {
             chartName.Series["Series1"].Points.Clear();
 
-            //X1CheckIfCBSelectionsTextIsHeaderAndChooseItsValues();
-            //Y1CheckIfCBSelectionsTextIsHeaderAndChooseItsValues()
             if (GForceSettings.X1AngleType == "Degrees")
             {
                 X1ValuesPolarChartArray[X1ValuesPolarChartArray.Length - 1] = LiveData.XZGAngleDeg;
@@ -130,165 +111,134 @@ namespace Physics_Data_Debug
             }
             Y1ValuesPolarChartArray[Y1ValuesPolarChartArray.Length - 1] = Math.Round(LiveData.XZG, 2);
 
-            // Test for total friction values
-            /*
-            X1ValuesChart1Array[X1ValuesChart1Array.Length - 1] = LiveData.RL_TotalFrictionAngle;
-            Y1ValuesChart1Array[Y1ValuesChart1Array.Length - 1] = Math.Round(LiveData.RL_TotalFriction, 2);
-            */
-
             Array.Copy(X1ValuesPolarChartArray, 1, X1ValuesPolarChartArray, 0, X1ValuesPolarChartArray.Length - 1);
             Array.Copy(Y1ValuesPolarChartArray, 1, Y1ValuesPolarChartArray, 0, Y1ValuesPolarChartArray.Length - 1);
 
-            if (GForceSettings.Scheme == "Green Red")
-            {
-                for (int i = 0; i < X1ValuesPolarChartArray.Length - 1; ++i)
-                {
-                    double minus = GForceSettings.Y1Max / steps;
-                    double ten = GForceSettings.Y1Max;
-                    double nine = ten - minus;
-                    double eight = nine - minus;
-                    double seven = eight - minus;
-                    double six = seven - minus;
-                    double five = six - minus;
-                    double four = five - minus;
-                    double three = four - minus;
-                    double two = three - minus;
-                    double one = two - minus;
-                    double zero = one - minus;
-                    chartName.Series["Series1"].Points.AddXY(X1ValuesPolarChartArray[i], Y1ValuesPolarChartArray[i]);
-                    if (Y1ValuesPolarChartArray[i] >= ten)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < ten && Y1ValuesPolarChartArray[i] >= nine)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < nine && Y1ValuesPolarChartArray[i] >= eight)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < eight && Y1ValuesPolarChartArray[i] >= seven)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < seven && Y1ValuesPolarChartArray[i] >= six)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < six && Y1ValuesPolarChartArray[i] >= five)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < five && Y1ValuesPolarChartArray[i] >= four)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < four && Y1ValuesPolarChartArray[i] >= three)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < three && Y1ValuesPolarChartArray[i] >= two)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < two && Y1ValuesPolarChartArray[i] >= one)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < one && Y1ValuesPolarChartArray[i] >= zero)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < X1ValuesPolarChartArray.Length - 1; ++i)
-                {
-                    double minus = GForceSettings.Y1Max / steps;
-                    double ten = GForceSettings.Y1Max;
-                    double nine = ten - minus;
-                    double eight = nine - minus;
-                    double seven = eight - minus;
-                    double six = seven - minus;
-                    double five = six - minus;
-                    double four = five - minus;
-                    double three = four - minus;
-                    double two = three - minus;
-                    double one = two - minus;
-                    double zero = one - minus;
-                    chartName.Series["Series1"].Points.AddXY(X1ValuesPolarChartArray[i], Y1ValuesPolarChartArray[i]);
-                    if (Y1ValuesPolarChartArray[i] >= ten)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < ten && Y1ValuesPolarChartArray[i] >= nine)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < nine && Y1ValuesPolarChartArray[i] >= eight)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < eight && Y1ValuesPolarChartArray[i] >= seven)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < seven && Y1ValuesPolarChartArray[i] >= six)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < six && Y1ValuesPolarChartArray[i] >= five)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < five && Y1ValuesPolarChartArray[i] >= four)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < four && Y1ValuesPolarChartArray[i] >= three)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < three && Y1ValuesPolarChartArray[i] >= two)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < two && Y1ValuesPolarChartArray[i] >= one)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                    }
-                    else if (Y1ValuesPolarChartArray[i] < one && Y1ValuesPolarChartArray[i] >= zero)
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                    }
-                    else
-                    {
-                        chartName.Series["Series1"].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                    }
-                }
-            }
-
+            ForLoopAxisArrays(chartName, 1, X1ValuesPolarChartArray, Y1ValuesPolarChartArray);
             chartName.Series["Series1"].Points.Last().MarkerSize = 10;
             chartName.Series["Series1"].Points.Last().MarkerColor = GForceSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
             chartName.Series["Series1"].Points.Last().IsValueShownAsLabel = true;
-            /*
-            X1ValuesChart1Array[0] = 0;
-            X1ValuesChart1Array[1] = 45;
-            List<double> X1ValuesChart1List = new List<double>(X1ValuesChart1Array);
-            //X1ValuesChart1List.AddRange(X1ValuesChart1Array);
-            Y1ValuesChart1Array[0] = 1.5;
-            Y1ValuesChart1Array[1] = 3;
-            List<double> Y1ValuesChart1List = new List<double>(Y1ValuesChart1Array);
-            //Y1ValuesChart1List.AddRange(Y1ValuesChart1Array);
-            chart1.Series["Series1"].Points.DataBindXY(X1ValuesChart1List, Y1ValuesChart1List);*/
         }
+        private static void ForLoopAxisArrays(Chart chartName, int u, double[] arrayX, double[] arrayY)
+        {
+            for (int i = 0; i < arrayX.Length - 1; ++i)
+            {
+                chartName.Series["Series" + u.ToString()].Points.AddXY(arrayX[i], arrayY[i]);
+                ColorGradient(chartName, Math.Abs(arrayY[i]), i, u);
+            }
+        }
+        private static void ColorGradient(Chart chartName, double array, int i, int u)
+        {
+            double minus = (GForceSettings.Y1Max - GForceSettings.Y1Min) / steps;
+            double ten = GForceSettings.Y1Max;
+            double nine = ten - minus;
+            double eight = nine - minus;
+            double seven = eight - minus;
+            double six = seven - minus;
+            double five = six - minus;
+            double four = five - minus;
+            double three = four - minus;
+            double two = three - minus;
+            double one = two - minus;
+            double zero = one - minus;
 
+            Color color10;
+            Color color9;
+            Color color8;
+            Color color7;
+            Color color6;
+            Color color5;
+            Color color4;
+            Color color3;
+            Color color2;
+            Color color1;
+
+            if (GForceSettings.Scheme == "Colorblind")
+            {
+                // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
+                //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);// color5
+                color10 = Color.FromArgb(historyalpha, 219, 109, 0);// color 13
+                color9 = Color.FromArgb(historyalpha, 36, 255, 36);// color 14
+                color8 = Color.FromArgb(historyalpha, 255, 255, 109);// color 15
+                color7 = Color.FromArgb(historyalpha, 109, 182, 255);// color 9
+                color6 = Color.FromArgb(historyalpha, 182, 109, 255);// color 8
+                color5 = Color.FromArgb(historyalpha, 0, 109, 219);// color 7
+                color4 = Color.FromArgb(historyalpha, 73, 0, 146);// color 6
+                color3 = Color.FromArgb(historyalpha, 255, 109, 182);// color 4
+                color2 = Color.FromArgb(historyalpha, 0, 146, 146);// color 3
+                color1 = Color.FromArgb(historyalpha, 0, 73, 73);// color 2
+            }
+            else if (GForceSettings.Scheme == "Green Red")
+            {
+                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
+                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
+                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+            }
+            else
+            {
+                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
+                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
+                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+            }
+            if (array >= nine)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color10;
+            }
+            else if (array < nine && array >= eight)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color9;
+            }
+            else if (array < eight && array >= seven)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color8;
+            }
+            else if (array < seven && array >= six)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color7;
+            }
+            else if (array < six && array >= five)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color6;
+            }
+            else if (array < five && array >= four)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color5;
+            }
+            else if (array < four && array >= three)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color4;
+            }
+            else if (array < three && array >= two)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color3;
+            }
+            else if (array < two && array >= one)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color2;
+            }
+            else if (array < one && array >= zero)
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color1;
+            }
+            else
+            {
+                chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = color1;
+            }
+        }
         public static void InfiniteHistoryPolarChart(Chart chartName)
         {
             if (GForceSettings.InfiniteHistoryEnabled == true)
@@ -302,149 +252,125 @@ namespace Physics_Data_Debug
                 chartName.Series["Series" + u.ToString()].IsValueShownAsLabel = false;
                 chartName.Series["Series" + u.ToString()].SmartLabelStyle.Enabled = false;
                 chartName.Series["Series" + u.ToString()].LabelBackColor = Color.Black;
-
-                if (GForceSettings.Scheme == "Green Red")
-                {
-                    for (int i = 0; i < X1ValuesPolarChartArray.Length - 1; ++i)
-                    {
-                        double minus = GForceSettings.Y1Max / steps;
-                        double ten = GForceSettings.Y1Max;
-                        double nine = ten - minus;
-                        double eight = nine - minus;
-                        double seven = eight - minus;
-                        double six = seven - minus;
-                        double five = six - minus;
-                        double four = five - minus;
-                        double three = four - minus;
-                        double two = three - minus;
-                        double one = two - minus;
-                        double zero = one - minus;
-
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(X1ValuesPolarChartArray[i], Y1ValuesPolarChartArray[i]);
-                        if (Y1ValuesPolarChartArray[i] >= ten)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < ten && Y1ValuesPolarChartArray[i] >= nine)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < nine && Y1ValuesPolarChartArray[i] >= eight)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < eight && Y1ValuesPolarChartArray[i] >= seven)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < seven && Y1ValuesPolarChartArray[i] >= six)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < six && Y1ValuesPolarChartArray[i] >= five)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < five && Y1ValuesPolarChartArray[i] >= four)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < four && Y1ValuesPolarChartArray[i] >= three)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < three && Y1ValuesPolarChartArray[i] >= two)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < two && Y1ValuesPolarChartArray[i] >= one)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < one && Y1ValuesPolarChartArray[i] >= zero)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                        }
-                    }
-                    u++;
-                }
-                else
-                {
-                    for (int i = 0; i < X1ValuesPolarChartArray.Length - 1; ++i)
-                    {
-                        double minus = GForceSettings.Y1Max / steps;
-                        double ten = GForceSettings.Y1Max;
-                        double nine = ten - minus;
-                        double eight = nine - minus;
-                        double seven = eight - minus;
-                        double six = seven - minus;
-                        double five = six - minus;
-                        double four = five - minus;
-                        double three = four - minus;
-                        double two = three - minus;
-                        double one = two - minus;
-                        double zero = one - minus;
-
-                        chartName.Series["Series" + u.ToString()].Points.AddXY(X1ValuesPolarChartArray[i], Y1ValuesPolarChartArray[i]);
-                        if (Y1ValuesPolarChartArray[i] >= ten)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < ten && Y1ValuesPolarChartArray[i] >= nine)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < nine && Y1ValuesPolarChartArray[i] >= eight)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < eight && Y1ValuesPolarChartArray[i] >= seven)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < seven && Y1ValuesPolarChartArray[i] >= six)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < six && Y1ValuesPolarChartArray[i] >= five)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < five && Y1ValuesPolarChartArray[i] >= four)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < four && Y1ValuesPolarChartArray[i] >= three)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < three && Y1ValuesPolarChartArray[i] >= two)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < two && Y1ValuesPolarChartArray[i] >= one)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                        }
-                        else if (Y1ValuesPolarChartArray[i] < one && Y1ValuesPolarChartArray[i] >= zero)
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                        }
-                        else
-                        {
-                            chartName.Series["Series" + u.ToString()].Points[i].MarkerColor = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                        }
-                    }
-                    u++;
-                }
-
+                ForLoopAxisArrays(chartName, u, X1ValuesPolarChartArray, Y1ValuesPolarChartArray);
+                u++;
             }
         }
+        private static void UpDownPolarChartGradient(Chart chartName, double interval)
+        {
+            Color color10;
+            Color color9;
+            Color color8;
+            Color color7;
+            Color color6;
+            Color color5;
+            Color color4;
+            Color color3;
+            Color color2;
+            Color color1;
 
+            if (GForceSettings.Scheme == "Colorblind")
+            {
+                // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
+                //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);// color5
+                color10 = Color.FromArgb(historyalpha, 219, 109, 0);// color 13
+                color9 = Color.FromArgb(historyalpha, 36, 255, 36);// color 14
+                color8 = Color.FromArgb(historyalpha, 255, 255, 109);// color 15
+                color7 = Color.FromArgb(historyalpha, 109, 182, 255);// color 9
+                color6 = Color.FromArgb(historyalpha, 182, 109, 255);// color 8
+                color5 = Color.FromArgb(historyalpha, 0, 109, 219);// color 7
+                color4 = Color.FromArgb(historyalpha, 73, 0, 146);// color 6
+                color3 = Color.FromArgb(historyalpha, 255, 109, 182);// color 4
+                color2 = Color.FromArgb(historyalpha, 0, 146, 146);// color 3
+                color1 = Color.FromArgb(historyalpha, 0, 73, 73);// color 2
+            }
+            else if (GForceSettings.Scheme == "Green Red")
+            {
+                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
+                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
+                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+            }
+            else
+            {
+                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
+                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
+                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
+                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+            }
+            for (double i = -GForceSettings.Y1Max * steps; i <= GForceSettings.Y1Max * steps; i += GForceSettings.Y1Max)
+            {
+
+                StripLine sl = new StripLine();
+                if (Math.Abs(i) == GForceSettings.Y1Max * 10)
+                {
+                    sl.BackColor = color10;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 9)
+                {
+                    sl.BackColor = color9;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 8)
+                {
+                    sl.BackColor = color8;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 7)
+                {
+                    sl.BackColor = color7;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 6)
+                {
+                    sl.BackColor = color6;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 5)
+                {
+                    sl.BackColor = color5;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 4)
+                {
+                    sl.BackColor = color4;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 3)
+                {
+                    sl.BackColor = color3;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 2)
+                {
+                    sl.BackColor = color2;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 1)
+                {
+                    sl.BackColor = color1;
+                }
+                if (Math.Abs(i) == GForceSettings.Y1Max * 0)
+                {
+
+                }
+                if (i < 0)
+                {
+                    sl.StripWidth = interval;
+                    sl.IntervalOffset = ((double)i) / steps;
+                }
+                else if (i > 0)
+                {
+                    sl.StripWidth = interval;
+                    sl.IntervalOffset = ((double)i) / steps - interval;
+                }
+                chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
+            }
+        }
         public static void SetUpDownChart(Chart chartName)
         {
             double interval = GForceSettings.Y1Max / steps;
@@ -458,133 +384,7 @@ namespace Physics_Data_Debug
             chartName.Series["Series1"].LabelBackColor = Color.Black;
 
             chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Clear();
-            if (GForceSettings.Scheme == "Green Red")
-            {
-                for (double i = -GForceSettings.Y1Max * steps; i <= GForceSettings.Y1Max * steps; i += GForceSettings.Y1Max)
-                {
-
-                    StripLine sl = new StripLine();
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 10)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 9)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 8)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 7)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 64 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 6)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 128 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 5)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 192 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 4)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 192 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 3)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 192 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 2)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 64 / divider, 192 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 1)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 0 / divider, 192 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 0)
-                    {
-
-                    }
-                    if (i < 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps;
-                    }
-                    else if (i > 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps - interval;
-                    }
-                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
-                }
-            }
-            else
-            {
-                for (double i = -GForceSettings.Y1Max * steps; i <= GForceSettings.Y1Max * steps; i += GForceSettings.Y1Max)
-                {
-
-                    StripLine sl = new StripLine();
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 10)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 9)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 8)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 0 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 7)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 64 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 6)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 128 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 5)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 192 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 4)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 192 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 3)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 192 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 2)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 64 / divider, 0 / divider, 192 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 1)
-                    {
-                        sl.BackColor = Color.FromArgb(alpha, 0 / divider, 0 / divider, 192 / divider);
-                    }
-                    if (Math.Abs(i) == GForceSettings.Y1Max * 0)
-                    {
-
-                    }
-                    if (i < 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps;
-                    }
-                    else if (i > 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps - interval;
-                    }
-                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
-                }
-            }
-
+            UpDownPolarChartGradient(chartName, interval);
         }
         public static void PlotUpDownChart(Chart chartName)
         {
@@ -593,11 +393,9 @@ namespace Physics_Data_Debug
             X1ValuesChart2Array[0] = 0.3;
             X1ValuesChart2Array[1] = 0.7;
             List<double> X1ValuesChart2List = new List<double>(X1ValuesChart2Array);
-            //X1ValuesChart1List.AddRange(X1ValuesChart1Array);
             Y1ValuesChart2Array[0] = Math.Round(LiveData.YG, 2);
             Y1ValuesChart2Array[1] = Y1ValuesChart2Array[0];
             List<double> Y1ValuesChart2List = new List<double>(Y1ValuesChart2Array);
-            //Y1ValuesChart1List.AddRange(Y1ValuesChart1Array);
             chartName.Series["Series1"].Points.DataBindXY(X1ValuesChart2List, Y1ValuesChart2List);
             chartName.Series["Series1"].Points.Last().IsValueShownAsLabel = true;
         }

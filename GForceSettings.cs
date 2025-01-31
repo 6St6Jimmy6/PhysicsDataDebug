@@ -47,7 +47,7 @@ namespace Physics_Data_Debug
         public static int DefaultHistoryAmountPoints { get; set; } = 100;
         public static bool DefaultInfiniteHistoryEnabled { get; set; } = false;
         public static int DefaultMarkerSize { get; set; } = 5;
-        public static string DefaultScheme { get; set; } = "Colorblind";
+        public static string DefaultScheme { get; set; } = "Green Red";
         public static Color DefaultMarkerColor { get; set; } = Color.Red;
 
 
