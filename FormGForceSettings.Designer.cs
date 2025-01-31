@@ -753,7 +753,7 @@ namespace Physics_Data_Debug
             this.SchemeComboBox.Name = "SchemeComboBox";
             this.SchemeComboBox.Size = new System.Drawing.Size(129, 21);
             this.SchemeComboBox.TabIndex = 439;
-            this.SchemeComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.GreenRedSchemeComboBox_DrawItem);
+            this.SchemeComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.SchemeComboBox_DrawItem);
             this.SchemeComboBox.SelectedIndexChanged += new System.EventHandler(this.SchemeComboBox_SelectedIndexChanged);
             this.SchemeComboBox.SelectionChangeCommitted += new System.EventHandler(this.SchemeComboBox_SelectionChangeCommitted);
             // 
