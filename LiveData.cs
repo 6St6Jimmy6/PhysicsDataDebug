@@ -52,7 +52,7 @@ namespace Physics_Data_Debug
         public static double dRadToDeg { get; } = 180 / Math.PI;
         public static float fKilometersPerHourToMetersPerSec { get; } = 1 / 3.6f;
         public static double dKilometersPerHourToMetersPerSec { get; } = 1 / 3.6d;
-        public static int tickInterval { get; set; } = 50;
+        public static int tickInterval = 50;
 
         #region Data
         #region Other Data
