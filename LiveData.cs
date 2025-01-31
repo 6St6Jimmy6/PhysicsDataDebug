@@ -835,10 +835,6 @@ namespace Physics_Data_Debug
             engineRPM = GetFloatData(memoryHelper, baseAddr, engineRPMOffests);
             engineRPMAxle = GetFloatData(memoryHelper, baseAddr, engineRPMAxleOffests);
             engineTorque = GetFloatData(memoryHelper, baseAddr, engineTorqueOffsets);
-            //speed = Helper.ReadMemory<float>(speedTargetAddr);
-            //engineRPM = Helper.ReadMemory<float>(engineRPMTargetAddr);
-            //engineRPMAxle = Helper.ReadMemory<float>(engineRPMAxleTargetAddr);
-            //engineTorque = Helper.ReadMemory<float>(engineTorqueTargetAddr);
         }
         private static void GetLocationHeadingData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
@@ -979,51 +975,6 @@ namespace Physics_Data_Debug
             //    FL_LateralSlipSpeed = 0;
             //    FL_LongitudinalSlipSpeed = 0;
             //}
-            /*FL_TreadTemperature = Helper.ReadMemory<float>(FL_TreadTemperatureTargetAddr);
-            FL_InnerTemperature = Helper.ReadMemory<float>(FL_InnerTemperatureTargetAddr);
-            FL_AngularVelocity = Helper.ReadMemory<float>(FL_AngularVelocity_TargetAddr);
-            FL_VerticalDeflection = Helper.ReadMemory<float>(FL_Deflection_TargetAddr);
-            FL_LoadedRadius = Helper.ReadMemory<float>(FL_LoadedRadius_TargetAddr);
-            FL_EffectiveRadius = Helper.ReadMemory<float>(FL_EffectiveRadius_TargetAddr);
-            FL_CurrentContactBrakeTorque = Helper.ReadMemory<float>(FL_CurrentContactBrakeTorque_TargetAddr);
-            FL_CurrentContactBrakeTorqueMax = Helper.ReadMemory<float>(FL_CurrentContactBrakeTorqueMax_TargetAddr);
-            FL_VerticalLoad = Helper.ReadMemory<float>(FL_VerticalLoad_TargetAddr);
-            FL_X = Helper.ReadMemory<float>(FL_X_TargetAddr);
-            FL_Y = Helper.ReadMemory<float>(FL_Y_TargetAddr);
-            FL_Z = Helper.ReadMemory<float>(FL_Z_TargetAddr);
-            FL_LateralLoad = Helper.ReadMemory<float>(FL_LateralLoad_TargetAddr);
-            FL_LongitudinalLoad = Helper.ReadMemory<float>(FL_LongitudinalLoad_TargetAddr);
-            FL_SlipAngleRad = Helper.ReadMemory<float>(FL_SlipAngleRad_TargetAddr);
-            FL_SlipRatio = Helper.ReadMemory<float>(FL_SlipRatio_TargetAddr);
-            FL_ContactLength = Helper.ReadMemory<float>(FL_ContactLength_TargetAddr);
-            FL_TravelSpeed = Helper.ReadMemory<float>(FL_TravelSpeed_TargetAddr);
-            FL_CamberAngleRad = Helper.ReadMemory<float>(FL_CamberAngleRad_TargetAddr);
-            FL_SteerAngleRad = Helper.ReadMemory<float>(FL_TireSteerAngleRad_TargetAddr);
-            FL_SlipAngleDeg = FL_SlipAngleRad * fRadToDeg;
-            FL_CamberAngleDeg = FL_CamberAngleRad * fRadToDeg;
-            FL_SteerAngleDeg = FL_SteerAngleRad * fRadToDeg;
-            FL_MomentOfInertia = Helper.ReadMemory<float>(FL_MomentOfInertia_TargetAddr);
-            FL_TireMass = Helper.ReadMemory<float>(FL_TireMass_TargetAddr);
-            FL_TireRadius = Helper.ReadMemory<float>(FL_TireRadius_TargetAddr);
-            FL_TireWidth = Helper.ReadMemory<float>(FL_TireWidth_TargetAddr);
-            FL_TireSpringRate = Helper.ReadMemory<float>(FL_TireSpringRate_TargetAddr);
-            FL_TireDamperRate = Helper.ReadMemory<float>(FL_TireDamperRate_TargetAddr);
-            FL_TireMaxDeflection = Helper.ReadMemory<float>(FL_TireMaxDeflection_TargetAddr);
-            FL_ThermalAirTransfer = Helper.ReadMemory<float>(FL_ThermalAirTransfer_TargetAddr);
-            FL_ThermalInnerTransfer = Helper.ReadMemory<float>(FL_ThermalInnerTransfer_TargetAddr);
- 
-            FL_SuspensionLength = Helper.ReadMemory<float>(FL_SuspensionLenght_TargetAddr);
-            FL_SuspensionVelocity = Helper.ReadMemory<float>(FL_SuspensionVelocity_TargetAddr);
-            if (FL_VerticalLoad == 0)
-            {
-                FL_LateralSlipSpeed = 0;//
-                FL_LongitudinalSlipSpeed = 0;//
-            }
-            else
-            {
-                FL_LateralSlipSpeed = Helper.ReadMemory<float>(FL_LateralSlipSpeed_TargetAddr);
-                FL_LongitudinalSlipSpeed = Helper.ReadMemory<float>(FL_LongitudinalSlipSpeed_TargetAddr);
-            }*/
         }
         private static void GetFRData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
@@ -1068,38 +1019,6 @@ namespace Physics_Data_Debug
             //    FR_LateralSlipSpeed = 0;
             //    FR_LongitudinalSlipSpeed = 0;
             //}
-            /*FR_TreadTemperature = Helper.ReadMemory<float>(FR_TreadTemperatureTargetAddr);
-            FR_InnerTemperature = Helper.ReadMemory<float>(FR_InnerTemperatureTargetAddr);
-            FR_AngularVelocity = Helper.ReadMemory<float>(FR_AngularVelocity_TargetAddr);
-            FR_VerticalDeflection = Helper.ReadMemory<float>(FR_Deflection_TargetAddr);
-            FR_LoadedRadius = Helper.ReadMemory<float>(FR_LoadedRadius_TargetAddr);
-            FR_EffectiveRadius = Helper.ReadMemory<float>(FR_EffectiveRadius_TargetAddr);
-            FR_CurrentContactBrakeTorque = Helper.ReadMemory<float>(FR_CurrentContactBrakeTorque_TargetAddr);
-            FR_CurrentContactBrakeTorqueMax = Helper.ReadMemory<float>(FR_CurrentContactBrakeTorqueMax_TargetAddr);
-            FR_VerticalLoad = Helper.ReadMemory<float>(FR_VerticalLoad_TargetAddr);
-            FR_X = Helper.ReadMemory<float>(FR_X_TargetAddr);
-            FR_Y = Helper.ReadMemory<float>(FR_Y_TargetAddr);
-            FR_Z = Helper.ReadMemory<float>(FR_Z_TargetAddr);
-            FR_LateralLoad = Helper.ReadMemory<float>(FR_LateralLoad_TargetAddr);
-            FR_LongitudinalLoad = Helper.ReadMemory<float>(FR_LongitudinalLoad_TargetAddr);
-            FR_SlipAngleRad = Helper.ReadMemory<float>(FR_SlipAngleRad_TargetAddr);
-            FR_SlipRatio = Helper.ReadMemory<float>(FR_SlipRatio_TargetAddr);
-            FR_ContactLength = Helper.ReadMemory<float>(FR_ContactLength_TargetAddr);
-            FR_TravelSpeed = Helper.ReadMemory<float>(FR_TravelSpeed_TargetAddr);
-            FR_MomentOfInertia = Helper.ReadMemory<float>(FR_MomentOfInertia_TargetAddr);
-            FR_CamberAngleRad = Helper.ReadMemory<float>(FR_CamberAngleRad_TargetAddr);
-            FR_SteerAngleRad = Helper.ReadMemory<float>(FR_TireSteerAngleRad_TargetAddr);
-            FR_TireMass = Helper.ReadMemory<float>(FR_TireMass_TargetAddr);
-            FR_TireRadius = Helper.ReadMemory<float>(FR_TireRadius_TargetAddr);
-            FR_TireWidth = Helper.ReadMemory<float>(FR_TireWidth_TargetAddr);
-            FR_TireSpringRate = Helper.ReadMemory<float>(FR_TireSpringRate_TargetAddr);
-            FR_TireDamperRate = Helper.ReadMemory<float>(FR_TireDamperRate_TargetAddr);
-            FR_TireMaxDeflection = Helper.ReadMemory<float>(FR_TireMaxDeflection_TargetAddr);
-            FR_ThermalAirTransfer = Helper.ReadMemory<float>(FR_ThermalAirTransfer_TargetAddr);
-            FR_ThermalInnerTransfer = Helper.ReadMemory<float>(FR_ThermalInnerTransfer_TargetAddr);
- 
-            FR_SuspensionLength = Helper.ReadMemory<float>(FR_SuspensionLenght_TargetAddr);
-            FR_SuspensionVelocity = Helper.ReadMemory<float>(FR_SuspensionVelocity_TargetAddr);*/
         }
         private static void GetRLData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
@@ -1144,38 +1063,6 @@ namespace Physics_Data_Debug
             //    FL_LateralSlipSpeed = 0;
             //    FL_LongitudinalSlipSpeed = 0;
             //}
-            /*RL_TreadTemperature = Helper.ReadMemory<float>(RL_TreadTemperatureTargetAddr);
-            RL_InnerTemperature = Helper.ReadMemory<float>(RL_InnerTemperatureTargetAddr);
-            RL_AngularVelocity = Helper.ReadMemory<float>(RL_AngularVelocity_TargetAddr);
-            RL_VerticalDeflection = Helper.ReadMemory<float>(RL_Deflection_TargetAddr);
-            RL_LoadedRadius = Helper.ReadMemory<float>(RL_LoadedRadius_TargetAddr);
-            RL_EffectiveRadius = Helper.ReadMemory<float>(RL_EffectiveRadius_TargetAddr);
-            RL_CurrentContactBrakeTorque = Helper.ReadMemory<float>(RL_CurrentContactBrakeTorque_TargetAddr);
-            RL_CurrentContactBrakeTorqueMax = Helper.ReadMemory<float>(RL_CurrentContactBrakeTorqueMax_TargetAddr);
-            RL_VerticalLoad = Helper.ReadMemory<float>(RL_VerticalLoad_TargetAddr);
-            RL_X = Helper.ReadMemory<float>(RL_X_TargetAddr);
-            RL_Y = Helper.ReadMemory<float>(RL_Y_TargetAddr);
-            RL_Z = Helper.ReadMemory<float>(RL_Z_TargetAddr);
-            RL_LateralLoad = Helper.ReadMemory<float>(RL_LateralLoad_TargetAddr);
-            RL_LongitudinalLoad = Helper.ReadMemory<float>(RL_LongitudinalLoad_TargetAddr);
-            RL_SlipAngleRad = Helper.ReadMemory<float>(RL_SlipAngleRad_TargetAddr);
-            RL_SlipRatio = Helper.ReadMemory<float>(RL_SlipRatio_TargetAddr);
-            RL_ContactLength = Helper.ReadMemory<float>(RL_ContactLength_TargetAddr);
-            RL_TravelSpeed = Helper.ReadMemory<float>(RL_TravelSpeed_TargetAddr);
-            RL_MomentOfInertia = Helper.ReadMemory<float>(RL_MomentOfInertia_TargetAddr);
-            RL_CamberAngleRad = Helper.ReadMemory<float>(RL_CamberAngleRad_TargetAddr);
-            RL_SteerAngleRad = Helper.ReadMemory<float>(RL_TireSteerAngleRad_TargetAddr);
-            RL_TireMass = Helper.ReadMemory<float>(RL_TireMass_TargetAddr);
-            RL_TireRadius = Helper.ReadMemory<float>(RL_TireRadius_TargetAddr);
-            RL_TireWidth = Helper.ReadMemory<float>(RL_TireWidth_TargetAddr);
-            RL_TireSpringRate = Helper.ReadMemory<float>(RL_TireSpringRate_TargetAddr);
-            RL_TireDamperRate = Helper.ReadMemory<float>(RL_TireDamperRate_TargetAddr);
-            RL_TireMaxDeflection = Helper.ReadMemory<float>(RL_TireMaxDeflection_TargetAddr);
-            RL_ThermalAirTransfer = Helper.ReadMemory<float>(RL_ThermalAirTransfer_TargetAddr);
-            RL_ThermalInnerTransfer = Helper.ReadMemory<float>(RL_ThermalInnerTransfer_TargetAddr);
- 
-            RL_SuspensionLength = Helper.ReadMemory<float>(RL_SuspensionLenght_TargetAddr);
-            RL_SuspensionVelocity = Helper.ReadMemory<float>(RL_SuspensionVelocity_TargetAddr);*/
         }
         private static void GetRRData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
@@ -1220,39 +1107,6 @@ namespace Physics_Data_Debug
             //    FL_LateralSlipSpeed = 0;
             //    FL_LongitudinalSlipSpeed = 0;
             //}
-            /*RR_TreadTemperature = Helper.ReadMemory<float>(RR_TreadTemperatureTargetAddr);
-            RR_InnerTemperature = Helper.ReadMemory<float>(RR_InnerTemperatureTargetAddr);
-            RR_AngularVelocity = Helper.ReadMemory<float>(RR_AngularVelocity_TargetAddr);
-            RR_VerticalDeflection = Helper.ReadMemory<float>(RR_Deflection_TargetAddr);
-            RR_LoadedRadius = Helper.ReadMemory<float>(RR_LoadedRadius_TargetAddr);
-            RR_EffectiveRadius = Helper.ReadMemory<float>(RR_EffectiveRadius_TargetAddr);
-            RR_CurrentContactBrakeTorque = Helper.ReadMemory<float>(RR_CurrentContactBrakeTorque_TargetAddr);
-            RR_CurrentContactBrakeTorqueMax = Helper.ReadMemory<float>(RR_CurrentContactBrakeTorqueMax_TargetAddr);
-            RR_VerticalLoad = Helper.ReadMemory<float>(RR_VerticalLoad_TargetAddr);
-            RR_X = Helper.ReadMemory<float>(RR_X_TargetAddr);
-            RR_Y = Helper.ReadMemory<float>(RR_Y_TargetAddr);
-            RR_Z = Helper.ReadMemory<float>(RR_Z_TargetAddr);
-            RR_LateralLoad = Helper.ReadMemory<float>(RR_LateralLoad_TargetAddr);
-            RR_LongitudinalLoad = Helper.ReadMemory<float>(RR_LongitudinalLoad_TargetAddr);
-            RR_SlipAngleRad = Helper.ReadMemory<float>(RR_SlipAngleRad_TargetAddr);
-            RR_SlipRatio = Helper.ReadMemory<float>(RR_SlipRatio_TargetAddr);
-            RR_ContactLength = Helper.ReadMemory<float>(RR_ContactLength_TargetAddr);
-            RR_TravelSpeed = Helper.ReadMemory<float>(RR_TravelSpeed_TargetAddr);
-            RR_LateralFriction = RR_LateralLoad / RR_VerticalLoad;
-            RR_MomentOfInertia = Helper.ReadMemory<float>(RR_MomentOfInertia_TargetAddr);
-            RR_CamberAngleRad = Helper.ReadMemory<float>(RR_CamberAngleRad_TargetAddr);
-            RR_SteerAngleRad = Helper.ReadMemory<float>(RR_TireSteerAngleRad_TargetAddr);
-            RR_TireMass = Helper.ReadMemory<float>(RR_TireMass_TargetAddr);
-            RR_TireRadius = Helper.ReadMemory<float>(RR_TireRadius_TargetAddr);
-            RR_TireWidth = Helper.ReadMemory<float>(RR_TireWidth_TargetAddr);
-            RR_TireSpringRate = Helper.ReadMemory<float>(RR_TireSpringRate_TargetAddr);
-            RR_TireDamperRate = Helper.ReadMemory<float>(RR_TireDamperRate_TargetAddr);
-            RR_TireMaxDeflection = Helper.ReadMemory<float>(RR_TireMaxDeflection_TargetAddr);
-            RR_ThermalAirTransfer = Helper.ReadMemory<float>(RR_ThermalAirTransfer_TargetAddr);
-            RR_ThermalInnerTransfer = Helper.ReadMemory<float>(RR_ThermalInnerTransfer_TargetAddr);
- 
-            RR_SuspensionLength = Helper.ReadMemory<float>(RR_SuspensionLenght_TargetAddr);
-            RR_SuspensionVelocity = Helper.ReadMemory<float>(RR_SuspensionVelocity_TargetAddr);*/
         }
         private static float GetLateralFriction(float latLoad, float vertLoad)
         {
