@@ -306,7 +306,6 @@ namespace Physics_Data_Debug
             this.startButton.TabIndex = 225;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Visible = false;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // stopButton
@@ -317,7 +316,6 @@ namespace Physics_Data_Debug
             this.stopButton.TabIndex = 226;
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Visible = false;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // timer1
