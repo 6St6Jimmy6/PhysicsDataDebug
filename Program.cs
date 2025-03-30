@@ -31,7 +31,7 @@ namespace Physics_Data_Debug
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLiveData());
-            //Application.Run(new TestChartPage());
+            //Application.Run(new FormTester());
         }
     }
 }

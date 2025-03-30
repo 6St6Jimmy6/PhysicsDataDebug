@@ -17,7 +17,7 @@ namespace Physics_Data_Debug
         public FormTireTemperatures()
         {
             InitializeComponent();
-            timer1.Interval = 94;
+            timer1.Interval = 100;
             updatedEnabled = false;
         }
 
@@ -31,26 +31,44 @@ namespace Physics_Data_Debug
         public List<double> RL_InnerYValues { get; set; } = new List<double>();
         public List<double> RR_TreadYValues { get; set; } = new List<double>();
         public List<double> RR_InnerYValues { get; set; } = new List<double>();
-        private int historyPoints = 101;
-        private void TemperatureSeries(Chart chartName, string seriesName, double dataY, TextBox txtBox, List<double> yValues)
+        private int historyPointsCorrect;
+        private int historyPointsOverhead = 1;
+        private int historyPoints = 500;
+        private int historyPointsDivider = 10;
+
+        private int intervalDivider = 5;
+        private void TemperatureSeries(Chart chartName, string seriesName, double dataY, List<double> yValues)
         {
             yValues.Add(dataY);
-            if (yValues.Count > historyPoints)
+            if (yValues.Count > historyPointsCorrect)
             {
                     yValues.RemoveAt(0);
             }
             chartName.ChartAreas["ChartArea1"].AxisX.Maximum = racetime;
-            chartName.ChartAreas["ChartArea1"].AxisX.Minimum = racetime - (historyPoints - 1)/10;
+            chartName.ChartAreas["ChartArea1"].AxisX.Minimum = racetime - (historyPoints) / historyPointsDivider;
             chartName.Series[seriesName].Points.DataBindXY(XValues, yValues);
             double roundedDataY = Math.Round(dataY, 2);
-            txtBox.Text = roundedDataY.ToString();
+            chartName.Series["Tread °C"].LegendText = "Tread " + roundedDataY + "°C";
+            chartName.Series["Inner °C"].LegendText = "Inner " + roundedDataY + "°C";
         }
         private void SetChart(Chart chartName)
         {
+            chartName.ChartAreas["ChartArea1"].Position.Height = 80;
+            chartName.ChartAreas["ChartArea1"].Position.Width = 100;
+            chartName.ChartAreas["ChartArea1"].Position.X = 0;
+            chartName.ChartAreas["ChartArea1"].Position.Y = 5;
+            chartName.Legends["Legend1"].Position.Height = 10;
+            chartName.Legends["Legend1"].Position.Width = 80;
+            chartName.Legends["Legend1"].Position.X = 10;
+            chartName.Legends["Legend1"].Position.Y = 90;
+            chartName.Legends["Legend1"].LegendStyle = LegendStyle.Row;
+            chartName.Series.Clear();
+            chartName.Series.Add("Tread °C");
+            chartName.Series.Add("Inner °C");
             chartName.Series["Tread °C"].ChartType = SeriesChartType.FastLine;
             chartName.Series["Inner °C"].ChartType = SeriesChartType.FastLine;
-            chartName.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            chartName.ChartAreas["ChartArea1"].AxisX.MajorGrid.Interval = 1;
+            chartName.ChartAreas["ChartArea1"].AxisX.Interval = (historyPoints / (historyPoints / intervalDivider))/ historyPointsDivider;
+            chartName.ChartAreas["ChartArea1"].AxisX.MajorGrid.Interval = (historyPoints / (historyPoints / intervalDivider))/ historyPointsDivider;
             chartName.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "F" + 0;// decimals
         }
         #endregion
@@ -58,6 +76,7 @@ namespace Physics_Data_Debug
         #region Form buttons etc
         private void TireTemperatures_Load(object sender, EventArgs e)
         {
+            historyPointsCorrect = historyPoints + historyPointsOverhead;
             SetChart(chartFL);
             SetChart(chartFR);
             SetChart(chartRL);
@@ -106,18 +125,18 @@ namespace Physics_Data_Debug
                 if (XValues.Contains<double>(racetime) == false)
                 {
                     XValues.Add(racetime);
-                    if (XValues.Count > historyPoints)
+                    if (XValues.Count > historyPointsCorrect)
                     {
                         XValues.RemoveAt(0);
                     }
-                    TemperatureSeries(chartFL, "Tread °C", LiveData.FL_TreadTemperature, textBox_FL_TreadTemperature, FL_TreadYValues);
-                    TemperatureSeries(chartFL, "Inner °C", LiveData.FL_InnerTemperature, textBox_FL_InnerTemperature, FL_InnerYValues);
-                    TemperatureSeries(chartFR, "Tread °C", LiveData.FR_TreadTemperature, textBox_FR_TreadTemperature, FR_TreadYValues);
-                    TemperatureSeries(chartFR, "Inner °C", LiveData.FR_InnerTemperature, textBox_FR_InnerTemperature, FR_InnerYValues);
-                    TemperatureSeries(chartRL, "Tread °C", LiveData.RL_TreadTemperature, textBox_RL_TreadTemperature, RL_TreadYValues);
-                    TemperatureSeries(chartRL, "Inner °C", LiveData.RL_InnerTemperature, textBox_RL_InnerTemperature, RL_InnerYValues);
-                    TemperatureSeries(chartRR, "Tread °C", LiveData.RR_TreadTemperature, textBox_RR_TreadTemperature, RR_TreadYValues);
-                    TemperatureSeries(chartRR, "Inner °C", LiveData.RR_InnerTemperature, textBox_RR_InnerTemperature, RR_InnerYValues);
+                    TemperatureSeries(chartFL, "Tread °C", LiveData.FL_TreadTemperature, FL_TreadYValues);
+                    TemperatureSeries(chartFL, "Inner °C", LiveData.FL_InnerTemperature, FL_InnerYValues);
+                    TemperatureSeries(chartFR, "Tread °C", LiveData.FR_TreadTemperature, FR_TreadYValues);
+                    TemperatureSeries(chartFR, "Inner °C", LiveData.FR_InnerTemperature, FR_InnerYValues);
+                    TemperatureSeries(chartRL, "Tread °C", LiveData.RL_TreadTemperature, RL_TreadYValues);
+                    TemperatureSeries(chartRL, "Inner °C", LiveData.RL_InnerTemperature, RL_InnerYValues);
+                    TemperatureSeries(chartRR, "Tread °C", LiveData.RR_TreadTemperature, RR_TreadYValues);
+                    TemperatureSeries(chartRR, "Inner °C", LiveData.RR_InnerTemperature, RR_InnerYValues);
                 }
             }
         }

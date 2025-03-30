@@ -55,18 +55,6 @@ namespace Physics_Data_Debug
             this.chartFR = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartFL = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.closeButton = new System.Windows.Forms.Button();
-            this.textBox_FL_InnerTemperature = new System.Windows.Forms.TextBox();
-            this.textBox_FL_TreadTemperature = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox_FR_InnerTemperature = new System.Windows.Forms.TextBox();
-            this.textBox_FR_TreadTemperature = new System.Windows.Forms.TextBox();
-            this.textBox_RL_InnerTemperature = new System.Windows.Forms.TextBox();
-            this.textBox_RL_TreadTemperature = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.textBox_RR_InnerTemperature = new System.Windows.Forms.TextBox();
-            this.textBox_RR_TreadTemperature = new System.Windows.Forms.TextBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -80,8 +68,18 @@ namespace Physics_Data_Debug
             // 
             this.chartRR.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 75F;
+            chartArea1.Position.Width = 100F;
+            chartArea1.Position.Y = 5F;
             this.chartRR.ChartAreas.Add(chartArea1);
+            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
             legend1.Name = "Legend1";
+            legend1.Position.Auto = false;
+            legend1.Position.Height = 10F;
+            legend1.Position.Width = 80F;
+            legend1.Position.X = 10F;
+            legend1.Position.Y = 90F;
             this.chartRR.Legends.Add(legend1);
             this.chartRR.Location = new System.Drawing.Point(333, 315);
             this.chartRR.Name = "chartRR";
@@ -95,7 +93,7 @@ namespace Physics_Data_Debug
             series2.Name = "Inner °C";
             this.chartRR.Series.Add(series1);
             this.chartRR.Series.Add(series2);
-            this.chartRR.Size = new System.Drawing.Size(314, 228);
+            this.chartRR.Size = new System.Drawing.Size(314, 261);
             this.chartRR.TabIndex = 10;
             this.chartRR.Text = "chart1";
             title1.Name = "RRTempTitle";
@@ -106,8 +104,18 @@ namespace Physics_Data_Debug
             // 
             this.chartRL.BackColor = System.Drawing.Color.Transparent;
             chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 75F;
+            chartArea2.Position.Width = 100F;
+            chartArea2.Position.Y = 5F;
             this.chartRL.ChartAreas.Add(chartArea2);
+            legend2.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
             legend2.Name = "Legend1";
+            legend2.Position.Auto = false;
+            legend2.Position.Height = 10F;
+            legend2.Position.Width = 80F;
+            legend2.Position.X = 10F;
+            legend2.Position.Y = 90F;
             this.chartRL.Legends.Add(legend2);
             this.chartRL.Location = new System.Drawing.Point(13, 315);
             this.chartRL.Name = "chartRL";
@@ -121,7 +129,7 @@ namespace Physics_Data_Debug
             series4.Name = "Inner °C";
             this.chartRL.Series.Add(series3);
             this.chartRL.Series.Add(series4);
-            this.chartRL.Size = new System.Drawing.Size(314, 228);
+            this.chartRL.Size = new System.Drawing.Size(314, 261);
             this.chartRL.TabIndex = 9;
             this.chartRL.Text = "chart1";
             title2.Name = "RLTempTitle";
@@ -132,8 +140,19 @@ namespace Physics_Data_Debug
             // 
             this.chartFR.BackColor = System.Drawing.Color.Transparent;
             chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 80F;
+            chartArea3.Position.Width = 100F;
+            chartArea3.Position.Y = 5F;
             this.chartFR.ChartAreas.Add(chartArea3);
+            legend3.IsTextAutoFit = false;
+            legend3.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
             legend3.Name = "Legend1";
+            legend3.Position.Auto = false;
+            legend3.Position.Height = 10F;
+            legend3.Position.Width = 80F;
+            legend3.Position.X = 10F;
+            legend3.Position.Y = 90F;
             this.chartFR.Legends.Add(legend3);
             this.chartFR.Location = new System.Drawing.Point(333, 42);
             this.chartFR.Name = "chartFR";
@@ -147,7 +166,7 @@ namespace Physics_Data_Debug
             series6.Name = "Inner °C";
             this.chartFR.Series.Add(series5);
             this.chartFR.Series.Add(series6);
-            this.chartFR.Size = new System.Drawing.Size(314, 228);
+            this.chartFR.Size = new System.Drawing.Size(314, 267);
             this.chartFR.TabIndex = 8;
             this.chartFR.Text = "chart1";
             title3.Name = "FRTempTitle";
@@ -158,8 +177,18 @@ namespace Physics_Data_Debug
             // 
             this.chartFL.BackColor = System.Drawing.Color.Transparent;
             chartArea4.Name = "ChartArea1";
+            chartArea4.Position.Auto = false;
+            chartArea4.Position.Height = 80F;
+            chartArea4.Position.Width = 100F;
+            chartArea4.Position.Y = 5F;
             this.chartFL.ChartAreas.Add(chartArea4);
+            legend4.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
             legend4.Name = "Legend1";
+            legend4.Position.Auto = false;
+            legend4.Position.Height = 10F;
+            legend4.Position.Width = 80F;
+            legend4.Position.X = 10F;
+            legend4.Position.Y = 90F;
             this.chartFL.Legends.Add(legend4);
             this.chartFL.Location = new System.Drawing.Point(13, 42);
             this.chartFL.Name = "chartFL";
@@ -173,7 +202,7 @@ namespace Physics_Data_Debug
             series8.Name = "Inner °C";
             this.chartFL.Series.Add(series7);
             this.chartFL.Series.Add(series8);
-            this.chartFL.Size = new System.Drawing.Size(314, 228);
+            this.chartFL.Size = new System.Drawing.Size(314, 261);
             this.chartFL.TabIndex = 7;
             this.chartFL.Text = "chart1";
             title4.Name = "FLTempTitle";
@@ -189,114 +218,6 @@ namespace Physics_Data_Debug
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // textBox_FL_InnerTemperature
-            // 
-            this.textBox_FL_InnerTemperature.Location = new System.Drawing.Point(133, 289);
-            this.textBox_FL_InnerTemperature.Name = "textBox_FL_InnerTemperature";
-            this.textBox_FL_InnerTemperature.ReadOnly = true;
-            this.textBox_FL_InnerTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_FL_InnerTemperature.TabIndex = 177;
-            this.textBox_FL_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_FL_TreadTemperature
-            // 
-            this.textBox_FL_TreadTemperature.Location = new System.Drawing.Point(51, 289);
-            this.textBox_FL_TreadTemperature.Name = "textBox_FL_TreadTemperature";
-            this.textBox_FL_TreadTemperature.ReadOnly = true;
-            this.textBox_FL_TreadTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_FL_TreadTemperature.TabIndex = 176;
-            this.textBox_FL_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(48, 273);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(126, 13);
-            this.label18.TabIndex = 178;
-            this.label18.Text = "Tread °C             Inner °C";
-            // 
-            // textBox_FR_InnerTemperature
-            // 
-            this.textBox_FR_InnerTemperature.Location = new System.Drawing.Point(454, 289);
-            this.textBox_FR_InnerTemperature.Name = "textBox_FR_InnerTemperature";
-            this.textBox_FR_InnerTemperature.ReadOnly = true;
-            this.textBox_FR_InnerTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_FR_InnerTemperature.TabIndex = 192;
-            this.textBox_FR_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_FR_TreadTemperature
-            // 
-            this.textBox_FR_TreadTemperature.Location = new System.Drawing.Point(372, 289);
-            this.textBox_FR_TreadTemperature.Name = "textBox_FR_TreadTemperature";
-            this.textBox_FR_TreadTemperature.ReadOnly = true;
-            this.textBox_FR_TreadTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_FR_TreadTemperature.TabIndex = 191;
-            this.textBox_FR_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_RL_InnerTemperature
-            // 
-            this.textBox_RL_InnerTemperature.Location = new System.Drawing.Point(133, 562);
-            this.textBox_RL_InnerTemperature.Name = "textBox_RL_InnerTemperature";
-            this.textBox_RL_InnerTemperature.ReadOnly = true;
-            this.textBox_RL_InnerTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_RL_InnerTemperature.TabIndex = 207;
-            this.textBox_RL_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_RL_TreadTemperature
-            // 
-            this.textBox_RL_TreadTemperature.Location = new System.Drawing.Point(51, 562);
-            this.textBox_RL_TreadTemperature.Name = "textBox_RL_TreadTemperature";
-            this.textBox_RL_TreadTemperature.ReadOnly = true;
-            this.textBox_RL_TreadTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_RL_TreadTemperature.TabIndex = 206;
-            this.textBox_RL_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(48, 546);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(126, 13);
-            this.label36.TabIndex = 208;
-            this.label36.Text = "Tread °C             Inner °C";
-            // 
-            // textBox_RR_InnerTemperature
-            // 
-            this.textBox_RR_InnerTemperature.Location = new System.Drawing.Point(454, 562);
-            this.textBox_RR_InnerTemperature.Name = "textBox_RR_InnerTemperature";
-            this.textBox_RR_InnerTemperature.ReadOnly = true;
-            this.textBox_RR_InnerTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_RR_InnerTemperature.TabIndex = 222;
-            this.textBox_RR_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_RR_TreadTemperature
-            // 
-            this.textBox_RR_TreadTemperature.Location = new System.Drawing.Point(372, 562);
-            this.textBox_RR_TreadTemperature.Name = "textBox_RR_TreadTemperature";
-            this.textBox_RR_TreadTemperature.ReadOnly = true;
-            this.textBox_RR_TreadTemperature.Size = new System.Drawing.Size(76, 20);
-            this.textBox_RR_TreadTemperature.TabIndex = 221;
-            this.textBox_RR_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(369, 546);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(126, 13);
-            this.label51.TabIndex = 223;
-            this.label51.Text = "Tread °C             Inner °C";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(369, 273);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 13);
-            this.label1.TabIndex = 224;
-            this.label1.Text = "Tread °C             Inner °C";
             // 
             // startButton
             // 
@@ -331,18 +252,6 @@ namespace Physics_Data_Debug
             this.ClientSize = new System.Drawing.Size(657, 588);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_RR_InnerTemperature);
-            this.Controls.Add(this.textBox_RR_TreadTemperature);
-            this.Controls.Add(this.label51);
-            this.Controls.Add(this.textBox_RL_InnerTemperature);
-            this.Controls.Add(this.textBox_RL_TreadTemperature);
-            this.Controls.Add(this.label36);
-            this.Controls.Add(this.textBox_FR_InnerTemperature);
-            this.Controls.Add(this.textBox_FR_TreadTemperature);
-            this.Controls.Add(this.textBox_FL_InnerTemperature);
-            this.Controls.Add(this.textBox_FL_TreadTemperature);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.chartRR);
             this.Controls.Add(this.chartRL);
@@ -357,7 +266,6 @@ namespace Physics_Data_Debug
             ((System.ComponentModel.ISupportInitialize)(this.chartFR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartFL)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -368,18 +276,6 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.DataVisualization.Charting.Chart chartFR;
         public System.Windows.Forms.DataVisualization.Charting.Chart chartFL;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.TextBox textBox_FL_InnerTemperature;
-        private System.Windows.Forms.TextBox textBox_FL_TreadTemperature;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox_FR_InnerTemperature;
-        private System.Windows.Forms.TextBox textBox_FR_TreadTemperature;
-        private System.Windows.Forms.TextBox textBox_RL_InnerTemperature;
-        private System.Windows.Forms.TextBox textBox_RL_TreadTemperature;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox_RR_InnerTemperature;
-        private System.Windows.Forms.TextBox textBox_RR_TreadTemperature;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;
         public System.Windows.Forms.Timer timer1;

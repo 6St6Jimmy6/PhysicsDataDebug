@@ -18,16 +18,79 @@ namespace Physics_Data_Debug
         {
             InitializeComponent();
             PauseUpdate = false;
-            timer1.Interval = 100;
-            timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
-            _4Wheels.SetChart(chart1);
-            _4Wheels.SetChart(chart2);
-            _4Wheels.SetChart(chart3);
-            _4Wheels.SetChart(chart4);
+            timer1.Interval = 50;
+            //timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
+
+            if (_4WheelsSettings.WheelChartsSelect == "All In One")
+            {
+                label1.Visible = false;
+                chart1.Visible = false;
+                chart1.Enabled = false;
+
+                label2.Visible = false;
+                chart2.Visible = false;
+                chart2.Enabled = false;
+
+                label3.Visible = false;
+                chart3.Visible = false;
+                chart3.Enabled = false;
+
+                label4.Visible = false;
+                chart4.Visible = false;
+                chart4.Enabled = false;
+
+                label5.Visible = true;
+                chart5.Enabled = true;
+                chart5.Visible = true;
+                _4Wheels.SetChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
+            }
+            if (_4WheelsSettings.WheelChartsSelect == "Separate")
+            {
+                label1.Visible = true;
+                chart1.Enabled = true;
+                chart1.Visible = true;
+
+                label2.Visible = true;
+                chart2.Enabled = true;
+                chart2.Visible = true;
+
+                label3.Visible = true;
+                chart3.Enabled = true;
+                chart3.Visible = true;
+
+                label4.Visible = true;
+                chart4.Enabled = true;
+                chart4.Visible = true;
+
+                label5.Visible = false;
+                chart5.Visible = false;
+                chart5.Enabled = false;
+
+                _4Wheels.SetChart(chart1, _4Wheels.seriesFL);
+                _4Wheels.SetChart(chart2, _4Wheels.seriesFR);
+                _4Wheels.SetChart(chart3, _4Wheels.seriesRL);
+                _4Wheels.SetChart(chart4, _4Wheels.seriesRR);
+            }
             _4Wheels.SetUpDownChart(GradientChart);
         }
-        private void ButtonVisibilities()
+        private void ButtonLabelVisibilities()
         {
+            if (_4WheelsSettings.WheelChartsSelect == "Separate")
+            {
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                label5.Visible = false;
+            }
+            else
+            { 
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+                label5.Visible = true;
+            }
             if (_4WheelsSettings.SettingsOpen == true)
             {
                 toSettingsButton.Visible = false;
@@ -36,6 +99,7 @@ namespace Physics_Data_Debug
             {
                 toSettingsButton.Visible = true;
             }
+            labelUpDownChart.Text = _4WheelsSettings.Z1Selection;
         }
         private void Form4Wheels_Load(object sender, EventArgs e)
         {
@@ -50,17 +114,189 @@ namespace Physics_Data_Debug
         {
             LiveData._4WheelsOpen = false;
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private float[] FL_XYZValues()
         {
-            ButtonVisibilities();
-            timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
+            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4Wheels.FL_X1ValuesChart, _4WheelsSettings.Y1Selection, _4Wheels.FL_Y1ValuesChart, _4WheelsSettings.Z1Selection, _4Wheels.FL_Z1ValuesChart,
+                                                    LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
+                                                    LiveData.FL_VerticalLoad, LiveData.FL_VerticalDeflection, LiveData.FL_LoadedRadius, LiveData.FL_EffectiveRadius, LiveData.FL_ContactLength,
+                                                    LiveData.FL_CurrentContactBrakeTorque, LiveData.FL_CurrentContactBrakeTorqueMax,
+                                                    LiveData.FL_SteerAngleDeg, LiveData.FL_CamberAngleDeg,
+                                                    LiveData.FL_LateralLoad, LiveData.FL_SlipAngleDeg, LiveData.FL_LateralFriction, LiveData.FL_LateralSlipSpeed,
+                                                    LiveData.FL_LongitudinalLoad, LiveData.FL_SlipRatio, LiveData.FL_LongitudinalFriction, LiveData.FL_LongitudinalSlipSpeed,
+                                                    LiveData.FL_TreadTemperature, LiveData.FL_InnerTemperature,
+                                                    LiveData.FL_TotalFriction, LiveData.FL_TotalFrictionAngle,
+                                                    LiveData.FL_SuspensionLength, LiveData.FL_SuspensionVelocity);
+        }
+        private float[] FR_XYZValues()
+        {
+            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4Wheels.FR_X1ValuesChart, _4WheelsSettings.Y1Selection, _4Wheels.FR_Y1ValuesChart, _4WheelsSettings.Z1Selection, _4Wheels.FR_Z1ValuesChart,
+                                                    LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
+                                                    LiveData.FR_VerticalLoad, LiveData.FR_VerticalDeflection, LiveData.FR_LoadedRadius, LiveData.FR_EffectiveRadius, LiveData.FR_ContactLength,
+                                                    LiveData.FR_CurrentContactBrakeTorque, LiveData.FR_CurrentContactBrakeTorqueMax,
+                                                    LiveData.FR_SteerAngleDeg, LiveData.FR_CamberAngleDeg,
+                                                    LiveData.FR_LateralLoad, LiveData.FR_SlipAngleDeg, LiveData.FR_LateralFriction, LiveData.FR_LateralSlipSpeed,
+                                                    LiveData.FR_LongitudinalLoad, LiveData.FR_SlipRatio, LiveData.FR_LongitudinalFriction, LiveData.FR_LongitudinalSlipSpeed,
+                                                    LiveData.FR_TreadTemperature, LiveData.FR_InnerTemperature,
+                                                    LiveData.FR_TotalFriction, LiveData.FR_TotalFrictionAngle,
+                                                    LiveData.FR_SuspensionLength, LiveData.FR_SuspensionVelocity);
+        }
+        private float[] RL_XYZValues()
+        {
+            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4Wheels.RL_X1ValuesChart, _4WheelsSettings.Y1Selection, _4Wheels.RL_Y1ValuesChart, _4WheelsSettings.Z1Selection, _4Wheels.RL_Z1ValuesChart,
+                                                    LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
+                                                    LiveData.RL_VerticalLoad, LiveData.RL_VerticalDeflection, LiveData.RL_LoadedRadius, LiveData.RL_EffectiveRadius, LiveData.RL_ContactLength,
+                                                    LiveData.RL_CurrentContactBrakeTorque, LiveData.RL_CurrentContactBrakeTorqueMax,
+                                                    LiveData.RL_SteerAngleDeg, LiveData.RL_CamberAngleDeg,
+                                                    LiveData.RL_LateralLoad, LiveData.RL_SlipAngleDeg, LiveData.RL_LateralFriction, LiveData.RL_LateralSlipSpeed,
+                                                    LiveData.RL_LongitudinalLoad, LiveData.RL_SlipRatio, LiveData.RL_LongitudinalFriction, LiveData.RL_LongitudinalSlipSpeed,
+                                                    LiveData.RL_TreadTemperature, LiveData.RL_InnerTemperature,
+                                                    LiveData.RL_TotalFriction, LiveData.RL_TotalFrictionAngle,
+                                                    LiveData.RL_SuspensionLength, LiveData.RL_SuspensionVelocity);
+        }
+        private float[] RR_XYZValues()
+        {
+            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4Wheels.RR_X1ValuesChart, _4WheelsSettings.Y1Selection, _4Wheels.RR_Y1ValuesChart, _4WheelsSettings.Z1Selection, _4Wheels.RR_Z1ValuesChart,
+                                                    LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
+                                                    LiveData.RR_VerticalLoad, LiveData.RR_VerticalDeflection, LiveData.RR_LoadedRadius, LiveData.RR_EffectiveRadius, LiveData.RR_ContactLength,
+                                                    LiveData.RR_CurrentContactBrakeTorque, LiveData.RR_CurrentContactBrakeTorqueMax,
+                                                    LiveData.RR_SteerAngleDeg, LiveData.RR_CamberAngleDeg,
+                                                    LiveData.RR_LateralLoad, LiveData.RR_SlipAngleDeg, LiveData.RR_LateralFriction, LiveData.RR_LateralSlipSpeed,
+                                                    LiveData.RR_LongitudinalLoad, LiveData.RR_SlipRatio, LiveData.RR_LongitudinalFriction, LiveData.RR_LongitudinalSlipSpeed,
+                                                    LiveData.RR_TreadTemperature, LiveData.RR_InnerTemperature,
+                                                    LiveData.RR_TotalFriction, LiveData.RR_TotalFrictionAngle,
+                                                    LiveData.RR_SuspensionLength, LiveData.RR_SuspensionVelocity);
+        }
+        private void ListSeriesFL(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        {
+            _4Wheels.ListSeries(chart1, _4Wheels.seriesFL, xyzValuesZero, _4Wheels.FL_X1ValuesChart, xyzValuesOne, _4Wheels.FL_Y1ValuesChart, xyzValuesTwo, _4Wheels.FL_Z1ValuesChart,
+            _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
+            _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
+            _4Wheels.FL_X1ValuesChartColor3, _4Wheels.FL_Y1ValuesChartColor3,
+            _4Wheels.FL_X1ValuesChartColor4, _4Wheels.FL_Y1ValuesChartColor4,
+            _4Wheels.FL_X1ValuesChartColor5, _4Wheels.FL_Y1ValuesChartColor5,
+            _4Wheels.FL_X1ValuesChartColor6, _4Wheels.FL_Y1ValuesChartColor6,
+            _4Wheels.FL_X1ValuesChartColor7, _4Wheels.FL_Y1ValuesChartColor7,
+            _4Wheels.FL_X1ValuesChartColor8, _4Wheels.FL_Y1ValuesChartColor8,
+            _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
+            _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10);
+        }
+        private void ListSeriesFR(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        {
+            _4Wheels.ListSeries(chart2, _4Wheels.seriesFR, xyzValuesZero, _4Wheels.FR_X1ValuesChart, xyzValuesOne, _4Wheels.FR_Y1ValuesChart, xyzValuesTwo, _4Wheels.FR_Z1ValuesChart,
+            _4Wheels.FR_X1ValuesChartColor1, _4Wheels.FR_Y1ValuesChartColor1,
+            _4Wheels.FR_X1ValuesChartColor2, _4Wheels.FR_Y1ValuesChartColor2,
+            _4Wheels.FR_X1ValuesChartColor3, _4Wheels.FR_Y1ValuesChartColor3,
+            _4Wheels.FR_X1ValuesChartColor4, _4Wheels.FR_Y1ValuesChartColor4,
+            _4Wheels.FR_X1ValuesChartColor5, _4Wheels.FR_Y1ValuesChartColor5,
+            _4Wheels.FR_X1ValuesChartColor6, _4Wheels.FR_Y1ValuesChartColor6,
+            _4Wheels.FR_X1ValuesChartColor7, _4Wheels.FR_Y1ValuesChartColor7,
+            _4Wheels.FR_X1ValuesChartColor8, _4Wheels.FR_Y1ValuesChartColor8,
+            _4Wheels.FR_X1ValuesChartColor9, _4Wheels.FR_Y1ValuesChartColor9,
+            _4Wheels.FR_X1ValuesChartColor10, _4Wheels.FR_Y1ValuesChartColor10);
+        }
+        private void ListSeriesRL(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        {
+            _4Wheels.ListSeries(chart3, _4Wheels.seriesRL, xyzValuesZero, _4Wheels.RL_X1ValuesChart, xyzValuesOne, _4Wheels.RL_Y1ValuesChart, xyzValuesTwo, _4Wheels.RL_Z1ValuesChart,
+            _4Wheels.RL_X1ValuesChartColor1, _4Wheels.RL_Y1ValuesChartColor1,
+            _4Wheels.RL_X1ValuesChartColor2, _4Wheels.RL_Y1ValuesChartColor2,
+            _4Wheels.RL_X1ValuesChartColor3, _4Wheels.RL_Y1ValuesChartColor3,
+            _4Wheels.RL_X1ValuesChartColor4, _4Wheels.RL_Y1ValuesChartColor4,
+            _4Wheels.RL_X1ValuesChartColor5, _4Wheels.RL_Y1ValuesChartColor5,
+            _4Wheels.RL_X1ValuesChartColor6, _4Wheels.RL_Y1ValuesChartColor6,
+            _4Wheels.RL_X1ValuesChartColor7, _4Wheels.RL_Y1ValuesChartColor7,
+            _4Wheels.RL_X1ValuesChartColor8, _4Wheels.RL_Y1ValuesChartColor8,
+            _4Wheels.RL_X1ValuesChartColor9, _4Wheels.RL_Y1ValuesChartColor9,
+            _4Wheels.RL_X1ValuesChartColor10, _4Wheels.RL_Y1ValuesChartColor10);
+        }
+        private void ListSeriesRR(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        {
+            _4Wheels.ListSeries(chart4, _4Wheels.seriesRR, xyzValuesZero, _4Wheels.RR_X1ValuesChart, xyzValuesOne, _4Wheels.RR_Y1ValuesChart, xyzValuesTwo, _4Wheels.RR_Z1ValuesChart,
+            _4Wheels.RR_X1ValuesChartColor1, _4Wheels.RR_Y1ValuesChartColor1,
+            _4Wheels.RR_X1ValuesChartColor2, _4Wheels.RR_Y1ValuesChartColor2,
+            _4Wheels.RR_X1ValuesChartColor3, _4Wheels.RR_Y1ValuesChartColor3,
+            _4Wheels.RR_X1ValuesChartColor4, _4Wheels.RR_Y1ValuesChartColor4,
+            _4Wheels.RR_X1ValuesChartColor5, _4Wheels.RR_Y1ValuesChartColor5,
+            _4Wheels.RR_X1ValuesChartColor6, _4Wheels.RR_Y1ValuesChartColor6,
+            _4Wheels.RR_X1ValuesChartColor7, _4Wheels.RR_Y1ValuesChartColor7,
+            _4Wheels.RR_X1ValuesChartColor8, _4Wheels.RR_Y1ValuesChartColor8,
+            _4Wheels.RR_X1ValuesChartColor9, _4Wheels.RR_Y1ValuesChartColor9,
+            _4Wheels.RR_X1ValuesChartColor10, _4Wheels.RR_Y1ValuesChartColor10);
+        }
+        private void ListSeriesAllWheels(float xyzValuesZeroFL, float xyzValuesOneFL, float xyzValuesTwoFL, 
+            float xyzValuesZeroFR, float xyzValuesOneFR, float xyzValuesTwoFR,
+            float xyzValuesZeroRL, float xyzValuesOneRL, float xyzValuesTwoRL,
+            float xyzValuesZeroRR, float xyzValuesOneRR, float xyzValuesTwoRR)
+        {
+            _4Wheels.ListSeriesAllWheels(chart5,
+                    _4Wheels.seriesFL, xyzValuesZeroFL, _4Wheels.FL_X1ValuesChart, xyzValuesOneFL, _4Wheels.FL_Y1ValuesChart, xyzValuesTwoFL, _4Wheels.FL_Z1ValuesChart,
+            _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
+            _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
+            _4Wheels.FL_X1ValuesChartColor3, _4Wheels.FL_Y1ValuesChartColor3,
+            _4Wheels.FL_X1ValuesChartColor4, _4Wheels.FL_Y1ValuesChartColor4,
+            _4Wheels.FL_X1ValuesChartColor5, _4Wheels.FL_Y1ValuesChartColor5,
+            _4Wheels.FL_X1ValuesChartColor6, _4Wheels.FL_Y1ValuesChartColor6,
+            _4Wheels.FL_X1ValuesChartColor7, _4Wheels.FL_Y1ValuesChartColor7,
+            _4Wheels.FL_X1ValuesChartColor8, _4Wheels.FL_Y1ValuesChartColor8,
+            _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
+            _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10,
+                    _4Wheels.seriesFR, xyzValuesZeroFR, _4Wheels.FR_X1ValuesChart, xyzValuesOneFR, _4Wheels.FR_Y1ValuesChart, xyzValuesTwoFR, _4Wheels.FR_Z1ValuesChart,
+            _4Wheels.FR_X1ValuesChartColor1, _4Wheels.FR_Y1ValuesChartColor1,
+            _4Wheels.FR_X1ValuesChartColor2, _4Wheels.FR_Y1ValuesChartColor2,
+            _4Wheels.FR_X1ValuesChartColor3, _4Wheels.FR_Y1ValuesChartColor3,
+            _4Wheels.FR_X1ValuesChartColor4, _4Wheels.FR_Y1ValuesChartColor4,
+            _4Wheels.FR_X1ValuesChartColor5, _4Wheels.FR_Y1ValuesChartColor5,
+            _4Wheels.FR_X1ValuesChartColor6, _4Wheels.FR_Y1ValuesChartColor6,
+            _4Wheels.FR_X1ValuesChartColor7, _4Wheels.FR_Y1ValuesChartColor7,
+            _4Wheels.FR_X1ValuesChartColor8, _4Wheels.FR_Y1ValuesChartColor8,
+            _4Wheels.FR_X1ValuesChartColor9, _4Wheels.FR_Y1ValuesChartColor9,
+            _4Wheels.FR_X1ValuesChartColor10, _4Wheels.FR_Y1ValuesChartColor10,
+                    _4Wheels.seriesRL, xyzValuesZeroRL, _4Wheels.RL_X1ValuesChart, xyzValuesOneRL, _4Wheels.RL_Y1ValuesChart, xyzValuesTwoRL, _4Wheels.RL_Z1ValuesChart,
+            _4Wheels.RL_X1ValuesChartColor1, _4Wheels.RL_Y1ValuesChartColor1,
+            _4Wheels.RL_X1ValuesChartColor2, _4Wheels.RL_Y1ValuesChartColor2,
+            _4Wheels.RL_X1ValuesChartColor3, _4Wheels.RL_Y1ValuesChartColor3,
+            _4Wheels.RL_X1ValuesChartColor4, _4Wheels.RL_Y1ValuesChartColor4,
+            _4Wheels.RL_X1ValuesChartColor5, _4Wheels.RL_Y1ValuesChartColor5,
+            _4Wheels.RL_X1ValuesChartColor6, _4Wheels.RL_Y1ValuesChartColor6,
+            _4Wheels.RL_X1ValuesChartColor7, _4Wheels.RL_Y1ValuesChartColor7,
+            _4Wheels.RL_X1ValuesChartColor8, _4Wheels.RL_Y1ValuesChartColor8,
+            _4Wheels.RL_X1ValuesChartColor9, _4Wheels.RL_Y1ValuesChartColor9,
+            _4Wheels.RL_X1ValuesChartColor10, _4Wheels.RL_Y1ValuesChartColor10,
+                    _4Wheels.seriesRR, xyzValuesZeroRR, _4Wheels.RR_X1ValuesChart, xyzValuesOneRR, _4Wheels.RR_Y1ValuesChart, xyzValuesTwoRR, _4Wheels.RR_Z1ValuesChart,
+            _4Wheels.RR_X1ValuesChartColor1, _4Wheels.RR_Y1ValuesChartColor1,
+            _4Wheels.RR_X1ValuesChartColor2, _4Wheels.RR_Y1ValuesChartColor2,
+            _4Wheels.RR_X1ValuesChartColor3, _4Wheels.RR_Y1ValuesChartColor3,
+            _4Wheels.RR_X1ValuesChartColor4, _4Wheels.RR_Y1ValuesChartColor4,
+            _4Wheels.RR_X1ValuesChartColor5, _4Wheels.RR_Y1ValuesChartColor5,
+            _4Wheels.RR_X1ValuesChartColor6, _4Wheels.RR_Y1ValuesChartColor6,
+            _4Wheels.RR_X1ValuesChartColor7, _4Wheels.RR_Y1ValuesChartColor7,
+            _4Wheels.RR_X1ValuesChartColor8, _4Wheels.RR_Y1ValuesChartColor8,
+            _4Wheels.RR_X1ValuesChartColor9, _4Wheels.RR_Y1ValuesChartColor9,
+            _4Wheels.RR_X1ValuesChartColor10, _4Wheels.RR_Y1ValuesChartColor10);
+        }
+            private void timer1_Tick(object sender, EventArgs e)
+        {
+            ButtonLabelVisibilities();
+            //timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
 
             if (LiveData.elapsedTime > 0 && PauseUpdate == false)
             {
-                _4Wheels.PlotChart(chart1, _4Wheels.FL_X1ValuesChartArray, _4Wheels.FL_Y1ValuesChartArray, _4Wheels.FL_Z1ValuesChartArray);
-                _4Wheels.PlotChart(chart2, _4Wheels.FR_X1ValuesChartArray, _4Wheels.FR_Y1ValuesChartArray, _4Wheels.FR_Z1ValuesChartArray);
-                _4Wheels.PlotChart(chart3, _4Wheels.RL_X1ValuesChartArray, _4Wheels.RL_Y1ValuesChartArray, _4Wheels.RL_Z1ValuesChartArray);
-                _4Wheels.PlotChart(chart4, _4Wheels.RR_X1ValuesChartArray, _4Wheels.RR_Y1ValuesChartArray, _4Wheels.RR_Z1ValuesChartArray);
+                float[] xyzValuesFL = FL_XYZValues();
+                float[] xyzValuesFR = FR_XYZValues();
+                float[] xyzValuesRL = RL_XYZValues();
+                float[] xyzValuesRR = RR_XYZValues();
+
+                if (_4WheelsSettings.WheelChartsSelect == "Separate")
+                {
+                    ListSeriesFL(xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2]);
+                    ListSeriesFR(xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2]);
+                    ListSeriesRL(xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2]);
+                    ListSeriesRR(xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
+                }
+
+                if (_4WheelsSettings.WheelChartsSelect == "All In One")
+                {
+                    ListSeriesAllWheels(xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2], xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2], xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2], xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
+                }
             }
         }
         private void Form4Wheels_SizeChanged(object sender, EventArgs e)
@@ -89,10 +325,17 @@ namespace Physics_Data_Debug
         {
             if (LiveData.elapsedTime > 0)
             {
-                _4Wheels.InfiniteHistoryChart(chart1, _4Wheels.FL_X1ValuesChartArray, _4Wheels.FL_Y1ValuesChartArray, _4Wheels.FL_Z1ValuesChartArray);
-                _4Wheels.InfiniteHistoryChart(chart2, _4Wheels.FR_X1ValuesChartArray, _4Wheels.FR_Y1ValuesChartArray, _4Wheels.FR_Z1ValuesChartArray);
-                _4Wheels.InfiniteHistoryChart(chart3, _4Wheels.RL_X1ValuesChartArray, _4Wheels.RL_Y1ValuesChartArray, _4Wheels.RL_Z1ValuesChartArray);
-                _4Wheels.InfiniteHistoryChart(chart4, _4Wheels.RR_X1ValuesChartArray, _4Wheels.RR_Y1ValuesChartArray, _4Wheels.RR_Z1ValuesChartArray);
+                if(_4WheelsSettings.WheelChartsSelect == "Separate")
+                {
+                    _4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesFL);
+                    _4Wheels.InfiniteHistoryChart(chart2, _4Wheels.seriesFR);
+                    _4Wheels.InfiniteHistoryChart(chart3, _4Wheels.seriesRL);
+                    _4Wheels.InfiniteHistoryChart(chart4, _4Wheels.seriesRR);
+                }
+                if(_4WheelsSettings.WheelChartsSelect == "All In One")
+                {
+                    _4Wheels.InfiniteHistoryChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
+                }
             }
         }
         private void toSettingsButton_Click(object sender, EventArgs e)
@@ -105,18 +348,19 @@ namespace Physics_Data_Debug
         private void refreshAndApplyButton_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            timer2.Enabled = false;
+            //timer2.Enabled = false;
             _4Wheels.ClearSeriesHistory(chart1);
             _4Wheels.ClearSeriesHistory(chart2);
             _4Wheels.ClearSeriesHistory(chart3);
             _4Wheels.ClearSeriesHistory(chart4);
+            _4Wheels.ClearSeriesHistory(chart5);
             _4Wheels.SetArrays();
             _4Wheels.SetUpDownChart(GradientChart);
 
             if (PauseUpdate == false)
             {
                 timer1.Enabled = true;
-                timer2.Enabled = true;
+                //timer2.Enabled = true;
             }
         }
         private void buttonPause_Click(object sender, EventArgs e)

@@ -22,9 +22,7 @@ namespace Physics_Data_Debug
         public static int Interval { get; set; } = 50;
         public static bool updatedStartedOnce { get; set; } = false;
         public static bool plotted { get; set; } = false;
-        // How long array is.
-        public static double[] flsTempArray { get; set; } = new double[300];
-        public static double[] fliTempArray { get; set; } = new double[300];
+        public static SeriesChartType SeriesChartType { get; set; } = SeriesChartType.Point;
 
         /// <summary>
         /// Some Font size max mins
@@ -37,7 +35,7 @@ namespace Physics_Data_Debug
         /// <summary>
         /// Background
         /// </summary>
-        public static Color DefaultBackgroundColor { get; set; } = Color.Black;
+        public static Color DefaultBackgroundColor { get; set; } = Color.Transparent;
         public static Color DefaultLegendColor { get; set; } = Color.White;
         public static bool OtherDefaults { get; set; } = true;
         public static bool AbsoluteValues { get; set; } = false;
@@ -52,6 +50,7 @@ namespace Physics_Data_Debug
         public static bool DefaultInfiniteHistoryEnabled { get; set; } = false;
         public static int DefaultMarkerSize { get; set; } = 4;
         public static string DefaultScheme { get; set; } = "Colorblind";
+        public static string DefaultWheelChartsSelect { get; set; } = "Separate";
         public static Color DefaultMarkerColor { get; set; } = Color.Red;
 
 
@@ -145,6 +144,7 @@ namespace Physics_Data_Debug
         public static bool InfiniteHistoryEnabled { get; set; } = DefaultInfiniteHistoryEnabled;
         public static int MarkerSize { get; set; } = DefaultMarkerSize;
         public static string Scheme { get; set; } = DefaultScheme;
+        public static string WheelChartsSelect { get; set; } = DefaultWheelChartsSelect;
         public static Color MarkerColor { get; set; } = DefaultMarkerColor;
         /// <summary>
         /// X1 Axis

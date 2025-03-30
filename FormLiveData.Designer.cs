@@ -190,10 +190,6 @@ namespace Physics_Data_Debug
             this.label66 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TickTime = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.textBox_FL_SuspensionVelocity = new System.Windows.Forms.TextBox();
@@ -240,6 +236,10 @@ namespace Physics_Data_Debug
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.buttonUpdates = new System.Windows.Forms.Timer(this.components);
             this.to4WheelsButton = new System.Windows.Forms.Button();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label12
@@ -1325,6 +1325,7 @@ namespace Physics_Data_Debug
             this.exitApplication.TabIndex = 150;
             this.exitApplication.Text = "Exit Application";
             this.exitApplication.UseVisualStyleBackColor = false;
+            this.exitApplication.Visible = false;
             this.exitApplication.Click += new System.EventHandler(this.exitApplication_Click);
             // 
             // textBox_FL_MaxCurrentContactBrakeTorque
@@ -1995,46 +1996,6 @@ namespace Physics_Data_Debug
             this.label68.TabIndex = 225;
             this.label68.Text = "REAR RIGHT DATA";
             // 
-            // richTextBox4
-            // 
-            this.richTextBox4.BackColor = System.Drawing.Color.Black;
-            this.richTextBox4.Location = new System.Drawing.Point(459, 401);
-            this.richTextBox4.MaxLength = 0;
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(350, 394);
-            this.richTextBox4.TabIndex = 102;
-            this.richTextBox4.Text = "";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.BackColor = System.Drawing.Color.Black;
-            this.richTextBox2.Location = new System.Drawing.Point(106, 401);
-            this.richTextBox2.MaxLength = 0;
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(350, 394);
-            this.richTextBox2.TabIndex = 64;
-            this.richTextBox2.Text = "";
-            // 
-            // richTextBox3
-            // 
-            this.richTextBox3.BackColor = System.Drawing.Color.Black;
-            this.richTextBox3.Location = new System.Drawing.Point(459, 1);
-            this.richTextBox3.MaxLength = 0;
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(350, 394);
-            this.richTextBox3.TabIndex = 83;
-            this.richTextBox3.Text = "";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.Location = new System.Drawing.Point(106, 1);
-            this.richTextBox1.MaxLength = 0;
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(350, 394);
-            this.richTextBox1.TabIndex = 45;
-            this.richTextBox1.Text = "";
-            // 
             // TickTime
             // 
             this.TickTime.AutoSize = true;
@@ -2525,13 +2486,53 @@ namespace Physics_Data_Debug
             this.to4WheelsButton.UseVisualStyleBackColor = false;
             this.to4WheelsButton.Click += new System.EventHandler(this.to4WheelsButton_Click);
             // 
+            // richTextBox4
+            // 
+            this.richTextBox4.BackColor = System.Drawing.Color.Black;
+            this.richTextBox4.Location = new System.Drawing.Point(459, 401);
+            this.richTextBox4.MaxLength = 0;
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox4.TabIndex = 102;
+            this.richTextBox4.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.Color.Black;
+            this.richTextBox2.Location = new System.Drawing.Point(106, 401);
+            this.richTextBox2.MaxLength = 0;
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox2.TabIndex = 64;
+            this.richTextBox2.Text = "";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.BackColor = System.Drawing.Color.Black;
+            this.richTextBox3.Location = new System.Drawing.Point(459, 1);
+            this.richTextBox3.MaxLength = 0;
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox3.TabIndex = 83;
+            this.richTextBox3.Text = "";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.Black;
+            this.richTextBox1.Location = new System.Drawing.Point(106, 1);
+            this.richTextBox1.MaxLength = 0;
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox1.TabIndex = 45;
+            this.richTextBox1.Text = "";
+            // 
             // FormLiveData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(821, 917);
+            this.ClientSize = new System.Drawing.Size(804, 849);
             this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.toGForceButton);
@@ -2740,6 +2741,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label12);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.richTextBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FormLiveData";
             this.Text = "Live Data";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstAllDataLoggerPage_Closing);
@@ -2910,10 +2912,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label TickTime;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.TextBox textBox_FL_SuspensionVelocity;
@@ -2960,6 +2958,10 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Timer buttonUpdates;
         private System.Windows.Forms.Button to4WheelsButton;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

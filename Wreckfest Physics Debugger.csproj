@@ -7,7 +7,7 @@
     <ProjectGuid>{9B846937-B82F-4FD4-9F92-F379FB3A9E2C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Physics_Data_Debug</RootNamespace>
-    <AssemblyName>Physics_Data_Debug_January_2025</AssemblyName>
+    <AssemblyName>Physics_Data_Debug_February_2025</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -98,6 +98,18 @@
     <Compile Include="FormGForceSettings.Designer.cs">
       <DependentUpon>FormGForceSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTest1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTest1.Designer.cs">
+      <DependentUpon>FormTest1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTester.Designer.cs">
+      <DependentUpon>FormTester.cs</DependentUpon>
+    </Compile>
     <Compile Include="GForce.cs" />
     <Compile Include="GForceSettings.cs" />
     <Compile Include="LiveData.cs" />
@@ -158,6 +170,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSuspensionSettings.resx">
       <DependentUpon>FormSuspensionSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTest1.resx">
+      <DependentUpon>FormTest1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTester.resx">
+      <DependentUpon>FormTester.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTireSettings.resx">
       <DependentUpon>FormTireSettings.cs</DependentUpon>

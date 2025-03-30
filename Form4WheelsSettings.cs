@@ -159,6 +159,10 @@ namespace Physics_Data_Debug
             SchemeComboBox.Items.Add("Colorblind");
             SchemeComboBox.Items.Add("Green Red");
             SchemeComboBox.Items.Add("Blue Red");
+            // Add Chart Selection Options in the combobox
+            WheelChartsSelectComboBox.Items.Add("Separate");
+            WheelChartsSelectComboBox.Items.Add("Front/Rear");
+            WheelChartsSelectComboBox.Items.Add("All In One");
             // Add X axis selections in the combobox
             X1SelectionComboBox.Items.Add(LogSettings.sTireTravelSpeed);
             X1SelectionComboBox.Items.Add(LogSettings.sAngularVelocity);
@@ -251,6 +255,7 @@ namespace Physics_Data_Debug
                 HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.DefaultHistoryAmountPoints.ToString();
                 InfiniteHistoryCheckBox.Checked = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 SchemeComboBox.SelectedItem = _4WheelsSettings.DefaultScheme;
+                WheelChartsSelectComboBox.SelectedItem = _4WheelsSettings.DefaultWheelChartsSelect;
             }
             else
             {
@@ -259,6 +264,7 @@ namespace Physics_Data_Debug
                 HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.HistoryAmountPoints.ToString();
                 InfiniteHistoryCheckBox.Checked = _4WheelsSettings.InfiniteHistoryEnabled;
                 SchemeComboBox.SelectedItem = _4WheelsSettings.Scheme;
+                WheelChartsSelectComboBox.SelectedItem = _4WheelsSettings.WheelChartsSelect;
             }
         }
 
@@ -445,6 +451,7 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.HistoryAmountPoints = _4WheelsSettings.DefaultHistoryAmountPoints;
                 _4WheelsSettings.InfiniteHistoryEnabled = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 _4WheelsSettings.Scheme = _4WheelsSettings.DefaultScheme;
+                _4WheelsSettings.WheelChartsSelect = _4WheelsSettings.DefaultWheelChartsSelect;
             }
             else
             {
@@ -453,6 +460,7 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
                 _4WheelsSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
+                _4WheelsSettings.WheelChartsSelect = WheelChartsSelectComboBox.Text;
             }
 
             // X-Axis
@@ -601,11 +609,48 @@ namespace Physics_Data_Debug
             var chart2 = form.chart2;
             var chart3 = form.chart3;
             var chart4 = form.chart4;
+            var chart5 = form.chart5;
             var gradientChart = form.GradientChart;
-            _4Wheels.SetChart(chart1);
-            _4Wheels.SetChart(chart2);
-            _4Wheels.SetChart(chart3);
-            _4Wheels.SetChart(chart4);
+            if(_4WheelsSettings.WheelChartsSelect == "All In One")
+            {
+                chart1.Visible = false;
+                chart1.Enabled = false;
+
+                chart2.Visible = false;
+                chart2.Enabled = false;
+
+                chart3.Visible = false;
+                chart3.Enabled = false;
+
+                chart4.Visible = false;
+                chart4.Enabled = false;
+
+                chart5.Enabled = true;
+                chart5.Visible = true;
+                _4Wheels.SetChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
+            }
+            if(_4WheelsSettings.WheelChartsSelect == "Separate")
+            {
+                chart1.Enabled = true;
+                chart1.Visible = true;
+
+                chart2.Enabled = true;
+                chart2.Visible = true;
+
+                chart3.Enabled = true;
+                chart3.Visible = true;
+
+                chart4.Enabled = true;
+                chart4.Visible = true;
+
+                chart5.Visible = false;
+                chart5.Enabled = false;
+
+                _4Wheels.SetChart(chart1, _4Wheels.seriesFL);
+                _4Wheels.SetChart(chart2, _4Wheels.seriesFR);
+                _4Wheels.SetChart(chart3, _4Wheels.seriesRL);
+                _4Wheels.SetChart(chart4, _4Wheels.seriesRR);
+            }
             _4Wheels.SetUpDownChart(gradientChart);
         }
         private void applyAndClearButton_Click(object sender, EventArgs e)
@@ -618,6 +663,7 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.HistoryAmountPoints = _4WheelsSettings.DefaultHistoryAmountPoints;
                 _4WheelsSettings.InfiniteHistoryEnabled = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 _4WheelsSettings.Scheme = _4WheelsSettings.DefaultScheme;
+                _4WheelsSettings.WheelChartsSelect = _4WheelsSettings.DefaultWheelChartsSelect;
             }
             else
             {
@@ -626,6 +672,7 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
                 _4WheelsSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
+                _4WheelsSettings.WheelChartsSelect = WheelChartsSelectComboBox.Text;
             }
 
             // X-Axis
@@ -774,6 +821,7 @@ namespace Physics_Data_Debug
             var chart2 = form.chart2;
             var chart3 = form.chart3;
             var chart4 = form.chart4;
+            var chart5 = form.chart5;
             var gradientChart = form.GradientChart;
             //var chart2 = form.chart2;
             var timer1 = form.timer1;
@@ -785,12 +833,51 @@ namespace Physics_Data_Debug
             _4Wheels.ClearSeriesHistory(chart2);
             _4Wheels.ClearSeriesHistory(chart3);
             _4Wheels.ClearSeriesHistory(chart4);
+            _4Wheels.ClearSeriesHistory(chart5);
             _4Wheels.SetArrays();
-            _4Wheels.SetChart(chart1);
-            _4Wheels.SetChart(chart2);
-            _4Wheels.SetChart(chart3);
-            _4Wheels.SetChart(chart4);
+
+            if (_4WheelsSettings.WheelChartsSelect == "All In One")
+            {
+                chart1.Visible = false;
+                chart1.Enabled = false;
+
+                chart2.Visible = false;
+                chart2.Enabled = false;
+
+                chart3.Visible = false;
+                chart3.Enabled = false;
+
+                chart4.Visible = false;
+                chart4.Enabled = false;
+
+                chart5.Enabled = true;
+                chart5.Visible = true;
+                _4Wheels.SetChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
+            }
+            if (_4WheelsSettings.WheelChartsSelect == "Separate")
+            {
+                chart1.Enabled = true;
+                chart1.Visible = true;
+
+                chart2.Enabled = true;
+                chart2.Visible = true;
+
+                chart3.Enabled = true;
+                chart3.Visible = true;
+
+                chart4.Enabled = true;
+                chart4.Visible = true;
+
+                chart5.Visible = false;
+                chart5.Enabled = false;
+
+                _4Wheels.SetChart(chart1, _4Wheels.seriesFL);
+                _4Wheels.SetChart(chart2, _4Wheels.seriesFR);
+                _4Wheels.SetChart(chart3, _4Wheels.seriesRL);
+                _4Wheels.SetChart(chart4, _4Wheels.seriesRR);
+            }
             _4Wheels.SetUpDownChart(gradientChart);
+
             timer1.Enabled = true;
             timer2.Enabled = true;
         }

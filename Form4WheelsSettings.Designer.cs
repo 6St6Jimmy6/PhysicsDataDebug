@@ -108,6 +108,8 @@ namespace Physics_Data_Debug
             this.AbsoluteValuesCheckBox = new System.Windows.Forms.CheckBox();
             this.applyChartSettingsButton = new System.Windows.Forms.Button();
             this.label29 = new System.Windows.Forms.Label();
+            this.WheelChartsSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SchemeComboBox
@@ -856,12 +858,31 @@ namespace Physics_Data_Debug
             this.label29.Text = "<--- Press first on the first load to get previous run\'s selections and settings." +
     " They don\'t show and get loaded at first otherwise.";
             // 
+            // WheelChartsSelectComboBox
+            // 
+            this.WheelChartsSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.WheelChartsSelectComboBox.FormattingEnabled = true;
+            this.WheelChartsSelectComboBox.Location = new System.Drawing.Point(12, 470);
+            this.WheelChartsSelectComboBox.Name = "WheelChartsSelectComboBox";
+            this.WheelChartsSelectComboBox.Size = new System.Drawing.Size(129, 21);
+            this.WheelChartsSelectComboBox.TabIndex = 525;
+            // 
+            // label30
+            // 
+            this.label30.Location = new System.Drawing.Point(9, 439);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(137, 28);
+            this.label30.TabIndex = 526;
+            this.label30.Text = "Separate, Front/Rear or All Wheels Charts";
+            // 
             // Form4WheelsSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1047, 450);
+            this.ClientSize = new System.Drawing.Size(1047, 506);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.WheelChartsSelectComboBox);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.applyChartSettingsButton);
             this.Controls.Add(this.AbsoluteValuesCheckBox);
@@ -1030,5 +1051,7 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.CheckBox AbsoluteValuesCheckBox;
         public System.Windows.Forms.Button applyChartSettingsButton;
         public System.Windows.Forms.Label label29;
+        public System.Windows.Forms.ComboBox WheelChartsSelectComboBox;
+        private System.Windows.Forms.Label label30;
     }
 }
