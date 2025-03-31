@@ -51,6 +51,15 @@ namespace Physics_Data_Debug
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.refreshAndClearButton = new System.Windows.Forms.Button();
             this.toSettingsButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
@@ -69,12 +78,14 @@ namespace Physics_Data_Debug
             this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label5 = new System.Windows.Forms.Label();
             this.labelUpDownChart = new System.Windows.Forms.Label();
+            this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GradientChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
             this.SuspendLayout();
             // 
             // refreshAndClearButton
@@ -343,6 +354,51 @@ namespace Physics_Data_Debug
             this.labelUpDownChart.TabIndex = 307;
             this.labelUpDownChart.Text = "Z axis selection";
             // 
+            // chart6
+            // 
+            chartArea7.AxisX.Title = "X1";
+            chartArea7.AxisX2.Title = "X2";
+            chartArea7.AxisY.Title = "Y1";
+            chartArea7.AxisY2.Title = "Y2";
+            chartArea7.Name = "ChartArea1";
+            chartArea8.AxisX.Title = "X1";
+            chartArea8.AxisY.Title = "Y1";
+            chartArea8.Name = "ChartArea2";
+            chartArea9.AxisX.Title = "X1";
+            chartArea9.AxisY.Title = "Y1";
+            chartArea9.Name = "ChartArea3";
+            chartArea10.AxisX.Title = "X1";
+            chartArea10.AxisY.Title = "Y1";
+            chartArea10.Name = "ChartArea4";
+            this.chart6.ChartAreas.Add(chartArea7);
+            this.chart6.ChartAreas.Add(chartArea8);
+            this.chart6.ChartAreas.Add(chartArea9);
+            this.chart6.ChartAreas.Add(chartArea10);
+            legend7.Enabled = false;
+            legend7.Name = "Legend1";
+            this.chart6.Legends.Add(legend7);
+            this.chart6.Location = new System.Drawing.Point(165, 27);
+            this.chart6.Name = "chart6";
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            series8.ChartArea = "ChartArea2";
+            series8.Legend = "Legend1";
+            series8.Name = "Series2";
+            series9.ChartArea = "ChartArea3";
+            series9.Legend = "Legend1";
+            series9.Name = "Series3";
+            series10.ChartArea = "ChartArea4";
+            series10.Legend = "Legend1";
+            series10.Name = "Series4";
+            this.chart6.Series.Add(series7);
+            this.chart6.Series.Add(series8);
+            this.chart6.Series.Add(series9);
+            this.chart6.Series.Add(series10);
+            this.chart6.Size = new System.Drawing.Size(700, 700);
+            this.chart6.TabIndex = 308;
+            this.chart6.Text = "chart6";
+            // 
             // Form4Wheels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +406,7 @@ namespace Physics_Data_Debug
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1042, 751);
+            this.Controls.Add(this.chart6);
             this.Controls.Add(this.labelUpDownChart);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chart5);
@@ -377,6 +434,7 @@ namespace Physics_Data_Debug
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GradientChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,5 +460,6 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.DataVisualization.Charting.Chart chart5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelUpDownChart;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart6;
     }
 }
