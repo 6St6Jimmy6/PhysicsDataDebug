@@ -31,7 +31,6 @@ namespace Physics_Data_Debug
         {
             this.SchemeComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.InfiniteHistoryCheckBox = new System.Windows.Forms.CheckBox();
             this.HistoryAmountPointsMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.Y1IntervalDividerTextBox = new System.Windows.Forms.TextBox();
@@ -117,7 +116,7 @@ namespace Physics_Data_Debug
             this.SchemeComboBox.BackColor = System.Drawing.SystemColors.Window;
             this.SchemeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SchemeComboBox.FormattingEnabled = true;
-            this.SchemeComboBox.Location = new System.Drawing.Point(12, 415);
+            this.SchemeComboBox.Location = new System.Drawing.Point(12, 392);
             this.SchemeComboBox.Name = "SchemeComboBox";
             this.SchemeComboBox.Size = new System.Drawing.Size(129, 21);
             this.SchemeComboBox.TabIndex = 505;
@@ -126,22 +125,11 @@ namespace Physics_Data_Debug
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 399);
+            this.label3.Location = new System.Drawing.Point(9, 376);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 13);
             this.label3.TabIndex = 504;
             this.label3.Text = "Chart Color Scheme";
-            // 
-            // InfiniteHistoryCheckBox
-            // 
-            this.InfiniteHistoryCheckBox.AutoSize = true;
-            this.InfiniteHistoryCheckBox.Location = new System.Drawing.Point(12, 379);
-            this.InfiniteHistoryCheckBox.Name = "InfiniteHistoryCheckBox";
-            this.InfiniteHistoryCheckBox.Size = new System.Drawing.Size(134, 17);
-            this.InfiniteHistoryCheckBox.TabIndex = 503;
-            this.InfiniteHistoryCheckBox.Text = "Infinite History Enabled";
-            this.InfiniteHistoryCheckBox.UseVisualStyleBackColor = true;
-            this.InfiniteHistoryCheckBox.Visible = false;
             // 
             // HistoryAmountPointsMaskedTextBox
             // 
@@ -863,14 +851,14 @@ namespace Physics_Data_Debug
             // 
             this.WheelChartsSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WheelChartsSelectComboBox.FormattingEnabled = true;
-            this.WheelChartsSelectComboBox.Location = new System.Drawing.Point(12, 470);
+            this.WheelChartsSelectComboBox.Location = new System.Drawing.Point(12, 447);
             this.WheelChartsSelectComboBox.Name = "WheelChartsSelectComboBox";
             this.WheelChartsSelectComboBox.Size = new System.Drawing.Size(129, 21);
             this.WheelChartsSelectComboBox.TabIndex = 525;
             // 
             // label30
             // 
-            this.label30.Location = new System.Drawing.Point(9, 439);
+            this.label30.Location = new System.Drawing.Point(9, 416);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(137, 28);
             this.label30.TabIndex = 526;
@@ -903,7 +891,6 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label6);
             this.Controls.Add(this.SchemeComboBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.InfiniteHistoryCheckBox);
             this.Controls.Add(this.HistoryAmountPointsMaskedTextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Y1IntervalDividerTextBox);
@@ -975,7 +962,6 @@ namespace Physics_Data_Debug
         #endregion
         public System.Windows.Forms.ComboBox SchemeComboBox;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.CheckBox InfiniteHistoryCheckBox;
         public System.Windows.Forms.MaskedTextBox HistoryAmountPointsMaskedTextBox;
         public System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox Y1IntervalDividerTextBox;

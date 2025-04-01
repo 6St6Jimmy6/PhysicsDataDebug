@@ -11,19 +11,7 @@ namespace Physics_Data_Debug
     class _4WheelsSettings
     {
         public static bool SettingsOpen { get; set; } = false;
-        /// <summary>
-        /// X and Y values
-        /// </summary>
-        public static List<double> X1Values { get; set; } = new List<double>();
-        public static List<double> Y1Values { get; set; } = new List<double>();
-        /// <summary>
-        /// Later stuff
-        /// </summary>
-        public static int Interval { get; set; } = 50;
-        public static bool updatedStartedOnce { get; set; } = false;
-        public static bool plotted { get; set; } = false;
         public static SeriesChartType SeriesChartType { get; set; } = SeriesChartType.Point;
-
         /// <summary>
         /// Some Font size max mins
         /// </summary>
@@ -38,24 +26,16 @@ namespace Physics_Data_Debug
         public static Color DefaultBackgroundColor { get; set; } = Color.Transparent;
         public static Color DefaultLegendColor { get; set; } = Color.White;
         public static bool OtherDefaults { get; set; } = true;
-        public static bool AbsoluteValues { get; set; } = false;
+        public static bool AbsoluteValues { get; set; } = true;
 
         /// <summary>
         /// Something
         /// </summary>
-        public static int DefaultHistoryAmountPoints { get; set; } = 100;
-        public static int DefaultFR_HistoryAmountPoints { get; set; } = 100;
-        public static int DefaultRL_HistoryAmountPoints { get; set; } = 100;
-        public static int DefaultRR_HistoryAmountPoints { get; set; } = 100;
-        public static bool DefaultInfiniteHistoryEnabled { get; set; } = false;
+        public static int DefaultHistoryAmountPoints { get; set; } = 1000;
         public static int DefaultMarkerSize { get; set; } = 4;
         public static string DefaultScheme { get; set; } = "Colorblind";
         public static string DefaultWheelChartsSelect { get; set; } = "Separate";
         public static Color DefaultMarkerColor { get; set; } = Color.Red;
-
-
-        public static readonly int historyalpha = 255;
-        public static readonly int historycolordivider = 2;
 
         /// <summary>
         /// X1 defaults
@@ -141,7 +121,6 @@ namespace Physics_Data_Debug
         /// Something
         /// </summary>
         public static int HistoryAmountPoints { get; set; } = DefaultHistoryAmountPoints;
-        public static bool InfiniteHistoryEnabled { get; set; } = DefaultInfiniteHistoryEnabled;
         public static int MarkerSize { get; set; } = DefaultMarkerSize;
         public static string Scheme { get; set; } = DefaultScheme;
         public static string WheelChartsSelect { get; set; } = DefaultWheelChartsSelect;

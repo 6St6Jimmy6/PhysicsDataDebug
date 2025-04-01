@@ -260,7 +260,6 @@ namespace Physics_Data_Debug
                 BackgroundColorComboBox.SelectedItem = _4WheelsSettings.DefaultBackgroundColor;
                 MarkerColorComboBox.SelectedItem = _4WheelsSettings.DefaultMarkerColor;
                 HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.DefaultHistoryAmountPoints.ToString();
-                InfiniteHistoryCheckBox.Checked = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 SchemeComboBox.SelectedItem = _4WheelsSettings.DefaultScheme;
                 WheelChartsSelectComboBox.SelectedItem = _4WheelsSettings.DefaultWheelChartsSelect;
             }
@@ -269,12 +268,10 @@ namespace Physics_Data_Debug
                 BackgroundColorComboBox.SelectedItem = _4WheelsSettings.BackgroundColor;
                 MarkerColorComboBox.SelectedItem = _4WheelsSettings.MarkerColor;
                 HistoryAmountPointsMaskedTextBox.Text = _4WheelsSettings.HistoryAmountPoints.ToString();
-                InfiniteHistoryCheckBox.Checked = _4WheelsSettings.InfiniteHistoryEnabled;
                 SchemeComboBox.SelectedItem = _4WheelsSettings.Scheme;
                 WheelChartsSelectComboBox.SelectedItem = _4WheelsSettings.WheelChartsSelect;
             }
         }
-
         private void LoadX1Defaults()
         {
             X1SelectionComboBox.SelectedItem = _4WheelsSettings.X1Selection;
@@ -443,6 +440,18 @@ namespace Physics_Data_Debug
                 //Z1MinorLineWidthComboBox.SelectedItem = _4WheelsSettings.Z1MinorLineWidth;
             }
         }
+        //////////////////////////////////////////////////////////////////////////////////////////
+        #region  OTHER STUFF
+        private void Form_4WheelsSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _4WheelsSettings.SettingsOpen = false;
+            RegistryTools.SaveAllSettings(Application.ProductName, this);
+        }
+        private void Form_4WheelsSettings_Load(object sender, EventArgs e)
+        {
+            _4WheelsSettings.SettingsOpen = true;
+            RegistryTools.LoadAllSettings(Application.ProductName, this);
+        }
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -456,7 +465,6 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.BackgroundColor = _4WheelsSettings.DefaultBackgroundColor;
                 _4WheelsSettings.MarkerColor = _4WheelsSettings.DefaultMarkerColor;
                 _4WheelsSettings.HistoryAmountPoints = _4WheelsSettings.DefaultHistoryAmountPoints;
-                _4WheelsSettings.InfiniteHistoryEnabled = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 _4WheelsSettings.Scheme = _4WheelsSettings.DefaultScheme;
                 _4WheelsSettings.WheelChartsSelect = _4WheelsSettings.DefaultWheelChartsSelect;
             }
@@ -465,7 +473,6 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
                 _4WheelsSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
                 _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
-                _4WheelsSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
                 _4WheelsSettings.WheelChartsSelect = WheelChartsSelectComboBox.Text;
             }
@@ -622,7 +629,6 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.BackgroundColor = _4WheelsSettings.DefaultBackgroundColor;
                 _4WheelsSettings.MarkerColor = _4WheelsSettings.DefaultMarkerColor;
                 _4WheelsSettings.HistoryAmountPoints = _4WheelsSettings.DefaultHistoryAmountPoints;
-                _4WheelsSettings.InfiniteHistoryEnabled = _4WheelsSettings.DefaultInfiniteHistoryEnabled;
                 _4WheelsSettings.Scheme = _4WheelsSettings.DefaultScheme;
                 _4WheelsSettings.WheelChartsSelect = _4WheelsSettings.DefaultWheelChartsSelect;
             }
@@ -631,7 +637,6 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
                 _4WheelsSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
                 _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
-                _4WheelsSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
                 _4WheelsSettings.WheelChartsSelect = WheelChartsSelectComboBox.Text;
             }
@@ -781,7 +786,6 @@ namespace Physics_Data_Debug
             timer1.Enabled = false;
             timer2.Enabled = false;
             form4Wheels.ClearAllSeriesHistory();
-            _4Wheels.SetArrays();
             //Add separate chart clearers
             form4Wheels.SetCharts();
             timer1.Enabled = true;
@@ -808,9 +812,7 @@ namespace Physics_Data_Debug
             }
             cb.ForeColor = fontColor;
         }
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///OTHER STUFF
-        ///
+        
         private void DefaultsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (DefaultsCheckBox.Checked == true)
@@ -901,13 +903,19 @@ namespace Physics_Data_Debug
                 e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             }
         }
-        private void SchemeComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        private void AbsoluteValuesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (AbsoluteValuesCheckBox.Checked == true)
+            {
+                _4WheelsSettings.AbsoluteValues = true;
+            }
+            else
+            {
+                _4WheelsSettings.AbsoluteValues = false;
+            }
         }
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///X1 STUFF
-        ///
+        #endregion
+        #region X1 STUFF
         private void X1DefaultsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (X1DefaultsCheckBox.Checked == true)
@@ -1051,11 +1059,8 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(X1MinorColorComboBox, (Color)color);
         }
-
-
-        //////////////////////////////////////////////////////////////////////////////////////////77
-        ///Y1 STUFF
-        ///
+        #endregion
+        #region Y1 STUFF
         private void Y1DefaultsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Y1DefaultsCheckBox.Checked == true)
@@ -1194,9 +1199,8 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(Y1MinorColorComboBox, (Color)color);
         }
-        //////////////////////////////////////////////////////////////////////////////////////////
-        ///Z1 STUFF
-        ///
+        #endregion
+        #region Z1 STUFF
         private void Z1DefaultsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Z1DefaultsCheckBox.Checked == true)
@@ -1208,29 +1212,7 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.Z1Defaults = false;
             }
         }
+        #endregion
         //////////////////////////////////////////////////////////////////////////////////////////
-        private void Form_4WheelsSettings_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _4WheelsSettings.SettingsOpen = false;
-            RegistryTools.SaveAllSettings(Application.ProductName, this);
-        }
-
-        private void Form_4WheelsSettings_Load(object sender, EventArgs e)
-        {
-            _4WheelsSettings.SettingsOpen = true;
-            RegistryTools.LoadAllSettings(Application.ProductName, this);
-        }
-
-        private void AbsoluteValuesCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (AbsoluteValuesCheckBox.Checked == true)
-            {
-                _4WheelsSettings.AbsoluteValues = true;
-            }
-            else
-            {
-                _4WheelsSettings.AbsoluteValues = false;
-            }
-        }
     }
 }

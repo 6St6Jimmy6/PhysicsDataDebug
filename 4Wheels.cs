@@ -10,17 +10,16 @@ namespace Physics_Data_Debug
 {
     class _4Wheels
     {
+        private static int Alpha { get; set; } = 255;
+        private static int Divider { get; set; } = 2;
+        private static int HistoryAlpha { get; set; } = 255;
+        private static int HistoryColorDivider { get; set; } = 2;
+        private static int Steps { get; set; } = 10;
 
-        private readonly static int alpha = 255;
-        private readonly static int divider = 2;
-        private readonly static int historyalpha = 255;
-        private readonly static int historycolordivider = 2;
-        private readonly static int steps = 10;
-
-        public static string seriesFL { get; set; } = "SeriesFL";
-        public static string seriesFR { get; set; } = "SeriesFR";
-        public static string seriesRL { get; set; } = "SeriesRL";
-        public static string seriesRR { get; set; } = "SeriesRR";
+        public static string SeriesFL { get; set; } = "SeriesFL";
+        public static string SeriesFR { get; set; } = "SeriesFR";
+        public static string SeriesRL { get; set; } = "SeriesRL";
+        public static string SeriesRR { get; set; } = "SeriesRR";
 
         public static List<double> FL_X1ValuesChart { get; set; } = new List<double>();
         public static List<double> FL_Y1ValuesChart { get; set; } = new List<double>();
@@ -209,42 +208,19 @@ namespace Physics_Data_Debug
         public static List<double> RR_Z1ValuesChartColor10 { get; set; } = new List<double>();
         #endregion
 
-        public static double[] FL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] FL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] FL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-        public static double[] FR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] FR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] FR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-        public static double[] RL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] RL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] RL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-        public static double[] RR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] RR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        public static double[] RR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-        private static int uHistoryHelper = 2;
-
-        public static void SetArrays()
-        {
-            FL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            FL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            FL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-            FR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            FR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            FR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-            RL_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            RL_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            RL_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-
-            RR_X1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            RR_Y1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-            RR_Z1ValuesChartArray = new double[_4WheelsSettings.HistoryAmountPoints];
-        }
+        static SeriesChartType ChartType { get; set; } = _4WheelsSettings.SeriesChartType;
+        static MarkerStyle MarkerStyle { get; set; } = MarkerStyle.Circle;
+        static int MarkerSizeHistory { get; set; } = 2;
+        private static Color Color10 { get; set; }
+        private static Color Color9 { get; set; }
+        private static Color Color8 { get; set; }
+        private static Color Color7 { get; set; }
+        private static Color Color6 { get; set; }
+        private static Color Color5 { get; set; }
+        private static Color Color4 { get; set; }
+        private static Color Color3 { get; set; }
+        private static Color Color2 { get; set; }
+        private static Color Color1 { get; set; }
         private static void XYAxisDefaultsSelected(string XorY, bool dAxis, double dMax, double dMin, double dMajorInterval, int dDecimals, bool dMinorEnabled, int dMinorIntervalFraction)
         {
             if (dAxis == true)
@@ -1149,43 +1125,23 @@ namespace Physics_Data_Debug
             // Series marker stuff
 
         }
-        private static void AddColorSeries(Chart chartName, string chartAreaName, string seriesName, Color color)
+        private static void AddHistoryColorSeries(Chart chartName, string chartAreaName, string seriesName, Color color)
         {
             chartName.Series.Add(seriesName);
             chartName.Series[seriesName].ChartArea = chartAreaName;
             chartName.Series[seriesName].MarkerColor = color;
-            chartName.Series[seriesName].ChartType = chartType;
-            chartName.Series[seriesName].MarkerStyle = markerStyle;
-            chartName.Series[seriesName].MarkerSize = markerSize;
+            chartName.Series[seriesName].ChartType = ChartType;
+            chartName.Series[seriesName].MarkerStyle = MarkerStyle;
+            chartName.Series[seriesName].MarkerSize = MarkerSizeHistory;
         }
         private static void AddSeries(Chart chartName, string chartAreaName, string seriesName)
         {
             chartName.Series.Add(seriesName);
             chartName.Series[seriesName].ChartArea = chartAreaName;
-            chartName.Series[seriesName].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);//Color.Transparent;//
-            chartName.Series[seriesName].ChartType = chartType;
-            chartName.Series[seriesName].MarkerStyle = markerStyle;
-            chartName.Series[seriesName].MarkerSize = markerSize;
-            chartName.Series[seriesName].SmartLabelStyle.Enabled = false;
-            chartName.Series[seriesName].LabelBackColor = chartName.ChartAreas[chartAreaName].BackColor;
-        }
-        private static void AddColorSeriesAllInOneChartArea(Chart chartName, string chartAreaName, string seriesName, Color color)
-        {
-            chartName.Series.Add(seriesName);
-            chartName.Series[seriesName].ChartArea = chartAreaName;
-            chartName.Series[seriesName].MarkerColor = color;
-            chartName.Series[seriesName].ChartType = chartType;
-            chartName.Series[seriesName].MarkerStyle = markerStyle;
-            chartName.Series[seriesName].MarkerSize = markerSize;
-        }
-        private static void AddSeriesAllInOneChartArea(Chart chartName, string chartAreaName, string seriesName)
-        {
-            chartName.Series.Add(seriesName);
-            chartName.Series[seriesName].ChartArea = chartAreaName;
-            chartName.Series[seriesName].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);//Color.Transparent;//
-            chartName.Series[seriesName].ChartType = chartType;
-            chartName.Series[seriesName].MarkerStyle = markerStyle;
-            chartName.Series[seriesName].MarkerSize = markerSize;
+            chartName.Series[seriesName].MarkerColor = Color.FromArgb(HistoryAlpha, 128, 0, 0);//Color.Transparent;//
+            chartName.Series[seriesName].ChartType = ChartType;
+            chartName.Series[seriesName].MarkerStyle = MarkerStyle;
+            chartName.Series[seriesName].MarkerSize = MarkerSizeHistory;
             chartName.Series[seriesName].SmartLabelStyle.Enabled = false;
             chartName.Series[seriesName].LabelBackColor = chartName.ChartAreas[chartAreaName].BackColor;
         }
@@ -1211,204 +1167,19 @@ namespace Physics_Data_Debug
 
             AddChart(chartName, chartAreaName);
             // New Marker color stuff
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor10, color10);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor9, color9);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor8, color8);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor7, color7);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor6, color6);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor5, color5);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor4, color4);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor3, color3);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor2, color2);
-            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor1, color1);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor10, Color10);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor9, Color9);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor8, Color8);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor7, Color7);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor6, Color6);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor5, Color5);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor4, Color4);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor3, Color3);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor2, Color2);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + seriesColor1, Color1);
 
             AddSeries(chartName, chartAreaName, seriesName);
         }
-        public static void SetChartFrontWheels(Chart chartName, string seriesNameFL, string seriesNameFR, string chartAreaName)
-        {
-            // New Marker color stuff
-            //chartName.Series.Clear();
-            //chartName.ChartAreas.Clear();
-
-            chartName.BackColor = Color.Transparent;
-
-            GetColorSchemeColors();
-
-            XYAxisDefaults("X",
-                         _4WheelsSettings.X1Selection,
-                         _4WheelsSettings.X1Defaults);
-
-            XYAxisDefaults("Y",
-                         _4WheelsSettings.Y1Selection,
-                         _4WheelsSettings.Y1Defaults);
-
-            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
-
-            // New Marker color stuff
-
-            AddChart(chartName, chartAreaName);
-
-            //FL
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL);
-
-            //FR
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR);
-        }
-        public static void SetChartRearWheels(Chart chartName, string seriesNameRL, string seriesNameRR, string chartAreaName)
-        {
-            // New Marker color stuff
-            //chartName.Series.Clear();
-            //chartName.ChartAreas.Clear();
-
-            chartName.BackColor = Color.Transparent;
-
-            GetColorSchemeColors();
-
-            XYAxisDefaults("X",
-                         _4WheelsSettings.X1Selection,
-                         _4WheelsSettings.X1Defaults);
-
-            XYAxisDefaults("Y",
-                         _4WheelsSettings.Y1Selection,
-                         _4WheelsSettings.Y1Defaults);
-
-            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
-
-            // New Marker color stuff
-
-            AddChart(chartName, chartAreaName);
-
-            //RL
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL);
-
-            //RR
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR);
-        }
-        public static void SetChartAllWheelsInOneChartArea(Chart chartName, string seriesNameFL, string seriesNameFR, string seriesNameRL, string seriesNameRR, string chartAreaName)
-        {
-            // New Marker color stuff
-            //chartName.Series.Clear();
-            //chartName.ChartAreas.Clear();
-
-            chartName.BackColor = Color.Transparent;
-
-            GetColorSchemeColors();
-
-            XYAxisDefaults("X",
-                         _4WheelsSettings.X1Selection,
-                         _4WheelsSettings.X1Defaults);
-
-            XYAxisDefaults("Y",
-                         _4WheelsSettings.Y1Selection,
-                         _4WheelsSettings.Y1Defaults);
-
-            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
-
-            // New Marker color stuff
-
-            AddChart(chartName, chartAreaName);
-
-            //FL
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL);
-
-            //FR
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR);
-
-            //RL
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL);
-
-            //RR
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor10, color10);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor9, color9);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor8, color8);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor7, color7);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor6, color6);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor5, color5);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor4, color4);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor3, color3);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor2, color2);
-            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor1, color1);
-
-            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR);
-        }
-
         public static float[] XYZListSelections(string xAxisSelection, List<double> xValues,
                                                 string yAxisSelection, List<double> yValues,
                                                 string zAxisSelection, List<double> zValues,
@@ -1753,16 +1524,6 @@ namespace Physics_Data_Debug
             }
             return xyzValues;
         }
-        private static Color color10;
-        private static Color color9;
-        private static Color color8;
-        private static Color color7;
-        private static Color color6;
-        private static Color color5;
-        private static Color color4;
-        private static Color color3;
-        private static Color color2;
-        private static Color color1;
         private static void GetColorSchemeColors()
         {
 
@@ -1770,42 +1531,42 @@ namespace Physics_Data_Debug
             {
                 // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
                 //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);// color5
-                color10 = Color.FromArgb(historyalpha, 219, 109, 0);// color 13
-                color9 = Color.FromArgb(historyalpha, 36, 255, 36);// color 14
-                color8 = Color.FromArgb(historyalpha, 255, 255, 109);// color 15
-                color7 = Color.FromArgb(historyalpha, 109, 182, 255);// color 9
-                color6 = Color.FromArgb(historyalpha, 182, 109, 255);// color 8
-                color5 = Color.FromArgb(historyalpha, 0, 109, 219);// color 7
-                color4 = Color.FromArgb(historyalpha, 73, 0, 146);// color 6
-                color3 = Color.FromArgb(historyalpha, 255, 109, 182);// color 4
-                color2 = Color.FromArgb(historyalpha, 0, 146, 146);// color 3
-                color1 = Color.FromArgb(historyalpha, 0, 73, 73);// color 2
+                Color10 = Color.FromArgb(HistoryAlpha, 219, 109, 0);// color 13
+                Color9 = Color.FromArgb(HistoryAlpha, 36, 255, 36);// color 14
+                Color8 = Color.FromArgb(HistoryAlpha, 255, 255, 109);// color 15
+                Color7 = Color.FromArgb(HistoryAlpha, 109, 182, 255);// color 9
+                Color6 = Color.FromArgb(HistoryAlpha, 182, 109, 255);// color 8
+                Color5 = Color.FromArgb(HistoryAlpha, 0, 109, 219);// color 7
+                Color4 = Color.FromArgb(HistoryAlpha, 73, 0, 146);// color 6
+                Color3 = Color.FromArgb(HistoryAlpha, 255, 109, 182);// color 4
+                Color2 = Color.FromArgb(HistoryAlpha, 0, 146, 146);// color 3
+                Color1 = Color.FromArgb(HistoryAlpha, 0, 73, 73);// color 2
             }
             else if (_4WheelsSettings.Scheme == "Green Red")
             {
-                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 64 / historycolordivider, 0 / historycolordivider);
-                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 128 / historycolordivider, 0 / historycolordivider);
-                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
-                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 192 / historycolordivider, 0 / historycolordivider);
+                Color10 = Color.FromArgb(HistoryAlpha, 128 / HistoryColorDivider, 0 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color9 = Color.FromArgb(HistoryAlpha, 192 / HistoryColorDivider, 0 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color8 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 0 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color7 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 64 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color6 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 128 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color5 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 192 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color4 = Color.FromArgb(HistoryAlpha, 192 / HistoryColorDivider, 192 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color3 = Color.FromArgb(HistoryAlpha, 128 / HistoryColorDivider, 192 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color2 = Color.FromArgb(HistoryAlpha, 64 / HistoryColorDivider, 192 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color1 = Color.FromArgb(HistoryAlpha, 0 / HistoryColorDivider, 192 / HistoryColorDivider, 0 / HistoryColorDivider);
             }
             else
             {
-                color10 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                color9 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                color8 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 0 / historycolordivider);
-                color7 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 64 / historycolordivider);
-                color6 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 128 / historycolordivider);
-                color5 = Color.FromArgb(historyalpha, 255 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                color4 = Color.FromArgb(historyalpha, 192 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                color3 = Color.FromArgb(historyalpha, 128 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                color2 = Color.FromArgb(historyalpha, 64 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
-                color1 = Color.FromArgb(historyalpha, 0 / historycolordivider, 0 / historycolordivider, 192 / historycolordivider);
+                Color10 = Color.FromArgb(HistoryAlpha, 128 / HistoryColorDivider, 0 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color9 = Color.FromArgb(HistoryAlpha, 192 / HistoryColorDivider, 0 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color8 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 0 / HistoryColorDivider, 0 / HistoryColorDivider);
+                Color7 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 0 / HistoryColorDivider, 64 / HistoryColorDivider);
+                Color6 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 0 / HistoryColorDivider, 128 / HistoryColorDivider);
+                Color5 = Color.FromArgb(HistoryAlpha, 255 / HistoryColorDivider, 0 / HistoryColorDivider, 192 / HistoryColorDivider);
+                Color4 = Color.FromArgb(HistoryAlpha, 192 / HistoryColorDivider, 0 / HistoryColorDivider, 192 / HistoryColorDivider);
+                Color3 = Color.FromArgb(HistoryAlpha, 128 / HistoryColorDivider, 0 / HistoryColorDivider, 192 / HistoryColorDivider);
+                Color2 = Color.FromArgb(HistoryAlpha, 64 / HistoryColorDivider, 0 / HistoryColorDivider, 192 / HistoryColorDivider);
+                Color1 = Color.FromArgb(HistoryAlpha, 0 / HistoryColorDivider, 0 / HistoryColorDivider, 192 / HistoryColorDivider);
             }
         }
         private static void ColorGradientSuper(double dataX, double dataY, double dataZ,
@@ -1825,7 +1586,7 @@ namespace Physics_Data_Debug
             double Ydata = Math.Abs(dataY);
             double Zdata = Math.Abs(dataZ);
 
-            double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / steps;
+            double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / Steps;
             double ten = _4WheelsSettings.Z1Max;
             double nine = ten - minus;
             double eight = nine - minus;
@@ -2140,7 +1901,6 @@ namespace Physics_Data_Debug
             chartName.Series[seriesName].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
             chartName.Series[seriesName].Points.Last().IsValueShownAsLabel = false;//true;
         }
-
         public static void ListSeriesAllWheels(Chart chartName, 
             string seriesNameFL, double dataXFL, List<double> xValuesFL, double dataYFL, List<double> yValuesFL, double dataZFL, List<double> zValuesFL,
             List<double> xValuesFLColor1, List<double> yValuesFLColor1,
@@ -2351,82 +2111,11 @@ namespace Physics_Data_Debug
             chartName.Series[seriesNameRR].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
             chartName.Series[seriesNameRR].Points.Last().IsValueShownAsLabel = false;//true;
         }
-
-        static SeriesChartType chartType = _4WheelsSettings.SeriesChartType;
-        static Color color = Color.Transparent;
-        static MarkerStyle markerStyle = MarkerStyle.Circle;
-        static int markerSize = 2;
-        static Color markerColor = Color.FromArgb(historyalpha, 128, 0, 0);
-        static bool valueShownAsLabelAndSmartLabelStyle = false;
-
-        public static void InfiniteHistoryChart(Chart chartName, string seriesName)
-        {
-            if (_4WheelsSettings.InfiniteHistoryEnabled == true)
-            {
-                chartName.Series.Insert(0, new Series(seriesName + uHistoryHelper.ToString()));
-                chartName.Series[seriesName + uHistoryHelper].ChartType = chartType;
-                chartName.Series[seriesName + uHistoryHelper.ToString()].Color = color;
-                chartName.Series[seriesName + uHistoryHelper.ToString()].MarkerStyle = markerStyle;
-                chartName.Series[seriesName + uHistoryHelper.ToString()].MarkerSize = markerSize;
-                chartName.Series[seriesName + uHistoryHelper.ToString()].MarkerColor = markerColor;
-                chartName.Series[seriesName + uHistoryHelper.ToString()].IsValueShownAsLabel = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesName + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesName + uHistoryHelper.ToString()].LabelBackColor = color;
-
-                uHistoryHelper++;
-            }
-        }
-        public static void InfiniteHistoryChartAllWheels(Chart chartName, string seriesNameFL, string seriesNameFR, string seriesNameRL, string seriesNameRR)
-        {
-            if (_4WheelsSettings.InfiniteHistoryEnabled == true)
-            {
-                chartName.Series.Insert(0, new Series(seriesNameFL + uHistoryHelper.ToString()));
-                chartName.Series[seriesNameFL + uHistoryHelper].ChartType = chartType;
-                chartName.Series[seriesNameFL + uHistoryHelper.ToString()].Color = color;
-                chartName.Series[seriesNameFL + uHistoryHelper.ToString()].MarkerStyle = markerStyle;
-                chartName.Series[seriesNameFL + uHistoryHelper.ToString()].MarkerSize = markerSize;
-                chartName.Series[seriesNameFL + uHistoryHelper.ToString()].MarkerColor = markerColor;
-                chartName.Series[seriesNameFL + uHistoryHelper.ToString()].IsValueShownAsLabel = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameFL + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameFL + uHistoryHelper.ToString()].LabelBackColor = color;
-
-                chartName.Series.Insert(0, new Series(seriesNameFR + uHistoryHelper.ToString()));
-                chartName.Series[seriesNameFR + uHistoryHelper].ChartType = chartType;
-                chartName.Series[seriesNameFR + uHistoryHelper.ToString()].Color = color;
-                chartName.Series[seriesNameFR + uHistoryHelper.ToString()].MarkerStyle = markerStyle;
-                chartName.Series[seriesNameFR + uHistoryHelper.ToString()].MarkerSize = markerSize;
-                chartName.Series[seriesNameFR + uHistoryHelper.ToString()].MarkerColor = markerColor;
-                chartName.Series[seriesNameFR + uHistoryHelper.ToString()].IsValueShownAsLabel = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameFR + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameFR + uHistoryHelper.ToString()].LabelBackColor = color;
-
-                chartName.Series.Insert(0, new Series(seriesNameRL + uHistoryHelper.ToString()));
-                chartName.Series[seriesNameRL + uHistoryHelper].ChartType = chartType;
-                chartName.Series[seriesNameRL + uHistoryHelper.ToString()].Color = color;
-                chartName.Series[seriesNameRL + uHistoryHelper.ToString()].MarkerStyle = markerStyle;
-                chartName.Series[seriesNameRL + uHistoryHelper.ToString()].MarkerSize = markerSize;
-                chartName.Series[seriesNameRL + uHistoryHelper.ToString()].MarkerColor = markerColor;
-                chartName.Series[seriesNameRL + uHistoryHelper.ToString()].IsValueShownAsLabel = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameRL + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameRL + uHistoryHelper.ToString()].LabelBackColor = color;
-
-                chartName.Series.Insert(0, new Series(seriesNameRR + uHistoryHelper.ToString()));
-                chartName.Series[seriesNameRR + uHistoryHelper].ChartType = chartType;
-                chartName.Series[seriesNameRR + uHistoryHelper.ToString()].Color = color;
-                chartName.Series[seriesNameRR + uHistoryHelper.ToString()].MarkerStyle = markerStyle;
-                chartName.Series[seriesNameRR + uHistoryHelper.ToString()].MarkerSize = markerSize;
-                chartName.Series[seriesNameRR + uHistoryHelper.ToString()].MarkerColor = markerColor;
-                chartName.Series[seriesNameRR + uHistoryHelper.ToString()].IsValueShownAsLabel = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameRR + uHistoryHelper.ToString()].SmartLabelStyle.Enabled = valueShownAsLabelAndSmartLabelStyle;
-                chartName.Series[seriesNameRR + uHistoryHelper.ToString()].LabelBackColor = color;
-                uHistoryHelper++;
-            }
-        }
         public static void SetUpDownChart(Chart chartName)
         {
 
             double maxmin = _4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min;
-            double interval = maxmin / steps;
+            double interval = maxmin / Steps;
             chartName.ChartAreas["ChartArea1"].AxisY.Minimum = _4WheelsSettings.Z1Min;
 
             chartName.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
@@ -2440,50 +2129,50 @@ namespace Physics_Data_Debug
             chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Clear();
             if (_4WheelsSettings.Scheme == "Green Red")
             {
-                for (double i = _4WheelsSettings.Z1Min * steps; i <= _4WheelsSettings.Z1Max * steps; i += maxmin)
+                for (double i = _4WheelsSettings.Z1Min * Steps; i <= _4WheelsSettings.Z1Max * Steps; i += maxmin)
                 {
 
-                    double iminsteps = i - _4WheelsSettings.Z1Min * steps;
+                    double iminsteps = i - _4WheelsSettings.Z1Min * Steps;
                     StripLine sl = new StripLine();
                     if (Math.Abs(iminsteps) == maxmin * 10)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 0 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 9)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 0 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 8)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 7)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 64 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 64 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 6)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 128 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 128 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 5)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 192 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 192 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 4)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 192 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 192 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 3)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 192 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 192 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 2)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 64 / divider, 192 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 64 / Divider, 192 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 1)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 0 / divider, 192 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 0 / Divider, 192 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 0)
                     {
@@ -2492,34 +2181,34 @@ namespace Physics_Data_Debug
                     if (i < 0)
                     {
                         sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps;
+                        sl.IntervalOffset = ((double)i) / Steps;
                     }
                     else if (i > 0)
                     {
                         sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps - interval;
+                        sl.IntervalOffset = ((double)i) / Steps - interval;
                     }
                     chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
                 }
             }
             else if (_4WheelsSettings.Scheme == "Colorblind")
             {
-                Color color2 = Color.FromArgb(historyalpha, 0, 73, 73);
-                Color color3 = Color.FromArgb(historyalpha, 0, 146, 146);
-                Color color4 = Color.FromArgb(historyalpha, 255, 109, 182);
+                Color color2 = Color.FromArgb(HistoryAlpha, 0, 73, 73);
+                Color color3 = Color.FromArgb(HistoryAlpha, 0, 146, 146);
+                Color color4 = Color.FromArgb(HistoryAlpha, 255, 109, 182);
                 //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);
-                Color color6 = Color.FromArgb(historyalpha, 73, 0, 146);
-                Color color7 = Color.FromArgb(historyalpha, 0, 109, 219);
-                Color color8 = Color.FromArgb(historyalpha, 182, 109, 255);
-                Color color9 = Color.FromArgb(historyalpha, 109, 182, 255);
-                Color color15 = Color.FromArgb(historyalpha, 255, 255, 109);
-                Color color14 = Color.FromArgb(historyalpha, 36, 255, 36);
-                Color color13 = Color.FromArgb(historyalpha, 219, 109, 0);
+                Color color6 = Color.FromArgb(HistoryAlpha, 73, 0, 146);
+                Color color7 = Color.FromArgb(HistoryAlpha, 0, 109, 219);
+                Color color8 = Color.FromArgb(HistoryAlpha, 182, 109, 255);
+                Color color9 = Color.FromArgb(HistoryAlpha, 109, 182, 255);
+                Color color15 = Color.FromArgb(HistoryAlpha, 255, 255, 109);
+                Color color14 = Color.FromArgb(HistoryAlpha, 36, 255, 36);
+                Color color13 = Color.FromArgb(HistoryAlpha, 219, 109, 0);
 
-                for (double i = _4WheelsSettings.Z1Min * steps; i <= _4WheelsSettings.Z1Max * steps; i += maxmin)
+                for (double i = _4WheelsSettings.Z1Min * Steps; i <= _4WheelsSettings.Z1Max * Steps; i += maxmin)
                 {
 
-                    double iminsteps = i - _4WheelsSettings.Z1Min * steps;
+                    double iminsteps = i - _4WheelsSettings.Z1Min * Steps;
                     StripLine sl = new StripLine();
                     if (Math.Abs(iminsteps) == maxmin * 10)
                     {
@@ -2568,61 +2257,61 @@ namespace Physics_Data_Debug
                     if (i < 0)
                     {
                         sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps;
+                        sl.IntervalOffset = ((double)i) / Steps;
                     }
                     else if (i > 0)
                     {
                         sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps - interval;
+                        sl.IntervalOffset = ((double)i) / Steps - interval;
                     }
                     chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
                 }
             }
             else
             {
-                for (double i = _4WheelsSettings.Z1Min * steps; i <= _4WheelsSettings.Z1Max * steps; i += maxmin)
+                for (double i = _4WheelsSettings.Z1Min * Steps; i <= _4WheelsSettings.Z1Max * Steps; i += maxmin)
                 {
-                    double iminsteps = i - _4WheelsSettings.Z1Min * steps;
+                    double iminsteps = i - _4WheelsSettings.Z1Min * Steps;
                     StripLine sl = new StripLine();
                     if (Math.Abs(iminsteps) == _4WheelsSettings.Z1Max * 10)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 0 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 9)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 0 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 8)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 0 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 0 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 7)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 64 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 64 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 6)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 128 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 128 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 5)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 255 / divider, 0 / divider, 192 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 192 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 4)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 192 / divider, 0 / divider, 192 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 0 / Divider, 192 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 3)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 128 / divider, 0 / divider, 192 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 0 / Divider, 192 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 2)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 64 / divider, 0 / divider, 192 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 64 / Divider, 0 / Divider, 192 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 1)
                     {
-                        sl.BackColor = Color.FromArgb(alpha, 0 / divider, 0 / divider, 192 / divider);
+                        sl.BackColor = Color.FromArgb(Alpha, 0 / Divider, 0 / Divider, 192 / Divider);
                     }
                     if (Math.Abs(iminsteps) == maxmin * 0)
                     {
@@ -2631,12 +2320,12 @@ namespace Physics_Data_Debug
                     if (i < 0)
                     {
                         sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps;
+                        sl.IntervalOffset = ((double)i) / Steps;
                     }
                     else if (i > 0)
                     {
                         sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / steps - interval;
+                        sl.IntervalOffset = ((double)i) / Steps - interval;
                     }
                     chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
                 }
