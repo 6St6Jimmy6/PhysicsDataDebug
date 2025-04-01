@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Physics_Data_Debug
 {
@@ -20,58 +21,37 @@ namespace Physics_Data_Debug
             PauseUpdate = false;
             timer1.Interval = 50;
             //timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
-
+            SetCharts();
+        }
+        public void SetCharts()
+        {
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+            // WORKS WRONG! Clears the chart series also
             if (_4WheelsSettings.WheelChartsSelect == "All In One")
             {
-                label1.Visible = false;
-                chart1.Visible = false;
-                chart1.Enabled = false;
+                _4Wheels.SetChartAllWheelsInOneChartArea(chart1, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR, "ChartAreaAllWheels");
+            }
+            if (_4WheelsSettings.WheelChartsSelect == "Front/Rear")
+            {
+                // Add first front then rear
+                _4Wheels.SetChartFrontWheels(chart1, _4Wheels.seriesFL, _4Wheels.seriesFR, "ChartAreaFront");
+                _4Wheels.SetChartRearWheels(chart1, _4Wheels.seriesRL, _4Wheels.seriesRR, "ChartAreaRear");
 
-                label2.Visible = false;
-                chart2.Visible = false;
-                chart2.Enabled = false;
-
-                label3.Visible = false;
-                chart3.Visible = false;
-                chart3.Enabled = false;
-
-                label4.Visible = false;
-                chart4.Visible = false;
-                chart4.Enabled = false;
-
-                label5.Visible = true;
-                chart5.Enabled = true;
-                chart5.Visible = true;
-                _4Wheels.SetChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
             }
             if (_4WheelsSettings.WheelChartsSelect == "Separate")
             {
-                label1.Visible = true;
-                chart1.Enabled = true;
-                chart1.Visible = true;
-
-                label2.Visible = true;
-                chart2.Enabled = true;
-                chart2.Visible = true;
-
-                label3.Visible = true;
-                chart3.Enabled = true;
-                chart3.Visible = true;
-
-                label4.Visible = true;
-                chart4.Enabled = true;
-                chart4.Visible = true;
-
-                label5.Visible = false;
-                chart5.Visible = false;
-                chart5.Enabled = false;
-
-                _4Wheels.SetChart(chart1, _4Wheels.seriesFL);
-                _4Wheels.SetChart(chart2, _4Wheels.seriesFR);
-                _4Wheels.SetChart(chart3, _4Wheels.seriesRL);
-                _4Wheels.SetChart(chart4, _4Wheels.seriesRR);
+                // Add first left and then right sides because the order of the ChartAreas is like that
+                _4Wheels.SetChart(chart1, _4Wheels.seriesFL, "ChartAreaFL");
+                _4Wheels.SetChart(chart1, _4Wheels.seriesRL, "ChartAreaRL");
+                _4Wheels.SetChart(chart1, _4Wheels.seriesFR, "ChartAreaFR");
+                _4Wheels.SetChart(chart1, _4Wheels.seriesRR, "ChartAreaRR");
             }
             _4Wheels.SetUpDownChart(GradientChart);
+        }
+        public void ClearAllSeriesHistory()
+        {
+            _4Wheels.ClearSeriesHistory(chart1);
         }
         private void ButtonLabelVisibilities()
         {
@@ -82,14 +62,38 @@ namespace Physics_Data_Debug
                 label3.Visible = true;
                 label4.Visible = true;
                 label5.Visible = false;
+                label6.Visible = false;
+                label7.Visible = false;
             }
-            else
+            else if (_4WheelsSettings.WheelChartsSelect == "All In One")
             { 
                 label1.Visible = false;
                 label2.Visible = false;
                 label3.Visible = false;
                 label4.Visible = false;
                 label5.Visible = true;
+                label6.Visible = false;
+                label7.Visible = false;
+            }
+            else if(_4WheelsSettings.WheelChartsSelect == "Front/Rear")
+            {
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+                label5.Visible = false;
+                label6.Visible = true;
+                label7.Visible = true;
+            }
+            else
+            {
+                label1.Visible = true;
+                label2.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                label7.Visible = true;
             }
             if (_4WheelsSettings.SettingsOpen == true)
             {
@@ -166,9 +170,10 @@ namespace Physics_Data_Debug
                                                     LiveData.RR_TotalFriction, LiveData.RR_TotalFrictionAngle,
                                                     LiveData.RR_SuspensionLength, LiveData.RR_SuspensionVelocity);
         }
-        private void ListSeriesFL(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        private void ListSeriesFL(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
         {
-            _4Wheels.ListSeries(chart1, _4Wheels.seriesFL, xyzValuesZero, _4Wheels.FL_X1ValuesChart, xyzValuesOne, _4Wheels.FL_Y1ValuesChart, xyzValuesTwo, _4Wheels.FL_Z1ValuesChart,
+            _4Wheels.ListSeries(chartName, 
+            _4Wheels.seriesFL, xyzValuesZero, _4Wheels.FL_X1ValuesChart, xyzValuesOne, _4Wheels.FL_Y1ValuesChart, xyzValuesTwo, _4Wheels.FL_Z1ValuesChart,
             _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
             _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
             _4Wheels.FL_X1ValuesChartColor3, _4Wheels.FL_Y1ValuesChartColor3,
@@ -180,9 +185,10 @@ namespace Physics_Data_Debug
             _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
             _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10);
         }
-        private void ListSeriesFR(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        private void ListSeriesFR(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
         {
-            _4Wheels.ListSeries(chart2, _4Wheels.seriesFR, xyzValuesZero, _4Wheels.FR_X1ValuesChart, xyzValuesOne, _4Wheels.FR_Y1ValuesChart, xyzValuesTwo, _4Wheels.FR_Z1ValuesChart,
+            _4Wheels.ListSeries(chartName, 
+            _4Wheels.seriesFR, xyzValuesZero, _4Wheels.FR_X1ValuesChart, xyzValuesOne, _4Wheels.FR_Y1ValuesChart, xyzValuesTwo, _4Wheels.FR_Z1ValuesChart,
             _4Wheels.FR_X1ValuesChartColor1, _4Wheels.FR_Y1ValuesChartColor1,
             _4Wheels.FR_X1ValuesChartColor2, _4Wheels.FR_Y1ValuesChartColor2,
             _4Wheels.FR_X1ValuesChartColor3, _4Wheels.FR_Y1ValuesChartColor3,
@@ -194,9 +200,10 @@ namespace Physics_Data_Debug
             _4Wheels.FR_X1ValuesChartColor9, _4Wheels.FR_Y1ValuesChartColor9,
             _4Wheels.FR_X1ValuesChartColor10, _4Wheels.FR_Y1ValuesChartColor10);
         }
-        private void ListSeriesRL(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        private void ListSeriesRL(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
         {
-            _4Wheels.ListSeries(chart3, _4Wheels.seriesRL, xyzValuesZero, _4Wheels.RL_X1ValuesChart, xyzValuesOne, _4Wheels.RL_Y1ValuesChart, xyzValuesTwo, _4Wheels.RL_Z1ValuesChart,
+            _4Wheels.ListSeries(chartName, 
+            _4Wheels.seriesRL, xyzValuesZero, _4Wheels.RL_X1ValuesChart, xyzValuesOne, _4Wheels.RL_Y1ValuesChart, xyzValuesTwo, _4Wheels.RL_Z1ValuesChart,
             _4Wheels.RL_X1ValuesChartColor1, _4Wheels.RL_Y1ValuesChartColor1,
             _4Wheels.RL_X1ValuesChartColor2, _4Wheels.RL_Y1ValuesChartColor2,
             _4Wheels.RL_X1ValuesChartColor3, _4Wheels.RL_Y1ValuesChartColor3,
@@ -208,9 +215,10 @@ namespace Physics_Data_Debug
             _4Wheels.RL_X1ValuesChartColor9, _4Wheels.RL_Y1ValuesChartColor9,
             _4Wheels.RL_X1ValuesChartColor10, _4Wheels.RL_Y1ValuesChartColor10);
         }
-        private void ListSeriesRR(float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        private void ListSeriesRR(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
         {
-            _4Wheels.ListSeries(chart4, _4Wheels.seriesRR, xyzValuesZero, _4Wheels.RR_X1ValuesChart, xyzValuesOne, _4Wheels.RR_Y1ValuesChart, xyzValuesTwo, _4Wheels.RR_Z1ValuesChart,
+            _4Wheels.ListSeries(chartName, 
+            _4Wheels.seriesRR, xyzValuesZero, _4Wheels.RR_X1ValuesChart, xyzValuesOne, _4Wheels.RR_Y1ValuesChart, xyzValuesTwo, _4Wheels.RR_Z1ValuesChart,
             _4Wheels.RR_X1ValuesChartColor1, _4Wheels.RR_Y1ValuesChartColor1,
             _4Wheels.RR_X1ValuesChartColor2, _4Wheels.RR_Y1ValuesChartColor2,
             _4Wheels.RR_X1ValuesChartColor3, _4Wheels.RR_Y1ValuesChartColor3,
@@ -222,12 +230,13 @@ namespace Physics_Data_Debug
             _4Wheels.RR_X1ValuesChartColor9, _4Wheels.RR_Y1ValuesChartColor9,
             _4Wheels.RR_X1ValuesChartColor10, _4Wheels.RR_Y1ValuesChartColor10);
         }
-        private void ListSeriesAllWheels(float xyzValuesZeroFL, float xyzValuesOneFL, float xyzValuesTwoFL, 
+        private void ListSeriesAllWheels(Chart chartName,
+            float xyzValuesZeroFL, float xyzValuesOneFL, float xyzValuesTwoFL, 
             float xyzValuesZeroFR, float xyzValuesOneFR, float xyzValuesTwoFR,
             float xyzValuesZeroRL, float xyzValuesOneRL, float xyzValuesTwoRL,
             float xyzValuesZeroRR, float xyzValuesOneRR, float xyzValuesTwoRR)
         {
-            _4Wheels.ListSeriesAllWheels(chart5,
+            _4Wheels.ListSeriesAllWheels(chartName,
                     _4Wheels.seriesFL, xyzValuesZeroFL, _4Wheels.FL_X1ValuesChart, xyzValuesOneFL, _4Wheels.FL_Y1ValuesChart, xyzValuesTwoFL, _4Wheels.FL_Z1ValuesChart,
             _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
             _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
@@ -273,7 +282,7 @@ namespace Physics_Data_Debug
             _4Wheels.RR_X1ValuesChartColor9, _4Wheels.RR_Y1ValuesChartColor9,
             _4Wheels.RR_X1ValuesChartColor10, _4Wheels.RR_Y1ValuesChartColor10);
         }
-            private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
             ButtonLabelVisibilities();
             //timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
@@ -287,15 +296,21 @@ namespace Physics_Data_Debug
 
                 if (_4WheelsSettings.WheelChartsSelect == "Separate")
                 {
-                    ListSeriesFL(xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2]);
-                    ListSeriesFR(xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2]);
-                    ListSeriesRL(xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2]);
-                    ListSeriesRR(xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
+                    ListSeriesFL(chart1, xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2]);
+                    ListSeriesFR(chart1, xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2]);
+                    ListSeriesRL(chart1, xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2]);
+                    ListSeriesRR(chart1, xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
                 }
-
+                if (_4WheelsSettings.WheelChartsSelect == "Front/Rear")
+                {
+                    ListSeriesFL(chart1, xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2]);
+                    ListSeriesFR(chart1, xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2]);
+                    ListSeriesRL(chart1, xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2]);
+                    ListSeriesRR(chart1, xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
+                }
                 if (_4WheelsSettings.WheelChartsSelect == "All In One")
                 {
-                    ListSeriesAllWheels(xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2], xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2], xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2], xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
+                    ListSeriesAllWheels(chart1, xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2], xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2], xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2], xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
                 }
             }
         }
@@ -325,17 +340,21 @@ namespace Physics_Data_Debug
         {
             if (LiveData.elapsedTime > 0)
             {
-                if(_4WheelsSettings.WheelChartsSelect == "Separate")
+                //_4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesFL);
+                //_4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesFR);
+                //_4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesRL);
+                //_4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesRR);
+                /*if(_4WheelsSettings.WheelChartsSelect == "Separate")
                 {
                     _4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesFL);
-                    _4Wheels.InfiniteHistoryChart(chart2, _4Wheels.seriesFR);
-                    _4Wheels.InfiniteHistoryChart(chart3, _4Wheels.seriesRL);
-                    _4Wheels.InfiniteHistoryChart(chart4, _4Wheels.seriesRR);
+                    _4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesFR);
+                    _4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesRL);
+                    _4Wheels.InfiniteHistoryChart(chart1, _4Wheels.seriesRR);
                 }
                 if(_4WheelsSettings.WheelChartsSelect == "All In One")
                 {
-                    _4Wheels.InfiniteHistoryChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
-                }
+                    _4Wheels.InfiniteHistoryChartAllWheels(chart1, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
+                }*/
             }
         }
         private void toSettingsButton_Click(object sender, EventArgs e)
@@ -350,10 +369,6 @@ namespace Physics_Data_Debug
             timer1.Enabled = false;
             //timer2.Enabled = false;
             _4Wheels.ClearSeriesHistory(chart1);
-            _4Wheels.ClearSeriesHistory(chart2);
-            _4Wheels.ClearSeriesHistory(chart3);
-            _4Wheels.ClearSeriesHistory(chart4);
-            _4Wheels.ClearSeriesHistory(chart5);
             _4Wheels.SetArrays();
             _4Wheels.SetUpDownChart(GradientChart);
 

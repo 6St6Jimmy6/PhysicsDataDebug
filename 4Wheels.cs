@@ -1062,113 +1062,177 @@ namespace Physics_Data_Debug
             RR_Z1ValuesChartColor10.Clear();
 
         }
-        public static void SetChartBasics(Chart chartName)
+        public static void AddChart(Chart chartName, string chartAreaName)
         {
-            chartName.ChartAreas["ChartArea1"].BackColor = _4WheelsSettings.BackgroundColor;
+            if (chartName.ChartAreas.IsUniqueName(chartAreaName))
+            {
+                chartName.ChartAreas.Add(chartAreaName);
+            }
+
+            chartName.ChartAreas[chartAreaName].BackColor = _4WheelsSettings.BackgroundColor;
 
             // X Axis
-            chartName.ChartAreas["ChartArea1"].AxisX.Maximum = _4WheelsSettings.X1Max;
-            chartName.ChartAreas["ChartArea1"].AxisX.Minimum = _4WheelsSettings.X1Min;
+            chartName.ChartAreas[chartAreaName].AxisX.Maximum = _4WheelsSettings.X1Max;
+            chartName.ChartAreas[chartAreaName].AxisX.Minimum = _4WheelsSettings.X1Min;
 
-            chartName.ChartAreas["ChartArea1"].AxisX.Interval = _4WheelsSettings.X1MajorInterval;
-            chartName.ChartAreas["ChartArea1"].AxisX.MajorGrid.Interval = _4WheelsSettings.X1MajorInterval;
-            chartName.ChartAreas["ChartArea1"].AxisX.LabelStyle.Format = "F" + _4WheelsSettings.X1MajorDecimals;// decimals
+            chartName.ChartAreas[chartAreaName].AxisX.Interval = _4WheelsSettings.X1MajorInterval;
+            chartName.ChartAreas[chartAreaName].AxisX.MajorGrid.Interval = _4WheelsSettings.X1MajorInterval;
+            chartName.ChartAreas[chartAreaName].AxisX.LabelStyle.Format = "F" + _4WheelsSettings.X1MajorDecimals;// decimals
 
-            chartName.ChartAreas["ChartArea1"].AxisX.LabelStyle.Font = new Font(_4WheelsSettings.X1FontFamily, _4WheelsSettings.X1FontSize, _4WheelsSettings.X1FontStyle);
-            chartName.ChartAreas["ChartArea1"].AxisX.LabelStyle.ForeColor = _4WheelsSettings.X1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisX.LabelStyle.Font = new Font(_4WheelsSettings.X1FontFamily, _4WheelsSettings.X1FontSize, _4WheelsSettings.X1FontStyle);
+            chartName.ChartAreas[chartAreaName].AxisX.LabelStyle.ForeColor = _4WheelsSettings.X1FontColor;
 
-            chartName.ChartAreas["ChartArea1"].AxisX.Title = _4WheelsSettings.X1Selection;
-            chartName.ChartAreas["ChartArea1"].AxisX.TitleFont = new Font(_4WheelsSettings.X1FontFamily, _4WheelsSettings.X1FontSize, _4WheelsSettings.X1FontStyle);
-            chartName.ChartAreas["ChartArea1"].AxisX.TitleForeColor = _4WheelsSettings.X1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisX.Title = _4WheelsSettings.X1Selection;
+            chartName.ChartAreas[chartAreaName].AxisX.TitleFont = new Font(_4WheelsSettings.X1FontFamily, _4WheelsSettings.X1FontSize, _4WheelsSettings.X1FontStyle);
+            chartName.ChartAreas[chartAreaName].AxisX.TitleForeColor = _4WheelsSettings.X1FontColor;
 
-            chartName.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = _4WheelsSettings.X1MajorLineWidth;
-            chartName.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineColor = _4WheelsSettings.X1MajorColor;
-            chartName.ChartAreas["ChartArea1"].AxisY.LineColor = Color.Transparent;// Need to do this for this specific line, because it's over the X axis lines.
+            chartName.ChartAreas[chartAreaName].AxisX.MajorGrid.LineWidth = _4WheelsSettings.X1MajorLineWidth;
+            chartName.ChartAreas[chartAreaName].AxisX.MajorGrid.LineColor = _4WheelsSettings.X1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisY.LineColor = Color.Transparent;// Need to do this for this specific line, because it's over the X axis lines.
 
-            chartName.ChartAreas["ChartArea1"].AxisX.MinorGrid.Enabled = _4WheelsSettings.X1MinorEnabled;
-            chartName.ChartAreas["ChartArea1"].AxisX.MinorGrid.LineDashStyle = _4WheelsSettings.X1MinorDashStyle;
-            chartName.ChartAreas["ChartArea1"].AxisX.MinorGrid.LineWidth = _4WheelsSettings.X1MinorLineWidth;
-            chartName.ChartAreas["ChartArea1"].AxisX.MinorGrid.Interval = chartName.ChartAreas["ChartArea1"].AxisX.Interval / _4WheelsSettings.X1MinorIntervalFraction;
-            chartName.ChartAreas["ChartArea1"].AxisX.MinorGrid.LineColor = _4WheelsSettings.X1MinorColor;
+            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.Enabled = _4WheelsSettings.X1MinorEnabled;
+            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.LineDashStyle = _4WheelsSettings.X1MinorDashStyle;
+            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.LineWidth = _4WheelsSettings.X1MinorLineWidth;
+            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.Interval = chartName.ChartAreas[chartAreaName].AxisX.Interval / _4WheelsSettings.X1MinorIntervalFraction;
+            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.LineColor = _4WheelsSettings.X1MinorColor;
 
-            chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.BackColor = Color.Empty;
-            chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonColor = _4WheelsSettings.X1MajorColor;
-            chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.LineColor = _4WheelsSettings.X1FontColor;
-            chartName.ChartAreas["ChartArea1"].AxisX.ScaleView.Zoomable = true;
-            chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-            chartName.ChartAreas["ChartArea1"].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.All;
-            chartName.ChartAreas["ChartArea1"].CursorX.AutoScroll = true;
-            chartName.ChartAreas["ChartArea1"].CursorX.IsUserEnabled = true;
-            chartName.ChartAreas["ChartArea1"].CursorX.IsUserSelectionEnabled = true;
-            chartName.ChartAreas["ChartArea1"].CursorX.Interval = 0.01;
-            chartName.ChartAreas["ChartArea1"].CursorX.LineColor = _4WheelsSettings.MarkerColor;
+            chartName.ChartAreas[chartAreaName].AxisX.ScrollBar.BackColor = Color.Empty;
+            chartName.ChartAreas[chartAreaName].AxisX.ScrollBar.ButtonColor = _4WheelsSettings.X1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisX.ScrollBar.LineColor = _4WheelsSettings.X1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisX.ScaleView.Zoomable = true;
+            chartName.ChartAreas[chartAreaName].AxisX.ScrollBar.Enabled = true;
+            chartName.ChartAreas[chartAreaName].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.All;
+            chartName.ChartAreas[chartAreaName].CursorX.AutoScroll = true;
+            chartName.ChartAreas[chartAreaName].CursorX.IsUserEnabled = true;
+            chartName.ChartAreas[chartAreaName].CursorX.IsUserSelectionEnabled = true;
+            chartName.ChartAreas[chartAreaName].CursorX.Interval = 0.01;
+            chartName.ChartAreas[chartAreaName].CursorX.LineColor = _4WheelsSettings.MarkerColor;
 
             // Y Axis
-            chartName.ChartAreas["ChartArea1"].AxisY.Title = _4WheelsSettings.Y1Selection;
-            chartName.ChartAreas["ChartArea1"].AxisY.Minimum = _4WheelsSettings.Y1Min;
-            chartName.ChartAreas["ChartArea1"].AxisY.Maximum = _4WheelsSettings.Y1Max;
+            chartName.ChartAreas[chartAreaName].AxisY.Title = _4WheelsSettings.Y1Selection;
+            chartName.ChartAreas[chartAreaName].AxisY.Minimum = _4WheelsSettings.Y1Min;
+            chartName.ChartAreas[chartAreaName].AxisY.Maximum = _4WheelsSettings.Y1Max;
 
-            chartName.ChartAreas["ChartArea1"].AxisY.LabelStyle.Font = new Font(_4WheelsSettings.Y1FontFamily, _4WheelsSettings.Y1FontSize, _4WheelsSettings.Y1FontStyle);
-            chartName.ChartAreas["ChartArea1"].AxisY.LabelStyle.ForeColor = _4WheelsSettings.Y1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.Font = new Font(_4WheelsSettings.Y1FontFamily, _4WheelsSettings.Y1FontSize, _4WheelsSettings.Y1FontStyle);
+            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.ForeColor = _4WheelsSettings.Y1FontColor;
 
-            chartName.ChartAreas["ChartArea1"].AxisY.Title = _4WheelsSettings.Y1Selection;
-            chartName.ChartAreas["ChartArea1"].AxisY.TitleFont = new Font(_4WheelsSettings.Y1FontFamily, _4WheelsSettings.Y1FontSize, _4WheelsSettings.Y1FontStyle);
-            chartName.ChartAreas["ChartArea1"].AxisY.TitleForeColor = _4WheelsSettings.Y1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisY.Title = _4WheelsSettings.Y1Selection;
+            chartName.ChartAreas[chartAreaName].AxisY.TitleFont = new Font(_4WheelsSettings.Y1FontFamily, _4WheelsSettings.Y1FontSize, _4WheelsSettings.Y1FontStyle);
+            chartName.ChartAreas[chartAreaName].AxisY.TitleForeColor = _4WheelsSettings.Y1FontColor;
 
-            chartName.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = _4WheelsSettings.Y1MajorLineWidth;
-            chartName.ChartAreas["ChartArea1"].AxisY.LabelStyle.Format = "F" + _4WheelsSettings.Y1MajorDecimals;// decimals
-            chartName.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineColor = _4WheelsSettings.Y1MajorColor;
-            chartName.ChartAreas["ChartArea1"].AxisY.Interval = _4WheelsSettings.Y1MajorInterval; // TickMark Interval
-            chartName.ChartAreas["ChartArea1"].AxisY.MajorGrid.Interval = _4WheelsSettings.Y1MajorInterval; // Major Grid Interval
-            chartName.ChartAreas["ChartArea1"].AxisY.LabelStyle.Interval = _4WheelsSettings.Y1MajorInterval; // Major Grid Label Interval
-            chartName.ChartAreas["ChartArea1"].AxisY.LabelStyle.IntervalOffset = 0;
+            chartName.ChartAreas[chartAreaName].AxisY.MajorGrid.LineWidth = _4WheelsSettings.Y1MajorLineWidth;
+            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.Format = "F" + _4WheelsSettings.Y1MajorDecimals;// decimals
+            chartName.ChartAreas[chartAreaName].AxisY.MajorGrid.LineColor = _4WheelsSettings.Y1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisY.Interval = _4WheelsSettings.Y1MajorInterval; // TickMark Interval
+            chartName.ChartAreas[chartAreaName].AxisY.MajorGrid.Interval = _4WheelsSettings.Y1MajorInterval; // Major Grid Interval
+            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.Interval = _4WheelsSettings.Y1MajorInterval; // Major Grid Label Interval
+            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.IntervalOffset = 0;
 
-            chartName.ChartAreas["ChartArea1"].AxisY.MinorGrid.Enabled = _4WheelsSettings.Y1MinorEnabled;
-            chartName.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineDashStyle = _4WheelsSettings.Y1MinorDashStyle;
-            chartName.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineWidth = _4WheelsSettings.Y1MinorLineWidth;
-            chartName.ChartAreas["ChartArea1"].AxisY.MinorGrid.Interval = chartName.ChartAreas["ChartArea1"].AxisY.Interval / _4WheelsSettings.Y1MinorIntervalFraction;
-            chartName.ChartAreas["ChartArea1"].AxisY.MinorGrid.LineColor = _4WheelsSettings.Y1MinorColor;
+            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.Enabled = _4WheelsSettings.Y1MinorEnabled;
+            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.LineDashStyle = _4WheelsSettings.Y1MinorDashStyle;
+            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.LineWidth = _4WheelsSettings.Y1MinorLineWidth;
+            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.Interval = chartName.ChartAreas[chartAreaName].AxisY.Interval / _4WheelsSettings.Y1MinorIntervalFraction;
+            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.LineColor = _4WheelsSettings.Y1MinorColor;
 
-            chartName.ChartAreas["ChartArea1"].AxisY.ScrollBar.BackColor = Color.Empty;
-            chartName.ChartAreas["ChartArea1"].AxisY.ScrollBar.ButtonColor = _4WheelsSettings.Y1MajorColor;
-            chartName.ChartAreas["ChartArea1"].AxisY.ScrollBar.LineColor = _4WheelsSettings.Y1FontColor;
-            chartName.ChartAreas["ChartArea1"].AxisY.ScaleView.Zoomable = true;
-            chartName.ChartAreas["ChartArea1"].AxisY.ScrollBar.Enabled = true;
-            chartName.ChartAreas["ChartArea1"].AxisY.ScrollBar.ButtonStyle = ScrollBarButtonStyles.All;
-            chartName.ChartAreas["ChartArea1"].CursorY.AutoScroll = true;
-            chartName.ChartAreas["ChartArea1"].CursorY.IsUserEnabled = true;
-            chartName.ChartAreas["ChartArea1"].CursorY.IsUserSelectionEnabled = true;
-            chartName.ChartAreas["ChartArea1"].CursorY.Interval = 0.01;
-            chartName.ChartAreas["ChartArea1"].CursorY.LineColor = _4WheelsSettings.MarkerColor;
+            chartName.ChartAreas[chartAreaName].AxisY.ScrollBar.BackColor = Color.Empty;
+            chartName.ChartAreas[chartAreaName].AxisY.ScrollBar.ButtonColor = _4WheelsSettings.Y1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisY.ScrollBar.LineColor = _4WheelsSettings.Y1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisY.ScaleView.Zoomable = true;
+            chartName.ChartAreas[chartAreaName].AxisY.ScrollBar.Enabled = true;
+            chartName.ChartAreas[chartAreaName].AxisY.ScrollBar.ButtonStyle = ScrollBarButtonStyles.All;
+            chartName.ChartAreas[chartAreaName].CursorY.AutoScroll = true;
+            chartName.ChartAreas[chartAreaName].CursorY.IsUserEnabled = true;
+            chartName.ChartAreas[chartAreaName].CursorY.IsUserSelectionEnabled = true;
+            chartName.ChartAreas[chartAreaName].CursorY.Interval = 0.01;
+            chartName.ChartAreas[chartAreaName].CursorY.LineColor = _4WheelsSettings.MarkerColor;
 
             // Series marker stuff
 
         }
-        private static void AddColorSeries(Chart chartName, string seriesName, Color color)
+        private static void AddColorSeries(Chart chartName, string chartAreaName, string seriesName, Color color)
         {
             chartName.Series.Add(seriesName);
+            chartName.Series[seriesName].ChartArea = chartAreaName;
             chartName.Series[seriesName].MarkerColor = color;
             chartName.Series[seriesName].ChartType = chartType;
             chartName.Series[seriesName].MarkerStyle = markerStyle;
             chartName.Series[seriesName].MarkerSize = markerSize;
         }
-        private static void AddSeries(Chart chartName, string seriesName)
+        private static void AddSeries(Chart chartName, string chartAreaName, string seriesName)
         {
             chartName.Series.Add(seriesName);
+            chartName.Series[seriesName].ChartArea = chartAreaName;
             chartName.Series[seriesName].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);//Color.Transparent;//
             chartName.Series[seriesName].ChartType = chartType;
             chartName.Series[seriesName].MarkerStyle = markerStyle;
             chartName.Series[seriesName].MarkerSize = markerSize;
             chartName.Series[seriesName].SmartLabelStyle.Enabled = false;
-            chartName.Series[seriesName].LabelBackColor = chartName.ChartAreas["ChartArea1"].BackColor;
+            chartName.Series[seriesName].LabelBackColor = chartName.ChartAreas[chartAreaName].BackColor;
         }
-        public static void SetChart(Chart chartName, string seriesName)
+        private static void AddColorSeriesAllInOneChartArea(Chart chartName, string chartAreaName, string seriesName, Color color)
+        {
+            chartName.Series.Add(seriesName);
+            chartName.Series[seriesName].ChartArea = chartAreaName;
+            chartName.Series[seriesName].MarkerColor = color;
+            chartName.Series[seriesName].ChartType = chartType;
+            chartName.Series[seriesName].MarkerStyle = markerStyle;
+            chartName.Series[seriesName].MarkerSize = markerSize;
+        }
+        private static void AddSeriesAllInOneChartArea(Chart chartName, string chartAreaName, string seriesName)
+        {
+            chartName.Series.Add(seriesName);
+            chartName.Series[seriesName].ChartArea = chartAreaName;
+            chartName.Series[seriesName].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);//Color.Transparent;//
+            chartName.Series[seriesName].ChartType = chartType;
+            chartName.Series[seriesName].MarkerStyle = markerStyle;
+            chartName.Series[seriesName].MarkerSize = markerSize;
+            chartName.Series[seriesName].SmartLabelStyle.Enabled = false;
+            chartName.Series[seriesName].LabelBackColor = chartName.ChartAreas[chartAreaName].BackColor;
+        }
+        public static void SetChart(Chart chartName, string seriesName, string chartAreaName)
         {
             // New Marker color stuff
-            chartName.Series.Clear();
+            //chartName.Series.Clear();
+            //chartName.ChartAreas.Clear();
             chartName.BackColor = Color.Transparent;
 
-            Colors();
+            GetColorSchemeColors();
+
+            XYAxisDefaults("X",
+                         _4WheelsSettings.X1Selection,
+                         _4WheelsSettings.X1Defaults);
+
+            XYAxisDefaults("Y",
+                         _4WheelsSettings.Y1Selection,
+                         _4WheelsSettings.Y1Defaults);
+
+            ZAxisDefaults(_4WheelsSettings.Z1Selection,
+                          _4WheelsSettings.Z1Defaults);
+
+            AddChart(chartName, chartAreaName);
+            // New Marker color stuff
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor10, color10);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor9, color9);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor8, color8);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor7, color7);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor6, color6);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor5, color5);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor4, color4);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor3, color3);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor2, color2);
+            AddColorSeries(chartName, chartAreaName, seriesName + seriesColor1, color1);
+
+            AddSeries(chartName, chartAreaName, seriesName);
+        }
+        public static void SetChartFrontWheels(Chart chartName, string seriesNameFL, string seriesNameFR, string chartAreaName)
+        {
+            // New Marker color stuff
+            //chartName.Series.Clear();
+            //chartName.ChartAreas.Clear();
+
+            chartName.BackColor = Color.Transparent;
+
+            GetColorSchemeColors();
 
             XYAxisDefaults("X",
                          _4WheelsSettings.X1Selection,
@@ -1181,100 +1245,168 @@ namespace Physics_Data_Debug
             ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
 
             // New Marker color stuff
-            AddColorSeries(chartName, seriesColor10, color10);
-            AddColorSeries(chartName, seriesColor9, color9);
-            AddColorSeries(chartName, seriesColor8, color8);
-            AddColorSeries(chartName, seriesColor7, color7);
-            AddColorSeries(chartName, seriesColor6, color6);
-            AddColorSeries(chartName, seriesColor5, color5);
-            AddColorSeries(chartName, seriesColor4, color4);
-            AddColorSeries(chartName, seriesColor3, color3);
-            AddColorSeries(chartName, seriesColor2, color2);
-            AddColorSeries(chartName, seriesColor1, color1);
 
-            AddSeries(chartName, seriesName);
-
-            SetChartBasics(chartName);
-        }
-        public static void SetChartAllWheels(Chart chartName, string seriesNameFL, string seriesNameFR, string seriesNameRL, string seriesNameRR)
-        {
-            // New Marker color stuff
-            chartName.Series.Clear();
-
-            chartName.BackColor = Color.Transparent;
-
-            Colors();
-
-            XYAxisDefaults("X",
-                         _4WheelsSettings.X1Selection,
-                         _4WheelsSettings.X1Defaults);
-
-            XYAxisDefaults("Y",
-                         _4WheelsSettings.Y1Selection,
-                         _4WheelsSettings.Y1Defaults);
-
-            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
-
-            // New Marker color stuff
+            AddChart(chartName, chartAreaName);
 
             //FL
-            AddColorSeries(chartName, seriesNameFL + seriesColor10, color10);
-            AddColorSeries(chartName, seriesNameFL + seriesColor9, color9);
-            AddColorSeries(chartName, seriesNameFL + seriesColor8, color8);
-            AddColorSeries(chartName, seriesNameFL + seriesColor7, color7);
-            AddColorSeries(chartName, seriesNameFL + seriesColor6, color6);
-            AddColorSeries(chartName, seriesNameFL + seriesColor5, color5);
-            AddColorSeries(chartName, seriesNameFL + seriesColor4, color4);
-            AddColorSeries(chartName, seriesNameFL + seriesColor3, color3);
-            AddColorSeries(chartName, seriesNameFL + seriesColor2, color2);
-            AddColorSeries(chartName, seriesNameFL + seriesColor1, color1);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor1, color1);
 
-            AddSeries(chartName, seriesNameFL);
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL);
 
             //FR
-            AddColorSeries(chartName, seriesNameFR + seriesColor10, color10);
-            AddColorSeries(chartName, seriesNameFR + seriesColor9, color9);
-            AddColorSeries(chartName, seriesNameFR + seriesColor8, color8);
-            AddColorSeries(chartName, seriesNameFR + seriesColor7, color7);
-            AddColorSeries(chartName, seriesNameFR + seriesColor6, color6);
-            AddColorSeries(chartName, seriesNameFR + seriesColor5, color5);
-            AddColorSeries(chartName, seriesNameFR + seriesColor4, color4);
-            AddColorSeries(chartName, seriesNameFR + seriesColor3, color3);
-            AddColorSeries(chartName, seriesNameFR + seriesColor2, color2);
-            AddColorSeries(chartName, seriesNameFR + seriesColor1, color1);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor1, color1);
 
-            AddSeries(chartName, seriesNameFR);
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR);
+        }
+        public static void SetChartRearWheels(Chart chartName, string seriesNameRL, string seriesNameRR, string chartAreaName)
+        {
+            // New Marker color stuff
+            //chartName.Series.Clear();
+            //chartName.ChartAreas.Clear();
+
+            chartName.BackColor = Color.Transparent;
+
+            GetColorSchemeColors();
+
+            XYAxisDefaults("X",
+                         _4WheelsSettings.X1Selection,
+                         _4WheelsSettings.X1Defaults);
+
+            XYAxisDefaults("Y",
+                         _4WheelsSettings.Y1Selection,
+                         _4WheelsSettings.Y1Defaults);
+
+            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
+
+            // New Marker color stuff
+
+            AddChart(chartName, chartAreaName);
 
             //RL
-            AddColorSeries(chartName, seriesNameRL + seriesColor10, color10);
-            AddColorSeries(chartName, seriesNameRL + seriesColor9, color9);
-            AddColorSeries(chartName, seriesNameRL + seriesColor8, color8);
-            AddColorSeries(chartName, seriesNameRL + seriesColor7, color7);
-            AddColorSeries(chartName, seriesNameRL + seriesColor6, color6);
-            AddColorSeries(chartName, seriesNameRL + seriesColor5, color5);
-            AddColorSeries(chartName, seriesNameRL + seriesColor4, color4);
-            AddColorSeries(chartName, seriesNameRL + seriesColor3, color3);
-            AddColorSeries(chartName, seriesNameRL + seriesColor2, color2);
-            AddColorSeries(chartName, seriesNameRL + seriesColor1, color1);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor1, color1);
 
-            AddSeries(chartName, seriesNameRL);
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL);
 
             //RR
-            AddColorSeries(chartName, seriesNameRR + seriesColor10, color10);
-            AddColorSeries(chartName, seriesNameRR + seriesColor9, color9);
-            AddColorSeries(chartName, seriesNameRR + seriesColor8, color8);
-            AddColorSeries(chartName, seriesNameRR + seriesColor7, color7);
-            AddColorSeries(chartName, seriesNameRR + seriesColor6, color6);
-            AddColorSeries(chartName, seriesNameRR + seriesColor5, color5);
-            AddColorSeries(chartName, seriesNameRR + seriesColor4, color4);
-            AddColorSeries(chartName, seriesNameRR + seriesColor3, color3);
-            AddColorSeries(chartName, seriesNameRR + seriesColor2, color2);
-            AddColorSeries(chartName, seriesNameRR + seriesColor1, color1);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor1, color1);
 
-            AddSeries(chartName, seriesNameRR);
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR);
+        }
+        public static void SetChartAllWheelsInOneChartArea(Chart chartName, string seriesNameFL, string seriesNameFR, string seriesNameRL, string seriesNameRR, string chartAreaName)
+        {
+            // New Marker color stuff
+            //chartName.Series.Clear();
+            //chartName.ChartAreas.Clear();
 
-            //Set basics of the chart
-            SetChartBasics(chartName);
+            chartName.BackColor = Color.Transparent;
+
+            GetColorSchemeColors();
+
+            XYAxisDefaults("X",
+                         _4WheelsSettings.X1Selection,
+                         _4WheelsSettings.X1Defaults);
+
+            XYAxisDefaults("Y",
+                         _4WheelsSettings.Y1Selection,
+                         _4WheelsSettings.Y1Defaults);
+
+            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
+
+            // New Marker color stuff
+
+            AddChart(chartName, chartAreaName);
+
+            //FL
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL + seriesColor1, color1);
+
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFL);
+
+            //FR
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR + seriesColor1, color1);
+
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameFR);
+
+            //RL
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL + seriesColor1, color1);
+
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRL);
+
+            //RR
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor10, color10);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor9, color9);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor8, color8);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor7, color7);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor6, color6);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor5, color5);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor4, color4);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor3, color3);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor2, color2);
+            AddColorSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR + seriesColor1, color1);
+
+            AddSeriesAllInOneChartArea(chartName, chartAreaName, seriesNameRR);
         }
 
         public static float[] XYZListSelections(string xAxisSelection, List<double> xValues,
@@ -1631,7 +1763,7 @@ namespace Physics_Data_Debug
         private static Color color3;
         private static Color color2;
         private static Color color1;
-        private static void Colors()
+        private static void GetColorSchemeColors()
         {
 
             if (_4WheelsSettings.Scheme == "Colorblind")
@@ -1992,16 +2124,16 @@ namespace Physics_Data_Debug
             xValuesColor9, yValuesColor9,
             xValuesColor10, yValuesColor10);
             chartName.Series[seriesName].Points.DataBindXY(xValues, yValues);
-            chartName.Series[seriesColor1].Points.DataBindXY(xValuesColor1, yValuesColor1);
-            chartName.Series[seriesColor2].Points.DataBindXY(xValuesColor2, yValuesColor2);
-            chartName.Series[seriesColor3].Points.DataBindXY(xValuesColor3, yValuesColor3);
-            chartName.Series[seriesColor4].Points.DataBindXY(xValuesColor4, yValuesColor4);
-            chartName.Series[seriesColor5].Points.DataBindXY(xValuesColor5, yValuesColor5);
-            chartName.Series[seriesColor6].Points.DataBindXY(xValuesColor6, yValuesColor6);
-            chartName.Series[seriesColor7].Points.DataBindXY(xValuesColor7, yValuesColor7);
-            chartName.Series[seriesColor8].Points.DataBindXY(xValuesColor8, yValuesColor8);
-            chartName.Series[seriesColor9].Points.DataBindXY(xValuesColor9, yValuesColor9);
-            chartName.Series[seriesColor10].Points.DataBindXY(xValuesColor10, yValuesColor10);
+            chartName.Series[seriesName + seriesColor1].Points.DataBindXY(xValuesColor1, yValuesColor1);
+            chartName.Series[seriesName + seriesColor2].Points.DataBindXY(xValuesColor2, yValuesColor2);
+            chartName.Series[seriesName + seriesColor3].Points.DataBindXY(xValuesColor3, yValuesColor3);
+            chartName.Series[seriesName + seriesColor4].Points.DataBindXY(xValuesColor4, yValuesColor4);
+            chartName.Series[seriesName + seriesColor5].Points.DataBindXY(xValuesColor5, yValuesColor5);
+            chartName.Series[seriesName + seriesColor6].Points.DataBindXY(xValuesColor6, yValuesColor6);
+            chartName.Series[seriesName + seriesColor7].Points.DataBindXY(xValuesColor7, yValuesColor7);
+            chartName.Series[seriesName + seriesColor8].Points.DataBindXY(xValuesColor8, yValuesColor8);
+            chartName.Series[seriesName + seriesColor9].Points.DataBindXY(xValuesColor9, yValuesColor9);
+            chartName.Series[seriesName + seriesColor10].Points.DataBindXY(xValuesColor10, yValuesColor10);
 
             //ForLoopAxisList(chartName, 1, xValues, yValues, zValues);
             chartName.Series[seriesName].Points.Last().MarkerSize = 8;
@@ -2122,7 +2254,7 @@ namespace Physics_Data_Debug
             xValuesFLColor9, yValuesFLColor9,
             xValuesFLColor10, yValuesFLColor10);
             chartName.Series[seriesNameFL].Points.DataBindXY(xValuesFL, yValuesFL);
-            chartName.Series[seriesNameFL+seriesColor1].Points.DataBindXY(xValuesFLColor1, yValuesFLColor1);
+            chartName.Series[seriesNameFL + seriesColor1].Points.DataBindXY(xValuesFLColor1, yValuesFLColor1);
             chartName.Series[seriesNameFL + seriesColor2].Points.DataBindXY(xValuesFLColor2, yValuesFLColor2);
             chartName.Series[seriesNameFL + seriesColor3].Points.DataBindXY(xValuesFLColor3, yValuesFLColor3);
             chartName.Series[seriesNameFL + seriesColor4].Points.DataBindXY(xValuesFLColor4, yValuesFLColor4);

@@ -141,6 +141,7 @@ namespace Physics_Data_Debug
             this.InfiniteHistoryCheckBox.TabIndex = 503;
             this.InfiniteHistoryCheckBox.Text = "Infinite History Enabled";
             this.InfiniteHistoryCheckBox.UseVisualStyleBackColor = true;
+            this.InfiniteHistoryCheckBox.Visible = false;
             // 
             // HistoryAmountPointsMaskedTextBox
             // 

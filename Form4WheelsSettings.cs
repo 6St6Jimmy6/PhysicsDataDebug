@@ -80,7 +80,14 @@ namespace Physics_Data_Debug
             LoadOtherDefaults();
         }
 
-
+        Form4Wheels form4Wheels = (Form4Wheels)Application.OpenForms["Form4Wheels"];
+        Timer timer1;
+        Timer timer2;
+        public void Form4WheelsFields()
+        {
+            timer1 = form4Wheels.timer1;
+            timer2 = form4Wheels.timer2;
+        }
         private void AddInComboBoxes()
         {
             // Add Font sizes in comboboxes
@@ -604,54 +611,8 @@ namespace Physics_Data_Debug
                 //_4WheelsSettings.Z1MinorDashStyle = (ChartDashStyle)Z1MinorDashStyleComboBox.SelectedItem;
             }
             // Updating chart settings
-            Form4Wheels form = (Form4Wheels)Application.OpenForms["Form4Wheels"];
-            var chart1 = form.chart1;
-            var chart2 = form.chart2;
-            var chart3 = form.chart3;
-            var chart4 = form.chart4;
-            var chart5 = form.chart5;
-            var gradientChart = form.GradientChart;
-            if(_4WheelsSettings.WheelChartsSelect == "All In One")
-            {
-                chart1.Visible = false;
-                chart1.Enabled = false;
-
-                chart2.Visible = false;
-                chart2.Enabled = false;
-
-                chart3.Visible = false;
-                chart3.Enabled = false;
-
-                chart4.Visible = false;
-                chart4.Enabled = false;
-
-                chart5.Enabled = true;
-                chart5.Visible = true;
-                _4Wheels.SetChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
-            }
-            if(_4WheelsSettings.WheelChartsSelect == "Separate")
-            {
-                chart1.Enabled = true;
-                chart1.Visible = true;
-
-                chart2.Enabled = true;
-                chart2.Visible = true;
-
-                chart3.Enabled = true;
-                chart3.Visible = true;
-
-                chart4.Enabled = true;
-                chart4.Visible = true;
-
-                chart5.Visible = false;
-                chart5.Enabled = false;
-
-                _4Wheels.SetChart(chart1, _4Wheels.seriesFL);
-                _4Wheels.SetChart(chart2, _4Wheels.seriesFR);
-                _4Wheels.SetChart(chart3, _4Wheels.seriesRL);
-                _4Wheels.SetChart(chart4, _4Wheels.seriesRR);
-            }
-            _4Wheels.SetUpDownChart(gradientChart);
+            // WORKS WRONG! Clears the chart series also
+            form4Wheels.SetCharts();
         }
         private void applyAndClearButton_Click(object sender, EventArgs e)
         {
@@ -816,68 +777,13 @@ namespace Physics_Data_Debug
                 //_4WheelsSettings.Z1MinorDashStyle = (ChartDashStyle)Z1MinorDashStyleComboBox.SelectedItem;
             }
             // Updating and clearing the charts from old data
-            Form4Wheels form = (Form4Wheels)Application.OpenForms["Form4Wheels"];
-            var chart1 = form.chart1;
-            var chart2 = form.chart2;
-            var chart3 = form.chart3;
-            var chart4 = form.chart4;
-            var chart5 = form.chart5;
-            var gradientChart = form.GradientChart;
-            //var chart2 = form.chart2;
-            var timer1 = form.timer1;
-            var timer2 = form.timer2;
-
+            Form4WheelsFields();
             timer1.Enabled = false;
             timer2.Enabled = false;
-            _4Wheels.ClearSeriesHistory(chart1);
-            _4Wheels.ClearSeriesHistory(chart2);
-            _4Wheels.ClearSeriesHistory(chart3);
-            _4Wheels.ClearSeriesHistory(chart4);
-            _4Wheels.ClearSeriesHistory(chart5);
+            form4Wheels.ClearAllSeriesHistory();
             _4Wheels.SetArrays();
-
-            if (_4WheelsSettings.WheelChartsSelect == "All In One")
-            {
-                chart1.Visible = false;
-                chart1.Enabled = false;
-
-                chart2.Visible = false;
-                chart2.Enabled = false;
-
-                chart3.Visible = false;
-                chart3.Enabled = false;
-
-                chart4.Visible = false;
-                chart4.Enabled = false;
-
-                chart5.Enabled = true;
-                chart5.Visible = true;
-                _4Wheels.SetChartAllWheels(chart5, _4Wheels.seriesFL, _4Wheels.seriesFR, _4Wheels.seriesRL, _4Wheels.seriesRR);
-            }
-            if (_4WheelsSettings.WheelChartsSelect == "Separate")
-            {
-                chart1.Enabled = true;
-                chart1.Visible = true;
-
-                chart2.Enabled = true;
-                chart2.Visible = true;
-
-                chart3.Enabled = true;
-                chart3.Visible = true;
-
-                chart4.Enabled = true;
-                chart4.Visible = true;
-
-                chart5.Visible = false;
-                chart5.Enabled = false;
-
-                _4Wheels.SetChart(chart1, _4Wheels.seriesFL);
-                _4Wheels.SetChart(chart2, _4Wheels.seriesFR);
-                _4Wheels.SetChart(chart3, _4Wheels.seriesRL);
-                _4Wheels.SetChart(chart4, _4Wheels.seriesRR);
-            }
-            _4Wheels.SetUpDownChart(gradientChart);
-
+            //Add separate chart clearers
+            form4Wheels.SetCharts();
             timer1.Enabled = true;
             timer2.Enabled = true;
         }
