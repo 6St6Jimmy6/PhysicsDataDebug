@@ -823,11 +823,6 @@ namespace Physics_Data_Debug
             differentialLocked = GetByteData(memoryHelper, baseAddr, differentialOpenOffsets);
             differentialVelocityRad = GetFloatData(memoryHelper, baseAddr, differentialVelocityRadOffsets);
             differentialTorque = GetFloatData(memoryHelper, baseAddr, differentialTorqueOffsets);
-            //frontLift = Helper.ReadMemory<float>(frontLiftTargetAddr);
-            //rearLift = Helper.ReadMemory<float>(rearLiftTargetAddr);
-            //differentialLocked = Helper.ReadMemory<byte>(differentialOpenTargetAddr);
-            //differentialVelocityRad = Helper.ReadMemory<float>(differentialVelocityRadTargetAddr);
-            //differentialTorque = Helper.ReadMemory<float>(differentialTorqueTargetAddr);
         }
         private static void GetEngineSpeedData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
@@ -1066,37 +1061,37 @@ namespace Physics_Data_Debug
         }
         private static void GetRRData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
-            RR_TreadTemperature = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, rrsOffsets);
-            RR_InnerTemperature = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, rriOffsets);
-            RR_AngularVelocity = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_AngularVelocityOffsets);
-            RR_VerticalDeflection = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_VerticalDeflectionOffsets);
-            RR_LoadedRadius = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_LoadedRadiusOffsets);
-            RR_EffectiveRadius = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_EffectiveRadiusOffsets);
-            RR_CurrentContactBrakeTorque = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_CurrentContactBrakeTorqueOffsets);
-            RR_CurrentContactBrakeTorqueMax = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_CurrentContactBrakeTorqueMaxOffsets);
-            RR_VerticalLoad = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_VerticalLoadOffsets);
-            RR_X = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_XOffsets);
-            RR_Y = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_YOffsets);
-            RR_Z = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_ZOffsets);
-            RR_LateralLoad = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_LateralLoadOffsets);
-            RR_LongitudinalLoad = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_LongitudinalLoadOffsets);
-            RR_SlipAngleRad = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_SlipAngleRadOffsets);
-            RR_SlipRatio = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_SlipRatioOffsets);
-            RR_ContactLength = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_ContactLengthOffsets);
-            RR_TravelSpeed = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_TravelSpeedOffsets);
-            RR_CamberAngleRad = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_CamberAngleRadOffsets);
-            RR_SteerAngleRad = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_SteerAngleRadOffsets);
-            RR_MomentOfInertia = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_MomentOfInertiaOffsets);
-            RR_TireMass = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_TireMassOffsets);
-            RR_TireRadius = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_TireRadiusOffsets);
-            RR_TireWidth = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_TireWidthOffsets);
-            RR_TireSpringRate = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_TireSpringRateOffsets);
-            RR_TireDamperRate = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_TireDamperRateOffsets);
-            RR_TireMaxDeflection = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_TireMaxDeflectionOffsets);
-            RR_ThermalAirTransfer = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_ThermalAirTransferOffsets);
-            RR_ThermalInnerTransfer = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_ThermalInnerTransferOffsets);
-            RR_SuspensionLength = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_SuspensionLengthOffsets);
-            RR_SuspensionVelocity = GetFloatData(memoryHelper, baseAddrTiresSuspensionLiftsDifferentialLocation, RR_SuspensionVelocityOffsets);
+            RR_TreadTemperature = GetFloatData(memoryHelper, baseAddr, rrsOffsets);
+            RR_InnerTemperature = GetFloatData(memoryHelper, baseAddr, rriOffsets);
+            RR_AngularVelocity = GetFloatData(memoryHelper, baseAddr, RR_AngularVelocityOffsets);
+            RR_VerticalDeflection = GetFloatData(memoryHelper, baseAddr, RR_VerticalDeflectionOffsets);
+            RR_LoadedRadius = GetFloatData(memoryHelper, baseAddr, RR_LoadedRadiusOffsets);
+            RR_EffectiveRadius = GetFloatData(memoryHelper, baseAddr, RR_EffectiveRadiusOffsets);
+            RR_CurrentContactBrakeTorque = GetFloatData(memoryHelper, baseAddr, RR_CurrentContactBrakeTorqueOffsets);
+            RR_CurrentContactBrakeTorqueMax = GetFloatData(memoryHelper, baseAddr, RR_CurrentContactBrakeTorqueMaxOffsets);
+            RR_VerticalLoad = GetFloatData(memoryHelper, baseAddr, RR_VerticalLoadOffsets);
+            RR_X = GetFloatData(memoryHelper, baseAddr, RR_XOffsets);
+            RR_Y = GetFloatData(memoryHelper, baseAddr, RR_YOffsets);
+            RR_Z = GetFloatData(memoryHelper, baseAddr, RR_ZOffsets);
+            RR_LateralLoad = GetFloatData(memoryHelper, baseAddr, RR_LateralLoadOffsets);
+            RR_LongitudinalLoad = GetFloatData(memoryHelper, baseAddr, RR_LongitudinalLoadOffsets);
+            RR_SlipAngleRad = GetFloatData(memoryHelper, baseAddr, RR_SlipAngleRadOffsets);
+            RR_SlipRatio = GetFloatData(memoryHelper, baseAddr, RR_SlipRatioOffsets);
+            RR_ContactLength = GetFloatData(memoryHelper, baseAddr, RR_ContactLengthOffsets);
+            RR_TravelSpeed = GetFloatData(memoryHelper, baseAddr, RR_TravelSpeedOffsets);
+            RR_CamberAngleRad = GetFloatData(memoryHelper, baseAddr, RR_CamberAngleRadOffsets);
+            RR_SteerAngleRad = GetFloatData(memoryHelper, baseAddr, RR_SteerAngleRadOffsets);
+            RR_MomentOfInertia = GetFloatData(memoryHelper, baseAddr, RR_MomentOfInertiaOffsets);
+            RR_TireMass = GetFloatData(memoryHelper, baseAddr, RR_TireMassOffsets);
+            RR_TireRadius = GetFloatData(memoryHelper, baseAddr, RR_TireRadiusOffsets);
+            RR_TireWidth = GetFloatData(memoryHelper, baseAddr, RR_TireWidthOffsets);
+            RR_TireSpringRate = GetFloatData(memoryHelper, baseAddr, RR_TireSpringRateOffsets);
+            RR_TireDamperRate = GetFloatData(memoryHelper, baseAddr, RR_TireDamperRateOffsets);
+            RR_TireMaxDeflection = GetFloatData(memoryHelper, baseAddr, RR_TireMaxDeflectionOffsets);
+            RR_ThermalAirTransfer = GetFloatData(memoryHelper, baseAddr, RR_ThermalAirTransferOffsets);
+            RR_ThermalInnerTransfer = GetFloatData(memoryHelper, baseAddr, RR_ThermalInnerTransferOffsets);
+            RR_SuspensionLength = GetFloatData(memoryHelper, baseAddr, RR_SuspensionLengthOffsets);
+            RR_SuspensionVelocity = GetFloatData(memoryHelper, baseAddr, RR_SuspensionVelocityOffsets);
             //if (RR_VerticalLoad != 0)
             //{
             RR_LateralSlipSpeed = GetFloatData(memoryHelper, baseAddr, RR_LateralSlipSpeedOffsets);
@@ -1358,50 +1353,33 @@ namespace Physics_Data_Debug
             LogSettings.rlParameter28 = XYZG.ToString() + delimiter;
             LogSettings.rrParameter28 = XYZG.ToString() + delimiter;
         }
+        private static void FilterCheckAndLog(string tireFileName, float slipRatio, float slipAngleDeg, float travelSpeed, float verticalLoad)
+        {
+            if (LogSettings.FiltersOn == true)
+            {
+                if ((slipRatio <= (0 + LogSettings.Z1) && slipRatio >= (0 - LogSettings.Z1))
+                        && (slipAngleDeg <= (0 + LogSettings.Z2) && slipAngleDeg >= (0 - LogSettings.Z2))
+                        && (travelSpeed >= (0 + LogSettings.Z3) || travelSpeed <= (0 - LogSettings.Z3))
+                        && (verticalLoad <= (LogSettings.W4 + LogSettings.Z4) && verticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
+                {
+                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, tireFileName, LogSettings.SaveFileName, LogSettings.Extension);
+                }
+                else
+                {
+                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, tireFileName, LogSettings.SaveFileName, LogSettings.Extension);
+                }
+            }
+        }
         private static void LogToFile()
         {
 
             if (logging == true)
             {
                 // SA, SR, Speed and Vertical Load filters for logging
-                if (LogSettings.FiltersOn == true)
-                {
-                    if ((FL_SlipRatio <= (0 + LogSettings.Z1) && FL_SlipRatio >= (0 - LogSettings.Z1))
-                        && (FL_SlipAngleDeg <= (0 + LogSettings.Z2) && FL_SlipAngleDeg >= (0 - LogSettings.Z2))
-                        && (FL_TravelSpeed >= (0 + LogSettings.Z3) || FL_TravelSpeed <= (0 - LogSettings.Z3))
-                        && (FL_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && FL_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
-                    {
-                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFLTire, LogSettings.SaveFileName, LogSettings.Extension);
-                    }
-                    if ((FR_SlipRatio <= (0 + LogSettings.Z1) && FR_SlipRatio >= (0 - LogSettings.Z1))
-                        && (FR_SlipAngleDeg <= (0 + LogSettings.Z2) && FR_SlipAngleDeg >= (0 - LogSettings.Z2))
-                        && (FR_TravelSpeed >= (0 + LogSettings.Z3) || FR_TravelSpeed <= (0 - LogSettings.Z3))
-                        && (FR_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && FR_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
-                    {
-                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFRTire, LogSettings.SaveFileName, LogSettings.Extension);
-                    }
-                    if ((RL_SlipRatio <= (0 + LogSettings.Z1) && RL_SlipRatio >= (0 - LogSettings.Z1))
-                        && (RL_SlipAngleDeg <= (0 + LogSettings.Z2) && RL_SlipAngleDeg >= (0 - LogSettings.Z2))
-                        && (RL_TravelSpeed >= (0 + LogSettings.Z3) || RL_TravelSpeed <= (0 - LogSettings.Z3))
-                        && (RL_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && RL_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
-                    {
-                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRLTire, LogSettings.SaveFileName, LogSettings.Extension);
-                    }
-                    if ((RR_SlipRatio <= (0 + LogSettings.Z1) && RR_SlipRatio >= (0 - LogSettings.Z1))
-                        && (RR_SlipAngleDeg <= (0 + LogSettings.Z2) && RR_SlipAngleDeg >= (0 - LogSettings.Z2))
-                        && (RR_TravelSpeed >= (0 + LogSettings.Z3) || RR_TravelSpeed <= (0 - LogSettings.Z3))
-                        && (RR_VerticalLoad <= (LogSettings.W4 + LogSettings.Z4) && RR_VerticalLoad >= (LogSettings.W4 - LogSettings.Z4)))
-                    {
-                        LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRRTire, LogSettings.SaveFileName, LogSettings.Extension);
-                    }
-                }
-                else
-                {
-                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFLTire, LogSettings.SaveFileName, LogSettings.Extension);
-                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameFRTire, LogSettings.SaveFileName, LogSettings.Extension);
-                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRLTire, LogSettings.SaveFileName, LogSettings.Extension);
-                    LogFileWriter(LogSettings.LogFileSaveLocationFolder, LogSettings.FileNameRRTire, LogSettings.SaveFileName, LogSettings.Extension);
-                }
+                FilterCheckAndLog(LogSettings.FileNameFLTire, FL_SlipRatio, FL_SlipAngleDeg, FL_TravelSpeed, FL_VerticalLoad);
+                FilterCheckAndLog(LogSettings.FileNameFRTire, FR_SlipRatio, FR_SlipAngleDeg, FR_TravelSpeed, FR_VerticalLoad);
+                FilterCheckAndLog(LogSettings.FileNameRLTire, RL_SlipRatio, RL_SlipAngleDeg, RL_TravelSpeed, RL_VerticalLoad);
+                FilterCheckAndLog(LogSettings.FileNameRRTire, RR_SlipRatio, RR_SlipAngleDeg, RR_TravelSpeed, RR_VerticalLoad);
             }
         }
         private static void LogFileWriter(string saveLocationFolder, string chooseTire, string saveFileName, string extension)
@@ -1609,31 +1587,5 @@ namespace Physics_Data_Debug
                 return "";
             }
         }
-        /*private static void WriteAllTiresParametersLine(string saveLocationFolder, string chooseTireFrontLeft, string chooseTireFrontRight, string chooseTireRearLeft, string chooseTireRearRight, string saveFileName)
-        {
-            using (StreamWriter sw = File.AppendText(saveLocationFolder + saveFileName))
-            {
-                sw.WriteLine(ParametersLine(chooseTireFrontLeft));
-                sw.WriteLine(ParametersLine(chooseTireFrontRight));
-                sw.WriteLine(ParametersLine(chooseTireRearLeft));
-                sw.WriteLine(ParametersLine(chooseTireRearRight));
-            }
-        }*/
-        /*private static void WriteFrontTiresParametersLine(string saveLocationFolder, string chooseTireFrontLeft, string chooseTireFrontRight, string saveFileName)
-        {
-            using (StreamWriter sw = File.AppendText(saveLocationFolder + saveFileName))
-            {
-                sw.WriteLine(ParametersLine(chooseTireFrontLeft));
-                sw.WriteLine(ParametersLine(chooseTireFrontRight));
-            }
-        }*/
-        /*private static void WriteRearTiresParametersLine(string saveLocationFolder, string chooseTireRearLeft, string chooseTireRearRight, string saveFileName)
-        {
-            using (StreamWriter sw = File.AppendText(saveLocationFolder + saveFileName))
-            {
-                sw.WriteLine(ParametersLine(chooseTireRearLeft));
-                sw.WriteLine(ParametersLine(chooseTireRearRight));
-            }
-        }*/
     }
 }

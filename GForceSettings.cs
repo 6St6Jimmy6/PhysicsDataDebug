@@ -61,8 +61,7 @@ namespace Physics_Data_Debug
         // Angle Type
         public static string X1DefaultAngleType { get; set; } = "Degrees";
         // Font
-        public static int X1DefaultFontIndex { get; set; } = 153;//"Microsoft Sans Serif";
-        public static FontFamily X1DefaultFontFamily { get; set; } = FontFamily.Families[X1DefaultFontIndex];
+        public static FontFamily X1DefaultFontFamily { get; set; } = FontFamily.GenericSansSerif;
         public static float X1DefaultFontSize { get; set; } = 8.25f;
         public static FontStyle X1DefaultFontStyle { get; set; } = FontStyle.Regular;// Regular Style
         public static Color X1DefaultFontColor { get; set; } = Color.White;
@@ -95,8 +94,7 @@ namespace Physics_Data_Debug
         public static Color Y1DefaultMarkerBorderColor { get; set; } = Color.Blue;
 
         // Font
-        public static int Y1DefaultFontIndex { get; set; } = 153;//"Microsoft Sans Serif"
-        public static FontFamily Y1DefaultFontFamily { get; set; } = FontFamily.Families[Y1DefaultFontIndex];
+        public static FontFamily Y1DefaultFontFamily { get; set; } = FontFamily.GenericSansSerif;
         public static float Y1DefaultFontSize { get; set; } = 8.25f;
         public static FontStyle Y1DefaultFontStyle { get; set; } = FontStyle.Regular;// Regular Style
         public static Color Y1DefaultFontColor { get; set; } = Color.White;
@@ -142,7 +140,6 @@ namespace Physics_Data_Debug
         /// // Angle Type
         public static string X1AngleType { get; set; } = X1DefaultAngleType;
         // Font
-        public static int X1FontIndex { get; set; } = X1DefaultFontIndex;
         public static FontFamily X1FontFamily { get; set; } = X1DefaultFontFamily;
         public static float X1FontSize { get; set; } = X1DefaultFontSize;
         public static FontStyle X1FontStyle { get; set; } = X1DefaultFontStyle;
@@ -175,7 +172,6 @@ namespace Physics_Data_Debug
         public static Color Y1MarkerBorderColor { get; set; } = Y1DefaultMarkerBorderColor;
 
         // Font
-        public static int Y1FontIndex { get; set; } = Y1DefaultFontIndex;
         public static FontFamily Y1FontFamily { get; set; } = Y1DefaultFontFamily;
         public static float Y1FontSize { get; set; } = Y1DefaultFontSize;
         public static FontStyle Y1FontStyle { get; set; } = Y1DefaultFontStyle;

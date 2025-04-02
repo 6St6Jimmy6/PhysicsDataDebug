@@ -82,11 +82,9 @@ namespace Physics_Data_Debug
 
         Form4Wheels form4Wheels = (Form4Wheels)Application.OpenForms["Form4Wheels"];
         Timer timer1;
-        Timer timer2;
         public void Form4WheelsFields()
         {
             timer1 = form4Wheels.timer1;
-            timer2 = form4Wheels.timer2;
         }
         private void AddInComboBoxes()
         {
@@ -502,7 +500,6 @@ namespace Physics_Data_Debug
             }
             else
             {
-                _4WheelsSettings.X1FontIndex = X1ComboBoxFonts.SelectedIndex;
                 _4WheelsSettings.X1FontFamily = (FontFamily)X1ComboBoxFonts.SelectedItem;
                 _4WheelsSettings.X1FontColor = (Color)X1FontColorComboBox.SelectedItem;
                 _4WheelsSettings.X1FontSize = (float)X1FontSizeComboBox.SelectedItem;
@@ -549,7 +546,6 @@ namespace Physics_Data_Debug
             }
             else
             {
-                _4WheelsSettings.Y1FontIndex = Y1ComboBoxFonts.SelectedIndex;
                 //_4WheelsSettings.Y1FontString = Y1ComboBoxFonts.Text;
                 _4WheelsSettings.Y1FontFamily = (FontFamily)Y1ComboBoxFonts.SelectedItem;
                 _4WheelsSettings.Y1FontColor = (Color)Y1FontColorComboBox.SelectedItem;
@@ -619,7 +615,7 @@ namespace Physics_Data_Debug
             }
             // Updating chart settings
             // WORKS WRONG! Clears the chart series also
-            form4Wheels.SetCharts();
+            form4Wheels.SetChartsForForm();
         }
         private void applyAndClearButton_Click(object sender, EventArgs e)
         {
@@ -666,7 +662,6 @@ namespace Physics_Data_Debug
             }
             else
             {
-                _4WheelsSettings.X1FontIndex = X1ComboBoxFonts.SelectedIndex;
                 _4WheelsSettings.X1FontFamily = (FontFamily)X1ComboBoxFonts.SelectedItem;
                 _4WheelsSettings.X1FontColor = (Color)X1FontColorComboBox.SelectedItem;
                 _4WheelsSettings.X1FontSize = (float)X1FontSizeComboBox.SelectedItem;
@@ -713,8 +708,6 @@ namespace Physics_Data_Debug
             }
             else
             {
-                _4WheelsSettings.Y1FontIndex = Y1ComboBoxFonts.SelectedIndex;
-                //_4WheelsSettings.Y1FontString = Y1ComboBoxFonts.Text;
                 _4WheelsSettings.Y1FontFamily = (FontFamily)Y1ComboBoxFonts.SelectedItem;
                 _4WheelsSettings.Y1FontColor = (Color)Y1FontColorComboBox.SelectedItem;
                 _4WheelsSettings.Y1FontSize = (float)Y1FontSizeComboBox.SelectedItem;
@@ -784,12 +777,10 @@ namespace Physics_Data_Debug
             // Updating and clearing the charts from old data
             Form4WheelsFields();
             timer1.Enabled = false;
-            timer2.Enabled = false;
             form4Wheels.ClearAllSeriesHistory();
             //Add separate chart clearers
-            form4Wheels.SetCharts();
+            form4Wheels.SetChartsForForm();
             timer1.Enabled = true;
-            timer2.Enabled = true;
         }
 
         private void LoadCurrentValuesButton_Click(object sender, EventArgs e)

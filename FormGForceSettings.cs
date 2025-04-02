@@ -178,7 +178,16 @@ namespace Physics_Data_Debug
                 SchemeComboBox.SelectedItem = GForceSettings.Scheme;
             }
         }
-
+        private void FormGForceSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            GForceSettings.SettingsOpen = false;
+            RegistryTools.SaveAllSettings(Application.ProductName, this);
+        }
+        private void FormGForceSettings_Load(object sender, EventArgs e)
+        {
+            GForceSettings.SettingsOpen = true;
+            RegistryTools.LoadAllSettings(Application.ProductName, this);
+        }
         private void LoadX1Defaults()
         {
             // Default X1 selections
@@ -289,20 +298,8 @@ namespace Physics_Data_Debug
         {
             this.Close();
         }
-
         private void applyButton_Click(object sender, EventArgs e)
         {
-            /*
-            if ()
-            {
-
-            }
-            else
-            {
-
-            }
-            */
-            // Other stuff
             if (DefaultsCheckBox.Checked == true)
             {
                 GForceSettings.BackgroundColor = GForceSettings.DefaultBackgroundColor;
@@ -343,7 +340,6 @@ namespace Physics_Data_Debug
             else
             {
                 GForceSettings.X1AngleType = X1AngleTypeComboBox.Text;
-                GForceSettings.X1FontIndex = X1ComboBoxFonts.SelectedIndex;
                 GForceSettings.X1FontFamily = (FontFamily)X1ComboBoxFonts.SelectedItem;
                 GForceSettings.X1FontColor = (Color)X1FontColorComboBox.SelectedItem;
                 GForceSettings.X1FontSize = (float)X1FontSizeComboBox.SelectedItem;
@@ -385,8 +381,6 @@ namespace Physics_Data_Debug
             }
             else
             {
-                GForceSettings.Y1FontIndex = Y1ComboBoxFonts.SelectedIndex;
-                //GForceSettings.Y1FontString = Y1ComboBoxFonts.Text;
                 GForceSettings.Y1FontFamily = (FontFamily)Y1ComboBoxFonts.SelectedItem;
                 GForceSettings.Y1FontColor = (Color)Y1FontColorComboBox.SelectedItem;
                 GForceSettings.Y1FontSize = (float)Y1FontSizeComboBox.SelectedItem;
@@ -422,14 +416,12 @@ namespace Physics_Data_Debug
             timer1.Enabled = true;
             timer2.Enabled = true;
         }
-
         private void LoadCurrentValuesButton_Click(object sender, EventArgs e)
         {
             LoadX1Defaults();
             LoadY1Defaults();
             LoadOtherDefaults();
         }
-
         private void CheckFontColorAndSetBackGroundColor(ComboBox cb, Color fontColor)
         {
             if (fontColor == Color.White || fontColor == Color.WhiteSmoke || fontColor == Color.AntiqueWhite || fontColor == Color.FloralWhite || fontColor == Color.NavajoWhite)
@@ -478,7 +470,6 @@ namespace Physics_Data_Debug
             MarkerColorComboBox.Font = new Font(GForceSettings.Y1DefaultFontFamily, GForceSettings.Y1DefaultFontSize, GForceSettings.Y1DefaultFontStyle);
             CheckFontColorAndSetBackGroundColor(MarkerColorComboBox, (Color)color);
         }
-
         private void BackgroundColorComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -493,7 +484,6 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(BackgroundColorComboBox, color);
         }
-
         private void BackgroundColorComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
@@ -502,7 +492,6 @@ namespace Physics_Data_Debug
             BackgroundColorComboBox.Font = new Font(GForceSettings.Y1DefaultFontFamily, GForceSettings.Y1DefaultFontSize, GForceSettings.Y1DefaultFontStyle);
             CheckFontColorAndSetBackGroundColor(BackgroundColorComboBox, (Color)color);
         }
-
         private void SchemeComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -535,12 +524,8 @@ namespace Physics_Data_Debug
                 e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             }
         }
-        private void SchemeComboBox_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-
-        }
         //////////////////////////////////////////////////////////////////////////////////////////
-        ///X1 STUFF
+        #region X1 STUFF
         ///
         private void X1DefaultsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -562,7 +547,6 @@ namespace Physics_Data_Debug
             e.DrawBackground();
             e.Graphics.DrawString(font.Name, font, Brushes.Black, e.Bounds.X, e.Bounds.Y);
         }
-
         private void X1ComboBoxFonts_SelectedIndexChanged(object sender, EventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -570,7 +554,6 @@ namespace Physics_Data_Debug
             var fontFamily = (FontFamily)comboBox.SelectedItem;
             X1ComboBoxFonts.Font = new Font(fontFamily, GForceSettings.X1DefaultFontSize, GForceSettings.X1DefaultFontStyle);
         }
-
         private void X1FontStyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -579,7 +562,6 @@ namespace Physics_Data_Debug
             var fontStyle = (FontStyle)comboBox.SelectedItem;
             X1FontStyleComboBox.Font = new Font(GForceSettings.X1DefaultFontFamily, GForceSettings.X1DefaultFontSize, fontStyle);
         }
-
         private void X1FontStyleComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -589,7 +571,6 @@ namespace Physics_Data_Debug
             e.DrawBackground();
             e.Graphics.DrawString(fontStyle.ToString(), font, Brushes.Black, e.Bounds.X, e.Bounds.Y);
         }
-
         private void X1FontColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -600,7 +581,6 @@ namespace Physics_Data_Debug
             X1FontColorComboBox.ForeColor = (Color)color;
             CheckFontColorAndSetBackGroundColor(X1FontColorComboBox, (Color)color);
         }
-
         private void X1FontColorComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -615,7 +595,6 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(X1FontColorComboBox, (Color)color);
         }
-
         private void X1FontSizeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
@@ -626,7 +605,6 @@ namespace Physics_Data_Debug
             //textBox8.Text = GForceSettings.X1FontSize.ToString();
             //comboBox7.Text = p.GetX1FontSize().ToString();
         }
-
         private void X1FontSizeComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -660,10 +638,34 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(X1MajorColorComboBox, (Color)color);
         }
-
+        private void X1MinorColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //GForceSettings GForceSettings = new GForceSettings();
+            //GForceSettings.X1MinorColor = (Color)X1MinorColorComboBox.SelectedItem;
+            var comboBox = (ComboBox)sender;
+            var color = comboBox.SelectedItem;
+            X1MinorColorComboBox.Font = new Font(GForceSettings.X1DefaultFontFamily, GForceSettings.X1DefaultFontSize, GForceSettings.X1DefaultFontStyle);
+            X1MinorColorComboBox.ForeColor = (Color)color;
+            CheckFontColorAndSetBackGroundColor(X1MinorColorComboBox, (Color)color);
+        }
+        private void X1MinorColorComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            //GForceSettings GForceSettings = new GForceSettings();
+            var comboBox = (ComboBox)sender;
+            var color = (Color)comboBox.Items[e.Index];
+            SolidBrush brush = new SolidBrush(color);
+            var font = new Font(GForceSettings.X1DefaultFontFamily, GForceSettings.X1DefaultFontSize, GForceSettings.X1DefaultFontStyle);
+            string colorRemovePart1 = color.ToString().Replace("Color [", "");
+            string colorRemovePart2 = colorRemovePart1.Replace("]", "");
+            string colorName = colorRemovePart2;
+            e.DrawBackground();
+            e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
+            CheckFontColorAndSetBackGroundColor(X1MinorColorComboBox, (Color)color);
+        }
+        #endregion
 
         //////////////////////////////////////////////////////////////////////////////////////////77
-        ///Y1 STUFF
+        #region Y1 STUFF
         ///
         private void Y1DefaultsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -685,14 +687,12 @@ namespace Physics_Data_Debug
             e.DrawBackground();
             e.Graphics.DrawString(font.Name, font, Brushes.Black, e.Bounds.X, e.Bounds.Y);
         }
-
         private void Y1ComboBoxFonts_SelectedIndexChanged(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
             var fontFamily = (FontFamily)comboBox.SelectedItem;
             Y1ComboBoxFonts.Font = new Font(fontFamily, GForceSettings.Y1DefaultFontSize, GForceSettings.Y1DefaultFontStyle);
         }
-
         private void Y1FontStyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -701,7 +701,6 @@ namespace Physics_Data_Debug
             var fontStyle = (FontStyle)comboBox.SelectedItem;
             Y1FontStyleComboBox.Font = new Font(GForceSettings.Y1DefaultFontFamily, GForceSettings.Y1DefaultFontSize, fontStyle);
         }
-
         private void Y1FontStyleComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -711,7 +710,6 @@ namespace Physics_Data_Debug
             e.DrawBackground();
             e.Graphics.DrawString(fontStyle.ToString(), font, Brushes.Black, e.Bounds.X, e.Bounds.Y);
         }
-
         private void Y1FontColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -722,7 +720,6 @@ namespace Physics_Data_Debug
             Y1FontColorComboBox.ForeColor = (Color)color;
             CheckFontColorAndSetBackGroundColor(Y1FontColorComboBox, (Color)color);
         }
-
         private void Y1FontColorComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -737,14 +734,12 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(Y1FontColorComboBox, (Color)color);
         }
-
         private void Y1FontSizeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
             var fontSize = comboBox.SelectedItem;
             Y1FontSizeComboBox.Font = new Font(GForceSettings.Y1DefaultFontFamily, (float)fontSize, GForceSettings.Y1DefaultFontStyle);
         }
-
         private void Y1FontSizeComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -778,81 +773,6 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(Y1MajorColorComboBox, (Color)color);
         }
-        private void X1MajorLineWidthComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void X1MajorDecimalsComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void AngleTypeComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void X1MinorIntervalComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void X1MinorLineWidthComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void X1MinorColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //GForceSettings GForceSettings = new GForceSettings();
-            //GForceSettings.X1MinorColor = (Color)X1MinorColorComboBox.SelectedItem;
-            var comboBox = (ComboBox)sender;
-            var color = comboBox.SelectedItem;
-            X1MinorColorComboBox.Font = new Font(GForceSettings.X1DefaultFontFamily, GForceSettings.X1DefaultFontSize, GForceSettings.X1DefaultFontStyle);
-            X1MinorColorComboBox.ForeColor = (Color)color;
-            CheckFontColorAndSetBackGroundColor(X1MinorColorComboBox, (Color)color);
-        }
-        private void X1MinorColorComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            //GForceSettings GForceSettings = new GForceSettings();
-            var comboBox = (ComboBox)sender;
-            var color = (Color)comboBox.Items[e.Index];
-            SolidBrush brush = new SolidBrush(color);
-            var font = new Font(GForceSettings.X1DefaultFontFamily, GForceSettings.X1DefaultFontSize, GForceSettings.X1DefaultFontStyle);
-            string colorRemovePart1 = color.ToString().Replace("Color [", "");
-            string colorRemovePart2 = colorRemovePart1.Replace("]", "");
-            string colorName = colorRemovePart2;
-            e.DrawBackground();
-            e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
-            CheckFontColorAndSetBackGroundColor(X1MinorColorComboBox, (Color)color);
-        }
-
-        private void X1MinorDashStyleComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void Y1MajorLineWidthComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void Y1MajorDecimalsComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void Y1MinorIntervalComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void Y1MinorLineWidthComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
         private void Y1MinorColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //GForceSettings GForceSettings = new GForceSettings();
@@ -877,267 +797,6 @@ namespace Physics_Data_Debug
             e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
             CheckFontColorAndSetBackGroundColor(Y1MinorColorComboBox, (Color)color);
         }
-
-        private void Y1MinorDashStyleComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void Y1IntervalDividerComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-
-        }
-
-        private void FormGForceSettings_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            GForceSettings.SettingsOpen = false;
-            RegistryTools.SaveAllSettings(Application.ProductName, this);
-        }
-
-        private void FormGForceSettings_Load(object sender, EventArgs e)
-        {
-            GForceSettings.SettingsOpen = true;
-            RegistryTools.LoadAllSettings(Application.ProductName, this);
-        }
-
-        private void Y1MajorIntervalDividerComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SchemeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void InfiniteHistoryCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HistoryAmountPointsMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1IntervalDividerTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1MinorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1MaxMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void Y1MajorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1MinorEnabledCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1MinorDashStyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1MinorIntervalComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1MajorDecimalsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Y1MinMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label23_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1AngleTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1MajorIntervalFractionTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1MinorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1MajorLineWidthComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1MinorEnabledCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1MinorDashStyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1MinorIntervalComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MarkerColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label37_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BackgroundColorComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void X1MajorIntervalFractionComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

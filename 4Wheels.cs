@@ -1148,8 +1148,6 @@ namespace Physics_Data_Debug
         public static void SetChart(Chart chartName, string seriesName, string chartAreaName)
         {
             // New Marker color stuff
-            //chartName.Series.Clear();
-            //chartName.ChartAreas.Clear();
             chartName.BackColor = Color.Transparent;
 
             GetColorSchemeColors();
@@ -1180,10 +1178,7 @@ namespace Physics_Data_Debug
 
             AddSeries(chartName, chartAreaName, seriesName);
         }
-        public static float[] XYZListSelections(string xAxisSelection, List<double> xValues,
-                                                string yAxisSelection, List<double> yValues,
-                                                string zAxisSelection, List<double> zValues,
-
+        public static float[] XYZListSelections(string xAxisSelection, string yAxisSelection, string zAxisSelection,
                                                 int raceTime, float travelSpeed, float angVel,
                                                 float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
                                                 float currContBrakeTorq, float currContBrakeTorqMax,
@@ -1569,7 +1564,7 @@ namespace Physics_Data_Debug
                 Color1 = Color.FromArgb(HistoryAlpha, 0 / HistoryColorDivider, 0 / HistoryColorDivider, 192 / HistoryColorDivider);
             }
         }
-        private static void ColorGradientSuper(double dataX, double dataY, double dataZ,
+        private static void ColorGradient(double dataX, double dataY, double dataZ,
             List<double> xValuesColor1, List<double> yValuesColor1,
             List<double> xValuesColor2, List<double> yValuesColor2,
             List<double> xValuesColor3, List<double> yValuesColor3,
@@ -1842,7 +1837,8 @@ namespace Physics_Data_Debug
                 //chartName.Series[seriesNameColor1].MarkerColor = color1;
             }
         }
-        public static void ListSeries(Chart chartName, string seriesName, double dataX, List<double> xValues, double dataY, List<double> yValues, double dataZ, List<double> zValues,
+        public static void ListSeries(Chart chartName, float noTireContactLimiter,
+            string seriesName, double dataX, List<double> xValues, double dataY, List<double> yValues, double dataZ, List<double> zValues,
             List<double> xValuesColor1, List<double> yValuesColor1,
             List<double> xValuesColor2, List<double> yValuesColor2,
             List<double> xValuesColor3, List<double> yValuesColor3,
@@ -1854,26 +1850,34 @@ namespace Physics_Data_Debug
             List<double> xValuesColor9, List<double> yValuesColor9,
             List<double> xValuesColor10, List<double> yValuesColor10)
         {
-            
-            if (_4WheelsSettings.AbsoluteValues == true)
+            // No tire contact, no data added
+            if (noTireContactLimiter == 0)
             {
-                xValues.Add(Math.Abs(dataX));
-                yValues.Add(Math.Abs(dataY));
-                zValues.Add(Math.Abs(dataZ));
+                return;
             }
-            else
+            // Maybe some more filters here or do it somewhere else
+            else// add data
             {
-                xValues.Add(dataX);
-                yValues.Add(dataY);
-                zValues.Add(dataZ);
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    xValues.Add(Math.Abs(dataX));
+                    yValues.Add(Math.Abs(dataY));
+                    zValues.Add(Math.Abs(dataZ));
+                }
+                else
+                {
+                    xValues.Add(dataX);
+                    yValues.Add(dataY);
+                    zValues.Add(dataZ);
+                }
+                if (xValues.Count > 1)
+                {
+                    xValues.RemoveAt(0);
+                    yValues.RemoveAt(0);
+                    zValues.RemoveAt(0);
+                }
             }
-            if (xValues.Count > 1)
-            {
-                xValues.RemoveAt(0);
-                yValues.RemoveAt(0);
-                zValues.RemoveAt(0);
-            }
-            ColorGradientSuper(dataX, dataY, dataZ,
+            ColorGradient(dataX, dataY, dataZ,
             xValuesColor1, yValuesColor1,
             xValuesColor2, yValuesColor2,
             xValuesColor3, yValuesColor3,
@@ -1900,216 +1904,6 @@ namespace Physics_Data_Debug
             chartName.Series[seriesName].Points.Last().MarkerSize = 8;
             chartName.Series[seriesName].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
             chartName.Series[seriesName].Points.Last().IsValueShownAsLabel = false;//true;
-        }
-        public static void ListSeriesAllWheels(Chart chartName, 
-            string seriesNameFL, double dataXFL, List<double> xValuesFL, double dataYFL, List<double> yValuesFL, double dataZFL, List<double> zValuesFL,
-            List<double> xValuesFLColor1, List<double> yValuesFLColor1,
-            List<double> xValuesFLColor2, List<double> yValuesFLColor2,
-            List<double> xValuesFLColor3, List<double> yValuesFLColor3,
-            List<double> xValuesFLColor4, List<double> yValuesFLColor4,
-            List<double> xValuesFLColor5, List<double> yValuesFLColor5,
-            List<double> xValuesFLColor6, List<double> yValuesFLColor6,
-            List<double> xValuesFLColor7, List<double> yValuesFLColor7,
-            List<double> xValuesFLColor8, List<double> yValuesFLColor8,
-            List<double> xValuesFLColor9, List<double> yValuesFLColor9,
-            List<double> xValuesFLColor10, List<double> yValuesFLColor10,
-            string seriesNameFR, double dataXFR, List<double> xValuesFR, double dataYFR, List<double> yValuesFR, double dataZFR, List<double> zValuesFR,
-            List<double> xValuesFRColor1, List<double> yValuesFRColor1,
-            List<double> xValuesFRColor2, List<double> yValuesFRColor2,
-            List<double> xValuesFRColor3, List<double> yValuesFRColor3,
-            List<double> xValuesFRColor4, List<double> yValuesFRColor4,
-            List<double> xValuesFRColor5, List<double> yValuesFRColor5,
-            List<double> xValuesFRColor6, List<double> yValuesFRColor6,
-            List<double> xValuesFRColor7, List<double> yValuesFRColor7,
-            List<double> xValuesFRColor8, List<double> yValuesFRColor8,
-            List<double> xValuesFRColor9, List<double> yValuesFRColor9,
-            List<double> xValuesFRColor10, List<double> yValuesFRColor10,
-            string seriesNameRL, double dataXRL, List<double> xValuesRL, double dataYRL, List<double> yValuesRL, double dataZRL, List<double> zValuesRL,
-            List<double> xValuesRLColor1, List<double> yValuesRLColor1,
-            List<double> xValuesRLColor2, List<double> yValuesRLColor2,
-            List<double> xValuesRLColor3, List<double> yValuesRLColor3,
-            List<double> xValuesRLColor4, List<double> yValuesRLColor4,
-            List<double> xValuesRLColor5, List<double> yValuesRLColor5,
-            List<double> xValuesRLColor6, List<double> yValuesRLColor6,
-            List<double> xValuesRLColor7, List<double> yValuesRLColor7,
-            List<double> xValuesRLColor8, List<double> yValuesRLColor8,
-            List<double> xValuesRLColor9, List<double> yValuesRLColor9,
-            List<double> xValuesRLColor10, List<double> yValuesRLColor10,
-            string seriesNameRR, double dataXRR, List<double> xValuesRR, double dataYRR, List<double> yValuesRR, double dataZRR, List<double> zValuesRR,
-            List<double> xValuesRRColor1, List<double> yValuesRRColor1,
-            List<double> xValuesRRColor2, List<double> yValuesRRColor2,
-            List<double> xValuesRRColor3, List<double> yValuesRRColor3,
-            List<double> xValuesRRColor4, List<double> yValuesRRColor4,
-            List<double> xValuesRRColor5, List<double> yValuesRRColor5,
-            List<double> xValuesRRColor6, List<double> yValuesRRColor6,
-            List<double> xValuesRRColor7, List<double> yValuesRRColor7,
-            List<double> xValuesRRColor8, List<double> yValuesRRColor8,
-            List<double> xValuesRRColor9, List<double> yValuesRRColor9,
-            List<double> xValuesRRColor10, List<double> yValuesRRColor10)
-        {
-
-            if (_4WheelsSettings.AbsoluteValues == true)
-            {
-                xValuesFL.Add(Math.Abs(dataXFL));
-                yValuesFL.Add(Math.Abs(dataYFL));
-                zValuesFL.Add(Math.Abs(dataZFL));
-
-                xValuesFR.Add(Math.Abs(dataXFR));
-                yValuesFR.Add(Math.Abs(dataYFR));
-                zValuesFR.Add(Math.Abs(dataZFR));
-
-                xValuesRL.Add(Math.Abs(dataXRL));
-                yValuesRL.Add(Math.Abs(dataYRL));
-                zValuesRL.Add(Math.Abs(dataZRL));
-
-                xValuesRR.Add(Math.Abs(dataXRR));
-                yValuesRR.Add(Math.Abs(dataYRR));
-                zValuesRR.Add(Math.Abs(dataZRR));
-            }
-            else
-            {
-                xValuesFL.Add(dataXFL);
-                yValuesFL.Add(dataYFL);
-                zValuesFL.Add(dataZFL);
-
-                xValuesFR.Add(dataXFR);
-                yValuesFR.Add(dataYFR);
-                zValuesFR.Add(dataZFR);
-
-                xValuesRL.Add(dataXRL);
-                yValuesRL.Add(dataYRL);
-                zValuesRL.Add(dataZRL);
-
-                xValuesRR.Add(dataXRR);
-                yValuesRR.Add(dataYRR);
-                zValuesRR.Add(dataZRR);
-            }
-            if (xValuesFL.Count > 1)
-            {
-                xValuesFL.RemoveAt(0);
-                yValuesFL.RemoveAt(0);
-                zValuesFL.RemoveAt(0);
-
-                xValuesFR.RemoveAt(0);
-                yValuesFR.RemoveAt(0);
-                zValuesFR.RemoveAt(0);
-
-                xValuesRL.RemoveAt(0);
-                yValuesRL.RemoveAt(0);
-                zValuesRL.RemoveAt(0);
-
-                xValuesRR.RemoveAt(0);
-                yValuesRR.RemoveAt(0);
-                zValuesRR.RemoveAt(0);
-            }
-            ColorGradientSuper(dataXFL, dataYFL, dataZFL,
-            xValuesFLColor1, yValuesFLColor1,
-            xValuesFLColor2, yValuesFLColor2,
-            xValuesFLColor3, yValuesFLColor3,
-            xValuesFLColor4, yValuesFLColor4,
-            xValuesFLColor5, yValuesFLColor5,
-            xValuesFLColor6, yValuesFLColor6,
-            xValuesFLColor7, yValuesFLColor7,
-            xValuesFLColor8, yValuesFLColor8,
-            xValuesFLColor9, yValuesFLColor9,
-            xValuesFLColor10, yValuesFLColor10);
-            chartName.Series[seriesNameFL].Points.DataBindXY(xValuesFL, yValuesFL);
-            chartName.Series[seriesNameFL + seriesColor1].Points.DataBindXY(xValuesFLColor1, yValuesFLColor1);
-            chartName.Series[seriesNameFL + seriesColor2].Points.DataBindXY(xValuesFLColor2, yValuesFLColor2);
-            chartName.Series[seriesNameFL + seriesColor3].Points.DataBindXY(xValuesFLColor3, yValuesFLColor3);
-            chartName.Series[seriesNameFL + seriesColor4].Points.DataBindXY(xValuesFLColor4, yValuesFLColor4);
-            chartName.Series[seriesNameFL + seriesColor5].Points.DataBindXY(xValuesFLColor5, yValuesFLColor5);
-            chartName.Series[seriesNameFL + seriesColor6].Points.DataBindXY(xValuesFLColor6, yValuesFLColor6);
-            chartName.Series[seriesNameFL + seriesColor7].Points.DataBindXY(xValuesFLColor7, yValuesFLColor7);
-            chartName.Series[seriesNameFL + seriesColor8].Points.DataBindXY(xValuesFLColor8, yValuesFLColor8);
-            chartName.Series[seriesNameFL + seriesColor9].Points.DataBindXY(xValuesFLColor9, yValuesFLColor9);
-            chartName.Series[seriesNameFL + seriesColor10].Points.DataBindXY(xValuesFLColor10, yValuesFLColor10);
-
-            ColorGradientSuper(dataXFR, dataYFR, dataZFR,
-            xValuesFRColor1, yValuesFRColor1,
-            xValuesFRColor2, yValuesFRColor2,
-            xValuesFRColor3, yValuesFRColor3,
-            xValuesFRColor4, yValuesFRColor4,
-            xValuesFRColor5, yValuesFRColor5,
-            xValuesFRColor6, yValuesFRColor6,
-            xValuesFRColor7, yValuesFRColor7,
-            xValuesFRColor8, yValuesFRColor8,
-            xValuesFRColor9, yValuesFRColor9,
-            xValuesFRColor10, yValuesFRColor10);
-            chartName.Series[seriesNameFR].Points.DataBindXY(xValuesFR, yValuesFR);
-            chartName.Series[seriesNameFR + seriesColor1].Points.DataBindXY(xValuesFRColor1, yValuesFRColor1);
-            chartName.Series[seriesNameFR + seriesColor2].Points.DataBindXY(xValuesFRColor2, yValuesFRColor2);
-            chartName.Series[seriesNameFR + seriesColor3].Points.DataBindXY(xValuesFRColor3, yValuesFRColor3);
-            chartName.Series[seriesNameFR + seriesColor4].Points.DataBindXY(xValuesFRColor4, yValuesFRColor4);
-            chartName.Series[seriesNameFR + seriesColor5].Points.DataBindXY(xValuesFRColor5, yValuesFRColor5);
-            chartName.Series[seriesNameFR + seriesColor6].Points.DataBindXY(xValuesFRColor6, yValuesFRColor6);
-            chartName.Series[seriesNameFR + seriesColor7].Points.DataBindXY(xValuesFRColor7, yValuesFRColor7);
-            chartName.Series[seriesNameFR + seriesColor8].Points.DataBindXY(xValuesFRColor8, yValuesFRColor8);
-            chartName.Series[seriesNameFR + seriesColor9].Points.DataBindXY(xValuesFRColor9, yValuesFRColor9);
-            chartName.Series[seriesNameFR + seriesColor10].Points.DataBindXY(xValuesFRColor10, yValuesFRColor10);
-
-            ColorGradientSuper(dataXRL, dataYRL, dataZRL,
-            xValuesRLColor1, yValuesRLColor1,
-            xValuesRLColor2, yValuesRLColor2,
-            xValuesRLColor3, yValuesRLColor3,
-            xValuesRLColor4, yValuesRLColor4,
-            xValuesRLColor5, yValuesRLColor5,
-            xValuesRLColor6, yValuesRLColor6,
-            xValuesRLColor7, yValuesRLColor7,
-            xValuesRLColor8, yValuesRLColor8,
-            xValuesRLColor9, yValuesRLColor9,
-            xValuesRLColor10, yValuesRLColor10);
-            chartName.Series[seriesNameRL].Points.DataBindXY(xValuesRL, yValuesRL);
-            chartName.Series[seriesNameRL + seriesColor1].Points.DataBindXY(xValuesRLColor1, yValuesRLColor1);
-            chartName.Series[seriesNameRL + seriesColor2].Points.DataBindXY(xValuesRLColor2, yValuesRLColor2);
-            chartName.Series[seriesNameRL + seriesColor3].Points.DataBindXY(xValuesRLColor3, yValuesRLColor3);
-            chartName.Series[seriesNameRL + seriesColor4].Points.DataBindXY(xValuesRLColor4, yValuesRLColor4);
-            chartName.Series[seriesNameRL + seriesColor5].Points.DataBindXY(xValuesRLColor5, yValuesRLColor5);
-            chartName.Series[seriesNameRL + seriesColor6].Points.DataBindXY(xValuesRLColor6, yValuesRLColor6);
-            chartName.Series[seriesNameRL + seriesColor7].Points.DataBindXY(xValuesRLColor7, yValuesRLColor7);
-            chartName.Series[seriesNameRL + seriesColor8].Points.DataBindXY(xValuesRLColor8, yValuesRLColor8);
-            chartName.Series[seriesNameRL + seriesColor9].Points.DataBindXY(xValuesRLColor9, yValuesRLColor9);
-            chartName.Series[seriesNameRL + seriesColor10].Points.DataBindXY(xValuesRLColor10, yValuesRLColor10);
-
-            ColorGradientSuper(dataXRR, dataYRR, dataZRR,
-            xValuesRRColor1, yValuesRRColor1,
-            xValuesRRColor2, yValuesRRColor2,
-            xValuesRRColor3, yValuesRRColor3,
-            xValuesRRColor4, yValuesRRColor4,
-            xValuesRRColor5, yValuesRRColor5,
-            xValuesRRColor6, yValuesRRColor6,
-            xValuesRRColor7, yValuesRRColor7,
-            xValuesRRColor8, yValuesRRColor8,
-            xValuesRRColor9, yValuesRRColor9,
-            xValuesRRColor10, yValuesRRColor10);
-            chartName.Series[seriesNameRR].Points.DataBindXY(xValuesRR, yValuesRR);
-            chartName.Series[seriesNameRR + seriesColor1].Points.DataBindXY(xValuesRRColor1, yValuesRRColor1);
-            chartName.Series[seriesNameRR + seriesColor2].Points.DataBindXY(xValuesRRColor2, yValuesRRColor2);
-            chartName.Series[seriesNameRR + seriesColor3].Points.DataBindXY(xValuesRRColor3, yValuesRRColor3);
-            chartName.Series[seriesNameRR + seriesColor4].Points.DataBindXY(xValuesRRColor4, yValuesRRColor4);
-            chartName.Series[seriesNameRR + seriesColor5].Points.DataBindXY(xValuesRRColor5, yValuesRRColor5);
-            chartName.Series[seriesNameRR + seriesColor6].Points.DataBindXY(xValuesRRColor6, yValuesRRColor6);
-            chartName.Series[seriesNameRR + seriesColor7].Points.DataBindXY(xValuesRRColor7, yValuesRRColor7);
-            chartName.Series[seriesNameRR + seriesColor8].Points.DataBindXY(xValuesRRColor8, yValuesRRColor8);
-            chartName.Series[seriesNameRR + seriesColor9].Points.DataBindXY(xValuesRRColor9, yValuesRRColor9);
-            chartName.Series[seriesNameRR + seriesColor10].Points.DataBindXY(xValuesRRColor10, yValuesRRColor10);
-
-            //ForLoopAxisList(chartName, 1, xValues, yValues, zValues);
-            chartName.Series[seriesNameFL].Points.Last().MarkerSize = 8;
-            chartName.Series[seriesNameFL].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
-            chartName.Series[seriesNameFL].Points.Last().IsValueShownAsLabel = false;//true;
-
-            chartName.Series[seriesNameFR].Points.Last().MarkerSize = 8;
-            chartName.Series[seriesNameFR].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
-            chartName.Series[seriesNameFR].Points.Last().IsValueShownAsLabel = false;//true;
-
-            chartName.Series[seriesNameRL].Points.Last().MarkerSize = 8;
-            chartName.Series[seriesNameRL].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
-            chartName.Series[seriesNameRL].Points.Last().IsValueShownAsLabel = false;//true;
-
-            chartName.Series[seriesNameRR].Points.Last().MarkerSize = 8;
-            chartName.Series[seriesNameRR].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
-            chartName.Series[seriesNameRR].Points.Last().IsValueShownAsLabel = false;//true;
         }
         public static void SetUpDownChart(Chart chartName)
         {

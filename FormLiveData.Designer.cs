@@ -128,7 +128,6 @@ namespace Physics_Data_Debug
             this.textBox_RR_TotalFrictionAngle = new System.Windows.Forms.TextBox();
             this.textBox_RR_TotalFriction = new System.Windows.Forms.TextBox();
             this.toLogSettingsButton = new System.Windows.Forms.Button();
-            this.exitApplication = new System.Windows.Forms.Button();
             this.textBox_FL_MaxCurrentContactBrakeTorque = new System.Windows.Forms.TextBox();
             this.textBox_FR_MaxCurrentContactBrakeTorque = new System.Windows.Forms.TextBox();
             this.textBox_RL_MaxCurrentContactBrakeTorque = new System.Windows.Forms.TextBox();
@@ -311,6 +310,7 @@ namespace Physics_Data_Debug
             this.textBox_FL_AngularVelocity.ReadOnly = true;
             this.textBox_FL_AngularVelocity.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_AngularVelocity.TabIndex = 46;
+            this.textBox_FL_AngularVelocity.Text = ",";
             this.textBox_FL_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FL_TreadTemperature
@@ -1315,19 +1315,6 @@ namespace Physics_Data_Debug
             this.toLogSettingsButton.UseVisualStyleBackColor = false;
             this.toLogSettingsButton.Click += new System.EventHandler(this.toSettingsButton_Click);
             // 
-            // exitApplication
-            // 
-            this.exitApplication.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.exitApplication.ForeColor = System.Drawing.Color.White;
-            this.exitApplication.Location = new System.Drawing.Point(3, 849);
-            this.exitApplication.Name = "exitApplication";
-            this.exitApplication.Size = new System.Drawing.Size(90, 45);
-            this.exitApplication.TabIndex = 150;
-            this.exitApplication.Text = "Exit Application";
-            this.exitApplication.UseVisualStyleBackColor = false;
-            this.exitApplication.Visible = false;
-            this.exitApplication.Click += new System.EventHandler(this.exitApplication_Click);
-            // 
             // textBox_FL_MaxCurrentContactBrakeTorque
             // 
             this.textBox_FL_MaxCurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
@@ -2188,9 +2175,9 @@ namespace Physics_Data_Debug
             this.CurrentDifferentialOpen.ForeColor = System.Drawing.Color.White;
             this.CurrentDifferentialOpen.Location = new System.Drawing.Point(3, 267);
             this.CurrentDifferentialOpen.Name = "CurrentDifferentialOpen";
-            this.CurrentDifferentialOpen.Size = new System.Drawing.Size(89, 13);
+            this.CurrentDifferentialOpen.Size = new System.Drawing.Size(93, 13);
             this.CurrentDifferentialOpen.TabIndex = 246;
-            this.CurrentDifferentialOpen.Text = "Diff Open/Closed";
+            this.CurrentDifferentialOpen.Text = "Diff Open/Locked";
             // 
             // label77
             // 
@@ -2532,7 +2519,7 @@ namespace Physics_Data_Debug
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(804, 849);
+            this.ClientSize = new System.Drawing.Size(814, 915);
             this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.toGForceButton);
@@ -2726,7 +2713,6 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.textBox_FL_TravelSpeed);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toTireSettingsButton);
-            this.Controls.Add(this.exitApplication);
             this.Controls.Add(this.toLogSettingsButton);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.logInterval_textBox);
@@ -2741,7 +2727,6 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label12);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.richTextBox3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FormLiveData";
             this.Text = "Live Data";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstAllDataLoggerPage_Closing);
@@ -2850,7 +2835,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TextBox textBox_RR_TotalFrictionAngle;
         private System.Windows.Forms.TextBox textBox_RR_TotalFriction;
         private System.Windows.Forms.Button toLogSettingsButton;
-        private System.Windows.Forms.Button exitApplication;
         private System.Windows.Forms.TextBox textBox_FL_MaxCurrentContactBrakeTorque;
         private System.Windows.Forms.TextBox textBox_FR_MaxCurrentContactBrakeTorque;
         private System.Windows.Forms.TextBox textBox_RL_MaxCurrentContactBrakeTorque;
