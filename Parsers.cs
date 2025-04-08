@@ -9,8 +9,9 @@ namespace Physics_Data_Debug
 {
     public class Parsers
     {
-        public static double TextBoxParserDouble(TextBox textBox, double variable, double defaultVariable, bool isNegativeCheck)
+        public static double TextBoxParserDouble(TextBox textBox, double defaultVariable, bool isNegativeCheck)
         {
+            double variable;
             if (double.TryParse(textBox.Text, out double parse))
             {
                 if (isNegativeCheck == true)
@@ -40,8 +41,9 @@ namespace Physics_Data_Debug
             }
             return variable;
         }
-        public static int TextBoxParserInt(TextBox textBox, int variable, int defaultVariable, bool isNegativeCheck)
+        public static int TextBoxParserInt(TextBox textBox, int defaultVariable, bool isNegativeCheck)
         {
+            int variable;
             if (int.TryParse(textBox.Text, out int parse))
             {
                 if (isNegativeCheck == true)
@@ -70,8 +72,9 @@ namespace Physics_Data_Debug
             }
             return variable;
         }
-        public static double MaskedTextBoxParserDouble(MaskedTextBox textBox, double variable, double defaultVariable, bool isNegativeCheck)
+        public static double MaskedTextBoxParserDouble(MaskedTextBox textBox, double defaultVariable, bool isNegativeCheck)
         {
+            double variable;
             if (double.TryParse(textBox.Text, out double parse))
             {
                 if (isNegativeCheck == true)
@@ -100,8 +103,9 @@ namespace Physics_Data_Debug
             }
             return variable;
         }
-        public static int MaskedTextBoxParserInt(MaskedTextBox textBox, int variable, int defaultVariable, bool isNegativeCheck)
+        public static int MaskedTextBoxParserInt(MaskedTextBox textBox, int defaultVariable, bool isNegativeCheck)
         {
+            int variable;
             if (int.TryParse(textBox.Text, out int parse))
             {
                 if (isNegativeCheck == true)
@@ -130,8 +134,9 @@ namespace Physics_Data_Debug
             }
             return variable;
         }
-        public static int HistoryAmountPointsMaskedTextBoxParserInt(MaskedTextBox textBox, int variable, int defaultVariable, bool isOverTwoCheck)
+        public static int HistoryAmountPointsMaskedTextBoxParserInt(MaskedTextBox textBox, int defaultVariable, bool isOverTwoCheck)
         {
+            int variable;
             if (int.TryParse(textBox.Text, out int parse))
             {
                 if (isOverTwoCheck == true)

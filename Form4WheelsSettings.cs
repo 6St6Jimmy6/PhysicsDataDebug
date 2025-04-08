@@ -424,7 +424,7 @@ namespace Physics_Data_Debug
             {
                 _4WheelsSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
                 _4WheelsSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
-                _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
+                _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.DefaultHistoryAmountPoints, true);
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
                 _4WheelsSettings.WheelChartsSelect = WheelChartsSelectComboBox.Text;
             }
@@ -459,12 +459,12 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.X1FontSize = (float)X1FontSizeComboBox.SelectedItem;
                 _4WheelsSettings.X1FontStyle = (FontStyle)X1FontStyleComboBox.SelectedItem;
 
-                _4WheelsSettings.X1Min = Parsers.MaskedTextBoxParserDouble(X1MinMaskedTextBox, _4WheelsSettings.X1Min, _4WheelsSettings.X1DefaultMin, _4WheelsSettings.AbsoluteValues);
-                _4WheelsSettings.X1Max = Parsers.MaskedTextBoxParserDouble(X1MaxMaskedTextBox, _4WheelsSettings.X1Max, _4WheelsSettings.X1DefaultMax, false);
+                _4WheelsSettings.X1Min = Parsers.MaskedTextBoxParserDouble(X1MinMaskedTextBox, _4WheelsSettings.X1DefaultMin, _4WheelsSettings.AbsoluteValues);
+                _4WheelsSettings.X1Max = Parsers.MaskedTextBoxParserDouble(X1MaxMaskedTextBox, _4WheelsSettings.X1DefaultMax, false);
 
                 _4WheelsSettings.X1MajorLineWidth = (int)X1MajorLineWidthComboBox.SelectedItem;
                 _4WheelsSettings.X1MajorDecimals = (int)X1MajorDecimalsComboBox.SelectedItem;
-                _4WheelsSettings.X1MajorInterval = Parsers.TextBoxParserDouble(X1MajorIntervalFractionTextBox, _4WheelsSettings.X1MajorInterval, _4WheelsSettings.X1DefaultMajorInterval, false);
+                _4WheelsSettings.X1MajorInterval = Parsers.TextBoxParserDouble(X1MajorIntervalFractionTextBox, _4WheelsSettings.X1DefaultMajorInterval, false);
                 _4WheelsSettings.X1MajorColor = (Color)X1MajorColorComboBox.SelectedItem;
 
                 _4WheelsSettings.X1MinorEnabled = X1MinorEnabledCheckBox.Checked;
@@ -506,12 +506,12 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.Y1FontSize = (float)Y1FontSizeComboBox.SelectedItem;
                 _4WheelsSettings.Y1FontStyle = (FontStyle)Y1FontStyleComboBox.SelectedItem;
 
-                _4WheelsSettings.Y1Min = Parsers.MaskedTextBoxParserDouble(Y1MinMaskedTextBox, _4WheelsSettings.Y1Min, _4WheelsSettings.Y1DefaultMin, _4WheelsSettings.AbsoluteValues);
-                _4WheelsSettings.Y1Max = Parsers.MaskedTextBoxParserDouble(Y1MaxMaskedTextBox, _4WheelsSettings.Y1Max, _4WheelsSettings.Y1DefaultMax, false);
+                _4WheelsSettings.Y1Min = Parsers.MaskedTextBoxParserDouble(Y1MinMaskedTextBox, _4WheelsSettings.Y1DefaultMin, _4WheelsSettings.AbsoluteValues);
+                _4WheelsSettings.Y1Max = Parsers.MaskedTextBoxParserDouble(Y1MaxMaskedTextBox, _4WheelsSettings.Y1DefaultMax, false);
 
                 _4WheelsSettings.Y1MajorLineWidth = (int)Y1MajorLineWidthComboBox.SelectedItem;
                 _4WheelsSettings.Y1MajorDecimals = (int)Y1MajorDecimalsComboBox.SelectedItem;
-                _4WheelsSettings.Y1MajorInterval = Parsers.TextBoxParserDouble(Y1IntervalDividerTextBox, _4WheelsSettings.Y1MajorInterval, _4WheelsSettings.Y1DefaultMajorInterval, true);
+                _4WheelsSettings.Y1MajorInterval = Parsers.TextBoxParserDouble(Y1IntervalDividerTextBox, _4WheelsSettings.Y1DefaultMajorInterval, true);
                 _4WheelsSettings.Y1MajorColor = (Color)Y1MajorColorComboBox.SelectedItem;
 
                 _4WheelsSettings.Y1MinorEnabled = Y1MinorEnabledCheckBox.Checked;
@@ -553,8 +553,8 @@ namespace Physics_Data_Debug
                 //_4WheelsSettings.Z1FontSize = (float)Z1FontSizeComboBox.SelectedItem;
                 //_4WheelsSettings.Z1FontStyle = (FontStyle)Z1FontStyleComboBox.SelectedItem;
 
-                _4WheelsSettings.Z1Min = Parsers.MaskedTextBoxParserDouble(Z1MinMaskedTextBox, _4WheelsSettings.Z1Min, _4WheelsSettings.Z1DefaultMin, true);
-                _4WheelsSettings.Z1Max = Parsers.MaskedTextBoxParserDouble(Z1MaxMaskedTextBox, _4WheelsSettings.Z1Max, _4WheelsSettings.Z1DefaultMax, true);
+                _4WheelsSettings.Z1Min = Parsers.MaskedTextBoxParserDouble(Z1MinMaskedTextBox, _4WheelsSettings.Z1DefaultMin, true);
+                _4WheelsSettings.Z1Max = Parsers.MaskedTextBoxParserDouble(Z1MaxMaskedTextBox, _4WheelsSettings.Z1DefaultMax, true);
 
                 //_4WheelsSettings.Z1MajorLineWidth = (int)Z1MajorLineWidthComboBox.SelectedItem;
                 //_4WheelsSettings.Z1MajorDecimals = (int)Z1MajorDecimalsComboBox.SelectedItem;
@@ -587,7 +587,7 @@ namespace Physics_Data_Debug
             {
                 _4WheelsSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
                 _4WheelsSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
-                _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.HistoryAmountPoints, _4WheelsSettings.DefaultHistoryAmountPoints, true);
+                _4WheelsSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, _4WheelsSettings.DefaultHistoryAmountPoints, true);
                 _4WheelsSettings.Scheme = SchemeComboBox.Text;
                 _4WheelsSettings.WheelChartsSelect = WheelChartsSelectComboBox.Text;
             }
@@ -622,12 +622,12 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.X1FontSize = (float)X1FontSizeComboBox.SelectedItem;
                 _4WheelsSettings.X1FontStyle = (FontStyle)X1FontStyleComboBox.SelectedItem;
 
-                _4WheelsSettings.X1Min = Parsers.MaskedTextBoxParserDouble(X1MinMaskedTextBox, _4WheelsSettings.X1Min, _4WheelsSettings.X1DefaultMin, _4WheelsSettings.AbsoluteValues);
-                _4WheelsSettings.X1Max = Parsers.MaskedTextBoxParserDouble(X1MaxMaskedTextBox, _4WheelsSettings.X1Max, _4WheelsSettings.X1DefaultMax, false);
+                _4WheelsSettings.X1Min = Parsers.MaskedTextBoxParserDouble(X1MinMaskedTextBox, _4WheelsSettings.X1DefaultMin, _4WheelsSettings.AbsoluteValues);
+                _4WheelsSettings.X1Max = Parsers.MaskedTextBoxParserDouble(X1MaxMaskedTextBox, _4WheelsSettings.X1DefaultMax, false);
 
                 _4WheelsSettings.X1MajorLineWidth = (int)X1MajorLineWidthComboBox.SelectedItem;
                 _4WheelsSettings.X1MajorDecimals = (int)X1MajorDecimalsComboBox.SelectedItem;
-                _4WheelsSettings.X1MajorInterval = Parsers.TextBoxParserDouble(X1MajorIntervalFractionTextBox, _4WheelsSettings.X1MajorInterval, _4WheelsSettings.X1DefaultMajorInterval, false);
+                _4WheelsSettings.X1MajorInterval = Parsers.TextBoxParserDouble(X1MajorIntervalFractionTextBox, _4WheelsSettings.X1DefaultMajorInterval, false);
                 _4WheelsSettings.X1MajorColor = (Color)X1MajorColorComboBox.SelectedItem;
 
                 _4WheelsSettings.X1MinorEnabled = X1MinorEnabledCheckBox.Checked;
@@ -668,12 +668,12 @@ namespace Physics_Data_Debug
                 _4WheelsSettings.Y1FontSize = (float)Y1FontSizeComboBox.SelectedItem;
                 _4WheelsSettings.Y1FontStyle = (FontStyle)Y1FontStyleComboBox.SelectedItem;
 
-                _4WheelsSettings.Y1Min = Parsers.MaskedTextBoxParserDouble(Y1MinMaskedTextBox, _4WheelsSettings.Y1Min, _4WheelsSettings.Y1DefaultMin, _4WheelsSettings.AbsoluteValues);
-                _4WheelsSettings.Y1Max = Parsers.MaskedTextBoxParserDouble(Y1MaxMaskedTextBox, _4WheelsSettings.Y1Max, _4WheelsSettings.Y1DefaultMax, false);
+                _4WheelsSettings.Y1Min = Parsers.MaskedTextBoxParserDouble(Y1MinMaskedTextBox, _4WheelsSettings.Y1DefaultMin, _4WheelsSettings.AbsoluteValues);
+                _4WheelsSettings.Y1Max = Parsers.MaskedTextBoxParserDouble(Y1MaxMaskedTextBox, _4WheelsSettings.Y1DefaultMax, false);
 
                 _4WheelsSettings.Y1MajorLineWidth = (int)Y1MajorLineWidthComboBox.SelectedItem;
                 _4WheelsSettings.Y1MajorDecimals = (int)Y1MajorDecimalsComboBox.SelectedItem;
-                _4WheelsSettings.Y1MajorInterval = Parsers.TextBoxParserDouble(Y1IntervalDividerTextBox, _4WheelsSettings.Y1MajorInterval, _4WheelsSettings.Y1DefaultMajorInterval, true);
+                _4WheelsSettings.Y1MajorInterval = Parsers.TextBoxParserDouble(Y1IntervalDividerTextBox, _4WheelsSettings.Y1DefaultMajorInterval, true);
                 _4WheelsSettings.Y1MajorColor = (Color)Y1MajorColorComboBox.SelectedItem;
 
                 _4WheelsSettings.Y1MinorEnabled = Y1MinorEnabledCheckBox.Checked;
@@ -715,8 +715,8 @@ namespace Physics_Data_Debug
                 //_4WheelsSettings.Z1FontSize = (float)Z1FontSizeComboBox.SelectedItem;
                 //_4WheelsSettings.Z1FontStyle = (FontStyle)Z1FontStyleComboBox.SelectedItem;
 
-                _4WheelsSettings.Z1Min = Parsers.MaskedTextBoxParserDouble(Z1MinMaskedTextBox, _4WheelsSettings.Z1Min, _4WheelsSettings.Z1DefaultMin, true);
-                _4WheelsSettings.Z1Max = Parsers.MaskedTextBoxParserDouble(Z1MaxMaskedTextBox, _4WheelsSettings.Z1Max, _4WheelsSettings.Z1DefaultMax, true);
+                _4WheelsSettings.Z1Min = Parsers.MaskedTextBoxParserDouble(Z1MinMaskedTextBox, _4WheelsSettings.Z1DefaultMin, true);
+                _4WheelsSettings.Z1Max = Parsers.MaskedTextBoxParserDouble(Z1MaxMaskedTextBox, _4WheelsSettings.Z1DefaultMax, true);
 
                 //_4WheelsSettings.Z1MajorLineWidth = (int)Z1MajorLineWidthComboBox.SelectedItem;
                 //_4WheelsSettings.Z1MajorDecimals = (int)Z1MajorDecimalsComboBox.SelectedItem;

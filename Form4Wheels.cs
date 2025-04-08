@@ -269,16 +269,16 @@ namespace Physics_Data_Debug
             {
                 xMinLimitTextBox.Enabled = true;
                 xMaxLimitTextBox.Enabled = true;
-                LimiterMinX = Parsers.TextBoxParserDouble(xMinLimitTextBox, LimiterMinX, _4WheelsSettings.X1DefaultMin, aboluteValueCheckX1);
-                LimiterMaxX = Parsers.TextBoxParserDouble(xMaxLimitTextBox, LimiterMaxX, _4WheelsSettings.X1DefaultMax, aboluteValueCheckX1);
+                LimiterMinX = Parsers.TextBoxParserDouble(xMinLimitTextBox, _4WheelsSettings.X1DefaultMin, aboluteValueCheckX1);
+                LimiterMaxX = Parsers.TextBoxParserDouble(xMaxLimitTextBox, _4WheelsSettings.X1DefaultMax, aboluteValueCheckX1);
                 yMinLimitTextBox.Enabled = true;
                 yMaxLimitTextBox.Enabled = true;
-                LimiterMinY = Parsers.TextBoxParserDouble(yMinLimitTextBox, LimiterMinY, _4WheelsSettings.Y1DefaultMin, aboluteValueCheckY1);
-                LimiterMaxY = Parsers.TextBoxParserDouble(yMaxLimitTextBox, LimiterMaxY, _4WheelsSettings.Y1DefaultMax, aboluteValueCheckY1);
+                LimiterMinY = Parsers.TextBoxParserDouble(yMinLimitTextBox, _4WheelsSettings.Y1DefaultMin, aboluteValueCheckY1);
+                LimiterMaxY = Parsers.TextBoxParserDouble(yMaxLimitTextBox, _4WheelsSettings.Y1DefaultMax, aboluteValueCheckY1);
                 zMinLimitTextBox.Enabled = true;
                 zMaxLimitTextBox.Enabled = true;
-                LimiterMinZ = Parsers.TextBoxParserDouble(zMinLimitTextBox, LimiterMinZ, _4WheelsSettings.Z1DefaultMin, aboluteValueCheckZ1);
-                LimiterMaxZ = Parsers.TextBoxParserDouble(zMaxLimitTextBox, LimiterMaxZ, _4WheelsSettings.Z1DefaultMax, aboluteValueCheckZ1);
+                LimiterMinZ = Parsers.TextBoxParserDouble(zMinLimitTextBox, _4WheelsSettings.Z1DefaultMin, aboluteValueCheckZ1);
+                LimiterMaxZ = Parsers.TextBoxParserDouble(zMaxLimitTextBox, _4WheelsSettings.Z1DefaultMax, aboluteValueCheckZ1);
             }
             else
             {

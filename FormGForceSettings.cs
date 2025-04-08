@@ -312,7 +312,7 @@ namespace Physics_Data_Debug
             {
                 GForceSettings.BackgroundColor = (Color)BackgroundColorComboBox.SelectedItem;
                 GForceSettings.MarkerColor = (Color)MarkerColorComboBox.SelectedItem;
-                GForceSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, GForceSettings.HistoryAmountPoints, GForceSettings.DefaultHistoryAmountPoints, true);
+                GForceSettings.HistoryAmountPoints = Parsers.HistoryAmountPointsMaskedTextBoxParserInt(HistoryAmountPointsMaskedTextBox, GForceSettings.DefaultHistoryAmountPoints, true);
                 GForceSettings.InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 GForceSettings.Scheme = SchemeComboBox.Text;
             }
@@ -386,8 +386,8 @@ namespace Physics_Data_Debug
                 GForceSettings.Y1FontSize = (float)Y1FontSizeComboBox.SelectedItem;
                 GForceSettings.Y1FontStyle = (FontStyle)Y1FontStyleComboBox.SelectedItem;
 
-                GForceSettings.Y1Min = Parsers.MaskedTextBoxParserDouble(Y1MinMaskedTextBox, GForceSettings.Y1Min, GForceSettings.Y1DefaultMin, true);
-                GForceSettings.Y1Max = Parsers.MaskedTextBoxParserDouble(Y1MaxMaskedTextBox, GForceSettings.Y1Max, GForceSettings.Y1DefaultMax, true);
+                GForceSettings.Y1Min = Parsers.MaskedTextBoxParserDouble(Y1MinMaskedTextBox, GForceSettings.Y1DefaultMin, true);
+                GForceSettings.Y1Max = Parsers.MaskedTextBoxParserDouble(Y1MaxMaskedTextBox, GForceSettings.Y1DefaultMax, true);
 
                 GForceSettings.Y1MajorLineWidth = (int)Y1MajorLineWidthComboBox.SelectedItem;
                 GForceSettings.Y1MajorDecimals = (int)Y1MajorDecimalsComboBox.SelectedItem;
