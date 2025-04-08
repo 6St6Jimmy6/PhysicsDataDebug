@@ -245,6 +245,24 @@ namespace Physics_Data_Debug
                 }
             }
         }
+        private void ListOfAbsoluteValues()
+        {
+            /*
+            LogSettings.sTireTravelSpeed
+            LogSettings.sAngularVelocity
+            LogSettings.sSteerAngle
+            LogSettings.sCamberAngle
+            LogSettings.sLateralLoad
+            LogSettings.sSlipAngle
+            LogSettings.sLateralFriction
+            LogSettings.sLateralSlipSpeed
+            LogSettings.sLongitudinalLoad
+            LogSettings.sSlipRatio
+            LogSettings.sLongitudinalFriction
+            LogSettings.sLongitudinalSlipSpeed
+            LogSettings.sSuspensionVelocity??
+            */
+        }
         private static void XYAxisDefaults(string XorY, string axisSelection, bool dAxis)
         {
             double dMax; double dMin; double dMajorInterval; int dDecimals; bool dMinorEnabled; int dMinorIntervalFraction;
@@ -555,14 +573,7 @@ namespace Physics_Data_Debug
             else if (axisSelection == LogSettings.sTreadTemperature)
             {
                 dMax = 380;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    dMin = 0;
-                }
-                else
-                {
-                    dMin = -20;
-                }
+                dMin = -20;
                 dMajorInterval = 20;
                 dDecimals = 0;
                 dMinorEnabled = true;
@@ -573,14 +584,7 @@ namespace Physics_Data_Debug
             else if (axisSelection == LogSettings.sInnerTemperature)
             {
                 dMax = 380;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    dMin = 0;
-                }
-                else
-                {
-                    dMin = -20;
-                }
+                dMin = -20;
                 dMajorInterval = 20;
                 dDecimals = 0;
                 dMinorEnabled = true;
@@ -591,14 +595,7 @@ namespace Physics_Data_Debug
             else if (axisSelection == LogSettings.sTotalFriction)
             {
                 dMax = 2;
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    dMin = 0;
-                }
-                else
-                {
-                    dMin = -dMax;
-                }
+                dMin = -dMax;
                 dMajorInterval = 0.5;
                 dDecimals = 2;
                 dMinorEnabled = true;
@@ -1152,16 +1149,11 @@ namespace Physics_Data_Debug
 
             GetColorSchemeColors();
 
-            XYAxisDefaults("X",
-                         _4WheelsSettings.X1Selection,
-                         _4WheelsSettings.X1Defaults);
+            XYAxisDefaults("X", _4WheelsSettings.X1Selection, _4WheelsSettings.X1Defaults);
 
-            XYAxisDefaults("Y",
-                         _4WheelsSettings.Y1Selection,
-                         _4WheelsSettings.Y1Defaults);
+            XYAxisDefaults("Y", _4WheelsSettings.Y1Selection, _4WheelsSettings.Y1Defaults);
 
-            ZAxisDefaults(_4WheelsSettings.Z1Selection,
-                          _4WheelsSettings.Z1Defaults);
+            ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
 
             AddChart(chartName, chartAreaName);
             // New Marker color stuff
@@ -1564,6 +1556,21 @@ namespace Physics_Data_Debug
                 Color1 = Color.FromArgb(HistoryAlpha, 0 / HistoryColorDivider, 0 / HistoryColorDivider, 192 / HistoryColorDivider);
             }
         }
+        private static void AddColorDataAndHandleHistoryBuffer(List<double> colorValues, double data)
+        {
+            if (_4WheelsSettings.AbsoluteValues == true)
+            {
+                colorValues.Add(Math.Abs(data));
+            }
+            else
+            {
+                colorValues.Add(data);
+            }
+            if (colorValues.Count > _4WheelsSettings.HistoryAmountPoints)
+            {
+                colorValues.RemoveAt(0);
+            }
+        }
         private static void ColorGradient(double dataX, double dataY, double dataZ,
             List<double> xValuesColor1, List<double> yValuesColor1,
             List<double> xValuesColor2, List<double> yValuesColor2,
@@ -1596,260 +1603,199 @@ namespace Physics_Data_Debug
 
             if (Zdata >= nine)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor10.Add(Math.Abs(Xdata));
-                    yValuesColor10.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor10.Add(dataX);
-                    yValuesColor10.Add(dataY);
-                }
-                if (xValuesColor10.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor10.RemoveAt(0);
-                }
-                if (yValuesColor10.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor10.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor10].MarkerColor = color10;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor10, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor10, dataY);
             }
             else if (Zdata < nine && Zdata >= eight)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor9.Add(Math.Abs(Xdata));
-                    yValuesColor9.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor9.Add(dataX);
-                    yValuesColor9.Add(dataY);
-                }
-                if (xValuesColor9.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor9.RemoveAt(0);
-                }
-                if (yValuesColor9.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor9.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor9].MarkerColor = color9;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor9, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor9, dataY);
             }
             else if (Zdata < eight && Zdata >= seven)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor8.Add(Math.Abs(Xdata));
-                    yValuesColor8.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor8.Add(dataX);
-                    yValuesColor8.Add(dataY);
-                }
-                if (xValuesColor8.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor8.RemoveAt(0);
-                }
-                if (yValuesColor8.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor8.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor8].MarkerColor = color8;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor8, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor8, dataY);
             }
             else if (Zdata < seven && Zdata >= six)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor7.Add(Math.Abs(Xdata));
-                    yValuesColor7.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor7.Add(dataX);
-                    yValuesColor7.Add(dataY);
-                }
-                if (xValuesColor7.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor7.RemoveAt(0);
-                }
-                if (yValuesColor7.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor7.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor7].MarkerColor = color7;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor7, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor7, dataY);
             }
             else if (Zdata < six && Zdata >= five)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor6.Add(Math.Abs(Xdata));
-                    yValuesColor6.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor6.Add(dataX);
-                    yValuesColor6.Add(dataY);
-                }
-                if (xValuesColor6.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor6.RemoveAt(0);
-                }
-                if (yValuesColor6.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor6.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor6].MarkerColor = color6;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor6, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor6, dataY);
             }
             else if (Zdata < five && Zdata >= four)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor5.Add(Math.Abs(Xdata));
-                    yValuesColor5.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor5.Add(dataX);
-                    yValuesColor5.Add(dataY);
-                }
-                if (xValuesColor5.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor5.RemoveAt(0);
-                }
-                if (yValuesColor5.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor5.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor5].MarkerColor = color5;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor5, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor5, dataY);
             }
             else if (Zdata < four && Zdata >= three)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor4.Add(Math.Abs(Xdata));
-                    yValuesColor4.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor4.Add(dataX);
-                    yValuesColor4.Add(dataY);
-                }
-                if (xValuesColor4.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor4.RemoveAt(0);
-                }
-                if (yValuesColor4.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor4.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor4].MarkerColor = color4;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor4, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor4, dataY);
             }
             else if (Zdata < three && Zdata >= two)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor3.Add(Math.Abs(Xdata));
-                    yValuesColor3.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor3.Add(dataX);
-                    yValuesColor3.Add(dataY);
-                }
-                if (xValuesColor3.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor3.RemoveAt(0);
-                }
-                if (yValuesColor3.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor3.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor3].MarkerColor = color3;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor3, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor3, dataY);
             }
             else if (Zdata < two && Zdata >= one)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor2.Add(Math.Abs(Xdata));
-                    yValuesColor2.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor2.Add(dataX);
-                    yValuesColor2.Add(dataY);
-                }
-                if (xValuesColor2.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor2.RemoveAt(0);
-                }
-                if (yValuesColor2.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor2.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor2].MarkerColor = color2;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor2, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor2, dataY);
             }
             else if (Zdata < one && Zdata >= zero)
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor1.Add(Math.Abs(Xdata));
-                    yValuesColor1.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor1.Add(dataX);
-                    yValuesColor1.Add(dataY);
-                }
-                if (xValuesColor1.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor1.RemoveAt(0);
-                }
-                if (yValuesColor1.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor1.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor1].MarkerColor = color1;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor1, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor1, dataY);
             }
             else
             {
-                if (_4WheelsSettings.AbsoluteValues == true)
-                {
-                    xValuesColor1.Add(Math.Abs(Xdata));
-                    yValuesColor1.Add(Math.Abs(Ydata));
-                }
-                else
-                {
-                    xValuesColor1.Add(dataX);
-                    yValuesColor1.Add(dataY);
-                }
-                if (xValuesColor1.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    xValuesColor1.RemoveAt(0);
-                }
-                if (yValuesColor1.Count > _4WheelsSettings.HistoryAmountPoints)
-                {
-                    yValuesColor1.RemoveAt(0);
-                }
-                //chartName.Series[seriesNameColor1].MarkerColor = color1;
+                AddColorDataAndHandleHistoryBuffer(xValuesColor1, dataX);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor1, dataY);
             }
         }
-        public static void ListSeries(Chart chartName, float noTireContactLimiter,
-            string seriesName, double dataX, List<double> xValues, double dataY, List<double> yValues, double dataZ, List<double> zValues,
-            List<double> xValuesColor1, List<double> yValuesColor1,
-            List<double> xValuesColor2, List<double> yValuesColor2,
-            List<double> xValuesColor3, List<double> yValuesColor3,
-            List<double> xValuesColor4, List<double> yValuesColor4,
-            List<double> xValuesColor5, List<double> yValuesColor5,
-            List<double> xValuesColor6, List<double> yValuesColor6,
-            List<double> xValuesColor7, List<double> yValuesColor7,
-            List<double> xValuesColor8, List<double> yValuesColor8,
-            List<double> xValuesColor9, List<double> yValuesColor9,
-            List<double> xValuesColor10, List<double> yValuesColor10)
+        public static void ListSeries(Chart chartName,
+            string seriesName, double dataX, double dataY, double dataZ)
         {
+            float noTireContactLimiter;
+            List<double> X1Values; List<double> Y1Values; List<double> Z1Values;
+            List<double> X1ValuesColor1; List<double> Y1ValuesColor1;
+            List< double > X1ValuesColor2; List<double> Y1ValuesColor2;
+            List< double > X1ValuesColor3; List<double> Y1ValuesColor3;
+            List< double > X1ValuesColor4; List<double> Y1ValuesColor4;
+            List< double > X1ValuesColor5; List<double> Y1ValuesColor5;
+            List< double > X1ValuesColor6; List<double> Y1ValuesColor6;
+            List< double > X1ValuesColor7; List<double> Y1ValuesColor7;
+            List< double > X1ValuesColor8; List<double> Y1ValuesColor8;
+            List< double > X1ValuesColor9; List<double> Y1ValuesColor9;
+            List< double > X1ValuesColor10; List<double> Y1ValuesColor10;
+
+            if (seriesName == _4Wheels.SeriesFL)
+            {
+                noTireContactLimiter = LiveData.FL_VerticalLoad;
+                X1Values = _4Wheels.FL_X1ValuesChart;
+                X1ValuesColor1 = _4Wheels.FL_X1ValuesChartColor1;
+                X1ValuesColor2 = _4Wheels.FL_X1ValuesChartColor2;
+                X1ValuesColor3 = _4Wheels.FL_X1ValuesChartColor3;
+                X1ValuesColor4 = _4Wheels.FL_X1ValuesChartColor4;
+                X1ValuesColor5 = _4Wheels.FL_X1ValuesChartColor5;
+                X1ValuesColor6 = _4Wheels.FL_X1ValuesChartColor6;
+                X1ValuesColor7 = _4Wheels.FL_X1ValuesChartColor7;
+                X1ValuesColor8 = _4Wheels.FL_X1ValuesChartColor8;
+                X1ValuesColor9 = _4Wheels.FL_X1ValuesChartColor9;
+                X1ValuesColor10 = _4Wheels.FL_X1ValuesChartColor10;
+                Y1Values = _4Wheels.FL_Y1ValuesChart;
+                Y1ValuesColor1 = _4Wheels.FL_Y1ValuesChartColor1;
+                Y1ValuesColor2 = _4Wheels.FL_Y1ValuesChartColor2;
+                Y1ValuesColor3 = _4Wheels.FL_Y1ValuesChartColor3;
+                Y1ValuesColor4 = _4Wheels.FL_Y1ValuesChartColor4;
+                Y1ValuesColor5 = _4Wheels.FL_Y1ValuesChartColor5;
+                Y1ValuesColor6 = _4Wheels.FL_Y1ValuesChartColor6;
+                Y1ValuesColor7 = _4Wheels.FL_Y1ValuesChartColor7;
+                Y1ValuesColor8 = _4Wheels.FL_Y1ValuesChartColor8;
+                Y1ValuesColor9 = _4Wheels.FL_Y1ValuesChartColor9;
+                Y1ValuesColor10 = _4Wheels.FL_Y1ValuesChartColor10;
+                Z1Values = _4Wheels.FL_Z1ValuesChart;
+            }
+            else if(seriesName == _4Wheels.SeriesFR)
+            {
+                noTireContactLimiter = LiveData.FR_VerticalLoad;
+                X1Values = _4Wheels.FR_X1ValuesChart;
+                X1ValuesColor1 = _4Wheels.FR_X1ValuesChartColor1;
+                X1ValuesColor2 = _4Wheels.FR_X1ValuesChartColor2;
+                X1ValuesColor3 = _4Wheels.FR_X1ValuesChartColor3;
+                X1ValuesColor4 = _4Wheels.FR_X1ValuesChartColor4;
+                X1ValuesColor5 = _4Wheels.FR_X1ValuesChartColor5;
+                X1ValuesColor6 = _4Wheels.FR_X1ValuesChartColor6;
+                X1ValuesColor7 = _4Wheels.FR_X1ValuesChartColor7;
+                X1ValuesColor8 = _4Wheels.FR_X1ValuesChartColor8;
+                X1ValuesColor9 = _4Wheels.FR_X1ValuesChartColor9;
+                X1ValuesColor10 = _4Wheels.FR_X1ValuesChartColor10;
+                Y1Values = _4Wheels.FR_Y1ValuesChart;
+                Y1ValuesColor1 = _4Wheels.FR_Y1ValuesChartColor1;
+                Y1ValuesColor2 = _4Wheels.FR_Y1ValuesChartColor2;
+                Y1ValuesColor3 = _4Wheels.FR_Y1ValuesChartColor3;
+                Y1ValuesColor4 = _4Wheels.FR_Y1ValuesChartColor4;
+                Y1ValuesColor5 = _4Wheels.FR_Y1ValuesChartColor5;
+                Y1ValuesColor6 = _4Wheels.FR_Y1ValuesChartColor6;
+                Y1ValuesColor7 = _4Wheels.FR_Y1ValuesChartColor7;
+                Y1ValuesColor8 = _4Wheels.FR_Y1ValuesChartColor8;
+                Y1ValuesColor9 = _4Wheels.FR_Y1ValuesChartColor9;
+                Y1ValuesColor10 = _4Wheels.FR_Y1ValuesChartColor10;
+                Z1Values = _4Wheels.FR_Z1ValuesChart;
+            }
+            else if (seriesName == _4Wheels.SeriesRL)
+            {
+                noTireContactLimiter = LiveData.RL_VerticalLoad;
+                X1Values = _4Wheels.RL_X1ValuesChart;
+                X1ValuesColor1 = _4Wheels.RL_X1ValuesChartColor1;
+                X1ValuesColor2 = _4Wheels.RL_X1ValuesChartColor2;
+                X1ValuesColor3 = _4Wheels.RL_X1ValuesChartColor3;
+                X1ValuesColor4 = _4Wheels.RL_X1ValuesChartColor4;
+                X1ValuesColor5 = _4Wheels.RL_X1ValuesChartColor5;
+                X1ValuesColor6 = _4Wheels.RL_X1ValuesChartColor6;
+                X1ValuesColor7 = _4Wheels.RL_X1ValuesChartColor7;
+                X1ValuesColor8 = _4Wheels.RL_X1ValuesChartColor8;
+                X1ValuesColor9 = _4Wheels.RL_X1ValuesChartColor9;
+                X1ValuesColor10 = _4Wheels.RL_X1ValuesChartColor10;
+                Y1Values = _4Wheels.RL_Y1ValuesChart;
+                Y1ValuesColor1 = _4Wheels.RL_Y1ValuesChartColor1;
+                Y1ValuesColor2 = _4Wheels.RL_Y1ValuesChartColor2;
+                Y1ValuesColor3 = _4Wheels.RL_Y1ValuesChartColor3;
+                Y1ValuesColor4 = _4Wheels.RL_Y1ValuesChartColor4;
+                Y1ValuesColor5 = _4Wheels.RL_Y1ValuesChartColor5;
+                Y1ValuesColor6 = _4Wheels.RL_Y1ValuesChartColor6;
+                Y1ValuesColor7 = _4Wheels.RL_Y1ValuesChartColor7;
+                Y1ValuesColor8 = _4Wheels.RL_Y1ValuesChartColor8;
+                Y1ValuesColor9 = _4Wheels.RL_Y1ValuesChartColor9;
+                Y1ValuesColor10 = _4Wheels.RL_Y1ValuesChartColor10;
+                Z1Values = _4Wheels.RL_Z1ValuesChart;
+            }
+            else//RR(seriesName == _4Wheels.SeriesRR)
+            {
+                noTireContactLimiter = LiveData.RR_VerticalLoad;
+                X1Values = _4Wheels.RR_X1ValuesChart;
+                X1ValuesColor1 = _4Wheels.RR_X1ValuesChartColor1;
+                X1ValuesColor2 = _4Wheels.RR_X1ValuesChartColor2;
+                X1ValuesColor3 = _4Wheels.RR_X1ValuesChartColor3;
+                X1ValuesColor4 = _4Wheels.RR_X1ValuesChartColor4;
+                X1ValuesColor5 = _4Wheels.RR_X1ValuesChartColor5;
+                X1ValuesColor6 = _4Wheels.RR_X1ValuesChartColor6;
+                X1ValuesColor7 = _4Wheels.RR_X1ValuesChartColor7;
+                X1ValuesColor8 = _4Wheels.RR_X1ValuesChartColor8;
+                X1ValuesColor9 = _4Wheels.RR_X1ValuesChartColor9;
+                X1ValuesColor10 = _4Wheels.RR_X1ValuesChartColor10;
+                Y1Values = _4Wheels.RR_Y1ValuesChart;
+                Y1ValuesColor1 = _4Wheels.RR_Y1ValuesChartColor1;
+                Y1ValuesColor2 = _4Wheels.RR_Y1ValuesChartColor2;
+                Y1ValuesColor3 = _4Wheels.RR_Y1ValuesChartColor3;
+                Y1ValuesColor4 = _4Wheels.RR_Y1ValuesChartColor4;
+                Y1ValuesColor5 = _4Wheels.RR_Y1ValuesChartColor5;
+                Y1ValuesColor6 = _4Wheels.RR_Y1ValuesChartColor6;
+                Y1ValuesColor7 = _4Wheels.RR_Y1ValuesChartColor7;
+                Y1ValuesColor8 = _4Wheels.RR_Y1ValuesChartColor8;
+                Y1ValuesColor9 = _4Wheels.RR_Y1ValuesChartColor9;
+                Y1ValuesColor10 = _4Wheels.RR_Y1ValuesChartColor10;
+                Z1Values = _4Wheels.RR_Z1ValuesChart;
+            }
+            /*
+            _4Wheels.ListSeries(chartName, LiveData.FL_VerticalLoad,
+            _4Wheels.SeriesFL, xyzValuesZero, _4Wheels.FL_X1ValuesChart, xyzValuesOne, _4Wheels.FL_Y1ValuesChart, xyzValuesTwo, _4Wheels.FL_Z1ValuesChart,
+            _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
+            _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
+            _4Wheels.FL_X1ValuesChartColor3, _4Wheels.FL_Y1ValuesChartColor3,
+            _4Wheels.FL_X1ValuesChartColor4, _4Wheels.FL_Y1ValuesChartColor4,
+            _4Wheels.FL_X1ValuesChartColor5, _4Wheels.FL_Y1ValuesChartColor5,
+            _4Wheels.FL_X1ValuesChartColor6, _4Wheels.FL_Y1ValuesChartColor6,
+            _4Wheels.FL_X1ValuesChartColor7, _4Wheels.FL_Y1ValuesChartColor7,
+            _4Wheels.FL_X1ValuesChartColor8, _4Wheels.FL_Y1ValuesChartColor8,
+            _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
+            _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10);
+            */
+
             // No tire contact, no data added
             if (noTireContactLimiter == 0)
             {
@@ -1860,45 +1806,45 @@ namespace Physics_Data_Debug
             {
                 if (_4WheelsSettings.AbsoluteValues == true)
                 {
-                    xValues.Add(Math.Abs(dataX));
-                    yValues.Add(Math.Abs(dataY));
-                    zValues.Add(Math.Abs(dataZ));
+                    X1Values.Add(Math.Abs(dataX));
+                    Y1Values.Add(Math.Abs(dataY));
+                    Z1Values.Add(Math.Abs(dataZ));
                 }
                 else
                 {
-                    xValues.Add(dataX);
-                    yValues.Add(dataY);
-                    zValues.Add(dataZ);
+                    X1Values.Add(dataX);
+                    Y1Values.Add(dataY);
+                    Z1Values.Add(dataZ);
                 }
-                if (xValues.Count > 1)
+                if (X1Values.Count > 1)
                 {
-                    xValues.RemoveAt(0);
-                    yValues.RemoveAt(0);
-                    zValues.RemoveAt(0);
+                    X1Values.RemoveAt(0);
+                    Y1Values.RemoveAt(0);
+                    Z1Values.RemoveAt(0);
                 }
             }
             ColorGradient(dataX, dataY, dataZ,
-            xValuesColor1, yValuesColor1,
-            xValuesColor2, yValuesColor2,
-            xValuesColor3, yValuesColor3,
-            xValuesColor4, yValuesColor4,
-            xValuesColor5, yValuesColor5,
-            xValuesColor6, yValuesColor6,
-            xValuesColor7, yValuesColor7,
-            xValuesColor8, yValuesColor8,
-            xValuesColor9, yValuesColor9,
-            xValuesColor10, yValuesColor10);
-            chartName.Series[seriesName].Points.DataBindXY(xValues, yValues);
-            chartName.Series[seriesName + seriesColor1].Points.DataBindXY(xValuesColor1, yValuesColor1);
-            chartName.Series[seriesName + seriesColor2].Points.DataBindXY(xValuesColor2, yValuesColor2);
-            chartName.Series[seriesName + seriesColor3].Points.DataBindXY(xValuesColor3, yValuesColor3);
-            chartName.Series[seriesName + seriesColor4].Points.DataBindXY(xValuesColor4, yValuesColor4);
-            chartName.Series[seriesName + seriesColor5].Points.DataBindXY(xValuesColor5, yValuesColor5);
-            chartName.Series[seriesName + seriesColor6].Points.DataBindXY(xValuesColor6, yValuesColor6);
-            chartName.Series[seriesName + seriesColor7].Points.DataBindXY(xValuesColor7, yValuesColor7);
-            chartName.Series[seriesName + seriesColor8].Points.DataBindXY(xValuesColor8, yValuesColor8);
-            chartName.Series[seriesName + seriesColor9].Points.DataBindXY(xValuesColor9, yValuesColor9);
-            chartName.Series[seriesName + seriesColor10].Points.DataBindXY(xValuesColor10, yValuesColor10);
+            X1ValuesColor1, Y1ValuesColor1,
+            X1ValuesColor2, Y1ValuesColor2,
+            X1ValuesColor3, Y1ValuesColor3,
+            X1ValuesColor4, Y1ValuesColor4,
+            X1ValuesColor5, Y1ValuesColor5,
+            X1ValuesColor6, Y1ValuesColor6,
+            X1ValuesColor7, Y1ValuesColor7,
+            X1ValuesColor8, Y1ValuesColor8,
+            X1ValuesColor9, Y1ValuesColor9,
+            X1ValuesColor10, Y1ValuesColor10);
+            chartName.Series[seriesName].Points.DataBindXY(X1Values, Y1Values);
+            chartName.Series[seriesName + seriesColor1].Points.DataBindXY(X1ValuesColor1, Y1ValuesColor1);
+            chartName.Series[seriesName + seriesColor2].Points.DataBindXY(X1ValuesColor2, Y1ValuesColor2);
+            chartName.Series[seriesName + seriesColor3].Points.DataBindXY(X1ValuesColor3, Y1ValuesColor3);
+            chartName.Series[seriesName + seriesColor4].Points.DataBindXY(X1ValuesColor4, Y1ValuesColor4);
+            chartName.Series[seriesName + seriesColor5].Points.DataBindXY(X1ValuesColor5, Y1ValuesColor5);
+            chartName.Series[seriesName + seriesColor6].Points.DataBindXY(X1ValuesColor6, Y1ValuesColor6);
+            chartName.Series[seriesName + seriesColor7].Points.DataBindXY(X1ValuesColor7, Y1ValuesColor7);
+            chartName.Series[seriesName + seriesColor8].Points.DataBindXY(X1ValuesColor8, Y1ValuesColor8);
+            chartName.Series[seriesName + seriesColor9].Points.DataBindXY(X1ValuesColor9, Y1ValuesColor9);
+            chartName.Series[seriesName + seriesColor10].Points.DataBindXY(X1ValuesColor10, Y1ValuesColor10);
 
             //ForLoopAxisList(chartName, 1, xValues, yValues, zValues);
             chartName.Series[seriesName].Points.Last().MarkerSize = 8;
@@ -1907,7 +1853,6 @@ namespace Physics_Data_Debug
         }
         public static void SetUpDownChart(Chart chartName)
         {
-
             double maxmin = _4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min;
             double interval = maxmin / Steps;
             chartName.ChartAreas["ChartArea1"].AxisY.Minimum = _4WheelsSettings.Z1Min;

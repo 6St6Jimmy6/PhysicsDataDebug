@@ -169,86 +169,40 @@ namespace Physics_Data_Debug
             WheelChartsSelectComboBox.Items.Add("Front/Rear");
             WheelChartsSelectComboBox.Items.Add("All In One");
             // Add X axis selections in the combobox
-            X1SelectionComboBox.Items.Add(LogSettings.sTireTravelSpeed);
-            X1SelectionComboBox.Items.Add(LogSettings.sAngularVelocity);
-            X1SelectionComboBox.Items.Add(LogSettings.sVerticalLoad);
-            X1SelectionComboBox.Items.Add(LogSettings.sVerticalDeflection);
-            X1SelectionComboBox.Items.Add(LogSettings.sLoadedRadius);
-            X1SelectionComboBox.Items.Add(LogSettings.sEffectiveRadius);
-            X1SelectionComboBox.Items.Add(LogSettings.sContactLength);
-            X1SelectionComboBox.Items.Add(LogSettings.sBrakeTorque);
-            X1SelectionComboBox.Items.Add(LogSettings.sMaxBrakeTorque);
-            X1SelectionComboBox.Items.Add(LogSettings.sSteerAngle);
-            X1SelectionComboBox.Items.Add(LogSettings.sCamberAngle);
-            X1SelectionComboBox.Items.Add(LogSettings.sLateralLoad);
-            X1SelectionComboBox.Items.Add(LogSettings.sSlipAngle);
-            X1SelectionComboBox.Items.Add(LogSettings.sLateralFriction);
-            X1SelectionComboBox.Items.Add(LogSettings.sLateralSlipSpeed);
-            X1SelectionComboBox.Items.Add(LogSettings.sLongitudinalLoad);
-            X1SelectionComboBox.Items.Add(LogSettings.sSlipRatio);
-            X1SelectionComboBox.Items.Add(LogSettings.sLongitudinalFriction);
-            X1SelectionComboBox.Items.Add(LogSettings.sLongitudinalSlipSpeed);
-            X1SelectionComboBox.Items.Add(LogSettings.sTreadTemperature);
-            X1SelectionComboBox.Items.Add(LogSettings.sInnerTemperature);
-            X1SelectionComboBox.Items.Add(LogSettings.sRaceTime);
-            X1SelectionComboBox.Items.Add(LogSettings.sTotalFriction);
-            X1SelectionComboBox.Items.Add(LogSettings.sTotalFrictionAngle);
-            X1SelectionComboBox.Items.Add(LogSettings.sSuspensionLength);
-            X1SelectionComboBox.Items.Add(LogSettings.sSuspensionVelocity);
+            AxisSelectionComboboxAdd(X1SelectionComboBox);
             // Add Y axis selections in the combobox
-            Y1SelectionComboBox.Items.Add(LogSettings.sTireTravelSpeed);
-            Y1SelectionComboBox.Items.Add(LogSettings.sAngularVelocity);
-            Y1SelectionComboBox.Items.Add(LogSettings.sVerticalLoad);
-            Y1SelectionComboBox.Items.Add(LogSettings.sVerticalDeflection);
-            Y1SelectionComboBox.Items.Add(LogSettings.sLoadedRadius);
-            Y1SelectionComboBox.Items.Add(LogSettings.sEffectiveRadius);
-            Y1SelectionComboBox.Items.Add(LogSettings.sContactLength);
-            Y1SelectionComboBox.Items.Add(LogSettings.sBrakeTorque);
-            Y1SelectionComboBox.Items.Add(LogSettings.sMaxBrakeTorque);
-            Y1SelectionComboBox.Items.Add(LogSettings.sSteerAngle);
-            Y1SelectionComboBox.Items.Add(LogSettings.sCamberAngle);
-            Y1SelectionComboBox.Items.Add(LogSettings.sLateralLoad);
-            Y1SelectionComboBox.Items.Add(LogSettings.sSlipAngle);
-            Y1SelectionComboBox.Items.Add(LogSettings.sLateralFriction);
-            Y1SelectionComboBox.Items.Add(LogSettings.sLateralSlipSpeed);
-            Y1SelectionComboBox.Items.Add(LogSettings.sLongitudinalLoad);
-            Y1SelectionComboBox.Items.Add(LogSettings.sSlipRatio);
-            Y1SelectionComboBox.Items.Add(LogSettings.sLongitudinalFriction);
-            Y1SelectionComboBox.Items.Add(LogSettings.sLongitudinalSlipSpeed);
-            Y1SelectionComboBox.Items.Add(LogSettings.sTreadTemperature);
-            Y1SelectionComboBox.Items.Add(LogSettings.sInnerTemperature);
-            Y1SelectionComboBox.Items.Add(LogSettings.sRaceTime);
-            Y1SelectionComboBox.Items.Add(LogSettings.sTotalFriction);
-            Y1SelectionComboBox.Items.Add(LogSettings.sTotalFrictionAngle);
-            Y1SelectionComboBox.Items.Add(LogSettings.sSuspensionLength);
-            Y1SelectionComboBox.Items.Add(LogSettings.sSuspensionVelocity);
+            AxisSelectionComboboxAdd(Y1SelectionComboBox);
             // Add Z axis selections in the combobox
-            Z1SelectionComboBox.Items.Add(LogSettings.sTireTravelSpeed);
-            Z1SelectionComboBox.Items.Add(LogSettings.sAngularVelocity);
-            Z1SelectionComboBox.Items.Add(LogSettings.sVerticalLoad);
-            Z1SelectionComboBox.Items.Add(LogSettings.sVerticalDeflection);
-            Z1SelectionComboBox.Items.Add(LogSettings.sLoadedRadius);
-            Z1SelectionComboBox.Items.Add(LogSettings.sEffectiveRadius);
-            Z1SelectionComboBox.Items.Add(LogSettings.sContactLength);
-            Z1SelectionComboBox.Items.Add(LogSettings.sBrakeTorque);
-            Z1SelectionComboBox.Items.Add(LogSettings.sMaxBrakeTorque);
-            Z1SelectionComboBox.Items.Add(LogSettings.sSteerAngle);
-            Z1SelectionComboBox.Items.Add(LogSettings.sCamberAngle);
-            Z1SelectionComboBox.Items.Add(LogSettings.sLateralLoad);
-            Z1SelectionComboBox.Items.Add(LogSettings.sSlipAngle);
-            Z1SelectionComboBox.Items.Add(LogSettings.sLateralFriction);
-            Z1SelectionComboBox.Items.Add(LogSettings.sLateralSlipSpeed);
-            Z1SelectionComboBox.Items.Add(LogSettings.sLongitudinalLoad);
-            Z1SelectionComboBox.Items.Add(LogSettings.sSlipRatio);
-            Z1SelectionComboBox.Items.Add(LogSettings.sLongitudinalFriction);
-            Z1SelectionComboBox.Items.Add(LogSettings.sLongitudinalSlipSpeed);
-            Z1SelectionComboBox.Items.Add(LogSettings.sTreadTemperature);
-            Z1SelectionComboBox.Items.Add(LogSettings.sInnerTemperature);
-            Z1SelectionComboBox.Items.Add(LogSettings.sRaceTime);
-            Z1SelectionComboBox.Items.Add(LogSettings.sTotalFriction);
-            Z1SelectionComboBox.Items.Add(LogSettings.sTotalFrictionAngle);
-            Z1SelectionComboBox.Items.Add(LogSettings.sSuspensionLength);
-            Z1SelectionComboBox.Items.Add(LogSettings.sSuspensionVelocity);
+            AxisSelectionComboboxAdd(Z1SelectionComboBox);
+        }
+        public static void AxisSelectionComboboxAdd(ComboBox axisSelectionCombobox)
+        {
+            axisSelectionCombobox.Items.Add(LogSettings.sTireTravelSpeed);
+            axisSelectionCombobox.Items.Add(LogSettings.sAngularVelocity);
+            axisSelectionCombobox.Items.Add(LogSettings.sVerticalLoad);
+            axisSelectionCombobox.Items.Add(LogSettings.sVerticalDeflection);
+            axisSelectionCombobox.Items.Add(LogSettings.sLoadedRadius);
+            axisSelectionCombobox.Items.Add(LogSettings.sEffectiveRadius);
+            axisSelectionCombobox.Items.Add(LogSettings.sContactLength);
+            axisSelectionCombobox.Items.Add(LogSettings.sBrakeTorque);
+            axisSelectionCombobox.Items.Add(LogSettings.sMaxBrakeTorque);
+            axisSelectionCombobox.Items.Add(LogSettings.sSteerAngle);
+            axisSelectionCombobox.Items.Add(LogSettings.sCamberAngle);
+            axisSelectionCombobox.Items.Add(LogSettings.sLateralLoad);
+            axisSelectionCombobox.Items.Add(LogSettings.sSlipAngle);
+            axisSelectionCombobox.Items.Add(LogSettings.sLateralFriction);
+            axisSelectionCombobox.Items.Add(LogSettings.sLateralSlipSpeed);
+            axisSelectionCombobox.Items.Add(LogSettings.sLongitudinalLoad);
+            axisSelectionCombobox.Items.Add(LogSettings.sSlipRatio);
+            axisSelectionCombobox.Items.Add(LogSettings.sLongitudinalFriction);
+            axisSelectionCombobox.Items.Add(LogSettings.sLongitudinalSlipSpeed);
+            axisSelectionCombobox.Items.Add(LogSettings.sTreadTemperature);
+            axisSelectionCombobox.Items.Add(LogSettings.sInnerTemperature);
+            axisSelectionCombobox.Items.Add(LogSettings.sRaceTime);
+            axisSelectionCombobox.Items.Add(LogSettings.sTotalFriction);
+            axisSelectionCombobox.Items.Add(LogSettings.sTotalFrictionAngle);
+            axisSelectionCombobox.Items.Add(LogSettings.sSuspensionLength);
+            axisSelectionCombobox.Items.Add(LogSettings.sSuspensionVelocity);
         }
         private void LoadOtherDefaults()
         {
@@ -616,6 +570,7 @@ namespace Physics_Data_Debug
             // Updating chart settings
             // WORKS WRONG! Clears the chart series also
             form4Wheels.SetChartsForForm();
+            form4Wheels.UpdateLimiters();
         }
         private void applyAndClearButton_Click(object sender, EventArgs e)
         {
@@ -781,6 +736,7 @@ namespace Physics_Data_Debug
             //Add separate chart clearers
             form4Wheels.SetChartsForForm();
             timer1.Enabled = true;
+            form4Wheels.UpdateLimiters();
         }
 
         private void LoadCurrentValuesButton_Click(object sender, EventArgs e)

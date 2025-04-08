@@ -20,7 +20,46 @@ namespace Physics_Data_Debug
             InitializeComponent();
             PauseUpdate = false;
             timer1.Interval = 50;
+
+            customChoiceCheckBox.Checked = false;
+            enableLimitersCheckBox.Checked = false;
+            
+            customChoiceCheckBox.Enabled = false;
+            enableLimitersCheckBox.Enabled = false;
+            label17.Enabled = false;
+            
+            xLimiterComboBox.Enabled = false;
+            yLimiterComboBox.Enabled = false;
+            zLimiterComboBox.Enabled = false;
+            xMinLimitTextBox.Enabled = false;
+            xMaxLimitTextBox.Enabled = false;
+            yMinLimitTextBox.Enabled = false;
+            yMaxLimitTextBox.Enabled = false;
+            zMinLimitTextBox.Enabled = false;
+            zMaxLimitTextBox.Enabled = false;
+            AddInComboBoxes();
+            LoadDefaults();
+            UpdateLimiters();
+            GetComboBoxAxisLimiterTexts();
             SetChartsForForm();
+        }
+        private void AddInComboBoxes()
+        {
+            Form4WheelsSettings.AxisSelectionComboboxAdd(xLimiterComboBox);
+            Form4WheelsSettings.AxisSelectionComboboxAdd(yLimiterComboBox);
+            Form4WheelsSettings.AxisSelectionComboboxAdd(zLimiterComboBox);
+        }
+        private void LoadDefaultTexts(ComboBox cBLimiter, string selection, TextBox tBMin, double minValue, TextBox tBMax, double maxValue)
+        {
+            cBLimiter.SelectedItem = selection;
+            tBMin.Text = minValue.ToString();
+            tBMax.Text = maxValue.ToString();
+        }
+        private void LoadDefaults()
+        {
+            LoadDefaultTexts(xLimiterComboBox, _4WheelsSettings.X1Selection, xMinLimitTextBox, _4WheelsSettings.X1DefaultMin, xMaxLimitTextBox, _4WheelsSettings.X1DefaultMax);
+            LoadDefaultTexts(yLimiterComboBox, _4WheelsSettings.Y1Selection, yMinLimitTextBox, _4WheelsSettings.Y1DefaultMin, yMaxLimitTextBox, _4WheelsSettings.Y1DefaultMax);
+            LoadDefaultTexts(zLimiterComboBox, _4WheelsSettings.Z1Selection, zMinLimitTextBox, _4WheelsSettings.Z1DefaultMin, zMaxLimitTextBox, _4WheelsSettings.Z1DefaultMax);
         }
         public void SetChartsForForm()
         {
@@ -177,71 +216,118 @@ namespace Physics_Data_Debug
                                                     LiveData.RR_TotalFriction, LiveData.RR_TotalFrictionAngle,
                                                     LiveData.RR_SuspensionLength, LiveData.RR_SuspensionVelocity);
         }
-        private void ListSeriesFL(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        private void ComboBoxAxisLimiterText(ComboBox cb, string axis, string defaultSelection)
         {
-            _4Wheels.ListSeries(chartName, LiveData.FL_VerticalLoad,
-            _4Wheels.SeriesFL, xyzValuesZero, _4Wheels.FL_X1ValuesChart, xyzValuesOne, _4Wheels.FL_Y1ValuesChart, xyzValuesTwo, _4Wheels.FL_Z1ValuesChart,
-            _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
-            _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
-            _4Wheels.FL_X1ValuesChartColor3, _4Wheels.FL_Y1ValuesChartColor3,
-            _4Wheels.FL_X1ValuesChartColor4, _4Wheels.FL_Y1ValuesChartColor4,
-            _4Wheels.FL_X1ValuesChartColor5, _4Wheels.FL_Y1ValuesChartColor5,
-            _4Wheels.FL_X1ValuesChartColor6, _4Wheels.FL_Y1ValuesChartColor6,
-            _4Wheels.FL_X1ValuesChartColor7, _4Wheels.FL_Y1ValuesChartColor7,
-            _4Wheels.FL_X1ValuesChartColor8, _4Wheels.FL_Y1ValuesChartColor8,
-            _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
-            _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10);
+            if(cb.SelectedItem != null)
+            {
+                if((string)cb.SelectedItem == defaultSelection)
+                {
+                    cb.Text = axis + ": " + cb.SelectedItem.ToString();
+                }
+                else
+                {
+                    cb.Text = cb.SelectedItem.ToString();
+                }
+            }
         }
-        private void ListSeriesFR(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        private void GetComboBoxAxisLimiterTexts()
         {
-            _4Wheels.ListSeries(chartName, LiveData.FR_VerticalLoad,
-            _4Wheels.SeriesFR, xyzValuesZero, _4Wheels.FR_X1ValuesChart, xyzValuesOne, _4Wheels.FR_Y1ValuesChart, xyzValuesTwo, _4Wheels.FR_Z1ValuesChart,
-            _4Wheels.FR_X1ValuesChartColor1, _4Wheels.FR_Y1ValuesChartColor1,
-            _4Wheels.FR_X1ValuesChartColor2, _4Wheels.FR_Y1ValuesChartColor2,
-            _4Wheels.FR_X1ValuesChartColor3, _4Wheels.FR_Y1ValuesChartColor3,
-            _4Wheels.FR_X1ValuesChartColor4, _4Wheels.FR_Y1ValuesChartColor4,
-            _4Wheels.FR_X1ValuesChartColor5, _4Wheels.FR_Y1ValuesChartColor5,
-            _4Wheels.FR_X1ValuesChartColor6, _4Wheels.FR_Y1ValuesChartColor6,
-            _4Wheels.FR_X1ValuesChartColor7, _4Wheels.FR_Y1ValuesChartColor7,
-            _4Wheels.FR_X1ValuesChartColor8, _4Wheels.FR_Y1ValuesChartColor8,
-            _4Wheels.FR_X1ValuesChartColor9, _4Wheels.FR_Y1ValuesChartColor9,
-            _4Wheels.FR_X1ValuesChartColor10, _4Wheels.FR_Y1ValuesChartColor10);
+            ComboBoxAxisLimiterText(xLimiterComboBox, "X", _4WheelsSettings.X1Selection);
+            ComboBoxAxisLimiterText(yLimiterComboBox, "Y", _4WheelsSettings.Y1Selection);
+            ComboBoxAxisLimiterText(zLimiterComboBox, "Z", _4WheelsSettings.Z1Selection);
         }
-        private void ListSeriesRL(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
+        public string LimiterSelectionX = _4WheelsSettings.X1Selection;
+        public string LimiterSelectionY = _4WheelsSettings.Y1Selection;
+        public string LimiterSelectionZ = _4WheelsSettings.Z1Selection;
+        public void UpdateLimiters()
         {
-            _4Wheels.ListSeries(chartName, LiveData.RL_VerticalLoad,
-            _4Wheels.SeriesRL, xyzValuesZero, _4Wheels.RL_X1ValuesChart, xyzValuesOne, _4Wheels.RL_Y1ValuesChart, xyzValuesTwo, _4Wheels.RL_Z1ValuesChart,
-            _4Wheels.RL_X1ValuesChartColor1, _4Wheels.RL_Y1ValuesChartColor1,
-            _4Wheels.RL_X1ValuesChartColor2, _4Wheels.RL_Y1ValuesChartColor2,
-            _4Wheels.RL_X1ValuesChartColor3, _4Wheels.RL_Y1ValuesChartColor3,
-            _4Wheels.RL_X1ValuesChartColor4, _4Wheels.RL_Y1ValuesChartColor4,
-            _4Wheels.RL_X1ValuesChartColor5, _4Wheels.RL_Y1ValuesChartColor5,
-            _4Wheels.RL_X1ValuesChartColor6, _4Wheels.RL_Y1ValuesChartColor6,
-            _4Wheels.RL_X1ValuesChartColor7, _4Wheels.RL_Y1ValuesChartColor7,
-            _4Wheels.RL_X1ValuesChartColor8, _4Wheels.RL_Y1ValuesChartColor8,
-            _4Wheels.RL_X1ValuesChartColor9, _4Wheels.RL_Y1ValuesChartColor9,
-            _4Wheels.RL_X1ValuesChartColor10, _4Wheels.RL_Y1ValuesChartColor10);
-        }
-        private void ListSeriesRR(Chart chartName, float xyzValuesZero, float xyzValuesOne, float xyzValuesTwo)
-        {
-            _4Wheels.ListSeries(chartName, LiveData.RR_VerticalLoad,
-            _4Wheels.SeriesRR, xyzValuesZero, _4Wheels.RR_X1ValuesChart, xyzValuesOne, _4Wheels.RR_Y1ValuesChart, xyzValuesTwo, _4Wheels.RR_Z1ValuesChart,
-            _4Wheels.RR_X1ValuesChartColor1, _4Wheels.RR_Y1ValuesChartColor1,
-            _4Wheels.RR_X1ValuesChartColor2, _4Wheels.RR_Y1ValuesChartColor2,
-            _4Wheels.RR_X1ValuesChartColor3, _4Wheels.RR_Y1ValuesChartColor3,
-            _4Wheels.RR_X1ValuesChartColor4, _4Wheels.RR_Y1ValuesChartColor4,
-            _4Wheels.RR_X1ValuesChartColor5, _4Wheels.RR_Y1ValuesChartColor5,
-            _4Wheels.RR_X1ValuesChartColor6, _4Wheels.RR_Y1ValuesChartColor6,
-            _4Wheels.RR_X1ValuesChartColor7, _4Wheels.RR_Y1ValuesChartColor7,
-            _4Wheels.RR_X1ValuesChartColor8, _4Wheels.RR_Y1ValuesChartColor8,
-            _4Wheels.RR_X1ValuesChartColor9, _4Wheels.RR_Y1ValuesChartColor9,
-            _4Wheels.RR_X1ValuesChartColor10, _4Wheels.RR_Y1ValuesChartColor10);
+            /*
+            LogSettings.sTireTravelSpeed
+            LogSettings.sAngularVelocity
+            LogSettings.sSteerAngle
+            LogSettings.sCamberAngle
+            LogSettings.sLateralLoad
+            LogSettings.sSlipAngle
+            LogSettings.sLateralFriction
+            LogSettings.sLateralSlipSpeed
+            LogSettings.sLongitudinalLoad
+            LogSettings.sSlipRatio
+            LogSettings.sLongitudinalFriction
+            LogSettings.sLongitudinalSlipSpeed
+            LogSettings.sSuspensionVelocity??
+            */
+            bool aboluteValueCheck = false;
+            if (customChoiceCheckBox.Checked == true)
+            {
+                xLimiterComboBox.Enabled = true;
+                LimiterSelectionX = (string)xLimiterComboBox.SelectedItem;
+                if(LimiterSelectionX == LogSettings.sTireTravelSpeed ||
+                   LimiterSelectionX == LogSettings.sAngularVelocity ||
+                   LimiterSelectionX == LogSettings.sSteerAngle ||
+                   LimiterSelectionX == LogSettings.sCamberAngle ||
+                   LimiterSelectionX == LogSettings.sLateralLoad ||
+                   LimiterSelectionX == LogSettings.sSlipAngle ||
+                   LimiterSelectionX == LogSettings.sLateralFriction ||
+                   LimiterSelectionX == LogSettings.sLateralSlipSpeed ||
+                   LimiterSelectionX == LogSettings.sLongitudinalLoad ||
+                   LimiterSelectionX == LogSettings.sSlipRatio ||
+                   LimiterSelectionX == LogSettings.sLongitudinalFriction ||
+                   LimiterSelectionX == LogSettings.sLongitudinalSlipSpeed ||
+                   LimiterSelectionX == LogSettings.sSuspensionVelocity)
+                {
+                    aboluteValueCheck = _4WheelsSettings.AbsoluteValues;
+                }
+                else
+                {
+                    aboluteValueCheck = false;
+                }
+                yLimiterComboBox.Enabled = true;
+                LimiterSelectionY = (string)yLimiterComboBox.SelectedItem;
+                zLimiterComboBox.Enabled = true;
+                LimiterSelectionZ = (string)zLimiterComboBox.SelectedItem;
+            }
+            else
+            {
+                LoadDefaults();
+                xLimiterComboBox.Enabled = false;
+                yLimiterComboBox.Enabled = false;
+                zLimiterComboBox.Enabled = false;
+            }
+
+            if (enableLimitersCheckBox.Checked == true)
+            {
+                xMinLimitTextBox.Enabled = true;
+                xMaxLimitTextBox.Enabled = true;
+                LimiterMinX = Parsers.TextBoxParserDouble(xMinLimitTextBox, LimiterMinX, _4WheelsSettings.X1DefaultMin, aboluteValueCheck);
+                LimiterMaxX = Parsers.TextBoxParserDouble(xMaxLimitTextBox, LimiterMaxX, _4WheelsSettings.X1DefaultMax, aboluteValueCheck);
+                yMinLimitTextBox.Enabled = true;
+                yMaxLimitTextBox.Enabled = true;
+                LimiterMinY = Parsers.TextBoxParserDouble(yMinLimitTextBox, LimiterMinY, _4WheelsSettings.Y1DefaultMin, aboluteValueCheck);
+                LimiterMaxY = Parsers.TextBoxParserDouble(yMaxLimitTextBox, LimiterMaxY, _4WheelsSettings.Y1DefaultMax, aboluteValueCheck);
+                zMinLimitTextBox.Enabled = true;
+                zMaxLimitTextBox.Enabled = true;
+                LimiterMinZ = Parsers.TextBoxParserDouble(zMinLimitTextBox, LimiterMinZ, _4WheelsSettings.Z1DefaultMin, aboluteValueCheck);
+                LimiterMaxZ = Parsers.TextBoxParserDouble(zMaxLimitTextBox, LimiterMaxZ, _4WheelsSettings.Z1DefaultMax, aboluteValueCheck);
+            }
+            else
+            {
+                xMinLimitTextBox.Enabled = false;
+                xMaxLimitTextBox.Enabled = false;
+                yMinLimitTextBox.Enabled = false;
+                yMaxLimitTextBox.Enabled = false;
+                zMinLimitTextBox.Enabled = false;
+                zMaxLimitTextBox.Enabled = false;
+            }
+            label17.Text = "Use only positive values on " + LimiterSelectionX + "/" + LimiterSelectionY + "/" + LimiterSelectionZ + ". They get automatically also negative opposite. On " + LimiterSelectionX + "/" + LimiterSelectionY + "/" + LimiterSelectionZ + " the limit works normally.";
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             ButtonLabelVisibilities();
-            //timer2.Interval = timer1.Interval * _4WheelsSettings.HistoryAmountPoints;
-
+            if (customChoiceCheckBox.Checked == false)
+            {
+            }
+            GetComboBoxAxisLimiterTexts();
+            //UpdateLimiters();
             if (LiveData.elapsedTime > 0 && PauseUpdate == false)
             {
                 float[] xyzValuesFL = FL_XYZValues();
@@ -249,11 +335,10 @@ namespace Physics_Data_Debug
                 float[] xyzValuesRL = RL_XYZValues();
                 float[] xyzValuesRR = RR_XYZValues();
 
-                ListSeriesFL(chart1, xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2]);
-                ListSeriesFR(chart1, xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2]);
-                ListSeriesRL(chart1, xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2]);
-                ListSeriesRR(chart1, xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
-                
+                _4Wheels.ListSeries(chart1, _4Wheels.SeriesFL, xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2]);
+                _4Wheels.ListSeries(chart1, _4Wheels.SeriesFR, xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2]);
+                _4Wheels.ListSeries(chart1, _4Wheels.SeriesRL, xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2]);
+                _4Wheels.ListSeries(chart1, _4Wheels.SeriesRR, xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2]);
             }
         }
         #region BUTTONS
@@ -274,7 +359,7 @@ namespace Physics_Data_Debug
             //timer2.Enabled = false;
             _4Wheels.ClearSeriesHistory(chart1);
             _4Wheels.SetUpDownChart(GradientChart);
-
+            UpdateLimiters();
             if (PauseUpdate == false)
             {
                 timer1.Enabled = true;
@@ -294,6 +379,57 @@ namespace Physics_Data_Debug
                 buttonPause.Text = "Pause Update";
             }
         }
+        private void customChoiceCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            //UpdateLimiters();
+        }
+        public double LimiterMinX = _4WheelsSettings.X1DefaultMin;
+        public double LimiterMinY = _4WheelsSettings.Y1DefaultMin;
+        public double LimiterMinZ = _4WheelsSettings.Z1DefaultMin;
+        public double LimiterMaxX = _4WheelsSettings.X1DefaultMax;
+        public double LimiterMaxY = _4WheelsSettings.Y1DefaultMax;
+        public double LimiterMaxZ = _4WheelsSettings.Z1DefaultMax;
+        private void enableLimitersCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            //UpdateLimiters();
+        }
         #endregion
+        private void xLimiterComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            GetComboBoxAxisLimiterTexts();
+        }
+        private void yLimiterComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            GetComboBoxAxisLimiterTexts();
+        }
+        private void zLimiterComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            GetComboBoxAxisLimiterTexts();
+        }
+        // Disables keypresses, but can still modify the text with code, by keeping the ComboBox DropDownStyle as DropDown and not using the DropDownList
+        private void xLimiterComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void yLimiterComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void zLimiterComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void customChoiceCheckBox_Click(object sender, EventArgs e)
+        {
+            UpdateLimiters();
+        }
+
+        private void enableLimitersCheckBox_Click(object sender, EventArgs e)
+        {
+            UpdateLimiters();
+        }
     }
 }
