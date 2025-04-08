@@ -22,7 +22,8 @@ namespace Physics_Data_Debug
                     }
                     else // Negative returns to default
                     {
-                        textBox.Text = "Invalid negative value!";
+                        //textBox.Text = "Negative value!\r\nDefaulting: " + defaultVariable.ToString();
+                        textBox.Text = defaultVariable.ToString();
                         variable = defaultVariable;
                     }
                 }
@@ -34,7 +35,7 @@ namespace Physics_Data_Debug
             else
             {
                 // Here you can display an error message like 'Invalid value'
-                textBox.Text = "Invalid value!";
+                textBox.Text = defaultVariable.ToString();
                 variable = defaultVariable;
             }
             return variable;
@@ -52,7 +53,7 @@ namespace Physics_Data_Debug
                     }
                     else // Negative returns to default
                     {
-                        textBox.Text = "Invalid negative value!";
+                        textBox.Text = defaultVariable.ToString();
                         variable = defaultVariable;
                     }
                 }
@@ -64,14 +65,14 @@ namespace Physics_Data_Debug
             else
             {
                 // Here you can display an error message like 'Invalid value'
-                textBox.Text = "Invalid value!";
+                textBox.Text = defaultVariable.ToString();
                 variable = defaultVariable;
             }
             return variable;
         }
-        public static double MaskedTextBoxParserDouble(MaskedTextBox maskedTextBox, double variable, double defaultVariable, bool isNegativeCheck)
+        public static double MaskedTextBoxParserDouble(MaskedTextBox textBox, double variable, double defaultVariable, bool isNegativeCheck)
         {
-            if (double.TryParse(maskedTextBox.Text, out double parse))
+            if (double.TryParse(textBox.Text, out double parse))
             {
                 if (isNegativeCheck == true)
                 {
@@ -82,7 +83,7 @@ namespace Physics_Data_Debug
                     }
                     else // Negative returns to default
                     {
-                        maskedTextBox.Text = "Invalid negative value!";
+                        textBox.Text = defaultVariable.ToString();
                         variable = defaultVariable;
                     }
                 }
@@ -94,14 +95,14 @@ namespace Physics_Data_Debug
             else
             {
                 // Here you can display an error message like 'Invalid value'
-                maskedTextBox.Text = "Invalid value!";
+                textBox.Text = defaultVariable.ToString();
                 variable = defaultVariable;
             }
             return variable;
         }
-        public static int MaskedTextBoxParserInt(MaskedTextBox maskedTextBox, int variable, int defaultVariable, bool isNegativeCheck)
+        public static int MaskedTextBoxParserInt(MaskedTextBox textBox, int variable, int defaultVariable, bool isNegativeCheck)
         {
-            if (int.TryParse(maskedTextBox.Text, out int parse))
+            if (int.TryParse(textBox.Text, out int parse))
             {
                 if (isNegativeCheck == true)
                 {
@@ -112,7 +113,7 @@ namespace Physics_Data_Debug
                     }
                     else // Negative returns to default
                     {
-                        maskedTextBox.Text = "Invalid negative value!";
+                        textBox.Text = defaultVariable.ToString();
                         variable = defaultVariable;
                     }
                 }
@@ -124,14 +125,14 @@ namespace Physics_Data_Debug
             else
             {
                 // Here you can display an error message like 'Invalid value'
-                maskedTextBox.Text = "Invalid value!";
+                textBox.Text = defaultVariable.ToString();
                 variable = defaultVariable;
             }
             return variable;
         }
-        public static int HistoryAmountPointsMaskedTextBoxParserInt(MaskedTextBox maskedTextBox, int variable, int defaultVariable, bool isOverTwoCheck)
+        public static int HistoryAmountPointsMaskedTextBoxParserInt(MaskedTextBox textBox, int variable, int defaultVariable, bool isOverTwoCheck)
         {
-            if (int.TryParse(maskedTextBox.Text, out int parse))
+            if (int.TryParse(textBox.Text, out int parse))
             {
                 if (isOverTwoCheck == true)
                 {
@@ -142,7 +143,7 @@ namespace Physics_Data_Debug
                     }
                     else // Negative returns to default
                     {
-                        maskedTextBox.Text = "Invalid value!";
+                        textBox.Text = defaultVariable.ToString();
                         variable = defaultVariable;
                     }
                 }
@@ -154,7 +155,7 @@ namespace Physics_Data_Debug
             else
             {
                 // Here you can display an error message like 'Invalid value'
-                maskedTextBox.Text = "Invalid value!";
+                textBox.Text = defaultVariable.ToString();
                 variable = defaultVariable;
             }
             return variable;

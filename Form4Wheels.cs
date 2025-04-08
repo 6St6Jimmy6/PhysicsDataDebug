@@ -23,11 +23,11 @@ namespace Physics_Data_Debug
 
             customChoiceCheckBox.Checked = false;
             enableLimitersCheckBox.Checked = false;
-            
+            /*
             customChoiceCheckBox.Enabled = false;
             enableLimitersCheckBox.Enabled = false;
             label17.Enabled = false;
-            
+            */
             xLimiterComboBox.Enabled = false;
             yLimiterComboBox.Enabled = false;
             zLimiterComboBox.Enabled = false;
@@ -239,52 +239,23 @@ namespace Physics_Data_Debug
         public string LimiterSelectionX = _4WheelsSettings.X1Selection;
         public string LimiterSelectionY = _4WheelsSettings.Y1Selection;
         public string LimiterSelectionZ = _4WheelsSettings.Z1Selection;
+
         public void UpdateLimiters()
         {
-            /*
-            LogSettings.sTireTravelSpeed
-            LogSettings.sAngularVelocity
-            LogSettings.sSteerAngle
-            LogSettings.sCamberAngle
-            LogSettings.sLateralLoad
-            LogSettings.sSlipAngle
-            LogSettings.sLateralFriction
-            LogSettings.sLateralSlipSpeed
-            LogSettings.sLongitudinalLoad
-            LogSettings.sSlipRatio
-            LogSettings.sLongitudinalFriction
-            LogSettings.sLongitudinalSlipSpeed
-            LogSettings.sSuspensionVelocity??
-            */
-            bool aboluteValueCheck = false;
+            bool aboluteValueCheckX1 = false;
+            bool aboluteValueCheckY1 = false;
+            bool aboluteValueCheckZ1 = false;
             if (customChoiceCheckBox.Checked == true)
             {
                 xLimiterComboBox.Enabled = true;
                 LimiterSelectionX = (string)xLimiterComboBox.SelectedItem;
-                if(LimiterSelectionX == LogSettings.sTireTravelSpeed ||
-                   LimiterSelectionX == LogSettings.sAngularVelocity ||
-                   LimiterSelectionX == LogSettings.sSteerAngle ||
-                   LimiterSelectionX == LogSettings.sCamberAngle ||
-                   LimiterSelectionX == LogSettings.sLateralLoad ||
-                   LimiterSelectionX == LogSettings.sSlipAngle ||
-                   LimiterSelectionX == LogSettings.sLateralFriction ||
-                   LimiterSelectionX == LogSettings.sLateralSlipSpeed ||
-                   LimiterSelectionX == LogSettings.sLongitudinalLoad ||
-                   LimiterSelectionX == LogSettings.sSlipRatio ||
-                   LimiterSelectionX == LogSettings.sLongitudinalFriction ||
-                   LimiterSelectionX == LogSettings.sLongitudinalSlipSpeed ||
-                   LimiterSelectionX == LogSettings.sSuspensionVelocity)
-                {
-                    aboluteValueCheck = _4WheelsSettings.AbsoluteValues;
-                }
-                else
-                {
-                    aboluteValueCheck = false;
-                }
+                aboluteValueCheckX1 = _4Wheels.CBSelectionCanBeAbsoluteValue(xLimiterComboBox);
                 yLimiterComboBox.Enabled = true;
                 LimiterSelectionY = (string)yLimiterComboBox.SelectedItem;
+                aboluteValueCheckY1 = _4Wheels.CBSelectionCanBeAbsoluteValue(yLimiterComboBox);
                 zLimiterComboBox.Enabled = true;
                 LimiterSelectionZ = (string)zLimiterComboBox.SelectedItem;
+                aboluteValueCheckZ1 = _4Wheels.CBSelectionCanBeAbsoluteValue(zLimiterComboBox);
             }
             else
             {
@@ -298,16 +269,16 @@ namespace Physics_Data_Debug
             {
                 xMinLimitTextBox.Enabled = true;
                 xMaxLimitTextBox.Enabled = true;
-                LimiterMinX = Parsers.TextBoxParserDouble(xMinLimitTextBox, LimiterMinX, _4WheelsSettings.X1DefaultMin, aboluteValueCheck);
-                LimiterMaxX = Parsers.TextBoxParserDouble(xMaxLimitTextBox, LimiterMaxX, _4WheelsSettings.X1DefaultMax, aboluteValueCheck);
+                LimiterMinX = Parsers.TextBoxParserDouble(xMinLimitTextBox, LimiterMinX, _4WheelsSettings.X1DefaultMin, aboluteValueCheckX1);
+                LimiterMaxX = Parsers.TextBoxParserDouble(xMaxLimitTextBox, LimiterMaxX, _4WheelsSettings.X1DefaultMax, aboluteValueCheckX1);
                 yMinLimitTextBox.Enabled = true;
                 yMaxLimitTextBox.Enabled = true;
-                LimiterMinY = Parsers.TextBoxParserDouble(yMinLimitTextBox, LimiterMinY, _4WheelsSettings.Y1DefaultMin, aboluteValueCheck);
-                LimiterMaxY = Parsers.TextBoxParserDouble(yMaxLimitTextBox, LimiterMaxY, _4WheelsSettings.Y1DefaultMax, aboluteValueCheck);
+                LimiterMinY = Parsers.TextBoxParserDouble(yMinLimitTextBox, LimiterMinY, _4WheelsSettings.Y1DefaultMin, aboluteValueCheckY1);
+                LimiterMaxY = Parsers.TextBoxParserDouble(yMaxLimitTextBox, LimiterMaxY, _4WheelsSettings.Y1DefaultMax, aboluteValueCheckY1);
                 zMinLimitTextBox.Enabled = true;
                 zMaxLimitTextBox.Enabled = true;
-                LimiterMinZ = Parsers.TextBoxParserDouble(zMinLimitTextBox, LimiterMinZ, _4WheelsSettings.Z1DefaultMin, aboluteValueCheck);
-                LimiterMaxZ = Parsers.TextBoxParserDouble(zMaxLimitTextBox, LimiterMaxZ, _4WheelsSettings.Z1DefaultMax, aboluteValueCheck);
+                LimiterMinZ = Parsers.TextBoxParserDouble(zMinLimitTextBox, LimiterMinZ, _4WheelsSettings.Z1DefaultMin, aboluteValueCheckZ1);
+                LimiterMaxZ = Parsers.TextBoxParserDouble(zMaxLimitTextBox, LimiterMaxZ, _4WheelsSettings.Z1DefaultMax, aboluteValueCheckZ1);
             }
             else
             {

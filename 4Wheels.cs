@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Physics_Data_Debug
@@ -245,8 +246,29 @@ namespace Physics_Data_Debug
                 }
             }
         }
-        private void ListOfAbsoluteValues()
+        public static bool CBSelectionCanBeAbsoluteValue(ComboBox cb)
         {
+            string selectedItem = (string)cb.SelectedItem;
+            if (selectedItem == LogSettings.sTireTravelSpeed ||
+                   selectedItem == LogSettings.sAngularVelocity ||
+                   selectedItem == LogSettings.sSteerAngle ||
+                   selectedItem == LogSettings.sCamberAngle ||
+                   selectedItem == LogSettings.sLateralLoad ||
+                   selectedItem == LogSettings.sSlipAngle ||
+                   selectedItem == LogSettings.sLateralFriction ||
+                   selectedItem == LogSettings.sLateralSlipSpeed ||
+                   selectedItem == LogSettings.sLongitudinalLoad ||
+                   selectedItem == LogSettings.sSlipRatio ||
+                   selectedItem == LogSettings.sLongitudinalFriction ||
+                   selectedItem == LogSettings.sLongitudinalSlipSpeed ||
+                   selectedItem == LogSettings.sSuspensionVelocity)
+            {
+                return _4WheelsSettings.AbsoluteValues;
+            }
+            else
+            {
+                return false;
+            }
             /*
             LogSettings.sTireTravelSpeed
             LogSettings.sAngularVelocity
@@ -1509,6 +1531,7 @@ namespace Physics_Data_Debug
             {
                 xyzValues[2] = verLoad;
             }
+            //Return the XYZ values array
             return xyzValues;
         }
         private static void GetColorSchemeColors()
