@@ -59,23 +59,23 @@ namespace Physics_Data_Debug
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.xMinLimitTextBox = new System.Windows.Forms.TextBox();
-            this.xMaxLimitTextBox = new System.Windows.Forms.TextBox();
+            this.X1MinLimitTextBox = new System.Windows.Forms.TextBox();
+            this.X1MaxLimitTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.yMaxLimitTextBox = new System.Windows.Forms.TextBox();
-            this.yMinLimitTextBox = new System.Windows.Forms.TextBox();
+            this.Y1MaxLimitTextBox = new System.Windows.Forms.TextBox();
+            this.Y1MinLimitTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.zMaxLimitTextBox = new System.Windows.Forms.TextBox();
-            this.zMinLimitTextBox = new System.Windows.Forms.TextBox();
+            this.Z1MaxLimitTextBox = new System.Windows.Forms.TextBox();
+            this.Z1MinLimitTextBox = new System.Windows.Forms.TextBox();
             this.enableLimitersCheckBox = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.xLimiterComboBox = new System.Windows.Forms.ComboBox();
-            this.yLimiterComboBox = new System.Windows.Forms.ComboBox();
-            this.zLimiterComboBox = new System.Windows.Forms.ComboBox();
+            this.X1LimiterComboBox = new System.Windows.Forms.ComboBox();
+            this.Y1LimiterComboBox = new System.Windows.Forms.ComboBox();
+            this.Z1LimiterComboBox = new System.Windows.Forms.ComboBox();
             this.customChoiceCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.GradientChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -301,18 +301,18 @@ namespace Physics_Data_Debug
             // 
             // xMinLimitTextBox
             // 
-            this.xMinLimitTextBox.Location = new System.Drawing.Point(227, 35);
-            this.xMinLimitTextBox.Multiline = true;
-            this.xMinLimitTextBox.Name = "xMinLimitTextBox";
-            this.xMinLimitTextBox.Size = new System.Drawing.Size(92, 20);
-            this.xMinLimitTextBox.TabIndex = 311;
+            this.X1MinLimitTextBox.Location = new System.Drawing.Point(227, 35);
+            this.X1MinLimitTextBox.Multiline = true;
+            this.X1MinLimitTextBox.Name = "xMinLimitTextBox";
+            this.X1MinLimitTextBox.Size = new System.Drawing.Size(92, 20);
+            this.X1MinLimitTextBox.TabIndex = 311;
             // 
             // xMaxLimitTextBox
             // 
-            this.xMaxLimitTextBox.Location = new System.Drawing.Point(227, 61);
-            this.xMaxLimitTextBox.Name = "xMaxLimitTextBox";
-            this.xMaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
-            this.xMaxLimitTextBox.TabIndex = 313;
+            this.X1MaxLimitTextBox.Location = new System.Drawing.Point(227, 61);
+            this.X1MaxLimitTextBox.Name = "xMaxLimitTextBox";
+            this.X1MaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
+            this.X1MaxLimitTextBox.TabIndex = 313;
             // 
             // label9
             // 
@@ -356,17 +356,17 @@ namespace Physics_Data_Debug
             // 
             // yMaxLimitTextBox
             // 
-            this.yMaxLimitTextBox.Location = new System.Drawing.Point(359, 61);
-            this.yMaxLimitTextBox.Name = "yMaxLimitTextBox";
-            this.yMaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
-            this.yMaxLimitTextBox.TabIndex = 318;
+            this.Y1MaxLimitTextBox.Location = new System.Drawing.Point(359, 61);
+            this.Y1MaxLimitTextBox.Name = "yMaxLimitTextBox";
+            this.Y1MaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
+            this.Y1MaxLimitTextBox.TabIndex = 318;
             // 
             // yMinLimitTextBox
             // 
-            this.yMinLimitTextBox.Location = new System.Drawing.Point(359, 35);
-            this.yMinLimitTextBox.Name = "yMinLimitTextBox";
-            this.yMinLimitTextBox.Size = new System.Drawing.Size(92, 20);
-            this.yMinLimitTextBox.TabIndex = 316;
+            this.Y1MinLimitTextBox.Location = new System.Drawing.Point(359, 35);
+            this.Y1MinLimitTextBox.Name = "yMinLimitTextBox";
+            this.Y1MinLimitTextBox.Size = new System.Drawing.Size(92, 20);
+            this.Y1MinLimitTextBox.TabIndex = 316;
             // 
             // label14
             // 
@@ -390,17 +390,17 @@ namespace Physics_Data_Debug
             // 
             // zMaxLimitTextBox
             // 
-            this.zMaxLimitTextBox.Location = new System.Drawing.Point(491, 61);
-            this.zMaxLimitTextBox.Name = "zMaxLimitTextBox";
-            this.zMaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
-            this.zMaxLimitTextBox.TabIndex = 323;
+            this.Z1MaxLimitTextBox.Location = new System.Drawing.Point(491, 61);
+            this.Z1MaxLimitTextBox.Name = "zMaxLimitTextBox";
+            this.Z1MaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
+            this.Z1MaxLimitTextBox.TabIndex = 323;
             // 
             // zMinLimitTextBox
             // 
-            this.zMinLimitTextBox.Location = new System.Drawing.Point(491, 35);
-            this.zMinLimitTextBox.Name = "zMinLimitTextBox";
-            this.zMinLimitTextBox.Size = new System.Drawing.Size(92, 20);
-            this.zMinLimitTextBox.TabIndex = 321;
+            this.Z1MinLimitTextBox.Location = new System.Drawing.Point(491, 35);
+            this.Z1MinLimitTextBox.Name = "zMinLimitTextBox";
+            this.Z1MinLimitTextBox.Size = new System.Drawing.Size(92, 20);
+            this.Z1MinLimitTextBox.TabIndex = 321;
             // 
             // enableLimitersCheckBox
             // 
@@ -426,33 +426,33 @@ namespace Physics_Data_Debug
             // 
             // xLimiterComboBox
             // 
-            this.xLimiterComboBox.FormattingEnabled = true;
-            this.xLimiterComboBox.Location = new System.Drawing.Point(196, 8);
-            this.xLimiterComboBox.Name = "xLimiterComboBox";
-            this.xLimiterComboBox.Size = new System.Drawing.Size(123, 21);
-            this.xLimiterComboBox.TabIndex = 328;
-            this.xLimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.xLimiterComboBox_SelectionChangeCommitted);
-            this.xLimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.xLimiterComboBox_KeyDown);
+            this.X1LimiterComboBox.FormattingEnabled = true;
+            this.X1LimiterComboBox.Location = new System.Drawing.Point(196, 8);
+            this.X1LimiterComboBox.Name = "xLimiterComboBox";
+            this.X1LimiterComboBox.Size = new System.Drawing.Size(123, 21);
+            this.X1LimiterComboBox.TabIndex = 328;
+            this.X1LimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.xLimiterComboBox_SelectionChangeCommitted);
+            this.X1LimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.xLimiterComboBox_KeyDown);
             // 
             // yLimiterComboBox
             // 
-            this.yLimiterComboBox.FormattingEnabled = true;
-            this.yLimiterComboBox.Location = new System.Drawing.Point(328, 8);
-            this.yLimiterComboBox.Name = "yLimiterComboBox";
-            this.yLimiterComboBox.Size = new System.Drawing.Size(123, 21);
-            this.yLimiterComboBox.TabIndex = 329;
-            this.yLimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.yLimiterComboBox_SelectionChangeCommitted);
-            this.yLimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.yLimiterComboBox_KeyDown);
+            this.Y1LimiterComboBox.FormattingEnabled = true;
+            this.Y1LimiterComboBox.Location = new System.Drawing.Point(328, 8);
+            this.Y1LimiterComboBox.Name = "yLimiterComboBox";
+            this.Y1LimiterComboBox.Size = new System.Drawing.Size(123, 21);
+            this.Y1LimiterComboBox.TabIndex = 329;
+            this.Y1LimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.yLimiterComboBox_SelectionChangeCommitted);
+            this.Y1LimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.yLimiterComboBox_KeyDown);
             // 
             // zLimiterComboBox
             // 
-            this.zLimiterComboBox.FormattingEnabled = true;
-            this.zLimiterComboBox.Location = new System.Drawing.Point(460, 8);
-            this.zLimiterComboBox.Name = "zLimiterComboBox";
-            this.zLimiterComboBox.Size = new System.Drawing.Size(123, 21);
-            this.zLimiterComboBox.TabIndex = 330;
-            this.zLimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.zLimiterComboBox_SelectionChangeCommitted);
-            this.zLimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.zLimiterComboBox_KeyDown);
+            this.Z1LimiterComboBox.FormattingEnabled = true;
+            this.Z1LimiterComboBox.Location = new System.Drawing.Point(460, 8);
+            this.Z1LimiterComboBox.Name = "zLimiterComboBox";
+            this.Z1LimiterComboBox.Size = new System.Drawing.Size(123, 21);
+            this.Z1LimiterComboBox.TabIndex = 330;
+            this.Z1LimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.zLimiterComboBox_SelectionChangeCommitted);
+            this.Z1LimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.zLimiterComboBox_KeyDown);
             // 
             // customChoiceCheckBox
             // 
@@ -473,23 +473,23 @@ namespace Physics_Data_Debug
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(918, 942);
             this.Controls.Add(this.customChoiceCheckBox);
-            this.Controls.Add(this.zLimiterComboBox);
-            this.Controls.Add(this.yLimiterComboBox);
-            this.Controls.Add(this.xLimiterComboBox);
+            this.Controls.Add(this.Z1LimiterComboBox);
+            this.Controls.Add(this.Y1LimiterComboBox);
+            this.Controls.Add(this.X1LimiterComboBox);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.enableLimitersCheckBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.zMaxLimitTextBox);
-            this.Controls.Add(this.zMinLimitTextBox);
+            this.Controls.Add(this.Z1MaxLimitTextBox);
+            this.Controls.Add(this.Z1MinLimitTextBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.yMaxLimitTextBox);
-            this.Controls.Add(this.yMinLimitTextBox);
+            this.Controls.Add(this.Y1MaxLimitTextBox);
+            this.Controls.Add(this.Y1MinLimitTextBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.xMaxLimitTextBox);
-            this.Controls.Add(this.xMinLimitTextBox);
+            this.Controls.Add(this.X1MaxLimitTextBox);
+            this.Controls.Add(this.X1MinLimitTextBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.labelUpDownChart);
@@ -530,23 +530,23 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox xMinLimitTextBox;
-        private System.Windows.Forms.TextBox xMaxLimitTextBox;
+        private System.Windows.Forms.TextBox X1MinLimitTextBox;
+        private System.Windows.Forms.TextBox X1MaxLimitTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox yMaxLimitTextBox;
-        private System.Windows.Forms.TextBox yMinLimitTextBox;
+        private System.Windows.Forms.TextBox Y1MaxLimitTextBox;
+        private System.Windows.Forms.TextBox Y1MinLimitTextBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox zMaxLimitTextBox;
-        private System.Windows.Forms.TextBox zMinLimitTextBox;
+        private System.Windows.Forms.TextBox Z1MaxLimitTextBox;
+        private System.Windows.Forms.TextBox Z1MinLimitTextBox;
         private System.Windows.Forms.CheckBox enableLimitersCheckBox;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox xLimiterComboBox;
-        private System.Windows.Forms.ComboBox yLimiterComboBox;
-        private System.Windows.Forms.ComboBox zLimiterComboBox;
+        private System.Windows.Forms.ComboBox X1LimiterComboBox;
+        private System.Windows.Forms.ComboBox Y1LimiterComboBox;
+        private System.Windows.Forms.ComboBox Z1LimiterComboBox;
         private System.Windows.Forms.CheckBox customChoiceCheckBox;
     }
 }

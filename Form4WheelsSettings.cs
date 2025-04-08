@@ -403,6 +403,7 @@ namespace Physics_Data_Debug
         {
             _4WheelsSettings.SettingsOpen = true;
             RegistryTools.LoadAllSettings(Application.ProductName, this);
+            _4WheelsSettings.AbsoluteValues = AbsoluteValuesCheckBox.Checked;
         }
         private void closeButton_Click(object sender, EventArgs e)
         {
@@ -570,7 +571,7 @@ namespace Physics_Data_Debug
             // Updating chart settings
             // WORKS WRONG! Clears the chart series also
             form4Wheels.SetChartsForForm();
-            form4Wheels.UpdateLimiters();
+            form4Wheels.UpdateAllLimiters();
         }
         private void applyAndClearButton_Click(object sender, EventArgs e)
         {
@@ -736,7 +737,7 @@ namespace Physics_Data_Debug
             //Add separate chart clearers
             form4Wheels.SetChartsForForm();
             timer1.Enabled = true;
-            form4Wheels.UpdateLimiters();
+            form4Wheels.UpdateAllLimiters();
         }
 
         private void LoadCurrentValuesButton_Click(object sender, EventArgs e)
