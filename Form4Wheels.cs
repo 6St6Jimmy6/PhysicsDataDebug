@@ -18,7 +18,7 @@ namespace Physics_Data_Debug
         public string X1LimiterSelection = _4WheelsSettings.X1Selection;
         public string Y1LimiterSelection = _4WheelsSettings.Y1Selection;
         public string Z1LimiterSelection = _4WheelsSettings.Z1Selection;
-        /*
+        
         public double X1LimiterDefaultMin = _4WheelsSettings.X1DefaultMin;
         public double Y1LimiterDefaultMin = _4WheelsSettings.Y1DefaultMin;
         public double Z1LimiterDefaultMin = _4WheelsSettings.Z1DefaultMin;
@@ -26,7 +26,7 @@ namespace Physics_Data_Debug
         public double X1LimiterDefaultMax = _4WheelsSettings.X1DefaultMax;
         public double Y1LimiterDefaultMax = _4WheelsSettings.Y1DefaultMax;
         public double Z1LimiterDefaultMax = _4WheelsSettings.Z1DefaultMax;
-        */
+        
         public double X1LimiterMin = _4WheelsSettings.X1DefaultMin;
         public double Y1LimiterMin = _4WheelsSettings.Y1DefaultMin;
         public double Z1LimiterMin = _4WheelsSettings.Z1DefaultMin;

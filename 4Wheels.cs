@@ -1989,7 +1989,7 @@ namespace Physics_Data_Debug
             X1AxisSelectionDefaults = _4Wheels.X1AxisSelectionDefaults(_4WheelsSettings.X1Selection);
 
             AxisDefaultsSelectedAndSetDefaultsToSelected(_4WheelsSettings.X1Defaults, X1AxisSelectionDefaults, _4WheelsSettings.X1Max, _4WheelsSettings.X1Min, _4WheelsSettings.X1MajorInterval, _4WheelsSettings.X1MajorDecimals, _4WheelsSettings.X1MinorEnabled, _4WheelsSettings.X1MinorIntervalFraction);
-
+            /*
             //The most important part at the end
             _4WheelsSettings.X1DefaultMax = dMax;
             _4WheelsSettings.X1DefaultMin = dMin;
@@ -1997,7 +1997,7 @@ namespace Physics_Data_Debug
             _4WheelsSettings.X1DefaultMajorDecimals = dDecimals;
             _4WheelsSettings.X1DefaultMinorEnabled = dMinorEnabled;
             _4WheelsSettings.X1DefaultMinorIntervalFraction = dMinorIntervalFraction;
-
+            */
             //var X1Axis = new List<object>();
             //list.Add(123);
             //list.Add("Hello World");
