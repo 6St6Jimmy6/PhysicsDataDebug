@@ -18,7 +18,15 @@ namespace Physics_Data_Debug
         public string X1LimiterSelection = _4WheelsSettings.X1Selection;
         public string Y1LimiterSelection = _4WheelsSettings.Y1Selection;
         public string Z1LimiterSelection = _4WheelsSettings.Z1Selection;
+        /*
+        public double X1LimiterDefaultMin = _4WheelsSettings.X1DefaultMin;
+        public double Y1LimiterDefaultMin = _4WheelsSettings.Y1DefaultMin;
+        public double Z1LimiterDefaultMin = _4WheelsSettings.Z1DefaultMin;
 
+        public double X1LimiterDefaultMax = _4WheelsSettings.X1DefaultMax;
+        public double Y1LimiterDefaultMax = _4WheelsSettings.Y1DefaultMax;
+        public double Z1LimiterDefaultMax = _4WheelsSettings.Z1DefaultMax;
+        */
         public double X1LimiterMin = _4WheelsSettings.X1DefaultMin;
         public double Y1LimiterMin = _4WheelsSettings.Y1DefaultMin;
         public double Z1LimiterMin = _4WheelsSettings.Z1DefaultMin;
@@ -35,11 +43,11 @@ namespace Physics_Data_Debug
 
             customChoiceCheckBox.Checked = false;
             enableLimitersCheckBox.Checked = false;
-            
+            /*
             customChoiceCheckBox.Enabled = false;
             enableLimitersCheckBox.Enabled = false;
             label17.Enabled = false;
-            
+            */
             X1LimiterComboBox.Enabled = false;
             Y1LimiterComboBox.Enabled = false;
             Z1LimiterComboBox.Enabled = false;
@@ -52,7 +60,7 @@ namespace Physics_Data_Debug
             AddInComboBoxes();
             LoadDefaults();
             UpdateAllLimiters();
-            GetComboBoxAxisLimiterTexts();
+            SetComboBoxAxisLimiterTexts();
             SetChartsForForm();
         }
         private void AddInComboBoxes()
@@ -69,8 +77,12 @@ namespace Physics_Data_Debug
         {
             tBMax.Text = maxValue.ToString();
         }
-        private void LoadDefaultTexts(TextBox tBMin, double minValue, TextBox tBMax, double maxValue)
+        private void LoadDefaultTexts(ComboBox cBSelection, TextBox tBMin, double minValue, TextBox tBMax, double maxValue)
         {
+            if (IsAbsoluteValue(cBSelection) == true)
+            {
+                minValue = 0;
+            }
             LoadDefaultTextMin(tBMin, minValue);
             LoadDefaultTextMax(tBMax, maxValue);
         }
@@ -80,12 +92,12 @@ namespace Physics_Data_Debug
         }
         private void LoadDefaults()
         {
-            LoadDefaultTexts(X1MinLimitTextBox, _4WheelsSettings.X1DefaultMin, X1MaxLimitTextBox, _4WheelsSettings.X1DefaultMax);
-            LimiterDefaultToSelectedAxis(X1LimiterComboBox, _4WheelsSettings.X1Selection);
-            LoadDefaultTexts(Y1MinLimitTextBox, _4WheelsSettings.Y1DefaultMin, Y1MaxLimitTextBox, _4WheelsSettings.Y1DefaultMax);
-            LimiterDefaultToSelectedAxis(Y1LimiterComboBox, _4WheelsSettings.Y1Selection);
-            LoadDefaultTexts(Z1MinLimitTextBox, _4WheelsSettings.Z1DefaultMin, Z1MaxLimitTextBox, _4WheelsSettings.Z1DefaultMax);
-            LimiterDefaultToSelectedAxis(Z1LimiterComboBox, _4WheelsSettings.Z1Selection);
+            LoadDefaultTexts(X1LimiterComboBox, X1MinLimitTextBox, X1LimiterDefaultMin, X1MaxLimitTextBox, X1LimiterDefaultMax);
+            LimiterDefaultToSelectedAxis(X1LimiterComboBox, X1LimiterSelection);
+            LoadDefaultTexts(Y1LimiterComboBox, Y1MinLimitTextBox, Y1LimiterDefaultMin, Y1MaxLimitTextBox, Y1LimiterDefaultMax);
+            LimiterDefaultToSelectedAxis(Y1LimiterComboBox, Y1LimiterSelection);
+            LoadDefaultTexts(Z1LimiterComboBox, Z1MinLimitTextBox, Z1LimiterDefaultMin, Z1MaxLimitTextBox, Z1LimiterDefaultMax);
+            LimiterDefaultToSelectedAxis(Z1LimiterComboBox, Z1LimiterSelection);
         }
         public void SetChartsForForm()
         {
@@ -242,6 +254,7 @@ namespace Physics_Data_Debug
                                                     LiveData.RR_TotalFriction, LiveData.RR_TotalFrictionAngle,
                                                     LiveData.RR_SuspensionLength, LiveData.RR_SuspensionVelocity);
         }
+        //GOOD
         private void ComboBoxAxisLimiterText(ComboBox cb, string axis, string defaultSelection)
         {
             if(cb.SelectedItem != null)
@@ -256,7 +269,8 @@ namespace Physics_Data_Debug
                 }
             }
         }
-        private void GetComboBoxAxisLimiterTexts()
+        //GOOD
+        private void SetComboBoxAxisLimiterTexts()
         {
             ComboBoxAxisLimiterText(X1LimiterComboBox, "X", _4WheelsSettings.X1Selection);
             ComboBoxAxisLimiterText(Y1LimiterComboBox, "Y", _4WheelsSettings.Y1Selection);
@@ -264,23 +278,23 @@ namespace Physics_Data_Debug
         }
         public void UpdateAllLimiters()
         {
+            if (customChoiceCheckBox.Checked == true) { X1LimiterSelection = LimiterSelection(X1LimiterComboBox); }//GOOD
             //double[] X1MinMax = UpdateLimiterMinMaxArray(X1LimiterComboBox, _4WheelsSettings.X1Selection, X1MinLimitTextBox, _4WheelsSettings.X1DefaultMin, X1MaxLimitTextBox, _4WheelsSettings.X1DefaultMax);
-            double[] X1MinMax = UpdateLimiterMinMaxArray(X1LimiterComboBox, X1MinLimitTextBox, _4WheelsSettings.X1DefaultMin, X1MaxLimitTextBox, _4WheelsSettings.X1DefaultMax);
+            double[] X1MinMax = UpdateLimiterMinMaxArray(X1LimiterComboBox, X1MinLimitTextBox, X1LimiterDefaultMin, X1MaxLimitTextBox, X1LimiterDefaultMax);
             X1LimiterMin = X1MinMax[0];
             X1LimiterMax = X1MinMax[1];
-            if (customChoiceCheckBox.Checked == true) { X1LimiterSelection = LimiterSelection(X1LimiterComboBox); }
 
+            if (customChoiceCheckBox.Checked == true) { Y1LimiterSelection = LimiterSelection(Y1LimiterComboBox); }
             //double[] Y1MinMax = UpdateLimiterMinMaxArray(Y1LimiterComboBox, _4WheelsSettings.Y1Selection, Y1MinLimitTextBox, _4WheelsSettings.Y1DefaultMin, Y1MaxLimitTextBox, _4WheelsSettings.Y1DefaultMax);
-            double[] Y1MinMax = UpdateLimiterMinMaxArray(Y1LimiterComboBox, Y1MinLimitTextBox, _4WheelsSettings.Y1DefaultMin, Y1MaxLimitTextBox, _4WheelsSettings.Y1DefaultMax);
+            double[] Y1MinMax = UpdateLimiterMinMaxArray(Y1LimiterComboBox, Y1MinLimitTextBox, Y1LimiterDefaultMin, Y1MaxLimitTextBox, Y1LimiterDefaultMax);
             Y1LimiterMin = Y1MinMax[0];
             Y1LimiterMax = Y1MinMax[1];
-            if (customChoiceCheckBox.Checked == true) { Y1LimiterSelection = LimiterSelection(Y1LimiterComboBox); }
 
+            if (customChoiceCheckBox.Checked == true) { Z1LimiterSelection = LimiterSelection(Z1LimiterComboBox); }
             //double[] Z1MinMax = UpdateLimiterMinMaxArray(Z1LimiterComboBox, _4WheelsSettings.Z1Selection, Z1MinLimitTextBox, _4WheelsSettings.Z1DefaultMin, Z1MaxLimitTextBox, _4WheelsSettings.Z1DefaultMax);
-            double[] Z1MinMax = UpdateLimiterMinMaxArray(Z1LimiterComboBox, Z1MinLimitTextBox, _4WheelsSettings.Z1DefaultMin, Z1MaxLimitTextBox, _4WheelsSettings.Z1DefaultMax);
+            double[] Z1MinMax = UpdateLimiterMinMaxArray(Z1LimiterComboBox, Z1MinLimitTextBox, Z1LimiterDefaultMin, Z1MaxLimitTextBox, Z1LimiterDefaultMax);
             Z1LimiterMin = Z1MinMax[0];
             Z1LimiterMax = Z1MinMax[1];
-            if (customChoiceCheckBox.Checked == true) { Z1LimiterSelection = LimiterSelection(Z1LimiterComboBox); }
             string first;
             string second;
             string third;
@@ -321,14 +335,18 @@ namespace Physics_Data_Debug
         }
         private bool IsAbsoluteValue(ComboBox cb)
         {
-            return _4Wheels.CBSelectionCanBeAbsoluteValue(cb);
+            return _4Wheels.CBSelectionIsAbsoluteValue(cb);
         }
         private double[] UpdateLimiterMinMaxArray(ComboBox cBLimiter, TextBox tBMin, double defaultMin, TextBox tBMax, double defaultMax)
         {
             double[] limiterArray = new double[2];
             bool absoluteValueCheck = AbsoluteValueCheck(cBLimiter, tBMin, defaultMin, tBMax, defaultMax);
             //bool absoluteValueCheck = AbsoluteValueCheck(cBLimiter, selection, tBMin, defaultMin, tBMax, defaultMax);
-
+            //Make it so minimum if it's absolute it's 0 at the minimum.
+            if (IsAbsoluteValue(cBLimiter) == true)
+            {
+                defaultMin = 0;
+            }
             limiterArray[0] = MinLimiter(tBMin, defaultMin, absoluteValueCheck);
             limiterArray[1] = MaxLimiter(tBMax, defaultMax, absoluteValueCheck);
             return limiterArray;
@@ -360,15 +378,17 @@ namespace Physics_Data_Debug
             }
             else
             {
-                LoadDefaultTexts(tBMin, defaultMin, tBMax, defaultMax);
+                LoadDefaultTexts(cb, tBMin, defaultMin, tBMax, defaultMax);
                 //LimiterDefaultToSelectedAxis(cb, selection);//Needed?
 
                 cb.Enabled = false;
                 return false;
             }
         }
+        /* Need to make parser and/or/checker that Max Value TextBox value can't be smaller than Min Value Textbox value */
         private double MinLimiter(TextBox tBMin, double defaultMin, bool abloluteValueCheck)
         {
+            //defaultMin is either 0 when it's absolute or if it's not then it's _4WheelsSettings.xxDefaultMin
             if (enableLimitersCheckBox.Checked == true)
             {
                 tBMin.Enabled = true;
@@ -399,7 +419,7 @@ namespace Physics_Data_Debug
             if (customChoiceCheckBox.Checked == false)
             {
             }
-            GetComboBoxAxisLimiterTexts();
+            SetComboBoxAxisLimiterTexts();
             //UpdateLimiters();
             if (LiveData.elapsedTime > 0 && PauseUpdate == false)
             {
@@ -463,15 +483,15 @@ namespace Physics_Data_Debug
         #endregion
         private void xLimiterComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            GetComboBoxAxisLimiterTexts();
+            SetComboBoxAxisLimiterTexts();
         }
         private void yLimiterComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            GetComboBoxAxisLimiterTexts();
+            SetComboBoxAxisLimiterTexts();
         }
         private void zLimiterComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            GetComboBoxAxisLimiterTexts();
+            SetComboBoxAxisLimiterTexts();
         }
         // Disables keypresses, but can still modify the text with code, by keeping the ComboBox DropDownStyle as DropDown and not using the DropDownList
         private void xLimiterComboBox_KeyDown(object sender, KeyEventArgs e)

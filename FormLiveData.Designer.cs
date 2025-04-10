@@ -310,7 +310,6 @@ namespace Physics_Data_Debug
             this.textBox_FL_AngularVelocity.ReadOnly = true;
             this.textBox_FL_AngularVelocity.Size = new System.Drawing.Size(177, 20);
             this.textBox_FL_AngularVelocity.TabIndex = 46;
-            this.textBox_FL_AngularVelocity.Text = ",";
             this.textBox_FL_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FL_TreadTemperature

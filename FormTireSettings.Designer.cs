@@ -29,6 +29,7 @@ namespace Physics_Data_Debug
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBox_FL_Radius = new System.Windows.Forms.TextBox();
             this.closeButton = new System.Windows.Forms.Button();
             this.flRadius = new System.Windows.Forms.Label();
@@ -108,14 +109,16 @@ namespace Physics_Data_Debug
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.textBox_RR_Radius = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // textBox_FL_Radius
             // 
-            this.textBox_FL_Radius.Location = new System.Drawing.Point(251, 65);
+            this.textBox_FL_Radius.Location = new System.Drawing.Point(209, 32);
             this.textBox_FL_Radius.Name = "textBox_FL_Radius";
             this.textBox_FL_Radius.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_Radius.TabIndex = 0;
+            this.textBox_FL_Radius.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_Radius_KeyDown);
             this.textBox_FL_Radius.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_Radius_KeyPress);
             // 
             // closeButton
@@ -131,7 +134,7 @@ namespace Physics_Data_Debug
             // flRadius
             // 
             this.flRadius.AutoSize = true;
-            this.flRadius.Location = new System.Drawing.Point(135, 68);
+            this.flRadius.Location = new System.Drawing.Point(93, 35);
             this.flRadius.Name = "flRadius";
             this.flRadius.Size = new System.Drawing.Size(40, 13);
             this.flRadius.TabIndex = 3;
@@ -140,7 +143,7 @@ namespace Physics_Data_Debug
             // flWidth
             // 
             this.flWidth.AutoSize = true;
-            this.flWidth.Location = new System.Drawing.Point(135, 94);
+            this.flWidth.Location = new System.Drawing.Point(93, 61);
             this.flWidth.Name = "flWidth";
             this.flWidth.Size = new System.Drawing.Size(35, 13);
             this.flWidth.TabIndex = 4;
@@ -149,7 +152,7 @@ namespace Physics_Data_Debug
             // flThermalAirTransfer
             // 
             this.flThermalAirTransfer.AutoSize = true;
-            this.flThermalAirTransfer.Location = new System.Drawing.Point(135, 120);
+            this.flThermalAirTransfer.Location = new System.Drawing.Point(93, 87);
             this.flThermalAirTransfer.Name = "flThermalAirTransfer";
             this.flThermalAirTransfer.Size = new System.Drawing.Size(102, 13);
             this.flThermalAirTransfer.TabIndex = 5;
@@ -158,7 +161,7 @@ namespace Physics_Data_Debug
             // flThermalInnerTransfer
             // 
             this.flThermalInnerTransfer.AutoSize = true;
-            this.flThermalInnerTransfer.Location = new System.Drawing.Point(135, 146);
+            this.flThermalInnerTransfer.Location = new System.Drawing.Point(93, 113);
             this.flThermalInnerTransfer.Name = "flThermalInnerTransfer";
             this.flThermalInnerTransfer.Size = new System.Drawing.Size(114, 13);
             this.flThermalInnerTransfer.TabIndex = 6;
@@ -167,7 +170,7 @@ namespace Physics_Data_Debug
             // flTireSpringRate
             // 
             this.flTireSpringRate.AutoSize = true;
-            this.flTireSpringRate.Location = new System.Drawing.Point(135, 172);
+            this.flTireSpringRate.Location = new System.Drawing.Point(93, 139);
             this.flTireSpringRate.Name = "flTireSpringRate";
             this.flTireSpringRate.Size = new System.Drawing.Size(63, 13);
             this.flTireSpringRate.TabIndex = 7;
@@ -176,7 +179,7 @@ namespace Physics_Data_Debug
             // flTireDamperRate
             // 
             this.flTireDamperRate.AutoSize = true;
-            this.flTireDamperRate.Location = new System.Drawing.Point(135, 198);
+            this.flTireDamperRate.Location = new System.Drawing.Point(93, 165);
             this.flTireDamperRate.Name = "flTireDamperRate";
             this.flTireDamperRate.Size = new System.Drawing.Size(70, 13);
             this.flTireDamperRate.TabIndex = 8;
@@ -185,7 +188,7 @@ namespace Physics_Data_Debug
             // flMaxDeflection
             // 
             this.flMaxDeflection.AutoSize = true;
-            this.flMaxDeflection.Location = new System.Drawing.Point(135, 224);
+            this.flMaxDeflection.Location = new System.Drawing.Point(93, 191);
             this.flMaxDeflection.Name = "flMaxDeflection";
             this.flMaxDeflection.Size = new System.Drawing.Size(78, 13);
             this.flMaxDeflection.TabIndex = 9;
@@ -194,7 +197,7 @@ namespace Physics_Data_Debug
             // flMass
             // 
             this.flMass.AutoSize = true;
-            this.flMass.Location = new System.Drawing.Point(135, 250);
+            this.flMass.Location = new System.Drawing.Point(93, 217);
             this.flMass.Name = "flMass";
             this.flMass.Size = new System.Drawing.Size(32, 13);
             this.flMass.TabIndex = 10;
@@ -203,7 +206,7 @@ namespace Physics_Data_Debug
             // flMomentOfInertia
             // 
             this.flMomentOfInertia.AutoSize = true;
-            this.flMomentOfInertia.Location = new System.Drawing.Point(135, 276);
+            this.flMomentOfInertia.Location = new System.Drawing.Point(93, 243);
             this.flMomentOfInertia.Name = "flMomentOfInertia";
             this.flMomentOfInertia.Size = new System.Drawing.Size(91, 13);
             this.flMomentOfInertia.TabIndex = 11;
@@ -211,72 +214,80 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_Width
             // 
-            this.textBox_FL_Width.Location = new System.Drawing.Point(251, 91);
+            this.textBox_FL_Width.Location = new System.Drawing.Point(209, 58);
             this.textBox_FL_Width.Name = "textBox_FL_Width";
             this.textBox_FL_Width.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_Width.TabIndex = 12;
+            this.textBox_FL_Width.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_Width_KeyDown);
             this.textBox_FL_Width.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_Width_KeyPress);
             // 
             // textBox_FL_ThermalAirTransfer
             // 
-            this.textBox_FL_ThermalAirTransfer.Location = new System.Drawing.Point(251, 117);
+            this.textBox_FL_ThermalAirTransfer.Location = new System.Drawing.Point(209, 84);
             this.textBox_FL_ThermalAirTransfer.Name = "textBox_FL_ThermalAirTransfer";
             this.textBox_FL_ThermalAirTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_ThermalAirTransfer.TabIndex = 13;
+            this.textBox_FL_ThermalAirTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_ThermalAirTransfer_KeyDown);
             this.textBox_FL_ThermalAirTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_ThermalAirTransfer_KeyPress);
             // 
             // textBox_FL_ThermalInnerTransfer
             // 
-            this.textBox_FL_ThermalInnerTransfer.Location = new System.Drawing.Point(251, 143);
+            this.textBox_FL_ThermalInnerTransfer.Location = new System.Drawing.Point(209, 110);
             this.textBox_FL_ThermalInnerTransfer.Name = "textBox_FL_ThermalInnerTransfer";
             this.textBox_FL_ThermalInnerTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_ThermalInnerTransfer.TabIndex = 14;
+            this.textBox_FL_ThermalInnerTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_ThermalInnerTransfer_KeyDown);
             this.textBox_FL_ThermalInnerTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_ThermalInnerTransfer_KeyPress);
             // 
             // textBox_FL_SpringRate
             // 
-            this.textBox_FL_SpringRate.Location = new System.Drawing.Point(251, 169);
+            this.textBox_FL_SpringRate.Location = new System.Drawing.Point(209, 136);
             this.textBox_FL_SpringRate.Name = "textBox_FL_SpringRate";
             this.textBox_FL_SpringRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_SpringRate.TabIndex = 15;
+            this.textBox_FL_SpringRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_SpringRate_KeyDown);
             this.textBox_FL_SpringRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_SpringRate_KeyPress);
             // 
             // textBox_FL_DamperRate
             // 
-            this.textBox_FL_DamperRate.Location = new System.Drawing.Point(251, 195);
+            this.textBox_FL_DamperRate.Location = new System.Drawing.Point(209, 162);
             this.textBox_FL_DamperRate.Name = "textBox_FL_DamperRate";
             this.textBox_FL_DamperRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_DamperRate.TabIndex = 16;
+            this.textBox_FL_DamperRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_DamperRate_KeyDown);
             this.textBox_FL_DamperRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_DamperRate_KeyPress);
             // 
             // textBox_FL_MaxDeflection
             // 
-            this.textBox_FL_MaxDeflection.Location = new System.Drawing.Point(251, 221);
+            this.textBox_FL_MaxDeflection.Location = new System.Drawing.Point(209, 188);
             this.textBox_FL_MaxDeflection.Name = "textBox_FL_MaxDeflection";
             this.textBox_FL_MaxDeflection.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_MaxDeflection.TabIndex = 17;
+            this.textBox_FL_MaxDeflection.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_MaxDeflection_KeyDown);
             this.textBox_FL_MaxDeflection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_MaxDeflection_KeyPress);
             // 
             // textBox_FL_Mass
             // 
-            this.textBox_FL_Mass.Location = new System.Drawing.Point(251, 247);
+            this.textBox_FL_Mass.Location = new System.Drawing.Point(209, 214);
             this.textBox_FL_Mass.Name = "textBox_FL_Mass";
             this.textBox_FL_Mass.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_Mass.TabIndex = 18;
+            this.textBox_FL_Mass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_Mass_KeyDown);
             this.textBox_FL_Mass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_Mass_KeyPress);
             // 
             // textBox_FL_MomentOfInertia
             // 
-            this.textBox_FL_MomentOfInertia.Location = new System.Drawing.Point(251, 273);
+            this.textBox_FL_MomentOfInertia.Location = new System.Drawing.Point(209, 240);
             this.textBox_FL_MomentOfInertia.Name = "textBox_FL_MomentOfInertia";
             this.textBox_FL_MomentOfInertia.Size = new System.Drawing.Size(100, 20);
             this.textBox_FL_MomentOfInertia.TabIndex = 19;
+            this.textBox_FL_MomentOfInertia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FL_MomentOfInertia_KeyDown);
             this.textBox_FL_MomentOfInertia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FL_MomentOfInertia_KeyPress);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(135, 42);
+            this.label13.Location = new System.Drawing.Point(93, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(73, 13);
             this.label13.TabIndex = 23;
@@ -284,28 +295,32 @@ namespace Physics_Data_Debug
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(12, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 50);
             this.button1.TabIndex = 24;
             this.button1.Text = "Read Values";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.ReadValues_Click);
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(12, 179);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 50);
             this.button2.TabIndex = 25;
             this.button2.Text = "Set Values";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.SetValues_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(384, 45);
+            this.label1.Location = new System.Drawing.Point(342, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 44;
@@ -313,72 +328,80 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_MomentOfInertia
             // 
-            this.textBox_FR_MomentOfInertia.Location = new System.Drawing.Point(500, 276);
+            this.textBox_FR_MomentOfInertia.Location = new System.Drawing.Point(458, 243);
             this.textBox_FR_MomentOfInertia.Name = "textBox_FR_MomentOfInertia";
             this.textBox_FR_MomentOfInertia.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_MomentOfInertia.TabIndex = 43;
+            this.textBox_FR_MomentOfInertia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_MomentOfInertia_KeyDown);
             this.textBox_FR_MomentOfInertia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_MomentOfInertia_KeyPress);
             // 
             // textBox_FR_Mass
             // 
-            this.textBox_FR_Mass.Location = new System.Drawing.Point(500, 250);
+            this.textBox_FR_Mass.Location = new System.Drawing.Point(458, 217);
             this.textBox_FR_Mass.Name = "textBox_FR_Mass";
             this.textBox_FR_Mass.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_Mass.TabIndex = 42;
+            this.textBox_FR_Mass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_Mass_KeyDown);
             this.textBox_FR_Mass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_Mass_KeyPress);
             // 
             // textBox_FR_MaxDeflection
             // 
-            this.textBox_FR_MaxDeflection.Location = new System.Drawing.Point(500, 224);
+            this.textBox_FR_MaxDeflection.Location = new System.Drawing.Point(458, 191);
             this.textBox_FR_MaxDeflection.Name = "textBox_FR_MaxDeflection";
             this.textBox_FR_MaxDeflection.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_MaxDeflection.TabIndex = 41;
+            this.textBox_FR_MaxDeflection.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_MaxDeflection_KeyDown);
             this.textBox_FR_MaxDeflection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_MaxDeflection_KeyPress);
             // 
             // textBox_FR_DamperRate
             // 
-            this.textBox_FR_DamperRate.Location = new System.Drawing.Point(500, 198);
+            this.textBox_FR_DamperRate.Location = new System.Drawing.Point(458, 165);
             this.textBox_FR_DamperRate.Name = "textBox_FR_DamperRate";
             this.textBox_FR_DamperRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_DamperRate.TabIndex = 40;
+            this.textBox_FR_DamperRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_DamperRate_KeyDown);
             this.textBox_FR_DamperRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_DamperRate_KeyPress);
             // 
             // textBox_FR_SpringRate
             // 
-            this.textBox_FR_SpringRate.Location = new System.Drawing.Point(500, 172);
+            this.textBox_FR_SpringRate.Location = new System.Drawing.Point(458, 139);
             this.textBox_FR_SpringRate.Name = "textBox_FR_SpringRate";
             this.textBox_FR_SpringRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_SpringRate.TabIndex = 39;
+            this.textBox_FR_SpringRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_SpringRate_KeyDown);
             this.textBox_FR_SpringRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_SpringRate_KeyPress);
             // 
             // textBox_FR_ThermalInnerTransfer
             // 
-            this.textBox_FR_ThermalInnerTransfer.Location = new System.Drawing.Point(500, 146);
+            this.textBox_FR_ThermalInnerTransfer.Location = new System.Drawing.Point(458, 113);
             this.textBox_FR_ThermalInnerTransfer.Name = "textBox_FR_ThermalInnerTransfer";
             this.textBox_FR_ThermalInnerTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_ThermalInnerTransfer.TabIndex = 38;
+            this.textBox_FR_ThermalInnerTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_ThermalInnerTransfer_KeyDown);
             this.textBox_FR_ThermalInnerTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_ThermalInnerTransfer_KeyPress);
             // 
             // textBox_FR_ThermalAirTransfer
             // 
-            this.textBox_FR_ThermalAirTransfer.Location = new System.Drawing.Point(500, 120);
+            this.textBox_FR_ThermalAirTransfer.Location = new System.Drawing.Point(458, 87);
             this.textBox_FR_ThermalAirTransfer.Name = "textBox_FR_ThermalAirTransfer";
             this.textBox_FR_ThermalAirTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_ThermalAirTransfer.TabIndex = 37;
+            this.textBox_FR_ThermalAirTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_ThermalAirTransfer_KeyDown);
             this.textBox_FR_ThermalAirTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_ThermalAirTransfer_KeyPress);
             // 
             // textBox_FR_Width
             // 
-            this.textBox_FR_Width.Location = new System.Drawing.Point(500, 94);
+            this.textBox_FR_Width.Location = new System.Drawing.Point(458, 61);
             this.textBox_FR_Width.Name = "textBox_FR_Width";
             this.textBox_FR_Width.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_Width.TabIndex = 36;
+            this.textBox_FR_Width.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_Width_KeyDown);
             this.textBox_FR_Width.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_Width_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(384, 279);
+            this.label2.Location = new System.Drawing.Point(342, 246);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 35;
@@ -387,7 +410,7 @@ namespace Physics_Data_Debug
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(384, 253);
+            this.label3.Location = new System.Drawing.Point(342, 220);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 34;
@@ -396,7 +419,7 @@ namespace Physics_Data_Debug
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(384, 227);
+            this.label4.Location = new System.Drawing.Point(342, 194);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 33;
@@ -405,7 +428,7 @@ namespace Physics_Data_Debug
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(384, 201);
+            this.label5.Location = new System.Drawing.Point(342, 168);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 32;
@@ -414,7 +437,7 @@ namespace Physics_Data_Debug
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(384, 175);
+            this.label6.Location = new System.Drawing.Point(342, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 31;
@@ -423,7 +446,7 @@ namespace Physics_Data_Debug
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(384, 149);
+            this.label7.Location = new System.Drawing.Point(342, 116);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 13);
             this.label7.TabIndex = 30;
@@ -432,7 +455,7 @@ namespace Physics_Data_Debug
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(384, 123);
+            this.label8.Location = new System.Drawing.Point(342, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 13);
             this.label8.TabIndex = 29;
@@ -441,7 +464,7 @@ namespace Physics_Data_Debug
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(384, 97);
+            this.label9.Location = new System.Drawing.Point(342, 64);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 28;
@@ -450,7 +473,7 @@ namespace Physics_Data_Debug
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(384, 71);
+            this.label10.Location = new System.Drawing.Point(342, 38);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 13);
             this.label10.TabIndex = 27;
@@ -458,16 +481,17 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_Radius
             // 
-            this.textBox_FR_Radius.Location = new System.Drawing.Point(500, 68);
+            this.textBox_FR_Radius.Location = new System.Drawing.Point(458, 35);
             this.textBox_FR_Radius.Name = "textBox_FR_Radius";
             this.textBox_FR_Radius.Size = new System.Drawing.Size(100, 20);
             this.textBox_FR_Radius.TabIndex = 26;
+            this.textBox_FR_Radius.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_FR_Radius_KeyDown);
             this.textBox_FR_Radius.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FR_Radius_KeyPress);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(135, 316);
+            this.label11.Location = new System.Drawing.Point(93, 283);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 13);
             this.label11.TabIndex = 63;
@@ -475,72 +499,80 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_MomentOfInertia
             // 
-            this.textBox_RL_MomentOfInertia.Location = new System.Drawing.Point(251, 547);
+            this.textBox_RL_MomentOfInertia.Location = new System.Drawing.Point(209, 514);
             this.textBox_RL_MomentOfInertia.Name = "textBox_RL_MomentOfInertia";
             this.textBox_RL_MomentOfInertia.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_MomentOfInertia.TabIndex = 62;
+            this.textBox_RL_MomentOfInertia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_MomentOfInertia_KeyDown);
             this.textBox_RL_MomentOfInertia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_MomentOfInertia_KeyPress);
             // 
             // textBox_RL_Mass
             // 
-            this.textBox_RL_Mass.Location = new System.Drawing.Point(251, 521);
+            this.textBox_RL_Mass.Location = new System.Drawing.Point(209, 488);
             this.textBox_RL_Mass.Name = "textBox_RL_Mass";
             this.textBox_RL_Mass.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_Mass.TabIndex = 61;
+            this.textBox_RL_Mass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_Mass_KeyDown);
             this.textBox_RL_Mass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_Mass_KeyPress);
             // 
             // textBox_RL_MaxDeflection
             // 
-            this.textBox_RL_MaxDeflection.Location = new System.Drawing.Point(251, 495);
+            this.textBox_RL_MaxDeflection.Location = new System.Drawing.Point(209, 462);
             this.textBox_RL_MaxDeflection.Name = "textBox_RL_MaxDeflection";
             this.textBox_RL_MaxDeflection.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_MaxDeflection.TabIndex = 60;
+            this.textBox_RL_MaxDeflection.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_MaxDeflection_KeyDown);
             this.textBox_RL_MaxDeflection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_MaxDeflection_KeyPress);
             // 
             // textBox_RL_DamperRate
             // 
-            this.textBox_RL_DamperRate.Location = new System.Drawing.Point(251, 469);
+            this.textBox_RL_DamperRate.Location = new System.Drawing.Point(209, 436);
             this.textBox_RL_DamperRate.Name = "textBox_RL_DamperRate";
             this.textBox_RL_DamperRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_DamperRate.TabIndex = 59;
+            this.textBox_RL_DamperRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_DamperRate_KeyDown);
             this.textBox_RL_DamperRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_DamperRate_KeyPress);
             // 
             // textBox_RL_SpringRate
             // 
-            this.textBox_RL_SpringRate.Location = new System.Drawing.Point(251, 443);
+            this.textBox_RL_SpringRate.Location = new System.Drawing.Point(209, 410);
             this.textBox_RL_SpringRate.Name = "textBox_RL_SpringRate";
             this.textBox_RL_SpringRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_SpringRate.TabIndex = 58;
+            this.textBox_RL_SpringRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_SpringRate_KeyDown);
             this.textBox_RL_SpringRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_SpringRate_KeyPress);
             // 
             // textBox_RL_ThermalInnerTransfer
             // 
-            this.textBox_RL_ThermalInnerTransfer.Location = new System.Drawing.Point(251, 417);
+            this.textBox_RL_ThermalInnerTransfer.Location = new System.Drawing.Point(209, 384);
             this.textBox_RL_ThermalInnerTransfer.Name = "textBox_RL_ThermalInnerTransfer";
             this.textBox_RL_ThermalInnerTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_ThermalInnerTransfer.TabIndex = 57;
+            this.textBox_RL_ThermalInnerTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_ThermalInnerTransfer_KeyDown);
             this.textBox_RL_ThermalInnerTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_ThermalInnerTransfer_KeyPress);
             // 
             // textBox_RL_ThermalAirTransfer
             // 
-            this.textBox_RL_ThermalAirTransfer.Location = new System.Drawing.Point(251, 391);
+            this.textBox_RL_ThermalAirTransfer.Location = new System.Drawing.Point(209, 358);
             this.textBox_RL_ThermalAirTransfer.Name = "textBox_RL_ThermalAirTransfer";
             this.textBox_RL_ThermalAirTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_ThermalAirTransfer.TabIndex = 56;
+            this.textBox_RL_ThermalAirTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_ThermalAirTransfer_KeyDown);
             this.textBox_RL_ThermalAirTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_ThermalAirTransfer_KeyPress);
             // 
             // textBox_RL_Width
             // 
-            this.textBox_RL_Width.Location = new System.Drawing.Point(251, 365);
+            this.textBox_RL_Width.Location = new System.Drawing.Point(209, 332);
             this.textBox_RL_Width.Name = "textBox_RL_Width";
             this.textBox_RL_Width.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_Width.TabIndex = 55;
+            this.textBox_RL_Width.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_Width_KeyDown);
             this.textBox_RL_Width.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_Width_KeyPress);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(135, 550);
+            this.label12.Location = new System.Drawing.Point(93, 517);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 13);
             this.label12.TabIndex = 54;
@@ -549,7 +581,7 @@ namespace Physics_Data_Debug
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(135, 524);
+            this.label14.Location = new System.Drawing.Point(93, 491);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(32, 13);
             this.label14.TabIndex = 53;
@@ -558,7 +590,7 @@ namespace Physics_Data_Debug
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(135, 498);
+            this.label15.Location = new System.Drawing.Point(93, 465);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(78, 13);
             this.label15.TabIndex = 52;
@@ -567,7 +599,7 @@ namespace Physics_Data_Debug
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(135, 472);
+            this.label16.Location = new System.Drawing.Point(93, 439);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(70, 13);
             this.label16.TabIndex = 51;
@@ -576,7 +608,7 @@ namespace Physics_Data_Debug
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(135, 446);
+            this.label17.Location = new System.Drawing.Point(93, 413);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(63, 13);
             this.label17.TabIndex = 50;
@@ -585,7 +617,7 @@ namespace Physics_Data_Debug
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(135, 420);
+            this.label18.Location = new System.Drawing.Point(93, 387);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(114, 13);
             this.label18.TabIndex = 49;
@@ -594,7 +626,7 @@ namespace Physics_Data_Debug
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(135, 394);
+            this.label19.Location = new System.Drawing.Point(93, 361);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(102, 13);
             this.label19.TabIndex = 48;
@@ -603,7 +635,7 @@ namespace Physics_Data_Debug
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(135, 368);
+            this.label20.Location = new System.Drawing.Point(93, 335);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(35, 13);
             this.label20.TabIndex = 47;
@@ -612,7 +644,7 @@ namespace Physics_Data_Debug
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(135, 342);
+            this.label21.Location = new System.Drawing.Point(93, 309);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(40, 13);
             this.label21.TabIndex = 46;
@@ -620,16 +652,17 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_Radius
             // 
-            this.textBox_RL_Radius.Location = new System.Drawing.Point(251, 339);
+            this.textBox_RL_Radius.Location = new System.Drawing.Point(209, 306);
             this.textBox_RL_Radius.Name = "textBox_RL_Radius";
             this.textBox_RL_Radius.Size = new System.Drawing.Size(100, 20);
             this.textBox_RL_Radius.TabIndex = 45;
+            this.textBox_RL_Radius.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RL_Radius_KeyDown);
             this.textBox_RL_Radius.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RL_Radius_KeyPress);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(385, 316);
+            this.label22.Location = new System.Drawing.Point(343, 283);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(74, 13);
             this.label22.TabIndex = 82;
@@ -637,72 +670,80 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_MomentOfInertia
             // 
-            this.textBox_RR_MomentOfInertia.Location = new System.Drawing.Point(501, 547);
+            this.textBox_RR_MomentOfInertia.Location = new System.Drawing.Point(459, 514);
             this.textBox_RR_MomentOfInertia.Name = "textBox_RR_MomentOfInertia";
             this.textBox_RR_MomentOfInertia.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_MomentOfInertia.TabIndex = 81;
+            this.textBox_RR_MomentOfInertia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_MomentOfInertia_KeyDown);
             this.textBox_RR_MomentOfInertia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_MomentOfInertia_KeyPress);
             // 
             // textBox_RR_Mass
             // 
-            this.textBox_RR_Mass.Location = new System.Drawing.Point(501, 521);
+            this.textBox_RR_Mass.Location = new System.Drawing.Point(459, 488);
             this.textBox_RR_Mass.Name = "textBox_RR_Mass";
             this.textBox_RR_Mass.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_Mass.TabIndex = 80;
+            this.textBox_RR_Mass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_Mass_KeyDown);
             this.textBox_RR_Mass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_Mass_KeyPress);
             // 
             // textBox_RR_MaxDeflection
             // 
-            this.textBox_RR_MaxDeflection.Location = new System.Drawing.Point(501, 495);
+            this.textBox_RR_MaxDeflection.Location = new System.Drawing.Point(459, 462);
             this.textBox_RR_MaxDeflection.Name = "textBox_RR_MaxDeflection";
             this.textBox_RR_MaxDeflection.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_MaxDeflection.TabIndex = 79;
+            this.textBox_RR_MaxDeflection.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_MaxDeflection_KeyDown);
             this.textBox_RR_MaxDeflection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_MaxDeflection_KeyPress);
             // 
             // textBox_RR_DamperRate
             // 
-            this.textBox_RR_DamperRate.Location = new System.Drawing.Point(501, 469);
+            this.textBox_RR_DamperRate.Location = new System.Drawing.Point(459, 436);
             this.textBox_RR_DamperRate.Name = "textBox_RR_DamperRate";
             this.textBox_RR_DamperRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_DamperRate.TabIndex = 78;
+            this.textBox_RR_DamperRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_DamperRate_KeyDown);
             this.textBox_RR_DamperRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_DamperRate_KeyPress);
             // 
             // textBox_RR_SpringRate
             // 
-            this.textBox_RR_SpringRate.Location = new System.Drawing.Point(501, 443);
+            this.textBox_RR_SpringRate.Location = new System.Drawing.Point(459, 410);
             this.textBox_RR_SpringRate.Name = "textBox_RR_SpringRate";
             this.textBox_RR_SpringRate.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_SpringRate.TabIndex = 77;
+            this.textBox_RR_SpringRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_SpringRate_KeyDown);
             this.textBox_RR_SpringRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_SpringRate_KeyPress);
             // 
             // textBox_RR_ThermalInnerTransfer
             // 
-            this.textBox_RR_ThermalInnerTransfer.Location = new System.Drawing.Point(501, 417);
+            this.textBox_RR_ThermalInnerTransfer.Location = new System.Drawing.Point(459, 384);
             this.textBox_RR_ThermalInnerTransfer.Name = "textBox_RR_ThermalInnerTransfer";
             this.textBox_RR_ThermalInnerTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_ThermalInnerTransfer.TabIndex = 76;
+            this.textBox_RR_ThermalInnerTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_ThermalInnerTransfer_KeyDown);
             this.textBox_RR_ThermalInnerTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_ThermalInnerTransfer_KeyPress);
             // 
             // textBox_RR_ThermalAirTransfer
             // 
-            this.textBox_RR_ThermalAirTransfer.Location = new System.Drawing.Point(501, 391);
+            this.textBox_RR_ThermalAirTransfer.Location = new System.Drawing.Point(459, 358);
             this.textBox_RR_ThermalAirTransfer.Name = "textBox_RR_ThermalAirTransfer";
             this.textBox_RR_ThermalAirTransfer.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_ThermalAirTransfer.TabIndex = 75;
+            this.textBox_RR_ThermalAirTransfer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_ThermalAirTransfer_KeyDown);
             this.textBox_RR_ThermalAirTransfer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_ThermalAirTransfer_KeyPress);
             // 
             // textBox_RR_Width
             // 
-            this.textBox_RR_Width.Location = new System.Drawing.Point(501, 365);
+            this.textBox_RR_Width.Location = new System.Drawing.Point(459, 332);
             this.textBox_RR_Width.Name = "textBox_RR_Width";
             this.textBox_RR_Width.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_Width.TabIndex = 74;
+            this.textBox_RR_Width.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_Width_KeyDown);
             this.textBox_RR_Width.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_Width_KeyPress);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(385, 550);
+            this.label23.Location = new System.Drawing.Point(343, 517);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(91, 13);
             this.label23.TabIndex = 73;
@@ -711,7 +752,7 @@ namespace Physics_Data_Debug
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(385, 524);
+            this.label24.Location = new System.Drawing.Point(343, 491);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(32, 13);
             this.label24.TabIndex = 72;
@@ -720,7 +761,7 @@ namespace Physics_Data_Debug
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(385, 498);
+            this.label25.Location = new System.Drawing.Point(343, 465);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(78, 13);
             this.label25.TabIndex = 71;
@@ -729,7 +770,7 @@ namespace Physics_Data_Debug
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(385, 472);
+            this.label26.Location = new System.Drawing.Point(343, 439);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(70, 13);
             this.label26.TabIndex = 70;
@@ -738,7 +779,7 @@ namespace Physics_Data_Debug
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(385, 446);
+            this.label27.Location = new System.Drawing.Point(343, 413);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(63, 13);
             this.label27.TabIndex = 69;
@@ -747,7 +788,7 @@ namespace Physics_Data_Debug
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(385, 420);
+            this.label28.Location = new System.Drawing.Point(343, 387);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(114, 13);
             this.label28.TabIndex = 68;
@@ -756,7 +797,7 @@ namespace Physics_Data_Debug
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(385, 394);
+            this.label29.Location = new System.Drawing.Point(343, 361);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(102, 13);
             this.label29.TabIndex = 67;
@@ -765,7 +806,7 @@ namespace Physics_Data_Debug
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(385, 368);
+            this.label30.Location = new System.Drawing.Point(343, 335);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(35, 13);
             this.label30.TabIndex = 66;
@@ -774,7 +815,7 @@ namespace Physics_Data_Debug
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(385, 342);
+            this.label31.Location = new System.Drawing.Point(343, 309);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(40, 13);
             this.label31.TabIndex = 65;
@@ -782,18 +823,23 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_Radius
             // 
-            this.textBox_RR_Radius.Location = new System.Drawing.Point(501, 339);
+            this.textBox_RR_Radius.Location = new System.Drawing.Point(459, 306);
             this.textBox_RR_Radius.Name = "textBox_RR_Radius";
             this.textBox_RR_Radius.Size = new System.Drawing.Size(100, 20);
             this.textBox_RR_Radius.TabIndex = 64;
+            this.textBox_RR_Radius.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_RR_Radius_KeyDown);
             this.textBox_RR_Radius.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_RR_Radius_KeyPress);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormTireSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(611, 581);
+            this.ClientSize = new System.Drawing.Size(565, 536);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textBox_RR_MomentOfInertia);
             this.Controls.Add(this.textBox_RR_Mass);
@@ -963,5 +1009,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox textBox_RR_Radius;
+        private System.Windows.Forms.Timer timer1;
     }
 }

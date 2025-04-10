@@ -57,9 +57,10 @@ namespace Physics_Data_Debug
         private void TireSettings_Load(object sender, EventArgs e)
         {
             LiveData.TireSettingsOpen = true;
+            timer1.Enabled = true;
             readAndWriteData();
         }
-
+        /*
         private void writeTireData()
         {
             Process p = Process.GetProcessesByName("Wreckfest_x64").FirstOrDefault();
@@ -192,7 +193,7 @@ namespace Physics_Data_Debug
             helper.WriteMemory<float>(RR_ThermalAirTransfer_TargetAddr, RR_ThermalAirTransfer);
             helper.WriteMemory<float>(RR_ThermalInnerTransfer_TargetAddr, RR_ThermalInnerTransfer);
         }
-
+        */
         private void readAndWriteData()
         {
             FL_MomentOfInertia = Convert.ToSingle(LiveData.FL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
@@ -240,7 +241,7 @@ namespace Physics_Data_Debug
             textBoxRLTireWrite();
             textBoxRRTireWrite();
         }
-
+        
         private void textBoxFLTireWrite()
         {
             textBox_FL_Radius.Text = FL_TireRadius.ToString(CultureInfo.GetCultureInfo("en-US"));
@@ -289,7 +290,7 @@ namespace Physics_Data_Debug
             textBox_RR_Mass.Text = RR_TireMass.ToString(CultureInfo.GetCultureInfo("en-US"));
             textBox_RR_MomentOfInertia.Text = RR_MomentOfInertia.ToString(CultureInfo.GetCultureInfo("en-US"));
         }
-
+        
         private void closeButton_Click(object sender, EventArgs e)
         {
             //First_All_Data_Logger_Page fadlp = new First_All_Data_Logger_Page();
@@ -301,7 +302,7 @@ namespace Physics_Data_Debug
         {
             readAndWriteData();
         }
-
+        /*
         private void ParseTireValues()
         {
             float fls1;//left as an example
@@ -401,9 +402,10 @@ namespace Physics_Data_Debug
                 textBoxRRTireWrite();
             }
         }
+        */
         private void SetValues_Click(object sender, EventArgs e)
         {
-            ParseTireValues();
+            //ParseTireValues();
         }
 
         private void CheckKeyIsNumberOrDecimalPoint(KeyPressEventArgs e)
@@ -618,7 +620,193 @@ namespace Physics_Data_Debug
 
         private void TireSettings_Close(object sender, FormClosedEventArgs e)
         {
+            timer1.Enabled = false;
             LiveData.TireSettingsOpen = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            readAndWriteData();
+        }
+
+        private void textBox_FL_Radius_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_Width_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_ThermalAirTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_ThermalInnerTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_SpringRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_DamperRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_MaxDeflection_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_Mass_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FL_MomentOfInertia_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_Radius_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_Width_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_ThermalAirTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_ThermalInnerTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_SpringRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_DamperRate_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void textBox_RL_MaxDeflection_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_Mass_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RL_MomentOfInertia_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_Radius_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_Width_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_ThermalAirTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_ThermalInnerTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_SpringRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_DamperRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_MaxDeflection_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_Mass_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_FR_MomentOfInertia_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_Radius_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_Width_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_ThermalAirTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_ThermalInnerTransfer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_SpringRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_DamperRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_MaxDeflection_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_Mass_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void textBox_RR_MomentOfInertia_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
         }
     }
 }

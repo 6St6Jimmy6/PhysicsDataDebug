@@ -222,6 +222,30 @@ namespace Physics_Data_Debug
         private static Color Color3 { get; set; }
         private static Color Color2 { get; set; }
         private static Color Color1 { get; set; }
+        private static void AxisDefaultsSelectedAndSetDefaultsToSelected(bool defaultsSelected, List<object> axisDefaultSelectionDefaults, double max, double min, double majorInterval, int decimals, bool minorEnabled, int minorIntervalFraction)
+        {
+            if (defaultsSelected == true)
+            {
+                max = (double)axisDefaultSelectionDefaults[1];
+                min = (double)axisDefaultSelectionDefaults[2];
+                majorInterval = (double)axisDefaultSelectionDefaults[3];
+                decimals = (int)axisDefaultSelectionDefaults[4];
+                minorEnabled = (bool)axisDefaultSelectionDefaults[5];
+                minorIntervalFraction = (int)axisDefaultSelectionDefaults[6];
+            }
+        }
+        private static void YAxisDefaultsSelected(bool dAxis, double dMax, double dMin, double dMajorInterval, int dDecimals, bool dMinorEnabled, int dMinorIntervalFraction)
+        {
+            if (dAxis == true)
+            {
+                _4WheelsSettings.Y1Max = dMax;
+                _4WheelsSettings.Y1Min = dMin;
+                _4WheelsSettings.Y1MajorInterval = dMajorInterval;
+                _4WheelsSettings.Y1MajorDecimals = dDecimals;
+                _4WheelsSettings.Y1MinorEnabled = dMinorEnabled;
+                _4WheelsSettings.Y1MinorIntervalFraction = dMinorIntervalFraction;
+            }
+        }
         private static void XYAxisDefaultsSelected(string XorY, bool dAxis, double dMax, double dMin, double dMajorInterval, int dDecimals, bool dMinorEnabled, int dMinorIntervalFraction)
         {
             if (dAxis == true)
@@ -246,7 +270,7 @@ namespace Physics_Data_Debug
                 }
             }
         }
-        public static bool CBSelectionCanBeAbsoluteValue(ComboBox cb)
+        public static bool CBSelectionIsAbsoluteValue(ComboBox cb)
         {
             string selectedItem = (string)cb.SelectedItem;
             if (selectedItem == LogSettings.sTireTravelSpeed ||
@@ -263,7 +287,7 @@ namespace Physics_Data_Debug
                    selectedItem == LogSettings.sLongitudinalSlipSpeed ||
                    selectedItem == LogSettings.sSuspensionVelocity)
             {
-                return _4WheelsSettings.AbsoluteValues;
+                return true;//_4WheelsSettings.AbsoluteValues;
             }
             else
             {
@@ -285,7 +309,373 @@ namespace Physics_Data_Debug
             LogSettings.sSuspensionVelocity??
             */
         }
-        private static void XYAxisDefaults(string XorY, string axisSelection, bool dAxis)
+        private static List<object> X1AxisSelectionDefaults(string axisSelection)
+        {
+            var XAxisSelectionList = new List<object>();
+            ///
+            /// [0] = defaultMax
+            /// [1] = defaultMin
+            /// [2] = defaultMajorInterval
+            /// [3] = defaultDecimals
+            /// [4] = defaultMinorDecimals
+            /// [5] = defaultMinorIntervalFraction
+            /// 
+            double dMax; double dMin; double dMajorInterval; int dDecimals; bool dMinorEnabled; int dMinorIntervalFraction;
+
+            if (axisSelection == LogSettings.sRaceTime)
+            {
+                dMax = double.NaN;
+                dMin = 0;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = false;
+                dMinorIntervalFraction = 60;
+            }
+            else if (axisSelection == LogSettings.sTireTravelSpeed)
+            {
+                dMax = 400;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax / 2;
+                }
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sAngularVelocity)
+            {
+                dMax = 400;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax / 2;
+                }
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sVerticalLoad)
+            {
+                dMax = 10000;
+                dMin = 0;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sVerticalDeflection)
+            {
+                dMax = 0.15;
+                dMin = 0;
+                dMajorInterval = 0.03;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sLoadedRadius)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sEffectiveRadius)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sContactLength)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sBrakeTorque)
+            {
+                dMax = 5000;
+                dMin = 0;
+                dMajorInterval = 500;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sMaxBrakeTorque)
+            {
+                dMax = 5000;
+                dMin = 0;
+                dMajorInterval = 500;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sSteerAngle)
+            {
+                dMax = 45;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 15;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sCamberAngle)
+            {
+                dMax = 10;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 4;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sLateralLoad)
+            {
+                dMax = 10000;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sSlipAngle)
+            {
+                dMax = 45;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 15;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sLateralFriction)
+            {
+                dMax = 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sLateralSlipSpeed)
+            {
+                dMax = 20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 5;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sLongitudinalLoad)
+            {
+                dMax = 10000;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sSlipRatio)
+            {
+                dMax = 1;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 0.2;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sLongitudinalFriction)
+            {
+                dMax = 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
+            {
+                dMax = 20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 5;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sTreadTemperature)
+            {
+                dMax = 380;
+                dMin = -20;
+                dMajorInterval = 20;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sInnerTemperature)
+            {
+                dMax = 380;
+                dMin = -20;
+                dMajorInterval = 20;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sTotalFriction)
+            {
+                dMax = 2;
+                dMin = -dMax;
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sTotalFrictionAngle)
+            {
+                dMax = 360;
+                dMin = 0;
+                dMajorInterval = 90;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sSuspensionLength)
+            {
+                dMax = 1;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 4;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == LogSettings.sSuspensionVelocity)
+            {
+                dMax = 10;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 2;
+                dDecimals = 4;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else
+            {
+                // Defaults auto scale
+                dMax = double.NaN;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = double.NaN;
+                }
+                dMajorInterval = 0;
+                dDecimals = 2;
+                dMinorEnabled = false;
+                dMinorIntervalFraction = 2;
+            }
+
+            XAxisSelectionList[0] = dMax;
+            XAxisSelectionList[1] = dMin;
+            XAxisSelectionList[2] = dMajorInterval;
+            XAxisSelectionList[3] = dDecimals;
+            XAxisSelectionList[4] = dMinorEnabled;
+            XAxisSelectionList[5] = dMinorIntervalFraction;
+
+            return XAxisSelectionList;
+        }
+
+        private static void YAxisDefaults(string axisSelection, bool usingDefaultsAxis)
         {
             double dMax; double dMin; double dMajorInterval; int dDecimals; bool dMinorEnabled; int dMinorIntervalFraction;
             if (axisSelection == LogSettings.sRaceTime)
@@ -297,7 +687,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = false;
                 dMinorIntervalFraction = 60;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sTireTravelSpeed)
             {
@@ -315,7 +705,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sAngularVelocity)
             {
@@ -333,7 +723,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sVerticalLoad)
             {
@@ -344,7 +734,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sVerticalDeflection)
             {
@@ -355,7 +745,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sLoadedRadius)
             {
@@ -366,7 +756,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sEffectiveRadius)
             {
@@ -377,7 +767,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sContactLength)
             {
@@ -388,7 +778,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sBrakeTorque)
             {
@@ -399,7 +789,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sMaxBrakeTorque)
             {
@@ -410,7 +800,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sSteerAngle)
             {
@@ -428,7 +818,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sCamberAngle)
             {
@@ -446,7 +836,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sLateralLoad)
             {
@@ -464,7 +854,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sSlipAngle)
             {
@@ -482,7 +872,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sLateralFriction)
             {
@@ -500,7 +890,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sLateralSlipSpeed)
             {
@@ -518,7 +908,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sLongitudinalLoad)
             {
@@ -536,7 +926,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sSlipRatio)
             {
@@ -554,7 +944,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sLongitudinalFriction)
             {
@@ -572,7 +962,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
             {
@@ -590,7 +980,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sTreadTemperature)
             {
@@ -601,7 +991,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sInnerTemperature)
             {
@@ -612,7 +1002,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sTotalFriction)
             {
@@ -623,7 +1013,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sTotalFrictionAngle)
             {
@@ -634,7 +1024,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sSuspensionLength)
             {
@@ -645,7 +1035,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else if (axisSelection == LogSettings.sSuspensionVelocity)
             {
@@ -663,7 +1053,414 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
 
-                XYAxisDefaultsSelected(XorY, dAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+                YAxisDefaultsSelected(usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else
+            {
+                // Defaults auto scale
+                dMax = double.NaN;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = double.NaN;
+                }
+                dMajorInterval = 0;
+                dDecimals = 2;
+                dMinorEnabled = false;
+                dMinorIntervalFraction = 2;
+            }
+            //The most important part at the end
+            _4WheelsSettings.Y1Selection = axisSelection;
+            _4WheelsSettings.Y1DefaultMax = dMax;
+            _4WheelsSettings.Y1DefaultMin = dMin;
+            _4WheelsSettings.Y1DefaultMajorInterval = dMajorInterval;
+            _4WheelsSettings.Y1DefaultMajorDecimals = dDecimals;
+            _4WheelsSettings.Y1DefaultMinorEnabled = dMinorEnabled;
+            _4WheelsSettings.Y1DefaultMinorIntervalFraction = dMinorIntervalFraction;
+        }
+
+        private static void XYAxisDefaults(string XorY, string axisSelection, bool usingDefaultsAxis)
+        {
+            double dMax; double dMin; double dMajorInterval; int dDecimals; bool dMinorEnabled; int dMinorIntervalFraction;
+            if (axisSelection == LogSettings.sRaceTime)
+            {
+                dMax = double.NaN;
+                dMin = 0;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = false;
+                dMinorIntervalFraction = 60;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sTireTravelSpeed)
+            {
+                dMax = 400;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax / 2;
+                }
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sAngularVelocity)
+            {
+                dMax = 400;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax / 2;
+                }
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sVerticalLoad)
+            {
+                dMax = 10000;
+                dMin = 0;
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sVerticalDeflection)
+            {
+                dMax = 0.15;
+                dMin = 0;
+                dMajorInterval = 0.03;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sLoadedRadius)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sEffectiveRadius)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sContactLength)
+            {
+                dMax = 0.5;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 3;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sBrakeTorque)
+            {
+                dMax = 5000;
+                dMin = 0;
+                dMajorInterval = 500;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sMaxBrakeTorque)
+            {
+                dMax = 5000;
+                dMin = 0;
+                dMajorInterval = 500;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sSteerAngle)
+            {
+                dMax = 45;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 15;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sCamberAngle)
+            {
+                dMax = 10;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 4;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sLateralLoad)
+            {
+                dMax = 10000;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sSlipAngle)
+            {
+                dMax = 45;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 15;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sLateralFriction)
+            {
+                dMax = 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sLateralSlipSpeed)
+            {
+                dMax = 20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 5;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sLongitudinalLoad)
+            {
+                dMax = 10000;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 1000;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sSlipRatio)
+            {
+                dMax = 1;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 0.2;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sLongitudinalFriction)
+            {
+                dMax = 2;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
+            {
+                dMax = 20;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 5;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sTreadTemperature)
+            {
+                dMax = 380;
+                dMin = -20;
+                dMajorInterval = 20;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sInnerTemperature)
+            {
+                dMax = 380;
+                dMin = -20;
+                dMajorInterval = 20;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sTotalFriction)
+            {
+                dMax = 2;
+                dMin = -dMax;
+                dMajorInterval = 0.5;
+                dDecimals = 2;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sTotalFrictionAngle)
+            {
+                dMax = 360;
+                dMin = 0;
+                dMajorInterval = 90;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sSuspensionLength)
+            {
+                dMax = 1;
+                dMin = 0;
+                dMajorInterval = 0.1;
+                dDecimals = 4;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
+            }
+            else if (axisSelection == LogSettings.sSuspensionVelocity)
+            {
+                dMax = 10;
+                if (_4WheelsSettings.AbsoluteValues == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 2;
+                dDecimals = 4;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+
+                XYAxisDefaultsSelected(XorY, usingDefaultsAxis, dMax, dMin, dMajorInterval, dDecimals, dMinorEnabled, dMinorIntervalFraction);
             }
             else
             {
@@ -1171,7 +1968,51 @@ namespace Physics_Data_Debug
 
             GetColorSchemeColors();
 
+            var X1AxisSelectionDefaults = new List<object>();
+
+            string axisSelection;
+
+            double defaultMax;
+            double defaultMin;
+            double defaultMajorInterval;
+            double defaultDecimals;
+            bool defaultMinorEnabled;
+            int defaultMinorIntervalFraction;
+
+            double max;
+            double min;
+            double majorInterval;
+            int decimals;
+            bool minorEnabled;
+            int minorIntervalFraction;
             XYAxisDefaults("X", _4WheelsSettings.X1Selection, _4WheelsSettings.X1Defaults);
+            X1AxisSelectionDefaults = _4Wheels.X1AxisSelectionDefaults(_4WheelsSettings.X1Selection);
+
+            AxisDefaultsSelectedAndSetDefaultsToSelected(_4WheelsSettings.X1Defaults, X1AxisSelectionDefaults, _4WheelsSettings.X1Max, _4WheelsSettings.X1Min, _4WheelsSettings.X1MajorInterval, _4WheelsSettings.X1MajorDecimals, _4WheelsSettings.X1MinorEnabled, _4WheelsSettings.X1MinorIntervalFraction);
+
+            //The most important part at the end
+            _4WheelsSettings.X1DefaultMax = dMax;
+            _4WheelsSettings.X1DefaultMin = dMin;
+            _4WheelsSettings.X1DefaultMajorInterval = dMajorInterval;
+            _4WheelsSettings.X1DefaultMajorDecimals = dDecimals;
+            _4WheelsSettings.X1DefaultMinorEnabled = dMinorEnabled;
+            _4WheelsSettings.X1DefaultMinorIntervalFraction = dMinorIntervalFraction;
+
+            //var X1Axis = new List<object>();
+            //list.Add(123);
+            //list.Add("Hello World");
+            //The most important part at the end
+            /*
+            if (XorY == "X")
+            {
+                _4WheelsSettings.X1Selection = axisSelection;
+                _4WheelsSettings.X1DefaultMax = dMax;
+                _4WheelsSettings.X1DefaultMin = dMin;
+                _4WheelsSettings.X1DefaultMajorInterval = dMajorInterval;
+                _4WheelsSettings.X1DefaultMajorDecimals = dDecimals;
+                _4WheelsSettings.X1DefaultMinorEnabled = dMinorEnabled;
+                _4WheelsSettings.X1DefaultMinorIntervalFraction = dMinorIntervalFraction;
+            }*/
 
             XYAxisDefaults("Y", _4WheelsSettings.Y1Selection, _4WheelsSettings.Y1Defaults);
 
