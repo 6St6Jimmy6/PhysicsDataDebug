@@ -1683,7 +1683,10 @@ namespace Physics_Data_Debug
             }
             else
             {
-                LoadDefaultTextBoxTexts(cb, tBMin, defaultMin, tBMax, defaultMax);
+                if(enableLimitersCheckBox.Checked == false)
+                {
+                    LoadDefaultTextBoxTexts(cb, tBMin, defaultMin, tBMax, defaultMax);
+                }
                 //LimiterDefaultToSelectedAxis(cb, selection);//Needed?
 
                 cb.Enabled = false;
@@ -1721,9 +1724,6 @@ namespace Physics_Data_Debug
         private void timer1_Tick(object sender, EventArgs e)
         {
             ButtonLabelVisibilities();
-            if (customChoiceCheckBox.Checked == false)
-            {
-            }
             if (enableLimitersCheckBox.Checked == true)
             {
                 LimitersEnabled = true;
