@@ -572,6 +572,7 @@ namespace Physics_Data_Debug
             // WORKS WRONG! Clears the chart series also
             form4Wheels.SetChartsForForm();
             form4Wheels.UpdateAllLimiters();
+            LoadValuesInTextBox();
         }
         private void applyAndClearButton_Click(object sender, EventArgs e)
         {

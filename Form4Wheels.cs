@@ -1853,5 +1853,10 @@ namespace Physics_Data_Debug
         {
 
         }
+
+        private void applyLimitersButton_Click(object sender, EventArgs e)
+        {
+            UpdateAllLimiters();
+        }
     }
 }
