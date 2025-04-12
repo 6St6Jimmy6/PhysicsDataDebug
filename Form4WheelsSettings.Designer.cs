@@ -143,9 +143,9 @@ namespace Physics_Data_Debug
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(9, 337);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
+            this.label7.Size = new System.Drawing.Size(140, 13);
             this.label7.TabIndex = 501;
-            this.label7.Text = "History Points";
+            this.label7.Text = "History Points per Z-gradient";
             // 
             // Y1IntervalDividerTextBox
             // 

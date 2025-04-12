@@ -77,6 +77,7 @@ namespace Physics_Data_Debug
             this.Y1LimiterComboBox = new System.Windows.Forms.ComboBox();
             this.Z1LimiterComboBox = new System.Windows.Forms.ComboBox();
             this.customChoiceCheckBox = new System.Windows.Forms.CheckBox();
+            this.noTireContactLimiterEnabledCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.GradientChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -121,7 +122,7 @@ namespace Physics_Data_Debug
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(292, 97);
+            this.label1.Location = new System.Drawing.Point(292, 142);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 300;
@@ -131,7 +132,7 @@ namespace Physics_Data_Debug
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(679, 97);
+            this.label2.Location = new System.Drawing.Point(679, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 301;
@@ -141,7 +142,7 @@ namespace Physics_Data_Debug
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(292, 483);
+            this.label3.Location = new System.Drawing.Point(292, 528);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 302;
@@ -151,7 +152,7 @@ namespace Physics_Data_Debug
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(680, 483);
+            this.label4.Location = new System.Drawing.Point(680, 528);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 303;
@@ -192,7 +193,7 @@ namespace Physics_Data_Debug
             legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.GradientChart.Legends.Add(legend1);
-            this.GradientChart.Location = new System.Drawing.Point(9, 129);
+            this.GradientChart.Location = new System.Drawing.Point(9, 132);
             this.GradientChart.Margin = new System.Windows.Forms.Padding(0);
             this.GradientChart.Name = "GradientChart";
             series1.BorderWidth = 3;
@@ -207,7 +208,7 @@ namespace Physics_Data_Debug
             series1.Points.Add(dataPoint1);
             series1.Points.Add(dataPoint2);
             this.GradientChart.Series.Add(series1);
-            this.GradientChart.Size = new System.Drawing.Size(68, 758);
+            this.GradientChart.Size = new System.Drawing.Size(68, 797);
             this.GradientChart.TabIndex = 304;
             this.GradientChart.Text = "chart5";
             title1.ForeColor = System.Drawing.Color.Transparent;
@@ -219,7 +220,7 @@ namespace Physics_Data_Debug
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(417, 97);
+            this.label5.Location = new System.Drawing.Point(417, 142);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 13);
             this.label5.TabIndex = 306;
@@ -257,7 +258,7 @@ namespace Physics_Data_Debug
             legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(83, 87);
+            this.chart1.Location = new System.Drawing.Point(83, 132);
             this.chart1.Name = "chart1";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
@@ -283,7 +284,7 @@ namespace Physics_Data_Debug
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(91, 97);
+            this.label6.Location = new System.Drawing.Point(91, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 309;
@@ -293,24 +294,24 @@ namespace Physics_Data_Debug
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(91, 483);
+            this.label7.Location = new System.Drawing.Point(91, 528);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 310;
             this.label7.Text = "Rear Tires";
             // 
-            // xMinLimitTextBox
+            // X1MinLimitTextBox
             // 
             this.X1MinLimitTextBox.Location = new System.Drawing.Point(227, 35);
             this.X1MinLimitTextBox.Multiline = true;
-            this.X1MinLimitTextBox.Name = "xMinLimitTextBox";
+            this.X1MinLimitTextBox.Name = "X1MinLimitTextBox";
             this.X1MinLimitTextBox.Size = new System.Drawing.Size(92, 20);
             this.X1MinLimitTextBox.TabIndex = 311;
             // 
-            // xMaxLimitTextBox
+            // X1MaxLimitTextBox
             // 
             this.X1MaxLimitTextBox.Location = new System.Drawing.Point(227, 61);
-            this.X1MaxLimitTextBox.Name = "xMaxLimitTextBox";
+            this.X1MaxLimitTextBox.Name = "X1MaxLimitTextBox";
             this.X1MaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
             this.X1MaxLimitTextBox.TabIndex = 313;
             // 
@@ -354,17 +355,17 @@ namespace Physics_Data_Debug
             this.label12.TabIndex = 319;
             this.label12.Text = "Min:";
             // 
-            // yMaxLimitTextBox
+            // Y1MaxLimitTextBox
             // 
             this.Y1MaxLimitTextBox.Location = new System.Drawing.Point(359, 61);
-            this.Y1MaxLimitTextBox.Name = "yMaxLimitTextBox";
+            this.Y1MaxLimitTextBox.Name = "Y1MaxLimitTextBox";
             this.Y1MaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
             this.Y1MaxLimitTextBox.TabIndex = 318;
             // 
-            // yMinLimitTextBox
+            // Y1MinLimitTextBox
             // 
             this.Y1MinLimitTextBox.Location = new System.Drawing.Point(359, 35);
-            this.Y1MinLimitTextBox.Name = "yMinLimitTextBox";
+            this.Y1MinLimitTextBox.Name = "Y1MinLimitTextBox";
             this.Y1MinLimitTextBox.Size = new System.Drawing.Size(92, 20);
             this.Y1MinLimitTextBox.TabIndex = 316;
             // 
@@ -388,17 +389,17 @@ namespace Physics_Data_Debug
             this.label15.TabIndex = 324;
             this.label15.Text = "Min:";
             // 
-            // zMaxLimitTextBox
+            // Z1MaxLimitTextBox
             // 
             this.Z1MaxLimitTextBox.Location = new System.Drawing.Point(491, 61);
-            this.Z1MaxLimitTextBox.Name = "zMaxLimitTextBox";
+            this.Z1MaxLimitTextBox.Name = "Z1MaxLimitTextBox";
             this.Z1MaxLimitTextBox.Size = new System.Drawing.Size(92, 20);
             this.Z1MaxLimitTextBox.TabIndex = 323;
             // 
-            // zMinLimitTextBox
+            // Z1MinLimitTextBox
             // 
             this.Z1MinLimitTextBox.Location = new System.Drawing.Point(491, 35);
-            this.Z1MinLimitTextBox.Name = "zMinLimitTextBox";
+            this.Z1MinLimitTextBox.Name = "Z1MinLimitTextBox";
             this.Z1MinLimitTextBox.Size = new System.Drawing.Size(92, 20);
             this.Z1MinLimitTextBox.TabIndex = 321;
             // 
@@ -424,31 +425,31 @@ namespace Physics_Data_Debug
             this.label17.Text = "Use only positive values on X/Y/Z. They get automatically also negative opposite." +
     " On X/Y/Z the limit works normally.";
             // 
-            // xLimiterComboBox
+            // X1LimiterComboBox
             // 
             this.X1LimiterComboBox.FormattingEnabled = true;
             this.X1LimiterComboBox.Location = new System.Drawing.Point(196, 8);
-            this.X1LimiterComboBox.Name = "xLimiterComboBox";
+            this.X1LimiterComboBox.Name = "X1LimiterComboBox";
             this.X1LimiterComboBox.Size = new System.Drawing.Size(123, 21);
             this.X1LimiterComboBox.TabIndex = 328;
             this.X1LimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.xLimiterComboBox_SelectionChangeCommitted);
             this.X1LimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.xLimiterComboBox_KeyDown);
             // 
-            // yLimiterComboBox
+            // Y1LimiterComboBox
             // 
             this.Y1LimiterComboBox.FormattingEnabled = true;
             this.Y1LimiterComboBox.Location = new System.Drawing.Point(328, 8);
-            this.Y1LimiterComboBox.Name = "yLimiterComboBox";
+            this.Y1LimiterComboBox.Name = "Y1LimiterComboBox";
             this.Y1LimiterComboBox.Size = new System.Drawing.Size(123, 21);
             this.Y1LimiterComboBox.TabIndex = 329;
             this.Y1LimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.yLimiterComboBox_SelectionChangeCommitted);
             this.Y1LimiterComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.yLimiterComboBox_KeyDown);
             // 
-            // zLimiterComboBox
+            // Z1LimiterComboBox
             // 
             this.Z1LimiterComboBox.FormattingEnabled = true;
             this.Z1LimiterComboBox.Location = new System.Drawing.Point(460, 8);
-            this.Z1LimiterComboBox.Name = "zLimiterComboBox";
+            this.Z1LimiterComboBox.Name = "Z1LimiterComboBox";
             this.Z1LimiterComboBox.Size = new System.Drawing.Size(123, 21);
             this.Z1LimiterComboBox.TabIndex = 330;
             this.Z1LimiterComboBox.SelectionChangeCommitted += new System.EventHandler(this.zLimiterComboBox_SelectionChangeCommitted);
@@ -465,13 +466,25 @@ namespace Physics_Data_Debug
             this.customChoiceCheckBox.UseVisualStyleBackColor = true;
             this.customChoiceCheckBox.Click += new System.EventHandler(this.customChoiceCheckBox_Click);
             // 
+            // noTireContactLimiterEnabledCheckBox
+            // 
+            this.noTireContactLimiterEnabledCheckBox.ForeColor = System.Drawing.Color.White;
+            this.noTireContactLimiterEnabledCheckBox.Location = new System.Drawing.Point(83, 87);
+            this.noTireContactLimiterEnabledCheckBox.Name = "noTireContactLimiterEnabledCheckBox";
+            this.noTireContactLimiterEnabledCheckBox.Size = new System.Drawing.Size(104, 39);
+            this.noTireContactLimiterEnabledCheckBox.TabIndex = 332;
+            this.noTireContactLimiterEnabledCheckBox.Text = "No tire contact limiter";
+            this.noTireContactLimiterEnabledCheckBox.UseVisualStyleBackColor = true;
+            this.noTireContactLimiterEnabledCheckBox.CheckedChanged += new System.EventHandler(this.noTireContactLimiterEnabledCheckBox_CheckedChanged);
+            // 
             // Form4Wheels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(918, 942);
+            this.ClientSize = new System.Drawing.Size(918, 948);
+            this.Controls.Add(this.noTireContactLimiterEnabledCheckBox);
             this.Controls.Add(this.customChoiceCheckBox);
             this.Controls.Add(this.Z1LimiterComboBox);
             this.Controls.Add(this.Y1LimiterComboBox);
@@ -548,5 +561,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.ComboBox Y1LimiterComboBox;
         private System.Windows.Forms.ComboBox Z1LimiterComboBox;
         private System.Windows.Forms.CheckBox customChoiceCheckBox;
+        private System.Windows.Forms.CheckBox noTireContactLimiterEnabledCheckBox;
     }
 }

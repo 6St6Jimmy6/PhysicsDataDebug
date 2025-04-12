@@ -222,6 +222,29 @@ namespace Physics_Data_Debug
         public static Color Color3 { get; set; }
         public static Color Color2 { get; set; }
         public static Color Color1 { get; set; }
+        public static bool LimiterSelectionIsAbsoluteValue(string selectedItem)
+        {
+            if (selectedItem == LogSettings.sTireTravelSpeed ||
+                   selectedItem == LogSettings.sAngularVelocity ||
+                   selectedItem == LogSettings.sSteerAngle ||
+                   selectedItem == LogSettings.sCamberAngle ||
+                   selectedItem == LogSettings.sLateralLoad ||
+                   selectedItem == LogSettings.sSlipAngle ||
+                   selectedItem == LogSettings.sLateralFriction ||
+                   selectedItem == LogSettings.sLateralSlipSpeed ||
+                   selectedItem == LogSettings.sLongitudinalLoad ||
+                   selectedItem == LogSettings.sSlipRatio ||
+                   selectedItem == LogSettings.sLongitudinalFriction ||
+                   selectedItem == LogSettings.sLongitudinalSlipSpeed ||
+                   selectedItem == LogSettings.sSuspensionVelocity)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static bool CBLimiterSelectionIsAbsoluteValue(ComboBox cb)
         {
             string selectedItem = (string)cb.SelectedItem;
@@ -239,29 +262,14 @@ namespace Physics_Data_Debug
                    selectedItem == LogSettings.sLongitudinalSlipSpeed ||
                    selectedItem == LogSettings.sSuspensionVelocity)
             {
-                return true;//_4WheelsSettings.AbsoluteValues;
+                return true;
             }
             else
             {
                 return false;
             }
-            /*
-            LogSettings.sTireTravelSpeed
-            LogSettings.sAngularVelocity
-            LogSettings.sSteerAngle
-            LogSettings.sCamberAngle
-            LogSettings.sLateralLoad
-            LogSettings.sSlipAngle
-            LogSettings.sLateralFriction
-            LogSettings.sLateralSlipSpeed
-            LogSettings.sLongitudinalLoad
-            LogSettings.sSlipRatio
-            LogSettings.sLongitudinalFriction
-            LogSettings.sLongitudinalSlipSpeed
-            LogSettings.sSuspensionVelocity??
-            */
         }
-        public static void ClearSeriesHistory(Chart chartName)
+        public static void ClearListDataHistory()
         {
             //while (chartName.Series.Count > 1) { chartName.Series.RemoveAt(0); }
             FL_X1ValuesChart.Clear();
@@ -750,6 +758,348 @@ namespace Physics_Data_Debug
             //Return the XYZ values array
             return xyzValues;
         }
+        public static float[] LimiterListSelections(string limiter1Selection, string limiter2Selection, string limiter3Selection,
+                                                int raceTime, float travelSpeed, float angVel,
+                                                float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
+                                                float currContBrakeTorq, float currContBrakeTorqMax,
+                                                float steerAngDeg, float cambAngDeg,
+                                                float latLoad, float slipAngleDeg, float latFrict, float latSlipSpeed,
+                                                float lonLoad, float slipRatio, float lonFrict, float lonSlipSpeed,
+                                                float treadTemp, float innerTemp,
+                                                float totalFrict, float totalFrictAngle,
+                                                float suspLength, float suspVel)
+        {
+            float[] limiters = new float[3];
+            //Limiter1
+            if (limiter1Selection == LogSettings.sTireTravelSpeed)
+            {
+                limiters[0] = travelSpeed;
+            }
+            else if (limiter1Selection == LogSettings.sAngularVelocity)
+            {
+                limiters[0] = angVel;
+            }
+            else if (limiter1Selection == LogSettings.sVerticalLoad)
+            {
+                limiters[0] = verLoad;
+            }
+            else if (limiter1Selection == LogSettings.sVerticalDeflection)
+            {
+                limiters[0] = verDefl;
+            }
+            else if (limiter1Selection == LogSettings.sLoadedRadius)
+            {
+                limiters[0] = loadRadius;
+            }
+            else if (limiter1Selection == LogSettings.sEffectiveRadius)
+            {
+                limiters[0] = effRadius;
+            }
+            else if (limiter1Selection == LogSettings.sContactLength)
+            {
+                limiters[0] = contLength;
+            }
+            else if (limiter1Selection == LogSettings.sBrakeTorque)
+            {
+                limiters[0] = currContBrakeTorq;
+            }
+            else if (limiter1Selection == LogSettings.sMaxBrakeTorque)
+            {
+                limiters[0] = currContBrakeTorqMax;
+            }
+            else if (limiter1Selection == LogSettings.sSteerAngle)
+            {
+                limiters[0] = steerAngDeg;
+            }
+            else if (limiter1Selection == LogSettings.sCamberAngle)
+            {
+                limiters[0] = cambAngDeg;
+            }
+            else if (limiter1Selection == LogSettings.sLateralLoad)
+            {
+                limiters[0] = latLoad;
+            }
+            else if (limiter1Selection == LogSettings.sSlipAngle)
+            {
+                limiters[0] = slipAngleDeg;
+            }
+            else if (limiter1Selection == LogSettings.sLateralFriction)
+            {
+                limiters[0] = latFrict;
+            }
+            else if (limiter1Selection == LogSettings.sLateralSlipSpeed)
+            {
+                limiters[0] = latSlipSpeed;
+            }
+            else if (limiter1Selection == LogSettings.sLongitudinalLoad)
+            {
+                limiters[0] = lonLoad;
+            }
+            else if (limiter1Selection == LogSettings.sSlipRatio)
+            {
+                limiters[0] = slipRatio;
+            }
+            else if (limiter1Selection == LogSettings.sLongitudinalFriction)
+            {
+                limiters[0] = lonFrict;
+            }
+            else if (limiter1Selection == LogSettings.sLongitudinalSlipSpeed)
+            {
+                limiters[0] = lonSlipSpeed;
+            }
+            else if (limiter1Selection == LogSettings.sTreadTemperature)
+            {
+                limiters[0] = treadTemp;
+            }
+            else if (limiter1Selection == LogSettings.sInnerTemperature)
+            {
+                limiters[0] = innerTemp;
+            }
+            else if (limiter1Selection == LogSettings.sRaceTime)
+            {
+                limiters[0] = raceTime;
+            }
+            else if (limiter1Selection == LogSettings.sTotalFriction)
+            {
+                limiters[0] = totalFrict;
+            }
+            else if (limiter1Selection == LogSettings.sTotalFrictionAngle)
+            {
+                limiters[0] = totalFrictAngle;
+            }
+            else if (limiter1Selection == LogSettings.sSuspensionLength)
+            {
+                limiters[0] = suspLength;
+            }
+            else if (limiter1Selection == LogSettings.sSuspensionVelocity)
+            {
+                limiters[0] = suspVel;
+            }
+            else//fallback to slip angle
+            {
+                limiters[0] = slipAngleDeg;
+            }
+            //Limiter2
+            if (limiter2Selection == LogSettings.sTireTravelSpeed)
+            {
+                limiters[1] = travelSpeed;
+            }
+            else if (limiter2Selection == LogSettings.sAngularVelocity)
+            {
+                limiters[1] = angVel;
+            }
+            else if (limiter2Selection == LogSettings.sVerticalLoad)
+            {
+                limiters[1] = verLoad;
+            }
+            else if (limiter2Selection == LogSettings.sVerticalDeflection)
+            {
+                limiters[1] = verDefl;
+            }
+            else if (limiter2Selection == LogSettings.sLoadedRadius)
+            {
+                limiters[1] = loadRadius;
+            }
+            else if (limiter2Selection == LogSettings.sEffectiveRadius)
+            {
+                limiters[1] = effRadius;
+            }
+            else if (limiter2Selection == LogSettings.sContactLength)
+            {
+                limiters[1] = contLength;
+            }
+            else if (limiter2Selection == LogSettings.sBrakeTorque)
+            {
+                limiters[1] = currContBrakeTorq;
+            }
+            else if (limiter2Selection == LogSettings.sMaxBrakeTorque)
+            {
+                limiters[1] = currContBrakeTorqMax;
+            }
+            else if (limiter2Selection == LogSettings.sSteerAngle)
+            {
+                limiters[1] = steerAngDeg;
+            }
+            else if (limiter2Selection == LogSettings.sCamberAngle)
+            {
+                limiters[1] = cambAngDeg;
+            }
+            else if (limiter2Selection == LogSettings.sLateralLoad)
+            {
+                limiters[1] = latLoad;
+            }
+            else if (limiter2Selection == LogSettings.sSlipAngle)
+            {
+                limiters[1] = slipAngleDeg;
+            }
+            else if (limiter2Selection == LogSettings.sLateralFriction)
+            {
+                limiters[1] = latFrict;
+            }
+            else if (limiter2Selection == LogSettings.sLateralSlipSpeed)
+            {
+                limiters[1] = latSlipSpeed;
+            }
+            else if (limiter2Selection == LogSettings.sLongitudinalLoad)
+            {
+                limiters[1] = lonLoad;
+            }
+            else if (limiter2Selection == LogSettings.sSlipRatio)
+            {
+                limiters[1] = slipRatio;
+            }
+            else if (limiter2Selection == LogSettings.sLongitudinalFriction)
+            {
+                limiters[1] = lonFrict;
+            }
+            else if (limiter2Selection == LogSettings.sLongitudinalSlipSpeed)
+            {
+                limiters[1] = lonSlipSpeed;
+            }
+            else if (limiter2Selection == LogSettings.sTreadTemperature)
+            {
+                limiters[1] = treadTemp;
+            }
+            else if (limiter2Selection == LogSettings.sInnerTemperature)
+            {
+                limiters[1] = innerTemp;
+            }
+            else if (limiter2Selection == LogSettings.sRaceTime)
+            {
+                limiters[1] = raceTime;
+            }
+            else if (limiter2Selection == LogSettings.sTotalFriction)
+            {
+                limiters[1] = totalFrict;
+            }
+            else if (limiter2Selection == LogSettings.sTotalFrictionAngle)
+            {
+                limiters[1] = totalFrictAngle;
+            }
+            else if (limiter2Selection == LogSettings.sSuspensionLength)
+            {
+                limiters[1] = suspLength;
+            }
+            else if (limiter2Selection == LogSettings.sSuspensionVelocity)
+            {
+                limiters[1] = suspVel;
+            }
+            else//fallback to lateral friction
+            {
+                limiters[1] = latFrict;
+            }
+            //Limiter3
+            if (limiter3Selection == LogSettings.sTireTravelSpeed)
+            {
+                limiters[2] = travelSpeed;
+            }
+            else if (limiter3Selection == LogSettings.sAngularVelocity)
+            {
+                limiters[2] = angVel;
+            }
+            else if (limiter3Selection == LogSettings.sVerticalLoad)
+            {
+                limiters[2] = verLoad;
+            }
+            else if (limiter3Selection == LogSettings.sVerticalDeflection)
+            {
+                limiters[2] = verDefl;
+            }
+            else if (limiter3Selection == LogSettings.sLoadedRadius)
+            {
+                limiters[2] = loadRadius;
+            }
+            else if (limiter3Selection == LogSettings.sEffectiveRadius)
+            {
+                limiters[2] = effRadius;
+            }
+            else if (limiter3Selection == LogSettings.sContactLength)
+            {
+                limiters[2] = contLength;
+            }
+            else if (limiter3Selection == LogSettings.sBrakeTorque)
+            {
+                limiters[2] = currContBrakeTorq;
+            }
+            else if (limiter3Selection == LogSettings.sMaxBrakeTorque)
+            {
+                limiters[2] = currContBrakeTorqMax;
+            }
+            else if (limiter3Selection == LogSettings.sSteerAngle)
+            {
+                limiters[2] = steerAngDeg;
+            }
+            else if (limiter3Selection == LogSettings.sCamberAngle)
+            {
+                limiters[2] = cambAngDeg;
+            }
+            else if (limiter3Selection == LogSettings.sLateralLoad)
+            {
+                limiters[2] = latLoad;
+            }
+            else if (limiter3Selection == LogSettings.sSlipAngle)
+            {
+                limiters[2] = slipAngleDeg;
+            }
+            else if (limiter3Selection == LogSettings.sLateralFriction)
+            {
+                limiters[2] = latFrict;
+            }
+            else if (limiter3Selection == LogSettings.sLateralSlipSpeed)
+            {
+                limiters[2] = latSlipSpeed;
+            }
+            else if (limiter3Selection == LogSettings.sLongitudinalLoad)
+            {
+                limiters[2] = lonLoad;
+            }
+            else if (limiter3Selection == LogSettings.sSlipRatio)
+            {
+                limiters[2] = slipRatio;
+            }
+            else if (limiter3Selection == LogSettings.sLongitudinalFriction)
+            {
+                limiters[2] = lonFrict;
+            }
+            else if (limiter3Selection == LogSettings.sLongitudinalSlipSpeed)
+            {
+                limiters[2] = lonSlipSpeed;
+            }
+            else if (limiter3Selection == LogSettings.sTreadTemperature)
+            {
+                limiters[2] = treadTemp;
+            }
+            else if (limiter3Selection == LogSettings.sInnerTemperature)
+            {
+                limiters[2] = innerTemp;
+            }
+            else if (limiter3Selection == LogSettings.sRaceTime)
+            {
+                limiters[2] = raceTime;
+            }
+            else if (limiter3Selection == LogSettings.sTotalFriction)
+            {
+                limiters[2] = totalFrict;
+            }
+            else if (limiter3Selection == LogSettings.sTotalFrictionAngle)
+            {
+                limiters[2] = totalFrictAngle;
+            }
+            else if (limiter3Selection == LogSettings.sSuspensionLength)
+            {
+                limiters[2] = suspLength;
+            }
+            else if (limiter3Selection == LogSettings.sSuspensionVelocity)
+            {
+                limiters[2] = suspVel;
+            }
+            else//fallback to vertical load
+            {
+                limiters[2] = verLoad;
+            }
+            //Return the XYZ values array
+            return limiters;
+        }
         private static void AddColorDataAndHandleHistoryBuffer(List<double> colorValues, double data)
         {
             if (_4WheelsSettings.AbsoluteValues == true)
@@ -765,7 +1115,8 @@ namespace Physics_Data_Debug
                 colorValues.RemoveAt(0);
             }
         }
-        private static void ColorGradient(double dataX, double dataY, double dataZ,
+        private static void ColorGradient(double dataX, double dataY, 
+            double dataZ,
             List<double> xValuesColor1, List<double> yValuesColor1,
             List<double> xValuesColor2, List<double> yValuesColor2,
             List<double> xValuesColor3, List<double> yValuesColor3,
@@ -778,8 +1129,8 @@ namespace Physics_Data_Debug
             List<double> xValuesColor10, List<double> yValuesColor10)
         {
 
-            double Xdata = Math.Abs(dataX);
-            double Ydata = Math.Abs(dataY);
+            //double Xdata = Math.Abs(dataX);
+            //double Ydata = Math.Abs(dataY);
             double Zdata = Math.Abs(dataZ);
 
             double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / Steps;
@@ -851,8 +1202,52 @@ namespace Physics_Data_Debug
                 AddColorDataAndHandleHistoryBuffer(yValuesColor1, dataY);
             }
         }
-        public static void ListSeries(Chart chartName,
-            string seriesName, double dataX, double dataY, double dataZ)
+        public static bool LimiterIsAbsoluteValue(string limiter)
+        {
+            return LimiterSelectionIsAbsoluteValue(limiter);
+        }
+        public static bool OverTheChosenLimiter(double limiterData1, double limiterData2, double limiterData3)
+        {
+            bool limiter1IsAbsoluteValue = LimiterIsAbsoluteValue(Form4Wheels.X1LimiterSelection);
+            bool limiter2IsAbsoluteValue = LimiterIsAbsoluteValue(Form4Wheels.Y1LimiterSelection);
+            bool limiter3IsAbsoluteValue = LimiterIsAbsoluteValue(Form4Wheels.Z1LimiterSelection);
+            if (limiter1IsAbsoluteValue == true)
+            {
+                if(Math.Abs(limiterData1) > Form4Wheels.X1LimiterMax || Math.Abs(limiterData1) < Form4Wheels.X1LimiterMin)
+                {
+                    return true;
+                }
+            }
+            else if (limiterData1 > Form4Wheels.X1LimiterMax || limiterData1 < Form4Wheels.X1LimiterMin)
+            {
+                return true;
+            }
+            if (limiter2IsAbsoluteValue == true)
+            {
+                if (Math.Abs(limiterData2) > Form4Wheels.Y1LimiterMax || Math.Abs(limiterData2) < Form4Wheels.Y1LimiterMin)
+                {
+                    return true;
+                }
+            }
+            else if (limiterData2 > Form4Wheels.Y1LimiterMax || limiterData2 < Form4Wheels.Y1LimiterMin)
+            {
+                return true;
+            }
+            if (limiter3IsAbsoluteValue == true)
+            {
+                if (Math.Abs(limiterData3) > Form4Wheels.Z1LimiterMax || Math.Abs(limiterData3) < Form4Wheels.Z1LimiterMin)
+                {
+                    return true;
+                }
+            }
+            else if (limiterData3 > Form4Wheels.Z1LimiterMax || limiterData3 < Form4Wheels.Z1LimiterMin)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static void ListSeries(Chart chartName, string seriesName, double dataX, double dataY, double dataZ, double limiter1Data, double limiter2Data, double limiter3Data)
         {
             float noTireContactLimiter;
             List<double> X1Values; List<double> Y1Values; List<double> Z1Values;
@@ -975,35 +1370,43 @@ namespace Physics_Data_Debug
                 Y1ValuesColor10 = _4Wheels.RR_Y1ValuesChartColor10;
                 Z1Values = _4Wheels.RR_Z1ValuesChart;
             }
-
+            if (_4WheelsSettings.AbsoluteValues == true)
+            {
+                dataX = Math.Abs(dataX);
+                dataY = Math.Abs(dataY);
+                dataZ = Math.Abs(dataZ);
+            }
             // No tire contact, no data added
-            if (noTireContactLimiter == 0)
+            if (Form4Wheels.NoTireContactLimiterEnabled == true)
             {
-                return;
-            }
-            // Maybe some more filters here or do it somewhere else
-            else// add data
-            {
-                if (_4WheelsSettings.AbsoluteValues == true)
+                if (noTireContactLimiter == 0)
                 {
-                    X1Values.Add(Math.Abs(dataX));
-                    Y1Values.Add(Math.Abs(dataY));
-                    Z1Values.Add(Math.Abs(dataZ));
-                }
-                else
-                {
-                    X1Values.Add(dataX);
-                    Y1Values.Add(dataY);
-                    Z1Values.Add(dataZ);
-                }
-                if (X1Values.Count > 1)
-                {
-                    X1Values.RemoveAt(0);
-                    Y1Values.RemoveAt(0);
-                    Z1Values.RemoveAt(0);
+                    return;
                 }
             }
-            ColorGradient(dataX, dataY, dataZ,
+            //Limiter filters
+            if (Form4Wheels.LimitersEnabled == true)
+            {
+                bool isOverTheLimiter = _4Wheels.OverTheChosenLimiter(limiter1Data, limiter2Data, limiter3Data);
+                if (/*noTireContactLimiter == 0 || */isOverTheLimiter == true)
+                {
+                    return;
+                }
+            }
+            // Add data if the previous stuff didn't return back
+            X1Values.Add(dataX);
+            Y1Values.Add(dataY);
+            Z1Values.Add(dataZ);
+
+            if (X1Values.Count > 1)
+            {
+                X1Values.RemoveAt(0);
+                Y1Values.RemoveAt(0);
+                Z1Values.RemoveAt(0);
+            }
+
+            ColorGradient(dataX, dataY, 
+                dataZ,
             X1ValuesColor1, Y1ValuesColor1,
             X1ValuesColor2, Y1ValuesColor2,
             X1ValuesColor3, Y1ValuesColor3,
@@ -1030,226 +1433,6 @@ namespace Physics_Data_Debug
             chartName.Series[seriesName].Points.Last().MarkerSize = 8;
             chartName.Series[seriesName].Points.Last().MarkerColor = _4WheelsSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
             chartName.Series[seriesName].Points.Last().IsValueShownAsLabel = false;//true;
-        }
-        public static void SetUpDownChart(Chart chartName)
-        {
-            double maxmin = _4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min;
-            double interval = maxmin / Steps;
-            chartName.ChartAreas["ChartArea1"].AxisY.Minimum = _4WheelsSettings.Z1Min;
-
-            chartName.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
-            chartName.ChartAreas["ChartArea1"].AxisX.Maximum = 1;
-            chartName.ChartAreas["ChartArea1"].AxisY.Maximum = _4WheelsSettings.Z1Max;
-            chartName.ChartAreas["ChartArea1"].AxisY.MajorGrid.Interval = interval;
-            chartName.ChartAreas["ChartArea1"].AxisY.Interval = interval;
-            chartName.Series["Series1"].Color = Color.Transparent;
-            chartName.Series["Series1"].LabelBackColor = Color.Transparent;
-
-            chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Clear();
-            if (_4WheelsSettings.Scheme == "Green Red")
-            {
-                for (double i = _4WheelsSettings.Z1Min * Steps; i <= _4WheelsSettings.Z1Max * Steps; i += maxmin)
-                {
-
-                    double iminsteps = i - _4WheelsSettings.Z1Min * Steps;
-                    StripLine sl = new StripLine();
-                    if (Math.Abs(iminsteps) == maxmin * 10)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 0 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 9)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 0 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 8)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 7)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 64 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 6)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 128 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 5)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 192 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 4)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 192 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 3)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 192 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 2)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 64 / Divider, 192 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 1)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 0 / Divider, 192 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 0)
-                    {
-
-                    }
-                    if (i < 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / Steps;
-                    }
-                    else if (i > 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / Steps - interval;
-                    }
-                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
-                }
-            }
-            else if (_4WheelsSettings.Scheme == "Colorblind")
-            {
-                Color color2 = Color.FromArgb(HistoryAlpha, 0, 73, 73);
-                Color color3 = Color.FromArgb(HistoryAlpha, 0, 146, 146);
-                Color color4 = Color.FromArgb(HistoryAlpha, 255, 109, 182);
-                //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);
-                Color color6 = Color.FromArgb(HistoryAlpha, 73, 0, 146);
-                Color color7 = Color.FromArgb(HistoryAlpha, 0, 109, 219);
-                Color color8 = Color.FromArgb(HistoryAlpha, 182, 109, 255);
-                Color color9 = Color.FromArgb(HistoryAlpha, 109, 182, 255);
-                Color color15 = Color.FromArgb(HistoryAlpha, 255, 255, 109);
-                Color color14 = Color.FromArgb(HistoryAlpha, 36, 255, 36);
-                Color color13 = Color.FromArgb(HistoryAlpha, 219, 109, 0);
-
-                for (double i = _4WheelsSettings.Z1Min * Steps; i <= _4WheelsSettings.Z1Max * Steps; i += maxmin)
-                {
-
-                    double iminsteps = i - _4WheelsSettings.Z1Min * Steps;
-                    StripLine sl = new StripLine();
-                    if (Math.Abs(iminsteps) == maxmin * 10)
-                    {
-                        sl.BackColor = color13;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 9)
-                    {
-                        sl.BackColor = color14;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 8)
-                    {
-                        sl.BackColor = color15;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 7)
-                    {
-                        sl.BackColor = color9;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 6)
-                    {
-                        sl.BackColor = color8;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 5)
-                    {
-                        sl.BackColor = color7;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 4)
-                    {
-                        sl.BackColor = color6;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 3)
-                    {
-                        sl.BackColor = color4;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 2)
-                    {
-                        sl.BackColor = color3;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 1)
-                    {
-                        sl.BackColor = color2;
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 0)
-                    {
-
-                    }
-                    if (i < 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / Steps;
-                    }
-                    else if (i > 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / Steps - interval;
-                    }
-                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
-                }
-            }
-            else
-            {
-                for (double i = _4WheelsSettings.Z1Min * Steps; i <= _4WheelsSettings.Z1Max * Steps; i += maxmin)
-                {
-                    double iminsteps = i - _4WheelsSettings.Z1Min * Steps;
-                    StripLine sl = new StripLine();
-                    if (Math.Abs(iminsteps) == _4WheelsSettings.Z1Max * 10)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 0 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 9)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 0 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 8)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 0 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 7)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 64 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 6)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 128 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 5)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 255 / Divider, 0 / Divider, 192 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 4)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 192 / Divider, 0 / Divider, 192 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 3)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 128 / Divider, 0 / Divider, 192 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 2)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 64 / Divider, 0 / Divider, 192 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 1)
-                    {
-                        sl.BackColor = Color.FromArgb(Alpha, 0 / Divider, 0 / Divider, 192 / Divider);
-                    }
-                    if (Math.Abs(iminsteps) == maxmin * 0)
-                    {
-
-                    }
-                    if (i < 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / Steps;
-                    }
-                    else if (i > 0)
-                    {
-                        sl.StripWidth = interval;
-                        sl.IntervalOffset = ((double)i) / Steps - interval;
-                    }
-                    chartName.ChartAreas["ChartArea1"].AxisY.StripLines.Add(sl);
-                }
-            }
-
         }
     }
 }

@@ -738,16 +738,19 @@ namespace Physics_Data_Debug
             form4Wheels.SetChartsForForm();
             timer1.Enabled = true;
             form4Wheels.UpdateAllLimiters();
+            LoadValuesInTextBox();
         }
-
-        private void LoadCurrentValuesButton_Click(object sender, EventArgs e)
+        private void LoadValuesInTextBox()
         {
             LoadX1Defaults();
             LoadY1Defaults();
             LoadZ1Defaults();
             LoadOtherDefaults();
         }
-
+        private void LoadCurrentValuesButton_Click(object sender, EventArgs e)
+        {
+            LoadValuesInTextBox();
+        }
         private void CheckFontColorAndSetBackGroundColor(ComboBox cb, Color fontColor)
         {
             if (fontColor == Color.White || fontColor == Color.WhiteSmoke || fontColor == Color.AntiqueWhite || fontColor == Color.FloralWhite || fontColor == Color.NavajoWhite)
