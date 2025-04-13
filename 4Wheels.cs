@@ -224,7 +224,8 @@ namespace Physics_Data_Debug
         public static Color Color1 { get; set; }
         public static bool LimiterSelectionIsAbsoluteValue(string selectedItem)
         {
-            if (selectedItem == LogSettings.sTireTravelSpeed ||
+            if (selectedItem == LogSettings.sNone ||
+                   selectedItem == LogSettings.sTireTravelSpeed ||
                    selectedItem == LogSettings.sAngularVelocity ||
                    selectedItem == LogSettings.sSteerAngle ||
                    selectedItem == LogSettings.sCamberAngle ||
@@ -248,19 +249,20 @@ namespace Physics_Data_Debug
         public static bool CBLimiterSelectionIsAbsoluteValue(ComboBox cb)
         {
             string selectedItem = (string)cb.SelectedItem;
-            if (selectedItem == LogSettings.sTireTravelSpeed ||
-                   selectedItem == LogSettings.sAngularVelocity ||
-                   selectedItem == LogSettings.sSteerAngle ||
-                   selectedItem == LogSettings.sCamberAngle ||
-                   selectedItem == LogSettings.sLateralLoad ||
-                   selectedItem == LogSettings.sSlipAngle ||
-                   selectedItem == LogSettings.sLateralFriction ||
-                   selectedItem == LogSettings.sLateralSlipSpeed ||
-                   selectedItem == LogSettings.sLongitudinalLoad ||
-                   selectedItem == LogSettings.sSlipRatio ||
-                   selectedItem == LogSettings.sLongitudinalFriction ||
-                   selectedItem == LogSettings.sLongitudinalSlipSpeed ||
-                   selectedItem == LogSettings.sSuspensionVelocity)
+            if (selectedItem == LogSettings.sNone ||
+                selectedItem == LogSettings.sTireTravelSpeed ||
+                selectedItem == LogSettings.sAngularVelocity ||
+                selectedItem == LogSettings.sSteerAngle ||
+                selectedItem == LogSettings.sCamberAngle ||
+                selectedItem == LogSettings.sLateralLoad ||
+                selectedItem == LogSettings.sSlipAngle ||
+                selectedItem == LogSettings.sLateralFriction ||
+                selectedItem == LogSettings.sLateralSlipSpeed ||
+                selectedItem == LogSettings.sLongitudinalLoad ||
+                selectedItem == LogSettings.sSlipRatio ||
+                selectedItem == LogSettings.sLongitudinalFriction ||
+                selectedItem == LogSettings.sLongitudinalSlipSpeed ||
+                selectedItem == LogSettings.sSuspensionVelocity)
             {
                 return true;
             }
@@ -417,7 +419,7 @@ namespace Physics_Data_Debug
 
         }
         public static float[] XYZListSelections(string xAxisSelection, string yAxisSelection, string zAxisSelection,
-                                                int raceTime, float travelSpeed, float angVel,
+                                                int none, int raceTime, float travelSpeed, float angVel,
                                                 float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
                                                 float currContBrakeTorq, float currContBrakeTorqMax,
                                                 float steerAngDeg, float cambAngDeg,
@@ -533,9 +535,9 @@ namespace Physics_Data_Debug
             {
                 xyzValues[0] = suspVel;
             }
-            else//fallback to slip angle
+            else//fallback to none
             {
-                xyzValues[0] = slipAngleDeg;
+                xyzValues[0] = none;
             }
             //Y
             if (yAxisSelection == LogSettings.sTireTravelSpeed)
@@ -642,9 +644,9 @@ namespace Physics_Data_Debug
             {
                 xyzValues[1] = suspVel;
             }
-            else//fallback to lateral friction
+            else//fallback to none
             {
-                xyzValues[1] = latFrict;
+                xyzValues[1] = none;
             }
             //Z
             if (zAxisSelection == LogSettings.sTireTravelSpeed)
@@ -751,15 +753,15 @@ namespace Physics_Data_Debug
             {
                 xyzValues[2] = suspVel;
             }
-            else//fallback to vertical load
+            else//fallback to none
             {
-                xyzValues[2] = verLoad;
+                xyzValues[2] = none;
             }
             //Return the XYZ values array
             return xyzValues;
         }
         public static float[] LimiterListSelections(string limiter1Selection, string limiter2Selection, string limiter3Selection,
-                                                int raceTime, float travelSpeed, float angVel,
+                                                int none, int raceTime, float travelSpeed, float angVel,
                                                 float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
                                                 float currContBrakeTorq, float currContBrakeTorqMax,
                                                 float steerAngDeg, float cambAngDeg,
@@ -875,9 +877,9 @@ namespace Physics_Data_Debug
             {
                 limiters[0] = suspVel;
             }
-            else//fallback to slip angle
+            else//fallback to none
             {
-                limiters[0] = slipAngleDeg;
+                limiters[0] = none;
             }
             //Limiter2
             if (limiter2Selection == LogSettings.sTireTravelSpeed)
@@ -984,9 +986,9 @@ namespace Physics_Data_Debug
             {
                 limiters[1] = suspVel;
             }
-            else//fallback to lateral friction
+            else//fallback to none
             {
-                limiters[1] = latFrict;
+                limiters[1] = none;
             }
             //Limiter3
             if (limiter3Selection == LogSettings.sTireTravelSpeed)
@@ -1093,9 +1095,9 @@ namespace Physics_Data_Debug
             {
                 limiters[2] = suspVel;
             }
-            else//fallback to vertical load
+            else//fallback to none
             {
-                limiters[2] = verLoad;
+                limiters[2] = none;
             }
             //Return the XYZ values array
             return limiters;

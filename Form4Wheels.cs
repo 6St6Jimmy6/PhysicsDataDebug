@@ -162,7 +162,7 @@ namespace Physics_Data_Debug
             /// 
             double dMax = 0; double dMin = 0; double dMajorInterval = 0; int dDecimals = 0; bool dMinorEnabled = true; int dMinorIntervalFraction = 0;
             AxisSelectionList.Add(dMax); AxisSelectionList.Add(dMin); AxisSelectionList.Add(dMajorInterval); AxisSelectionList.Add(dDecimals); AxisSelectionList.Add(dMinorEnabled); AxisSelectionList.Add(dMinorIntervalFraction);
-
+            
             if (axisSelection == LogSettings.sRaceTime)
             {
                 dMax = double.NaN;
@@ -171,6 +171,15 @@ namespace Physics_Data_Debug
                 dDecimals = 0;
                 dMinorEnabled = false;
                 dMinorIntervalFraction = 60;
+            }
+            else if (axisSelection == LogSettings.sNone)
+            {
+                dMax = 2;
+                dMin = 0;
+                dMajorInterval = 0;
+                dDecimals = 0;
+                dMinorEnabled = false;
+                dMinorIntervalFraction = 1;
             }
             else if (axisSelection == LogSettings.sTireTravelSpeed)
             {
@@ -533,6 +542,11 @@ namespace Physics_Data_Debug
             if (axisSelection == LogSettings.sRaceTime)
             {
                 dMax = double.NaN;
+                dMin = 0;
+            }
+            else if (axisSelection == LogSettings.sNone)
+            {
+                dMax = 2;
                 dMin = 0;
             }
             else if (axisSelection == LogSettings.sTireTravelSpeed)
@@ -1240,7 +1254,7 @@ namespace Physics_Data_Debug
         private float[] FL_XYZValues()
         {
             return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
                                                     LiveData.FL_VerticalLoad, LiveData.FL_VerticalDeflection, LiveData.FL_LoadedRadius, LiveData.FL_EffectiveRadius, LiveData.FL_ContactLength,
                                                     LiveData.FL_CurrentContactBrakeTorque, LiveData.FL_CurrentContactBrakeTorqueMax,
                                                     LiveData.FL_SteerAngleDeg, LiveData.FL_CamberAngleDeg,
@@ -1253,7 +1267,7 @@ namespace Physics_Data_Debug
         private float[] FL_LimiterValue()
         {
             return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
                                                     LiveData.FL_VerticalLoad, LiveData.FL_VerticalDeflection, LiveData.FL_LoadedRadius, LiveData.FL_EffectiveRadius, LiveData.FL_ContactLength,
                                                     LiveData.FL_CurrentContactBrakeTorque, LiveData.FL_CurrentContactBrakeTorqueMax,
                                                     LiveData.FL_SteerAngleDeg, LiveData.FL_CamberAngleDeg,
@@ -1266,7 +1280,7 @@ namespace Physics_Data_Debug
         private float[] FR_XYZValues()
         {
             return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
                                                     LiveData.FR_VerticalLoad, LiveData.FR_VerticalDeflection, LiveData.FR_LoadedRadius, LiveData.FR_EffectiveRadius, LiveData.FR_ContactLength,
                                                     LiveData.FR_CurrentContactBrakeTorque, LiveData.FR_CurrentContactBrakeTorqueMax,
                                                     LiveData.FR_SteerAngleDeg, LiveData.FR_CamberAngleDeg,
@@ -1279,7 +1293,7 @@ namespace Physics_Data_Debug
         private float[] FR_LimiterValue()
         {
             return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
                                                     LiveData.FR_VerticalLoad, LiveData.FR_VerticalDeflection, LiveData.FR_LoadedRadius, LiveData.FR_EffectiveRadius, LiveData.FR_ContactLength,
                                                     LiveData.FR_CurrentContactBrakeTorque, LiveData.FR_CurrentContactBrakeTorqueMax,
                                                     LiveData.FR_SteerAngleDeg, LiveData.FR_CamberAngleDeg,
@@ -1292,7 +1306,7 @@ namespace Physics_Data_Debug
         private float[] RL_XYZValues()
         {
             return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
                                                     LiveData.RL_VerticalLoad, LiveData.RL_VerticalDeflection, LiveData.RL_LoadedRadius, LiveData.RL_EffectiveRadius, LiveData.RL_ContactLength,
                                                     LiveData.RL_CurrentContactBrakeTorque, LiveData.RL_CurrentContactBrakeTorqueMax,
                                                     LiveData.RL_SteerAngleDeg, LiveData.RL_CamberAngleDeg,
@@ -1305,7 +1319,7 @@ namespace Physics_Data_Debug
         private float[] RL_LimiterValue()
         {
             return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
                                                     LiveData.RL_VerticalLoad, LiveData.RL_VerticalDeflection, LiveData.RL_LoadedRadius, LiveData.RL_EffectiveRadius, LiveData.RL_ContactLength,
                                                     LiveData.RL_CurrentContactBrakeTorque, LiveData.RL_CurrentContactBrakeTorqueMax,
                                                     LiveData.RL_SteerAngleDeg, LiveData.RL_CamberAngleDeg,
@@ -1318,7 +1332,7 @@ namespace Physics_Data_Debug
         private float[] RR_LimiterValue()
         {
             return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
                                                     LiveData.RR_VerticalLoad, LiveData.RR_VerticalDeflection, LiveData.RR_LoadedRadius, LiveData.RR_EffectiveRadius, LiveData.RR_ContactLength,
                                                     LiveData.RR_CurrentContactBrakeTorque, LiveData.RR_CurrentContactBrakeTorqueMax,
                                                     LiveData.RR_SteerAngleDeg, LiveData.RR_CamberAngleDeg,
@@ -1331,7 +1345,7 @@ namespace Physics_Data_Debug
         private float[] RR_XYZValues()
         {
             return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
+                                                    LiveData.None, LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
                                                     LiveData.RR_VerticalLoad, LiveData.RR_VerticalDeflection, LiveData.RR_LoadedRadius, LiveData.RR_EffectiveRadius, LiveData.RR_ContactLength,
                                                     LiveData.RR_CurrentContactBrakeTorque, LiveData.RR_CurrentContactBrakeTorqueMax,
                                                     LiveData.RR_SteerAngleDeg, LiveData.RR_CamberAngleDeg,
@@ -1406,6 +1420,11 @@ namespace Physics_Data_Debug
             if (axisSelection == LogSettings.sRaceTime)
             {
                 dMax = double.NaN;
+                dMin = 0;
+            }
+            else if (axisSelection == LogSettings.sNone)
+            {
+                dMax = 2;
                 dMin = 0;
             }
             else if (axisSelection == LogSettings.sTireTravelSpeed)

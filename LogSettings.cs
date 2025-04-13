@@ -63,6 +63,7 @@ namespace Physics_Data_Debug
         public static bool YGRotatedLogEnabled { get; set; } = true;//27
         public static bool XYZGLogEnabled { get; set; } = true;//28
 
+        public static string sNone { get; set; } = "None";
         public static string sTireTravelSpeed { get; set; } = "Tire Travel Speed";
         public static string sAngularVelocity { get; set; } = "Angular Velocity";
         public static string sVerticalLoad { get; set; } = "Vertical Load";

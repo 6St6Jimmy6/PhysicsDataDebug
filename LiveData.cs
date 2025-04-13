@@ -57,6 +57,8 @@ namespace Physics_Data_Debug
         #region Data
         #region Other Data
         //Time Data
+        public static int None = 1;
+
         public static int RaceTime;
 
         public static float speed = 0.00f;

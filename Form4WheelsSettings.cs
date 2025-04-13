@@ -177,6 +177,7 @@ namespace Physics_Data_Debug
         }
         public static void AxisSelectionComboboxAdd(ComboBox axisSelectionCombobox)
         {
+            axisSelectionCombobox.Items.Add(LogSettings.sNone);
             axisSelectionCombobox.Items.Add(LogSettings.sTireTravelSpeed);
             axisSelectionCombobox.Items.Add(LogSettings.sAngularVelocity);
             axisSelectionCombobox.Items.Add(LogSettings.sVerticalLoad);
