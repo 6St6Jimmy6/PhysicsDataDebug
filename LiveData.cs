@@ -67,8 +67,13 @@ namespace Physics_Data_Debug
         public static float gForce = 0.00f;
         public static float g = 9.80665f;
 
+        public static float xDrag = 0.00f;
+        public static float yDrag = 0.00f;
+        public static float zDrag = 0.00f;
+
         public static float frontLift = 0.00f;
         public static float rearLift = 0.00f;
+
         public static float engineRPM = 0.00f;
         public static float engineRPMAxle = 0.00f;
         public static float engineTorque = 0.00f;
@@ -348,6 +353,9 @@ namespace Physics_Data_Debug
 
         #region Other offsets
         public static int OffsetSpeed { get; set; } = 0x70;
+        public static int OffsetXDrag { get; set; } = 0xAACF20;
+        public static int OffsetYDrag { get; set; } = 0xAACF24;
+        public static int OffsetZDrag { get; set; } = 0xAACF28;
         public static int OffsetFrontLift { get; set; } = 0xAACF2C;
         public static int OffsetRearLift { get; set; } = 0xAACF30;
         public static int OffsetEngineRPM { get; set; } = 0x38;
@@ -462,6 +470,9 @@ namespace Physics_Data_Debug
         #region Pointers
         #region Speed and Lift pointers
         public static int[] speedOffsets { get; set; } = { OffsetSpeed };
+        public static int[] xDragOffsets { get; set; } = { OffsetXDrag };
+        public static int[] yDragOffsets { get; set; } = { OffsetYDrag };
+        public static int[] zDragOffsets { get; set; } = { OffsetZDrag };
         public static int[] frontLiftOffsets { get; set; } = { OffsetFrontLift };
         public static int[] rearLiftOffsets { get; set; } = { OffsetRearLift };
         #endregion
@@ -679,7 +690,7 @@ namespace Physics_Data_Debug
             elapsedTime = raceTimeArray[1] - raceTimeArray[0];
             #endregion
             #region Read Speed, Lifts, Engine Torque and Differential
-            GetLiftsDifferentialData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocation);
+            GetDragLiftsDifferentialData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocation);
             GetEngineSpeedData(Helper, baseAddrEngineSpeed);
             enginePower = engineTorque * engineRPM / 9549;
             #endregion
@@ -816,8 +827,11 @@ namespace Physics_Data_Debug
 
             return memoryHelper.ReadMemory<byte>(Memory.Utils.MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsets));
         }
-        private static void GetLiftsDifferentialData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
+        private static void GetDragLiftsDifferentialData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
+            xDrag = GetFloatData(memoryHelper, baseAddr, xDragOffsets);
+            yDrag = GetFloatData(memoryHelper, baseAddr, yDragOffsets);
+            zDrag = GetFloatData(memoryHelper, baseAddr, zDragOffsets);
             frontLift = GetFloatData(memoryHelper, baseAddr, frontLiftOffsets);
             rearLift = GetFloatData(memoryHelper, baseAddr, rearLiftOffsets);
             differentialLocked = GetByteData(memoryHelper, baseAddr, differentialOpenOffsets);

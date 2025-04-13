@@ -239,13 +239,16 @@ namespace Physics_Data_Debug
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.CurrentYDrag = new System.Windows.Forms.Label();
+            this.CurrentXDrag = new System.Windows.Forms.Label();
+            this.CurrentZDrag = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(3, 5);
+            this.label12.Location = new System.Drawing.Point(3, 7);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 27;
@@ -255,7 +258,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentSpeed.AutoSize = true;
             this.CurrentSpeed.ForeColor = System.Drawing.Color.White;
-            this.CurrentSpeed.Location = new System.Drawing.Point(3, 18);
+            this.CurrentSpeed.Location = new System.Drawing.Point(3, 20);
             this.CurrentSpeed.Name = "CurrentSpeed";
             this.CurrentSpeed.Size = new System.Drawing.Size(73, 13);
             this.CurrentSpeed.TabIndex = 28;
@@ -265,27 +268,26 @@ namespace Physics_Data_Debug
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 107);
+            this.label13.Location = new System.Drawing.Point(3, 175);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 13);
+            this.label13.Size = new System.Drawing.Size(93, 13);
             this.label13.TabIndex = 29;
-            this.label13.Text = "Front Lift (N)";
+            this.label13.Text = "Front/Rear Lift (N)";
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(3, 141);
+            this.label14.Location = new System.Drawing.Point(3, 112);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(64, 13);
+            this.label14.Size = new System.Drawing.Size(97, 17);
             this.label14.TabIndex = 30;
-            this.label14.Text = "Rear Lift (N)";
+            this.label14.Text = "Aero Drag X/Y/Z";
             // 
             // CurrentFrontLift
             // 
             this.CurrentFrontLift.AutoSize = true;
             this.CurrentFrontLift.ForeColor = System.Drawing.Color.White;
-            this.CurrentFrontLift.Location = new System.Drawing.Point(3, 120);
+            this.CurrentFrontLift.Location = new System.Drawing.Point(3, 188);
             this.CurrentFrontLift.Name = "CurrentFrontLift";
             this.CurrentFrontLift.Size = new System.Drawing.Size(85, 13);
             this.CurrentFrontLift.TabIndex = 31;
@@ -295,7 +297,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentRearLift.AutoSize = true;
             this.CurrentRearLift.ForeColor = System.Drawing.Color.White;
-            this.CurrentRearLift.Location = new System.Drawing.Point(3, 154);
+            this.CurrentRearLift.Location = new System.Drawing.Point(3, 201);
             this.CurrentRearLift.Name = "CurrentRearLift";
             this.CurrentRearLift.Size = new System.Drawing.Size(84, 13);
             this.CurrentRearLift.TabIndex = 32;
@@ -1009,7 +1011,7 @@ namespace Physics_Data_Debug
             // 
             this.startFileLoggingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.startFileLoggingButton.ForeColor = System.Drawing.Color.White;
-            this.startFileLoggingButton.Location = new System.Drawing.Point(3, 364);
+            this.startFileLoggingButton.Location = new System.Drawing.Point(6, 418);
             this.startFileLoggingButton.Name = "startFileLoggingButton";
             this.startFileLoggingButton.Size = new System.Drawing.Size(90, 45);
             this.startFileLoggingButton.TabIndex = 121;
@@ -1021,7 +1023,7 @@ namespace Physics_Data_Debug
             // 
             this.logInterval_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.logInterval_textBox.ForeColor = System.Drawing.Color.White;
-            this.logInterval_textBox.Location = new System.Drawing.Point(4, 431);
+            this.logInterval_textBox.Location = new System.Drawing.Point(7, 485);
             this.logInterval_textBox.Name = "logInterval_textBox";
             this.logInterval_textBox.Size = new System.Drawing.Size(89, 20);
             this.logInterval_textBox.TabIndex = 123;
@@ -1032,7 +1034,7 @@ namespace Physics_Data_Debug
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(0, 415);
+            this.label15.Location = new System.Drawing.Point(3, 469);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 13);
             this.label15.TabIndex = 124;
@@ -1306,7 +1308,7 @@ namespace Physics_Data_Debug
             // 
             this.toLogSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toLogSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toLogSettingsButton.Location = new System.Drawing.Point(3, 470);
+            this.toLogSettingsButton.Location = new System.Drawing.Point(6, 524);
             this.toLogSettingsButton.Name = "toLogSettingsButton";
             this.toLogSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toLogSettingsButton.TabIndex = 149;
@@ -1362,7 +1364,7 @@ namespace Physics_Data_Debug
             // 
             this.toTireSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTireSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toTireSettingsButton.Location = new System.Drawing.Point(3, 633);
+            this.toTireSettingsButton.Location = new System.Drawing.Point(6, 687);
             this.toTireSettingsButton.Name = "toTireSettingsButton";
             this.toTireSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toTireSettingsButton.TabIndex = 155;
@@ -1986,7 +1988,7 @@ namespace Physics_Data_Debug
             // 
             this.TickTime.AutoSize = true;
             this.TickTime.ForeColor = System.Drawing.Color.White;
-            this.TickTime.Location = new System.Drawing.Point(0, 454);
+            this.TickTime.Location = new System.Drawing.Point(3, 508);
             this.TickTime.Name = "TickTime";
             this.TickTime.Size = new System.Drawing.Size(78, 13);
             this.TickTime.TabIndex = 226;
@@ -2128,7 +2130,7 @@ namespace Physics_Data_Debug
             // 
             this.toSuspensionSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toSuspensionSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(3, 798);
+            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(6, 852);
             this.toSuspensionSettingsButton.Name = "toSuspensionSettingsButton";
             this.toSuspensionSettingsButton.Size = new System.Drawing.Size(90, 45);
             this.toSuspensionSettingsButton.TabIndex = 239;
@@ -2140,7 +2142,7 @@ namespace Physics_Data_Debug
             // 
             this.OpenTemperaturesChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.OpenTemperaturesChart.ForeColor = System.Drawing.Color.White;
-            this.OpenTemperaturesChart.Location = new System.Drawing.Point(3, 572);
+            this.OpenTemperaturesChart.Location = new System.Drawing.Point(6, 626);
             this.OpenTemperaturesChart.Name = "OpenTemperaturesChart";
             this.OpenTemperaturesChart.Size = new System.Drawing.Size(90, 55);
             this.OpenTemperaturesChart.TabIndex = 240;
@@ -2152,7 +2154,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEngineTorque.AutoSize = true;
             this.CurrentEngineTorque.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineTorque.Location = new System.Drawing.Point(3, 216);
+            this.CurrentEngineTorque.Location = new System.Drawing.Point(3, 266);
             this.CurrentEngineTorque.Name = "CurrentEngineTorque";
             this.CurrentEngineTorque.Size = new System.Drawing.Size(99, 13);
             this.CurrentEngineTorque.TabIndex = 242;
@@ -2162,7 +2164,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEnginePower.AutoSize = true;
             this.CurrentEnginePower.ForeColor = System.Drawing.Color.White;
-            this.CurrentEnginePower.Location = new System.Drawing.Point(3, 229);
+            this.CurrentEnginePower.Location = new System.Drawing.Point(3, 279);
             this.CurrentEnginePower.Name = "CurrentEnginePower";
             this.CurrentEnginePower.Size = new System.Drawing.Size(99, 13);
             this.CurrentEnginePower.TabIndex = 244;
@@ -2172,7 +2174,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentDifferentialOpen.AutoSize = true;
             this.CurrentDifferentialOpen.ForeColor = System.Drawing.Color.White;
-            this.CurrentDifferentialOpen.Location = new System.Drawing.Point(3, 267);
+            this.CurrentDifferentialOpen.Location = new System.Drawing.Point(3, 319);
             this.CurrentDifferentialOpen.Name = "CurrentDifferentialOpen";
             this.CurrentDifferentialOpen.Size = new System.Drawing.Size(93, 13);
             this.CurrentDifferentialOpen.TabIndex = 246;
@@ -2182,7 +2184,7 @@ namespace Physics_Data_Debug
             // 
             this.label77.AutoSize = true;
             this.label77.ForeColor = System.Drawing.Color.White;
-            this.label77.Location = new System.Drawing.Point(3, 254);
+            this.label77.Location = new System.Drawing.Point(3, 306);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(57, 13);
             this.label77.TabIndex = 245;
@@ -2192,7 +2194,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentDifferentialSpeedRad.AutoSize = true;
             this.CurrentDifferentialSpeedRad.ForeColor = System.Drawing.Color.White;
-            this.CurrentDifferentialSpeedRad.Location = new System.Drawing.Point(3, 280);
+            this.CurrentDifferentialSpeedRad.Location = new System.Drawing.Point(3, 332);
             this.CurrentDifferentialSpeedRad.Name = "CurrentDifferentialSpeedRad";
             this.CurrentDifferentialSpeedRad.Size = new System.Drawing.Size(66, 13);
             this.CurrentDifferentialSpeedRad.TabIndex = 247;
@@ -2202,7 +2204,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentDifferentialTorque.AutoSize = true;
             this.CurrentDifferentialTorque.ForeColor = System.Drawing.Color.White;
-            this.CurrentDifferentialTorque.Location = new System.Drawing.Point(3, 293);
+            this.CurrentDifferentialTorque.Location = new System.Drawing.Point(3, 345);
             this.CurrentDifferentialTorque.Name = "CurrentDifferentialTorque";
             this.CurrentDifferentialTorque.Size = new System.Drawing.Size(66, 13);
             this.CurrentDifferentialTorque.TabIndex = 248;
@@ -2212,7 +2214,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEngineRPM.AutoSize = true;
             this.CurrentEngineRPM.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineRPM.Location = new System.Drawing.Point(3, 190);
+            this.CurrentEngineRPM.Location = new System.Drawing.Point(3, 240);
             this.CurrentEngineRPM.Name = "CurrentEngineRPM";
             this.CurrentEngineRPM.Size = new System.Drawing.Size(68, 13);
             this.CurrentEngineRPM.TabIndex = 250;
@@ -2222,7 +2224,7 @@ namespace Physics_Data_Debug
             // 
             this.label78.AutoSize = true;
             this.label78.ForeColor = System.Drawing.Color.White;
-            this.label78.Location = new System.Drawing.Point(3, 177);
+            this.label78.Location = new System.Drawing.Point(3, 227);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(40, 13);
             this.label78.TabIndex = 249;
@@ -2232,7 +2234,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEngineRPMAxle.AutoSize = true;
             this.CurrentEngineRPMAxle.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(3, 203);
+            this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(3, 253);
             this.CurrentEngineRPMAxle.Name = "CurrentEngineRPMAxle";
             this.CurrentEngineRPMAxle.Size = new System.Drawing.Size(91, 13);
             this.CurrentEngineRPMAxle.TabIndex = 251;
@@ -2242,7 +2244,7 @@ namespace Physics_Data_Debug
             // 
             this.toTestChartPageButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTestChartPageButton.ForeColor = System.Drawing.Color.White;
-            this.toTestChartPageButton.Location = new System.Drawing.Point(3, 684);
+            this.toTestChartPageButton.Location = new System.Drawing.Point(6, 738);
             this.toTestChartPageButton.Name = "toTestChartPageButton";
             this.toTestChartPageButton.Size = new System.Drawing.Size(90, 55);
             this.toTestChartPageButton.TabIndex = 252;
@@ -2254,7 +2256,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentAcceleration.AutoSize = true;
             this.CurrentAcceleration.ForeColor = System.Drawing.Color.White;
-            this.CurrentAcceleration.Location = new System.Drawing.Point(3, 49);
+            this.CurrentAcceleration.Location = new System.Drawing.Point(3, 55);
             this.CurrentAcceleration.Name = "CurrentAcceleration";
             this.CurrentAcceleration.Size = new System.Drawing.Size(102, 13);
             this.CurrentAcceleration.TabIndex = 254;
@@ -2264,7 +2266,7 @@ namespace Physics_Data_Debug
             // 
             this.label75.AutoSize = true;
             this.label75.ForeColor = System.Drawing.Color.White;
-            this.label75.Location = new System.Drawing.Point(3, 36);
+            this.label75.Location = new System.Drawing.Point(3, 42);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(99, 13);
             this.label75.TabIndex = 253;
@@ -2274,7 +2276,7 @@ namespace Physics_Data_Debug
             // 
             this.CurrentGForce.AutoSize = true;
             this.CurrentGForce.ForeColor = System.Drawing.Color.White;
-            this.CurrentGForce.Location = new System.Drawing.Point(3, 85);
+            this.CurrentGForce.Location = new System.Drawing.Point(3, 88);
             this.CurrentGForce.Name = "CurrentGForce";
             this.CurrentGForce.Size = new System.Drawing.Size(79, 13);
             this.CurrentGForce.TabIndex = 256;
@@ -2284,7 +2286,7 @@ namespace Physics_Data_Debug
             // 
             this.label74.AutoSize = true;
             this.label74.ForeColor = System.Drawing.Color.White;
-            this.label74.Location = new System.Drawing.Point(3, 72);
+            this.label74.Location = new System.Drawing.Point(3, 75);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(45, 13);
             this.label74.TabIndex = 255;
@@ -2294,7 +2296,7 @@ namespace Physics_Data_Debug
             // 
             this.getProcessButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.getProcessButton.ForeColor = System.Drawing.Color.White;
-            this.getProcessButton.Location = new System.Drawing.Point(3, 313);
+            this.getProcessButton.Location = new System.Drawing.Point(6, 367);
             this.getProcessButton.Name = "getProcessButton";
             this.getProcessButton.Size = new System.Drawing.Size(90, 45);
             this.getProcessButton.TabIndex = 257;
@@ -2431,7 +2433,7 @@ namespace Physics_Data_Debug
             // 
             this.toGForceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toGForceButton.ForeColor = System.Drawing.Color.White;
-            this.toGForceButton.Location = new System.Drawing.Point(3, 745);
+            this.toGForceButton.Location = new System.Drawing.Point(6, 799);
             this.toGForceButton.Name = "toGForceButton";
             this.toGForceButton.Size = new System.Drawing.Size(90, 47);
             this.toGForceButton.TabIndex = 273;
@@ -2448,9 +2450,9 @@ namespace Physics_Data_Debug
             this.checkBox1.ForeColor = System.Drawing.Color.White;
             this.checkBox1.Location = new System.Drawing.Point(106, 813);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(124, 17);
+            this.checkBox1.Size = new System.Drawing.Size(380, 17);
             this.checkBox1.TabIndex = 274;
-            this.checkBox1.Text = "Text Box updates on";
+            this.checkBox1.Text = "Text Box updates on. (Tick off to save resources if you\'re logging data etc.)";
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -2464,7 +2466,7 @@ namespace Physics_Data_Debug
             // 
             this.to4WheelsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.to4WheelsButton.ForeColor = System.Drawing.Color.White;
-            this.to4WheelsButton.Location = new System.Drawing.Point(3, 521);
+            this.to4WheelsButton.Location = new System.Drawing.Point(6, 575);
             this.to4WheelsButton.Name = "to4WheelsButton";
             this.to4WheelsButton.Size = new System.Drawing.Size(90, 45);
             this.to4WheelsButton.TabIndex = 275;
@@ -2512,6 +2514,36 @@ namespace Physics_Data_Debug
             this.richTextBox1.TabIndex = 45;
             this.richTextBox1.Text = "";
             // 
+            // CurrentYDrag
+            // 
+            this.CurrentYDrag.AutoSize = true;
+            this.CurrentYDrag.ForeColor = System.Drawing.Color.White;
+            this.CurrentYDrag.Location = new System.Drawing.Point(3, 136);
+            this.CurrentYDrag.Name = "CurrentYDrag";
+            this.CurrentYDrag.Size = new System.Drawing.Size(77, 13);
+            this.CurrentYDrag.TabIndex = 277;
+            this.CurrentYDrag.Text = "Current Y Drag";
+            // 
+            // CurrentXDrag
+            // 
+            this.CurrentXDrag.AutoSize = true;
+            this.CurrentXDrag.ForeColor = System.Drawing.Color.White;
+            this.CurrentXDrag.Location = new System.Drawing.Point(3, 123);
+            this.CurrentXDrag.Name = "CurrentXDrag";
+            this.CurrentXDrag.Size = new System.Drawing.Size(77, 13);
+            this.CurrentXDrag.TabIndex = 276;
+            this.CurrentXDrag.Text = "Current X Drag";
+            // 
+            // CurrentZDrag
+            // 
+            this.CurrentZDrag.AutoSize = true;
+            this.CurrentZDrag.ForeColor = System.Drawing.Color.White;
+            this.CurrentZDrag.Location = new System.Drawing.Point(3, 149);
+            this.CurrentZDrag.Name = "CurrentZDrag";
+            this.CurrentZDrag.Size = new System.Drawing.Size(77, 13);
+            this.CurrentZDrag.TabIndex = 278;
+            this.CurrentZDrag.Text = "Current Z Drag";
+            // 
             // FormLiveData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2519,6 +2551,9 @@ namespace Physics_Data_Debug
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(814, 915);
+            this.Controls.Add(this.CurrentZDrag);
+            this.Controls.Add(this.CurrentYDrag);
+            this.Controls.Add(this.CurrentXDrag);
             this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.toGForceButton);
@@ -2945,6 +2980,9 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.Label CurrentYDrag;
+        public System.Windows.Forms.Label CurrentXDrag;
+        public System.Windows.Forms.Label CurrentZDrag;
     }
 }
 

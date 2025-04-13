@@ -118,6 +118,9 @@ namespace Physics_Data_Debug
             CurrentSpeed.Text = Math.Round(LiveData.speed, 2).ToString();
             CurrentAcceleration.Text = Math.Round(LiveData.XYZAcceleration, 2).ToString();
             CurrentGForce.Text = Math.Round(LiveData.XYZG, 2).ToString();
+            CurrentXDrag.Text = Math.Round(LiveData.xDrag, 2).ToString();
+            CurrentYDrag.Text = Math.Round(LiveData.yDrag, 2).ToString();
+            CurrentZDrag.Text = Math.Round(LiveData.zDrag, 2).ToString();
             CurrentFrontLift.Text = Math.Round(LiveData.frontLift, 2).ToString();
             CurrentRearLift.Text = Math.Round(LiveData.rearLift, 2).ToString();
             CurrentEngineRPM.Text = Math.Round(LiveData.engineRPM, 0).ToString() + " RPM";
