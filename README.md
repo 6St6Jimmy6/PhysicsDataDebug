@@ -6,11 +6,11 @@ Main page:
 
 This is how Four Wheels Page looks:
 
+![limiters](https://github.com/user-attachments/assets/6036f3b7-04f2-46be-afed-c265f6ca7438)
+
 ![4wheels_gradient](https://github.com/user-attachments/assets/b9b06097-d5fb-41b0-ab7a-59061e778523)
 
 This is how the G-Force graph looks by default:
-
-![limiters](https://github.com/user-attachments/assets/6036f3b7-04f2-46be-afed-c265f6ca7438)
 
 ![GForce Page](https://github.com/user-attachments/assets/9aa0afc9-47e5-4b50-b68b-cdd0e8f57d0d)
 
