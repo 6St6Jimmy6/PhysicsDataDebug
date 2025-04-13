@@ -103,6 +103,7 @@ namespace Physics_Data_Debug
         public static double rotationYRad { get; set; }
         public static double rotationYDeg { get; set; }
         //public static double rotationZ { get; set; }
+        // Accel and G force
         public static float XAcceleration { get; set; }
         public static float XG { get; set; }
         public static double XGRotated { get; set; }
@@ -116,6 +117,12 @@ namespace Physics_Data_Debug
         public static double XZG { get; set; }
         public static double XYZAcceleration { get; set; }
         public static double XYZG { get; set; }
+        // Drag
+        public static double XDragRotated { get; set; }
+        public static double YDragRotated { get; set; }
+        public static double ZDragRotated { get; set; }
+        public static double XZDrag { get; set; }
+        public static double XYZDrag { get; set; }
 
         public static Matrix4x4 playerRotation;
         public static Quaternion playerQuaternion = new Quaternion(Q1, Q2, Q3, Q4);
@@ -334,7 +341,7 @@ namespace Physics_Data_Debug
         public static ulong baseAddrRacetime { get; set; } = 0x1832648;
         public static ulong baseAddrLocationHeading { get; set; } = 0x1832B88;
         //Every update offsets the base address of the memory points. 99% of the time forwards.
-        public static ulong baseAddrUpdt { get; set; } = 0x9E00;
+        public static ulong baseAddrUpdt { get; set; } = 0x0;//0x9E00;
                                                              //0x0;// April 2022 version 1.285308
                                                              //0x4650;// May 2022
                                                              //0x5710// October 2022
@@ -702,6 +709,7 @@ namespace Physics_Data_Debug
             YAcceleration = BigValueReducerFloat(YAcceleration);
             ZAcceleration = BigValueReducerFloat(ZAcceleration);
             AccelGForceXYZHeading();
+            DragForceXYZHeading();
             #endregion
             #endregion
             #region Read Tire Data
@@ -940,6 +948,15 @@ namespace Physics_Data_Debug
             XGRotated = Math.Sin(XZGAngleRad) * XZG;
             ZGRotated = Math.Cos(XZGAngleRad) * XZG;
             YGRotated = YG;// Y axis isn't ever rotated
+        }
+        public static void DragForceXYZHeading()
+        {
+            // Getting the XZ direction where in the world the car is going.
+            //XZAccelerationAngleRad = XZAngleRad(XAcceleration, ZAcceleration);
+            //XZAccelerationAngleDeg = RadToDeg((float)XZAccelerationAngleDeg);
+            // Get normalized heading, so it's easy to draw for example the g-forces in the right direction compared to the car pivot point.
+            XZDrag = Math.Sqrt(Math.Pow(xDrag, 2) + Math.Pow(zDrag, 2));
+            XYZDrag = Math.Sqrt(Math.Pow(XZDrag, 2) + Math.Pow(yDrag, 2));
         }
         private static void GetFLData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
