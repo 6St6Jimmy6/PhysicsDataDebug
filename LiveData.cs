@@ -84,6 +84,23 @@ namespace Physics_Data_Debug
         public static byte differentialLocked = 0;
         public static float differentialVelocityRad = 0.00f;
         public static float differentialTorque = 0.00f;
+        
+        public static float M11 { get; set; }
+        public static float M12 { get; set; }
+        public static float M13 { get; set; }
+        public static float M14 { get; set; }
+        public static float M21 { get; set; }
+        public static float M22 { get; set; }
+        public static float M23 { get; set; }
+        public static float M24 { get; set; }
+        public static float M31 { get; set; }
+        public static float M32 { get; set; }
+        public static float M33 { get; set; }
+        public static float M34 { get; set; }
+        public static float M41 { get; set; }
+        public static float M42 { get; set; }
+        public static float M43 { get; set; }
+        public static float M44 { get; set; }
 
         public static float TX { get; set; }
         public static float TY { get; set; }
@@ -338,7 +355,7 @@ namespace Physics_Data_Debug
         #endregion
 
         #region Basest of the basest adresses
-        public static ulong baseAddrTiresSuspensionLiftsDifferentialLocation { get; set; } = 0x18324C8;//0x1831EE0;//this was changing between cars, the new adrdess is only for the player
+        public static ulong baseAddrTiresSuspensionLiftsDifferentialLocationHeading { get; set; } = 0x18324C8;//0x1831EE0;//this was changing between cars, the new adrdess is only for the player
         public static ulong baseAddrEngineSpeed { get; set; } = 0x18327C8;
         public static ulong baseAddrRacetime { get; set; } = 0x1832648;
         public static ulong baseAddrLocationHeading { get; set; } = 0x1832B88;
@@ -377,6 +394,24 @@ namespace Physics_Data_Debug
         #endregion
 
         #region Location offsets
+        public static int OffsetLocationData { get; set; } = 0x970;
+        public static int OffsetM11 { get; set; } = 0x0;
+        public static int OffsetM12 { get; set; } = 0x4;
+        public static int OffsetM13 { get; set; } = 0x8;
+        public static int OffsetM14 { get; set; } = 0xC;
+        public static int OffsetM21 { get; set; } = 0x10;
+        public static int OffsetM22 { get; set; } = 0x14;
+        public static int OffsetM23 { get; set; } = 0x18;
+        public static int OffsetM24 { get; set; } = 0x1C;
+        public static int OffsetM31 { get; set; } = 0x20;
+        public static int OffsetM32 { get; set; } = 0x24;
+        public static int OffsetM33 { get; set; } = 0x28;
+        public static int OffsetM34 { get; set; } = 0x2C;
+        public static int OffsetM41 { get; set; } = 0x20;
+        public static int OffsetM42 { get; set; } = 0x24;
+        public static int OffsetM43 { get; set; } = 0x28;
+        public static int OffsetM44 { get; set; } = 0x2C;
+        
         public static int OffsetTX { get; set; } = 0x0;
         public static int OffsetTY { get; set; } = 0x4;
         public static int OffsetTZ { get; set; } = 0x8;
@@ -499,7 +534,24 @@ namespace Physics_Data_Debug
         public static int[] raceTimerOffsets { get; set; } = { OffsetRaceTime };
         #endregion
 
-        #region Location and heading pointers
+        #region Location, heading and acceleration offsets
+        public static int[] M11Offsets { get; set; } = { OffsetLocationData, OffsetM11 };
+        public static int[] M12Offsets { get; set; } = { OffsetLocationData, OffsetM12 };
+        public static int[] M13Offsets { get; set; } = { OffsetLocationData, OffsetM13 };
+        public static int[] M14Offsets { get; set; } = { OffsetLocationData, OffsetM14 };
+        public static int[] M21Offsets { get; set; } = { OffsetLocationData, OffsetM21 };
+        public static int[] M22Offsets { get; set; } = { OffsetLocationData, OffsetM22 };
+        public static int[] M23Offsets { get; set; } = { OffsetLocationData, OffsetM23 };
+        public static int[] M24Offsets { get; set; } = { OffsetLocationData, OffsetM24 };
+        public static int[] M31Offsets { get; set; } = { OffsetLocationData, OffsetM31 };
+        public static int[] M32Offsets { get; set; } = { OffsetLocationData, OffsetM32 };
+        public static int[] M33Offsets { get; set; } = { OffsetLocationData, OffsetM33 };
+        public static int[] M34Offsets { get; set; } = { OffsetLocationData, OffsetM34 };
+        public static int[] M41Offsets { get; set; } = { OffsetLocationData, OffsetM41 };
+        public static int[] M42Offsets { get; set; } = { OffsetLocationData, OffsetM42 };
+        public static int[] M43Offsets { get; set; } = { OffsetLocationData, OffsetM43 };
+        public static int[] M44Offsets { get; set; } = { OffsetLocationData, OffsetM44 };
+
         public static int[] TXOffsets { get; set; } = { OffsetTX };
         public static int[] TYOffsets { get; set; } = { OffsetTY };
         public static int[] TZOffsets { get; set; } = { OffsetTZ };
@@ -698,13 +750,13 @@ namespace Physics_Data_Debug
             Array.Copy(raceTimeArray, 1, raceTimeArray, 0, raceTimeArray.Length - 1);
             elapsedTime = raceTimeArray[1] - raceTimeArray[0];
             #endregion
-            #region Read Speed, Lifts, Engine Torque and Differential
-            GetDragLiftsDifferentialData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocation);
+            #region Read Speed, Lifts, Drag, Location, Heading, Engine Torque and Differential
+            GetDragLiftsDifferentialLocationHeadingData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocationHeading);
             GetEngineSpeedData(Helper, baseAddrEngineSpeed);
             enginePower = engineTorque * engineRPM / 9549;
             #endregion
-            #region Read Location, heading, acceleration and g-force
-            GetLocationHeadingData(Helper, baseAddrLocationHeading);
+            #region Read Acceleration and g-force
+            GetAccelData(Helper, baseAddrAccel);
             #region Some XYZ calculations that needs to be made as own methods later
             // Getting rid of too big or low values when the pointer is changing or something odd happens, so it won't crash the math for Int32 later.
             XAcceleration = BigValueReducerFloat(XAcceleration);
@@ -716,7 +768,7 @@ namespace Physics_Data_Debug
             #endregion
             #region Read Tire Data
             #region Front Left
-            GetFLData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocation);
+            GetFLData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocationHeading);
             FL_LateralFriction = GetLateralFriction(FL_LateralLoad, FL_VerticalLoad);
             FL_LongitudinalFriction = GetLongitudinalFriction(FL_LongitudinalLoad, FL_VerticalLoad);
             FL_TotalFriction = GetTotalFriction(FL_LateralFriction, FL_LongitudinalFriction);
@@ -728,7 +780,7 @@ namespace Physics_Data_Debug
             #endregion
             #endregion
             #region Front Right
-            GetFRData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocation);
+            GetFRData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocationHeading);
             FR_LateralFriction = GetLateralFriction(FR_LateralLoad, FR_VerticalLoad);
             FR_LongitudinalFriction = GetLongitudinalFriction(FR_LongitudinalLoad, FR_VerticalLoad);
             FR_TotalFriction = GetTotalFriction(FR_LateralFriction, FR_LongitudinalFriction);
@@ -740,7 +792,7 @@ namespace Physics_Data_Debug
             #endregion
             #endregion
             #region Rear Left
-            GetRLData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocation);
+            GetRLData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocationHeading);
             RL_LateralFriction = GetLateralFriction(RL_LateralLoad, RL_VerticalLoad);
             RL_LongitudinalFriction = GetLongitudinalFriction(RL_LongitudinalLoad, RL_VerticalLoad);
             RL_TotalFriction = GetTotalFriction(RL_LateralFriction, RL_LongitudinalFriction);
@@ -752,7 +804,7 @@ namespace Physics_Data_Debug
             #endregion
             #endregion
             #region Rear Right
-            GetRRData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocation);
+            GetRRData(Helper, baseAddrTiresSuspensionLiftsDifferentialLocationHeading);
             RR_LateralFriction = GetLateralFriction(RR_LateralLoad, RR_VerticalLoad);
             RR_LongitudinalFriction = GetLongitudinalFriction(RR_LongitudinalLoad, RR_VerticalLoad);
             RR_TotalFriction = GetTotalFriction(RR_LateralFriction, RR_LongitudinalFriction);
@@ -838,7 +890,24 @@ namespace Physics_Data_Debug
             return memoryHelper.ReadMemory<byte>(Memory.Utils.MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsets));
         }
         private static void GetDragLiftsDifferentialData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
-        {
+        {            
+            M11 = GetFloatData(memoryHelper, baseAddr, M11Offsets);
+            M12 = GetFloatData(memoryHelper, baseAddr, M12Offsets);
+            M13 = GetFloatData(memoryHelper, baseAddr, M13Offsets);
+            M14 = GetFloatData(memoryHelper, baseAddr, M14Offsets);
+            M21 = GetFloatData(memoryHelper, baseAddr, M21Offsets);
+            M22 = GetFloatData(memoryHelper, baseAddr, M22Offsets);
+            M23 = GetFloatData(memoryHelper, baseAddr, M23Offsets);
+            M24 = GetFloatData(memoryHelper, baseAddr, M24Offsets);
+            M31 = GetFloatData(memoryHelper, baseAddr, M31Offsets);
+            M32 = GetFloatData(memoryHelper, baseAddr, M32Offsets);
+            M33 = GetFloatData(memoryHelper, baseAddr, M33Offsets);
+            M34 = GetFloatData(memoryHelper, baseAddr, M34Offsets);
+            M41 = GetFloatData(memoryHelper, baseAddr, M41Offsets);
+            M42 = GetFloatData(memoryHelper, baseAddr, M42Offsets);
+            M43 = GetFloatData(memoryHelper, baseAddr, M43Offsets);
+            M44 = GetFloatData(memoryHelper, baseAddr, M44Offsets);
+
             xDrag = GetFloatData(memoryHelper, baseAddr, xDragOffsets);
             yDrag = GetFloatData(memoryHelper, baseAddr, yDragOffsets);
             zDrag = GetFloatData(memoryHelper, baseAddr, zDragOffsets);
@@ -855,37 +924,82 @@ namespace Physics_Data_Debug
             engineRPMAxle = GetFloatData(memoryHelper, baseAddr, engineRPMAxleOffests);
             engineTorque = GetFloatData(memoryHelper, baseAddr, engineTorqueOffsets);
         }
-        private static void GetLocationHeadingData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
+        private static void GetAccelData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr)
         {
             // Most of these not needed for now
             /*
-            TX = Helper.ReadMemory<float>(TXTargetAddr);
-            TY = Helper.ReadMemory<float>(TYTargetAddr);
-            TZ = Helper.ReadMemory<float>(TZTargetAddr);*/
-            R11 = GetFloatData(memoryHelper, baseAddr, R11Offsets);
-            R12 = GetFloatData(memoryHelper, baseAddr, R12Offsets);
-            R13 = GetFloatData(memoryHelper, baseAddr, R13Offsets);
-            //R11 = Helper.ReadMemory<float>(R11TargetAddr);
-            //R12 = Helper.ReadMemory<float>(R12TargetAddr);
-            //R13 = Helper.ReadMemory<float>(R13TargetAddr);
-            /*
-            R21 = Helper.ReadMemory<float>(A2TargetAddr);
-            R22 = Helper.ReadMemory<float>(B2TargetAddr);
-            R23 = Helper.ReadMemory<float>(C2TargetAddr);
-            R31 = Helper.ReadMemory<float>(A3TargetAddr);
-            R32 = Helper.ReadMemory<float>(B3TargetAddr);
-            R33 = Helper.ReadMemory<float>(C3TargetAddr);
-            Q1 = Helper.ReadMemory<float>(Q1TargetAddr);
-            Q2 = Helper.ReadMemory<float>(Q2TargetAddr);
-            Q3 = Helper.ReadMemory<float>(Q3TargetAddr);
-            Q4 = Helper.ReadMemory<float>(Q4TargetAddr);
+            TXAccel = GetFloatData(memoryHelper, baseAddr, TXOffsets);
+            TYAccel = GetFloatData(memoryHelper, baseAddr, TYOffsets);
+            TZAccel = GetFloatData(memoryHelper, baseAddr, TZOffsets);
+
+            R11Accel = GetFloatData(memoryHelper, baseAddr, R11Offsets);
+            R12Accel = GetFloatData(memoryHelper, baseAddr, R12Offsets);
+            R13Accel = GetFloatData(memoryHelper, baseAddr, R13Offsets);
+            
+            R21Accel = GetFloatData(memoryHelper, baseAddr, R21Offsets);
+            R22Accel = GetFloatData(memoryHelper, baseAddr, R22Offsets);
+            R23Accel = GetFloatData(memoryHelper, baseAddr, R23Offsets);
+
+            R31Accel = GetFloatData(memoryHelper, baseAddr, R31Offsets);
+            R32Accel = GetFloatData(memoryHelper, baseAddr, R32Offsets);
+            R33Accel = GetFloatData(memoryHelper, baseAddr, R33Offsets);
+
+            Q1Accel = GetFloatData(memoryHelper, baseAddr, Q1Offsets);
+            Q2Accel = GetFloatData(memoryHelper, baseAddr, Q2Offsets);
+            Q3Accel = GetFloatData(memoryHelper, baseAddr, Q3Offsets);
+            Q4Accel = GetFloatData(memoryHelper, baseAddr, Q4Offsets);
+
+            A1Accel = GetFloatData(memoryHelper, baseAddr, A1Offsets);
+            A2Accel = GetFloatData(memoryHelper, baseAddr, A1Offsets);
             */
             XAcceleration = GetFloatData(memoryHelper, baseAddr, XAccelerationOffsets);
             YAcceleration = GetFloatData(memoryHelper, baseAddr, YAccelerationOffsets);
             ZAcceleration = GetFloatData(memoryHelper, baseAddr, ZAccelerationOffsets);
-            //XAcceleration = Helper.ReadMemory<float>(XAccelerationTargetAddr);
-            //YAcceleration = Helper.ReadMemory<float>(YAccelerationTargetAddr);
-            //ZAcceleration = Helper.ReadMemory<float>(ZAccelerationTargetAddr);
+        }
+
+        public static Matrix4x4 transformMatrix;
+        public static Vector3 worldPosition;
+        public static Matrix4x4 rotationInverted = Matrix4x4.Identity;
+        public static Vector3 GetPitchYawRollFromQuaternion(Quaternion rotation)
+        {
+            float yaw = (float)Math.Atan2(2.0f * (rotation.Y * rotation.W + rotation.X * rotation.Z), 1.0f - 2.0f * (rotation.X * rotation.X + rotation.Y * rotation.Y));
+            float pitch = (float)Math.Asin(2.0f * (rotation.X * rotation.W - rotation.Y * rotation.Z));
+            float roll = (float)Math.Atan2(2.0f * (rotation.X * rotation.Y + rotation.Z * rotation.W), 1.0f - 2.0f * (rotation.X * rotation.X + rotation.Z * rotation.Z));
+
+            return new Vector3(pitch, yaw, roll);
+        }
+        public static void CalcAngles()
+        {
+            transformMatrix = new Matrix4x4(M11, M12, M13, M14, M21, M22, M23, M24, M31, M32, M33, M34, M41, M42, M43, M44);
+            Quaternion quat = Quaternion.CreateFromRotationMatrix(transformMatrix);
+
+            Vector3 pyr = GetPitchYawRollFromQuaternion(quat);
+            // Pitch Yaw and Roll
+            //rawData.pitch = -pyr.X;
+            //rawData.yaw = -pyr.Y;
+            //rawData.roll = LoopAngleRad(-pyr.Z, (float)Math.PI * 0.5f);
+        }
+        public static void WorldAccelToLocalAngle()
+        {
+            worldPosition = new Vector3((float)M41, (float)M42, (float)M43);
+            Vector3 worldAcceleration = new Vector3((float)XAcceleration, (float)YAcceleration, (float)ZAcceleration);
+            transformMatrix.Translation = worldPosition;
+            Matrix4x4 rotation = new Matrix4x4();
+            rotation = transformMatrix;
+            rotation.M41 = 0.0f;
+            rotation.M42 = 0.0f;
+            rotation.M43 = 0.0f;
+            rotation.M44 = 1.0f;
+
+            rotationInverted = new Matrix4x4();
+            Matrix4x4.Invert(rotation, out rotationInverted);
+
+            //transform world acceleration to local space
+            Vector3 localAcceleration = Vector3.Transform(worldAcceleration, rotationInverted);
+            //Vector3 localAcceleration = worldAcceleration;
+            XAcceleration = localAcceleration.X;
+            YAcceleration = localAcceleration.Y;
+            ZAcceleration = localAcceleration.Z;
         }
         public static float BigValueReducerFloat(float value)
         {
@@ -900,12 +1014,16 @@ namespace Physics_Data_Debug
         }
         public static void AccelGForceXYZHeading()
         {
+            CalcAngles();
+            WorldAccelToLocalAngle();
+
             // Getting the XZ direction where in the world the car is going.
             XZAccelerationAngleRad = XZAngleRad(XAcceleration, ZAcceleration);
             XZAccelerationAngleDeg = RadToDeg((float)XZAccelerationAngleDeg);
 
             XZAcceleration = Math.Sqrt(Math.Pow(XAcceleration, 2) + Math.Pow(ZAcceleration, 2));
             XYZAcceleration = Math.Sqrt(Math.Pow(XZAcceleration, 2) + Math.Pow(YAcceleration, 2));
+    
             // G-Force
             XG = XAcceleration / g;
             YG = YAcceleration / g;
@@ -914,9 +1032,9 @@ namespace Physics_Data_Debug
             // Get normalized heading, so it's easy to draw for example the g-forces in the right direction compared to the car pivot point.
             //playerRotation = new Matrix4x4(R11, R12, R13, 0, R21, R22, R23, 0, R31, R32, R33, 0, 0, 0, 0, 1);
             //Angle3D.GetAngles(playerRotation);
+
             XZG = Math.Sqrt(Math.Pow(XG, 2) + Math.Pow(ZG, 2));
             XYZG = Math.Sqrt(Math.Pow(YG, 2) + Math.Pow(XZG, 2));
-
             if (rotationYRad < 3 * Math.PI &&
                 rotationYRad > -3 * Math.PI &&
                 XZAccelerationAngleRad < 3 * Math.PI &&
