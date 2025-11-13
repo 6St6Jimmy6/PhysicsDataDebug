@@ -62,7 +62,59 @@ namespace Physics_Data_Debug
         public static bool ZGRotatedLogEnabled { get; set; } = true;//26
         public static bool YGRotatedLogEnabled { get; set; } = true;//27
         public static bool XYZGLogEnabled { get; set; } = true;//28
-
+        public static List<string> DataNameStrings { get; set; } = new List<string>
+            (
+                new string[]
+                {
+                    "None",
+                    "Tire Travel Speed",
+                    "Angular Velocity",
+                    "Vertical Load",
+                    "Vertical Deflection",
+                    "Loaded Radius",
+                    "Effective Radius",
+                    "Contact Length",
+                    "Brake Torque",
+                    "Max Brake Torque",
+                    "Steer Angle",
+                    "Camber Angle",
+                    "Lateral Load",
+                    "Slip Angle",
+                    "Lateral Friction",
+                    "Lateral Slip Speed",
+                    "Longitudinal Load",
+                    "Slip Ratio",
+                    "Longitudinal Friction",
+                    "Longitudinal Slip Speed",
+                    "Tread Temperature",
+                    "Inner Temperature",
+                    "Race Time",
+                    "Total Friction",
+                    "Total Friction Angle",
+                    "Suspension Length",
+                    "Suspension Velocity"
+                }
+            );
+        public static List<string> DataNameStringsAbsoluteValues { get; set; } = new List<string>
+            (
+                new string[]
+                {
+                    "None",
+                    "Tire Travel Speed",
+                    "Angular Velocity",
+                    "Steer Angle",
+                    "Camber Angle",
+                    "Lateral Load",
+                    "Slip Angle",
+                    "Lateral Friction",
+                    "Lateral Slip Speed",
+                    "Longitudinal Load",
+                    "Slip Ratio",
+                    "Longitudinal Friction",
+                    "Longitudinal Slip Speed",
+                    "Suspension Velocity"
+                }
+            );
         public static string sNone { get; set; } = "None";
         public static string sTireTravelSpeed { get; set; } = "Tire Travel Speed";
         public static string sAngularVelocity { get; set; } = "Angular Velocity";

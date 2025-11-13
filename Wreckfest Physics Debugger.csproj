@@ -77,7 +77,6 @@
   <ItemGroup>
     <Compile Include="4Wheels.cs" />
     <Compile Include="4WheelsSettings.cs" />
-    <Compile Include="Angle3D.cs" />
     <Compile Include="Form4Wheels.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,7 +118,7 @@
     <Compile Include="LiveData.cs" />
     <Compile Include="LogData.cs" />
     <Compile Include="LogSettings.cs" />
-    <Compile Include="Parsers.cs" />
+    <Compile Include="TextBoxBaseParsers.cs" />
     <Compile Include="Registry Tools.cs" />
     <Compile Include="FormLiveData.cs">
       <SubType>Form</SubType>

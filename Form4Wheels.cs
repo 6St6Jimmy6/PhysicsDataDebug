@@ -19,22 +19,24 @@ namespace Physics_Data_Debug
         public static string X1LimiterSelection { get; set; } = _4WheelsSettings.X1Selection;
         public static string Y1LimiterSelection { get; set; } = _4WheelsSettings.Y1Selection;
         public static string Z1LimiterSelection { get; set; } = _4WheelsSettings.Z1Selection;
-        
-        public static double X1LimiterDefaultMin = _4WheelsSettings.X1DefaultMin;
-        public static double Y1LimiterDefaultMin = _4WheelsSettings.Y1DefaultMin;
-        public static double Z1LimiterDefaultMin = _4WheelsSettings.Z1DefaultMin;
 
-        public static double X1LimiterDefaultMax = _4WheelsSettings.X1DefaultMax;
-        public static double Y1LimiterDefaultMax = _4WheelsSettings.Y1DefaultMax;
-        public static double Z1LimiterDefaultMax = _4WheelsSettings.Z1DefaultMax;
+        public static double X1LimiterDefaultMin { get; set; } = _4WheelsSettings.X1DefaultMin;
+        public static double Y1LimiterDefaultMin { get; set; } = _4WheelsSettings.Y1DefaultMin;
+        public static double Z1LimiterDefaultMin { get; set; } = _4WheelsSettings.Z1DefaultMin;
 
-        public static double X1LimiterMin = _4WheelsSettings.X1DefaultMin;
-        public static double Y1LimiterMin = _4WheelsSettings.Y1DefaultMin;
-        public static double Z1LimiterMin = _4WheelsSettings.Z1DefaultMin;
+        public static double X1LimiterDefaultMax { get; set; } = _4WheelsSettings.X1DefaultMax;
+        public static double Y1LimiterDefaultMax { get; set; } = _4WheelsSettings.Y1DefaultMax;
+        public static double Z1LimiterDefaultMax { get; set; } = _4WheelsSettings.Z1DefaultMax;
 
-        public static double X1LimiterMax = _4WheelsSettings.X1DefaultMax;
-        public static double Y1LimiterMax = _4WheelsSettings.Y1DefaultMax;
-        public static double Z1LimiterMax = _4WheelsSettings.Z1DefaultMax;
+        public static double X1LimiterMin { get; set; } = _4WheelsSettings.X1DefaultMin;
+        public static double Y1LimiterMin { get; set; } = _4WheelsSettings.Y1DefaultMin;
+        public static double Z1LimiterMin { get; set; } = _4WheelsSettings.Z1DefaultMin;
+
+        public static double X1LimiterMax { get; set; } = _4WheelsSettings.X1DefaultMax;
+        public static double Y1LimiterMax { get; set; } = _4WheelsSettings.Y1DefaultMax;
+        public static double Z1LimiterMax { get; set; } = _4WheelsSettings.Z1DefaultMax;
+        public static List<string> xyzAxisSelection { get; set; } = new List<string> { _4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection };
+        public static List<string> xyzAxisLimiterSelection { get; set; } = new List<string> { X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection };
 
         public Form4Wheels()
         {
@@ -81,7 +83,7 @@ namespace Physics_Data_Debug
         }
         private void LoadDefaultTextBoxTexts(ComboBox cBSelection, TextBox tBMin, double minValue, TextBox tBMax, double maxValue)
         {
-            if (CBLimiterIsAbsoluteValue(cBSelection) == true)
+            if (LogSettings.DataNameStringsAbsoluteValues.Contains((string)cBSelection.SelectedItem) == true)
             {
                 minValue = 0;
             }
@@ -111,45 +113,45 @@ namespace Physics_Data_Debug
             {
                 // Colors from https://jacksonlab.agronomy.wisc.edu/2016/05/23/15-level-colorblind-friendly-palette/
                 //Color color5 = Color.FromArgb(historyalpha, 255, 182, 219);// color5
-                _4Wheels.Color10 = Color.FromArgb(_4Wheels.HistoryAlpha, 219, 109, 0);// color 13
-                _4Wheels.Color9 = Color.FromArgb(_4Wheels.HistoryAlpha, 36, 255, 36);// color 14
-                _4Wheels.Color8 = Color.FromArgb(_4Wheels.HistoryAlpha, 255, 255, 109);// color 15
-                _4Wheels.Color7 = Color.FromArgb(_4Wheels.HistoryAlpha, 109, 182, 255);// color 9
-                _4Wheels.Color6 = Color.FromArgb(_4Wheels.HistoryAlpha, 182, 109, 255);// color 8
-                _4Wheels.Color5 = Color.FromArgb(_4Wheels.HistoryAlpha, 0, 109, 219);// color 7
-                _4Wheels.Color4 = Color.FromArgb(_4Wheels.HistoryAlpha, 73, 0, 146);// color 6
-                _4Wheels.Color3 = Color.FromArgb(_4Wheels.HistoryAlpha, 255, 109, 182);// color 4
-                _4Wheels.Color2 = Color.FromArgb(_4Wheels.HistoryAlpha, 0, 146, 146);// color 3
-                _4Wheels.Color1 = Color.FromArgb(_4Wheels.HistoryAlpha, 0, 73, 73);// color 2
+                _4Wheels.MarkerColors.Insert(1, Color.FromArgb(_4Wheels.HistoryAlpha, 0, 73, 73));// color 2;
+                _4Wheels.MarkerColors[2] = Color.FromArgb(_4Wheels.HistoryAlpha, 0, 146, 146);// color 3
+                _4Wheels.MarkerColors[3] = Color.FromArgb(_4Wheels.HistoryAlpha, 255, 109, 182);// color 4
+                _4Wheels.MarkerColors[4] = Color.FromArgb(_4Wheels.HistoryAlpha, 73, 0, 146);// color 6
+                _4Wheels.MarkerColors[5] = Color.FromArgb(_4Wheels.HistoryAlpha, 0, 109, 219);// color 7
+                _4Wheels.MarkerColors[6] = Color.FromArgb(_4Wheels.HistoryAlpha, 182, 109, 255);// color 8
+                _4Wheels.MarkerColors[7] = Color.FromArgb(_4Wheels.HistoryAlpha, 109, 182, 255);// color 9
+                _4Wheels.MarkerColors[8] = Color.FromArgb(_4Wheels.HistoryAlpha, 255, 255, 109);// color 15
+                _4Wheels.MarkerColors[9] = Color.FromArgb(_4Wheels.HistoryAlpha, 36, 255, 36);// color 14
+                _4Wheels.MarkerColors[10] = Color.FromArgb(_4Wheels.HistoryAlpha, 219, 109, 0);// color 13
             }
             else if (_4WheelsSettings.Scheme == "Green Red")
             {
-                _4Wheels.Color10 = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color9 = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color8 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color7 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 64 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color6 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color5 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color4 = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color3 = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color2 = Color.FromArgb(_4Wheels.HistoryAlpha, 64 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color1 = Color.FromArgb(_4Wheels.HistoryAlpha, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[1] = Color.FromArgb(_4Wheels.HistoryAlpha, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[2] = Color.FromArgb(_4Wheels.HistoryAlpha, 64 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[3] = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[4] = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[5] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[6] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[7] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 64 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[8] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[9] = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[10] = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
             }
             else
             {
-                _4Wheels.Color10 = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color9 = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color8 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color7 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 64 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color6 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 128 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color5 = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color4 = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color3 = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color2 = Color.FromArgb(_4Wheels.HistoryAlpha, 64 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
-                _4Wheels.Color1 = Color.FromArgb(_4Wheels.HistoryAlpha, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[1] = Color.FromArgb(_4Wheels.HistoryAlpha, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[2] = Color.FromArgb(_4Wheels.HistoryAlpha, 64 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[3] = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[4] = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[5] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 192 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[6] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 128 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[7] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 64 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[8] = Color.FromArgb(_4Wheels.HistoryAlpha, 255 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[9] = Color.FromArgb(_4Wheels.HistoryAlpha, 192 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
+                _4Wheels.MarkerColors[10] = Color.FromArgb(_4Wheels.HistoryAlpha, 128 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider, 0 / _4Wheels.HistoryColorDivider);
             }
         }
-        public List<object> AxisSelectionDefaults(string axisSelection, bool isAbsolute)
+        public List<object> SelectionDefaults(string axisSelection, bool isAbsolute)
         {
             var AxisSelectionList = new List<object>();
             ///
@@ -160,12 +162,12 @@ namespace Physics_Data_Debug
             /// [4] = defaultMinorDecimals
             /// [5] = defaultMinorIntervalFraction
             /// 
-            double dMax = 0; double dMin = 0; double dMajorInterval = 0; int dDecimals = 0; bool dMinorEnabled = true; int dMinorIntervalFraction = 0;
+            float dMax = 0; float dMin = 0; double dMajorInterval = 0; int dDecimals = 0; bool dMinorEnabled = true; int dMinorIntervalFraction = 0;
             AxisSelectionList.Add(dMax); AxisSelectionList.Add(dMin); AxisSelectionList.Add(dMajorInterval); AxisSelectionList.Add(dDecimals); AxisSelectionList.Add(dMinorEnabled); AxisSelectionList.Add(dMinorIntervalFraction);
-            
+
             if (axisSelection == LogSettings.sRaceTime)
             {
-                dMax = double.NaN;
+                dMax = (float)double.NaN;
                 dMin = 0;
                 dMajorInterval = 1000;
                 dDecimals = 0;
@@ -224,7 +226,7 @@ namespace Physics_Data_Debug
             }
             else if (axisSelection == LogSettings.sVerticalDeflection)
             {
-                dMax = 0.15;
+                dMax = (float)0.15;
                 dMin = 0;
                 dMajorInterval = 0.03;
                 dDecimals = 3;
@@ -233,7 +235,7 @@ namespace Physics_Data_Debug
             }
             else if (axisSelection == LogSettings.sLoadedRadius)
             {
-                dMax = 0.5;
+                dMax = (float)0.5;
                 dMin = 0;
                 dMajorInterval = 0.1;
                 dDecimals = 3;
@@ -242,7 +244,7 @@ namespace Physics_Data_Debug
             }
             else if (axisSelection == LogSettings.sEffectiveRadius)
             {
-                dMax = 0.5;
+                dMax = (float)0.5;
                 dMin = 0;
                 dMajorInterval = 0.1;
                 dDecimals = 3;
@@ -251,7 +253,7 @@ namespace Physics_Data_Debug
             }
             else if (axisSelection == LogSettings.sContactLength)
             {
-                dMax = 0.5;
+                dMax = (float)0.5;
                 dMin = 0;
                 dMajorInterval = 0.1;
                 dDecimals = 3;
@@ -500,14 +502,14 @@ namespace Physics_Data_Debug
             else
             {
                 // Defaults auto scale
-                dMax = double.NaN;
+                dMax = (float)double.NaN;
                 if (isAbsolute == true)
                 {
                     dMin = 0;
                 }
                 else
                 {
-                    dMin = double.NaN;
+                    dMin = (float)double.NaN;
                 }
                 dMajorInterval = 0;
                 dDecimals = 2;
@@ -535,13 +537,13 @@ namespace Physics_Data_Debug
             /// [4] = defaultMinorDecimals
             /// [5] = defaultMinorIntervalFraction
             /// 
-            double dMax = 0; double dMin = 0;// double dMajorInterval = 0; int dDecimals = 0; bool dMinorEnabled = true; int dMinorIntervalFraction = 0;
+            float dMax = 0; float dMin = 0;// double dMajorInterval = 0; int dDecimals = 0; bool dMinorEnabled = true; int dMinorIntervalFraction = 0;
             AxisSelectionList.Add(dMax); AxisSelectionList.Add(dMin);// AxisSelectionList.Add(dMajorInterval); AxisSelectionList.Add(dDecimals); AxisSelectionList.Add(dMinorEnabled); AxisSelectionList.Add(dMinorIntervalFraction);
 
 
             if (axisSelection == LogSettings.sRaceTime)
             {
-                dMax = double.NaN;
+                dMax = (float)double.NaN;
                 dMin = 0;
             }
             else if (axisSelection == LogSettings.sNone)
@@ -566,22 +568,22 @@ namespace Physics_Data_Debug
             }
             else if (axisSelection == LogSettings.sVerticalDeflection)
             {
-                dMax = 0.15;
+                dMax = (float)0.15;
                 dMin = 0;
             }
             else if (axisSelection == LogSettings.sLoadedRadius)
             {
-                dMax = 0.5;
+                dMax = (float)0.5;
                 dMin = 0;
             }
             else if (axisSelection == LogSettings.sEffectiveRadius)
             {
-                dMax = 0.5;
+                dMax = (float)0.5;
                 dMin = 0;
             }
             else if (axisSelection == LogSettings.sContactLength)
             {
-                dMax = 0.5;
+                dMax = (float)0.5;
                 dMin = 0;
             }
             else if (axisSelection == LogSettings.sBrakeTorque)
@@ -677,8 +679,8 @@ namespace Physics_Data_Debug
             else
             {
                 // Defaults auto scale
-                dMax = double.NaN;
-                dMin = double.NaN;
+                dMax = (float)double.NaN;
+                dMin = (float)double.NaN;
             }
 
             AxisSelectionList[0] = dMax;
@@ -694,8 +696,8 @@ namespace Physics_Data_Debug
         {
             if (defaultsSelected == true)
             {
-                _4WheelsSettings.X1Max = (double)axisDefaultSelectionDefaults[0];
-                _4WheelsSettings.X1Min = (double)axisDefaultSelectionDefaults[1];
+                _4WheelsSettings.X1Max = (float)axisDefaultSelectionDefaults[0];
+                _4WheelsSettings.X1Min = (float)axisDefaultSelectionDefaults[1];
                 _4WheelsSettings.X1MajorInterval = (double)axisDefaultSelectionDefaults[2];
                 _4WheelsSettings.X1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
                 _4WheelsSettings.X1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
@@ -706,8 +708,8 @@ namespace Physics_Data_Debug
         {
             if (defaultsSelected == true)
             {
-                _4WheelsSettings.Y1Max = (double)axisDefaultSelectionDefaults[0];
-                _4WheelsSettings.Y1Min = (double)axisDefaultSelectionDefaults[1];
+                _4WheelsSettings.Y1Max = (float)axisDefaultSelectionDefaults[0];
+                _4WheelsSettings.Y1Min = (float)axisDefaultSelectionDefaults[1];
                 _4WheelsSettings.Y1MajorInterval = (double)axisDefaultSelectionDefaults[2];
                 _4WheelsSettings.Y1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
                 _4WheelsSettings.Y1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
@@ -718,8 +720,8 @@ namespace Physics_Data_Debug
         {
             if (defaultsSelected == true)
             {
-                _4WheelsSettings.Z1Max = (double)axisDefaultSelectionDefaults[0];
-                _4WheelsSettings.Z1Min = (double)axisDefaultSelectionDefaults[1];
+                _4WheelsSettings.Z1Max = (float)axisDefaultSelectionDefaults[0];
+                _4WheelsSettings.Z1Min = (float)axisDefaultSelectionDefaults[1];
                 //_4WheelsSettings.Z1MajorInterval = (double)axisDefaultSelectionDefaults[2];
                 //_4WheelsSettings.Z1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
                 //_4WheelsSettings.Z1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
@@ -730,8 +732,8 @@ namespace Physics_Data_Debug
         {
             if (defaultsSelected == false)
             {
-                X1LimiterMax = (double)axisDefaultSelectionDefaults[0];
-                X1LimiterMin = (double)axisDefaultSelectionDefaults[1];
+                X1LimiterMax = (float)axisDefaultSelectionDefaults[0];
+                X1LimiterMin = (float)axisDefaultSelectionDefaults[1];
                 //_4WheelsSettings.X1MajorInterval = (double)axisDefaultSelectionDefaults[2];
                 //_4WheelsSettings.X1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
                 //_4WheelsSettings.X1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
@@ -742,8 +744,8 @@ namespace Physics_Data_Debug
         {
             if (defaultsSelected == false)
             {
-                Y1LimiterMax = (double)axisDefaultSelectionDefaults[0];
-                Y1LimiterMin = (double)axisDefaultSelectionDefaults[1];
+                Y1LimiterMax = (float)axisDefaultSelectionDefaults[0];
+                Y1LimiterMin = (float)axisDefaultSelectionDefaults[1];
                 //_4WheelsSettings.X1MajorInterval = (double)axisDefaultSelectionDefaults[2];
                 //_4WheelsSettings.X1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
                 //_4WheelsSettings.X1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
@@ -754,8 +756,8 @@ namespace Physics_Data_Debug
         {
             if (defaultsSelected == false)
             {
-                Z1LimiterMax = (double)axisDefaultSelectionDefaults[0];
-                Z1LimiterMin = (double)axisDefaultSelectionDefaults[1];
+                Z1LimiterMax = (float)axisDefaultSelectionDefaults[0];
+                Z1LimiterMin = (float)axisDefaultSelectionDefaults[1];
                 //_4WheelsSettings.X1MajorInterval = (double)axisDefaultSelectionDefaults[2];
                 //_4WheelsSettings.X1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
                 //_4WheelsSettings.X1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
@@ -881,10 +883,10 @@ namespace Physics_Data_Debug
             //var Z1AxisSelectionDefaults = new List<object>();
 
             //XYAxisDefaults("X", _4WheelsSettings.X1Selection, _4WheelsSettings.X1Defaults);
-            var X1AxisSelectionDefaults = AxisSelectionDefaults(_4WheelsSettings.X1Selection, _4WheelsSettings.AbsoluteValues);
+            var X1AxisSelectionDefaults = SelectionDefaults(_4WheelsSettings.X1Selection, _4WheelsSettings.AbsoluteValues);
 
-            _4WheelsSettings.X1DefaultMax = (double)X1AxisSelectionDefaults[0];
-            _4WheelsSettings.X1DefaultMin = (double)X1AxisSelectionDefaults[1];
+            _4WheelsSettings.X1DefaultMax = (float)X1AxisSelectionDefaults[0];
+            _4WheelsSettings.X1DefaultMin = (float)X1AxisSelectionDefaults[1];
             _4WheelsSettings.X1DefaultMajorInterval = (double)X1AxisSelectionDefaults[2];
             _4WheelsSettings.X1DefaultMajorDecimals = (int)X1AxisSelectionDefaults[3];
             _4WheelsSettings.X1DefaultMinorEnabled = (bool)X1AxisSelectionDefaults[4];
@@ -892,10 +894,10 @@ namespace Physics_Data_Debug
             X1AxisToDefaults(_4WheelsSettings.X1Defaults, X1AxisSelectionDefaults);
 
             //XYAxisDefaults("Y", _4WheelsSettings.Y1Selection, _4WheelsSettings.Y1Defaults);
-            var Y1AxisSelectionDefaults = AxisSelectionDefaults(_4WheelsSettings.Y1Selection, _4WheelsSettings.AbsoluteValues);
+            var Y1AxisSelectionDefaults = SelectionDefaults(_4WheelsSettings.Y1Selection, _4WheelsSettings.AbsoluteValues);
 
-            _4WheelsSettings.Y1DefaultMax = (double)Y1AxisSelectionDefaults[0];
-            _4WheelsSettings.Y1DefaultMin = (double)Y1AxisSelectionDefaults[1];
+            _4WheelsSettings.Y1DefaultMax = (float)Y1AxisSelectionDefaults[0];
+            _4WheelsSettings.Y1DefaultMin = (float)Y1AxisSelectionDefaults[1];
             _4WheelsSettings.Y1DefaultMajorInterval = (double)Y1AxisSelectionDefaults[2];
             _4WheelsSettings.Y1DefaultMajorDecimals = (int)Y1AxisSelectionDefaults[3];
             _4WheelsSettings.Y1DefaultMinorEnabled = (bool)Y1AxisSelectionDefaults[4];
@@ -905,8 +907,8 @@ namespace Physics_Data_Debug
             //ZAxisDefaults(_4WheelsSettings.Z1Selection, _4WheelsSettings.Z1Defaults);
             var Z1AxisSelectionDefaults = AbsoluteZAxisSelectionDefaults(_4WheelsSettings.Z1Selection);
 
-            _4WheelsSettings.Z1DefaultMax = (double)Z1AxisSelectionDefaults[0];
-            _4WheelsSettings.Z1DefaultMin = (double)Z1AxisSelectionDefaults[1];
+            _4WheelsSettings.Z1DefaultMax = (float)Z1AxisSelectionDefaults[0];
+            _4WheelsSettings.Z1DefaultMin = (float)Z1AxisSelectionDefaults[1];
             //_4WheelsSettings.Z1DefaultMajorInterval = (double)Z1AxisSelectionDefaults[2];
             //_4WheelsSettings.Z1DefaultMajorDecimals = (int)Z1AxisSelectionDefaults[3];
             //_4WheelsSettings.Z1DefaultMinorEnabled = (bool)Z1AxisSelectionDefaults[4];
@@ -915,17 +917,16 @@ namespace Physics_Data_Debug
 
             AddChart(chartName, chartAreaName);
             // New Marker color stuff
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor10, _4Wheels.Color10);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor9, _4Wheels.Color9);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor8, _4Wheels.Color8);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor7, _4Wheels.Color7);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor6, _4Wheels.Color6);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor5, _4Wheels.Color5);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor4, _4Wheels.Color4);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor3, _4Wheels.Color3);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor2, _4Wheels.Color2);
-            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor1, _4Wheels.Color1);
-
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor10, _4Wheels.MarkerColors[10]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor9, _4Wheels.MarkerColors[9]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor8, _4Wheels.MarkerColors[8]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor7, _4Wheels.MarkerColors[7]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor6, _4Wheels.MarkerColors[6]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor5, _4Wheels.MarkerColors[5]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor4, _4Wheels.MarkerColors[4]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor3, _4Wheels.MarkerColors[3]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor2, _4Wheels.MarkerColors[2]);
+            AddHistoryColorSeries(chartName, chartAreaName, seriesName + _4Wheels.seriesColor1, _4Wheels.MarkerColors[1]);
             AddSeries(chartName, chartAreaName, seriesName);
         }
         public void SetUpDownChart(Chart chartName)
@@ -1162,27 +1163,27 @@ namespace Physics_Data_Debug
             // WORKS WRONG! Clears the chart series also
             if (_4WheelsSettings.WheelChartsSelect == "All In One")
             {
-                SetChart(chart1, _4Wheels.SeriesFL, chartAllWheels);
-                SetChart(chart1, _4Wheels.SeriesRL, chartAllWheels);
-                SetChart(chart1, _4Wheels.SeriesFR, chartAllWheels);
-                SetChart(chart1, _4Wheels.SeriesRR, chartAllWheels);
+                SetChart(chart1, _4Wheels.FL_SeriesString, chartAllWheels);
+                SetChart(chart1, _4Wheels.RL_SeriesString, chartAllWheels);
+                SetChart(chart1, _4Wheels.FR_SeriesString, chartAllWheels);
+                SetChart(chart1, _4Wheels.RR_SeriesString, chartAllWheels);
             }
             if (_4WheelsSettings.WheelChartsSelect == "Front/Rear")
             {
                 // Add first front then rear
-                SetChart(chart1, _4Wheels.SeriesFL, chartFrontWheels);
-                SetChart(chart1, _4Wheels.SeriesFR, chartFrontWheels);
-                SetChart(chart1, _4Wheels.SeriesRL, chartRearWheels);
-                SetChart(chart1, _4Wheels.SeriesRR, chartRearWheels);
+                SetChart(chart1, _4Wheels.FL_SeriesString, chartFrontWheels);
+                SetChart(chart1, _4Wheels.FR_SeriesString, chartFrontWheels);
+                SetChart(chart1, _4Wheels.RL_SeriesString, chartRearWheels);
+                SetChart(chart1, _4Wheels.RR_SeriesString, chartRearWheels);
 
             }
             if (_4WheelsSettings.WheelChartsSelect == "Separate")
             {
                 // Add first left and then right sides because the order of the ChartAreas is like that when there are four
-                SetChart(chart1, _4Wheels.SeriesFL, chartFL);
-                SetChart(chart1, _4Wheels.SeriesRL, chartRL);
-                SetChart(chart1, _4Wheels.SeriesFR, chartFR);
-                SetChart(chart1, _4Wheels.SeriesRR, chartRR);
+                SetChart(chart1, _4Wheels.FL_SeriesString, chartFL);
+                SetChart(chart1, _4Wheels.RL_SeriesString, chartRL);
+                SetChart(chart1, _4Wheels.FR_SeriesString, chartFR);
+                SetChart(chart1, _4Wheels.RR_SeriesString, chartRR);
             }
             SetUpDownChart(GradientChart);
         }
@@ -1203,7 +1204,7 @@ namespace Physics_Data_Debug
                 label7.Visible = false;
             }
             else if (_4WheelsSettings.WheelChartsSelect == "All In One")
-            { 
+            {
                 label1.Visible = false;
                 label2.Visible = false;
                 label3.Visible = false;
@@ -1212,7 +1213,7 @@ namespace Physics_Data_Debug
                 label6.Visible = false;
                 label7.Visible = false;
             }
-            else if(_4WheelsSettings.WheelChartsSelect == "Front/Rear")
+            else if (_4WheelsSettings.WheelChartsSelect == "Front/Rear")
             {
                 label1.Visible = false;
                 label2.Visible = false;
@@ -1251,116 +1252,12 @@ namespace Physics_Data_Debug
         {
             LiveData._4WheelsOpen = false;
         }
-        private float[] FL_XYZValues()
-        {
-            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
-                                                    LiveData.FL_VerticalLoad, LiveData.FL_VerticalDeflection, LiveData.FL_LoadedRadius, LiveData.FL_EffectiveRadius, LiveData.FL_ContactLength,
-                                                    LiveData.FL_CurrentContactBrakeTorque, LiveData.FL_CurrentContactBrakeTorqueMax,
-                                                    LiveData.FL_SteerAngleDeg, LiveData.FL_CamberAngleDeg,
-                                                    LiveData.FL_LateralLoad, LiveData.FL_SlipAngleDeg, LiveData.FL_LateralFriction, LiveData.FL_LateralSlipSpeed,
-                                                    LiveData.FL_LongitudinalLoad, LiveData.FL_SlipRatio, LiveData.FL_LongitudinalFriction, LiveData.FL_LongitudinalSlipSpeed,
-                                                    LiveData.FL_TreadTemperature, LiveData.FL_InnerTemperature,
-                                                    LiveData.FL_TotalFriction, LiveData.FL_TotalFrictionAngle,
-                                                    LiveData.FL_SuspensionLength, LiveData.FL_SuspensionVelocity);
-        }
-        private float[] FL_LimiterValue()
-        {
-            return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.FL_TravelSpeed, LiveData.FL_AngularVelocity,
-                                                    LiveData.FL_VerticalLoad, LiveData.FL_VerticalDeflection, LiveData.FL_LoadedRadius, LiveData.FL_EffectiveRadius, LiveData.FL_ContactLength,
-                                                    LiveData.FL_CurrentContactBrakeTorque, LiveData.FL_CurrentContactBrakeTorqueMax,
-                                                    LiveData.FL_SteerAngleDeg, LiveData.FL_CamberAngleDeg,
-                                                    LiveData.FL_LateralLoad, LiveData.FL_SlipAngleDeg, LiveData.FL_LateralFriction, LiveData.FL_LateralSlipSpeed,
-                                                    LiveData.FL_LongitudinalLoad, LiveData.FL_SlipRatio, LiveData.FL_LongitudinalFriction, LiveData.FL_LongitudinalSlipSpeed,
-                                                    LiveData.FL_TreadTemperature, LiveData.FL_InnerTemperature,
-                                                    LiveData.FL_TotalFriction, LiveData.FL_TotalFrictionAngle,
-                                                    LiveData.FL_SuspensionLength, LiveData.FL_SuspensionVelocity);
-        }
-        private float[] FR_XYZValues()
-        {
-            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
-                                                    LiveData.FR_VerticalLoad, LiveData.FR_VerticalDeflection, LiveData.FR_LoadedRadius, LiveData.FR_EffectiveRadius, LiveData.FR_ContactLength,
-                                                    LiveData.FR_CurrentContactBrakeTorque, LiveData.FR_CurrentContactBrakeTorqueMax,
-                                                    LiveData.FR_SteerAngleDeg, LiveData.FR_CamberAngleDeg,
-                                                    LiveData.FR_LateralLoad, LiveData.FR_SlipAngleDeg, LiveData.FR_LateralFriction, LiveData.FR_LateralSlipSpeed,
-                                                    LiveData.FR_LongitudinalLoad, LiveData.FR_SlipRatio, LiveData.FR_LongitudinalFriction, LiveData.FR_LongitudinalSlipSpeed,
-                                                    LiveData.FR_TreadTemperature, LiveData.FR_InnerTemperature,
-                                                    LiveData.FR_TotalFriction, LiveData.FR_TotalFrictionAngle,
-                                                    LiveData.FR_SuspensionLength, LiveData.FR_SuspensionVelocity);
-        }
-        private float[] FR_LimiterValue()
-        {
-            return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.FR_TravelSpeed, LiveData.FR_AngularVelocity,
-                                                    LiveData.FR_VerticalLoad, LiveData.FR_VerticalDeflection, LiveData.FR_LoadedRadius, LiveData.FR_EffectiveRadius, LiveData.FR_ContactLength,
-                                                    LiveData.FR_CurrentContactBrakeTorque, LiveData.FR_CurrentContactBrakeTorqueMax,
-                                                    LiveData.FR_SteerAngleDeg, LiveData.FR_CamberAngleDeg,
-                                                    LiveData.FR_LateralLoad, LiveData.FR_SlipAngleDeg, LiveData.FR_LateralFriction, LiveData.FR_LateralSlipSpeed,
-                                                    LiveData.FR_LongitudinalLoad, LiveData.FR_SlipRatio, LiveData.FR_LongitudinalFriction, LiveData.FR_LongitudinalSlipSpeed,
-                                                    LiveData.FR_TreadTemperature, LiveData.FR_InnerTemperature,
-                                                    LiveData.FR_TotalFriction, LiveData.FR_TotalFrictionAngle,
-                                                    LiveData.FR_SuspensionLength, LiveData.FR_SuspensionVelocity);
-        }
-        private float[] RL_XYZValues()
-        {
-            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
-                                                    LiveData.RL_VerticalLoad, LiveData.RL_VerticalDeflection, LiveData.RL_LoadedRadius, LiveData.RL_EffectiveRadius, LiveData.RL_ContactLength,
-                                                    LiveData.RL_CurrentContactBrakeTorque, LiveData.RL_CurrentContactBrakeTorqueMax,
-                                                    LiveData.RL_SteerAngleDeg, LiveData.RL_CamberAngleDeg,
-                                                    LiveData.RL_LateralLoad, LiveData.RL_SlipAngleDeg, LiveData.RL_LateralFriction, LiveData.RL_LateralSlipSpeed,
-                                                    LiveData.RL_LongitudinalLoad, LiveData.RL_SlipRatio, LiveData.RL_LongitudinalFriction, LiveData.RL_LongitudinalSlipSpeed,
-                                                    LiveData.RL_TreadTemperature, LiveData.RL_InnerTemperature,
-                                                    LiveData.RL_TotalFriction, LiveData.RL_TotalFrictionAngle,
-                                                    LiveData.RL_SuspensionLength, LiveData.RL_SuspensionVelocity);
-        }
-        private float[] RL_LimiterValue()
-        {
-            return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.RL_TravelSpeed, LiveData.RL_AngularVelocity,
-                                                    LiveData.RL_VerticalLoad, LiveData.RL_VerticalDeflection, LiveData.RL_LoadedRadius, LiveData.RL_EffectiveRadius, LiveData.RL_ContactLength,
-                                                    LiveData.RL_CurrentContactBrakeTorque, LiveData.RL_CurrentContactBrakeTorqueMax,
-                                                    LiveData.RL_SteerAngleDeg, LiveData.RL_CamberAngleDeg,
-                                                    LiveData.RL_LateralLoad, LiveData.RL_SlipAngleDeg, LiveData.RL_LateralFriction, LiveData.RL_LateralSlipSpeed,
-                                                    LiveData.RL_LongitudinalLoad, LiveData.RL_SlipRatio, LiveData.RL_LongitudinalFriction, LiveData.RL_LongitudinalSlipSpeed,
-                                                    LiveData.RL_TreadTemperature, LiveData.RL_InnerTemperature,
-                                                    LiveData.RL_TotalFriction, LiveData.RL_TotalFrictionAngle,
-                                                    LiveData.RL_SuspensionLength, LiveData.RL_SuspensionVelocity);
-        }
-        private float[] RR_LimiterValue()
-        {
-            return _4Wheels.LimiterListSelections(X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
-                                                    LiveData.RR_VerticalLoad, LiveData.RR_VerticalDeflection, LiveData.RR_LoadedRadius, LiveData.RR_EffectiveRadius, LiveData.RR_ContactLength,
-                                                    LiveData.RR_CurrentContactBrakeTorque, LiveData.RR_CurrentContactBrakeTorqueMax,
-                                                    LiveData.RR_SteerAngleDeg, LiveData.RR_CamberAngleDeg,
-                                                    LiveData.RR_LateralLoad, LiveData.RR_SlipAngleDeg, LiveData.RR_LateralFriction, LiveData.RR_LateralSlipSpeed,
-                                                    LiveData.RR_LongitudinalLoad, LiveData.RR_SlipRatio, LiveData.RR_LongitudinalFriction, LiveData.RR_LongitudinalSlipSpeed,
-                                                    LiveData.RR_TreadTemperature, LiveData.RR_InnerTemperature,
-                                                    LiveData.RR_TotalFriction, LiveData.RR_TotalFrictionAngle,
-                                                    LiveData.RR_SuspensionLength, LiveData.RR_SuspensionVelocity);
-        }
-        private float[] RR_XYZValues()
-        {
-            return _4Wheels.XYZListSelections(_4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection,
-                                                    LiveData.None, LiveData.RaceTime, LiveData.RR_TravelSpeed, LiveData.RR_AngularVelocity,
-                                                    LiveData.RR_VerticalLoad, LiveData.RR_VerticalDeflection, LiveData.RR_LoadedRadius, LiveData.RR_EffectiveRadius, LiveData.RR_ContactLength,
-                                                    LiveData.RR_CurrentContactBrakeTorque, LiveData.RR_CurrentContactBrakeTorqueMax,
-                                                    LiveData.RR_SteerAngleDeg, LiveData.RR_CamberAngleDeg,
-                                                    LiveData.RR_LateralLoad, LiveData.RR_SlipAngleDeg, LiveData.RR_LateralFriction, LiveData.RR_LateralSlipSpeed,
-                                                    LiveData.RR_LongitudinalLoad, LiveData.RR_SlipRatio, LiveData.RR_LongitudinalFriction, LiveData.RR_LongitudinalSlipSpeed,
-                                                    LiveData.RR_TreadTemperature, LiveData.RR_InnerTemperature,
-                                                    LiveData.RR_TotalFriction, LiveData.RR_TotalFrictionAngle,
-                                                    LiveData.RR_SuspensionLength, LiveData.RR_SuspensionVelocity);
-        }
         //GOOD
         private void ComboBoxAxisLimiterText(ComboBox cb, string axis, string defaultSelection)
         {
-            if(cb.SelectedItem != null)
+            if (cb.SelectedItem != null)
             {
-                if((string)cb.SelectedItem == defaultSelection)
+                if ((string)cb.SelectedItem == defaultSelection)
                 {
                     cb.Text = axis + ": " + cb.SelectedItem.ToString();
                 }
@@ -1404,186 +1301,23 @@ namespace Physics_Data_Debug
             X1LimiterDefaultMin = (double)axisSelectionDefaults[1];
             X1AxisToDefaults(enableLimitersCheckBox.Checked, axisSelectionDefaults);
         }*/
-        public List<object> LimiterSelectionDefaults(string axisSelection)
-        {
-            var AxisSelectionList = new List<object>();
-            ///
-            /// [0] = defaultMax
-            /// [1] = defaultMin
-            /// [2] = defaultMajorInterval
-            /// [3] = defaultDecimals
-            /// [4] = defaultMinorDecimals
-            /// [5] = defaultMinorIntervalFraction
-            /// 
-            double dMax; double dMin;
-
-            if (axisSelection == LogSettings.sRaceTime)
-            {
-                dMax = double.NaN;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sNone)
-            {
-                dMax = 2;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sTireTravelSpeed)
-            {
-                dMax = 400;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sAngularVelocity)
-            {
-                dMax = 400;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sVerticalLoad)
-            {
-                dMax = 10000;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sVerticalDeflection)
-            {
-                dMax = 0.15;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sLoadedRadius)
-            {
-                dMax = 0.5;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sEffectiveRadius)
-            {
-                dMax = 0.5;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sContactLength)
-            {
-                dMax = 0.5;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sBrakeTorque)
-            {
-                dMax = 5000;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sMaxBrakeTorque)
-            {
-                dMax = 5000;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sSteerAngle)
-            {
-                dMax = 45;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sCamberAngle)
-            {
-                dMax = 10;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sLateralLoad)
-            {
-                dMax = 10000;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sSlipAngle)
-            {
-                dMax = 45;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sLateralFriction)
-            {
-                dMax = 2;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sLateralSlipSpeed)
-            {
-                dMax = 20;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sLongitudinalLoad)
-            {
-                dMax = 10000;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sSlipRatio)
-            {
-                dMax = 1;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sLongitudinalFriction)
-            {
-                dMax = 2;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
-            {
-                dMax = 20;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sTreadTemperature)
-            {
-                dMax = 380;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sInnerTemperature)
-            {
-                dMax = 380;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sTotalFriction)
-            {
-                dMax = 2;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sTotalFrictionAngle)
-            {
-                dMax = 360;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sSuspensionLength)
-            {
-                dMax = 1;
-                dMin = 0;
-            }
-            else if (axisSelection == LogSettings.sSuspensionVelocity)
-            {
-                dMax = 10;
-                dMin = 0;
-            }
-            else
-            {
-                // Defaults auto scale
-                dMax = double.NaN;
-                dMin = double.NaN;
-            }
-
-            AxisSelectionList[0] = dMax;
-            AxisSelectionList[1] = dMin;
-            //AxisSelectionList[2] = dMajorInterval;
-            //AxisSelectionList[3] = dDecimals;
-            //AxisSelectionList[4] = dMinorEnabled;
-            //AxisSelectionList[5] = dMinorIntervalFraction;
-
-            return AxisSelectionList;
-        }
         public void UpdateAllLimiters()
         {
-            if(customChoiceCheckBox.Checked == false)
+            if (customChoiceCheckBox.Checked == false)
             {
                 X1LimiterSelection = LimiterDefaultToSelectedAxis(X1LimiterComboBox, _4WheelsSettings.X1Selection);
                 Y1LimiterSelection = LimiterDefaultToSelectedAxis(Y1LimiterComboBox, _4WheelsSettings.Y1Selection);
                 Z1LimiterSelection = LimiterDefaultToSelectedAxis(Z1LimiterComboBox, _4WheelsSettings.Z1Selection);
             }
+            if (customChoiceCheckBox.Checked == true)
+            {
+                X1LimiterSelection = LimiterSelection(X1LimiterComboBox);
+            }
 
-            if (customChoiceCheckBox.Checked == true) { X1LimiterSelection = LimiterSelection(X1LimiterComboBox); }//GOOD
-            //double[] X1MinMax = UpdateLimiterMinMaxArray(X1LimiterComboBox, _4WheelsSettings.X1Selection, X1MinLimitTextBox, _4WheelsSettings.X1DefaultMin, X1MaxLimitTextBox, _4WheelsSettings.X1DefaultMax);
+            var X1LimiterSelectionDefaults = SelectionDefaults(X1LimiterSelection, true);
 
-            var X1LimiterSelectionDefaults = AxisSelectionDefaults(X1LimiterSelection, true);
-
-            X1LimiterDefaultMax = (double)X1LimiterSelectionDefaults[0];
-            X1LimiterDefaultMin = (double)X1LimiterSelectionDefaults[1];
+            X1LimiterDefaultMax = (float)X1LimiterSelectionDefaults[0];
+            X1LimiterDefaultMin = (float)X1LimiterSelectionDefaults[1];
             X1LimiterAxisToDefaults(enableLimitersCheckBox.Checked, X1LimiterSelectionDefaults);
 
             double[] X1MinMax = UpdateLimiterMinMaxArray(X1LimiterComboBox, X1MinLimitTextBox, X1LimiterDefaultMin, X1MaxLimitTextBox, X1LimiterDefaultMax);
@@ -1591,84 +1325,61 @@ namespace Physics_Data_Debug
             X1LimiterMax = X1MinMax[1];
 
             if (customChoiceCheckBox.Checked == true) { Y1LimiterSelection = LimiterSelection(Y1LimiterComboBox); }
-            //double[] Y1MinMax = UpdateLimiterMinMaxArray(Y1LimiterComboBox, _4WheelsSettings.Y1Selection, Y1MinLimitTextBox, _4WheelsSettings.Y1DefaultMin, Y1MaxLimitTextBox, _4WheelsSettings.Y1DefaultMax);
 
-            var Y1LimiterSelectionDefaults = AxisSelectionDefaults(Y1LimiterSelection, true);
+            var Y1LimiterSelectionDefaults = SelectionDefaults(Y1LimiterSelection, true);
 
-            Y1LimiterDefaultMax = (double)Y1LimiterSelectionDefaults[0];
-            Y1LimiterDefaultMin = (double)Y1LimiterSelectionDefaults[1];
+            Y1LimiterDefaultMax = (float)Y1LimiterSelectionDefaults[0];
+            Y1LimiterDefaultMin = (float)Y1LimiterSelectionDefaults[1];
             Y1LimiterAxisToDefaults(enableLimitersCheckBox.Checked, Y1LimiterSelectionDefaults);
-            
+
             double[] Y1MinMax = UpdateLimiterMinMaxArray(Y1LimiterComboBox, Y1MinLimitTextBox, Y1LimiterDefaultMin, Y1MaxLimitTextBox, Y1LimiterDefaultMax);
             Y1LimiterMin = Y1MinMax[0];
             Y1LimiterMax = Y1MinMax[1];
 
             if (customChoiceCheckBox.Checked == true) { Z1LimiterSelection = LimiterSelection(Z1LimiterComboBox); }
-            //double[] Z1MinMax = UpdateLimiterMinMaxArray(Z1LimiterComboBox, _4WheelsSettings.Z1Selection, Z1MinLimitTextBox, _4WheelsSettings.Z1DefaultMin, Z1MaxLimitTextBox, _4WheelsSettings.Z1DefaultMax);
 
-            var Z1LimiterSelectionDefaults = AxisSelectionDefaults(Z1LimiterSelection, true);
+            var Z1LimiterSelectionDefaults = SelectionDefaults(Z1LimiterSelection, true);
 
-            Z1LimiterDefaultMax = (double)Z1LimiterSelectionDefaults[0];
-            Z1LimiterDefaultMin = (double)Z1LimiterSelectionDefaults[1];
+            Z1LimiterDefaultMax = (float)Z1LimiterSelectionDefaults[0];
+            Z1LimiterDefaultMin = (float)Z1LimiterSelectionDefaults[1];
             Z1LimiterAxisToDefaults(enableLimitersCheckBox.Checked, Z1LimiterSelectionDefaults);
-            
+
             double[] Z1MinMax = UpdateLimiterMinMaxArray(Z1LimiterComboBox, Z1MinLimitTextBox, Z1LimiterDefaultMin, Z1MaxLimitTextBox, Z1LimiterDefaultMax);
             Z1LimiterMin = Z1MinMax[0];
             Z1LimiterMax = Z1MinMax[1];
-            string first;
-            string second;
-            string third;
-            string fourth;
-            string fifth;
-            string sixth;
-            if(CBLimiterIsAbsoluteValue(X1LimiterComboBox) == true)
-            {
-                first = "/" + X1LimiterSelection + "/";
-                fourth = "";
-            }
-            else
-            {
-                first = "";
-                fourth = "/" + X1LimiterSelection + "/";
-            }
-            if (CBLimiterIsAbsoluteValue(Y1LimiterComboBox) == true)
-            {
-                second = "/" + Y1LimiterSelection + "/";
-                fifth = "";
-            }
-            else
-            {
-                second = "";
-                fifth = "/" + Y1LimiterSelection + "/";
-            }
-            if (CBLimiterIsAbsoluteValue(Z1LimiterComboBox) == true)
-            {
-                third = "/" + Z1LimiterSelection + "/";
-                sixth = "";
-            }
-            else
-            {
-                third = "";
-                sixth = "/" + Z1LimiterSelection + "/";
-            }
-            label17.Text = "Use only positive values on " + first + second + third + ". They get automatically also negative opposite. On " + fourth + fifth + sixth + " the limit works normally.";
+
+            string[] x1Limiter = LimitersLabelText(X1LimiterComboBox, X1LimiterSelection);
+            string[] y1Limiter = LimitersLabelText(Y1LimiterComboBox, Y1LimiterSelection);
+            string[] z1Limiter = LimitersLabelText(Z1LimiterComboBox, Z1LimiterSelection);
+            label17.Text = "Use only positive values on " + x1Limiter[0] + y1Limiter[0] + z1Limiter[0] + ". They get automatically also negative opposite. On " + x1Limiter[1] + y1Limiter[1] + z1Limiter[1] + " the limit works normally.";
         }
-        public bool CBLimiterIsAbsoluteValue(ComboBox cb)
+        public string[] LimitersLabelText(ComboBox cb, string limiter)
         {
-            return _4Wheels.CBLimiterSelectionIsAbsoluteValue(cb);
+            string[] arrayString = new string[2];
+            if (LogSettings.DataNameStringsAbsoluteValues.Contains((string)cb.SelectedItem) == true)
+            {
+                arrayString[0] = "/" + limiter + "/";
+                arrayString[1] = "";
+            }
+            else
+            {
+                arrayString[0] = "";
+                arrayString[1] = "/" + limiter + "/";
+            }
+            return arrayString;
         }
         private double[] UpdateLimiterMinMaxArray(ComboBox cBLimiter, TextBox tBMin, double defaultMin, TextBox tBMax, double defaultMax)
         {
             double[] limiterArray = new double[2];
             bool absoluteValueCheck = AbsoluteValueCheck(cBLimiter, tBMin, defaultMin, tBMax, defaultMax);
-            //bool absoluteValueCheck = AbsoluteValueCheck(cBLimiter, selection, tBMin, defaultMin, tBMax, defaultMax);
             //Make it so minimum if it's absolute it's 0 at the minimum.
-            if (CBLimiterIsAbsoluteValue(cBLimiter) == true)
+            if (LogSettings.DataNameStringsAbsoluteValues.Contains((string)cBLimiter.SelectedItem) == true)
             {
                 defaultMin = 0;
             }
-            limiterArray[0] = MinLimiter(tBMin, defaultMin, absoluteValueCheck);
-            limiterArray[1] = MaxLimiter(tBMax, defaultMax, absoluteValueCheck);
+
+            limiterArray[0] = Limiter(tBMin, defaultMin, absoluteValueCheck);
+            limiterArray[1] = Limiter(tBMax, defaultMax, absoluteValueCheck);
             return limiterArray;
         }
         private string LimiterSelection(ComboBox cBLimiter)
@@ -1677,12 +1388,10 @@ namespace Physics_Data_Debug
         }
         private bool AbsoluteValueCheck(ComboBox cb, TextBox tBMin, double defaultMin, TextBox tBMax, double defaultMax)
         {
-            //bool enableCustomLimiter = EnableCustomLimiter(cb, selection, tBMin, defaultMin, tBMax, defaultMax);
-            bool enableCustomLimiter = EnableCustomLimiter(cb, tBMin, defaultMin, tBMax, defaultMax);//Use this instead and remove the LimiterDefaultToSelectedAxis(cb, selection); from inside?
+            bool enableCustomLimiter = EnableCustomLimiter(cb, tBMin, defaultMin, tBMax, defaultMax);
             if (enableCustomLimiter == true)
             {
-                //return _4Wheels.CBSelectionCanBeAbsoluteValue(cb);
-                return CBLimiterIsAbsoluteValue(cb);
+                return LogSettings.DataNameStringsAbsoluteValues.Contains((string)cb.SelectedItem);
             }
             else
             {
@@ -1702,7 +1411,7 @@ namespace Physics_Data_Debug
             }
             else
             {
-                if(enableLimitersCheckBox.Checked == false)
+                if (enableLimitersCheckBox.Checked == false)
                 {
                     LoadDefaultTextBoxTexts(cb, tBMin, defaultMin, tBMax, defaultMax);
                 }
@@ -1713,31 +1422,18 @@ namespace Physics_Data_Debug
             }
         }
         /* Need to make parser and/or/checker that Max Value TextBox value can't be smaller than Min Value Textbox value */
-        private double MinLimiter(TextBox tBMin, double defaultMin, bool abloluteValueCheck)
+        private double Limiter(TextBox tB, double defaultValue, bool abloluteValueCheck)
         {
             //defaultMin is either 0 when it's absolute or if it's not then it's _4WheelsSettings.xxDefaultMin
             if (enableLimitersCheckBox.Checked == true)
             {
-                tBMin.Enabled = true;
-                return Parsers.TextBoxParserDouble(tBMin, defaultMin, abloluteValueCheck);
+                tB.Enabled = true;
+                return TextBoxBaseParsers.Parser(tB, defaultValue, abloluteValueCheck);
             }
             else
             {
-                tBMin.Enabled = false;
-                return defaultMin;
-            }
-        }
-        private double MaxLimiter(TextBox tBMax, double defaultMax, bool abloluteValueCheck)
-        {
-            if (enableLimitersCheckBox.Checked == true)
-            {
-                tBMax.Enabled = true;
-                return Parsers.TextBoxParserDouble(tBMax, defaultMax, abloluteValueCheck);
-            }
-            else
-            {
-                tBMax.Enabled = false;
-                return defaultMax;
+                tB.Enabled = false;
+                return defaultValue;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -1764,23 +1460,72 @@ namespace Physics_Data_Debug
             //UpdateLimiters();
             if (LiveData.elapsedTime > 0 && PauseUpdate == false)
             {
-                float[] xyzValuesFL = FL_XYZValues();
-                float[] xyzValuesFR = FR_XYZValues();
-                float[] xyzValuesRL = RL_XYZValues();
-                float[] xyzValuesRR = RR_XYZValues();
+                xyzAxisSelection = new List<string> { _4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection };
+                List<float> FL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.FL_LiveDataList);
+                List<float> FR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.FR_LiveDataList);
+                List<float> RL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.RL_LiveDataList);
+                List<float> RR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.RR_LiveDataList);
 
-                float[] limiterFL = FL_LimiterValue();
-                float[] limiterFR = FR_LimiterValue();
-                float[] limiterRL = RL_LimiterValue();
-                float[] limiterRR = RR_LimiterValue();
+                xyzAxisLimiterSelection = new List<string> { X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection };
+                List<float> FL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.FL_LiveDataList);
+                List<float> FR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.FR_LiveDataList);
+                List<float> RL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.RL_LiveDataList);
+                List<float> RR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.RR_LiveDataList);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.SeriesFL, xyzValuesFL[0], xyzValuesFL[1], xyzValuesFL[2], limiterFL[0], limiterFL[1], limiterFL[2]);
-                _4Wheels.ListSeries(chart1, _4Wheels.SeriesFR, xyzValuesFR[0], xyzValuesFR[1], xyzValuesFR[2], limiterFR[0], limiterFR[1], limiterFR[2]);
-                _4Wheels.ListSeries(chart1, _4Wheels.SeriesRL, xyzValuesRL[0], xyzValuesRL[1], xyzValuesRL[2], limiterRL[0], limiterRL[1], limiterRL[2]);
-                _4Wheels.ListSeries(chart1, _4Wheels.SeriesRR, xyzValuesRR[0], xyzValuesRR[1], xyzValuesRR[2], limiterRR[0], limiterRR[1], limiterRR[2]);
+                _4Wheels.ListSeries(chart1, _4Wheels.FL_SeriesString, FL_xyzValues, FL_limiter, LiveData.FL_VerticalLoad,
+                    _4Wheels.FL_X1ValuesChart, _4Wheels.FL_Y1ValuesChart, _4Wheels.FL_Z1ValuesChart,
+                    _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
+                    _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
+                    _4Wheels.FL_X1ValuesChartColor3, _4Wheels.FL_Y1ValuesChartColor3,
+                    _4Wheels.FL_X1ValuesChartColor4, _4Wheels.FL_Y1ValuesChartColor4,
+                    _4Wheels.FL_X1ValuesChartColor5, _4Wheels.FL_Y1ValuesChartColor5,
+                    _4Wheels.FL_X1ValuesChartColor6, _4Wheels.FL_Y1ValuesChartColor6,
+                    _4Wheels.FL_X1ValuesChartColor7, _4Wheels.FL_Y1ValuesChartColor7,
+                    _4Wheels.FL_X1ValuesChartColor8, _4Wheels.FL_Y1ValuesChartColor8,
+                    _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
+                    _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10);
+
+                _4Wheels.ListSeries(chart1, _4Wheels.FR_SeriesString, FR_xyzValues, FR_limiter, LiveData.FR_VerticalLoad,
+                    _4Wheels.FR_X1ValuesChart, _4Wheels.FR_Y1ValuesChart, _4Wheels.FR_Z1ValuesChart,
+                    _4Wheels.FR_X1ValuesChartColor1, _4Wheels.FR_Y1ValuesChartColor1,
+                    _4Wheels.FR_X1ValuesChartColor2, _4Wheels.FR_Y1ValuesChartColor2,
+                    _4Wheels.FR_X1ValuesChartColor3, _4Wheels.FR_Y1ValuesChartColor3,
+                    _4Wheels.FR_X1ValuesChartColor4, _4Wheels.FR_Y1ValuesChartColor4,
+                    _4Wheels.FR_X1ValuesChartColor5, _4Wheels.FR_Y1ValuesChartColor5,
+                    _4Wheels.FR_X1ValuesChartColor6, _4Wheels.FR_Y1ValuesChartColor6,
+                    _4Wheels.FR_X1ValuesChartColor7, _4Wheels.FR_Y1ValuesChartColor7,
+                    _4Wheels.FR_X1ValuesChartColor8, _4Wheels.FR_Y1ValuesChartColor8,
+                    _4Wheels.FR_X1ValuesChartColor9, _4Wheels.FR_Y1ValuesChartColor9,
+                    _4Wheels.FR_X1ValuesChartColor10, _4Wheels.FR_Y1ValuesChartColor10);
+
+                _4Wheels.ListSeries(chart1, _4Wheels.RL_SeriesString, RL_xyzValues, RL_limiter, LiveData.RL_VerticalLoad,
+                    _4Wheels.RL_X1ValuesChart, _4Wheels.RL_Y1ValuesChart, _4Wheels.RL_Z1ValuesChart,
+                    _4Wheels.RL_X1ValuesChartColor1, _4Wheels.RL_Y1ValuesChartColor1,
+                    _4Wheels.RL_X1ValuesChartColor2, _4Wheels.RL_Y1ValuesChartColor2,
+                    _4Wheels.RL_X1ValuesChartColor3, _4Wheels.RL_Y1ValuesChartColor3,
+                    _4Wheels.RL_X1ValuesChartColor4, _4Wheels.RL_Y1ValuesChartColor4,
+                    _4Wheels.RL_X1ValuesChartColor5, _4Wheels.RL_Y1ValuesChartColor5,
+                    _4Wheels.RL_X1ValuesChartColor6, _4Wheels.RL_Y1ValuesChartColor6,
+                    _4Wheels.RL_X1ValuesChartColor7, _4Wheels.RL_Y1ValuesChartColor7,
+                    _4Wheels.RL_X1ValuesChartColor8, _4Wheels.RL_Y1ValuesChartColor8,
+                    _4Wheels.RL_X1ValuesChartColor9, _4Wheels.RL_Y1ValuesChartColor9,
+                    _4Wheels.RL_X1ValuesChartColor10, _4Wheels.RL_Y1ValuesChartColor10);
+
+                _4Wheels.ListSeries(chart1, _4Wheels.RR_SeriesString, RR_xyzValues, RR_limiter, LiveData.RR_VerticalLoad,
+                    _4Wheels.RR_X1ValuesChart, _4Wheels.RR_Y1ValuesChart, _4Wheels.RR_Z1ValuesChart,
+                    _4Wheels.RR_X1ValuesChartColor1, _4Wheels.RR_Y1ValuesChartColor1,
+                    _4Wheels.RR_X1ValuesChartColor2, _4Wheels.RR_Y1ValuesChartColor2,
+                    _4Wheels.RR_X1ValuesChartColor3, _4Wheels.RR_Y1ValuesChartColor3,
+                    _4Wheels.RR_X1ValuesChartColor4, _4Wheels.RR_Y1ValuesChartColor4,
+                    _4Wheels.RR_X1ValuesChartColor5, _4Wheels.RR_Y1ValuesChartColor5,
+                    _4Wheels.RR_X1ValuesChartColor6, _4Wheels.RR_Y1ValuesChartColor6,
+                    _4Wheels.RR_X1ValuesChartColor7, _4Wheels.RR_Y1ValuesChartColor7,
+                    _4Wheels.RR_X1ValuesChartColor8, _4Wheels.RR_Y1ValuesChartColor8,
+                    _4Wheels.RR_X1ValuesChartColor9, _4Wheels.RR_Y1ValuesChartColor9,
+                    _4Wheels.RR_X1ValuesChartColor10, _4Wheels.RR_Y1ValuesChartColor10);
             }
         }
-        #region BUTTONS
+        #region BUTTONS, BOXES etc.
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -1807,7 +1552,7 @@ namespace Physics_Data_Debug
         }
         private void buttonPause_Click(object sender, EventArgs e)
         {
-            if(PauseUpdate == false)
+            if (PauseUpdate == false)
             {
                 PauseUpdate = true;
                 buttonPause.Text = "Continue Update";
@@ -1826,7 +1571,6 @@ namespace Physics_Data_Debug
         {
             UpdateAllLimiters();
         }
-        #endregion
         private void xLimiterComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             SetComboBoxAxisLimiterTexts();
@@ -1877,5 +1621,6 @@ namespace Physics_Data_Debug
         {
             UpdateAllLimiters();
         }
+        #endregion
     }
 }

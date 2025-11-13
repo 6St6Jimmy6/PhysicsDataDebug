@@ -5,38 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Physics_Data_Debug
-{ 
+{
     public class LogData
     {
-            //To Do: Maybe later this needs to be more flexible, so it gets and sets the stuff that's actually logged.
+        //To Do: Maybe later this needs to be more flexible, so it gets and sets the stuff that's actually logged.
 
-            //Current List of logging stuff
-            /*
-        public static string sRaceTime = "RaceTime";
-        public static string sTireTravelSpeed = "TireTravelSpeed";
-        public static string sAngularVelocity = "AngularVelocity";
-        public static string sVerticalLoad = "VerticalLoad";
-        public static string sVerticalDeflection = "VerticalDeflection";
-        public static string sLoadedRadius = "LoadedRadius";
-        public static string sEffectiveRadius = "EffectiveRadius";
-        public static string sContactLength = "ContactLength";
-        public static string sBrakeTorque = "BrakeTorque";
-        public static string sMaxBrakeTorque = "MaxBrakeTorque";
-        public static string sSteerAngle = "SteerAngle";
-        public static string sCamberAngle = "CamberAngle";
-        public static string sLateralLoad = "LateralLoad";
-        public static string sSlipAngle = "SlipAngle";
-        public static string sLateralFriction = "LateralFriction";
-        public static string sLateralSlipSpeed = "LateralSlipSpeed";
-        public static string sLongitudinalLoad = "LongitudinalLoad";
-        public static string sSlipRatio = "SlipRatio";
-        public static string sLongitudinalFriction = "LongitudinalFriction";
-        public static string sLongitudinalSlipSpeed = "LongitudinalSlipSpeed";
-        public static string sTreadTemperature = "TreadTemperature";
-        public static string sInnerTemperature = "InnerTemperature";
-        public static string sTotalFriction = "TotalFriction";
-        public static string sTotalFrictionAngle = "TotalFrictionAngle";
-             */
+        //Current List of logging stuff
+        /*
+    public static string sRaceTime = "RaceTime";
+    public static string sTireTravelSpeed = "TireTravelSpeed";
+    public static string sAngularVelocity = "AngularVelocity";
+    public static string sVerticalLoad = "VerticalLoad";
+    public static string sVerticalDeflection = "VerticalDeflection";
+    public static string sLoadedRadius = "LoadedRadius";
+    public static string sEffectiveRadius = "EffectiveRadius";
+    public static string sContactLength = "ContactLength";
+    public static string sBrakeTorque = "BrakeTorque";
+    public static string sMaxBrakeTorque = "MaxBrakeTorque";
+    public static string sSteerAngle = "SteerAngle";
+    public static string sCamberAngle = "CamberAngle";
+    public static string sLateralLoad = "LateralLoad";
+    public static string sSlipAngle = "SlipAngle";
+    public static string sLateralFriction = "LateralFriction";
+    public static string sLateralSlipSpeed = "LateralSlipSpeed";
+    public static string sLongitudinalLoad = "LongitudinalLoad";
+    public static string sSlipRatio = "SlipRatio";
+    public static string sLongitudinalFriction = "LongitudinalFriction";
+    public static string sLongitudinalSlipSpeed = "LongitudinalSlipSpeed";
+    public static string sTreadTemperature = "TreadTemperature";
+    public static string sInnerTemperature = "InnerTemperature";
+    public static string sTotalFriction = "TotalFriction";
+    public static string sTotalFrictionAngle = "TotalFrictionAngle";
+         */
 
         public int RaceTime { get; set; }
         public float TireTravelSpeed { get; set; }
@@ -72,17 +72,17 @@ namespace Physics_Data_Debug
          * public float a { get; set; }
          * */
 
-        public LogData(int RaceTime, 
-            float TireTravelSpeed, 
-            float AngularVelocity, 
-            float VerticalLoad, 
-            float VerticalDeflection, 
-            float LoadedRadius, 
-            float EffectiveRadius, 
-            float ContactLength, 
-            float BrakeTorque, 
-            float MaxBrakeTorque, 
-            float SteerAngle, 
+        public LogData(int RaceTime,
+            float TireTravelSpeed,
+            float AngularVelocity,
+            float VerticalLoad,
+            float VerticalDeflection,
+            float LoadedRadius,
+            float EffectiveRadius,
+            float ContactLength,
+            float BrakeTorque,
+            float MaxBrakeTorque,
+            float SteerAngle,
             float CamberAngle,
             float LateralLoad,
             float SlipAngle,

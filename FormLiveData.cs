@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.IO;
-using System.Windows.Forms;
+using System.Linq;
+using System.Numerics;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Timers;
-using System.Numerics;
+using System.Windows.Forms;
 
 namespace Physics_Data_Debug
 {
@@ -47,7 +49,11 @@ namespace Physics_Data_Debug
             logInterval_textBox.Text = LiveData.tickInterval.ToString();
             //panel1.Paint += new PaintEventHandler(panel1_Paint);
             //panel2.Paint += new PaintEventHandler(panel2_Paint);
+            //WreckfestData.FL_TireData = WreckfestData.AddItemInDataListTiresWreckfest<float>(WreckfestData.BaseAddr, WreckfestData.Name, WreckfestData.Offsets, WreckfestData.Value);
+            
+            /*byte[] exeBytes = LiveData.GetExeBytes(LiveData.PathSource);
 
+            LiveData.PatternAtOffset = LiveData.PatternAt(exeBytes, LiveData.PatternToFind);*/
         }
         #region Methods
         public void ButtonVisibilities()
@@ -106,22 +112,24 @@ namespace Physics_Data_Debug
         private void TextBoxUpdates()
         {
             /*
-            textBox1.Text = "X: " + LiveData.TX + "\r\n" + "Y: " + LiveData.TY + "\r\n" + "Z: " + LiveData.TZ;
-            textBox2.Text = "R11: " + LiveData.R11 + "\r\n" + "R12: " + LiveData.R12 + "\r\n" + "R13: " + LiveData.R13;
-            textBox3.Text = "R21: " + LiveData.R21 + "\r\n" + "R22: " + LiveData.R22 + "\r\n" + "R23: " + LiveData.R23;
-            textBox4.Text = "R31: " + LiveData.R31 + "\r\n" + "R32: " + LiveData.R32 + "\r\n" + "R33: " + LiveData.R33;
-            textBox5.Text = "X: " + LiveData.Q1 + "\r\n" + "Y: " + LiveData.Q2 + "\r\n" + "Z: " + LiveData.Q3 + "\r\n" + "W: " + LiveData.Q4;
+            textBox1.Text = "X: " + LiveData.TXAccel + "\r\n" + "Y: " + LiveData.TYAccel + "\r\n" + "Z: " + LiveData.TZAccel;
+            textBox2.Text = "R11: " + LiveData.R11Accel + "\r\n" + "R12: " + LiveData.R12Accel + "\r\n" + "R13: " + LiveData.R13Accel;
+            textBox3.Text = "R21: " + LiveData.R21Accel + "\r\n" + "R22: " + LiveData.R22Accel + "\r\n" + "R23: " + LiveData.R23Accel;
+            textBox4.Text = "R31: " + LiveData.R31Accel + "\r\n" + "R32: " + LiveData.R32Accel + "\r\n" + "R33: " + LiveData.R33Accel;
+            textBox5.Text = "X: " + LiveData.Q1Accel + "\r\n" + "Y: " + LiveData.Q2Accel + "\r\n" + "Z: " + LiveData.Q3Accel + "\r\n" + "W: " + LiveData.Q4Accel + "\r\n" + "A1: " + LiveData.A1Accel + "\r\n" + "A2: " + LiveData.A2Accel;
             textBox6.Text = "RY°: " + Math.Round(LiveData.rotationYDeg, 2) + "\r\n" + "RY°r: " + Math.Round(LiveData.rotationYRad, 2) + "\r\n" + "gX: " + Math.Round(LiveData.XG, 2) + "\r\n" + "gY: " + Math.Round(LiveData.YG, 2) + "\r\n" + "gZ: " + Math.Round(LiveData.ZG, 2) + "\r\n" + "XZ°: " + Math.Round(LiveData.XZAccelerationAngleDeg, 2) + "\r\n" + "XZ°r: " + Math.Round(LiveData.XZAccelerationAngleRad, 2) + "\r\n" + "gXZ: " +
                 Math.Round(LiveData.XZG, 2) + "\r\n" + "gXZ°: " + Math.Round(LiveData.XZGAngleDeg, 2) + "\r\n" + "gXZ°r: " + Math.Round(LiveData.XZGAngleRad, 2);
             */
+            textBox1.Text = "Front Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchFL), 3) + " | " + Math.Round(LiveData.FL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawFL), 3) + " | " + Math.Round(LiveData.FL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollFL), 3) + " | " + Math.Round(LiveData.FL_CamberAngleDeg, 3);
+            textBox2.Text = "Front Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchFR), 3) + " | " + Math.Round(LiveData.FR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawFR), 3) + " | " + Math.Round(LiveData.FR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollFR), 3) + " | " + Math.Round(LiveData.FR_CamberAngleDeg, 3);
+            textBox3.Text = "Rear Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchRL), 3) + " | " + Math.Round(LiveData.RL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawRL), 3) + " | " + Math.Round(LiveData.RL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollRL), 3) + " | " + Math.Round(LiveData.RL_CamberAngleDeg, 3);
+            textBox4.Text = "Rear Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchRR), 3) + " | " + Math.Round(LiveData.RR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawRR), 3) + " | " + Math.Round(LiveData.RR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollRR), 3) + " | " + Math.Round(LiveData.RR_CamberAngleDeg, 3);
+            //textBox5.Text = LiveData.FL_TireData[0].ToString() + "\r\n" + LiveData.FL_TireData[1].ToString() + "\r\n" + LiveData.FL_TireData[2].ToString() + "\r\n" + LiveData.FL_TireData[3].ToString();
+            //textBox5.Text = "RL_LonBristleStiffness: " + Math.Round(LiveData.RL_LonBristleStiffness, 2) + "\r\n" + "RL_LonForceSlide: " + Math.Round(LiveData.RL_LonForceSlide, 2) + "\r\n" + "RL_LonForceStatic: " + Math.Round(LiveData.RL_LonForceStatic, 2) + "\r\n" + "RL_LonForceTotal: " + Math.Round(LiveData.RL_LonForceTotal, 2);
             // Chassis, Engine and Differential stuff
             CurrentSpeed.Text = Math.Round(LiveData.speed, 2).ToString();
             CurrentAcceleration.Text = Math.Round(LiveData.XYZAcceleration, 2).ToString();
             CurrentGForce.Text = Math.Round(LiveData.XYZG, 2).ToString();
-            CurrentDrag.Text = Math.Round(LiveData.XYZDrag, 2).ToString();
-            //CurrentXDrag.Text = Math.Round(LiveData.xDrag, 2).ToString();
-            //CurrentYDrag.Text = Math.Round(LiveData.yDrag, 2).ToString();
-            //CurrentZDrag.Text = Math.Round(LiveData.zDrag, 2).ToString();
             CurrentFrontLift.Text = Math.Round(LiveData.frontLift, 2).ToString();
             CurrentRearLift.Text = Math.Round(LiveData.rearLift, 2).ToString();
             CurrentEngineRPM.Text = Math.Round(LiveData.engineRPM, 0).ToString() + " RPM";

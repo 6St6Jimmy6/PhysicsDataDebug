@@ -17,211 +17,202 @@ namespace Physics_Data_Debug
         public static int HistoryColorDivider { get; set; } = 2;
         public static int Steps { get; set; } = 10;
 
-        public static string SeriesFL { get; set; } = "SeriesFL";
-        public static string SeriesFR { get; set; } = "SeriesFR";
-        public static string SeriesRL { get; set; } = "SeriesRL";
-        public static string SeriesRR { get; set; } = "SeriesRR";
+        public static string FL_SeriesString { get; set; } = "SeriesFL";
+        public static List<float> FL_X1ValuesChart { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChart { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChart { get; set; } = new List<float>();
 
-        public static List<double> FL_X1ValuesChart { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChart { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChart { get; set; } = new List<double>();
+        public static string FR_SeriesString { get; set; } = "SeriesFR";
+        public static List<float> FR_X1ValuesChart { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChart { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChart { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChart { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChart { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChart { get; set; } = new List<double>();
+        public static string RL_SeriesString { get; set; } = "SeriesRL";
+        public static List<float> RL_X1ValuesChart { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChart { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChart { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChart { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChart { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChart { get; set; } = new List<double>();
-
-        public static List<double> RR_X1ValuesChart { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChart { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChart { get; set; } = new List<double>();
+        public static string RR_SeriesString { get; set; } = "SeriesRR";
+        public static List<float> RR_X1ValuesChart { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChart { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChart { get; set; } = new List<float>();
         #region Color Gradient list values.
         public static string seriesColor1 { get; set; } = "Color1";
-        public static List<double> FL_X1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor1 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor1 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor1 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor1 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor1 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor1 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor1 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor1 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor1 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor1 { get; set; } = new List<float>();
 
         public static string seriesColor2 { get; set; } = "Color2";
-        public static List<double> FL_X1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor2 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor2 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor2 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor2 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor2 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor2 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor2 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor2 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor2 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor2 { get; set; } = new List<float>();
 
         public static string seriesColor3 { get; set; } = "Color3";
-        public static List<double> FL_X1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor3 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor3 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor3 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor3 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor3 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor3 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor3 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor3 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor3 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor3 { get; set; } = new List<float>();
 
         public static string seriesColor4 { get; set; } = "Color4";
-        public static List<double> FL_X1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor4 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor4 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor4 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor4 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor4 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor4 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor4 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor4 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor4 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor4 { get; set; } = new List<float>();
 
         public static string seriesColor5 { get; set; } = "Color5";
-        public static List<double> FL_X1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor5 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor5 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor5 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor5 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor5 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor5 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor5 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor5 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor5 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor5 { get; set; } = new List<float>();
 
         public static string seriesColor6 { get; set; } = "Color6";
-        public static List<double> FL_X1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor6 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor6 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor6 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor6 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor6 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor6 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor6 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor6 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor6 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor6 { get; set; } = new List<float>();
 
         public static string seriesColor7 { get; set; } = "Color7";
-        public static List<double> FL_X1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor7 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor7 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor7 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor7 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor7 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor7 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor7 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor7 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor7 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor7 { get; set; } = new List<float>();
 
         public static string seriesColor8 { get; set; } = "Color8";
-        public static List<double> FL_X1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor8 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor8 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor8 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor8 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor8 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor8 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor8 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor8 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor8 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor8 { get; set; } = new List<float>();
 
         public static string seriesColor9 { get; set; } = "Color9";
-        public static List<double> FL_X1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor9 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor9 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor9 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor9 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor9 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor9 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor9 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor9 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor9 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor9 { get; set; } = new List<float>();
 
         public static string seriesColor10 { get; set; } = "Color10";
-        public static List<double> FL_X1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> FL_Y1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> FL_Z1ValuesChartColor10 { get; set; } = new List<double>();
+        public static List<float> FL_X1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> FL_Y1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> FL_Z1ValuesChartColor10 { get; set; } = new List<float>();
 
-        public static List<double> FR_X1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> FR_Y1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> FR_Z1ValuesChartColor10 { get; set; } = new List<double>();
+        public static List<float> FR_X1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> FR_Y1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> FR_Z1ValuesChartColor10 { get; set; } = new List<float>();
 
-        public static List<double> RL_X1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> RL_Y1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> RL_Z1ValuesChartColor10 { get; set; } = new List<double>();
+        public static List<float> RL_X1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> RL_Y1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> RL_Z1ValuesChartColor10 { get; set; } = new List<float>();
 
-        public static List<double> RR_X1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> RR_Y1ValuesChartColor10 { get; set; } = new List<double>();
-        public static List<double> RR_Z1ValuesChartColor10 { get; set; } = new List<double>();
+        public static List<float> RR_X1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> RR_Y1ValuesChartColor10 { get; set; } = new List<float>();
+        public static List<float> RR_Z1ValuesChartColor10 { get; set; } = new List<float>();
         #endregion
 
         public static SeriesChartType ChartType { get; set; } = _4WheelsSettings.SeriesChartType;
         public static MarkerStyle MarkerStyle { get; set; } = MarkerStyle.Circle;
         public static int MarkerSizeHistory { get; set; } = 2;
-        public static Color Color10 { get; set; }
-        public static Color Color9 { get; set; }
-        public static Color Color8 { get; set; }
-        public static Color Color7 { get; set; }
-        public static Color Color6 { get; set; }
-        public static Color Color5 { get; set; }
-        public static Color Color4 { get; set; }
-        public static Color Color3 { get; set; }
-        public static Color Color2 { get; set; }
-        public static Color Color1 { get; set; }
+        public static List<Color> MarkerColors { get; set; } = new List<Color>(new Color[11]);
+        /*
         public static bool LimiterSelectionIsAbsoluteValue(string selectedItem)
         {
             if (selectedItem == LogSettings.sNone ||
@@ -249,20 +240,20 @@ namespace Physics_Data_Debug
         public static bool CBLimiterSelectionIsAbsoluteValue(ComboBox cb)
         {
             string selectedItem = (string)cb.SelectedItem;
-            if (selectedItem == LogSettings.sNone ||
-                selectedItem == LogSettings.sTireTravelSpeed ||
-                selectedItem == LogSettings.sAngularVelocity ||
-                selectedItem == LogSettings.sSteerAngle ||
-                selectedItem == LogSettings.sCamberAngle ||
-                selectedItem == LogSettings.sLateralLoad ||
-                selectedItem == LogSettings.sSlipAngle ||
-                selectedItem == LogSettings.sLateralFriction ||
-                selectedItem == LogSettings.sLateralSlipSpeed ||
-                selectedItem == LogSettings.sLongitudinalLoad ||
-                selectedItem == LogSettings.sSlipRatio ||
-                selectedItem == LogSettings.sLongitudinalFriction ||
-                selectedItem == LogSettings.sLongitudinalSlipSpeed ||
-                selectedItem == LogSettings.sSuspensionVelocity)
+            if (selectedItem == LogSettings.sNone || 
+                   selectedItem == LogSettings.sTireTravelSpeed ||
+                   selectedItem == LogSettings.sAngularVelocity ||
+                   selectedItem == LogSettings.sSteerAngle ||
+                   selectedItem == LogSettings.sCamberAngle ||
+                   selectedItem == LogSettings.sLateralLoad ||
+                   selectedItem == LogSettings.sSlipAngle ||
+                   selectedItem == LogSettings.sLateralFriction ||
+                   selectedItem == LogSettings.sLateralSlipSpeed ||
+                   selectedItem == LogSettings.sLongitudinalLoad ||
+                   selectedItem == LogSettings.sSlipRatio ||
+                   selectedItem == LogSettings.sLongitudinalFriction ||
+                   selectedItem == LogSettings.sLongitudinalSlipSpeed ||
+                   selectedItem == LogSettings.sSuspensionVelocity)
             {
                 return true;
             }
@@ -270,7 +261,7 @@ namespace Physics_Data_Debug
             {
                 return false;
             }
-        }
+        }*/
         public static void ClearListDataHistory()
         {
             //while (chartName.Series.Count > 1) { chartName.Series.RemoveAt(0); }
@@ -286,7 +277,7 @@ namespace Physics_Data_Debug
             RR_X1ValuesChart.Clear();
             RR_Y1ValuesChart.Clear();
             RR_Z1ValuesChart.Clear();
-            
+
             FL_X1ValuesChartColor1.Clear();
             FL_Y1ValuesChartColor1.Clear();
             FL_Z1ValuesChartColor1.Clear();
@@ -418,691 +409,125 @@ namespace Physics_Data_Debug
             RR_Z1ValuesChartColor10.Clear();
 
         }
-        public static float[] XYZListSelections(string xAxisSelection, string yAxisSelection, string zAxisSelection,
-                                                int none, int raceTime, float travelSpeed, float angVel,
-                                                float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
-                                                float currContBrakeTorq, float currContBrakeTorqMax,
-                                                float steerAngDeg, float cambAngDeg,
-                                                float latLoad, float slipAngleDeg, float latFrict, float latSlipSpeed,
-                                                float lonLoad, float slipRatio, float lonFrict, float lonSlipSpeed,
-                                                float treadTemp, float innerTemp,
-                                                float totalFrict, float totalFrictAngle,
-                                                float suspLength, float suspVel)
+        public static List<float> ListSelections(List<string> xyzSelection, int none, int raceTime, List<float> liveDataList)
         {
-            float[] xyzValues = new float[3];
-            //X
-            if (xAxisSelection == LogSettings.sTireTravelSpeed)
-            {
-                xyzValues[0] = travelSpeed;
-            }
-            else if (xAxisSelection == LogSettings.sAngularVelocity)
-            {
-                xyzValues[0] = angVel;
-            }
-            else if (xAxisSelection == LogSettings.sVerticalLoad)
-            {
-                xyzValues[0] = verLoad;
-            }
-            else if (xAxisSelection == LogSettings.sVerticalDeflection)
-            {
-                xyzValues[0] = verDefl;
-            }
-            else if (xAxisSelection == LogSettings.sLoadedRadius)
-            {
-                xyzValues[0] = loadRadius;
-            }
-            else if (xAxisSelection == LogSettings.sEffectiveRadius)
-            {
-                xyzValues[0] = effRadius;
-            }
-            else if (xAxisSelection == LogSettings.sContactLength)
-            {
-                xyzValues[0] = contLength;
-            }
-            else if (xAxisSelection == LogSettings.sBrakeTorque)
-            {
-                xyzValues[0] = currContBrakeTorq;
-            }
-            else if (xAxisSelection == LogSettings.sMaxBrakeTorque)
-            {
-                xyzValues[0] = currContBrakeTorqMax;
-            }
-            else if (xAxisSelection == LogSettings.sSteerAngle)
-            {
-                xyzValues[0] = steerAngDeg;
-            }
-            else if (xAxisSelection == LogSettings.sCamberAngle)
-            {
-                xyzValues[0] = cambAngDeg;
-            }
-            else if (xAxisSelection == LogSettings.sLateralLoad)
-            {
-                xyzValues[0] = latLoad;
-            }
-            else if (xAxisSelection == LogSettings.sSlipAngle)
-            {
-                xyzValues[0] = slipAngleDeg;
-            }
-            else if (xAxisSelection == LogSettings.sLateralFriction)
-            {
-                xyzValues[0] = latFrict;
-            }
-            else if (xAxisSelection == LogSettings.sLateralSlipSpeed)
-            {
-                xyzValues[0] = latSlipSpeed;
-            }
-            else if (xAxisSelection == LogSettings.sLongitudinalLoad)
-            {
-                xyzValues[0] = lonLoad;
-            }
-            else if (xAxisSelection == LogSettings.sSlipRatio)
-            {
-                xyzValues[0] = slipRatio;
-            }
-            else if (xAxisSelection == LogSettings.sLongitudinalFriction)
-            {
-                xyzValues[0] = lonFrict;
-            }
-            else if (xAxisSelection == LogSettings.sLongitudinalSlipSpeed)
-            {
-                xyzValues[0] = lonSlipSpeed;
-            }
-            else if (xAxisSelection == LogSettings.sTreadTemperature)
-            {
-                xyzValues[0] = treadTemp;
-            }
-            else if (xAxisSelection == LogSettings.sInnerTemperature)
-            {
-                xyzValues[0] = innerTemp;
-            }
-            else if (xAxisSelection == LogSettings.sRaceTime)
-            {
-                xyzValues[0] = raceTime;
-            }
-            else if (xAxisSelection == LogSettings.sTotalFriction)
-            {
-                xyzValues[0] = totalFrict;
-            }
-            else if (xAxisSelection == LogSettings.sTotalFrictionAngle)
-            {
-                xyzValues[0] = totalFrictAngle;
-            }
-            else if (xAxisSelection == LogSettings.sSuspensionLength)
-            {
-                xyzValues[0] = suspLength;
-            }
-            else if (xAxisSelection == LogSettings.sSuspensionVelocity)
-            {
-                xyzValues[0] = suspVel;
-            }
-            else//fallback to none
-            {
-                xyzValues[0] = none;
-            }
-            //Y
-            if (yAxisSelection == LogSettings.sTireTravelSpeed)
-            {
-                xyzValues[1] = travelSpeed;
-            }
-            else if (yAxisSelection == LogSettings.sAngularVelocity)
-            {
-                xyzValues[1] = angVel;
-            }
-            else if (yAxisSelection == LogSettings.sVerticalLoad)
-            {
-                xyzValues[1] = verLoad;
-            }
-            else if (yAxisSelection == LogSettings.sVerticalDeflection)
-            {
-                xyzValues[1] = verDefl;
-            }
-            else if (yAxisSelection == LogSettings.sLoadedRadius)
-            {
-                xyzValues[1] = loadRadius;
-            }
-            else if (yAxisSelection == LogSettings.sEffectiveRadius)
-            {
-                xyzValues[1] = effRadius;
-            }
-            else if (yAxisSelection == LogSettings.sContactLength)
-            {
-                xyzValues[1] = contLength;
-            }
-            else if (yAxisSelection == LogSettings.sBrakeTorque)
-            {
-                xyzValues[1] = currContBrakeTorq;
-            }
-            else if (yAxisSelection == LogSettings.sMaxBrakeTorque)
-            {
-                xyzValues[1] = currContBrakeTorqMax;
-            }
-            else if (yAxisSelection == LogSettings.sSteerAngle)
-            {
-                xyzValues[1] = steerAngDeg;
-            }
-            else if (yAxisSelection == LogSettings.sCamberAngle)
-            {
-                xyzValues[1] = cambAngDeg;
-            }
-            else if (yAxisSelection == LogSettings.sLateralLoad)
-            {
-                xyzValues[1] = latLoad;
-            }
-            else if (yAxisSelection == LogSettings.sSlipAngle)
-            {
-                xyzValues[1] = slipAngleDeg;
-            }
-            else if (yAxisSelection == LogSettings.sLateralFriction)
-            {
-                xyzValues[1] = latFrict;
-            }
-            else if (yAxisSelection == LogSettings.sLateralSlipSpeed)
-            {
-                xyzValues[1] = latSlipSpeed;
-            }
-            else if (yAxisSelection == LogSettings.sLongitudinalLoad)
-            {
-                xyzValues[1] = lonLoad;
-            }
-            else if (yAxisSelection == LogSettings.sSlipRatio)
-            {
-                xyzValues[1] = slipRatio;
-            }
-            else if (yAxisSelection == LogSettings.sLongitudinalFriction)
-            {
-                xyzValues[1] = lonFrict;
-            }
-            else if (yAxisSelection == LogSettings.sLongitudinalSlipSpeed)
-            {
-                xyzValues[1] = lonSlipSpeed;
-            }
-            else if (yAxisSelection == LogSettings.sTreadTemperature)
-            {
-                xyzValues[1] = treadTemp;
-            }
-            else if (yAxisSelection == LogSettings.sInnerTemperature)
-            {
-                xyzValues[1] = innerTemp;
-            }
-            else if (yAxisSelection == LogSettings.sRaceTime)
-            {
-                xyzValues[1] = raceTime;
-            }
-            else if (yAxisSelection == LogSettings.sTotalFriction)
-            {
-                xyzValues[1] = totalFrict;
-            }
-            else if (yAxisSelection == LogSettings.sTotalFrictionAngle)
-            {
-                xyzValues[1] = totalFrictAngle;
-            }
-            else if (yAxisSelection == LogSettings.sSuspensionLength)
-            {
-                xyzValues[1] = suspLength;
-            }
-            else if (yAxisSelection == LogSettings.sSuspensionVelocity)
-            {
-                xyzValues[1] = suspVel;
-            }
-            else//fallback to none
-            {
-                xyzValues[1] = none;
-            }
-            //Z
-            if (zAxisSelection == LogSettings.sTireTravelSpeed)
-            {
-                xyzValues[2] = travelSpeed;
-            }
-            else if (zAxisSelection == LogSettings.sAngularVelocity)
-            {
-                xyzValues[2] = angVel;
-            }
-            else if (zAxisSelection == LogSettings.sVerticalLoad)
-            {
-                xyzValues[2] = verLoad;
-            }
-            else if (zAxisSelection == LogSettings.sVerticalDeflection)
-            {
-                xyzValues[2] = verDefl;
-            }
-            else if (zAxisSelection == LogSettings.sLoadedRadius)
-            {
-                xyzValues[2] = loadRadius;
-            }
-            else if (zAxisSelection == LogSettings.sEffectiveRadius)
-            {
-                xyzValues[2] = effRadius;
-            }
-            else if (zAxisSelection == LogSettings.sContactLength)
-            {
-                xyzValues[2] = contLength;
-            }
-            else if (zAxisSelection == LogSettings.sBrakeTorque)
-            {
-                xyzValues[2] = currContBrakeTorq;
-            }
-            else if (zAxisSelection == LogSettings.sMaxBrakeTorque)
-            {
-                xyzValues[2] = currContBrakeTorqMax;
-            }
-            else if (zAxisSelection == LogSettings.sSteerAngle)
-            {
-                xyzValues[2] = steerAngDeg;
-            }
-            else if (zAxisSelection == LogSettings.sCamberAngle)
-            {
-                xyzValues[2] = cambAngDeg;
-            }
-            else if (zAxisSelection == LogSettings.sLateralLoad)
-            {
-                xyzValues[2] = latLoad;
-            }
-            else if (zAxisSelection == LogSettings.sSlipAngle)
-            {
-                xyzValues[2] = slipAngleDeg;
-            }
-            else if (zAxisSelection == LogSettings.sLateralFriction)
-            {
-                xyzValues[2] = latFrict;
-            }
-            else if (zAxisSelection == LogSettings.sLateralSlipSpeed)
-            {
-                xyzValues[2] = latSlipSpeed;
-            }
-            else if (zAxisSelection == LogSettings.sLongitudinalLoad)
-            {
-                xyzValues[2] = lonLoad;
-            }
-            else if (zAxisSelection == LogSettings.sSlipRatio)
-            {
-                xyzValues[2] = slipRatio;
-            }
-            else if (zAxisSelection == LogSettings.sLongitudinalFriction)
-            {
-                xyzValues[2] = lonFrict;
-            }
-            else if (zAxisSelection == LogSettings.sLongitudinalSlipSpeed)
-            {
-                xyzValues[2] = lonSlipSpeed;
-            }
-            else if (zAxisSelection == LogSettings.sTreadTemperature)
-            {
-                xyzValues[2] = treadTemp;
-            }
-            else if (zAxisSelection == LogSettings.sInnerTemperature)
-            {
-                xyzValues[2] = innerTemp;
-            }
-            else if (zAxisSelection == LogSettings.sRaceTime)
-            {
-                xyzValues[2] = raceTime;
-            }
-            else if (zAxisSelection == LogSettings.sTotalFriction)
-            {
-                xyzValues[2] = totalFrict;
-            }
-            else if (zAxisSelection == LogSettings.sTotalFrictionAngle)
-            {
-                xyzValues[2] = totalFrictAngle;
-            }
-            else if (zAxisSelection == LogSettings.sSuspensionLength)
-            {
-                xyzValues[2] = suspLength;
-            }
-            else if (zAxisSelection == LogSettings.sSuspensionVelocity)
-            {
-                xyzValues[2] = suspVel;
-            }
-            else//fallback to none
-            {
-                xyzValues[2] = none;
+            List<float> xyzValues = new List<float>();
+
+            for (int i = 0; i < xyzSelection.Count; i++)
+            {
+                if (xyzSelection[i] == LogSettings.sTireTravelSpeed)
+                {
+                    xyzValues.Add(liveDataList[0]);
+                }
+                else if (xyzSelection[i] == LogSettings.sAngularVelocity)
+                {
+                    xyzValues.Add(liveDataList[1]);
+                }
+                else if (xyzSelection[i] == LogSettings.sVerticalLoad)
+                {
+                    xyzValues.Add(liveDataList[2]);
+                }
+                else if (xyzSelection[i] == LogSettings.sVerticalDeflection)
+                {
+                    xyzValues.Add(liveDataList[3]);
+                }
+                else if (xyzSelection[i] == LogSettings.sLoadedRadius)
+                {
+                    xyzValues.Add(liveDataList[4]);
+                }
+                else if (xyzSelection[i] == LogSettings.sEffectiveRadius)
+                {
+                    xyzValues.Add(liveDataList[5]);
+                }
+                else if (xyzSelection[i] == LogSettings.sContactLength)
+                {
+                    xyzValues.Add(liveDataList[6]);
+                }
+                else if (xyzSelection[i] == LogSettings.sBrakeTorque)
+                {
+                    xyzValues.Add(liveDataList[7]);
+                }
+                else if (xyzSelection[i] == LogSettings.sMaxBrakeTorque)
+                {
+                    xyzValues.Add(liveDataList[8]);
+                }
+                else if (xyzSelection[i] == LogSettings.sSteerAngle)
+                {
+                    xyzValues.Add(liveDataList[9]);
+                }
+                else if (xyzSelection[i] == LogSettings.sCamberAngle)
+                {
+                    xyzValues.Add(liveDataList[10]);
+                }
+                else if (xyzSelection[i] == LogSettings.sLateralLoad)
+                {
+                    xyzValues.Add(liveDataList[11]);
+                }
+                else if (xyzSelection[i] == LogSettings.sSlipAngle)
+                {
+                    xyzValues.Add(liveDataList[12]);
+                }
+                else if (xyzSelection[i] == LogSettings.sLateralFriction)
+                {
+                    xyzValues.Add(liveDataList[13]);
+                }
+                else if (xyzSelection[i] == LogSettings.sLateralSlipSpeed)
+                {
+                    xyzValues.Add(liveDataList[14]);
+                }
+                else if (xyzSelection[i] == LogSettings.sLongitudinalLoad)
+                {
+                    xyzValues.Add(liveDataList[15]);
+                }
+                else if (xyzSelection[i] == LogSettings.sSlipRatio)
+                {
+                    xyzValues.Add(liveDataList[16]);
+                }
+                else if (xyzSelection[i] == LogSettings.sLongitudinalFriction)
+                {
+                    xyzValues.Add(liveDataList[17]);
+                }
+                else if (xyzSelection[i] == LogSettings.sLongitudinalSlipSpeed)
+                {
+                    xyzValues.Add(liveDataList[18]);
+                }
+                else if (xyzSelection[i] == LogSettings.sTreadTemperature)
+                {
+                    xyzValues.Add(liveDataList[19]);
+                }
+                else if (xyzSelection[i] == LogSettings.sInnerTemperature)
+                {
+                    xyzValues.Add(liveDataList[20]);
+                }
+                else if (xyzSelection[i] == LogSettings.sRaceTime)
+                {
+                    xyzValues.Add(raceTime);
+                }
+                else if (xyzSelection[i] == LogSettings.sTotalFriction)
+                {
+                    xyzValues.Add(liveDataList[21]);
+                }
+                else if (xyzSelection[i] == LogSettings.sTotalFrictionAngle)
+                {
+                    xyzValues.Add(liveDataList[22]);
+                }
+                else if (xyzSelection[i] == LogSettings.sSuspensionLength)
+                {
+                    xyzValues.Add(liveDataList[23]);
+                }
+                else if (xyzSelection[i] == LogSettings.sSuspensionVelocity)
+                {
+                    xyzValues.Add(liveDataList[24]);
+                }
+                else//fallback to none
+                {
+                    xyzValues.Add(none);
+                }
             }
             //Return the XYZ values array
             return xyzValues;
         }
-        public static float[] LimiterListSelections(string limiter1Selection, string limiter2Selection, string limiter3Selection,
-                                                int none, int raceTime, float travelSpeed, float angVel,
-                                                float verLoad, float verDefl, float loadRadius, float effRadius, float contLength,
-                                                float currContBrakeTorq, float currContBrakeTorqMax,
-                                                float steerAngDeg, float cambAngDeg,
-                                                float latLoad, float slipAngleDeg, float latFrict, float latSlipSpeed,
-                                                float lonLoad, float slipRatio, float lonFrict, float lonSlipSpeed,
-                                                float treadTemp, float innerTemp,
-                                                float totalFrict, float totalFrictAngle,
-                                                float suspLength, float suspVel)
-        {
-            float[] limiters = new float[3];
-            //Limiter1
-            if (limiter1Selection == LogSettings.sTireTravelSpeed)
-            {
-                limiters[0] = travelSpeed;
-            }
-            else if (limiter1Selection == LogSettings.sAngularVelocity)
-            {
-                limiters[0] = angVel;
-            }
-            else if (limiter1Selection == LogSettings.sVerticalLoad)
-            {
-                limiters[0] = verLoad;
-            }
-            else if (limiter1Selection == LogSettings.sVerticalDeflection)
-            {
-                limiters[0] = verDefl;
-            }
-            else if (limiter1Selection == LogSettings.sLoadedRadius)
-            {
-                limiters[0] = loadRadius;
-            }
-            else if (limiter1Selection == LogSettings.sEffectiveRadius)
-            {
-                limiters[0] = effRadius;
-            }
-            else if (limiter1Selection == LogSettings.sContactLength)
-            {
-                limiters[0] = contLength;
-            }
-            else if (limiter1Selection == LogSettings.sBrakeTorque)
-            {
-                limiters[0] = currContBrakeTorq;
-            }
-            else if (limiter1Selection == LogSettings.sMaxBrakeTorque)
-            {
-                limiters[0] = currContBrakeTorqMax;
-            }
-            else if (limiter1Selection == LogSettings.sSteerAngle)
-            {
-                limiters[0] = steerAngDeg;
-            }
-            else if (limiter1Selection == LogSettings.sCamberAngle)
-            {
-                limiters[0] = cambAngDeg;
-            }
-            else if (limiter1Selection == LogSettings.sLateralLoad)
-            {
-                limiters[0] = latLoad;
-            }
-            else if (limiter1Selection == LogSettings.sSlipAngle)
-            {
-                limiters[0] = slipAngleDeg;
-            }
-            else if (limiter1Selection == LogSettings.sLateralFriction)
-            {
-                limiters[0] = latFrict;
-            }
-            else if (limiter1Selection == LogSettings.sLateralSlipSpeed)
-            {
-                limiters[0] = latSlipSpeed;
-            }
-            else if (limiter1Selection == LogSettings.sLongitudinalLoad)
-            {
-                limiters[0] = lonLoad;
-            }
-            else if (limiter1Selection == LogSettings.sSlipRatio)
-            {
-                limiters[0] = slipRatio;
-            }
-            else if (limiter1Selection == LogSettings.sLongitudinalFriction)
-            {
-                limiters[0] = lonFrict;
-            }
-            else if (limiter1Selection == LogSettings.sLongitudinalSlipSpeed)
-            {
-                limiters[0] = lonSlipSpeed;
-            }
-            else if (limiter1Selection == LogSettings.sTreadTemperature)
-            {
-                limiters[0] = treadTemp;
-            }
-            else if (limiter1Selection == LogSettings.sInnerTemperature)
-            {
-                limiters[0] = innerTemp;
-            }
-            else if (limiter1Selection == LogSettings.sRaceTime)
-            {
-                limiters[0] = raceTime;
-            }
-            else if (limiter1Selection == LogSettings.sTotalFriction)
-            {
-                limiters[0] = totalFrict;
-            }
-            else if (limiter1Selection == LogSettings.sTotalFrictionAngle)
-            {
-                limiters[0] = totalFrictAngle;
-            }
-            else if (limiter1Selection == LogSettings.sSuspensionLength)
-            {
-                limiters[0] = suspLength;
-            }
-            else if (limiter1Selection == LogSettings.sSuspensionVelocity)
-            {
-                limiters[0] = suspVel;
-            }
-            else//fallback to none
-            {
-                limiters[0] = none;
-            }
-            //Limiter2
-            if (limiter2Selection == LogSettings.sTireTravelSpeed)
-            {
-                limiters[1] = travelSpeed;
-            }
-            else if (limiter2Selection == LogSettings.sAngularVelocity)
-            {
-                limiters[1] = angVel;
-            }
-            else if (limiter2Selection == LogSettings.sVerticalLoad)
-            {
-                limiters[1] = verLoad;
-            }
-            else if (limiter2Selection == LogSettings.sVerticalDeflection)
-            {
-                limiters[1] = verDefl;
-            }
-            else if (limiter2Selection == LogSettings.sLoadedRadius)
-            {
-                limiters[1] = loadRadius;
-            }
-            else if (limiter2Selection == LogSettings.sEffectiveRadius)
-            {
-                limiters[1] = effRadius;
-            }
-            else if (limiter2Selection == LogSettings.sContactLength)
-            {
-                limiters[1] = contLength;
-            }
-            else if (limiter2Selection == LogSettings.sBrakeTorque)
-            {
-                limiters[1] = currContBrakeTorq;
-            }
-            else if (limiter2Selection == LogSettings.sMaxBrakeTorque)
-            {
-                limiters[1] = currContBrakeTorqMax;
-            }
-            else if (limiter2Selection == LogSettings.sSteerAngle)
-            {
-                limiters[1] = steerAngDeg;
-            }
-            else if (limiter2Selection == LogSettings.sCamberAngle)
-            {
-                limiters[1] = cambAngDeg;
-            }
-            else if (limiter2Selection == LogSettings.sLateralLoad)
-            {
-                limiters[1] = latLoad;
-            }
-            else if (limiter2Selection == LogSettings.sSlipAngle)
-            {
-                limiters[1] = slipAngleDeg;
-            }
-            else if (limiter2Selection == LogSettings.sLateralFriction)
-            {
-                limiters[1] = latFrict;
-            }
-            else if (limiter2Selection == LogSettings.sLateralSlipSpeed)
-            {
-                limiters[1] = latSlipSpeed;
-            }
-            else if (limiter2Selection == LogSettings.sLongitudinalLoad)
-            {
-                limiters[1] = lonLoad;
-            }
-            else if (limiter2Selection == LogSettings.sSlipRatio)
-            {
-                limiters[1] = slipRatio;
-            }
-            else if (limiter2Selection == LogSettings.sLongitudinalFriction)
-            {
-                limiters[1] = lonFrict;
-            }
-            else if (limiter2Selection == LogSettings.sLongitudinalSlipSpeed)
-            {
-                limiters[1] = lonSlipSpeed;
-            }
-            else if (limiter2Selection == LogSettings.sTreadTemperature)
-            {
-                limiters[1] = treadTemp;
-            }
-            else if (limiter2Selection == LogSettings.sInnerTemperature)
-            {
-                limiters[1] = innerTemp;
-            }
-            else if (limiter2Selection == LogSettings.sRaceTime)
-            {
-                limiters[1] = raceTime;
-            }
-            else if (limiter2Selection == LogSettings.sTotalFriction)
-            {
-                limiters[1] = totalFrict;
-            }
-            else if (limiter2Selection == LogSettings.sTotalFrictionAngle)
-            {
-                limiters[1] = totalFrictAngle;
-            }
-            else if (limiter2Selection == LogSettings.sSuspensionLength)
-            {
-                limiters[1] = suspLength;
-            }
-            else if (limiter2Selection == LogSettings.sSuspensionVelocity)
-            {
-                limiters[1] = suspVel;
-            }
-            else//fallback to none
-            {
-                limiters[1] = none;
-            }
-            //Limiter3
-            if (limiter3Selection == LogSettings.sTireTravelSpeed)
-            {
-                limiters[2] = travelSpeed;
-            }
-            else if (limiter3Selection == LogSettings.sAngularVelocity)
-            {
-                limiters[2] = angVel;
-            }
-            else if (limiter3Selection == LogSettings.sVerticalLoad)
-            {
-                limiters[2] = verLoad;
-            }
-            else if (limiter3Selection == LogSettings.sVerticalDeflection)
-            {
-                limiters[2] = verDefl;
-            }
-            else if (limiter3Selection == LogSettings.sLoadedRadius)
-            {
-                limiters[2] = loadRadius;
-            }
-            else if (limiter3Selection == LogSettings.sEffectiveRadius)
-            {
-                limiters[2] = effRadius;
-            }
-            else if (limiter3Selection == LogSettings.sContactLength)
-            {
-                limiters[2] = contLength;
-            }
-            else if (limiter3Selection == LogSettings.sBrakeTorque)
-            {
-                limiters[2] = currContBrakeTorq;
-            }
-            else if (limiter3Selection == LogSettings.sMaxBrakeTorque)
-            {
-                limiters[2] = currContBrakeTorqMax;
-            }
-            else if (limiter3Selection == LogSettings.sSteerAngle)
-            {
-                limiters[2] = steerAngDeg;
-            }
-            else if (limiter3Selection == LogSettings.sCamberAngle)
-            {
-                limiters[2] = cambAngDeg;
-            }
-            else if (limiter3Selection == LogSettings.sLateralLoad)
-            {
-                limiters[2] = latLoad;
-            }
-            else if (limiter3Selection == LogSettings.sSlipAngle)
-            {
-                limiters[2] = slipAngleDeg;
-            }
-            else if (limiter3Selection == LogSettings.sLateralFriction)
-            {
-                limiters[2] = latFrict;
-            }
-            else if (limiter3Selection == LogSettings.sLateralSlipSpeed)
-            {
-                limiters[2] = latSlipSpeed;
-            }
-            else if (limiter3Selection == LogSettings.sLongitudinalLoad)
-            {
-                limiters[2] = lonLoad;
-            }
-            else if (limiter3Selection == LogSettings.sSlipRatio)
-            {
-                limiters[2] = slipRatio;
-            }
-            else if (limiter3Selection == LogSettings.sLongitudinalFriction)
-            {
-                limiters[2] = lonFrict;
-            }
-            else if (limiter3Selection == LogSettings.sLongitudinalSlipSpeed)
-            {
-                limiters[2] = lonSlipSpeed;
-            }
-            else if (limiter3Selection == LogSettings.sTreadTemperature)
-            {
-                limiters[2] = treadTemp;
-            }
-            else if (limiter3Selection == LogSettings.sInnerTemperature)
-            {
-                limiters[2] = innerTemp;
-            }
-            else if (limiter3Selection == LogSettings.sRaceTime)
-            {
-                limiters[2] = raceTime;
-            }
-            else if (limiter3Selection == LogSettings.sTotalFriction)
-            {
-                limiters[2] = totalFrict;
-            }
-            else if (limiter3Selection == LogSettings.sTotalFrictionAngle)
-            {
-                limiters[2] = totalFrictAngle;
-            }
-            else if (limiter3Selection == LogSettings.sSuspensionLength)
-            {
-                limiters[2] = suspLength;
-            }
-            else if (limiter3Selection == LogSettings.sSuspensionVelocity)
-            {
-                limiters[2] = suspVel;
-            }
-            else//fallback to none
-            {
-                limiters[2] = none;
-            }
-            //Return the XYZ values array
-            return limiters;
-        }
-        private static void AddColorDataAndHandleHistoryBuffer(List<double> colorValues, double data)
+        private static void AddColorDataAndHandleHistoryBuffer(List<float> colorValues, float data)
         {
             if (_4WheelsSettings.AbsoluteValues == true)
             {
@@ -1117,154 +542,137 @@ namespace Physics_Data_Debug
                 colorValues.RemoveAt(0);
             }
         }
-        private static void ColorGradient(double dataX, double dataY, 
-            double dataZ,
-            List<double> xValuesColor1, List<double> yValuesColor1,
-            List<double> xValuesColor2, List<double> yValuesColor2,
-            List<double> xValuesColor3, List<double> yValuesColor3,
-            List<double> xValuesColor4, List<double> yValuesColor4,
-            List<double> xValuesColor5, List<double> yValuesColor5,
-            List<double> xValuesColor6, List<double> yValuesColor6,
-            List<double> xValuesColor7, List<double> yValuesColor7,
-            List<double> xValuesColor8, List<double> yValuesColor8,
-            List<double> xValuesColor9, List<double> yValuesColor9,
-            List<double> xValuesColor10, List<double> yValuesColor10)
+        private static void ColorGradient(List<float> xyzValues,
+            List<float> xValuesColor1, List<float> yValuesColor1,
+            List<float> xValuesColor2, List<float> yValuesColor2,
+            List<float> xValuesColor3, List<float> yValuesColor3,
+            List<float> xValuesColor4, List<float> yValuesColor4,
+            List<float> xValuesColor5, List<float> yValuesColor5,
+            List<float> xValuesColor6, List<float> yValuesColor6,
+            List<float> xValuesColor7, List<float> yValuesColor7,
+            List<float> xValuesColor8, List<float> yValuesColor8,
+            List<float> xValuesColor9, List<float> yValuesColor9,
+            List<float> xValuesColor10, List<float> yValuesColor10)
         {
 
-            //double Xdata = Math.Abs(dataX);
-            //double Ydata = Math.Abs(dataY);
-            double Zdata = Math.Abs(dataZ);
+            //float Xdata = Math.Abs(xyzValues[0]);
+            //float Ydata = Math.Abs(xyzValues[1]);
+            float Zdata = Math.Abs(xyzValues[2]);
 
-            double minus = (_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / Steps;
-            double ten = _4WheelsSettings.Z1Max;
-            double nine = ten - minus;
-            double eight = nine - minus;
-            double seven = eight - minus;
-            double six = seven - minus;
-            double five = six - minus;
-            double four = five - minus;
-            double three = four - minus;
-            double two = three - minus;
-            double one = two - minus;
-            double zero = one - minus;
+            float minus = (float)(_4WheelsSettings.Z1Max - _4WheelsSettings.Z1Min) / Steps;
+            float ten = (float)_4WheelsSettings.Z1Max;
+            float nine = ten - minus;
+            float eight = nine - minus;
+            float seven = eight - minus;
+            float six = seven - minus;
+            float five = six - minus;
+            float four = five - minus;
+            float three = four - minus;
+            float two = three - minus;
+            float one = two - minus;
+            float zero = one - minus;
 
             if (Zdata >= nine)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor10, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor10, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor10, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor10, xyzValues[1]);
             }
             else if (Zdata < nine && Zdata >= eight)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor9, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor9, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor9, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor9, xyzValues[1]);
             }
             else if (Zdata < eight && Zdata >= seven)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor8, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor8, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor8, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor8, xyzValues[1]);
             }
             else if (Zdata < seven && Zdata >= six)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor7, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor7, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor7, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor7, xyzValues[1]);
             }
             else if (Zdata < six && Zdata >= five)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor6, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor6, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor6, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor6, xyzValues[1]);
             }
             else if (Zdata < five && Zdata >= four)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor5, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor5, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor5, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor5, xyzValues[1]);
             }
             else if (Zdata < four && Zdata >= three)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor4, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor4, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor4, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor4, xyzValues[1]);
             }
             else if (Zdata < three && Zdata >= two)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor3, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor3, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor3, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor3, xyzValues[1]);
             }
             else if (Zdata < two && Zdata >= one)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor2, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor2, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor2, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor2, xyzValues[1]);
             }
             else if (Zdata < one && Zdata >= zero)
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor1, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor1, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor1, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor1, xyzValues[1]);
             }
             else
             {
-                AddColorDataAndHandleHistoryBuffer(xValuesColor1, dataX);
-                AddColorDataAndHandleHistoryBuffer(yValuesColor1, dataY);
+                AddColorDataAndHandleHistoryBuffer(xValuesColor1, xyzValues[0]);
+                AddColorDataAndHandleHistoryBuffer(yValuesColor1, xyzValues[1]);
             }
         }
-        public static bool LimiterIsAbsoluteValue(string limiter)
+        public static bool OverTheChosenLimiter(float limiter, string limiterSelection, double limiterMax, double limiterMin)
         {
-            return LimiterSelectionIsAbsoluteValue(limiter);
-        }
-        public static bool OverTheChosenLimiter(double limiterData1, double limiterData2, double limiterData3)
-        {
-            bool limiter1IsAbsoluteValue = LimiterIsAbsoluteValue(Form4Wheels.X1LimiterSelection);
-            bool limiter2IsAbsoluteValue = LimiterIsAbsoluteValue(Form4Wheels.Y1LimiterSelection);
-            bool limiter3IsAbsoluteValue = LimiterIsAbsoluteValue(Form4Wheels.Z1LimiterSelection);
-            if (limiter1IsAbsoluteValue == true)
+            bool limiterIsAbsoluteValue = LogSettings.DataNameStringsAbsoluteValues.Contains(limiterSelection);
+            if (limiterIsAbsoluteValue == true)
             {
-                if(Math.Abs(limiterData1) > Form4Wheels.X1LimiterMax || Math.Abs(limiterData1) < Form4Wheels.X1LimiterMin)
+                if (Math.Abs(limiter) > limiterMax || Math.Abs(limiter) < limiterMin)
                 {
                     return true;
                 }
             }
-            else if (limiterData1 > Form4Wheels.X1LimiterMax || limiterData1 < Form4Wheels.X1LimiterMin)
-            {
-                return true;
-            }
-            if (limiter2IsAbsoluteValue == true)
-            {
-                if (Math.Abs(limiterData2) > Form4Wheels.Y1LimiterMax || Math.Abs(limiterData2) < Form4Wheels.Y1LimiterMin)
-                {
-                    return true;
-                }
-            }
-            else if (limiterData2 > Form4Wheels.Y1LimiterMax || limiterData2 < Form4Wheels.Y1LimiterMin)
-            {
-                return true;
-            }
-            if (limiter3IsAbsoluteValue == true)
-            {
-                if (Math.Abs(limiterData3) > Form4Wheels.Z1LimiterMax || Math.Abs(limiterData3) < Form4Wheels.Z1LimiterMin)
-                {
-                    return true;
-                }
-            }
-            else if (limiterData3 > Form4Wheels.Z1LimiterMax || limiterData3 < Form4Wheels.Z1LimiterMin)
+            else if (limiter > limiterMax || limiter < limiterMin)
             {
                 return true;
             }
             return false;
         }
 
-        public static void ListSeries(Chart chartName, string seriesName, double dataX, double dataY, double dataZ, double limiter1Data, double limiter2Data, double limiter3Data)
+        public static void ListSeries(Chart chartName, string seriesName, List<float> xyzValues, List<float> limiter, float noTireContactLimiter,
+                                        List<float> X1Values, List<float> Y1Values, List<float> Z1Values,
+                                        List<float> X1ValuesColor1, List<float> Y1ValuesColor1,
+                                        List<float> X1ValuesColor2, List<float> Y1ValuesColor2,
+                                        List<float> X1ValuesColor3, List<float> Y1ValuesColor3,
+                                        List<float> X1ValuesColor4, List<float> Y1ValuesColor4,
+                                        List<float> X1ValuesColor5, List<float> Y1ValuesColor5,
+                                        List<float> X1ValuesColor6, List<float> Y1ValuesColor6,
+                                        List<float> X1ValuesColor7, List<float> Y1ValuesColor7,
+                                        List<float> X1ValuesColor8, List<float> Y1ValuesColor8,
+                                        List<float> X1ValuesColor9, List<float> Y1ValuesColor9,
+                                        List<float> X1ValuesColor10, List<float> Y1ValuesColor10)
         {
+            /*
             float noTireContactLimiter;
-            List<double> X1Values; List<double> Y1Values; List<double> Z1Values;
-            List<double> X1ValuesColor1; List<double> Y1ValuesColor1;
-            List< double > X1ValuesColor2; List<double> Y1ValuesColor2;
-            List< double > X1ValuesColor3; List<double> Y1ValuesColor3;
-            List< double > X1ValuesColor4; List<double> Y1ValuesColor4;
-            List< double > X1ValuesColor5; List<double> Y1ValuesColor5;
-            List< double > X1ValuesColor6; List<double> Y1ValuesColor6;
-            List< double > X1ValuesColor7; List<double> Y1ValuesColor7;
-            List< double > X1ValuesColor8; List<double> Y1ValuesColor8;
-            List< double > X1ValuesColor9; List<double> Y1ValuesColor9;
-            List< double > X1ValuesColor10; List<double> Y1ValuesColor10;
-
-            if (seriesName == _4Wheels.SeriesFL)
+            List<float> X1Values; List<float> Y1Values; List<float> Z1Values;
+            List<float> X1ValuesColor1; List<float> Y1ValuesColor1;
+            List<float> X1ValuesColor2; List<float> Y1ValuesColor2;
+            List<float> X1ValuesColor3; List<float> Y1ValuesColor3;
+            List<float> X1ValuesColor4; List<float> Y1ValuesColor4;
+            List<float> X1ValuesColor5; List<float> Y1ValuesColor5;
+            List<float> X1ValuesColor6; List<float> Y1ValuesColor6;
+            List<float> X1ValuesColor7; List<float> Y1ValuesColor7;
+            List<float> X1ValuesColor8; List<float> Y1ValuesColor8;
+            List<float> X1ValuesColor9; List<float> Y1ValuesColor9;
+            List<float> X1ValuesColor10; List<float> Y1ValuesColor10;
+            */
+            if (seriesName == _4Wheels.FL_SeriesString)
             {
                 noTireContactLimiter = LiveData.FL_VerticalLoad;
                 X1Values = _4Wheels.FL_X1ValuesChart;
@@ -1291,7 +699,7 @@ namespace Physics_Data_Debug
                 Y1ValuesColor10 = _4Wheels.FL_Y1ValuesChartColor10;
                 Z1Values = _4Wheels.FL_Z1ValuesChart;
             }
-            else if(seriesName == _4Wheels.SeriesFR)
+            else if (seriesName == _4Wheels.FR_SeriesString)
             {
                 noTireContactLimiter = LiveData.FR_VerticalLoad;
                 X1Values = _4Wheels.FR_X1ValuesChart;
@@ -1318,7 +726,7 @@ namespace Physics_Data_Debug
                 Y1ValuesColor10 = _4Wheels.FR_Y1ValuesChartColor10;
                 Z1Values = _4Wheels.FR_Z1ValuesChart;
             }
-            else if (seriesName == _4Wheels.SeriesRL)
+            else if (seriesName == _4Wheels.RL_SeriesString)
             {
                 noTireContactLimiter = LiveData.RL_VerticalLoad;
                 X1Values = _4Wheels.RL_X1ValuesChart;
@@ -1374,9 +782,9 @@ namespace Physics_Data_Debug
             }
             if (_4WheelsSettings.AbsoluteValues == true)
             {
-                dataX = Math.Abs(dataX);
-                dataY = Math.Abs(dataY);
-                dataZ = Math.Abs(dataZ);
+                xyzValues[0] = Math.Abs(xyzValues[0]);
+                xyzValues[1] = Math.Abs(xyzValues[1]);
+                xyzValues[2] = Math.Abs(xyzValues[2]);
             }
             // No tire contact, no data added
             if (Form4Wheels.NoTireContactLimiterEnabled == true)
@@ -1389,16 +797,18 @@ namespace Physics_Data_Debug
             //Limiter filters
             if (Form4Wheels.LimitersEnabled == true)
             {
-                bool isOverTheLimiter = _4Wheels.OverTheChosenLimiter(limiter1Data, limiter2Data, limiter3Data);
-                if (/*noTireContactLimiter == 0 || */isOverTheLimiter == true)
+                bool isOverTheLimiterX1 = _4Wheels.OverTheChosenLimiter(limiter[0], Form4Wheels.X1LimiterSelection, Form4Wheels.X1LimiterMax, Form4Wheels.X1LimiterMin);
+                bool isOverTheLimiterY1 = _4Wheels.OverTheChosenLimiter(limiter[1], Form4Wheels.Y1LimiterSelection, Form4Wheels.Y1LimiterMax, Form4Wheels.Y1LimiterMin);
+                bool isOverTheLimiterZ1 = _4Wheels.OverTheChosenLimiter(limiter[2], Form4Wheels.Z1LimiterSelection, Form4Wheels.Z1LimiterMax, Form4Wheels.Z1LimiterMin);
+                if (isOverTheLimiterX1 || isOverTheLimiterY1 || isOverTheLimiterZ1 == true)
                 {
                     return;
                 }
             }
             // Add data if the previous stuff didn't return back
-            X1Values.Add(dataX);
-            Y1Values.Add(dataY);
-            Z1Values.Add(dataZ);
+            X1Values.Add(xyzValues[0]);
+            Y1Values.Add(xyzValues[1]);
+            Z1Values.Add(xyzValues[2]);
 
             if (X1Values.Count > 1)
             {
@@ -1407,8 +817,7 @@ namespace Physics_Data_Debug
                 Z1Values.RemoveAt(0);
             }
 
-            ColorGradient(dataX, dataY, 
-                dataZ,
+            ColorGradient(xyzValues,
             X1ValuesColor1, Y1ValuesColor1,
             X1ValuesColor2, Y1ValuesColor2,
             X1ValuesColor3, Y1ValuesColor3,
@@ -1419,6 +828,7 @@ namespace Physics_Data_Debug
             X1ValuesColor8, Y1ValuesColor8,
             X1ValuesColor9, Y1ValuesColor9,
             X1ValuesColor10, Y1ValuesColor10);
+
             chartName.Series[seriesName].Points.DataBindXY(X1Values, Y1Values);
             chartName.Series[seriesName + seriesColor1].Points.DataBindXY(X1ValuesColor1, Y1ValuesColor1);
             chartName.Series[seriesName + seriesColor2].Points.DataBindXY(X1ValuesColor2, Y1ValuesColor2);

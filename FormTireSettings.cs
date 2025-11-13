@@ -58,7 +58,7 @@ namespace Physics_Data_Debug
         {
             LiveData.TireSettingsOpen = true;
             timer1.Enabled = true;
-            readAndWriteData();
+            ReadData();
         }
         /*
         private void writeTireData()
@@ -194,7 +194,7 @@ namespace Physics_Data_Debug
             helper.WriteMemory<float>(RR_ThermalInnerTransfer_TargetAddr, RR_ThermalInnerTransfer);
         }
         */
-        private void readAndWriteData()
+        private void ReadData()
         {
             FL_MomentOfInertia = Convert.ToSingle(LiveData.FL_MomentOfInertia/*, System.Globalization.CultureInfo.InvariantCulture*/);
             FL_TireMass = Convert.ToSingle(LiveData.FL_TireMass/*, System.Globalization.CultureInfo.InvariantCulture*/);
@@ -300,7 +300,7 @@ namespace Physics_Data_Debug
 
         private void ReadValues_Click(object sender, EventArgs e)
         {
-            readAndWriteData();
+            ReadData();
         }
         /*
         private void ParseTireValues()
@@ -626,7 +626,7 @@ namespace Physics_Data_Debug
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            readAndWriteData();
+            ReadData();
         }
 
         private void textBox_FL_Radius_KeyDown(object sender, KeyEventArgs e)

@@ -169,53 +169,53 @@ namespace Physics_Data_Debug
             int x3 = 60;
             int y3 = 208;
             */
-            /*
-            if(LiveData.XZGAngleDeg <= 90d)
-            {
-                x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-                y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            }
-            else if(LiveData.XZGAngleDeg <= 180d)
-            {
-                x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-                y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            }
-            else if (LiveData.XZGAngleDeg <= 270d)
-            {
-                x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-                y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            }
-            else if (LiveData.XZGAngleDeg <= 360d)
-            {
-                x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-                y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
-            }*/
-            /*
-            if ((LiveData.XZG >= -0.001 && LiveData.XZG <= 0.001) || LiveData.XZG == double.NaN)
-            {
-                x = xy;
-                y = xy;
-                x2 = 192;
-                y2 = 208;
-            }
-            else
-            {
-                x = xy + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
-                y = xy - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
-                x2 = 192 + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
-                y2 = 208 - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
-            }
-            y3 = 193 - Convert.ToInt32(Math.Round(LiveData.YG * GScale, 0));
-
-            //pictureBox1.Location = new Point(x, y);
-            CurrentGForceXZMoving.Location = new Point(x2, y2);
-            CurrentGForceXZMoving.Text = Math.Round(LiveData.XZG, 2).ToString() + " G";
-            //textBox7.Text = "x: " + x.ToString() +"\r\n" + "y: " + y.ToString();
-            CurrentGForceYMoving.Location = new Point(x3, y3);
-            CurrentGForceYMoving.Text = Math.Round(Math.Abs(LiveData.YGRotated), 2).ToString() + " G";
+        /*
+        if(LiveData.XZGAngleDeg <= 90d)
+        {
+            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
+            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
         }
-            
-        */
+        else if(LiveData.XZGAngleDeg <= 180d)
+        {
+            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
+            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
+        }
+        else if (LiveData.XZGAngleDeg <= 270d)
+        {
+            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
+            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
+        }
+        else if (LiveData.XZGAngleDeg <= 360d)
+        {
+            x = Convert.ToInt32((Math.Cos(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
+            y = Convert.ToInt32((Math.Sin(LiveData.XZGAngleRad) / LiveData.XZYG) * 10);
+        }*/
+        /*
+        if ((LiveData.XZG >= -0.001 && LiveData.XZG <= 0.001) || LiveData.XZG == double.NaN)
+        {
+            x = xy;
+            y = xy;
+            x2 = 192;
+            y2 = 208;
+        }
+        else
+        {
+            x = xy + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
+            y = xy - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
+            x2 = 192 + Convert.ToInt32(Math.Round(LiveData.XGRotated * GScale, 0));
+            y2 = 208 - Convert.ToInt32(Math.Round(LiveData.ZGRotated * GScale, 0));
+        }
+        y3 = 193 - Convert.ToInt32(Math.Round(LiveData.YG * GScale, 0));
+
+        //pictureBox1.Location = new Point(x, y);
+        CurrentGForceXZMoving.Location = new Point(x2, y2);
+        CurrentGForceXZMoving.Text = Math.Round(LiveData.XZG, 2).ToString() + " G";
+        //textBox7.Text = "x: " + x.ToString() +"\r\n" + "y: " + y.ToString();
+        CurrentGForceYMoving.Location = new Point(x3, y3);
+        CurrentGForceYMoving.Text = Math.Round(Math.Abs(LiveData.YGRotated), 2).ToString() + " G";
+    }
+
+    */
         /*
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -486,7 +486,7 @@ namespace Physics_Data_Debug
 
         private void refreshAndApplyButton_Click(object sender, EventArgs e)
         {
-            
+
             timer1.Enabled = false;
             timer2.Enabled = false;
             GForce.ClearSeriesHistory(chart1);

@@ -56,8 +56,8 @@ namespace Physics_Data_Debug
         public static int X1DefaultMajorDecimals { get; set; } = 0;
         public static double X1DefaultMajorInterval { get; set; } = 1;
         public static int X1DefaultMajorLineWidth { get; set; } = 1;
-        public static double X1DefaultMin { get; set; } = -1;//
-        public static double X1DefaultMax { get; set; } = 1;//
+        public static float X1DefaultMin { get; set; } = -1;//
+        public static float X1DefaultMax { get; set; } = 1;//
         // Minor grid
         public static bool X1DefaultMinorEnabled { get; set; } = false;
         public static int X1DefaultMinorIntervalFraction { get; set; } = 1;
@@ -91,8 +91,8 @@ namespace Physics_Data_Debug
         public static int Y1DefaultMajorDecimals { get; set; } = 1;
         public static double Y1DefaultMajorInterval { get; set; } = 1;//
         public static int Y1DefaultMajorLineWidth { get; set; } = 1;
-        public static double Y1DefaultMin { get; set; } = -2;//
-        public static double Y1DefaultMax { get; set; } = 2;//
+        public static float Y1DefaultMin { get; set; } = -2;//
+        public static float Y1DefaultMax { get; set; } = 2;//
         // Minor grid
         public static bool Y1DefaultMinorEnabled { get; set; } = false;
         public static int Y1DefaultMinorIntervalFraction { get; set; } = 1;
@@ -103,8 +103,8 @@ namespace Physics_Data_Debug
         //Z
         public static bool Z1Defaults { get; set; } = true;
         public static string Z1DefaultType { get; set; } = LogSettings.sVerticalLoad;
-        public static double Z1DefaultMax { get; set; } = 10000;//
-        public static double Z1DefaultMin { get; set; } = 0;//
+        public static float Z1DefaultMax { get; set; } = 10000;//
+        public static float Z1DefaultMin { get; set; } = 0;//
         ///////////////////////////////////////////////////////////////////////////////////
 
         // Changable values
@@ -141,8 +141,8 @@ namespace Physics_Data_Debug
         public static int X1MajorDecimals { get; set; } = X1DefaultMajorDecimals;
         public static double X1MajorInterval { get; set; } = X1DefaultMajorInterval;
         public static int X1MajorLineWidth { get; set; } = X1DefaultMajorLineWidth;
-        public static double X1Min { get; set; } = X1DefaultMin;
-        public static double X1Max { get; set; } = X1DefaultMax;
+        public static float X1Min { get; set; } = X1DefaultMin;
+        public static float X1Max { get; set; } = X1DefaultMax;
         // Minor grid
         public static bool X1MinorEnabled { get; set; } = X1DefaultMinorEnabled;
         public static int X1MinorIntervalFraction { get; set; } = X1DefaultMinorIntervalFraction;
@@ -175,8 +175,8 @@ namespace Physics_Data_Debug
         public static int Y1MajorDecimals { get; set; } = Y1DefaultMajorDecimals;
         public static double Y1MajorInterval { get; set; } = Y1DefaultMajorInterval;
         public static int Y1MajorLineWidth { get; set; } = Y1DefaultMajorLineWidth;
-        public static double Y1Min { get; set; } = Y1DefaultMin;
-        public static double Y1Max { get; set; } = Y1DefaultMax;
+        public static float Y1Min { get; set; } = Y1DefaultMin;
+        public static float Y1Max { get; set; } = Y1DefaultMax;
         // Minor grid
         public static bool Y1MinorEnabled { get; set; } = Y1DefaultMinorEnabled;
         public static int Y1MinorIntervalFraction { get; set; } = Y1DefaultMinorIntervalFraction;
@@ -186,7 +186,7 @@ namespace Physics_Data_Debug
 
         //Z
         public static string Z1Selection { get; set; } = Z1DefaultType;
-        public static double Z1Max { get; set; } = Z1DefaultMax;
-        public static double Z1Min { get; set; } = Z1DefaultMin;
+        public static float Z1Max { get; set; } = Z1DefaultMax;
+        public static float Z1Min { get; set; } = Z1DefaultMin;
     }
 }
