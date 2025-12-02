@@ -175,11 +175,24 @@ namespace Physics_Data_Debug
             // Add Z axis selections in the combobox
             AxisSelectionComboboxAdd(Z1SelectionComboBox);
         }
+        /// <summary>
+        /// USE ENUMS INSTEAD OF DataNameStrings
+        /// </summary>
+        /// <param name="axisSelectionCombobox"></param>
         public static void AxisSelectionComboboxAdd(ComboBox axisSelectionCombobox)
         {
+            /*
             foreach (string astring in LogSettings.DataNameStrings)
             {
                 axisSelectionCombobox.Items.Add(astring);
+            }*/
+            //foreach (string names in Enum.GetNames(typeof(WF_TireDataOffset)))
+            //{
+            //    axisSelectionCombobox.Items.Add(names);
+            //}
+            foreach (string names in WreckfestEnums.AllValueNames)
+            {
+                axisSelectionCombobox.Items.Add(names);
             }
         }/*
         public static void AxisSelectionComboboxAdd(ComboBox axisSelectionCombobox)

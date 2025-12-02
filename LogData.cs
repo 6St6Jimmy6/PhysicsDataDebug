@@ -62,15 +62,6 @@ namespace Physics_Data_Debug
         public float InnerTemperature { get; set; }
         public float TotalFriction { get; set; }
         public float TotalFrictionAngle { get; set; }
-        /*
-         * public float a { get; set; }
-         * public float a { get; set; }
-         * public float a { get; set; }
-         * public float a { get; set; }
-         * public float a { get; set; }
-         * public float a { get; set; }
-         * public float a { get; set; }
-         * */
 
         public LogData(int RaceTime,
             float TireTravelSpeed,

@@ -1,13 +1,10 @@
-﻿using System;
+﻿using Memory.Win64;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Threading;
-using System.Timers;
 using System.Windows.Forms;
 
 namespace Physics_Data_Debug
@@ -15,28 +12,9 @@ namespace Physics_Data_Debug
     public partial class FormLiveData : Form
     {
         #region Field variables
-        /*
-        public static bool logging = false;
-
-        private static System.Timers.Timer aTimer { get; set; }
-
-        private readonly int[] raceTimeArray = new int[3];
-        private readonly int[] tickTimeArray = new int[3];
-        private int elapsedTime = 0;
-        
-        public static bool SettingsOpen { get; set; } = false;
-
-        private static DateTime previousTime;
-        private double dTickTime = 16;
-
-        public static int GScale = 25;
-
-        Process process;
-        Memory.Win64.MemoryHelper64 Helper { get; set; }
-        */
         private string sTickTime = "Tick time: Nothing";
 
-
+        public static Process Process;
         private bool processGet = false;
 
         #endregion
@@ -46,69 +24,57 @@ namespace Physics_Data_Debug
 
             toSuspensionSettingsButton.Hide();// Not yet implemented
 
-            logInterval_textBox.Text = LiveData.tickInterval.ToString();
-            //panel1.Paint += new PaintEventHandler(panel1_Paint);
-            //panel2.Paint += new PaintEventHandler(panel2_Paint);
-            //WreckfestData.FL_TireData = WreckfestData.AddItemInDataListTiresWreckfest<float>(WreckfestData.BaseAddr, WreckfestData.Name, WreckfestData.Offsets, WreckfestData.Value);
-            
-            /*byte[] exeBytes = LiveData.GetExeBytes(LiveData.PathSource);
-
-            LiveData.PatternAtOffset = LiveData.PatternAt(exeBytes, LiveData.PatternToFind);*/
+            logInterval_textBox.Text = LiveData.TickInterval.ToString();
         }
         #region Methods
         public void ButtonVisibilities()
         {
-            if (LiveData.logging == true)
-            {
-                toLogSettingsButton.Visible = false;
-            }
-            if (LiveData.LogSettingsOpen == false && LiveData.logging == false)
-            {
-                toLogSettingsButton.Visible = true;
-            }
-            if (LiveData.LogSettingsOpen == true)
-            {
-                toLogSettingsButton.Visible = false;
-                startFileLoggingButton.Visible = false;
-            }
-            if (LiveData.LogSettingsOpen == false)
-            {
-                startFileLoggingButton.Visible = true;
-            }
-            if (LiveData.TireSettingsOpen == true)
-            {
-                toTireSettingsButton.Visible = false;
-            }
-            if (LiveData.TireSettingsOpen == false)
-            {
-                toTireSettingsButton.Visible = true;
-            }
-            if (LiveData.TemperaturesChartOpen == true)
-            {
-                OpenTemperaturesChart.Visible = false;
-            }
-            if (LiveData.TemperaturesChartOpen == false)
-            {
-                OpenTemperaturesChart.Visible = true;
-            }
-            if (LiveData.GForceOpen == true)
-            {
-                toGForceButton.Visible = false;
-            }
-            if (LiveData.GForceOpen == false)
-            {
-                toGForceButton.Visible = true;
-            }
-            if (LiveData._4WheelsOpen == true)
-            {
-                to4WheelsButton.Visible = false;
-            }
-            if (LiveData._4WheelsOpen == false)
-            {
-                to4WheelsButton.Visible = true;
-            }
+            if (LiveData.logging == true) { toLogSettingsButton.Visible = false; }
+            if (LiveData.LogSettingsOpen == false && LiveData.logging == false) { toLogSettingsButton.Visible = true; }
+            if (LiveData.LogSettingsOpen == true) { toLogSettingsButton.Visible = false; startFileLoggingButton.Visible = false; }
+            if (LiveData.LogSettingsOpen == false) { startFileLoggingButton.Visible = true; }
+            if (LiveData.TireSettingsOpen == true) { toTireSettingsButton.Visible = false; }
+            if (LiveData.TireSettingsOpen == false) { toTireSettingsButton.Visible = true; }
+            if (LiveData.TemperaturesChartOpen == true) { OpenTemperaturesChart.Visible = false; }
+            if (LiveData.TemperaturesChartOpen == false) { OpenTemperaturesChart.Visible = true; }
+            if (LiveData.GForceOpen == true) { toGForceButton.Visible = false; }
+            if (LiveData.GForceOpen == false) { toGForceButton.Visible = true; }
+            if (LiveData._4WheelsOpen == true) { to4WheelsButton.Visible = false; }
+            if (LiveData._4WheelsOpen == false) { to4WheelsButton.Visible = true; }
         }
+        private void textBoxTireWriter(Enum prefix, 
+            TextBox angularVelocity, TextBox contactLength, TextBox currentContactBrakeTorque, TextBox maxCurrentContactBrakeTorque, TextBox deflection, TextBox effectiveRadius, TextBox lateralLoad, TextBox loadedRadius, 
+            TextBox longitudinalLoad, TextBox slipRatio, TextBox travelSpeed, TextBox verticalLoad, TextBox lateralFriction, TextBox longitudinalFriction, TextBox treadTemperature, TextBox innerTemperature, 
+            TextBox slipAngleDeg, TextBox totalFriciton, TextBox totalFrictionAngle, TextBox lateralSlipSpeed, TextBox longitudinalSlipSpeed, TextBox camberAngle, TextBox steerAngle, TextBox suspensionLength, TextBox suspensionVelocity)
+        {
+            angularVelocity.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.AngularVelocity), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            contactLength.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.ContactLength), 4).ToString(CultureInfo.GetCultureInfo("en-US"));
+            currentContactBrakeTorque.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.CurrentContactBrakeTorque), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            maxCurrentContactBrakeTorque.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.CurrentContactBrakeTorqueMax), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            deflection.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.VerticalDeflection), 4).ToString(CultureInfo.GetCultureInfo("en-US"));
+            effectiveRadius.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.EffectiveRadius), 4).ToString(CultureInfo.GetCultureInfo("en-US"));
+            lateralLoad.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.LateralLoad), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            loadedRadius.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.LoadedRadius), 4).ToString(CultureInfo.GetCultureInfo("en-US"));
+            longitudinalLoad.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.LongitudinalLoad), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            slipRatio.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.SlipRatio), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            travelSpeed.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TravelSpeed), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            verticalLoad.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.VerticalLoad), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            lateralFriction.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.LateralFriction), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            longitudinalFriction.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.LongitudinalFriction), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            treadTemperature.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TreadTemperature), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            innerTemperature.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.InnerTemperature), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            slipAngleDeg.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.SlipAngleDeg), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            totalFriciton.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TotalFriction), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            totalFrictionAngle.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TotalFrictionAngleDeg), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            lateralSlipSpeed.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.LateralSlipSpeed), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            longitudinalSlipSpeed.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.LongitudinalSlipSpeed), 2).ToString(CultureInfo.GetCultureInfo("en-US"));
+            camberAngle.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.CamberAngleDeg), 3).ToString(CultureInfo.GetCultureInfo("en-US"));
+            steerAngle.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.SteerAngleDeg), 3).ToString(CultureInfo.GetCultureInfo("en-US"));
 
+
+            suspensionLength.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_SuspensionDataOffset.SuspensionLength), 4).ToString(CultureInfo.GetCultureInfo("en-US"));
+            suspensionVelocity.Text = Math.Round(LiveData.GetFullListDataValue(prefix, WF_SuspensionDataOffset.SuspensionVelocity), 4).ToString(CultureInfo.GetCultureInfo("en-US"));
+        }
         private void TextBoxUpdates()
         {
             /*
@@ -120,181 +86,89 @@ namespace Physics_Data_Debug
             textBox6.Text = "RY°: " + Math.Round(LiveData.rotationYDeg, 2) + "\r\n" + "RY°r: " + Math.Round(LiveData.rotationYRad, 2) + "\r\n" + "gX: " + Math.Round(LiveData.XG, 2) + "\r\n" + "gY: " + Math.Round(LiveData.YG, 2) + "\r\n" + "gZ: " + Math.Round(LiveData.ZG, 2) + "\r\n" + "XZ°: " + Math.Round(LiveData.XZAccelerationAngleDeg, 2) + "\r\n" + "XZ°r: " + Math.Round(LiveData.XZAccelerationAngleRad, 2) + "\r\n" + "gXZ: " +
                 Math.Round(LiveData.XZG, 2) + "\r\n" + "gXZ°: " + Math.Round(LiveData.XZGAngleDeg, 2) + "\r\n" + "gXZ°r: " + Math.Round(LiveData.XZGAngleRad, 2);
             */
-            textBox1.Text = "Front Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchFL), 3) + " | " + Math.Round(LiveData.FL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawFL), 3) + " | " + Math.Round(LiveData.FL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollFL), 3) + " | " + Math.Round(LiveData.FL_CamberAngleDeg, 3);
-            textBox2.Text = "Front Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchFR), 3) + " | " + Math.Round(LiveData.FR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawFR), 3) + " | " + Math.Round(LiveData.FR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollFR), 3) + " | " + Math.Round(LiveData.FR_CamberAngleDeg, 3);
-            textBox3.Text = "Rear Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchRL), 3) + " | " + Math.Round(LiveData.RL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawRL), 3) + " | " + Math.Round(LiveData.RL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollRL), 3) + " | " + Math.Round(LiveData.RL_CamberAngleDeg, 3);
-            textBox4.Text = "Rear Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.pitchRR), 3) + " | " + Math.Round(LiveData.RR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.yawRR), 3) + " | " + Math.Round(LiveData.RR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.rollRR), 3) + " | " + Math.Round(LiveData.RR_CamberAngleDeg, 3);
+            //textBox1.Text = "Front Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.FL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.FL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.FL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FL_CamberAngleDeg, 3);
+            //textBox2.Text = "Front Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.FR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.FR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.FR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FR_CamberAngleDeg, 3);
+            //textBox3.Text = "Rear Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.RL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.RL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.RL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RL_CamberAngleDeg, 3);
+            //textBox4.Text = "Rear Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.RR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.RR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.RR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RR_CamberAngleDeg, 3);
             //textBox5.Text = LiveData.FL_TireData[0].ToString() + "\r\n" + LiveData.FL_TireData[1].ToString() + "\r\n" + LiveData.FL_TireData[2].ToString() + "\r\n" + LiveData.FL_TireData[3].ToString();
             //textBox5.Text = "RL_LonBristleStiffness: " + Math.Round(LiveData.RL_LonBristleStiffness, 2) + "\r\n" + "RL_LonForceSlide: " + Math.Round(LiveData.RL_LonForceSlide, 2) + "\r\n" + "RL_LonForceStatic: " + Math.Round(LiveData.RL_LonForceStatic, 2) + "\r\n" + "RL_LonForceTotal: " + Math.Round(LiveData.RL_LonForceTotal, 2);
+            
             // Chassis, Engine and Differential stuff
-            CurrentSpeed.Text = Math.Round(LiveData.speed, 2).ToString();
-            CurrentAcceleration.Text = Math.Round(LiveData.XYZAcceleration, 2).ToString();
-            CurrentGForce.Text = Math.Round(LiveData.XYZG, 2).ToString();
-            CurrentFrontLift.Text = Math.Round(LiveData.frontLift, 2).ToString();
-            CurrentRearLift.Text = Math.Round(LiveData.rearLift, 2).ToString();
-            CurrentEngineRPM.Text = Math.Round(LiveData.engineRPM, 0).ToString() + " RPM";
-            CurrentEngineRPMAxle.Text = "(" + Math.Round(LiveData.engineRPMAxle, 0).ToString() + ") RPM";
-            CurrentEngineTorque.Text = Math.Round(LiveData.engineTorque, 2).ToString() + " Nm";
-            CurrentEnginePower.Text = Math.Round(LiveData.enginePower, 2).ToString() + " kW";
-            if (LiveData.differentialLocked == 1)
+            CurrentSpeed.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_EngineDataOffset.Speed), 2).ToString();
+            CurrentAcceleration.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZAcceleration), 2).ToString();
+            CurrentGForce.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZG), 2).ToString();
+            CurrentXDrag.Text = "X: " + Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.XDragLocal), 2).ToString();
+            CurrentYDrag.Text = "Y: " + Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.YDragLocal), 2).ToString();
+            CurrentZDrag.Text = "Z: " + Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.ZDragLocal), 2).ToString();
+            CurrentTotalDrag.Text = "Total: " + Math.Round(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.XDragLocal), 2) + Math.Pow(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.YDragLocal), 2) + Math.Pow(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.ZDragLocal), 2)), 2)), 2).ToString();
+            CurrentFrontLift.Text = "Front: " + Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.FrontLift), 2).ToString();
+            CurrentRearLift.Text = "Rear: " + Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.RearLift), 2).ToString();
+            CurrentEngineRPM.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineRPM), 0).ToString() + " RPM";
+            CurrentEngineRPMAxle.Text = "(" + Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineRPMAxle), 0).ToString() + ") RPM";
+            CurrentEngineTorque.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineTorqueNm), 2).ToString() + " Nm";
+            CurrentEnginePower.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_EngineDataOffset.EnginePowerKW), 2).ToString() + " kW";
+            if (LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpen) != 0)
             {
-                CurrentDifferentialOpen.Text = "Locked";
+                CurrentDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
             }
             else
             {
-                CurrentDifferentialOpen.Text = "Open";
+               CurrentDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
             }
-            CurrentDifferentialSpeedRad.Text = Math.Round(LiveData.differentialVelocityRad, 2).ToString() + " rad/s";
-            CurrentDifferentialTorque.Text = Math.Round(LiveData.differentialTorque, 2).ToString() + " Nm";
+            CurrentDifferentialSpeedRad.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRad), 2).ToString() + " rad/s";
+            CurrentDifferentialTorque.Text = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialTorque), 2).ToString() + " Nm";
 
-
-            //Tire and Suspension data
+            textBoxTireWriter(WF_Prefix.FL, textBox_FL_AngularVelocity, textBox_FL_ContactLength, textBox_FL_CurrentContactBrakeTorque, textBox_FL_MaxCurrentContactBrakeTorque, textBox_FL_Deflection, textBox_FL_EffectiveRadius,
+                textBox_FL_LateralLoad, textBox_FL_LoadedRadius, textBox_FL_LongitudinalLoad, textBox_FL_SlipRatio, textBox_FL_TravelSpeed, textBox_FL_VerticalLoad, textBox_FL_LateralFriction, textBox_FL_LongitudinalFriction, textBox_FL_TreadTemperature,
+                textBox_FL_InnerTemperature, textBox_FL_SlipAngleDeg, textBox_FL_TotalFriction, textBox_FL_TotalFrictionAngle, textBox_FL_LateralSlipSpeed, textBox_FL_LongitudinalSlipSpeed, textBox_FL_CamberAngle, textBox_FL_TireSteerAngle, 
+                textBox_FL_SuspensionLength, textBox_FL_SuspensionVelocity);
+            textBoxTireWriter(WF_Prefix.FR, textBox_FR_AngularVelocity, textBox_FR_ContactLength, textBox_FR_CurrentContactBrakeTorque, textBox_FR_MaxCurrentContactBrakeTorque, textBox_FR_Deflection, textBox_FR_EffectiveRadius,
+                textBox_FR_LateralLoad, textBox_FR_LoadedRadius, textBox_FR_LongitudinalLoad, textBox_FR_SlipRatio, textBox_FR_TravelSpeed, textBox_FR_VerticalLoad, textBox_FR_LateralFriction, textBox_FR_LongitudinalFriction, textBox_FR_TreadTemperature,
+                textBox_FR_InnerTemperature, textBox_FR_SlipAngleDeg, textBox_FR_TotalFriction, textBox_FR_TotalFrictionAngle, textBox_FR_LateralSlipSpeed, textBox_FR_LongitudinalSlipSpeed, textBox_FR_CamberAngle, textBox_FR_TireSteerAngle, 
+                textBox_FR_SuspensionLength, textBox_FR_SuspensionVelocity);
+            textBoxTireWriter(WF_Prefix.RL, textBox_RL_AngularVelocity, textBox_RL_ContactLength, textBox_RL_CurrentContactBrakeTorque, textBox_RL_MaxCurrentContactBrakeTorque, textBox_RL_Deflection, textBox_RL_EffectiveRadius,
+                textBox_RL_LateralLoad, textBox_RL_LoadedRadius, textBox_RL_LongitudinalLoad, textBox_RL_SlipRatio, textBox_RL_TravelSpeed, textBox_RL_VerticalLoad, textBox_RL_LateralFriction, textBox_RL_LongitudinalFriction, textBox_RL_TreadTemperature,
+                textBox_RL_InnerTemperature, textBox_RL_SlipAngleDeg, textBox_RL_TotalFriction, textBox_RL_TotalFrictionAngle, textBox_RL_LateralSlipSpeed, textBox_RL_LongitudinalSlipSpeed, textBox_RL_CamberAngle, textBox_RL_TireSteerAngle, 
+                textBox_RL_SuspensionLength, textBox_RL_SuspensionVelocity);
+            textBoxTireWriter(WF_Prefix.RR, textBox_RR_AngularVelocity, textBox_RR_ContactLength, textBox_RR_CurrentContactBrakeTorque, textBox_RR_MaxCurrentContactBrakeTorque, textBox_RR_Deflection, textBox_RR_EffectiveRadius,
+                textBox_RR_LateralLoad, textBox_RR_LoadedRadius, textBox_RR_LongitudinalLoad, textBox_RR_SlipRatio, textBox_RR_TravelSpeed, textBox_RR_VerticalLoad, textBox_RR_LateralFriction, textBox_RR_LongitudinalFriction, textBox_RR_TreadTemperature,
+                textBox_RR_InnerTemperature, textBox_RR_SlipAngleDeg, textBox_RR_TotalFriction, textBox_RR_TotalFrictionAngle, textBox_RR_LateralSlipSpeed, textBox_RR_LongitudinalSlipSpeed, textBox_RR_CamberAngle, textBox_RR_TireSteerAngle, 
+                textBox_RR_SuspensionLength, textBox_RR_SuspensionVelocity);
+            /*
             //Front left
-            textBox_FL_AngularVelocity.Text = Math.Round(LiveData.FL_AngularVelocity, 2).ToString();
-            textBox_FL_ContactLength.Text = Math.Round(LiveData.FL_ContactLength, 4).ToString();
-            textBox_FL_CurrentContactBrakeTorque.Text = Math.Round(LiveData.FL_CurrentContactBrakeTorque, 2).ToString();
-            textBox_FL_MaxCurrentContactBrakeTorque.Text = Math.Round(LiveData.FL_CurrentContactBrakeTorqueMax, 2).ToString();
-            textBox_FL_Deflection.Text = Math.Round(LiveData.FL_VerticalDeflection, 4).ToString();
-            textBox_FL_EffectiveRadius.Text = Math.Round(LiveData.FL_EffectiveRadius, 4).ToString();
-            textBox_FL_LateralLoad.Text = Math.Round(LiveData.FL_LateralLoad, 2).ToString();
-            textBox_FL_LoadedRadius.Text = Math.Round(LiveData.FL_LoadedRadius, 4).ToString();
-            textBox_FL_LongitudinalLoad.Text = Math.Round(LiveData.FL_LongitudinalLoad, 2).ToString();
-            //textBox_FL_SlipAngleRad.Text = Math.Round(LiveData.FL_SlipAngleRad, 2).ToString();
-            textBox_FL_SlipRatio.Text = Math.Round(LiveData.FL_SlipRatio, 2).ToString();
-            textBox_FL_TravelSpeed.Text = Math.Round(LiveData.FL_TravelSpeed, 2).ToString();
-            textBox_FL_VerticalLoad.Text = Math.Round(LiveData.FL_VerticalLoad, 2).ToString();
-            textBox_FL_LateralFriction.Text = Math.Round(LiveData.FL_LateralFriction, 2).ToString();
-            textBox_FL_LongitudinalFriction.Text = Math.Round(LiveData.FL_LongitudinalFriction, 2).ToString();
-            textBox_FL_TreadTemperature.Text = Math.Round(LiveData.FL_TreadTemperature, 2).ToString();
-            textBox_FL_InnerTemperature.Text = Math.Round(LiveData.FL_InnerTemperature, 2).ToString();
-            textBox_FL_SlipAngleDeg.Text = Math.Round(LiveData.FL_SlipAngleDeg, 2).ToString();
-            textBox_FL_TotalFriction.Text = Math.Round(LiveData.FL_TotalFriction, 2).ToString();//
-            textBox_FL_TotalFrictionAngle.Text = Math.Round(LiveData.FL_TotalFrictionAngle, 2).ToString();//
-            textBox_FL_LateralSlipSpeed.Text = Math.Round(LiveData.FL_LateralSlipSpeed, 2).ToString();//
-            textBox_FL_LongitudinalSlipSpeed.Text = Math.Round(LiveData.FL_LongitudinalSlipSpeed, 2).ToString();//
-            textBox_FL_CamberAngle.Text = Math.Round(LiveData.FL_CamberAngleDeg, 2).ToString();//
-            textBox_FL_TireSteerAngle.Text = Math.Round(LiveData.FL_SteerAngleDeg, 2).ToString();//
-
+            //Tire data
+            //Suspension data
             textBox_FL_SuspensionLength.Text = Math.Round(LiveData.FL_SuspensionLength, 4).ToString();
             textBox_FL_SuspensionVelocity.Text = Math.Round(LiveData.FL_SuspensionVelocity, 4).ToString();
 
             //Front right
-            textBox_FR_AngularVelocity.Text = Math.Round(LiveData.FR_AngularVelocity, 2).ToString();
-            textBox_FR_ContactLength.Text = Math.Round(LiveData.FR_ContactLength, 4).ToString();
-            textBox_FR_CurrentContactBrakeTorque.Text = Math.Round(LiveData.FR_CurrentContactBrakeTorque, 2).ToString();
-            textBox_FR_MaxCurrentContactBrakeTorque.Text = Math.Round(LiveData.FR_CurrentContactBrakeTorqueMax, 2).ToString();
-            textBox_FR_Deflection.Text = Math.Round(LiveData.FR_VerticalDeflection, 4).ToString();
-            textBox_FR_EffectiveRadius.Text = Math.Round(LiveData.FR_EffectiveRadius, 4).ToString();
-            textBox_FR_LateralLoad.Text = Math.Round(LiveData.FR_LateralLoad, 2).ToString();
-            textBox_FR_LoadedRadius.Text = Math.Round(LiveData.FR_LoadedRadius, 4).ToString();
-            textBox_FR_LongitudinalLoad.Text = Math.Round(LiveData.FR_LongitudinalLoad, 2).ToString();
-            //textBox_FR_SlipAngleRad.Text = Math.Round(LiveData.FR_SlipAngleRad, 2).ToString();
-            textBox_FR_SlipRatio.Text = Math.Round(LiveData.FR_SlipRatio, 2).ToString();
-            textBox_FR_TravelSpeed.Text = Math.Round(LiveData.FR_TravelSpeed, 2).ToString();
-            textBox_FR_VerticalLoad.Text = Math.Round(LiveData.FR_VerticalLoad, 2).ToString();
-            textBox_FR_LateralFriction.Text = Math.Round(LiveData.FR_LateralFriction, 2).ToString();
-            textBox_FR_LongitudinalFriction.Text = Math.Round(LiveData.FR_LongitudinalFriction, 2).ToString();
-            textBox_FR_TreadTemperature.Text = Math.Round(LiveData.FR_TreadTemperature, 2).ToString();
-            textBox_FR_InnerTemperature.Text = Math.Round(LiveData.FR_InnerTemperature, 2).ToString();
-            textBox_FR_SlipAngleDeg.Text = Math.Round(LiveData.FR_SlipAngleDeg, 2).ToString();
-            textBox_FR_TotalFriction.Text = Math.Round(LiveData.FR_TotalFriction, 2).ToString();//
-            textBox_FR_TotalFrictionAngle.Text = Math.Round(LiveData.FR_TotalFrictionAngle, 2).ToString();//
-            textBox_FR_LateralSlipSpeed.Text = Math.Round(LiveData.FR_LateralSlipSpeed, 2).ToString();//
-            textBox_FR_LongitudinalSlipSpeed.Text = Math.Round(LiveData.FR_LongitudinalSlipSpeed, 2).ToString();//
-            textBox_FR_CamberAngle.Text = Math.Round(LiveData.FR_CamberAngleDeg, 2).ToString();//
-            textBox_FR_TireSteerAngle.Text = Math.Round(LiveData.FR_SteerAngleDeg, 2).ToString();//
-
+            //Tire data
+            //Suspension data
             textBox_FR_SuspensionLength.Text = Math.Round(LiveData.FR_SuspensionLength, 4).ToString();
             textBox_FR_SuspensionVelocity.Text = Math.Round(LiveData.FR_SuspensionVelocity, 4).ToString();
 
             //Rear left
-            textBox_RL_AngularVelocity.Text = Math.Round(LiveData.RL_AngularVelocity, 2).ToString();
-            textBox_RL_ContactLength.Text = Math.Round(LiveData.RL_ContactLength, 4).ToString();
-            textBox_RL_CurrentContactBrakeTorque.Text = Math.Round(LiveData.RL_CurrentContactBrakeTorque, 2).ToString();
-            textBox_RL_MaxCurrentContactBrakeTorque.Text = Math.Round(LiveData.RL_CurrentContactBrakeTorqueMax, 2).ToString();
-            textBox_RL_Deflection.Text = Math.Round(LiveData.RL_VerticalDeflection, 4).ToString();
-            textBox_RL_EffectiveRadius.Text = Math.Round(LiveData.RL_EffectiveRadius, 4).ToString();
-            textBox_RL_LateralLoad.Text = Math.Round(LiveData.RL_LateralLoad, 2).ToString();
-            textBox_RL_LoadedRadius.Text = Math.Round(LiveData.RL_LoadedRadius, 4).ToString();
-            textBox_RL_LongitudinalLoad.Text = Math.Round(LiveData.RL_LongitudinalLoad, 2).ToString();
-            //textBox_RL_SlipAngleRad.Text = Math.Round(LiveData.RL_SlipAngleRad, 2).ToString();
-            textBox_RL_SlipRatio.Text = Math.Round(LiveData.RL_SlipRatio, 2).ToString();
-            textBox_RL_TravelSpeed.Text = Math.Round(LiveData.RL_TravelSpeed, 2).ToString();
-            textBox_RL_VerticalLoad.Text = Math.Round(LiveData.RL_VerticalLoad, 2).ToString();
-            textBox_RL_LateralFriction.Text = Math.Round(LiveData.RL_LateralFriction, 2).ToString();
-            textBox_RL_LongitudinalFriction.Text = Math.Round(LiveData.RL_LongitudinalFriction, 2).ToString();
-            textBox_RL_TreadTemperature.Text = Math.Round(LiveData.RL_TreadTemperature, 2).ToString();
-            textBox_RL_InnerTemperature.Text = Math.Round(LiveData.RL_InnerTemperature, 2).ToString();
-            textBox_RL_SlipAngleDeg.Text = Math.Round(LiveData.RL_SlipAngleDeg, 2).ToString();
-            textBox_RL_TotalFriction.Text = Math.Round(LiveData.RL_TotalFriction, 2).ToString();//
-            textBox_RL_TotalFrictionAngle.Text = Math.Round(LiveData.RL_TotalFrictionAngle, 2).ToString();//
-            textBox_RL_LateralSlipSpeed.Text = Math.Round(LiveData.RL_LateralSlipSpeed, 2).ToString();//
-            textBox_RL_LongitudinalSlipSpeed.Text = Math.Round(LiveData.RL_LongitudinalSlipSpeed, 2).ToString();//
-            textBox_RL_CamberAngle.Text = Math.Round(LiveData.RL_CamberAngleDeg, 2).ToString();//
-            textBox_RL_TireSteerAngle.Text = Math.Round(LiveData.RL_SteerAngleDeg, 2).ToString();//
-
+            //Tire data
+            //Suspension data
             textBox_RL_SuspensionLength.Text = Math.Round(LiveData.RL_SuspensionLength, 4).ToString();
             textBox_RL_SuspensionVelocity.Text = Math.Round(LiveData.RL_SuspensionVelocity, 4).ToString();
 
             //Rear right
-            textBox_RR_AngularVelocity.Text = Math.Round(LiveData.RR_AngularVelocity, 2).ToString();
-            textBox_RR_ContactLength.Text = Math.Round(LiveData.RR_ContactLength, 4).ToString();
-            textBox_RR_CurrentContactBrakeTorque.Text = Math.Round(LiveData.RR_CurrentContactBrakeTorque, 2).ToString();
-            textBox_RR_MaxCurrentContactBrakeTorque.Text = Math.Round(LiveData.RR_CurrentContactBrakeTorqueMax, 2).ToString();
-            textBox_RR_Deflection.Text = Math.Round(LiveData.RR_VerticalDeflection, 4).ToString();
-            textBox_RR_EffectiveRadius.Text = Math.Round(LiveData.RR_EffectiveRadius, 4).ToString();
-            textBox_RR_LateralLoad.Text = Math.Round(LiveData.RR_LateralLoad, 2).ToString();
-            textBox_RR_LoadedRadius.Text = Math.Round(LiveData.RR_LoadedRadius, 4).ToString();
-            textBox_RR_LongitudinalLoad.Text = Math.Round(LiveData.RR_LongitudinalLoad, 2).ToString();
-            //textBox_RR_SlipAngleRad.Text = Math.Round(LiveData.RR_SlipAngleRad, 2).ToString();
-            textBox_RR_SlipRatio.Text = Math.Round(LiveData.RR_SlipRatio, 2).ToString();
-            textBox_RR_TravelSpeed.Text = Math.Round(LiveData.RR_TravelSpeed, 2).ToString();
-            textBox_RR_VerticalLoad.Text = Math.Round(LiveData.RR_VerticalLoad, 2).ToString();
-            textBox_RR_LateralFriction.Text = Math.Round(LiveData.RR_LateralFriction, 2).ToString();
-            textBox_RR_LongitudinalFriction.Text = Math.Round(LiveData.RR_LongitudinalFriction, 2).ToString();
-            textBox_RR_TreadTemperature.Text = Math.Round(LiveData.RR_TreadTemperature, 2).ToString();
-            textBox_RR_InnerTemperature.Text = Math.Round(LiveData.RR_InnerTemperature, 2).ToString();
-            textBox_RR_SlipAngleDeg.Text = Math.Round(LiveData.RR_SlipAngleDeg, 2).ToString();
-            textBox_RR_TotalFriction.Text = Math.Round(LiveData.RR_TotalFriction, 2).ToString();//
-            textBox_RR_TotalFrictionAngle.Text = Math.Round(LiveData.RR_TotalFrictionAngle, 2).ToString();//
-            textBox_RR_LateralSlipSpeed.Text = Math.Round(LiveData.RR_LateralSlipSpeed, 2).ToString();//
-            textBox_RR_LongitudinalSlipSpeed.Text = Math.Round(LiveData.RR_LongitudinalSlipSpeed, 2).ToString();//
-            textBox_RR_CamberAngle.Text = Math.Round(LiveData.RR_CamberAngleDeg, 2).ToString();//
-            textBox_RR_TireSteerAngle.Text = Math.Round(LiveData.RR_SteerAngleDeg, 2).ToString();//
-
+            //Tire data
+            //Suspension data
             textBox_RR_SuspensionLength.Text = Math.Round(LiveData.RR_SuspensionLength, 4).ToString();
-            textBox_RR_SuspensionVelocity.Text = Math.Round(LiveData.RR_SuspensionVelocity, 4).ToString();
+            textBox_RR_SuspensionVelocity.Text = Math.Round(LiveData.RR_SuspensionVelocity, 4).ToString();*/
         }
         private void UpdateFormData()
         {
             ButtonVisibilities();
-            //TextBoxUpdates();
-            //string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         private void ProcessStart()
         {
-
             processGet = true;
-
             getProcessButton.Text = "Refresh Process";
-            //update.Start();
             timer1.Enabled = true;
-            /*
-            aTimer = new System.Timers.Timer(LiveData.tickInterval);
-            aTimer.Elapsed += OnTimedEvent;
-            aTimer.AutoReset = true;
-            aTimer.Enabled = true;
-            */
-        }
-        private void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            /*
-            dTickTime = (e.SignalTime - previousTime).TotalMilliseconds;
-            sTickTime = "Tick time " + dTickTime + " ms";
-            previousTime = e.SignalTime;
-            aTimer.Interval = LiveData.tickInterval;
-            */
         }
         #endregion
         #region Form and Buttons stuff
@@ -313,73 +187,35 @@ namespace Physics_Data_Debug
             // Empty box makes it 1 and not 0 or less.
             if (textbox.Text == "")
             {
-                LiveData.tickInterval = 1;
+                LiveData.TickInterval = 1;
                 textbox.Text = "1";
             }
-            else if (int.TryParse(textbox.Text, out LiveData.tickInterval))
+            else if (int.TryParse(textbox.Text, out LiveData.TickInterval))
             {
-                if (LiveData.tickInterval > 2000)
+                if (LiveData.TickInterval > 2000)
                 {
-                    LiveData.tickInterval = 2000;
+                    LiveData.TickInterval = 2000;
                     textbox.Text = "2000";
                 }
-                else if (LiveData.tickInterval < 1 || LiveData.tickInterval == -1)
+                else if (LiveData.TickInterval < 1 || LiveData.TickInterval == -1)
                 {
-                    LiveData.tickInterval = 1;
+                    LiveData.TickInterval = 1;
                     textbox.Text = "1";
                 }
             }
         }
-        /**********************************OUTDATED SUFF*****************************************
-        private void tempCorrectionBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch1 = e.KeyChar;
-
-            if(ch1 == 44 && tempCorrectionBox.Text.IndexOf(',') != -1)
-            {
-                e.Handled = true;
-                return;
-            }
-
-            if (!Char.IsDigit(ch1) && ch1 != 8 && ch1 != 44 && ch1 != 45)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void tempCorrectionBox_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(tempCorrectionBox.Text))
-            {
-                TempCorrectionValue = 0;
-            }
-            else
-            {
-                TempCorrectionValue = Convert.ToDouble(tempCorrectionBox.Text);
-            } 
-        }
-
-        */
         private void Start_Log_Click(object sender, EventArgs e)
         {
             if (LiveData.logging == true)
             {
                 LiveData.logging = false;
                 startFileLoggingButton.Text = "Start Logging";
-                //checkedListBoxFLLogging.Show();
-                //selectFLAll.Show();
-                //FLApplyLogSettings.Show();
-                //LoggingSelectionsLabel.Show();
             }
             else
             {
                 Directory.CreateDirectory(LogSettings.LogFileSaveLocationFolder);
                 LiveData.logging = true;
                 startFileLoggingButton.Text = "Stop Logging";
-                //checkedListBoxFLLogging.Hide();
-                //selectFLAll.Hide();
-                //FLApplyLogSettings.Hide();
-                //LoggingSelectionsLabel.Hide();
             }
         }
         private void toSettingsButton_Click(object sender, EventArgs e)
@@ -388,14 +224,10 @@ namespace Physics_Data_Debug
             LiveData.LogSettingsOpen = true;
             FormLogSettings s1 = new FormLogSettings();
             s1.Show();
-
-            //Start_Log.Visible = false;
-            /*
-            this.Hide();
-            */
         }
         private void exitApplication_Click(object sender, EventArgs e)
         {
+            LiveData.Helper.Close();
             Application.Exit();
         }
         private void toTireSettingsButton_Click(object sender, EventArgs e)
@@ -404,17 +236,14 @@ namespace Physics_Data_Debug
             LiveData.TireSettingsOpen = true;
             FormTireSettings s = new FormTireSettings();
             s.Show();
-            //this.Hide();
-
         }
         private void FirstAllDataLoggerPage_Closing(object sender, FormClosingEventArgs e)
         {
+            //LiveData.Helper.Close();
             //RegistryTools.SaveAllSettings(Application.ProductName, this);
-            if (LiveData.process != null && processGet == true)
+            if (LiveData.Process != null && processGet == true)
             {
                 timer1.Enabled = false;
-                //aTimer.Enabled = false;
-                //update.Abort();
             }
         }
         private void OpenTemperaturesChart_Click(object sender, EventArgs e)
@@ -460,79 +289,70 @@ namespace Physics_Data_Debug
         }
         private void getProcessButton_Click(object sender, EventArgs e)
         {
-            LiveData.process = Process.GetProcessesByName("Wreckfest_x64").FirstOrDefault();
-
-
-            if (LiveData.process != null && processGet == false)
+            LiveData.Process = Process.GetProcessesByName("Wreckfest_x64").FirstOrDefault();
+            if (LiveData.Process != null && processGet == false)
             {
                 ProcessStart();
             }
-            else if (LiveData.process != null && processGet == true)
+            else if (LiveData.Process != null && processGet == true)
             {
                 getProcessButton.Text = "Getting Process";
-                //update.IsBackground = false;
-                //update.Abort();
                 timer1.Enabled = false;
-                //aTimer.Enabled = false;
                 processGet = false;
                 ProcessStart();
-
             }
             else
             {
+                timer1.Enabled = false;
                 processGet = false;
                 getProcessButton.Text = "Get Process";
                 return;
             }
         }
 
+        public bool FirstTimeLoad = false;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            LiveData.GetData();
-            //getData();
+            if (FirstTimeLoad == false)
+            {
+                WreckfestEnums.AddNames();
+                // Needs to be in order of WF_Prefix
+                LiveData.GenerateBodyDataList<float>(WF_BodyRotationChunks.DataStart, WF_Prefix.Body, LiveData.Body_DataList, LiveData.FullDataList, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
 
+                LiveData.GenerateTireDataList<float>(WF_TireDataChunks.DataStart, WF_Prefix.FL, LiveData.FL_TireDataList, LiveData.FullDataList, LiveData.FL_TireData, WF_SuspensionChunks.DataStart, LiveData.FL_SuspensionData);//1
+                LiveData.GenerateTireDataList<float>(WF_TireDataChunks.DataStart, WF_Prefix.FR, LiveData.FR_TireDataList, LiveData.FullDataList, LiveData.FR_TireData, WF_SuspensionChunks.DataStart, LiveData.FR_SuspensionData);//2
+                LiveData.GenerateTireDataList<float>(WF_TireDataChunks.DataStart, WF_Prefix.RL, LiveData.RL_TireDataList, LiveData.FullDataList, LiveData.RL_TireData, WF_SuspensionChunks.DataStart, LiveData.RL_SuspensionData);//3
+                LiveData.GenerateTireDataList<float>(WF_TireDataChunks.DataStart, WF_Prefix.RR, LiveData.RR_TireDataList, LiveData.FullDataList, LiveData.RR_TireData, WF_SuspensionChunks.DataStart, LiveData.RR_SuspensionData);//4
+
+                LiveData.GeneratePowertrainDataList<float>(WF_EngineDataChunks.DataStart, WF_Prefix.Powertrain, LiveData.Powertrain_DataList, LiveData.FullDataList, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
+                FirstTimeLoad = true;
+            }
+            LiveData.GetData((ulong)BaseAddressUpdate.V1_308408);
+            // Needs to be in order of WF_Prefix
+            LiveData.UpdateBodyDataValues<float>(WF_BodyRotationChunks.DataStart, WF_Prefix.Body, LiveData.Body_DataList, LiveData.FullDataList, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
+
+            LiveData.UpdateTireDataValues<float>(WF_TireDataChunks.DataStart, WF_Prefix.FL, LiveData.FL_TireDataList, LiveData.FullDataList, LiveData.FL_TireData, WF_SuspensionChunks.DataStart, LiveData.FL_SuspensionData);//1
+            LiveData.UpdateTireDataValues<float>(WF_TireDataChunks.DataStart, WF_Prefix.FR, LiveData.FR_TireDataList, LiveData.FullDataList, LiveData.FR_TireData, WF_SuspensionChunks.DataStart, LiveData.FR_SuspensionData);//2
+            LiveData.UpdateTireDataValues<float>(WF_TireDataChunks.DataStart, WF_Prefix.RL, LiveData.RL_TireDataList, LiveData.FullDataList, LiveData.RL_TireData, WF_SuspensionChunks.DataStart, LiveData.RL_SuspensionData);//3
+            LiveData.UpdateTireDataValues<float>(WF_TireDataChunks.DataStart, WF_Prefix.RR, LiveData.RR_TireDataList, LiveData.FullDataList, LiveData.RR_TireData, WF_SuspensionChunks.DataStart, LiveData.RR_SuspensionData);//4
+
+            LiveData.UpdatePowertrainDataValues<float>(WF_EngineDataChunks.DataStart, WF_Prefix.Powertrain, LiveData.Powertrain_DataList, LiveData.FullDataList, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
+            //LiveData.ConsoleTireData(LiveData.TireDataList);
+
+            LiveData.LogToFile();
             //ButtonVisibilities();
-            if (checkBox1.Checked == true && LiveData.elapsedTime > 0)
+            if (checkBox1.Checked == true && LiveData.ElapsedTime > 0)
             {
                 TextBoxUpdates();
             }
-            /*
-            //No chart update for Form4Wheels and G-Force charts if race timer isn't ticking
-            FormLiveData formlivedata = (FormLiveData)Application.OpenForms["FormLiveData"];
-            var timerlivedata = formlivedata.timer1;
-            if (LiveData.elapsedTime > 0)
-            { }
-            else
-            { }
-            */
-            sTickTime = "Tick time " + LiveData.elapsedTime + " ms";
+            sTickTime = "Tick time " + LiveData.ElapsedTime + " ms";
             TickTime.Text = sTickTime;
-            timer1.Interval = LiveData.tickInterval;
+            timer1.Interval = LiveData.TickInterval;
         }
 
         private void buttonUpdates_Tick(object sender, EventArgs e)
         {
             UpdateFormData();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
         }
         private void toGForceButton_Click(object sender, EventArgs e)
         {
@@ -541,12 +361,7 @@ namespace Physics_Data_Debug
             FormGForce s1 = new FormGForce();
             s1.Show();
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
         #endregion
-
         private void to4WheelsButton_Click(object sender, EventArgs e)
         {
             to4WheelsButton.Visible = false;

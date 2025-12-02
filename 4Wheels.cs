@@ -212,56 +212,6 @@ namespace Physics_Data_Debug
         public static MarkerStyle MarkerStyle { get; set; } = MarkerStyle.Circle;
         public static int MarkerSizeHistory { get; set; } = 2;
         public static List<Color> MarkerColors { get; set; } = new List<Color>(new Color[11]);
-        /*
-        public static bool LimiterSelectionIsAbsoluteValue(string selectedItem)
-        {
-            if (selectedItem == LogSettings.sNone ||
-                   selectedItem == LogSettings.sTireTravelSpeed ||
-                   selectedItem == LogSettings.sAngularVelocity ||
-                   selectedItem == LogSettings.sSteerAngle ||
-                   selectedItem == LogSettings.sCamberAngle ||
-                   selectedItem == LogSettings.sLateralLoad ||
-                   selectedItem == LogSettings.sSlipAngle ||
-                   selectedItem == LogSettings.sLateralFriction ||
-                   selectedItem == LogSettings.sLateralSlipSpeed ||
-                   selectedItem == LogSettings.sLongitudinalLoad ||
-                   selectedItem == LogSettings.sSlipRatio ||
-                   selectedItem == LogSettings.sLongitudinalFriction ||
-                   selectedItem == LogSettings.sLongitudinalSlipSpeed ||
-                   selectedItem == LogSettings.sSuspensionVelocity)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public static bool CBLimiterSelectionIsAbsoluteValue(ComboBox cb)
-        {
-            string selectedItem = (string)cb.SelectedItem;
-            if (selectedItem == LogSettings.sNone || 
-                   selectedItem == LogSettings.sTireTravelSpeed ||
-                   selectedItem == LogSettings.sAngularVelocity ||
-                   selectedItem == LogSettings.sSteerAngle ||
-                   selectedItem == LogSettings.sCamberAngle ||
-                   selectedItem == LogSettings.sLateralLoad ||
-                   selectedItem == LogSettings.sSlipAngle ||
-                   selectedItem == LogSettings.sLateralFriction ||
-                   selectedItem == LogSettings.sLateralSlipSpeed ||
-                   selectedItem == LogSettings.sLongitudinalLoad ||
-                   selectedItem == LogSettings.sSlipRatio ||
-                   selectedItem == LogSettings.sLongitudinalFriction ||
-                   selectedItem == LogSettings.sLongitudinalSlipSpeed ||
-                   selectedItem == LogSettings.sSuspensionVelocity)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }*/
         public static void ClearListDataHistory()
         {
             //while (chartName.Series.Count > 1) { chartName.Series.RemoveAt(0); }
@@ -409,116 +359,124 @@ namespace Physics_Data_Debug
             RR_Z1ValuesChartColor10.Clear();
 
         }
-        public static List<float> ListSelections(List<string> xyzSelection, int none, int raceTime, List<float> liveDataList)
+        /// <summary>
+        /// THIS NEEDS TO BE CHANGED TO USE THE ENUMS INSTEAD OF INDEXES AND STRINGS!
+        /// </summary>
+        /// <param name="xyzSelection"></param>
+        /// <param name="none"></param>
+        /// <param name="raceTime"></param>
+        /// <param name="liveDataList"></param>
+        /// <returns></returns>
+        public static List<float> ListSelections(List<string> xyzSelection, int none, int raceTime, Enum prefix)//, List<float> liveDataList)
         {
             List<float> xyzValues = new List<float>();
 
             for (int i = 0; i < xyzSelection.Count; i++)
             {
-                if (xyzSelection[i] == LogSettings.sTireTravelSpeed)
+                if (xyzSelection[i] == nameof(AllValueNames.TravelSpeed))
                 {
-                    xyzValues.Add(liveDataList[0]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.TravelSpeed.GetType()), WF_TireDataOffset.TravelSpeed)].Value);//liveDataList[0]);
                 }
-                else if (xyzSelection[i] == LogSettings.sAngularVelocity)
+                else if (xyzSelection[i] == nameof(AllValueNames.AngularVelocity))
                 {
-                    xyzValues.Add(liveDataList[1]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.AngularVelocity.GetType()), WF_TireDataOffset.AngularVelocity)].Value);//liveDataList[1]);
                 }
-                else if (xyzSelection[i] == LogSettings.sVerticalLoad)
+                else if (xyzSelection[i] == nameof(AllValueNames.VerticalLoad))
                 {
-                    xyzValues.Add(liveDataList[2]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.VerticalLoad.GetType()), WF_TireDataOffset.VerticalLoad)].Value);//liveDataList[2]);
                 }
-                else if (xyzSelection[i] == LogSettings.sVerticalDeflection)
+                else if (xyzSelection[i] == nameof(AllValueNames.VerticalDeflection))
                 {
-                    xyzValues.Add(liveDataList[3]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.VerticalDeflection.GetType()), WF_TireDataOffset.VerticalDeflection)].Value);//liveDataList[3]);
                 }
-                else if (xyzSelection[i] == LogSettings.sLoadedRadius)
+                else if (xyzSelection[i] == nameof(AllValueNames.LoadedRadius))
                 {
-                    xyzValues.Add(liveDataList[4]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.LoadedRadius.GetType()), WF_TireDataOffset.LoadedRadius)].Value);//liveDataList[4]);
                 }
-                else if (xyzSelection[i] == LogSettings.sEffectiveRadius)
+                else if (xyzSelection[i] == nameof(AllValueNames.EffectiveRadius))
                 {
-                    xyzValues.Add(liveDataList[5]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.EffectiveRadius.GetType()), WF_TireDataOffset.EffectiveRadius)].Value);//liveDataList[5]);
                 }
-                else if (xyzSelection[i] == LogSettings.sContactLength)
+                else if (xyzSelection[i] == nameof(AllValueNames.ContactLength))
                 {
-                    xyzValues.Add(liveDataList[6]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.ContactLength.GetType()), WF_TireDataOffset.ContactLength)].Value);//liveDataList[6]);
                 }
-                else if (xyzSelection[i] == LogSettings.sBrakeTorque)
+                else if (xyzSelection[i] == nameof(AllValueNames.CurrentContactBrakeTorque))
                 {
-                    xyzValues.Add(liveDataList[7]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.CurrentContactBrakeTorque.GetType()), WF_TireDataOffset.CurrentContactBrakeTorque)].Value);//liveDataList[7]);
                 }
-                else if (xyzSelection[i] == LogSettings.sMaxBrakeTorque)
+                else if (xyzSelection[i] == nameof(AllValueNames.CurrentContactBrakeTorqueMax))
                 {
-                    xyzValues.Add(liveDataList[8]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.CurrentContactBrakeTorqueMax.GetType()), WF_TireDataOffset.CurrentContactBrakeTorqueMax)].Value);//iveDataList[8]);
                 }
-                else if (xyzSelection[i] == LogSettings.sSteerAngle)
+                else if (xyzSelection[i] == nameof(AllValueNames.SteerAngleDeg))
                 {
-                    xyzValues.Add(liveDataList[9]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.SteerAngleDeg.GetType()), WF_TireDataOffset.SteerAngleDeg)].Value);//liveDataList[9]);//WF_TireDataCalculated
                 }
-                else if (xyzSelection[i] == LogSettings.sCamberAngle)
+                else if (xyzSelection[i] == nameof(AllValueNames.CamberAngleDeg))
                 {
-                    xyzValues.Add(liveDataList[10]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.CamberAngleDeg.GetType()), WF_TireDataOffset.CamberAngleDeg)].Value);//liveDataList[10]);//WF_TireDataCalculated
                 }
-                else if (xyzSelection[i] == LogSettings.sLateralLoad)
+                else if (xyzSelection[i] == nameof(AllValueNames.LateralLoad))
                 {
-                    xyzValues.Add(liveDataList[11]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.LateralLoad.GetType()), WF_TireDataOffset.LateralLoad)].Value);//liveDataList[11]);
                 }
-                else if (xyzSelection[i] == LogSettings.sSlipAngle)
+                else if (xyzSelection[i] == nameof(AllValueNames.SlipAngleDeg))
                 {
-                    xyzValues.Add(liveDataList[12]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.SlipAngleDeg.GetType()), WF_TireDataOffset.SlipAngleDeg)].Value);//liveDataList[12]);//WF_TireDataCalculated
                 }
-                else if (xyzSelection[i] == LogSettings.sLateralFriction)
+                else if (xyzSelection[i] == nameof(AllValueNames.LateralFriction))
                 {
-                    xyzValues.Add(liveDataList[13]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.LateralFriction.GetType()), WF_TireDataOffset.LateralFriction)].Value);//liveDataList[13]);//WF_TireDataCalculated
                 }
-                else if (xyzSelection[i] == LogSettings.sLateralSlipSpeed)
+                else if (xyzSelection[i] == nameof(AllValueNames.LateralSlipSpeed))
                 {
-                    xyzValues.Add(liveDataList[14]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.LateralSlipSpeed.GetType()), WF_TireDataOffset.LateralSlipSpeed)].Value);//liveDataList[14]);
                 }
-                else if (xyzSelection[i] == LogSettings.sLongitudinalLoad)
+                else if (xyzSelection[i] == nameof(AllValueNames.LongitudinalLoad))
                 {
-                    xyzValues.Add(liveDataList[15]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.LongitudinalLoad.GetType()), WF_TireDataOffset.LongitudinalLoad)].Value);//liveDataList[15]);
                 }
-                else if (xyzSelection[i] == LogSettings.sSlipRatio)
+                else if (xyzSelection[i] == nameof(AllValueNames.SlipRatio))
                 {
-                    xyzValues.Add(liveDataList[16]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.SlipRatio.GetType()), WF_TireDataOffset.SlipRatio)].Value);//liveDataList[16]);
                 }
-                else if (xyzSelection[i] == LogSettings.sLongitudinalFriction)
+                else if (xyzSelection[i] == nameof(AllValueNames.LongitudinalFriction))
                 {
-                    xyzValues.Add(liveDataList[17]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.LongitudinalFriction.GetType()), WF_TireDataOffset.LongitudinalFriction)].Value);//liveDataList[17]);//WF_TireDataCalculated
                 }
-                else if (xyzSelection[i] == LogSettings.sLongitudinalSlipSpeed)
+                else if (xyzSelection[i] == nameof(AllValueNames.LongitudinalSlipSpeed))
                 {
-                    xyzValues.Add(liveDataList[18]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.LongitudinalSlipSpeed.GetType()), WF_TireDataOffset.LongitudinalSlipSpeed)].Value);//liveDataList[18]);
                 }
-                else if (xyzSelection[i] == LogSettings.sTreadTemperature)
+                else if (xyzSelection[i] == nameof(AllValueNames.TreadTemperature))
                 {
-                    xyzValues.Add(liveDataList[19]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.TreadTemperature.GetType()), WF_TireDataOffset.TreadTemperature)].Value);//liveDataList[19]);
                 }
-                else if (xyzSelection[i] == LogSettings.sInnerTemperature)
+                else if (xyzSelection[i] == nameof(AllValueNames.InnerTemperature))
                 {
-                    xyzValues.Add(liveDataList[20]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.InnerTemperature.GetType()), WF_TireDataOffset.InnerTemperature)].Value);//liveDataList[20]);
                 }
-                else if (xyzSelection[i] == LogSettings.sRaceTime)
+                else if (xyzSelection[i] == nameof(WF_TimeDataOffset.RaceTime))//LogSettings.sRaceTime)
                 {
                     xyzValues.Add(raceTime);
                 }
-                else if (xyzSelection[i] == LogSettings.sTotalFriction)
+                else if (xyzSelection[i] == nameof(AllValueNames.TotalFriction))
                 {
-                    xyzValues.Add(liveDataList[21]);
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.TotalFriction.GetType()), WF_TireDataOffset.TotalFriction)].Value);//liveDataList[21]);//WF_TireDataCalculated
                 }
-                else if (xyzSelection[i] == LogSettings.sTotalFrictionAngle)
+                else if (xyzSelection[i] == nameof(AllValueNames.TotalFrictionAngleDeg))
                 {
-                    xyzValues.Add(liveDataList[22]);
-                }
-                else if (xyzSelection[i] == LogSettings.sSuspensionLength)
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.TotalFrictionAngleDeg.GetType()), WF_TireDataOffset.TotalFrictionAngleDeg)].Value);//liveDataList[22]);//WF_TireDataCalculated
+                }/*
+                else if (xyzSelection[i] == nameof(AllValueName.SuspensionLength))
                 {
-                    xyzValues.Add(liveDataList[23]);
+                    xyzValues.Add(LiveData.TireDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.SuspensionLength.GetType()), WF_TireDataOffset.SuspensionLength)].Value);//liveDataList[23]);
                 }
-                else if (xyzSelection[i] == LogSettings.sSuspensionVelocity)
+                else if (xyzSelection[i] == nameof(AllValueName.SuspensionVelocity))
                 {
-                    xyzValues.Add(liveDataList[24]);
-                }
+                    xyzValues.Add(LiveData.TireDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.SuspensionVelocity.GetType()), WF_TireDataOffset.SuspensionVelocity)].Value);//liveDataList[24]);
+                }*/
                 else//fallback to none
                 {
                     xyzValues.Add(none);
@@ -630,7 +588,7 @@ namespace Physics_Data_Debug
         }
         public static bool OverTheChosenLimiter(float limiter, string limiterSelection, double limiterMax, double limiterMin)
         {
-            bool limiterIsAbsoluteValue = LogSettings.DataNameStringsAbsoluteValues.Contains(limiterSelection);
+            bool limiterIsAbsoluteValue = WreckfestEnums.DataNameStringsAbsoluteValues.Contains(limiterSelection);
             if (limiterIsAbsoluteValue == true)
             {
                 if (Math.Abs(limiter) > limiterMax || Math.Abs(limiter) < limiterMin)
@@ -658,128 +616,6 @@ namespace Physics_Data_Debug
                                         List<float> X1ValuesColor9, List<float> Y1ValuesColor9,
                                         List<float> X1ValuesColor10, List<float> Y1ValuesColor10)
         {
-            /*
-            float noTireContactLimiter;
-            List<float> X1Values; List<float> Y1Values; List<float> Z1Values;
-            List<float> X1ValuesColor1; List<float> Y1ValuesColor1;
-            List<float> X1ValuesColor2; List<float> Y1ValuesColor2;
-            List<float> X1ValuesColor3; List<float> Y1ValuesColor3;
-            List<float> X1ValuesColor4; List<float> Y1ValuesColor4;
-            List<float> X1ValuesColor5; List<float> Y1ValuesColor5;
-            List<float> X1ValuesColor6; List<float> Y1ValuesColor6;
-            List<float> X1ValuesColor7; List<float> Y1ValuesColor7;
-            List<float> X1ValuesColor8; List<float> Y1ValuesColor8;
-            List<float> X1ValuesColor9; List<float> Y1ValuesColor9;
-            List<float> X1ValuesColor10; List<float> Y1ValuesColor10;
-            */
-            if (seriesName == _4Wheels.FL_SeriesString)
-            {
-                noTireContactLimiter = LiveData.FL_VerticalLoad;
-                X1Values = _4Wheels.FL_X1ValuesChart;
-                X1ValuesColor1 = _4Wheels.FL_X1ValuesChartColor1;
-                X1ValuesColor2 = _4Wheels.FL_X1ValuesChartColor2;
-                X1ValuesColor3 = _4Wheels.FL_X1ValuesChartColor3;
-                X1ValuesColor4 = _4Wheels.FL_X1ValuesChartColor4;
-                X1ValuesColor5 = _4Wheels.FL_X1ValuesChartColor5;
-                X1ValuesColor6 = _4Wheels.FL_X1ValuesChartColor6;
-                X1ValuesColor7 = _4Wheels.FL_X1ValuesChartColor7;
-                X1ValuesColor8 = _4Wheels.FL_X1ValuesChartColor8;
-                X1ValuesColor9 = _4Wheels.FL_X1ValuesChartColor9;
-                X1ValuesColor10 = _4Wheels.FL_X1ValuesChartColor10;
-                Y1Values = _4Wheels.FL_Y1ValuesChart;
-                Y1ValuesColor1 = _4Wheels.FL_Y1ValuesChartColor1;
-                Y1ValuesColor2 = _4Wheels.FL_Y1ValuesChartColor2;
-                Y1ValuesColor3 = _4Wheels.FL_Y1ValuesChartColor3;
-                Y1ValuesColor4 = _4Wheels.FL_Y1ValuesChartColor4;
-                Y1ValuesColor5 = _4Wheels.FL_Y1ValuesChartColor5;
-                Y1ValuesColor6 = _4Wheels.FL_Y1ValuesChartColor6;
-                Y1ValuesColor7 = _4Wheels.FL_Y1ValuesChartColor7;
-                Y1ValuesColor8 = _4Wheels.FL_Y1ValuesChartColor8;
-                Y1ValuesColor9 = _4Wheels.FL_Y1ValuesChartColor9;
-                Y1ValuesColor10 = _4Wheels.FL_Y1ValuesChartColor10;
-                Z1Values = _4Wheels.FL_Z1ValuesChart;
-            }
-            else if (seriesName == _4Wheels.FR_SeriesString)
-            {
-                noTireContactLimiter = LiveData.FR_VerticalLoad;
-                X1Values = _4Wheels.FR_X1ValuesChart;
-                X1ValuesColor1 = _4Wheels.FR_X1ValuesChartColor1;
-                X1ValuesColor2 = _4Wheels.FR_X1ValuesChartColor2;
-                X1ValuesColor3 = _4Wheels.FR_X1ValuesChartColor3;
-                X1ValuesColor4 = _4Wheels.FR_X1ValuesChartColor4;
-                X1ValuesColor5 = _4Wheels.FR_X1ValuesChartColor5;
-                X1ValuesColor6 = _4Wheels.FR_X1ValuesChartColor6;
-                X1ValuesColor7 = _4Wheels.FR_X1ValuesChartColor7;
-                X1ValuesColor8 = _4Wheels.FR_X1ValuesChartColor8;
-                X1ValuesColor9 = _4Wheels.FR_X1ValuesChartColor9;
-                X1ValuesColor10 = _4Wheels.FR_X1ValuesChartColor10;
-                Y1Values = _4Wheels.FR_Y1ValuesChart;
-                Y1ValuesColor1 = _4Wheels.FR_Y1ValuesChartColor1;
-                Y1ValuesColor2 = _4Wheels.FR_Y1ValuesChartColor2;
-                Y1ValuesColor3 = _4Wheels.FR_Y1ValuesChartColor3;
-                Y1ValuesColor4 = _4Wheels.FR_Y1ValuesChartColor4;
-                Y1ValuesColor5 = _4Wheels.FR_Y1ValuesChartColor5;
-                Y1ValuesColor6 = _4Wheels.FR_Y1ValuesChartColor6;
-                Y1ValuesColor7 = _4Wheels.FR_Y1ValuesChartColor7;
-                Y1ValuesColor8 = _4Wheels.FR_Y1ValuesChartColor8;
-                Y1ValuesColor9 = _4Wheels.FR_Y1ValuesChartColor9;
-                Y1ValuesColor10 = _4Wheels.FR_Y1ValuesChartColor10;
-                Z1Values = _4Wheels.FR_Z1ValuesChart;
-            }
-            else if (seriesName == _4Wheels.RL_SeriesString)
-            {
-                noTireContactLimiter = LiveData.RL_VerticalLoad;
-                X1Values = _4Wheels.RL_X1ValuesChart;
-                X1ValuesColor1 = _4Wheels.RL_X1ValuesChartColor1;
-                X1ValuesColor2 = _4Wheels.RL_X1ValuesChartColor2;
-                X1ValuesColor3 = _4Wheels.RL_X1ValuesChartColor3;
-                X1ValuesColor4 = _4Wheels.RL_X1ValuesChartColor4;
-                X1ValuesColor5 = _4Wheels.RL_X1ValuesChartColor5;
-                X1ValuesColor6 = _4Wheels.RL_X1ValuesChartColor6;
-                X1ValuesColor7 = _4Wheels.RL_X1ValuesChartColor7;
-                X1ValuesColor8 = _4Wheels.RL_X1ValuesChartColor8;
-                X1ValuesColor9 = _4Wheels.RL_X1ValuesChartColor9;
-                X1ValuesColor10 = _4Wheels.RL_X1ValuesChartColor10;
-                Y1Values = _4Wheels.RL_Y1ValuesChart;
-                Y1ValuesColor1 = _4Wheels.RL_Y1ValuesChartColor1;
-                Y1ValuesColor2 = _4Wheels.RL_Y1ValuesChartColor2;
-                Y1ValuesColor3 = _4Wheels.RL_Y1ValuesChartColor3;
-                Y1ValuesColor4 = _4Wheels.RL_Y1ValuesChartColor4;
-                Y1ValuesColor5 = _4Wheels.RL_Y1ValuesChartColor5;
-                Y1ValuesColor6 = _4Wheels.RL_Y1ValuesChartColor6;
-                Y1ValuesColor7 = _4Wheels.RL_Y1ValuesChartColor7;
-                Y1ValuesColor8 = _4Wheels.RL_Y1ValuesChartColor8;
-                Y1ValuesColor9 = _4Wheels.RL_Y1ValuesChartColor9;
-                Y1ValuesColor10 = _4Wheels.RL_Y1ValuesChartColor10;
-                Z1Values = _4Wheels.RL_Z1ValuesChart;
-            }
-            else//RR(seriesName == _4Wheels.SeriesRR)
-            {
-                noTireContactLimiter = LiveData.RR_VerticalLoad;
-                X1Values = _4Wheels.RR_X1ValuesChart;
-                X1ValuesColor1 = _4Wheels.RR_X1ValuesChartColor1;
-                X1ValuesColor2 = _4Wheels.RR_X1ValuesChartColor2;
-                X1ValuesColor3 = _4Wheels.RR_X1ValuesChartColor3;
-                X1ValuesColor4 = _4Wheels.RR_X1ValuesChartColor4;
-                X1ValuesColor5 = _4Wheels.RR_X1ValuesChartColor5;
-                X1ValuesColor6 = _4Wheels.RR_X1ValuesChartColor6;
-                X1ValuesColor7 = _4Wheels.RR_X1ValuesChartColor7;
-                X1ValuesColor8 = _4Wheels.RR_X1ValuesChartColor8;
-                X1ValuesColor9 = _4Wheels.RR_X1ValuesChartColor9;
-                X1ValuesColor10 = _4Wheels.RR_X1ValuesChartColor10;
-                Y1Values = _4Wheels.RR_Y1ValuesChart;
-                Y1ValuesColor1 = _4Wheels.RR_Y1ValuesChartColor1;
-                Y1ValuesColor2 = _4Wheels.RR_Y1ValuesChartColor2;
-                Y1ValuesColor3 = _4Wheels.RR_Y1ValuesChartColor3;
-                Y1ValuesColor4 = _4Wheels.RR_Y1ValuesChartColor4;
-                Y1ValuesColor5 = _4Wheels.RR_Y1ValuesChartColor5;
-                Y1ValuesColor6 = _4Wheels.RR_Y1ValuesChartColor6;
-                Y1ValuesColor7 = _4Wheels.RR_Y1ValuesChartColor7;
-                Y1ValuesColor8 = _4Wheels.RR_Y1ValuesChartColor8;
-                Y1ValuesColor9 = _4Wheels.RR_Y1ValuesChartColor9;
-                Y1ValuesColor10 = _4Wheels.RR_Y1ValuesChartColor10;
-                Z1Values = _4Wheels.RR_Z1ValuesChart;
-            }
             if (_4WheelsSettings.AbsoluteValues == true)
             {
                 xyzValues[0] = Math.Abs(xyzValues[0]);

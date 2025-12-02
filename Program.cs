@@ -16,8 +16,6 @@ using System.Diagnostics;
 
 namespace Physics_Data_Debug
 {
-
-
     static class Program
     {
         /// <summary>
@@ -32,6 +30,7 @@ namespace Physics_Data_Debug
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLiveData());
             //Application.Run(new FormTester());
+
         }
     }
 }

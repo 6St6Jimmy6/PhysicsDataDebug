@@ -240,17 +240,19 @@ namespace Physics_Data_Debug
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.CurrentYDrag = new System.Windows.Forms.Label();
-            this.CurrentDrag = new System.Windows.Forms.Label();
+            this.CurrentXDrag = new System.Windows.Forms.Label();
             this.CurrentZDrag = new System.Windows.Forms.Label();
+            this.CurrentTotalDrag = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(3, 7);
+            this.label12.Location = new System.Drawing.Point(6, 13);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.Size = new System.Drawing.Size(140, 25);
             this.label12.TabIndex = 27;
             this.label12.Text = "Speed (km/h)";
             // 
@@ -258,9 +260,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentSpeed.AutoSize = true;
             this.CurrentSpeed.ForeColor = System.Drawing.Color.White;
-            this.CurrentSpeed.Location = new System.Drawing.Point(3, 20);
+            this.CurrentSpeed.Location = new System.Drawing.Point(15, 38);
+            this.CurrentSpeed.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentSpeed.Name = "CurrentSpeed";
-            this.CurrentSpeed.Size = new System.Drawing.Size(73, 13);
+            this.CurrentSpeed.Size = new System.Drawing.Size(148, 25);
             this.CurrentSpeed.TabIndex = 28;
             this.CurrentSpeed.Text = "Current speed";
             // 
@@ -268,28 +271,31 @@ namespace Physics_Data_Debug
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 146);
+            this.label13.Location = new System.Drawing.Point(6, 326);
+            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 13);
+            this.label13.Size = new System.Drawing.Size(76, 25);
             this.label13.TabIndex = 29;
-            this.label13.Text = "Front/Rear Lift (N)";
+            this.label13.Text = "Lift (N)";
             // 
             // label14
             // 
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(3, 112);
+            this.label14.Location = new System.Drawing.Point(6, 194);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(97, 17);
+            this.label14.Size = new System.Drawing.Size(194, 22);
             this.label14.TabIndex = 30;
-            this.label14.Text = "Aero Drag Total";
+            this.label14.Text = "Aero Drag";
             // 
             // CurrentFrontLift
             // 
             this.CurrentFrontLift.AutoSize = true;
             this.CurrentFrontLift.ForeColor = System.Drawing.Color.White;
-            this.CurrentFrontLift.Location = new System.Drawing.Point(3, 159);
+            this.CurrentFrontLift.Location = new System.Drawing.Point(15, 351);
+            this.CurrentFrontLift.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentFrontLift.Name = "CurrentFrontLift";
-            this.CurrentFrontLift.Size = new System.Drawing.Size(85, 13);
+            this.CurrentFrontLift.Size = new System.Drawing.Size(174, 25);
             this.CurrentFrontLift.TabIndex = 31;
             this.CurrentFrontLift.Text = "Current Front Lift";
             // 
@@ -297,9 +303,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentRearLift.AutoSize = true;
             this.CurrentRearLift.ForeColor = System.Drawing.Color.White;
-            this.CurrentRearLift.Location = new System.Drawing.Point(3, 172);
+            this.CurrentRearLift.Location = new System.Drawing.Point(15, 376);
+            this.CurrentRearLift.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentRearLift.Name = "CurrentRearLift";
-            this.CurrentRearLift.Size = new System.Drawing.Size(84, 13);
+            this.CurrentRearLift.Size = new System.Drawing.Size(170, 25);
             this.CurrentRearLift.TabIndex = 32;
             this.CurrentRearLift.Text = "Current Rear Lift";
             // 
@@ -307,10 +314,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_AngularVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_AngularVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_AngularVelocity.Location = new System.Drawing.Point(238, 55);
+            this.textBox_FL_AngularVelocity.Location = new System.Drawing.Point(476, 106);
+            this.textBox_FL_AngularVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_AngularVelocity.Name = "textBox_FL_AngularVelocity";
             this.textBox_FL_AngularVelocity.ReadOnly = true;
-            this.textBox_FL_AngularVelocity.Size = new System.Drawing.Size(177, 20);
+            this.textBox_FL_AngularVelocity.Size = new System.Drawing.Size(350, 31);
             this.textBox_FL_AngularVelocity.TabIndex = 46;
             this.textBox_FL_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -318,10 +326,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_TreadTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_TreadTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_TreadTemperature.Location = new System.Drawing.Point(238, 289);
+            this.textBox_FL_TreadTemperature.Location = new System.Drawing.Point(476, 556);
+            this.textBox_FL_TreadTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_TreadTemperature.Name = "textBox_FL_TreadTemperature";
             this.textBox_FL_TreadTemperature.ReadOnly = true;
-            this.textBox_FL_TreadTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_TreadTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_TreadTemperature.TabIndex = 47;
             this.textBox_FL_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -329,10 +338,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_InnerTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_InnerTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_InnerTemperature.Location = new System.Drawing.Point(339, 289);
+            this.textBox_FL_InnerTemperature.Location = new System.Drawing.Point(678, 556);
+            this.textBox_FL_InnerTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_InnerTemperature.Name = "textBox_FL_InnerTemperature";
             this.textBox_FL_InnerTemperature.ReadOnly = true;
-            this.textBox_FL_InnerTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_InnerTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_InnerTemperature.TabIndex = 48;
             this.textBox_FL_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -340,10 +350,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_Deflection.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_Deflection.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_Deflection.Location = new System.Drawing.Point(339, 81);
+            this.textBox_FL_Deflection.Location = new System.Drawing.Point(678, 156);
+            this.textBox_FL_Deflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_Deflection.Name = "textBox_FL_Deflection";
             this.textBox_FL_Deflection.ReadOnly = true;
-            this.textBox_FL_Deflection.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_Deflection.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_Deflection.TabIndex = 49;
             this.textBox_FL_Deflection.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -351,10 +362,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_LoadedRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_LoadedRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_LoadedRadius.Location = new System.Drawing.Point(238, 107);
+            this.textBox_FL_LoadedRadius.Location = new System.Drawing.Point(476, 206);
+            this.textBox_FL_LoadedRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_LoadedRadius.Name = "textBox_FL_LoadedRadius";
             this.textBox_FL_LoadedRadius.ReadOnly = true;
-            this.textBox_FL_LoadedRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_LoadedRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_LoadedRadius.TabIndex = 50;
             this.textBox_FL_LoadedRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -362,10 +374,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_EffectiveRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_EffectiveRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_EffectiveRadius.Location = new System.Drawing.Point(339, 107);
+            this.textBox_FL_EffectiveRadius.Location = new System.Drawing.Point(678, 206);
+            this.textBox_FL_EffectiveRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_EffectiveRadius.Name = "textBox_FL_EffectiveRadius";
             this.textBox_FL_EffectiveRadius.ReadOnly = true;
-            this.textBox_FL_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_EffectiveRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_EffectiveRadius.TabIndex = 51;
             this.textBox_FL_EffectiveRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -373,10 +386,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_CurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_CurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(238, 159);
+            this.textBox_FL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(476, 306);
+            this.textBox_FL_CurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_CurrentContactBrakeTorque.Name = "textBox_FL_CurrentContactBrakeTorque";
             this.textBox_FL_CurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_FL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_CurrentContactBrakeTorque.TabIndex = 52;
             this.textBox_FL_CurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -384,10 +398,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_VerticalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_VerticalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_VerticalLoad.Location = new System.Drawing.Point(238, 81);
+            this.textBox_FL_VerticalLoad.Location = new System.Drawing.Point(476, 156);
+            this.textBox_FL_VerticalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_VerticalLoad.Name = "textBox_FL_VerticalLoad";
             this.textBox_FL_VerticalLoad.ReadOnly = true;
-            this.textBox_FL_VerticalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_VerticalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_VerticalLoad.TabIndex = 54;
             this.textBox_FL_VerticalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -395,10 +410,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_LateralLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_LateralLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_LateralLoad.Location = new System.Drawing.Point(238, 185);
+            this.textBox_FL_LateralLoad.Location = new System.Drawing.Point(476, 356);
+            this.textBox_FL_LateralLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_LateralLoad.Name = "textBox_FL_LateralLoad";
             this.textBox_FL_LateralLoad.ReadOnly = true;
-            this.textBox_FL_LateralLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_LateralLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_LateralLoad.TabIndex = 55;
             this.textBox_FL_LateralLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -406,10 +422,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_LongitudinalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_LongitudinalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_LongitudinalLoad.Location = new System.Drawing.Point(339, 185);
+            this.textBox_FL_LongitudinalLoad.Location = new System.Drawing.Point(678, 356);
+            this.textBox_FL_LongitudinalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_LongitudinalLoad.Name = "textBox_FL_LongitudinalLoad";
             this.textBox_FL_LongitudinalLoad.ReadOnly = true;
-            this.textBox_FL_LongitudinalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_LongitudinalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_LongitudinalLoad.TabIndex = 56;
             this.textBox_FL_LongitudinalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -417,10 +434,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_SlipAngleDeg.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_SlipAngleDeg.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_SlipAngleDeg.Location = new System.Drawing.Point(238, 211);
+            this.textBox_FL_SlipAngleDeg.Location = new System.Drawing.Point(476, 406);
+            this.textBox_FL_SlipAngleDeg.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_SlipAngleDeg.Name = "textBox_FL_SlipAngleDeg";
             this.textBox_FL_SlipAngleDeg.ReadOnly = true;
-            this.textBox_FL_SlipAngleDeg.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_SlipAngleDeg.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_SlipAngleDeg.TabIndex = 58;
             this.textBox_FL_SlipAngleDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -428,10 +446,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_SlipRatio.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_SlipRatio.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_SlipRatio.Location = new System.Drawing.Point(339, 211);
+            this.textBox_FL_SlipRatio.Location = new System.Drawing.Point(678, 406);
+            this.textBox_FL_SlipRatio.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_SlipRatio.Name = "textBox_FL_SlipRatio";
             this.textBox_FL_SlipRatio.ReadOnly = true;
-            this.textBox_FL_SlipRatio.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_SlipRatio.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_SlipRatio.TabIndex = 59;
             this.textBox_FL_SlipRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -439,10 +458,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ContactLength.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ContactLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ContactLength.Location = new System.Drawing.Point(238, 133);
+            this.textBox_FL_ContactLength.Location = new System.Drawing.Point(476, 256);
+            this.textBox_FL_ContactLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_ContactLength.Name = "textBox_FL_ContactLength";
             this.textBox_FL_ContactLength.ReadOnly = true;
-            this.textBox_FL_ContactLength.Size = new System.Drawing.Size(177, 20);
+            this.textBox_FL_ContactLength.Size = new System.Drawing.Size(350, 31);
             this.textBox_FL_ContactLength.TabIndex = 60;
             this.textBox_FL_ContactLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -450,10 +470,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_TravelSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_TravelSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_TravelSpeed.Location = new System.Drawing.Point(238, 29);
+            this.textBox_FL_TravelSpeed.Location = new System.Drawing.Point(476, 56);
+            this.textBox_FL_TravelSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_TravelSpeed.Name = "textBox_FL_TravelSpeed";
             this.textBox_FL_TravelSpeed.ReadOnly = true;
-            this.textBox_FL_TravelSpeed.Size = new System.Drawing.Size(177, 20);
+            this.textBox_FL_TravelSpeed.Size = new System.Drawing.Size(350, 31);
             this.textBox_FL_TravelSpeed.TabIndex = 61;
             this.textBox_FL_TravelSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -461,10 +482,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_LateralFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_LateralFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_LateralFriction.Location = new System.Drawing.Point(238, 237);
+            this.textBox_FL_LateralFriction.Location = new System.Drawing.Point(476, 456);
+            this.textBox_FL_LateralFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_LateralFriction.Name = "textBox_FL_LateralFriction";
             this.textBox_FL_LateralFriction.ReadOnly = true;
-            this.textBox_FL_LateralFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_LateralFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_LateralFriction.TabIndex = 62;
             this.textBox_FL_LateralFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -472,10 +494,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_LongitudinalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_LongitudinalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_LongitudinalFriction.Location = new System.Drawing.Point(339, 237);
+            this.textBox_FL_LongitudinalFriction.Location = new System.Drawing.Point(678, 456);
+            this.textBox_FL_LongitudinalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_LongitudinalFriction.Name = "textBox_FL_LongitudinalFriction";
             this.textBox_FL_LongitudinalFriction.ReadOnly = true;
-            this.textBox_FL_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_LongitudinalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_LongitudinalFriction.TabIndex = 63;
             this.textBox_FL_LongitudinalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -483,10 +506,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_LongitudinalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_LongitudinalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_LongitudinalFriction.Location = new System.Drawing.Point(693, 237);
+            this.textBox_FR_LongitudinalFriction.Location = new System.Drawing.Point(1386, 456);
+            this.textBox_FR_LongitudinalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_LongitudinalFriction.Name = "textBox_FR_LongitudinalFriction";
             this.textBox_FR_LongitudinalFriction.ReadOnly = true;
-            this.textBox_FR_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_LongitudinalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_LongitudinalFriction.TabIndex = 82;
             this.textBox_FR_LongitudinalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -494,10 +518,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_LateralFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_LateralFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_LateralFriction.Location = new System.Drawing.Point(592, 237);
+            this.textBox_FR_LateralFriction.Location = new System.Drawing.Point(1184, 456);
+            this.textBox_FR_LateralFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_LateralFriction.Name = "textBox_FR_LateralFriction";
             this.textBox_FR_LateralFriction.ReadOnly = true;
-            this.textBox_FR_LateralFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_LateralFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_LateralFriction.TabIndex = 81;
             this.textBox_FR_LateralFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -505,10 +530,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_TravelSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_TravelSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_TravelSpeed.Location = new System.Drawing.Point(592, 29);
+            this.textBox_FR_TravelSpeed.Location = new System.Drawing.Point(1184, 56);
+            this.textBox_FR_TravelSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_TravelSpeed.Name = "textBox_FR_TravelSpeed";
             this.textBox_FR_TravelSpeed.ReadOnly = true;
-            this.textBox_FR_TravelSpeed.Size = new System.Drawing.Size(177, 20);
+            this.textBox_FR_TravelSpeed.Size = new System.Drawing.Size(350, 31);
             this.textBox_FR_TravelSpeed.TabIndex = 80;
             this.textBox_FR_TravelSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -516,10 +542,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ContactLength.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ContactLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ContactLength.Location = new System.Drawing.Point(592, 133);
+            this.textBox_FR_ContactLength.Location = new System.Drawing.Point(1184, 256);
+            this.textBox_FR_ContactLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_ContactLength.Name = "textBox_FR_ContactLength";
             this.textBox_FR_ContactLength.ReadOnly = true;
-            this.textBox_FR_ContactLength.Size = new System.Drawing.Size(177, 20);
+            this.textBox_FR_ContactLength.Size = new System.Drawing.Size(350, 31);
             this.textBox_FR_ContactLength.TabIndex = 79;
             this.textBox_FR_ContactLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -527,10 +554,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_SlipRatio.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_SlipRatio.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_SlipRatio.Location = new System.Drawing.Point(693, 211);
+            this.textBox_FR_SlipRatio.Location = new System.Drawing.Point(1386, 406);
+            this.textBox_FR_SlipRatio.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_SlipRatio.Name = "textBox_FR_SlipRatio";
             this.textBox_FR_SlipRatio.ReadOnly = true;
-            this.textBox_FR_SlipRatio.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_SlipRatio.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_SlipRatio.TabIndex = 78;
             this.textBox_FR_SlipRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -538,10 +566,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_SlipAngleDeg.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_SlipAngleDeg.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_SlipAngleDeg.Location = new System.Drawing.Point(592, 211);
+            this.textBox_FR_SlipAngleDeg.Location = new System.Drawing.Point(1184, 406);
+            this.textBox_FR_SlipAngleDeg.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_SlipAngleDeg.Name = "textBox_FR_SlipAngleDeg";
             this.textBox_FR_SlipAngleDeg.ReadOnly = true;
-            this.textBox_FR_SlipAngleDeg.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_SlipAngleDeg.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_SlipAngleDeg.TabIndex = 77;
             this.textBox_FR_SlipAngleDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -549,10 +578,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_LongitudinalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_LongitudinalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_LongitudinalLoad.Location = new System.Drawing.Point(693, 185);
+            this.textBox_FR_LongitudinalLoad.Location = new System.Drawing.Point(1386, 356);
+            this.textBox_FR_LongitudinalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_LongitudinalLoad.Name = "textBox_FR_LongitudinalLoad";
             this.textBox_FR_LongitudinalLoad.ReadOnly = true;
-            this.textBox_FR_LongitudinalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_LongitudinalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_LongitudinalLoad.TabIndex = 75;
             this.textBox_FR_LongitudinalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -560,10 +590,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_LateralLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_LateralLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_LateralLoad.Location = new System.Drawing.Point(592, 185);
+            this.textBox_FR_LateralLoad.Location = new System.Drawing.Point(1184, 356);
+            this.textBox_FR_LateralLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_LateralLoad.Name = "textBox_FR_LateralLoad";
             this.textBox_FR_LateralLoad.ReadOnly = true;
-            this.textBox_FR_LateralLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_LateralLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_LateralLoad.TabIndex = 74;
             this.textBox_FR_LateralLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -571,10 +602,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_VerticalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_VerticalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_VerticalLoad.Location = new System.Drawing.Point(592, 81);
+            this.textBox_FR_VerticalLoad.Location = new System.Drawing.Point(1184, 156);
+            this.textBox_FR_VerticalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_VerticalLoad.Name = "textBox_FR_VerticalLoad";
             this.textBox_FR_VerticalLoad.ReadOnly = true;
-            this.textBox_FR_VerticalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_VerticalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_VerticalLoad.TabIndex = 73;
             this.textBox_FR_VerticalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -582,10 +614,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_CurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_CurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(592, 159);
+            this.textBox_FR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(1184, 306);
+            this.textBox_FR_CurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_CurrentContactBrakeTorque.Name = "textBox_FR_CurrentContactBrakeTorque";
             this.textBox_FR_CurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_FR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_CurrentContactBrakeTorque.TabIndex = 71;
             this.textBox_FR_CurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -593,10 +626,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_EffectiveRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_EffectiveRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_EffectiveRadius.Location = new System.Drawing.Point(693, 107);
+            this.textBox_FR_EffectiveRadius.Location = new System.Drawing.Point(1386, 206);
+            this.textBox_FR_EffectiveRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_EffectiveRadius.Name = "textBox_FR_EffectiveRadius";
             this.textBox_FR_EffectiveRadius.ReadOnly = true;
-            this.textBox_FR_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_EffectiveRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_EffectiveRadius.TabIndex = 70;
             this.textBox_FR_EffectiveRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -604,10 +638,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_LoadedRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_LoadedRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_LoadedRadius.Location = new System.Drawing.Point(592, 107);
+            this.textBox_FR_LoadedRadius.Location = new System.Drawing.Point(1184, 206);
+            this.textBox_FR_LoadedRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_LoadedRadius.Name = "textBox_FR_LoadedRadius";
             this.textBox_FR_LoadedRadius.ReadOnly = true;
-            this.textBox_FR_LoadedRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_LoadedRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_LoadedRadius.TabIndex = 69;
             this.textBox_FR_LoadedRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -615,10 +650,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_Deflection.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_Deflection.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_Deflection.Location = new System.Drawing.Point(693, 81);
+            this.textBox_FR_Deflection.Location = new System.Drawing.Point(1386, 156);
+            this.textBox_FR_Deflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_Deflection.Name = "textBox_FR_Deflection";
             this.textBox_FR_Deflection.ReadOnly = true;
-            this.textBox_FR_Deflection.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_Deflection.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_Deflection.TabIndex = 68;
             this.textBox_FR_Deflection.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -626,10 +662,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_InnerTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_InnerTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_InnerTemperature.Location = new System.Drawing.Point(693, 289);
+            this.textBox_FR_InnerTemperature.Location = new System.Drawing.Point(1386, 556);
+            this.textBox_FR_InnerTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_InnerTemperature.Name = "textBox_FR_InnerTemperature";
             this.textBox_FR_InnerTemperature.ReadOnly = true;
-            this.textBox_FR_InnerTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_InnerTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_InnerTemperature.TabIndex = 67;
             this.textBox_FR_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -637,10 +674,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_TreadTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_TreadTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_TreadTemperature.Location = new System.Drawing.Point(592, 289);
+            this.textBox_FR_TreadTemperature.Location = new System.Drawing.Point(1184, 556);
+            this.textBox_FR_TreadTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_TreadTemperature.Name = "textBox_FR_TreadTemperature";
             this.textBox_FR_TreadTemperature.ReadOnly = true;
-            this.textBox_FR_TreadTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_TreadTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_TreadTemperature.TabIndex = 66;
             this.textBox_FR_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -648,10 +686,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_AngularVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_AngularVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_AngularVelocity.Location = new System.Drawing.Point(592, 55);
+            this.textBox_FR_AngularVelocity.Location = new System.Drawing.Point(1184, 106);
+            this.textBox_FR_AngularVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_AngularVelocity.Name = "textBox_FR_AngularVelocity";
             this.textBox_FR_AngularVelocity.ReadOnly = true;
-            this.textBox_FR_AngularVelocity.Size = new System.Drawing.Size(177, 20);
+            this.textBox_FR_AngularVelocity.Size = new System.Drawing.Size(350, 31);
             this.textBox_FR_AngularVelocity.TabIndex = 65;
             this.textBox_FR_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -659,10 +698,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_LongitudinalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_LongitudinalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_LongitudinalFriction.Location = new System.Drawing.Point(339, 639);
+            this.textBox_RL_LongitudinalFriction.Location = new System.Drawing.Point(678, 1229);
+            this.textBox_RL_LongitudinalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_LongitudinalFriction.Name = "textBox_RL_LongitudinalFriction";
             this.textBox_RL_LongitudinalFriction.ReadOnly = true;
-            this.textBox_RL_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_LongitudinalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_LongitudinalFriction.TabIndex = 101;
             this.textBox_RL_LongitudinalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -670,10 +710,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_LateralFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_LateralFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_LateralFriction.Location = new System.Drawing.Point(238, 639);
+            this.textBox_RL_LateralFriction.Location = new System.Drawing.Point(476, 1229);
+            this.textBox_RL_LateralFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_LateralFriction.Name = "textBox_RL_LateralFriction";
             this.textBox_RL_LateralFriction.ReadOnly = true;
-            this.textBox_RL_LateralFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_LateralFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_LateralFriction.TabIndex = 100;
             this.textBox_RL_LateralFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -681,10 +722,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_TravelSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_TravelSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_TravelSpeed.Location = new System.Drawing.Point(238, 431);
+            this.textBox_RL_TravelSpeed.Location = new System.Drawing.Point(476, 829);
+            this.textBox_RL_TravelSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_TravelSpeed.Name = "textBox_RL_TravelSpeed";
             this.textBox_RL_TravelSpeed.ReadOnly = true;
-            this.textBox_RL_TravelSpeed.Size = new System.Drawing.Size(177, 20);
+            this.textBox_RL_TravelSpeed.Size = new System.Drawing.Size(350, 31);
             this.textBox_RL_TravelSpeed.TabIndex = 99;
             this.textBox_RL_TravelSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -692,10 +734,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ContactLength.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ContactLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ContactLength.Location = new System.Drawing.Point(238, 535);
+            this.textBox_RL_ContactLength.Location = new System.Drawing.Point(476, 1029);
+            this.textBox_RL_ContactLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_ContactLength.Name = "textBox_RL_ContactLength";
             this.textBox_RL_ContactLength.ReadOnly = true;
-            this.textBox_RL_ContactLength.Size = new System.Drawing.Size(177, 20);
+            this.textBox_RL_ContactLength.Size = new System.Drawing.Size(350, 31);
             this.textBox_RL_ContactLength.TabIndex = 98;
             this.textBox_RL_ContactLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -703,10 +746,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_SlipRatio.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_SlipRatio.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_SlipRatio.Location = new System.Drawing.Point(339, 613);
+            this.textBox_RL_SlipRatio.Location = new System.Drawing.Point(678, 1179);
+            this.textBox_RL_SlipRatio.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_SlipRatio.Name = "textBox_RL_SlipRatio";
             this.textBox_RL_SlipRatio.ReadOnly = true;
-            this.textBox_RL_SlipRatio.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_SlipRatio.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_SlipRatio.TabIndex = 97;
             this.textBox_RL_SlipRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -714,10 +758,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_SlipAngleDeg.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_SlipAngleDeg.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_SlipAngleDeg.Location = new System.Drawing.Point(238, 613);
+            this.textBox_RL_SlipAngleDeg.Location = new System.Drawing.Point(476, 1179);
+            this.textBox_RL_SlipAngleDeg.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_SlipAngleDeg.Name = "textBox_RL_SlipAngleDeg";
             this.textBox_RL_SlipAngleDeg.ReadOnly = true;
-            this.textBox_RL_SlipAngleDeg.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_SlipAngleDeg.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_SlipAngleDeg.TabIndex = 96;
             this.textBox_RL_SlipAngleDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -725,10 +770,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_LongitudinalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_LongitudinalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_LongitudinalLoad.Location = new System.Drawing.Point(339, 587);
+            this.textBox_RL_LongitudinalLoad.Location = new System.Drawing.Point(678, 1129);
+            this.textBox_RL_LongitudinalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_LongitudinalLoad.Name = "textBox_RL_LongitudinalLoad";
             this.textBox_RL_LongitudinalLoad.ReadOnly = true;
-            this.textBox_RL_LongitudinalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_LongitudinalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_LongitudinalLoad.TabIndex = 94;
             this.textBox_RL_LongitudinalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -736,10 +782,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_LateralLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_LateralLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_LateralLoad.Location = new System.Drawing.Point(238, 587);
+            this.textBox_RL_LateralLoad.Location = new System.Drawing.Point(476, 1129);
+            this.textBox_RL_LateralLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_LateralLoad.Name = "textBox_RL_LateralLoad";
             this.textBox_RL_LateralLoad.ReadOnly = true;
-            this.textBox_RL_LateralLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_LateralLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_LateralLoad.TabIndex = 93;
             this.textBox_RL_LateralLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -747,10 +794,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_VerticalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_VerticalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_VerticalLoad.Location = new System.Drawing.Point(238, 483);
+            this.textBox_RL_VerticalLoad.Location = new System.Drawing.Point(476, 929);
+            this.textBox_RL_VerticalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_VerticalLoad.Name = "textBox_RL_VerticalLoad";
             this.textBox_RL_VerticalLoad.ReadOnly = true;
-            this.textBox_RL_VerticalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_VerticalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_VerticalLoad.TabIndex = 92;
             this.textBox_RL_VerticalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -758,10 +806,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_CurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_CurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(238, 561);
+            this.textBox_RL_CurrentContactBrakeTorque.Location = new System.Drawing.Point(476, 1079);
+            this.textBox_RL_CurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_CurrentContactBrakeTorque.Name = "textBox_RL_CurrentContactBrakeTorque";
             this.textBox_RL_CurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_RL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_CurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_CurrentContactBrakeTorque.TabIndex = 90;
             this.textBox_RL_CurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -769,10 +818,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_EffectiveRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_EffectiveRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_EffectiveRadius.Location = new System.Drawing.Point(339, 509);
+            this.textBox_RL_EffectiveRadius.Location = new System.Drawing.Point(678, 979);
+            this.textBox_RL_EffectiveRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_EffectiveRadius.Name = "textBox_RL_EffectiveRadius";
             this.textBox_RL_EffectiveRadius.ReadOnly = true;
-            this.textBox_RL_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_EffectiveRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_EffectiveRadius.TabIndex = 89;
             this.textBox_RL_EffectiveRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -780,10 +830,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_LoadedRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_LoadedRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_LoadedRadius.Location = new System.Drawing.Point(238, 509);
+            this.textBox_RL_LoadedRadius.Location = new System.Drawing.Point(476, 979);
+            this.textBox_RL_LoadedRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_LoadedRadius.Name = "textBox_RL_LoadedRadius";
             this.textBox_RL_LoadedRadius.ReadOnly = true;
-            this.textBox_RL_LoadedRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_LoadedRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_LoadedRadius.TabIndex = 88;
             this.textBox_RL_LoadedRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -791,10 +842,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_Deflection.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_Deflection.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_Deflection.Location = new System.Drawing.Point(339, 483);
+            this.textBox_RL_Deflection.Location = new System.Drawing.Point(678, 929);
+            this.textBox_RL_Deflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_Deflection.Name = "textBox_RL_Deflection";
             this.textBox_RL_Deflection.ReadOnly = true;
-            this.textBox_RL_Deflection.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_Deflection.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_Deflection.TabIndex = 87;
             this.textBox_RL_Deflection.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -802,10 +854,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_InnerTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_InnerTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_InnerTemperature.Location = new System.Drawing.Point(339, 691);
+            this.textBox_RL_InnerTemperature.Location = new System.Drawing.Point(678, 1329);
+            this.textBox_RL_InnerTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_InnerTemperature.Name = "textBox_RL_InnerTemperature";
             this.textBox_RL_InnerTemperature.ReadOnly = true;
-            this.textBox_RL_InnerTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_InnerTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_InnerTemperature.TabIndex = 86;
             this.textBox_RL_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -813,10 +866,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_TreadTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_TreadTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_TreadTemperature.Location = new System.Drawing.Point(238, 691);
+            this.textBox_RL_TreadTemperature.Location = new System.Drawing.Point(476, 1329);
+            this.textBox_RL_TreadTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_TreadTemperature.Name = "textBox_RL_TreadTemperature";
             this.textBox_RL_TreadTemperature.ReadOnly = true;
-            this.textBox_RL_TreadTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_TreadTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_TreadTemperature.TabIndex = 85;
             this.textBox_RL_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -824,10 +878,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_AngularVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_AngularVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_AngularVelocity.Location = new System.Drawing.Point(238, 457);
+            this.textBox_RL_AngularVelocity.Location = new System.Drawing.Point(476, 879);
+            this.textBox_RL_AngularVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_AngularVelocity.Name = "textBox_RL_AngularVelocity";
             this.textBox_RL_AngularVelocity.ReadOnly = true;
-            this.textBox_RL_AngularVelocity.Size = new System.Drawing.Size(177, 20);
+            this.textBox_RL_AngularVelocity.Size = new System.Drawing.Size(350, 31);
             this.textBox_RL_AngularVelocity.TabIndex = 84;
             this.textBox_RL_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -835,10 +890,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_LongitudinalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_LongitudinalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_LongitudinalFriction.Location = new System.Drawing.Point(693, 639);
+            this.textBox_RR_LongitudinalFriction.Location = new System.Drawing.Point(1386, 1229);
+            this.textBox_RR_LongitudinalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_LongitudinalFriction.Name = "textBox_RR_LongitudinalFriction";
             this.textBox_RR_LongitudinalFriction.ReadOnly = true;
-            this.textBox_RR_LongitudinalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_LongitudinalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_LongitudinalFriction.TabIndex = 120;
             this.textBox_RR_LongitudinalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -846,10 +902,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_LateralFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_LateralFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_LateralFriction.Location = new System.Drawing.Point(592, 639);
+            this.textBox_RR_LateralFriction.Location = new System.Drawing.Point(1184, 1229);
+            this.textBox_RR_LateralFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_LateralFriction.Name = "textBox_RR_LateralFriction";
             this.textBox_RR_LateralFriction.ReadOnly = true;
-            this.textBox_RR_LateralFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_LateralFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_LateralFriction.TabIndex = 119;
             this.textBox_RR_LateralFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -857,10 +914,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_TravelSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_TravelSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_TravelSpeed.Location = new System.Drawing.Point(592, 431);
+            this.textBox_RR_TravelSpeed.Location = new System.Drawing.Point(1184, 829);
+            this.textBox_RR_TravelSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_TravelSpeed.Name = "textBox_RR_TravelSpeed";
             this.textBox_RR_TravelSpeed.ReadOnly = true;
-            this.textBox_RR_TravelSpeed.Size = new System.Drawing.Size(177, 20);
+            this.textBox_RR_TravelSpeed.Size = new System.Drawing.Size(350, 31);
             this.textBox_RR_TravelSpeed.TabIndex = 118;
             this.textBox_RR_TravelSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -868,10 +926,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ContactLength.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ContactLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ContactLength.Location = new System.Drawing.Point(592, 535);
+            this.textBox_RR_ContactLength.Location = new System.Drawing.Point(1184, 1029);
+            this.textBox_RR_ContactLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_ContactLength.Name = "textBox_RR_ContactLength";
             this.textBox_RR_ContactLength.ReadOnly = true;
-            this.textBox_RR_ContactLength.Size = new System.Drawing.Size(177, 20);
+            this.textBox_RR_ContactLength.Size = new System.Drawing.Size(350, 31);
             this.textBox_RR_ContactLength.TabIndex = 117;
             this.textBox_RR_ContactLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -879,10 +938,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_SlipRatio.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_SlipRatio.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_SlipRatio.Location = new System.Drawing.Point(693, 613);
+            this.textBox_RR_SlipRatio.Location = new System.Drawing.Point(1386, 1179);
+            this.textBox_RR_SlipRatio.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_SlipRatio.Name = "textBox_RR_SlipRatio";
             this.textBox_RR_SlipRatio.ReadOnly = true;
-            this.textBox_RR_SlipRatio.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_SlipRatio.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_SlipRatio.TabIndex = 116;
             this.textBox_RR_SlipRatio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -890,10 +950,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_SlipAngleDeg.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_SlipAngleDeg.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_SlipAngleDeg.Location = new System.Drawing.Point(592, 613);
+            this.textBox_RR_SlipAngleDeg.Location = new System.Drawing.Point(1184, 1179);
+            this.textBox_RR_SlipAngleDeg.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_SlipAngleDeg.Name = "textBox_RR_SlipAngleDeg";
             this.textBox_RR_SlipAngleDeg.ReadOnly = true;
-            this.textBox_RR_SlipAngleDeg.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_SlipAngleDeg.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_SlipAngleDeg.TabIndex = 115;
             this.textBox_RR_SlipAngleDeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -901,10 +962,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_LongitudinalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_LongitudinalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_LongitudinalLoad.Location = new System.Drawing.Point(693, 587);
+            this.textBox_RR_LongitudinalLoad.Location = new System.Drawing.Point(1386, 1129);
+            this.textBox_RR_LongitudinalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_LongitudinalLoad.Name = "textBox_RR_LongitudinalLoad";
             this.textBox_RR_LongitudinalLoad.ReadOnly = true;
-            this.textBox_RR_LongitudinalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_LongitudinalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_LongitudinalLoad.TabIndex = 113;
             this.textBox_RR_LongitudinalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -912,10 +974,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_LateralLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_LateralLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_LateralLoad.Location = new System.Drawing.Point(592, 587);
+            this.textBox_RR_LateralLoad.Location = new System.Drawing.Point(1184, 1129);
+            this.textBox_RR_LateralLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_LateralLoad.Name = "textBox_RR_LateralLoad";
             this.textBox_RR_LateralLoad.ReadOnly = true;
-            this.textBox_RR_LateralLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_LateralLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_LateralLoad.TabIndex = 112;
             this.textBox_RR_LateralLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -923,10 +986,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_VerticalLoad.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_VerticalLoad.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_VerticalLoad.Location = new System.Drawing.Point(592, 483);
+            this.textBox_RR_VerticalLoad.Location = new System.Drawing.Point(1184, 929);
+            this.textBox_RR_VerticalLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_VerticalLoad.Name = "textBox_RR_VerticalLoad";
             this.textBox_RR_VerticalLoad.ReadOnly = true;
-            this.textBox_RR_VerticalLoad.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_VerticalLoad.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_VerticalLoad.TabIndex = 111;
             this.textBox_RR_VerticalLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -934,10 +998,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_CurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_CurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(592, 561);
+            this.textBox_RR_CurrentContactBrakeTorque.Location = new System.Drawing.Point(1184, 1079);
+            this.textBox_RR_CurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_CurrentContactBrakeTorque.Name = "textBox_RR_CurrentContactBrakeTorque";
             this.textBox_RR_CurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_RR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_CurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_CurrentContactBrakeTorque.TabIndex = 109;
             this.textBox_RR_CurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -945,10 +1010,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_EffectiveRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_EffectiveRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_EffectiveRadius.Location = new System.Drawing.Point(693, 509);
+            this.textBox_RR_EffectiveRadius.Location = new System.Drawing.Point(1386, 979);
+            this.textBox_RR_EffectiveRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_EffectiveRadius.Name = "textBox_RR_EffectiveRadius";
             this.textBox_RR_EffectiveRadius.ReadOnly = true;
-            this.textBox_RR_EffectiveRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_EffectiveRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_EffectiveRadius.TabIndex = 108;
             this.textBox_RR_EffectiveRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -956,10 +1022,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_LoadedRadius.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_LoadedRadius.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_LoadedRadius.Location = new System.Drawing.Point(592, 509);
+            this.textBox_RR_LoadedRadius.Location = new System.Drawing.Point(1184, 979);
+            this.textBox_RR_LoadedRadius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_LoadedRadius.Name = "textBox_RR_LoadedRadius";
             this.textBox_RR_LoadedRadius.ReadOnly = true;
-            this.textBox_RR_LoadedRadius.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_LoadedRadius.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_LoadedRadius.TabIndex = 107;
             this.textBox_RR_LoadedRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -967,10 +1034,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_Deflection.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_Deflection.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_Deflection.Location = new System.Drawing.Point(693, 483);
+            this.textBox_RR_Deflection.Location = new System.Drawing.Point(1386, 929);
+            this.textBox_RR_Deflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_Deflection.Name = "textBox_RR_Deflection";
             this.textBox_RR_Deflection.ReadOnly = true;
-            this.textBox_RR_Deflection.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_Deflection.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_Deflection.TabIndex = 106;
             this.textBox_RR_Deflection.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -978,10 +1046,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_InnerTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_InnerTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_InnerTemperature.Location = new System.Drawing.Point(693, 691);
+            this.textBox_RR_InnerTemperature.Location = new System.Drawing.Point(1386, 1329);
+            this.textBox_RR_InnerTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_InnerTemperature.Name = "textBox_RR_InnerTemperature";
             this.textBox_RR_InnerTemperature.ReadOnly = true;
-            this.textBox_RR_InnerTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_InnerTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_InnerTemperature.TabIndex = 105;
             this.textBox_RR_InnerTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -989,10 +1058,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_TreadTemperature.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_TreadTemperature.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_TreadTemperature.Location = new System.Drawing.Point(592, 691);
+            this.textBox_RR_TreadTemperature.Location = new System.Drawing.Point(1184, 1329);
+            this.textBox_RR_TreadTemperature.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_TreadTemperature.Name = "textBox_RR_TreadTemperature";
             this.textBox_RR_TreadTemperature.ReadOnly = true;
-            this.textBox_RR_TreadTemperature.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_TreadTemperature.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_TreadTemperature.TabIndex = 104;
             this.textBox_RR_TreadTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1000,10 +1070,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_AngularVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_AngularVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_AngularVelocity.Location = new System.Drawing.Point(592, 457);
+            this.textBox_RR_AngularVelocity.Location = new System.Drawing.Point(1184, 879);
+            this.textBox_RR_AngularVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_AngularVelocity.Name = "textBox_RR_AngularVelocity";
             this.textBox_RR_AngularVelocity.ReadOnly = true;
-            this.textBox_RR_AngularVelocity.Size = new System.Drawing.Size(177, 20);
+            this.textBox_RR_AngularVelocity.Size = new System.Drawing.Size(350, 31);
             this.textBox_RR_AngularVelocity.TabIndex = 103;
             this.textBox_RR_AngularVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1011,9 +1082,10 @@ namespace Physics_Data_Debug
             // 
             this.startFileLoggingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.startFileLoggingButton.ForeColor = System.Drawing.Color.White;
-            this.startFileLoggingButton.Location = new System.Drawing.Point(6, 389);
+            this.startFileLoggingButton.Location = new System.Drawing.Point(12, 748);
+            this.startFileLoggingButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.startFileLoggingButton.Name = "startFileLoggingButton";
-            this.startFileLoggingButton.Size = new System.Drawing.Size(90, 45);
+            this.startFileLoggingButton.Size = new System.Drawing.Size(180, 87);
             this.startFileLoggingButton.TabIndex = 121;
             this.startFileLoggingButton.Text = "Start File Logging";
             this.startFileLoggingButton.UseVisualStyleBackColor = false;
@@ -1023,9 +1095,10 @@ namespace Physics_Data_Debug
             // 
             this.logInterval_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.logInterval_textBox.ForeColor = System.Drawing.Color.White;
-            this.logInterval_textBox.Location = new System.Drawing.Point(7, 456);
+            this.logInterval_textBox.Location = new System.Drawing.Point(14, 877);
+            this.logInterval_textBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.logInterval_textBox.Name = "logInterval_textBox";
-            this.logInterval_textBox.Size = new System.Drawing.Size(89, 20);
+            this.logInterval_textBox.Size = new System.Drawing.Size(174, 31);
             this.logInterval_textBox.TabIndex = 123;
             this.logInterval_textBox.TextChanged += new System.EventHandler(this.logInterval_textBox_TextChanged);
             this.logInterval_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInterval_textBox_Keypress);
@@ -1034,9 +1107,10 @@ namespace Physics_Data_Debug
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(3, 440);
+            this.label15.Location = new System.Drawing.Point(6, 846);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(90, 13);
+            this.label15.Size = new System.Drawing.Size(176, 25);
             this.label15.TabIndex = 124;
             this.label15.Text = "Log Tick Interval:";
             // 
@@ -1044,10 +1118,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_LateralSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_LateralSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_LateralSlipSpeed.Location = new System.Drawing.Point(238, 263);
+            this.textBox_FL_LateralSlipSpeed.Location = new System.Drawing.Point(476, 506);
+            this.textBox_FL_LateralSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_LateralSlipSpeed.Name = "textBox_FL_LateralSlipSpeed";
             this.textBox_FL_LateralSlipSpeed.ReadOnly = true;
-            this.textBox_FL_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_LateralSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_LateralSlipSpeed.TabIndex = 125;
             this.textBox_FL_LateralSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1055,10 +1130,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_LongitudinalSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_LongitudinalSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(339, 263);
+            this.textBox_FL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(678, 506);
+            this.textBox_FL_LongitudinalSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_LongitudinalSlipSpeed.Name = "textBox_FL_LongitudinalSlipSpeed";
             this.textBox_FL_LongitudinalSlipSpeed.ReadOnly = true;
-            this.textBox_FL_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_LongitudinalSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_LongitudinalSlipSpeed.TabIndex = 126;
             this.textBox_FL_LongitudinalSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1066,10 +1142,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_TireSteerAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_TireSteerAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_TireSteerAngle.Location = new System.Drawing.Point(238, 367);
+            this.textBox_FL_TireSteerAngle.Location = new System.Drawing.Point(476, 706);
+            this.textBox_FL_TireSteerAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_TireSteerAngle.Name = "textBox_FL_TireSteerAngle";
             this.textBox_FL_TireSteerAngle.ReadOnly = true;
-            this.textBox_FL_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_TireSteerAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_TireSteerAngle.TabIndex = 127;
             this.textBox_FL_TireSteerAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1077,10 +1154,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_CamberAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_CamberAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_CamberAngle.Location = new System.Drawing.Point(339, 367);
+            this.textBox_FL_CamberAngle.Location = new System.Drawing.Point(678, 706);
+            this.textBox_FL_CamberAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_CamberAngle.Name = "textBox_FL_CamberAngle";
             this.textBox_FL_CamberAngle.ReadOnly = true;
-            this.textBox_FL_CamberAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_CamberAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_CamberAngle.TabIndex = 128;
             this.textBox_FL_CamberAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1088,10 +1166,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_CamberAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_CamberAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_CamberAngle.Location = new System.Drawing.Point(693, 367);
+            this.textBox_FR_CamberAngle.Location = new System.Drawing.Point(1386, 706);
+            this.textBox_FR_CamberAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_CamberAngle.Name = "textBox_FR_CamberAngle";
             this.textBox_FR_CamberAngle.ReadOnly = true;
-            this.textBox_FR_CamberAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_CamberAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_CamberAngle.TabIndex = 132;
             this.textBox_FR_CamberAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1099,10 +1178,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_TireSteerAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_TireSteerAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_TireSteerAngle.Location = new System.Drawing.Point(592, 367);
+            this.textBox_FR_TireSteerAngle.Location = new System.Drawing.Point(1184, 706);
+            this.textBox_FR_TireSteerAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_TireSteerAngle.Name = "textBox_FR_TireSteerAngle";
             this.textBox_FR_TireSteerAngle.ReadOnly = true;
-            this.textBox_FR_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_TireSteerAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_TireSteerAngle.TabIndex = 131;
             this.textBox_FR_TireSteerAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1110,10 +1190,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_LongitudinalSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_LongitudinalSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(693, 263);
+            this.textBox_FR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(1386, 506);
+            this.textBox_FR_LongitudinalSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_LongitudinalSlipSpeed.Name = "textBox_FR_LongitudinalSlipSpeed";
             this.textBox_FR_LongitudinalSlipSpeed.ReadOnly = true;
-            this.textBox_FR_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_LongitudinalSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_LongitudinalSlipSpeed.TabIndex = 130;
             this.textBox_FR_LongitudinalSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1121,10 +1202,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_LateralSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_LateralSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_LateralSlipSpeed.Location = new System.Drawing.Point(592, 263);
+            this.textBox_FR_LateralSlipSpeed.Location = new System.Drawing.Point(1184, 506);
+            this.textBox_FR_LateralSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_LateralSlipSpeed.Name = "textBox_FR_LateralSlipSpeed";
             this.textBox_FR_LateralSlipSpeed.ReadOnly = true;
-            this.textBox_FR_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_LateralSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_LateralSlipSpeed.TabIndex = 129;
             this.textBox_FR_LateralSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1132,10 +1214,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_CamberAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_CamberAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_CamberAngle.Location = new System.Drawing.Point(339, 769);
+            this.textBox_RL_CamberAngle.Location = new System.Drawing.Point(678, 1479);
+            this.textBox_RL_CamberAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_CamberAngle.Name = "textBox_RL_CamberAngle";
             this.textBox_RL_CamberAngle.ReadOnly = true;
-            this.textBox_RL_CamberAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_CamberAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_CamberAngle.TabIndex = 134;
             this.textBox_RL_CamberAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1143,10 +1226,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_TireSteerAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_TireSteerAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_TireSteerAngle.Location = new System.Drawing.Point(238, 769);
+            this.textBox_RL_TireSteerAngle.Location = new System.Drawing.Point(476, 1479);
+            this.textBox_RL_TireSteerAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_TireSteerAngle.Name = "textBox_RL_TireSteerAngle";
             this.textBox_RL_TireSteerAngle.ReadOnly = true;
-            this.textBox_RL_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_TireSteerAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_TireSteerAngle.TabIndex = 133;
             this.textBox_RL_TireSteerAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1154,10 +1238,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_LongitudinalSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_LongitudinalSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(339, 665);
+            this.textBox_RL_LongitudinalSlipSpeed.Location = new System.Drawing.Point(678, 1279);
+            this.textBox_RL_LongitudinalSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_LongitudinalSlipSpeed.Name = "textBox_RL_LongitudinalSlipSpeed";
             this.textBox_RL_LongitudinalSlipSpeed.ReadOnly = true;
-            this.textBox_RL_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_LongitudinalSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_LongitudinalSlipSpeed.TabIndex = 136;
             this.textBox_RL_LongitudinalSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1165,10 +1250,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_LateralSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_LateralSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_LateralSlipSpeed.Location = new System.Drawing.Point(238, 665);
+            this.textBox_RL_LateralSlipSpeed.Location = new System.Drawing.Point(476, 1279);
+            this.textBox_RL_LateralSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_LateralSlipSpeed.Name = "textBox_RL_LateralSlipSpeed";
             this.textBox_RL_LateralSlipSpeed.ReadOnly = true;
-            this.textBox_RL_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_LateralSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_LateralSlipSpeed.TabIndex = 135;
             this.textBox_RL_LateralSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1176,10 +1262,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_CamberAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_CamberAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_CamberAngle.Location = new System.Drawing.Point(693, 769);
+            this.textBox_RR_CamberAngle.Location = new System.Drawing.Point(1386, 1479);
+            this.textBox_RR_CamberAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_CamberAngle.Name = "textBox_RR_CamberAngle";
             this.textBox_RR_CamberAngle.ReadOnly = true;
-            this.textBox_RR_CamberAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_CamberAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_CamberAngle.TabIndex = 138;
             this.textBox_RR_CamberAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1187,10 +1274,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_TireSteerAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_TireSteerAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_TireSteerAngle.Location = new System.Drawing.Point(592, 769);
+            this.textBox_RR_TireSteerAngle.Location = new System.Drawing.Point(1184, 1479);
+            this.textBox_RR_TireSteerAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_TireSteerAngle.Name = "textBox_RR_TireSteerAngle";
             this.textBox_RR_TireSteerAngle.ReadOnly = true;
-            this.textBox_RR_TireSteerAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_TireSteerAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_TireSteerAngle.TabIndex = 137;
             this.textBox_RR_TireSteerAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1198,10 +1286,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_LongitudinalSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_LongitudinalSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(693, 665);
+            this.textBox_RR_LongitudinalSlipSpeed.Location = new System.Drawing.Point(1386, 1279);
+            this.textBox_RR_LongitudinalSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_LongitudinalSlipSpeed.Name = "textBox_RR_LongitudinalSlipSpeed";
             this.textBox_RR_LongitudinalSlipSpeed.ReadOnly = true;
-            this.textBox_RR_LongitudinalSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_LongitudinalSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_LongitudinalSlipSpeed.TabIndex = 140;
             this.textBox_RR_LongitudinalSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1209,10 +1298,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_LateralSlipSpeed.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_LateralSlipSpeed.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_LateralSlipSpeed.Location = new System.Drawing.Point(592, 665);
+            this.textBox_RR_LateralSlipSpeed.Location = new System.Drawing.Point(1184, 1279);
+            this.textBox_RR_LateralSlipSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_LateralSlipSpeed.Name = "textBox_RR_LateralSlipSpeed";
             this.textBox_RR_LateralSlipSpeed.ReadOnly = true;
-            this.textBox_RR_LateralSlipSpeed.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_LateralSlipSpeed.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_LateralSlipSpeed.TabIndex = 139;
             this.textBox_RR_LateralSlipSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1220,10 +1310,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_TotalFrictionAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_TotalFrictionAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_TotalFrictionAngle.Location = new System.Drawing.Point(339, 315);
+            this.textBox_FL_TotalFrictionAngle.Location = new System.Drawing.Point(678, 606);
+            this.textBox_FL_TotalFrictionAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_TotalFrictionAngle.Name = "textBox_FL_TotalFrictionAngle";
             this.textBox_FL_TotalFrictionAngle.ReadOnly = true;
-            this.textBox_FL_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_TotalFrictionAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_TotalFrictionAngle.TabIndex = 142;
             this.textBox_FL_TotalFrictionAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1231,10 +1322,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_TotalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_TotalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_TotalFriction.Location = new System.Drawing.Point(238, 315);
+            this.textBox_FL_TotalFriction.Location = new System.Drawing.Point(476, 606);
+            this.textBox_FL_TotalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_TotalFriction.Name = "textBox_FL_TotalFriction";
             this.textBox_FL_TotalFriction.ReadOnly = true;
-            this.textBox_FL_TotalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_TotalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_TotalFriction.TabIndex = 141;
             this.textBox_FL_TotalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1242,10 +1334,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_TotalFrictionAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_TotalFrictionAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_TotalFrictionAngle.Location = new System.Drawing.Point(693, 315);
+            this.textBox_FR_TotalFrictionAngle.Location = new System.Drawing.Point(1386, 606);
+            this.textBox_FR_TotalFrictionAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_TotalFrictionAngle.Name = "textBox_FR_TotalFrictionAngle";
             this.textBox_FR_TotalFrictionAngle.ReadOnly = true;
-            this.textBox_FR_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_TotalFrictionAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_TotalFrictionAngle.TabIndex = 144;
             this.textBox_FR_TotalFrictionAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1253,10 +1346,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_TotalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_TotalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_TotalFriction.Location = new System.Drawing.Point(592, 315);
+            this.textBox_FR_TotalFriction.Location = new System.Drawing.Point(1184, 606);
+            this.textBox_FR_TotalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_TotalFriction.Name = "textBox_FR_TotalFriction";
             this.textBox_FR_TotalFriction.ReadOnly = true;
-            this.textBox_FR_TotalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_TotalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_TotalFriction.TabIndex = 143;
             this.textBox_FR_TotalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1264,10 +1358,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_TotalFrictionAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_TotalFrictionAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_TotalFrictionAngle.Location = new System.Drawing.Point(339, 717);
+            this.textBox_RL_TotalFrictionAngle.Location = new System.Drawing.Point(678, 1379);
+            this.textBox_RL_TotalFrictionAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_TotalFrictionAngle.Name = "textBox_RL_TotalFrictionAngle";
             this.textBox_RL_TotalFrictionAngle.ReadOnly = true;
-            this.textBox_RL_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_TotalFrictionAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_TotalFrictionAngle.TabIndex = 146;
             this.textBox_RL_TotalFrictionAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1275,10 +1370,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_TotalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_TotalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_TotalFriction.Location = new System.Drawing.Point(238, 717);
+            this.textBox_RL_TotalFriction.Location = new System.Drawing.Point(476, 1379);
+            this.textBox_RL_TotalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_TotalFriction.Name = "textBox_RL_TotalFriction";
             this.textBox_RL_TotalFriction.ReadOnly = true;
-            this.textBox_RL_TotalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_TotalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_TotalFriction.TabIndex = 145;
             this.textBox_RL_TotalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1286,10 +1382,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_TotalFrictionAngle.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_TotalFrictionAngle.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_TotalFrictionAngle.Location = new System.Drawing.Point(693, 717);
+            this.textBox_RR_TotalFrictionAngle.Location = new System.Drawing.Point(1386, 1379);
+            this.textBox_RR_TotalFrictionAngle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_TotalFrictionAngle.Name = "textBox_RR_TotalFrictionAngle";
             this.textBox_RR_TotalFrictionAngle.ReadOnly = true;
-            this.textBox_RR_TotalFrictionAngle.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_TotalFrictionAngle.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_TotalFrictionAngle.TabIndex = 148;
             this.textBox_RR_TotalFrictionAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1297,10 +1394,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_TotalFriction.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_TotalFriction.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_TotalFriction.Location = new System.Drawing.Point(592, 717);
+            this.textBox_RR_TotalFriction.Location = new System.Drawing.Point(1184, 1379);
+            this.textBox_RR_TotalFriction.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_TotalFriction.Name = "textBox_RR_TotalFriction";
             this.textBox_RR_TotalFriction.ReadOnly = true;
-            this.textBox_RR_TotalFriction.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_TotalFriction.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_TotalFriction.TabIndex = 147;
             this.textBox_RR_TotalFriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1308,9 +1406,10 @@ namespace Physics_Data_Debug
             // 
             this.toLogSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toLogSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toLogSettingsButton.Location = new System.Drawing.Point(6, 495);
+            this.toLogSettingsButton.Location = new System.Drawing.Point(12, 952);
+            this.toLogSettingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.toLogSettingsButton.Name = "toLogSettingsButton";
-            this.toLogSettingsButton.Size = new System.Drawing.Size(90, 45);
+            this.toLogSettingsButton.Size = new System.Drawing.Size(180, 87);
             this.toLogSettingsButton.TabIndex = 149;
             this.toLogSettingsButton.Text = "Log Settings";
             this.toLogSettingsButton.UseVisualStyleBackColor = false;
@@ -1320,10 +1419,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_MaxCurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_MaxCurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(339, 159);
+            this.textBox_FL_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(678, 306);
+            this.textBox_FL_MaxCurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_MaxCurrentContactBrakeTorque.Name = "textBox_FL_MaxCurrentContactBrakeTorque";
             this.textBox_FL_MaxCurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_FL_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_MaxCurrentContactBrakeTorque.TabIndex = 151;
             this.textBox_FL_MaxCurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1331,10 +1431,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_MaxCurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_MaxCurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(693, 159);
+            this.textBox_FR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(1386, 306);
+            this.textBox_FR_MaxCurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_MaxCurrentContactBrakeTorque.Name = "textBox_FR_MaxCurrentContactBrakeTorque";
             this.textBox_FR_MaxCurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_FR_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_MaxCurrentContactBrakeTorque.TabIndex = 152;
             this.textBox_FR_MaxCurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1342,10 +1443,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_MaxCurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_MaxCurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(339, 561);
+            this.textBox_RL_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(678, 1079);
+            this.textBox_RL_MaxCurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_MaxCurrentContactBrakeTorque.Name = "textBox_RL_MaxCurrentContactBrakeTorque";
             this.textBox_RL_MaxCurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_RL_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_MaxCurrentContactBrakeTorque.TabIndex = 153;
             this.textBox_RL_MaxCurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1353,10 +1455,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_MaxCurrentContactBrakeTorque.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_MaxCurrentContactBrakeTorque.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(693, 561);
+            this.textBox_RR_MaxCurrentContactBrakeTorque.Location = new System.Drawing.Point(1386, 1079);
+            this.textBox_RR_MaxCurrentContactBrakeTorque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_MaxCurrentContactBrakeTorque.Name = "textBox_RR_MaxCurrentContactBrakeTorque";
             this.textBox_RR_MaxCurrentContactBrakeTorque.ReadOnly = true;
-            this.textBox_RR_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_MaxCurrentContactBrakeTorque.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_MaxCurrentContactBrakeTorque.TabIndex = 154;
             this.textBox_RR_MaxCurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1364,9 +1467,10 @@ namespace Physics_Data_Debug
             // 
             this.toTireSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTireSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toTireSettingsButton.Location = new System.Drawing.Point(6, 658);
+            this.toTireSettingsButton.Location = new System.Drawing.Point(12, 1265);
+            this.toTireSettingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.toTireSettingsButton.Name = "toTireSettingsButton";
-            this.toTireSettingsButton.Size = new System.Drawing.Size(90, 45);
+            this.toTireSettingsButton.Size = new System.Drawing.Size(180, 87);
             this.toTireSettingsButton.TabIndex = 155;
             this.toTireSettingsButton.Text = "Tire Settings";
             this.toTireSettingsButton.UseVisualStyleBackColor = false;
@@ -1376,9 +1480,10 @@ namespace Physics_Data_Debug
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(110, 32);
+            this.label1.Location = new System.Drawing.Point(220, 62);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 13);
+            this.label1.Size = new System.Drawing.Size(661, 25);
             this.label1.TabIndex = 162;
             this.label1.Text = "Tire Travel Speed                                                                " +
     "          m/s";
@@ -1387,9 +1492,10 @@ namespace Physics_Data_Debug
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(110, 58);
+            this.label2.Location = new System.Drawing.Point(220, 112);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(339, 13);
+            this.label2.Size = new System.Drawing.Size(676, 25);
             this.label2.TabIndex = 163;
             this.label2.Text = "Angular Velocity                                                                 " +
     "            km/h";
@@ -1398,9 +1504,10 @@ namespace Physics_Data_Debug
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(110, 84);
+            this.label3.Location = new System.Drawing.Point(220, 162);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(323, 13);
+            this.label3.Size = new System.Drawing.Size(638, 25);
             this.label3.TabIndex = 164;
             this.label3.Text = "Vertical Load/Deflection                              N /                        " +
     "     m";
@@ -1409,9 +1516,10 @@ namespace Physics_Data_Debug
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(110, 110);
+            this.label4.Location = new System.Drawing.Point(220, 212);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(324, 13);
+            this.label4.Size = new System.Drawing.Size(640, 25);
             this.label4.TabIndex = 165;
             this.label4.Text = "Loaded/Effective Radius                             m /                          " +
     "   m";
@@ -1420,9 +1528,10 @@ namespace Physics_Data_Debug
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(110, 136);
+            this.label5.Location = new System.Drawing.Point(220, 262);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(322, 13);
+            this.label5.Size = new System.Drawing.Size(643, 25);
             this.label5.TabIndex = 166;
             this.label5.Text = "Contact Length                                                                   " +
     "           m";
@@ -1431,9 +1540,10 @@ namespace Physics_Data_Debug
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(110, 162);
+            this.label6.Location = new System.Drawing.Point(220, 312);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(329, 13);
+            this.label6.Size = new System.Drawing.Size(653, 25);
             this.label6.TabIndex = 167;
             this.label6.Text = "Braking Torque                                              /                    " +
     "          Nm";
@@ -1442,9 +1552,10 @@ namespace Physics_Data_Debug
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(110, 370);
+            this.label7.Location = new System.Drawing.Point(220, 712);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(316, 13);
+            this.label7.Size = new System.Drawing.Size(627, 25);
             this.label7.TabIndex = 168;
             this.label7.Text = "Steer/Camber Angle                                      /                        " +
     "      °";
@@ -1453,9 +1564,10 @@ namespace Physics_Data_Debug
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(110, 188);
+            this.label8.Location = new System.Drawing.Point(220, 362);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(322, 13);
+            this.label8.Size = new System.Drawing.Size(633, 25);
             this.label8.TabIndex = 169;
             this.label8.Text = "Lat/Lon Load                                                /                    " +
     "           N";
@@ -1464,9 +1576,10 @@ namespace Physics_Data_Debug
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(110, 214);
+            this.label9.Location = new System.Drawing.Point(220, 412);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(330, 13);
+            this.label9.Size = new System.Drawing.Size(654, 25);
             this.label9.TabIndex = 170;
             this.label9.Text = "Slip Angle/Ratio                                           ° /                   " +
     "           0-1";
@@ -1475,9 +1588,10 @@ namespace Physics_Data_Debug
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(110, 240);
+            this.label10.Location = new System.Drawing.Point(220, 462);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(321, 13);
+            this.label10.Size = new System.Drawing.Size(635, 25);
             this.label10.TabIndex = 171;
             this.label10.Text = "Lat/Lon Friction                                             /                   " +
     "            μ";
@@ -1486,9 +1600,10 @@ namespace Physics_Data_Debug
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(110, 266);
+            this.label11.Location = new System.Drawing.Point(220, 512);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(332, 13);
+            this.label11.Size = new System.Drawing.Size(654, 25);
             this.label11.TabIndex = 172;
             this.label11.Text = "Lat/Lon Slip Speed                                       /                       " +
     "        m/s";
@@ -1497,9 +1612,10 @@ namespace Physics_Data_Debug
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(110, 292);
+            this.label18.Location = new System.Drawing.Point(220, 562);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(327, 13);
+            this.label18.Size = new System.Drawing.Size(647, 25);
             this.label18.TabIndex = 175;
             this.label18.Text = "Tread/Inner Temps                                     °C /                       " +
     "      °C";
@@ -1508,9 +1624,10 @@ namespace Physics_Data_Debug
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(110, 318);
+            this.label19.Location = new System.Drawing.Point(220, 612);
+            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(319, 13);
+            this.label19.Size = new System.Drawing.Size(632, 25);
             this.label19.TabIndex = 176;
             this.label19.Text = "Total Friction/Angle                                      μ /                    " +
     "         °";
@@ -1519,9 +1636,10 @@ namespace Physics_Data_Debug
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(464, 318);
+            this.label20.Location = new System.Drawing.Point(928, 612);
+            this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(319, 13);
+            this.label20.Size = new System.Drawing.Size(632, 25);
             this.label20.TabIndex = 191;
             this.label20.Text = "Total Friction/Angle                                      μ /                    " +
     "         °";
@@ -1530,9 +1648,10 @@ namespace Physics_Data_Debug
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(464, 292);
+            this.label21.Location = new System.Drawing.Point(928, 562);
+            this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(327, 13);
+            this.label21.Size = new System.Drawing.Size(647, 25);
             this.label21.TabIndex = 190;
             this.label21.Text = "Tread/Inner Temps                                     °C /                       " +
     "      °C";
@@ -1541,9 +1660,10 @@ namespace Physics_Data_Debug
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(464, 263);
+            this.label24.Location = new System.Drawing.Point(928, 506);
+            this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(332, 13);
+            this.label24.Size = new System.Drawing.Size(654, 25);
             this.label24.TabIndex = 187;
             this.label24.Text = "Lat/Lon Slip Speed                                       /                       " +
     "        m/s";
@@ -1552,9 +1672,10 @@ namespace Physics_Data_Debug
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(464, 240);
+            this.label25.Location = new System.Drawing.Point(928, 462);
+            this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(321, 13);
+            this.label25.Size = new System.Drawing.Size(635, 25);
             this.label25.TabIndex = 186;
             this.label25.Text = "Lat/Lon Friction                                             /                   " +
     "            μ";
@@ -1563,9 +1684,10 @@ namespace Physics_Data_Debug
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(464, 214);
+            this.label26.Location = new System.Drawing.Point(928, 412);
+            this.label26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(330, 13);
+            this.label26.Size = new System.Drawing.Size(654, 25);
             this.label26.TabIndex = 185;
             this.label26.Text = "Slip Angle/Ratio                                           ° /                   " +
     "           0-1";
@@ -1574,9 +1696,10 @@ namespace Physics_Data_Debug
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(464, 188);
+            this.label27.Location = new System.Drawing.Point(928, 362);
+            this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(322, 13);
+            this.label27.Size = new System.Drawing.Size(633, 25);
             this.label27.TabIndex = 184;
             this.label27.Text = "Lat/Lon Load                                                /                    " +
     "           N";
@@ -1585,9 +1708,10 @@ namespace Physics_Data_Debug
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(464, 370);
+            this.label28.Location = new System.Drawing.Point(928, 712);
+            this.label28.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(316, 13);
+            this.label28.Size = new System.Drawing.Size(627, 25);
             this.label28.TabIndex = 183;
             this.label28.Text = "Steer/Camber Angle                                      /                        " +
     "      °";
@@ -1596,9 +1720,10 @@ namespace Physics_Data_Debug
             // 
             this.label29.AutoSize = true;
             this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(464, 162);
+            this.label29.Location = new System.Drawing.Point(928, 312);
+            this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(329, 13);
+            this.label29.Size = new System.Drawing.Size(653, 25);
             this.label29.TabIndex = 182;
             this.label29.Text = "Braking Torque                                              /                    " +
     "          Nm";
@@ -1607,9 +1732,10 @@ namespace Physics_Data_Debug
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(464, 136);
+            this.label30.Location = new System.Drawing.Point(928, 262);
+            this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(322, 13);
+            this.label30.Size = new System.Drawing.Size(643, 25);
             this.label30.TabIndex = 181;
             this.label30.Text = "Contact Length                                                                   " +
     "           m";
@@ -1618,9 +1744,10 @@ namespace Physics_Data_Debug
             // 
             this.label31.AutoSize = true;
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(464, 110);
+            this.label31.Location = new System.Drawing.Point(928, 212);
+            this.label31.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(324, 13);
+            this.label31.Size = new System.Drawing.Size(640, 25);
             this.label31.TabIndex = 180;
             this.label31.Text = "Loaded/Effective Radius                             m /                          " +
     "   m";
@@ -1629,9 +1756,10 @@ namespace Physics_Data_Debug
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(464, 84);
+            this.label32.Location = new System.Drawing.Point(928, 162);
+            this.label32.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(323, 13);
+            this.label32.Size = new System.Drawing.Size(638, 25);
             this.label32.TabIndex = 179;
             this.label32.Text = "Vertical Load/Deflection                              N /                        " +
     "     m";
@@ -1640,9 +1768,10 @@ namespace Physics_Data_Debug
             // 
             this.label33.AutoSize = true;
             this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(464, 58);
+            this.label33.Location = new System.Drawing.Point(928, 112);
+            this.label33.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(339, 13);
+            this.label33.Size = new System.Drawing.Size(676, 25);
             this.label33.TabIndex = 178;
             this.label33.Text = "Angular Velocity                                                                 " +
     "            km/h";
@@ -1651,9 +1780,10 @@ namespace Physics_Data_Debug
             // 
             this.label34.AutoSize = true;
             this.label34.ForeColor = System.Drawing.Color.White;
-            this.label34.Location = new System.Drawing.Point(464, 32);
+            this.label34.Location = new System.Drawing.Point(928, 62);
+            this.label34.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(332, 13);
+            this.label34.Size = new System.Drawing.Size(661, 25);
             this.label34.TabIndex = 177;
             this.label34.Text = "Tire Travel Speed                                                                " +
     "          m/s";
@@ -1662,9 +1792,10 @@ namespace Physics_Data_Debug
             // 
             this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.Color.White;
-            this.label35.Location = new System.Drawing.Point(110, 720);
+            this.label35.Location = new System.Drawing.Point(220, 1385);
+            this.label35.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(319, 13);
+            this.label35.Size = new System.Drawing.Size(632, 25);
             this.label35.TabIndex = 206;
             this.label35.Text = "Total Friction/Angle                                      μ /                    " +
     "         °";
@@ -1673,9 +1804,10 @@ namespace Physics_Data_Debug
             // 
             this.label36.AutoSize = true;
             this.label36.ForeColor = System.Drawing.Color.White;
-            this.label36.Location = new System.Drawing.Point(110, 694);
+            this.label36.Location = new System.Drawing.Point(220, 1335);
+            this.label36.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(327, 13);
+            this.label36.Size = new System.Drawing.Size(647, 25);
             this.label36.TabIndex = 205;
             this.label36.Text = "Tread/Inner Temps                                     °C /                       " +
     "      °C";
@@ -1684,9 +1816,10 @@ namespace Physics_Data_Debug
             // 
             this.label39.AutoSize = true;
             this.label39.ForeColor = System.Drawing.Color.White;
-            this.label39.Location = new System.Drawing.Point(110, 668);
+            this.label39.Location = new System.Drawing.Point(220, 1285);
+            this.label39.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(332, 13);
+            this.label39.Size = new System.Drawing.Size(654, 25);
             this.label39.TabIndex = 202;
             this.label39.Text = "Lat/Lon Slip Speed                                       /                       " +
     "        m/s";
@@ -1695,9 +1828,10 @@ namespace Physics_Data_Debug
             // 
             this.label40.AutoSize = true;
             this.label40.ForeColor = System.Drawing.Color.White;
-            this.label40.Location = new System.Drawing.Point(110, 642);
+            this.label40.Location = new System.Drawing.Point(220, 1235);
+            this.label40.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(321, 13);
+            this.label40.Size = new System.Drawing.Size(635, 25);
             this.label40.TabIndex = 201;
             this.label40.Text = "Lat/Lon Friction                                             /                   " +
     "            μ";
@@ -1706,9 +1840,10 @@ namespace Physics_Data_Debug
             // 
             this.label41.AutoSize = true;
             this.label41.ForeColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(110, 616);
+            this.label41.Location = new System.Drawing.Point(220, 1185);
+            this.label41.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(330, 13);
+            this.label41.Size = new System.Drawing.Size(654, 25);
             this.label41.TabIndex = 200;
             this.label41.Text = "Slip Angle/Ratio                                           ° /                   " +
     "           0-1";
@@ -1717,9 +1852,10 @@ namespace Physics_Data_Debug
             // 
             this.label42.AutoSize = true;
             this.label42.ForeColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(110, 590);
+            this.label42.Location = new System.Drawing.Point(220, 1135);
+            this.label42.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(322, 13);
+            this.label42.Size = new System.Drawing.Size(633, 25);
             this.label42.TabIndex = 199;
             this.label42.Text = "Lat/Lon Load                                                /                    " +
     "           N";
@@ -1728,9 +1864,10 @@ namespace Physics_Data_Debug
             // 
             this.label43.AutoSize = true;
             this.label43.ForeColor = System.Drawing.Color.White;
-            this.label43.Location = new System.Drawing.Point(110, 772);
+            this.label43.Location = new System.Drawing.Point(220, 1485);
+            this.label43.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(316, 13);
+            this.label43.Size = new System.Drawing.Size(627, 25);
             this.label43.TabIndex = 198;
             this.label43.Text = "Steer/Camber Angle                                      /                        " +
     "      °";
@@ -1739,9 +1876,10 @@ namespace Physics_Data_Debug
             // 
             this.label44.AutoSize = true;
             this.label44.ForeColor = System.Drawing.Color.White;
-            this.label44.Location = new System.Drawing.Point(110, 564);
+            this.label44.Location = new System.Drawing.Point(220, 1085);
+            this.label44.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(329, 13);
+            this.label44.Size = new System.Drawing.Size(653, 25);
             this.label44.TabIndex = 197;
             this.label44.Text = "Braking Torque                                              /                    " +
     "          Nm";
@@ -1750,9 +1888,10 @@ namespace Physics_Data_Debug
             // 
             this.label45.AutoSize = true;
             this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(110, 538);
+            this.label45.Location = new System.Drawing.Point(220, 1035);
+            this.label45.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(322, 13);
+            this.label45.Size = new System.Drawing.Size(643, 25);
             this.label45.TabIndex = 196;
             this.label45.Text = "Contact Length                                                                   " +
     "           m";
@@ -1761,9 +1900,10 @@ namespace Physics_Data_Debug
             // 
             this.label46.AutoSize = true;
             this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(110, 512);
+            this.label46.Location = new System.Drawing.Point(220, 985);
+            this.label46.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(324, 13);
+            this.label46.Size = new System.Drawing.Size(640, 25);
             this.label46.TabIndex = 195;
             this.label46.Text = "Loaded/Effective Radius                             m /                          " +
     "   m";
@@ -1772,9 +1912,10 @@ namespace Physics_Data_Debug
             // 
             this.label47.AutoSize = true;
             this.label47.ForeColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(110, 486);
+            this.label47.Location = new System.Drawing.Point(220, 935);
+            this.label47.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(323, 13);
+            this.label47.Size = new System.Drawing.Size(638, 25);
             this.label47.TabIndex = 194;
             this.label47.Text = "Vertical Load/Deflection                              N /                        " +
     "     m";
@@ -1783,9 +1924,10 @@ namespace Physics_Data_Debug
             // 
             this.label48.AutoSize = true;
             this.label48.ForeColor = System.Drawing.Color.White;
-            this.label48.Location = new System.Drawing.Point(110, 460);
+            this.label48.Location = new System.Drawing.Point(220, 885);
+            this.label48.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(339, 13);
+            this.label48.Size = new System.Drawing.Size(676, 25);
             this.label48.TabIndex = 193;
             this.label48.Text = "Angular Velocity                                                                 " +
     "            km/h";
@@ -1794,9 +1936,10 @@ namespace Physics_Data_Debug
             // 
             this.label49.AutoSize = true;
             this.label49.ForeColor = System.Drawing.Color.White;
-            this.label49.Location = new System.Drawing.Point(110, 434);
+            this.label49.Location = new System.Drawing.Point(220, 835);
+            this.label49.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(332, 13);
+            this.label49.Size = new System.Drawing.Size(661, 25);
             this.label49.TabIndex = 192;
             this.label49.Text = "Tire Travel Speed                                                                " +
     "          m/s";
@@ -1805,9 +1948,10 @@ namespace Physics_Data_Debug
             // 
             this.label50.AutoSize = true;
             this.label50.ForeColor = System.Drawing.Color.White;
-            this.label50.Location = new System.Drawing.Point(465, 720);
+            this.label50.Location = new System.Drawing.Point(930, 1385);
+            this.label50.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(319, 13);
+            this.label50.Size = new System.Drawing.Size(632, 25);
             this.label50.TabIndex = 221;
             this.label50.Text = "Total Friction/Angle                                      μ /                    " +
     "         °";
@@ -1816,9 +1960,10 @@ namespace Physics_Data_Debug
             // 
             this.label51.AutoSize = true;
             this.label51.ForeColor = System.Drawing.Color.White;
-            this.label51.Location = new System.Drawing.Point(464, 694);
+            this.label51.Location = new System.Drawing.Point(928, 1335);
+            this.label51.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(327, 13);
+            this.label51.Size = new System.Drawing.Size(647, 25);
             this.label51.TabIndex = 220;
             this.label51.Text = "Tread/Inner Temps                                     °C /                       " +
     "      °C";
@@ -1827,9 +1972,10 @@ namespace Physics_Data_Debug
             // 
             this.label54.AutoSize = true;
             this.label54.ForeColor = System.Drawing.Color.White;
-            this.label54.Location = new System.Drawing.Point(465, 668);
+            this.label54.Location = new System.Drawing.Point(930, 1285);
+            this.label54.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(332, 13);
+            this.label54.Size = new System.Drawing.Size(654, 25);
             this.label54.TabIndex = 217;
             this.label54.Text = "Lat/Lon Slip Speed                                       /                       " +
     "        m/s";
@@ -1838,9 +1984,10 @@ namespace Physics_Data_Debug
             // 
             this.label55.AutoSize = true;
             this.label55.ForeColor = System.Drawing.Color.White;
-            this.label55.Location = new System.Drawing.Point(463, 642);
+            this.label55.Location = new System.Drawing.Point(926, 1235);
+            this.label55.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(321, 13);
+            this.label55.Size = new System.Drawing.Size(635, 25);
             this.label55.TabIndex = 216;
             this.label55.Text = "Lat/Lon Friction                                             /                   " +
     "            μ";
@@ -1849,9 +1996,10 @@ namespace Physics_Data_Debug
             // 
             this.label56.AutoSize = true;
             this.label56.ForeColor = System.Drawing.Color.White;
-            this.label56.Location = new System.Drawing.Point(465, 616);
+            this.label56.Location = new System.Drawing.Point(930, 1185);
+            this.label56.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(330, 13);
+            this.label56.Size = new System.Drawing.Size(654, 25);
             this.label56.TabIndex = 215;
             this.label56.Text = "Slip Angle/Ratio                                           ° /                   " +
     "           0-1";
@@ -1860,9 +2008,10 @@ namespace Physics_Data_Debug
             // 
             this.label57.AutoSize = true;
             this.label57.ForeColor = System.Drawing.Color.White;
-            this.label57.Location = new System.Drawing.Point(465, 590);
+            this.label57.Location = new System.Drawing.Point(930, 1135);
+            this.label57.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(322, 13);
+            this.label57.Size = new System.Drawing.Size(633, 25);
             this.label57.TabIndex = 214;
             this.label57.Text = "Lat/Lon Load                                                /                    " +
     "           N";
@@ -1871,9 +2020,10 @@ namespace Physics_Data_Debug
             // 
             this.label58.AutoSize = true;
             this.label58.ForeColor = System.Drawing.Color.White;
-            this.label58.Location = new System.Drawing.Point(465, 772);
+            this.label58.Location = new System.Drawing.Point(930, 1485);
+            this.label58.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(316, 13);
+            this.label58.Size = new System.Drawing.Size(627, 25);
             this.label58.TabIndex = 213;
             this.label58.Text = "Steer/Camber Angle                                      /                        " +
     "      °";
@@ -1882,9 +2032,10 @@ namespace Physics_Data_Debug
             // 
             this.label59.AutoSize = true;
             this.label59.ForeColor = System.Drawing.Color.White;
-            this.label59.Location = new System.Drawing.Point(464, 564);
+            this.label59.Location = new System.Drawing.Point(928, 1085);
+            this.label59.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(329, 13);
+            this.label59.Size = new System.Drawing.Size(653, 25);
             this.label59.TabIndex = 212;
             this.label59.Text = "Braking Torque                                              /                    " +
     "          Nm";
@@ -1893,9 +2044,10 @@ namespace Physics_Data_Debug
             // 
             this.label60.AutoSize = true;
             this.label60.ForeColor = System.Drawing.Color.White;
-            this.label60.Location = new System.Drawing.Point(465, 538);
+            this.label60.Location = new System.Drawing.Point(930, 1035);
+            this.label60.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(322, 13);
+            this.label60.Size = new System.Drawing.Size(643, 25);
             this.label60.TabIndex = 211;
             this.label60.Text = "Contact Length                                                                   " +
     "           m";
@@ -1904,9 +2056,10 @@ namespace Physics_Data_Debug
             // 
             this.label61.AutoSize = true;
             this.label61.ForeColor = System.Drawing.Color.White;
-            this.label61.Location = new System.Drawing.Point(463, 512);
+            this.label61.Location = new System.Drawing.Point(926, 985);
+            this.label61.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(324, 13);
+            this.label61.Size = new System.Drawing.Size(640, 25);
             this.label61.TabIndex = 210;
             this.label61.Text = "Loaded/Effective Radius                             m /                          " +
     "   m";
@@ -1915,9 +2068,10 @@ namespace Physics_Data_Debug
             // 
             this.label62.AutoSize = true;
             this.label62.ForeColor = System.Drawing.Color.White;
-            this.label62.Location = new System.Drawing.Point(464, 486);
+            this.label62.Location = new System.Drawing.Point(928, 935);
+            this.label62.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(323, 13);
+            this.label62.Size = new System.Drawing.Size(638, 25);
             this.label62.TabIndex = 209;
             this.label62.Text = "Vertical Load/Deflection                              N /                        " +
     "     m";
@@ -1926,9 +2080,10 @@ namespace Physics_Data_Debug
             // 
             this.label63.AutoSize = true;
             this.label63.ForeColor = System.Drawing.Color.White;
-            this.label63.Location = new System.Drawing.Point(464, 460);
+            this.label63.Location = new System.Drawing.Point(928, 885);
+            this.label63.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(339, 13);
+            this.label63.Size = new System.Drawing.Size(676, 25);
             this.label63.TabIndex = 208;
             this.label63.Text = "Angular Velocity                                                                 " +
     "            km/h";
@@ -1937,9 +2092,10 @@ namespace Physics_Data_Debug
             // 
             this.label64.AutoSize = true;
             this.label64.ForeColor = System.Drawing.Color.White;
-            this.label64.Location = new System.Drawing.Point(464, 434);
+            this.label64.Location = new System.Drawing.Point(928, 835);
+            this.label64.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(332, 13);
+            this.label64.Size = new System.Drawing.Size(661, 25);
             this.label64.TabIndex = 207;
             this.label64.Text = "Tire Travel Speed                                                                " +
     "          m/s";
@@ -1948,9 +2104,10 @@ namespace Physics_Data_Debug
             // 
             this.label65.AutoSize = true;
             this.label65.ForeColor = System.Drawing.Color.White;
-            this.label65.Location = new System.Drawing.Point(250, 4);
+            this.label65.Location = new System.Drawing.Point(500, 8);
+            this.label65.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(105, 13);
+            this.label65.Size = new System.Drawing.Size(204, 25);
             this.label65.TabIndex = 222;
             this.label65.Text = "FRONT LEFT DATA";
             // 
@@ -1958,9 +2115,10 @@ namespace Physics_Data_Debug
             // 
             this.label66.AutoSize = true;
             this.label66.ForeColor = System.Drawing.Color.White;
-            this.label66.Location = new System.Drawing.Point(608, 4);
+            this.label66.Location = new System.Drawing.Point(1216, 8);
+            this.label66.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(113, 13);
+            this.label66.Size = new System.Drawing.Size(216, 25);
             this.label66.TabIndex = 223;
             this.label66.Text = "FRONT RIGHT DATA";
             // 
@@ -1968,9 +2126,10 @@ namespace Physics_Data_Debug
             // 
             this.label67.AutoSize = true;
             this.label67.ForeColor = System.Drawing.Color.White;
-            this.label67.Location = new System.Drawing.Point(250, 407);
+            this.label67.Location = new System.Drawing.Point(500, 783);
+            this.label67.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(98, 13);
+            this.label67.Size = new System.Drawing.Size(190, 25);
             this.label67.TabIndex = 224;
             this.label67.Text = "REAR LEFT DATA";
             // 
@@ -1978,9 +2137,10 @@ namespace Physics_Data_Debug
             // 
             this.label68.AutoSize = true;
             this.label68.ForeColor = System.Drawing.Color.White;
-            this.label68.Location = new System.Drawing.Point(608, 407);
+            this.label68.Location = new System.Drawing.Point(1216, 783);
+            this.label68.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(106, 13);
+            this.label68.Size = new System.Drawing.Size(202, 25);
             this.label68.TabIndex = 225;
             this.label68.Text = "REAR RIGHT DATA";
             // 
@@ -1988,9 +2148,10 @@ namespace Physics_Data_Debug
             // 
             this.TickTime.AutoSize = true;
             this.TickTime.ForeColor = System.Drawing.Color.White;
-            this.TickTime.Location = new System.Drawing.Point(3, 479);
+            this.TickTime.Location = new System.Drawing.Point(6, 921);
+            this.TickTime.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.TickTime.Name = "TickTime";
-            this.TickTime.Size = new System.Drawing.Size(78, 13);
+            this.TickTime.Size = new System.Drawing.Size(156, 25);
             this.TickTime.TabIndex = 226;
             this.TickTime.Text = "Tick time: 0 ms";
             // 
@@ -1998,9 +2159,10 @@ namespace Physics_Data_Debug
             // 
             this.label70.AutoSize = true;
             this.label70.ForeColor = System.Drawing.Color.White;
-            this.label70.Location = new System.Drawing.Point(108, 344);
+            this.label70.Location = new System.Drawing.Point(216, 662);
+            this.label70.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(332, 13);
+            this.label70.Size = new System.Drawing.Size(656, 25);
             this.label70.TabIndex = 227;
             this.label70.Text = "Susp Length/Velocity                                  m /                        " +
     "     m/s";
@@ -2009,10 +2171,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_SuspensionVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_SuspensionVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_SuspensionVelocity.Location = new System.Drawing.Point(339, 341);
+            this.textBox_FL_SuspensionVelocity.Location = new System.Drawing.Point(678, 656);
+            this.textBox_FL_SuspensionVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_SuspensionVelocity.Name = "textBox_FL_SuspensionVelocity";
             this.textBox_FL_SuspensionVelocity.ReadOnly = true;
-            this.textBox_FL_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_SuspensionVelocity.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_SuspensionVelocity.TabIndex = 229;
             this.textBox_FL_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2020,10 +2183,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_SuspensionLength.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_SuspensionLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_SuspensionLength.Location = new System.Drawing.Point(238, 341);
+            this.textBox_FL_SuspensionLength.Location = new System.Drawing.Point(476, 656);
+            this.textBox_FL_SuspensionLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FL_SuspensionLength.Name = "textBox_FL_SuspensionLength";
             this.textBox_FL_SuspensionLength.ReadOnly = true;
-            this.textBox_FL_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FL_SuspensionLength.Size = new System.Drawing.Size(148, 31);
             this.textBox_FL_SuspensionLength.TabIndex = 228;
             this.textBox_FL_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2031,10 +2195,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_SuspensionVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_SuspensionVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_SuspensionVelocity.Location = new System.Drawing.Point(693, 341);
+            this.textBox_FR_SuspensionVelocity.Location = new System.Drawing.Point(1386, 656);
+            this.textBox_FR_SuspensionVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_SuspensionVelocity.Name = "textBox_FR_SuspensionVelocity";
             this.textBox_FR_SuspensionVelocity.ReadOnly = true;
-            this.textBox_FR_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_SuspensionVelocity.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_SuspensionVelocity.TabIndex = 232;
             this.textBox_FR_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2042,10 +2207,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_SuspensionLength.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_SuspensionLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_SuspensionLength.Location = new System.Drawing.Point(592, 341);
+            this.textBox_FR_SuspensionLength.Location = new System.Drawing.Point(1184, 656);
+            this.textBox_FR_SuspensionLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_FR_SuspensionLength.Name = "textBox_FR_SuspensionLength";
             this.textBox_FR_SuspensionLength.ReadOnly = true;
-            this.textBox_FR_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_FR_SuspensionLength.Size = new System.Drawing.Size(148, 31);
             this.textBox_FR_SuspensionLength.TabIndex = 231;
             this.textBox_FR_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2053,9 +2219,10 @@ namespace Physics_Data_Debug
             // 
             this.label71.AutoSize = true;
             this.label71.ForeColor = System.Drawing.Color.White;
-            this.label71.Location = new System.Drawing.Point(464, 344);
+            this.label71.Location = new System.Drawing.Point(928, 662);
+            this.label71.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(332, 13);
+            this.label71.Size = new System.Drawing.Size(656, 25);
             this.label71.TabIndex = 230;
             this.label71.Text = "Susp Length/Velocity                                  m /                        " +
     "     m/s";
@@ -2064,10 +2231,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_SuspensionVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_SuspensionVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_SuspensionVelocity.Location = new System.Drawing.Point(339, 743);
+            this.textBox_RL_SuspensionVelocity.Location = new System.Drawing.Point(678, 1429);
+            this.textBox_RL_SuspensionVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_SuspensionVelocity.Name = "textBox_RL_SuspensionVelocity";
             this.textBox_RL_SuspensionVelocity.ReadOnly = true;
-            this.textBox_RL_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_SuspensionVelocity.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_SuspensionVelocity.TabIndex = 235;
             this.textBox_RL_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2075,10 +2243,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_SuspensionLength.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_SuspensionLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_SuspensionLength.Location = new System.Drawing.Point(238, 743);
+            this.textBox_RL_SuspensionLength.Location = new System.Drawing.Point(476, 1429);
+            this.textBox_RL_SuspensionLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RL_SuspensionLength.Name = "textBox_RL_SuspensionLength";
             this.textBox_RL_SuspensionLength.ReadOnly = true;
-            this.textBox_RL_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RL_SuspensionLength.Size = new System.Drawing.Size(148, 31);
             this.textBox_RL_SuspensionLength.TabIndex = 234;
             this.textBox_RL_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2086,9 +2255,10 @@ namespace Physics_Data_Debug
             // 
             this.label72.AutoSize = true;
             this.label72.ForeColor = System.Drawing.Color.White;
-            this.label72.Location = new System.Drawing.Point(110, 746);
+            this.label72.Location = new System.Drawing.Point(220, 1435);
+            this.label72.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(332, 13);
+            this.label72.Size = new System.Drawing.Size(656, 25);
             this.label72.TabIndex = 233;
             this.label72.Text = "Susp Length/Velocity                                  m /                        " +
     "     m/s";
@@ -2097,10 +2267,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_SuspensionVelocity.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_SuspensionVelocity.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_SuspensionVelocity.Location = new System.Drawing.Point(693, 743);
+            this.textBox_RR_SuspensionVelocity.Location = new System.Drawing.Point(1386, 1429);
+            this.textBox_RR_SuspensionVelocity.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_SuspensionVelocity.Name = "textBox_RR_SuspensionVelocity";
             this.textBox_RR_SuspensionVelocity.ReadOnly = true;
-            this.textBox_RR_SuspensionVelocity.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_SuspensionVelocity.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_SuspensionVelocity.TabIndex = 238;
             this.textBox_RR_SuspensionVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2108,10 +2279,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_SuspensionLength.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_SuspensionLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_SuspensionLength.Location = new System.Drawing.Point(592, 743);
+            this.textBox_RR_SuspensionLength.Location = new System.Drawing.Point(1184, 1429);
+            this.textBox_RR_SuspensionLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_RR_SuspensionLength.Name = "textBox_RR_SuspensionLength";
             this.textBox_RR_SuspensionLength.ReadOnly = true;
-            this.textBox_RR_SuspensionLength.Size = new System.Drawing.Size(76, 20);
+            this.textBox_RR_SuspensionLength.Size = new System.Drawing.Size(148, 31);
             this.textBox_RR_SuspensionLength.TabIndex = 237;
             this.textBox_RR_SuspensionLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2119,9 +2291,10 @@ namespace Physics_Data_Debug
             // 
             this.label73.AutoSize = true;
             this.label73.ForeColor = System.Drawing.Color.White;
-            this.label73.Location = new System.Drawing.Point(466, 746);
+            this.label73.Location = new System.Drawing.Point(932, 1435);
+            this.label73.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(332, 13);
+            this.label73.Size = new System.Drawing.Size(656, 25);
             this.label73.TabIndex = 236;
             this.label73.Text = "Susp Length/Velocity                                  m /                        " +
     "     m/s";
@@ -2130,9 +2303,10 @@ namespace Physics_Data_Debug
             // 
             this.toSuspensionSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toSuspensionSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(6, 823);
+            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(12, 1583);
+            this.toSuspensionSettingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.toSuspensionSettingsButton.Name = "toSuspensionSettingsButton";
-            this.toSuspensionSettingsButton.Size = new System.Drawing.Size(90, 45);
+            this.toSuspensionSettingsButton.Size = new System.Drawing.Size(180, 87);
             this.toSuspensionSettingsButton.TabIndex = 239;
             this.toSuspensionSettingsButton.Text = "Suspension Settings";
             this.toSuspensionSettingsButton.UseVisualStyleBackColor = false;
@@ -2142,9 +2316,10 @@ namespace Physics_Data_Debug
             // 
             this.OpenTemperaturesChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.OpenTemperaturesChart.ForeColor = System.Drawing.Color.White;
-            this.OpenTemperaturesChart.Location = new System.Drawing.Point(6, 597);
+            this.OpenTemperaturesChart.Location = new System.Drawing.Point(12, 1148);
+            this.OpenTemperaturesChart.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.OpenTemperaturesChart.Name = "OpenTemperaturesChart";
-            this.OpenTemperaturesChart.Size = new System.Drawing.Size(90, 55);
+            this.OpenTemperaturesChart.Size = new System.Drawing.Size(180, 106);
             this.OpenTemperaturesChart.TabIndex = 240;
             this.OpenTemperaturesChart.Text = "Tire Temperatures Chart";
             this.OpenTemperaturesChart.UseVisualStyleBackColor = false;
@@ -2154,9 +2329,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEngineTorque.AutoSize = true;
             this.CurrentEngineTorque.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineTorque.Location = new System.Drawing.Point(3, 237);
+            this.CurrentEngineTorque.Location = new System.Drawing.Point(15, 476);
+            this.CurrentEngineTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEngineTorque.Name = "CurrentEngineTorque";
-            this.CurrentEngineTorque.Size = new System.Drawing.Size(99, 13);
+            this.CurrentEngineTorque.Size = new System.Drawing.Size(202, 25);
             this.CurrentEngineTorque.TabIndex = 242;
             this.CurrentEngineTorque.Text = "Current torque (Nm)";
             // 
@@ -2164,9 +2340,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEnginePower.AutoSize = true;
             this.CurrentEnginePower.ForeColor = System.Drawing.Color.White;
-            this.CurrentEnginePower.Location = new System.Drawing.Point(3, 250);
+            this.CurrentEnginePower.Location = new System.Drawing.Point(15, 501);
+            this.CurrentEnginePower.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEnginePower.Name = "CurrentEnginePower";
-            this.CurrentEnginePower.Size = new System.Drawing.Size(99, 13);
+            this.CurrentEnginePower.Size = new System.Drawing.Size(198, 25);
             this.CurrentEnginePower.TabIndex = 244;
             this.CurrentEnginePower.Text = "Current power (kW)";
             // 
@@ -2174,9 +2351,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentDifferentialOpen.AutoSize = true;
             this.CurrentDifferentialOpen.ForeColor = System.Drawing.Color.White;
-            this.CurrentDifferentialOpen.Location = new System.Drawing.Point(3, 290);
+            this.CurrentDifferentialOpen.Location = new System.Drawing.Point(15, 558);
+            this.CurrentDifferentialOpen.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentDifferentialOpen.Name = "CurrentDifferentialOpen";
-            this.CurrentDifferentialOpen.Size = new System.Drawing.Size(93, 13);
+            this.CurrentDifferentialOpen.Size = new System.Drawing.Size(178, 25);
             this.CurrentDifferentialOpen.TabIndex = 246;
             this.CurrentDifferentialOpen.Text = "Diff Open/Locked";
             // 
@@ -2184,9 +2362,10 @@ namespace Physics_Data_Debug
             // 
             this.label77.AutoSize = true;
             this.label77.ForeColor = System.Drawing.Color.White;
-            this.label77.Location = new System.Drawing.Point(3, 277);
+            this.label77.Location = new System.Drawing.Point(6, 533);
+            this.label77.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(57, 13);
+            this.label77.Size = new System.Drawing.Size(115, 25);
             this.label77.TabIndex = 245;
             this.label77.Text = "Differential";
             // 
@@ -2194,9 +2373,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentDifferentialSpeedRad.AutoSize = true;
             this.CurrentDifferentialSpeedRad.ForeColor = System.Drawing.Color.White;
-            this.CurrentDifferentialSpeedRad.Location = new System.Drawing.Point(3, 303);
+            this.CurrentDifferentialSpeedRad.Location = new System.Drawing.Point(15, 583);
+            this.CurrentDifferentialSpeedRad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentDifferentialSpeedRad.Name = "CurrentDifferentialSpeedRad";
-            this.CurrentDifferentialSpeedRad.Size = new System.Drawing.Size(66, 13);
+            this.CurrentDifferentialSpeedRad.Size = new System.Drawing.Size(128, 25);
             this.CurrentDifferentialSpeedRad.TabIndex = 247;
             this.CurrentDifferentialSpeedRad.Text = "Speed rad/s";
             // 
@@ -2204,9 +2384,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentDifferentialTorque.AutoSize = true;
             this.CurrentDifferentialTorque.ForeColor = System.Drawing.Color.White;
-            this.CurrentDifferentialTorque.Location = new System.Drawing.Point(3, 316);
+            this.CurrentDifferentialTorque.Location = new System.Drawing.Point(15, 608);
+            this.CurrentDifferentialTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentDifferentialTorque.Name = "CurrentDifferentialTorque";
-            this.CurrentDifferentialTorque.Size = new System.Drawing.Size(66, 13);
+            this.CurrentDifferentialTorque.Size = new System.Drawing.Size(132, 25);
             this.CurrentDifferentialTorque.TabIndex = 248;
             this.CurrentDifferentialTorque.Text = "Torque (Nm)";
             // 
@@ -2214,9 +2395,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEngineRPM.AutoSize = true;
             this.CurrentEngineRPM.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineRPM.Location = new System.Drawing.Point(3, 211);
+            this.CurrentEngineRPM.Location = new System.Drawing.Point(15, 426);
+            this.CurrentEngineRPM.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEngineRPM.Name = "CurrentEngineRPM";
-            this.CurrentEngineRPM.Size = new System.Drawing.Size(68, 13);
+            this.CurrentEngineRPM.Size = new System.Drawing.Size(136, 25);
             this.CurrentEngineRPM.TabIndex = 250;
             this.CurrentEngineRPM.Text = "Current RPM";
             // 
@@ -2224,9 +2406,10 @@ namespace Physics_Data_Debug
             // 
             this.label78.AutoSize = true;
             this.label78.ForeColor = System.Drawing.Color.White;
-            this.label78.Location = new System.Drawing.Point(3, 198);
+            this.label78.Location = new System.Drawing.Point(6, 401);
+            this.label78.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(40, 13);
+            this.label78.Size = new System.Drawing.Size(79, 25);
             this.label78.TabIndex = 249;
             this.label78.Text = "Engine";
             // 
@@ -2234,9 +2417,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentEngineRPMAxle.AutoSize = true;
             this.CurrentEngineRPMAxle.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(3, 224);
+            this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(15, 451);
+            this.CurrentEngineRPMAxle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEngineRPMAxle.Name = "CurrentEngineRPMAxle";
-            this.CurrentEngineRPMAxle.Size = new System.Drawing.Size(91, 13);
+            this.CurrentEngineRPMAxle.Size = new System.Drawing.Size(184, 25);
             this.CurrentEngineRPMAxle.TabIndex = 251;
             this.CurrentEngineRPMAxle.Text = "Current RPM Axle";
             // 
@@ -2244,9 +2428,10 @@ namespace Physics_Data_Debug
             // 
             this.toTestChartPageButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTestChartPageButton.ForeColor = System.Drawing.Color.White;
-            this.toTestChartPageButton.Location = new System.Drawing.Point(6, 709);
+            this.toTestChartPageButton.Location = new System.Drawing.Point(12, 1363);
+            this.toTestChartPageButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.toTestChartPageButton.Name = "toTestChartPageButton";
-            this.toTestChartPageButton.Size = new System.Drawing.Size(90, 55);
+            this.toTestChartPageButton.Size = new System.Drawing.Size(180, 106);
             this.toTestChartPageButton.TabIndex = 252;
             this.toTestChartPageButton.Text = "Open Chart Plotter";
             this.toTestChartPageButton.UseVisualStyleBackColor = false;
@@ -2256,9 +2441,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentAcceleration.AutoSize = true;
             this.CurrentAcceleration.ForeColor = System.Drawing.Color.White;
-            this.CurrentAcceleration.Location = new System.Drawing.Point(3, 55);
+            this.CurrentAcceleration.Location = new System.Drawing.Point(15, 106);
+            this.CurrentAcceleration.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentAcceleration.Name = "CurrentAcceleration";
-            this.CurrentAcceleration.Size = new System.Drawing.Size(102, 13);
+            this.CurrentAcceleration.Size = new System.Drawing.Size(206, 25);
             this.CurrentAcceleration.TabIndex = 254;
             this.CurrentAcceleration.Text = "Current acceleration";
             // 
@@ -2266,9 +2452,10 @@ namespace Physics_Data_Debug
             // 
             this.label75.AutoSize = true;
             this.label75.ForeColor = System.Drawing.Color.White;
-            this.label75.Location = new System.Drawing.Point(3, 42);
+            this.label75.Location = new System.Drawing.Point(6, 81);
+            this.label75.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(99, 13);
+            this.label75.Size = new System.Drawing.Size(197, 25);
             this.label75.TabIndex = 253;
             this.label75.Text = "Acceleration (m/s2)";
             // 
@@ -2276,9 +2463,10 @@ namespace Physics_Data_Debug
             // 
             this.CurrentGForce.AutoSize = true;
             this.CurrentGForce.ForeColor = System.Drawing.Color.White;
-            this.CurrentGForce.Location = new System.Drawing.Point(3, 88);
+            this.CurrentGForce.Location = new System.Drawing.Point(15, 169);
+            this.CurrentGForce.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentGForce.Name = "CurrentGForce";
-            this.CurrentGForce.Size = new System.Drawing.Size(79, 13);
+            this.CurrentGForce.Size = new System.Drawing.Size(160, 25);
             this.CurrentGForce.TabIndex = 256;
             this.CurrentGForce.Text = "Current G-force";
             // 
@@ -2286,9 +2474,10 @@ namespace Physics_Data_Debug
             // 
             this.label74.AutoSize = true;
             this.label74.ForeColor = System.Drawing.Color.White;
-            this.label74.Location = new System.Drawing.Point(3, 75);
+            this.label74.Location = new System.Drawing.Point(6, 144);
+            this.label74.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(45, 13);
+            this.label74.Size = new System.Drawing.Size(90, 25);
             this.label74.TabIndex = 255;
             this.label74.Text = "G-Force";
             // 
@@ -2296,9 +2485,10 @@ namespace Physics_Data_Debug
             // 
             this.getProcessButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.getProcessButton.ForeColor = System.Drawing.Color.White;
-            this.getProcessButton.Location = new System.Drawing.Point(6, 338);
+            this.getProcessButton.Location = new System.Drawing.Point(12, 650);
+            this.getProcessButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.getProcessButton.Name = "getProcessButton";
-            this.getProcessButton.Size = new System.Drawing.Size(90, 45);
+            this.getProcessButton.Size = new System.Drawing.Size(180, 87);
             this.getProcessButton.TabIndex = 257;
             this.getProcessButton.Text = "Get Process";
             this.getProcessButton.UseVisualStyleBackColor = false;
@@ -2313,67 +2503,69 @@ namespace Physics_Data_Debug
             // 
             this.textBox1.AcceptsReturn = true;
             this.textBox1.AcceptsTab = true;
-            this.textBox1.Location = new System.Drawing.Point(815, 29);
+            this.textBox1.Location = new System.Drawing.Point(1630, 56);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(103, 46);
+            this.textBox1.Size = new System.Drawing.Size(202, 85);
             this.textBox1.TabIndex = 258;
             this.textBox1.Visible = false;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
             this.textBox2.AcceptsReturn = true;
             this.textBox2.AcceptsTab = true;
-            this.textBox2.Location = new System.Drawing.Point(924, 29);
+            this.textBox2.Location = new System.Drawing.Point(1848, 56);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(103, 46);
+            this.textBox2.Size = new System.Drawing.Size(202, 85);
             this.textBox2.TabIndex = 259;
             this.textBox2.Visible = false;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
             this.textBox3.AcceptsReturn = true;
             this.textBox3.AcceptsTab = true;
-            this.textBox3.Location = new System.Drawing.Point(1033, 29);
+            this.textBox3.Location = new System.Drawing.Point(2066, 56);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(105, 46);
+            this.textBox3.Size = new System.Drawing.Size(206, 85);
             this.textBox3.TabIndex = 260;
             this.textBox3.Visible = false;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
             this.textBox4.AcceptsReturn = true;
             this.textBox4.AcceptsTab = true;
-            this.textBox4.Location = new System.Drawing.Point(1144, 29);
+            this.textBox4.Location = new System.Drawing.Point(2288, 56);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(105, 46);
+            this.textBox4.Size = new System.Drawing.Size(206, 85);
             this.textBox4.TabIndex = 261;
             this.textBox4.Visible = false;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox5
             // 
             this.textBox5.AcceptsReturn = true;
             this.textBox5.AcceptsTab = true;
-            this.textBox5.Location = new System.Drawing.Point(1255, 29);
+            this.textBox5.Location = new System.Drawing.Point(2510, 56);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(105, 68);
+            this.textBox5.Size = new System.Drawing.Size(206, 127);
             this.textBox5.TabIndex = 262;
             this.textBox5.Visible = false;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(815, 13);
+            this.label16.Location = new System.Drawing.Point(1630, 25);
+            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 13);
+            this.label16.Size = new System.Drawing.Size(148, 25);
             this.label16.TabIndex = 263;
             this.label16.Text = "Transform xyz";
             this.label16.Visible = false;
@@ -2381,9 +2573,10 @@ namespace Physics_Data_Debug
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(921, 13);
+            this.label17.Location = new System.Drawing.Point(1842, 25);
+            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(86, 13);
+            this.label17.Size = new System.Drawing.Size(173, 25);
             this.label17.TabIndex = 264;
             this.label17.Text = "Rotation 1 xyz??";
             this.label17.Visible = false;
@@ -2391,9 +2584,10 @@ namespace Physics_Data_Debug
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(1030, 13);
+            this.label22.Location = new System.Drawing.Point(2060, 25);
+            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(86, 13);
+            this.label22.Size = new System.Drawing.Size(173, 25);
             this.label22.TabIndex = 265;
             this.label22.Text = "Rotation 2 xyz??";
             this.label22.Visible = false;
@@ -2401,9 +2595,10 @@ namespace Physics_Data_Debug
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1141, 13);
+            this.label23.Location = new System.Drawing.Point(2282, 25);
+            this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(86, 13);
+            this.label23.Size = new System.Drawing.Size(173, 25);
             this.label23.TabIndex = 266;
             this.label23.Text = "Rotation 3 xyz??";
             this.label23.Visible = false;
@@ -2411,9 +2606,10 @@ namespace Physics_Data_Debug
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(1252, 13);
+            this.label37.Location = new System.Drawing.Point(2504, 25);
+            this.label37.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(70, 13);
+            this.label37.Size = new System.Drawing.Size(141, 25);
             this.label37.TabIndex = 267;
             this.label37.Text = "Quaternions?";
             this.label37.Visible = false;
@@ -2422,10 +2618,11 @@ namespace Physics_Data_Debug
             // 
             this.textBox6.AcceptsReturn = true;
             this.textBox6.AcceptsTab = true;
-            this.textBox6.Location = new System.Drawing.Point(815, 87);
+            this.textBox6.Location = new System.Drawing.Point(1630, 167);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(103, 147);
+            this.textBox6.Size = new System.Drawing.Size(202, 279);
             this.textBox6.TabIndex = 268;
             this.textBox6.Visible = false;
             // 
@@ -2433,9 +2630,10 @@ namespace Physics_Data_Debug
             // 
             this.toGForceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toGForceButton.ForeColor = System.Drawing.Color.White;
-            this.toGForceButton.Location = new System.Drawing.Point(6, 770);
+            this.toGForceButton.Location = new System.Drawing.Point(12, 1481);
+            this.toGForceButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.toGForceButton.Name = "toGForceButton";
-            this.toGForceButton.Size = new System.Drawing.Size(90, 47);
+            this.toGForceButton.Size = new System.Drawing.Size(180, 90);
             this.toGForceButton.TabIndex = 273;
             this.toGForceButton.Text = "Open G-Force Page";
             this.toGForceButton.UseVisualStyleBackColor = false;
@@ -2448,13 +2646,13 @@ namespace Physics_Data_Debug
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(106, 813);
+            this.checkBox1.Location = new System.Drawing.Point(212, 1563);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(380, 17);
+            this.checkBox1.Size = new System.Drawing.Size(761, 29);
             this.checkBox1.TabIndex = 274;
             this.checkBox1.Text = "Text Box updates on. (Tick off to save resources if you\'re logging data etc.)";
             this.checkBox1.UseVisualStyleBackColor = false;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // buttonUpdates
             // 
@@ -2466,9 +2664,10 @@ namespace Physics_Data_Debug
             // 
             this.to4WheelsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.to4WheelsButton.ForeColor = System.Drawing.Color.White;
-            this.to4WheelsButton.Location = new System.Drawing.Point(6, 546);
+            this.to4WheelsButton.Location = new System.Drawing.Point(12, 1050);
+            this.to4WheelsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.to4WheelsButton.Name = "to4WheelsButton";
-            this.to4WheelsButton.Size = new System.Drawing.Size(90, 45);
+            this.to4WheelsButton.Size = new System.Drawing.Size(180, 87);
             this.to4WheelsButton.TabIndex = 275;
             this.to4WheelsButton.Text = "Open Four Wheels Page";
             this.to4WheelsButton.UseVisualStyleBackColor = false;
@@ -2477,40 +2676,44 @@ namespace Physics_Data_Debug
             // richTextBox4
             // 
             this.richTextBox4.BackColor = System.Drawing.Color.Black;
-            this.richTextBox4.Location = new System.Drawing.Point(459, 401);
+            this.richTextBox4.Location = new System.Drawing.Point(918, 771);
+            this.richTextBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.richTextBox4.MaxLength = 0;
             this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox4.Size = new System.Drawing.Size(696, 754);
             this.richTextBox4.TabIndex = 102;
             this.richTextBox4.Text = "";
             // 
             // richTextBox2
             // 
             this.richTextBox2.BackColor = System.Drawing.Color.Black;
-            this.richTextBox2.Location = new System.Drawing.Point(106, 401);
+            this.richTextBox2.Location = new System.Drawing.Point(212, 771);
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.richTextBox2.MaxLength = 0;
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox2.Size = new System.Drawing.Size(696, 754);
             this.richTextBox2.TabIndex = 64;
             this.richTextBox2.Text = "";
             // 
             // richTextBox3
             // 
             this.richTextBox3.BackColor = System.Drawing.Color.Black;
-            this.richTextBox3.Location = new System.Drawing.Point(459, 1);
+            this.richTextBox3.Location = new System.Drawing.Point(918, 2);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.richTextBox3.MaxLength = 0;
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox3.Size = new System.Drawing.Size(696, 754);
             this.richTextBox3.TabIndex = 83;
             this.richTextBox3.Text = "";
             // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.Location = new System.Drawing.Point(106, 1);
+            this.richTextBox1.Location = new System.Drawing.Point(212, 2);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.richTextBox1.MaxLength = 0;
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(350, 394);
+            this.richTextBox1.Size = new System.Drawing.Size(696, 754);
             this.richTextBox1.TabIndex = 45;
             this.richTextBox1.Text = "";
             // 
@@ -2518,41 +2721,54 @@ namespace Physics_Data_Debug
             // 
             this.CurrentYDrag.AutoSize = true;
             this.CurrentYDrag.ForeColor = System.Drawing.Color.White;
-            this.CurrentYDrag.Location = new System.Drawing.Point(3, 136);
+            this.CurrentYDrag.Location = new System.Drawing.Point(15, 241);
+            this.CurrentYDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentYDrag.Name = "CurrentYDrag";
-            this.CurrentYDrag.Size = new System.Drawing.Size(77, 13);
+            this.CurrentYDrag.Size = new System.Drawing.Size(156, 25);
             this.CurrentYDrag.TabIndex = 277;
             this.CurrentYDrag.Text = "Current Y Drag";
-            this.CurrentYDrag.Visible = false;
             // 
-            // CurrentDrag
+            // CurrentXDrag
             // 
-            this.CurrentDrag.AutoSize = true;
-            this.CurrentDrag.ForeColor = System.Drawing.Color.White;
-            this.CurrentDrag.Location = new System.Drawing.Point(3, 123);
-            this.CurrentDrag.Name = "CurrentDrag";
-            this.CurrentDrag.Size = new System.Drawing.Size(67, 13);
-            this.CurrentDrag.TabIndex = 276;
-            this.CurrentDrag.Text = "Current Drag";
+            this.CurrentXDrag.AutoSize = true;
+            this.CurrentXDrag.ForeColor = System.Drawing.Color.White;
+            this.CurrentXDrag.Location = new System.Drawing.Point(15, 216);
+            this.CurrentXDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.CurrentXDrag.Name = "CurrentXDrag";
+            this.CurrentXDrag.Size = new System.Drawing.Size(155, 25);
+            this.CurrentXDrag.TabIndex = 276;
+            this.CurrentXDrag.Text = "Current X Drag";
             // 
             // CurrentZDrag
             // 
             this.CurrentZDrag.AutoSize = true;
             this.CurrentZDrag.ForeColor = System.Drawing.Color.White;
-            this.CurrentZDrag.Location = new System.Drawing.Point(3, 149);
+            this.CurrentZDrag.Location = new System.Drawing.Point(15, 266);
+            this.CurrentZDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentZDrag.Name = "CurrentZDrag";
-            this.CurrentZDrag.Size = new System.Drawing.Size(77, 13);
+            this.CurrentZDrag.Size = new System.Drawing.Size(154, 25);
             this.CurrentZDrag.TabIndex = 278;
             this.CurrentZDrag.Text = "Current Z Drag";
-            this.CurrentZDrag.Visible = false;
+            // 
+            // CurrentTotalDrag
+            // 
+            this.CurrentTotalDrag.AutoSize = true;
+            this.CurrentTotalDrag.ForeColor = System.Drawing.Color.White;
+            this.CurrentTotalDrag.Location = new System.Drawing.Point(15, 291);
+            this.CurrentTotalDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.CurrentTotalDrag.Name = "CurrentTotalDrag";
+            this.CurrentTotalDrag.Size = new System.Drawing.Size(189, 25);
+            this.CurrentTotalDrag.TabIndex = 279;
+            this.CurrentTotalDrag.Text = "Current Total Drag";
             // 
             // FormLiveData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(814, 915);
+            this.ClientSize = new System.Drawing.Size(1628, 1760);
+            this.Controls.Add(this.CurrentTotalDrag);
             this.Controls.Add(this.CurrentFrontLift);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.CurrentEngineRPMAxle);
@@ -2567,7 +2783,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.CurrentRearLift);
             this.Controls.Add(this.CurrentZDrag);
             this.Controls.Add(this.CurrentYDrag);
-            this.Controls.Add(this.CurrentDrag);
+            this.Controls.Add(this.CurrentXDrag);
             this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.toGForceButton);
@@ -2763,6 +2979,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label12);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.richTextBox3);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormLiveData";
             this.Text = "Live Data";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstAllDataLoggerPage_Closing);
@@ -2983,8 +3200,9 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox1;
         public System.Windows.Forms.Label CurrentYDrag;
-        public System.Windows.Forms.Label CurrentDrag;
+        public System.Windows.Forms.Label CurrentXDrag;
         public System.Windows.Forms.Label CurrentZDrag;
+        public System.Windows.Forms.Label CurrentTotalDrag;
     }
 }
 

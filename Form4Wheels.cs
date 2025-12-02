@@ -83,7 +83,7 @@ namespace Physics_Data_Debug
         }
         private void LoadDefaultTextBoxTexts(ComboBox cBSelection, TextBox tBMin, double minValue, TextBox tBMax, double maxValue)
         {
-            if (LogSettings.DataNameStringsAbsoluteValues.Contains((string)cBSelection.SelectedItem) == true)
+            if (WreckfestEnums.DataNameStringsAbsoluteValues.Contains((string)cBSelection.SelectedItem) == true)
             {
                 minValue = 0;
             }
@@ -165,7 +165,7 @@ namespace Physics_Data_Debug
             float dMax = 0; float dMin = 0; double dMajorInterval = 0; int dDecimals = 0; bool dMinorEnabled = true; int dMinorIntervalFraction = 0;
             AxisSelectionList.Add(dMax); AxisSelectionList.Add(dMin); AxisSelectionList.Add(dMajorInterval); AxisSelectionList.Add(dDecimals); AxisSelectionList.Add(dMinorEnabled); AxisSelectionList.Add(dMinorIntervalFraction);
 
-            if (axisSelection == LogSettings.sRaceTime)
+            if (axisSelection == nameof(WF_TimeDataOffset.RaceTime))//LogSettings.sRaceTime)
             {
                 dMax = (float)double.NaN;
                 dMin = 0;
@@ -174,7 +174,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = false;
                 dMinorIntervalFraction = 60;
             }
-            else if (axisSelection == LogSettings.sNone)
+            else if (axisSelection == nameof(AllValueNames.None))//LogSettings.sNone)
             {
                 dMax = 2;
                 dMin = 0;
@@ -183,7 +183,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = false;
                 dMinorIntervalFraction = 1;
             }
-            else if (axisSelection == LogSettings.sTireTravelSpeed)
+            else if (axisSelection == nameof(AllValueNames.TravelSpeed))//LogSettings.sTireTravelSpeed)
             {
                 dMax = 400;
                 if (isAbsolute == true)
@@ -199,7 +199,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sAngularVelocity)
+            else if (axisSelection == nameof(AllValueNames.AngularVelocity))//LogSettings.sAngularVelocity)
             {
                 dMax = 400;
                 if (isAbsolute == true)
@@ -215,7 +215,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sVerticalLoad)
+            else if (axisSelection == nameof(AllValueNames.VerticalLoad))//LogSettings.sVerticalLoad)
             {
                 dMax = 10000;
                 dMin = 0;
@@ -224,7 +224,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sVerticalDeflection)
+            else if (axisSelection == nameof(AllValueNames.VerticalDeflection))//LogSettings.sVerticalDeflection)
             {
                 dMax = (float)0.15;
                 dMin = 0;
@@ -233,7 +233,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sLoadedRadius)
+            else if (axisSelection == nameof(AllValueNames.LoadedRadius))//LogSettings.sLoadedRadius)
             {
                 dMax = (float)0.5;
                 dMin = 0;
@@ -242,7 +242,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sEffectiveRadius)
+            else if (axisSelection == nameof(AllValueNames.LoadedRadius))//LogSettings.sEffectiveRadius)
             {
                 dMax = (float)0.5;
                 dMin = 0;
@@ -251,7 +251,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sContactLength)
+            else if (axisSelection == nameof(AllValueNames.ContactLength))//LogSettings.sContactLength)
             {
                 dMax = (float)0.5;
                 dMin = 0;
@@ -260,7 +260,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sBrakeTorque)
+            else if (axisSelection == nameof(AllValueNames.CurrentContactBrakeTorque))//LogSettings.sBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
@@ -269,7 +269,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sMaxBrakeTorque)
+            else if (axisSelection == nameof(AllValueNames.CurrentContactBrakeTorqueMax))//LogSettings.sMaxBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
@@ -278,7 +278,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sSteerAngle)
+            else if (axisSelection == nameof(AllValueNames.SteerAngleDeg))//LogSettings.sSteerAngle)
             {
                 dMax = 45;
                 if (isAbsolute == true)
@@ -294,7 +294,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sCamberAngle)
+            else if (axisSelection == nameof(AllValueNames.CamberAngleDeg))//LogSettings.sCamberAngle)
             {
                 dMax = 10;
                 if (isAbsolute == true)
@@ -310,7 +310,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sLateralLoad)
+            else if (axisSelection == nameof(AllValueNames.LateralLoad))//LogSettings.sLateralLoad)
             {
                 dMax = 10000;
                 if (isAbsolute == true)
@@ -326,7 +326,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sSlipAngle)
+            else if (axisSelection == nameof(AllValueNames.SlipAngleDeg))//LogSettings.sSlipAngle)
             {
                 dMax = 45;
                 if (isAbsolute == true)
@@ -342,7 +342,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sLateralFriction)
+            else if (axisSelection == nameof(AllValueNames.LateralFriction))//LogSettings.sLateralFriction)
             {
                 dMax = 2;
                 if (isAbsolute == true)
@@ -358,7 +358,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sLateralSlipSpeed)
+            else if (axisSelection == nameof(AllValueNames.LateralSlipSpeed))//LogSettings.sLateralSlipSpeed)
             {
                 dMax = 20;
                 if (isAbsolute == true)
@@ -374,7 +374,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sLongitudinalLoad)
+            else if (axisSelection == nameof(AllValueNames.LongitudinalLoad))//LogSettings.sLongitudinalLoad)
             {
                 dMax = 10000;
                 if (isAbsolute == true)
@@ -390,7 +390,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sSlipRatio)
+            else if (axisSelection == nameof(AllValueNames.SlipRatio))//LogSettings.sSlipRatio)
             {
                 dMax = 1;
                 if (isAbsolute == true)
@@ -406,7 +406,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sLongitudinalFriction)
+            else if (axisSelection == nameof(AllValueNames.LongitudinalFriction))//LogSettings.sLongitudinalFriction)
             {
                 dMax = 2;
                 if (isAbsolute == true)
@@ -422,7 +422,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
+            else if (axisSelection == nameof(AllValueNames.LongitudinalSlipSpeed))//LogSettings.sLongitudinalSlipSpeed)
             {
                 dMax = 20;
                 if (isAbsolute == true)
@@ -438,7 +438,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sTreadTemperature)
+            else if (axisSelection == nameof(AllValueNames.TreadTemperature))//LogSettings.sTreadTemperature)
             {
                 dMax = 380;
                 dMin = -20;
@@ -447,7 +447,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sInnerTemperature)
+            else if (axisSelection == nameof(AllValueNames.InnerTemperature))//LogSettings.sInnerTemperature)
             {
                 dMax = 380;
                 dMin = -20;
@@ -456,7 +456,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sTotalFriction)
+            else if (axisSelection == nameof(AllValueNames.TotalFriction))//LogSettings.sTotalFriction)
             {
                 dMax = 2;
                 dMin = -dMax;
@@ -465,7 +465,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sTotalFrictionAngle)
+            else if (axisSelection == nameof(AllValueNames.TotalFrictionAngleDeg))//LogSettings.sTotalFrictionAngle)
             {
                 dMax = 360;
                 dMin = 0;
@@ -474,7 +474,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sSuspensionLength)
+            else if (axisSelection == nameof(AllValueNames.SuspensionLength))//LogSettings.sSuspensionLength)
             {
                 dMax = 1;
                 dMin = 0;
@@ -483,7 +483,7 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
-            else if (axisSelection == LogSettings.sSuspensionVelocity)
+            else if (axisSelection == nameof(AllValueNames.SuspensionVelocity))//LogSettings.sSuspensionVelocity)
             {
                 dMax = 10;
                 if (isAbsolute == true)
@@ -541,137 +541,137 @@ namespace Physics_Data_Debug
             AxisSelectionList.Add(dMax); AxisSelectionList.Add(dMin);// AxisSelectionList.Add(dMajorInterval); AxisSelectionList.Add(dDecimals); AxisSelectionList.Add(dMinorEnabled); AxisSelectionList.Add(dMinorIntervalFraction);
 
 
-            if (axisSelection == LogSettings.sRaceTime)
+            if (axisSelection == nameof(WF_TimeDataOffset.RaceTime))//LogSettings.sRaceTime)
             {
                 dMax = (float)double.NaN;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sNone)
+            else if (axisSelection == nameof(AllValueNames.None))//LogSettings.sNone)
             {
                 dMax = 2;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sTireTravelSpeed)
+            else if (axisSelection == nameof(AllValueNames.TravelSpeed))//LogSettings.sTireTravelSpeed)
             {
                 dMax = 400;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sAngularVelocity)
+            else if (axisSelection == nameof(AllValueNames.AngularVelocity))//LogSettings.sAngularVelocity)
             {
                 dMax = 400;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sVerticalLoad)
+            else if (axisSelection == nameof(AllValueNames.VerticalLoad))//LogSettings.sVerticalLoad)
             {
                 dMax = 10000;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sVerticalDeflection)
+            else if (axisSelection == nameof(AllValueNames.VerticalDeflection))//LogSettings.sVerticalDeflection)
             {
                 dMax = (float)0.15;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sLoadedRadius)
+            else if (axisSelection == nameof(AllValueNames.LoadedRadius))//LogSettings.sLoadedRadius)
             {
                 dMax = (float)0.5;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sEffectiveRadius)
+            else if (axisSelection == nameof(AllValueNames.EffectiveRadius))//LogSettings.sEffectiveRadius)
             {
                 dMax = (float)0.5;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sContactLength)
+            else if (axisSelection == nameof(AllValueNames.ContactLength))//LogSettings.sContactLength)
             {
                 dMax = (float)0.5;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sBrakeTorque)
+            else if (axisSelection == nameof(AllValueNames.CurrentContactBrakeTorque))//LogSettings.sBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sMaxBrakeTorque)
+            else if (axisSelection == nameof(AllValueNames.CurrentContactBrakeTorqueMax))//LogSettings.sMaxBrakeTorque)
             {
                 dMax = 5000;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sSteerAngle)
+            else if (axisSelection == nameof(AllValueNames.SteerAngleDeg))//LogSettings.sSteerAngle)
             {
                 dMax = 45;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sCamberAngle)
+            else if (axisSelection == nameof(AllValueNames.CamberAngleDeg))//LogSettings.sCamberAngle)
             {
                 dMax = 10;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sLateralLoad)
+            else if (axisSelection == nameof(AllValueNames.LateralLoad))//LogSettings.sLateralLoad)
             {
                 dMax = 10000;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sSlipAngle)
+            else if (axisSelection == nameof(AllValueNames.SlipAngleDeg))//LogSettings.sSlipAngle)
             {
                 dMax = 45;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sLateralFriction)
+            else if (axisSelection == nameof(AllValueNames.LateralFriction))//LogSettings.sLateralFriction)
             {
                 dMax = 2;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sLateralSlipSpeed)
+            else if (axisSelection == nameof(AllValueNames.LateralSlipSpeed))//LogSettings.sLateralSlipSpeed)
             {
                 dMax = 20;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sLongitudinalLoad)
+            else if (axisSelection == nameof(AllValueNames.LongitudinalLoad))//LogSettings.sLongitudinalLoad)
             {
                 dMax = 10000;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sSlipRatio)
+            else if (axisSelection == nameof(AllValueNames.SlipRatio))//LogSettings.sSlipRatio)
             {
                 dMax = 1;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sLongitudinalFriction)
+            else if (axisSelection == nameof(AllValueNames.LongitudinalFriction))//LogSettings.sLongitudinalFriction)
             {
                 dMax = 2;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sLongitudinalSlipSpeed)
+            else if (axisSelection == nameof(AllValueNames.LongitudinalSlipSpeed))//LogSettings.sLongitudinalSlipSpeed)
             {
                 dMax = 20;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sTreadTemperature)
+            else if (axisSelection == nameof(AllValueNames.TreadTemperature))//LogSettings.sTreadTemperature)
             {
                 dMax = 380;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sInnerTemperature)
+            else if (axisSelection == nameof(AllValueNames.InnerTemperature))//LogSettings.sInnerTemperature)
             {
                 dMax = 380;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sTotalFriction)
+            else if (axisSelection == nameof(AllValueNames.TotalFriction))//LogSettings.sTotalFriction)
             {
                 dMax = 2;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sTotalFrictionAngle)
+            else if (axisSelection == nameof(AllValueNames.TotalFrictionAngleDeg))//LogSettings.sTotalFrictionAngle)
             {
                 dMax = 360;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sSuspensionLength)
+            else if (axisSelection == nameof(AllValueNames.SuspensionLength))//LogSettings.sSuspensionLength)
             {
                 dMax = 1;
                 dMin = 0;
             }
-            else if (axisSelection == LogSettings.sSuspensionVelocity)
+            else if (axisSelection == nameof(AllValueNames.SuspensionVelocity))//LogSettings.sSuspensionVelocity)
             {
                 dMax = 10;
                 dMin = 0;
@@ -1356,7 +1356,7 @@ namespace Physics_Data_Debug
         public string[] LimitersLabelText(ComboBox cb, string limiter)
         {
             string[] arrayString = new string[2];
-            if (LogSettings.DataNameStringsAbsoluteValues.Contains((string)cb.SelectedItem) == true)
+            if (WreckfestEnums.DataNameStringsAbsoluteValues.Contains((string)cb.SelectedItem) == true)
             {
                 arrayString[0] = "/" + limiter + "/";
                 arrayString[1] = "";
@@ -1373,7 +1373,7 @@ namespace Physics_Data_Debug
             double[] limiterArray = new double[2];
             bool absoluteValueCheck = AbsoluteValueCheck(cBLimiter, tBMin, defaultMin, tBMax, defaultMax);
             //Make it so minimum if it's absolute it's 0 at the minimum.
-            if (LogSettings.DataNameStringsAbsoluteValues.Contains((string)cBLimiter.SelectedItem) == true)
+            if (WreckfestEnums.DataNameStringsAbsoluteValues.Contains((string)cBLimiter.SelectedItem) == true)
             {
                 defaultMin = 0;
             }
@@ -1391,7 +1391,7 @@ namespace Physics_Data_Debug
             bool enableCustomLimiter = EnableCustomLimiter(cb, tBMin, defaultMin, tBMax, defaultMax);
             if (enableCustomLimiter == true)
             {
-                return LogSettings.DataNameStringsAbsoluteValues.Contains((string)cb.SelectedItem);
+                return WreckfestEnums.DataNameStringsAbsoluteValues.Contains((string)cb.SelectedItem);
             }
             else
             {
@@ -1458,21 +1458,21 @@ namespace Physics_Data_Debug
             SetComboBoxAxisLimiterTexts();
             GetSetComboBoxAxisLimiter();
             //UpdateLimiters();
-            if (LiveData.elapsedTime > 0 && PauseUpdate == false)
+            if (LiveData.ElapsedTime > 0 && PauseUpdate == false)
             {
                 xyzAxisSelection = new List<string> { _4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection };
-                List<float> FL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.FL_LiveDataList);
-                List<float> FR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.FR_LiveDataList);
-                List<float> RL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.RL_LiveDataList);
-                List<float> RR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, LiveData.RR_LiveDataList);
+                List<float> FL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FL);//, LiveData.FL_LiveDataList);
+                List<float> FR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FR);//,, LiveData.FR_LiveDataList);
+                List<float> RL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RL);//,, LiveData.RL_LiveDataList);
+                List<float> RR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RR);//,, LiveData.RR_LiveDataList);
 
                 xyzAxisLimiterSelection = new List<string> { X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection };
-                List<float> FL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.FL_LiveDataList);
-                List<float> FR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.FR_LiveDataList);
-                List<float> RL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.RL_LiveDataList);
-                List<float> RR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, LiveData.RR_LiveDataList);
+                List<float> FL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FL);//,, LiveData.FL_LiveDataList);
+                List<float> FR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FR);//,, LiveData.FR_LiveDataList);
+                List<float> RL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RL);//,, LiveData.RL_LiveDataList);
+                List<float> RR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RR);//,, LiveData.RR_LiveDataList);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.FL_SeriesString, FL_xyzValues, FL_limiter, LiveData.FL_VerticalLoad,
+                _4Wheels.ListSeries(chart1, _4Wheels.FL_SeriesString, FL_xyzValues, FL_limiter, LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.FL_X1ValuesChart, _4Wheels.FL_Y1ValuesChart, _4Wheels.FL_Z1ValuesChart,
                     _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
                     _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
@@ -1485,7 +1485,7 @@ namespace Physics_Data_Debug
                     _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
                     _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.FR_SeriesString, FR_xyzValues, FR_limiter, LiveData.FR_VerticalLoad,
+                _4Wheels.ListSeries(chart1, _4Wheels.FR_SeriesString, FR_xyzValues, FR_limiter, LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.FR_X1ValuesChart, _4Wheels.FR_Y1ValuesChart, _4Wheels.FR_Z1ValuesChart,
                     _4Wheels.FR_X1ValuesChartColor1, _4Wheels.FR_Y1ValuesChartColor1,
                     _4Wheels.FR_X1ValuesChartColor2, _4Wheels.FR_Y1ValuesChartColor2,
@@ -1498,7 +1498,7 @@ namespace Physics_Data_Debug
                     _4Wheels.FR_X1ValuesChartColor9, _4Wheels.FR_Y1ValuesChartColor9,
                     _4Wheels.FR_X1ValuesChartColor10, _4Wheels.FR_Y1ValuesChartColor10);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.RL_SeriesString, RL_xyzValues, RL_limiter, LiveData.RL_VerticalLoad,
+                _4Wheels.ListSeries(chart1, _4Wheels.RL_SeriesString, RL_xyzValues, RL_limiter, LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.RL_X1ValuesChart, _4Wheels.RL_Y1ValuesChart, _4Wheels.RL_Z1ValuesChart,
                     _4Wheels.RL_X1ValuesChartColor1, _4Wheels.RL_Y1ValuesChartColor1,
                     _4Wheels.RL_X1ValuesChartColor2, _4Wheels.RL_Y1ValuesChartColor2,
@@ -1511,7 +1511,7 @@ namespace Physics_Data_Debug
                     _4Wheels.RL_X1ValuesChartColor9, _4Wheels.RL_Y1ValuesChartColor9,
                     _4Wheels.RL_X1ValuesChartColor10, _4Wheels.RL_Y1ValuesChartColor10);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.RR_SeriesString, RR_xyzValues, RR_limiter, LiveData.RR_VerticalLoad,
+                _4Wheels.ListSeries(chart1, _4Wheels.RR_SeriesString, RR_xyzValues, RR_limiter, LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.RR_X1ValuesChart, _4Wheels.RR_Y1ValuesChart, _4Wheels.RR_Z1ValuesChart,
                     _4Wheels.RR_X1ValuesChartColor1, _4Wheels.RR_Y1ValuesChartColor1,
                     _4Wheels.RR_X1ValuesChartColor2, _4Wheels.RR_Y1ValuesChartColor2,

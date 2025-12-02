@@ -56,13 +56,15 @@ namespace Physics_Data_Debug
             this.textBox_W2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.DelimiterTextBox = new System.Windows.Forms.TextBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // closeLogSettings
             // 
-            this.closeLogSettings.Location = new System.Drawing.Point(13, 13);
+            this.closeLogSettings.Location = new System.Drawing.Point(26, 25);
+            this.closeLogSettings.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.closeLogSettings.Name = "closeLogSettings";
-            this.closeLogSettings.Size = new System.Drawing.Size(75, 43);
+            this.closeLogSettings.Size = new System.Drawing.Size(150, 83);
             this.closeLogSettings.TabIndex = 0;
             this.closeLogSettings.Text = "Close Log Settings";
             this.closeLogSettings.UseVisualStyleBackColor = true;
@@ -71,9 +73,10 @@ namespace Physics_Data_Debug
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(123, 18);
+            this.label1.Location = new System.Drawing.Point(246, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
+            this.label1.Size = new System.Drawing.Size(238, 25);
             this.label1.TabIndex = 17;
             this.label1.Text = "Tire Logging Selections";
             // 
@@ -82,9 +85,10 @@ namespace Physics_Data_Debug
             this.selectAll.AutoSize = true;
             this.selectAll.Checked = true;
             this.selectAll.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.selectAll.Location = new System.Drawing.Point(126, 39);
+            this.selectAll.Location = new System.Drawing.Point(252, 75);
+            this.selectAll.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.selectAll.Name = "selectAll";
-            this.selectAll.Size = new System.Drawing.Size(70, 17);
+            this.selectAll.Size = new System.Drawing.Size(134, 29);
             this.selectAll.TabIndex = 18;
             this.selectAll.Text = "Select All";
             this.selectAll.UseVisualStyleBackColor = true;
@@ -124,33 +128,39 @@ namespace Physics_Data_Debug
             "Longitudinal G-Force",
             "Vertical G-Force",
             "G-Force"});
-            this.checkedListBoxLogging.Location = new System.Drawing.Point(126, 62);
+            this.checkedListBoxLogging.Location = new System.Drawing.Point(252, 119);
+            this.checkedListBoxLogging.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkedListBoxLogging.Name = "checkedListBoxLogging";
-            this.checkedListBoxLogging.Size = new System.Drawing.Size(203, 349);
+            this.checkedListBoxLogging.Size = new System.Drawing.Size(402, 648);
             this.checkedListBoxLogging.TabIndex = 19;
             this.checkedListBoxLogging.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxLogging_SelectedIndexChanged);
             // 
             // SelectedListBox
             // 
             this.SelectedListBox.FormattingEnabled = true;
-            this.SelectedListBox.Location = new System.Drawing.Point(126, 420);
+            this.SelectedListBox.ItemHeight = 25;
+            this.SelectedListBox.Location = new System.Drawing.Point(252, 808);
+            this.SelectedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.SelectedListBox.Name = "SelectedListBox";
-            this.SelectedListBox.Size = new System.Drawing.Size(115, 56);
+            this.SelectedListBox.Size = new System.Drawing.Size(226, 104);
             this.SelectedListBox.TabIndex = 20;
             // 
             // SelectedIndeciesListBox
             // 
             this.SelectedIndeciesListBox.FormattingEnabled = true;
-            this.SelectedIndeciesListBox.Location = new System.Drawing.Point(247, 420);
+            this.SelectedIndeciesListBox.ItemHeight = 25;
+            this.SelectedIndeciesListBox.Location = new System.Drawing.Point(494, 808);
+            this.SelectedIndeciesListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.SelectedIndeciesListBox.Name = "SelectedIndeciesListBox";
-            this.SelectedIndeciesListBox.Size = new System.Drawing.Size(82, 56);
+            this.SelectedIndeciesListBox.Size = new System.Drawing.Size(160, 104);
             this.SelectedIndeciesListBox.TabIndex = 21;
             // 
             // FLApplyLogSettings
             // 
-            this.FLApplyLogSettings.Location = new System.Drawing.Point(13, 72);
+            this.FLApplyLogSettings.Location = new System.Drawing.Point(26, 138);
+            this.FLApplyLogSettings.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.FLApplyLogSettings.Name = "FLApplyLogSettings";
-            this.FLApplyLogSettings.Size = new System.Drawing.Size(75, 39);
+            this.FLApplyLogSettings.Size = new System.Drawing.Size(150, 75);
             this.FLApplyLogSettings.TabIndex = 22;
             this.FLApplyLogSettings.Text = "Apply";
             this.FLApplyLogSettings.UseVisualStyleBackColor = true;
@@ -159,9 +169,10 @@ namespace Physics_Data_Debug
             // checkBoxFiltersOn
             // 
             this.checkBoxFiltersOn.AutoSize = true;
-            this.checkBoxFiltersOn.Location = new System.Drawing.Point(378, 39);
+            this.checkBoxFiltersOn.Location = new System.Drawing.Point(756, 75);
+            this.checkBoxFiltersOn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBoxFiltersOn.Name = "checkBoxFiltersOn";
-            this.checkBoxFiltersOn.Size = new System.Drawing.Size(68, 17);
+            this.checkBoxFiltersOn.Size = new System.Drawing.Size(133, 29);
             this.checkBoxFiltersOn.TabIndex = 23;
             this.checkBoxFiltersOn.Text = "Filters on";
             this.checkBoxFiltersOn.UseVisualStyleBackColor = true;
@@ -169,147 +180,164 @@ namespace Physics_Data_Debug
             // 
             // textBox_Z1
             // 
-            this.textBox_Z1.Location = new System.Drawing.Point(703, 65);
+            this.textBox_Z1.Location = new System.Drawing.Point(1406, 125);
+            this.textBox_Z1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_Z1.Name = "textBox_Z1";
-            this.textBox_Z1.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Z1.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z1.TabIndex = 25;
             this.textBox_Z1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Z1_KeyPress);
             // 
             // textBox_Z2
             // 
-            this.textBox_Z2.Location = new System.Drawing.Point(703, 91);
+            this.textBox_Z2.Location = new System.Drawing.Point(1406, 175);
+            this.textBox_Z2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_Z2.Name = "textBox_Z2";
-            this.textBox_Z2.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Z2.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z2.TabIndex = 26;
             this.textBox_Z2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Z2_KeyPress);
             // 
             // textBox_Z3
             // 
-            this.textBox_Z3.Location = new System.Drawing.Point(703, 117);
+            this.textBox_Z3.Location = new System.Drawing.Point(1406, 225);
+            this.textBox_Z3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_Z3.Name = "textBox_Z3";
-            this.textBox_Z3.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Z3.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z3.TabIndex = 27;
             this.textBox_Z3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Z3_KeyPress);
             // 
             // textBox_Z4
             // 
-            this.textBox_Z4.Location = new System.Drawing.Point(703, 143);
+            this.textBox_Z4.Location = new System.Drawing.Point(1406, 275);
+            this.textBox_Z4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_Z4.Name = "textBox_Z4";
-            this.textBox_Z4.Size = new System.Drawing.Size(100, 20);
+            this.textBox_Z4.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z4.TabIndex = 28;
             this.textBox_Z4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Z4_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(378, 68);
+            this.label2.Location = new System.Drawing.Point(756, 131);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 13);
+            this.label2.Size = new System.Drawing.Size(282, 25);
             this.label2.TabIndex = 29;
             this.label2.Text = "Slip Ratio (0-1) include only:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(378, 94);
+            this.label3.Location = new System.Drawing.Point(756, 181);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 13);
+            this.label3.Size = new System.Drawing.Size(264, 25);
             this.label3.TabIndex = 30;
             this.label3.Text = "Slip Angle (°) include only:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(378, 120);
+            this.label4.Location = new System.Drawing.Point(756, 231);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 13);
+            this.label4.Size = new System.Drawing.Size(352, 25);
             this.label4.TabIndex = 31;
             this.label4.Text = "Tire Travel Speed (m/s) exclude all:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(378, 146);
+            this.label5.Location = new System.Drawing.Point(756, 281);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 13);
+            this.label5.Size = new System.Drawing.Size(300, 25);
             this.label5.TabIndex = 32;
             this.label5.Text = "Vertical Load (N) include only:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(657, 68);
+            this.label6.Location = new System.Drawing.Point(1314, 131);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.Size = new System.Drawing.Size(78, 25);
             this.label6.TabIndex = 33;
             this.label6.Text = "up to ±";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(564, 120);
+            this.label7.Location = new System.Drawing.Point(1128, 231);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 13);
+            this.label7.Size = new System.Drawing.Size(264, 25);
             this.label7.TabIndex = 34;
             this.label7.Text = "0                             up to ±";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(657, 94);
+            this.label8.Location = new System.Drawing.Point(1314, 181);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 13);
+            this.label8.Size = new System.Drawing.Size(78, 25);
             this.label8.TabIndex = 35;
             this.label8.Text = "up to ±";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(657, 146);
+            this.label9.Location = new System.Drawing.Point(1314, 281);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.Size = new System.Drawing.Size(78, 25);
             this.label9.TabIndex = 36;
             this.label9.Text = "up to ±";
             // 
             // textBox_W4
             // 
-            this.textBox_W4.Location = new System.Drawing.Point(565, 143);
+            this.textBox_W4.Location = new System.Drawing.Point(1130, 275);
+            this.textBox_W4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_W4.Name = "textBox_W4";
-            this.textBox_W4.Size = new System.Drawing.Size(81, 20);
+            this.textBox_W4.Size = new System.Drawing.Size(158, 31);
             this.textBox_W4.TabIndex = 37;
             this.textBox_W4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_W4_Keypress);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(522, 94);
+            this.label11.Location = new System.Drawing.Point(1044, 181);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 13);
+            this.label11.Size = new System.Drawing.Size(72, 25);
             this.label11.TabIndex = 39;
             this.label11.Text = "both ±";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(522, 68);
+            this.label12.Location = new System.Drawing.Point(1044, 131);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.Size = new System.Drawing.Size(72, 25);
             this.label12.TabIndex = 40;
             this.label12.Text = "both ±";
             // 
             // textBox_W1
             // 
-            this.textBox_W1.Location = new System.Drawing.Point(565, 65);
+            this.textBox_W1.Location = new System.Drawing.Point(1130, 125);
+            this.textBox_W1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_W1.Name = "textBox_W1";
-            this.textBox_W1.Size = new System.Drawing.Size(81, 20);
+            this.textBox_W1.Size = new System.Drawing.Size(158, 31);
             this.textBox_W1.TabIndex = 41;
             this.textBox_W1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_W1_KeyPress);
             // 
             // textBox_W2
             // 
-            this.textBox_W2.Location = new System.Drawing.Point(565, 91);
+            this.textBox_W2.Location = new System.Drawing.Point(1130, 175);
+            this.textBox_W2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox_W2.Name = "textBox_W2";
-            this.textBox_W2.Size = new System.Drawing.Size(81, 20);
+            this.textBox_W2.Size = new System.Drawing.Size(158, 31);
             this.textBox_W2.TabIndex = 42;
             this.textBox_W2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_W2_KeyPress);
             // 
@@ -317,26 +345,38 @@ namespace Physics_Data_Debug
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label10.Location = new System.Drawing.Point(9, 113);
+            this.label10.Location = new System.Drawing.Point(18, 217);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.Size = new System.Drawing.Size(96, 25);
             this.label10.TabIndex = 260;
             this.label10.Text = "Delimiter";
             // 
             // DelimiterTextBox
             // 
             this.DelimiterTextBox.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DelimiterTextBox.Location = new System.Drawing.Point(12, 129);
+            this.DelimiterTextBox.Location = new System.Drawing.Point(24, 248);
+            this.DelimiterTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.DelimiterTextBox.Name = "DelimiterTextBox";
-            this.DelimiterTextBox.Size = new System.Drawing.Size(36, 21);
+            this.DelimiterTextBox.Size = new System.Drawing.Size(68, 35);
             this.DelimiterTextBox.TabIndex = 259;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(756, 322);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(402, 648);
+            this.checkedListBox1.TabIndex = 261;
             // 
             // FormLogSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(941, 512);
+            this.ClientSize = new System.Drawing.Size(1882, 985);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.DelimiterTextBox);
             this.Controls.Add(this.textBox_W2);
@@ -364,6 +404,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.selectAll);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.closeLogSettings);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormLogSettings";
             this.Text = "Log Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_Closing);
@@ -403,5 +444,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TextBox textBox_W2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox DelimiterTextBox;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }

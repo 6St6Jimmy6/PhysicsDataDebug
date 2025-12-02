@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Windows.Forms;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Physics_Data_Debug
 {
@@ -24,6 +25,13 @@ namespace Physics_Data_Debug
             DelimiterTextBox.MaxLength = 1;
         }
         #region Methods
+        public void CheckedListBoxAdd(CheckedListBox cLB)
+        {
+            foreach (var arawData in LiveData.FL_RawData)
+            {
+                cLB.Items.Add(arawData.ToString());
+            }
+        }
         private void DelimiterSet()
         {
             char[] charArray = DelimiterTextBox.Text.ToCharArray();
@@ -415,6 +423,8 @@ namespace Physics_Data_Debug
             ReadTextBoxes();
 
             TextBoxesToString();
+
+            CheckedListBoxAdd(checkedListBox1);
         }
         private void CheckKeyIsNumberOrDecimalPoint(KeyPressEventArgs e)
         {

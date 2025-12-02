@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Threading;
-using System.Collections.Generic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Physics_Data_Debug
 {
@@ -118,7 +119,7 @@ namespace Physics_Data_Debug
         private double racetime = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (LiveData.elapsedTime > 0 && updatedEnabled == true)
+            if (LiveData.ElapsedTime > 0 && updatedEnabled == true)
             {
                 double raceTime = RaceTimeToSeconds(LiveData.RaceTime);
                 racetime = raceTime;
@@ -129,14 +130,14 @@ namespace Physics_Data_Debug
                     {
                         XValues.RemoveAt(0);
                     }
-                    TemperatureSeries(chartFL, "Tread °C", LiveData.FL_TreadTemperature, FL_TreadYValues);
-                    TemperatureSeries(chartFL, "Inner °C", LiveData.FL_InnerTemperature, FL_InnerYValues);
-                    TemperatureSeries(chartFR, "Tread °C", LiveData.FR_TreadTemperature, FR_TreadYValues);
-                    TemperatureSeries(chartFR, "Inner °C", LiveData.FR_InnerTemperature, FR_InnerYValues);
-                    TemperatureSeries(chartRL, "Tread °C", LiveData.RL_TreadTemperature, RL_TreadYValues);
-                    TemperatureSeries(chartRL, "Inner °C", LiveData.RL_InnerTemperature, RL_InnerYValues);
-                    TemperatureSeries(chartRR, "Tread °C", LiveData.RR_TreadTemperature, RR_TreadYValues);
-                    TemperatureSeries(chartRR, "Inner °C", LiveData.RR_InnerTemperature, RR_InnerYValues);
+                    TemperatureSeries(chartFL, "Tread °C", LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TreadTemperature), FL_TreadYValues);
+                    TemperatureSeries(chartFL, "Inner °C", LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.InnerTemperature), FL_InnerYValues);
+                    TemperatureSeries(chartFR, "Tread °C", LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TreadTemperature), FR_TreadYValues);
+                    TemperatureSeries(chartFR, "Inner °C", LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.InnerTemperature), FR_InnerYValues);
+                    TemperatureSeries(chartRL, "Tread °C", LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TreadTemperature), RL_TreadYValues);
+                    TemperatureSeries(chartRL, "Inner °C", LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.InnerTemperature), RL_InnerYValues);
+                    TemperatureSeries(chartRR, "Tread °C", LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TreadTemperature), RR_TreadYValues);
+                    TemperatureSeries(chartRR, "Inner °C", LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.InnerTemperature), RR_InnerYValues);
                 }
             }
         }
