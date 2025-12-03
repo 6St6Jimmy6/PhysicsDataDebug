@@ -12,7 +12,7 @@ namespace Physics_Data_Debug
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public float Value { get; set; }
+        public dynamic Value { get; set; }
     }
     public class RawTireData
     {
@@ -121,20 +121,20 @@ namespace Physics_Data_Debug
         #region Data
         public static int None { get; set; } = 1;
         public static int RaceTime { get; set; }
-        public static List<float> Body_RotationData { get; set; }
-        public static List<float> Body_AccelData { get; set; }
-        public static List<float> Body_AeroData { get; set; }
-        public static List<float> Powertrain_EngineData { get; set; }
-        public static List<float> Powertrain_DifferentialPrimaryAxleData { get; set; }
-        public static List<float> Powertrain_DifferentialSecondaryAxleData { get; set; }
-        public static List<float> FL_TireData { get; set; }
-        public static List<float> FL_SuspensionData { get; set; }
-        public static List<float> FR_TireData { get; set; }
-        public static List<float> FR_SuspensionData { get; set; }
-        public static List<float> RL_TireData { get; set; }
-        public static List<float> RL_SuspensionData { get; set; }
-        public static List<float> RR_TireData { get; set; }
-        public static List<float> RR_SuspensionData { get; set; }
+        public static List<object> Body_RotationData { get; set; }
+        public static List<object> Body_AccelData { get; set; }
+        public static List<object> Body_AeroData { get; set; }
+        public static List<object> Powertrain_EngineData { get; set; }
+        public static List<object> Powertrain_DifferentialPrimaryAxleData { get; set; }
+        public static List<object> Powertrain_DifferentialSecondaryAxleData { get; set; }
+        public static List<object> FL_TireData { get; set; }
+        public static List<object> FL_SuspensionData { get; set; }
+        public static List<object> FR_TireData { get; set; }
+        public static List<object> FR_SuspensionData { get; set; }
+        public static List<object> RL_TireData { get; set; }
+        public static List<object> RL_SuspensionData { get; set; }
+        public static List<object> RR_TireData { get; set; }
+        public static List<object> RR_SuspensionData { get; set; }
         #endregion
 
         public static Process Process;
@@ -207,15 +207,17 @@ namespace Physics_Data_Debug
             }*/
         }
         public static List<List<DataItem>> FullDataList { get; set; } = new List<List<DataItem>>();
-        public static float GetFullListDataValue(Enum prefix, Enum dataValueToFind)
+        public static dynamic GetFullListDataValue(Enum prefix, Enum dataValueToFind)
         {
+            //dynamic was float
             string s = prefix + "_";
             int index = Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix);
             return FullDataList[index][FullDataList[index].FindIndex(r => r.Name == s + dataValueToFind)].Value;
         }
-        private static float GetDataValue(List<float> data, Enum dataStart, Enum dataValueToFind)
+        private static T GetDataValue<T>(List<T> data, Enum dataStart, Enum dataValueToFind)
         {
-            int size = ObjectType.GetSize<float>();
+            //T was float
+            int size = 4;//ObjectType.GetSize<T>();
             return data[(Convert.ToInt32(dataValueToFind) - Convert.ToInt32(dataStart)) / size];
         }
         public static List<DataItem> Body_DataList { get; set; } = new List<DataItem>();
@@ -335,8 +337,15 @@ namespace Physics_Data_Debug
                 }
             }
         }
-        public static List<float> GetRawFloatArrayData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, ulong baseAddrUpdt, int sideOffset, int[] extraOffsets, int dataStartOffset, int arraySize)
+        public static List<object> GetRawFloatArrayData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, ulong baseAddrUpdt, int sideOffset, int[] extraOffsets, int dataStartOffset, int arraySize)
         {
+            // Needs later to be likely List<object> and reader has every 4 bytes as a list object then something defines what type each of them are. Int32 or float
+            //List<object> data = new List<object>();
+            //data.Add(1);
+            //data.Add(1.0f);
+            //int oneInt = (int)data[0];
+            //float oneFloat = (float)data[1];
+
             int[] numberOfExtraOffsets = new int[1 + extraOffsets.Length];
             int[] offsetList = numberOfExtraOffsets;
 
@@ -356,13 +365,13 @@ namespace Physics_Data_Debug
             }
 
             ulong bAU = memoryHelper.GetBaseAddress(baseAddr + baseAddrUpdt);
-            List<float> dataRaw = memoryHelper.ReadMemoryFloatArray<float[]>(MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsetList), arraySize).ToList();
+            var dataRaw = memoryHelper.ReadMemoryArray<float[]>(MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsetList), arraySize).ToList<object>();
             return dataRaw;
         }
-        public static List<float> GetCalculatedEngineData(List<float> engineData)
+        public static List<object> GetCalculatedEngineData(List<object> engineData)
         {
-            float helperEngineTorqueNm = GetDataValue(engineData, WF_EngineDataChunks.DataStart, WF_EngineDataOffset.EngineTorqueNm);
-            float helperEngineRPM = GetDataValue(engineData, WF_EngineDataChunks.DataStart, WF_EngineDataOffset.EngineRPM);
+            float helperEngineTorqueNm = (float)GetDataValue(engineData, WF_EngineDataChunks.DataStart, WF_EngineDataOffset.EngineTorqueNm);
+            float helperEngineRPM = (float)GetDataValue(engineData, WF_EngineDataChunks.DataStart, WF_EngineDataOffset.EngineRPM);
 
             float engineTorqueLbFt = 0.7375621493f * helperEngineTorqueNm;
 
@@ -371,32 +380,32 @@ namespace Physics_Data_Debug
             float enginePowerPS = enginePowerHP * 0.986f;
             float enginePowerBHP = enginePowerKW * 1.34102f;
 
-            return new List<float>() {
+            return new List<object>() {
                 engineTorqueLbFt,
                 enginePowerKW,
                 enginePowerHP,
                 enginePowerPS,
                 enginePowerBHP, };// Needs to be in the same order as in WF_EngineDataOffset enumerator
         }
-        public static List<float> GetCalcuatedTireData(List<float> tireData)
+        public static List<object> GetCalcuatedTireData(List<object> tireData)
         {
             var transformMatrix = new Matrix4x4(
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM11),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM12),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM13),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM14),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM21),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM22),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM23),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM24),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM31),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM32),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM33),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM34),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM41),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM42),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM43),
-                GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM44));
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM11),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM12),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM13),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM14),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM21),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM22),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM23),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM24),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM31),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM32),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM33),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM34),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM41),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM42),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM43),
+                (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM44));
 
             float casterAngleRad = (float)-CalcAngles(transformMatrix).X;// caster not really
             float casterAngleDeg = (float)RadToDeg(casterAngleRad);// RadToDeg(RL_TireM11);
@@ -405,14 +414,14 @@ namespace Physics_Data_Debug
             float camberAngleRad = (float)LoopAngleRad(-CalcAngles(transformMatrix).Z, Math.PI * 0.5f);// camber close
 
             float camberAngleDeg = (float)RadToDeg(camberAngleRad);// RadToDeg(RL_TireM12);
-            float lateralFriction = (float)GetFriction(GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad), GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad));
-            float longitudinalFriction = (float)GetFriction(GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LongitudinalLoad), GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad));
+            float lateralFriction = (float)GetFriction((float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad), (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad));
+            float longitudinalFriction = (float)GetFriction((float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LongitudinalLoad), (float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad));
             float totalFriction = (float)GetTotalFriction(lateralFriction, longitudinalFriction);
             float totalFrictionAngleDeg = (float)GetTotalFrictionAngle(lateralFriction, longitudinalFriction);
 
-            float slipAngleDeg = (float)RadToDeg(GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.SlipAngleRad));
+            float slipAngleDeg = (float)RadToDeg((float)GetDataValue(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.SlipAngleRad));
 
-            return new List<float>() { 
+            return new List<object>() { 
                 casterAngleRad, 
                 casterAngleDeg, 
                 steerAngleRad, 
@@ -505,27 +514,27 @@ namespace Physics_Data_Debug
         {
             return new Vector3(transformMatrixBody.M41, transformMatrixBody.M42, transformMatrixBody.M43);
         }
-        public static Matrix4x4 TransformMatrixBody(List<float> bodyRotationData, Enum bodyDataStart)
+        public static Matrix4x4 TransformMatrixBody(List<object> bodyRotationData, Enum bodyDataStart)
         {
             return new Matrix4x4(
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM11),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM12),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM13),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM14),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM21),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM22),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM23),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM24),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM31),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM32),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM33),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM34),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM41),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM42),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM43),
-                GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM44));
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM11),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM12),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM13),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM14),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM21),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM22),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM23),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM24),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM31),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM32),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM33),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM34),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM41),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM42),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM43),
+                (float)GetDataValue(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM44));
         }
-        public static void GeneratePowertrainDataList<T>(Enum bodyRotationDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<float> bodyRotationData, Enum bodyAccelDataStart, List<float> bodyAccelData, Enum bodyAeroDataStart, List<float> bodyAeroData)
+        public static void GeneratePowertrainDataList(Enum bodyRotationDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<object> bodyRotationData, Enum bodyAccelDataStart, List<object> bodyAccelData, Enum bodyAeroDataStart, List<object> bodyAeroData)
         {
             foreach (int i in Enum.GetValues(typeof(WF_EngineDataOffset)))
             {
@@ -541,9 +550,9 @@ namespace Physics_Data_Debug
             }
             fullList.Add(subList);
         }
-        public static void UpdatePowertrainDataValues<T>(Enum powertrainEngineDataStart, Enum prefix, List<DataItem> subList, List<List<DataItem>> fullList, List<float> powertrainEngineData, Enum powertrainDifferentailPrimaryAxleDataStart, List<float> DifferentailPrimaryAxle, Enum powertrainDifferentialSecondaryAxleDataStart, List<float> powertrainDifferentialSecondaryAxleData)
+        public static void UpdatePowertrainDataValues(Enum powertrainEngineDataStart, Enum prefix, List<DataItem> subList, List<List<DataItem>> fullList, List<object> powertrainEngineData, Enum powertrainDifferentailPrimaryAxleDataStart, List<object> DifferentailPrimaryAxle, Enum powertrainDifferentialSecondaryAxleDataStart, List<object> powertrainDifferentialSecondaryAxleData)
         {
-            int size = ObjectType.GetSize<T>();
+            int size = 4;// ObjectType.GetSize<T>();
             int count = subList.Count;
             int ii = 0;
             foreach (int i in Enum.GetValues(typeof(WF_EngineDataOffset)))
@@ -574,7 +583,7 @@ namespace Physics_Data_Debug
             fullList.RemoveAt(indexOfInFullList);
             fullList.Insert(indexOfInFullList, subList);// !=0 means differential is locked. ==0 means it's open
         }
-        public static List<float> GetCalculatedRotationData(Matrix4x4 transformMatrixBody, List<float> bodyRotationData)
+        public static List<object> GetCalculatedRotationData(Matrix4x4 transformMatrixBody, List<object> bodyRotationData)
         {
             //Vector3 worldPositionBody = new Vector3(transformMatrixBody.M41, transformMatrixBody.M42, transformMatrixBody.M43);
             //CalcAngles(transformMatrixBody);// Needed?
@@ -585,7 +594,7 @@ namespace Physics_Data_Debug
             float body_RollRad = (float)LoopAngleRad(-CalcAngles(transformMatrixBody).Z, Math.PI * 0.5f);
             float body_RollDeg = (float)RadToDeg(body_RollRad);
 
-            return new List<float>()
+            return new List<object>()
             {
                 body_PitchRad,
                 body_PitchDeg,
@@ -595,11 +604,11 @@ namespace Physics_Data_Debug
                 body_RollDeg,// Needs to be in the same order as in WF_BodyRotationDataOffset enumerator;
             };
         }
-        public static List<float> GetCalculatedAccelData(Matrix4x4 transformMatrixBody, List<float> bodyAccelData)
+        public static List<object> GetCalculatedAccelData(Matrix4x4 transformMatrixBody, List<object> bodyAccelData)
         {
-            float worldAccelX = GetDataValue(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.XAccelerationWorld);
-            float worldAccelY = GetDataValue(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.YAccelerationWorld);
-            float worldAccelZ = GetDataValue(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.ZAccelerationWorld);
+            float worldAccelX = (float)GetDataValue(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.XAccelerationWorld);
+            float worldAccelY = (float)GetDataValue(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.YAccelerationWorld);
+            float worldAccelZ = (float)GetDataValue(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.ZAccelerationWorld);
             Vector3 worldAcceleration = new Vector3(worldAccelX, worldAccelY, worldAccelZ);
             Vector3 localAccel = WorldTransformToLocal(worldAcceleration, WorldPositionBody(transformMatrixBody), transformMatrixBody);
             
@@ -650,7 +659,7 @@ namespace Physics_Data_Debug
                     }
                 }
             }
-            return new List<float>() {
+            return new List<object>() {
                 (float)localAccel.X,
                 (float)localAccel.Y,
                 (float)localAccel.Z,
@@ -667,12 +676,12 @@ namespace Physics_Data_Debug
                 (float)body_XZGAngleRad,
                 (float)body_XZGAngleDeg };// Needs to be in the same order as in WF_BodyAccelDataOffset enumerator;
         }
-        public static List<float> GetCalculatedAeroData(Matrix4x4 transformMatrixBody)
+        public static List<object> GetCalculatedAeroData(Matrix4x4 transformMatrixBody)
         {
-            Vector3 worldAcceleration = new Vector3(GetDataValue(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.XDragWorld), GetDataValue(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.YDragWorld), GetDataValue(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.ZDragWorld));
+            Vector3 worldAcceleration = new Vector3((float)GetDataValue(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.XDragWorld), (float)GetDataValue(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.YDragWorld), (float)GetDataValue(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.ZDragWorld));
             Vector3 localDrag = WorldTransformToLocal(worldAcceleration, WorldPositionBody(transformMatrixBody), transformMatrixBody);
 
-            return new List<float>() {
+            return new List<object>() {
                 (float)localDrag.X,
                 (float)localDrag.Y,
                 (float)localDrag.Z,};// Needs to be in the same order as in WF_AeroDataOffset enumerator;
@@ -690,7 +699,7 @@ namespace Physics_Data_Debug
                 Console.WriteLine();
             }
         }
-        public static void GenerateBodyDataList<T>(Enum bodyRotationDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<float> bodyRotationData, Enum bodyAccelDataStart, List<float> bodyAccelData, Enum bodyAeroDataStart, List<float> bodyAeroData)
+        public static void GenerateBodyDataList(Enum bodyRotationDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<object> bodyRotationData, Enum bodyAccelDataStart, List<object> bodyAccelData, Enum bodyAeroDataStart, List<object> bodyAeroData)
         {
             foreach (int i in Enum.GetValues(typeof(WF_BodyRotationDataOffset)))
             {
@@ -706,9 +715,9 @@ namespace Physics_Data_Debug
             }
             fullList.Add(subList);
         }
-        public static void UpdateBodyDataValues<T>(Enum bodyRotationDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<float> bodyRotationData, Enum bodyAccelDataStart, List<float> bodyAccelData, Enum bodyAeroDataStart, List<float> bodyAeroData)
+        public static void UpdateBodyDataValues(Enum bodyRotationDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<object> bodyRotationData, Enum bodyAccelDataStart, List<object> bodyAccelData, Enum bodyAeroDataStart, List<object> bodyAeroData)
         {
-            int size = ObjectType.GetSize<T>();
+            int size = 4;// ObjectType.GetSize<T>();
             int count = subList.Count;
             int ii = 0;
             foreach (int i in Enum.GetValues(typeof(WF_BodyRotationDataOffset)))
@@ -739,7 +748,7 @@ namespace Physics_Data_Debug
             fullList.RemoveAt(indexOfInFullList);
             fullList.Insert(indexOfInFullList, subList);
         }
-        public static void GenerateTireDataList<T>(Enum tireDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<float> tireData, Enum suspensionDataStart, List<float> suspensionData)
+        public static void GenerateTireDataList(Enum tireDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<object> tireData, Enum suspensionDataStart, List<object> suspensionData)
         {
             //Tire data
             foreach (int i in Enum.GetValues(typeof(WF_TireDataOffset)))
@@ -753,9 +762,9 @@ namespace Physics_Data_Debug
             }
             fullList.Add(subList);
         }
-        public static void UpdateTireDataValues<T>(Enum tireDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<float> tireData, Enum suspensionDataStart, List<float> suspensionData)
+        public static void UpdateTireDataValues(Enum tireDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<object> tireData, Enum suspensionDataStart, List<object> suspensionData)
         {
-            int size = ObjectType.GetSize<T>();
+            int size = 4;//ObjectType.GetSize<T>();
             int count = subList.Count;
             int ii = 0;
             foreach (int i in Enum.GetValues(typeof(WF_TireDataOffset)))

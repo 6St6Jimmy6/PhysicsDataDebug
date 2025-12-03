@@ -1,6 +1,7 @@
 using Memory.Utils;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -130,13 +131,13 @@ namespace Memory.Win64
             bool result = WriteProcessMemory(process.Handle, MemoryAddress, data, sz, out bw);
             return result && bw != IntPtr.Zero;
         }
-        // ADDED float array reader, since tons of stuff are at that and can that way just read a bigger array of data.
-        public float[] ReadMemoryFloatArray<T>(ulong MemoryAddress, int byteArraySize)
+        // ADDED array reader, since tons of stuff are at that and can that way just read a bigger array of data.
+        // Need to at some point use just the ReadMemoryBytesArray() and convert the byte arrays somewhere else to the certain type.
+        public object[] ReadMemoryArray<T>(ulong MemoryAddress, int byteArraySize)
         {
-            //int f = new T[byteArraySize].Length * Marshal.SizeOf(typeof(float));
             int f = new T[byteArraySize].Length;
             byte[] data = ReadMemoryBytesArray(MemoryAddress, f, byteArraySize);
-            return ConvertToFloatArray(data);
+            return ConvertToFloatArray(data).Cast<object>().ToArray();
         }
         #region Conversion
         // taken from https://stackoverflow.com/questions/50672268/c-sharp-reading-another-process-memory
