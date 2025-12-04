@@ -1,5 +1,6 @@
 using Memory.Utils;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -133,25 +134,28 @@ namespace Memory.Win64
         }
         // ADDED array reader, since tons of stuff are at that and can that way just read a bigger array of data.
         // Need to at some point use just the ReadMemoryBytesArray() and convert the byte arrays somewhere else to the certain type.
-        public object[] ReadMemoryArray<T>(ulong MemoryAddress, int byteArraySize)
+        //Removed <T> and made size always 4, because all the values are 4 byte arrays like Int32 or floats
+        public List<byte[]> ReadMemoryArray(ulong MemoryAddress, int byteArraySize)
         {
-            int f = new T[byteArraySize].Length;
+            int f = byteArraySize;//new T[byteArraySize].Length;// No need because no more <T>
             byte[] data = ReadMemoryBytesArray(MemoryAddress, f, byteArraySize);
-            return ConvertToFloatArray(data).Cast<object>().ToArray();
+            return ConvertToArray(data);
         }
         #region Conversion
         // taken from https://stackoverflow.com/questions/50672268/c-sharp-reading-another-process-memory
-        public static float[] ConvertToFloatArray(byte[] bytes)
+
+        //float[] to object[] and 4 bytes length always
+        public static List<byte[]> ConvertToArray(byte[] bytes)
         {
             if (bytes.Length % 4 != 0)
                 throw new ArgumentException();
+            List<byte[]> list = new List<byte[]>();
+            var obj = new float[bytes.Length / 4];
+            // This needs to be different converter per value
+            for (var i = 0; i < obj.Length; i++)
+                list.Add(BitConverter.GetBytes(BitConverter.ToSingle(bytes, i * 4)));//bytes[i * 4];//BitConverter.ToSingle(bytes, i * 4);
 
-            var floats = new float[bytes.Length / 4];
-
-            for (var i = 0; i < floats.Length; i++)
-                floats[i] = BitConverter.ToSingle(bytes, i * 4);
-
-            return floats;
+            return list;
         }
 
         private static T ByteArrayToStructure<T>(byte[] bytes) where T : struct
