@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -546,58 +547,60 @@ namespace Physics_Data_Debug
                 (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM42),
                 (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM43),
                 (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM44));
-        }   
-        public static void GeneratePowertrainDataList(Enum location, List<DataItem> subList, List<List<DataItem>> fullList, Enum bodyRotationDataStart, Enum bodyAccelDataStart, Enum bodyAeroDataStart)
+        }
+        public static T GetEnum<T>(int enumAsInt)
         {
+            Type enumType = typeof(T);
+
+            T value = (T)Enum.ToObject(enumType, enumAsInt);
+            if (Enum.IsDefined(enumType, value) == false)
+            {
+                throw new NotSupportedException("Unable to convert value to the type: " + enumType.ToString());
+            }
+
+            return value;
+        }
+        public static int ForEachValueUpdate<T>(int ii, Enum prefix, List<List<DataItem>> fullList, List<byte[]> byteData, Enum dataStart)
+        {
+            int size = 4;// ObjectType.GetSize<T>();
+            int indexOfInFullList = Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix);
+
+            foreach (int i in Enum.GetValues(typeof(T)))
+            {
+                int test = Convert.ToInt32(GetEnum<T>(i));
+                //int index = Array.IndexOf(Enum.GetValues(((WF_EngineDataOffset)i).GetType()), (WF_EngineDataOffset)i);
+                //subList[index].Value = powertrainEngineData[((int)(WF_EngineDataOffset)i - Convert.ToInt32(powertrainEngineDataStart)) / size];//Needs all the offsets in the list...
+                if (/*typeof(T) == typeof(WF_DifferentialDataOffset) && */i == (int)WF_DifferentialDataOffset.DifferentialOpen && Convert.ToInt32(prefix) == (int)WF_Prefix.Powertrain)
+                    fullList[indexOfInFullList][ii].Value = BitConverter.ToInt32(byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size], 0);
+                else
+                    fullList[indexOfInFullList][ii].Value = BitConverter.ToSingle(byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size], 0);
+                ii++;
+            }
+            return ii;
+        }
+        public static void GeneratePowertrainDataList(Enum prefix, List<List<DataItem>> fullList, Enum bodyRotationDataStart, Enum bodyAccelDataStart, Enum bodyAeroDataStart)
+        {
+            List<DataItem> subList = new List<DataItem>();
             foreach (int i in Enum.GetValues(typeof(WF_EngineDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)(WF_EngineDataOffset)i, Name = location + "_" + (WF_EngineDataOffset)i });
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_EngineDataOffset)i, Name = prefix + "_" + (WF_EngineDataOffset)i });
             }
             foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)WF_DifferentialSide.PrimaryAxle + (int)(WF_DifferentialDataOffset)i, Name = location + "_" /*+ WF_DifferentialSide.PrimaryAxle*/ + (WF_DifferentialDataOffset)i });
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.PrimaryAxle + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.PrimaryAxle*/ + (WF_DifferentialDataOffset)i });
             }
             foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)WF_DifferentialSide.SecondaryAxle + (int)(WF_DifferentialDataOffset)i, Name = location + "_" /*+ WF_DifferentialSide.SecondaryAxle*/ + (WF_DifferentialDataOffset)i });
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.SecondaryAxle + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.SecondaryAxle*/ + (WF_DifferentialDataOffset)i });
             }
             fullList.Add(subList);
         }
-        public static void UpdatePowertrainDataValues(Enum powertrainEngineDataStart, Enum prefix, List<DataItem> subList, List<List<DataItem>> fullList, List<byte[]> powertrainEngineData, Enum powertrainDifferentailPrimaryAxleDataStart, List<byte[]> DifferentailPrimaryAxle, Enum powertrainDifferentialSecondaryAxleDataStart, List<byte[]> powertrainDifferentialSecondaryAxleData)
+        public static void UpdatePowertrainDataValues(Enum prefix, List<List<DataItem>> fullList, Enum powertrainEngineDataStart, List<byte[]> powertrainEngineData, Enum powertrainDifferentailPrimaryAxleDataStart, List<byte[]> DifferentailPrimaryAxle, Enum powertrainDifferentialSecondaryAxleDataStart, List<byte[]> powertrainDifferentialSecondaryAxleData)
         {
-            int size = 4;// ObjectType.GetSize<T>();
-            int count = subList.Count;
             int ii = 0;
-            foreach (int i in Enum.GetValues(typeof(WF_EngineDataOffset)))
-            {
-                //int index = Array.IndexOf(Enum.GetValues(((WF_EngineDataOffset)i).GetType()), (WF_EngineDataOffset)i);
-                //subList[index].Value = powertrainEngineData[((int)(WF_EngineDataOffset)i - Convert.ToInt32(powertrainEngineDataStart)) / size];//Needs all the offsets in the list...
-
-                subList[ii].Value = BitConverter.ToSingle(powertrainEngineData[((int)(WF_EngineDataOffset)i - Convert.ToInt32(powertrainEngineDataStart)) / size], 0);
-                ii++;
-            }
-            foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
-            {
-                //int diffClosed = BitConverter.ToInt32(BitConverter.GetBytes((float)DifferentailPrimaryAxle[((int)(WF_DifferentialDataOffset)i - Convert.ToInt32(powertrainDifferentailPrimaryAxleDataStart)) / size]), 0);
-                //int index = ii + 1 + Array.IndexOf(Enum.GetValues(((WF_DifferentialDataOffset)i).GetType()), (WF_DifferentialDataOffset)i);
-                //subList[ii].Value = DifferentailPrimaryAxle[((int)(WF_DifferentialDataOffset)i - Convert.ToInt32(powertrainDifferentailPrimaryAxleDataStart)) / size];//Needs all the offsets in the list...
-                if (i != (int)WF_DifferentialDataOffset.DifferentialOpen)
-                { subList[ii].Value = BitConverter.ToSingle(DifferentailPrimaryAxle[((int)(WF_DifferentialDataOffset)i - Convert.ToInt32(powertrainDifferentailPrimaryAxleDataStart)) / size], 0); }
-                else
-                { subList[ii].Value = BitConverter.ToInt32(DifferentailPrimaryAxle[((int)(WF_DifferentialDataOffset)i - Convert.ToInt32(powertrainDifferentailPrimaryAxleDataStart)) / size], 0); }
-                ii++;
-            }
-            foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
-            {
-                //int index = ii + 1 + Array.IndexOf(Enum.GetValues(((WF_DifferentialDataOffset)i).GetType()), (WF_DifferentialDataOffset)i);
-                //subList[ii].Value = powertrainDifferentialSecondaryAxleData[((int)(WF_DifferentialDataOffset)i - Convert.ToInt32(powertrainDifferentialSecondaryAxleDataStart)) / size];//Needs all the offsets in the list...
-
-                subList[ii].Value = BitConverter.ToSingle(powertrainDifferentialSecondaryAxleData[((int)(WF_DifferentialDataOffset)i - Convert.ToInt32(powertrainDifferentialSecondaryAxleDataStart)) / size], 0);
-                ii++;
-            }
-            int indexOfInFullList = Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix);
-            fullList.RemoveAt(indexOfInFullList);
-            fullList.Insert(indexOfInFullList, subList);// !=0 means differential is locked. ==0 means it's open
+            ii = ForEachValueUpdate<WF_EngineDataOffset>(ii, prefix, fullList, powertrainEngineData, powertrainEngineDataStart);
+            ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, DifferentailPrimaryAxle, powertrainDifferentialSecondaryAxleDataStart);
+            ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, powertrainDifferentialSecondaryAxleData, powertrainDifferentialSecondaryAxleDataStart);
         }
         public static List<byte[]> GetCalculatedRotationData(Matrix4x4 transformMatrixBody)
         {
@@ -715,94 +718,50 @@ namespace Physics_Data_Debug
                 Console.WriteLine();
             }
         }
-        public static void GenerateBodyDataList(Enum location, List<DataItem> subList, List<List<DataItem>> fullList, Enum bodyRotationDataStart, Enum bodyAccelDataStart, Enum bodyAeroDataStart)
+        public static void GenerateBodyDataList(Enum prefix, List<List<DataItem>> fullList, Enum bodyRotationDataStart, Enum bodyAccelDataStart, Enum bodyAeroDataStart)
         {
+            List<DataItem> subList = new List<DataItem>();
             foreach (int i in Enum.GetValues(typeof(WF_BodyRotationDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)WF_BodyRotationChunks.Offset1 + (int)(WF_BodyRotationDataOffset)i, Name = location + "_" + (WF_BodyRotationDataOffset)i});
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_BodyRotationChunks.Offset1 + (int)(WF_BodyRotationDataOffset)i, Name = prefix + "_" + (WF_BodyRotationDataOffset)i});
             }
             foreach (int i in Enum.GetValues(typeof(WF_BodyAccelDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)(WF_BodyAccelDataOffset)i, Name = location + "_" + (WF_BodyAccelDataOffset)i});
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_BodyAccelDataOffset)i, Name = prefix + "_" + (WF_BodyAccelDataOffset)i});
             }
             foreach (int i in Enum.GetValues(typeof(WF_AeroDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)(WF_AeroDataOffset)i, Name = location + "_" + (WF_AeroDataOffset)i });
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_AeroDataOffset)i, Name = prefix + "_" + (WF_AeroDataOffset)i });
             }
             fullList.Add(subList);
         }
-        public static void UpdateBodyDataValues(Enum location, List<DataItem> subList, List<List<DataItem>> fullList, Enum bodyRotationDataStart, List<byte[]> bodyRotationData, Enum bodyAccelDataStart, List<byte[]> bodyAccelData, Enum bodyAeroDataStart, List<byte[]> bodyAeroData)
+        public static void UpdateBodyDataValues(Enum prefix, List<List<DataItem>> fullList, Enum bodyRotationDataStart, List<byte[]> bodyRotationData, Enum bodyAccelDataStart, List<byte[]> bodyAccelData, Enum bodyAeroDataStart, List<byte[]> bodyAeroData)
         {
-            int size = 4;// ObjectType.GetSize<T>();
-            int count = subList.Count;
             int ii = 0;
-            foreach (int i in Enum.GetValues(typeof(WF_BodyRotationDataOffset)))
-            {
-                //int index = Array.IndexOf(Enum.GetValues(((WF_BodyRotationDataOffset)i).GetType()), (WF_BodyRotationDataOffset)i);
-                //subList[index].Value = bodyRotationData[((int)(WF_BodyRotationDataOffset)i - Convert.ToInt32(bodyRotationDataStart)) / size];//Needs all the offsets in the list...
-
-                subList[ii].Value = BitConverter.ToSingle(bodyRotationData[((int)(WF_BodyRotationDataOffset)i - Convert.ToInt32(bodyRotationDataStart)) / size], 0);
-                ii++;
-            }
-            foreach (int i in Enum.GetValues(typeof(WF_BodyAccelDataOffset)))
-            {
-                //int index = ii + 1 + Array.IndexOf(Enum.GetValues(((WF_BodyAccelDataOffset)i).GetType()), (WF_BodyAccelDataOffset)i);
-                //subList[ii].Value = bodyAccelData[((int)(WF_BodyAccelDataOffset)i - Convert.ToInt32(bodyAccelDataStart)) / size];//Needs all the offsets in the list...
-
-                subList[ii].Value = BitConverter.ToSingle(bodyAccelData[((int)(WF_BodyAccelDataOffset)i - Convert.ToInt32(bodyAccelDataStart)) / size], 0);
-                ii++;
-            }
-            foreach (int i in Enum.GetValues(typeof(WF_AeroDataOffset)))
-            {
-                //int index = ii + 1 + Array.IndexOf(Enum.GetValues(((WF_AeroDataOffset)i).GetType()), (WF_AeroDataOffset)i);
-                //subList[ii].Value = bodyAeroData[((int)(WF_AeroDataOffset)i - Convert.ToInt32(bodyAeroDataStart)) / size];//Needs all the offsets in the list...
-
-                subList[ii].Value = BitConverter.ToSingle(bodyAeroData[((int)(WF_AeroDataOffset)i - Convert.ToInt32(bodyAeroDataStart)) / size], 0);
-                ii++;
-            }
-            int indexOfInFullList = Array.IndexOf(Enum.GetValues(location.GetType()), location);
-            fullList.RemoveAt(indexOfInFullList);
-            fullList.Insert(indexOfInFullList, subList);
+            ii = ForEachValueUpdate<WF_BodyRotationDataOffset>(ii, prefix, fullList, bodyRotationData, bodyRotationDataStart);
+            ii = ForEachValueUpdate<WF_BodyAccelDataOffset>(ii, prefix, fullList, bodyAccelData, bodyAccelDataStart);
+            ii = ForEachValueUpdate<WF_AeroDataOffset>(ii, prefix, fullList, bodyAeroData, bodyAeroDataStart);
         }
-        public static void GenerateTireDataList(Enum location, List<DataItem> subList, List<List<DataItem>> fullList, Enum tireDataStart, Enum suspensionDataStart)
+        public static void GenerateTireDataList(Enum prefix, List<List<DataItem>> fullList, Enum tireDataStart, Enum suspensionDataStart)
         {
+            List<DataItem> subList = new List<DataItem>();
             //Tire data
             foreach (int i in Enum.GetValues(typeof(WF_TireDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)(WF_TireDataOffset)i, Name = location + "_" + (WF_TireDataOffset)i});
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_TireDataOffset)i, Name = prefix + "_" + (WF_TireDataOffset)i});
             }
             //Suspension data gets added also in
             foreach (int i in Enum.GetValues(typeof(WF_SuspensionDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(location) + (int)WF_TireDataOffset.SlipAngleDeg + 0x4 + (int)(WF_SuspensionDataOffset)i, Name = location + "_" + (WF_SuspensionDataOffset)i});
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_TireDataOffset.SlipAngleDeg + 0x4 + (int)(WF_SuspensionDataOffset)i, Name = prefix + "_" + (WF_SuspensionDataOffset)i});
             }
             fullList.Add(subList);
         }
-        public static void UpdateTireDataValues(Enum tireDataStart, Enum location, List<DataItem> subList, List<List<DataItem>> fullList, List<byte[]> tireData, Enum suspensionDataStart, List<byte[]> suspensionData)
+        public static void UpdateTireDataValues(Enum prefix, List<List<DataItem>> fullList, Enum tireDataStart, List<byte[]> tireData, Enum suspensionDataStart, List<byte[]> suspensionData)
         {
-            int size = 4;//ObjectType.GetSize<T>();
-            int count = subList.Count;
             int ii = 0;
-            foreach (int i in Enum.GetValues(typeof(WF_TireDataOffset)))
-            {
-                //int index = Array.IndexOf(Enum.GetValues(((WF_TireDataOffset)i).GetType()), (WF_TireDataOffset)i);
-                //subList[index].Value = tireData[((int)(WF_TireDataOffset)i - Convert.ToInt32(tireDataStart)) / size];//Needs all the offsets in the list...
-
-                subList[ii].Value = BitConverter.ToSingle(tireData[((int)(WF_TireDataOffset)i - Convert.ToInt32(tireDataStart)) / size], 0);
-                ii++;
-            }
-            //Suspension data gets updated also
-            foreach (int i in Enum.GetValues(typeof(WF_SuspensionDataOffset)))
-            {
-                //int index = ii + 1 + Array.IndexOf(Enum.GetValues(((WF_SuspensionDataOffset)i).GetType()), (WF_SuspensionDataOffset)i);
-                //subList[index].Value = suspensionData[((int)(WF_SuspensionDataOffset)i - Convert.ToInt32(suspensionDataStart)) / size];//Needs all the offsets in the list...
-
-                subList[ii].Value = BitConverter.ToSingle(suspensionData[((int)(WF_SuspensionDataOffset)i - Convert.ToInt32(suspensionDataStart)) / size], 0);
-                ii++;
-            }
-            int indexOfInFullList = Array.IndexOf(Enum.GetValues(location.GetType()), location);
-            fullList.RemoveAt(indexOfInFullList);
-            fullList.Insert(indexOfInFullList, subList);
+            ii = ForEachValueUpdate<WF_TireDataOffset>(ii, prefix, fullList, tireData, tireDataStart);
+            ii = ForEachValueUpdate<WF_SuspensionDataOffset>(ii, prefix, fullList, suspensionData, suspensionDataStart);
         }
         private static float GetFriction(float latORlonLoad, float vertLoad)
         {
