@@ -19,6 +19,7 @@ namespace Physics_Data_Debug
 
         public static void Test()
         {
+            /*
             foreach (int i in Enum.GetValues(typeof(WF_TireDataOffset)))
             {
                 LiveData.FL_TireDataList.Add(new DataItem { Id = (int)WF_Prefix.FL + (int)(WF_TireDataOffset)i, Name = WF_Prefix.FL + "_" + (WF_TireDataOffset)i });
@@ -42,7 +43,7 @@ namespace Physics_Data_Debug
                 LiveData.RR_TireDataList.Add(new DataItem { Id = (int)WF_Prefix.RR + (int)(WF_TireDataOffset)i, Name = WF_Prefix.FR + "_" + (WF_TireDataOffset)i });
             }
             LiveData.FullDataList.Add(LiveData.RR_TireDataList);
-
+            */
             /*
             List<RawDataItem> body = new List<RawDataItem>();
             body.Add(new RawDataItem { Id = 1000, Name = "X_Acceleration", Value = 3.3f });

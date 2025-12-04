@@ -236,10 +236,6 @@ namespace Physics_Data_Debug
         }
         public static List<DataItem> Body_DataList { get; set; } = new List<DataItem>();
         public static List<DataItem> Powertrain_DataList { get; set; } = new List<DataItem>();
-        public static List<DataItem> FL_TireDataList { get; set; } = new List<DataItem>();
-        public static List<DataItem> FR_TireDataList { get; set; } = new List<DataItem>();
-        public static List<DataItem> RL_TireDataList { get; set; } = new List<DataItem>();
-        public static List<DataItem> RR_TireDataList { get; set; } = new List<DataItem>();
         public static int GetElapsedTime()
         {
             RaceTimeArray[RaceTimeArray.Length - 1] = RaceTime;
