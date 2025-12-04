@@ -234,8 +234,6 @@ namespace Physics_Data_Debug
         {
             tB.Text = ValueString(prefix, dataValue, roundDigits);
         }
-        public static List<DataItem> Body_DataList { get; set; } = new List<DataItem>();
-        public static List<DataItem> Powertrain_DataList { get; set; } = new List<DataItem>();
         public static int GetElapsedTime()
         {
             RaceTimeArray[RaceTimeArray.Length - 1] = RaceTime;
