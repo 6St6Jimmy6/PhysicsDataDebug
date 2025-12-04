@@ -33,16 +33,15 @@ namespace Physics_Data_Debug
         private void textBoxTireWrite(Enum prefix,  
             TextBox radius, TextBox width, TextBox thermalAirTransfer, TextBox thermalInnerTransfer, TextBox springRate, TextBox damperRate, TextBox maxDeflection, TextBox mass, TextBox momentOfInertia)
         {
-            //int index = tireDataList.FindIndex(r => r.Name == s + WF_TireDataOffset.TireRadius);
-            radius.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TireRadius).ToString(CultureInfo.GetCultureInfo("en-US"));
-            width.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TireWidth).ToString(CultureInfo.GetCultureInfo("en-US"));
-            thermalAirTransfer.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.ThermalAirTransfer).ToString(CultureInfo.GetCultureInfo("en-US"));
-            thermalInnerTransfer.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.ThermalInnerTransfer).ToString(CultureInfo.GetCultureInfo("en-US"));
-            springRate.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TireSpringRate).ToString(CultureInfo.GetCultureInfo("en-US"));
-            damperRate.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TireDamperRate).ToString(CultureInfo.GetCultureInfo("en-US"));
-            maxDeflection.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TireMaxDeflection).ToString(CultureInfo.GetCultureInfo("en-US"));
-            mass.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.TireMass).ToString(CultureInfo.GetCultureInfo("en-US"));
-            momentOfInertia.Text = LiveData.GetFullListDataValue(prefix, WF_TireDataOffset.MomentOfInertia).ToString(CultureInfo.GetCultureInfo("en-US"));
+            LiveData.SetValueInTB(radius, prefix, WF_TireDataOffset.TireRadius);
+            LiveData.SetValueInTB(width, prefix, WF_TireDataOffset.TireWidth);
+            LiveData.SetValueInTB(thermalAirTransfer, prefix, WF_TireDataOffset.ThermalAirTransfer);
+            LiveData.SetValueInTB(thermalInnerTransfer, prefix, WF_TireDataOffset.ThermalInnerTransfer);
+            LiveData.SetValueInTB(springRate, prefix, WF_TireDataOffset.TireSpringRate);
+            LiveData.SetValueInTB(damperRate, prefix, WF_TireDataOffset.TireDamperRate);
+            LiveData.SetValueInTB(maxDeflection, prefix, WF_TireDataOffset.TireMaxDeflection);
+            LiveData.SetValueInTB(mass, prefix, WF_TireDataOffset.TireMass);
+            LiveData.SetValueInTB(momentOfInertia, prefix, WF_TireDataOffset.MomentOfInertia);
         }
         private void CheckKeyIsNumberOrDecimalPoint(KeyPressEventArgs e)
         {

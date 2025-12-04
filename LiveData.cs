@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Windows.Forms;
 
 namespace Physics_Data_Debug
 {
@@ -222,6 +224,14 @@ namespace Physics_Data_Debug
             { return BitConverter.ToSingle(data[(Convert.ToInt32(dataValueToFind) - Convert.ToInt32(dataStart)) / size], 0); }
             else//Int32
             { return BitConverter.ToInt32(data[(Convert.ToInt32(dataValueToFind) - Convert.ToInt32(dataStart)) / size], 0); }
+        }
+        public static string ValueString(Enum prefix, Enum dataValue, int roundDigits = 9, string preText = "", string afterText = "")
+        {
+            return preText + Math.Round(GetFullListDataValue(prefix, dataValue), roundDigits).ToString(CultureInfo.GetCultureInfo("en-US")) + afterText;
+        }
+        public static void SetValueInTB(TextBox tB, Enum prefix, Enum dataValue, int roundDigits = 9, string preText = "", string suffText = "")
+        {
+            tB.Text = ValueString(prefix, dataValue, roundDigits);
         }
         public static List<DataItem> Body_DataList { get; set; } = new List<DataItem>();
         public static List<DataItem> Powertrain_DataList { get; set; } = new List<DataItem>();
