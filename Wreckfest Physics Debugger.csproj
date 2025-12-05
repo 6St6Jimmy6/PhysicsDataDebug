@@ -104,12 +104,6 @@
     <Compile Include="FormGForceSettings.Designer.cs">
       <DependentUpon>FormGForceSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTest1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTest1.Designer.cs">
-      <DependentUpon>FormTest1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormTester.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,9 +173,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSuspensionSettings.resx">
       <DependentUpon>FormSuspensionSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTest1.resx">
-      <DependentUpon>FormTest1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTester.resx">
       <DependentUpon>FormTester.cs</DependentUpon>
