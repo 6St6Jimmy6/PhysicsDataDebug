@@ -540,6 +540,7 @@ namespace Physics_Data_Debug
         }
         public static T GetEnum<T>(int enumAsInt)
         {
+            //https://stackoverflow.com/questions/79126/create-generic-method-constraining-t-to-an-enum
             Type enumType = typeof(T);
 
             T value = (T)Enum.ToObject(enumType, enumAsInt);
