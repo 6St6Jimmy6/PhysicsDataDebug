@@ -316,7 +316,7 @@ namespace Physics_Data_Debug
             LiveData.UpdatePowertrainDataValues(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
             //LiveData.ConsoleTireData(LiveData.TireDataList);
 
-            LiveData.LogToFile();
+            DataLogger.LogToFile();
             //ButtonVisibilities();
             if (checkBox1.Checked == true && LiveData.ElapsedTime > 0)
             {
