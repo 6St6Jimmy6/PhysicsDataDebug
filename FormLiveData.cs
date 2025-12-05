@@ -143,7 +143,7 @@ namespace Physics_Data_Debug
 
             CurrentRightDifferentialSpeedRad.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
             CurrentRightDifferentialTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
-            int diffSecClosed = LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft);
+            int diffSecClosed = LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryRight);
             if (diffSecClosed != 0)
             {
                 CurrentRightDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
