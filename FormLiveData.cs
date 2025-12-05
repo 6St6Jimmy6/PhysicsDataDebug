@@ -29,8 +29,11 @@ namespace Physics_Data_Debug
             logInterval_textBox.Text = LiveData.TickInterval.ToString();
 
             GameVersionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            GameVersionComboBox.Items.Add(BaseAddressUpdate.V1_308408);
-            GameVersionComboBox.Items.Add(BaseAddressUpdate.V1_285308);
+
+            foreach (ulong e in Enum.GetValues(typeof(BaseAddressUpdate)))
+            {
+                GameVersionComboBox.Items.Add((BaseAddressUpdate)e);
+            }
             GameVersionComboBox.SelectedItem = BaseAddressUpdate.V1_308408;
             SelectedVersion = GameVersionComboBox.SelectedItem;
         }
