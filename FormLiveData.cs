@@ -327,7 +327,7 @@ namespace Physics_Data_Debug
                 LiveData.GeneratePowertrainDataList(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, WF_DifferentialDataChunks.DataStart, WF_DifferentialDataChunks.DataStart);//5
                 FirstTimeLoad = true;
             }
-            LiveData.GetData((ulong)SelectedVersion/*BaseAddressUpdate.V1_308408*/);
+            LiveData.GetData((long)SelectedVersion);
             // Needs to be in order of WF_Prefix
             LiveData.UpdateBodyDataValues(WF_Prefix.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
 
