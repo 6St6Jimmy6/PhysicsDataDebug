@@ -29,8 +29,8 @@ namespace Physics_Data_Debug
         #region Methods
         public void ButtonVisibilities()
         {
-            if (LiveData.logging == true) { toLogSettingsButton.Visible = false; }
-            if (LiveData.LogSettingsOpen == false && LiveData.logging == false) { toLogSettingsButton.Visible = true; }
+            if (LiveData.Logging == true) { toLogSettingsButton.Visible = false; }
+            if (LiveData.LogSettingsOpen == false && LiveData.Logging == false) { toLogSettingsButton.Visible = true; }
             if (LiveData.LogSettingsOpen == true) { toLogSettingsButton.Visible = false; startFileLoggingButton.Visible = false; }
             if (LiveData.LogSettingsOpen == false) { startFileLoggingButton.Visible = true; }
             if (LiveData.TireSettingsOpen == true) { toTireSettingsButton.Visible = false; }
@@ -183,15 +183,15 @@ namespace Physics_Data_Debug
         }
         private void Start_Log_Click(object sender, EventArgs e)
         {
-            if (LiveData.logging == true)
+            if (LiveData.Logging == true)
             {
-                LiveData.logging = false;
+                LiveData.Logging = false;
                 startFileLoggingButton.Text = "Start Logging";
             }
             else
             {
                 Directory.CreateDirectory(LogSettings.LogFileSaveLocationFolder);
-                LiveData.logging = true;
+                LiveData.Logging = true;
                 startFileLoggingButton.Text = "Stop Logging";
             }
         }

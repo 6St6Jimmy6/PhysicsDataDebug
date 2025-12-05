@@ -79,6 +79,7 @@
     <Compile Include="4Wheels.cs" />
     <Compile Include="4WheelsSettings.cs" />
     <Compile Include="DataItem.cs" />
+    <Compile Include="DataLogger.cs" />
     <Compile Include="Form4Wheels.cs">
       <SubType>Form</SubType>
     </Compile>
