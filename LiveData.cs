@@ -145,7 +145,7 @@ namespace Physics_Data_Debug
             Array.Copy(RaceTimeArray, 1, RaceTimeArray, 0, RaceTimeArray.Length - 1);
             return RaceTimeArray[1] - RaceTimeArray[0];
         }
-        public static void GetData(ulong baseAddrUpdt)
+        public static void GetData(long baseAddrUpdt)
         {
             //Dictionary<WF_Prefix, DataItem> Dict = WF_Dictionary.DefaultWF1Dictionary;
             if (Process == null)
@@ -251,7 +251,7 @@ namespace Physics_Data_Debug
                 }
             }
         }
-        public static List<byte[]> GetRawFourBytesArrayData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, ulong baseAddrUpdt, int sideOffset, int[] extraOffsets, int dataStartOffset, int arraySize)
+        public static List<byte[]> GetRawFourBytesArrayData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, long baseAddrUpdt, int sideOffset, int[] extraOffsets, int dataStartOffset, int arraySize)
         {
             int[] numberOfExtraOffsets = new int[1 + extraOffsets.Length];
             int[] offsetList = numberOfExtraOffsets;
@@ -270,8 +270,7 @@ namespace Physics_Data_Debug
                 }
                 offsetList[numberOfExtraOffsets.Count() -1] = dataStartOffset + sideOffset;
             }
-
-            ulong bAU = memoryHelper.GetBaseAddress(baseAddr + baseAddrUpdt);
+            ulong bAU = memoryHelper.GetBaseAddress((ulong)((long)baseAddr + baseAddrUpdt));
             List<byte[]> dataRaw = memoryHelper.ReadMemoryArray(MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsetList), arraySize);
             return dataRaw;
         }
@@ -341,9 +340,9 @@ namespace Physics_Data_Debug
                 BitConverter.GetBytes(totalFrictionAngleDeg), 
                 BitConverter.GetBytes(slipAngleDeg) };// Needs to be in the same order as in WF_TireDataOffset enumerator
         }
-        public static T GetRawData<T>(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, ulong baseAddrUpdt, int[] offsets)
+        public static T GetRawData<T>(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, long baseAddrUpdt, int[] offsets)
         {
-            ulong bAU = memoryHelper.GetBaseAddress(baseAddr + baseAddrUpdt);
+            ulong bAU = memoryHelper.GetBaseAddress((ulong)((long)baseAddr + baseAddrUpdt));
 
             return memoryHelper.ReadMemory<T>(Memory.Utils.MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsets));
         }

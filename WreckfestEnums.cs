@@ -322,7 +322,7 @@ namespace Physics_Data_Debug
         RaceTime = 0x1832648,
         Acceleration = 0x1832B88,
     }
-    public enum BaseAddressUpdate : ulong
+    public enum BaseAddressUpdate : long
     {
         V1_285308 = 0x0,
         V1_308408 = 0x9E00,

@@ -29,7 +29,7 @@ namespace Physics_Data_Debug
                     {
                         Id = 0,
                         FullAddress = 0,
-                        BaseAddress = LiveData.Helper.GetBaseAddress((ulong)BaseAddress.BodyLocationHeading + (ulong)BaseAddressUpdate.V1_308408),
+                        BaseAddress = LiveData.Helper.GetBaseAddress((ulong)BaseAddress.BodyLocationHeading + (long)BaseAddressUpdate.V1_308408),
                         Offsets = new int[] { 0 },
                         Name = "Shit",
                         Value = 0f,

@@ -30,7 +30,7 @@ namespace Physics_Data_Debug
 
             GameVersionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            foreach (ulong e in Enum.GetValues(typeof(BaseAddressUpdate)))
+            foreach (long e in Enum.GetValues(typeof(BaseAddressUpdate)))
             {
                 GameVersionComboBox.Items.Add((BaseAddressUpdate)e);
             }
