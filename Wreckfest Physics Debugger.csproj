@@ -121,6 +121,7 @@
     <Compile Include="LiveData.cs" />
     <Compile Include="LogData.cs" />
     <Compile Include="LogSettings.cs" />
+    <Compile Include="RawTireData.cs" />
     <Compile Include="TextBoxBaseParsers.cs" />
     <Compile Include="Registry Tools.cs" />
     <Compile Include="FormLiveData.cs">

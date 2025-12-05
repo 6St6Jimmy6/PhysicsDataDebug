@@ -27,7 +27,10 @@ namespace Physics_Data_Debug
         #region Methods
         public void CheckedListBoxAdd(CheckedListBox cLB)
         {
-            foreach (var arawData in LiveData.FL_RawData)
+
+
+            List<RawTireData> RawTireDataList = new List<RawTireData>();
+            foreach (var arawData in RawTireDataList)
             {
                 cLB.Items.Add(arawData.ToString());
             }
