@@ -9,6 +9,19 @@ namespace Physics_Data_Debug
 {
     public class DataLogger
     {
+        public static void LogToFile()
+        {
+            CheckWhatToLogInFile(LogSettings.Delimiter);
+
+            if (LiveData.Logging == true)
+            {
+                // SA, SR, Speed and Vertical Load filters for logging
+                FilterCheckAndLog(LogSettings.FileNameFLTire, LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.VerticalLoad));
+                FilterCheckAndLog(LogSettings.FileNameFRTire, LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.VerticalLoad));
+                FilterCheckAndLog(LogSettings.FileNameRLTire, LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.VerticalLoad));
+                FilterCheckAndLog(LogSettings.FileNameRRTire, LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.VerticalLoad));
+            }
+        }
         private static void CheckWhatToLogInFile(char delimiter)
         {
             LogSettings.Header0 = nameof(AllValueNames.TravelSpeed) + delimiter;//LogSettings.sTireTravelSpeed
@@ -206,19 +219,6 @@ namespace Physics_Data_Debug
                 {
                     LogFileWriter(LogSettings.LogFileSaveLocationFolder, tireFileName, LogSettings.SaveFileName, LogSettings.Extension);
                 }
-            }
-        }
-        public static void LogToFile()
-        {
-            CheckWhatToLogInFile(LogSettings.Delimiter);
-
-            if (LiveData.Logging == true)
-            {
-                // SA, SR, Speed and Vertical Load filters for logging
-                FilterCheckAndLog(LogSettings.FileNameFLTire, LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.VerticalLoad));
-                FilterCheckAndLog(LogSettings.FileNameFRTire, LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.VerticalLoad));
-                FilterCheckAndLog(LogSettings.FileNameRLTire, LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.VerticalLoad));
-                FilterCheckAndLog(LogSettings.FileNameRRTire, LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.VerticalLoad));
             }
         }
         private static void LogFileWriter(string saveLocationFolder, string chooseTire, string saveFileName, string extension)
