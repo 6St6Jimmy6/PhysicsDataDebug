@@ -481,7 +481,7 @@ namespace Physics_Data_Debug
             }
             foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.Left + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.PrimaryAxle*/ + (WF_DifferentialDataOffset)i });
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) +/* (int)WF_DifferentialSide.Left + */(int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.PrimaryAxle*/ + (WF_DifferentialDataOffset)i });
             }
             //foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
             //{
