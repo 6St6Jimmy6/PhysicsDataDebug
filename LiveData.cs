@@ -483,12 +483,8 @@ namespace Physics_Data_Debug
             }
             foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) +/* (int)WF_DifferentialSide.Left + */(int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.PrimaryAxle*/ + (WF_DifferentialDataOffset)i });
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) +(int)(WF_DifferentialDataOffset)i, Name = prefix + "_" + (WF_DifferentialDataOffset)i });
             }
-            //foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
-            //{
-            //    subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.SecondaryAxle + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.SecondaryAxle*/ + (WF_DifferentialDataOffset)i });
-            //}
             fullList.Add(subList);
         }
         public static void UpdatePowertrainDataValues(Enum prefix, List<List<DataItem>> fullList, Enum powertrainEngineDataStart, List<byte[]> powertrainEngineData, Enum powertrainDifferentailPrimaryAxleDataStart, List<byte[]> DifferentailPrimaryAxle, Enum powertrainDifferentialSecondaryAxleDataStart, List<byte[]> powertrainDifferentialSecondaryAxleData)
