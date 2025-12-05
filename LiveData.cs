@@ -462,12 +462,14 @@ namespace Physics_Data_Debug
             foreach (int i in Enum.GetValues(typeof(T)))
             {
                 int test = Convert.ToInt32(GetEnum<T>(i));
-                //int index = Array.IndexOf(Enum.GetValues(((WF_EngineDataOffset)i).GetType()), (WF_EngineDataOffset)i);
-                //subList[index].Value = powertrainEngineData[((int)(WF_EngineDataOffset)i - Convert.ToInt32(powertrainEngineDataStart)) / size];//Needs all the offsets in the list...
-                if (/*typeof(T) == typeof(WF_DifferentialDataOffset) && */i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft && Convert.ToInt32(prefix) == (int)WF_Prefix.Powertrain)
-                    fullList[indexOfInFullList][ii].Value = BitConverter.ToInt32(byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size], 0);
+                byte[] valueByteArray = byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size];
+                if (i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft ||
+                    i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryRight
+                    && Convert.ToInt32(prefix) == (int)WF_Prefix.Powertrain) //Just Powertrain differentials. When more are foud, need to find a better way. In the meanwhile just add more else ifs
+
+                { fullList[indexOfInFullList][ii].Value = BitConverter.ToInt32(valueByteArray, 0); }
                 else
-                    fullList[indexOfInFullList][ii].Value = BitConverter.ToSingle(byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size], 0);
+                { fullList[indexOfInFullList][ii].Value = BitConverter.ToSingle(valueByteArray, 0); }
                 ii++;
             }
             return ii;
