@@ -492,7 +492,6 @@ namespace Physics_Data_Debug
             int ii = 0;
             ii = ForEachValueUpdate<WF_EngineDataOffset>(ii, prefix, fullList, powertrainEngineData, powertrainEngineDataStart);
             ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, DifferentailPrimaryAxle, powertrainDifferentialSecondaryAxleDataStart);
-            //ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, powertrainDifferentialSecondaryAxleData, powertrainDifferentialSecondaryAxleDataStart);
         }
         public static List<byte[]> GetCalculatedRotationData(Matrix4x4 transformMatrixBody)
         {
