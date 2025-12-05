@@ -253,13 +253,6 @@ namespace Physics_Data_Debug
         }
         public static List<byte[]> GetRawFourBytesArrayData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, ulong baseAddrUpdt, int sideOffset, int[] extraOffsets, int dataStartOffset, int arraySize)
         {
-            // Needs later to be likely List<object> and reader has every 4 bytes as a list object then something defines what type each of them are. Int32 or float
-            //List<object> data = new List<object>();
-            //data.Add(1);
-            //data.Add(1.0f);
-            //int oneInt = (int)data[0];
-            //float oneFloat = (float)data[1];
-
             int[] numberOfExtraOffsets = new int[1 + extraOffsets.Length];
             int[] offsetList = numberOfExtraOffsets;
 
