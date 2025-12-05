@@ -92,7 +92,7 @@ namespace Physics_Data_Debug
 
 
             // Series marker stuff
-            chartName.Series["Series1"].MarkerSize = 5;
+            chartName.Series["Series1"].MarkerSize = 2;
             chartName.Series["Series1"].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
             chartName.Series["Series1"].SmartLabelStyle.Enabled = false;
             chartName.Series["Series1"].LabelBackColor = chartName.ChartAreas["ChartArea1"].BackColor;
@@ -115,7 +115,7 @@ namespace Physics_Data_Debug
             Array.Copy(Y1ValuesPolarChartArray, 1, Y1ValuesPolarChartArray, 0, Y1ValuesPolarChartArray.Length - 1);
 
             ForLoopAxisArrays(chartName, 1, X1ValuesPolarChartArray, Y1ValuesPolarChartArray);
-            chartName.Series["Series1"].Points.Last().MarkerSize = 10;
+            chartName.Series["Series1"].Points.Last().MarkerSize = 5;
             chartName.Series["Series1"].Points.Last().MarkerColor = GForceSettings.MarkerColor;// Color.FromArgb(255, 255, 0, 0);
             chartName.Series["Series1"].Points.Last().IsValueShownAsLabel = true;
         }
@@ -247,7 +247,7 @@ namespace Physics_Data_Debug
                 chartName.Series["Series" + u].ChartType = SeriesChartType.Polar;
                 chartName.Series["Series" + u.ToString()].Color = Color.Transparent;
                 chartName.Series["Series" + u.ToString()].MarkerStyle = MarkerStyle.Circle;
-                chartName.Series["Series" + u.ToString()].MarkerSize = 5;
+                chartName.Series["Series" + u.ToString()].MarkerSize = 2;
                 chartName.Series["Series" + u.ToString()].MarkerColor = Color.FromArgb(historyalpha, 128, 0, 0);
                 chartName.Series["Series" + u.ToString()].IsValueShownAsLabel = false;
                 chartName.Series["Series" + u.ToString()].SmartLabelStyle.Enabled = false;
