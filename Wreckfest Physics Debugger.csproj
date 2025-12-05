@@ -154,6 +154,7 @@
     <Compile Include="FormTireTemperatures.Designer.cs">
       <DependentUpon>FormTireTemperatures.cs</DependentUpon>
     </Compile>
+    <Compile Include="WF_Dictionary.cs" />
     <Compile Include="WreckfestEnums.cs" />
     <EmbeddedResource Include="Form4Wheels.resx">
       <DependentUpon>Form4Wheels.cs</DependentUpon>
