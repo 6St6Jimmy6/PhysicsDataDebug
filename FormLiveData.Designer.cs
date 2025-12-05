@@ -2830,7 +2830,7 @@ namespace Physics_Data_Debug
             this.GameVersionComboBox.Name = "GameVersionComboBox";
             this.GameVersionComboBox.Size = new System.Drawing.Size(192, 33);
             this.GameVersionComboBox.TabIndex = 285;
-            this.GameVersionComboBox.SelectedIndexChanged += new System.EventHandler(this.GameVersionComboBox_SelectedIndexChanged);
+            this.GameVersionComboBox.SelectionChangeCommitted += new System.EventHandler(this.GameVersionComboBox_SelectionChangeCommitted);
             // 
             // label38
             // 
@@ -2849,7 +2849,7 @@ namespace Physics_Data_Debug
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1628, 1992);
+            this.ClientSize = new System.Drawing.Size(1628, 1958);
             this.Controls.Add(this.GameVersionComboBox);
             this.Controls.Add(this.RightLabel);
             this.Controls.Add(this.CurrentRightDifferentialTorque);

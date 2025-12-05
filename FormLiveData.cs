@@ -27,10 +27,7 @@ namespace Physics_Data_Debug
 
             logInterval_textBox.Text = LiveData.TickInterval.ToString();
 
-            //GameVersionComboBox.DrawItem += GameVersionComboBox_DrawItem;
-            //GameVersionComboBox.DrawMode = DrawMode.OwnerDrawFixed;
             GameVersionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-
             GameVersionComboBox.Items.Add(BaseAddressUpdate.V1_308408);
             GameVersionComboBox.Items.Add(BaseAddressUpdate.V1_285308);
 
@@ -392,22 +389,7 @@ namespace Physics_Data_Debug
             }
             cb.ForeColor = fontColor;
         }
-        
-        private void GameVersionComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            //GForceSettings GForceSettings = new GForceSettings();
-            var comboBox = (ComboBox)sender;
-            var color = Color.Black;
-            SolidBrush brush = new SolidBrush(color);
-            var font = new Font(GForceSettings.Y1DefaultFontFamily, GForceSettings.Y1DefaultFontSize, GForceSettings.Y1DefaultFontStyle);
-            string colorRemovePart1 = color.ToString().Replace("Color [", "");
-            string colorRemovePart2 = colorRemovePart1.Replace("]", "");
-            string colorName = colorRemovePart2;
-            e.DrawBackground();
-            e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
-            CheckFontColorAndSetBackGroundColor(GameVersionComboBox, color);
-        }
-        private void GameVersionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void GameVersionComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             LoadGameVersion();
         }
