@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,27 @@ namespace Physics_Data_Debug
             toSuspensionSettingsButton.Hide();// Not yet implemented
 
             logInterval_textBox.Text = LiveData.TickInterval.ToString();
+
+            //GameVersionComboBox.DrawItem += GameVersionComboBox_DrawItem;
+            //GameVersionComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            GameVersionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            GameVersionComboBox.Items.Add(BaseAddressUpdate.V1_308408);
+            GameVersionComboBox.Items.Add(BaseAddressUpdate.V1_285308);
+
+            LoadGameVersion();
+        }
+        private void LoadGameVersion()
+        {
+            if(GameVersionComboBox.SelectedIndex == 0)
+            {
+                GameVersionComboBox.SelectedItem = BaseAddressUpdate.V1_308408;
+            }
+            else
+            {
+                GameVersionComboBox.SelectedItem = BaseAddressUpdate.V1_285308;
+            }
+
         }
         #region Methods
         public void ButtonVisibilities()
@@ -107,16 +129,28 @@ namespace Physics_Data_Debug
             CurrentEngineRPMAxle.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineRPMAxle, 0, "(", ") RPM");
             CurrentEngineTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineTorqueNm, 2, "", " Nm");
             CurrentEnginePower.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.EnginePowerKW, 2, "", " kW") + " kW";
-            CurrentDifferentialSpeedRad.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRad, 2, "", " rad/s");
-            CurrentDifferentialTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialTorque, 2, "", " Nm");
-            int diffClosed = LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpen);
-            if (diffClosed != 0)
+            CurrentLeftDifferentialSpeedRad.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
+            CurrentLeftDifferentialTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
+            int diffPrimClosed = LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft);
+            if (diffPrimClosed != 0)
             {
-                CurrentDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
+                CurrentLeftDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
             }
             else
             {
-               CurrentDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
+               CurrentLeftDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
+            }
+
+            CurrentRightDifferentialSpeedRad.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
+            CurrentRightDifferentialTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
+            int diffSecClosed = LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft);
+            if (diffSecClosed != 0)
+            {
+                CurrentRightDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
+            }
+            else
+            {
+                CurrentRightDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
             }
 
             textBoxTireWriter(WF_Prefix.FL, textBox_FL_AngularVelocity, textBox_FL_ContactLength, textBox_FL_CurrentContactBrakeTorque, textBox_FL_MaxCurrentContactBrakeTorque, textBox_FL_Deflection, textBox_FL_EffectiveRadius,
@@ -304,7 +338,7 @@ namespace Physics_Data_Debug
                 LiveData.GeneratePowertrainDataList(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, WF_DifferentialDataChunks.DataStart, WF_DifferentialDataChunks.DataStart);//5
                 FirstTimeLoad = true;
             }
-            LiveData.GetData((ulong)BaseAddressUpdate.V1_308408);
+            LiveData.GetData((ulong)GameVersionComboBox.SelectedItem/*BaseAddressUpdate.V1_308408*/);
             // Needs to be in order of WF_Prefix
             LiveData.UpdateBodyDataValues(WF_Prefix.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
 
@@ -345,6 +379,37 @@ namespace Physics_Data_Debug
             LiveData._4WheelsOpen = true;
             Form4Wheels s1 = new Form4Wheels();
             s1.Show();
+        }
+        private void CheckFontColorAndSetBackGroundColor(ComboBox cb, Color fontColor)
+        {
+            if (fontColor == Color.White || fontColor == Color.WhiteSmoke || fontColor == Color.AntiqueWhite || fontColor == Color.FloralWhite || fontColor == Color.NavajoWhite)
+            {
+                cb.BackColor = Color.Black;
+            }
+            else
+            {
+                cb.BackColor = SystemColors.Window;
+            }
+            cb.ForeColor = fontColor;
+        }
+        
+        private void GameVersionComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            //GForceSettings GForceSettings = new GForceSettings();
+            var comboBox = (ComboBox)sender;
+            var color = Color.Black;
+            SolidBrush brush = new SolidBrush(color);
+            var font = new Font(GForceSettings.Y1DefaultFontFamily, GForceSettings.Y1DefaultFontSize, GForceSettings.Y1DefaultFontStyle);
+            string colorRemovePart1 = color.ToString().Replace("Color [", "");
+            string colorRemovePart2 = colorRemovePart1.Replace("]", "");
+            string colorName = colorRemovePart2;
+            e.DrawBackground();
+            e.Graphics.DrawString(colorName, font, brush, e.Bounds.X, e.Bounds.Y);
+            CheckFontColorAndSetBackGroundColor(GameVersionComboBox, color);
+        }
+        private void GameVersionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGameVersion();
         }
     }
 }

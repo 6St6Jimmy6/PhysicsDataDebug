@@ -592,19 +592,23 @@ namespace Physics_Data_Debug
     }
     public enum WF_DifferentialDataChunks : int
     {
-        DataStart = WF_DifferentialDataOffset.DifferentialOpen,
-        ChunkSize = 0xC
+        DataStart = WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft,
+        ChunkSize = 0x6C
     }
     public enum WF_DifferentialSide : int
     {
-        PrimaryAxle = 0x0,
-        SecondaryAxle = 0x60,
+        Left = 0x0,
+        Right = 0x60,
     }
     public enum WF_DifferentialDataOffset : int
     {
-        DifferentialOpen = 0xD94,// !=0 means differential is locked. ==0 means it's open
-        DifferentialVelocityRad = 0xD98,
-        DifferentialTorque = 0xD9C,
+        DifferentialOpenPrimaryLeft = 0xD94,// !=0 means differential is locked. ==0 means it's open
+        DifferentialVelocityRadPrimaryLeft = 0xD98,
+        DifferentialTorquePrimaryLeft = 0xD9C,
+
+        DifferentialOpenPrimaryRight = DifferentialOpenPrimaryLeft + WF_DifferentialSide.Right,// !=0 means differential is locked. ==0 means it's open
+        DifferentialVelocityRadPrimaryRight = DifferentialVelocityRadPrimaryLeft + WF_DifferentialSide.Right,
+        DifferentialTorquePrimaryRight = DifferentialTorquePrimaryLeft + WF_DifferentialSide.Right,
     }
     public enum WF_TimeDataOffset : int
     {

@@ -170,8 +170,8 @@ namespace Physics_Data_Debug
             #region Read Speed, Engine Torque and Differential
             Powertrain_EngineData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Engine, baseAddrUpdt, (int)WF_EngineSide.AllSides, new int[] { }, (int)WF_EngineDataChunks.DataStart, (int)WF_EngineDataChunks.ChunkSize);//Get raw data...
             Powertrain_EngineData = Powertrain_EngineData.Concat(GetCalculatedEngineData(Powertrain_EngineData)).ToList();//...then Concat (expand) it with calculated data;
-            Powertrain_DifferentialPrimaryAxleData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Differential, baseAddrUpdt, (int)WF_DifferentialSide.PrimaryAxle, new int[] { }, (int)WF_DifferentialDataChunks.DataStart, (int)WF_DifferentialDataChunks.ChunkSize);
-            Powertrain_DifferentialSecondaryAxleData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Differential, baseAddrUpdt, (int)WF_DifferentialSide.SecondaryAxle, new int[] { }, (int)WF_DifferentialDataChunks.DataStart, (int)WF_DifferentialDataChunks.ChunkSize);
+            Powertrain_DifferentialPrimaryAxleData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Differential, baseAddrUpdt, (int)WF_DifferentialSide.Left, new int[] { }, (int)WF_DifferentialDataChunks.DataStart, (int)WF_DifferentialDataChunks.ChunkSize);
+            //Powertrain_DifferentialSecondaryAxleData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Differential, baseAddrUpdt, (int)WF_DifferentialSide.SecondaryAxle, new int[] { }, (int)WF_DifferentialDataChunks.DataStart, (int)WF_DifferentialDataChunks.ChunkSize);
             #endregion
 
             #region Read Tire Data
@@ -471,7 +471,7 @@ namespace Physics_Data_Debug
                 int test = Convert.ToInt32(GetEnum<T>(i));
                 //int index = Array.IndexOf(Enum.GetValues(((WF_EngineDataOffset)i).GetType()), (WF_EngineDataOffset)i);
                 //subList[index].Value = powertrainEngineData[((int)(WF_EngineDataOffset)i - Convert.ToInt32(powertrainEngineDataStart)) / size];//Needs all the offsets in the list...
-                if (/*typeof(T) == typeof(WF_DifferentialDataOffset) && */i == (int)WF_DifferentialDataOffset.DifferentialOpen && Convert.ToInt32(prefix) == (int)WF_Prefix.Powertrain)
+                if (/*typeof(T) == typeof(WF_DifferentialDataOffset) && */i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft && Convert.ToInt32(prefix) == (int)WF_Prefix.Powertrain)
                     fullList[indexOfInFullList][ii].Value = BitConverter.ToInt32(byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size], 0);
                 else
                     fullList[indexOfInFullList][ii].Value = BitConverter.ToSingle(byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size], 0);
@@ -488,12 +488,12 @@ namespace Physics_Data_Debug
             }
             foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.PrimaryAxle + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.PrimaryAxle*/ + (WF_DifferentialDataOffset)i });
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.Left + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.PrimaryAxle*/ + (WF_DifferentialDataOffset)i });
             }
-            foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.SecondaryAxle + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.SecondaryAxle*/ + (WF_DifferentialDataOffset)i });
-            }
+            //foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
+            //{
+            //    subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_DifferentialSide.SecondaryAxle + (int)(WF_DifferentialDataOffset)i, Name = prefix + "_" /*+ WF_DifferentialSide.SecondaryAxle*/ + (WF_DifferentialDataOffset)i });
+            //}
             fullList.Add(subList);
         }
         public static void UpdatePowertrainDataValues(Enum prefix, List<List<DataItem>> fullList, Enum powertrainEngineDataStart, List<byte[]> powertrainEngineData, Enum powertrainDifferentailPrimaryAxleDataStart, List<byte[]> DifferentailPrimaryAxle, Enum powertrainDifferentialSecondaryAxleDataStart, List<byte[]> powertrainDifferentialSecondaryAxleData)
@@ -501,7 +501,7 @@ namespace Physics_Data_Debug
             int ii = 0;
             ii = ForEachValueUpdate<WF_EngineDataOffset>(ii, prefix, fullList, powertrainEngineData, powertrainEngineDataStart);
             ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, DifferentailPrimaryAxle, powertrainDifferentialSecondaryAxleDataStart);
-            ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, powertrainDifferentialSecondaryAxleData, powertrainDifferentialSecondaryAxleDataStart);
+            //ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, powertrainDifferentialSecondaryAxleData, powertrainDifferentialSecondaryAxleDataStart);
         }
         public static List<byte[]> GetCalculatedRotationData(Matrix4x4 transformMatrixBody)
         {
