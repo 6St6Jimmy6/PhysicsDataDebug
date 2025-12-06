@@ -16,139 +16,139 @@ namespace Physics_Data_Debug
             if (LiveData.Logging == true)
             {
                 // SA, SR, Speed and Vertical Load filters for logging
-                FilterCheckAndLog(LogSettings.FileNameFLTire, LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.VerticalLoad));
-                FilterCheckAndLog(LogSettings.FileNameFRTire, LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.VerticalLoad));
-                FilterCheckAndLog(LogSettings.FileNameRLTire, LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.VerticalLoad));
-                FilterCheckAndLog(LogSettings.FileNameRRTire, LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.VerticalLoad));
+                FilterCheckAndLog(LogSettings.FileNameFLTire, LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.VerticalLoad));
+                FilterCheckAndLog(LogSettings.FileNameFRTire, LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.VerticalLoad));
+                FilterCheckAndLog(LogSettings.FileNameRLTire, LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.VerticalLoad));
+                FilterCheckAndLog(LogSettings.FileNameRRTire, LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.SlipRatio), LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.SlipAngleDeg), LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.TravelSpeed), LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.VerticalLoad));
             }
         }
         private static void CheckWhatToLogInFile(char delimiter)
         {
             LogSettings.Header0 = nameof(AllValueNames.TravelSpeed) + delimiter;//LogSettings.sTireTravelSpeed
-            LogSettings.FL_Parameter0 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
-            LogSettings.FR_Parameter0 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
-            LogSettings.RL_Parameter0 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
-            LogSettings.RR_Parameter0 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
+            LogSettings.FL_Parameter0 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
+            LogSettings.FR_Parameter0 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
+            LogSettings.RL_Parameter0 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
+            LogSettings.RR_Parameter0 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.TravelSpeed).ToString() + delimiter;
 
             LogSettings.Header1 = nameof(AllValueNames.AngularVelocity) + delimiter;//LogSettings.sAngularVelocity
-            LogSettings.FL_Parameter1 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
-            LogSettings.FR_Parameter1 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
-            LogSettings.RL_Parameter1 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
-            LogSettings.RR_Parameter1 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
+            LogSettings.FL_Parameter1 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
+            LogSettings.FR_Parameter1 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
+            LogSettings.RL_Parameter1 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
+            LogSettings.RR_Parameter1 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.AngularVelocity).ToString() + delimiter;
 
             LogSettings.Header2 = nameof(AllValueNames.VerticalLoad) + delimiter;//LogSettings.sVerticalLoad
-            LogSettings.FL_Parameter2 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
-            LogSettings.FR_Parameter2 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
-            LogSettings.RL_Parameter2 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
-            LogSettings.RR_Parameter2 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
+            LogSettings.FL_Parameter2 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
+            LogSettings.FR_Parameter2 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
+            LogSettings.RL_Parameter2 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
+            LogSettings.RR_Parameter2 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.VerticalLoad).ToString() + delimiter;
 
             LogSettings.Header3 = nameof(AllValueNames.VerticalDeflection) + delimiter;//LogSettings.sVerticalDeflection
-            LogSettings.FL_Parameter3 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
-            LogSettings.FR_Parameter3 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
-            LogSettings.RL_Parameter3 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
-            LogSettings.RR_Parameter3 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
+            LogSettings.FL_Parameter3 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
+            LogSettings.FR_Parameter3 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
+            LogSettings.RL_Parameter3 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
+            LogSettings.RR_Parameter3 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.VerticalDeflection).ToString() + delimiter;
 
             LogSettings.Header4 = nameof(AllValueNames.LoadedRadius) + delimiter;//LogSettings.sLoadedRadius
-            LogSettings.FL_Parameter4 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
-            LogSettings.FR_Parameter4 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
-            LogSettings.RL_Parameter4 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
-            LogSettings.RR_Parameter4 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
+            LogSettings.FL_Parameter4 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
+            LogSettings.FR_Parameter4 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
+            LogSettings.RL_Parameter4 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
+            LogSettings.RR_Parameter4 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.LoadedRadius).ToString() + delimiter;
 
             LogSettings.Header5 = nameof(AllValueNames.EffectiveRadius) + delimiter;//LogSettings.sEffectiveRadius
-            LogSettings.FL_Parameter5 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
-            LogSettings.FR_Parameter5 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
-            LogSettings.RL_Parameter5 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
-            LogSettings.RR_Parameter5 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
+            LogSettings.FL_Parameter5 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
+            LogSettings.FR_Parameter5 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
+            LogSettings.RL_Parameter5 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
+            LogSettings.RR_Parameter5 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.EffectiveRadius).ToString() + delimiter;
 
             LogSettings.Header6 = nameof(AllValueNames.ContactLength) + delimiter;//LogSettings.sContactLength
-            LogSettings.FL_Parameter6 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.ContactLength).ToString() + delimiter;
-            LogSettings.FR_Parameter6 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.ContactLength).ToString() + delimiter;
-            LogSettings.RL_Parameter6 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.ContactLength).ToString() + delimiter;
-            LogSettings.RR_Parameter6 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.ContactLength).ToString() + delimiter;
+            LogSettings.FL_Parameter6 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.ContactLength).ToString() + delimiter;
+            LogSettings.FR_Parameter6 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.ContactLength).ToString() + delimiter;
+            LogSettings.RL_Parameter6 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.ContactLength).ToString() + delimiter;
+            LogSettings.RR_Parameter6 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.ContactLength).ToString() + delimiter;
 
             LogSettings.Header7 = nameof(AllValueNames.CurrentContactBrakeTorque) + delimiter;//LogSettings.sBrakeTorque
-            LogSettings.FL_Parameter7 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
-            LogSettings.FR_Parameter7 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
-            LogSettings.RL_Parameter7 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
-            LogSettings.RR_Parameter7 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
+            LogSettings.FL_Parameter7 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
+            LogSettings.FR_Parameter7 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
+            LogSettings.RL_Parameter7 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
+            LogSettings.RR_Parameter7 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.CurrentContactBrakeTorque).ToString() + delimiter;
 
             LogSettings.Header7_1 = nameof(AllValueNames.CurrentContactBrakeTorqueMax) + delimiter;//LogSettings.sMaxBrakeTorque
-            LogSettings.FL_Parameter7_1 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
-            LogSettings.FR_Parameter7_1 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
-            LogSettings.RL_Parameter7_1 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
-            LogSettings.RR_Parameter7_1 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
+            LogSettings.FL_Parameter7_1 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
+            LogSettings.FR_Parameter7_1 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
+            LogSettings.RL_Parameter7_1 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
+            LogSettings.RR_Parameter7_1 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.CurrentContactBrakeTorqueMax).ToString() + delimiter;
 
             LogSettings.Header8 = nameof(AllValueNames.SteerAngleDeg) + delimiter;//LogSettings.sSteerAngle
-            LogSettings.FL_Parameter8 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
-            LogSettings.FR_Parameter8 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
-            LogSettings.RL_Parameter8 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
-            LogSettings.RR_Parameter8 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
+            LogSettings.FL_Parameter8 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
+            LogSettings.FR_Parameter8 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
+            LogSettings.RL_Parameter8 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
+            LogSettings.RR_Parameter8 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.SteerAngleDeg).ToString() + delimiter;
 
             LogSettings.Header9 = nameof(AllValueNames.CamberAngleDeg) + delimiter;//LogSettings.sCamberAngle
-            LogSettings.FL_Parameter9 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
-            LogSettings.FR_Parameter9 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
-            LogSettings.RL_Parameter9 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
-            LogSettings.RR_Parameter9 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
+            LogSettings.FL_Parameter9 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
+            LogSettings.FR_Parameter9 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
+            LogSettings.RL_Parameter9 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
+            LogSettings.RR_Parameter9 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.CamberAngleDeg).ToString() + delimiter;
 
             LogSettings.Header10 = nameof(AllValueNames.LateralLoad) + delimiter;//LogSettings.sLateralLoad
-            LogSettings.FL_Parameter10 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
-            LogSettings.FR_Parameter10 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
-            LogSettings.RL_Parameter10 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
-            LogSettings.RR_Parameter10 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
+            LogSettings.FL_Parameter10 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
+            LogSettings.FR_Parameter10 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
+            LogSettings.RL_Parameter10 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
+            LogSettings.RR_Parameter10 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.LateralLoad).ToString() + delimiter;
 
             LogSettings.Header11 = nameof(AllValueNames.SlipAngleDeg) + delimiter;//LogSettings.sSlipAngle
-            LogSettings.FL_Parameter11 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
-            LogSettings.FR_Parameter11 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
-            LogSettings.RL_Parameter11 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
-            LogSettings.RR_Parameter11 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
+            LogSettings.FL_Parameter11 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
+            LogSettings.FR_Parameter11 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
+            LogSettings.RL_Parameter11 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
+            LogSettings.RR_Parameter11 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.SlipAngleDeg).ToString() + delimiter;
 
             LogSettings.Header12 = nameof(AllValueNames.LateralFriction) + delimiter;//LogSettings.sLateralFriction
-            LogSettings.FL_Parameter12 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
-            LogSettings.FR_Parameter12 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
-            LogSettings.RL_Parameter12 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
-            LogSettings.RR_Parameter12 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
+            LogSettings.FL_Parameter12 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
+            LogSettings.FR_Parameter12 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
+            LogSettings.RL_Parameter12 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
+            LogSettings.RR_Parameter12 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.LateralFriction).ToString() + delimiter;
 
             LogSettings.Header13 = nameof(AllValueNames.LateralSlipSpeed) + delimiter;//LogSettings.sLateralSlipSpeed
-            LogSettings.FL_Parameter13 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
-            LogSettings.FR_Parameter13 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
-            LogSettings.RL_Parameter13 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
-            LogSettings.RR_Parameter13 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
+            LogSettings.FL_Parameter13 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
+            LogSettings.FR_Parameter13 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
+            LogSettings.RL_Parameter13 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
+            LogSettings.RR_Parameter13 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.LateralSlipSpeed).ToString() + delimiter;
 
             LogSettings.Header14 = nameof(AllValueNames.LongitudinalLoad) + delimiter;//LogSettings.sLongitudinalLoad
-            LogSettings.FL_Parameter14 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
-            LogSettings.FR_Parameter14 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
-            LogSettings.RL_Parameter14 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
-            LogSettings.RR_Parameter14 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
+            LogSettings.FL_Parameter14 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
+            LogSettings.FR_Parameter14 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
+            LogSettings.RL_Parameter14 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
+            LogSettings.RR_Parameter14 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.LongitudinalLoad).ToString() + delimiter;
 
             LogSettings.Header15 = nameof(AllValueNames.SlipRatio) + delimiter;//LogSettings.sSlipRatio
-            LogSettings.FL_Parameter15 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
-            LogSettings.FR_Parameter15 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
-            LogSettings.RL_Parameter15 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
-            LogSettings.RR_Parameter15 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
+            LogSettings.FL_Parameter15 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
+            LogSettings.FR_Parameter15 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
+            LogSettings.RL_Parameter15 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
+            LogSettings.RR_Parameter15 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.SlipRatio).ToString() + delimiter;
 
             LogSettings.Header16 = nameof(AllValueNames.LongitudinalFriction) + delimiter;//LogSettings.sLongitudinalFriction
-            LogSettings.FL_Parameter16 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
-            LogSettings.FR_Parameter16 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
-            LogSettings.RL_Parameter16 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
-            LogSettings.RR_Parameter16 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
+            LogSettings.FL_Parameter16 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
+            LogSettings.FR_Parameter16 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
+            LogSettings.RL_Parameter16 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
+            LogSettings.RR_Parameter16 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.LongitudinalFriction).ToString() + delimiter;
 
             LogSettings.Header17 = nameof(AllValueNames.LongitudinalSlipSpeed) + delimiter;//LogSettings.sLongitudinalSlipSpeed
-            LogSettings.FL_Parameter17 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
-            LogSettings.FR_Parameter17 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
-            LogSettings.RL_Parameter17 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
-            LogSettings.RR_Parameter17 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
+            LogSettings.FL_Parameter17 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
+            LogSettings.FR_Parameter17 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
+            LogSettings.RL_Parameter17 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
+            LogSettings.RR_Parameter17 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.LongitudinalSlipSpeed).ToString() + delimiter;
 
             LogSettings.Header18 = nameof(AllValueNames.TreadTemperature) + delimiter;//LogSettings.sTreadTemperature
-            LogSettings.FL_Parameter18 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
-            LogSettings.FR_Parameter18 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
-            LogSettings.RL_Parameter18 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
-            LogSettings.RR_Parameter18 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
+            LogSettings.FL_Parameter18 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
+            LogSettings.FR_Parameter18 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
+            LogSettings.RL_Parameter18 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
+            LogSettings.RR_Parameter18 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.TreadTemperature).ToString() + delimiter;
 
             LogSettings.Header19 = nameof(AllValueNames.InnerTemperature) + delimiter;//LogSettings.sInnerTemperature
-            LogSettings.FL_Parameter19 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
-            LogSettings.FR_Parameter19 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
-            LogSettings.RL_Parameter19 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
-            LogSettings.RR_Parameter19 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
+            LogSettings.FL_Parameter19 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
+            LogSettings.FR_Parameter19 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
+            LogSettings.RL_Parameter19 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
+            LogSettings.RR_Parameter19 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.InnerTemperature).ToString() + delimiter;
 
             LogSettings.Header20 = nameof(AllValueNames.RaceTime) + delimiter;//LogSettings.sRaceTime
             LogSettings.FL_Parameter20 = LiveData.RaceTime.ToString().ToString() + delimiter;
@@ -157,52 +157,52 @@ namespace Physics_Data_Debug
             LogSettings.RR_Parameter20 = LiveData.RaceTime.ToString().ToString() + delimiter;
 
             LogSettings.Header21 = nameof(AllValueNames.TotalFriction) + delimiter;//LogSettings.sTotalFriction
-            LogSettings.FL_Parameter21 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
-            LogSettings.FR_Parameter21 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
-            LogSettings.RL_Parameter21 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
-            LogSettings.RR_Parameter21 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
+            LogSettings.FL_Parameter21 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
+            LogSettings.FR_Parameter21 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
+            LogSettings.RL_Parameter21 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
+            LogSettings.RR_Parameter21 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.TotalFriction).ToString() + delimiter;
 
             LogSettings.Header22 = nameof(AllValueNames.TotalFrictionAngleDeg) + delimiter;//LogSettings.sTotalFrictionAngle
-            LogSettings.FL_Parameter22 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
-            LogSettings.FR_Parameter22 = LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
-            LogSettings.RL_Parameter22 = LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
-            LogSettings.RR_Parameter22 = LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
+            LogSettings.FL_Parameter22 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
+            LogSettings.FR_Parameter22 = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
+            LogSettings.RL_Parameter22 = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
+            LogSettings.RR_Parameter22 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
 
             LogSettings.Header23 = nameof(AllValueNames.SuspensionLength) + delimiter;//LogSettings.sSuspensionLength
-            LogSettings.FL_Parameter23 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
-            LogSettings.FR_Parameter23 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
-            LogSettings.RL_Parameter23 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
-            LogSettings.RR_Parameter23 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.FL_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.FR_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.RL_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.RR_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
 
             LogSettings.Header24 = nameof(AllValueNames.SuspensionVelocity) + delimiter;//LogSettings.sSuspensionVelocity
-            LogSettings.FL_Parameter24 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
-            LogSettings.FR_Parameter24 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
-            LogSettings.RL_Parameter24 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
-            LogSettings.RR_Parameter24 = LiveData.GetFullListDataValue(WF_Prefix.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.FL_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.FR_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.RL_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.RR_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
 
             LogSettings.Header25 = nameof(AllValueNames.Body_XYZG) + delimiter;//LogSettings.sXGRotated
-            LogSettings.FL_Parameter25 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
-            LogSettings.FR_Parameter25 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
-            LogSettings.RL_Parameter25 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
-            LogSettings.RR_Parameter25 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
+            LogSettings.FL_Parameter25 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
+            LogSettings.FR_Parameter25 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
+            LogSettings.RL_Parameter25 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
+            LogSettings.RR_Parameter25 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;
 
             LogSettings.Header26 = nameof(AllValueNames.Body_XZAccelerationAngleDeg) + delimiter;//LogSettings.sZGRotated
-            LogSettings.FL_Parameter26 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
-            LogSettings.FR_Parameter26 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
-            LogSettings.RL_Parameter26 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
-            LogSettings.RR_Parameter26 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
+            LogSettings.FL_Parameter26 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
+            LogSettings.FR_Parameter26 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
+            LogSettings.RL_Parameter26 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
+            LogSettings.RR_Parameter26 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAccelerationAngleDeg).ToString() + delimiter;
 
             LogSettings.Header27 = nameof(AllValueNames.Body_XZAcceleration) + delimiter;//LogSettings.sYGRotated
-            LogSettings.FL_Parameter27 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
-            LogSettings.FR_Parameter27 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
-            LogSettings.RL_Parameter27 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
-            LogSettings.RR_Parameter27 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
+            LogSettings.FL_Parameter27 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
+            LogSettings.FR_Parameter27 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
+            LogSettings.RL_Parameter27 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
+            LogSettings.RR_Parameter27 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZAcceleration).ToString() + delimiter;
 
             LogSettings.Header28 = nameof(AllValueNames.Body_XYZAcceleration) + delimiter;//LogSettings.sXYZG
-            LogSettings.FL_Parameter28 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
-            LogSettings.FR_Parameter28 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
-            LogSettings.RL_Parameter28 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
-            LogSettings.RR_Parameter28 = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
+            LogSettings.FL_Parameter28 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
+            LogSettings.FR_Parameter28 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
+            LogSettings.RL_Parameter28 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
+            LogSettings.RR_Parameter28 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZAcceleration).ToString() + delimiter;
         }
         private static void FilterCheckAndLog(string tireFileName, float slipRatio, float slipAngleDeg, float travelSpeed, float verticalLoad)
         {

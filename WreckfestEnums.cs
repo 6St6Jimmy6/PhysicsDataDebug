@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Physics_Data_Debug
 {
-    public enum WF_Prefix : int// don't add anything in the first 4 zeroes. So everyone of these end with 00000, to support Prefix+ValueName ID calculation.
+    public enum WF_PrefixMain : int// don't add anything in the first 4 zeroes. So everyone of these end with 00000, to support Prefix+ValueName ID calculation.
     {
         Body = 0,
         FL = 100000000,
@@ -14,6 +14,16 @@ namespace Physics_Data_Debug
         RL = 300000000,
         RR = 400000000,
         Powertrain = 500000000,
+    }
+    public enum WF_PrefixSecondary : int
+    {
+        None,
+        Aero,
+        Tires,
+        Suspension,
+        Engine,
+        Differential,
+        Transmission,
     }
     public enum AllValueNames : int
     {

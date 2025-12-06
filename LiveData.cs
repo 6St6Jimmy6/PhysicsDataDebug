@@ -464,7 +464,7 @@ namespace Physics_Data_Debug
                 byte[] valueByteArray = byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size];
                 if (i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft ||
                     i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryRight
-                    && Convert.ToInt32(prefix) == (int)WF_Prefix.Powertrain) //Just Powertrain differentials. When more are foud, need to find a better way. In the meanwhile just add more else ifs
+                    && Convert.ToInt32(prefix) == (int)WF_PrefixMain.Powertrain) //Just Powertrain differentials. When more are foud, need to find a better way. In the meanwhile just add more else ifs
 
                 { fullList[indexOfInFullList][ii].Value = BitConverter.ToInt32(valueByteArray, 0); }
                 else

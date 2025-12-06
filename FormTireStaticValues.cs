@@ -30,10 +30,10 @@ namespace Physics_Data_Debug
         }
         private void ReadData()
         {
-            textBoxTireWrite(WF_Prefix.FL, textBox_FL_Radius, textBox_FL_Width, textBox_FL_ThermalAirTransfer, textBox_FL_ThermalInnerTransfer, textBox_FL_SpringRate, textBox_FL_DamperRate, textBox_FL_MaxDeflection, textBox_FL_Mass, textBox_FL_MomentOfInertia);
-            textBoxTireWrite(WF_Prefix.FR, textBox_FR_Radius, textBox_FR_Width, textBox_FR_ThermalAirTransfer, textBox_FR_ThermalInnerTransfer, textBox_FR_SpringRate, textBox_FR_DamperRate, textBox_FR_MaxDeflection, textBox_FR_Mass, textBox_FR_MomentOfInertia);
-            textBoxTireWrite(WF_Prefix.RL, textBox_RL_Radius, textBox_RL_Width, textBox_RL_ThermalAirTransfer, textBox_RL_ThermalInnerTransfer, textBox_RL_SpringRate, textBox_RL_DamperRate, textBox_RL_MaxDeflection, textBox_RL_Mass, textBox_RL_MomentOfInertia);
-            textBoxTireWrite(WF_Prefix.RR, textBox_RR_Radius, textBox_RR_Width, textBox_RR_ThermalAirTransfer, textBox_RR_ThermalInnerTransfer, textBox_RR_SpringRate, textBox_RR_DamperRate, textBox_RR_MaxDeflection, textBox_RR_Mass, textBox_RR_MomentOfInertia);
+            textBoxTireWrite(WF_PrefixMain.FL, textBox_FL_Radius, textBox_FL_Width, textBox_FL_ThermalAirTransfer, textBox_FL_ThermalInnerTransfer, textBox_FL_SpringRate, textBox_FL_DamperRate, textBox_FL_MaxDeflection, textBox_FL_Mass, textBox_FL_MomentOfInertia);
+            textBoxTireWrite(WF_PrefixMain.FR, textBox_FR_Radius, textBox_FR_Width, textBox_FR_ThermalAirTransfer, textBox_FR_ThermalInnerTransfer, textBox_FR_SpringRate, textBox_FR_DamperRate, textBox_FR_MaxDeflection, textBox_FR_Mass, textBox_FR_MomentOfInertia);
+            textBoxTireWrite(WF_PrefixMain.RL, textBox_RL_Radius, textBox_RL_Width, textBox_RL_ThermalAirTransfer, textBox_RL_ThermalInnerTransfer, textBox_RL_SpringRate, textBox_RL_DamperRate, textBox_RL_MaxDeflection, textBox_RL_Mass, textBox_RL_MomentOfInertia);
+            textBoxTireWrite(WF_PrefixMain.RR, textBox_RR_Radius, textBox_RR_Width, textBox_RR_ThermalAirTransfer, textBox_RR_ThermalInnerTransfer, textBox_RR_SpringRate, textBox_RR_DamperRate, textBox_RR_MaxDeflection, textBox_RR_Mass, textBox_RR_MomentOfInertia);
         }
         private void textBoxTireWrite(Enum prefix,  
             TextBox radius, TextBox width, TextBox thermalAirTransfer, TextBox thermalInnerTransfer, TextBox springRate, TextBox damperRate, TextBox maxDeflection, TextBox mass, TextBox momentOfInertia)

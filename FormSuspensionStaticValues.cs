@@ -103,7 +103,7 @@ namespace Physics_Data_Debug
         }
         private void ReadData()
         {
-            textBoxSuspensionWrite(WF_Prefix.FL, 
+            textBoxSuspensionWrite(WF_PrefixMain.FL, 
                 textBox_FL_SpringRate, 
                 textBox_FL_ProgressiveRate, 
                 textBox_FL_BumpLimitsX, textBox_FL_BumpLimitsY,
@@ -112,7 +112,7 @@ namespace Physics_Data_Debug
                 textBox_FL_ExpansionLimitFromZero, textBox_FL_CompressionLimitFromZero,
                 textBox_FL_ReboundRate, textBox_FL_ReboundStartPosition, textBox_FL_ReboundEndPosition,
                 textBox_FL_BumpStopLength, textBox_FL_BumpStopRate, textBox_FL_BumpStopRateGainDeflectionSquared, textBox_FL_BumpStopDamp, textBox_FL_BumpStopDampGainDeflectionSquared);
-            textBoxSuspensionWrite(WF_Prefix.FR,
+            textBoxSuspensionWrite(WF_PrefixMain.FR,
                 textBox_FR_SpringRate,
                 textBox_FR_ProgressiveRate,
                 textBox_FR_BumpLimitsX, textBox_FR_BumpLimitsY,
@@ -121,7 +121,7 @@ namespace Physics_Data_Debug
                 textBox_FR_ExpansionLimitFromZero, textBox_FR_CompressionLimitFromZero,
                 textBox_FR_ReboundRate, textBox_FR_ReboundStartPosition, textBox_FR_ReboundEndPosition,
                 textBox_FR_BumpStopLength, textBox_FR_BumpStopRate, textBox_FR_BumpStopRateGainDeflectionSquared, textBox_FR_BumpStopDamp, textBox_FR_BumpStopDampGainDeflectionSquared);
-            textBoxSuspensionWrite(WF_Prefix.RL,
+            textBoxSuspensionWrite(WF_PrefixMain.RL,
                 textBox_RL_SpringRate,
                 textBox_RL_ProgressiveRate,
                 textBox_RL_BumpLimitsX, textBox_RL_BumpLimitsY,
@@ -130,7 +130,7 @@ namespace Physics_Data_Debug
                 textBox_RL_ExpansionLimitFromZero, textBox_RL_CompressionLimitFromZero,
                 textBox_RL_ReboundRate, textBox_RL_ReboundStartPosition, textBox_RL_ReboundEndPosition,
                 textBox_RL_BumpStopLength, textBox_RL_BumpStopRate, textBox_RL_BumpStopRateGainDeflectionSquared, textBox_RL_BumpStopDamp, textBox_RL_BumpStopDampGainDeflectionSquared);
-            textBoxSuspensionWrite(WF_Prefix.RR,
+            textBoxSuspensionWrite(WF_PrefixMain.RR,
                 textBox_RR_SpringRate,
                 textBox_RR_ProgressiveRate,
                 textBox_RR_BumpLimitsX, textBox_RR_BumpLimitsY,

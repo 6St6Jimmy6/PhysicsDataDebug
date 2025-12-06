@@ -39,16 +39,17 @@ namespace Physics_Data_Debug
 
             if (FirstTimeLoad == false)
             {
+                //Dictionary<WF_PrefixMain, Dictionary<WF_PrefixSecondary, DataItem>> DefaultWF1Dictionary = WF_Dictionary.DefaultWF1Dictionary;
                 WreckfestEnums.AddNames();
                 // Needs to be in order of WF_Prefix
-                LiveData.GenerateBodyDataList(WF_Prefix.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, WF_BodyAccelDataChunks.DataStart, WF_AeroDataChunks.DataStart);//0
+                LiveData.GenerateBodyDataList(WF_PrefixMain.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, WF_BodyAccelDataChunks.DataStart, WF_AeroDataChunks.DataStart);//0
 
-                LiveData.GenerateTireDataList(WF_Prefix.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//1
-                LiveData.GenerateTireDataList(WF_Prefix.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//2
-                LiveData.GenerateTireDataList(WF_Prefix.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//3
-                LiveData.GenerateTireDataList(WF_Prefix.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//4
+                LiveData.GenerateTireDataList(WF_PrefixMain.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//1
+                LiveData.GenerateTireDataList(WF_PrefixMain.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//2
+                LiveData.GenerateTireDataList(WF_PrefixMain.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//3
+                LiveData.GenerateTireDataList(WF_PrefixMain.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//4
 
-                LiveData.GeneratePowertrainDataList(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, WF_DifferentialDataChunks.DataStart, WF_DifferentialDataChunks.DataStart);//5
+                LiveData.GeneratePowertrainDataList(WF_PrefixMain.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, WF_DifferentialDataChunks.DataStart, WF_DifferentialDataChunks.DataStart);//5
                 FirstTimeLoad = true;
             }
         }
@@ -120,22 +121,22 @@ namespace Physics_Data_Debug
             //textBox5.Text = "RL_LonBristleStiffness: " + Math.Round(LiveData.RL_LonBristleStiffness, 2) + "\r\n" + "RL_LonForceSlide: " + Math.Round(LiveData.RL_LonForceSlide, 2) + "\r\n" + "RL_LonForceStatic: " + Math.Round(LiveData.RL_LonForceStatic, 2) + "\r\n" + "RL_LonForceTotal: " + Math.Round(LiveData.RL_LonForceTotal, 2);
 
             // Chassis, Engine and Differential stuff
-            CurrentSpeed.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.Speed, 2);
-            CurrentAcceleration.Text = LiveData.ValueString(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZAcceleration, 2);
-            CurrentGForce.Text = LiveData.ValueString(WF_Prefix.Body, WF_BodyAccelDataOffset.XYZG, 2);
-            CurrentXDrag.Text = LiveData.ValueString(WF_Prefix.Body, WF_AeroDataOffset.XDragLocal, 2, "X: ");
-            CurrentYDrag.Text = LiveData.ValueString(WF_Prefix.Body, WF_AeroDataOffset.YDragLocal, 2, "Y: ");
-            CurrentZDrag.Text = LiveData.ValueString(WF_Prefix.Body, WF_AeroDataOffset.ZDragLocal, 2, "Z: ");
-            CurrentTotalDrag.Text = "Total: " + Math.Round(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.XDragLocal), 2) + Math.Pow(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.YDragLocal), 2) + Math.Pow(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_AeroDataOffset.ZDragLocal), 2)), 2)), 2).ToString();
-            CurrentFrontLift.Text = LiveData.ValueString(WF_Prefix.Body, WF_AeroDataOffset.FrontLift, 2, "Front: ");
-            CurrentRearLift.Text = LiveData.ValueString(WF_Prefix.Body, WF_AeroDataOffset.RearLift, 2, "Rear: ");
-            CurrentEngineRPM.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineRPM, 0, "", " RPM");
-            CurrentEngineRPMAxle.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineRPMAxle, 0, "(", ") RPM");
-            CurrentEngineTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.EngineTorqueNm, 2, "", " Nm");
-            CurrentEnginePower.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_EngineDataOffset.EnginePowerKW, 2, "", " kW") + " kW";
-            CurrentLeftDifferentialSpeedRad.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
-            CurrentLeftDifferentialTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
-            int diffPrimClosed = LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft);
+            CurrentSpeed.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.Speed, 2);
+            CurrentAcceleration.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZAcceleration, 2);
+            CurrentGForce.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZG, 2);
+            CurrentXDrag.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.XDragLocal, 2, "X: ");
+            CurrentYDrag.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.YDragLocal, 2, "Y: ");
+            CurrentZDrag.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.ZDragLocal, 2, "Z: ");
+            CurrentTotalDrag.Text = "Total: " + Math.Round(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_AeroDataOffset.XDragLocal), 2) + Math.Pow(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_AeroDataOffset.YDragLocal), 2) + Math.Pow(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_AeroDataOffset.ZDragLocal), 2)), 2)), 2).ToString();
+            CurrentFrontLift.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.FrontLift, 2, "Front: ");
+            CurrentRearLift.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.RearLift, 2, "Rear: ");
+            CurrentEngineRPM.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EngineRPM, 0, "", " RPM");
+            CurrentEngineRPMAxle.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EngineRPMAxle, 0, "(", ") RPM");
+            CurrentEngineTorque.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EngineTorqueNm, 2, "", " Nm");
+            CurrentEnginePower.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EnginePowerKW, 2, "", " kW") + " kW";
+            CurrentLeftDifferentialSpeedRad.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
+            CurrentLeftDifferentialTorque.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
+            int diffPrimClosed = LiveData.GetFullListDataValue(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft);
             if (diffPrimClosed != 0)
             {
                 CurrentLeftDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
@@ -145,9 +146,9 @@ namespace Physics_Data_Debug
                CurrentLeftDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
             }
 
-            CurrentRightDifferentialSpeedRad.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
-            CurrentRightDifferentialTorque.Text = LiveData.ValueString(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
-            int diffSecClosed = LiveData.GetFullListDataValue(WF_Prefix.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryRight);
+            CurrentRightDifferentialSpeedRad.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
+            CurrentRightDifferentialTorque.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
+            int diffSecClosed = LiveData.GetFullListDataValue(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryRight);
             if (diffSecClosed != 0)
             {
                 CurrentRightDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
@@ -157,19 +158,19 @@ namespace Physics_Data_Debug
                 CurrentRightDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
             }
 
-            textBoxTireWriter(WF_Prefix.FL, textBox_FL_AngularVelocity, textBox_FL_ContactLength, textBox_FL_CurrentContactBrakeTorque, textBox_FL_MaxCurrentContactBrakeTorque, textBox_FL_Deflection, textBox_FL_EffectiveRadius,
+            textBoxTireWriter(WF_PrefixMain.FL, textBox_FL_AngularVelocity, textBox_FL_ContactLength, textBox_FL_CurrentContactBrakeTorque, textBox_FL_MaxCurrentContactBrakeTorque, textBox_FL_Deflection, textBox_FL_EffectiveRadius,
                 textBox_FL_LateralLoad, textBox_FL_LoadedRadius, textBox_FL_LongitudinalLoad, textBox_FL_SlipRatio, textBox_FL_TravelSpeed, textBox_FL_VerticalLoad, textBox_FL_LateralFriction, textBox_FL_LongitudinalFriction, textBox_FL_TreadTemperature,
                 textBox_FL_InnerTemperature, textBox_FL_SlipAngleDeg, textBox_FL_TotalFriction, textBox_FL_TotalFrictionAngle, textBox_FL_LateralSlipSpeed, textBox_FL_LongitudinalSlipSpeed, textBox_FL_CamberAngle, textBox_FL_TireSteerAngle, 
                 textBox_FL_SuspensionLength, textBox_FL_SuspensionVelocity);
-            textBoxTireWriter(WF_Prefix.FR, textBox_FR_AngularVelocity, textBox_FR_ContactLength, textBox_FR_CurrentContactBrakeTorque, textBox_FR_MaxCurrentContactBrakeTorque, textBox_FR_Deflection, textBox_FR_EffectiveRadius,
+            textBoxTireWriter(WF_PrefixMain.FR, textBox_FR_AngularVelocity, textBox_FR_ContactLength, textBox_FR_CurrentContactBrakeTorque, textBox_FR_MaxCurrentContactBrakeTorque, textBox_FR_Deflection, textBox_FR_EffectiveRadius,
                 textBox_FR_LateralLoad, textBox_FR_LoadedRadius, textBox_FR_LongitudinalLoad, textBox_FR_SlipRatio, textBox_FR_TravelSpeed, textBox_FR_VerticalLoad, textBox_FR_LateralFriction, textBox_FR_LongitudinalFriction, textBox_FR_TreadTemperature,
                 textBox_FR_InnerTemperature, textBox_FR_SlipAngleDeg, textBox_FR_TotalFriction, textBox_FR_TotalFrictionAngle, textBox_FR_LateralSlipSpeed, textBox_FR_LongitudinalSlipSpeed, textBox_FR_CamberAngle, textBox_FR_TireSteerAngle, 
                 textBox_FR_SuspensionLength, textBox_FR_SuspensionVelocity);
-            textBoxTireWriter(WF_Prefix.RL, textBox_RL_AngularVelocity, textBox_RL_ContactLength, textBox_RL_CurrentContactBrakeTorque, textBox_RL_MaxCurrentContactBrakeTorque, textBox_RL_Deflection, textBox_RL_EffectiveRadius,
+            textBoxTireWriter(WF_PrefixMain.RL, textBox_RL_AngularVelocity, textBox_RL_ContactLength, textBox_RL_CurrentContactBrakeTorque, textBox_RL_MaxCurrentContactBrakeTorque, textBox_RL_Deflection, textBox_RL_EffectiveRadius,
                 textBox_RL_LateralLoad, textBox_RL_LoadedRadius, textBox_RL_LongitudinalLoad, textBox_RL_SlipRatio, textBox_RL_TravelSpeed, textBox_RL_VerticalLoad, textBox_RL_LateralFriction, textBox_RL_LongitudinalFriction, textBox_RL_TreadTemperature,
                 textBox_RL_InnerTemperature, textBox_RL_SlipAngleDeg, textBox_RL_TotalFriction, textBox_RL_TotalFrictionAngle, textBox_RL_LateralSlipSpeed, textBox_RL_LongitudinalSlipSpeed, textBox_RL_CamberAngle, textBox_RL_TireSteerAngle, 
                 textBox_RL_SuspensionLength, textBox_RL_SuspensionVelocity);
-            textBoxTireWriter(WF_Prefix.RR, textBox_RR_AngularVelocity, textBox_RR_ContactLength, textBox_RR_CurrentContactBrakeTorque, textBox_RR_MaxCurrentContactBrakeTorque, textBox_RR_Deflection, textBox_RR_EffectiveRadius,
+            textBoxTireWriter(WF_PrefixMain.RR, textBox_RR_AngularVelocity, textBox_RR_ContactLength, textBox_RR_CurrentContactBrakeTorque, textBox_RR_MaxCurrentContactBrakeTorque, textBox_RR_Deflection, textBox_RR_EffectiveRadius,
                 textBox_RR_LateralLoad, textBox_RR_LoadedRadius, textBox_RR_LongitudinalLoad, textBox_RR_SlipRatio, textBox_RR_TravelSpeed, textBox_RR_VerticalLoad, textBox_RR_LateralFriction, textBox_RR_LongitudinalFriction, textBox_RR_TreadTemperature,
                 textBox_RR_InnerTemperature, textBox_RR_SlipAngleDeg, textBox_RR_TotalFriction, textBox_RR_TotalFrictionAngle, textBox_RR_LateralSlipSpeed, textBox_RR_LongitudinalSlipSpeed, textBox_RR_CamberAngle, textBox_RR_TireSteerAngle, 
                 textBox_RR_SuspensionLength, textBox_RR_SuspensionVelocity);
@@ -329,14 +330,14 @@ namespace Physics_Data_Debug
         {
             LiveData.GetData((long)SelectedVersion);
             // Needs to be in order of WF_Prefix
-            LiveData.UpdateBodyDataValues(WF_Prefix.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
+            LiveData.UpdateBodyDataValues(WF_PrefixMain.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
 
-            LiveData.UpdateTireDataValues(WF_Prefix.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FL_TireData, WF_SuspensionChunks.DataStart, LiveData.FL_SuspensionData);//1
-            LiveData.UpdateTireDataValues(WF_Prefix.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FR_TireData, WF_SuspensionChunks.DataStart, LiveData.FR_SuspensionData);//2
-            LiveData.UpdateTireDataValues(WF_Prefix.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RL_TireData, WF_SuspensionChunks.DataStart, LiveData.RL_SuspensionData);//3
-            LiveData.UpdateTireDataValues(WF_Prefix.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RR_TireData, WF_SuspensionChunks.DataStart, LiveData.RR_SuspensionData);//4
+            LiveData.UpdateTireDataValues(WF_PrefixMain.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FL_TireData, WF_SuspensionChunks.DataStart, LiveData.FL_SuspensionData);//1
+            LiveData.UpdateTireDataValues(WF_PrefixMain.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FR_TireData, WF_SuspensionChunks.DataStart, LiveData.FR_SuspensionData);//2
+            LiveData.UpdateTireDataValues(WF_PrefixMain.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RL_TireData, WF_SuspensionChunks.DataStart, LiveData.RL_SuspensionData);//3
+            LiveData.UpdateTireDataValues(WF_PrefixMain.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RR_TireData, WF_SuspensionChunks.DataStart, LiveData.RR_SuspensionData);//4
 
-            LiveData.UpdatePowertrainDataValues(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
+            LiveData.UpdatePowertrainDataValues(WF_PrefixMain.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
             //LiveData.ConsoleTireData(LiveData.TireDataList);
             ValuesGet = true;
             DataLogger.LogToFile();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Physics_Data_Debug
 {
@@ -16,5 +17,6 @@ namespace Physics_Data_Debug
         public string Name { get; set; }
         public dynamic Value { get; set; }
         public int Unit { get; set; }
+        public TextBox textBox { get; set; }
     }
 }

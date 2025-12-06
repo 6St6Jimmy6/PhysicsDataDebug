@@ -103,13 +103,13 @@ namespace Physics_Data_Debug
 
             if (GForceSettings.X1AngleType == "Degrees")
             {
-                X1ValuesPolarChartArray[X1ValuesPolarChartArray.Length - 1] = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.Body_XZGAngleDeg);
+                X1ValuesPolarChartArray[X1ValuesPolarChartArray.Length - 1] = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.Body_XZGAngleDeg);
             }
             else//radians
             {
-                X1ValuesPolarChartArray[X1ValuesPolarChartArray.Length - 1] = LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZGAngleRad);
+                X1ValuesPolarChartArray[X1ValuesPolarChartArray.Length - 1] = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZGAngleRad);
             }
-            Y1ValuesPolarChartArray[Y1ValuesPolarChartArray.Length - 1] = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.XZG), 2);
+            Y1ValuesPolarChartArray[Y1ValuesPolarChartArray.Length - 1] = Math.Round(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XZG), 2);
 
             Array.Copy(X1ValuesPolarChartArray, 1, X1ValuesPolarChartArray, 0, X1ValuesPolarChartArray.Length - 1);
             Array.Copy(Y1ValuesPolarChartArray, 1, Y1ValuesPolarChartArray, 0, Y1ValuesPolarChartArray.Length - 1);
@@ -393,7 +393,7 @@ namespace Physics_Data_Debug
             X1ValuesChart2Array[0] = 0.3;
             X1ValuesChart2Array[1] = 0.7;
             List<double> X1ValuesChart2List = new List<double>(X1ValuesChart2Array);
-            Y1ValuesChart2Array[0] = Math.Round(LiveData.GetFullListDataValue(WF_Prefix.Body, WF_BodyAccelDataOffset.YG), 2);
+            Y1ValuesChart2Array[0] = Math.Round(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.YG), 2);
             Y1ValuesChart2Array[1] = Y1ValuesChart2Array[0];
             List<double> Y1ValuesChart2List = new List<double>(Y1ValuesChart2Array);
             chartName.Series["Series1"].Points.DataBindXY(X1ValuesChart2List, Y1ValuesChart2List);

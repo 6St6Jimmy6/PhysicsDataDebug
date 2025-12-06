@@ -1461,18 +1461,18 @@ namespace Physics_Data_Debug
             if (LiveData.ElapsedTime > 0 && PauseUpdate == false)
             {
                 xyzAxisSelection = new List<string> { _4WheelsSettings.X1Selection, _4WheelsSettings.Y1Selection, _4WheelsSettings.Z1Selection };
-                List<float> FL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FL);//, LiveData.FL_LiveDataList);
-                List<float> FR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FR);//,, LiveData.FR_LiveDataList);
-                List<float> RL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RL);//,, LiveData.RL_LiveDataList);
-                List<float> RR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RR);//,, LiveData.RR_LiveDataList);
+                List<float> FL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.FL);//, LiveData.FL_LiveDataList);
+                List<float> FR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.FR);//,, LiveData.FR_LiveDataList);
+                List<float> RL_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.RL);//,, LiveData.RL_LiveDataList);
+                List<float> RR_xyzValues = _4Wheels.ListSelections(xyzAxisSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.RR);//,, LiveData.RR_LiveDataList);
 
                 xyzAxisLimiterSelection = new List<string> { X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection };
-                List<float> FL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FL);//,, LiveData.FL_LiveDataList);
-                List<float> FR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.FR);//,, LiveData.FR_LiveDataList);
-                List<float> RL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RL);//,, LiveData.RL_LiveDataList);
-                List<float> RR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_Prefix.RR);//,, LiveData.RR_LiveDataList);
+                List<float> FL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.FL);//,, LiveData.FL_LiveDataList);
+                List<float> FR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.FR);//,, LiveData.FR_LiveDataList);
+                List<float> RL_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.RL);//,, LiveData.RL_LiveDataList);
+                List<float> RR_limiter = _4Wheels.ListSelections(xyzAxisLimiterSelection, LiveData.None, LiveData.RaceTime, WF_PrefixMain.RR);//,, LiveData.RR_LiveDataList);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.FL_SeriesString, FL_xyzValues, FL_limiter, LiveData.GetFullListDataValue(WF_Prefix.FL, WF_TireDataOffset.VerticalLoad),
+                _4Wheels.ListSeries(chart1, _4Wheels.FL_SeriesString, FL_xyzValues, FL_limiter, LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.FL_X1ValuesChart, _4Wheels.FL_Y1ValuesChart, _4Wheels.FL_Z1ValuesChart,
                     _4Wheels.FL_X1ValuesChartColor1, _4Wheels.FL_Y1ValuesChartColor1,
                     _4Wheels.FL_X1ValuesChartColor2, _4Wheels.FL_Y1ValuesChartColor2,
@@ -1485,7 +1485,7 @@ namespace Physics_Data_Debug
                     _4Wheels.FL_X1ValuesChartColor9, _4Wheels.FL_Y1ValuesChartColor9,
                     _4Wheels.FL_X1ValuesChartColor10, _4Wheels.FL_Y1ValuesChartColor10);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.FR_SeriesString, FR_xyzValues, FR_limiter, LiveData.GetFullListDataValue(WF_Prefix.FR, WF_TireDataOffset.VerticalLoad),
+                _4Wheels.ListSeries(chart1, _4Wheels.FR_SeriesString, FR_xyzValues, FR_limiter, LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.FR_X1ValuesChart, _4Wheels.FR_Y1ValuesChart, _4Wheels.FR_Z1ValuesChart,
                     _4Wheels.FR_X1ValuesChartColor1, _4Wheels.FR_Y1ValuesChartColor1,
                     _4Wheels.FR_X1ValuesChartColor2, _4Wheels.FR_Y1ValuesChartColor2,
@@ -1498,7 +1498,7 @@ namespace Physics_Data_Debug
                     _4Wheels.FR_X1ValuesChartColor9, _4Wheels.FR_Y1ValuesChartColor9,
                     _4Wheels.FR_X1ValuesChartColor10, _4Wheels.FR_Y1ValuesChartColor10);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.RL_SeriesString, RL_xyzValues, RL_limiter, LiveData.GetFullListDataValue(WF_Prefix.RL, WF_TireDataOffset.VerticalLoad),
+                _4Wheels.ListSeries(chart1, _4Wheels.RL_SeriesString, RL_xyzValues, RL_limiter, LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.RL_X1ValuesChart, _4Wheels.RL_Y1ValuesChart, _4Wheels.RL_Z1ValuesChart,
                     _4Wheels.RL_X1ValuesChartColor1, _4Wheels.RL_Y1ValuesChartColor1,
                     _4Wheels.RL_X1ValuesChartColor2, _4Wheels.RL_Y1ValuesChartColor2,
@@ -1511,7 +1511,7 @@ namespace Physics_Data_Debug
                     _4Wheels.RL_X1ValuesChartColor9, _4Wheels.RL_Y1ValuesChartColor9,
                     _4Wheels.RL_X1ValuesChartColor10, _4Wheels.RL_Y1ValuesChartColor10);
 
-                _4Wheels.ListSeries(chart1, _4Wheels.RR_SeriesString, RR_xyzValues, RR_limiter, LiveData.GetFullListDataValue(WF_Prefix.RR, WF_TireDataOffset.VerticalLoad),
+                _4Wheels.ListSeries(chart1, _4Wheels.RR_SeriesString, RR_xyzValues, RR_limiter, LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.VerticalLoad),
                     _4Wheels.RR_X1ValuesChart, _4Wheels.RR_Y1ValuesChart, _4Wheels.RR_Z1ValuesChart,
                     _4Wheels.RR_X1ValuesChartColor1, _4Wheels.RR_Y1ValuesChartColor1,
                     _4Wheels.RR_X1ValuesChartColor2, _4Wheels.RR_Y1ValuesChartColor2,
