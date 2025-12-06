@@ -132,7 +132,7 @@ namespace Physics_Data_Debug
             this.textBox_FR_MaxCurrentContactBrakeTorque = new System.Windows.Forms.TextBox();
             this.textBox_RL_MaxCurrentContactBrakeTorque = new System.Windows.Forms.TextBox();
             this.textBox_RR_MaxCurrentContactBrakeTorque = new System.Windows.Forms.TextBox();
-            this.toTireSettingsButton = new System.Windows.Forms.Button();
+            this.toTireStaticValues = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -202,7 +202,7 @@ namespace Physics_Data_Debug
             this.textBox_RR_SuspensionVelocity = new System.Windows.Forms.TextBox();
             this.textBox_RR_SuspensionLength = new System.Windows.Forms.TextBox();
             this.label73 = new System.Windows.Forms.Label();
-            this.toSuspensionSettingsButton = new System.Windows.Forms.Button();
+            this.toSuspensionStaticValuesButton = new System.Windows.Forms.Button();
             this.OpenTemperaturesChart = new System.Windows.Forms.Button();
             this.CurrentEngineTorque = new System.Windows.Forms.Label();
             this.CurrentEnginePower = new System.Windows.Forms.Label();
@@ -1470,18 +1470,18 @@ namespace Physics_Data_Debug
             this.textBox_RR_MaxCurrentContactBrakeTorque.TabIndex = 154;
             this.textBox_RR_MaxCurrentContactBrakeTorque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // toTireSettingsButton
+            // toTireStaticValues
             // 
-            this.toTireSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.toTireSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toTireSettingsButton.Location = new System.Drawing.Point(11, 1465);
-            this.toTireSettingsButton.Margin = new System.Windows.Forms.Padding(6);
-            this.toTireSettingsButton.Name = "toTireSettingsButton";
-            this.toTireSettingsButton.Size = new System.Drawing.Size(180, 87);
-            this.toTireSettingsButton.TabIndex = 155;
-            this.toTireSettingsButton.Text = "Tire Settings";
-            this.toTireSettingsButton.UseVisualStyleBackColor = false;
-            this.toTireSettingsButton.Click += new System.EventHandler(this.toTireSettingsButton_Click);
+            this.toTireStaticValues.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toTireStaticValues.ForeColor = System.Drawing.Color.White;
+            this.toTireStaticValues.Location = new System.Drawing.Point(11, 1686);
+            this.toTireStaticValues.Margin = new System.Windows.Forms.Padding(6);
+            this.toTireStaticValues.Name = "toTireStaticValues";
+            this.toTireStaticValues.Size = new System.Drawing.Size(180, 87);
+            this.toTireStaticValues.TabIndex = 155;
+            this.toTireStaticValues.Text = "Tire Static Values Page";
+            this.toTireStaticValues.UseVisualStyleBackColor = false;
+            this.toTireStaticValues.Click += new System.EventHandler(this.toTireStaticValues_Click);
             // 
             // label1
             // 
@@ -2306,18 +2306,18 @@ namespace Physics_Data_Debug
             this.label73.Text = "Susp Length/Velocity                                  m /                        " +
     "     m/s";
             // 
-            // toSuspensionSettingsButton
+            // toSuspensionStaticValuesButton
             // 
-            this.toSuspensionSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.toSuspensionSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionSettingsButton.Location = new System.Drawing.Point(11, 1783);
-            this.toSuspensionSettingsButton.Margin = new System.Windows.Forms.Padding(6);
-            this.toSuspensionSettingsButton.Name = "toSuspensionSettingsButton";
-            this.toSuspensionSettingsButton.Size = new System.Drawing.Size(180, 87);
-            this.toSuspensionSettingsButton.TabIndex = 239;
-            this.toSuspensionSettingsButton.Text = "Suspension Settings";
-            this.toSuspensionSettingsButton.UseVisualStyleBackColor = false;
-            this.toSuspensionSettingsButton.Click += new System.EventHandler(this.toSuspensionSettingsButton_Click);
+            this.toSuspensionStaticValuesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toSuspensionStaticValuesButton.ForeColor = System.Drawing.Color.White;
+            this.toSuspensionStaticValuesButton.Location = new System.Drawing.Point(11, 1783);
+            this.toSuspensionStaticValuesButton.Margin = new System.Windows.Forms.Padding(6);
+            this.toSuspensionStaticValuesButton.Name = "toSuspensionStaticValuesButton";
+            this.toSuspensionStaticValuesButton.Size = new System.Drawing.Size(180, 87);
+            this.toSuspensionStaticValuesButton.TabIndex = 239;
+            this.toSuspensionStaticValuesButton.Text = "Suspension Static Values Page";
+            this.toSuspensionStaticValuesButton.UseVisualStyleBackColor = false;
+            this.toSuspensionStaticValuesButton.Click += new System.EventHandler(this.toSuspensionStaticValuesButton_Click);
             // 
             // OpenTemperaturesChart
             // 
@@ -2435,7 +2435,7 @@ namespace Physics_Data_Debug
             // 
             this.toTestChartPageButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTestChartPageButton.ForeColor = System.Drawing.Color.White;
-            this.toTestChartPageButton.Location = new System.Drawing.Point(11, 1563);
+            this.toTestChartPageButton.Location = new System.Drawing.Point(11, 1466);
             this.toTestChartPageButton.Margin = new System.Windows.Forms.Padding(6);
             this.toTestChartPageButton.Name = "toTestChartPageButton";
             this.toTestChartPageButton.Size = new System.Drawing.Size(180, 106);
@@ -2637,7 +2637,7 @@ namespace Physics_Data_Debug
             // 
             this.toGForceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toGForceButton.ForeColor = System.Drawing.Color.White;
-            this.toGForceButton.Location = new System.Drawing.Point(11, 1681);
+            this.toGForceButton.Location = new System.Drawing.Point(11, 1584);
             this.toGForceButton.Margin = new System.Windows.Forms.Padding(6);
             this.toGForceButton.Name = "toGForceButton";
             this.toGForceButton.Size = new System.Drawing.Size(180, 90);
@@ -2894,7 +2894,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label75);
             this.Controls.Add(this.toTestChartPageButton);
             this.Controls.Add(this.OpenTemperaturesChart);
-            this.Controls.Add(this.toSuspensionSettingsButton);
+            this.Controls.Add(this.toSuspensionStaticValuesButton);
             this.Controls.Add(this.textBox_RR_SuspensionVelocity);
             this.Controls.Add(this.textBox_RR_SuspensionLength);
             this.Controls.Add(this.label73);
@@ -3055,7 +3055,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_FL_TravelSpeed);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.toTireSettingsButton);
+            this.Controls.Add(this.toTireStaticValues);
             this.Controls.Add(this.toLogSettingsButton);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.logInterval_textBox);
@@ -3181,7 +3181,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TextBox textBox_FR_MaxCurrentContactBrakeTorque;
         private System.Windows.Forms.TextBox textBox_RL_MaxCurrentContactBrakeTorque;
         private System.Windows.Forms.TextBox textBox_RR_MaxCurrentContactBrakeTorque;
-        private System.Windows.Forms.Button toTireSettingsButton;
+        private System.Windows.Forms.Button toTireStaticValues;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -3251,7 +3251,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TextBox textBox_RR_SuspensionVelocity;
         private System.Windows.Forms.TextBox textBox_RR_SuspensionLength;
         private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Button toSuspensionSettingsButton;
+        private System.Windows.Forms.Button toSuspensionStaticValuesButton;
         private System.Windows.Forms.Button OpenTemperaturesChart;
         public System.Windows.Forms.Label CurrentEngineTorque;
         public System.Windows.Forms.Label CurrentEnginePower;

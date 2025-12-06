@@ -30,21 +30,21 @@ namespace Physics_Data_Debug
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0.5D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 0.5D);
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0.5D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 0.5D);
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.refreshAndClearButton = new System.Windows.Forms.Button();
             this.toSettingsButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -86,7 +86,7 @@ namespace Physics_Data_Debug
             // refreshAndClearButton
             // 
             this.refreshAndClearButton.Location = new System.Drawing.Point(18, 81);
-            this.refreshAndClearButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.refreshAndClearButton.Margin = new System.Windows.Forms.Padding(6);
             this.refreshAndClearButton.Name = "refreshAndClearButton";
             this.refreshAndClearButton.Size = new System.Drawing.Size(136, 75);
             this.refreshAndClearButton.TabIndex = 294;
@@ -97,7 +97,7 @@ namespace Physics_Data_Debug
             // toSettingsButton
             // 
             this.toSettingsButton.Location = new System.Drawing.Point(18, 23);
-            this.toSettingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.toSettingsButton.Margin = new System.Windows.Forms.Padding(6);
             this.toSettingsButton.Name = "toSettingsButton";
             this.toSettingsButton.Size = new System.Drawing.Size(136, 44);
             this.toSettingsButton.TabIndex = 293;
@@ -114,7 +114,7 @@ namespace Physics_Data_Debug
             // buttonPause
             // 
             this.buttonPause.Location = new System.Drawing.Point(18, 254);
-            this.buttonPause.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonPause.Margin = new System.Windows.Forms.Padding(6);
             this.buttonPause.Name = "buttonPause";
             this.buttonPause.Size = new System.Drawing.Size(136, 75);
             this.buttonPause.TabIndex = 299;
@@ -169,60 +169,60 @@ namespace Physics_Data_Debug
             // GradientChart
             // 
             this.GradientChart.BackColor = System.Drawing.Color.Transparent;
-            chartArea11.AxisX.Interval = 1D;
-            chartArea11.AxisX.LabelStyle.Enabled = false;
-            chartArea11.AxisX.LineColor = System.Drawing.Color.Maroon;
-            chartArea11.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea11.AxisX.MajorGrid.Enabled = false;
-            chartArea11.AxisX.MajorGrid.Interval = 1D;
-            chartArea11.AxisX.MajorGrid.IntervalOffset = 0D;
-            chartArea11.AxisX.MajorGrid.LineColor = System.Drawing.Color.Maroon;
-            chartArea11.AxisX.MajorTickMark.Enabled = false;
-            chartArea11.AxisX.MajorTickMark.Interval = 1D;
-            chartArea11.AxisX.Maximum = 1D;
-            chartArea11.AxisX.Minimum = 0D;
-            chartArea11.AxisX.Title = "phat";
-            chartArea11.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            chartArea11.AxisX.TitleForeColor = System.Drawing.Color.Transparent;
-            chartArea11.AxisX2.Title = "jou";
-            chartArea11.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            chartArea11.AxisX2.TitleForeColor = System.Drawing.Color.White;
-            chartArea11.AxisY.Interval = 1D;
-            chartArea11.AxisY.IsLabelAutoFit = false;
-            chartArea11.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea11.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea11.AxisY.MajorGrid.Interval = 1D;
-            chartArea11.AxisY.MajorTickMark.Enabled = false;
-            chartArea11.AxisY.Maximum = 10D;
-            chartArea11.AxisY.Minimum = -10D;
-            chartArea11.BackColor = System.Drawing.Color.Transparent;
-            chartArea11.Name = "ChartArea1";
-            this.GradientChart.ChartAreas.Add(chartArea11);
-            legend5.Enabled = false;
-            legend5.Name = "Legend1";
-            this.GradientChart.Legends.Add(legend5);
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.LabelStyle.Enabled = false;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.Maroon;
+            chartArea1.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorGrid.Interval = 1D;
+            chartArea1.AxisX.MajorGrid.IntervalOffset = 0D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Maroon;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisX.MajorTickMark.Interval = 1D;
+            chartArea1.AxisX.Maximum = 1D;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisX.Title = "phat";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisX2.Title = "jou";
+            chartArea1.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            chartArea1.AxisX2.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.Interval = 1D;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea1.AxisY.MajorGrid.Interval = 1D;
+            chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.Maximum = 10D;
+            chartArea1.AxisY.Minimum = -10D;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.GradientChart.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.GradientChart.Legends.Add(legend1);
             this.GradientChart.Location = new System.Drawing.Point(18, 350);
             this.GradientChart.Margin = new System.Windows.Forms.Padding(0);
             this.GradientChart.Name = "GradientChart";
-            series11.BorderWidth = 3;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Color = System.Drawing.Color.Red;
-            series11.LabelForeColor = System.Drawing.Color.White;
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            dataPoint5.IsValueShownAsLabel = false;
-            dataPoint5.LabelForeColor = System.Drawing.Color.White;
-            series11.Points.Add(dataPoint5);
-            series11.Points.Add(dataPoint6);
-            this.GradientChart.Series.Add(series11);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Red;
+            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            dataPoint1.IsValueShownAsLabel = false;
+            dataPoint1.LabelForeColor = System.Drawing.Color.White;
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            this.GradientChart.Series.Add(series1);
             this.GradientChart.Size = new System.Drawing.Size(136, 1437);
             this.GradientChart.TabIndex = 304;
             this.GradientChart.Text = "chart5";
-            title3.ForeColor = System.Drawing.Color.Transparent;
-            title3.Name = "Title1";
-            title3.Text = "jou";
-            this.GradientChart.Titles.Add(title3);
+            title1.ForeColor = System.Drawing.Color.Transparent;
+            title1.Name = "Title1";
+            title1.Text = "jou";
+            this.GradientChart.Titles.Add(title1);
             // 
             // label5
             // 
@@ -247,46 +247,46 @@ namespace Physics_Data_Debug
             // 
             // chart1
             // 
-            chartArea12.AxisX.Title = "X1 1";
-            chartArea12.AxisX2.Title = "X2";
-            chartArea12.AxisY.Title = "Y1 1";
-            chartArea12.AxisY2.Title = "Y2";
-            chartArea12.Name = "ChartArea1";
-            chartArea13.AxisX.Title = "X1 2";
-            chartArea13.AxisY.Title = "Y1 2";
-            chartArea13.Name = "ChartArea2";
-            chartArea14.AxisX.Title = "X1 3";
-            chartArea14.AxisY.Title = "Y1 3";
-            chartArea14.Name = "ChartArea3";
-            chartArea15.AxisX.Title = "X1 4";
-            chartArea15.AxisY.Title = "Y1 4";
-            chartArea15.Name = "ChartArea4";
-            this.chart1.ChartAreas.Add(chartArea12);
-            this.chart1.ChartAreas.Add(chartArea13);
-            this.chart1.ChartAreas.Add(chartArea14);
-            this.chart1.ChartAreas.Add(chartArea15);
-            legend6.Enabled = false;
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            chartArea2.AxisX.Title = "X1 1";
+            chartArea2.AxisX2.Title = "X2";
+            chartArea2.AxisY.Title = "Y1 1";
+            chartArea2.AxisY2.Title = "Y2";
+            chartArea2.Name = "ChartArea1";
+            chartArea3.AxisX.Title = "X1 2";
+            chartArea3.AxisY.Title = "Y1 2";
+            chartArea3.Name = "ChartArea2";
+            chartArea4.AxisX.Title = "X1 3";
+            chartArea4.AxisY.Title = "Y1 3";
+            chartArea4.Name = "ChartArea3";
+            chartArea5.AxisX.Title = "X1 4";
+            chartArea5.AxisY.Title = "Y1 4";
+            chartArea5.Name = "ChartArea4";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.ChartAreas.Add(chartArea3);
+            this.chart1.ChartAreas.Add(chartArea4);
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(166, 254);
-            this.chart1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chart1.Margin = new System.Windows.Forms.Padding(6);
             this.chart1.Name = "chart1";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            series13.ChartArea = "ChartArea2";
-            series13.Legend = "Legend1";
-            series13.Name = "Series2";
-            series14.ChartArea = "ChartArea3";
-            series14.Legend = "Legend1";
-            series14.Name = "Series3";
-            series15.ChartArea = "ChartArea4";
-            series15.Legend = "Legend1";
-            series15.Name = "Series4";
-            this.chart1.Series.Add(series12);
-            this.chart1.Series.Add(series13);
-            this.chart1.Series.Add(series14);
-            this.chart1.Series.Add(series15);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series3.ChartArea = "ChartArea2";
+            series3.Legend = "Legend1";
+            series3.Name = "Series2";
+            series4.ChartArea = "ChartArea3";
+            series4.Legend = "Legend1";
+            series4.Name = "Series3";
+            series5.ChartArea = "ChartArea4";
+            series5.Legend = "Legend1";
+            series5.Name = "Series4";
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
+            this.chart1.Series.Add(series5);
             this.chart1.Size = new System.Drawing.Size(1600, 1538);
             this.chart1.TabIndex = 308;
             this.chart1.Text = "chart1";
@@ -316,7 +316,7 @@ namespace Physics_Data_Debug
             // X1MinLimitTextBox
             // 
             this.X1MinLimitTextBox.Location = new System.Drawing.Point(606, 60);
-            this.X1MinLimitTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.X1MinLimitTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.X1MinLimitTextBox.Multiline = true;
             this.X1MinLimitTextBox.Name = "X1MinLimitTextBox";
             this.X1MinLimitTextBox.Size = new System.Drawing.Size(180, 31);
@@ -325,7 +325,7 @@ namespace Physics_Data_Debug
             // X1MaxLimitTextBox
             // 
             this.X1MaxLimitTextBox.Location = new System.Drawing.Point(606, 103);
-            this.X1MaxLimitTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.X1MaxLimitTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.X1MaxLimitTextBox.Name = "X1MaxLimitTextBox";
             this.X1MaxLimitTextBox.Size = new System.Drawing.Size(180, 31);
             this.X1MaxLimitTextBox.TabIndex = 313;
@@ -377,7 +377,7 @@ namespace Physics_Data_Debug
             // Y1MaxLimitTextBox
             // 
             this.Y1MaxLimitTextBox.Location = new System.Drawing.Point(1018, 103);
-            this.Y1MaxLimitTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Y1MaxLimitTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.Y1MaxLimitTextBox.Name = "Y1MaxLimitTextBox";
             this.Y1MaxLimitTextBox.Size = new System.Drawing.Size(180, 31);
             this.Y1MaxLimitTextBox.TabIndex = 318;
@@ -385,7 +385,7 @@ namespace Physics_Data_Debug
             // Y1MinLimitTextBox
             // 
             this.Y1MinLimitTextBox.Location = new System.Drawing.Point(1018, 60);
-            this.Y1MinLimitTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Y1MinLimitTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.Y1MinLimitTextBox.Name = "Y1MinLimitTextBox";
             this.Y1MinLimitTextBox.Size = new System.Drawing.Size(180, 31);
             this.Y1MinLimitTextBox.TabIndex = 316;
@@ -415,7 +415,7 @@ namespace Physics_Data_Debug
             // Z1MaxLimitTextBox
             // 
             this.Z1MaxLimitTextBox.Location = new System.Drawing.Point(1430, 103);
-            this.Z1MaxLimitTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Z1MaxLimitTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.Z1MaxLimitTextBox.Name = "Z1MaxLimitTextBox";
             this.Z1MaxLimitTextBox.Size = new System.Drawing.Size(180, 31);
             this.Z1MaxLimitTextBox.TabIndex = 323;
@@ -423,7 +423,7 @@ namespace Physics_Data_Debug
             // Z1MinLimitTextBox
             // 
             this.Z1MinLimitTextBox.Location = new System.Drawing.Point(1430, 60);
-            this.Z1MinLimitTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Z1MinLimitTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.Z1MinLimitTextBox.Name = "Z1MinLimitTextBox";
             this.Z1MinLimitTextBox.Size = new System.Drawing.Size(180, 31);
             this.Z1MinLimitTextBox.TabIndex = 321;
@@ -432,7 +432,7 @@ namespace Physics_Data_Debug
             // 
             this.enableLimitersCheckBox.ForeColor = System.Drawing.Color.White;
             this.enableLimitersCheckBox.Location = new System.Drawing.Point(166, 67);
-            this.enableLimitersCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.enableLimitersCheckBox.Margin = new System.Windows.Forms.Padding(6);
             this.enableLimitersCheckBox.Name = "enableLimitersCheckBox";
             this.enableLimitersCheckBox.Size = new System.Drawing.Size(208, 88);
             this.enableLimitersCheckBox.TabIndex = 326;
@@ -456,7 +456,7 @@ namespace Physics_Data_Debug
             // 
             this.X1LimiterComboBox.FormattingEnabled = true;
             this.X1LimiterComboBox.Location = new System.Drawing.Point(386, 15);
-            this.X1LimiterComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.X1LimiterComboBox.Margin = new System.Windows.Forms.Padding(6);
             this.X1LimiterComboBox.Name = "X1LimiterComboBox";
             this.X1LimiterComboBox.Size = new System.Drawing.Size(400, 33);
             this.X1LimiterComboBox.TabIndex = 328;
@@ -467,7 +467,7 @@ namespace Physics_Data_Debug
             // 
             this.Y1LimiterComboBox.FormattingEnabled = true;
             this.Y1LimiterComboBox.Location = new System.Drawing.Point(798, 15);
-            this.Y1LimiterComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Y1LimiterComboBox.Margin = new System.Windows.Forms.Padding(6);
             this.Y1LimiterComboBox.Name = "Y1LimiterComboBox";
             this.Y1LimiterComboBox.Size = new System.Drawing.Size(400, 33);
             this.Y1LimiterComboBox.TabIndex = 329;
@@ -478,7 +478,7 @@ namespace Physics_Data_Debug
             // 
             this.Z1LimiterComboBox.FormattingEnabled = true;
             this.Z1LimiterComboBox.Location = new System.Drawing.Point(1210, 15);
-            this.Z1LimiterComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Z1LimiterComboBox.Margin = new System.Windows.Forms.Padding(6);
             this.Z1LimiterComboBox.Name = "Z1LimiterComboBox";
             this.Z1LimiterComboBox.Size = new System.Drawing.Size(400, 33);
             this.Z1LimiterComboBox.TabIndex = 330;
@@ -489,7 +489,7 @@ namespace Physics_Data_Debug
             // 
             this.customChoiceCheckBox.ForeColor = System.Drawing.Color.White;
             this.customChoiceCheckBox.Location = new System.Drawing.Point(166, 15);
-            this.customChoiceCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.customChoiceCheckBox.Margin = new System.Windows.Forms.Padding(6);
             this.customChoiceCheckBox.Name = "customChoiceCheckBox";
             this.customChoiceCheckBox.Size = new System.Drawing.Size(208, 40);
             this.customChoiceCheckBox.TabIndex = 331;
@@ -501,7 +501,7 @@ namespace Physics_Data_Debug
             // 
             this.noTireContactLimiterEnabledCheckBox.ForeColor = System.Drawing.Color.White;
             this.noTireContactLimiterEnabledCheckBox.Location = new System.Drawing.Point(166, 167);
-            this.noTireContactLimiterEnabledCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.noTireContactLimiterEnabledCheckBox.Margin = new System.Windows.Forms.Padding(6);
             this.noTireContactLimiterEnabledCheckBox.Name = "noTireContactLimiterEnabledCheckBox";
             this.noTireContactLimiterEnabledCheckBox.Size = new System.Drawing.Size(208, 75);
             this.noTireContactLimiterEnabledCheckBox.TabIndex = 332;
@@ -512,7 +512,7 @@ namespace Physics_Data_Debug
             // applyLimitersButton
             // 
             this.applyLimitersButton.Location = new System.Drawing.Point(18, 167);
-            this.applyLimitersButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.applyLimitersButton.Margin = new System.Windows.Forms.Padding(6);
             this.applyLimitersButton.Name = "applyLimitersButton";
             this.applyLimitersButton.Size = new System.Drawing.Size(136, 75);
             this.applyLimitersButton.TabIndex = 333;
@@ -560,7 +560,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.refreshAndClearButton);
             this.Controls.Add(this.toSettingsButton);
             this.Controls.Add(this.chart1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form4Wheels";
             this.Text = "Form4Wheels";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form4Wheels_FormClosed);

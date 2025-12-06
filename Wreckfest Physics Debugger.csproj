@@ -133,17 +133,17 @@
     <Compile Include="FormLogSettings.Designer.cs">
       <DependentUpon>FormLogSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSuspensionSettings.cs">
+    <Compile Include="FormSuspensionStaticValues.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSuspensionSettings.Designer.cs">
-      <DependentUpon>FormSuspensionSettings.cs</DependentUpon>
+    <Compile Include="FormSuspensionStaticValues.Designer.cs">
+      <DependentUpon>FormSuspensionStaticValues.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTireSettings.cs">
+    <Compile Include="FormTireStaticValues.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTireSettings.Designer.cs">
-      <DependentUpon>FormTireSettings.cs</DependentUpon>
+    <Compile Include="FormTireStaticValues.Designer.cs">
+      <DependentUpon>FormTireStaticValues.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTireTemperatures.cs">
       <SubType>Form</SubType>
@@ -171,14 +171,14 @@
     <EmbeddedResource Include="FormLogSettings.resx">
       <DependentUpon>FormLogSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSuspensionSettings.resx">
-      <DependentUpon>FormSuspensionSettings.cs</DependentUpon>
+    <EmbeddedResource Include="FormSuspensionStaticValues.resx">
+      <DependentUpon>FormSuspensionStaticValues.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTester.resx">
       <DependentUpon>FormTester.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTireSettings.resx">
-      <DependentUpon>FormTireSettings.cs</DependentUpon>
+    <EmbeddedResource Include="FormTireStaticValues.resx">
+      <DependentUpon>FormTireStaticValues.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTireTemperatures.resx">
       <DependentUpon>FormTireTemperatures.cs</DependentUpon>

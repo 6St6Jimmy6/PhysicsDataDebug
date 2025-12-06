@@ -16,9 +16,9 @@ namespace Physics_Data_Debug
     {
         public static bool Logging { get; set; } = false;
         public static bool LogSettingsOpen { get; set; } = false;
-        public static bool TireSettingsOpen { get; set; } = false;
+        public static bool FormTireStaticValues { get; set; } = false;
         public static bool TemperaturesChartOpen { get; set; } = false;
-        public static bool SuspensionSettingsOpen { get; set; } = false;
+        public static bool FormSuspensionStaticValuesOpen { get; set; } = false;
         public static bool GForceOpen { get; set; } = false;
         public static bool _4WheelsOpen { get; set; } = false;
         public static double RadDeg { get; } = 180 / Math.PI;

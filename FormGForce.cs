@@ -55,10 +55,6 @@ namespace Physics_Data_Debug
                 GForce.PlotUpDownChart(chart2);
             }
         }
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
         private void FormGForce_SizeChanged(object sender, EventArgs e)
         {
             //16 + 440 + 110;
@@ -75,11 +71,6 @@ namespace Physics_Data_Debug
             chart2.Location = new Point(0, 0);
             chart2.Size = new Size(newWidthChart2, newHeightWidthChart1);
             chart2.Location = new Point(newHeightWidthChart1, 0);
-        }
-
-        private void chart2_Click(object sender, EventArgs e)
-        {
-
         }
         private void timer2_Tick(object sender, EventArgs e)
         {

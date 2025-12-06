@@ -16,15 +16,14 @@ namespace Physics_Data_Debug
         private string sTickTime = "Tick time: Nothing";
 
         public static Process Process;
-        private bool processGet = false;
+        public static bool ProcessGet { get; set; } = false;
+        public static bool FirstTimeLoad = false;
         object SelectedVersion;
 
         #endregion
         public FormLiveData()
         {
             InitializeComponent();
-
-            toSuspensionSettingsButton.Hide();// Not yet implemented
 
             logInterval_textBox.Text = LiveData.TickInterval.ToString();
 
@@ -36,6 +35,22 @@ namespace Physics_Data_Debug
             }
             GameVersionComboBox.SelectedItem = BaseAddressUpdate.V1_308408;
             SelectedVersion = GameVersionComboBox.SelectedItem;
+
+
+            if (FirstTimeLoad == false)
+            {
+                WreckfestEnums.AddNames();
+                // Needs to be in order of WF_Prefix
+                LiveData.GenerateBodyDataList(WF_Prefix.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, WF_BodyAccelDataChunks.DataStart, WF_AeroDataChunks.DataStart);//0
+
+                LiveData.GenerateTireDataList(WF_Prefix.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//1
+                LiveData.GenerateTireDataList(WF_Prefix.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//2
+                LiveData.GenerateTireDataList(WF_Prefix.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//3
+                LiveData.GenerateTireDataList(WF_Prefix.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//4
+
+                LiveData.GeneratePowertrainDataList(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, WF_DifferentialDataChunks.DataStart, WF_DifferentialDataChunks.DataStart);//5
+                FirstTimeLoad = true;
+            }
         }
         #region Methods
         public void ButtonVisibilities()
@@ -44,8 +59,8 @@ namespace Physics_Data_Debug
             if (LiveData.LogSettingsOpen == false && LiveData.Logging == false) { toLogSettingsButton.Visible = true; }
             if (LiveData.LogSettingsOpen == true) { toLogSettingsButton.Visible = false; startFileLoggingButton.Visible = false; }
             if (LiveData.LogSettingsOpen == false) { startFileLoggingButton.Visible = true; }
-            if (LiveData.TireSettingsOpen == true) { toTireSettingsButton.Visible = false; }
-            if (LiveData.TireSettingsOpen == false) { toTireSettingsButton.Visible = true; }
+            if (LiveData.FormTireStaticValues == true) { toTireStaticValues.Visible = false; }
+            if (LiveData.FormTireStaticValues == false) { toTireStaticValues.Visible = true; }
             if (LiveData.TemperaturesChartOpen == true) { OpenTemperaturesChart.Visible = false; }
             if (LiveData.TemperaturesChartOpen == false) { OpenTemperaturesChart.Visible = true; }
             if (LiveData.GForceOpen == true) { toGForceButton.Visible = false; }
@@ -166,7 +181,7 @@ namespace Physics_Data_Debug
 
         private void ProcessStart()
         {
-            processGet = true;
+            ProcessGet = true;
             getProcessButton.Text = "Refresh Process";
             timer1.Enabled = true;
         }
@@ -230,18 +245,18 @@ namespace Physics_Data_Debug
             LiveData.Helper.Close();
             Application.Exit();
         }
-        private void toTireSettingsButton_Click(object sender, EventArgs e)
+        private void toTireStaticValues_Click(object sender, EventArgs e)
         {
-            toTireSettingsButton.Visible = false;
-            LiveData.TireSettingsOpen = true;
-            FormTireSettings s = new FormTireSettings();
+            toTireStaticValues.Visible = false;
+            LiveData.FormTireStaticValues = true;
+            FormTireStaticValues s = new FormTireStaticValues();
             s.Show();
         }
         private void FirstAllDataLoggerPage_Closing(object sender, FormClosingEventArgs e)
         {
             //LiveData.Helper.Close();
             //RegistryTools.SaveAllSettings(Application.ProductName, this);
-            if (LiveData.Process != null && processGet == true)
+            if (LiveData.Process != null && ProcessGet == true)
             {
                 timer1.Enabled = false;
             }
@@ -253,11 +268,11 @@ namespace Physics_Data_Debug
             FormTireTemperatures s = new FormTireTemperatures();
             s.Show();
         }
-        private void toSuspensionSettingsButton_Click(object sender, EventArgs e)
+        private void toSuspensionStaticValuesButton_Click(object sender, EventArgs e)
         {
-            toSuspensionSettingsButton.Visible = false;
-            LiveData.SuspensionSettingsOpen = true;
-            FormSuspensionSettings s = new FormSuspensionSettings();
+            toSuspensionStaticValuesButton.Visible = false;
+            LiveData.FormSuspensionStaticValuesOpen = true;
+            FormSuspensionStaticValues s = new FormSuspensionStaticValues();
             s.Show();
         }
         private void toTestChartPageButton_Click(object sender, EventArgs e)
@@ -290,43 +305,28 @@ namespace Physics_Data_Debug
         private void getProcessButton_Click(object sender, EventArgs e)
         {
             LiveData.Process = Process.GetProcessesByName("Wreckfest_x64").FirstOrDefault();
-            if (LiveData.Process != null && processGet == false)
+            if (LiveData.Process != null && ProcessGet == false)
             {
                 ProcessStart();
             }
-            else if (LiveData.Process != null && processGet == true)
+            else if (LiveData.Process != null && ProcessGet == true)
             {
                 getProcessButton.Text = "Getting Process";
                 timer1.Enabled = false;
-                processGet = false;
+                ProcessGet = false;
                 ProcessStart();
             }
             else
             {
                 timer1.Enabled = false;
-                processGet = false;
+                ProcessGet = false;
                 getProcessButton.Text = "Get Process";
                 return;
             }
         }
-
-        public bool FirstTimeLoad = false;
+        public static bool ValuesGet { get; set; } = false;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (FirstTimeLoad == false)
-            {
-                WreckfestEnums.AddNames();
-                // Needs to be in order of WF_Prefix
-                LiveData.GenerateBodyDataList(WF_Prefix.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, WF_BodyAccelDataChunks.DataStart, WF_AeroDataChunks.DataStart);//0
-
-                LiveData.GenerateTireDataList(WF_Prefix.FL,  LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//1
-                LiveData.GenerateTireDataList(WF_Prefix.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//2
-                LiveData.GenerateTireDataList(WF_Prefix.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//3
-                LiveData.GenerateTireDataList(WF_Prefix.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_SuspensionChunks.DataStart);//4
-
-                LiveData.GeneratePowertrainDataList(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, WF_DifferentialDataChunks.DataStart, WF_DifferentialDataChunks.DataStart);//5
-                FirstTimeLoad = true;
-            }
             LiveData.GetData((long)SelectedVersion);
             // Needs to be in order of WF_Prefix
             LiveData.UpdateBodyDataValues(WF_Prefix.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
@@ -338,10 +338,10 @@ namespace Physics_Data_Debug
 
             LiveData.UpdatePowertrainDataValues(WF_Prefix.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
             //LiveData.ConsoleTireData(LiveData.TireDataList);
-
+            ValuesGet = true;
             DataLogger.LogToFile();
             //ButtonVisibilities();
-            if (checkBox1.Checked == true && LiveData.ElapsedTime > 0)
+            if (checkBox1.Checked == true)
             {
                 TextBoxUpdates();
             }

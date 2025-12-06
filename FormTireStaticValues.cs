@@ -7,17 +7,22 @@ using System.Globalization;
 
 namespace Physics_Data_Debug
 {
-    public partial class FormTireSettings : Form
+    public partial class FormTireStaticValues : Form
     {
-        public FormTireSettings()
+        public FormTireStaticValues()
         {
             InitializeComponent();
-        }
-        private void TireSettings_Load(object sender, EventArgs e)
-        {
-            LiveData.TireSettingsOpen = true;
+
+            textBox_FL_Radius.ReadOnly = true; textBox_FL_Width.ReadOnly = true; textBox_FL_ThermalAirTransfer.ReadOnly = true; textBox_FL_ThermalInnerTransfer.ReadOnly = true; textBox_FL_SpringRate.ReadOnly = true; textBox_FL_DamperRate.ReadOnly = true; textBox_FL_MaxDeflection.ReadOnly = true; textBox_FL_Mass.ReadOnly = true; textBox_FL_MomentOfInertia.ReadOnly = true;
+            textBox_FR_Radius.ReadOnly = true; textBox_FR_Width.ReadOnly = true; textBox_FR_ThermalAirTransfer.ReadOnly = true; textBox_FR_ThermalInnerTransfer.ReadOnly = true; textBox_FR_SpringRate.ReadOnly = true; textBox_FR_DamperRate.ReadOnly = true; textBox_FR_MaxDeflection.ReadOnly = true; textBox_FR_Mass.ReadOnly = true; textBox_FR_MomentOfInertia.ReadOnly = true;
+            textBox_RL_Radius.ReadOnly = true; textBox_RL_Width.ReadOnly = true; textBox_RL_ThermalAirTransfer.ReadOnly = true; textBox_RL_ThermalInnerTransfer.ReadOnly = true; textBox_RL_SpringRate.ReadOnly = true; textBox_RL_DamperRate.ReadOnly = true; textBox_RL_MaxDeflection.ReadOnly = true; textBox_RL_Mass.ReadOnly = true; textBox_RL_MomentOfInertia.ReadOnly = true;
+            textBox_RR_Radius.ReadOnly = true; textBox_RR_Width.ReadOnly = true; textBox_RR_ThermalAirTransfer.ReadOnly = true; textBox_RR_ThermalInnerTransfer.ReadOnly = true; textBox_RR_SpringRate.ReadOnly = true; textBox_RR_DamperRate.ReadOnly = true; textBox_RR_MaxDeflection.ReadOnly = true; textBox_RR_Mass.ReadOnly = true; textBox_RR_MomentOfInertia.ReadOnly = true;
             timer1.Enabled = true;
-            ReadData();
+            timer1.Interval = 100;
+        }
+        private void FormTireStaticValues_Load(object sender, EventArgs e)
+        {
+            LiveData.FormTireStaticValues = true;
         }
         private void closeButton_Click(object sender, EventArgs e)
         {
@@ -52,15 +57,18 @@ namespace Physics_Data_Debug
                 e.Handled = true;
             }
         }
-        private void TireSettings_Close(object sender, FormClosedEventArgs e)
+        private void FormTireStaticValues_Close(object sender, FormClosedEventArgs e)
         {
             timer1.Enabled = false;
-            LiveData.TireSettingsOpen = false;
+            LiveData.FormTireStaticValues = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ReadData();
+            if (LiveData.Process != null && FormLiveData.ProcessGet == true && FormLiveData.FirstTimeLoad == true && LiveData.FullDataList.Count > 0 && FormLiveData.ValuesGet == true)
+            {
+                ReadData();
+            }
         }
         #region FL TextBoxes
         private void textBox_FL_Radius_KeyPress(object sender, KeyPressEventArgs e)

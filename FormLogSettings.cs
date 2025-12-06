@@ -393,10 +393,6 @@ namespace Physics_Data_Debug
         private void selectAll_CheckedChanged(object sender, EventArgs e)
         {
             CheckAllOnListBoxStates();
-        }
-        private void selectAll_Click(object sender, EventArgs e)
-        {
-            CheckAllOnListBoxStates();
             CheckAllOffListBoxStates();
         }
         private void backToFirstAllDataLoggerPage_Click(object sender, EventArgs e)

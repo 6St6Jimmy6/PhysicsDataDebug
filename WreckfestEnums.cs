@@ -445,8 +445,8 @@ namespace Physics_Data_Debug
     public enum WF_SuspensionDataOffset : int
     {
         SpringRate = 0xE80,//0
-        ProgresiveRate = 0xE84,//1
-        BumbLimitsX = 0xE88,//2
+        ProgressiveRate = 0xE84,//1
+        BumpLimitsX = 0xE88,//2
         BumpLimitsY = 0xE8C,//3
         ReboundLimitsX = 0xE90,//4
         ReboundLimitsY = 0xE94,//5
@@ -454,13 +454,13 @@ namespace Physics_Data_Debug
         ReboundDampX = 0xE9C,//7
         BumpDampY = 0xEA0,//8
         ReboundDampY = 0xEA4,//9
-        ExpandLimitFromZero = 0xEA8,//10
+        ExpansionLimitFromZero = 0xEA8,//10
         CompressionLimitFromZero = 0xEAC,//11
-        RideHeight_BumpStopDown_ReboundLength = 0xEB0,//12
+        ReboundEndPosition = 0xEB0,//12 RideHeight + BumpStopDown + ReboundLength
         SuspensionLength = 0xEB4,//13
         SuspensionVelocity = 0xEB8,//14
         BumpStopLength = 0xEBC,//15
-        RideHeight_BumpStopDown = 0xEC0,//16
+        ReboundStartPosition = 0xEC0,//16 RideHeight + BumpStopDown
         BumpStopRate = 0xEC4,//17
         ReboundRate = 0xEC8,//18
         BumpStopDamp = 0xECC,//19

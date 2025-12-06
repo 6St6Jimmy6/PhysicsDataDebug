@@ -62,7 +62,7 @@ namespace Physics_Data_Debug
             // closeLogSettings
             // 
             this.closeLogSettings.Location = new System.Drawing.Point(26, 25);
-            this.closeLogSettings.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.closeLogSettings.Margin = new System.Windows.Forms.Padding(6);
             this.closeLogSettings.Name = "closeLogSettings";
             this.closeLogSettings.Size = new System.Drawing.Size(150, 83);
             this.closeLogSettings.TabIndex = 0;
@@ -86,14 +86,13 @@ namespace Physics_Data_Debug
             this.selectAll.Checked = true;
             this.selectAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.selectAll.Location = new System.Drawing.Point(252, 75);
-            this.selectAll.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.selectAll.Margin = new System.Windows.Forms.Padding(6);
             this.selectAll.Name = "selectAll";
             this.selectAll.Size = new System.Drawing.Size(134, 29);
             this.selectAll.TabIndex = 18;
             this.selectAll.Text = "Select All";
             this.selectAll.UseVisualStyleBackColor = true;
             this.selectAll.CheckedChanged += new System.EventHandler(this.selectAll_CheckedChanged);
-            this.selectAll.Click += new System.EventHandler(this.selectAll_Click);
             // 
             // checkedListBoxLogging
             // 
@@ -129,7 +128,7 @@ namespace Physics_Data_Debug
             "Vertical G-Force",
             "G-Force"});
             this.checkedListBoxLogging.Location = new System.Drawing.Point(252, 119);
-            this.checkedListBoxLogging.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkedListBoxLogging.Margin = new System.Windows.Forms.Padding(6);
             this.checkedListBoxLogging.Name = "checkedListBoxLogging";
             this.checkedListBoxLogging.Size = new System.Drawing.Size(402, 648);
             this.checkedListBoxLogging.TabIndex = 19;
@@ -140,7 +139,7 @@ namespace Physics_Data_Debug
             this.SelectedListBox.FormattingEnabled = true;
             this.SelectedListBox.ItemHeight = 25;
             this.SelectedListBox.Location = new System.Drawing.Point(252, 808);
-            this.SelectedListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SelectedListBox.Margin = new System.Windows.Forms.Padding(6);
             this.SelectedListBox.Name = "SelectedListBox";
             this.SelectedListBox.Size = new System.Drawing.Size(226, 104);
             this.SelectedListBox.TabIndex = 20;
@@ -150,7 +149,7 @@ namespace Physics_Data_Debug
             this.SelectedIndeciesListBox.FormattingEnabled = true;
             this.SelectedIndeciesListBox.ItemHeight = 25;
             this.SelectedIndeciesListBox.Location = new System.Drawing.Point(494, 808);
-            this.SelectedIndeciesListBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SelectedIndeciesListBox.Margin = new System.Windows.Forms.Padding(6);
             this.SelectedIndeciesListBox.Name = "SelectedIndeciesListBox";
             this.SelectedIndeciesListBox.Size = new System.Drawing.Size(160, 104);
             this.SelectedIndeciesListBox.TabIndex = 21;
@@ -158,7 +157,7 @@ namespace Physics_Data_Debug
             // FLApplyLogSettings
             // 
             this.FLApplyLogSettings.Location = new System.Drawing.Point(26, 138);
-            this.FLApplyLogSettings.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.FLApplyLogSettings.Margin = new System.Windows.Forms.Padding(6);
             this.FLApplyLogSettings.Name = "FLApplyLogSettings";
             this.FLApplyLogSettings.Size = new System.Drawing.Size(150, 75);
             this.FLApplyLogSettings.TabIndex = 22;
@@ -170,7 +169,7 @@ namespace Physics_Data_Debug
             // 
             this.checkBoxFiltersOn.AutoSize = true;
             this.checkBoxFiltersOn.Location = new System.Drawing.Point(756, 75);
-            this.checkBoxFiltersOn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.checkBoxFiltersOn.Margin = new System.Windows.Forms.Padding(6);
             this.checkBoxFiltersOn.Name = "checkBoxFiltersOn";
             this.checkBoxFiltersOn.Size = new System.Drawing.Size(133, 29);
             this.checkBoxFiltersOn.TabIndex = 23;
@@ -181,7 +180,7 @@ namespace Physics_Data_Debug
             // textBox_Z1
             // 
             this.textBox_Z1.Location = new System.Drawing.Point(1406, 125);
-            this.textBox_Z1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_Z1.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_Z1.Name = "textBox_Z1";
             this.textBox_Z1.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z1.TabIndex = 25;
@@ -190,7 +189,7 @@ namespace Physics_Data_Debug
             // textBox_Z2
             // 
             this.textBox_Z2.Location = new System.Drawing.Point(1406, 175);
-            this.textBox_Z2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_Z2.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_Z2.Name = "textBox_Z2";
             this.textBox_Z2.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z2.TabIndex = 26;
@@ -199,7 +198,7 @@ namespace Physics_Data_Debug
             // textBox_Z3
             // 
             this.textBox_Z3.Location = new System.Drawing.Point(1406, 225);
-            this.textBox_Z3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_Z3.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_Z3.Name = "textBox_Z3";
             this.textBox_Z3.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z3.TabIndex = 27;
@@ -208,7 +207,7 @@ namespace Physics_Data_Debug
             // textBox_Z4
             // 
             this.textBox_Z4.Location = new System.Drawing.Point(1406, 275);
-            this.textBox_Z4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_Z4.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_Z4.Name = "textBox_Z4";
             this.textBox_Z4.Size = new System.Drawing.Size(196, 31);
             this.textBox_Z4.TabIndex = 28;
@@ -297,7 +296,7 @@ namespace Physics_Data_Debug
             // textBox_W4
             // 
             this.textBox_W4.Location = new System.Drawing.Point(1130, 275);
-            this.textBox_W4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_W4.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_W4.Name = "textBox_W4";
             this.textBox_W4.Size = new System.Drawing.Size(158, 31);
             this.textBox_W4.TabIndex = 37;
@@ -326,7 +325,7 @@ namespace Physics_Data_Debug
             // textBox_W1
             // 
             this.textBox_W1.Location = new System.Drawing.Point(1130, 125);
-            this.textBox_W1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_W1.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_W1.Name = "textBox_W1";
             this.textBox_W1.Size = new System.Drawing.Size(158, 31);
             this.textBox_W1.TabIndex = 41;
@@ -335,7 +334,7 @@ namespace Physics_Data_Debug
             // textBox_W2
             // 
             this.textBox_W2.Location = new System.Drawing.Point(1130, 175);
-            this.textBox_W2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_W2.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_W2.Name = "textBox_W2";
             this.textBox_W2.Size = new System.Drawing.Size(158, 31);
             this.textBox_W2.TabIndex = 42;
@@ -356,7 +355,7 @@ namespace Physics_Data_Debug
             // 
             this.DelimiterTextBox.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DelimiterTextBox.Location = new System.Drawing.Point(24, 248);
-            this.DelimiterTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DelimiterTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.DelimiterTextBox.Name = "DelimiterTextBox";
             this.DelimiterTextBox.Size = new System.Drawing.Size(68, 35);
             this.DelimiterTextBox.TabIndex = 259;
@@ -404,7 +403,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.selectAll);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.closeLogSettings);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormLogSettings";
             this.Text = "Log Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_Closing);

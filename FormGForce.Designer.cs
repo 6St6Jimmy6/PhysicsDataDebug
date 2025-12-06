@@ -133,16 +133,16 @@ namespace Physics_Data_Debug
             series1.SmartLabelStyle.CalloutLineColor = System.Drawing.Color.White;
             series1.SmartLabelStyle.Enabled = false;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(440, 440);
+            this.chart1.Size = new System.Drawing.Size(880, 846);
             this.chart1.TabIndex = 288;
             this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(0, 75);
+            this.closeButton.Location = new System.Drawing.Point(0, 144);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(65, 23);
+            this.closeButton.Size = new System.Drawing.Size(130, 44);
             this.closeButton.TabIndex = 286;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
@@ -183,7 +183,7 @@ namespace Physics_Data_Debug
             legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(440, 0);
+            this.chart2.Location = new System.Drawing.Point(880, 0);
             this.chart2.Margin = new System.Windows.Forms.Padding(0);
             this.chart2.Name = "chart2";
             series2.BorderWidth = 3;
@@ -198,14 +198,13 @@ namespace Physics_Data_Debug
             series2.Points.Add(dataPoint1);
             series2.Points.Add(dataPoint2);
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(110, 440);
+            this.chart2.Size = new System.Drawing.Size(220, 846);
             this.chart2.TabIndex = 289;
             this.chart2.Text = "chart2";
             title1.ForeColor = System.Drawing.Color.Transparent;
             title1.Name = "Title1";
             title1.Text = "jou";
             this.chart2.Titles.Add(title1);
-            this.chart2.Click += new System.EventHandler(this.chart2_Click);
             // 
             // timer2
             // 
@@ -215,8 +214,9 @@ namespace Physics_Data_Debug
             // toSettingsButton
             // 
             this.toSettingsButton.Location = new System.Drawing.Point(0, 0);
+            this.toSettingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.toSettingsButton.Name = "toSettingsButton";
-            this.toSettingsButton.Size = new System.Drawing.Size(65, 23);
+            this.toSettingsButton.Size = new System.Drawing.Size(130, 44);
             this.toSettingsButton.TabIndex = 290;
             this.toSettingsButton.Text = "Settings";
             this.toSettingsButton.UseVisualStyleBackColor = true;
@@ -224,9 +224,10 @@ namespace Physics_Data_Debug
             // 
             // refreshAndClearButton
             // 
-            this.refreshAndClearButton.Location = new System.Drawing.Point(0, 30);
+            this.refreshAndClearButton.Location = new System.Drawing.Point(0, 58);
+            this.refreshAndClearButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.refreshAndClearButton.Name = "refreshAndClearButton";
-            this.refreshAndClearButton.Size = new System.Drawing.Size(65, 39);
+            this.refreshAndClearButton.Size = new System.Drawing.Size(130, 75);
             this.refreshAndClearButton.TabIndex = 291;
             this.refreshAndClearButton.Text = "Clear / Refresh";
             this.refreshAndClearButton.UseVisualStyleBackColor = true;
@@ -234,17 +235,18 @@ namespace Physics_Data_Debug
             // 
             // FormGForce
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(550, 440);
+            this.ClientSize = new System.Drawing.Size(1100, 846);
             this.Controls.Add(this.refreshAndClearButton);
             this.Controls.Add(this.toSettingsButton);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormGForce";
             this.Text = "FormGForce";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGForce_FormClosed);

@@ -1,7 +1,7 @@
 ﻿
 namespace Physics_Data_Debug
 {
-    partial class FormTireSettings
+    partial class FormTireStaticValues
     {
         /// <summary>
         /// Required designer variable.
@@ -113,7 +113,7 @@ namespace Physics_Data_Debug
             // textBox_FL_Radius
             // 
             this.textBox_FL_Radius.Location = new System.Drawing.Point(418, 62);
-            this.textBox_FL_Radius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_Radius.Name = "textBox_FL_Radius";
             this.textBox_FL_Radius.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_Radius.TabIndex = 0;
@@ -123,11 +123,11 @@ namespace Physics_Data_Debug
             // closeButton
             // 
             this.closeButton.Location = new System.Drawing.Point(24, 23);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(6);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(150, 88);
             this.closeButton.TabIndex = 1;
-            this.closeButton.Text = "Close Tire Settings";
+            this.closeButton.Text = "Close Tire Static Values";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
@@ -224,7 +224,7 @@ namespace Physics_Data_Debug
             // textBox_FL_Width
             // 
             this.textBox_FL_Width.Location = new System.Drawing.Point(418, 112);
-            this.textBox_FL_Width.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_Width.Name = "textBox_FL_Width";
             this.textBox_FL_Width.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_Width.TabIndex = 12;
@@ -234,7 +234,7 @@ namespace Physics_Data_Debug
             // textBox_FL_ThermalAirTransfer
             // 
             this.textBox_FL_ThermalAirTransfer.Location = new System.Drawing.Point(418, 162);
-            this.textBox_FL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ThermalAirTransfer.Name = "textBox_FL_ThermalAirTransfer";
             this.textBox_FL_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_ThermalAirTransfer.TabIndex = 13;
@@ -244,7 +244,7 @@ namespace Physics_Data_Debug
             // textBox_FL_ThermalInnerTransfer
             // 
             this.textBox_FL_ThermalInnerTransfer.Location = new System.Drawing.Point(418, 212);
-            this.textBox_FL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ThermalInnerTransfer.Name = "textBox_FL_ThermalInnerTransfer";
             this.textBox_FL_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_ThermalInnerTransfer.TabIndex = 14;
@@ -254,7 +254,7 @@ namespace Physics_Data_Debug
             // textBox_FL_SpringRate
             // 
             this.textBox_FL_SpringRate.Location = new System.Drawing.Point(418, 262);
-            this.textBox_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_SpringRate.Name = "textBox_FL_SpringRate";
             this.textBox_FL_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_SpringRate.TabIndex = 15;
@@ -264,7 +264,7 @@ namespace Physics_Data_Debug
             // textBox_FL_DamperRate
             // 
             this.textBox_FL_DamperRate.Location = new System.Drawing.Point(418, 312);
-            this.textBox_FL_DamperRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_DamperRate.Name = "textBox_FL_DamperRate";
             this.textBox_FL_DamperRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_DamperRate.TabIndex = 16;
@@ -274,7 +274,7 @@ namespace Physics_Data_Debug
             // textBox_FL_MaxDeflection
             // 
             this.textBox_FL_MaxDeflection.Location = new System.Drawing.Point(418, 362);
-            this.textBox_FL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_MaxDeflection.Name = "textBox_FL_MaxDeflection";
             this.textBox_FL_MaxDeflection.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_MaxDeflection.TabIndex = 17;
@@ -284,7 +284,7 @@ namespace Physics_Data_Debug
             // textBox_FL_Mass
             // 
             this.textBox_FL_Mass.Location = new System.Drawing.Point(418, 412);
-            this.textBox_FL_Mass.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_Mass.Name = "textBox_FL_Mass";
             this.textBox_FL_Mass.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_Mass.TabIndex = 18;
@@ -294,7 +294,7 @@ namespace Physics_Data_Debug
             // textBox_FL_MomentOfInertia
             // 
             this.textBox_FL_MomentOfInertia.Location = new System.Drawing.Point(418, 462);
-            this.textBox_FL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_MomentOfInertia.Name = "textBox_FL_MomentOfInertia";
             this.textBox_FL_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_MomentOfInertia.TabIndex = 19;
@@ -324,7 +324,7 @@ namespace Physics_Data_Debug
             // textBox_FR_MomentOfInertia
             // 
             this.textBox_FR_MomentOfInertia.Location = new System.Drawing.Point(916, 467);
-            this.textBox_FR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_MomentOfInertia.Name = "textBox_FR_MomentOfInertia";
             this.textBox_FR_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_MomentOfInertia.TabIndex = 43;
@@ -334,7 +334,7 @@ namespace Physics_Data_Debug
             // textBox_FR_Mass
             // 
             this.textBox_FR_Mass.Location = new System.Drawing.Point(916, 417);
-            this.textBox_FR_Mass.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_Mass.Name = "textBox_FR_Mass";
             this.textBox_FR_Mass.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_Mass.TabIndex = 42;
@@ -344,7 +344,7 @@ namespace Physics_Data_Debug
             // textBox_FR_MaxDeflection
             // 
             this.textBox_FR_MaxDeflection.Location = new System.Drawing.Point(916, 367);
-            this.textBox_FR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_MaxDeflection.Name = "textBox_FR_MaxDeflection";
             this.textBox_FR_MaxDeflection.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_MaxDeflection.TabIndex = 41;
@@ -354,7 +354,7 @@ namespace Physics_Data_Debug
             // textBox_FR_DamperRate
             // 
             this.textBox_FR_DamperRate.Location = new System.Drawing.Point(916, 317);
-            this.textBox_FR_DamperRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_DamperRate.Name = "textBox_FR_DamperRate";
             this.textBox_FR_DamperRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_DamperRate.TabIndex = 40;
@@ -364,7 +364,7 @@ namespace Physics_Data_Debug
             // textBox_FR_SpringRate
             // 
             this.textBox_FR_SpringRate.Location = new System.Drawing.Point(916, 267);
-            this.textBox_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_SpringRate.Name = "textBox_FR_SpringRate";
             this.textBox_FR_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_SpringRate.TabIndex = 39;
@@ -374,7 +374,7 @@ namespace Physics_Data_Debug
             // textBox_FR_ThermalInnerTransfer
             // 
             this.textBox_FR_ThermalInnerTransfer.Location = new System.Drawing.Point(916, 217);
-            this.textBox_FR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ThermalInnerTransfer.Name = "textBox_FR_ThermalInnerTransfer";
             this.textBox_FR_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_ThermalInnerTransfer.TabIndex = 38;
@@ -384,7 +384,7 @@ namespace Physics_Data_Debug
             // textBox_FR_ThermalAirTransfer
             // 
             this.textBox_FR_ThermalAirTransfer.Location = new System.Drawing.Point(916, 167);
-            this.textBox_FR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ThermalAirTransfer.Name = "textBox_FR_ThermalAirTransfer";
             this.textBox_FR_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_ThermalAirTransfer.TabIndex = 37;
@@ -394,7 +394,7 @@ namespace Physics_Data_Debug
             // textBox_FR_Width
             // 
             this.textBox_FR_Width.Location = new System.Drawing.Point(916, 117);
-            this.textBox_FR_Width.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_Width.Name = "textBox_FR_Width";
             this.textBox_FR_Width.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_Width.TabIndex = 36;
@@ -494,7 +494,7 @@ namespace Physics_Data_Debug
             // textBox_FR_Radius
             // 
             this.textBox_FR_Radius.Location = new System.Drawing.Point(916, 67);
-            this.textBox_FR_Radius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_Radius.Name = "textBox_FR_Radius";
             this.textBox_FR_Radius.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_Radius.TabIndex = 26;
@@ -514,7 +514,7 @@ namespace Physics_Data_Debug
             // textBox_RL_MomentOfInertia
             // 
             this.textBox_RL_MomentOfInertia.Location = new System.Drawing.Point(418, 988);
-            this.textBox_RL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_MomentOfInertia.Name = "textBox_RL_MomentOfInertia";
             this.textBox_RL_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_MomentOfInertia.TabIndex = 62;
@@ -524,7 +524,7 @@ namespace Physics_Data_Debug
             // textBox_RL_Mass
             // 
             this.textBox_RL_Mass.Location = new System.Drawing.Point(418, 938);
-            this.textBox_RL_Mass.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_Mass.Name = "textBox_RL_Mass";
             this.textBox_RL_Mass.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_Mass.TabIndex = 61;
@@ -534,7 +534,7 @@ namespace Physics_Data_Debug
             // textBox_RL_MaxDeflection
             // 
             this.textBox_RL_MaxDeflection.Location = new System.Drawing.Point(418, 888);
-            this.textBox_RL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_MaxDeflection.Name = "textBox_RL_MaxDeflection";
             this.textBox_RL_MaxDeflection.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_MaxDeflection.TabIndex = 60;
@@ -544,7 +544,7 @@ namespace Physics_Data_Debug
             // textBox_RL_DamperRate
             // 
             this.textBox_RL_DamperRate.Location = new System.Drawing.Point(418, 838);
-            this.textBox_RL_DamperRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_DamperRate.Name = "textBox_RL_DamperRate";
             this.textBox_RL_DamperRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_DamperRate.TabIndex = 59;
@@ -554,7 +554,7 @@ namespace Physics_Data_Debug
             // textBox_RL_SpringRate
             // 
             this.textBox_RL_SpringRate.Location = new System.Drawing.Point(418, 788);
-            this.textBox_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_SpringRate.Name = "textBox_RL_SpringRate";
             this.textBox_RL_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_SpringRate.TabIndex = 58;
@@ -564,7 +564,7 @@ namespace Physics_Data_Debug
             // textBox_RL_ThermalInnerTransfer
             // 
             this.textBox_RL_ThermalInnerTransfer.Location = new System.Drawing.Point(418, 738);
-            this.textBox_RL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ThermalInnerTransfer.Name = "textBox_RL_ThermalInnerTransfer";
             this.textBox_RL_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_ThermalInnerTransfer.TabIndex = 57;
@@ -574,7 +574,7 @@ namespace Physics_Data_Debug
             // textBox_RL_ThermalAirTransfer
             // 
             this.textBox_RL_ThermalAirTransfer.Location = new System.Drawing.Point(418, 688);
-            this.textBox_RL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ThermalAirTransfer.Name = "textBox_RL_ThermalAirTransfer";
             this.textBox_RL_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_ThermalAirTransfer.TabIndex = 56;
@@ -584,7 +584,7 @@ namespace Physics_Data_Debug
             // textBox_RL_Width
             // 
             this.textBox_RL_Width.Location = new System.Drawing.Point(418, 638);
-            this.textBox_RL_Width.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_Width.Name = "textBox_RL_Width";
             this.textBox_RL_Width.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_Width.TabIndex = 55;
@@ -684,7 +684,7 @@ namespace Physics_Data_Debug
             // textBox_RL_Radius
             // 
             this.textBox_RL_Radius.Location = new System.Drawing.Point(418, 588);
-            this.textBox_RL_Radius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_Radius.Name = "textBox_RL_Radius";
             this.textBox_RL_Radius.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_Radius.TabIndex = 45;
@@ -704,7 +704,7 @@ namespace Physics_Data_Debug
             // textBox_RR_MomentOfInertia
             // 
             this.textBox_RR_MomentOfInertia.Location = new System.Drawing.Point(918, 988);
-            this.textBox_RR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_MomentOfInertia.Name = "textBox_RR_MomentOfInertia";
             this.textBox_RR_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_MomentOfInertia.TabIndex = 81;
@@ -714,7 +714,7 @@ namespace Physics_Data_Debug
             // textBox_RR_Mass
             // 
             this.textBox_RR_Mass.Location = new System.Drawing.Point(918, 938);
-            this.textBox_RR_Mass.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_Mass.Name = "textBox_RR_Mass";
             this.textBox_RR_Mass.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_Mass.TabIndex = 80;
@@ -724,7 +724,7 @@ namespace Physics_Data_Debug
             // textBox_RR_MaxDeflection
             // 
             this.textBox_RR_MaxDeflection.Location = new System.Drawing.Point(918, 888);
-            this.textBox_RR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_MaxDeflection.Name = "textBox_RR_MaxDeflection";
             this.textBox_RR_MaxDeflection.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_MaxDeflection.TabIndex = 79;
@@ -734,7 +734,7 @@ namespace Physics_Data_Debug
             // textBox_RR_DamperRate
             // 
             this.textBox_RR_DamperRate.Location = new System.Drawing.Point(918, 838);
-            this.textBox_RR_DamperRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_DamperRate.Name = "textBox_RR_DamperRate";
             this.textBox_RR_DamperRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_DamperRate.TabIndex = 78;
@@ -744,7 +744,7 @@ namespace Physics_Data_Debug
             // textBox_RR_SpringRate
             // 
             this.textBox_RR_SpringRate.Location = new System.Drawing.Point(918, 788);
-            this.textBox_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_SpringRate.Name = "textBox_RR_SpringRate";
             this.textBox_RR_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_SpringRate.TabIndex = 77;
@@ -754,7 +754,7 @@ namespace Physics_Data_Debug
             // textBox_RR_ThermalInnerTransfer
             // 
             this.textBox_RR_ThermalInnerTransfer.Location = new System.Drawing.Point(918, 738);
-            this.textBox_RR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ThermalInnerTransfer.Name = "textBox_RR_ThermalInnerTransfer";
             this.textBox_RR_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_ThermalInnerTransfer.TabIndex = 76;
@@ -764,7 +764,7 @@ namespace Physics_Data_Debug
             // textBox_RR_ThermalAirTransfer
             // 
             this.textBox_RR_ThermalAirTransfer.Location = new System.Drawing.Point(918, 688);
-            this.textBox_RR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ThermalAirTransfer.Name = "textBox_RR_ThermalAirTransfer";
             this.textBox_RR_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_ThermalAirTransfer.TabIndex = 75;
@@ -774,7 +774,7 @@ namespace Physics_Data_Debug
             // textBox_RR_Width
             // 
             this.textBox_RR_Width.Location = new System.Drawing.Point(918, 638);
-            this.textBox_RR_Width.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_Width.Name = "textBox_RR_Width";
             this.textBox_RR_Width.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_Width.TabIndex = 74;
@@ -874,7 +874,7 @@ namespace Physics_Data_Debug
             // textBox_RR_Radius
             // 
             this.textBox_RR_Radius.Location = new System.Drawing.Point(918, 588);
-            this.textBox_RR_Radius.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_Radius.Name = "textBox_RR_Radius";
             this.textBox_RR_Radius.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_Radius.TabIndex = 64;
@@ -885,7 +885,7 @@ namespace Physics_Data_Debug
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // FormTireSettings
+            // FormTireStaticValues
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -968,11 +968,11 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.flRadius);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.textBox_FL_Radius);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Name = "FormTireSettings";
-            this.Text = "Tire Settings";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TireSettings_Close);
-            this.Load += new System.EventHandler(this.TireSettings_Load);
+            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Name = "FormTireStaticValues";
+            this.Text = "Tire Static Values";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormTireStaticValues_Close);
+            this.Load += new System.EventHandler(this.FormTireStaticValues_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
