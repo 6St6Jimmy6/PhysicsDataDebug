@@ -101,9 +101,10 @@ namespace Physics_Data_Debug
             // 
             this.MarkerColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MarkerColorComboBox.FormattingEnabled = true;
-            this.MarkerColorComboBox.Location = new System.Drawing.Point(12, 233);
+            this.MarkerColorComboBox.Location = new System.Drawing.Point(24, 448);
+            this.MarkerColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MarkerColorComboBox.Name = "MarkerColorComboBox";
-            this.MarkerColorComboBox.Size = new System.Drawing.Size(129, 21);
+            this.MarkerColorComboBox.Size = new System.Drawing.Size(254, 33);
             this.MarkerColorComboBox.TabIndex = 369;
             this.MarkerColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MarkerColorComboBox_DrawItem);
             this.MarkerColorComboBox.SelectionChangeCommitted += new System.EventHandler(this.MarkerColorComboBox_SelectionChangeCommitted);
@@ -111,17 +112,19 @@ namespace Physics_Data_Debug
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(9, 217);
+            this.label37.Location = new System.Drawing.Point(18, 417);
+            this.label37.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(67, 13);
+            this.label37.Size = new System.Drawing.Size(136, 25);
             this.label37.TabIndex = 368;
             this.label37.Text = "Marker Color";
             // 
             // LoadCurrentValuesButton
             // 
-            this.LoadCurrentValuesButton.Location = new System.Drawing.Point(12, 100);
+            this.LoadCurrentValuesButton.Location = new System.Drawing.Point(24, 192);
+            this.LoadCurrentValuesButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.LoadCurrentValuesButton.Name = "LoadCurrentValuesButton";
-            this.LoadCurrentValuesButton.Size = new System.Drawing.Size(89, 51);
+            this.LoadCurrentValuesButton.Size = new System.Drawing.Size(178, 98);
             this.LoadCurrentValuesButton.TabIndex = 367;
             this.LoadCurrentValuesButton.Text = "Load Current Values";
             this.LoadCurrentValuesButton.UseVisualStyleBackColor = true;
@@ -132,9 +135,10 @@ namespace Physics_Data_Debug
             this.DefaultsCheckBox.AutoSize = true;
             this.DefaultsCheckBox.Checked = true;
             this.DefaultsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DefaultsCheckBox.Location = new System.Drawing.Point(12, 157);
+            this.DefaultsCheckBox.Location = new System.Drawing.Point(24, 302);
+            this.DefaultsCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.DefaultsCheckBox.Name = "DefaultsCheckBox";
-            this.DefaultsCheckBox.Size = new System.Drawing.Size(65, 17);
+            this.DefaultsCheckBox.Size = new System.Drawing.Size(123, 29);
             this.DefaultsCheckBox.TabIndex = 366;
             this.DefaultsCheckBox.Text = "Defaults";
             this.DefaultsCheckBox.UseVisualStyleBackColor = true;
@@ -143,9 +147,10 @@ namespace Physics_Data_Debug
             // BackgroundColorComboBox
             // 
             this.BackgroundColorComboBox.FormattingEnabled = true;
-            this.BackgroundColorComboBox.Location = new System.Drawing.Point(12, 193);
+            this.BackgroundColorComboBox.Location = new System.Drawing.Point(24, 371);
+            this.BackgroundColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.BackgroundColorComboBox.Name = "BackgroundColorComboBox";
-            this.BackgroundColorComboBox.Size = new System.Drawing.Size(129, 21);
+            this.BackgroundColorComboBox.Size = new System.Drawing.Size(254, 33);
             this.BackgroundColorComboBox.TabIndex = 365;
             this.BackgroundColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.BackgroundColorComboBox_DrawItem);
             this.BackgroundColorComboBox.SelectionChangeCommitted += new System.EventHandler(this.BackgroundColorComboBox_SelectionChangeCommitted);
@@ -153,17 +158,19 @@ namespace Physics_Data_Debug
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 177);
+            this.label8.Location = new System.Drawing.Point(18, 340);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 13);
+            this.label8.Size = new System.Drawing.Size(184, 25);
             this.label8.TabIndex = 364;
             this.label8.Text = "Background Color";
             // 
             // applyAndClearChartsButton
             // 
-            this.applyAndClearChartsButton.Location = new System.Drawing.Point(12, 43);
+            this.applyAndClearChartsButton.Location = new System.Drawing.Point(24, 83);
+            this.applyAndClearChartsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.applyAndClearChartsButton.Name = "applyAndClearChartsButton";
-            this.applyAndClearChartsButton.Size = new System.Drawing.Size(89, 51);
+            this.applyAndClearChartsButton.Size = new System.Drawing.Size(178, 98);
             this.applyAndClearChartsButton.TabIndex = 363;
             this.applyAndClearChartsButton.Text = "Apply and Clear Charts";
             this.applyAndClearChartsButton.UseVisualStyleBackColor = true;
@@ -171,9 +178,10 @@ namespace Physics_Data_Debug
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(12, 12);
+            this.closeButton.Location = new System.Drawing.Point(24, 23);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(60, 25);
+            this.closeButton.Size = new System.Drawing.Size(120, 48);
             this.closeButton.TabIndex = 362;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
@@ -181,9 +189,10 @@ namespace Physics_Data_Debug
             // 
             // X1MajorIntervalFractionTextBox
             // 
-            this.X1MajorIntervalFractionTextBox.Location = new System.Drawing.Point(226, 250);
+            this.X1MajorIntervalFractionTextBox.Location = new System.Drawing.Point(452, 481);
+            this.X1MajorIntervalFractionTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MajorIntervalFractionTextBox.Name = "X1MajorIntervalFractionTextBox";
-            this.X1MajorIntervalFractionTextBox.Size = new System.Drawing.Size(71, 20);
+            this.X1MajorIntervalFractionTextBox.Size = new System.Drawing.Size(138, 31);
             this.X1MajorIntervalFractionTextBox.TabIndex = 399;
             this.X1MajorIntervalFractionTextBox.Visible = false;
             // 
@@ -191,18 +200,20 @@ namespace Physics_Data_Debug
             // 
             this.X1MinorLineWidthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1MinorLineWidthComboBox.FormattingEnabled = true;
-            this.X1MinorLineWidthComboBox.Location = new System.Drawing.Point(303, 303);
+            this.X1MinorLineWidthComboBox.Location = new System.Drawing.Point(606, 583);
+            this.X1MinorLineWidthComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MinorLineWidthComboBox.Name = "X1MinorLineWidthComboBox";
-            this.X1MinorLineWidthComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1MinorLineWidthComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1MinorLineWidthComboBox.TabIndex = 398;
             // 
             // X1MajorColorComboBox
             // 
             this.X1MajorColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1MajorColorComboBox.FormattingEnabled = true;
-            this.X1MajorColorComboBox.Location = new System.Drawing.Point(303, 224);
+            this.X1MajorColorComboBox.Location = new System.Drawing.Point(606, 431);
+            this.X1MajorColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MajorColorComboBox.Name = "X1MajorColorComboBox";
-            this.X1MajorColorComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1MajorColorComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1MajorColorComboBox.TabIndex = 395;
             this.X1MajorColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1MajorColorComboBox_DrawItem);
             this.X1MajorColorComboBox.SelectedIndexChanged += new System.EventHandler(this.X1MajorColorComboBox_SelectedIndexChanged);
@@ -211,17 +222,19 @@ namespace Physics_Data_Debug
             // 
             this.X1MajorLineWidthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1MajorLineWidthComboBox.FormattingEnabled = true;
-            this.X1MajorLineWidthComboBox.Location = new System.Drawing.Point(168, 224);
+            this.X1MajorLineWidthComboBox.Location = new System.Drawing.Point(336, 431);
+            this.X1MajorLineWidthComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MajorLineWidthComboBox.Name = "X1MajorLineWidthComboBox";
-            this.X1MajorLineWidthComboBox.Size = new System.Drawing.Size(52, 21);
+            this.X1MajorLineWidthComboBox.Size = new System.Drawing.Size(100, 33);
             this.X1MajorLineWidthComboBox.TabIndex = 394;
             // 
             // X1MinorEnabledCheckBox
             // 
             this.X1MinorEnabledCheckBox.AutoSize = true;
-            this.X1MinorEnabledCheckBox.Location = new System.Drawing.Point(168, 305);
+            this.X1MinorEnabledCheckBox.Location = new System.Drawing.Point(336, 587);
+            this.X1MinorEnabledCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MinorEnabledCheckBox.Name = "X1MinorEnabledCheckBox";
-            this.X1MinorEnabledCheckBox.Size = new System.Drawing.Size(65, 17);
+            this.X1MinorEnabledCheckBox.Size = new System.Drawing.Size(123, 29);
             this.X1MinorEnabledCheckBox.TabIndex = 393;
             this.X1MinorEnabledCheckBox.Text = "Enabled";
             this.X1MinorEnabledCheckBox.UseVisualStyleBackColor = true;
@@ -230,18 +243,20 @@ namespace Physics_Data_Debug
             // 
             this.X1MinorDashStyleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1MinorDashStyleComboBox.FormattingEnabled = true;
-            this.X1MinorDashStyleComboBox.Location = new System.Drawing.Point(303, 342);
+            this.X1MinorDashStyleComboBox.Location = new System.Drawing.Point(606, 658);
+            this.X1MinorDashStyleComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MinorDashStyleComboBox.Name = "X1MinorDashStyleComboBox";
-            this.X1MinorDashStyleComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1MinorDashStyleComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1MinorDashStyleComboBox.TabIndex = 392;
             // 
             // X1MinorColorComboBox
             // 
             this.X1MinorColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1MinorColorComboBox.FormattingEnabled = true;
-            this.X1MinorColorComboBox.Location = new System.Drawing.Point(168, 342);
+            this.X1MinorColorComboBox.Location = new System.Drawing.Point(336, 658);
+            this.X1MinorColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MinorColorComboBox.Name = "X1MinorColorComboBox";
-            this.X1MinorColorComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1MinorColorComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1MinorColorComboBox.TabIndex = 391;
             this.X1MinorColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1MinorColorComboBox_DrawItem);
             this.X1MinorColorComboBox.SelectedIndexChanged += new System.EventHandler(this.X1MinorColorComboBox_SelectedIndexChanged);
@@ -250,18 +265,20 @@ namespace Physics_Data_Debug
             // 
             this.X1MinorIntervalComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1MinorIntervalComboBox.FormattingEnabled = true;
-            this.X1MinorIntervalComboBox.Location = new System.Drawing.Point(253, 303);
+            this.X1MinorIntervalComboBox.Location = new System.Drawing.Point(506, 583);
+            this.X1MinorIntervalComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MinorIntervalComboBox.Name = "X1MinorIntervalComboBox";
-            this.X1MinorIntervalComboBox.Size = new System.Drawing.Size(44, 21);
+            this.X1MinorIntervalComboBox.Size = new System.Drawing.Size(84, 33);
             this.X1MinorIntervalComboBox.TabIndex = 390;
             // 
             // X1FontColorComboBox
             // 
             this.X1FontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1FontColorComboBox.FormattingEnabled = true;
-            this.X1FontColorComboBox.Location = new System.Drawing.Point(303, 184);
+            this.X1FontColorComboBox.Location = new System.Drawing.Point(606, 354);
+            this.X1FontColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1FontColorComboBox.Name = "X1FontColorComboBox";
-            this.X1FontColorComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1FontColorComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1FontColorComboBox.TabIndex = 386;
             this.X1FontColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1FontColorComboBox_DrawItem);
             this.X1FontColorComboBox.SelectedIndexChanged += new System.EventHandler(this.X1FontColorComboBox_SelectedIndexChanged);
@@ -269,27 +286,30 @@ namespace Physics_Data_Debug
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(165, 208);
+            this.label16.Location = new System.Drawing.Point(330, 400);
+            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(183, 13);
+            this.label16.Size = new System.Drawing.Size(361, 25);
             this.label16.TabIndex = 385;
             this.label16.Text = "Line Width  / Interval Fraction / Color";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(300, 128);
+            this.label15.Location = new System.Drawing.Point(600, 246);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(54, 13);
+            this.label15.Size = new System.Drawing.Size(109, 25);
             this.label15.TabIndex = 384;
             this.label15.Text = "Font Style";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(165, 88);
+            this.label14.Location = new System.Drawing.Point(330, 169);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(102, 13);
+            this.label14.Size = new System.Drawing.Size(209, 25);
             this.label14.TabIndex = 383;
             this.label14.Text = "Major Grid Font Size";
             // 
@@ -297,9 +317,10 @@ namespace Physics_Data_Debug
             // 
             this.X1FontStyleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1FontStyleComboBox.FormattingEnabled = true;
-            this.X1FontStyleComboBox.Location = new System.Drawing.Point(303, 144);
+            this.X1FontStyleComboBox.Location = new System.Drawing.Point(606, 277);
+            this.X1FontStyleComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1FontStyleComboBox.Name = "X1FontStyleComboBox";
-            this.X1FontStyleComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1FontStyleComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1FontStyleComboBox.TabIndex = 382;
             this.X1FontStyleComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1FontStyleComboBox_DrawItem);
             this.X1FontStyleComboBox.SelectedIndexChanged += new System.EventHandler(this.X1FontStyleComboBox_SelectedIndexChanged);
@@ -307,9 +328,10 @@ namespace Physics_Data_Debug
             // X1FontSizeComboBox
             // 
             this.X1FontSizeComboBox.FormattingEnabled = true;
-            this.X1FontSizeComboBox.Location = new System.Drawing.Point(168, 104);
+            this.X1FontSizeComboBox.Location = new System.Drawing.Point(336, 200);
+            this.X1FontSizeComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1FontSizeComboBox.Name = "X1FontSizeComboBox";
-            this.X1FontSizeComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1FontSizeComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1FontSizeComboBox.TabIndex = 381;
             this.X1FontSizeComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1FontSizeComboBox_DrawItem);
             this.X1FontSizeComboBox.SelectedIndexChanged += new System.EventHandler(this.X1FontSizeComboBox_SelectedIndexChanged);
@@ -318,9 +340,10 @@ namespace Physics_Data_Debug
             // 
             this.X1ComboBoxFonts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1ComboBoxFonts.FormattingEnabled = true;
-            this.X1ComboBoxFonts.Location = new System.Drawing.Point(303, 104);
+            this.X1ComboBoxFonts.Location = new System.Drawing.Point(606, 200);
+            this.X1ComboBoxFonts.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1ComboBoxFonts.Name = "X1ComboBoxFonts";
-            this.X1ComboBoxFonts.Size = new System.Drawing.Size(129, 21);
+            this.X1ComboBoxFonts.Size = new System.Drawing.Size(254, 33);
             this.X1ComboBoxFonts.TabIndex = 380;
             this.X1ComboBoxFonts.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.X1ComboBoxFonts_DrawItem);
             this.X1ComboBoxFonts.SelectedIndexChanged += new System.EventHandler(this.X1ComboBoxFonts_SelectedIndexChanged);
@@ -328,54 +351,60 @@ namespace Physics_Data_Debug
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(300, 326);
+            this.label13.Location = new System.Drawing.Point(600, 627);
+            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 13);
+            this.label13.Size = new System.Drawing.Size(116, 25);
             this.label13.TabIndex = 379;
             this.label13.Text = "Dash Style";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(165, 326);
+            this.label12.Location = new System.Drawing.Point(330, 627);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
+            this.label12.Size = new System.Drawing.Size(169, 25);
             this.label12.TabIndex = 378;
             this.label12.Text = "Minor Grid Color";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(165, 287);
+            this.label11.Location = new System.Drawing.Point(330, 552);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(202, 13);
+            this.label11.Size = new System.Drawing.Size(401, 25);
             this.label11.TabIndex = 377;
             this.label11.Text = "Minor Grid Enable / Fraction / Line Width";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(300, 168);
+            this.label5.Location = new System.Drawing.Point(600, 323);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.Size = new System.Drawing.Size(112, 25);
             this.label5.TabIndex = 373;
             this.label5.Text = "Font Color";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(300, 88);
+            this.label4.Location = new System.Drawing.Point(600, 169);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.Size = new System.Drawing.Size(117, 25);
             this.label4.TabIndex = 372;
             this.label4.Text = "Font Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 9);
+            this.label1.Location = new System.Drawing.Point(330, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(156, 25);
             this.label1.TabIndex = 371;
             this.label1.Text = "X Axis (Round)";
             // 
@@ -384,9 +413,10 @@ namespace Physics_Data_Debug
             this.X1DefaultsCheckBox.AutoSize = true;
             this.X1DefaultsCheckBox.Checked = true;
             this.X1DefaultsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.X1DefaultsCheckBox.Location = new System.Drawing.Point(168, 25);
+            this.X1DefaultsCheckBox.Location = new System.Drawing.Point(336, 48);
+            this.X1DefaultsCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1DefaultsCheckBox.Name = "X1DefaultsCheckBox";
-            this.X1DefaultsCheckBox.Size = new System.Drawing.Size(65, 17);
+            this.X1DefaultsCheckBox.Size = new System.Drawing.Size(123, 29);
             this.X1DefaultsCheckBox.TabIndex = 370;
             this.X1DefaultsCheckBox.Text = "Defaults";
             this.X1DefaultsCheckBox.UseVisualStyleBackColor = true;
@@ -395,9 +425,10 @@ namespace Physics_Data_Debug
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(165, 49);
+            this.label9.Location = new System.Drawing.Point(330, 94);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(157, 13);
+            this.label9.Size = new System.Drawing.Size(321, 25);
             this.label9.TabIndex = 376;
             this.label9.Text = "Angle Type (degrees or radians)";
             // 
@@ -405,16 +436,18 @@ namespace Physics_Data_Debug
             // 
             this.X1AngleTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1AngleTypeComboBox.FormattingEnabled = true;
-            this.X1AngleTypeComboBox.Location = new System.Drawing.Point(168, 64);
+            this.X1AngleTypeComboBox.Location = new System.Drawing.Point(336, 123);
+            this.X1AngleTypeComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1AngleTypeComboBox.Name = "X1AngleTypeComboBox";
-            this.X1AngleTypeComboBox.Size = new System.Drawing.Size(129, 21);
+            this.X1AngleTypeComboBox.Size = new System.Drawing.Size(254, 33);
             this.X1AngleTypeComboBox.TabIndex = 400;
             // 
             // Y1IntervalDividerTextBox
             // 
-            this.Y1IntervalDividerTextBox.Location = new System.Drawing.Point(581, 250);
+            this.Y1IntervalDividerTextBox.Location = new System.Drawing.Point(1162, 481);
+            this.Y1IntervalDividerTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1IntervalDividerTextBox.Name = "Y1IntervalDividerTextBox";
-            this.Y1IntervalDividerTextBox.Size = new System.Drawing.Size(44, 20);
+            this.Y1IntervalDividerTextBox.Size = new System.Drawing.Size(84, 31);
             this.Y1IntervalDividerTextBox.TabIndex = 430;
             this.Y1IntervalDividerTextBox.Visible = false;
             // 
@@ -422,34 +455,38 @@ namespace Physics_Data_Debug
             // 
             this.Y1MinorLineWidthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MinorLineWidthComboBox.FormattingEnabled = true;
-            this.Y1MinorLineWidthComboBox.Location = new System.Drawing.Point(616, 304);
+            this.Y1MinorLineWidthComboBox.Location = new System.Drawing.Point(1232, 585);
+            this.Y1MinorLineWidthComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MinorLineWidthComboBox.Name = "Y1MinorLineWidthComboBox";
-            this.Y1MinorLineWidthComboBox.Size = new System.Drawing.Size(129, 21);
+            this.Y1MinorLineWidthComboBox.Size = new System.Drawing.Size(254, 33);
             this.Y1MinorLineWidthComboBox.TabIndex = 429;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(616, 49);
+            this.label10.Location = new System.Drawing.Point(1232, 94);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.Size = new System.Drawing.Size(104, 25);
             this.label10.TabIndex = 428;
             this.label10.Text = "Maximum";
             // 
             // Y1MaxMaskedTextBox
             // 
-            this.Y1MaxMaskedTextBox.Location = new System.Drawing.Point(616, 65);
+            this.Y1MaxMaskedTextBox.Location = new System.Drawing.Point(1232, 125);
+            this.Y1MaxMaskedTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MaxMaskedTextBox.Name = "Y1MaxMaskedTextBox";
-            this.Y1MaxMaskedTextBox.Size = new System.Drawing.Size(129, 20);
+            this.Y1MaxMaskedTextBox.Size = new System.Drawing.Size(254, 31);
             this.Y1MaxMaskedTextBox.TabIndex = 427;
             // 
             // Y1MajorColorComboBox
             // 
             this.Y1MajorColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MajorColorComboBox.FormattingEnabled = true;
-            this.Y1MajorColorComboBox.Location = new System.Drawing.Point(631, 224);
+            this.Y1MajorColorComboBox.Location = new System.Drawing.Point(1262, 431);
+            this.Y1MajorColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MajorColorComboBox.Name = "Y1MajorColorComboBox";
-            this.Y1MajorColorComboBox.Size = new System.Drawing.Size(114, 21);
+            this.Y1MajorColorComboBox.Size = new System.Drawing.Size(224, 33);
             this.Y1MajorColorComboBox.TabIndex = 426;
             this.Y1MajorColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1MajorColorComboBox_DrawItem);
             this.Y1MajorColorComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MajorColorComboBox_SelectedIndexChanged);
@@ -458,17 +495,19 @@ namespace Physics_Data_Debug
             // 
             this.Y1MajorLineWidthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MajorLineWidthComboBox.FormattingEnabled = true;
-            this.Y1MajorLineWidthComboBox.Location = new System.Drawing.Point(481, 224);
+            this.Y1MajorLineWidthComboBox.Location = new System.Drawing.Point(962, 431);
+            this.Y1MajorLineWidthComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MajorLineWidthComboBox.Name = "Y1MajorLineWidthComboBox";
-            this.Y1MajorLineWidthComboBox.Size = new System.Drawing.Size(44, 21);
+            this.Y1MajorLineWidthComboBox.Size = new System.Drawing.Size(84, 33);
             this.Y1MajorLineWidthComboBox.TabIndex = 425;
             // 
             // Y1MinorEnabledCheckBox
             // 
             this.Y1MinorEnabledCheckBox.AutoSize = true;
-            this.Y1MinorEnabledCheckBox.Location = new System.Drawing.Point(481, 306);
+            this.Y1MinorEnabledCheckBox.Location = new System.Drawing.Point(962, 588);
+            this.Y1MinorEnabledCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MinorEnabledCheckBox.Name = "Y1MinorEnabledCheckBox";
-            this.Y1MinorEnabledCheckBox.Size = new System.Drawing.Size(65, 17);
+            this.Y1MinorEnabledCheckBox.Size = new System.Drawing.Size(123, 29);
             this.Y1MinorEnabledCheckBox.TabIndex = 424;
             this.Y1MinorEnabledCheckBox.Text = "Enabled";
             this.Y1MinorEnabledCheckBox.UseVisualStyleBackColor = true;
@@ -477,18 +516,20 @@ namespace Physics_Data_Debug
             // 
             this.Y1MinorDashStyleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MinorDashStyleComboBox.FormattingEnabled = true;
-            this.Y1MinorDashStyleComboBox.Location = new System.Drawing.Point(616, 343);
+            this.Y1MinorDashStyleComboBox.Location = new System.Drawing.Point(1232, 660);
+            this.Y1MinorDashStyleComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MinorDashStyleComboBox.Name = "Y1MinorDashStyleComboBox";
-            this.Y1MinorDashStyleComboBox.Size = new System.Drawing.Size(129, 21);
+            this.Y1MinorDashStyleComboBox.Size = new System.Drawing.Size(254, 33);
             this.Y1MinorDashStyleComboBox.TabIndex = 423;
             // 
             // Y1MinorColorComboBox
             // 
             this.Y1MinorColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MinorColorComboBox.FormattingEnabled = true;
-            this.Y1MinorColorComboBox.Location = new System.Drawing.Point(481, 343);
+            this.Y1MinorColorComboBox.Location = new System.Drawing.Point(962, 660);
+            this.Y1MinorColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MinorColorComboBox.Name = "Y1MinorColorComboBox";
-            this.Y1MinorColorComboBox.Size = new System.Drawing.Size(129, 21);
+            this.Y1MinorColorComboBox.Size = new System.Drawing.Size(254, 33);
             this.Y1MinorColorComboBox.TabIndex = 422;
             this.Y1MinorColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1MinorColorComboBox_DrawItem);
             this.Y1MinorColorComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1MinorColorComboBox_SelectedIndexChanged);
@@ -497,34 +538,38 @@ namespace Physics_Data_Debug
             // 
             this.Y1MinorIntervalComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MinorIntervalComboBox.FormattingEnabled = true;
-            this.Y1MinorIntervalComboBox.Location = new System.Drawing.Point(566, 304);
+            this.Y1MinorIntervalComboBox.Location = new System.Drawing.Point(1132, 585);
+            this.Y1MinorIntervalComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MinorIntervalComboBox.Name = "Y1MinorIntervalComboBox";
-            this.Y1MinorIntervalComboBox.Size = new System.Drawing.Size(44, 21);
+            this.Y1MinorIntervalComboBox.Size = new System.Drawing.Size(84, 33);
             this.Y1MinorIntervalComboBox.TabIndex = 421;
             // 
             // Y1MajorDecimalsComboBox
             // 
             this.Y1MajorDecimalsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MajorDecimalsComboBox.FormattingEnabled = true;
-            this.Y1MajorDecimalsComboBox.Location = new System.Drawing.Point(531, 224);
+            this.Y1MajorDecimalsComboBox.Location = new System.Drawing.Point(1062, 431);
+            this.Y1MajorDecimalsComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MajorDecimalsComboBox.Name = "Y1MajorDecimalsComboBox";
-            this.Y1MajorDecimalsComboBox.Size = new System.Drawing.Size(44, 21);
+            this.Y1MajorDecimalsComboBox.Size = new System.Drawing.Size(84, 33);
             this.Y1MajorDecimalsComboBox.TabIndex = 420;
             // 
             // Y1MinMaskedTextBox
             // 
-            this.Y1MinMaskedTextBox.Location = new System.Drawing.Point(481, 65);
+            this.Y1MinMaskedTextBox.Location = new System.Drawing.Point(962, 125);
+            this.Y1MinMaskedTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MinMaskedTextBox.Name = "Y1MinMaskedTextBox";
-            this.Y1MinMaskedTextBox.Size = new System.Drawing.Size(129, 20);
+            this.Y1MinMaskedTextBox.Size = new System.Drawing.Size(254, 31);
             this.Y1MinMaskedTextBox.TabIndex = 419;
             // 
             // Y1FontColorComboBox
             // 
             this.Y1FontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1FontColorComboBox.FormattingEnabled = true;
-            this.Y1FontColorComboBox.Location = new System.Drawing.Point(616, 184);
+            this.Y1FontColorComboBox.Location = new System.Drawing.Point(1232, 354);
+            this.Y1FontColorComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1FontColorComboBox.Name = "Y1FontColorComboBox";
-            this.Y1FontColorComboBox.Size = new System.Drawing.Size(129, 21);
+            this.Y1FontColorComboBox.Size = new System.Drawing.Size(254, 33);
             this.Y1FontColorComboBox.TabIndex = 417;
             this.Y1FontColorComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1FontColorComboBox_DrawItem);
             this.Y1FontColorComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1FontColorComboBox_SelectedIndexChanged);
@@ -532,27 +577,30 @@ namespace Physics_Data_Debug
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(478, 208);
+            this.label17.Location = new System.Drawing.Point(956, 400);
+            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(193, 13);
+            this.label17.Size = new System.Drawing.Size(377, 25);
             this.label17.TabIndex = 416;
             this.label17.Text = "Line Width / Decimals / Interval / Color";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(613, 128);
+            this.label18.Location = new System.Drawing.Point(1226, 246);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(54, 13);
+            this.label18.Size = new System.Drawing.Size(109, 25);
             this.label18.TabIndex = 415;
             this.label18.Text = "Font Style";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(478, 88);
+            this.label19.Location = new System.Drawing.Point(956, 169);
+            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(102, 13);
+            this.label19.Size = new System.Drawing.Size(209, 25);
             this.label19.TabIndex = 414;
             this.label19.Text = "Major Grid Font Size";
             // 
@@ -560,9 +608,10 @@ namespace Physics_Data_Debug
             // 
             this.Y1FontStyleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1FontStyleComboBox.FormattingEnabled = true;
-            this.Y1FontStyleComboBox.Location = new System.Drawing.Point(616, 144);
+            this.Y1FontStyleComboBox.Location = new System.Drawing.Point(1232, 277);
+            this.Y1FontStyleComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1FontStyleComboBox.Name = "Y1FontStyleComboBox";
-            this.Y1FontStyleComboBox.Size = new System.Drawing.Size(129, 21);
+            this.Y1FontStyleComboBox.Size = new System.Drawing.Size(254, 33);
             this.Y1FontStyleComboBox.TabIndex = 413;
             this.Y1FontStyleComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1FontStyleComboBox_DrawItem);
             this.Y1FontStyleComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1FontStyleComboBox_SelectedIndexChanged);
@@ -570,9 +619,10 @@ namespace Physics_Data_Debug
             // Y1FontSizeComboBox
             // 
             this.Y1FontSizeComboBox.FormattingEnabled = true;
-            this.Y1FontSizeComboBox.Location = new System.Drawing.Point(481, 104);
+            this.Y1FontSizeComboBox.Location = new System.Drawing.Point(962, 200);
+            this.Y1FontSizeComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1FontSizeComboBox.Name = "Y1FontSizeComboBox";
-            this.Y1FontSizeComboBox.Size = new System.Drawing.Size(129, 21);
+            this.Y1FontSizeComboBox.Size = new System.Drawing.Size(254, 33);
             this.Y1FontSizeComboBox.TabIndex = 412;
             this.Y1FontSizeComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1FontSizeComboBox_DrawItem);
             this.Y1FontSizeComboBox.SelectedIndexChanged += new System.EventHandler(this.Y1FontSizeComboBox_SelectedIndexChanged);
@@ -581,9 +631,10 @@ namespace Physics_Data_Debug
             // 
             this.Y1ComboBoxFonts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1ComboBoxFonts.FormattingEnabled = true;
-            this.Y1ComboBoxFonts.Location = new System.Drawing.Point(616, 104);
+            this.Y1ComboBoxFonts.Location = new System.Drawing.Point(1232, 200);
+            this.Y1ComboBoxFonts.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1ComboBoxFonts.Name = "Y1ComboBoxFonts";
-            this.Y1ComboBoxFonts.Size = new System.Drawing.Size(129, 21);
+            this.Y1ComboBoxFonts.Size = new System.Drawing.Size(254, 33);
             this.Y1ComboBoxFonts.TabIndex = 411;
             this.Y1ComboBoxFonts.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.Y1ComboBoxFonts_DrawItem);
             this.Y1ComboBoxFonts.SelectedIndexChanged += new System.EventHandler(this.Y1ComboBoxFonts_SelectedIndexChanged);
@@ -591,63 +642,70 @@ namespace Physics_Data_Debug
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(613, 327);
+            this.label20.Location = new System.Drawing.Point(1226, 629);
+            this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(58, 13);
+            this.label20.Size = new System.Drawing.Size(116, 25);
             this.label20.TabIndex = 410;
             this.label20.Text = "Dash Style";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(478, 327);
+            this.label21.Location = new System.Drawing.Point(956, 629);
+            this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(82, 13);
+            this.label21.Size = new System.Drawing.Size(169, 25);
             this.label21.TabIndex = 409;
             this.label21.Text = "Minor Grid Color";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(478, 288);
+            this.label22.Location = new System.Drawing.Point(956, 554);
+            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(202, 13);
+            this.label22.Size = new System.Drawing.Size(401, 25);
             this.label22.TabIndex = 408;
             this.label22.Text = "Minor Grid Enable / Fraction / Line Width";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(478, 49);
+            this.label23.Location = new System.Drawing.Point(956, 94);
+            this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(48, 13);
+            this.label23.Size = new System.Drawing.Size(98, 25);
             this.label23.TabIndex = 407;
             this.label23.Text = "Minimum";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(613, 168);
+            this.label25.Location = new System.Drawing.Point(1226, 323);
+            this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(55, 13);
+            this.label25.Size = new System.Drawing.Size(112, 25);
             this.label25.TabIndex = 404;
             this.label25.Text = "Font Color";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(613, 88);
+            this.label26.Location = new System.Drawing.Point(1226, 169);
+            this.label26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(59, 13);
+            this.label26.Size = new System.Drawing.Size(117, 25);
             this.label26.TabIndex = 403;
             this.label26.Text = "Font Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(478, 9);
+            this.label2.Location = new System.Drawing.Point(956, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(141, 25);
             this.label2.TabIndex = 402;
             this.label2.Text = "Y Axis (Slice)";
             // 
@@ -656,9 +714,10 @@ namespace Physics_Data_Debug
             this.Y1DefaultsCheckBox.AutoSize = true;
             this.Y1DefaultsCheckBox.Checked = true;
             this.Y1DefaultsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Y1DefaultsCheckBox.Location = new System.Drawing.Point(481, 25);
+            this.Y1DefaultsCheckBox.Location = new System.Drawing.Point(962, 48);
+            this.Y1DefaultsCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1DefaultsCheckBox.Name = "Y1DefaultsCheckBox";
-            this.Y1DefaultsCheckBox.Size = new System.Drawing.Size(65, 17);
+            this.Y1DefaultsCheckBox.Size = new System.Drawing.Size(123, 29);
             this.Y1DefaultsCheckBox.TabIndex = 401;
             this.Y1DefaultsCheckBox.Text = "Defaults";
             this.Y1DefaultsCheckBox.UseVisualStyleBackColor = true;
@@ -666,26 +725,29 @@ namespace Physics_Data_Debug
             // 
             // HistoryAmountPointsMaskedTextBox
             // 
-            this.HistoryAmountPointsMaskedTextBox.Location = new System.Drawing.Point(12, 273);
+            this.HistoryAmountPointsMaskedTextBox.Location = new System.Drawing.Point(24, 525);
+            this.HistoryAmountPointsMaskedTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.HistoryAmountPointsMaskedTextBox.Name = "HistoryAmountPointsMaskedTextBox";
-            this.HistoryAmountPointsMaskedTextBox.Size = new System.Drawing.Size(129, 20);
+            this.HistoryAmountPointsMaskedTextBox.Size = new System.Drawing.Size(254, 31);
             this.HistoryAmountPointsMaskedTextBox.TabIndex = 436;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 257);
+            this.label7.Location = new System.Drawing.Point(18, 494);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
+            this.label7.Size = new System.Drawing.Size(145, 25);
             this.label7.TabIndex = 435;
             this.label7.Text = "History Points";
             // 
             // InfiniteHistoryCheckBox
             // 
             this.InfiniteHistoryCheckBox.AutoSize = true;
-            this.InfiniteHistoryCheckBox.Location = new System.Drawing.Point(12, 299);
+            this.InfiniteHistoryCheckBox.Location = new System.Drawing.Point(24, 575);
+            this.InfiniteHistoryCheckBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.InfiniteHistoryCheckBox.Name = "InfiniteHistoryCheckBox";
-            this.InfiniteHistoryCheckBox.Size = new System.Drawing.Size(134, 17);
+            this.InfiniteHistoryCheckBox.Size = new System.Drawing.Size(265, 29);
             this.InfiniteHistoryCheckBox.TabIndex = 437;
             this.InfiniteHistoryCheckBox.Text = "Infinite History Enabled";
             this.InfiniteHistoryCheckBox.UseVisualStyleBackColor = true;
@@ -695,18 +757,20 @@ namespace Physics_Data_Debug
             this.SchemeComboBox.BackColor = System.Drawing.SystemColors.Window;
             this.SchemeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SchemeComboBox.FormattingEnabled = true;
-            this.SchemeComboBox.Location = new System.Drawing.Point(12, 335);
+            this.SchemeComboBox.Location = new System.Drawing.Point(24, 644);
+            this.SchemeComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.SchemeComboBox.Name = "SchemeComboBox";
-            this.SchemeComboBox.Size = new System.Drawing.Size(129, 21);
+            this.SchemeComboBox.Size = new System.Drawing.Size(254, 33);
             this.SchemeComboBox.TabIndex = 439;
             this.SchemeComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.SchemeComboBox_DrawItem);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 319);
+            this.label3.Location = new System.Drawing.Point(18, 613);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 13);
+            this.label3.Size = new System.Drawing.Size(205, 25);
             this.label3.TabIndex = 438;
             this.label3.Text = "Chart Color Scheme";
             // 
@@ -714,26 +778,28 @@ namespace Physics_Data_Debug
             // 
             this.Y1MajorIntervalDividerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1MajorIntervalDividerComboBox.FormattingEnabled = true;
-            this.Y1MajorIntervalDividerComboBox.Location = new System.Drawing.Point(581, 224);
+            this.Y1MajorIntervalDividerComboBox.Location = new System.Drawing.Point(1162, 431);
+            this.Y1MajorIntervalDividerComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Y1MajorIntervalDividerComboBox.Name = "Y1MajorIntervalDividerComboBox";
-            this.Y1MajorIntervalDividerComboBox.Size = new System.Drawing.Size(44, 21);
+            this.Y1MajorIntervalDividerComboBox.Size = new System.Drawing.Size(84, 33);
             this.Y1MajorIntervalDividerComboBox.TabIndex = 440;
             // 
             // X1MajorIntervalFractionComboBox
             // 
             this.X1MajorIntervalFractionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1MajorIntervalFractionComboBox.FormattingEnabled = true;
-            this.X1MajorIntervalFractionComboBox.Location = new System.Drawing.Point(226, 224);
+            this.X1MajorIntervalFractionComboBox.Location = new System.Drawing.Point(452, 431);
+            this.X1MajorIntervalFractionComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.X1MajorIntervalFractionComboBox.Name = "X1MajorIntervalFractionComboBox";
-            this.X1MajorIntervalFractionComboBox.Size = new System.Drawing.Size(71, 21);
+            this.X1MajorIntervalFractionComboBox.Size = new System.Drawing.Size(138, 33);
             this.X1MajorIntervalFractionComboBox.TabIndex = 441;
             // 
             // FormGForceSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(761, 458);
+            this.ClientSize = new System.Drawing.Size(1522, 881);
             this.Controls.Add(this.X1MajorIntervalFractionComboBox);
             this.Controls.Add(this.Y1MajorIntervalDividerComboBox);
             this.Controls.Add(this.SchemeComboBox);
@@ -800,6 +866,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label8);
             this.Controls.Add(this.applyAndClearChartsButton);
             this.Controls.Add(this.closeButton);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormGForceSettings";
             this.Text = "FormGForceSettings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGForceSettings_FormClosing);
