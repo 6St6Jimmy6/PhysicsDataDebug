@@ -140,7 +140,7 @@ namespace Physics_Data_Debug
             // closeButton
             // 
             this.closeButton.Location = new System.Drawing.Point(0, 144);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(6);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(130, 44);
             this.closeButton.TabIndex = 286;
@@ -214,7 +214,7 @@ namespace Physics_Data_Debug
             // toSettingsButton
             // 
             this.toSettingsButton.Location = new System.Drawing.Point(0, 0);
-            this.toSettingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.toSettingsButton.Margin = new System.Windows.Forms.Padding(6);
             this.toSettingsButton.Name = "toSettingsButton";
             this.toSettingsButton.Size = new System.Drawing.Size(130, 44);
             this.toSettingsButton.TabIndex = 290;
@@ -225,7 +225,7 @@ namespace Physics_Data_Debug
             // refreshAndClearButton
             // 
             this.refreshAndClearButton.Location = new System.Drawing.Point(0, 58);
-            this.refreshAndClearButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.refreshAndClearButton.Margin = new System.Windows.Forms.Padding(6);
             this.refreshAndClearButton.Name = "refreshAndClearButton";
             this.refreshAndClearButton.Size = new System.Drawing.Size(130, 75);
             this.refreshAndClearButton.TabIndex = 291;
@@ -246,7 +246,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormGForce";
             this.Text = "FormGForce";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGForce_FormClosed);
