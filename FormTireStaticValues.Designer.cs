@@ -112,6 +112,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_Radius
             // 
+            this.textBox_FL_Radius.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_Radius.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_Radius.Location = new System.Drawing.Point(418, 62);
             this.textBox_FL_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_Radius.Name = "textBox_FL_Radius";
@@ -122,18 +124,22 @@ namespace Physics_Data_Debug
             // 
             // closeButton
             // 
+            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.closeButton.ForeColor = System.Drawing.Color.White;
             this.closeButton.Location = new System.Drawing.Point(24, 23);
             this.closeButton.Margin = new System.Windows.Forms.Padding(6);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(150, 88);
+            this.closeButton.Size = new System.Drawing.Size(150, 125);
             this.closeButton.TabIndex = 1;
             this.closeButton.Text = "Close Tire Static Values";
-            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // flRadius
             // 
             this.flRadius.AutoSize = true;
+            this.flRadius.BackColor = System.Drawing.Color.Black;
+            this.flRadius.ForeColor = System.Drawing.Color.White;
             this.flRadius.Location = new System.Drawing.Point(186, 67);
             this.flRadius.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flRadius.Name = "flRadius";
@@ -144,6 +150,8 @@ namespace Physics_Data_Debug
             // flWidth
             // 
             this.flWidth.AutoSize = true;
+            this.flWidth.BackColor = System.Drawing.Color.Black;
+            this.flWidth.ForeColor = System.Drawing.Color.White;
             this.flWidth.Location = new System.Drawing.Point(186, 117);
             this.flWidth.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flWidth.Name = "flWidth";
@@ -154,6 +162,8 @@ namespace Physics_Data_Debug
             // flThermalAirTransfer
             // 
             this.flThermalAirTransfer.AutoSize = true;
+            this.flThermalAirTransfer.BackColor = System.Drawing.Color.Black;
+            this.flThermalAirTransfer.ForeColor = System.Drawing.Color.White;
             this.flThermalAirTransfer.Location = new System.Drawing.Point(186, 167);
             this.flThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flThermalAirTransfer.Name = "flThermalAirTransfer";
@@ -164,6 +174,8 @@ namespace Physics_Data_Debug
             // flThermalInnerTransfer
             // 
             this.flThermalInnerTransfer.AutoSize = true;
+            this.flThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
+            this.flThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
             this.flThermalInnerTransfer.Location = new System.Drawing.Point(186, 217);
             this.flThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flThermalInnerTransfer.Name = "flThermalInnerTransfer";
@@ -174,6 +186,8 @@ namespace Physics_Data_Debug
             // flTireSpringRate
             // 
             this.flTireSpringRate.AutoSize = true;
+            this.flTireSpringRate.BackColor = System.Drawing.Color.Black;
+            this.flTireSpringRate.ForeColor = System.Drawing.Color.White;
             this.flTireSpringRate.Location = new System.Drawing.Point(186, 267);
             this.flTireSpringRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flTireSpringRate.Name = "flTireSpringRate";
@@ -184,6 +198,8 @@ namespace Physics_Data_Debug
             // flTireDamperRate
             // 
             this.flTireDamperRate.AutoSize = true;
+            this.flTireDamperRate.BackColor = System.Drawing.Color.Black;
+            this.flTireDamperRate.ForeColor = System.Drawing.Color.White;
             this.flTireDamperRate.Location = new System.Drawing.Point(186, 317);
             this.flTireDamperRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flTireDamperRate.Name = "flTireDamperRate";
@@ -194,6 +210,8 @@ namespace Physics_Data_Debug
             // flMaxDeflection
             // 
             this.flMaxDeflection.AutoSize = true;
+            this.flMaxDeflection.BackColor = System.Drawing.Color.Black;
+            this.flMaxDeflection.ForeColor = System.Drawing.Color.White;
             this.flMaxDeflection.Location = new System.Drawing.Point(186, 367);
             this.flMaxDeflection.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flMaxDeflection.Name = "flMaxDeflection";
@@ -204,6 +222,8 @@ namespace Physics_Data_Debug
             // flMass
             // 
             this.flMass.AutoSize = true;
+            this.flMass.BackColor = System.Drawing.Color.Black;
+            this.flMass.ForeColor = System.Drawing.Color.White;
             this.flMass.Location = new System.Drawing.Point(186, 417);
             this.flMass.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flMass.Name = "flMass";
@@ -214,6 +234,8 @@ namespace Physics_Data_Debug
             // flMomentOfInertia
             // 
             this.flMomentOfInertia.AutoSize = true;
+            this.flMomentOfInertia.BackColor = System.Drawing.Color.Black;
+            this.flMomentOfInertia.ForeColor = System.Drawing.Color.White;
             this.flMomentOfInertia.Location = new System.Drawing.Point(186, 467);
             this.flMomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flMomentOfInertia.Name = "flMomentOfInertia";
@@ -223,6 +245,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_Width
             // 
+            this.textBox_FL_Width.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_Width.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_Width.Location = new System.Drawing.Point(418, 112);
             this.textBox_FL_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_Width.Name = "textBox_FL_Width";
@@ -233,6 +257,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_ThermalAirTransfer
             // 
+            this.textBox_FL_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_ThermalAirTransfer.Location = new System.Drawing.Point(418, 162);
             this.textBox_FL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ThermalAirTransfer.Name = "textBox_FL_ThermalAirTransfer";
@@ -243,6 +269,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_ThermalInnerTransfer
             // 
+            this.textBox_FL_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_ThermalInnerTransfer.Location = new System.Drawing.Point(418, 212);
             this.textBox_FL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ThermalInnerTransfer.Name = "textBox_FL_ThermalInnerTransfer";
@@ -253,6 +281,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_SpringRate
             // 
+            this.textBox_FL_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_SpringRate.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_SpringRate.Location = new System.Drawing.Point(418, 262);
             this.textBox_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_SpringRate.Name = "textBox_FL_SpringRate";
@@ -263,6 +293,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_DamperRate
             // 
+            this.textBox_FL_DamperRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_DamperRate.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_DamperRate.Location = new System.Drawing.Point(418, 312);
             this.textBox_FL_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_DamperRate.Name = "textBox_FL_DamperRate";
@@ -273,6 +305,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_MaxDeflection
             // 
+            this.textBox_FL_MaxDeflection.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_MaxDeflection.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_MaxDeflection.Location = new System.Drawing.Point(418, 362);
             this.textBox_FL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_MaxDeflection.Name = "textBox_FL_MaxDeflection";
@@ -283,6 +317,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_Mass
             // 
+            this.textBox_FL_Mass.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_Mass.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_Mass.Location = new System.Drawing.Point(418, 412);
             this.textBox_FL_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_Mass.Name = "textBox_FL_Mass";
@@ -293,6 +329,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FL_MomentOfInertia
             // 
+            this.textBox_FL_MomentOfInertia.BackColor = System.Drawing.Color.Black;
+            this.textBox_FL_MomentOfInertia.ForeColor = System.Drawing.Color.White;
             this.textBox_FL_MomentOfInertia.Location = new System.Drawing.Point(418, 462);
             this.textBox_FL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_MomentOfInertia.Name = "textBox_FL_MomentOfInertia";
@@ -304,6 +342,8 @@ namespace Physics_Data_Debug
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Black;
+            this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(186, 17);
             this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
@@ -314,6 +354,8 @@ namespace Physics_Data_Debug
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(684, 23);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
@@ -323,6 +365,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_MomentOfInertia
             // 
+            this.textBox_FR_MomentOfInertia.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_MomentOfInertia.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_MomentOfInertia.Location = new System.Drawing.Point(916, 467);
             this.textBox_FR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_MomentOfInertia.Name = "textBox_FR_MomentOfInertia";
@@ -333,6 +377,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_Mass
             // 
+            this.textBox_FR_Mass.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_Mass.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_Mass.Location = new System.Drawing.Point(916, 417);
             this.textBox_FR_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_Mass.Name = "textBox_FR_Mass";
@@ -343,6 +389,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_MaxDeflection
             // 
+            this.textBox_FR_MaxDeflection.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_MaxDeflection.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_MaxDeflection.Location = new System.Drawing.Point(916, 367);
             this.textBox_FR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_MaxDeflection.Name = "textBox_FR_MaxDeflection";
@@ -353,6 +401,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_DamperRate
             // 
+            this.textBox_FR_DamperRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_DamperRate.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_DamperRate.Location = new System.Drawing.Point(916, 317);
             this.textBox_FR_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_DamperRate.Name = "textBox_FR_DamperRate";
@@ -363,6 +413,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_SpringRate
             // 
+            this.textBox_FR_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_SpringRate.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_SpringRate.Location = new System.Drawing.Point(916, 267);
             this.textBox_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_SpringRate.Name = "textBox_FR_SpringRate";
@@ -373,6 +425,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_ThermalInnerTransfer
             // 
+            this.textBox_FR_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_ThermalInnerTransfer.Location = new System.Drawing.Point(916, 217);
             this.textBox_FR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ThermalInnerTransfer.Name = "textBox_FR_ThermalInnerTransfer";
@@ -383,6 +437,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_ThermalAirTransfer
             // 
+            this.textBox_FR_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_ThermalAirTransfer.Location = new System.Drawing.Point(916, 167);
             this.textBox_FR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ThermalAirTransfer.Name = "textBox_FR_ThermalAirTransfer";
@@ -393,6 +449,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_Width
             // 
+            this.textBox_FR_Width.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_Width.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_Width.Location = new System.Drawing.Point(916, 117);
             this.textBox_FR_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_Width.Name = "textBox_FR_Width";
@@ -404,6 +462,8 @@ namespace Physics_Data_Debug
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(684, 473);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
@@ -414,6 +474,8 @@ namespace Physics_Data_Debug
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(684, 423);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
@@ -424,6 +486,8 @@ namespace Physics_Data_Debug
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Black;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(684, 373);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
@@ -434,6 +498,8 @@ namespace Physics_Data_Debug
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Black;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(684, 323);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
@@ -444,6 +510,8 @@ namespace Physics_Data_Debug
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Black;
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(684, 273);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
@@ -454,6 +522,8 @@ namespace Physics_Data_Debug
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Black;
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(684, 223);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
@@ -464,6 +534,8 @@ namespace Physics_Data_Debug
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Black;
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(684, 173);
             this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
@@ -474,6 +546,8 @@ namespace Physics_Data_Debug
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Black;
+            this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(684, 123);
             this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
@@ -484,6 +558,8 @@ namespace Physics_Data_Debug
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Black;
+            this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(684, 73);
             this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
@@ -493,6 +569,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_FR_Radius
             // 
+            this.textBox_FR_Radius.BackColor = System.Drawing.Color.Black;
+            this.textBox_FR_Radius.ForeColor = System.Drawing.Color.White;
             this.textBox_FR_Radius.Location = new System.Drawing.Point(916, 67);
             this.textBox_FR_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_Radius.Name = "textBox_FR_Radius";
@@ -504,6 +582,8 @@ namespace Physics_Data_Debug
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Black;
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(186, 544);
             this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
@@ -513,6 +593,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_MomentOfInertia
             // 
+            this.textBox_RL_MomentOfInertia.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_MomentOfInertia.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_MomentOfInertia.Location = new System.Drawing.Point(418, 988);
             this.textBox_RL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_MomentOfInertia.Name = "textBox_RL_MomentOfInertia";
@@ -523,6 +605,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_Mass
             // 
+            this.textBox_RL_Mass.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_Mass.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_Mass.Location = new System.Drawing.Point(418, 938);
             this.textBox_RL_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_Mass.Name = "textBox_RL_Mass";
@@ -533,6 +617,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_MaxDeflection
             // 
+            this.textBox_RL_MaxDeflection.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_MaxDeflection.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_MaxDeflection.Location = new System.Drawing.Point(418, 888);
             this.textBox_RL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_MaxDeflection.Name = "textBox_RL_MaxDeflection";
@@ -543,6 +629,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_DamperRate
             // 
+            this.textBox_RL_DamperRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_DamperRate.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_DamperRate.Location = new System.Drawing.Point(418, 838);
             this.textBox_RL_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_DamperRate.Name = "textBox_RL_DamperRate";
@@ -553,6 +641,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_SpringRate
             // 
+            this.textBox_RL_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_SpringRate.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_SpringRate.Location = new System.Drawing.Point(418, 788);
             this.textBox_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_SpringRate.Name = "textBox_RL_SpringRate";
@@ -563,6 +653,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_ThermalInnerTransfer
             // 
+            this.textBox_RL_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_ThermalInnerTransfer.Location = new System.Drawing.Point(418, 738);
             this.textBox_RL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ThermalInnerTransfer.Name = "textBox_RL_ThermalInnerTransfer";
@@ -573,6 +665,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_ThermalAirTransfer
             // 
+            this.textBox_RL_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_ThermalAirTransfer.Location = new System.Drawing.Point(418, 688);
             this.textBox_RL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ThermalAirTransfer.Name = "textBox_RL_ThermalAirTransfer";
@@ -583,6 +677,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_Width
             // 
+            this.textBox_RL_Width.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_Width.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_Width.Location = new System.Drawing.Point(418, 638);
             this.textBox_RL_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_Width.Name = "textBox_RL_Width";
@@ -594,6 +690,8 @@ namespace Physics_Data_Debug
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Black;
+            this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(186, 994);
             this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
@@ -604,6 +702,8 @@ namespace Physics_Data_Debug
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Black;
+            this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(186, 944);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
@@ -614,6 +714,8 @@ namespace Physics_Data_Debug
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Black;
+            this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(186, 894);
             this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
@@ -624,6 +726,8 @@ namespace Physics_Data_Debug
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Black;
+            this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(186, 844);
             this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
@@ -634,6 +738,8 @@ namespace Physics_Data_Debug
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Black;
+            this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(186, 794);
             this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label17.Name = "label17";
@@ -644,6 +750,8 @@ namespace Physics_Data_Debug
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Black;
+            this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(186, 744);
             this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label18.Name = "label18";
@@ -654,6 +762,8 @@ namespace Physics_Data_Debug
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Black;
+            this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(186, 694);
             this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label19.Name = "label19";
@@ -664,6 +774,8 @@ namespace Physics_Data_Debug
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Black;
+            this.label20.ForeColor = System.Drawing.Color.White;
             this.label20.Location = new System.Drawing.Point(186, 644);
             this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label20.Name = "label20";
@@ -674,6 +786,8 @@ namespace Physics_Data_Debug
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Black;
+            this.label21.ForeColor = System.Drawing.Color.White;
             this.label21.Location = new System.Drawing.Point(186, 594);
             this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label21.Name = "label21";
@@ -683,6 +797,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RL_Radius
             // 
+            this.textBox_RL_Radius.BackColor = System.Drawing.Color.Black;
+            this.textBox_RL_Radius.ForeColor = System.Drawing.Color.White;
             this.textBox_RL_Radius.Location = new System.Drawing.Point(418, 588);
             this.textBox_RL_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_Radius.Name = "textBox_RL_Radius";
@@ -694,6 +810,8 @@ namespace Physics_Data_Debug
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Black;
+            this.label22.ForeColor = System.Drawing.Color.White;
             this.label22.Location = new System.Drawing.Point(686, 544);
             this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
@@ -703,6 +821,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_MomentOfInertia
             // 
+            this.textBox_RR_MomentOfInertia.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_MomentOfInertia.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_MomentOfInertia.Location = new System.Drawing.Point(918, 988);
             this.textBox_RR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_MomentOfInertia.Name = "textBox_RR_MomentOfInertia";
@@ -713,6 +833,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_Mass
             // 
+            this.textBox_RR_Mass.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_Mass.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_Mass.Location = new System.Drawing.Point(918, 938);
             this.textBox_RR_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_Mass.Name = "textBox_RR_Mass";
@@ -723,6 +845,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_MaxDeflection
             // 
+            this.textBox_RR_MaxDeflection.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_MaxDeflection.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_MaxDeflection.Location = new System.Drawing.Point(918, 888);
             this.textBox_RR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_MaxDeflection.Name = "textBox_RR_MaxDeflection";
@@ -733,6 +857,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_DamperRate
             // 
+            this.textBox_RR_DamperRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_DamperRate.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_DamperRate.Location = new System.Drawing.Point(918, 838);
             this.textBox_RR_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_DamperRate.Name = "textBox_RR_DamperRate";
@@ -743,6 +869,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_SpringRate
             // 
+            this.textBox_RR_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_SpringRate.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_SpringRate.Location = new System.Drawing.Point(918, 788);
             this.textBox_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_SpringRate.Name = "textBox_RR_SpringRate";
@@ -753,6 +881,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_ThermalInnerTransfer
             // 
+            this.textBox_RR_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_ThermalInnerTransfer.Location = new System.Drawing.Point(918, 738);
             this.textBox_RR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ThermalInnerTransfer.Name = "textBox_RR_ThermalInnerTransfer";
@@ -763,6 +893,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_ThermalAirTransfer
             // 
+            this.textBox_RR_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_ThermalAirTransfer.Location = new System.Drawing.Point(918, 688);
             this.textBox_RR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ThermalAirTransfer.Name = "textBox_RR_ThermalAirTransfer";
@@ -773,6 +905,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_Width
             // 
+            this.textBox_RR_Width.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_Width.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_Width.Location = new System.Drawing.Point(918, 638);
             this.textBox_RR_Width.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_Width.Name = "textBox_RR_Width";
@@ -784,6 +918,8 @@ namespace Physics_Data_Debug
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Black;
+            this.label23.ForeColor = System.Drawing.Color.White;
             this.label23.Location = new System.Drawing.Point(686, 994);
             this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label23.Name = "label23";
@@ -794,6 +930,8 @@ namespace Physics_Data_Debug
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Black;
+            this.label24.ForeColor = System.Drawing.Color.White;
             this.label24.Location = new System.Drawing.Point(686, 944);
             this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label24.Name = "label24";
@@ -804,6 +942,8 @@ namespace Physics_Data_Debug
             // label25
             // 
             this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Black;
+            this.label25.ForeColor = System.Drawing.Color.White;
             this.label25.Location = new System.Drawing.Point(686, 894);
             this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label25.Name = "label25";
@@ -814,6 +954,8 @@ namespace Physics_Data_Debug
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Black;
+            this.label26.ForeColor = System.Drawing.Color.White;
             this.label26.Location = new System.Drawing.Point(686, 844);
             this.label26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label26.Name = "label26";
@@ -824,6 +966,8 @@ namespace Physics_Data_Debug
             // label27
             // 
             this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Black;
+            this.label27.ForeColor = System.Drawing.Color.White;
             this.label27.Location = new System.Drawing.Point(686, 794);
             this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label27.Name = "label27";
@@ -834,6 +978,8 @@ namespace Physics_Data_Debug
             // label28
             // 
             this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Black;
+            this.label28.ForeColor = System.Drawing.Color.White;
             this.label28.Location = new System.Drawing.Point(686, 744);
             this.label28.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label28.Name = "label28";
@@ -844,6 +990,8 @@ namespace Physics_Data_Debug
             // label29
             // 
             this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Black;
+            this.label29.ForeColor = System.Drawing.Color.White;
             this.label29.Location = new System.Drawing.Point(686, 694);
             this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label29.Name = "label29";
@@ -854,6 +1002,8 @@ namespace Physics_Data_Debug
             // label30
             // 
             this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Black;
+            this.label30.ForeColor = System.Drawing.Color.White;
             this.label30.Location = new System.Drawing.Point(686, 644);
             this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label30.Name = "label30";
@@ -864,6 +1014,8 @@ namespace Physics_Data_Debug
             // label31
             // 
             this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Black;
+            this.label31.ForeColor = System.Drawing.Color.White;
             this.label31.Location = new System.Drawing.Point(686, 594);
             this.label31.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label31.Name = "label31";
@@ -873,6 +1025,8 @@ namespace Physics_Data_Debug
             // 
             // textBox_RR_Radius
             // 
+            this.textBox_RR_Radius.BackColor = System.Drawing.Color.Black;
+            this.textBox_RR_Radius.ForeColor = System.Drawing.Color.White;
             this.textBox_RR_Radius.Location = new System.Drawing.Point(918, 588);
             this.textBox_RR_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_Radius.Name = "textBox_RR_Radius";
@@ -890,6 +1044,7 @@ namespace Physics_Data_Debug
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1130, 1031);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textBox_RR_MomentOfInertia);

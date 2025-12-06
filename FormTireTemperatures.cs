@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -54,6 +55,25 @@ namespace Physics_Data_Debug
         }
         private void SetChart(Chart chartName)
         {
+            string chartAreaName = "ChartArea1";
+            chartName.ChartAreas[chartAreaName].BackColor = _4WheelsSettings.BackgroundColor;
+
+            // X Axis
+            chartName.ChartAreas[chartAreaName].AxisX.LabelStyle.ForeColor = _4WheelsSettings.X1FontColor;
+
+            chartName.ChartAreas[chartAreaName].AxisX.TitleForeColor = _4WheelsSettings.X1FontColor;
+
+            chartName.ChartAreas[chartAreaName].AxisX.MajorGrid.LineColor = _4WheelsSettings.X1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.LineColor = _4WheelsSettings.X1MinorColor;
+
+            // Y Axis
+            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.ForeColor = _4WheelsSettings.Y1FontColor;
+
+            chartName.ChartAreas[chartAreaName].AxisY.TitleForeColor = _4WheelsSettings.Y1FontColor;
+
+            chartName.ChartAreas[chartAreaName].AxisY.MajorGrid.LineColor = _4WheelsSettings.Y1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.LineColor = _4WheelsSettings.Y1MinorColor;
+
             chartName.ChartAreas["ChartArea1"].Position.Height = 80;
             chartName.ChartAreas["ChartArea1"].Position.Width = 100;
             chartName.ChartAreas["ChartArea1"].Position.X = 0;

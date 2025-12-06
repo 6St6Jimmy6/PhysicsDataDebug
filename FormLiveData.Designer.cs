@@ -255,6 +255,7 @@ namespace Physics_Data_Debug
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(6, 13);
             this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -266,6 +267,7 @@ namespace Physics_Data_Debug
             // CurrentSpeed
             // 
             this.CurrentSpeed.AutoSize = true;
+            this.CurrentSpeed.BackColor = System.Drawing.Color.Transparent;
             this.CurrentSpeed.ForeColor = System.Drawing.Color.White;
             this.CurrentSpeed.Location = new System.Drawing.Point(15, 38);
             this.CurrentSpeed.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -277,6 +279,7 @@ namespace Physics_Data_Debug
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(6, 326);
             this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -287,6 +290,7 @@ namespace Physics_Data_Debug
             // 
             // label14
             // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(6, 194);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -298,6 +302,7 @@ namespace Physics_Data_Debug
             // CurrentFrontLift
             // 
             this.CurrentFrontLift.AutoSize = true;
+            this.CurrentFrontLift.BackColor = System.Drawing.Color.Transparent;
             this.CurrentFrontLift.ForeColor = System.Drawing.Color.White;
             this.CurrentFrontLift.Location = new System.Drawing.Point(15, 351);
             this.CurrentFrontLift.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -309,6 +314,7 @@ namespace Physics_Data_Debug
             // CurrentRearLift
             // 
             this.CurrentRearLift.AutoSize = true;
+            this.CurrentRearLift.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRearLift.ForeColor = System.Drawing.Color.White;
             this.CurrentRearLift.Location = new System.Drawing.Point(15, 376);
             this.CurrentRearLift.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -1477,7 +1483,7 @@ namespace Physics_Data_Debug
             this.toTireStaticValues.Location = new System.Drawing.Point(11, 1686);
             this.toTireStaticValues.Margin = new System.Windows.Forms.Padding(6);
             this.toTireStaticValues.Name = "toTireStaticValues";
-            this.toTireStaticValues.Size = new System.Drawing.Size(180, 87);
+            this.toTireStaticValues.Size = new System.Drawing.Size(180, 103);
             this.toTireStaticValues.TabIndex = 155;
             this.toTireStaticValues.Text = "Tire Static Values Page";
             this.toTireStaticValues.UseVisualStyleBackColor = false;
@@ -2310,10 +2316,10 @@ namespace Physics_Data_Debug
             // 
             this.toSuspensionStaticValuesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toSuspensionStaticValuesButton.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionStaticValuesButton.Location = new System.Drawing.Point(11, 1783);
+            this.toSuspensionStaticValuesButton.Location = new System.Drawing.Point(11, 1801);
             this.toSuspensionStaticValuesButton.Margin = new System.Windows.Forms.Padding(6);
             this.toSuspensionStaticValuesButton.Name = "toSuspensionStaticValuesButton";
-            this.toSuspensionStaticValuesButton.Size = new System.Drawing.Size(180, 87);
+            this.toSuspensionStaticValuesButton.Size = new System.Drawing.Size(180, 108);
             this.toSuspensionStaticValuesButton.TabIndex = 239;
             this.toSuspensionStaticValuesButton.Text = "Suspension Static Values Page";
             this.toSuspensionStaticValuesButton.UseVisualStyleBackColor = false;
@@ -2335,6 +2341,7 @@ namespace Physics_Data_Debug
             // CurrentEngineTorque
             // 
             this.CurrentEngineTorque.AutoSize = true;
+            this.CurrentEngineTorque.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEngineTorque.ForeColor = System.Drawing.Color.White;
             this.CurrentEngineTorque.Location = new System.Drawing.Point(15, 476);
             this.CurrentEngineTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2346,6 +2353,7 @@ namespace Physics_Data_Debug
             // CurrentEnginePower
             // 
             this.CurrentEnginePower.AutoSize = true;
+            this.CurrentEnginePower.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEnginePower.ForeColor = System.Drawing.Color.White;
             this.CurrentEnginePower.Location = new System.Drawing.Point(15, 501);
             this.CurrentEnginePower.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2357,6 +2365,7 @@ namespace Physics_Data_Debug
             // CurrentLeftDifferentialOpen
             // 
             this.CurrentLeftDifferentialOpen.AutoSize = true;
+            this.CurrentLeftDifferentialOpen.BackColor = System.Drawing.Color.Transparent;
             this.CurrentLeftDifferentialOpen.ForeColor = System.Drawing.Color.White;
             this.CurrentLeftDifferentialOpen.Location = new System.Drawing.Point(15, 583);
             this.CurrentLeftDifferentialOpen.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2368,6 +2377,7 @@ namespace Physics_Data_Debug
             // Differential
             // 
             this.Differential.AutoSize = true;
+            this.Differential.BackColor = System.Drawing.Color.Transparent;
             this.Differential.ForeColor = System.Drawing.Color.White;
             this.Differential.Location = new System.Drawing.Point(6, 533);
             this.Differential.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2379,6 +2389,7 @@ namespace Physics_Data_Debug
             // CurrentLeftDifferentialSpeedRad
             // 
             this.CurrentLeftDifferentialSpeedRad.AutoSize = true;
+            this.CurrentLeftDifferentialSpeedRad.BackColor = System.Drawing.Color.Transparent;
             this.CurrentLeftDifferentialSpeedRad.ForeColor = System.Drawing.Color.White;
             this.CurrentLeftDifferentialSpeedRad.Location = new System.Drawing.Point(15, 608);
             this.CurrentLeftDifferentialSpeedRad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2390,6 +2401,7 @@ namespace Physics_Data_Debug
             // CurrentLeftDifferentialTorque
             // 
             this.CurrentLeftDifferentialTorque.AutoSize = true;
+            this.CurrentLeftDifferentialTorque.BackColor = System.Drawing.Color.Transparent;
             this.CurrentLeftDifferentialTorque.ForeColor = System.Drawing.Color.White;
             this.CurrentLeftDifferentialTorque.Location = new System.Drawing.Point(15, 633);
             this.CurrentLeftDifferentialTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2401,6 +2413,7 @@ namespace Physics_Data_Debug
             // CurrentEngineRPM
             // 
             this.CurrentEngineRPM.AutoSize = true;
+            this.CurrentEngineRPM.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEngineRPM.ForeColor = System.Drawing.Color.White;
             this.CurrentEngineRPM.Location = new System.Drawing.Point(15, 426);
             this.CurrentEngineRPM.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2412,6 +2425,7 @@ namespace Physics_Data_Debug
             // label78
             // 
             this.label78.AutoSize = true;
+            this.label78.BackColor = System.Drawing.Color.Transparent;
             this.label78.ForeColor = System.Drawing.Color.White;
             this.label78.Location = new System.Drawing.Point(6, 401);
             this.label78.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2423,6 +2437,7 @@ namespace Physics_Data_Debug
             // CurrentEngineRPMAxle
             // 
             this.CurrentEngineRPMAxle.AutoSize = true;
+            this.CurrentEngineRPMAxle.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEngineRPMAxle.ForeColor = System.Drawing.Color.White;
             this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(15, 451);
             this.CurrentEngineRPMAxle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2447,6 +2462,7 @@ namespace Physics_Data_Debug
             // CurrentAcceleration
             // 
             this.CurrentAcceleration.AutoSize = true;
+            this.CurrentAcceleration.BackColor = System.Drawing.Color.Transparent;
             this.CurrentAcceleration.ForeColor = System.Drawing.Color.White;
             this.CurrentAcceleration.Location = new System.Drawing.Point(15, 106);
             this.CurrentAcceleration.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2458,6 +2474,7 @@ namespace Physics_Data_Debug
             // label75
             // 
             this.label75.AutoSize = true;
+            this.label75.BackColor = System.Drawing.Color.Transparent;
             this.label75.ForeColor = System.Drawing.Color.White;
             this.label75.Location = new System.Drawing.Point(6, 81);
             this.label75.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2469,6 +2486,7 @@ namespace Physics_Data_Debug
             // CurrentGForce
             // 
             this.CurrentGForce.AutoSize = true;
+            this.CurrentGForce.BackColor = System.Drawing.Color.Transparent;
             this.CurrentGForce.ForeColor = System.Drawing.Color.White;
             this.CurrentGForce.Location = new System.Drawing.Point(15, 169);
             this.CurrentGForce.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2480,6 +2498,7 @@ namespace Physics_Data_Debug
             // label74
             // 
             this.label74.AutoSize = true;
+            this.label74.BackColor = System.Drawing.Color.Transparent;
             this.label74.ForeColor = System.Drawing.Color.White;
             this.label74.Location = new System.Drawing.Point(6, 144);
             this.label74.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2687,6 +2706,7 @@ namespace Physics_Data_Debug
             this.richTextBox4.Margin = new System.Windows.Forms.Padding(6);
             this.richTextBox4.MaxLength = 0;
             this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.ReadOnly = true;
             this.richTextBox4.Size = new System.Drawing.Size(696, 754);
             this.richTextBox4.TabIndex = 102;
             this.richTextBox4.Text = "";
@@ -2698,6 +2718,7 @@ namespace Physics_Data_Debug
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(6);
             this.richTextBox2.MaxLength = 0;
             this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(696, 754);
             this.richTextBox2.TabIndex = 64;
             this.richTextBox2.Text = "";
@@ -2709,6 +2730,7 @@ namespace Physics_Data_Debug
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(6);
             this.richTextBox3.MaxLength = 0;
             this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.ReadOnly = true;
             this.richTextBox3.Size = new System.Drawing.Size(696, 754);
             this.richTextBox3.TabIndex = 83;
             this.richTextBox3.Text = "";
@@ -2720,6 +2742,7 @@ namespace Physics_Data_Debug
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(6);
             this.richTextBox1.MaxLength = 0;
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(696, 754);
             this.richTextBox1.TabIndex = 45;
             this.richTextBox1.Text = "";
@@ -2727,6 +2750,7 @@ namespace Physics_Data_Debug
             // CurrentYDrag
             // 
             this.CurrentYDrag.AutoSize = true;
+            this.CurrentYDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentYDrag.ForeColor = System.Drawing.Color.White;
             this.CurrentYDrag.Location = new System.Drawing.Point(15, 241);
             this.CurrentYDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2738,6 +2762,7 @@ namespace Physics_Data_Debug
             // CurrentXDrag
             // 
             this.CurrentXDrag.AutoSize = true;
+            this.CurrentXDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentXDrag.ForeColor = System.Drawing.Color.White;
             this.CurrentXDrag.Location = new System.Drawing.Point(15, 216);
             this.CurrentXDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2749,6 +2774,7 @@ namespace Physics_Data_Debug
             // CurrentZDrag
             // 
             this.CurrentZDrag.AutoSize = true;
+            this.CurrentZDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentZDrag.ForeColor = System.Drawing.Color.White;
             this.CurrentZDrag.Location = new System.Drawing.Point(15, 266);
             this.CurrentZDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2760,6 +2786,7 @@ namespace Physics_Data_Debug
             // CurrentTotalDrag
             // 
             this.CurrentTotalDrag.AutoSize = true;
+            this.CurrentTotalDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentTotalDrag.ForeColor = System.Drawing.Color.White;
             this.CurrentTotalDrag.Location = new System.Drawing.Point(15, 291);
             this.CurrentTotalDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2771,6 +2798,7 @@ namespace Physics_Data_Debug
             // LeftLabel
             // 
             this.LeftLabel.AutoSize = true;
+            this.LeftLabel.BackColor = System.Drawing.Color.Transparent;
             this.LeftLabel.ForeColor = System.Drawing.Color.White;
             this.LeftLabel.Location = new System.Drawing.Point(6, 559);
             this.LeftLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2782,6 +2810,7 @@ namespace Physics_Data_Debug
             // RightLabel
             // 
             this.RightLabel.AutoSize = true;
+            this.RightLabel.BackColor = System.Drawing.Color.Transparent;
             this.RightLabel.ForeColor = System.Drawing.Color.White;
             this.RightLabel.Location = new System.Drawing.Point(6, 661);
             this.RightLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2793,6 +2822,7 @@ namespace Physics_Data_Debug
             // CurrentRightDifferentialTorque
             // 
             this.CurrentRightDifferentialTorque.AutoSize = true;
+            this.CurrentRightDifferentialTorque.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRightDifferentialTorque.ForeColor = System.Drawing.Color.White;
             this.CurrentRightDifferentialTorque.Location = new System.Drawing.Point(15, 736);
             this.CurrentRightDifferentialTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2804,6 +2834,7 @@ namespace Physics_Data_Debug
             // CurrentRightDifferentialSpeedRad
             // 
             this.CurrentRightDifferentialSpeedRad.AutoSize = true;
+            this.CurrentRightDifferentialSpeedRad.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRightDifferentialSpeedRad.ForeColor = System.Drawing.Color.White;
             this.CurrentRightDifferentialSpeedRad.Location = new System.Drawing.Point(15, 711);
             this.CurrentRightDifferentialSpeedRad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2815,6 +2846,7 @@ namespace Physics_Data_Debug
             // CurrentRightDifferentialOpen
             // 
             this.CurrentRightDifferentialOpen.AutoSize = true;
+            this.CurrentRightDifferentialOpen.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRightDifferentialOpen.ForeColor = System.Drawing.Color.White;
             this.CurrentRightDifferentialOpen.Location = new System.Drawing.Point(15, 686);
             this.CurrentRightDifferentialOpen.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2835,6 +2867,7 @@ namespace Physics_Data_Debug
             // label38
             // 
             this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.ForeColor = System.Drawing.Color.White;
             this.label38.Location = new System.Drawing.Point(-1, 774);
             this.label38.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
@@ -2851,27 +2884,6 @@ namespace Physics_Data_Debug
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1628, 1958);
             this.Controls.Add(this.GameVersionComboBox);
-            this.Controls.Add(this.RightLabel);
-            this.Controls.Add(this.CurrentRightDifferentialTorque);
-            this.Controls.Add(this.CurrentRightDifferentialSpeedRad);
-            this.Controls.Add(this.CurrentRightDifferentialOpen);
-            this.Controls.Add(this.LeftLabel);
-            this.Controls.Add(this.CurrentTotalDrag);
-            this.Controls.Add(this.CurrentFrontLift);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.CurrentEngineRPMAxle);
-            this.Controls.Add(this.CurrentEngineRPM);
-            this.Controls.Add(this.label78);
-            this.Controls.Add(this.CurrentLeftDifferentialTorque);
-            this.Controls.Add(this.CurrentLeftDifferentialSpeedRad);
-            this.Controls.Add(this.CurrentLeftDifferentialOpen);
-            this.Controls.Add(this.Differential);
-            this.Controls.Add(this.CurrentEnginePower);
-            this.Controls.Add(this.CurrentEngineTorque);
-            this.Controls.Add(this.CurrentRearLift);
-            this.Controls.Add(this.CurrentZDrag);
-            this.Controls.Add(this.CurrentYDrag);
-            this.Controls.Add(this.CurrentXDrag);
             this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.toGForceButton);
@@ -2888,10 +2900,6 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox_FL_LateralSlipSpeed);
             this.Controls.Add(this.getProcessButton);
-            this.Controls.Add(this.CurrentGForce);
-            this.Controls.Add(this.label74);
-            this.Controls.Add(this.CurrentAcceleration);
-            this.Controls.Add(this.label75);
             this.Controls.Add(this.toTestChartPageButton);
             this.Controls.Add(this.OpenTemperaturesChart);
             this.Controls.Add(this.toSuspensionStaticValuesButton);
@@ -3062,12 +3070,37 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.startFileLoggingButton);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.CurrentSpeed);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.label38);
+            this.Controls.Add(this.RightLabel);
+            this.Controls.Add(this.CurrentRightDifferentialTorque);
+            this.Controls.Add(this.CurrentRightDifferentialSpeedRad);
+            this.Controls.Add(this.CurrentRightDifferentialOpen);
+            this.Controls.Add(this.LeftLabel);
+            this.Controls.Add(this.CurrentTotalDrag);
+            this.Controls.Add(this.CurrentFrontLift);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.CurrentEngineRPMAxle);
+            this.Controls.Add(this.CurrentEngineRPM);
+            this.Controls.Add(this.label78);
+            this.Controls.Add(this.CurrentLeftDifferentialTorque);
+            this.Controls.Add(this.CurrentLeftDifferentialSpeedRad);
+            this.Controls.Add(this.CurrentLeftDifferentialOpen);
+            this.Controls.Add(this.Differential);
+            this.Controls.Add(this.CurrentEnginePower);
+            this.Controls.Add(this.CurrentEngineTorque);
+            this.Controls.Add(this.CurrentRearLift);
+            this.Controls.Add(this.CurrentZDrag);
+            this.Controls.Add(this.CurrentYDrag);
+            this.Controls.Add(this.CurrentXDrag);
+            this.Controls.Add(this.CurrentGForce);
+            this.Controls.Add(this.label74);
+            this.Controls.Add(this.CurrentAcceleration);
+            this.Controls.Add(this.label75);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.CurrentSpeed);
+            this.Controls.Add(this.label12);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormLiveData";
             this.Text = "Live Data";
