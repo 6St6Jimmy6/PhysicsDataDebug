@@ -37,12 +37,16 @@ namespace Physics_Data_Debug
         public static List<byte[]> Powertrain_DifferentialSecondaryAxleData { get; set; }
         public static List<byte[]> FL_TireData { get; set; }
         public static List<byte[]> FL_SuspensionData { get; set; }
+        public static List<byte[]> FL_SuspensionGeometryData { get; set; }
         public static List<byte[]> FR_TireData { get; set; }
         public static List<byte[]> FR_SuspensionData { get; set; }
+        public static List<byte[]> FR_SuspensionGeometryData { get; set; }
         public static List<byte[]> RL_TireData { get; set; }
         public static List<byte[]> RL_SuspensionData { get; set; }
+        public static List<byte[]> RL_SuspensionGeometryData { get; set; }
         public static List<byte[]> RR_TireData { get; set; }
         public static List<byte[]> RR_SuspensionData { get; set; }
+        public static List<byte[]> RR_SuspensionGeometryData { get; set; }
         #endregion
 
         public static Process Process;
@@ -177,19 +181,23 @@ namespace Physics_Data_Debug
             #region Read Tire Data
             FL_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.FL, new int[] { (int)WF_TireDataChunks.Offset1}, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
             FL_TireData = FL_TireData.Concat(GetCalcuatedTireData(FL_TireData)).ToList();//...then Concat (expand) it with calculated data
-            FL_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.FL, new int[] { }, (int)WF_SuspensionChunks.DataStart, (int)WF_SuspensionChunks.ChunkSize);
+            FL_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.FL, new int[] { }, (int)WF_SuspensionDataChunks.DataStart, (int)WF_SuspensionDataChunks.ChunkSize);
+            FL_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.FL, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
 
             FR_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.FR, new int [] { (int)WF_TireDataChunks.Offset1}, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
             FR_TireData = FR_TireData.Concat(GetCalcuatedTireData(FR_TireData)).ToList();//...then Concat (expand) it with calculated data
-            FR_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.FR, new int[] { }, (int)WF_SuspensionChunks.DataStart, (int)WF_SuspensionChunks.ChunkSize);
+            FR_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.FR, new int[] { }, (int)WF_SuspensionDataChunks.DataStart, (int)WF_SuspensionDataChunks.ChunkSize);
+            FR_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.FR, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
 
             RL_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.RL, new int[] { (int)WF_TireDataChunks.Offset1 }, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
             RL_TireData = RL_TireData.Concat(GetCalcuatedTireData(RL_TireData)).ToList();//...then Concat (expand) it with calculated data
-            RL_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.RL, new int[] { }, (int)WF_SuspensionChunks.DataStart, (int)WF_SuspensionChunks.ChunkSize);
+            RL_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.RL, new int[] { }, (int)WF_SuspensionDataChunks.DataStart, (int)WF_SuspensionDataChunks.ChunkSize);
+            RL_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.RL, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
 
             RR_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.RR, new int[] { (int)WF_TireDataChunks.Offset1 }, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
             RR_TireData = RR_TireData.Concat(GetCalcuatedTireData(RR_TireData)).ToList();//...then Concat (expand) it with calculated data
-            RR_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.RR, new int[] {  }, (int)WF_SuspensionChunks.DataStart, (int)WF_SuspensionChunks.ChunkSize);
+            RR_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension, baseAddrUpdt, (int)WF_SuspensionSideOffset.RR, new int[] {  }, (int)WF_SuspensionDataChunks.DataStart, (int)WF_SuspensionDataChunks.ChunkSize);
+            RR_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.RR, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
             #endregion
             /*#region Stiffness and Lon/Lat Forces
             RL_LonBristleStiffness = BristleStiffness(LonStiffness, RL_ContactLength);
@@ -645,13 +653,19 @@ namespace Physics_Data_Debug
             {
                 subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_TireDataOffset.SlipAngleDeg + 0x4 + (int)(WF_SuspensionDataOffset)i, Name = prefix + "_" + (WF_SuspensionDataOffset)i});
             }
+            //Suspension Geometry
+            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
+            {
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_SuspensionDataOffset.BumpStopDampGainDeflectionSquared + 0x4 + (int)(WF_SuspensionGeometryDataOffset)i, Name = prefix + "_" + (WF_SuspensionGeometryDataOffset)i });
+            }
             fullList.Add(subList);
         }
-        public static void UpdateTireDataValues(Enum prefix, List<List<DataItem>> fullList, Enum tireDataStart, List<byte[]> tireData, Enum suspensionDataStart, List<byte[]> suspensionData)
+        public static void UpdateTireDataValues(Enum prefix, List<List<DataItem>> fullList, Enum tireDataStart, List<byte[]> tireData, Enum suspensionDataStart, List<byte[]> suspensionData, Enum suspensionGeometryDataStart, List<byte[]>suspensionGeometryData)
         {
             int ii = 0;
             ii = ForEachValueUpdate<WF_TireDataOffset>(ii, prefix, fullList, tireData, tireDataStart);
             ii = ForEachValueUpdate<WF_SuspensionDataOffset>(ii, prefix, fullList, suspensionData, suspensionDataStart);
+            ii = ForEachValueUpdate<WF_SuspensionGeometryDataOffset>(ii, prefix, fullList, suspensionGeometryData, suspensionGeometryDataStart);
         }
         private static float GetFriction(float latORlonLoad, float vertLoad)
         {

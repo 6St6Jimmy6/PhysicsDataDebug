@@ -441,7 +441,7 @@ namespace Physics_Data_Debug
 
         SlipAngleDeg = TotalFrictionAngleDeg + 0x4,
     }
-    public enum WF_SuspensionChunks : int
+    public enum WF_SuspensionDataChunks : int
     {
         DataStart = WF_SuspensionDataOffset.SpringRate,
         ChunkSize = 0x58,
@@ -480,7 +480,7 @@ namespace Physics_Data_Debug
     }
     public enum WF_SuspensionGeometryDataChunks : int
     {
-        DataStart = WF_SuspensionGeometryOffsets.UpperFrontArmSpindleX,
+        DataStart = WF_SuspensionGeometryDataOffset.UpperFrontArmSpindleX,
         ChunkSize = 0x43C,//Need more cheking. Too much empty stuff here likely
     }
     public enum WF_SuspensionGeometrySideOffsets : int
@@ -488,9 +488,9 @@ namespace Physics_Data_Debug
         FL = 0x0,
         RL = FL + 0x55DC0,
         FR = 0x0 + 0x2AAEE0,
-        RR = FR + RL,
+        RR = FR + 0x55DC0,
     }
-    public enum WF_SuspensionGeometryOffsets : int
+    public enum WF_SuspensionGeometryDataOffset : int
     {
         //XYZW coordinates
         //Upper Front Arm
