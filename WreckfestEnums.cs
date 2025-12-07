@@ -331,6 +331,7 @@ namespace Physics_Data_Debug
         Speed = Engine,
         RaceTime = 0x1832648,
         Acceleration = 0x1832B88,
+        SuspensionGeometry = 0x184B118,
     }
     public enum BaseAddressUpdate : long
     {
@@ -476,6 +477,197 @@ namespace Physics_Data_Debug
         BumpStopDamp = 0xECC,//19
         BumpStopRateGainDeflectionSquared = 0xED0,//21
         BumpStopDampGainDeflectionSquared = 0xED4,//22
+    }
+    public enum WF_SuspensionGeometryDataChunks : int
+    {
+        DataStart = WF_SuspensionGeometryOffsets.UpperFrontArmSpindleX,
+        ChunkSize = 0x43C,//Need more cheking. Too much empty stuff here likely
+    }
+    public enum WF_SuspensionGeometrySideOffsets : int
+    {
+        FL = 0x0,
+        RL = FL + 0x55DC0,
+        FR = 0x0 + 0x2AAEE0,
+        RR = FR + RL,
+    }
+    public enum WF_SuspensionGeometryOffsets : int
+    {
+        //XYZW coordinates
+        //Upper Front Arm
+        UpperFrontArmSpindleX = 0x12A0,
+        UpperFrontArmSpindleY = UpperFrontArmSpindleX + 0x4,
+        UpperFrontArmSpindleZ = UpperFrontArmSpindleY + 0x4,
+        UpperFrontArmSpindleW = UpperFrontArmSpindleZ + 0x4,
+
+        UpperFrontArmBodyX = UpperFrontArmSpindleW + 0x4,
+        UpperFrontArmBodyY = UpperFrontArmBodyX + 0x4,
+        UpperFrontArmBodyZ = UpperFrontArmBodyY + 0x4,
+        UpperFrontArmBodyW = UpperFrontArmBodyZ + 0x4,
+
+        UpperFrontArmUnknownX = UpperFrontArmBodyW + 0x4,
+        UpperFrontArmUnknownY = UpperFrontArmUnknownX + 0x4,
+        UpperFrontArmUnknownZ = UpperFrontArmUnknownY + 0x4,
+        UpperFrontArmUnknownW = UpperFrontArmUnknownZ + 0x4, 
+
+
+        UpperRearArmSpindleX = 0x1340,
+        UpperRearArmSpindleY = UpperRearArmSpindleX + 0x4,
+        UpperRearArmSpindleZ = UpperRearArmSpindleY + 0x4,
+        UpperRearArmSpindleW = UpperRearArmSpindleZ + 0x4,
+
+        UpperRearArmBodyX = UpperRearArmSpindleW + 0x4,
+        UpperRearArmBodyY = UpperRearArmBodyX + 0x4,
+        UpperRearArmBodyZ = UpperRearArmBodyY + 0x4,
+        UpperRearArmBodyW = UpperRearArmBodyZ + 0x4,
+
+        UpperRearArmUnknownX = UpperRearArmBodyW + 0x4,
+        UpperRearArmUnknownY = UpperRearArmUnknownX + 0x4,
+        UpperRearArmUnknownZ = UpperRearArmUnknownY + 0x4,
+        UpperRearArmUnknownW = UpperRearArmUnknownZ + 0x4,
+
+        //Lower Front Arm
+        LowerFrontArmSpindleX = 0x13E0,
+        LowerFrontArmSpindleY = LowerFrontArmSpindleX + 0x4,
+        LowerFrontArmSpindleZ = LowerFrontArmSpindleY + 0x4,
+        LowerFrontArmSpindleW = LowerFrontArmSpindleZ + 0x4,
+
+        LowerFrontArmBodyX = LowerFrontArmSpindleW + 0x4,
+        LowerFrontArmBodyY = LowerFrontArmBodyX + 0x4,
+        LowerFrontArmBodyZ = LowerFrontArmBodyY + 0x4,
+        LowerFrontArmBodyW = LowerFrontArmBodyZ + 0x4,
+
+        LowerFrontArmUnknownX = LowerFrontArmBodyW + 0x4,
+        LowerFrontArmUnknownY = LowerFrontArmUnknownX + 0x4,
+        LowerFrontArmUnknownZ = LowerFrontArmUnknownY + 0x4,
+        LowerFrontArmUnknownW = LowerFrontArmUnknownZ + 0x4,
+
+
+        LowerRearArmSpindleX = 0x1480,
+        LowerRearArmSpindleY = LowerRearArmSpindleX + 0x4,
+        LowerRearArmSpindleZ = LowerRearArmSpindleY + 0x4,
+        LowerRearArmSpindleW = LowerRearArmSpindleZ + 0x4,
+
+        LowerRearArmBodyX = LowerRearArmSpindleW + 0x4,
+        LowerRearArmBodyY = LowerRearArmBodyX + 0x4,
+        LowerRearArmBodyZ = LowerRearArmBodyY + 0x4,
+        LowerRearArmBodyW = LowerRearArmBodyZ + 0x4,
+
+        LowerRearArmUnknownX = LowerRearArmBodyW + 0x4,
+        LowerRearArmUnknownY = LowerRearArmUnknownX + 0x4,
+        LowerRearArmUnknownZ = LowerRearArmUnknownY + 0x4,
+        LowerRearArmUnknownW = LowerRearArmUnknownZ + 0x4,
+
+        //Steering Rod
+        SteeringRodSpindleX = 0x1520,
+        SteeringRodSpindleY = SteeringRodSpindleX + 0x4,
+        SteeringRodSpindleZ = SteeringRodSpindleY + 0x4,
+        SteeringRodSpindleW = SteeringRodSpindleZ + 0x4,
+
+        SteeringRodBodyX = SteeringRodSpindleW + 0x4,
+        SteeringRodBodyY = SteeringRodBodyX + 0x4,
+        SteeringRodBodyZ = SteeringRodBodyY + 0x4,
+        SteeringRodBodyW = SteeringRodBodyZ + 0x4,
+
+        SteeringRodUnknownX = SteeringRodBodyW + 0x4,
+        SteeringRodUnknownY = SteeringRodUnknownX + 0x4,
+        SteeringRodUnknownZ = SteeringRodUnknownY + 0x4,
+        SteeringRodUnknownW = SteeringRodUnknownZ + 0x4,
+
+        //XYZ Coordinates
+        //Upper Front Arm
+        XYZUpperFrontArmSpindleX = 0x1550,
+        XYZUpperFrontArmSpindleY = XYZUpperFrontArmSpindleX + 0x4,
+        XYZUpperFrontArmSpindleZ = XYZUpperFrontArmSpindleY + 0x4,
+
+        XYZUpperFrontArmBodyX = XYZUpperFrontArmSpindleZ + 0x4,
+        XYZUpperFrontArmBodyY = XYZUpperFrontArmBodyX + 0x4,
+        XYZUpperFrontArmBodyZ = XYZUpperFrontArmBodyY + 0x4,
+
+        XYZUpperRearArmSpindleX = XYZUpperFrontArmBodyZ + 0x4,
+        XYZUpperRearArmSpindleY = XYZUpperRearArmSpindleX + 0x4,
+        XYZUpperRearArmSpindleZ = XYZUpperRearArmSpindleY + 0x4,
+
+        XYZUpperRearArmBodyX = XYZUpperRearArmSpindleZ + 0x4,
+        XYZUpperRearArmBodyY = XYZUpperRearArmBodyX + 0x4,
+        XYZUpperRearArmBodyZ = XYZUpperRearArmBodyY + 0x4,
+
+        //Lower Front Arm
+        XYZLowerFrontArmSpindleX = XYZUpperRearArmBodyZ + 0x4,
+        XYZLowerFrontArmSpindleY = XYZLowerFrontArmSpindleX + 0x4,
+        XYZLowerFrontArmSpindleZ = XYZLowerFrontArmSpindleY + 0x4,
+
+        XYZLowerFrontArmBodyX = XYZLowerFrontArmSpindleZ + 0x4,
+        XYZLowerFrontArmBodyY = XYZLowerFrontArmBodyX + 0x4,
+        XYZLowerFrontArmBodyZ = XYZLowerFrontArmBodyY + 0x4,
+
+        XYZLowerRearArmSpindleX = XYZLowerFrontArmBodyZ,
+        XYZLowerRearArmSpindleY = XYZLowerRearArmSpindleX + 0x4,
+        XYZLowerRearArmSpindleZ = XYZLowerRearArmSpindleY + 0x4,
+
+        XYZLowerRearArmBodyX = XYZLowerRearArmSpindleZ + 0x4,
+        XYZLowerRearArmBodyY = XYZLowerRearArmBodyX + 0x4,
+        XYZLowerRearArmBodyZ = XYZLowerRearArmBodyY + 0x4,
+
+        //Steering Rod
+        XYZSteeringRodSpindleX = XYZLowerRearArmBodyZ + 0x4,
+        XYZSteeringRodSpindleY = XYZSteeringRodSpindleX + 0x4,
+        XYZSteeringRodSpindleZ = XYZSteeringRodSpindleY + 0x4,
+
+        XYZSteeringRodBodyX = XYZSteeringRodSpindleZ + 0x4,
+        XYZSteeringRodBodyY = XYZSteeringRodBodyX + 0x4,
+        XYZSteeringRodBodyZ = XYZSteeringRodBodyY + 0x4,
+
+        XYZSteeringRodUnknownX = XYZSteeringRodBodyZ + 0x4,
+        XYZSteeringRodUnknownY = XYZSteeringRodUnknownX + 0x4,
+        XYZSteeringRodUnknownZ = XYZSteeringRodUnknownY + 0x4,
+        XYZSteeringRodUnknownW = XYZSteeringRodUnknownZ + 0x4,
+
+        //XYZW coordinates
+        //Push Rod
+        PushRodSpindleX = 0x1640,
+        PushRodSpindleY = PushRodSpindleX + 0x4,
+        PushRodSpindleZ = PushRodSpindleY + 0x4,
+        PushRodSpindleW = PushRodSpindleZ + 0x4,
+
+        PushRodBodyX = PushRodSpindleW + 0x4,
+        PushRodBodyY = PushRodBodyX + 0x4,
+        PushRodBodyZ = PushRodBodyY + 0x4,
+        PushRodBodyW = PushRodBodyZ + 0x4,
+
+        PushRodUnkown1 = PushRodBodyW + 0x4,
+        PushRodUnkown2 = PushRodUnkown1 + 0x4,
+        PushRodUnkown3 = PushRodUnkown2 + 0x4,
+        PushRodUnkown4 = PushRodUnkown3 + 0x4,
+        PushRodUnkown5 = PushRodUnkown4 + 0x4,
+        PushRodUnkown6 = PushRodUnkown5 + 0x4,
+        PushRodUnkown7 = PushRodUnkown6 + 0x4,
+        //XYZ Coordinates
+        XYZPushRodSpindleX = PushRodUnkown7 + 0x4,
+        XYZPushRodSpindleY = XYZPushRodSpindleX + 0x4,
+        XYZPushRodSpindleZ = XYZPushRodSpindleY + 0x4,
+
+        XYZPushRodBodyX = XYZPushRodSpindleZ + 0x4,
+        XYZPushRodBodyY = XYZPushRodBodyX + 0x4,
+        XYZPushRodBodyZ = XYZPushRodBodyY + 0x4,
+
+        XYZPushRodUnkown1 = XYZPushRodBodyZ + 0x4,
+        XYZPushRodUnkown2 = XYZPushRodUnkown1 + 0x4,
+        XYZPushRodUnkown3 = XYZPushRodUnkown2 + 0x4,
+        XYZPushRodUnkown4 = XYZPushRodUnkown3 + 0x4,
+        XYZPushRodUnkown5 = XYZPushRodUnkown4 + 0x4,
+        XYZPushRodUnkown6 = XYZPushRodUnkown5 + 0x4,
+        XYZPushRodUnkown7 = XYZPushRodUnkown6 + 0x4,
+        XYZPushRodUnkown8 = XYZPushRodUnkown7 + 0x4,
+        XYZPushRodUnkown9 = XYZPushRodUnkown8 + 0x4,
+        XYZPushRodUnkown10 = XYZPushRodUnkown9 + 0x4,
+        XYZPushRodUnkown11 = XYZPushRodUnkown10 + 0x4,
+        XYZPushRodUnkown12 = XYZPushRodUnkown11 + 0x4,
+        XYZPushRodUnkown13 = XYZPushRodUnkown12 + 0x4,
+        XYZPushRodUnkown14 = XYZPushRodUnkown13 + 0x4,
+        XYZPushRodUnkown15 = XYZPushRodUnkown14 + 0x4,
+        XYZPushRodUnkown16 = XYZPushRodUnkown15 + 0x4,
+        XYZPushRodUnkown17 = XYZPushRodUnkown16 + 0x4,
+        XYZPushRodUnkown18 = XYZPushRodUnkown17 + 0x4,
     }
     public enum WF_BodyAccelDataChunks : int
     {
