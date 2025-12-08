@@ -1770,6 +1770,7 @@ namespace Physics_Data_Debug
             this.textBox_FL_SuspensionGeometry.Name = "textBox_FL_SuspensionGeometry";
             this.textBox_FL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
             this.textBox_FL_SuspensionGeometry.TabIndex = 237;
+            this.textBox_FL_SuspensionGeometry.Visible = false;
             this.textBox_FL_SuspensionGeometry.WordWrap = false;
             // 
             // textBox_RL_SuspensionGeometry
@@ -1780,6 +1781,7 @@ namespace Physics_Data_Debug
             this.textBox_RL_SuspensionGeometry.Name = "textBox_RL_SuspensionGeometry";
             this.textBox_RL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
             this.textBox_RL_SuspensionGeometry.TabIndex = 238;
+            this.textBox_RL_SuspensionGeometry.Visible = false;
             this.textBox_RL_SuspensionGeometry.WordWrap = false;
             // 
             // textBox_RR_SuspensionGeometry
@@ -1790,6 +1792,7 @@ namespace Physics_Data_Debug
             this.textBox_RR_SuspensionGeometry.Name = "textBox_RR_SuspensionGeometry";
             this.textBox_RR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
             this.textBox_RR_SuspensionGeometry.TabIndex = 240;
+            this.textBox_RR_SuspensionGeometry.Visible = false;
             this.textBox_RR_SuspensionGeometry.WordWrap = false;
             // 
             // textBox_FR_SuspensionGeometry
@@ -1800,6 +1803,7 @@ namespace Physics_Data_Debug
             this.textBox_FR_SuspensionGeometry.Name = "textBox_FR_SuspensionGeometry";
             this.textBox_FR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
             this.textBox_FR_SuspensionGeometry.TabIndex = 239;
+            this.textBox_FR_SuspensionGeometry.Visible = false;
             this.textBox_FR_SuspensionGeometry.WordWrap = false;
             // 
             // FormSuspensionStaticValues
@@ -1808,7 +1812,7 @@ namespace Physics_Data_Debug
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(3590, 1414);
+            this.ClientSize = new System.Drawing.Size(2159, 1414);
             this.Controls.Add(this.textBox_RR_SuspensionGeometry);
             this.Controls.Add(this.textBox_FR_SuspensionGeometry);
             this.Controls.Add(this.textBox_RL_SuspensionGeometry);

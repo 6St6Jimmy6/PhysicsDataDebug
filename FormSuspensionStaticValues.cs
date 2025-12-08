@@ -16,6 +16,10 @@ namespace Physics_Data_Debug
         public FormSuspensionStaticValues()
         {
             InitializeComponent();
+            //textBox_FL_SuspensionGeometry.Visible = true;
+            //textBox_FR_SuspensionGeometry.Visible = true;
+            //textBox_RL_SuspensionGeometry.Visible = true;
+            //textBox_RR_SuspensionGeometry.Visible = true;
 
             textBox_FL_SpringRate.ReadOnly = true;
             textBox_FL_ProgressiveRate.ReadOnly = true;
