@@ -2882,7 +2882,7 @@ namespace Physics_Data_Debug
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1628, 1958);
+            this.ClientSize = new System.Drawing.Size(1628, 2026);
             this.Controls.Add(this.GameVersionComboBox);
             this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.checkBox1);

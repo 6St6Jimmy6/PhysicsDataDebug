@@ -180,6 +180,10 @@ namespace Physics_Data_Debug
             this.textBox_RR_BumpLimitsY = new System.Windows.Forms.TextBox();
             this.textBox_RR_ReboundLimitsY = new System.Windows.Forms.TextBox();
             this.textBox_RR_BumpDampY = new System.Windows.Forms.TextBox();
+            this.textBox_FL_SuspensionGeometry = new System.Windows.Forms.TextBox();
+            this.textBox_RL_SuspensionGeometry = new System.Windows.Forms.TextBox();
+            this.textBox_RR_SuspensionGeometry = new System.Windows.Forms.TextBox();
+            this.textBox_FR_SuspensionGeometry = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label22
@@ -1758,13 +1762,57 @@ namespace Physics_Data_Debug
             this.textBox_RR_BumpDampY.Size = new System.Drawing.Size(95, 31);
             this.textBox_RR_BumpDampY.TabIndex = 236;
             // 
+            // textBox_FL_SuspensionGeometry
+            // 
+            this.textBox_FL_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_FL_SuspensionGeometry.Location = new System.Drawing.Point(1137, 23);
+            this.textBox_FL_SuspensionGeometry.Multiline = true;
+            this.textBox_FL_SuspensionGeometry.Name = "textBox_FL_SuspensionGeometry";
+            this.textBox_FL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
+            this.textBox_FL_SuspensionGeometry.TabIndex = 237;
+            this.textBox_FL_SuspensionGeometry.WordWrap = false;
+            // 
+            // textBox_RL_SuspensionGeometry
+            // 
+            this.textBox_RL_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_RL_SuspensionGeometry.Location = new System.Drawing.Point(1739, 23);
+            this.textBox_RL_SuspensionGeometry.Multiline = true;
+            this.textBox_RL_SuspensionGeometry.Name = "textBox_RL_SuspensionGeometry";
+            this.textBox_RL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
+            this.textBox_RL_SuspensionGeometry.TabIndex = 238;
+            this.textBox_RL_SuspensionGeometry.WordWrap = false;
+            // 
+            // textBox_RR_SuspensionGeometry
+            // 
+            this.textBox_RR_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_RR_SuspensionGeometry.Location = new System.Drawing.Point(2943, 23);
+            this.textBox_RR_SuspensionGeometry.Multiline = true;
+            this.textBox_RR_SuspensionGeometry.Name = "textBox_RR_SuspensionGeometry";
+            this.textBox_RR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
+            this.textBox_RR_SuspensionGeometry.TabIndex = 240;
+            this.textBox_RR_SuspensionGeometry.WordWrap = false;
+            // 
+            // textBox_FR_SuspensionGeometry
+            // 
+            this.textBox_FR_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_FR_SuspensionGeometry.Location = new System.Drawing.Point(2341, 23);
+            this.textBox_FR_SuspensionGeometry.Multiline = true;
+            this.textBox_FR_SuspensionGeometry.Name = "textBox_FR_SuspensionGeometry";
+            this.textBox_FR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
+            this.textBox_FR_SuspensionGeometry.TabIndex = 239;
+            this.textBox_FR_SuspensionGeometry.WordWrap = false;
+            // 
             // FormSuspensionStaticValues
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(2023, 1414);
+            this.ClientSize = new System.Drawing.Size(3590, 1414);
+            this.Controls.Add(this.textBox_RR_SuspensionGeometry);
+            this.Controls.Add(this.textBox_FR_SuspensionGeometry);
+            this.Controls.Add(this.textBox_RL_SuspensionGeometry);
+            this.Controls.Add(this.textBox_FL_SuspensionGeometry);
             this.Controls.Add(this.textBox_RR_BumpDampY);
             this.Controls.Add(this.textBox_RR_ReboundLimitsY);
             this.Controls.Add(this.textBox_RR_BumpLimitsY);
@@ -2076,5 +2124,9 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TextBox textBox_RR_BumpLimitsY;
         private System.Windows.Forms.TextBox textBox_RR_ReboundLimitsY;
         private System.Windows.Forms.TextBox textBox_RR_BumpDampY;
+        private System.Windows.Forms.TextBox textBox_FL_SuspensionGeometry;
+        private System.Windows.Forms.TextBox textBox_RL_SuspensionGeometry;
+        private System.Windows.Forms.TextBox textBox_RR_SuspensionGeometry;
+        private System.Windows.Forms.TextBox textBox_FR_SuspensionGeometry;
     }
 }

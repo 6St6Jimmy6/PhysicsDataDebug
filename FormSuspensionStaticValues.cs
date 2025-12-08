@@ -139,6 +139,46 @@ namespace Physics_Data_Debug
                 textBox_RR_ExpansionLimitFromZero, textBox_RR_CompressionLimitFromZero,
                 textBox_RR_ReboundRate, textBox_RR_ReboundStartPosition, textBox_RR_ReboundEndPosition,
                 textBox_RR_BumpStopLength, textBox_RR_BumpStopRate, textBox_RR_BumpStopRateGainDeflectionSquared, textBox_RR_BumpStopDamp, textBox_RR_BumpStopDampGainDeflectionSquared);
+
+            List<string> FL = new List<string>();
+            //Write text
+            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
+            {
+                string s = "" + WF_PrefixMain.FL + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.FL, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
+                FL.Add(s);
+            }
+            var resultFL = String.Join("", FL.ToArray());
+            textBox_FL_SuspensionGeometry.Text = resultFL;
+
+            List<string> RL = new List<string>();
+            //Write text
+            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
+            {
+                string s = "" + WF_PrefixMain.RL + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.RL, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
+                RL.Add(s);
+            }
+            var resultRL = String.Join("", RL.ToArray());
+            textBox_RL_SuspensionGeometry.Text = resultRL;
+
+            List<string> FR = new List<string>();
+            //Write text
+            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
+            {
+                string s = "" + WF_PrefixMain.FR + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.FR, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
+                FR.Add(s);
+            }
+            var resultFR = String.Join("", FR.ToArray());
+            textBox_FR_SuspensionGeometry.Text = resultFR;
+
+            List<string> RR = new List<string>();
+            //Write text
+            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
+            {
+                string s = "" + WF_PrefixMain.RR + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.RR, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
+                RR.Add(s);
+            }
+            var resultRR = String.Join("", RR.ToArray());
+            textBox_RR_SuspensionGeometry.Text = resultRR;
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
