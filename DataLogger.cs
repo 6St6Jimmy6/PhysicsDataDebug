@@ -169,16 +169,16 @@ namespace Physics_Data_Debug
             LogSettings.RR_Parameter22 = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.TotalFrictionAngleDeg).ToString() + delimiter;
 
             LogSettings.Header23 = nameof(AllValueNames.SuspensionLength) + delimiter;//LogSettings.sSuspensionLength
-            LogSettings.FL_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
-            LogSettings.FR_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
-            LogSettings.RL_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
-            LogSettings.RR_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.FL_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.FR_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.RL_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionLength).ToString() + delimiter;
+            LogSettings.RR_Parameter23 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionLength).ToString() + delimiter;
 
             LogSettings.Header24 = nameof(AllValueNames.SuspensionVelocity) + delimiter;//LogSettings.sSuspensionVelocity
-            LogSettings.FL_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
-            LogSettings.FR_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
-            LogSettings.RL_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
-            LogSettings.RR_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_SuspensionDataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.FL_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.FR_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.RL_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionVelocity).ToString() + delimiter;
+            LogSettings.RR_Parameter24 = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension1DataOffset.SuspensionVelocity).ToString() + delimiter;
 
             LogSettings.Header25 = nameof(AllValueNames.Body_XYZG) + delimiter;//LogSettings.sXGRotated
             LogSettings.FL_Parameter25 = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZG).ToString() + delimiter;

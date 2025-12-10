@@ -323,7 +323,8 @@ namespace Physics_Data_Debug
     public enum BaseAddress : ulong
     {
         Tire = 0x18324C8,
-        Suspension = Tire,
+        Suspension1 = Tire,
+        Suspension2 = 0x1831EE0,
         Aero = Tire,
         Differential = Tire,
         BodyLocationHeading = Tire,
@@ -441,19 +442,19 @@ namespace Physics_Data_Debug
 
         SlipAngleDeg = TotalFrictionAngleDeg + 0x4,
     }
-    public enum WF_SuspensionDataChunks : int
+    public enum WF_Suspension1DataChunks : int
     {
-        DataStart = WF_SuspensionDataOffset.SpringRate,
+        DataStart = WF_Suspension1DataOffset.SpringRate,
         ChunkSize = 0x58,
     }
-    public enum WF_SuspensionSideOffset : int
+    public enum WF_Suspension1DataSideOffset : int
     {
         FL = 0x0,
         FR = 0x60,//Next tire offset from FL
         RL = FR + FR,//Next tire offset from FL
         RR = FR + FR + FR,//Next tire offset from FL
     }
-    public enum WF_SuspensionDataOffset : int
+    public enum WF_Suspension1DataOffset : int
     {
         SpringRate = 0xE80,//0
         ProgressiveRate = 0xE84,//1
@@ -496,7 +497,7 @@ namespace Physics_Data_Debug
         /// Spindle points are from tire pivot and body points are from body pivot
         /// </summary>
         //XYZW coordinates
-        //Upper Front Arm
+        //Upper Arm
         SpindleUpperFrontArmX = 0x12A0,
         SpindleUpperFrontArmY = SpindleUpperFrontArmX + 0x4,
         SpindleUpperFrontArmZ = SpindleUpperFrontArmY + 0x4,
@@ -528,7 +529,7 @@ namespace Physics_Data_Debug
         UnknownUpperRearArmZ = UnknownUpperRearArmY + 0x4,
         UnknownUpperRearArmW = UnknownUpperRearArmZ + 0x4,
 
-        //Lower Front Arm
+        //Lower Arm
         SpindleLowerFrontArmX = 0x13E0,
         SpindleLowerFrontArmY = SpindleLowerFrontArmX + 0x4,
         SpindleLowerFrontArmZ = SpindleLowerFrontArmY + 0x4,
@@ -545,12 +546,12 @@ namespace Physics_Data_Debug
         UnknownLowerFrontArmW = UnknownLowerFrontArmZ + 0x4,
 
 
-        SpindleRearFrontArmX = 0x1480,
-        SpindleRearFrontArmY = SpindleRearFrontArmX + 0x4,
-        SpindleRearFrontArmZ = SpindleRearFrontArmY + 0x4,
-        SpindleRearFrontArmW = SpindleRearFrontArmZ + 0x4,
+        SpindleLowerRearArmX = 0x1480,
+        SpindleLowerRearArmY = SpindleLowerRearArmX + 0x4,
+        SpindleLowerRearArmZ = SpindleLowerRearArmY + 0x4,
+        SpindleLowerRearArmW = SpindleLowerRearArmZ + 0x4,
 
-        BodyLowerRearArmX = SpindleRearFrontArmW + 0x4,
+        BodyLowerRearArmX = SpindleLowerRearArmW + 0x4,
         BodyLowerRearArmY = BodyLowerRearArmX + 0x4,
         BodyLowerRearArmZ = BodyLowerRearArmY + 0x4,
         BodyLowerRearArmW = BodyLowerRearArmZ + 0x4,
