@@ -42,7 +42,7 @@ namespace Physics_Data_Debug
                 //Dictionary<WF_PrefixMain, Dictionary<WF_PrefixSecondary, DataItem>> DefaultWF1Dictionary = WF_Dictionary.DefaultWF1Dictionary;
                 WreckfestEnums.AddNames();
                 // Needs to be in order of WF_Prefix
-                LiveData.GenerateBodyDataList(WF_PrefixMain.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, WF_BodyAccelDataChunks.DataStart, WF_AeroDataChunks.DataStart);//0
+                LiveData.GenerateBodyDataList(WF_PrefixMain.Body, LiveData.FullDataList);//0
 
                 LiveData.GenerateTireDataList(WF_PrefixMain.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_Suspension1DataChunks.DataStart);//1
                 LiveData.GenerateTireDataList(WF_PrefixMain.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_Suspension1DataChunks.DataStart);//2
@@ -330,12 +330,12 @@ namespace Physics_Data_Debug
         {
             LiveData.GetData((long)SelectedVersion);
             // Needs to be in order of WF_Prefix
-            LiveData.UpdateBodyDataValues(WF_PrefixMain.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData);//0
+            LiveData.UpdateBodyDataValues(WF_PrefixMain.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData, WF_MassDataChunks.DataStart, LiveData.Body_MassData);//0
 
-            LiveData.UpdateTireDataValues(WF_PrefixMain.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FL_TireData, WF_Suspension1DataChunks.DataStart, LiveData.FL_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.FL_SuspensionGeometryData);//1
-            LiveData.UpdateTireDataValues(WF_PrefixMain.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FR_TireData, WF_Suspension1DataChunks.DataStart, LiveData.FR_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.FR_SuspensionGeometryData);//2
-            LiveData.UpdateTireDataValues(WF_PrefixMain.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RL_TireData, WF_Suspension1DataChunks.DataStart, LiveData.RL_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.RL_SuspensionGeometryData);//3
-            LiveData.UpdateTireDataValues(WF_PrefixMain.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RR_TireData, WF_Suspension1DataChunks.DataStart, LiveData.RR_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.RR_SuspensionGeometryData);//4
+            LiveData.UpdateTireDataValues(WF_PrefixMain.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FL_TireData, WF_Suspension1DataChunks.DataStart, LiveData.FL_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.FL_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.FL_Suspension2Data);//1
+            LiveData.UpdateTireDataValues(WF_PrefixMain.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FR_TireData, WF_Suspension1DataChunks.DataStart, LiveData.FR_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.FR_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.FR_Suspension2Data);//2
+            LiveData.UpdateTireDataValues(WF_PrefixMain.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RL_TireData, WF_Suspension1DataChunks.DataStart, LiveData.RL_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.RL_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.RL_Suspension2Data);//3
+            LiveData.UpdateTireDataValues(WF_PrefixMain.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RR_TireData, WF_Suspension1DataChunks.DataStart, LiveData.RR_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.RR_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.RR_Suspension2Data);//4
 
             LiveData.UpdatePowertrainDataValues(WF_PrefixMain.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
             //LiveData.ConsoleTireData(LiveData.TireDataList);

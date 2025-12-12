@@ -5,9 +5,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Physics_Data_Debug
 {
@@ -16,10 +19,10 @@ namespace Physics_Data_Debug
         public FormSuspensionStaticValues()
         {
             InitializeComponent();
-            textBox_FL_SuspensionGeometry.Visible = true;
-            textBox_FR_SuspensionGeometry.Visible = true;
-            textBox_RL_SuspensionGeometry.Visible = true;
-            textBox_RR_SuspensionGeometry.Visible = true;
+            //textBox_FL_SuspensionGeometry.Visible = true;
+            //textBox_FR_SuspensionGeometry.Visible = true;
+            //textBox_RL_SuspensionGeometry.Visible = true;
+            //textBox_RR_SuspensionGeometry.Visible = true;
 
             textBox_FL_SpringRate.ReadOnly = true;
             textBox_FL_ProgressiveRate.ReadOnly = true;
@@ -105,63 +108,53 @@ namespace Physics_Data_Debug
             LiveData.SetValueInTB(bumpStopDamp, prefix, WF_Suspension1DataOffset.BumpStopDamp);
             LiveData.SetValueInTB(bumpStopDampGainDeflectionSquared, prefix, WF_Suspension1DataOffset.BumpStopDampGainDeflectionSquared);
         }
-        private void SuspensionGeometry(Enum side, bool isStatic, float rideHeight = 0)
+        private void Asdasdasd(Chart chart, Enum side, bool isStatic, string seriesName, float rideHeight,
+            float StaticTirePivotX, float StaticTirePivotY, float StaticTirePivotZ, 
+            float DynamicTirePivotX, float DynamicTirePivotY, float DynamicTirePivotZ, 
+            Enum BodyArmX, Enum BodyArmY, Enum BodyArmZ,
+            Enum SpindleArmX, Enum SpindleArmY, Enum SpindleArmZ)
         {
-            float StaticTirePivotX = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotX);
-            float StaticTirePivotY = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotY) + rideHeight;
-            float StaticTirePivotZ = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotZ);
 
-            float StaticBodyUpperFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperFrontArmX);
-            float StaticBodyUpperFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperFrontArmY) + rideHeight;
-            float StaticBodyUpperFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperFrontArmZ);
-            float StaticSpindleUpperFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmX) + StaticTirePivotX;
-            float StaticSpindleUpperFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmY) + StaticTirePivotY;
-            float StaticSpindleUpperFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmZ) + StaticTirePivotZ;
-
-            float StaticBodyUpperRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperRearArmX);
-            float StaticBodyUpperRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperRearArmY) + rideHeight;
-            float StaticBodyUpperRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperRearArmZ);
-            float StaticSpindleUpperRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmX) + StaticTirePivotX;
-            float StaticSpindleUpperRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmY) + StaticTirePivotY;
-            float StaticSpindleUpperRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmZ) + StaticTirePivotZ;
-
-            float StaticBodyLowerFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerFrontArmX);
-            float StaticBodyLowerFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerFrontArmY) + rideHeight;
-            float StaticBodyLowerFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerFrontArmZ);
-            float StaticSpindleLowerFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmX) + StaticTirePivotX;
-            float StaticSpindleLowerFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmY) + StaticTirePivotY;
-            float StaticSpindleLowerFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmZ) + StaticTirePivotZ;
-
-            float StaticBodyLowerRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerRearArmX);
-            float StaticBodyLowerRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerRearArmY) + rideHeight;
-            float StaticBodyLowerRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerRearArmZ);
-            float StaticSpindleLowerRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmX) + StaticTirePivotX;
-            float StaticSpindleLowerRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmY) + StaticTirePivotY;
-            float StaticSpindleLowerRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmZ) + StaticTirePivotZ;
-
-            float DynamicTirePivotX = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM41);
-            float DynamicTirePivotY = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM42) + rideHeight;
-            float DynamicTirePivotZ = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM43);
-
-            float DynamicSpindleUpperFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmX) + DynamicTirePivotX;
-            float DynamicSpindleUpperFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmY) + DynamicTirePivotY;
-            float DynamicSpindleUpperFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmZ) + DynamicTirePivotZ;
-
-            float DynamicSpindleUpperRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmX) + DynamicTirePivotX;
-            float DynamicSpindleUpperRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmY) + DynamicTirePivotY;
-            float DynamicSpindleUpperRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmZ) + DynamicTirePivotZ;
-
-            float DynamicSpindleLowerFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmX) + DynamicTirePivotX;
-            float DynamicSpindleLowerFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmY) + DynamicTirePivotY;
-            float DynamicSpindleLowerFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmZ) + DynamicTirePivotZ;
-
-            float DynamicSpindleLowerRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmX) + DynamicTirePivotX;
-            float DynamicSpindleLowerRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmY) + DynamicTirePivotY;
-            float DynamicSpindleLowerRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmZ) + DynamicTirePivotZ;
-
+            float StaticBodyFrontArmX = LiveData.GetFullListDataValue(side, BodyArmX);
+            float StaticBodyFrontArmY = LiveData.GetFullListDataValue(side, BodyArmY) + rideHeight;
+            float StaticBodyFrontArmZ = LiveData.GetFullListDataValue(side, BodyArmZ);
+            float StaticSpindleFrontArmX = LiveData.GetFullListDataValue(side, SpindleArmX) + StaticTirePivotX;
+            float StaticSpindleFrontArmY = LiveData.GetFullListDataValue(side, SpindleArmY) + StaticTirePivotY;
+            float StaticSpindleFrontArmZ = LiveData.GetFullListDataValue(side, SpindleArmZ) + StaticTirePivotZ;
+            float DynamicSpindleFrontArmX = StaticSpindleFrontArmX + DynamicTirePivotX;
+            float DynamicSpindleFrontArmY = StaticSpindleFrontArmY + DynamicTirePivotY;
+            float DynamicSpindleFrontArmZ = StaticSpindleFrontArmZ + DynamicTirePivotZ;
+            string stringXY = side + seriesName;
+            chart.Series[stringXY].Points[0].XValue = StaticBodyFrontArmX;
+            chart.Series[stringXY].Points[0].YValues = new double[] { StaticBodyFrontArmY };
+            if (isStatic == true)
+            {
+                chart.Series[stringXY].Points[1].XValue = StaticSpindleFrontArmX;
+                chart.Series[stringXY].Points[1].YValues = new double[] { StaticSpindleFrontArmY };
+            }
+            else
+            {
+                chart.Series[stringXY].Points[1].XValue = DynamicSpindleFrontArmX;
+                chart.Series[stringXY].Points[1].YValues = new double[] { DynamicSpindleFrontArmY };
+            }
+        }
+        private void SuspensionGeometry(Enum side, bool isStatic)
+        {
+            float rideHeight = LiveData.GetFullListDataValue(side, WF_Suspension2DataOffset.RideHeight);
             chart1.Series["RideHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
             chart1.Series["RideHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + rideHeight };
 
+            //float CenterOfMassHeight = 0;
+            float CenterOfMassHeight = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_MassDataOffset.CenterOfMassHeight);
+            chart1.Series["CoMHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
+            chart1.Series["CoMHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + CenterOfMassHeight };
+
+            float StaticTirePivotX = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotX);
+            float StaticTirePivotY = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotY) + rideHeight + CenterOfMassHeight;
+            float StaticTirePivotZ = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotZ);
+            float DynamicTirePivotX = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM41);
+            float DynamicTirePivotY = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM42) + rideHeight + CenterOfMassHeight;
+            float DynamicTirePivotZ = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM43);
             string TirePivotXY = side + "TirePivotXY";
             if (isStatic == true)
             {
@@ -174,6 +167,16 @@ namespace Physics_Data_Debug
                 chart1.Series[TirePivotXY].Points[0].YValues = new double[] { DynamicTirePivotY };
             }
 
+
+            float StaticBodyUpperFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperFrontArmX);
+            float StaticBodyUpperFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperFrontArmY) + rideHeight + CenterOfMassHeight;
+            float StaticBodyUpperFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperFrontArmZ);
+            float StaticSpindleUpperFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmX) + StaticTirePivotX;
+            float StaticSpindleUpperFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmY) + StaticTirePivotY;
+            float StaticSpindleUpperFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmZ) + StaticTirePivotZ;
+            float DynamicSpindleUpperFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmX) + DynamicTirePivotX;
+            float DynamicSpindleUpperFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmY) + DynamicTirePivotY;
+            float DynamicSpindleUpperFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmZ) + DynamicTirePivotZ;
             string UpperFrontArmXY = side + "UpperFrontArmXY";
             chart1.Series[UpperFrontArmXY].Points[0].XValue = StaticBodyUpperFrontArmX;
             chart1.Series[UpperFrontArmXY].Points[0].YValues = new double[] { StaticBodyUpperFrontArmY };
@@ -188,6 +191,16 @@ namespace Physics_Data_Debug
                 chart1.Series[UpperFrontArmXY].Points[1].YValues = new double[] { DynamicSpindleUpperFrontArmY };
             }
 
+
+            float StaticBodyUpperRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperRearArmX);
+            float StaticBodyUpperRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperRearArmY) + rideHeight + CenterOfMassHeight;
+            float StaticBodyUpperRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyUpperRearArmZ);
+            float StaticSpindleUpperRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmX) + StaticTirePivotX;
+            float StaticSpindleUpperRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmY) + StaticTirePivotY;
+            float StaticSpindleUpperRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmZ) + StaticTirePivotZ;
+            float DynamicSpindleUpperRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmX) + DynamicTirePivotX;
+            float DynamicSpindleUpperRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmY) + DynamicTirePivotY;
+            float DynamicSpindleUpperRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleUpperRearArmZ) + DynamicTirePivotZ;
             string UpperRearArmXY = side + "UpperRearArmXY";
             chart1.Series[UpperRearArmXY].Points[0].XValue = StaticBodyUpperRearArmX;
             chart1.Series[UpperRearArmXY].Points[0].YValues = new double[] { StaticBodyUpperRearArmY };
@@ -202,6 +215,15 @@ namespace Physics_Data_Debug
                 chart1.Series[UpperRearArmXY].Points[1].YValues = new double[] { DynamicSpindleUpperRearArmY };
             }
 
+            float StaticBodyLowerFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerFrontArmX);
+            float StaticBodyLowerFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerFrontArmY) + rideHeight + CenterOfMassHeight;
+            float StaticBodyLowerFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerFrontArmZ);
+            float StaticSpindleLowerFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmX) + StaticTirePivotX;
+            float StaticSpindleLowerFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmY) + StaticTirePivotY;
+            float StaticSpindleLowerFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmZ) + StaticTirePivotZ;
+            float DynamicSpindleLowerFrontArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmX) + DynamicTirePivotX;
+            float DynamicSpindleLowerFrontArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmY) + DynamicTirePivotY;
+            float DynamicSpindleLowerFrontArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmZ) + DynamicTirePivotZ;
             string LowerFrontArmXY = side + "LowerFrontArmXY";
             chart1.Series[LowerFrontArmXY].Points[0].XValue = StaticBodyLowerFrontArmX;
             chart1.Series[LowerFrontArmXY].Points[0].YValues = new double[] { StaticBodyLowerFrontArmY };
@@ -216,6 +238,15 @@ namespace Physics_Data_Debug
                 chart1.Series[LowerFrontArmXY].Points[1].YValues = new double[] { DynamicSpindleLowerFrontArmY };
             }
 
+            float StaticBodyLowerRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerRearArmX);
+            float StaticBodyLowerRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerRearArmY) + rideHeight + CenterOfMassHeight;
+            float StaticBodyLowerRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodyLowerRearArmZ);
+            float StaticSpindleLowerRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmX) + StaticTirePivotX;
+            float StaticSpindleLowerRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmY) + StaticTirePivotY;
+            float StaticSpindleLowerRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmZ) + StaticTirePivotZ;
+            float DynamicSpindleLowerRearArmX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmX) + DynamicTirePivotX;
+            float DynamicSpindleLowerRearArmY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmY) + DynamicTirePivotY;
+            float DynamicSpindleLowerRearArmZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleLowerRearArmZ) + DynamicTirePivotZ;
             string LowerRearArmXY = side + "LowerRearArmXY";
             chart1.Series[LowerRearArmXY].Points[0].XValue = StaticBodyLowerRearArmX;
             chart1.Series[LowerRearArmXY].Points[0].YValues = new double[] { StaticBodyLowerRearArmY };
@@ -229,6 +260,165 @@ namespace Physics_Data_Debug
                 chart1.Series[LowerRearArmXY].Points[1].XValue = DynamicSpindleLowerRearArmX;
                 chart1.Series[LowerRearArmXY].Points[1].YValues = new double[] { DynamicSpindleLowerRearArmY };
             }
+
+            float StaticBodySteeringRodX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodySteeringRodX);
+            float StaticBodySteeringRodY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodySteeringRodY) + rideHeight + CenterOfMassHeight;
+            float StaticBodySteeringRodZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.BodySteeringRodZ);
+            float StaticSpindleSteeringRodX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodX) + StaticTirePivotX;
+            float StaticSpindleSteeringRodY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodY) + StaticTirePivotY;
+            float StaticSpindleSteeringRodZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodX) + StaticTirePivotZ;
+            float DynamicSpindleSteeringRodX = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodX) + DynamicTirePivotX;//?? Needs also to + tire X rotation and offset the offset with that
+            float DynamicSpindleSteeringRodY = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodY) + DynamicTirePivotY;// Needs also to + tire Y rotation and offset the offset with that
+            float DynamicSpindleSteeringRodZ = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodX) + DynamicTirePivotZ;//?? Needs also to + tire Z rotation and offset the offset with that
+            string SteeringRodXY = side + "SteeringRodXY";
+            chart1.Series[SteeringRodXY].Points[0].XValue = StaticBodySteeringRodX;
+            chart1.Series[SteeringRodXY].Points[0].YValues = new double[] { StaticBodySteeringRodY };
+            if (isStatic == true)
+            {
+                chart1.Series[SteeringRodXY].Points[1].XValue = StaticSpindleSteeringRodX;
+                chart1.Series[SteeringRodXY].Points[1].YValues = new double[] { StaticSpindleSteeringRodY };
+            }
+            else
+            {
+                chart1.Series[SteeringRodXY].Points[1].XValue = DynamicSpindleSteeringRodX;
+                chart1.Series[SteeringRodXY].Points[1].YValues = new double[] { DynamicSpindleSteeringRodY };
+            }
+
+            string UpperArmMidpointXY = side + "UpperArmMidpointXY";
+            float BodyUpperArmMidpointX = (StaticBodyUpperFrontArmX + StaticBodyUpperRearArmX) / 2;
+            float BodyUpperArmMidpointY = (StaticBodyUpperFrontArmY + StaticBodyUpperRearArmY) / 2;
+            chart1.Series[UpperArmMidpointXY].Points[0].XValue = BodyUpperArmMidpointX;//BodyUpperArmMidpointX
+            chart1.Series[UpperArmMidpointXY].Points[0].YValues = new double[] { BodyUpperArmMidpointY };//BodyUpperArmMidpointY
+            chart1.Series[UpperArmMidpointXY].Points[1].XValue = chart1.Series[UpperFrontArmXY].Points[1].XValue;//DynamicSpindleUpperFrontArmX
+            chart1.Series[UpperArmMidpointXY].Points[1].YValues = chart1.Series[UpperFrontArmXY].Points[1].YValues;//DynamicSpindleUpperFrontArmY
+
+            string LowerArmMidpointXY = side + "LowerArmMidpointXY";
+            float BodyLowerArmMidpointX = (StaticBodyLowerFrontArmX + StaticBodyLowerRearArmX) / 2;
+            float BodyLowerArmMidpointY = (StaticBodyLowerFrontArmY + StaticBodyLowerRearArmY) / 2;
+            chart1.Series[LowerArmMidpointXY].Points[0].XValue = BodyLowerArmMidpointX;
+            chart1.Series[LowerArmMidpointXY].Points[0].YValues = new double[] { BodyLowerArmMidpointY };
+            chart1.Series[LowerArmMidpointXY].Points[1].XValue = chart1.Series[LowerFrontArmXY].Points[1].XValue;//DynamicSpindleLowerFrontArmX
+            chart1.Series[LowerArmMidpointXY].Points[1].YValues = chart1.Series[LowerFrontArmXY].Points[1].YValues;//DynamicSpindleLowerFrontArmY
+
+            //https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
+            /*float[] ICXY = XYLineIntersection(
+            DynamicSpindleUpperFrontArmX, BodyUpperArmMidpointX,
+            DynamicSpindleUpperFrontArmY, BodyUpperArmMidpointY,
+            DynamicSpindleLowerFrontArmX, BodyLowerArmMidpointX,
+            DynamicSpindleLowerFrontArmY, BodyLowerArmMidpointY);*/
+
+            /*float[] ICXY = XYLineIntersection(
+            BodyUpperArmMidpointX, DynamicSpindleUpperFrontArmX,
+            BodyUpperArmMidpointY, DynamicSpindleUpperFrontArmY,
+            BodyLowerArmMidpointX, DynamicSpindleLowerFrontArmX,
+            BodyLowerArmMidpointY, DynamicSpindleLowerFrontArmY);*/
+
+            /*float[] ICXY = XYLineIntersection(
+            DynamicSpindleUpperFrontArmX, BodyUpperArmMidpointX,
+            BodyUpperArmMidpointY, DynamicSpindleUpperFrontArmY,
+            DynamicSpindleLowerFrontArmX, BodyLowerArmMidpointX,
+            BodyLowerArmMidpointY, DynamicSpindleLowerFrontArmY);*/
+
+            /*float[] ICXY = XYLineIntersection(
+            BodyUpperArmMidpointX, DynamicSpindleUpperFrontArmX,
+            DynamicSpindleUpperFrontArmY, BodyUpperArmMidpointY,
+            BodyLowerArmMidpointY, DynamicSpindleLowerFrontArmX,
+            DynamicSpindleLowerFrontArmY, BodyLowerArmMidpointY);*/
+
+            float[] ICXY = XYLineIntersection(
+            DynamicSpindleLowerFrontArmX, BodyLowerArmMidpointX,
+            DynamicSpindleLowerFrontArmY, BodyLowerArmMidpointY,
+            DynamicSpindleUpperFrontArmX, BodyUpperArmMidpointX,
+            DynamicSpindleUpperFrontArmY, BodyUpperArmMidpointY);
+
+            string InstantCenterXY = side + "InstantCenterXY";
+            chart1.Series[InstantCenterXY].Points[0].XValue = BodyUpperArmMidpointX;
+            chart1.Series[InstantCenterXY].Points[0].YValues = new double[] { BodyUpperArmMidpointY };
+            chart1.Series[InstantCenterXY].Points[1].XValue = ICXY[0];
+            chart1.Series[InstantCenterXY].Points[1].YValues = new double[] { ICXY[1] };
+            chart1.Series[InstantCenterXY].Points[2].XValue = BodyLowerArmMidpointX;
+            chart1.Series[InstantCenterXY].Points[2].YValues = new double[] { BodyLowerArmMidpointY };
+        }
+        private float[] XYLineIntersection(
+            float x1, float x2, 
+            float y1, float y2,
+            float x3, float x4, 
+            float y3, float y4)
+        {
+            float m1 = -((y2 - y1) / (x1 - x2));//why one of these needs to be minus instead??
+            float c1 = - m1 * x1 + y1;
+            float m2 = (y4 - y3) / (x4 - x3);
+            float c2 = - m2 * x3 + y3;
+
+            float y;
+            float x;
+            /*
+            y - y1 = m1 * (x - x1);
+            y - y1 = m1 * x - m1 * x1;
+            y - y1 + m1 * x1 = m1 * x;
+            y = m1 * x - m1 * x1 + y1;
+            m1 * x - m1 * x1 + y1 - y = 0;
+            m1 * x + c1 - y = 0;
+            m1 * x - y + c1 = 0;
+            m2 * x -m2 * x3 + y3 - y = 0;
+            */
+            x = (c2 - c1) / (m1 - m2);
+            y = m1 * (c2 - c1) / (m1 - m2) + c1;
+
+            //a1x + b1y + c1 = 0
+            //
+
+            return new float[] { x, y };
+            /*
+            if(
+                x1 == 0 && 
+                y1 == 0 && 
+                x2 == 0 && 
+                y2 == 0 && 
+                x3 == 0 &&
+                y3 == 0 &&
+                x4 == 0 &&
+                y4 == 0)
+            { return new float[] { 0, 0}; }
+            float sx = x2 - x1;
+            float tx = x4 - x3;
+            float stx = x3 - x1;
+
+            float sy = y2 - y1;
+            float ty = y4 - y3;
+            float sty = y3 - y1;
+
+            float s = (stx + tx) / sx;
+            float t0 = (s*sy - sty)/ty;
+            float s0 = (stx + t0 * tx)/sx;
+
+            if (0 <= s0)
+            {
+                return new float[] { x1 + s0 * (x2 - x1), y1 + s0 * (y2 - y1) };
+            }
+            else if (t0 <= 1)
+            {
+                return new float[] { x3 + t0 * (x4 - x3), y3 + t0 * (y4 - y3) };
+            }
+            else
+            {
+                return new float[] { 0, 0 };
+            }*/
+            /*
+            float t = ( (x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4) ) / ( (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4) );
+            float u = ( (x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3) ) / ( (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4) );
+            if(0f <= t && t <= 1f)
+            {
+                return new float[] { x1 + t * ( x2 - x1 ), y1 + t * (y2 - y1) };
+            }
+            else if (0f <= u && u <= 1f)
+            {
+                return new float[] { x3 + u * (x4 - x3), y3 + u * (y4 - y3) };
+            }
+            else
+            {
+                return new float[] { 0, 0 };
+            }*/
         }
         private void ReadData()
         {
@@ -314,8 +504,8 @@ namespace Physics_Data_Debug
             if (LiveData.Process != null && FormLiveData.ProcessGet == true && FormLiveData.FirstTimeLoad == true && LiveData.FullDataList.Count > 0 && FormLiveData.ValuesGet == true)
             {
                 ReadData();
-                SuspensionGeometry(WF_PrefixMain.FL, false, 0.16f);
-                SuspensionGeometry(WF_PrefixMain.FR, false, 0.16f);
+                SuspensionGeometry(WF_PrefixMain.FL, false);
+                SuspensionGeometry(WF_PrefixMain.FR, false);
             }
         }
     }

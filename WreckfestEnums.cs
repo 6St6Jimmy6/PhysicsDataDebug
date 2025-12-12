@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Physics_Data_Debug
 {
+    #region Prefixes for full data names.
     public enum WF_PrefixMain : int// don't add anything in the first 4 zeroes. So everyone of these end with 00000, to support Prefix+ValueName ID calculation.
     {
         Body = 0,
@@ -25,6 +26,8 @@ namespace Physics_Data_Debug
         Differential,
         Transmission,
     }
+    #endregion
+    #region Collection of value names. Might be bit useless, but used for easy access for now
     public enum AllValueNames : int
     {
         None = 0,
@@ -320,11 +323,13 @@ namespace Physics_Data_Debug
 
         SlipAngleDeg,
     }
+    #endregion
+    #region Base Addresses and their offsets for different game versions
     public enum BaseAddress : ulong
     {
         Tire = 0x18324C8,
         Suspension1 = Tire,
-        Suspension2 = 0x1831EE0,
+        Suspension2 = Tire,
         Aero = Tire,
         Differential = Tire,
         BodyLocationHeading = Tire,
@@ -348,6 +353,8 @@ namespace Physics_Data_Debug
         // 0x7DF0 April 2023
         // 0x9E00; March 2024 { get; set; } = 7DF0+2010 { get; set; } = 9E00
     }
+    #endregion
+    #region Tire Data
     public enum WF_TireDataChunks : int
     {
         DataStart = WF_TireDataOffset.MomentOfInertia,//
@@ -442,6 +449,8 @@ namespace Physics_Data_Debug
 
         SlipAngleDeg = TotalFrictionAngleDeg + 0x4,
     }
+    #endregion
+    #region Suspension Data old
     public enum WF_Suspension1DataChunks : int
     {
         DataStart = WF_Suspension1DataOffset.SpringRate,
@@ -466,7 +475,7 @@ namespace Physics_Data_Debug
         ReboundDampX = 0xE9C,//7
         BumpDampY = 0xEA0,//8
         ReboundDampY = 0xEA4,//9
-        ExpansionLimitFromZero = 0xEA8,//10
+        ExpansionLimitFromZero = 0xEA8,//10//SuspensionMaxLength?
         CompressionLimitFromZero = 0xEAC,//11
         ReboundEndPosition = 0xEB0,//12 RideHeight + BumpStopDown + ReboundLength
         SuspensionLength = 0xEB4,//13
@@ -479,6 +488,65 @@ namespace Physics_Data_Debug
         BumpStopRateGainDeflectionSquared = 0xED0,//21
         BumpStopDampGainDeflectionSquared = 0xED4,//22
     }
+    #endregion
+    #region Sprung/Unsprung Masses
+    public enum WF_BodyMassSide : int
+    {
+        AllSides = 0x0,
+    }
+    public enum WF_MassDataChunks : int
+    {
+        DataStart = WF_MassDataOffset.SprungMass,
+        ChunkSize = 0x1C,
+    }
+    public enum WF_MassDataOffset : int
+    {
+        SprungMass = 0xAACE08,//https://en.wikipedia.org/wiki/Sprung_mass //Total Weight basically
+        UnsprungMass = SprungMass + 0x4,//https://en.wikipedia.org/wiki/Unsprung_mass // Tires + Brakes + Suspension. This is basically the all the tire file masses together, because those need to include that stuff in them.
+        CenterOfMassHeight = 0xAACE20,
+    }
+    #endregion
+    #region Suspension better data? Not sure are all here, so might need to use both.
+    public enum WF_Suspension2DataChunks : int
+    {
+        DataStart = WF_Suspension2DataOffset.SomeDistanceOffsetByRideHeight,
+        ChunkSize = 0x5C,
+    }
+    public enum WF_Suspension2DataSideOffset : int
+    {
+        FL = 0x0,
+        FR = FL,
+        RL = 0x5C,
+        RR = RL,//
+    }
+    public enum WF_Suspension2DataOffset : int
+    {
+        SomeDistanceOffsetByRideHeight = 0xAACE40,//
+        ReboundEndPosition = SomeDistanceOffsetByRideHeight + 0x4,//RideHeight + BumpStopDown
+        SuspensionMaxLength = ReboundEndPosition + 0x4,//
+        RideHeight = SuspensionMaxLength + 0x4,//
+        SpringRate = RideHeight + 0x4,//
+        BumpLimitsX = SpringRate + 0x4,//
+        BumpLimitsY = BumpLimitsX + 0x4,//
+        BumpDampX = BumpLimitsY + 0x4,//
+        BumpDampY = BumpDampX + 0x4,//
+        ReboundLimitsX = BumpDampY + 0x4,//
+        ReboundLimitsY = ReboundLimitsX + 0x4,//
+        ReboundDampX = ReboundLimitsY + 0x4,//
+        ReboundDampY = ReboundDampX + 0x4,//
+        BumpStopLength = ReboundDampY + 0x4,//
+        BumpStopRate = BumpStopLength + 0x4,//
+        BumpStopDamp = BumpStopRate + 0x4,//
+        BumpStopRateGainDeflectionSquared = BumpStopDamp + 0x4,//
+        BumpStopDampGainDeflectionSquared = BumpStopRateGainDeflectionSquared + 0x4,//
+        ReboundLength = BumpStopDampGainDeflectionSquared + 0x4,//
+        ReboundRate = ReboundLength + 0x4,//
+        ProgressiveRate = ReboundRate + 0x4,//
+        RollbarStiffness = ProgressiveRate + 0x4,//
+        CamberAngleRadians = RollbarStiffness + 0x4,//
+    }
+    #endregion
+    #region Suspension Geometry
     public enum WF_SuspensionGeometryDataChunks : int
     {
         DataStart = WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmX,
@@ -692,6 +760,8 @@ namespace Physics_Data_Debug
         XYZUnknownPushRod17 = XYZUnknownPushRod16 + 0x4,
         XYZUnknownPushRod18 = XYZUnknownPushRod17 + 0x4,
     }
+    #endregion
+    #region Body Accel Data
     public enum WF_BodyAccelDataChunks : int
     {
         DataStart = 0x0,
@@ -726,6 +796,8 @@ namespace Physics_Data_Debug
         XZGAngleRad = XYZG + 0x4,
         Body_XZGAngleDeg = XZGAngleRad + 0x4,
     }
+    #endregion
+    #region Body Rotation Data
     public enum WF_BodyRotationChunks : int
     {
         DataStart = WF_BodyRotationDataOffset.BodyM11,
@@ -765,6 +837,8 @@ namespace Physics_Data_Debug
         RollRad = YawDeg + 0x4,
         RollDeg = RollRad + 0x4,
     }
+    #endregion
+    #region Aero Data
     public enum WF_AeroDataChunks : int
     {
         DataStart = WF_AeroDataOffset.XDragWorld,
@@ -789,6 +863,8 @@ namespace Physics_Data_Debug
         YDragLocal = XDragLocal + 0x4,
         ZDragLocal = YDragLocal + 0x4,
     }
+    #endregion
+    #region Engine Data
     public enum WF_EngineDataChunks : int
     {
         DataStart = 0x0,
@@ -814,6 +890,8 @@ namespace Physics_Data_Debug
         EnginePowerPS = EnginePowerHP + 0x4,
         EnginePowerBHP = EnginePowerPS + 0x4,
     }
+    #endregion
+    #region Differential Data
     public enum WF_DifferentialDataChunks : int
     {
         DataStart = WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft,
@@ -834,10 +912,13 @@ namespace Physics_Data_Debug
         DifferentialVelocityRadPrimaryRight = DifferentialVelocityRadPrimaryLeft + WF_DifferentialSide.Right,
         DifferentialTorquePrimaryRight = DifferentialTorquePrimaryLeft + WF_DifferentialSide.Right,
     }
+    #endregion
+    #region Time Data
     public enum WF_TimeDataOffset : int
     {
         RaceTime = 0x14,
     }
+    #endregion
     public class WreckfestEnums
     {
         public static List<string> AllValueNames = new List<string>();
