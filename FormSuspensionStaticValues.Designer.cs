@@ -90,6 +90,14 @@ namespace Physics_Data_Debug
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint36 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint37 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint38 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint39 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint40 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint41 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint42 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint43 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             this.label22 = new System.Windows.Forms.Label();
             this.textBox_RR_BumpStopLength = new System.Windows.Forms.TextBox();
             this.textBox_RR_ReboundEndPosition = new System.Windows.Forms.TextBox();
@@ -165,7 +173,6 @@ namespace Physics_Data_Debug
             this.flThermalAirTransfer = new System.Windows.Forms.Label();
             this.flWidth = new System.Windows.Forms.Label();
             this.flRadius = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Button();
             this.textBox_FL_SpringRate = new System.Windows.Forms.TextBox();
             this.textBox_FR_ReboundStartPosition = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -252,7 +259,7 @@ namespace Physics_Data_Debug
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(686, 721);
+            this.label22.Location = new System.Drawing.Point(515, 707);
             this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(140, 25);
@@ -263,8 +270,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpStopLength.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopLength.Location = new System.Drawing.Point(918, 1196);
-            this.textBox_RR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpStopLength.Location = new System.Drawing.Point(747, 1182);
+            this.textBox_RR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpStopLength.Name = "textBox_RR_BumpStopLength";
             this.textBox_RR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_BumpStopLength.TabIndex = 160;
@@ -273,8 +280,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundEndPosition.Location = new System.Drawing.Point(918, 1154);
-            this.textBox_RR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ReboundEndPosition.Location = new System.Drawing.Point(747, 1140);
+            this.textBox_RR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ReboundEndPosition.Name = "textBox_RR_ReboundEndPosition";
             this.textBox_RR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_ReboundEndPosition.TabIndex = 159;
@@ -283,8 +290,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_CompressionLimitFromZero.Location = new System.Drawing.Point(918, 1023);
-            this.textBox_RR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 1009);
+            this.textBox_RR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_CompressionLimitFromZero.Name = "textBox_RR_CompressionLimitFromZero";
             this.textBox_RR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_CompressionLimitFromZero.TabIndex = 158;
@@ -293,8 +300,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ExpansionLimitFromZero.Location = new System.Drawing.Point(918, 981);
-            this.textBox_RR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 967);
+            this.textBox_RR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ExpansionLimitFromZero.Name = "textBox_RR_ExpansionLimitFromZero";
             this.textBox_RR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_ExpansionLimitFromZero.TabIndex = 157;
@@ -303,8 +310,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpDampX.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpDampX.Location = new System.Drawing.Point(918, 938);
-            this.textBox_RR_BumpDampX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpDampX.Location = new System.Drawing.Point(747, 924);
+            this.textBox_RR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpDampX.Name = "textBox_RR_BumpDampX";
             this.textBox_RR_BumpDampX.Size = new System.Drawing.Size(96, 31);
             this.textBox_RR_BumpDampX.TabIndex = 156;
@@ -313,8 +320,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundLimitsX.Location = new System.Drawing.Point(918, 894);
-            this.textBox_RR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ReboundLimitsX.Location = new System.Drawing.Point(747, 880);
+            this.textBox_RR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ReboundLimitsX.Name = "textBox_RR_ReboundLimitsX";
             this.textBox_RR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_RR_ReboundLimitsX.TabIndex = 155;
@@ -323,8 +330,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpLimitsX.Location = new System.Drawing.Point(918, 852);
-            this.textBox_RR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpLimitsX.Location = new System.Drawing.Point(747, 838);
+            this.textBox_RR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpLimitsX.Name = "textBox_RR_BumpLimitsX";
             this.textBox_RR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_RR_BumpLimitsX.TabIndex = 154;
@@ -333,8 +340,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ProgressiveRate.Location = new System.Drawing.Point(918, 810);
-            this.textBox_RR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ProgressiveRate.Location = new System.Drawing.Point(747, 796);
+            this.textBox_RR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ProgressiveRate.Name = "textBox_RR_ProgressiveRate";
             this.textBox_RR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_ProgressiveRate.TabIndex = 153;
@@ -343,7 +350,7 @@ namespace Physics_Data_Debug
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(686, 1202);
+            this.label23.Location = new System.Drawing.Point(515, 1188);
             this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(189, 25);
@@ -354,7 +361,7 @@ namespace Physics_Data_Debug
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(686, 1160);
+            this.label24.Location = new System.Drawing.Point(515, 1146);
             this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(192, 25);
@@ -365,7 +372,7 @@ namespace Physics_Data_Debug
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(686, 1031);
+            this.label25.Location = new System.Drawing.Point(515, 1017);
             this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(189, 25);
@@ -376,7 +383,7 @@ namespace Physics_Data_Debug
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(686, 987);
+            this.label26.Location = new System.Drawing.Point(515, 973);
             this.label26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(136, 25);
@@ -387,7 +394,7 @@ namespace Physics_Data_Debug
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(686, 944);
+            this.label27.Location = new System.Drawing.Point(515, 930);
             this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(190, 25);
@@ -398,7 +405,7 @@ namespace Physics_Data_Debug
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(686, 902);
+            this.label28.Location = new System.Drawing.Point(515, 888);
             this.label28.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(222, 25);
@@ -409,7 +416,7 @@ namespace Physics_Data_Debug
             // 
             this.label29.AutoSize = true;
             this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(686, 858);
+            this.label29.Location = new System.Drawing.Point(515, 844);
             this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(190, 25);
@@ -420,7 +427,7 @@ namespace Physics_Data_Debug
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(686, 815);
+            this.label30.Location = new System.Drawing.Point(515, 801);
             this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(177, 25);
@@ -431,7 +438,7 @@ namespace Physics_Data_Debug
             // 
             this.label31.AutoSize = true;
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(686, 771);
+            this.label31.Location = new System.Drawing.Point(515, 757);
             this.label31.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(125, 25);
@@ -443,8 +450,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_SpringRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_SpringRate.Location = new System.Drawing.Point(918, 765);
-            this.textBox_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_SpringRate.Location = new System.Drawing.Point(747, 751);
+            this.textBox_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_SpringRate.Name = "textBox_RR_SpringRate";
             this.textBox_RR_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_SpringRate.TabIndex = 143;
@@ -453,7 +460,7 @@ namespace Physics_Data_Debug
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(186, 721);
+            this.label11.Location = new System.Drawing.Point(15, 707);
             this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(128, 25);
@@ -464,8 +471,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpStopLength.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopLength.Location = new System.Drawing.Point(418, 1196);
-            this.textBox_RL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpStopLength.Location = new System.Drawing.Point(247, 1182);
+            this.textBox_RL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpStopLength.Name = "textBox_RL_BumpStopLength";
             this.textBox_RL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_BumpStopLength.TabIndex = 141;
@@ -474,8 +481,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundEndPosition.Location = new System.Drawing.Point(418, 1154);
-            this.textBox_RL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ReboundEndPosition.Location = new System.Drawing.Point(247, 1140);
+            this.textBox_RL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ReboundEndPosition.Name = "textBox_RL_ReboundEndPosition";
             this.textBox_RL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_ReboundEndPosition.TabIndex = 140;
@@ -484,8 +491,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_CompressionLimitFromZero.Location = new System.Drawing.Point(418, 1023);
-            this.textBox_RL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 1009);
+            this.textBox_RL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_CompressionLimitFromZero.Name = "textBox_RL_CompressionLimitFromZero";
             this.textBox_RL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_CompressionLimitFromZero.TabIndex = 139;
@@ -494,8 +501,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ExpansionLimitFromZero.Location = new System.Drawing.Point(418, 981);
-            this.textBox_RL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 967);
+            this.textBox_RL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ExpansionLimitFromZero.Name = "textBox_RL_ExpansionLimitFromZero";
             this.textBox_RL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_ExpansionLimitFromZero.TabIndex = 138;
@@ -504,8 +511,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpDampX.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpDampX.Location = new System.Drawing.Point(418, 938);
-            this.textBox_RL_BumpDampX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpDampX.Location = new System.Drawing.Point(247, 924);
+            this.textBox_RL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpDampX.Name = "textBox_RL_BumpDampX";
             this.textBox_RL_BumpDampX.Size = new System.Drawing.Size(96, 31);
             this.textBox_RL_BumpDampX.TabIndex = 137;
@@ -514,8 +521,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundLimitsX.Location = new System.Drawing.Point(418, 894);
-            this.textBox_RL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ReboundLimitsX.Location = new System.Drawing.Point(247, 880);
+            this.textBox_RL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ReboundLimitsX.Name = "textBox_RL_ReboundLimitsX";
             this.textBox_RL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_RL_ReboundLimitsX.TabIndex = 136;
@@ -524,8 +531,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpLimitsX.Location = new System.Drawing.Point(418, 852);
-            this.textBox_RL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpLimitsX.Location = new System.Drawing.Point(247, 838);
+            this.textBox_RL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpLimitsX.Name = "textBox_RL_BumpLimitsX";
             this.textBox_RL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_RL_BumpLimitsX.TabIndex = 135;
@@ -534,8 +541,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ProgressiveRate.Location = new System.Drawing.Point(418, 810);
-            this.textBox_RL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ProgressiveRate.Location = new System.Drawing.Point(247, 796);
+            this.textBox_RL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ProgressiveRate.Name = "textBox_RL_ProgressiveRate";
             this.textBox_RL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_ProgressiveRate.TabIndex = 134;
@@ -544,7 +551,7 @@ namespace Physics_Data_Debug
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(186, 1202);
+            this.label12.Location = new System.Drawing.Point(15, 1188);
             this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(189, 25);
@@ -555,7 +562,7 @@ namespace Physics_Data_Debug
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(186, 1160);
+            this.label14.Location = new System.Drawing.Point(15, 1146);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(192, 25);
@@ -566,7 +573,7 @@ namespace Physics_Data_Debug
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(186, 1031);
+            this.label15.Location = new System.Drawing.Point(15, 1017);
             this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(189, 25);
@@ -577,7 +584,7 @@ namespace Physics_Data_Debug
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(186, 987);
+            this.label16.Location = new System.Drawing.Point(15, 973);
             this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(136, 25);
@@ -588,7 +595,7 @@ namespace Physics_Data_Debug
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(186, 944);
+            this.label17.Location = new System.Drawing.Point(15, 930);
             this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(190, 25);
@@ -599,7 +606,7 @@ namespace Physics_Data_Debug
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(186, 902);
+            this.label18.Location = new System.Drawing.Point(15, 888);
             this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(222, 25);
@@ -610,7 +617,7 @@ namespace Physics_Data_Debug
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(186, 858);
+            this.label19.Location = new System.Drawing.Point(15, 844);
             this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(190, 25);
@@ -621,7 +628,7 @@ namespace Physics_Data_Debug
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(186, 815);
+            this.label20.Location = new System.Drawing.Point(15, 801);
             this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(177, 25);
@@ -632,7 +639,7 @@ namespace Physics_Data_Debug
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(186, 771);
+            this.label21.Location = new System.Drawing.Point(15, 757);
             this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(125, 25);
@@ -643,8 +650,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_SpringRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_SpringRate.Location = new System.Drawing.Point(418, 765);
-            this.textBox_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_SpringRate.Location = new System.Drawing.Point(247, 751);
+            this.textBox_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_SpringRate.Name = "textBox_RL_SpringRate";
             this.textBox_RL_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_SpringRate.TabIndex = 124;
@@ -653,7 +660,7 @@ namespace Physics_Data_Debug
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(686, 23);
+            this.label1.Location = new System.Drawing.Point(515, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 25);
@@ -664,8 +671,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpStopLength.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopLength.Location = new System.Drawing.Point(918, 496);
-            this.textBox_FR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpStopLength.Location = new System.Drawing.Point(747, 482);
+            this.textBox_FR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpStopLength.Name = "textBox_FR_BumpStopLength";
             this.textBox_FR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_BumpStopLength.TabIndex = 122;
@@ -674,8 +681,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundEndPosition.Location = new System.Drawing.Point(918, 454);
-            this.textBox_FR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ReboundEndPosition.Location = new System.Drawing.Point(747, 440);
+            this.textBox_FR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ReboundEndPosition.Name = "textBox_FR_ReboundEndPosition";
             this.textBox_FR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_ReboundEndPosition.TabIndex = 121;
@@ -684,8 +691,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_CompressionLimitFromZero.Location = new System.Drawing.Point(918, 325);
-            this.textBox_FR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 311);
+            this.textBox_FR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_CompressionLimitFromZero.Name = "textBox_FR_CompressionLimitFromZero";
             this.textBox_FR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_CompressionLimitFromZero.TabIndex = 120;
@@ -694,8 +701,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ExpansionLimitFromZero.Location = new System.Drawing.Point(918, 283);
-            this.textBox_FR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 269);
+            this.textBox_FR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ExpansionLimitFromZero.Name = "textBox_FR_ExpansionLimitFromZero";
             this.textBox_FR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_ExpansionLimitFromZero.TabIndex = 119;
@@ -704,8 +711,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpDampX.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpDampX.Location = new System.Drawing.Point(918, 238);
-            this.textBox_FR_BumpDampX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpDampX.Location = new System.Drawing.Point(747, 224);
+            this.textBox_FR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpDampX.Name = "textBox_FR_BumpDampX";
             this.textBox_FR_BumpDampX.Size = new System.Drawing.Size(96, 31);
             this.textBox_FR_BumpDampX.TabIndex = 118;
@@ -714,8 +721,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundLimitsX.Location = new System.Drawing.Point(918, 196);
-            this.textBox_FR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ReboundLimitsX.Location = new System.Drawing.Point(747, 182);
+            this.textBox_FR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ReboundLimitsX.Name = "textBox_FR_ReboundLimitsX";
             this.textBox_FR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_FR_ReboundLimitsX.TabIndex = 117;
@@ -724,8 +731,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpLimitsX.Location = new System.Drawing.Point(918, 154);
-            this.textBox_FR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpLimitsX.Location = new System.Drawing.Point(747, 140);
+            this.textBox_FR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpLimitsX.Name = "textBox_FR_BumpLimitsX";
             this.textBox_FR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_FR_BumpLimitsX.TabIndex = 116;
@@ -734,8 +741,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ProgressiveRate.Location = new System.Drawing.Point(918, 110);
-            this.textBox_FR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ProgressiveRate.Location = new System.Drawing.Point(747, 96);
+            this.textBox_FR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ProgressiveRate.Name = "textBox_FR_ProgressiveRate";
             this.textBox_FR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_ProgressiveRate.TabIndex = 115;
@@ -744,7 +751,7 @@ namespace Physics_Data_Debug
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(686, 500);
+            this.label2.Location = new System.Drawing.Point(515, 486);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(189, 25);
@@ -755,7 +762,7 @@ namespace Physics_Data_Debug
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(686, 460);
+            this.label3.Location = new System.Drawing.Point(515, 446);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(192, 25);
@@ -766,7 +773,7 @@ namespace Physics_Data_Debug
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(686, 331);
+            this.label4.Location = new System.Drawing.Point(515, 317);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(189, 25);
@@ -777,7 +784,7 @@ namespace Physics_Data_Debug
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(686, 288);
+            this.label5.Location = new System.Drawing.Point(515, 274);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 25);
@@ -788,7 +795,7 @@ namespace Physics_Data_Debug
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(686, 244);
+            this.label6.Location = new System.Drawing.Point(515, 230);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(190, 25);
@@ -799,7 +806,7 @@ namespace Physics_Data_Debug
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(686, 202);
+            this.label7.Location = new System.Drawing.Point(515, 188);
             this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(222, 25);
@@ -810,7 +817,7 @@ namespace Physics_Data_Debug
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(686, 160);
+            this.label8.Location = new System.Drawing.Point(515, 146);
             this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(190, 25);
@@ -821,7 +828,7 @@ namespace Physics_Data_Debug
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(686, 115);
+            this.label9.Location = new System.Drawing.Point(515, 101);
             this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(177, 25);
@@ -832,7 +839,7 @@ namespace Physics_Data_Debug
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(686, 73);
+            this.label10.Location = new System.Drawing.Point(515, 59);
             this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(125, 25);
@@ -843,8 +850,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_SpringRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_SpringRate.Location = new System.Drawing.Point(918, 67);
-            this.textBox_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_SpringRate.Location = new System.Drawing.Point(747, 53);
+            this.textBox_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_SpringRate.Name = "textBox_FR_SpringRate";
             this.textBox_FR_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_SpringRate.TabIndex = 105;
@@ -853,7 +860,7 @@ namespace Physics_Data_Debug
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(186, 23);
+            this.label13.Location = new System.Drawing.Point(15, 9);
             this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(142, 25);
@@ -864,8 +871,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpStopLength.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopLength.Location = new System.Drawing.Point(418, 496);
-            this.textBox_FL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpStopLength.Location = new System.Drawing.Point(247, 482);
+            this.textBox_FL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpStopLength.Name = "textBox_FL_BumpStopLength";
             this.textBox_FL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_BumpStopLength.TabIndex = 101;
@@ -874,8 +881,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundEndPosition.Location = new System.Drawing.Point(418, 454);
-            this.textBox_FL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ReboundEndPosition.Location = new System.Drawing.Point(247, 440);
+            this.textBox_FL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ReboundEndPosition.Name = "textBox_FL_ReboundEndPosition";
             this.textBox_FL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_ReboundEndPosition.TabIndex = 100;
@@ -884,8 +891,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_CompressionLimitFromZero.Location = new System.Drawing.Point(418, 325);
-            this.textBox_FL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 311);
+            this.textBox_FL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_CompressionLimitFromZero.Name = "textBox_FL_CompressionLimitFromZero";
             this.textBox_FL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_CompressionLimitFromZero.TabIndex = 99;
@@ -894,8 +901,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ExpansionLimitFromZero.Location = new System.Drawing.Point(418, 283);
-            this.textBox_FL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 269);
+            this.textBox_FL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ExpansionLimitFromZero.Name = "textBox_FL_ExpansionLimitFromZero";
             this.textBox_FL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_ExpansionLimitFromZero.TabIndex = 98;
@@ -904,8 +911,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpDampX.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpDampX.Location = new System.Drawing.Point(418, 238);
-            this.textBox_FL_BumpDampX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpDampX.Location = new System.Drawing.Point(247, 224);
+            this.textBox_FL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpDampX.Name = "textBox_FL_BumpDampX";
             this.textBox_FL_BumpDampX.Size = new System.Drawing.Size(96, 31);
             this.textBox_FL_BumpDampX.TabIndex = 97;
@@ -914,8 +921,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundLimitsX.Location = new System.Drawing.Point(418, 196);
-            this.textBox_FL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ReboundLimitsX.Location = new System.Drawing.Point(247, 182);
+            this.textBox_FL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ReboundLimitsX.Name = "textBox_FL_ReboundLimitsX";
             this.textBox_FL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_FL_ReboundLimitsX.TabIndex = 96;
@@ -924,8 +931,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpLimitsX.Location = new System.Drawing.Point(418, 154);
-            this.textBox_FL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpLimitsX.Location = new System.Drawing.Point(247, 140);
+            this.textBox_FL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpLimitsX.Name = "textBox_FL_BumpLimitsX";
             this.textBox_FL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
             this.textBox_FL_BumpLimitsX.TabIndex = 95;
@@ -934,8 +941,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ProgressiveRate.Location = new System.Drawing.Point(418, 110);
-            this.textBox_FL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ProgressiveRate.Location = new System.Drawing.Point(247, 96);
+            this.textBox_FL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ProgressiveRate.Name = "textBox_FL_ProgressiveRate";
             this.textBox_FL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_ProgressiveRate.TabIndex = 94;
@@ -944,7 +951,7 @@ namespace Physics_Data_Debug
             // 
             this.flMomentOfInertia.AutoSize = true;
             this.flMomentOfInertia.ForeColor = System.Drawing.Color.White;
-            this.flMomentOfInertia.Location = new System.Drawing.Point(186, 500);
+            this.flMomentOfInertia.Location = new System.Drawing.Point(15, 486);
             this.flMomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flMomentOfInertia.Name = "flMomentOfInertia";
             this.flMomentOfInertia.Size = new System.Drawing.Size(189, 25);
@@ -955,7 +962,7 @@ namespace Physics_Data_Debug
             // 
             this.flMass.AutoSize = true;
             this.flMass.ForeColor = System.Drawing.Color.White;
-            this.flMass.Location = new System.Drawing.Point(186, 460);
+            this.flMass.Location = new System.Drawing.Point(15, 446);
             this.flMass.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flMass.Name = "flMass";
             this.flMass.Size = new System.Drawing.Size(192, 25);
@@ -966,7 +973,7 @@ namespace Physics_Data_Debug
             // 
             this.flMaxDeflection.AutoSize = true;
             this.flMaxDeflection.ForeColor = System.Drawing.Color.White;
-            this.flMaxDeflection.Location = new System.Drawing.Point(186, 331);
+            this.flMaxDeflection.Location = new System.Drawing.Point(15, 317);
             this.flMaxDeflection.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flMaxDeflection.Name = "flMaxDeflection";
             this.flMaxDeflection.Size = new System.Drawing.Size(189, 25);
@@ -977,7 +984,7 @@ namespace Physics_Data_Debug
             // 
             this.flTireDamperRate.AutoSize = true;
             this.flTireDamperRate.ForeColor = System.Drawing.Color.White;
-            this.flTireDamperRate.Location = new System.Drawing.Point(186, 288);
+            this.flTireDamperRate.Location = new System.Drawing.Point(15, 274);
             this.flTireDamperRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flTireDamperRate.Name = "flTireDamperRate";
             this.flTireDamperRate.Size = new System.Drawing.Size(136, 25);
@@ -988,7 +995,7 @@ namespace Physics_Data_Debug
             // 
             this.flTireSpringRate.AutoSize = true;
             this.flTireSpringRate.ForeColor = System.Drawing.Color.White;
-            this.flTireSpringRate.Location = new System.Drawing.Point(186, 244);
+            this.flTireSpringRate.Location = new System.Drawing.Point(15, 230);
             this.flTireSpringRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flTireSpringRate.Name = "flTireSpringRate";
             this.flTireSpringRate.Size = new System.Drawing.Size(190, 25);
@@ -999,7 +1006,7 @@ namespace Physics_Data_Debug
             // 
             this.flThermalInnerTransfer.AutoSize = true;
             this.flThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
-            this.flThermalInnerTransfer.Location = new System.Drawing.Point(186, 202);
+            this.flThermalInnerTransfer.Location = new System.Drawing.Point(15, 188);
             this.flThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flThermalInnerTransfer.Name = "flThermalInnerTransfer";
             this.flThermalInnerTransfer.Size = new System.Drawing.Size(222, 25);
@@ -1010,7 +1017,7 @@ namespace Physics_Data_Debug
             // 
             this.flThermalAirTransfer.AutoSize = true;
             this.flThermalAirTransfer.ForeColor = System.Drawing.Color.White;
-            this.flThermalAirTransfer.Location = new System.Drawing.Point(186, 160);
+            this.flThermalAirTransfer.Location = new System.Drawing.Point(15, 146);
             this.flThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flThermalAirTransfer.Name = "flThermalAirTransfer";
             this.flThermalAirTransfer.Size = new System.Drawing.Size(190, 25);
@@ -1021,7 +1028,7 @@ namespace Physics_Data_Debug
             // 
             this.flWidth.AutoSize = true;
             this.flWidth.ForeColor = System.Drawing.Color.White;
-            this.flWidth.Location = new System.Drawing.Point(186, 115);
+            this.flWidth.Location = new System.Drawing.Point(15, 101);
             this.flWidth.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flWidth.Name = "flWidth";
             this.flWidth.Size = new System.Drawing.Size(177, 25);
@@ -1032,32 +1039,19 @@ namespace Physics_Data_Debug
             // 
             this.flRadius.AutoSize = true;
             this.flRadius.ForeColor = System.Drawing.Color.White;
-            this.flRadius.Location = new System.Drawing.Point(186, 73);
+            this.flRadius.Location = new System.Drawing.Point(15, 59);
             this.flRadius.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.flRadius.Name = "flRadius";
             this.flRadius.Size = new System.Drawing.Size(125, 25);
             this.flRadius.TabIndex = 85;
             this.flRadius.Text = "Spring Rate";
             // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.closeButton.ForeColor = System.Drawing.Color.White;
-            this.closeButton.Location = new System.Drawing.Point(24, 23);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(150, 162);
-            this.closeButton.TabIndex = 84;
-            this.closeButton.Text = "Close Suspension Static Values";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
             // textBox_FL_SpringRate
             // 
             this.textBox_FL_SpringRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_SpringRate.Location = new System.Drawing.Point(418, 67);
-            this.textBox_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_SpringRate.Location = new System.Drawing.Point(247, 53);
+            this.textBox_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_SpringRate.Name = "textBox_FL_SpringRate";
             this.textBox_FL_SpringRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_SpringRate.TabIndex = 83;
@@ -1066,8 +1060,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundStartPosition.Location = new System.Drawing.Point(918, 412);
-            this.textBox_FR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ReboundStartPosition.Location = new System.Drawing.Point(747, 398);
+            this.textBox_FR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ReboundStartPosition.Name = "textBox_FR_ReboundStartPosition";
             this.textBox_FR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_ReboundStartPosition.TabIndex = 165;
@@ -1076,7 +1070,7 @@ namespace Physics_Data_Debug
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(686, 417);
+            this.label32.Location = new System.Drawing.Point(515, 403);
             this.label32.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(199, 25);
@@ -1087,8 +1081,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundStartPosition.Location = new System.Drawing.Point(418, 412);
-            this.textBox_FL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ReboundStartPosition.Location = new System.Drawing.Point(247, 398);
+            this.textBox_FL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ReboundStartPosition.Name = "textBox_FL_ReboundStartPosition";
             this.textBox_FL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_ReboundStartPosition.TabIndex = 163;
@@ -1097,7 +1091,7 @@ namespace Physics_Data_Debug
             // 
             this.label33.AutoSize = true;
             this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(186, 417);
+            this.label33.Location = new System.Drawing.Point(15, 403);
             this.label33.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(199, 25);
@@ -1108,8 +1102,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundStartPosition.Location = new System.Drawing.Point(918, 1110);
-            this.textBox_RR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ReboundStartPosition.Location = new System.Drawing.Point(747, 1096);
+            this.textBox_RR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ReboundStartPosition.Name = "textBox_RR_ReboundStartPosition";
             this.textBox_RR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_ReboundStartPosition.TabIndex = 169;
@@ -1118,7 +1112,7 @@ namespace Physics_Data_Debug
             // 
             this.label34.AutoSize = true;
             this.label34.ForeColor = System.Drawing.Color.White;
-            this.label34.Location = new System.Drawing.Point(686, 1115);
+            this.label34.Location = new System.Drawing.Point(515, 1101);
             this.label34.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(199, 25);
@@ -1129,8 +1123,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundStartPosition.Location = new System.Drawing.Point(418, 1110);
-            this.textBox_RL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ReboundStartPosition.Location = new System.Drawing.Point(247, 1096);
+            this.textBox_RL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ReboundStartPosition.Name = "textBox_RL_ReboundStartPosition";
             this.textBox_RL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_ReboundStartPosition.TabIndex = 167;
@@ -1139,7 +1133,7 @@ namespace Physics_Data_Debug
             // 
             this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.Color.White;
-            this.label35.Location = new System.Drawing.Point(186, 1115);
+            this.label35.Location = new System.Drawing.Point(15, 1101);
             this.label35.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(199, 25);
@@ -1150,8 +1144,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpStopRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopRate.Location = new System.Drawing.Point(918, 540);
-            this.textBox_FR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpStopRate.Location = new System.Drawing.Point(747, 526);
+            this.textBox_FR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpStopRate.Name = "textBox_FR_BumpStopRate";
             this.textBox_FR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_BumpStopRate.TabIndex = 173;
@@ -1160,7 +1154,7 @@ namespace Physics_Data_Debug
             // 
             this.label36.AutoSize = true;
             this.label36.ForeColor = System.Drawing.Color.White;
-            this.label36.Location = new System.Drawing.Point(686, 546);
+            this.label36.Location = new System.Drawing.Point(515, 532);
             this.label36.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(168, 25);
@@ -1171,8 +1165,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpStopRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopRate.Location = new System.Drawing.Point(418, 540);
-            this.textBox_FL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpStopRate.Location = new System.Drawing.Point(247, 526);
+            this.textBox_FL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpStopRate.Name = "textBox_FL_BumpStopRate";
             this.textBox_FL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_BumpStopRate.TabIndex = 171;
@@ -1181,7 +1175,7 @@ namespace Physics_Data_Debug
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.Color.White;
-            this.label37.Location = new System.Drawing.Point(186, 546);
+            this.label37.Location = new System.Drawing.Point(15, 532);
             this.label37.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(168, 25);
@@ -1192,7 +1186,7 @@ namespace Physics_Data_Debug
             // 
             this.label38.AutoSize = true;
             this.label38.ForeColor = System.Drawing.Color.White;
-            this.label38.Location = new System.Drawing.Point(686, 1240);
+            this.label38.Location = new System.Drawing.Point(515, 1226);
             this.label38.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(168, 25);
@@ -1203,7 +1197,7 @@ namespace Physics_Data_Debug
             // 
             this.label39.AutoSize = true;
             this.label39.ForeColor = System.Drawing.Color.White;
-            this.label39.Location = new System.Drawing.Point(186, 1240);
+            this.label39.Location = new System.Drawing.Point(15, 1226);
             this.label39.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(168, 25);
@@ -1214,7 +1208,7 @@ namespace Physics_Data_Debug
             // 
             this.label40.AutoSize = true;
             this.label40.ForeColor = System.Drawing.Color.White;
-            this.label40.Location = new System.Drawing.Point(1132, 294);
+            this.label40.Location = new System.Drawing.Point(955, 275);
             this.label40.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(888, 25);
@@ -1226,7 +1220,7 @@ namespace Physics_Data_Debug
             // 
             this.label41.AutoSize = true;
             this.label41.ForeColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(1130, 987);
+            this.label41.Location = new System.Drawing.Point(955, 970);
             this.label41.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(888, 25);
@@ -1238,7 +1232,7 @@ namespace Physics_Data_Debug
             // 
             this.label42.AutoSize = true;
             this.label42.ForeColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(1132, 331);
+            this.label42.Location = new System.Drawing.Point(955, 312);
             this.label42.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(248, 25);
@@ -1249,7 +1243,7 @@ namespace Physics_Data_Debug
             // 
             this.label43.AutoSize = true;
             this.label43.ForeColor = System.Drawing.Color.White;
-            this.label43.Location = new System.Drawing.Point(1130, 1031);
+            this.label43.Location = new System.Drawing.Point(955, 1012);
             this.label43.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(248, 25);
@@ -1260,7 +1254,7 @@ namespace Physics_Data_Debug
             // 
             this.label44.AutoSize = true;
             this.label44.ForeColor = System.Drawing.Color.White;
-            this.label44.Location = new System.Drawing.Point(1130, 460);
+            this.label44.Location = new System.Drawing.Point(955, 446);
             this.label44.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(496, 25);
@@ -1271,7 +1265,7 @@ namespace Physics_Data_Debug
             // 
             this.label45.AutoSize = true;
             this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(1130, 1160);
+            this.label45.Location = new System.Drawing.Point(955, 1140);
             this.label45.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(496, 25);
@@ -1282,7 +1276,7 @@ namespace Physics_Data_Debug
             // 
             this.label46.AutoSize = true;
             this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(1130, 417);
+            this.label46.Location = new System.Drawing.Point(955, 403);
             this.label46.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(313, 25);
@@ -1293,7 +1287,7 @@ namespace Physics_Data_Debug
             // 
             this.label47.AutoSize = true;
             this.label47.ForeColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(1132, 1115);
+            this.label47.Location = new System.Drawing.Point(955, 1102);
             this.label47.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(313, 25);
@@ -1304,8 +1298,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ReboundRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundRate.Location = new System.Drawing.Point(918, 367);
-            this.textBox_FR_ReboundRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ReboundRate.Location = new System.Drawing.Point(747, 353);
+            this.textBox_FR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ReboundRate.Name = "textBox_FR_ReboundRate";
             this.textBox_FR_ReboundRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_ReboundRate.TabIndex = 189;
@@ -1314,7 +1308,7 @@ namespace Physics_Data_Debug
             // 
             this.label48.AutoSize = true;
             this.label48.ForeColor = System.Drawing.Color.White;
-            this.label48.Location = new System.Drawing.Point(686, 373);
+            this.label48.Location = new System.Drawing.Point(515, 359);
             this.label48.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(150, 25);
@@ -1325,8 +1319,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ReboundRate.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundRate.Location = new System.Drawing.Point(418, 367);
-            this.textBox_FL_ReboundRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ReboundRate.Location = new System.Drawing.Point(247, 353);
+            this.textBox_FL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ReboundRate.Name = "textBox_FL_ReboundRate";
             this.textBox_FL_ReboundRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_ReboundRate.TabIndex = 187;
@@ -1335,7 +1329,7 @@ namespace Physics_Data_Debug
             // 
             this.label49.AutoSize = true;
             this.label49.ForeColor = System.Drawing.Color.White;
-            this.label49.Location = new System.Drawing.Point(186, 373);
+            this.label49.Location = new System.Drawing.Point(15, 359);
             this.label49.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(150, 25);
@@ -1346,8 +1340,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ReboundRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundRate.Location = new System.Drawing.Point(918, 1067);
-            this.textBox_RR_ReboundRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ReboundRate.Location = new System.Drawing.Point(747, 1053);
+            this.textBox_RR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ReboundRate.Name = "textBox_RR_ReboundRate";
             this.textBox_RR_ReboundRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_ReboundRate.TabIndex = 193;
@@ -1356,7 +1350,7 @@ namespace Physics_Data_Debug
             // 
             this.label50.AutoSize = true;
             this.label50.ForeColor = System.Drawing.Color.White;
-            this.label50.Location = new System.Drawing.Point(686, 1073);
+            this.label50.Location = new System.Drawing.Point(515, 1059);
             this.label50.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(150, 25);
@@ -1367,8 +1361,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ReboundRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundRate.Location = new System.Drawing.Point(418, 1067);
-            this.textBox_RL_ReboundRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ReboundRate.Location = new System.Drawing.Point(247, 1053);
+            this.textBox_RL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ReboundRate.Name = "textBox_RL_ReboundRate";
             this.textBox_RL_ReboundRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_ReboundRate.TabIndex = 191;
@@ -1377,7 +1371,7 @@ namespace Physics_Data_Debug
             // 
             this.label51.AutoSize = true;
             this.label51.ForeColor = System.Drawing.Color.White;
-            this.label51.Location = new System.Drawing.Point(186, 1073);
+            this.label51.Location = new System.Drawing.Point(15, 1059);
             this.label51.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(150, 25);
@@ -1388,8 +1382,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopDamp.Location = new System.Drawing.Point(918, 627);
-            this.textBox_FR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpStopDamp.Location = new System.Drawing.Point(747, 613);
+            this.textBox_FR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpStopDamp.Name = "textBox_FR_BumpStopDamp";
             this.textBox_FR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_BumpStopDamp.TabIndex = 197;
@@ -1398,7 +1392,7 @@ namespace Physics_Data_Debug
             // 
             this.label52.AutoSize = true;
             this.label52.ForeColor = System.Drawing.Color.White;
-            this.label52.Location = new System.Drawing.Point(686, 629);
+            this.label52.Location = new System.Drawing.Point(515, 615);
             this.label52.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(179, 25);
@@ -1409,8 +1403,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopDamp.Location = new System.Drawing.Point(418, 627);
-            this.textBox_FL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpStopDamp.Location = new System.Drawing.Point(247, 613);
+            this.textBox_FL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpStopDamp.Name = "textBox_FL_BumpStopDamp";
             this.textBox_FL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_BumpStopDamp.TabIndex = 195;
@@ -1419,7 +1413,7 @@ namespace Physics_Data_Debug
             // 
             this.label53.AutoSize = true;
             this.label53.ForeColor = System.Drawing.Color.White;
-            this.label53.Location = new System.Drawing.Point(186, 629);
+            this.label53.Location = new System.Drawing.Point(15, 615);
             this.label53.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(179, 25);
@@ -1430,8 +1424,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpStopRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopRate.Location = new System.Drawing.Point(918, 1238);
-            this.textBox_RR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpStopRate.Location = new System.Drawing.Point(747, 1224);
+            this.textBox_RR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpStopRate.Name = "textBox_RR_BumpStopRate";
             this.textBox_RR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_BumpStopRate.TabIndex = 201;
@@ -1440,7 +1434,7 @@ namespace Physics_Data_Debug
             // 
             this.label54.AutoSize = true;
             this.label54.ForeColor = System.Drawing.Color.White;
-            this.label54.Location = new System.Drawing.Point(684, 1329);
+            this.label54.Location = new System.Drawing.Point(513, 1315);
             this.label54.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(179, 25);
@@ -1451,8 +1445,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpStopRate.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopRate.Location = new System.Drawing.Point(418, 1238);
-            this.textBox_RL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpStopRate.Location = new System.Drawing.Point(247, 1224);
+            this.textBox_RL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpStopRate.Name = "textBox_RL_BumpStopRate";
             this.textBox_RL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_BumpStopRate.TabIndex = 199;
@@ -1461,7 +1455,7 @@ namespace Physics_Data_Debug
             // 
             this.label55.AutoSize = true;
             this.label55.ForeColor = System.Drawing.Color.White;
-            this.label55.Location = new System.Drawing.Point(186, 1329);
+            this.label55.Location = new System.Drawing.Point(15, 1315);
             this.label55.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(179, 25);
@@ -1472,8 +1466,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(918, 583);
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 569);
+            this.textBox_FR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpStopRateGainDeflectionSquared.Name = "textBox_FR_BumpStopRateGainDeflectionSquared";
             this.textBox_FR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_BumpStopRateGainDeflectionSquared.TabIndex = 205;
@@ -1482,7 +1476,7 @@ namespace Physics_Data_Debug
             // 
             this.label56.AutoSize = true;
             this.label56.ForeColor = System.Drawing.Color.White;
-            this.label56.Location = new System.Drawing.Point(686, 588);
+            this.label56.Location = new System.Drawing.Point(515, 574);
             this.label56.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(219, 25);
@@ -1493,8 +1487,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(418, 583);
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 569);
+            this.textBox_FL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpStopRateGainDeflectionSquared.Name = "textBox_FL_BumpStopRateGainDeflectionSquared";
             this.textBox_FL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_BumpStopRateGainDeflectionSquared.TabIndex = 203;
@@ -1503,7 +1497,7 @@ namespace Physics_Data_Debug
             // 
             this.label57.AutoSize = true;
             this.label57.ForeColor = System.Drawing.Color.White;
-            this.label57.Location = new System.Drawing.Point(188, 587);
+            this.label57.Location = new System.Drawing.Point(17, 573);
             this.label57.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(219, 25);
@@ -1514,7 +1508,7 @@ namespace Physics_Data_Debug
             // 
             this.label58.AutoSize = true;
             this.label58.ForeColor = System.Drawing.Color.White;
-            this.label58.Location = new System.Drawing.Point(1132, 588);
+            this.label58.Location = new System.Drawing.Point(955, 569);
             this.label58.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(209, 25);
@@ -1525,7 +1519,7 @@ namespace Physics_Data_Debug
             // 
             this.label59.AutoSize = true;
             this.label59.ForeColor = System.Drawing.Color.White;
-            this.label59.Location = new System.Drawing.Point(1132, 675);
+            this.label59.Location = new System.Drawing.Point(955, 656);
             this.label59.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(209, 25);
@@ -1536,8 +1530,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(918, 669);
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 655);
+            this.textBox_FR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpStopDampGainDeflectionSquared.Name = "textBox_FR_BumpStopDampGainDeflectionSquared";
             this.textBox_FR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_FR_BumpStopDampGainDeflectionSquared.TabIndex = 210;
@@ -1546,7 +1540,7 @@ namespace Physics_Data_Debug
             // 
             this.label60.AutoSize = true;
             this.label60.ForeColor = System.Drawing.Color.White;
-            this.label60.Location = new System.Drawing.Point(686, 671);
+            this.label60.Location = new System.Drawing.Point(515, 657);
             this.label60.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(230, 25);
@@ -1557,8 +1551,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(418, 669);
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 655);
+            this.textBox_FL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpStopDampGainDeflectionSquared.Name = "textBox_FL_BumpStopDampGainDeflectionSquared";
             this.textBox_FL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_FL_BumpStopDampGainDeflectionSquared.TabIndex = 208;
@@ -1567,7 +1561,7 @@ namespace Physics_Data_Debug
             // 
             this.label61.AutoSize = true;
             this.label61.ForeColor = System.Drawing.Color.White;
-            this.label61.Location = new System.Drawing.Point(186, 671);
+            this.label61.Location = new System.Drawing.Point(15, 657);
             this.label61.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(230, 25);
@@ -1578,7 +1572,7 @@ namespace Physics_Data_Debug
             // 
             this.label62.AutoSize = true;
             this.label62.ForeColor = System.Drawing.Color.White;
-            this.label62.Location = new System.Drawing.Point(1132, 1373);
+            this.label62.Location = new System.Drawing.Point(955, 1353);
             this.label62.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(209, 25);
@@ -1589,8 +1583,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(918, 1367);
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 1353);
+            this.textBox_RR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpStopDampGainDeflectionSquared.Name = "textBox_RR_BumpStopDampGainDeflectionSquared";
             this.textBox_RR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_BumpStopDampGainDeflectionSquared.TabIndex = 220;
@@ -1599,7 +1593,7 @@ namespace Physics_Data_Debug
             // 
             this.label63.AutoSize = true;
             this.label63.ForeColor = System.Drawing.Color.White;
-            this.label63.Location = new System.Drawing.Point(686, 1373);
+            this.label63.Location = new System.Drawing.Point(515, 1359);
             this.label63.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(230, 25);
@@ -1610,8 +1604,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(418, 1367);
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 1353);
+            this.textBox_RL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpStopDampGainDeflectionSquared.Name = "textBox_RL_BumpStopDampGainDeflectionSquared";
             this.textBox_RL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_BumpStopDampGainDeflectionSquared.TabIndex = 218;
@@ -1620,7 +1614,7 @@ namespace Physics_Data_Debug
             // 
             this.label64.AutoSize = true;
             this.label64.ForeColor = System.Drawing.Color.White;
-            this.label64.Location = new System.Drawing.Point(186, 1373);
+            this.label64.Location = new System.Drawing.Point(15, 1359);
             this.label64.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(230, 25);
@@ -1631,7 +1625,7 @@ namespace Physics_Data_Debug
             // 
             this.label65.AutoSize = true;
             this.label65.ForeColor = System.Drawing.Color.White;
-            this.label65.Location = new System.Drawing.Point(1132, 1281);
+            this.label65.Location = new System.Drawing.Point(955, 1272);
             this.label65.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(209, 25);
@@ -1642,8 +1636,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopDamp.Location = new System.Drawing.Point(918, 1325);
-            this.textBox_RR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpStopDamp.Location = new System.Drawing.Point(747, 1311);
+            this.textBox_RR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpStopDamp.Name = "textBox_RR_BumpStopDamp";
             this.textBox_RR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_BumpStopDamp.TabIndex = 215;
@@ -1652,7 +1646,7 @@ namespace Physics_Data_Debug
             // 
             this.label66.AutoSize = true;
             this.label66.ForeColor = System.Drawing.Color.White;
-            this.label66.Location = new System.Drawing.Point(686, 1281);
+            this.label66.Location = new System.Drawing.Point(515, 1267);
             this.label66.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(219, 25);
@@ -1663,8 +1657,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopDamp.Location = new System.Drawing.Point(418, 1325);
-            this.textBox_RL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpStopDamp.Location = new System.Drawing.Point(247, 1311);
+            this.textBox_RL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpStopDamp.Name = "textBox_RL_BumpStopDamp";
             this.textBox_RL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_BumpStopDamp.TabIndex = 213;
@@ -1673,7 +1667,7 @@ namespace Physics_Data_Debug
             // 
             this.label67.AutoSize = true;
             this.label67.ForeColor = System.Drawing.Color.White;
-            this.label67.Location = new System.Drawing.Point(186, 1281);
+            this.label67.Location = new System.Drawing.Point(15, 1267);
             this.label67.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(219, 25);
@@ -1684,8 +1678,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(918, 1283);
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 1269);
+            this.textBox_RR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpStopRateGainDeflectionSquared.Name = "textBox_RR_BumpStopRateGainDeflectionSquared";
             this.textBox_RR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_RR_BumpStopRateGainDeflectionSquared.TabIndex = 224;
@@ -1694,8 +1688,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(418, 1283);
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 1269);
+            this.textBox_RL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpStopRateGainDeflectionSquared.Name = "textBox_RL_BumpStopRateGainDeflectionSquared";
             this.textBox_RL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
             this.textBox_RL_BumpStopRateGainDeflectionSquared.TabIndex = 223;
@@ -1708,8 +1702,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpLimitsY.Location = new System.Drawing.Point(520, 154);
-            this.textBox_FL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpLimitsY.Location = new System.Drawing.Point(349, 140);
+            this.textBox_FL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpLimitsY.Name = "textBox_FL_BumpLimitsY";
             this.textBox_FL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_FL_BumpLimitsY.TabIndex = 225;
@@ -1718,8 +1712,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpLimitsY.Location = new System.Drawing.Point(1020, 154);
-            this.textBox_FR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpLimitsY.Location = new System.Drawing.Point(849, 140);
+            this.textBox_FR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpLimitsY.Name = "textBox_FR_BumpLimitsY";
             this.textBox_FR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_FR_BumpLimitsY.TabIndex = 226;
@@ -1728,8 +1722,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundLimitsY.Location = new System.Drawing.Point(520, 196);
-            this.textBox_FL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_ReboundLimitsY.Location = new System.Drawing.Point(349, 182);
+            this.textBox_FL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_ReboundLimitsY.Name = "textBox_FL_ReboundLimitsY";
             this.textBox_FL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_FL_ReboundLimitsY.TabIndex = 227;
@@ -1738,8 +1732,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FL_BumpDampY.BackColor = System.Drawing.Color.Black;
             this.textBox_FL_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpDampY.Location = new System.Drawing.Point(520, 238);
-            this.textBox_FL_BumpDampY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FL_BumpDampY.Location = new System.Drawing.Point(349, 224);
+            this.textBox_FL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FL_BumpDampY.Name = "textBox_FL_BumpDampY";
             this.textBox_FL_BumpDampY.Size = new System.Drawing.Size(96, 31);
             this.textBox_FL_BumpDampY.TabIndex = 228;
@@ -1748,8 +1742,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundLimitsY.Location = new System.Drawing.Point(1020, 196);
-            this.textBox_FR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_ReboundLimitsY.Location = new System.Drawing.Point(849, 182);
+            this.textBox_FR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_ReboundLimitsY.Name = "textBox_FR_ReboundLimitsY";
             this.textBox_FR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_FR_ReboundLimitsY.TabIndex = 229;
@@ -1758,8 +1752,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_FR_BumpDampY.BackColor = System.Drawing.Color.Black;
             this.textBox_FR_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpDampY.Location = new System.Drawing.Point(1020, 238);
-            this.textBox_FR_BumpDampY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_FR_BumpDampY.Location = new System.Drawing.Point(849, 224);
+            this.textBox_FR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_FR_BumpDampY.Name = "textBox_FR_BumpDampY";
             this.textBox_FR_BumpDampY.Size = new System.Drawing.Size(96, 31);
             this.textBox_FR_BumpDampY.TabIndex = 230;
@@ -1768,8 +1762,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpLimitsY.Location = new System.Drawing.Point(520, 852);
-            this.textBox_RL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpLimitsY.Location = new System.Drawing.Point(349, 838);
+            this.textBox_RL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpLimitsY.Name = "textBox_RL_BumpLimitsY";
             this.textBox_RL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_RL_BumpLimitsY.TabIndex = 231;
@@ -1778,8 +1772,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundLimitsY.Location = new System.Drawing.Point(520, 894);
-            this.textBox_RL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_ReboundLimitsY.Location = new System.Drawing.Point(349, 880);
+            this.textBox_RL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_ReboundLimitsY.Name = "textBox_RL_ReboundLimitsY";
             this.textBox_RL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_RL_ReboundLimitsY.TabIndex = 232;
@@ -1788,8 +1782,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RL_BumpDampY.BackColor = System.Drawing.Color.Black;
             this.textBox_RL_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpDampY.Location = new System.Drawing.Point(520, 938);
-            this.textBox_RL_BumpDampY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RL_BumpDampY.Location = new System.Drawing.Point(349, 924);
+            this.textBox_RL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RL_BumpDampY.Name = "textBox_RL_BumpDampY";
             this.textBox_RL_BumpDampY.Size = new System.Drawing.Size(96, 31);
             this.textBox_RL_BumpDampY.TabIndex = 233;
@@ -1798,8 +1792,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpLimitsY.Location = new System.Drawing.Point(1020, 852);
-            this.textBox_RR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpLimitsY.Location = new System.Drawing.Point(849, 838);
+            this.textBox_RR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpLimitsY.Name = "textBox_RR_BumpLimitsY";
             this.textBox_RR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_RR_BumpLimitsY.TabIndex = 234;
@@ -1808,8 +1802,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundLimitsY.Location = new System.Drawing.Point(1020, 894);
-            this.textBox_RR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_ReboundLimitsY.Location = new System.Drawing.Point(849, 880);
+            this.textBox_RR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_ReboundLimitsY.Name = "textBox_RR_ReboundLimitsY";
             this.textBox_RR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
             this.textBox_RR_ReboundLimitsY.TabIndex = 235;
@@ -1818,8 +1812,8 @@ namespace Physics_Data_Debug
             // 
             this.textBox_RR_BumpDampY.BackColor = System.Drawing.Color.Black;
             this.textBox_RR_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpDampY.Location = new System.Drawing.Point(1020, 938);
-            this.textBox_RR_BumpDampY.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_RR_BumpDampY.Location = new System.Drawing.Point(849, 924);
+            this.textBox_RR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_RR_BumpDampY.Name = "textBox_RR_BumpDampY";
             this.textBox_RR_BumpDampY.Size = new System.Drawing.Size(96, 31);
             this.textBox_RR_BumpDampY.TabIndex = 236;
@@ -1827,8 +1821,8 @@ namespace Physics_Data_Debug
             // textBox_FL_SuspensionGeometry
             // 
             this.textBox_FL_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FL_SuspensionGeometry.Location = new System.Drawing.Point(1136, 23);
-            this.textBox_FL_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_FL_SuspensionGeometry.Location = new System.Drawing.Point(3670, 13);
+            this.textBox_FL_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_FL_SuspensionGeometry.Multiline = true;
             this.textBox_FL_SuspensionGeometry.Name = "textBox_FL_SuspensionGeometry";
             this.textBox_FL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
@@ -1839,8 +1833,8 @@ namespace Physics_Data_Debug
             // textBox_RL_SuspensionGeometry
             // 
             this.textBox_RL_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_RL_SuspensionGeometry.Location = new System.Drawing.Point(1740, 23);
-            this.textBox_RL_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_RL_SuspensionGeometry.Location = new System.Drawing.Point(4274, 13);
+            this.textBox_RL_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_RL_SuspensionGeometry.Multiline = true;
             this.textBox_RL_SuspensionGeometry.Name = "textBox_RL_SuspensionGeometry";
             this.textBox_RL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
@@ -1851,8 +1845,8 @@ namespace Physics_Data_Debug
             // textBox_RR_SuspensionGeometry
             // 
             this.textBox_RR_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_RR_SuspensionGeometry.Location = new System.Drawing.Point(2944, 23);
-            this.textBox_RR_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_RR_SuspensionGeometry.Location = new System.Drawing.Point(5482, 13);
+            this.textBox_RR_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_RR_SuspensionGeometry.Multiline = true;
             this.textBox_RR_SuspensionGeometry.Name = "textBox_RR_SuspensionGeometry";
             this.textBox_RR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
@@ -1863,8 +1857,8 @@ namespace Physics_Data_Debug
             // textBox_FR_SuspensionGeometry
             // 
             this.textBox_FR_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FR_SuspensionGeometry.Location = new System.Drawing.Point(2340, 23);
-            this.textBox_FR_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_FR_SuspensionGeometry.Location = new System.Drawing.Point(4878, 13);
+            this.textBox_FR_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_FR_SuspensionGeometry.Multiline = true;
             this.textBox_FR_SuspensionGeometry.Name = "textBox_FR_SuspensionGeometry";
             this.textBox_FR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
@@ -1879,8 +1873,8 @@ namespace Physics_Data_Debug
             chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
             chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.Maximum = 4D;
-            chartArea1.AxisX.Minimum = -4D;
+            chartArea1.AxisX.Maximum = 2D;
+            chartArea1.AxisX.Minimum = -2D;
             chartArea1.AxisX.MinorGrid.Enabled = true;
             chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
             chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
@@ -1894,7 +1888,7 @@ namespace Physics_Data_Debug
             chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
             chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.Maximum = 3D;
+            chartArea1.AxisY.Maximum = 2D;
             chartArea1.AxisY.Minimum = -1D;
             chartArea1.AxisY.MinorGrid.Enabled = true;
             chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
@@ -1907,8 +1901,8 @@ namespace Physics_Data_Debug
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(1136, 23);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chart1.Location = new System.Drawing.Point(1853, 13);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
@@ -1978,6 +1972,8 @@ namespace Physics_Data_Debug
             series6.MarkerSize = 3;
             series6.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series6.Name = "FLUpperArmMidpointXY";
+            dataPoint9.Color = System.Drawing.Color.Transparent;
+            dataPoint9.MarkerColor = System.Drawing.Color.Transparent;
             series6.Points.Add(dataPoint8);
             series6.Points.Add(dataPoint9);
             series7.ChartArea = "ChartArea1";
@@ -2014,6 +2010,8 @@ namespace Physics_Data_Debug
             series9.MarkerSize = 3;
             series9.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series9.Name = "FLLowerArmMidpointXY";
+            dataPoint15.Color = System.Drawing.Color.Transparent;
+            dataPoint15.MarkerColor = System.Drawing.Color.Transparent;
             series9.Points.Add(dataPoint14);
             series9.Points.Add(dataPoint15);
             series10.ChartArea = "ChartArea1";
@@ -2089,6 +2087,8 @@ namespace Physics_Data_Debug
             series15.MarkerSize = 3;
             series15.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series15.Name = "FRUpperArmMidpointXY";
+            dataPoint27.Color = System.Drawing.Color.Transparent;
+            dataPoint27.MarkerColor = System.Drawing.Color.Transparent;
             series15.Points.Add(dataPoint26);
             series15.Points.Add(dataPoint27);
             series16.ChartArea = "ChartArea1";
@@ -2125,6 +2125,8 @@ namespace Physics_Data_Debug
             series18.MarkerSize = 3;
             series18.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series18.Name = "FRLowerArmMidpointXY";
+            dataPoint33.Color = System.Drawing.Color.Transparent;
+            dataPoint33.MarkerColor = System.Drawing.Color.Transparent;
             series18.Points.Add(dataPoint32);
             series18.Points.Add(dataPoint33);
             series19.ChartArea = "ChartArea1";
@@ -2152,6 +2154,31 @@ namespace Physics_Data_Debug
             series20.Points.Add(dataPoint36);
             series20.Points.Add(dataPoint37);
             series20.Points.Add(dataPoint38);
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series21.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series21.IsValueShownAsLabel = true;
+            series21.LabelFormat = "{0:N3}";
+            series21.Legend = "Legend1";
+            series21.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series21.MarkerSize = 8;
+            series21.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series21.Name = "FrontRollCenterXY";
+            series21.Points.Add(dataPoint39);
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series22.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series22.Legend = "Legend1";
+            series22.Name = "LeftRCLine";
+            series22.Points.Add(dataPoint40);
+            series22.Points.Add(dataPoint41);
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series23.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series23.Legend = "Legend1";
+            series23.Name = "RightRCLine";
+            series23.Points.Add(dataPoint42);
+            series23.Points.Add(dataPoint43);
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
@@ -2172,6 +2199,9 @@ namespace Physics_Data_Debug
             this.chart1.Series.Add(series18);
             this.chart1.Series.Add(series19);
             this.chart1.Series.Add(series20);
+            this.chart1.Series.Add(series21);
+            this.chart1.Series.Add(series22);
+            this.chart1.Series.Add(series23);
             this.chart1.Size = new System.Drawing.Size(1878, 1375);
             this.chart1.TabIndex = 241;
             this.chart1.Text = "chart1";
@@ -2183,10 +2213,10 @@ namespace Physics_Data_Debug
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(2418, 1471);
+            this.Controls.Add(this.textBox_FL_SuspensionGeometry);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.textBox_FR_SuspensionGeometry);
             this.Controls.Add(this.textBox_RL_SuspensionGeometry);
-            this.Controls.Add(this.textBox_FL_SuspensionGeometry);
             this.Controls.Add(this.textBox_RR_BumpDampY);
             this.Controls.Add(this.textBox_RR_ReboundLimitsY);
             this.Controls.Add(this.textBox_RR_BumpLimitsY);
@@ -2334,10 +2364,9 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.flThermalAirTransfer);
             this.Controls.Add(this.flWidth);
             this.Controls.Add(this.flRadius);
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.textBox_FL_SpringRate);
             this.Controls.Add(this.textBox_RR_SuspensionGeometry);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormSuspensionStaticValues";
             this.Text = "SuspensionStaticValues";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSuspensionStaticValues_Closing);
@@ -2425,7 +2454,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label flThermalAirTransfer;
         private System.Windows.Forms.Label flWidth;
         private System.Windows.Forms.Label flRadius;
-        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.TextBox textBox_FL_SpringRate;
         private System.Windows.Forms.TextBox textBox_FR_ReboundStartPosition;
         private System.Windows.Forms.Label label32;
