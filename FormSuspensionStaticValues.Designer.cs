@@ -30,84 +30,15 @@ namespace Physics_Data_Debug
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0.329D, 0.12D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(-0.0222D, 0.136D);
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0.329D, 0.12D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(-0.0222D, 0.136D);
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint15 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint16 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint17 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint18 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint19 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint20 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint21 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint22 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint23 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint24 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint25 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint26 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint27 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint28 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint29 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint30 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint31 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint32 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint33 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint34 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint35 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint36 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint37 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint38 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint39 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint40 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint41 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint42 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint43 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox_RR_BumpStopLength = new System.Windows.Forms.TextBox();
-            this.textBox_RR_ReboundEndPosition = new System.Windows.Forms.TextBox();
-            this.textBox_RR_CompressionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_RR_ExpansionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_RR_BumpDampX = new System.Windows.Forms.TextBox();
-            this.textBox_RR_ReboundLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_RR_BumpLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_RR_ProgressiveRate = new System.Windows.Forms.TextBox();
+            this.label_RR_BumpStopLength = new System.Windows.Forms.Label();
+            this.label_RR_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.label_RR_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_RR_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_RR_BumpDampX = new System.Windows.Forms.Label();
+            this.label_RR_ReboundLimitsX = new System.Windows.Forms.Label();
+            this.label_RR_BumpLimitsX = new System.Windows.Forms.Label();
+            this.label_RR_ProgressiveRate = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -117,16 +48,16 @@ namespace Physics_Data_Debug
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.textBox_RR_SpringRate = new System.Windows.Forms.TextBox();
+            this.label_RR_SpringRate = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox_RL_BumpStopLength = new System.Windows.Forms.TextBox();
-            this.textBox_RL_ReboundEndPosition = new System.Windows.Forms.TextBox();
-            this.textBox_RL_CompressionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_RL_ExpansionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_RL_BumpDampX = new System.Windows.Forms.TextBox();
-            this.textBox_RL_ReboundLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_RL_BumpLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_RL_ProgressiveRate = new System.Windows.Forms.TextBox();
+            this.label_RL_BumpStopLength = new System.Windows.Forms.Label();
+            this.label_RL_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.label_RL_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_RL_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_RL_BumpDampX = new System.Windows.Forms.Label();
+            this.label_RL_ReboundLimitsX = new System.Windows.Forms.Label();
+            this.label_RL_BumpLimitsX = new System.Windows.Forms.Label();
+            this.label_RL_ProgressiveRate = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -136,16 +67,16 @@ namespace Physics_Data_Debug
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox_RL_SpringRate = new System.Windows.Forms.TextBox();
+            this.label_RL_SpringRate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox_FR_BumpStopLength = new System.Windows.Forms.TextBox();
-            this.textBox_FR_ReboundEndPosition = new System.Windows.Forms.TextBox();
-            this.textBox_FR_CompressionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_FR_ExpansionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_FR_BumpDampX = new System.Windows.Forms.TextBox();
-            this.textBox_FR_ReboundLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_FR_BumpLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_FR_ProgressiveRate = new System.Windows.Forms.TextBox();
+            this.label_FR_BumpStopLength = new System.Windows.Forms.Label();
+            this.label_FR_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.label_FR_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_FR_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_FR_BumpDampX = new System.Windows.Forms.Label();
+            this.label_FR_ReboundLimitsX = new System.Windows.Forms.Label();
+            this.label_FR_BumpLimitsX = new System.Windows.Forms.Label();
+            this.label_FR_ProgressiveRate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -155,16 +86,16 @@ namespace Physics_Data_Debug
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox_FR_SpringRate = new System.Windows.Forms.TextBox();
+            this.label_FR_SpringRate = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox_FL_BumpStopLength = new System.Windows.Forms.TextBox();
-            this.textBox_FL_ReboundEndPosition = new System.Windows.Forms.TextBox();
-            this.textBox_FL_CompressionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_FL_ExpansionLimitFromZero = new System.Windows.Forms.TextBox();
-            this.textBox_FL_BumpDampX = new System.Windows.Forms.TextBox();
-            this.textBox_FL_ReboundLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_FL_BumpLimitsX = new System.Windows.Forms.TextBox();
-            this.textBox_FL_ProgressiveRate = new System.Windows.Forms.TextBox();
+            this.label_FL_BumpStopLength = new System.Windows.Forms.Label();
+            this.label_FL_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.label_FL_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_FL_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.label_FL_BumpDampX = new System.Windows.Forms.Label();
+            this.label_FL_ReboundLimitsX = new System.Windows.Forms.Label();
+            this.label_FL_BumpLimitsX = new System.Windows.Forms.Label();
+            this.label_FL_ProgressiveRate = new System.Windows.Forms.Label();
             this.flMomentOfInertia = new System.Windows.Forms.Label();
             this.flMass = new System.Windows.Forms.Label();
             this.flMaxDeflection = new System.Windows.Forms.Label();
@@ -174,18 +105,18 @@ namespace Physics_Data_Debug
             this.flThermalAirTransfer = new System.Windows.Forms.Label();
             this.flWidth = new System.Windows.Forms.Label();
             this.flRadius = new System.Windows.Forms.Label();
-            this.textBox_FL_SpringRate = new System.Windows.Forms.TextBox();
-            this.textBox_FR_ReboundStartPosition = new System.Windows.Forms.TextBox();
+            this.label_FL_SpringRate = new System.Windows.Forms.Label();
+            this.label_FR_ReboundStartPosition = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.textBox_FL_ReboundStartPosition = new System.Windows.Forms.TextBox();
+            this.label_FL_ReboundStartPosition = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.textBox_RR_ReboundStartPosition = new System.Windows.Forms.TextBox();
+            this.label_RR_ReboundStartPosition = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox_RL_ReboundStartPosition = new System.Windows.Forms.TextBox();
+            this.label_RL_ReboundStartPosition = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.textBox_FR_BumpStopRate = new System.Windows.Forms.TextBox();
+            this.label_FR_BumpStopRate = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.textBox_FL_BumpStopRate = new System.Windows.Forms.TextBox();
+            this.label_FL_BumpStopRate = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -197,63 +128,57 @@ namespace Physics_Data_Debug
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
-            this.textBox_FR_ReboundRate = new System.Windows.Forms.TextBox();
+            this.label_FR_ReboundRate = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.textBox_FL_ReboundRate = new System.Windows.Forms.TextBox();
+            this.label_FL_ReboundRate = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.textBox_RR_ReboundRate = new System.Windows.Forms.TextBox();
+            this.label_RR_ReboundRate = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
-            this.textBox_RL_ReboundRate = new System.Windows.Forms.TextBox();
+            this.label_RL_ReboundRate = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
-            this.textBox_FR_BumpStopDamp = new System.Windows.Forms.TextBox();
+            this.label_FR_BumpStopDamp = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
-            this.textBox_FL_BumpStopDamp = new System.Windows.Forms.TextBox();
+            this.label_FL_BumpStopDamp = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
-            this.textBox_RR_BumpStopRate = new System.Windows.Forms.TextBox();
+            this.label_RR_BumpStopRate = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
-            this.textBox_RL_BumpStopRate = new System.Windows.Forms.TextBox();
+            this.label_RL_BumpStopRate = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
-            this.textBox_FR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.TextBox();
+            this.label_FR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
-            this.textBox_FL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.TextBox();
+            this.label_FL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
-            this.textBox_FR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.TextBox();
+            this.label_FR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.textBox_FL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.TextBox();
+            this.label_FL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
-            this.textBox_RR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.TextBox();
+            this.label_RR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
-            this.textBox_RL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.TextBox();
+            this.label_RL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
-            this.textBox_RR_BumpStopDamp = new System.Windows.Forms.TextBox();
+            this.label_RR_BumpStopDamp = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
-            this.textBox_RL_BumpStopDamp = new System.Windows.Forms.TextBox();
+            this.label_RL_BumpStopDamp = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
-            this.textBox_RR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.TextBox();
-            this.textBox_RL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.TextBox();
+            this.label_RR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.label_RL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox_FL_BumpLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_FR_BumpLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_FL_ReboundLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_FL_BumpDampY = new System.Windows.Forms.TextBox();
-            this.textBox_FR_ReboundLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_FR_BumpDampY = new System.Windows.Forms.TextBox();
-            this.textBox_RL_BumpLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_RL_ReboundLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_RL_BumpDampY = new System.Windows.Forms.TextBox();
-            this.textBox_RR_BumpLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_RR_ReboundLimitsY = new System.Windows.Forms.TextBox();
-            this.textBox_RR_BumpDampY = new System.Windows.Forms.TextBox();
-            this.textBox_FL_SuspensionGeometry = new System.Windows.Forms.TextBox();
-            this.textBox_RL_SuspensionGeometry = new System.Windows.Forms.TextBox();
-            this.textBox_RR_SuspensionGeometry = new System.Windows.Forms.TextBox();
-            this.textBox_FR_SuspensionGeometry = new System.Windows.Forms.TextBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.label_FL_BumpLimitsY = new System.Windows.Forms.Label();
+            this.label_FR_BumpLimitsY = new System.Windows.Forms.Label();
+            this.label_FL_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.label_FL_BumpDampY = new System.Windows.Forms.Label();
+            this.label_FR_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.label_FR_BumpDampY = new System.Windows.Forms.Label();
+            this.label_RL_BumpLimitsY = new System.Windows.Forms.Label();
+            this.label_RL_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.label_RL_BumpDampY = new System.Windows.Forms.Label();
+            this.label_RR_BumpLimitsY = new System.Windows.Forms.Label();
+            this.label_RR_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.label_RR_BumpDampY = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label22
@@ -267,85 +192,93 @@ namespace Physics_Data_Debug
             this.label22.TabIndex = 161;
             this.label22.Text = "REAR RIGHT";
             // 
-            // textBox_RR_BumpStopLength
+            // label_RR_BumpStopLength
             // 
-            this.textBox_RR_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopLength.Location = new System.Drawing.Point(747, 1182);
-            this.textBox_RR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpStopLength.Name = "textBox_RR_BumpStopLength";
-            this.textBox_RR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_BumpStopLength.TabIndex = 160;
+            this.label_RR_BumpStopLength.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopLength.Location = new System.Drawing.Point(747, 1182);
+            this.label_RR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpStopLength.Name = "label_RR_BumpStopLength";
+            this.label_RR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_BumpStopLength.TabIndex = 160;
             // 
-            // textBox_RR_ReboundEndPosition
+            // label_RR_ReboundEndPosition
             // 
-            this.textBox_RR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundEndPosition.Location = new System.Drawing.Point(747, 1140);
-            this.textBox_RR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_ReboundEndPosition.Name = "textBox_RR_ReboundEndPosition";
-            this.textBox_RR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_ReboundEndPosition.TabIndex = 159;
+            this.label_RR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
+            this.label_RR_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundEndPosition.Location = new System.Drawing.Point(747, 1140);
+            this.label_RR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_ReboundEndPosition.Name = "label_RR_ReboundEndPosition";
+            this.label_RR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_ReboundEndPosition.TabIndex = 159;
             // 
-            // textBox_RR_CompressionLimitFromZero
+            // label_RR_CompressionLimitFromZero
             // 
-            this.textBox_RR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 1009);
-            this.textBox_RR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_CompressionLimitFromZero.Name = "textBox_RR_CompressionLimitFromZero";
-            this.textBox_RR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_CompressionLimitFromZero.TabIndex = 158;
+            this.label_RR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_RR_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 1009);
+            this.label_RR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_CompressionLimitFromZero.Name = "label_RR_CompressionLimitFromZero";
+            this.label_RR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_CompressionLimitFromZero.TabIndex = 158;
             // 
-            // textBox_RR_ExpansionLimitFromZero
+            // label_RR_ExpansionLimitFromZero
             // 
-            this.textBox_RR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 967);
-            this.textBox_RR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_ExpansionLimitFromZero.Name = "textBox_RR_ExpansionLimitFromZero";
-            this.textBox_RR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_ExpansionLimitFromZero.TabIndex = 157;
+            this.label_RR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_RR_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 967);
+            this.label_RR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_ExpansionLimitFromZero.Name = "label_RR_ExpansionLimitFromZero";
+            this.label_RR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_ExpansionLimitFromZero.TabIndex = 157;
             // 
-            // textBox_RR_BumpDampX
+            // label_RR_BumpDampX
             // 
-            this.textBox_RR_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpDampX.Location = new System.Drawing.Point(747, 924);
-            this.textBox_RR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpDampX.Name = "textBox_RR_BumpDampX";
-            this.textBox_RR_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RR_BumpDampX.TabIndex = 156;
+            this.label_RR_BumpDampX.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpDampX.Location = new System.Drawing.Point(747, 924);
+            this.label_RR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpDampX.Name = "label_RR_BumpDampX";
+            this.label_RR_BumpDampX.Size = new System.Drawing.Size(96, 31);
+            this.label_RR_BumpDampX.TabIndex = 156;
             // 
-            // textBox_RR_ReboundLimitsX
+            // label_RR_ReboundLimitsX
             // 
-            this.textBox_RR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundLimitsX.Location = new System.Drawing.Point(747, 880);
-            this.textBox_RR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_ReboundLimitsX.Name = "textBox_RR_ReboundLimitsX";
-            this.textBox_RR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RR_ReboundLimitsX.TabIndex = 155;
+            this.label_RR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_RR_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundLimitsX.Location = new System.Drawing.Point(747, 880);
+            this.label_RR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_ReboundLimitsX.Name = "label_RR_ReboundLimitsX";
+            this.label_RR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_RR_ReboundLimitsX.TabIndex = 155;
             // 
-            // textBox_RR_BumpLimitsX
+            // label_RR_BumpLimitsX
             // 
-            this.textBox_RR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpLimitsX.Location = new System.Drawing.Point(747, 838);
-            this.textBox_RR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpLimitsX.Name = "textBox_RR_BumpLimitsX";
-            this.textBox_RR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RR_BumpLimitsX.TabIndex = 154;
+            this.label_RR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpLimitsX.Location = new System.Drawing.Point(747, 838);
+            this.label_RR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpLimitsX.Name = "label_RR_BumpLimitsX";
+            this.label_RR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_RR_BumpLimitsX.TabIndex = 154;
             // 
-            // textBox_RR_ProgressiveRate
+            // label_RR_ProgressiveRate
             // 
-            this.textBox_RR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ProgressiveRate.Location = new System.Drawing.Point(747, 796);
-            this.textBox_RR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_ProgressiveRate.Name = "textBox_RR_ProgressiveRate";
-            this.textBox_RR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_ProgressiveRate.TabIndex = 153;
+            this.label_RR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
+            this.label_RR_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ProgressiveRate.Location = new System.Drawing.Point(747, 796);
+            this.label_RR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_ProgressiveRate.Name = "label_RR_ProgressiveRate";
+            this.label_RR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_ProgressiveRate.TabIndex = 153;
             // 
             // label23
             // 
@@ -447,15 +380,16 @@ namespace Physics_Data_Debug
             this.label31.Tag = "";
             this.label31.Text = "Spring Rate";
             // 
-            // textBox_RR_SpringRate
+            // label_RR_SpringRate
             // 
-            this.textBox_RR_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_SpringRate.Location = new System.Drawing.Point(747, 751);
-            this.textBox_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_SpringRate.Name = "textBox_RR_SpringRate";
-            this.textBox_RR_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_SpringRate.TabIndex = 143;
+            this.label_RR_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.label_RR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_SpringRate.Location = new System.Drawing.Point(747, 751);
+            this.label_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_SpringRate.Name = "label_RR_SpringRate";
+            this.label_RR_SpringRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_SpringRate.TabIndex = 143;
             // 
             // label11
             // 
@@ -468,85 +402,93 @@ namespace Physics_Data_Debug
             this.label11.TabIndex = 142;
             this.label11.Text = "REAR LEFT";
             // 
-            // textBox_RL_BumpStopLength
+            // label_RL_BumpStopLength
             // 
-            this.textBox_RL_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopLength.Location = new System.Drawing.Point(247, 1182);
-            this.textBox_RL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpStopLength.Name = "textBox_RL_BumpStopLength";
-            this.textBox_RL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_BumpStopLength.TabIndex = 141;
+            this.label_RL_BumpStopLength.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopLength.Location = new System.Drawing.Point(247, 1182);
+            this.label_RL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpStopLength.Name = "label_RL_BumpStopLength";
+            this.label_RL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_BumpStopLength.TabIndex = 141;
             // 
-            // textBox_RL_ReboundEndPosition
+            // label_RL_ReboundEndPosition
             // 
-            this.textBox_RL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundEndPosition.Location = new System.Drawing.Point(247, 1140);
-            this.textBox_RL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_ReboundEndPosition.Name = "textBox_RL_ReboundEndPosition";
-            this.textBox_RL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_ReboundEndPosition.TabIndex = 140;
+            this.label_RL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
+            this.label_RL_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundEndPosition.Location = new System.Drawing.Point(247, 1140);
+            this.label_RL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_ReboundEndPosition.Name = "label_RL_ReboundEndPosition";
+            this.label_RL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_ReboundEndPosition.TabIndex = 140;
             // 
-            // textBox_RL_CompressionLimitFromZero
+            // label_RL_CompressionLimitFromZero
             // 
-            this.textBox_RL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 1009);
-            this.textBox_RL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_CompressionLimitFromZero.Name = "textBox_RL_CompressionLimitFromZero";
-            this.textBox_RL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_CompressionLimitFromZero.TabIndex = 139;
+            this.label_RL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_RL_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 1009);
+            this.label_RL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_CompressionLimitFromZero.Name = "label_RL_CompressionLimitFromZero";
+            this.label_RL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_CompressionLimitFromZero.TabIndex = 139;
             // 
-            // textBox_RL_ExpansionLimitFromZero
+            // label_RL_ExpansionLimitFromZero
             // 
-            this.textBox_RL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 967);
-            this.textBox_RL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_ExpansionLimitFromZero.Name = "textBox_RL_ExpansionLimitFromZero";
-            this.textBox_RL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_ExpansionLimitFromZero.TabIndex = 138;
+            this.label_RL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_RL_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 967);
+            this.label_RL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_ExpansionLimitFromZero.Name = "label_RL_ExpansionLimitFromZero";
+            this.label_RL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_ExpansionLimitFromZero.TabIndex = 138;
             // 
-            // textBox_RL_BumpDampX
+            // label_RL_BumpDampX
             // 
-            this.textBox_RL_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpDampX.Location = new System.Drawing.Point(247, 924);
-            this.textBox_RL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpDampX.Name = "textBox_RL_BumpDampX";
-            this.textBox_RL_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RL_BumpDampX.TabIndex = 137;
+            this.label_RL_BumpDampX.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpDampX.Location = new System.Drawing.Point(247, 924);
+            this.label_RL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpDampX.Name = "label_RL_BumpDampX";
+            this.label_RL_BumpDampX.Size = new System.Drawing.Size(96, 31);
+            this.label_RL_BumpDampX.TabIndex = 137;
             // 
-            // textBox_RL_ReboundLimitsX
+            // label_RL_ReboundLimitsX
             // 
-            this.textBox_RL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundLimitsX.Location = new System.Drawing.Point(247, 880);
-            this.textBox_RL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_ReboundLimitsX.Name = "textBox_RL_ReboundLimitsX";
-            this.textBox_RL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RL_ReboundLimitsX.TabIndex = 136;
+            this.label_RL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_RL_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundLimitsX.Location = new System.Drawing.Point(247, 880);
+            this.label_RL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_ReboundLimitsX.Name = "label_RL_ReboundLimitsX";
+            this.label_RL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_RL_ReboundLimitsX.TabIndex = 136;
             // 
-            // textBox_RL_BumpLimitsX
+            // label_RL_BumpLimitsX
             // 
-            this.textBox_RL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpLimitsX.Location = new System.Drawing.Point(247, 838);
-            this.textBox_RL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpLimitsX.Name = "textBox_RL_BumpLimitsX";
-            this.textBox_RL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RL_BumpLimitsX.TabIndex = 135;
+            this.label_RL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpLimitsX.Location = new System.Drawing.Point(247, 838);
+            this.label_RL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpLimitsX.Name = "label_RL_BumpLimitsX";
+            this.label_RL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_RL_BumpLimitsX.TabIndex = 135;
             // 
-            // textBox_RL_ProgressiveRate
+            // label_RL_ProgressiveRate
             // 
-            this.textBox_RL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ProgressiveRate.Location = new System.Drawing.Point(247, 796);
-            this.textBox_RL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_ProgressiveRate.Name = "textBox_RL_ProgressiveRate";
-            this.textBox_RL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_ProgressiveRate.TabIndex = 134;
+            this.label_RL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
+            this.label_RL_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ProgressiveRate.Location = new System.Drawing.Point(247, 796);
+            this.label_RL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_ProgressiveRate.Name = "label_RL_ProgressiveRate";
+            this.label_RL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_ProgressiveRate.TabIndex = 134;
             // 
             // label12
             // 
@@ -647,15 +589,16 @@ namespace Physics_Data_Debug
             this.label21.TabIndex = 125;
             this.label21.Text = "Spring Rate";
             // 
-            // textBox_RL_SpringRate
+            // label_RL_SpringRate
             // 
-            this.textBox_RL_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_SpringRate.Location = new System.Drawing.Point(247, 751);
-            this.textBox_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_SpringRate.Name = "textBox_RL_SpringRate";
-            this.textBox_RL_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_SpringRate.TabIndex = 124;
+            this.label_RL_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.label_RL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_SpringRate.Location = new System.Drawing.Point(247, 751);
+            this.label_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_SpringRate.Name = "label_RL_SpringRate";
+            this.label_RL_SpringRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_SpringRate.TabIndex = 124;
             // 
             // label1
             // 
@@ -668,85 +611,93 @@ namespace Physics_Data_Debug
             this.label1.TabIndex = 123;
             this.label1.Text = "FRONT RIGHT";
             // 
-            // textBox_FR_BumpStopLength
+            // label_FR_BumpStopLength
             // 
-            this.textBox_FR_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopLength.Location = new System.Drawing.Point(747, 482);
-            this.textBox_FR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpStopLength.Name = "textBox_FR_BumpStopLength";
-            this.textBox_FR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_BumpStopLength.TabIndex = 122;
+            this.label_FR_BumpStopLength.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopLength.Location = new System.Drawing.Point(747, 482);
+            this.label_FR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpStopLength.Name = "label_FR_BumpStopLength";
+            this.label_FR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_BumpStopLength.TabIndex = 122;
             // 
-            // textBox_FR_ReboundEndPosition
+            // label_FR_ReboundEndPosition
             // 
-            this.textBox_FR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundEndPosition.Location = new System.Drawing.Point(747, 440);
-            this.textBox_FR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_ReboundEndPosition.Name = "textBox_FR_ReboundEndPosition";
-            this.textBox_FR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_ReboundEndPosition.TabIndex = 121;
+            this.label_FR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
+            this.label_FR_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundEndPosition.Location = new System.Drawing.Point(747, 440);
+            this.label_FR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_ReboundEndPosition.Name = "label_FR_ReboundEndPosition";
+            this.label_FR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_ReboundEndPosition.TabIndex = 121;
             // 
-            // textBox_FR_CompressionLimitFromZero
+            // label_FR_CompressionLimitFromZero
             // 
-            this.textBox_FR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 311);
-            this.textBox_FR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_CompressionLimitFromZero.Name = "textBox_FR_CompressionLimitFromZero";
-            this.textBox_FR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_CompressionLimitFromZero.TabIndex = 120;
+            this.label_FR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_FR_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 311);
+            this.label_FR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_CompressionLimitFromZero.Name = "label_FR_CompressionLimitFromZero";
+            this.label_FR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_CompressionLimitFromZero.TabIndex = 120;
             // 
-            // textBox_FR_ExpansionLimitFromZero
+            // label_FR_ExpansionLimitFromZero
             // 
-            this.textBox_FR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 269);
-            this.textBox_FR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_ExpansionLimitFromZero.Name = "textBox_FR_ExpansionLimitFromZero";
-            this.textBox_FR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_ExpansionLimitFromZero.TabIndex = 119;
+            this.label_FR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_FR_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 269);
+            this.label_FR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_ExpansionLimitFromZero.Name = "label_FR_ExpansionLimitFromZero";
+            this.label_FR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_ExpansionLimitFromZero.TabIndex = 119;
             // 
-            // textBox_FR_BumpDampX
+            // label_FR_BumpDampX
             // 
-            this.textBox_FR_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpDampX.Location = new System.Drawing.Point(747, 224);
-            this.textBox_FR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpDampX.Name = "textBox_FR_BumpDampX";
-            this.textBox_FR_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FR_BumpDampX.TabIndex = 118;
+            this.label_FR_BumpDampX.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpDampX.Location = new System.Drawing.Point(747, 224);
+            this.label_FR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpDampX.Name = "label_FR_BumpDampX";
+            this.label_FR_BumpDampX.Size = new System.Drawing.Size(96, 31);
+            this.label_FR_BumpDampX.TabIndex = 118;
             // 
-            // textBox_FR_ReboundLimitsX
+            // label_FR_ReboundLimitsX
             // 
-            this.textBox_FR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundLimitsX.Location = new System.Drawing.Point(747, 182);
-            this.textBox_FR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_ReboundLimitsX.Name = "textBox_FR_ReboundLimitsX";
-            this.textBox_FR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FR_ReboundLimitsX.TabIndex = 117;
+            this.label_FR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_FR_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundLimitsX.Location = new System.Drawing.Point(747, 182);
+            this.label_FR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_ReboundLimitsX.Name = "label_FR_ReboundLimitsX";
+            this.label_FR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_FR_ReboundLimitsX.TabIndex = 117;
             // 
-            // textBox_FR_BumpLimitsX
+            // label_FR_BumpLimitsX
             // 
-            this.textBox_FR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpLimitsX.Location = new System.Drawing.Point(747, 140);
-            this.textBox_FR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpLimitsX.Name = "textBox_FR_BumpLimitsX";
-            this.textBox_FR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FR_BumpLimitsX.TabIndex = 116;
+            this.label_FR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpLimitsX.Location = new System.Drawing.Point(747, 140);
+            this.label_FR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpLimitsX.Name = "label_FR_BumpLimitsX";
+            this.label_FR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_FR_BumpLimitsX.TabIndex = 116;
             // 
-            // textBox_FR_ProgressiveRate
+            // label_FR_ProgressiveRate
             // 
-            this.textBox_FR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ProgressiveRate.Location = new System.Drawing.Point(747, 96);
-            this.textBox_FR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_ProgressiveRate.Name = "textBox_FR_ProgressiveRate";
-            this.textBox_FR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_ProgressiveRate.TabIndex = 115;
+            this.label_FR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
+            this.label_FR_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ProgressiveRate.Location = new System.Drawing.Point(747, 96);
+            this.label_FR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_ProgressiveRate.Name = "label_FR_ProgressiveRate";
+            this.label_FR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_ProgressiveRate.TabIndex = 115;
             // 
             // label2
             // 
@@ -847,15 +798,16 @@ namespace Physics_Data_Debug
             this.label10.TabIndex = 106;
             this.label10.Text = "Spring Rate";
             // 
-            // textBox_FR_SpringRate
+            // label_FR_SpringRate
             // 
-            this.textBox_FR_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_SpringRate.Location = new System.Drawing.Point(747, 53);
-            this.textBox_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_SpringRate.Name = "textBox_FR_SpringRate";
-            this.textBox_FR_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_SpringRate.TabIndex = 105;
+            this.label_FR_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.label_FR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_SpringRate.Location = new System.Drawing.Point(747, 53);
+            this.label_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_SpringRate.Name = "label_FR_SpringRate";
+            this.label_FR_SpringRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_SpringRate.TabIndex = 105;
             // 
             // label13
             // 
@@ -868,85 +820,93 @@ namespace Physics_Data_Debug
             this.label13.TabIndex = 102;
             this.label13.Text = "FRONT LEFT";
             // 
-            // textBox_FL_BumpStopLength
+            // label_FL_BumpStopLength
             // 
-            this.textBox_FL_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopLength.Location = new System.Drawing.Point(247, 482);
-            this.textBox_FL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpStopLength.Name = "textBox_FL_BumpStopLength";
-            this.textBox_FL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_BumpStopLength.TabIndex = 101;
+            this.label_FL_BumpStopLength.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopLength.Location = new System.Drawing.Point(247, 482);
+            this.label_FL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpStopLength.Name = "label_FL_BumpStopLength";
+            this.label_FL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_BumpStopLength.TabIndex = 101;
             // 
-            // textBox_FL_ReboundEndPosition
+            // label_FL_ReboundEndPosition
             // 
-            this.textBox_FL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundEndPosition.Location = new System.Drawing.Point(247, 440);
-            this.textBox_FL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_ReboundEndPosition.Name = "textBox_FL_ReboundEndPosition";
-            this.textBox_FL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_ReboundEndPosition.TabIndex = 100;
+            this.label_FL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
+            this.label_FL_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundEndPosition.Location = new System.Drawing.Point(247, 440);
+            this.label_FL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_ReboundEndPosition.Name = "label_FL_ReboundEndPosition";
+            this.label_FL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_ReboundEndPosition.TabIndex = 100;
             // 
-            // textBox_FL_CompressionLimitFromZero
+            // label_FL_CompressionLimitFromZero
             // 
-            this.textBox_FL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 311);
-            this.textBox_FL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_CompressionLimitFromZero.Name = "textBox_FL_CompressionLimitFromZero";
-            this.textBox_FL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_CompressionLimitFromZero.TabIndex = 99;
+            this.label_FL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_FL_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 311);
+            this.label_FL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_CompressionLimitFromZero.Name = "label_FL_CompressionLimitFromZero";
+            this.label_FL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_CompressionLimitFromZero.TabIndex = 99;
             // 
-            // textBox_FL_ExpansionLimitFromZero
+            // label_FL_ExpansionLimitFromZero
             // 
-            this.textBox_FL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 269);
-            this.textBox_FL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_ExpansionLimitFromZero.Name = "textBox_FL_ExpansionLimitFromZero";
-            this.textBox_FL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_ExpansionLimitFromZero.TabIndex = 98;
+            this.label_FL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
+            this.label_FL_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 269);
+            this.label_FL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_ExpansionLimitFromZero.Name = "label_FL_ExpansionLimitFromZero";
+            this.label_FL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_ExpansionLimitFromZero.TabIndex = 98;
             // 
-            // textBox_FL_BumpDampX
+            // label_FL_BumpDampX
             // 
-            this.textBox_FL_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpDampX.Location = new System.Drawing.Point(247, 224);
-            this.textBox_FL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpDampX.Name = "textBox_FL_BumpDampX";
-            this.textBox_FL_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FL_BumpDampX.TabIndex = 97;
+            this.label_FL_BumpDampX.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpDampX.Location = new System.Drawing.Point(247, 224);
+            this.label_FL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpDampX.Name = "label_FL_BumpDampX";
+            this.label_FL_BumpDampX.Size = new System.Drawing.Size(96, 31);
+            this.label_FL_BumpDampX.TabIndex = 97;
             // 
-            // textBox_FL_ReboundLimitsX
+            // label_FL_ReboundLimitsX
             // 
-            this.textBox_FL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundLimitsX.Location = new System.Drawing.Point(247, 182);
-            this.textBox_FL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_ReboundLimitsX.Name = "textBox_FL_ReboundLimitsX";
-            this.textBox_FL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FL_ReboundLimitsX.TabIndex = 96;
+            this.label_FL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_FL_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundLimitsX.Location = new System.Drawing.Point(247, 182);
+            this.label_FL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_ReboundLimitsX.Name = "label_FL_ReboundLimitsX";
+            this.label_FL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_FL_ReboundLimitsX.TabIndex = 96;
             // 
-            // textBox_FL_BumpLimitsX
+            // label_FL_BumpLimitsX
             // 
-            this.textBox_FL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpLimitsX.Location = new System.Drawing.Point(247, 140);
-            this.textBox_FL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpLimitsX.Name = "textBox_FL_BumpLimitsX";
-            this.textBox_FL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FL_BumpLimitsX.TabIndex = 95;
+            this.label_FL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpLimitsX.Location = new System.Drawing.Point(247, 140);
+            this.label_FL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpLimitsX.Name = "label_FL_BumpLimitsX";
+            this.label_FL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
+            this.label_FL_BumpLimitsX.TabIndex = 95;
             // 
-            // textBox_FL_ProgressiveRate
+            // label_FL_ProgressiveRate
             // 
-            this.textBox_FL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ProgressiveRate.Location = new System.Drawing.Point(247, 96);
-            this.textBox_FL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_ProgressiveRate.Name = "textBox_FL_ProgressiveRate";
-            this.textBox_FL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_ProgressiveRate.TabIndex = 94;
+            this.label_FL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
+            this.label_FL_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ProgressiveRate.Location = new System.Drawing.Point(247, 96);
+            this.label_FL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_ProgressiveRate.Name = "label_FL_ProgressiveRate";
+            this.label_FL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_ProgressiveRate.TabIndex = 94;
             // 
             // flMomentOfInertia
             // 
@@ -1047,25 +1007,27 @@ namespace Physics_Data_Debug
             this.flRadius.TabIndex = 85;
             this.flRadius.Text = "Spring Rate";
             // 
-            // textBox_FL_SpringRate
+            // label_FL_SpringRate
             // 
-            this.textBox_FL_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_SpringRate.Location = new System.Drawing.Point(247, 53);
-            this.textBox_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_SpringRate.Name = "textBox_FL_SpringRate";
-            this.textBox_FL_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_SpringRate.TabIndex = 83;
+            this.label_FL_SpringRate.BackColor = System.Drawing.Color.Black;
+            this.label_FL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_SpringRate.Location = new System.Drawing.Point(247, 53);
+            this.label_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_SpringRate.Name = "label_FL_SpringRate";
+            this.label_FL_SpringRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_SpringRate.TabIndex = 83;
             // 
-            // textBox_FR_ReboundStartPosition
+            // label_FR_ReboundStartPosition
             // 
-            this.textBox_FR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundStartPosition.Location = new System.Drawing.Point(747, 398);
-            this.textBox_FR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_ReboundStartPosition.Name = "textBox_FR_ReboundStartPosition";
-            this.textBox_FR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_ReboundStartPosition.TabIndex = 165;
+            this.label_FR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
+            this.label_FR_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundStartPosition.Location = new System.Drawing.Point(747, 398);
+            this.label_FR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_ReboundStartPosition.Name = "label_FR_ReboundStartPosition";
+            this.label_FR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_ReboundStartPosition.TabIndex = 165;
             // 
             // label32
             // 
@@ -1078,15 +1040,16 @@ namespace Physics_Data_Debug
             this.label32.TabIndex = 164;
             this.label32.Text = "Rebound Start Pos.";
             // 
-            // textBox_FL_ReboundStartPosition
+            // label_FL_ReboundStartPosition
             // 
-            this.textBox_FL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundStartPosition.Location = new System.Drawing.Point(247, 398);
-            this.textBox_FL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_ReboundStartPosition.Name = "textBox_FL_ReboundStartPosition";
-            this.textBox_FL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_ReboundStartPosition.TabIndex = 163;
+            this.label_FL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
+            this.label_FL_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundStartPosition.Location = new System.Drawing.Point(247, 398);
+            this.label_FL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_ReboundStartPosition.Name = "label_FL_ReboundStartPosition";
+            this.label_FL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_ReboundStartPosition.TabIndex = 163;
             // 
             // label33
             // 
@@ -1099,15 +1062,16 @@ namespace Physics_Data_Debug
             this.label33.TabIndex = 162;
             this.label33.Text = "Rebound Start Pos.";
             // 
-            // textBox_RR_ReboundStartPosition
+            // label_RR_ReboundStartPosition
             // 
-            this.textBox_RR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundStartPosition.Location = new System.Drawing.Point(747, 1096);
-            this.textBox_RR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_ReboundStartPosition.Name = "textBox_RR_ReboundStartPosition";
-            this.textBox_RR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_ReboundStartPosition.TabIndex = 169;
+            this.label_RR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
+            this.label_RR_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundStartPosition.Location = new System.Drawing.Point(747, 1096);
+            this.label_RR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_ReboundStartPosition.Name = "label_RR_ReboundStartPosition";
+            this.label_RR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_ReboundStartPosition.TabIndex = 169;
             // 
             // label34
             // 
@@ -1120,15 +1084,16 @@ namespace Physics_Data_Debug
             this.label34.TabIndex = 168;
             this.label34.Text = "Rebound Start Pos.";
             // 
-            // textBox_RL_ReboundStartPosition
+            // label_RL_ReboundStartPosition
             // 
-            this.textBox_RL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundStartPosition.Location = new System.Drawing.Point(247, 1096);
-            this.textBox_RL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_ReboundStartPosition.Name = "textBox_RL_ReboundStartPosition";
-            this.textBox_RL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_ReboundStartPosition.TabIndex = 167;
+            this.label_RL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
+            this.label_RL_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundStartPosition.Location = new System.Drawing.Point(247, 1096);
+            this.label_RL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_ReboundStartPosition.Name = "label_RL_ReboundStartPosition";
+            this.label_RL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_ReboundStartPosition.TabIndex = 167;
             // 
             // label35
             // 
@@ -1141,15 +1106,16 @@ namespace Physics_Data_Debug
             this.label35.TabIndex = 166;
             this.label35.Text = "Rebound Start Pos.";
             // 
-            // textBox_FR_BumpStopRate
+            // label_FR_BumpStopRate
             // 
-            this.textBox_FR_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopRate.Location = new System.Drawing.Point(747, 526);
-            this.textBox_FR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpStopRate.Name = "textBox_FR_BumpStopRate";
-            this.textBox_FR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_BumpStopRate.TabIndex = 173;
+            this.label_FR_BumpStopRate.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopRate.Location = new System.Drawing.Point(747, 526);
+            this.label_FR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpStopRate.Name = "label_FR_BumpStopRate";
+            this.label_FR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_BumpStopRate.TabIndex = 173;
             // 
             // label36
             // 
@@ -1162,15 +1128,16 @@ namespace Physics_Data_Debug
             this.label36.TabIndex = 172;
             this.label36.Text = "Bump Stop Rate";
             // 
-            // textBox_FL_BumpStopRate
+            // label_FL_BumpStopRate
             // 
-            this.textBox_FL_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopRate.Location = new System.Drawing.Point(247, 526);
-            this.textBox_FL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpStopRate.Name = "textBox_FL_BumpStopRate";
-            this.textBox_FL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_BumpStopRate.TabIndex = 171;
+            this.label_FL_BumpStopRate.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopRate.Location = new System.Drawing.Point(247, 526);
+            this.label_FL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpStopRate.Name = "label_FL_BumpStopRate";
+            this.label_FL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_BumpStopRate.TabIndex = 171;
             // 
             // label37
             // 
@@ -1295,15 +1262,16 @@ namespace Physics_Data_Debug
             this.label47.TabIndex = 185;
             this.label47.Text = "Ride Height + Bump Stop Down";
             // 
-            // textBox_FR_ReboundRate
+            // label_FR_ReboundRate
             // 
-            this.textBox_FR_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundRate.Location = new System.Drawing.Point(747, 353);
-            this.textBox_FR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_ReboundRate.Name = "textBox_FR_ReboundRate";
-            this.textBox_FR_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_ReboundRate.TabIndex = 189;
+            this.label_FR_ReboundRate.BackColor = System.Drawing.Color.Black;
+            this.label_FR_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundRate.Location = new System.Drawing.Point(747, 353);
+            this.label_FR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_ReboundRate.Name = "label_FR_ReboundRate";
+            this.label_FR_ReboundRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_ReboundRate.TabIndex = 189;
             // 
             // label48
             // 
@@ -1316,15 +1284,16 @@ namespace Physics_Data_Debug
             this.label48.TabIndex = 188;
             this.label48.Text = "Rebound Rate";
             // 
-            // textBox_FL_ReboundRate
+            // label_FL_ReboundRate
             // 
-            this.textBox_FL_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundRate.Location = new System.Drawing.Point(247, 353);
-            this.textBox_FL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_ReboundRate.Name = "textBox_FL_ReboundRate";
-            this.textBox_FL_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_ReboundRate.TabIndex = 187;
+            this.label_FL_ReboundRate.BackColor = System.Drawing.Color.Black;
+            this.label_FL_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundRate.Location = new System.Drawing.Point(247, 353);
+            this.label_FL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_ReboundRate.Name = "label_FL_ReboundRate";
+            this.label_FL_ReboundRate.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_ReboundRate.TabIndex = 187;
             // 
             // label49
             // 
@@ -1337,15 +1306,16 @@ namespace Physics_Data_Debug
             this.label49.TabIndex = 186;
             this.label49.Text = "Rebound Rate";
             // 
-            // textBox_RR_ReboundRate
+            // label_RR_ReboundRate
             // 
-            this.textBox_RR_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundRate.Location = new System.Drawing.Point(747, 1053);
-            this.textBox_RR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_ReboundRate.Name = "textBox_RR_ReboundRate";
-            this.textBox_RR_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_ReboundRate.TabIndex = 193;
+            this.label_RR_ReboundRate.BackColor = System.Drawing.Color.Black;
+            this.label_RR_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundRate.Location = new System.Drawing.Point(747, 1053);
+            this.label_RR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_ReboundRate.Name = "label_RR_ReboundRate";
+            this.label_RR_ReboundRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_ReboundRate.TabIndex = 193;
             // 
             // label50
             // 
@@ -1358,15 +1328,16 @@ namespace Physics_Data_Debug
             this.label50.TabIndex = 192;
             this.label50.Text = "Rebound Rate";
             // 
-            // textBox_RL_ReboundRate
+            // label_RL_ReboundRate
             // 
-            this.textBox_RL_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundRate.Location = new System.Drawing.Point(247, 1053);
-            this.textBox_RL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_ReboundRate.Name = "textBox_RL_ReboundRate";
-            this.textBox_RL_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_ReboundRate.TabIndex = 191;
+            this.label_RL_ReboundRate.BackColor = System.Drawing.Color.Black;
+            this.label_RL_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundRate.Location = new System.Drawing.Point(247, 1053);
+            this.label_RL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_ReboundRate.Name = "label_RL_ReboundRate";
+            this.label_RL_ReboundRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_ReboundRate.TabIndex = 191;
             // 
             // label51
             // 
@@ -1379,15 +1350,16 @@ namespace Physics_Data_Debug
             this.label51.TabIndex = 190;
             this.label51.Text = "Rebound Rate";
             // 
-            // textBox_FR_BumpStopDamp
+            // label_FR_BumpStopDamp
             // 
-            this.textBox_FR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopDamp.Location = new System.Drawing.Point(747, 613);
-            this.textBox_FR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpStopDamp.Name = "textBox_FR_BumpStopDamp";
-            this.textBox_FR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_BumpStopDamp.TabIndex = 197;
+            this.label_FR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopDamp.Location = new System.Drawing.Point(747, 613);
+            this.label_FR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpStopDamp.Name = "label_FR_BumpStopDamp";
+            this.label_FR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_BumpStopDamp.TabIndex = 197;
             // 
             // label52
             // 
@@ -1400,15 +1372,16 @@ namespace Physics_Data_Debug
             this.label52.TabIndex = 196;
             this.label52.Text = "Bump Stop Damp";
             // 
-            // textBox_FL_BumpStopDamp
+            // label_FL_BumpStopDamp
             // 
-            this.textBox_FL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopDamp.Location = new System.Drawing.Point(247, 613);
-            this.textBox_FL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpStopDamp.Name = "textBox_FL_BumpStopDamp";
-            this.textBox_FL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_BumpStopDamp.TabIndex = 195;
+            this.label_FL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopDamp.Location = new System.Drawing.Point(247, 613);
+            this.label_FL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpStopDamp.Name = "label_FL_BumpStopDamp";
+            this.label_FL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_BumpStopDamp.TabIndex = 195;
             // 
             // label53
             // 
@@ -1421,15 +1394,16 @@ namespace Physics_Data_Debug
             this.label53.TabIndex = 194;
             this.label53.Text = "Bump Stop Damp";
             // 
-            // textBox_RR_BumpStopRate
+            // label_RR_BumpStopRate
             // 
-            this.textBox_RR_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopRate.Location = new System.Drawing.Point(747, 1224);
-            this.textBox_RR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpStopRate.Name = "textBox_RR_BumpStopRate";
-            this.textBox_RR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_BumpStopRate.TabIndex = 201;
+            this.label_RR_BumpStopRate.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopRate.Location = new System.Drawing.Point(747, 1224);
+            this.label_RR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpStopRate.Name = "label_RR_BumpStopRate";
+            this.label_RR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_BumpStopRate.TabIndex = 201;
             // 
             // label54
             // 
@@ -1442,15 +1416,16 @@ namespace Physics_Data_Debug
             this.label54.TabIndex = 200;
             this.label54.Text = "Bump Stop Damp";
             // 
-            // textBox_RL_BumpStopRate
+            // label_RL_BumpStopRate
             // 
-            this.textBox_RL_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopRate.Location = new System.Drawing.Point(247, 1224);
-            this.textBox_RL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpStopRate.Name = "textBox_RL_BumpStopRate";
-            this.textBox_RL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_BumpStopRate.TabIndex = 199;
+            this.label_RL_BumpStopRate.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopRate.Location = new System.Drawing.Point(247, 1224);
+            this.label_RL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpStopRate.Name = "label_RL_BumpStopRate";
+            this.label_RL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_BumpStopRate.TabIndex = 199;
             // 
             // label55
             // 
@@ -1463,15 +1438,16 @@ namespace Physics_Data_Debug
             this.label55.TabIndex = 198;
             this.label55.Text = "Bump Stop Damp";
             // 
-            // textBox_FR_BumpStopRateGainDeflectionSquared
+            // label_FR_BumpStopRateGainDeflectionSquared
             // 
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 569);
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.Name = "textBox_FR_BumpStopRateGainDeflectionSquared";
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_BumpStopRateGainDeflectionSquared.TabIndex = 205;
+            this.label_FR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 569);
+            this.label_FR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpStopRateGainDeflectionSquared.Name = "label_FR_BumpStopRateGainDeflectionSquared";
+            this.label_FR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_BumpStopRateGainDeflectionSquared.TabIndex = 205;
             // 
             // label56
             // 
@@ -1484,15 +1460,16 @@ namespace Physics_Data_Debug
             this.label56.TabIndex = 204;
             this.label56.Text = "Bump Stop Rate Gain";
             // 
-            // textBox_FL_BumpStopRateGainDeflectionSquared
+            // label_FL_BumpStopRateGainDeflectionSquared
             // 
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 569);
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.Name = "textBox_FL_BumpStopRateGainDeflectionSquared";
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_BumpStopRateGainDeflectionSquared.TabIndex = 203;
+            this.label_FL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 569);
+            this.label_FL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpStopRateGainDeflectionSquared.Name = "label_FL_BumpStopRateGainDeflectionSquared";
+            this.label_FL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_BumpStopRateGainDeflectionSquared.TabIndex = 203;
             // 
             // label57
             // 
@@ -1527,15 +1504,16 @@ namespace Physics_Data_Debug
             this.label59.TabIndex = 211;
             this.label59.Text = "(Deflection Squared)";
             // 
-            // textBox_FR_BumpStopDampGainDeflectionSquared
+            // label_FR_BumpStopDampGainDeflectionSquared
             // 
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 655);
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.Name = "textBox_FR_BumpStopDampGainDeflectionSquared";
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FR_BumpStopDampGainDeflectionSquared.TabIndex = 210;
+            this.label_FR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 655);
+            this.label_FR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpStopDampGainDeflectionSquared.Name = "label_FR_BumpStopDampGainDeflectionSquared";
+            this.label_FR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_FR_BumpStopDampGainDeflectionSquared.TabIndex = 210;
             // 
             // label60
             // 
@@ -1548,15 +1526,16 @@ namespace Physics_Data_Debug
             this.label60.TabIndex = 209;
             this.label60.Text = "Bump Stop Damp Gain";
             // 
-            // textBox_FL_BumpStopDampGainDeflectionSquared
+            // label_FL_BumpStopDampGainDeflectionSquared
             // 
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 655);
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.Name = "textBox_FL_BumpStopDampGainDeflectionSquared";
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_FL_BumpStopDampGainDeflectionSquared.TabIndex = 208;
+            this.label_FL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 655);
+            this.label_FL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpStopDampGainDeflectionSquared.Name = "label_FL_BumpStopDampGainDeflectionSquared";
+            this.label_FL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_FL_BumpStopDampGainDeflectionSquared.TabIndex = 208;
             // 
             // label61
             // 
@@ -1580,15 +1559,16 @@ namespace Physics_Data_Debug
             this.label62.TabIndex = 221;
             this.label62.Text = "(Deflection Squared)";
             // 
-            // textBox_RR_BumpStopDampGainDeflectionSquared
+            // label_RR_BumpStopDampGainDeflectionSquared
             // 
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 1353);
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.Name = "textBox_RR_BumpStopDampGainDeflectionSquared";
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_BumpStopDampGainDeflectionSquared.TabIndex = 220;
+            this.label_RR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 1353);
+            this.label_RR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpStopDampGainDeflectionSquared.Name = "label_RR_BumpStopDampGainDeflectionSquared";
+            this.label_RR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_BumpStopDampGainDeflectionSquared.TabIndex = 220;
             // 
             // label63
             // 
@@ -1601,15 +1581,16 @@ namespace Physics_Data_Debug
             this.label63.TabIndex = 219;
             this.label63.Text = "Bump Stop Damp Gain";
             // 
-            // textBox_RL_BumpStopDampGainDeflectionSquared
+            // label_RL_BumpStopDampGainDeflectionSquared
             // 
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 1353);
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.Name = "textBox_RL_BumpStopDampGainDeflectionSquared";
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_BumpStopDampGainDeflectionSquared.TabIndex = 218;
+            this.label_RL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 1353);
+            this.label_RL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpStopDampGainDeflectionSquared.Name = "label_RL_BumpStopDampGainDeflectionSquared";
+            this.label_RL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_BumpStopDampGainDeflectionSquared.TabIndex = 218;
             // 
             // label64
             // 
@@ -1633,15 +1614,16 @@ namespace Physics_Data_Debug
             this.label65.TabIndex = 216;
             this.label65.Text = "(Deflection Squared)";
             // 
-            // textBox_RR_BumpStopDamp
+            // label_RR_BumpStopDamp
             // 
-            this.textBox_RR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopDamp.Location = new System.Drawing.Point(747, 1311);
-            this.textBox_RR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpStopDamp.Name = "textBox_RR_BumpStopDamp";
-            this.textBox_RR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_BumpStopDamp.TabIndex = 215;
+            this.label_RR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopDamp.Location = new System.Drawing.Point(747, 1311);
+            this.label_RR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpStopDamp.Name = "label_RR_BumpStopDamp";
+            this.label_RR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_BumpStopDamp.TabIndex = 215;
             // 
             // label66
             // 
@@ -1654,15 +1636,16 @@ namespace Physics_Data_Debug
             this.label66.TabIndex = 214;
             this.label66.Text = "Bump Stop Rate Gain";
             // 
-            // textBox_RL_BumpStopDamp
+            // label_RL_BumpStopDamp
             // 
-            this.textBox_RL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopDamp.Location = new System.Drawing.Point(247, 1311);
-            this.textBox_RL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpStopDamp.Name = "textBox_RL_BumpStopDamp";
-            this.textBox_RL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_BumpStopDamp.TabIndex = 213;
+            this.label_RL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopDamp.Location = new System.Drawing.Point(247, 1311);
+            this.label_RL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpStopDamp.Name = "label_RL_BumpStopDamp";
+            this.label_RL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_BumpStopDamp.TabIndex = 213;
             // 
             // label67
             // 
@@ -1675,568 +1658,163 @@ namespace Physics_Data_Debug
             this.label67.TabIndex = 212;
             this.label67.Text = "Bump Stop Rate Gain";
             // 
-            // textBox_RR_BumpStopRateGainDeflectionSquared
+            // label_RR_BumpStopRateGainDeflectionSquared
             // 
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 1269);
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.Name = "textBox_RR_BumpStopRateGainDeflectionSquared";
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RR_BumpStopRateGainDeflectionSquared.TabIndex = 224;
+            this.label_RR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 1269);
+            this.label_RR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpStopRateGainDeflectionSquared.Name = "label_RR_BumpStopRateGainDeflectionSquared";
+            this.label_RR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_RR_BumpStopRateGainDeflectionSquared.TabIndex = 224;
             // 
-            // textBox_RL_BumpStopRateGainDeflectionSquared
+            // label_RL_BumpStopRateGainDeflectionSquared
             // 
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 1269);
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.Name = "textBox_RL_BumpStopRateGainDeflectionSquared";
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.textBox_RL_BumpStopRateGainDeflectionSquared.TabIndex = 223;
+            this.label_RL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 1269);
+            this.label_RL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpStopRateGainDeflectionSquared.Name = "label_RL_BumpStopRateGainDeflectionSquared";
+            this.label_RL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
+            this.label_RL_BumpStopRateGainDeflectionSquared.TabIndex = 223;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBox_FL_BumpLimitsY
+            // label_FL_BumpLimitsY
             // 
-            this.textBox_FL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpLimitsY.Location = new System.Drawing.Point(349, 140);
-            this.textBox_FL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpLimitsY.Name = "textBox_FL_BumpLimitsY";
-            this.textBox_FL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FL_BumpLimitsY.TabIndex = 225;
+            this.label_FL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpLimitsY.Location = new System.Drawing.Point(349, 140);
+            this.label_FL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpLimitsY.Name = "label_FL_BumpLimitsY";
+            this.label_FL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_FL_BumpLimitsY.TabIndex = 225;
             // 
-            // textBox_FR_BumpLimitsY
+            // label_FR_BumpLimitsY
             // 
-            this.textBox_FR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpLimitsY.Location = new System.Drawing.Point(849, 140);
-            this.textBox_FR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpLimitsY.Name = "textBox_FR_BumpLimitsY";
-            this.textBox_FR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FR_BumpLimitsY.TabIndex = 226;
+            this.label_FR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpLimitsY.Location = new System.Drawing.Point(849, 140);
+            this.label_FR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpLimitsY.Name = "label_FR_BumpLimitsY";
+            this.label_FR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_FR_BumpLimitsY.TabIndex = 226;
             // 
-            // textBox_FL_ReboundLimitsY
+            // label_FL_ReboundLimitsY
             // 
-            this.textBox_FL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_ReboundLimitsY.Location = new System.Drawing.Point(349, 182);
-            this.textBox_FL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_ReboundLimitsY.Name = "textBox_FL_ReboundLimitsY";
-            this.textBox_FL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FL_ReboundLimitsY.TabIndex = 227;
+            this.label_FL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_FL_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundLimitsY.Location = new System.Drawing.Point(349, 182);
+            this.label_FL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_ReboundLimitsY.Name = "label_FL_ReboundLimitsY";
+            this.label_FL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_FL_ReboundLimitsY.TabIndex = 227;
             // 
-            // textBox_FL_BumpDampY
+            // label_FL_BumpDampY
             // 
-            this.textBox_FL_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.textBox_FL_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FL_BumpDampY.Location = new System.Drawing.Point(349, 224);
-            this.textBox_FL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FL_BumpDampY.Name = "textBox_FL_BumpDampY";
-            this.textBox_FL_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FL_BumpDampY.TabIndex = 228;
+            this.label_FL_BumpDampY.BackColor = System.Drawing.Color.Black;
+            this.label_FL_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpDampY.Location = new System.Drawing.Point(349, 224);
+            this.label_FL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_BumpDampY.Name = "label_FL_BumpDampY";
+            this.label_FL_BumpDampY.Size = new System.Drawing.Size(96, 31);
+            this.label_FL_BumpDampY.TabIndex = 228;
             // 
-            // textBox_FR_ReboundLimitsY
+            // label_FR_ReboundLimitsY
             // 
-            this.textBox_FR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_ReboundLimitsY.Location = new System.Drawing.Point(849, 182);
-            this.textBox_FR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_ReboundLimitsY.Name = "textBox_FR_ReboundLimitsY";
-            this.textBox_FR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FR_ReboundLimitsY.TabIndex = 229;
+            this.label_FR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_FR_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundLimitsY.Location = new System.Drawing.Point(849, 182);
+            this.label_FR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_ReboundLimitsY.Name = "label_FR_ReboundLimitsY";
+            this.label_FR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_FR_ReboundLimitsY.TabIndex = 229;
             // 
-            // textBox_FR_BumpDampY
+            // label_FR_BumpDampY
             // 
-            this.textBox_FR_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.textBox_FR_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_FR_BumpDampY.Location = new System.Drawing.Point(849, 224);
-            this.textBox_FR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_FR_BumpDampY.Name = "textBox_FR_BumpDampY";
-            this.textBox_FR_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_FR_BumpDampY.TabIndex = 230;
+            this.label_FR_BumpDampY.BackColor = System.Drawing.Color.Black;
+            this.label_FR_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpDampY.Location = new System.Drawing.Point(849, 224);
+            this.label_FR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_BumpDampY.Name = "label_FR_BumpDampY";
+            this.label_FR_BumpDampY.Size = new System.Drawing.Size(96, 31);
+            this.label_FR_BumpDampY.TabIndex = 230;
             // 
-            // textBox_RL_BumpLimitsY
+            // label_RL_BumpLimitsY
             // 
-            this.textBox_RL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpLimitsY.Location = new System.Drawing.Point(349, 838);
-            this.textBox_RL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpLimitsY.Name = "textBox_RL_BumpLimitsY";
-            this.textBox_RL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RL_BumpLimitsY.TabIndex = 231;
+            this.label_RL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpLimitsY.Location = new System.Drawing.Point(349, 838);
+            this.label_RL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpLimitsY.Name = "label_RL_BumpLimitsY";
+            this.label_RL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_RL_BumpLimitsY.TabIndex = 231;
             // 
-            // textBox_RL_ReboundLimitsY
+            // label_RL_ReboundLimitsY
             // 
-            this.textBox_RL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_ReboundLimitsY.Location = new System.Drawing.Point(349, 880);
-            this.textBox_RL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_ReboundLimitsY.Name = "textBox_RL_ReboundLimitsY";
-            this.textBox_RL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RL_ReboundLimitsY.TabIndex = 232;
+            this.label_RL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_RL_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundLimitsY.Location = new System.Drawing.Point(349, 880);
+            this.label_RL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_ReboundLimitsY.Name = "label_RL_ReboundLimitsY";
+            this.label_RL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_RL_ReboundLimitsY.TabIndex = 232;
             // 
-            // textBox_RL_BumpDampY
+            // label_RL_BumpDampY
             // 
-            this.textBox_RL_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.textBox_RL_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RL_BumpDampY.Location = new System.Drawing.Point(349, 924);
-            this.textBox_RL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RL_BumpDampY.Name = "textBox_RL_BumpDampY";
-            this.textBox_RL_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RL_BumpDampY.TabIndex = 233;
+            this.label_RL_BumpDampY.BackColor = System.Drawing.Color.Black;
+            this.label_RL_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpDampY.Location = new System.Drawing.Point(349, 924);
+            this.label_RL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_BumpDampY.Name = "label_RL_BumpDampY";
+            this.label_RL_BumpDampY.Size = new System.Drawing.Size(96, 31);
+            this.label_RL_BumpDampY.TabIndex = 233;
             // 
-            // textBox_RR_BumpLimitsY
+            // label_RR_BumpLimitsY
             // 
-            this.textBox_RR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpLimitsY.Location = new System.Drawing.Point(849, 838);
-            this.textBox_RR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpLimitsY.Name = "textBox_RR_BumpLimitsY";
-            this.textBox_RR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RR_BumpLimitsY.TabIndex = 234;
+            this.label_RR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpLimitsY.Location = new System.Drawing.Point(849, 838);
+            this.label_RR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpLimitsY.Name = "label_RR_BumpLimitsY";
+            this.label_RR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_RR_BumpLimitsY.TabIndex = 234;
             // 
-            // textBox_RR_ReboundLimitsY
+            // label_RR_ReboundLimitsY
             // 
-            this.textBox_RR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_ReboundLimitsY.Location = new System.Drawing.Point(849, 880);
-            this.textBox_RR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_ReboundLimitsY.Name = "textBox_RR_ReboundLimitsY";
-            this.textBox_RR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RR_ReboundLimitsY.TabIndex = 235;
+            this.label_RR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
+            this.label_RR_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundLimitsY.Location = new System.Drawing.Point(849, 880);
+            this.label_RR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_ReboundLimitsY.Name = "label_RR_ReboundLimitsY";
+            this.label_RR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
+            this.label_RR_ReboundLimitsY.TabIndex = 235;
             // 
-            // textBox_RR_BumpDampY
+            // label_RR_BumpDampY
             // 
-            this.textBox_RR_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.textBox_RR_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.textBox_RR_BumpDampY.Location = new System.Drawing.Point(849, 924);
-            this.textBox_RR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox_RR_BumpDampY.Name = "textBox_RR_BumpDampY";
-            this.textBox_RR_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.textBox_RR_BumpDampY.TabIndex = 236;
-            // 
-            // textBox_FL_SuspensionGeometry
-            // 
-            this.textBox_FL_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FL_SuspensionGeometry.Location = new System.Drawing.Point(3670, 13);
-            this.textBox_FL_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_FL_SuspensionGeometry.Multiline = true;
-            this.textBox_FL_SuspensionGeometry.Name = "textBox_FL_SuspensionGeometry";
-            this.textBox_FL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
-            this.textBox_FL_SuspensionGeometry.TabIndex = 237;
-            this.textBox_FL_SuspensionGeometry.Visible = false;
-            this.textBox_FL_SuspensionGeometry.WordWrap = false;
-            // 
-            // textBox_RL_SuspensionGeometry
-            // 
-            this.textBox_RL_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_RL_SuspensionGeometry.Location = new System.Drawing.Point(4274, 13);
-            this.textBox_RL_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_RL_SuspensionGeometry.Multiline = true;
-            this.textBox_RL_SuspensionGeometry.Name = "textBox_RL_SuspensionGeometry";
-            this.textBox_RL_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
-            this.textBox_RL_SuspensionGeometry.TabIndex = 238;
-            this.textBox_RL_SuspensionGeometry.Visible = false;
-            this.textBox_RL_SuspensionGeometry.WordWrap = false;
-            // 
-            // textBox_RR_SuspensionGeometry
-            // 
-            this.textBox_RR_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_RR_SuspensionGeometry.Location = new System.Drawing.Point(5482, 13);
-            this.textBox_RR_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_RR_SuspensionGeometry.Multiline = true;
-            this.textBox_RR_SuspensionGeometry.Name = "textBox_RR_SuspensionGeometry";
-            this.textBox_RR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
-            this.textBox_RR_SuspensionGeometry.TabIndex = 240;
-            this.textBox_RR_SuspensionGeometry.Visible = false;
-            this.textBox_RR_SuspensionGeometry.WordWrap = false;
-            // 
-            // textBox_FR_SuspensionGeometry
-            // 
-            this.textBox_FR_SuspensionGeometry.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FR_SuspensionGeometry.Location = new System.Drawing.Point(4878, 13);
-            this.textBox_FR_SuspensionGeometry.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_FR_SuspensionGeometry.Multiline = true;
-            this.textBox_FR_SuspensionGeometry.Name = "textBox_FR_SuspensionGeometry";
-            this.textBox_FR_SuspensionGeometry.Size = new System.Drawing.Size(596, 3564);
-            this.textBox_FR_SuspensionGeometry.TabIndex = 239;
-            this.textBox_FR_SuspensionGeometry.Visible = false;
-            this.textBox_FR_SuspensionGeometry.WordWrap = false;
-            // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX.Interval = 0.5D;
-            chartArea1.AxisX.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.Maximum = 2D;
-            chartArea1.AxisX.Minimum = -2D;
-            chartArea1.AxisX.MinorGrid.Enabled = true;
-            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX2.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.Crossing = 0D;
-            chartArea1.AxisY.Interval = 0.5D;
-            chartArea1.AxisY.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY.Maximum = 2D;
-            chartArea1.AxisY.Minimum = -1D;
-            chartArea1.AxisY.MinorGrid.Enabled = true;
-            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY2.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "FrontSuspension";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.BackColor = System.Drawing.Color.LightGray;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(1853, 13);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "FrontSuspension";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series1.IsValueShownAsLabel = true;
-            series1.LabelFormat = "{0:N2}";
-            series1.Legend = "Legend1";
-            series1.LegendText = "ComHeight";
-            series1.MarkerColor = System.Drawing.Color.Green;
-            series1.MarkerSize = 8;
-            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series1.Name = "FrontCoMHeight";
-            series1.Points.Add(dataPoint1);
-            series2.ChartArea = "FrontSuspension";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.IsValueShownAsLabel = true;
-            series2.LabelFormat = "{0:N2}";
-            series2.Legend = "Legend1";
-            series2.LegendText = "RideHeight";
-            series2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            series2.MarkerSize = 8;
-            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series2.Name = "FrontRideHeight";
-            series2.Points.Add(dataPoint2);
-            series3.ChartArea = "FrontSuspension";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series3.IsValueShownAsLabel = true;
-            series3.LabelFormat = "{0:N3}";
-            series3.Legend = "Legend1";
-            series3.LegendText = "RollCenterXY";
-            series3.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series3.MarkerSize = 8;
-            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series3.Name = "FrontRollCenterXY";
-            series3.Points.Add(dataPoint3);
-            series4.ChartArea = "FrontSuspension";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series4.Color = System.Drawing.Color.Gray;
-            series4.IsValueShownAsLabel = true;
-            series4.LabelFormat = "{0:N3}";
-            series4.Legend = "Legend1";
-            series4.LegendText = "TirePivotXY";
-            series4.MarkerBorderColor = System.Drawing.Color.Black;
-            series4.MarkerBorderWidth = 2;
-            series4.MarkerColor = System.Drawing.Color.Gray;
-            series4.MarkerSize = 8;
-            series4.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series4.Name = "FrontFLTirePivotXY";
-            dataPoint4.IsValueShownAsLabel = true;
-            series4.Points.Add(dataPoint4);
-            series5.ChartArea = "FrontSuspension";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series5.LabelFormat = "{0:N3}";
-            series5.Legend = "Legend1";
-            series5.LegendText = "UpperFrontArmXY";
-            series5.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series5.MarkerSize = 4;
-            series5.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series5.Name = "FrontFLUpperFrontArmXY";
-            dataPoint5.IsValueShownAsLabel = true;
-            dataPoint6.IsValueShownAsLabel = false;
-            series5.Points.Add(dataPoint5);
-            series5.Points.Add(dataPoint6);
-            series6.ChartArea = "FrontSuspension";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Red;
-            series6.LabelFormat = "{0:N3}";
-            series6.Legend = "Legend1";
-            series6.LegendText = "UpperRearArmXY";
-            series6.MarkerColor = System.Drawing.Color.Red;
-            series6.MarkerSize = 4;
-            series6.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series6.Name = "FrontFLUpperRearArmXY";
-            dataPoint7.IsValueShownAsLabel = true;
-            dataPoint8.IsValueShownAsLabel = true;
-            series6.Points.Add(dataPoint7);
-            series6.Points.Add(dataPoint8);
-            series7.ChartArea = "FrontSuspension";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Color = System.Drawing.Color.Gray;
-            series7.Legend = "Legend1";
-            series7.LegendText = "UpperArmMidpointXY";
-            series7.MarkerColor = System.Drawing.Color.Gray;
-            series7.MarkerSize = 3;
-            series7.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series7.Name = "FrontFLUpperArmMidpointXY";
-            dataPoint10.Color = System.Drawing.Color.Transparent;
-            dataPoint10.MarkerColor = System.Drawing.Color.Transparent;
-            series7.Points.Add(dataPoint9);
-            series7.Points.Add(dataPoint10);
-            series8.ChartArea = "FrontSuspension";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series8.LabelFormat = "{0:N3}";
-            series8.Legend = "Legend1";
-            series8.LegendText = "LowerFrontArmXY";
-            series8.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series8.MarkerSize = 4;
-            series8.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series8.Name = "FrontFLLowerFrontArmXY";
-            dataPoint11.IsValueShownAsLabel = true;
-            dataPoint12.IsValueShownAsLabel = false;
-            series8.Points.Add(dataPoint11);
-            series8.Points.Add(dataPoint12);
-            series9.ChartArea = "FrontSuspension";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Color = System.Drawing.Color.Yellow;
-            series9.LabelFormat = "{0:N3}";
-            series9.Legend = "Legend1";
-            series9.LegendText = "LowerRearArmXY";
-            series9.MarkerColor = System.Drawing.Color.Yellow;
-            series9.MarkerSize = 4;
-            series9.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series9.Name = "FrontFLLowerRearArmXY";
-            dataPoint13.IsValueShownAsLabel = true;
-            dataPoint14.IsValueShownAsLabel = true;
-            series9.Points.Add(dataPoint13);
-            series9.Points.Add(dataPoint14);
-            series10.ChartArea = "FrontSuspension";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series10.Color = System.Drawing.Color.Gray;
-            series10.Legend = "Legend1";
-            series10.LegendText = "LowerArmMidpointXY";
-            series10.MarkerColor = System.Drawing.Color.Gray;
-            series10.MarkerSize = 3;
-            series10.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series10.Name = "FrontFLLowerArmMidpointXY";
-            dataPoint16.Color = System.Drawing.Color.Transparent;
-            dataPoint16.MarkerColor = System.Drawing.Color.Transparent;
-            series10.Points.Add(dataPoint15);
-            series10.Points.Add(dataPoint16);
-            series11.ChartArea = "FrontSuspension";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Color = System.Drawing.Color.Aqua;
-            series11.LabelFormat = "{0:N3}";
-            series11.Legend = "Legend1";
-            series11.LegendText = "SteeringRodXY";
-            series11.MarkerColor = System.Drawing.Color.Aqua;
-            series11.MarkerSize = 4;
-            series11.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series11.Name = "FrontFLSteeringRodXY";
-            dataPoint17.IsValueShownAsLabel = true;
-            dataPoint18.IsValueShownAsLabel = true;
-            series11.Points.Add(dataPoint17);
-            series11.Points.Add(dataPoint18);
-            series12.ChartArea = "FrontSuspension";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Color = System.Drawing.Color.Gray;
-            series12.LabelFormat = "{0:N3}";
-            series12.Legend = "Legend1";
-            series12.LegendText = "InstantCenterXY";
-            series12.Name = "FrontFLInstantCenterXY";
-            dataPoint20.IsValueShownAsLabel = true;
-            dataPoint20.MarkerColor = System.Drawing.Color.Maroon;
-            dataPoint20.MarkerSize = 10;
-            dataPoint20.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series12.Points.Add(dataPoint19);
-            series12.Points.Add(dataPoint20);
-            series12.Points.Add(dataPoint21);
-            series13.ChartArea = "FrontSuspension";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series13.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series13.Legend = "Legend1";
-            series13.LegendText = "RCLine";
-            series13.Name = "FrontFLRCLine";
-            series13.Points.Add(dataPoint22);
-            series13.Points.Add(dataPoint23);
-            series14.ChartArea = "FrontSuspension";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series14.Color = System.Drawing.Color.Gray;
-            series14.IsValueShownAsLabel = true;
-            series14.IsVisibleInLegend = false;
-            series14.LabelFormat = "{0:N3}";
-            series14.Legend = "Legend1";
-            series14.MarkerBorderColor = System.Drawing.Color.Black;
-            series14.MarkerBorderWidth = 2;
-            series14.MarkerColor = System.Drawing.Color.Gray;
-            series14.MarkerSize = 8;
-            series14.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series14.Name = "FrontFRTirePivotXY";
-            series14.Points.Add(dataPoint24);
-            series15.ChartArea = "FrontSuspension";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series15.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series15.IsVisibleInLegend = false;
-            series15.LabelFormat = "{0:N3}";
-            series15.Legend = "Legend1";
-            series15.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series15.MarkerSize = 4;
-            series15.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series15.Name = "FrontFRUpperFrontArmXY";
-            dataPoint25.IsValueShownAsLabel = true;
-            dataPoint26.IsValueShownAsLabel = false;
-            series15.Points.Add(dataPoint25);
-            series15.Points.Add(dataPoint26);
-            series16.ChartArea = "FrontSuspension";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series16.Color = System.Drawing.Color.Red;
-            series16.IsVisibleInLegend = false;
-            series16.LabelFormat = "{0:N3}";
-            series16.Legend = "Legend1";
-            series16.MarkerColor = System.Drawing.Color.Red;
-            series16.MarkerSize = 4;
-            series16.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series16.Name = "FrontFRUpperRearArmXY";
-            dataPoint27.IsValueShownAsLabel = true;
-            dataPoint28.IsValueShownAsLabel = true;
-            series16.Points.Add(dataPoint27);
-            series16.Points.Add(dataPoint28);
-            series17.ChartArea = "FrontSuspension";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series17.Color = System.Drawing.Color.Gray;
-            series17.IsVisibleInLegend = false;
-            series17.Legend = "Legend1";
-            series17.MarkerColor = System.Drawing.Color.Gray;
-            series17.MarkerSize = 3;
-            series17.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series17.Name = "FrontFRUpperArmMidpointXY";
-            dataPoint30.Color = System.Drawing.Color.Transparent;
-            dataPoint30.MarkerColor = System.Drawing.Color.Transparent;
-            series17.Points.Add(dataPoint29);
-            series17.Points.Add(dataPoint30);
-            series18.ChartArea = "FrontSuspension";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series18.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series18.IsVisibleInLegend = false;
-            series18.LabelFormat = "{0:N3}";
-            series18.Legend = "Legend1";
-            series18.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series18.MarkerSize = 4;
-            series18.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series18.Name = "FrontFRLowerFrontArmXY";
-            dataPoint31.IsValueShownAsLabel = true;
-            dataPoint32.IsValueShownAsLabel = false;
-            series18.Points.Add(dataPoint31);
-            series18.Points.Add(dataPoint32);
-            series19.ChartArea = "FrontSuspension";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series19.Color = System.Drawing.Color.Yellow;
-            series19.IsVisibleInLegend = false;
-            series19.LabelFormat = "{0:N3}";
-            series19.Legend = "Legend1";
-            series19.MarkerColor = System.Drawing.Color.Yellow;
-            series19.MarkerSize = 4;
-            series19.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series19.Name = "FrontFRLowerRearArmXY";
-            dataPoint33.IsValueShownAsLabel = true;
-            dataPoint34.IsValueShownAsLabel = true;
-            series19.Points.Add(dataPoint33);
-            series19.Points.Add(dataPoint34);
-            series20.ChartArea = "FrontSuspension";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series20.Color = System.Drawing.Color.Gray;
-            series20.IsVisibleInLegend = false;
-            series20.Legend = "Legend1";
-            series20.MarkerColor = System.Drawing.Color.Gray;
-            series20.MarkerSize = 3;
-            series20.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series20.Name = "FrontFRLowerArmMidpointXY";
-            dataPoint36.Color = System.Drawing.Color.Transparent;
-            dataPoint36.MarkerColor = System.Drawing.Color.Transparent;
-            series20.Points.Add(dataPoint35);
-            series20.Points.Add(dataPoint36);
-            series21.ChartArea = "FrontSuspension";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series21.Color = System.Drawing.Color.Aqua;
-            series21.IsValueShownAsLabel = true;
-            series21.IsVisibleInLegend = false;
-            series21.LabelFormat = "{0:N3}";
-            series21.Legend = "Legend1";
-            series21.MarkerColor = System.Drawing.Color.Aqua;
-            series21.MarkerSize = 4;
-            series21.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series21.Name = "FrontFRSteeringRodXY";
-            series21.Points.Add(dataPoint37);
-            series21.Points.Add(dataPoint38);
-            series22.ChartArea = "FrontSuspension";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series22.Color = System.Drawing.Color.Gray;
-            series22.IsVisibleInLegend = false;
-            series22.LabelFormat = "{0:N3}";
-            series22.Legend = "Legend1";
-            series22.Name = "FrontFRInstantCenterXY";
-            dataPoint40.IsValueShownAsLabel = true;
-            dataPoint40.MarkerColor = System.Drawing.Color.Maroon;
-            dataPoint40.MarkerSize = 10;
-            dataPoint40.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series22.Points.Add(dataPoint39);
-            series22.Points.Add(dataPoint40);
-            series22.Points.Add(dataPoint41);
-            series23.ChartArea = "FrontSuspension";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series23.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series23.IsVisibleInLegend = false;
-            series23.Legend = "Legend1";
-            series23.Name = "FrontFRRCLine";
-            series23.Points.Add(dataPoint42);
-            series23.Points.Add(dataPoint43);
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Series.Add(series7);
-            this.chart1.Series.Add(series8);
-            this.chart1.Series.Add(series9);
-            this.chart1.Series.Add(series10);
-            this.chart1.Series.Add(series11);
-            this.chart1.Series.Add(series12);
-            this.chart1.Series.Add(series13);
-            this.chart1.Series.Add(series14);
-            this.chart1.Series.Add(series15);
-            this.chart1.Series.Add(series16);
-            this.chart1.Series.Add(series17);
-            this.chart1.Series.Add(series18);
-            this.chart1.Series.Add(series19);
-            this.chart1.Series.Add(series20);
-            this.chart1.Series.Add(series21);
-            this.chart1.Series.Add(series22);
-            this.chart1.Series.Add(series23);
-            this.chart1.Size = new System.Drawing.Size(1878, 1375);
-            this.chart1.TabIndex = 241;
-            this.chart1.Text = "chart1";
-            title1.DockedToChartArea = "FrontSuspension";
-            title1.IsDockedInsideChartArea = false;
-            title1.Name = "FrontSuspension";
-            title1.Text = "Front Suspension";
-            this.chart1.Titles.Add(title1);
+            this.label_RR_BumpDampY.BackColor = System.Drawing.Color.Black;
+            this.label_RR_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpDampY.Location = new System.Drawing.Point(849, 924);
+            this.label_RR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_BumpDampY.Name = "label_RR_BumpDampY";
+            this.label_RR_BumpDampY.Size = new System.Drawing.Size(96, 31);
+            this.label_RR_BumpDampY.TabIndex = 236;
             // 
             // FormSuspensionStaticValues
             // 
@@ -2244,60 +1822,56 @@ namespace Physics_Data_Debug
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(2418, 1471);
-            this.Controls.Add(this.textBox_FL_SuspensionGeometry);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.textBox_FR_SuspensionGeometry);
-            this.Controls.Add(this.textBox_RL_SuspensionGeometry);
-            this.Controls.Add(this.textBox_RR_BumpDampY);
-            this.Controls.Add(this.textBox_RR_ReboundLimitsY);
-            this.Controls.Add(this.textBox_RR_BumpLimitsY);
-            this.Controls.Add(this.textBox_RL_BumpDampY);
-            this.Controls.Add(this.textBox_RL_ReboundLimitsY);
-            this.Controls.Add(this.textBox_RL_BumpLimitsY);
-            this.Controls.Add(this.textBox_FR_BumpDampY);
-            this.Controls.Add(this.textBox_FR_ReboundLimitsY);
-            this.Controls.Add(this.textBox_FL_BumpDampY);
-            this.Controls.Add(this.textBox_FL_ReboundLimitsY);
-            this.Controls.Add(this.textBox_FR_BumpLimitsY);
-            this.Controls.Add(this.textBox_FL_BumpLimitsY);
-            this.Controls.Add(this.textBox_RR_BumpStopRateGainDeflectionSquared);
-            this.Controls.Add(this.textBox_RL_BumpStopRateGainDeflectionSquared);
+            this.ClientSize = new System.Drawing.Size(1883, 1471);
+            this.Controls.Add(this.label_RR_BumpDampY);
+            this.Controls.Add(this.label_RR_ReboundLimitsY);
+            this.Controls.Add(this.label_RR_BumpLimitsY);
+            this.Controls.Add(this.label_RL_BumpDampY);
+            this.Controls.Add(this.label_RL_ReboundLimitsY);
+            this.Controls.Add(this.label_RL_BumpLimitsY);
+            this.Controls.Add(this.label_FR_BumpDampY);
+            this.Controls.Add(this.label_FR_ReboundLimitsY);
+            this.Controls.Add(this.label_FL_BumpDampY);
+            this.Controls.Add(this.label_FL_ReboundLimitsY);
+            this.Controls.Add(this.label_FR_BumpLimitsY);
+            this.Controls.Add(this.label_FL_BumpLimitsY);
+            this.Controls.Add(this.label_RR_BumpStopRateGainDeflectionSquared);
+            this.Controls.Add(this.label_RL_BumpStopRateGainDeflectionSquared);
             this.Controls.Add(this.label62);
-            this.Controls.Add(this.textBox_RR_BumpStopDampGainDeflectionSquared);
+            this.Controls.Add(this.label_RR_BumpStopDampGainDeflectionSquared);
             this.Controls.Add(this.label63);
-            this.Controls.Add(this.textBox_RL_BumpStopDampGainDeflectionSquared);
+            this.Controls.Add(this.label_RL_BumpStopDampGainDeflectionSquared);
             this.Controls.Add(this.label64);
             this.Controls.Add(this.label65);
-            this.Controls.Add(this.textBox_RR_BumpStopDamp);
+            this.Controls.Add(this.label_RR_BumpStopDamp);
             this.Controls.Add(this.label66);
-            this.Controls.Add(this.textBox_RL_BumpStopDamp);
+            this.Controls.Add(this.label_RL_BumpStopDamp);
             this.Controls.Add(this.label67);
             this.Controls.Add(this.label59);
-            this.Controls.Add(this.textBox_FR_BumpStopDampGainDeflectionSquared);
+            this.Controls.Add(this.label_FR_BumpStopDampGainDeflectionSquared);
             this.Controls.Add(this.label60);
-            this.Controls.Add(this.textBox_FL_BumpStopDampGainDeflectionSquared);
+            this.Controls.Add(this.label_FL_BumpStopDampGainDeflectionSquared);
             this.Controls.Add(this.label61);
             this.Controls.Add(this.label58);
-            this.Controls.Add(this.textBox_FR_BumpStopRateGainDeflectionSquared);
+            this.Controls.Add(this.label_FR_BumpStopRateGainDeflectionSquared);
             this.Controls.Add(this.label56);
-            this.Controls.Add(this.textBox_FL_BumpStopRateGainDeflectionSquared);
+            this.Controls.Add(this.label_FL_BumpStopRateGainDeflectionSquared);
             this.Controls.Add(this.label57);
-            this.Controls.Add(this.textBox_RR_BumpStopRate);
+            this.Controls.Add(this.label_RR_BumpStopRate);
             this.Controls.Add(this.label54);
-            this.Controls.Add(this.textBox_RL_BumpStopRate);
+            this.Controls.Add(this.label_RL_BumpStopRate);
             this.Controls.Add(this.label55);
-            this.Controls.Add(this.textBox_FR_BumpStopDamp);
+            this.Controls.Add(this.label_FR_BumpStopDamp);
             this.Controls.Add(this.label52);
-            this.Controls.Add(this.textBox_FL_BumpStopDamp);
+            this.Controls.Add(this.label_FL_BumpStopDamp);
             this.Controls.Add(this.label53);
-            this.Controls.Add(this.textBox_RR_ReboundRate);
+            this.Controls.Add(this.label_RR_ReboundRate);
             this.Controls.Add(this.label50);
-            this.Controls.Add(this.textBox_RL_ReboundRate);
+            this.Controls.Add(this.label_RL_ReboundRate);
             this.Controls.Add(this.label51);
-            this.Controls.Add(this.textBox_FR_ReboundRate);
+            this.Controls.Add(this.label_FR_ReboundRate);
             this.Controls.Add(this.label48);
-            this.Controls.Add(this.textBox_FL_ReboundRate);
+            this.Controls.Add(this.label_FL_ReboundRate);
             this.Controls.Add(this.label49);
             this.Controls.Add(this.label47);
             this.Controls.Add(this.label46);
@@ -2309,27 +1883,27 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label40);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.label39);
-            this.Controls.Add(this.textBox_FR_BumpStopRate);
+            this.Controls.Add(this.label_FR_BumpStopRate);
             this.Controls.Add(this.label36);
-            this.Controls.Add(this.textBox_FL_BumpStopRate);
+            this.Controls.Add(this.label_FL_BumpStopRate);
             this.Controls.Add(this.label37);
-            this.Controls.Add(this.textBox_RR_ReboundStartPosition);
+            this.Controls.Add(this.label_RR_ReboundStartPosition);
             this.Controls.Add(this.label34);
-            this.Controls.Add(this.textBox_RL_ReboundStartPosition);
+            this.Controls.Add(this.label_RL_ReboundStartPosition);
             this.Controls.Add(this.label35);
-            this.Controls.Add(this.textBox_FR_ReboundStartPosition);
+            this.Controls.Add(this.label_FR_ReboundStartPosition);
             this.Controls.Add(this.label32);
-            this.Controls.Add(this.textBox_FL_ReboundStartPosition);
+            this.Controls.Add(this.label_FL_ReboundStartPosition);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.textBox_RR_BumpStopLength);
-            this.Controls.Add(this.textBox_RR_ReboundEndPosition);
-            this.Controls.Add(this.textBox_RR_CompressionLimitFromZero);
-            this.Controls.Add(this.textBox_RR_ExpansionLimitFromZero);
-            this.Controls.Add(this.textBox_RR_BumpDampX);
-            this.Controls.Add(this.textBox_RR_ReboundLimitsX);
-            this.Controls.Add(this.textBox_RR_BumpLimitsX);
-            this.Controls.Add(this.textBox_RR_ProgressiveRate);
+            this.Controls.Add(this.label_RR_BumpStopLength);
+            this.Controls.Add(this.label_RR_ReboundEndPosition);
+            this.Controls.Add(this.label_RR_CompressionLimitFromZero);
+            this.Controls.Add(this.label_RR_ExpansionLimitFromZero);
+            this.Controls.Add(this.label_RR_BumpDampX);
+            this.Controls.Add(this.label_RR_ReboundLimitsX);
+            this.Controls.Add(this.label_RR_BumpLimitsX);
+            this.Controls.Add(this.label_RR_ProgressiveRate);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label25);
@@ -2339,16 +1913,16 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.label31);
-            this.Controls.Add(this.textBox_RR_SpringRate);
+            this.Controls.Add(this.label_RR_SpringRate);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox_RL_BumpStopLength);
-            this.Controls.Add(this.textBox_RL_ReboundEndPosition);
-            this.Controls.Add(this.textBox_RL_CompressionLimitFromZero);
-            this.Controls.Add(this.textBox_RL_ExpansionLimitFromZero);
-            this.Controls.Add(this.textBox_RL_BumpDampX);
-            this.Controls.Add(this.textBox_RL_ReboundLimitsX);
-            this.Controls.Add(this.textBox_RL_BumpLimitsX);
-            this.Controls.Add(this.textBox_RL_ProgressiveRate);
+            this.Controls.Add(this.label_RL_BumpStopLength);
+            this.Controls.Add(this.label_RL_ReboundEndPosition);
+            this.Controls.Add(this.label_RL_CompressionLimitFromZero);
+            this.Controls.Add(this.label_RL_ExpansionLimitFromZero);
+            this.Controls.Add(this.label_RL_BumpDampX);
+            this.Controls.Add(this.label_RL_ReboundLimitsX);
+            this.Controls.Add(this.label_RL_BumpLimitsX);
+            this.Controls.Add(this.label_RL_ProgressiveRate);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
@@ -2358,16 +1932,16 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox_RL_SpringRate);
+            this.Controls.Add(this.label_RL_SpringRate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_FR_BumpStopLength);
-            this.Controls.Add(this.textBox_FR_ReboundEndPosition);
-            this.Controls.Add(this.textBox_FR_CompressionLimitFromZero);
-            this.Controls.Add(this.textBox_FR_ExpansionLimitFromZero);
-            this.Controls.Add(this.textBox_FR_BumpDampX);
-            this.Controls.Add(this.textBox_FR_ReboundLimitsX);
-            this.Controls.Add(this.textBox_FR_BumpLimitsX);
-            this.Controls.Add(this.textBox_FR_ProgressiveRate);
+            this.Controls.Add(this.label_FR_BumpStopLength);
+            this.Controls.Add(this.label_FR_ReboundEndPosition);
+            this.Controls.Add(this.label_FR_CompressionLimitFromZero);
+            this.Controls.Add(this.label_FR_ExpansionLimitFromZero);
+            this.Controls.Add(this.label_FR_BumpDampX);
+            this.Controls.Add(this.label_FR_ReboundLimitsX);
+            this.Controls.Add(this.label_FR_BumpLimitsX);
+            this.Controls.Add(this.label_FR_ProgressiveRate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -2377,16 +1951,16 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox_FR_SpringRate);
+            this.Controls.Add(this.label_FR_SpringRate);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox_FL_BumpStopLength);
-            this.Controls.Add(this.textBox_FL_ReboundEndPosition);
-            this.Controls.Add(this.textBox_FL_CompressionLimitFromZero);
-            this.Controls.Add(this.textBox_FL_ExpansionLimitFromZero);
-            this.Controls.Add(this.textBox_FL_BumpDampX);
-            this.Controls.Add(this.textBox_FL_ReboundLimitsX);
-            this.Controls.Add(this.textBox_FL_BumpLimitsX);
-            this.Controls.Add(this.textBox_FL_ProgressiveRate);
+            this.Controls.Add(this.label_FL_BumpStopLength);
+            this.Controls.Add(this.label_FL_ReboundEndPosition);
+            this.Controls.Add(this.label_FL_CompressionLimitFromZero);
+            this.Controls.Add(this.label_FL_ExpansionLimitFromZero);
+            this.Controls.Add(this.label_FL_BumpDampX);
+            this.Controls.Add(this.label_FL_ReboundLimitsX);
+            this.Controls.Add(this.label_FL_BumpLimitsX);
+            this.Controls.Add(this.label_FL_ProgressiveRate);
             this.Controls.Add(this.flMomentOfInertia);
             this.Controls.Add(this.flMass);
             this.Controls.Add(this.flMaxDeflection);
@@ -2396,14 +1970,12 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.flThermalAirTransfer);
             this.Controls.Add(this.flWidth);
             this.Controls.Add(this.flRadius);
-            this.Controls.Add(this.textBox_FL_SpringRate);
-            this.Controls.Add(this.textBox_RR_SuspensionGeometry);
+            this.Controls.Add(this.label_FL_SpringRate);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormSuspensionStaticValues";
             this.Text = "SuspensionStaticValues";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSuspensionStaticValues_Closing);
             this.Load += new System.EventHandler(this.FormSuspensionStaticValues_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2412,14 +1984,14 @@ namespace Physics_Data_Debug
         #endregion
 
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox_RR_BumpStopLength;
-        private System.Windows.Forms.TextBox textBox_RR_ReboundEndPosition;
-        private System.Windows.Forms.TextBox textBox_RR_CompressionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_RR_ExpansionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_RR_BumpDampX;
-        private System.Windows.Forms.TextBox textBox_RR_ReboundLimitsX;
-        private System.Windows.Forms.TextBox textBox_RR_BumpLimitsX;
-        private System.Windows.Forms.TextBox textBox_RR_ProgressiveRate;
+        private System.Windows.Forms.Label label_RR_BumpStopLength;
+        private System.Windows.Forms.Label label_RR_ReboundEndPosition;
+        private System.Windows.Forms.Label label_RR_CompressionLimitFromZero;
+        private System.Windows.Forms.Label label_RR_ExpansionLimitFromZero;
+        private System.Windows.Forms.Label label_RR_BumpDampX;
+        private System.Windows.Forms.Label label_RR_ReboundLimitsX;
+        private System.Windows.Forms.Label label_RR_BumpLimitsX;
+        private System.Windows.Forms.Label label_RR_ProgressiveRate;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
@@ -2429,16 +2001,16 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox_RR_SpringRate;
+        private System.Windows.Forms.Label label_RR_SpringRate;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox_RL_BumpStopLength;
-        private System.Windows.Forms.TextBox textBox_RL_ReboundEndPosition;
-        private System.Windows.Forms.TextBox textBox_RL_CompressionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_RL_ExpansionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_RL_BumpDampX;
-        private System.Windows.Forms.TextBox textBox_RL_ReboundLimitsX;
-        private System.Windows.Forms.TextBox textBox_RL_BumpLimitsX;
-        private System.Windows.Forms.TextBox textBox_RL_ProgressiveRate;
+        private System.Windows.Forms.Label label_RL_BumpStopLength;
+        private System.Windows.Forms.Label label_RL_ReboundEndPosition;
+        private System.Windows.Forms.Label label_RL_CompressionLimitFromZero;
+        private System.Windows.Forms.Label label_RL_ExpansionLimitFromZero;
+        private System.Windows.Forms.Label label_RL_BumpDampX;
+        private System.Windows.Forms.Label label_RL_ReboundLimitsX;
+        private System.Windows.Forms.Label label_RL_BumpLimitsX;
+        private System.Windows.Forms.Label label_RL_ProgressiveRate;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -2448,16 +2020,16 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox_RL_SpringRate;
+        private System.Windows.Forms.Label label_RL_SpringRate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox_FR_BumpStopLength;
-        private System.Windows.Forms.TextBox textBox_FR_ReboundEndPosition;
-        private System.Windows.Forms.TextBox textBox_FR_CompressionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_FR_ExpansionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_FR_BumpDampX;
-        private System.Windows.Forms.TextBox textBox_FR_ReboundLimitsX;
-        private System.Windows.Forms.TextBox textBox_FR_BumpLimitsX;
-        private System.Windows.Forms.TextBox textBox_FR_ProgressiveRate;
+        private System.Windows.Forms.Label label_FR_BumpStopLength;
+        private System.Windows.Forms.Label label_FR_ReboundEndPosition;
+        private System.Windows.Forms.Label label_FR_CompressionLimitFromZero;
+        private System.Windows.Forms.Label label_FR_ExpansionLimitFromZero;
+        private System.Windows.Forms.Label label_FR_BumpDampX;
+        private System.Windows.Forms.Label label_FR_ReboundLimitsX;
+        private System.Windows.Forms.Label label_FR_BumpLimitsX;
+        private System.Windows.Forms.Label label_FR_ProgressiveRate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -2467,16 +2039,16 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox_FR_SpringRate;
+        private System.Windows.Forms.Label label_FR_SpringRate;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox_FL_BumpStopLength;
-        private System.Windows.Forms.TextBox textBox_FL_ReboundEndPosition;
-        private System.Windows.Forms.TextBox textBox_FL_CompressionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_FL_ExpansionLimitFromZero;
-        private System.Windows.Forms.TextBox textBox_FL_BumpDampX;
-        private System.Windows.Forms.TextBox textBox_FL_ReboundLimitsX;
-        private System.Windows.Forms.TextBox textBox_FL_BumpLimitsX;
-        private System.Windows.Forms.TextBox textBox_FL_ProgressiveRate;
+        private System.Windows.Forms.Label label_FL_BumpStopLength;
+        private System.Windows.Forms.Label label_FL_ReboundEndPosition;
+        private System.Windows.Forms.Label label_FL_CompressionLimitFromZero;
+        private System.Windows.Forms.Label label_FL_ExpansionLimitFromZero;
+        private System.Windows.Forms.Label label_FL_BumpDampX;
+        private System.Windows.Forms.Label label_FL_ReboundLimitsX;
+        private System.Windows.Forms.Label label_FL_BumpLimitsX;
+        private System.Windows.Forms.Label label_FL_ProgressiveRate;
         private System.Windows.Forms.Label flMomentOfInertia;
         private System.Windows.Forms.Label flMass;
         private System.Windows.Forms.Label flMaxDeflection;
@@ -2486,18 +2058,18 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label flThermalAirTransfer;
         private System.Windows.Forms.Label flWidth;
         private System.Windows.Forms.Label flRadius;
-        private System.Windows.Forms.TextBox textBox_FL_SpringRate;
-        private System.Windows.Forms.TextBox textBox_FR_ReboundStartPosition;
+        private System.Windows.Forms.Label label_FL_SpringRate;
+        private System.Windows.Forms.Label label_FR_ReboundStartPosition;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox textBox_FL_ReboundStartPosition;
+        private System.Windows.Forms.Label label_FL_ReboundStartPosition;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox_RR_ReboundStartPosition;
+        private System.Windows.Forms.Label label_RR_ReboundStartPosition;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox_RL_ReboundStartPosition;
+        private System.Windows.Forms.Label label_RL_ReboundStartPosition;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBox_FR_BumpStopRate;
+        private System.Windows.Forms.Label label_FR_BumpStopRate;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox_FL_BumpStopRate;
+        private System.Windows.Forms.Label label_FL_BumpStopRate;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
@@ -2509,61 +2081,56 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.TextBox textBox_FR_ReboundRate;
+        private System.Windows.Forms.Label label_FR_ReboundRate;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.TextBox textBox_FL_ReboundRate;
+        private System.Windows.Forms.Label label_FL_ReboundRate;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TextBox textBox_RR_ReboundRate;
+        private System.Windows.Forms.Label label_RR_ReboundRate;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox textBox_RL_ReboundRate;
+        private System.Windows.Forms.Label label_RL_ReboundRate;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.TextBox textBox_FR_BumpStopDamp;
+        private System.Windows.Forms.Label label_FR_BumpStopDamp;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox textBox_FL_BumpStopDamp;
+        private System.Windows.Forms.Label label_FL_BumpStopDamp;
         private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.TextBox textBox_RR_BumpStopRate;
+        private System.Windows.Forms.Label label_RR_BumpStopRate;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox textBox_RL_BumpStopRate;
+        private System.Windows.Forms.Label label_RL_BumpStopRate;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBox_FR_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.Label label_FR_BumpStopRateGainDeflectionSquared;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.TextBox textBox_FL_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.Label label_FL_BumpStopRateGainDeflectionSquared;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.TextBox textBox_FR_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.Label label_FR_BumpStopDampGainDeflectionSquared;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.TextBox textBox_FL_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.Label label_FL_BumpStopDampGainDeflectionSquared;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.TextBox textBox_RR_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.Label label_RR_BumpStopDampGainDeflectionSquared;
         private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.TextBox textBox_RL_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.Label label_RL_BumpStopDampGainDeflectionSquared;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.TextBox textBox_RR_BumpStopDamp;
+        private System.Windows.Forms.Label label_RR_BumpStopDamp;
         private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.TextBox textBox_RL_BumpStopDamp;
+        private System.Windows.Forms.Label label_RL_BumpStopDamp;
         private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.TextBox textBox_RR_BumpStopRateGainDeflectionSquared;
-        private System.Windows.Forms.TextBox textBox_RL_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.Label label_RR_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.Label label_RL_BumpStopRateGainDeflectionSquared;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox_FL_BumpLimitsY;
-        private System.Windows.Forms.TextBox textBox_FR_BumpLimitsY;
-        private System.Windows.Forms.TextBox textBox_FL_ReboundLimitsY;
-        private System.Windows.Forms.TextBox textBox_FL_BumpDampY;
-        private System.Windows.Forms.TextBox textBox_FR_ReboundLimitsY;
-        private System.Windows.Forms.TextBox textBox_FR_BumpDampY;
-        private System.Windows.Forms.TextBox textBox_RL_BumpLimitsY;
-        private System.Windows.Forms.TextBox textBox_RL_ReboundLimitsY;
-        private System.Windows.Forms.TextBox textBox_RL_BumpDampY;
-        private System.Windows.Forms.TextBox textBox_RR_BumpLimitsY;
-        private System.Windows.Forms.TextBox textBox_RR_ReboundLimitsY;
-        private System.Windows.Forms.TextBox textBox_RR_BumpDampY;
-        private System.Windows.Forms.TextBox textBox_FL_SuspensionGeometry;
-        private System.Windows.Forms.TextBox textBox_RL_SuspensionGeometry;
-        private System.Windows.Forms.TextBox textBox_RR_SuspensionGeometry;
-        private System.Windows.Forms.TextBox textBox_FR_SuspensionGeometry;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label label_FL_BumpLimitsY;
+        private System.Windows.Forms.Label label_FR_BumpLimitsY;
+        private System.Windows.Forms.Label label_FL_ReboundLimitsY;
+        private System.Windows.Forms.Label label_FL_BumpDampY;
+        private System.Windows.Forms.Label label_FR_ReboundLimitsY;
+        private System.Windows.Forms.Label label_FR_BumpDampY;
+        private System.Windows.Forms.Label label_RL_BumpLimitsY;
+        private System.Windows.Forms.Label label_RL_ReboundLimitsY;
+        private System.Windows.Forms.Label label_RL_BumpDampY;
+        private System.Windows.Forms.Label label_RR_BumpLimitsY;
+        private System.Windows.Forms.Label label_RR_ReboundLimitsY;
+        private System.Windows.Forms.Label label_RR_BumpDampY;
     }
 }

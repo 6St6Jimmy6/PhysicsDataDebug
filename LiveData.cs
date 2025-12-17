@@ -19,6 +19,7 @@ namespace Physics_Data_Debug
         public static bool FormTireStaticValues { get; set; } = false;
         public static bool TemperaturesChartOpen { get; set; } = false;
         public static bool FormSuspensionStaticValuesOpen { get; set; } = false;
+        public static bool FormSuspensionGeometryOpen {  get; set; } = false;
         public static bool GForceOpen { get; set; } = false;
         public static bool _4WheelsOpen { get; set; } = false;
         public static double RadDeg { get; } = 180 / Math.PI;
@@ -147,6 +148,10 @@ namespace Physics_Data_Debug
         public static void SetValueInTB(TextBox tB, Enum prefix, Enum dataValue, int roundDigits = 9, string preText = "", string suffText = "")
         {
             tB.Text = ValueString(prefix, dataValue, roundDigits);
+        }
+        public static void SetValueInLabel(Label l, Enum prefix, Enum dataValue, int roundDigits = 9, string preText = "", string suffText = "")
+        {
+            l.Text = ValueString(prefix, dataValue, roundDigits);
         }
         public static int GetElapsedTime()
         {

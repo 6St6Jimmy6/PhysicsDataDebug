@@ -12,11 +12,6 @@ namespace Physics_Data_Debug
         public FormTireStaticValues()
         {
             InitializeComponent();
-
-            textBox_FL_Radius.ReadOnly = true; textBox_FL_Width.ReadOnly = true; textBox_FL_ThermalAirTransfer.ReadOnly = true; textBox_FL_ThermalInnerTransfer.ReadOnly = true; textBox_FL_SpringRate.ReadOnly = true; textBox_FL_DamperRate.ReadOnly = true; textBox_FL_MaxDeflection.ReadOnly = true; textBox_FL_Mass.ReadOnly = true; textBox_FL_MomentOfInertia.ReadOnly = true;
-            textBox_FR_Radius.ReadOnly = true; textBox_FR_Width.ReadOnly = true; textBox_FR_ThermalAirTransfer.ReadOnly = true; textBox_FR_ThermalInnerTransfer.ReadOnly = true; textBox_FR_SpringRate.ReadOnly = true; textBox_FR_DamperRate.ReadOnly = true; textBox_FR_MaxDeflection.ReadOnly = true; textBox_FR_Mass.ReadOnly = true; textBox_FR_MomentOfInertia.ReadOnly = true;
-            textBox_RL_Radius.ReadOnly = true; textBox_RL_Width.ReadOnly = true; textBox_RL_ThermalAirTransfer.ReadOnly = true; textBox_RL_ThermalInnerTransfer.ReadOnly = true; textBox_RL_SpringRate.ReadOnly = true; textBox_RL_DamperRate.ReadOnly = true; textBox_RL_MaxDeflection.ReadOnly = true; textBox_RL_Mass.ReadOnly = true; textBox_RL_MomentOfInertia.ReadOnly = true;
-            textBox_RR_Radius.ReadOnly = true; textBox_RR_Width.ReadOnly = true; textBox_RR_ThermalAirTransfer.ReadOnly = true; textBox_RR_ThermalInnerTransfer.ReadOnly = true; textBox_RR_SpringRate.ReadOnly = true; textBox_RR_DamperRate.ReadOnly = true; textBox_RR_MaxDeflection.ReadOnly = true; textBox_RR_Mass.ReadOnly = true; textBox_RR_MomentOfInertia.ReadOnly = true;
             timer1.Enabled = true;
             timer1.Interval = 100;
         }
@@ -30,23 +25,23 @@ namespace Physics_Data_Debug
         }
         private void ReadData()
         {
-            textBoxTireWrite(WF_PrefixMain.FL, textBox_FL_Radius, textBox_FL_Width, textBox_FL_ThermalAirTransfer, textBox_FL_ThermalInnerTransfer, textBox_FL_SpringRate, textBox_FL_DamperRate, textBox_FL_MaxDeflection, textBox_FL_Mass, textBox_FL_MomentOfInertia);
-            textBoxTireWrite(WF_PrefixMain.FR, textBox_FR_Radius, textBox_FR_Width, textBox_FR_ThermalAirTransfer, textBox_FR_ThermalInnerTransfer, textBox_FR_SpringRate, textBox_FR_DamperRate, textBox_FR_MaxDeflection, textBox_FR_Mass, textBox_FR_MomentOfInertia);
-            textBoxTireWrite(WF_PrefixMain.RL, textBox_RL_Radius, textBox_RL_Width, textBox_RL_ThermalAirTransfer, textBox_RL_ThermalInnerTransfer, textBox_RL_SpringRate, textBox_RL_DamperRate, textBox_RL_MaxDeflection, textBox_RL_Mass, textBox_RL_MomentOfInertia);
-            textBoxTireWrite(WF_PrefixMain.RR, textBox_RR_Radius, textBox_RR_Width, textBox_RR_ThermalAirTransfer, textBox_RR_ThermalInnerTransfer, textBox_RR_SpringRate, textBox_RR_DamperRate, textBox_RR_MaxDeflection, textBox_RR_Mass, textBox_RR_MomentOfInertia);
+            labelTireWrite(WF_PrefixMain.FL, label_FL_Radius, label_FL_Width, label_FL_ThermalAirTransfer, label_FL_ThermalInnerTransfer, label_FL_SpringRate, label_FL_DamperRate, label_FL_MaxDeflection, label_FL_Mass, label_FL_MomentOfInertia);
+            labelTireWrite(WF_PrefixMain.FR, label_FR_Radius, label_FR_Width, label_FR_ThermalAirTransfer, label_FR_ThermalInnerTransfer, label_FR_SpringRate, label_FR_DamperRate, label_FR_MaxDeflection, label_FR_Mass, label_FR_MomentOfInertia);
+            labelTireWrite(WF_PrefixMain.RL, label_RL_Radius, label_RL_Width, label_RL_ThermalAirTransfer, label_RL_ThermalInnerTransfer, label_RL_SpringRate, label_RL_DamperRate, label_RL_MaxDeflection, label_RL_Mass, label_RL_MomentOfInertia);
+            labelTireWrite(WF_PrefixMain.RR, label_RR_Radius, label_RR_Width, label_RR_ThermalAirTransfer, label_RR_ThermalInnerTransfer, label_RR_SpringRate, label_RR_DamperRate, label_RR_MaxDeflection, label_RR_Mass, label_RR_MomentOfInertia);
         }
-        private void textBoxTireWrite(Enum prefix,  
-            TextBox radius, TextBox width, TextBox thermalAirTransfer, TextBox thermalInnerTransfer, TextBox springRate, TextBox damperRate, TextBox maxDeflection, TextBox mass, TextBox momentOfInertia)
+        private void labelTireWrite(Enum prefix,
+            Label radius, Label width, Label thermalAirTransfer, Label thermalInnerTransfer, Label springRate, Label damperRate, Label maxDeflection, Label mass, Label momentOfInertia)
         {
-            LiveData.SetValueInTB(radius, prefix, WF_TireDataOffset.TireRadius);
-            LiveData.SetValueInTB(width, prefix, WF_TireDataOffset.TireWidth);
-            LiveData.SetValueInTB(thermalAirTransfer, prefix, WF_TireDataOffset.ThermalAirTransfer);
-            LiveData.SetValueInTB(thermalInnerTransfer, prefix, WF_TireDataOffset.ThermalInnerTransfer);
-            LiveData.SetValueInTB(springRate, prefix, WF_TireDataOffset.TireSpringRate);
-            LiveData.SetValueInTB(damperRate, prefix, WF_TireDataOffset.TireDamperRate);
-            LiveData.SetValueInTB(maxDeflection, prefix, WF_TireDataOffset.TireMaxDeflection);
-            LiveData.SetValueInTB(mass, prefix, WF_TireDataOffset.TireMass);
-            LiveData.SetValueInTB(momentOfInertia, prefix, WF_TireDataOffset.MomentOfInertia);
+            LiveData.SetValueInLabel(radius, prefix, WF_TireDataOffset.TireRadius);
+            LiveData.SetValueInLabel(width, prefix, WF_TireDataOffset.TireWidth);
+            LiveData.SetValueInLabel(thermalAirTransfer, prefix, WF_TireDataOffset.ThermalAirTransfer);
+            LiveData.SetValueInLabel(thermalInnerTransfer, prefix, WF_TireDataOffset.ThermalInnerTransfer);
+            LiveData.SetValueInLabel(springRate, prefix, WF_TireDataOffset.TireSpringRate);
+            LiveData.SetValueInLabel(damperRate, prefix, WF_TireDataOffset.TireDamperRate);
+            LiveData.SetValueInLabel(maxDeflection, prefix, WF_TireDataOffset.TireMaxDeflection);
+            LiveData.SetValueInLabel(mass, prefix, WF_TireDataOffset.TireMass);
+            LiveData.SetValueInLabel(momentOfInertia, prefix, WF_TireDataOffset.MomentOfInertia);
         }
         private void CheckKeyIsNumberOrDecimalPoint(KeyPressEventArgs e)
         {

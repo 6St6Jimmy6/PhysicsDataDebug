@@ -29,7 +29,6 @@ namespace Physics_Data_Debug
         /// </summary>
         private void InitializeComponent()
         {
-            this.closeLogSettings = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.selectAll = new System.Windows.Forms.CheckBox();
             this.checkedListBoxLogging = new System.Windows.Forms.CheckedListBox();
@@ -58,17 +57,6 @@ namespace Physics_Data_Debug
             this.DelimiterTextBox = new System.Windows.Forms.TextBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
-            // 
-            // closeLogSettings
-            // 
-            this.closeLogSettings.Location = new System.Drawing.Point(26, 25);
-            this.closeLogSettings.Margin = new System.Windows.Forms.Padding(6);
-            this.closeLogSettings.Name = "closeLogSettings";
-            this.closeLogSettings.Size = new System.Drawing.Size(150, 83);
-            this.closeLogSettings.TabIndex = 0;
-            this.closeLogSettings.Text = "Close Log Settings";
-            this.closeLogSettings.UseVisualStyleBackColor = true;
-            this.closeLogSettings.Click += new System.EventHandler(this.backToFirstAllDataLoggerPage_Click);
             // 
             // label1
             // 
@@ -156,7 +144,7 @@ namespace Physics_Data_Debug
             // 
             // FLApplyLogSettings
             // 
-            this.FLApplyLogSettings.Location = new System.Drawing.Point(26, 138);
+            this.FLApplyLogSettings.Location = new System.Drawing.Point(15, 15);
             this.FLApplyLogSettings.Margin = new System.Windows.Forms.Padding(6);
             this.FLApplyLogSettings.Name = "FLApplyLogSettings";
             this.FLApplyLogSettings.Size = new System.Drawing.Size(150, 75);
@@ -344,7 +332,7 @@ namespace Physics_Data_Debug
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label10.Location = new System.Drawing.Point(18, 217);
+            this.label10.Location = new System.Drawing.Point(15, 96);
             this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 25);
@@ -354,7 +342,7 @@ namespace Physics_Data_Debug
             // DelimiterTextBox
             // 
             this.DelimiterTextBox.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DelimiterTextBox.Location = new System.Drawing.Point(24, 248);
+            this.DelimiterTextBox.Location = new System.Drawing.Point(15, 127);
             this.DelimiterTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.DelimiterTextBox.Name = "DelimiterTextBox";
             this.DelimiterTextBox.Size = new System.Drawing.Size(68, 35);
@@ -402,7 +390,6 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.checkedListBoxLogging);
             this.Controls.Add(this.selectAll);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.closeLogSettings);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormLogSettings";
             this.Text = "Log Settings";
@@ -415,8 +402,6 @@ namespace Physics_Data_Debug
         }
 
         #endregion
-
-        private System.Windows.Forms.Button closeLogSettings;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox selectAll;
         private System.Windows.Forms.CheckedListBox checkedListBoxLogging;

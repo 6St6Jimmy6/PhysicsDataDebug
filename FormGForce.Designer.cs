@@ -43,7 +43,6 @@ namespace Physics_Data_Debug
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.closeButton = new System.Windows.Forms.Button();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.toSettingsButton = new System.Windows.Forms.Button();
@@ -136,17 +135,6 @@ namespace Physics_Data_Debug
             this.chart1.Size = new System.Drawing.Size(880, 846);
             this.chart1.TabIndex = 288;
             this.chart1.Text = "chart1";
-            // 
-            // closeButton
-            // 
-            this.closeButton.Location = new System.Drawing.Point(0, 144);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(6);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(130, 44);
-            this.closeButton.TabIndex = 286;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // chart2
             // 
@@ -243,7 +231,6 @@ namespace Physics_Data_Debug
             this.ClientSize = new System.Drawing.Size(1100, 846);
             this.Controls.Add(this.refreshAndClearButton);
             this.Controls.Add(this.toSettingsButton);
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -261,7 +248,6 @@ namespace Physics_Data_Debug
         #endregion
         public System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button closeButton;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         public System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button toSettingsButton;
