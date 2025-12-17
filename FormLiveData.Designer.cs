@@ -202,7 +202,7 @@ namespace Physics_Data_Debug
             this.textBox_RR_SuspensionVelocity = new System.Windows.Forms.TextBox();
             this.textBox_RR_SuspensionLength = new System.Windows.Forms.TextBox();
             this.label73 = new System.Windows.Forms.Label();
-            this.toSuspensionStaticValuesButton = new System.Windows.Forms.Button();
+            this.toSuspensionStaticValues = new System.Windows.Forms.Button();
             this.OpenTemperaturesChart = new System.Windows.Forms.Button();
             this.CurrentEngineTorque = new System.Windows.Forms.Label();
             this.CurrentEnginePower = new System.Windows.Forms.Label();
@@ -2312,18 +2312,18 @@ namespace Physics_Data_Debug
             this.label73.Text = "Susp Length/Velocity                                  m /                        " +
     "     m/s";
             // 
-            // toSuspensionStaticValuesButton
+            // toSuspensionStaticValues
             // 
-            this.toSuspensionStaticValuesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.toSuspensionStaticValuesButton.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionStaticValuesButton.Location = new System.Drawing.Point(11, 1801);
-            this.toSuspensionStaticValuesButton.Margin = new System.Windows.Forms.Padding(6);
-            this.toSuspensionStaticValuesButton.Name = "toSuspensionStaticValuesButton";
-            this.toSuspensionStaticValuesButton.Size = new System.Drawing.Size(180, 108);
-            this.toSuspensionStaticValuesButton.TabIndex = 239;
-            this.toSuspensionStaticValuesButton.Text = "Suspension Static Values Page";
-            this.toSuspensionStaticValuesButton.UseVisualStyleBackColor = false;
-            this.toSuspensionStaticValuesButton.Click += new System.EventHandler(this.toSuspensionStaticValuesButton_Click);
+            this.toSuspensionStaticValues.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toSuspensionStaticValues.ForeColor = System.Drawing.Color.White;
+            this.toSuspensionStaticValues.Location = new System.Drawing.Point(11, 1801);
+            this.toSuspensionStaticValues.Margin = new System.Windows.Forms.Padding(6);
+            this.toSuspensionStaticValues.Name = "toSuspensionStaticValues";
+            this.toSuspensionStaticValues.Size = new System.Drawing.Size(180, 108);
+            this.toSuspensionStaticValues.TabIndex = 239;
+            this.toSuspensionStaticValues.Text = "Suspension Static Values Page";
+            this.toSuspensionStaticValues.UseVisualStyleBackColor = false;
+            this.toSuspensionStaticValues.Click += new System.EventHandler(this.toSuspensionStaticValuesButton_Click);
             // 
             // OpenTemperaturesChart
             // 
@@ -2902,7 +2902,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.getProcessButton);
             this.Controls.Add(this.toTestChartPageButton);
             this.Controls.Add(this.OpenTemperaturesChart);
-            this.Controls.Add(this.toSuspensionStaticValuesButton);
+            this.Controls.Add(this.toSuspensionStaticValues);
             this.Controls.Add(this.textBox_RR_SuspensionVelocity);
             this.Controls.Add(this.textBox_RR_SuspensionLength);
             this.Controls.Add(this.label73);
@@ -3284,7 +3284,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TextBox textBox_RR_SuspensionVelocity;
         private System.Windows.Forms.TextBox textBox_RR_SuspensionLength;
         private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Button toSuspensionStaticValuesButton;
+        private System.Windows.Forms.Button toSuspensionStaticValues;
         private System.Windows.Forms.Button OpenTemperaturesChart;
         public System.Windows.Forms.Label CurrentEngineTorque;
         public System.Windows.Forms.Label CurrentEnginePower;

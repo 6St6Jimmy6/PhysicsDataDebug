@@ -68,6 +68,10 @@ namespace Physics_Data_Debug
             if (LiveData.GForceOpen == false) { toGForceButton.Visible = true; }
             if (LiveData._4WheelsOpen == true) { to4WheelsButton.Visible = false; }
             if (LiveData._4WheelsOpen == false) { to4WheelsButton.Visible = true; }
+            if (LiveData.FormSuspensionStaticValuesOpen == true) { toSuspensionStaticValues.Visible = false; }
+            if (LiveData.FormSuspensionStaticValuesOpen == false) { toSuspensionStaticValues.Visible = true; }
+            
+
         }
         private void textBoxTireWriter(Enum prefix, 
             TextBox angularVelocity, TextBox contactLength, TextBox currentContactBrakeTorque, TextBox maxCurrentContactBrakeTorque, TextBox deflection, TextBox effectiveRadius, TextBox lateralLoad, TextBox loadedRadius, 
@@ -271,7 +275,7 @@ namespace Physics_Data_Debug
         }
         private void toSuspensionStaticValuesButton_Click(object sender, EventArgs e)
         {
-            toSuspensionStaticValuesButton.Visible = false;
+            toSuspensionStaticValues.Visible = false;
             LiveData.FormSuspensionStaticValuesOpen = true;
             FormSuspensionStaticValues s = new FormSuspensionStaticValues();
             s.Show();

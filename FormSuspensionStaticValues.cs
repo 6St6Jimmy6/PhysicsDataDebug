@@ -20,6 +20,7 @@ namespace Physics_Data_Debug
         public FormSuspensionStaticValues()
         {
             InitializeComponent();
+            SetChart(chart1);
             textBox_FL_SuspensionGeometry.Visible = true;
             textBox_FR_SuspensionGeometry.Visible = true;
             textBox_RL_SuspensionGeometry.Visible = true;
@@ -64,7 +65,731 @@ namespace Physics_Data_Debug
             timer1.Enabled = true;
             timer1.Interval = 100;
         }
+        private void SetChart(Chart chartName)
+        {
+            chartName.BackColor = Color.Transparent;
 
+            chartName.Series.Clear();
+            chartName.ChartAreas.Clear();
+
+            string sideName = "";
+            string suspension = "";
+            string legendName = "Legend1";
+            Color textColor = Color.White;
+            Color chartLineColors = Color.FromArgb(32, 32, 32);
+            #region Legends
+            chartName.Legends.Clear();
+            chartName.Legends.Add(legendName);
+            chartName.Legends[legendName].ForeColor = textColor;
+            chartName.Legends[legendName].BackColor = Color.Transparent;
+            chartName.Legends[legendName].Docking = Docking.Bottom;
+            #endregion
+
+            #region Front Suspension
+            sideName = "Front";
+            suspension = "Suspension";
+            chartName.ChartAreas.Add(sideName + suspension);
+            chartName.ChartAreas[sideName + suspension].BackColor = Color.Transparent;
+
+            #region AxisX
+            chartName.ChartAreas[sideName + suspension].AxisX.TitleForeColor = textColor;
+            chartName.ChartAreas[sideName + suspension].AxisX.LabelStyle.ForeColor = textColor;
+            chartName.ChartAreas[sideName + suspension].AxisX.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisX.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisX.MajorGrid.Enabled = true;
+            chartName.ChartAreas[sideName + suspension].AxisX.MajorGrid.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisX.MajorTickMark.Enabled = true;
+            chartName.ChartAreas[sideName + suspension].AxisX.MajorTickMark.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisX.MajorTickMark.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.Enabled = true;
+            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dot;
+
+            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.Enabled = false;
+            chartName.ChartAreas[sideName + suspension].AxisX.MinorTickMark.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisX.MinorTickMark.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisX.Crossing = double.NaN;
+            chartName.ChartAreas[sideName + suspension].AxisX.Interval = 0.5d;
+            chartName.ChartAreas[sideName + suspension].AxisX.Maximum = 2;
+            chartName.ChartAreas[sideName + suspension].AxisX.Minimum = -2;
+            #endregion
+
+            #region AxisY
+            chartName.ChartAreas[sideName + suspension].AxisY.TitleForeColor = textColor;
+            chartName.ChartAreas[sideName + suspension].AxisY.LabelStyle.ForeColor = textColor;
+            chartName.ChartAreas[sideName + suspension].AxisY.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisY.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisY.MajorGrid.Enabled = true;
+            chartName.ChartAreas[sideName + suspension].AxisY.MajorGrid.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisY.MajorTickMark.Enabled = true;
+            chartName.ChartAreas[sideName + suspension].AxisY.MajorTickMark.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisY.MajorTickMark.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.Enabled = true;
+            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.LineDashStyle = ChartDashStyle.Dot;
+
+            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.Enabled = false;
+            chartName.ChartAreas[sideName + suspension].AxisY.MinorTickMark.LineColor = chartLineColors;
+            chartName.ChartAreas[sideName + suspension].AxisY.MinorTickMark.LineDashStyle = ChartDashStyle.Dash;
+
+            chartName.ChartAreas[sideName + suspension].AxisY.Crossing = double.NaN;
+            chartName.ChartAreas[sideName + suspension].AxisY.Interval = 0.5d;
+            chartName.ChartAreas[sideName + suspension].AxisY.Maximum = 2;
+            chartName.ChartAreas[sideName + suspension].AxisY.Minimum = -1;
+            #endregion
+            
+            #region Titles
+            chartName.Titles.Clear();
+            chartName.Titles.Add(Name = sideName + suspension);
+            chartName.Titles[0].ForeColor = textColor;
+            chartName.Titles[0].Text = sideName + " " + suspension;
+            chartName.Titles[0].DockedToChartArea = sideName + suspension;
+            chartName.Titles[0].IsDockedInsideChartArea = false;
+            #endregion
+
+            #region Series
+            string seriesName = "";
+            string legendText = "";
+            #region CenterOfMassHeight
+            seriesName = "CenterOfMassHeight";
+            legendText = "CenterOfMassHeight";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 10;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            #endregion
+
+            #region RollCenterXY
+            legendText = "RollCenterXY";
+            seriesName = "RollCenterXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 64, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 64, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 6;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            #endregion
+
+            #region RideHeight
+            legendText = "RideHeight";
+            seriesName = "RideHeight";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(64, 64, 255);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(64, 64, 255);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(64, 64, 255);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 6;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            #endregion
+
+            #region FL
+
+            #region FLTirePivotXY
+            legendText = "TirePivotXY";
+            seriesName = "FLTirePivotXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 2;
+            chartName.Series[sideName + seriesName].MarkerSize = 8;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            #endregion
+
+            #region FLUpperFrontArmXY
+            legendText = "UpperFrontArmXY";
+            seriesName = "FLUpperFrontArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
+            #endregion
+
+            #region FLUpperRearArmXY
+            legendText = "UpperRearArmXY";
+            seriesName = "FLUpperRearArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            #endregion
+
+            #region FLUpperArmMidpointXY
+            legendText = "UpperArmMidpointXY";
+            seriesName = "FLUpperArmMidpointXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 3;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
+            #endregion
+
+            #region FLLowerFrontArmXY
+            legendText = "LowerFrontArmXY";
+            seriesName = "FLLowerFrontArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
+            #endregion
+
+            #region FLLowerRearArmXY
+            legendText = "LowerRearArmXY";
+            seriesName = "FLLowerRearArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            #endregion
+
+            #region FLLowerArmMidpointXY
+            legendText = "LowerArmMidpointXY";
+            seriesName = "FLLowerArmMidpointXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 3;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
+            #endregion
+
+            #region FLSteeringRodXY
+            legendText = "SteeringRodXY";
+            seriesName = "FLSteeringRodXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 255);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 255);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 255);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            #endregion
+
+            #region FLInstantCenterXY
+            legendText = "InstantCenterXY";
+            seriesName = "FLInstantCenterXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 5;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            chartName.Series[sideName + seriesName].Points[1].MarkerSize = 10;
+            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].Points[2].IsValueShownAsLabel = false;
+            #endregion
+
+            #region FLRollCenterLine
+            legendText = "RollCenterLine";
+            seriesName = "FLRollCenterLine";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 5;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            #endregion
+            #endregion
+
+            #region FR
+            #region FRTirePivotXY
+            legendText = "TirePivotXY";
+            seriesName = "FRTirePivotXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 2;
+            chartName.Series[sideName + seriesName].MarkerSize = 8;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            #endregion
+
+            #region FRUpperFrontArmXY
+            legendText = "UpperFrontArmXY";
+            seriesName = "FRUpperFrontArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
+            #endregion
+
+            #region FRUpperRearArmXY
+            legendText = "UpperRearArmXY";
+            seriesName = "FRUpperRearArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 0, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            #endregion
+
+            #region FRUpperArmMidpointXY
+            legendText = "UpperArmMidpointXY";
+            seriesName = "FRUpperArmMidpointXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 3;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
+            #endregion
+
+            #region FRLowerFrontArmXY
+            legendText = "LowerFrontArmXY";
+            seriesName = "FRLowerFrontArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
+            #endregion
+
+            #region FRLowerRearArmXY
+            legendText = "LowerRearArmXY";
+            seriesName = "FRLowerRearArmXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 255, 0);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            #endregion
+
+            #region FRLowerArmMidpointXY
+            legendText = "LowerArmMidpointXY";
+            seriesName = "FRLowerArmMidpointXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 3;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
+            #endregion
+
+            #region FRSteeringRodXY
+            legendText = "SteeringRodXY";
+            seriesName = "FRSteeringRodXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 255);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 255);
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 255);
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 4;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            #endregion
+
+            #region FRInstantCenterXY
+            legendText = "InstantCenterXY";
+            seriesName = "FRInstantCenterXY";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 5;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
+            chartName.Series[sideName + seriesName].Points[1].MarkerSize = 10;
+            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.FromArgb(128, 0, 0);
+            chartName.Series[sideName + seriesName].Points[2].IsValueShownAsLabel = false;
+            #endregion
+
+            #region FRRollCenterLine
+            legendText = "RollCenterLine";
+            seriesName = "FRRollCenterLine";
+            chartName.Series.Add(sideName + seriesName);
+            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
+            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
+            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
+            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
+            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
+            chartName.Series[sideName + seriesName].Legend = legendName;
+            chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
+            chartName.Series[sideName + seriesName].LegendText = legendText;
+            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
+            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
+            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
+            chartName.Series[sideName + seriesName].MarkerSize = 5;
+            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
+            if (chartName.Series[sideName + seriesName].Points.Count == 0)
+            {
+                chartName.Series[sideName + seriesName].Points.Add();
+                chartName.Series[sideName + seriesName].Points.Add();
+            }
+            #endregion
+            #endregion
+
+            #endregion
+
+            #endregion
+
+            #region Rear Suspension
+            #endregion
+
+        }
         private void FormSuspensionStaticValues_Load(object sender, EventArgs e)
         {
             LiveData.FormSuspensionStaticValuesOpen = true;
@@ -73,6 +798,7 @@ namespace Physics_Data_Debug
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            LiveData.FormSuspensionStaticValuesOpen = false;
         }
 
         private void FormSuspensionStaticValues_Closing(object sender, FormClosingEventArgs e)
@@ -129,9 +855,9 @@ namespace Physics_Data_Debug
                 W = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM44)
             };
         }
-        private void TirePivotChartPoints(Enum side, Vector4 staticTirePivot, Vector4 dynamicTirePivot, Chart chart, string seriesName, bool isStatic)
+        private void TirePivotChartPoints(string chartSideName, Enum side, Vector4 staticTirePivot, Vector4 dynamicTirePivot, Chart chart, string seriesName, bool isStatic)
         {
-            string fullSeriesName = side + seriesName;
+            string fullSeriesName = chartSideName + side + seriesName;
             if (isStatic == true)
             {
                 chart.Series[fullSeriesName].Points[0].XValue = staticTirePivot.X;
@@ -163,9 +889,9 @@ namespace Physics_Data_Debug
                 W = LiveData.GetFullListDataValue(side, w)/* + tirePivot.W*///??
             };
         }
-        private void ArmChartPoints(Enum side, Vector4 staticBodyArm, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
+        private void ArmChartPoints(string chartSideName, Enum side, Vector4 staticBodyArm, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
         {
-            string fullSeriesName = side + seriesName;
+            string fullSeriesName = chartSideName + side + seriesName;
             chart.Series[fullSeriesName].Points[0].XValue = staticBodyArm.X;
             chart.Series[fullSeriesName].Points[0].YValues = new double[] { staticBodyArm.Y };
             if (isStatic == true)
@@ -179,24 +905,24 @@ namespace Physics_Data_Debug
                 chart.Series[fullSeriesName].Points[1].YValues = new double[] { dynamicSpindleArm.Y };
             }
         }
-        private void ArmMidpointChartPoints(Enum side, Vector4 bodyArmMidpoint, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
+        private void ArmMidpointChartPoints(string chartSideName, Enum side, Vector4 bodyArmMidpoint, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
         {
-            string fulSeriesName = side + seriesName;
-            chart1.Series[fulSeriesName].Points[0].XValue = bodyArmMidpoint.X;//BodyUpperArmMidpointX
-            chart1.Series[fulSeriesName].Points[0].YValues = new double[] { bodyArmMidpoint.Y };//BodyUpperArmMidpointY
+            string fullSeriesName = chartSideName + side + seriesName;
+            chart1.Series[fullSeriesName].Points[0].XValue = bodyArmMidpoint.X;//BodyUpperArmMidpointX
+            chart1.Series[fullSeriesName].Points[0].YValues = new double[] { bodyArmMidpoint.Y };//BodyUpperArmMidpointY
 
             if (isStatic == true)
             {
-                chart1.Series[fulSeriesName].Points[1].XValue = staticSpindleArm.X;
-                chart1.Series[fulSeriesName].Points[1].YValues = new double[] { staticSpindleArm.Y };
+                chart1.Series[fullSeriesName].Points[1].XValue = staticSpindleArm.X;
+                chart1.Series[fullSeriesName].Points[1].YValues = new double[] { staticSpindleArm.Y };
             }
             else
             {
-                chart1.Series[fulSeriesName].Points[1].XValue = dynamicSpindleArm.X;//chart.Series[side + "UpperFrontArmXY"].Points[1].XValue;//DynamicSpindleUpperFrontArmX
-                chart1.Series[fulSeriesName].Points[1].YValues = new double[] { dynamicSpindleArm.Y };//chart.Series[side + "UpperFrontArmXY"].Points[1].YValues;//DynamicSpindleUpperFrontArmY
+                chart1.Series[fullSeriesName].Points[1].XValue = dynamicSpindleArm.X;//chart.Series[side + "UpperFrontArmXY"].Points[1].XValue;//DynamicSpindleUpperFrontArmX
+                chart1.Series[fullSeriesName].Points[1].YValues = new double[] { dynamicSpindleArm.Y };//chart.Series[side + "UpperFrontArmXY"].Points[1].YValues;//DynamicSpindleUpperFrontArmY
             }
         }
-        private void SuspensionRollCenter(string side, bool isStatic,Chart chart, Vector4 instantCenterFL, Vector4 instantCenterFR)
+        private void SuspensionRollCenter(string chartSideName, bool isStatic,Chart chart, Vector4 instantCenterFL, Vector4 instantCenterFR)
         {
             float rideHeightFL = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension2DataOffset.RideHeight);
             float centerOfMassHeightFL = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_MassDataOffset.CenterOfMassHeight);
@@ -230,38 +956,38 @@ namespace Physics_Data_Debug
                 tireMiddleContactPointFL,
                 instantCenterFR,
                 tireMiddleContactPointFR);
-            string rollCenterXY = "Front" + "RollCenterXY";
+            string rollCenterXY = chartSideName + "RollCenterXY";
             chart.Series[rollCenterXY].Points[0].XValue = rollCenter.X;
             chart.Series[rollCenterXY].Points[0].YValues = new double[] { rollCenter.Y };
 
-            string left = "LeftRCLine";
-            chart.Series[left].Points[0].XValue = instantCenterFL.X;
-            chart.Series[left].Points[0].YValues = new double[] { instantCenterFL.Y };
-            chart.Series[left].Points[1].XValue = tireMiddleContactPointFL.X;
-            chart.Series[left].Points[1].YValues = new double[] { tireMiddleContactPointFL.Y };
+            string FLRCLine = chartSideName + "FL" + "RollCenterLine";
+            chart.Series[FLRCLine].Points[0].XValue = instantCenterFL.X;
+            chart.Series[FLRCLine].Points[0].YValues = new double[] { instantCenterFL.Y };
+            chart.Series[FLRCLine].Points[1].XValue = tireMiddleContactPointFL.X;
+            chart.Series[FLRCLine].Points[1].YValues = new double[] { tireMiddleContactPointFL.Y };
 
-            string right = "RightRCLine";
-            chart.Series[right].Points[0].XValue = instantCenterFR.X;
-            chart.Series[right].Points[0].YValues = new double[] { instantCenterFR.Y };
-            chart.Series[right].Points[1].XValue = tireMiddleContactPointFR.X;
-            chart.Series[right].Points[1].YValues = new double[] { tireMiddleContactPointFR.Y };
+            string FRRCLine = chartSideName + "FR" + "RollCenterLine";
+            chart.Series[FRRCLine].Points[0].XValue = instantCenterFR.X;
+            chart.Series[FRRCLine].Points[0].YValues = new double[] { instantCenterFR.Y };
+            chart.Series[FRRCLine].Points[1].XValue = tireMiddleContactPointFR.X;
+            chart.Series[FRRCLine].Points[1].YValues = new double[] { tireMiddleContactPointFR.Y };
 
             #endregion
         }
-        private Vector4 SuspensionGeometry(Enum side, bool isStatic, Chart chart)
+        private Vector4 SuspensionGeometry(string chartSideName, Enum side, bool isStatic, Chart chart)
         {
             float rideHeight = LiveData.GetFullListDataValue(side, WF_Suspension2DataOffset.RideHeight);
-            chart.Series["RideHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
-            chart.Series["RideHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + rideHeight };
+            chart.Series[chartSideName + "RideHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
+            chart.Series[chartSideName + "RideHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + rideHeight };
 
             float centerOfMassHeight = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_MassDataOffset.CenterOfMassHeight);
-            chart.Series["CoMHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
-            chart.Series["CoMHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + centerOfMassHeight };
+            chart.Series[chartSideName + "CenterOfMassHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
+            chart.Series[chartSideName + "CenterOfMassHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + centerOfMassHeight };
 
             #region TirePivot
             Vector4 staticTirePivot = StaticTirePivot(side, rideHeight, centerOfMassHeight);
             Vector4 dynamicTirePivot = DynamicTirePivot(side, rideHeight, centerOfMassHeight);
-            TirePivotChartPoints(side, staticTirePivot, dynamicTirePivot, chart, "TirePivotXY", isStatic);
+            TirePivotChartPoints(chartSideName, side, staticTirePivot, dynamicTirePivot, chart, "TirePivotXY", isStatic);
             #endregion
 
             #region UpperFront
@@ -283,7 +1009,7 @@ namespace Physics_Data_Debug
                 WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmZ,
                 WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmW,
                 dynamicTirePivot);
-            ArmChartPoints(side, staticBodyUpperFrontArm, staticSpindleUpperFrontArm, dynamicSpindleUpperFrontArm, chart, "UpperFrontArmXY", isStatic);
+            ArmChartPoints(chartSideName, side, staticBodyUpperFrontArm, staticSpindleUpperFrontArm, dynamicSpindleUpperFrontArm, chart, "UpperFrontArmXY", isStatic);
             #endregion
 
             #region UpperRear
@@ -305,7 +1031,7 @@ namespace Physics_Data_Debug
                 WF_SuspensionGeometryDataOffset.SpindleUpperRearArmZ,
                 WF_SuspensionGeometryDataOffset.SpindleUpperRearArmW,
                 dynamicTirePivot);
-            ArmChartPoints(side, staticBodyUpperRearArm, staticSpindleUpperRearArm, dynamicSpindleUpperRearArm, chart, "UpperRearArmXY", isStatic);
+            ArmChartPoints(chartSideName, side, staticBodyUpperRearArm, staticSpindleUpperRearArm, dynamicSpindleUpperRearArm, chart, "UpperRearArmXY", isStatic);
             #endregion
 
             #region LowerFront
@@ -327,7 +1053,7 @@ namespace Physics_Data_Debug
                 WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmZ,
                 WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmW,
                 dynamicTirePivot);
-            ArmChartPoints(side, staticBodyLowerFrontArm, staticSpindleLowerFrontArm, dynamicSpindleLowerFrontArm, chart, "LowerFrontArmXY", isStatic);
+            ArmChartPoints(chartSideName, side, staticBodyLowerFrontArm, staticSpindleLowerFrontArm, dynamicSpindleLowerFrontArm, chart, "LowerFrontArmXY", isStatic);
             #endregion
 
             #region LowerRear
@@ -349,7 +1075,7 @@ namespace Physics_Data_Debug
                 WF_SuspensionGeometryDataOffset.SpindleLowerRearArmZ,
                 WF_SuspensionGeometryDataOffset.SpindleLowerRearArmW,
                 dynamicTirePivot);
-            ArmChartPoints(side, staticBodyLowerRearArm, staticSpindleLowerRearArm, dynamicSpindleLowerRearArm, chart, "LowerRearArmXY", isStatic);
+            ArmChartPoints(chartSideName, side, staticBodyLowerRearArm, staticSpindleLowerRearArm, dynamicSpindleLowerRearArm, chart, "LowerRearArmXY", isStatic);
             #endregion
 
             #region SteeringRod
@@ -372,18 +1098,18 @@ namespace Physics_Data_Debug
                 Z = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodZ) + dynamicTirePivot.Z,//?? Needs also to + tire Z rotation and offset the offset with that
                 W = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodW) + dynamicTirePivot.W
             };
-            ArmChartPoints(side, staticBodySteeringRod, staticSpindleSteeringRod, dynamicSpindleSteeringRod, chart, "SteeringRodXY", isStatic);
+            ArmChartPoints(chartSideName, side, staticBodySteeringRod, staticSpindleSteeringRod, dynamicSpindleSteeringRod, chart, "SteeringRodXY", isStatic);
             #endregion
 
             #region InstantCenter
 
             #region UpperArmMidpoint
             Vector4 bodyUpperArmMidpoint = MidPointArm(staticBodyUpperFrontArm, staticBodyUpperRearArm);
-            ArmMidpointChartPoints(side, bodyUpperArmMidpoint, staticSpindleUpperFrontArm, dynamicSpindleUpperFrontArm, chart, "UpperArmMidpointXY", isStatic);
+            ArmMidpointChartPoints(chartSideName, side, bodyUpperArmMidpoint, staticSpindleUpperFrontArm, dynamicSpindleUpperFrontArm, chart, "UpperArmMidpointXY", isStatic);
             #endregion
             #region LowerArmMidpoint
             Vector4 bodyLowerArmMidpoint = MidPointArm(staticBodyLowerFrontArm, staticBodyLowerRearArm);
-            ArmMidpointChartPoints(side, bodyLowerArmMidpoint, staticSpindleLowerFrontArm, dynamicSpindleLowerFrontArm, chart, "LowerArmMidpointXY", isStatic);
+            ArmMidpointChartPoints(chartSideName, side, bodyLowerArmMidpoint, staticSpindleLowerFrontArm, dynamicSpindleLowerFrontArm, chart, "LowerArmMidpointXY", isStatic);
             #endregion
 
             #region InstantCenter
@@ -394,7 +1120,7 @@ namespace Physics_Data_Debug
             dynamicSpindleUpperFrontArm,
             bodyUpperArmMidpoint);
 
-            string InstantCenterXY = side + "InstantCenterXY";
+            string InstantCenterXY = chartSideName + side + "InstantCenterXY";
             chart.Series[InstantCenterXY].Points[0].XValue = bodyUpperArmMidpoint.X;
             chart.Series[InstantCenterXY].Points[0].YValues = new double[] { bodyUpperArmMidpoint.Y };
             chart.Series[InstantCenterXY].Points[1].XValue = instantCenter.X;
@@ -405,22 +1131,6 @@ namespace Physics_Data_Debug
 
             #endregion
             return instantCenter;
-
-            #region Roll Center
-            Vector4 tireMiddleContactPoint = new Vector4 
-            { 
-                X = dynamicTirePivot.X,
-                Y = dynamicTirePivot.Y - LiveData.GetFullListDataValue(side, WF_TireDataOffset.LoadedRadius),
-                Z = dynamicTirePivot.Z,
-                W = dynamicTirePivot.W,
-            };
-            Vector4 rollCenter = XYLineIntersectionVector(
-                instantCenter,
-                tireMiddleContactPoint,
-                instantCenter,
-                tireMiddleContactPoint);
-            string rollCenterXY = side + "RollCenterXY";
-            #endregion
         }
         Vector4 MidPointArm(Vector4 frontArm, Vector4 rearArm)
         {
@@ -430,24 +1140,6 @@ namespace Physics_Data_Debug
                 Z = 0,
                 W = 1,
             };
-        }
-        private float[] XYLineIntersection(
-            float x1, float x2,
-            float y1, float y2,
-            float x3, float x4,
-            float y3, float y4)//https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
-        {
-            float m1 = (y2 - y1) / (x2 - x1);//why one of these needs to be minus instead??
-            float c1 = -m1 * x1 + y1;
-            float m2 = (y4 - y3) / (x4 - x3);
-            float c2 = -m2 * x3 + y3;
-
-            float y;
-            float x;
-            x = (c2 - c1) / (m1 - m2);
-            y = m1 * (c2 - c1) / (m1 - m2) + c1;
-
-            return new float[] { x, y };
         }
         private Vector4 XYLineIntersectionVector(
             Vector4 vector1,
@@ -551,8 +1243,8 @@ namespace Physics_Data_Debug
             if (LiveData.Process != null && FormLiveData.ProcessGet == true && FormLiveData.FirstTimeLoad == true && LiveData.FullDataList.Count > 0 && FormLiveData.ValuesGet == true)
             {
                 ReadData();
-                Vector4 instantCenterFL = SuspensionGeometry(WF_PrefixMain.FL, false, chart1);
-                Vector4 instantCenterFR = SuspensionGeometry(WF_PrefixMain.FR, false, chart1);
+                Vector4 instantCenterFL = SuspensionGeometry("Front", WF_PrefixMain.FL, false, chart1);
+                Vector4 instantCenterFR = SuspensionGeometry("Front", WF_PrefixMain.FR, false, chart1);
                 SuspensionRollCenter("Front", false, chart1, instantCenterFL, instantCenterFR);
             }
         }
