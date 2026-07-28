@@ -233,38 +233,49 @@ namespace Physics_Data_Debug
             this.label52 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label104 = new System.Windows.Forms.Label();
+            this.label184 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label105 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label106 = new System.Windows.Forms.Label();
+            this.label183 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label107 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
             this.label108 = new System.Windows.Forms.Label();
+            this.label182 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label109 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label110 = new System.Windows.Forms.Label();
+            this.label181 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label111 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label112 = new System.Windows.Forms.Label();
+            this.label180 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label113 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
+            this.label179 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.label115 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label116 = new System.Windows.Forms.Label();
+            this.label178 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label117 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.label177 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
+            this.label176 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.label175 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
+            this.label174 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -351,17 +362,46 @@ namespace Physics_Data_Debug
             this.label143 = new System.Windows.Forms.Label();
             this.label144 = new System.Windows.Forms.Label();
             this.label145 = new System.Windows.Forms.Label();
-            this.label174 = new System.Windows.Forms.Label();
-            this.label175 = new System.Windows.Forms.Label();
-            this.label176 = new System.Windows.Forms.Label();
-            this.label177 = new System.Windows.Forms.Label();
-            this.label178 = new System.Windows.Forms.Label();
-            this.label179 = new System.Windows.Forms.Label();
-            this.label180 = new System.Windows.Forms.Label();
-            this.label181 = new System.Windows.Forms.Label();
-            this.label182 = new System.Windows.Forms.Label();
-            this.label183 = new System.Windows.Forms.Label();
-            this.label184 = new System.Windows.Forms.Label();
+            this.label_FL_Mx = new System.Windows.Forms.Label();
+            this.label_FL_Mz = new System.Windows.Forms.Label();
+            this.label_FL_My = new System.Windows.Forms.Label();
+            this.label188 = new System.Windows.Forms.Label();
+            this.label189 = new System.Windows.Forms.Label();
+            this.label190 = new System.Windows.Forms.Label();
+            this.label185 = new System.Windows.Forms.Label();
+            this.label186 = new System.Windows.Forms.Label();
+            this.label187 = new System.Windows.Forms.Label();
+            this.label_FR_My = new System.Windows.Forms.Label();
+            this.label_FR_Mz = new System.Windows.Forms.Label();
+            this.label_FR_Mx = new System.Windows.Forms.Label();
+            this.label194 = new System.Windows.Forms.Label();
+            this.label195 = new System.Windows.Forms.Label();
+            this.label196 = new System.Windows.Forms.Label();
+            this.label_RL_My = new System.Windows.Forms.Label();
+            this.label_RL_Mz = new System.Windows.Forms.Label();
+            this.label_RL_Mx = new System.Windows.Forms.Label();
+            this.label200 = new System.Windows.Forms.Label();
+            this.label201 = new System.Windows.Forms.Label();
+            this.label202 = new System.Windows.Forms.Label();
+            this.label_RR_My = new System.Windows.Forms.Label();
+            this.label_RR_Mz = new System.Windows.Forms.Label();
+            this.label_RR_Mx = new System.Windows.Forms.Label();
+            this.label191 = new System.Windows.Forms.Label();
+            this.label_FL_PneumaticTrail = new System.Windows.Forms.Label();
+            this.label193 = new System.Windows.Forms.Label();
+            this.label192 = new System.Windows.Forms.Label();
+            this.label_FR_PneumaticTrail = new System.Windows.Forms.Label();
+            this.label198 = new System.Windows.Forms.Label();
+            this.label199 = new System.Windows.Forms.Label();
+            this.label_RL_PneumaticTrail = new System.Windows.Forms.Label();
+            this.label204 = new System.Windows.Forms.Label();
+            this.label205 = new System.Windows.Forms.Label();
+            this.label_RR_PneumaticTrail = new System.Windows.Forms.Label();
+            this.label207 = new System.Windows.Forms.Label();
+            this.label_FL_RollingResistance = new System.Windows.Forms.Label();
+            this.label_FR_RollingResistance = new System.Windows.Forms.Label();
+            this.label_RL_RollingResistance = new System.Windows.Forms.Label();
+            this.label_RR_RollingResistance = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -373,7 +413,7 @@ namespace Physics_Data_Debug
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(6, 13);
+            this.label12.Location = new System.Drawing.Point(15, 598);
             this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(140, 25);
@@ -385,7 +425,7 @@ namespace Physics_Data_Debug
             this.CurrentSpeed.AutoSize = true;
             this.CurrentSpeed.BackColor = System.Drawing.Color.Transparent;
             this.CurrentSpeed.ForeColor = System.Drawing.Color.White;
-            this.CurrentSpeed.Location = new System.Drawing.Point(15, 38);
+            this.CurrentSpeed.Location = new System.Drawing.Point(24, 623);
             this.CurrentSpeed.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentSpeed.Name = "CurrentSpeed";
             this.CurrentSpeed.Size = new System.Drawing.Size(148, 25);
@@ -397,7 +437,7 @@ namespace Physics_Data_Debug
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(6, 326);
+            this.label13.Location = new System.Drawing.Point(15, 918);
             this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(76, 25);
@@ -408,7 +448,7 @@ namespace Physics_Data_Debug
             // 
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(6, 194);
+            this.label14.Location = new System.Drawing.Point(15, 786);
             this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(194, 22);
@@ -420,7 +460,7 @@ namespace Physics_Data_Debug
             this.CurrentFrontLift.AutoSize = true;
             this.CurrentFrontLift.BackColor = System.Drawing.Color.Transparent;
             this.CurrentFrontLift.ForeColor = System.Drawing.Color.White;
-            this.CurrentFrontLift.Location = new System.Drawing.Point(15, 351);
+            this.CurrentFrontLift.Location = new System.Drawing.Point(24, 943);
             this.CurrentFrontLift.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentFrontLift.Name = "CurrentFrontLift";
             this.CurrentFrontLift.Size = new System.Drawing.Size(174, 25);
@@ -432,7 +472,7 @@ namespace Physics_Data_Debug
             this.CurrentRearLift.AutoSize = true;
             this.CurrentRearLift.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRearLift.ForeColor = System.Drawing.Color.White;
-            this.CurrentRearLift.Location = new System.Drawing.Point(15, 376);
+            this.CurrentRearLift.Location = new System.Drawing.Point(24, 968);
             this.CurrentRearLift.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentRearLift.Name = "CurrentRearLift";
             this.CurrentRearLift.Size = new System.Drawing.Size(170, 25);
@@ -1211,7 +1251,7 @@ namespace Physics_Data_Debug
             // 
             this.startFileLoggingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.startFileLoggingButton.ForeColor = System.Drawing.Color.White;
-            this.startFileLoggingButton.Location = new System.Drawing.Point(11, 948);
+            this.startFileLoggingButton.Location = new System.Drawing.Point(29, 178);
             this.startFileLoggingButton.Margin = new System.Windows.Forms.Padding(6);
             this.startFileLoggingButton.Name = "startFileLoggingButton";
             this.startFileLoggingButton.Size = new System.Drawing.Size(180, 87);
@@ -1224,7 +1264,7 @@ namespace Physics_Data_Debug
             // 
             this.logInterval_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.logInterval_textBox.ForeColor = System.Drawing.Color.White;
-            this.logInterval_textBox.Location = new System.Drawing.Point(13, 1077);
+            this.logInterval_textBox.Location = new System.Drawing.Point(29, 519);
             this.logInterval_textBox.Margin = new System.Windows.Forms.Padding(6);
             this.logInterval_textBox.Name = "logInterval_textBox";
             this.logInterval_textBox.Size = new System.Drawing.Size(174, 31);
@@ -1236,7 +1276,7 @@ namespace Physics_Data_Debug
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(5, 1046);
+            this.label15.Location = new System.Drawing.Point(15, 488);
             this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(176, 25);
@@ -1535,7 +1575,7 @@ namespace Physics_Data_Debug
             // 
             this.toLogSettingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toLogSettingsButton.ForeColor = System.Drawing.Color.White;
-            this.toLogSettingsButton.Location = new System.Drawing.Point(11, 1152);
+            this.toLogSettingsButton.Location = new System.Drawing.Point(29, 277);
             this.toLogSettingsButton.Margin = new System.Windows.Forms.Padding(6);
             this.toLogSettingsButton.Name = "toLogSettingsButton";
             this.toLogSettingsButton.Size = new System.Drawing.Size(180, 87);
@@ -1596,10 +1636,10 @@ namespace Physics_Data_Debug
             // 
             this.toTireStaticValues.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTireStaticValues.ForeColor = System.Drawing.Color.White;
-            this.toTireStaticValues.Location = new System.Drawing.Point(11, 1686);
+            this.toTireStaticValues.Location = new System.Drawing.Point(811, 18);
             this.toTireStaticValues.Margin = new System.Windows.Forms.Padding(6);
             this.toTireStaticValues.Name = "toTireStaticValues";
-            this.toTireStaticValues.Size = new System.Drawing.Size(180, 103);
+            this.toTireStaticValues.Size = new System.Drawing.Size(180, 108);
             this.toTireStaticValues.TabIndex = 155;
             this.toTireStaticValues.Text = "Tire Static Values Page";
             this.toTireStaticValues.UseVisualStyleBackColor = false;
@@ -1765,7 +1805,7 @@ namespace Physics_Data_Debug
             // 
             this.label65.AutoSize = true;
             this.label65.ForeColor = System.Drawing.Color.White;
-            this.label65.Location = new System.Drawing.Point(500, 8);
+            this.label65.Location = new System.Drawing.Point(521, 182);
             this.label65.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(204, 25);
@@ -1776,7 +1816,7 @@ namespace Physics_Data_Debug
             // 
             this.label66.AutoSize = true;
             this.label66.ForeColor = System.Drawing.Color.White;
-            this.label66.Location = new System.Drawing.Point(1216, 8);
+            this.label66.Location = new System.Drawing.Point(1237, 182);
             this.label66.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(216, 25);
@@ -1787,7 +1827,7 @@ namespace Physics_Data_Debug
             // 
             this.label67.AutoSize = true;
             this.label67.ForeColor = System.Drawing.Color.White;
-            this.label67.Location = new System.Drawing.Point(500, 783);
+            this.label67.Location = new System.Drawing.Point(521, 1066);
             this.label67.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(190, 25);
@@ -1798,7 +1838,7 @@ namespace Physics_Data_Debug
             // 
             this.label68.AutoSize = true;
             this.label68.ForeColor = System.Drawing.Color.White;
-            this.label68.Location = new System.Drawing.Point(1216, 783);
+            this.label68.Location = new System.Drawing.Point(1237, 1066);
             this.label68.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(202, 25);
@@ -1809,7 +1849,7 @@ namespace Physics_Data_Debug
             // 
             this.TickTime.AutoSize = true;
             this.TickTime.ForeColor = System.Drawing.Color.White;
-            this.TickTime.Location = new System.Drawing.Point(5, 1121);
+            this.TickTime.Location = new System.Drawing.Point(23, 558);
             this.TickTime.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.TickTime.Name = "TickTime";
             this.TickTime.Size = new System.Drawing.Size(156, 25);
@@ -1928,7 +1968,7 @@ namespace Physics_Data_Debug
             // 
             this.toSuspensionStaticValues.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toSuspensionStaticValues.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionStaticValues.Location = new System.Drawing.Point(11, 1801);
+            this.toSuspensionStaticValues.Location = new System.Drawing.Point(1003, 18);
             this.toSuspensionStaticValues.Margin = new System.Windows.Forms.Padding(6);
             this.toSuspensionStaticValues.Name = "toSuspensionStaticValues";
             this.toSuspensionStaticValues.Size = new System.Drawing.Size(180, 108);
@@ -1941,12 +1981,12 @@ namespace Physics_Data_Debug
             // 
             this.OpenTemperaturesChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.OpenTemperaturesChart.ForeColor = System.Drawing.Color.White;
-            this.OpenTemperaturesChart.Location = new System.Drawing.Point(11, 1348);
+            this.OpenTemperaturesChart.Location = new System.Drawing.Point(235, 18);
             this.OpenTemperaturesChart.Margin = new System.Windows.Forms.Padding(6);
             this.OpenTemperaturesChart.Name = "OpenTemperaturesChart";
-            this.OpenTemperaturesChart.Size = new System.Drawing.Size(180, 106);
+            this.OpenTemperaturesChart.Size = new System.Drawing.Size(180, 108);
             this.OpenTemperaturesChart.TabIndex = 240;
-            this.OpenTemperaturesChart.Text = "Tire Temperatures Chart";
+            this.OpenTemperaturesChart.Text = "Tire Temperatures Page";
             this.OpenTemperaturesChart.UseVisualStyleBackColor = false;
             this.OpenTemperaturesChart.Click += new System.EventHandler(this.OpenTemperaturesChart_Click);
             // 
@@ -1955,7 +1995,7 @@ namespace Physics_Data_Debug
             this.CurrentEngineTorque.AutoSize = true;
             this.CurrentEngineTorque.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEngineTorque.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineTorque.Location = new System.Drawing.Point(15, 476);
+            this.CurrentEngineTorque.Location = new System.Drawing.Point(24, 1079);
             this.CurrentEngineTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEngineTorque.Name = "CurrentEngineTorque";
             this.CurrentEngineTorque.Size = new System.Drawing.Size(202, 25);
@@ -1967,7 +2007,7 @@ namespace Physics_Data_Debug
             this.CurrentEnginePower.AutoSize = true;
             this.CurrentEnginePower.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEnginePower.ForeColor = System.Drawing.Color.White;
-            this.CurrentEnginePower.Location = new System.Drawing.Point(15, 501);
+            this.CurrentEnginePower.Location = new System.Drawing.Point(24, 1104);
             this.CurrentEnginePower.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEnginePower.Name = "CurrentEnginePower";
             this.CurrentEnginePower.Size = new System.Drawing.Size(198, 25);
@@ -1979,7 +2019,7 @@ namespace Physics_Data_Debug
             this.CurrentLeftDifferentialOpen.AutoSize = true;
             this.CurrentLeftDifferentialOpen.BackColor = System.Drawing.Color.Transparent;
             this.CurrentLeftDifferentialOpen.ForeColor = System.Drawing.Color.White;
-            this.CurrentLeftDifferentialOpen.Location = new System.Drawing.Point(15, 583);
+            this.CurrentLeftDifferentialOpen.Location = new System.Drawing.Point(24, 1188);
             this.CurrentLeftDifferentialOpen.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentLeftDifferentialOpen.Name = "CurrentLeftDifferentialOpen";
             this.CurrentLeftDifferentialOpen.Size = new System.Drawing.Size(178, 25);
@@ -1991,7 +2031,7 @@ namespace Physics_Data_Debug
             this.Differential.AutoSize = true;
             this.Differential.BackColor = System.Drawing.Color.Transparent;
             this.Differential.ForeColor = System.Drawing.Color.White;
-            this.Differential.Location = new System.Drawing.Point(6, 533);
+            this.Differential.Location = new System.Drawing.Point(15, 1138);
             this.Differential.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Differential.Name = "Differential";
             this.Differential.Size = new System.Drawing.Size(115, 25);
@@ -2003,7 +2043,7 @@ namespace Physics_Data_Debug
             this.CurrentLeftDifferentialSpeedRad.AutoSize = true;
             this.CurrentLeftDifferentialSpeedRad.BackColor = System.Drawing.Color.Transparent;
             this.CurrentLeftDifferentialSpeedRad.ForeColor = System.Drawing.Color.White;
-            this.CurrentLeftDifferentialSpeedRad.Location = new System.Drawing.Point(15, 608);
+            this.CurrentLeftDifferentialSpeedRad.Location = new System.Drawing.Point(24, 1213);
             this.CurrentLeftDifferentialSpeedRad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentLeftDifferentialSpeedRad.Name = "CurrentLeftDifferentialSpeedRad";
             this.CurrentLeftDifferentialSpeedRad.Size = new System.Drawing.Size(128, 25);
@@ -2015,7 +2055,7 @@ namespace Physics_Data_Debug
             this.CurrentLeftDifferentialTorque.AutoSize = true;
             this.CurrentLeftDifferentialTorque.BackColor = System.Drawing.Color.Transparent;
             this.CurrentLeftDifferentialTorque.ForeColor = System.Drawing.Color.White;
-            this.CurrentLeftDifferentialTorque.Location = new System.Drawing.Point(15, 633);
+            this.CurrentLeftDifferentialTorque.Location = new System.Drawing.Point(24, 1238);
             this.CurrentLeftDifferentialTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentLeftDifferentialTorque.Name = "CurrentLeftDifferentialTorque";
             this.CurrentLeftDifferentialTorque.Size = new System.Drawing.Size(132, 25);
@@ -2027,7 +2067,7 @@ namespace Physics_Data_Debug
             this.CurrentEngineRPM.AutoSize = true;
             this.CurrentEngineRPM.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEngineRPM.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineRPM.Location = new System.Drawing.Point(15, 426);
+            this.CurrentEngineRPM.Location = new System.Drawing.Point(24, 1029);
             this.CurrentEngineRPM.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEngineRPM.Name = "CurrentEngineRPM";
             this.CurrentEngineRPM.Size = new System.Drawing.Size(136, 25);
@@ -2039,7 +2079,7 @@ namespace Physics_Data_Debug
             this.label78.AutoSize = true;
             this.label78.BackColor = System.Drawing.Color.Transparent;
             this.label78.ForeColor = System.Drawing.Color.White;
-            this.label78.Location = new System.Drawing.Point(6, 401);
+            this.label78.Location = new System.Drawing.Point(15, 1004);
             this.label78.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(79, 25);
@@ -2051,7 +2091,7 @@ namespace Physics_Data_Debug
             this.CurrentEngineRPMAxle.AutoSize = true;
             this.CurrentEngineRPMAxle.BackColor = System.Drawing.Color.Transparent;
             this.CurrentEngineRPMAxle.ForeColor = System.Drawing.Color.White;
-            this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(15, 451);
+            this.CurrentEngineRPMAxle.Location = new System.Drawing.Point(24, 1054);
             this.CurrentEngineRPMAxle.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentEngineRPMAxle.Name = "CurrentEngineRPMAxle";
             this.CurrentEngineRPMAxle.Size = new System.Drawing.Size(184, 25);
@@ -2062,7 +2102,7 @@ namespace Physics_Data_Debug
             // 
             this.toTestChartPageButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toTestChartPageButton.ForeColor = System.Drawing.Color.White;
-            this.toTestChartPageButton.Location = new System.Drawing.Point(11, 1466);
+            this.toTestChartPageButton.Location = new System.Drawing.Point(29, 376);
             this.toTestChartPageButton.Margin = new System.Windows.Forms.Padding(6);
             this.toTestChartPageButton.Name = "toTestChartPageButton";
             this.toTestChartPageButton.Size = new System.Drawing.Size(180, 106);
@@ -2076,7 +2116,7 @@ namespace Physics_Data_Debug
             this.CurrentAcceleration.AutoSize = true;
             this.CurrentAcceleration.BackColor = System.Drawing.Color.Transparent;
             this.CurrentAcceleration.ForeColor = System.Drawing.Color.White;
-            this.CurrentAcceleration.Location = new System.Drawing.Point(15, 106);
+            this.CurrentAcceleration.Location = new System.Drawing.Point(24, 691);
             this.CurrentAcceleration.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentAcceleration.Name = "CurrentAcceleration";
             this.CurrentAcceleration.Size = new System.Drawing.Size(206, 25);
@@ -2088,7 +2128,7 @@ namespace Physics_Data_Debug
             this.label75.AutoSize = true;
             this.label75.BackColor = System.Drawing.Color.Transparent;
             this.label75.ForeColor = System.Drawing.Color.White;
-            this.label75.Location = new System.Drawing.Point(6, 81);
+            this.label75.Location = new System.Drawing.Point(15, 666);
             this.label75.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(197, 25);
@@ -2100,7 +2140,7 @@ namespace Physics_Data_Debug
             this.CurrentGForce.AutoSize = true;
             this.CurrentGForce.BackColor = System.Drawing.Color.Transparent;
             this.CurrentGForce.ForeColor = System.Drawing.Color.White;
-            this.CurrentGForce.Location = new System.Drawing.Point(15, 169);
+            this.CurrentGForce.Location = new System.Drawing.Point(24, 754);
             this.CurrentGForce.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentGForce.Name = "CurrentGForce";
             this.CurrentGForce.Size = new System.Drawing.Size(160, 25);
@@ -2112,7 +2152,7 @@ namespace Physics_Data_Debug
             this.label74.AutoSize = true;
             this.label74.BackColor = System.Drawing.Color.Transparent;
             this.label74.ForeColor = System.Drawing.Color.White;
-            this.label74.Location = new System.Drawing.Point(6, 144);
+            this.label74.Location = new System.Drawing.Point(15, 729);
             this.label74.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(90, 25);
@@ -2123,7 +2163,7 @@ namespace Physics_Data_Debug
             // 
             this.getProcessButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.getProcessButton.ForeColor = System.Drawing.Color.White;
-            this.getProcessButton.Location = new System.Drawing.Point(11, 850);
+            this.getProcessButton.Location = new System.Drawing.Point(29, 79);
             this.getProcessButton.Margin = new System.Windows.Forms.Padding(6);
             this.getProcessButton.Name = "getProcessButton";
             this.getProcessButton.Size = new System.Drawing.Size(180, 87);
@@ -2141,7 +2181,7 @@ namespace Physics_Data_Debug
             // 
             this.textBox1.AcceptsReturn = true;
             this.textBox1.AcceptsTab = true;
-            this.textBox1.Location = new System.Drawing.Point(1630, 56);
+            this.textBox1.Location = new System.Drawing.Point(1646, 40);
             this.textBox1.Margin = new System.Windows.Forms.Padding(6);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -2153,7 +2193,7 @@ namespace Physics_Data_Debug
             // 
             this.textBox2.AcceptsReturn = true;
             this.textBox2.AcceptsTab = true;
-            this.textBox2.Location = new System.Drawing.Point(1848, 56);
+            this.textBox2.Location = new System.Drawing.Point(1864, 40);
             this.textBox2.Margin = new System.Windows.Forms.Padding(6);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -2165,7 +2205,7 @@ namespace Physics_Data_Debug
             // 
             this.textBox3.AcceptsReturn = true;
             this.textBox3.AcceptsTab = true;
-            this.textBox3.Location = new System.Drawing.Point(2066, 56);
+            this.textBox3.Location = new System.Drawing.Point(2082, 40);
             this.textBox3.Margin = new System.Windows.Forms.Padding(6);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
@@ -2177,7 +2217,7 @@ namespace Physics_Data_Debug
             // 
             this.textBox4.AcceptsReturn = true;
             this.textBox4.AcceptsTab = true;
-            this.textBox4.Location = new System.Drawing.Point(2288, 56);
+            this.textBox4.Location = new System.Drawing.Point(2304, 40);
             this.textBox4.Margin = new System.Windows.Forms.Padding(6);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -2189,7 +2229,7 @@ namespace Physics_Data_Debug
             // 
             this.textBox5.AcceptsReturn = true;
             this.textBox5.AcceptsTab = true;
-            this.textBox5.Location = new System.Drawing.Point(2510, 56);
+            this.textBox5.Location = new System.Drawing.Point(2526, 40);
             this.textBox5.Margin = new System.Windows.Forms.Padding(6);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
@@ -2200,7 +2240,8 @@ namespace Physics_Data_Debug
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1630, 25);
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(1646, 9);
             this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(148, 25);
@@ -2211,7 +2252,8 @@ namespace Physics_Data_Debug
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1842, 25);
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(1858, 9);
             this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(173, 25);
@@ -2222,7 +2264,8 @@ namespace Physics_Data_Debug
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(2060, 25);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(2076, 9);
             this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(173, 25);
@@ -2233,7 +2276,8 @@ namespace Physics_Data_Debug
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(2282, 25);
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(2298, 9);
             this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(173, 25);
@@ -2244,7 +2288,8 @@ namespace Physics_Data_Debug
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(2504, 25);
+            this.label37.ForeColor = System.Drawing.Color.White;
+            this.label37.Location = new System.Drawing.Point(2520, 9);
             this.label37.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(141, 25);
@@ -2256,7 +2301,7 @@ namespace Physics_Data_Debug
             // 
             this.textBox6.AcceptsReturn = true;
             this.textBox6.AcceptsTab = true;
-            this.textBox6.Location = new System.Drawing.Point(1630, 167);
+            this.textBox6.Location = new System.Drawing.Point(1646, 151);
             this.textBox6.Margin = new System.Windows.Forms.Padding(6);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
@@ -2268,12 +2313,12 @@ namespace Physics_Data_Debug
             // 
             this.toGForceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toGForceButton.ForeColor = System.Drawing.Color.White;
-            this.toGForceButton.Location = new System.Drawing.Point(11, 1584);
+            this.toGForceButton.Location = new System.Drawing.Point(619, 18);
             this.toGForceButton.Margin = new System.Windows.Forms.Padding(6);
             this.toGForceButton.Name = "toGForceButton";
-            this.toGForceButton.Size = new System.Drawing.Size(180, 90);
+            this.toGForceButton.Size = new System.Drawing.Size(180, 108);
             this.toGForceButton.TabIndex = 273;
-            this.toGForceButton.Text = "Open G-Force Page";
+            this.toGForceButton.Text = "G-Force Page";
             this.toGForceButton.UseVisualStyleBackColor = false;
             this.toGForceButton.Click += new System.EventHandler(this.toGForceButton_Click);
             // 
@@ -2284,7 +2329,7 @@ namespace Physics_Data_Debug
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(212, 1563);
+            this.checkBox1.Location = new System.Drawing.Point(235, 138);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(6);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(761, 29);
@@ -2302,12 +2347,12 @@ namespace Physics_Data_Debug
             // 
             this.to4WheelsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.to4WheelsButton.ForeColor = System.Drawing.Color.White;
-            this.to4WheelsButton.Location = new System.Drawing.Point(11, 1250);
+            this.to4WheelsButton.Location = new System.Drawing.Point(427, 18);
             this.to4WheelsButton.Margin = new System.Windows.Forms.Padding(6);
             this.to4WheelsButton.Name = "to4WheelsButton";
-            this.to4WheelsButton.Size = new System.Drawing.Size(180, 87);
+            this.to4WheelsButton.Size = new System.Drawing.Size(180, 108);
             this.to4WheelsButton.TabIndex = 275;
-            this.to4WheelsButton.Text = "Open Four Wheels Page";
+            this.to4WheelsButton.Text = "Four Wheels Page";
             this.to4WheelsButton.UseVisualStyleBackColor = false;
             this.to4WheelsButton.Click += new System.EventHandler(this.to4WheelsButton_Click);
             // 
@@ -2316,7 +2361,7 @@ namespace Physics_Data_Debug
             this.CurrentYDrag.AutoSize = true;
             this.CurrentYDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentYDrag.ForeColor = System.Drawing.Color.White;
-            this.CurrentYDrag.Location = new System.Drawing.Point(15, 241);
+            this.CurrentYDrag.Location = new System.Drawing.Point(24, 833);
             this.CurrentYDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentYDrag.Name = "CurrentYDrag";
             this.CurrentYDrag.Size = new System.Drawing.Size(156, 25);
@@ -2328,7 +2373,7 @@ namespace Physics_Data_Debug
             this.CurrentXDrag.AutoSize = true;
             this.CurrentXDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentXDrag.ForeColor = System.Drawing.Color.White;
-            this.CurrentXDrag.Location = new System.Drawing.Point(15, 216);
+            this.CurrentXDrag.Location = new System.Drawing.Point(24, 808);
             this.CurrentXDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentXDrag.Name = "CurrentXDrag";
             this.CurrentXDrag.Size = new System.Drawing.Size(155, 25);
@@ -2340,7 +2385,7 @@ namespace Physics_Data_Debug
             this.CurrentZDrag.AutoSize = true;
             this.CurrentZDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentZDrag.ForeColor = System.Drawing.Color.White;
-            this.CurrentZDrag.Location = new System.Drawing.Point(15, 266);
+            this.CurrentZDrag.Location = new System.Drawing.Point(24, 858);
             this.CurrentZDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentZDrag.Name = "CurrentZDrag";
             this.CurrentZDrag.Size = new System.Drawing.Size(154, 25);
@@ -2352,7 +2397,7 @@ namespace Physics_Data_Debug
             this.CurrentTotalDrag.AutoSize = true;
             this.CurrentTotalDrag.BackColor = System.Drawing.Color.Transparent;
             this.CurrentTotalDrag.ForeColor = System.Drawing.Color.White;
-            this.CurrentTotalDrag.Location = new System.Drawing.Point(15, 291);
+            this.CurrentTotalDrag.Location = new System.Drawing.Point(24, 883);
             this.CurrentTotalDrag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentTotalDrag.Name = "CurrentTotalDrag";
             this.CurrentTotalDrag.Size = new System.Drawing.Size(189, 25);
@@ -2364,7 +2409,7 @@ namespace Physics_Data_Debug
             this.LeftLabel.AutoSize = true;
             this.LeftLabel.BackColor = System.Drawing.Color.Transparent;
             this.LeftLabel.ForeColor = System.Drawing.Color.White;
-            this.LeftLabel.Location = new System.Drawing.Point(6, 559);
+            this.LeftLabel.Location = new System.Drawing.Point(15, 1164);
             this.LeftLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LeftLabel.Name = "LeftLabel";
             this.LeftLabel.Size = new System.Drawing.Size(48, 25);
@@ -2376,7 +2421,7 @@ namespace Physics_Data_Debug
             this.RightLabel.AutoSize = true;
             this.RightLabel.BackColor = System.Drawing.Color.Transparent;
             this.RightLabel.ForeColor = System.Drawing.Color.White;
-            this.RightLabel.Location = new System.Drawing.Point(6, 661);
+            this.RightLabel.Location = new System.Drawing.Point(15, 1266);
             this.RightLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.RightLabel.Name = "RightLabel";
             this.RightLabel.Size = new System.Drawing.Size(62, 25);
@@ -2388,7 +2433,7 @@ namespace Physics_Data_Debug
             this.CurrentRightDifferentialTorque.AutoSize = true;
             this.CurrentRightDifferentialTorque.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRightDifferentialTorque.ForeColor = System.Drawing.Color.White;
-            this.CurrentRightDifferentialTorque.Location = new System.Drawing.Point(15, 736);
+            this.CurrentRightDifferentialTorque.Location = new System.Drawing.Point(24, 1341);
             this.CurrentRightDifferentialTorque.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentRightDifferentialTorque.Name = "CurrentRightDifferentialTorque";
             this.CurrentRightDifferentialTorque.Size = new System.Drawing.Size(132, 25);
@@ -2400,7 +2445,7 @@ namespace Physics_Data_Debug
             this.CurrentRightDifferentialSpeedRad.AutoSize = true;
             this.CurrentRightDifferentialSpeedRad.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRightDifferentialSpeedRad.ForeColor = System.Drawing.Color.White;
-            this.CurrentRightDifferentialSpeedRad.Location = new System.Drawing.Point(15, 711);
+            this.CurrentRightDifferentialSpeedRad.Location = new System.Drawing.Point(24, 1316);
             this.CurrentRightDifferentialSpeedRad.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentRightDifferentialSpeedRad.Name = "CurrentRightDifferentialSpeedRad";
             this.CurrentRightDifferentialSpeedRad.Size = new System.Drawing.Size(128, 25);
@@ -2412,7 +2457,7 @@ namespace Physics_Data_Debug
             this.CurrentRightDifferentialOpen.AutoSize = true;
             this.CurrentRightDifferentialOpen.BackColor = System.Drawing.Color.Transparent;
             this.CurrentRightDifferentialOpen.ForeColor = System.Drawing.Color.White;
-            this.CurrentRightDifferentialOpen.Location = new System.Drawing.Point(15, 686);
+            this.CurrentRightDifferentialOpen.Location = new System.Drawing.Point(24, 1291);
             this.CurrentRightDifferentialOpen.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.CurrentRightDifferentialOpen.Name = "CurrentRightDifferentialOpen";
             this.CurrentRightDifferentialOpen.Size = new System.Drawing.Size(178, 25);
@@ -2422,7 +2467,7 @@ namespace Physics_Data_Debug
             // GameVersionComboBox
             // 
             this.GameVersionComboBox.FormattingEnabled = true;
-            this.GameVersionComboBox.Location = new System.Drawing.Point(11, 808);
+            this.GameVersionComboBox.Location = new System.Drawing.Point(29, 37);
             this.GameVersionComboBox.Name = "GameVersionComboBox";
             this.GameVersionComboBox.Size = new System.Drawing.Size(192, 33);
             this.GameVersionComboBox.TabIndex = 285;
@@ -2433,7 +2478,7 @@ namespace Physics_Data_Debug
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.ForeColor = System.Drawing.Color.White;
-            this.label38.Location = new System.Drawing.Point(-1, 774);
+            this.label38.Location = new System.Drawing.Point(15, 9);
             this.label38.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(214, 25);
@@ -2444,7 +2489,7 @@ namespace Physics_Data_Debug
             // 
             this.toSuspensionGeometry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toSuspensionGeometry.ForeColor = System.Drawing.Color.White;
-            this.toSuspensionGeometry.Location = new System.Drawing.Point(10, 1921);
+            this.toSuspensionGeometry.Location = new System.Drawing.Point(1195, 18);
             this.toSuspensionGeometry.Margin = new System.Windows.Forms.Padding(6);
             this.toSuspensionGeometry.Name = "toSuspensionGeometry";
             this.toSuspensionGeometry.Size = new System.Drawing.Size(180, 108);
@@ -2456,6 +2501,16 @@ namespace Physics_Data_Debug
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label_FL_RollingResistance);
+            this.panel1.Controls.Add(this.label193);
+            this.panel1.Controls.Add(this.label_FL_PneumaticTrail);
+            this.panel1.Controls.Add(this.label191);
+            this.panel1.Controls.Add(this.label190);
+            this.panel1.Controls.Add(this.label189);
+            this.panel1.Controls.Add(this.label188);
+            this.panel1.Controls.Add(this.label_FL_My);
+            this.panel1.Controls.Add(this.label_FL_Mz);
+            this.panel1.Controls.Add(this.label_FL_Mx);
             this.panel1.Controls.Add(this.label_FL_Deflection);
             this.panel1.Controls.Add(this.label_FL_EffectiveRadius);
             this.panel1.Controls.Add(this.label_FL_TravelSpeed);
@@ -2520,9 +2575,9 @@ namespace Physics_Data_Debug
             this.panel1.Controls.Add(this.label69);
             this.panel1.Controls.Add(this.label53);
             this.panel1.Controls.Add(this.label52);
-            this.panel1.Location = new System.Drawing.Point(214, 2);
+            this.panel1.Location = new System.Drawing.Point(235, 176);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(695, 754);
+            this.panel1.Size = new System.Drawing.Size(695, 853);
             this.panel1.TabIndex = 288;
             // 
             // label98
@@ -2828,11 +2883,21 @@ namespace Physics_Data_Debug
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.label192);
+            this.panel2.Controls.Add(this.label_FR_RollingResistance);
+            this.panel2.Controls.Add(this.label185);
+            this.panel2.Controls.Add(this.label_FR_PneumaticTrail);
             this.panel2.Controls.Add(this.label_FR_SuspensionVelocity);
+            this.panel2.Controls.Add(this.label198);
+            this.panel2.Controls.Add(this.label186);
             this.panel2.Controls.Add(this.label_FR_SuspensionLength);
+            this.panel2.Controls.Add(this.label187);
             this.panel2.Controls.Add(this.label_FR_TreadTemperature);
+            this.panel2.Controls.Add(this.label_FR_My);
             this.panel2.Controls.Add(this.label_FR_InnerTemperature);
+            this.panel2.Controls.Add(this.label_FR_Mz);
             this.panel2.Controls.Add(this.label_FR_Deflection);
+            this.panel2.Controls.Add(this.label_FR_Mx);
             this.panel2.Controls.Add(this.label_FR_LoadedRadius);
             this.panel2.Controls.Add(this.label_FR_EffectiveRadius);
             this.panel2.Controls.Add(this.label_FR_CurrentContactBrakeTorque);
@@ -2903,9 +2968,9 @@ namespace Physics_Data_Debug
             this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.label28);
             this.panel2.Controls.Add(this.label29);
-            this.panel2.Location = new System.Drawing.Point(918, 2);
+            this.panel2.Location = new System.Drawing.Point(939, 176);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(695, 754);
+            this.panel2.Size = new System.Drawing.Size(695, 853);
             this.panel2.TabIndex = 289;
             // 
             // label104
@@ -2919,6 +2984,16 @@ namespace Physics_Data_Debug
             this.label104.Size = new System.Drawing.Size(215, 31);
             this.label104.TabIndex = 305;
             this.label104.Text = "Susp Length/Velocity";
+            // 
+            // label184
+            // 
+            this.label184.BackColor = System.Drawing.Color.Black;
+            this.label184.ForeColor = System.Drawing.Color.White;
+            this.label184.Location = new System.Drawing.Point(421, 705);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(47, 31);
+            this.label184.TabIndex = 36;
+            this.label184.Text = " /";
             // 
             // label35
             // 
@@ -2966,6 +3041,16 @@ namespace Physics_Data_Debug
             this.label106.TabIndex = 303;
             this.label106.Text = "Tread/Inner Temps";
             // 
+            // label183
+            // 
+            this.label183.BackColor = System.Drawing.Color.Black;
+            this.label183.ForeColor = System.Drawing.Color.White;
+            this.label183.Location = new System.Drawing.Point(421, 657);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(47, 31);
+            this.label183.TabIndex = 35;
+            this.label183.Text = "m /";
+            // 
             // label36
             // 
             this.label36.BackColor = System.Drawing.Color.Black;
@@ -3011,6 +3096,16 @@ namespace Physics_Data_Debug
             this.label108.Size = new System.Drawing.Size(161, 31);
             this.label108.TabIndex = 301;
             this.label108.Text = "Lat/Lon Friction";
+            // 
+            // label182
+            // 
+            this.label182.BackColor = System.Drawing.Color.Black;
+            this.label182.ForeColor = System.Drawing.Color.White;
+            this.label182.Location = new System.Drawing.Point(421, 605);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(47, 31);
+            this.label182.TabIndex = 34;
+            this.label182.Text = "μ /";
             // 
             // label39
             // 
@@ -3058,6 +3153,16 @@ namespace Physics_Data_Debug
             this.label110.TabIndex = 299;
             this.label110.Text = "Lat/Lon Load";
             // 
+            // label181
+            // 
+            this.label181.BackColor = System.Drawing.Color.Black;
+            this.label181.ForeColor = System.Drawing.Color.White;
+            this.label181.Location = new System.Drawing.Point(421, 555);
+            this.label181.Name = "label181";
+            this.label181.Size = new System.Drawing.Size(47, 31);
+            this.label181.TabIndex = 33;
+            this.label181.Text = "°C /";
+            // 
             // label40
             // 
             this.label40.BackColor = System.Drawing.Color.Black;
@@ -3103,6 +3208,16 @@ namespace Physics_Data_Debug
             this.label112.Size = new System.Drawing.Size(159, 31);
             this.label112.TabIndex = 297;
             this.label112.Text = "Braking Torque";
+            // 
+            // label180
+            // 
+            this.label180.BackColor = System.Drawing.Color.Black;
+            this.label180.ForeColor = System.Drawing.Color.White;
+            this.label180.Location = new System.Drawing.Point(421, 505);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(47, 31);
+            this.label180.TabIndex = 32;
+            this.label180.Text = " /";
             // 
             // label41
             // 
@@ -3150,6 +3265,16 @@ namespace Physics_Data_Debug
             this.label114.TabIndex = 295;
             this.label114.Text = "Loaded/Effective Radius";
             // 
+            // label179
+            // 
+            this.label179.BackColor = System.Drawing.Color.Black;
+            this.label179.ForeColor = System.Drawing.Color.White;
+            this.label179.Location = new System.Drawing.Point(421, 455);
+            this.label179.Name = "label179";
+            this.label179.Size = new System.Drawing.Size(47, 31);
+            this.label179.TabIndex = 31;
+            this.label179.Text = " /";
+            // 
             // label42
             // 
             this.label42.BackColor = System.Drawing.Color.Black;
@@ -3196,6 +3321,16 @@ namespace Physics_Data_Debug
             this.label116.TabIndex = 293;
             this.label116.Text = "Angular Velocity";
             // 
+            // label178
+            // 
+            this.label178.BackColor = System.Drawing.Color.Black;
+            this.label178.ForeColor = System.Drawing.Color.White;
+            this.label178.Location = new System.Drawing.Point(421, 405);
+            this.label178.Name = "label178";
+            this.label178.Size = new System.Drawing.Size(47, 31);
+            this.label178.TabIndex = 30;
+            this.label178.Text = "° /";
+            // 
             // label43
             // 
             this.label43.BackColor = System.Drawing.Color.Black;
@@ -3230,6 +3365,16 @@ namespace Physics_Data_Debug
             this.label25.TabIndex = 36;
             this.label25.Text = "°C";
             // 
+            // label177
+            // 
+            this.label177.BackColor = System.Drawing.Color.Black;
+            this.label177.ForeColor = System.Drawing.Color.White;
+            this.label177.Location = new System.Drawing.Point(421, 355);
+            this.label177.Name = "label177";
+            this.label177.Size = new System.Drawing.Size(47, 31);
+            this.label177.TabIndex = 29;
+            this.label177.Text = " /";
+            // 
             // label44
             // 
             this.label44.BackColor = System.Drawing.Color.Black;
@@ -3251,6 +3396,16 @@ namespace Physics_Data_Debug
             this.label32.Size = new System.Drawing.Size(29, 31);
             this.label32.TabIndex = 29;
             this.label32.Text = "m";
+            // 
+            // label176
+            // 
+            this.label176.BackColor = System.Drawing.Color.Black;
+            this.label176.ForeColor = System.Drawing.Color.White;
+            this.label176.Location = new System.Drawing.Point(421, 305);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(47, 31);
+            this.label176.TabIndex = 28;
+            this.label176.Text = " /";
             // 
             // label45
             // 
@@ -3274,6 +3429,16 @@ namespace Physics_Data_Debug
             this.label26.TabIndex = 35;
             this.label26.Text = "m/s";
             // 
+            // label175
+            // 
+            this.label175.BackColor = System.Drawing.Color.Black;
+            this.label175.ForeColor = System.Drawing.Color.White;
+            this.label175.Location = new System.Drawing.Point(421, 205);
+            this.label175.Name = "label175";
+            this.label175.Size = new System.Drawing.Size(47, 31);
+            this.label175.TabIndex = 27;
+            this.label175.Text = "m /";
+            // 
             // label46
             // 
             this.label46.BackColor = System.Drawing.Color.Black;
@@ -3283,6 +3448,16 @@ namespace Physics_Data_Debug
             this.label46.Size = new System.Drawing.Size(41, 25);
             this.label46.TabIndex = 27;
             this.label46.Text = "m /";
+            // 
+            // label174
+            // 
+            this.label174.BackColor = System.Drawing.Color.Black;
+            this.label174.ForeColor = System.Drawing.Color.White;
+            this.label174.Location = new System.Drawing.Point(421, 155);
+            this.label174.Name = "label174";
+            this.label174.Size = new System.Drawing.Size(47, 31);
+            this.label174.TabIndex = 26;
+            this.label174.Text = "N /";
             // 
             // label31
             // 
@@ -3357,6 +3532,16 @@ namespace Physics_Data_Debug
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.label199);
+            this.panel3.Controls.Add(this.label_RL_RollingResistance);
+            this.panel3.Controls.Add(this.label194);
+            this.panel3.Controls.Add(this.label_RL_PneumaticTrail);
+            this.panel3.Controls.Add(this.label195);
+            this.panel3.Controls.Add(this.label204);
+            this.panel3.Controls.Add(this.label196);
+            this.panel3.Controls.Add(this.label_RL_My);
+            this.panel3.Controls.Add(this.label_RL_Mz);
+            this.panel3.Controls.Add(this.label_RL_Mx);
             this.panel3.Controls.Add(this.label_RL_Deflection);
             this.panel3.Controls.Add(this.label_RL_EffectiveRadius);
             this.panel3.Controls.Add(this.label_RL_SuspensionVelocity);
@@ -3421,9 +3606,9 @@ namespace Physics_Data_Debug
             this.panel3.Controls.Add(this.label129);
             this.panel3.Controls.Add(this.label131);
             this.panel3.Controls.Add(this.label130);
-            this.panel3.Location = new System.Drawing.Point(214, 771);
+            this.panel3.Location = new System.Drawing.Point(235, 1054);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(695, 754);
+            this.panel3.Size = new System.Drawing.Size(695, 852);
             this.panel3.TabIndex = 290;
             // 
             // label146
@@ -3897,10 +4082,20 @@ namespace Physics_Data_Debug
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.label205);
+            this.panel4.Controls.Add(this.label_RR_RollingResistance);
+            this.panel4.Controls.Add(this.label200);
+            this.panel4.Controls.Add(this.label_RR_PneumaticTrail);
             this.panel4.Controls.Add(this.label_RR_Deflection);
+            this.panel4.Controls.Add(this.label207);
+            this.panel4.Controls.Add(this.label201);
             this.panel4.Controls.Add(this.label_RR_EffectiveRadius);
+            this.panel4.Controls.Add(this.label202);
+            this.panel4.Controls.Add(this.label_RR_My);
             this.panel4.Controls.Add(this.label_RR_SuspensionVelocity);
+            this.panel4.Controls.Add(this.label_RR_Mz);
             this.panel4.Controls.Add(this.label_RR_SuspensionLength);
+            this.panel4.Controls.Add(this.label_RR_Mx);
             this.panel4.Controls.Add(this.label_RR_MaxCurrentContactBrakeTorque);
             this.panel4.Controls.Add(this.label_RR_TotalFrictionAngle);
             this.panel4.Controls.Add(this.label_RR_TotalFriction);
@@ -3961,9 +4156,9 @@ namespace Physics_Data_Debug
             this.panel4.Controls.Add(this.label143);
             this.panel4.Controls.Add(this.label144);
             this.panel4.Controls.Add(this.label145);
-            this.panel4.Location = new System.Drawing.Point(918, 771);
+            this.panel4.Location = new System.Drawing.Point(939, 1054);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(695, 754);
+            this.panel4.Size = new System.Drawing.Size(695, 852);
             this.panel4.TabIndex = 291;
             // 
             // label160
@@ -4406,115 +4601,485 @@ namespace Physics_Data_Debug
             this.label145.TabIndex = 321;
             this.label145.Text = "Angular Velocity";
             // 
-            // label174
+            // label_FL_Mx
             // 
-            this.label174.BackColor = System.Drawing.Color.Black;
-            this.label174.ForeColor = System.Drawing.Color.White;
-            this.label174.Location = new System.Drawing.Point(421, 155);
-            this.label174.Name = "label174";
-            this.label174.Size = new System.Drawing.Size(47, 31);
-            this.label174.TabIndex = 26;
-            this.label174.Text = "N /";
+            this.label_FL_Mx.BackColor = System.Drawing.Color.Black;
+            this.label_FL_Mx.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_Mx.ForeColor = System.Drawing.Color.White;
+            this.label_FL_Mx.Location = new System.Drawing.Point(127, 750);
+            this.label_FL_Mx.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_Mx.Name = "label_FL_Mx";
+            this.label_FL_Mx.Size = new System.Drawing.Size(148, 31);
+            this.label_FL_Mx.TabIndex = 230;
+            this.label_FL_Mx.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label175
+            // label_FL_Mz
             // 
-            this.label175.BackColor = System.Drawing.Color.Black;
-            this.label175.ForeColor = System.Drawing.Color.White;
-            this.label175.Location = new System.Drawing.Point(421, 205);
-            this.label175.Name = "label175";
-            this.label175.Size = new System.Drawing.Size(47, 31);
-            this.label175.TabIndex = 27;
-            this.label175.Text = "m /";
+            this.label_FL_Mz.BackColor = System.Drawing.Color.Black;
+            this.label_FL_Mz.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_Mz.ForeColor = System.Drawing.Color.White;
+            this.label_FL_Mz.Location = new System.Drawing.Point(317, 749);
+            this.label_FL_Mz.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_Mz.Name = "label_FL_Mz";
+            this.label_FL_Mz.Size = new System.Drawing.Size(148, 31);
+            this.label_FL_Mz.TabIndex = 231;
+            this.label_FL_Mz.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label176
+            // label_FL_My
             // 
-            this.label176.BackColor = System.Drawing.Color.Black;
-            this.label176.ForeColor = System.Drawing.Color.White;
-            this.label176.Location = new System.Drawing.Point(421, 305);
-            this.label176.Name = "label176";
-            this.label176.Size = new System.Drawing.Size(47, 31);
-            this.label176.TabIndex = 28;
-            this.label176.Text = " /";
+            this.label_FL_My.BackColor = System.Drawing.Color.Black;
+            this.label_FL_My.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_My.ForeColor = System.Drawing.Color.White;
+            this.label_FL_My.Location = new System.Drawing.Point(507, 749);
+            this.label_FL_My.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_My.Name = "label_FL_My";
+            this.label_FL_My.Size = new System.Drawing.Size(148, 31);
+            this.label_FL_My.TabIndex = 232;
+            this.label_FL_My.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label177
+            // label188
             // 
-            this.label177.BackColor = System.Drawing.Color.Black;
-            this.label177.ForeColor = System.Drawing.Color.White;
-            this.label177.Location = new System.Drawing.Point(421, 355);
-            this.label177.Name = "label177";
-            this.label177.Size = new System.Drawing.Size(47, 31);
-            this.label177.TabIndex = 29;
-            this.label177.Text = " /";
+            this.label188.AutoSize = true;
+            this.label188.ForeColor = System.Drawing.Color.White;
+            this.label188.Location = new System.Drawing.Point(6, 750);
+            this.label188.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label188.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label188.Name = "label188";
+            this.label188.Size = new System.Drawing.Size(111, 31);
+            this.label188.TabIndex = 233;
+            this.label188.Text = "Mx/Mz/My";
             // 
-            // label178
+            // label189
             // 
-            this.label178.BackColor = System.Drawing.Color.Black;
-            this.label178.ForeColor = System.Drawing.Color.White;
-            this.label178.Location = new System.Drawing.Point(421, 405);
-            this.label178.Name = "label178";
-            this.label178.Size = new System.Drawing.Size(47, 31);
-            this.label178.TabIndex = 30;
-            this.label178.Text = "° /";
+            this.label189.AutoSize = true;
+            this.label189.BackColor = System.Drawing.Color.Black;
+            this.label189.ForeColor = System.Drawing.Color.White;
+            this.label189.Location = new System.Drawing.Point(284, 751);
+            this.label189.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label189.Name = "label189";
+            this.label189.Size = new System.Drawing.Size(24, 31);
+            this.label189.TabIndex = 234;
+            this.label189.Text = " /";
             // 
-            // label179
+            // label190
             // 
-            this.label179.BackColor = System.Drawing.Color.Black;
-            this.label179.ForeColor = System.Drawing.Color.White;
-            this.label179.Location = new System.Drawing.Point(421, 455);
-            this.label179.Name = "label179";
-            this.label179.Size = new System.Drawing.Size(47, 31);
-            this.label179.TabIndex = 31;
-            this.label179.Text = " /";
+            this.label190.AutoSize = true;
+            this.label190.BackColor = System.Drawing.Color.Black;
+            this.label190.ForeColor = System.Drawing.Color.White;
+            this.label190.Location = new System.Drawing.Point(474, 752);
+            this.label190.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label190.Name = "label190";
+            this.label190.Size = new System.Drawing.Size(24, 31);
+            this.label190.TabIndex = 235;
+            this.label190.Text = " /";
             // 
-            // label180
+            // label185
             // 
-            this.label180.BackColor = System.Drawing.Color.Black;
-            this.label180.ForeColor = System.Drawing.Color.White;
-            this.label180.Location = new System.Drawing.Point(421, 505);
-            this.label180.Name = "label180";
-            this.label180.Size = new System.Drawing.Size(47, 31);
-            this.label180.TabIndex = 32;
-            this.label180.Text = " /";
+            this.label185.AutoSize = true;
+            this.label185.BackColor = System.Drawing.Color.Black;
+            this.label185.ForeColor = System.Drawing.Color.White;
+            this.label185.Location = new System.Drawing.Point(477, 750);
+            this.label185.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label185.Name = "label185";
+            this.label185.Size = new System.Drawing.Size(24, 31);
+            this.label185.TabIndex = 241;
+            this.label185.Text = " /";
             // 
-            // label181
+            // label186
             // 
-            this.label181.BackColor = System.Drawing.Color.Black;
-            this.label181.ForeColor = System.Drawing.Color.White;
-            this.label181.Location = new System.Drawing.Point(421, 555);
-            this.label181.Name = "label181";
-            this.label181.Size = new System.Drawing.Size(47, 31);
-            this.label181.TabIndex = 33;
-            this.label181.Text = "°C /";
+            this.label186.AutoSize = true;
+            this.label186.BackColor = System.Drawing.Color.Black;
+            this.label186.ForeColor = System.Drawing.Color.White;
+            this.label186.Location = new System.Drawing.Point(287, 750);
+            this.label186.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(24, 31);
+            this.label186.TabIndex = 240;
+            this.label186.Text = " /";
             // 
-            // label182
+            // label187
             // 
-            this.label182.BackColor = System.Drawing.Color.Black;
-            this.label182.ForeColor = System.Drawing.Color.White;
-            this.label182.Location = new System.Drawing.Point(421, 605);
-            this.label182.Name = "label182";
-            this.label182.Size = new System.Drawing.Size(47, 31);
-            this.label182.TabIndex = 34;
-            this.label182.Text = "μ /";
+            this.label187.AutoSize = true;
+            this.label187.ForeColor = System.Drawing.Color.White;
+            this.label187.Location = new System.Drawing.Point(6, 750);
+            this.label187.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label187.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label187.Name = "label187";
+            this.label187.Size = new System.Drawing.Size(111, 31);
+            this.label187.TabIndex = 239;
+            this.label187.Text = "Mx/Mz/My";
             // 
-            // label183
+            // label_FR_My
             // 
-            this.label183.BackColor = System.Drawing.Color.Black;
-            this.label183.ForeColor = System.Drawing.Color.White;
-            this.label183.Location = new System.Drawing.Point(421, 657);
-            this.label183.Name = "label183";
-            this.label183.Size = new System.Drawing.Size(47, 31);
-            this.label183.TabIndex = 35;
-            this.label183.Text = "m /";
+            this.label_FR_My.BackColor = System.Drawing.Color.Black;
+            this.label_FR_My.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_My.ForeColor = System.Drawing.Color.White;
+            this.label_FR_My.Location = new System.Drawing.Point(510, 750);
+            this.label_FR_My.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_My.Name = "label_FR_My";
+            this.label_FR_My.Size = new System.Drawing.Size(148, 31);
+            this.label_FR_My.TabIndex = 238;
+            this.label_FR_My.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label184
+            // label_FR_Mz
             // 
-            this.label184.BackColor = System.Drawing.Color.Black;
-            this.label184.ForeColor = System.Drawing.Color.White;
-            this.label184.Location = new System.Drawing.Point(421, 705);
-            this.label184.Name = "label184";
-            this.label184.Size = new System.Drawing.Size(47, 31);
-            this.label184.TabIndex = 36;
-            this.label184.Text = " /";
+            this.label_FR_Mz.BackColor = System.Drawing.Color.Black;
+            this.label_FR_Mz.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_Mz.ForeColor = System.Drawing.Color.White;
+            this.label_FR_Mz.Location = new System.Drawing.Point(320, 750);
+            this.label_FR_Mz.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_Mz.Name = "label_FR_Mz";
+            this.label_FR_Mz.Size = new System.Drawing.Size(148, 31);
+            this.label_FR_Mz.TabIndex = 237;
+            this.label_FR_Mz.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_FR_Mx
+            // 
+            this.label_FR_Mx.BackColor = System.Drawing.Color.Black;
+            this.label_FR_Mx.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_Mx.ForeColor = System.Drawing.Color.White;
+            this.label_FR_Mx.Location = new System.Drawing.Point(129, 750);
+            this.label_FR_Mx.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_Mx.Name = "label_FR_Mx";
+            this.label_FR_Mx.Size = new System.Drawing.Size(148, 31);
+            this.label_FR_Mx.TabIndex = 236;
+            this.label_FR_Mx.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label194
+            // 
+            this.label194.AutoSize = true;
+            this.label194.BackColor = System.Drawing.Color.Black;
+            this.label194.ForeColor = System.Drawing.Color.White;
+            this.label194.Location = new System.Drawing.Point(474, 754);
+            this.label194.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label194.Name = "label194";
+            this.label194.Size = new System.Drawing.Size(24, 31);
+            this.label194.TabIndex = 325;
+            this.label194.Text = " /";
+            // 
+            // label195
+            // 
+            this.label195.AutoSize = true;
+            this.label195.BackColor = System.Drawing.Color.Black;
+            this.label195.ForeColor = System.Drawing.Color.White;
+            this.label195.Location = new System.Drawing.Point(284, 754);
+            this.label195.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label195.Name = "label195";
+            this.label195.Size = new System.Drawing.Size(24, 31);
+            this.label195.TabIndex = 324;
+            this.label195.Text = " /";
+            // 
+            // label196
+            // 
+            this.label196.AutoSize = true;
+            this.label196.ForeColor = System.Drawing.Color.White;
+            this.label196.Location = new System.Drawing.Point(6, 750);
+            this.label196.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label196.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label196.Name = "label196";
+            this.label196.Size = new System.Drawing.Size(111, 31);
+            this.label196.TabIndex = 323;
+            this.label196.Text = "Mx/Mz/My";
+            // 
+            // label_RL_My
+            // 
+            this.label_RL_My.BackColor = System.Drawing.Color.Black;
+            this.label_RL_My.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_My.ForeColor = System.Drawing.Color.White;
+            this.label_RL_My.Location = new System.Drawing.Point(507, 751);
+            this.label_RL_My.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_My.Name = "label_RL_My";
+            this.label_RL_My.Size = new System.Drawing.Size(148, 31);
+            this.label_RL_My.TabIndex = 322;
+            this.label_RL_My.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_RL_Mz
+            // 
+            this.label_RL_Mz.BackColor = System.Drawing.Color.Black;
+            this.label_RL_Mz.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_Mz.ForeColor = System.Drawing.Color.White;
+            this.label_RL_Mz.Location = new System.Drawing.Point(317, 750);
+            this.label_RL_Mz.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_Mz.Name = "label_RL_Mz";
+            this.label_RL_Mz.Size = new System.Drawing.Size(148, 31);
+            this.label_RL_Mz.TabIndex = 321;
+            this.label_RL_Mz.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_RL_Mx
+            // 
+            this.label_RL_Mx.BackColor = System.Drawing.Color.Black;
+            this.label_RL_Mx.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_Mx.ForeColor = System.Drawing.Color.White;
+            this.label_RL_Mx.Location = new System.Drawing.Point(127, 751);
+            this.label_RL_Mx.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_Mx.Name = "label_RL_Mx";
+            this.label_RL_Mx.Size = new System.Drawing.Size(148, 31);
+            this.label_RL_Mx.TabIndex = 320;
+            this.label_RL_Mx.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label200
+            // 
+            this.label200.AutoSize = true;
+            this.label200.BackColor = System.Drawing.Color.Black;
+            this.label200.ForeColor = System.Drawing.Color.White;
+            this.label200.Location = new System.Drawing.Point(477, 754);
+            this.label200.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label200.Name = "label200";
+            this.label200.Size = new System.Drawing.Size(24, 31);
+            this.label200.TabIndex = 331;
+            this.label200.Text = " /";
+            // 
+            // label201
+            // 
+            this.label201.AutoSize = true;
+            this.label201.BackColor = System.Drawing.Color.Black;
+            this.label201.ForeColor = System.Drawing.Color.White;
+            this.label201.Location = new System.Drawing.Point(287, 752);
+            this.label201.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label201.Name = "label201";
+            this.label201.Size = new System.Drawing.Size(24, 31);
+            this.label201.TabIndex = 330;
+            this.label201.Text = " /";
+            // 
+            // label202
+            // 
+            this.label202.AutoSize = true;
+            this.label202.ForeColor = System.Drawing.Color.White;
+            this.label202.Location = new System.Drawing.Point(6, 752);
+            this.label202.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label202.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label202.Name = "label202";
+            this.label202.Size = new System.Drawing.Size(111, 31);
+            this.label202.TabIndex = 329;
+            this.label202.Text = "Mx/Mz/My";
+            // 
+            // label_RR_My
+            // 
+            this.label_RR_My.BackColor = System.Drawing.Color.Black;
+            this.label_RR_My.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_My.ForeColor = System.Drawing.Color.White;
+            this.label_RR_My.Location = new System.Drawing.Point(510, 753);
+            this.label_RR_My.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_My.Name = "label_RR_My";
+            this.label_RR_My.Size = new System.Drawing.Size(148, 31);
+            this.label_RR_My.TabIndex = 328;
+            this.label_RR_My.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_RR_Mz
+            // 
+            this.label_RR_Mz.BackColor = System.Drawing.Color.Black;
+            this.label_RR_Mz.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_Mz.ForeColor = System.Drawing.Color.White;
+            this.label_RR_Mz.Location = new System.Drawing.Point(320, 751);
+            this.label_RR_Mz.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_Mz.Name = "label_RR_Mz";
+            this.label_RR_Mz.Size = new System.Drawing.Size(148, 31);
+            this.label_RR_Mz.TabIndex = 327;
+            this.label_RR_Mz.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_RR_Mx
+            // 
+            this.label_RR_Mx.BackColor = System.Drawing.Color.Black;
+            this.label_RR_Mx.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_Mx.ForeColor = System.Drawing.Color.White;
+            this.label_RR_Mx.Location = new System.Drawing.Point(129, 749);
+            this.label_RR_Mx.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_Mx.Name = "label_RR_Mx";
+            this.label_RR_Mx.Size = new System.Drawing.Size(148, 31);
+            this.label_RR_Mx.TabIndex = 326;
+            this.label_RR_Mx.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label191
+            // 
+            this.label191.AutoSize = true;
+            this.label191.ForeColor = System.Drawing.Color.White;
+            this.label191.Location = new System.Drawing.Point(6, 802);
+            this.label191.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label191.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label191.Name = "label191";
+            this.label191.Size = new System.Drawing.Size(60, 31);
+            this.label191.TabIndex = 236;
+            this.label191.Text = "Pt/Rr";
+            // 
+            // label_FL_PneumaticTrail
+            // 
+            this.label_FL_PneumaticTrail.BackColor = System.Drawing.Color.Black;
+            this.label_FL_PneumaticTrail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_PneumaticTrail.ForeColor = System.Drawing.Color.White;
+            this.label_FL_PneumaticTrail.Location = new System.Drawing.Point(260, 802);
+            this.label_FL_PneumaticTrail.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_PneumaticTrail.Name = "label_FL_PneumaticTrail";
+            this.label_FL_PneumaticTrail.Size = new System.Drawing.Size(148, 31);
+            this.label_FL_PneumaticTrail.TabIndex = 237;
+            this.label_FL_PneumaticTrail.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label193
+            // 
+            this.label193.AutoSize = true;
+            this.label193.BackColor = System.Drawing.Color.Black;
+            this.label193.ForeColor = System.Drawing.Color.White;
+            this.label193.Location = new System.Drawing.Point(415, 802);
+            this.label193.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label193.Name = "label193";
+            this.label193.Size = new System.Drawing.Size(41, 31);
+            this.label193.TabIndex = 238;
+            this.label193.Text = "m /";
+            // 
+            // label192
+            // 
+            this.label192.AutoSize = true;
+            this.label192.BackColor = System.Drawing.Color.Black;
+            this.label192.ForeColor = System.Drawing.Color.White;
+            this.label192.Location = new System.Drawing.Point(417, 803);
+            this.label192.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label192.Name = "label192";
+            this.label192.Size = new System.Drawing.Size(41, 31);
+            this.label192.TabIndex = 241;
+            this.label192.Text = "m /";
+            // 
+            // label_FR_PneumaticTrail
+            // 
+            this.label_FR_PneumaticTrail.BackColor = System.Drawing.Color.Black;
+            this.label_FR_PneumaticTrail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_PneumaticTrail.ForeColor = System.Drawing.Color.White;
+            this.label_FR_PneumaticTrail.Location = new System.Drawing.Point(260, 802);
+            this.label_FR_PneumaticTrail.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_PneumaticTrail.Name = "label_FR_PneumaticTrail";
+            this.label_FR_PneumaticTrail.Size = new System.Drawing.Size(148, 31);
+            this.label_FR_PneumaticTrail.TabIndex = 240;
+            this.label_FR_PneumaticTrail.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label198
+            // 
+            this.label198.AutoSize = true;
+            this.label198.ForeColor = System.Drawing.Color.White;
+            this.label198.Location = new System.Drawing.Point(6, 802);
+            this.label198.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label198.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label198.Name = "label198";
+            this.label198.Size = new System.Drawing.Size(60, 31);
+            this.label198.TabIndex = 239;
+            this.label198.Text = "Pt/Rr";
+            // 
+            // label199
+            // 
+            this.label199.AutoSize = true;
+            this.label199.BackColor = System.Drawing.Color.Black;
+            this.label199.ForeColor = System.Drawing.Color.White;
+            this.label199.Location = new System.Drawing.Point(417, 801);
+            this.label199.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label199.Name = "label199";
+            this.label199.Size = new System.Drawing.Size(41, 31);
+            this.label199.TabIndex = 336;
+            this.label199.Text = "m /";
+            // 
+            // label_RL_PneumaticTrail
+            // 
+            this.label_RL_PneumaticTrail.BackColor = System.Drawing.Color.Black;
+            this.label_RL_PneumaticTrail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_PneumaticTrail.ForeColor = System.Drawing.Color.White;
+            this.label_RL_PneumaticTrail.Location = new System.Drawing.Point(260, 800);
+            this.label_RL_PneumaticTrail.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_PneumaticTrail.Name = "label_RL_PneumaticTrail";
+            this.label_RL_PneumaticTrail.Size = new System.Drawing.Size(148, 31);
+            this.label_RL_PneumaticTrail.TabIndex = 335;
+            this.label_RL_PneumaticTrail.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label204
+            // 
+            this.label204.AutoSize = true;
+            this.label204.ForeColor = System.Drawing.Color.White;
+            this.label204.Location = new System.Drawing.Point(6, 800);
+            this.label204.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label204.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label204.Name = "label204";
+            this.label204.Size = new System.Drawing.Size(60, 31);
+            this.label204.TabIndex = 334;
+            this.label204.Text = "Pt/Rr";
+            // 
+            // label205
+            // 
+            this.label205.AutoSize = true;
+            this.label205.BackColor = System.Drawing.Color.Black;
+            this.label205.ForeColor = System.Drawing.Color.White;
+            this.label205.Location = new System.Drawing.Point(417, 802);
+            this.label205.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label205.Name = "label205";
+            this.label205.Size = new System.Drawing.Size(41, 31);
+            this.label205.TabIndex = 339;
+            this.label205.Text = "m /";
+            // 
+            // label_RR_PneumaticTrail
+            // 
+            this.label_RR_PneumaticTrail.BackColor = System.Drawing.Color.Black;
+            this.label_RR_PneumaticTrail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_PneumaticTrail.ForeColor = System.Drawing.Color.White;
+            this.label_RR_PneumaticTrail.Location = new System.Drawing.Point(260, 801);
+            this.label_RR_PneumaticTrail.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_PneumaticTrail.Name = "label_RR_PneumaticTrail";
+            this.label_RR_PneumaticTrail.Size = new System.Drawing.Size(148, 31);
+            this.label_RR_PneumaticTrail.TabIndex = 338;
+            this.label_RR_PneumaticTrail.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label207
+            // 
+            this.label207.AutoSize = true;
+            this.label207.ForeColor = System.Drawing.Color.White;
+            this.label207.Location = new System.Drawing.Point(6, 801);
+            this.label207.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label207.MinimumSize = new System.Drawing.Size(0, 31);
+            this.label207.Name = "label207";
+            this.label207.Size = new System.Drawing.Size(60, 31);
+            this.label207.TabIndex = 337;
+            this.label207.Text = "Pt/Rr";
+            // 
+            // label_FL_RollingResistance
+            // 
+            this.label_FL_RollingResistance.BackColor = System.Drawing.Color.Black;
+            this.label_FL_RollingResistance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FL_RollingResistance.ForeColor = System.Drawing.Color.White;
+            this.label_FL_RollingResistance.Location = new System.Drawing.Point(462, 803);
+            this.label_FL_RollingResistance.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FL_RollingResistance.Name = "label_FL_RollingResistance";
+            this.label_FL_RollingResistance.Size = new System.Drawing.Size(148, 31);
+            this.label_FL_RollingResistance.TabIndex = 239;
+            this.label_FL_RollingResistance.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_FR_RollingResistance
+            // 
+            this.label_FR_RollingResistance.BackColor = System.Drawing.Color.Black;
+            this.label_FR_RollingResistance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_FR_RollingResistance.ForeColor = System.Drawing.Color.White;
+            this.label_FR_RollingResistance.Location = new System.Drawing.Point(466, 802);
+            this.label_FR_RollingResistance.Margin = new System.Windows.Forms.Padding(6);
+            this.label_FR_RollingResistance.Name = "label_FR_RollingResistance";
+            this.label_FR_RollingResistance.Size = new System.Drawing.Size(148, 31);
+            this.label_FR_RollingResistance.TabIndex = 241;
+            this.label_FR_RollingResistance.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_RL_RollingResistance
+            // 
+            this.label_RL_RollingResistance.BackColor = System.Drawing.Color.Black;
+            this.label_RL_RollingResistance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RL_RollingResistance.ForeColor = System.Drawing.Color.White;
+            this.label_RL_RollingResistance.Location = new System.Drawing.Point(462, 801);
+            this.label_RL_RollingResistance.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RL_RollingResistance.Name = "label_RL_RollingResistance";
+            this.label_RL_RollingResistance.Size = new System.Drawing.Size(148, 31);
+            this.label_RL_RollingResistance.TabIndex = 306;
+            this.label_RL_RollingResistance.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label_RR_RollingResistance
+            // 
+            this.label_RR_RollingResistance.BackColor = System.Drawing.Color.Black;
+            this.label_RR_RollingResistance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_RR_RollingResistance.ForeColor = System.Drawing.Color.White;
+            this.label_RR_RollingResistance.Location = new System.Drawing.Point(466, 801);
+            this.label_RR_RollingResistance.Margin = new System.Windows.Forms.Padding(6);
+            this.label_RR_RollingResistance.Name = "label_RR_RollingResistance";
+            this.label_RR_RollingResistance.Size = new System.Drawing.Size(148, 31);
+            this.label_RR_RollingResistance.TabIndex = 337;
+            this.label_RR_RollingResistance.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // FormLiveData
             // 
@@ -4522,17 +5087,17 @@ namespace Physics_Data_Debug
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1628, 2073);
+            this.ClientSize = new System.Drawing.Size(1645, 2119);
             this.Controls.Add(this.toSuspensionGeometry);
             this.Controls.Add(this.GameVersionComboBox);
-            this.Controls.Add(this.to4WheelsButton);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.toGForceButton);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label37);
+            this.Controls.Add(this.to4WheelsButton);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label17);
+            this.Controls.Add(this.toGForceButton);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
@@ -4541,24 +5106,24 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.getProcessButton);
             this.Controls.Add(this.toTestChartPageButton);
-            this.Controls.Add(this.OpenTemperaturesChart);
-            this.Controls.Add(this.toSuspensionStaticValues);
             this.Controls.Add(this.TickTime);
             this.Controls.Add(this.label68);
             this.Controls.Add(this.label67);
             this.Controls.Add(this.label66);
             this.Controls.Add(this.label65);
-            this.Controls.Add(this.toTireStaticValues);
-            this.Controls.Add(this.toLogSettingsButton);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.logInterval_textBox);
             this.Controls.Add(this.startFileLoggingButton);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.OpenTemperaturesChart);
+            this.Controls.Add(this.toLogSettingsButton);
+            this.Controls.Add(this.toSuspensionStaticValues);
+            this.Controls.Add(this.logInterval_textBox);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.RightLabel);
             this.Controls.Add(this.CurrentRightDifferentialTorque);
             this.Controls.Add(this.CurrentRightDifferentialSpeedRad);
             this.Controls.Add(this.CurrentRightDifferentialOpen);
             this.Controls.Add(this.LeftLabel);
+            this.Controls.Add(this.toTireStaticValues);
             this.Controls.Add(this.CurrentTotalDrag);
             this.Controls.Add(this.CurrentFrontLift);
             this.Controls.Add(this.label13);
@@ -4937,6 +5502,46 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label label176;
         private System.Windows.Forms.Label label175;
         private System.Windows.Forms.Label label174;
+        private System.Windows.Forms.Label label190;
+        private System.Windows.Forms.Label label189;
+        private System.Windows.Forms.Label label188;
+        private System.Windows.Forms.Label label_FL_My;
+        private System.Windows.Forms.Label label_FL_Mz;
+        private System.Windows.Forms.Label label_FL_Mx;
+        private System.Windows.Forms.Label label185;
+        private System.Windows.Forms.Label label186;
+        private System.Windows.Forms.Label label187;
+        private System.Windows.Forms.Label label_FR_My;
+        private System.Windows.Forms.Label label_FR_Mz;
+        private System.Windows.Forms.Label label_FR_Mx;
+        private System.Windows.Forms.Label label194;
+        private System.Windows.Forms.Label label195;
+        private System.Windows.Forms.Label label196;
+        private System.Windows.Forms.Label label_RL_My;
+        private System.Windows.Forms.Label label_RL_Mz;
+        private System.Windows.Forms.Label label_RL_Mx;
+        private System.Windows.Forms.Label label200;
+        private System.Windows.Forms.Label label201;
+        private System.Windows.Forms.Label label202;
+        private System.Windows.Forms.Label label_RR_My;
+        private System.Windows.Forms.Label label_RR_Mz;
+        private System.Windows.Forms.Label label_RR_Mx;
+        private System.Windows.Forms.Label label193;
+        private System.Windows.Forms.Label label_FL_PneumaticTrail;
+        private System.Windows.Forms.Label label191;
+        private System.Windows.Forms.Label label192;
+        private System.Windows.Forms.Label label_FR_PneumaticTrail;
+        private System.Windows.Forms.Label label198;
+        private System.Windows.Forms.Label label199;
+        private System.Windows.Forms.Label label_RL_PneumaticTrail;
+        private System.Windows.Forms.Label label204;
+        private System.Windows.Forms.Label label205;
+        private System.Windows.Forms.Label label_RR_PneumaticTrail;
+        private System.Windows.Forms.Label label207;
+        private System.Windows.Forms.Label label_FL_RollingResistance;
+        private System.Windows.Forms.Label label_FR_RollingResistance;
+        private System.Windows.Forms.Label label_RL_RollingResistance;
+        private System.Windows.Forms.Label label_RR_RollingResistance;
     }
 }
 

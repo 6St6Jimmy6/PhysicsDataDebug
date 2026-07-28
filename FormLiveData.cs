@@ -24,6 +24,26 @@ namespace Physics_Data_Debug
         public FormLiveData()
         {
             InitializeComponent();
+            bool debugEnabled = false;
+
+            textBox1.Visible = debugEnabled;
+            textBox2.Visible = debugEnabled;
+            textBox3.Visible = debugEnabled;
+            textBox4.Visible = debugEnabled;
+            textBox5.Visible = debugEnabled;
+            textBox6.Visible = debugEnabled;
+            label16.Visible = debugEnabled;
+            label17.Visible = debugEnabled;
+            label22.Visible = debugEnabled;
+            label23.Visible = debugEnabled;
+            label37.Visible = debugEnabled;
+
+            textBox1.Enabled = debugEnabled;
+            textBox2.Enabled = debugEnabled;
+            textBox3.Enabled = debugEnabled;
+            textBox4.Enabled = debugEnabled;
+            textBox5.Enabled = debugEnabled;
+            textBox6.Enabled = debugEnabled;
 
             logInterval_textBox.Text = LiveData.TickInterval.ToString();
 
@@ -89,7 +109,7 @@ namespace Physics_Data_Debug
         private void labelTireWriter(Enum prefix,
             Label angularVelocity, Label contactLength, Label currentContactBrakeTorque, Label maxCurrentContactBrakeTorque, Label deflection, Label effectiveRadius, Label lateralLoad, Label loadedRadius,
             Label longitudinalLoad, Label slipRatio, Label travelSpeed, Label verticalLoad, Label lateralFriction, Label longitudinalFriction, Label treadTemperature, Label innerTemperature,
-            Label slipAngleDeg, Label totalFriction, Label totalFrictionAngle, Label lateralSlipSpeed, Label longitudinalSlipSpeed, Label camberAngle, Label steerAngle, Label suspensionLength, Label suspensionVelocity)
+            Label slipAngleDeg, Label totalFriction, Label totalFrictionAngle, Label lateralSlipSpeed, Label longitudinalSlipSpeed, Label camberAngle, Label steerAngle, Label suspensionLength, Label suspensionVelocity, Label mx, Label mz, Label my, Label pneumaticTrail, Label rollingResistance)
         {
             LiveData.SetValueInLabel(angularVelocity, prefix, WF_TireDataOffset.AngularVelocity, 2);
             LiveData.SetValueInLabel(contactLength, prefix, WF_TireDataOffset.ContactLength, 4);
@@ -118,40 +138,15 @@ namespace Physics_Data_Debug
 
             LiveData.SetValueInLabel(suspensionLength, prefix, WF_Suspension1DataOffset.SuspensionLength, 4);
             LiveData.SetValueInLabel(suspensionVelocity, prefix, WF_Suspension1DataOffset.SuspensionVelocity, 4);
-        }/*
-        private void textBoxTireWriter(Enum prefix, 
-            TextBox angularVelocity, TextBox contactLength, TextBox currentContactBrakeTorque, TextBox maxCurrentContactBrakeTorque, TextBox deflection, TextBox effectiveRadius, TextBox lateralLoad, TextBox loadedRadius, 
-            TextBox longitudinalLoad, TextBox slipRatio, TextBox travelSpeed, TextBox verticalLoad, TextBox lateralFriction, TextBox longitudinalFriction, TextBox treadTemperature, TextBox innerTemperature, 
-            TextBox slipAngleDeg, TextBox totalFriction, TextBox totalFrictionAngle, TextBox lateralSlipSpeed, TextBox longitudinalSlipSpeed, TextBox camberAngle, TextBox steerAngle, TextBox suspensionLength, TextBox suspensionVelocity)
-        {
-            LiveData.SetValueInTB(angularVelocity, prefix, WF_TireDataOffset.AngularVelocity, 2);
-            LiveData.SetValueInTB(contactLength, prefix, WF_TireDataOffset.ContactLength, 4);
-            LiveData.SetValueInTB(currentContactBrakeTorque, prefix, WF_TireDataOffset.CurrentContactBrakeTorque, 2);
-            LiveData.SetValueInTB(maxCurrentContactBrakeTorque, prefix, WF_TireDataOffset.CurrentContactBrakeTorqueMax, 2);
-            LiveData.SetValueInTB(deflection, prefix, WF_TireDataOffset.VerticalDeflection, 4);
-            LiveData.SetValueInTB(effectiveRadius, prefix, WF_TireDataOffset.EffectiveRadius, 4);
-            LiveData.SetValueInTB(lateralLoad, prefix, WF_TireDataOffset.LateralLoad, 2);
-            LiveData.SetValueInTB(loadedRadius, prefix, WF_TireDataOffset.LoadedRadius, 4);
-            LiveData.SetValueInTB(longitudinalLoad, prefix, WF_TireDataOffset.LongitudinalLoad, 2);
-            LiveData.SetValueInTB(slipRatio, prefix, WF_TireDataOffset.SlipRatio, 2);
-            LiveData.SetValueInTB(travelSpeed, prefix, WF_TireDataOffset.TravelSpeed, 2);
-            LiveData.SetValueInTB(verticalLoad, prefix, WF_TireDataOffset.VerticalLoad, 2);
-            LiveData.SetValueInTB(lateralFriction, prefix, WF_TireDataOffset.LateralFriction, 2);
-            LiveData.SetValueInTB(longitudinalFriction, prefix, WF_TireDataOffset.LongitudinalFriction, 2);
-            LiveData.SetValueInTB(treadTemperature, prefix, WF_TireDataOffset.TreadTemperature, 2);
-            LiveData.SetValueInTB(innerTemperature, prefix, WF_TireDataOffset.InnerTemperature, 2);
-            LiveData.SetValueInTB(slipAngleDeg, prefix, WF_TireDataOffset.SlipAngleDeg, 2);
-            LiveData.SetValueInTB(totalFriction, prefix, WF_TireDataOffset.TotalFriction, 2);
-            LiveData.SetValueInTB(totalFrictionAngle, prefix, WF_TireDataOffset.TotalFrictionAngleDeg, 2);
-            LiveData.SetValueInTB(lateralSlipSpeed, prefix, WF_TireDataOffset.LateralSlipSpeed, 2);
-            LiveData.SetValueInTB(longitudinalSlipSpeed, prefix, WF_TireDataOffset.LongitudinalSlipSpeed, 2);
-            LiveData.SetValueInTB(camberAngle, prefix, WF_TireDataOffset.CamberAngleDeg, 3);
-            LiveData.SetValueInTB(steerAngle, prefix, WF_TireDataOffset.SteerAngleDeg, 3);
 
 
-            LiveData.SetValueInTB(suspensionLength, prefix, WF_Suspension1DataOffset.SuspensionLength, 4);
-            LiveData.SetValueInTB(suspensionVelocity, prefix, WF_Suspension1DataOffset.SuspensionVelocity, 4);
-        }*/
+            LiveData.SetValueInLabel(mx, prefix, WF_TireDataOffset.Mx, 2);
+            LiveData.SetValueInLabel(mz, prefix, WF_TireDataOffset.Mz, 2);
+            LiveData.SetValueInLabel(my, prefix, WF_TireDataOffset.My, 2);
+
+            LiveData.SetValueInLabel(pneumaticTrail, prefix, WF_TireDataOffset.PneumaticTrail, 6);
+            LiveData.SetValueInLabel(rollingResistance, prefix, WF_TireDataOffset.RollingResistance, 5);
+        }
         private void TextBoxUpdates()
         {
             /*
@@ -207,41 +202,22 @@ namespace Physics_Data_Debug
             {
                 CurrentRightDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
             }
-            /*
-            textBoxTireWriter(WF_PrefixMain.FL, textBox_FL_AngularVelocity, textBox_FL_ContactLength, textBox_FL_CurrentContactBrakeTorque, textBox_FL_MaxCurrentContactBrakeTorque, textBox_FL_Deflection, textBox_FL_EffectiveRadius,
-                textBox_FL_LateralLoad, textBox_FL_LoadedRadius, textBox_FL_LongitudinalLoad, textBox_FL_SlipRatio, textBox_FL_TravelSpeed, textBox_FL_VerticalLoad, textBox_FL_LateralFriction, textBox_FL_LongitudinalFriction, textBox_FL_TreadTemperature,
-                textBox_FL_InnerTemperature, textBox_FL_SlipAngleDeg, textBox_FL_TotalFriction, textBox_FL_TotalFrictionAngle, textBox_FL_LateralSlipSpeed, textBox_FL_LongitudinalSlipSpeed, textBox_FL_CamberAngle, textBox_FL_TireSteerAngle, 
-                textBox_FL_SuspensionLength, textBox_FL_SuspensionVelocity);
-            textBoxTireWriter(WF_PrefixMain.FR, textBox_FR_AngularVelocity, textBox_FR_ContactLength, textBox_FR_CurrentContactBrakeTorque, textBox_FR_MaxCurrentContactBrakeTorque, textBox_FR_Deflection, textBox_FR_EffectiveRadius,
-                textBox_FR_LateralLoad, textBox_FR_LoadedRadius, textBox_FR_LongitudinalLoad, textBox_FR_SlipRatio, textBox_FR_TravelSpeed, textBox_FR_VerticalLoad, textBox_FR_LateralFriction, textBox_FR_LongitudinalFriction, textBox_FR_TreadTemperature,
-                textBox_FR_InnerTemperature, textBox_FR_SlipAngleDeg, textBox_FR_TotalFriction, textBox_FR_TotalFrictionAngle, textBox_FR_LateralSlipSpeed, textBox_FR_LongitudinalSlipSpeed, textBox_FR_CamberAngle, textBox_FR_TireSteerAngle, 
-                textBox_FR_SuspensionLength, textBox_FR_SuspensionVelocity);
-            textBoxTireWriter(WF_PrefixMain.RL, textBox_RL_AngularVelocity, textBox_RL_ContactLength, textBox_RL_CurrentContactBrakeTorque, textBox_RL_MaxCurrentContactBrakeTorque, textBox_RL_Deflection, textBox_RL_EffectiveRadius,
-                textBox_RL_LateralLoad, textBox_RL_LoadedRadius, textBox_RL_LongitudinalLoad, textBox_RL_SlipRatio, textBox_RL_TravelSpeed, textBox_RL_VerticalLoad, textBox_RL_LateralFriction, textBox_RL_LongitudinalFriction, textBox_RL_TreadTemperature,
-                textBox_RL_InnerTemperature, textBox_RL_SlipAngleDeg, textBox_RL_TotalFriction, textBox_RL_TotalFrictionAngle, textBox_RL_LateralSlipSpeed, textBox_RL_LongitudinalSlipSpeed, textBox_RL_CamberAngle, textBox_RL_TireSteerAngle, 
-                textBox_RL_SuspensionLength, textBox_RL_SuspensionVelocity);
-            textBoxTireWriter(WF_PrefixMain.RR, textBox_RR_AngularVelocity, textBox_RR_ContactLength, textBox_RR_CurrentContactBrakeTorque, textBox_RR_MaxCurrentContactBrakeTorque, textBox_RR_Deflection, textBox_RR_EffectiveRadius,
-                textBox_RR_LateralLoad, textBox_RR_LoadedRadius, textBox_RR_LongitudinalLoad, textBox_RR_SlipRatio, textBox_RR_TravelSpeed, textBox_RR_VerticalLoad, textBox_RR_LateralFriction, textBox_RR_LongitudinalFriction, textBox_RR_TreadTemperature,
-                textBox_RR_InnerTemperature, textBox_RR_SlipAngleDeg, textBox_RR_TotalFriction, textBox_RR_TotalFrictionAngle, textBox_RR_LateralSlipSpeed, textBox_RR_LongitudinalSlipSpeed, textBox_RR_CamberAngle, textBox_RR_TireSteerAngle, 
-                textBox_RR_SuspensionLength, textBox_RR_SuspensionVelocity);
-            */
-
             labelTireWriter(WF_PrefixMain.FL, label_FL_AngularVelocity, label_FL_ContactLength, label_FL_CurrentContactBrakeTorque, label_FL_MaxCurrentContactBrakeTorque, label_FL_Deflection, label_FL_EffectiveRadius,
                 label_FL_LateralLoad, label_FL_LoadedRadius, label_FL_LongitudinalLoad, label_FL_SlipRatio, label_FL_TravelSpeed, label_FL_VerticalLoad, label_FL_LateralFriction, label_FL_LongitudinalFriction, label_FL_TreadTemperature,
                 label_FL_InnerTemperature, label_FL_SlipAngleDeg, label_FL_TotalFriction, label_FL_TotalFrictionAngle, label_FL_LateralSlipSpeed, label_FL_LongitudinalSlipSpeed, label_FL_CamberAngle, label_FL_TireSteerAngle,
-                label_FL_SuspensionLength, label_FL_SuspensionVelocity);
+                label_FL_SuspensionLength, label_FL_SuspensionVelocity, label_FL_Mx, label_FL_Mz, label_FL_My, label_FL_PneumaticTrail, label_FL_RollingResistance);
             labelTireWriter(WF_PrefixMain.FR, label_FR_AngularVelocity, label_FR_ContactLength, label_FR_CurrentContactBrakeTorque, label_FR_MaxCurrentContactBrakeTorque, label_FR_Deflection, label_FR_EffectiveRadius,
                 label_FR_LateralLoad, label_FR_LoadedRadius, label_FR_LongitudinalLoad, label_FR_SlipRatio, label_FR_TravelSpeed, label_FR_VerticalLoad, label_FR_LateralFriction, label_FR_LongitudinalFriction, label_FR_TreadTemperature,
                 label_FR_InnerTemperature, label_FR_SlipAngleDeg, label_FR_TotalFriction, label_FR_TotalFrictionAngle, label_FR_LateralSlipSpeed, label_FR_LongitudinalSlipSpeed, label_FR_CamberAngle, label_FR_TireSteerAngle,
-                label_FR_SuspensionLength, label_FR_SuspensionVelocity);
+                label_FR_SuspensionLength, label_FR_SuspensionVelocity, label_FR_Mx, label_FR_Mz, label_FR_My, label_FR_PneumaticTrail, label_FR_RollingResistance);
             labelTireWriter(WF_PrefixMain.RL, label_RL_AngularVelocity, label_RL_ContactLength, label_RL_CurrentContactBrakeTorque, label_RL_MaxCurrentContactBrakeTorque, label_RL_Deflection, label_RL_EffectiveRadius,
                 label_RL_LateralLoad, label_RL_LoadedRadius, label_RL_LongitudinalLoad, label_RL_SlipRatio, label_RL_TravelSpeed, label_RL_VerticalLoad, label_RL_LateralFriction, label_RL_LongitudinalFriction, label_RL_TreadTemperature,
                 label_RL_InnerTemperature, label_RL_SlipAngleDeg, label_RL_TotalFriction, label_RL_TotalFrictionAngle, label_RL_LateralSlipSpeed, label_RL_LongitudinalSlipSpeed, label_RL_CamberAngle, label_RL_TireSteerAngle,
-                label_RL_SuspensionLength, label_RL_SuspensionVelocity);
+                label_RL_SuspensionLength, label_RL_SuspensionVelocity, label_RL_Mx, label_RL_Mz, label_RL_My, label_RL_PneumaticTrail, label_RL_RollingResistance);
             labelTireWriter(WF_PrefixMain.RR, label_RR_AngularVelocity, label_RR_ContactLength, label_RR_CurrentContactBrakeTorque, label_RR_MaxCurrentContactBrakeTorque, label_RR_Deflection, label_RR_EffectiveRadius,
                 label_RR_LateralLoad, label_RR_LoadedRadius, label_RR_LongitudinalLoad, label_RR_SlipRatio, label_RR_TravelSpeed, label_RR_VerticalLoad, label_RR_LateralFriction, label_RR_LongitudinalFriction, label_RR_TreadTemperature,
                 label_RR_InnerTemperature, label_RR_SlipAngleDeg, label_RR_TotalFriction, label_RR_TotalFrictionAngle, label_RR_LateralSlipSpeed, label_RR_LongitudinalSlipSpeed, label_RR_CamberAngle, label_RR_TireSteerAngle,
-                label_RR_SuspensionLength, label_RR_SuspensionVelocity);
+                label_RR_SuspensionLength, label_RR_SuspensionVelocity, label_RR_Mx, label_RR_Mz, label_RR_My, label_RR_PneumaticTrail, label_RR_RollingResistance);
         }
         private void UpdateFormData()
         {

@@ -438,6 +438,54 @@ namespace Physics_Data_Debug
                 dMinorEnabled = true;
                 dMinorIntervalFraction = 2;
             }
+            else if(axisSelection == nameof(AllValueNames.Mx))
+            {
+                dMax = 1000;
+                if (isAbsolute == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == nameof(AllValueNames.Mz))
+            {
+                dMax = 1000;
+                if (isAbsolute == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
+            else if (axisSelection == nameof(AllValueNames.My))
+            {
+                dMax = 1000;
+                if (isAbsolute == true)
+                {
+                    dMin = 0;
+                }
+                else
+                {
+                    dMin = -dMax;
+                }
+                dMajorInterval = 100;
+                dDecimals = 0;
+                dMinorEnabled = true;
+                dMinorIntervalFraction = 2;
+            }
             else if (axisSelection == nameof(AllValueNames.TreadTemperature))//LogSettings.sTreadTemperature)
             {
                 dMax = 380;
@@ -674,6 +722,21 @@ namespace Physics_Data_Debug
             else if (axisSelection == nameof(AllValueNames.SuspensionVelocity))//LogSettings.sSuspensionVelocity)
             {
                 dMax = 10;
+                dMin = 0;
+            }
+            else if (axisSelection == nameof(AllValueNames.Mx))//
+            {
+                dMax = 1000;
+                dMin = 0;
+            }
+            else if (axisSelection == nameof(AllValueNames.Mz))//
+            {
+                dMax = 1000;
+                dMin = 0;
+            }
+            else if (axisSelection == nameof(AllValueNames.My))//
+            {
+                dMax = 1000;
                 dMin = 0;
             }
             else

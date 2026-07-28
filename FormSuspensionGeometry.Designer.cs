@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
@@ -208,7 +211,13 @@
             chartArea1.AxisY2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "FrontSuspension";
+            chartArea2.Name = "ChartArea1";
+            chartArea3.Name = "ChartArea2";
+            chartArea4.Name = "ChartArea3";
             this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.ChartAreas.Add(chartArea3);
+            this.chart1.ChartAreas.Add(chartArea4);
             legend1.BackColor = System.Drawing.Color.LightGray;
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend1.Name = "Legend1";
@@ -537,7 +546,7 @@
             this.chart1.Series.Add(series21);
             this.chart1.Series.Add(series22);
             this.chart1.Series.Add(series23);
-            this.chart1.Size = new System.Drawing.Size(1984, 1375);
+            this.chart1.Size = new System.Drawing.Size(1984, 1547);
             this.chart1.TabIndex = 242;
             this.chart1.Text = "chart1";
             title1.DockedToChartArea = "FrontSuspension";
@@ -552,12 +561,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(2052, 1395);
+            this.ClientSize = new System.Drawing.Size(2152, 1395);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.textBox_FL_SuspensionGeometry);
             this.Controls.Add(this.textBox_FR_SuspensionGeometry);
             this.Controls.Add(this.textBox_RL_SuspensionGeometry);
             this.Controls.Add(this.textBox_RR_SuspensionGeometry);
-            this.Controls.Add(this.chart1);
             this.Name = "FormSuspensionGeometry";
             this.Text = "FormSuspensionGeometry";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSuspensionGeometry_FormClosing);

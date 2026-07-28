@@ -123,6 +123,11 @@ namespace Physics_Data_Debug
 
         LateralLoad,
         LongitudinalLoad,
+
+        Mx,
+        Mz,
+        My,
+
         SlipAngleRad,
         SlipRatio,
         LateralResistance,
@@ -168,6 +173,8 @@ namespace Physics_Data_Debug
         TotalFrictionAngleDeg,
 
         SlipAngleDeg,
+        RollingResistance,
+        PneumaticTrail,
 
         TirePitchRad,
         TirePitchDeg,
@@ -424,6 +431,11 @@ namespace Physics_Data_Debug
         LateralLoad = 0x4B8,
         LongitudinalLoad = 0x4C0,
 
+
+        Mx = 0x4CC,//Rolling Momentum
+        Mz = 0x4D0,//Self Align Momentum
+        My = 0x4D4,//Overturning Momentum
+
         SlipAngleRad = 0xBF0,
         SlipRatio = 0xBF4,
         LateralResistance = 0xBF8,
@@ -448,6 +460,8 @@ namespace Physics_Data_Debug
         TotalFrictionAngleDeg = TotalFriction + 0x4,
 
         SlipAngleDeg = TotalFrictionAngleDeg + 0x4,
+        RollingResistance = SlipAngleDeg + 0x4,
+        PneumaticTrail = RollingResistance + 0x4,
     }
     #endregion
     #region Suspension Data old
@@ -953,6 +967,9 @@ namespace Physics_Data_Debug
                     nameof(Physics_Data_Debug.AllValueNames.LongitudinalFriction),//"Longitudinal Friction",
                     nameof(Physics_Data_Debug.AllValueNames.LongitudinalSlipSpeed),//"Longitudinal Slip Speed",
                     nameof(Physics_Data_Debug.AllValueNames.SuspensionVelocity),//"Suspension Velocity"
+                    nameof(Physics_Data_Debug.AllValueNames.Mx),//"Mx",
+                    nameof(Physics_Data_Debug.AllValueNames.Mz),//"Mz",
+                    nameof(Physics_Data_Debug.AllValueNames.My),//"My",
                 }
             );
     }

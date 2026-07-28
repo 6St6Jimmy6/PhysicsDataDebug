@@ -477,6 +477,27 @@ namespace Physics_Data_Debug
                 {
                     xyzValues.Add(LiveData.TireDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.SuspensionVelocity.GetType()), WF_TireDataOffset.SuspensionVelocity)].Value);//liveDataList[24]);
                 }*/
+                else if (xyzSelection[i] == nameof(AllValueNames.Mx))
+                {
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.Mx.GetType()), WF_TireDataOffset.Mx)].Value);
+                }
+                else if (xyzSelection[i] == nameof(AllValueNames.Mz))
+                {
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.Mz.GetType()), WF_TireDataOffset.Mz)].Value);
+                }
+                else if (xyzSelection[i] == nameof(AllValueNames.My))
+                {
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.My.GetType()), WF_TireDataOffset.My)].Value);
+                }
+                else if (xyzSelection[i] == nameof(AllValueNames.RollingResistance))
+                {
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.RollingResistance.GetType()), WF_TireDataOffset.RollingResistance)].Value);
+                }
+                else if (xyzSelection[i] == nameof(AllValueNames.PneumaticTrail))
+                {
+                    xyzValues.Add(LiveData.FullDataList[Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix)][Array.IndexOf(Enum.GetValues(WF_TireDataOffset.PneumaticTrail.GetType()), WF_TireDataOffset.PneumaticTrail)].Value);
+                }
+                
                 else//fallback to none
                 {
                     xyzValues.Add(none);

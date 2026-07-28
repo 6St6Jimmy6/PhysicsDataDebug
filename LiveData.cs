@@ -320,6 +320,10 @@ namespace Physics_Data_Debug
         }
         public static List<byte[]> GetCalcuatedTireData(List<byte[]> tireData)
         {
+            float lateralLoad = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad);
+            float longitudinalLoad = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LongitudinalLoad);
+            float verticalLoad = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad);
+
             var transformMatrix = new Matrix4x4(
                 (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM11),
                 (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM12),
@@ -345,25 +349,45 @@ namespace Physics_Data_Debug
             float camberAngleRad = (float)LoopAngleRad(-CalcAngles(transformMatrix).Z, Math.PI * 0.5f);// camber close
 
             float camberAngleDeg = (float)RadToDeg(camberAngleRad);// RadToDeg(RL_TireM12);
-            float lateralFriction = (float)GetFriction((float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad), (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad));
-            float longitudinalFriction = (float)GetFriction((float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LongitudinalLoad), (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad));
+            float lateralFriction = (float)GetFriction(lateralLoad, verticalLoad);
+            float longitudinalFriction = (float)GetFriction(longitudinalLoad, verticalLoad);
             float totalFriction = (float)GetTotalFriction(lateralFriction, longitudinalFriction);
             float totalFrictionAngleDeg = (float)GetTotalFrictionAngle(lateralFriction, longitudinalFriction);
 
             float slipAngleDeg = (float)RadToDeg((float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.SlipAngleRad));
+            float rollingResistance;
+            if (verticalLoad != 0)
+            {
+                rollingResistance = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.Mx) / verticalLoad;
+            }
+            else
+            {
+                rollingResistance = 0;
+            }
+            float pneumaticTrail;
+            if ((float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad) != 0)
+            {
+                pneumaticTrail = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.Mz) / (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad);
+            }
+            else
+            {
+                pneumaticTrail = 0;
+            }
 
-            return new List<byte[]>() { 
+                return new List<byte[]>() {
                 BitConverter.GetBytes(casterAngleRad),
-                BitConverter.GetBytes(casterAngleDeg), 
-                BitConverter.GetBytes(steerAngleRad), 
-                BitConverter.GetBytes(steerAngleDeg), 
-                BitConverter.GetBytes(camberAngleRad), 
-                BitConverter.GetBytes(camberAngleDeg), 
-                BitConverter.GetBytes(lateralFriction), 
-                BitConverter.GetBytes(longitudinalFriction), 
-                BitConverter.GetBytes(totalFriction), 
-                BitConverter.GetBytes(totalFrictionAngleDeg), 
-                BitConverter.GetBytes(slipAngleDeg) };// Needs to be in the same order as in WF_TireDataOffset enumerator
+                BitConverter.GetBytes(casterAngleDeg),
+                BitConverter.GetBytes(steerAngleRad),
+                BitConverter.GetBytes(steerAngleDeg),
+                BitConverter.GetBytes(camberAngleRad),
+                BitConverter.GetBytes(camberAngleDeg),
+                BitConverter.GetBytes(lateralFriction),
+                BitConverter.GetBytes(longitudinalFriction),
+                BitConverter.GetBytes(totalFriction),
+                BitConverter.GetBytes(totalFrictionAngleDeg),
+                BitConverter.GetBytes(slipAngleDeg),
+                BitConverter.GetBytes(rollingResistance),
+                BitConverter.GetBytes(pneumaticTrail) };// Needs to be in the same order as in WF_TireDataOffset enumerator
         }
         public static T GetRawData<T>(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, long baseAddrUpdt, int[] offsets)
         {
@@ -673,7 +697,7 @@ namespace Physics_Data_Debug
             //Suspension data gets added also in
             foreach (int i in Enum.GetValues(typeof(WF_Suspension1DataOffset)))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_TireDataOffset.SlipAngleDeg + 0x4 + (int)(WF_Suspension1DataOffset)i, Name = prefix + "_" + (WF_Suspension1DataOffset)i});
+                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_TireDataOffset.PneumaticTrail + 0x4 + (int)(WF_Suspension1DataOffset)i, Name = prefix + "_" + (WF_Suspension1DataOffset)i});
             }
             //Suspension Geometry
             foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
