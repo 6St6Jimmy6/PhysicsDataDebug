@@ -1,5 +1,4 @@
-﻿using Memory.Win64;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -13,142 +12,498 @@ namespace Physics_Data_Debug
     public partial class FormLiveData : Form
     {
         #region Field variables
-        private string sTickTime = "Tick time: Nothing";
-
-        public static Process Process;
         public static bool ProcessGet { get; set; } = false;
         public static bool FirstTimeLoad = false;
-        object SelectedVersion;
+        private const string AutomaticVersionOption = "Automatic (Wreckfest_x64.exe)";
+        private GameVersionProfile SelectedVersion;
+        private long activeBaseAddressShift;
+        private readonly DataLogger dataLogger = new DataLogger();
+        private readonly string originalWindowTitle;
+
+#if DEBUG
+        public static bool debugEnabled = true;
+#else
+        public static bool debugEnabled = false;
+#endif
 
         #endregion
         public FormLiveData()
         {
             InitializeComponent();
-            bool debugEnabled = false;
+            // The Designer already contains the actual layout and does not
+            // need memory configuration, JSON profiles, or runtime bindings.
+            if (System.ComponentModel.LicenseManager.UsageMode ==
+                System.ComponentModel.LicenseUsageMode.Designtime)
+                return;
+            originalWindowTitle = Text;
+            InitializeTireLabels();
 
-            textBox1.Visible = debugEnabled;
-            textBox2.Visible = debugEnabled;
-            textBox3.Visible = debugEnabled;
-            textBox4.Visible = debugEnabled;
-            textBox5.Visible = debugEnabled;
-            textBox6.Visible = debugEnabled;
-            label16.Visible = debugEnabled;
-            label17.Visible = debugEnabled;
-            label22.Visible = debugEnabled;
-            label23.Visible = debugEnabled;
-            label37.Visible = debugEnabled;
-
-            textBox1.Enabled = debugEnabled;
-            textBox2.Enabled = debugEnabled;
-            textBox3.Enabled = debugEnabled;
-            textBox4.Enabled = debugEnabled;
-            textBox5.Enabled = debugEnabled;
-            textBox6.Enabled = debugEnabled;
+            foreach (Control control in new Control[] { textBox1, textBox2, textBox3,
+                textBox4, textBox5, textBox6, label16, label17, label22, label23, label37 })
+                control.Visible = debugEnabled;
+            foreach (TextBox box in new[] { textBox1, textBox2, textBox3,
+                textBox4, textBox5, textBox6 })
+                box.Enabled = debugEnabled;
 
             logInterval_textBox.Text = LiveData.TickInterval.ToString();
 
             GameVersionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            foreach (long e in Enum.GetValues(typeof(BaseAddressUpdate)))
-            {
-                GameVersionComboBox.Items.Add((BaseAddressUpdate)e);
-            }
-            GameVersionComboBox.SelectedItem = BaseAddressUpdate.V1_308408;
-            SelectedVersion = GameVersionComboBox.SelectedItem;
+            GameVersionComboBox.Items.Add(AutomaticVersionOption);
+            foreach (GameVersionProfile version in GameMemoryConfig.Versions)
+                GameVersionComboBox.Items.Add(version);
+            // First-run default is automatic. Previously saved manual selections
+            // are restored by JsonFormSettings when the form loads.
+            GameVersionComboBox.SelectedIndex = 0;
+            SelectedVersion = GameMemoryConfig.ActiveVersion;
+            activeBaseAddressShift = SelectedVersion.BaseAddressShift;
+            ComboBoxBehaviors.EnableSearch(this);
+            InitializeGameConfigSelector();
+            UpdateGameConfigTitle();
+            JsonFormSettings.AttachProfileButton(this, ApplyVersionSelection);
+            InitializeDesignerLayoutBehavior();
 
-            foreach (Label l in this.Controls.OfType<Label>())
+            foreach (BoundTireLabel binding in boundTireLabels)
             {
-                if(l.Name.Contains("FL_") || l.Name.Contains("FR_") || l.Name.Contains("RL_") || l.Name.Contains("RR_"))
-                {
-                    l.TextAlign = ContentAlignment.TopRight;
-                    l.BackColor = Color.Transparent;
-                    l.ForeColor = Color.White;
-                    l.Enabled = true;
-                }
+                Label l = binding.Label;
+                l.TextAlign = ContentAlignment.TopRight;
+                l.BackColor = Color.Transparent;
+                l.ForeColor = Color.White;
+                l.Enabled = true;
             }
 
             if (FirstTimeLoad == false)
             {
-                //Dictionary<WF_PrefixMain, Dictionary<WF_PrefixSecondary, DataItem>> DefaultWF1Dictionary = WF_Dictionary.DefaultWF1Dictionary;
-                WreckfestEnums.AddNames();
-                // Needs to be in order of WF_Prefix
-                LiveData.GenerateBodyDataList(WF_PrefixMain.Body, LiveData.FullDataList);//0
-
-                LiveData.GenerateTireDataList(WF_PrefixMain.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_Suspension1DataChunks.DataStart);//1
-                LiveData.GenerateTireDataList(WF_PrefixMain.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_Suspension1DataChunks.DataStart);//2
-                LiveData.GenerateTireDataList(WF_PrefixMain.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_Suspension1DataChunks.DataStart);//3
-                LiveData.GenerateTireDataList(WF_PrefixMain.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, WF_Suspension1DataChunks.DataStart);//4
-
-                LiveData.GeneratePowertrainDataList(WF_PrefixMain.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, WF_DifferentialDataChunks.DataStart, WF_DifferentialDataChunks.DataStart);//5
+                LiveData.InitializeDataLists();
                 FirstTimeLoad = true;
             }
         }
+
+        private void InitializeGameConfigSelector()
+        {
+            // The Designer owns the version selector's size and dropdown width.
+            // The Config button occupies the next row of the same table.
+            var menu = new ContextMenuStrip();
+            menu.Items.Add("Load game configuration...", null, (sender, args) => ChooseGameConfiguration());
+            menu.Items.Add("Save current configuration as...", null, (sender, args) => SaveGameConfigurationAs());
+            menu.Items.Add("Reload current configuration", null, (sender, args) =>
+                SwitchGameConfiguration(GameMemoryConfig.ActiveFileName));
+            menu.Items.Add("Select Wreckfest configuration", null, (sender, args) =>
+                SwitchGameConfiguration(GameMemoryConfig.DefaultFileName));
+            menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add("Open configuration folder", null, (sender, args) => OpenGameConfigurationFolder());
+
+            // The button is Designer-owned. Only its menu and click action
+            // are initialized here, so its design-time location is preserved.
+            GameConfigurationProfilesButton.ContextMenuStrip = menu;
+            GameConfigurationProfilesButton.Click += (sender, args) =>
+                menu.Show(GameConfigurationProfilesButton, 0, GameConfigurationProfilesButton.Height);
+            var tooltip = new ToolTip(components);
+            tooltip.SetToolTip(GameConfigurationProfilesButton, "Load or save a game-memory configuration JSON profile");
+            tooltip.SetToolTip(GameVersionComboBox,
+                "Automatic: detect build and base shift from the attached Wreckfest_x64.exe. " +
+                "Or select a JSON version manually.");
+            Disposed += (sender, args) => menu.Dispose();
+        }
+
+        private void UpdateGameConfigTitle() =>
+            Text = originalWindowTitle + " - " + GameMemoryConfig.ActiveFileName;
+
+        private bool CanSwitchGameConfiguration()
+        {
+            if (ProcessGet || timer1.Enabled || LiveData.Logging)
+            {
+                MessageBox.Show("Stop memory sampling and logging before switching game configurations.",
+                    "Game configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (Application.OpenForms.Cast<Form>().Any(form => !ReferenceEquals(form, this)))
+            {
+                MessageBox.Show("Close the other chart/settings windows before switching game configurations. " +
+                    "Their fields may change with the new JSON.",
+                    "Game configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            return true;
+        }
+
+        private void ChooseGameConfiguration()
+        {
+            if (!CanSwitchGameConfiguration()) return;
+            using (var dialog = new System.Windows.Forms.OpenFileDialog
+            {
+                Title = "Load game memory configuration",
+                Filter = "JSON game configuration (*.json)|*.json",
+                InitialDirectory = GameMemoryConfig.SettingsDirectory,
+                FileName = GameMemoryConfig.ActiveFileName,
+                CheckFileExists = true
+            })
+            {
+                if (dialog.ShowDialog(this) != DialogResult.OK) return;
+                try
+                {
+                    // External files are copied into the managed Settings
+                    // folder, with a unique name to preserve existing files.
+                    string name = ImportGameConfiguration(dialog.FileName);
+                    SwitchGameConfiguration(name);
+                }
+                catch (Exception ex) when (IsGameConfigFileError(ex)) { ShowGameConfigError(ex); }
+            }
+        }
+
+        private static string ImportGameConfiguration(string sourcePath)
+        {
+            string source = Path.GetFullPath(sourcePath);
+            string directory = Path.GetFullPath(GameMemoryConfig.SettingsDirectory);
+            string fileName = Path.GetFileName(source);
+            if (string.Equals(Path.GetDirectoryName(source), directory, StringComparison.OrdinalIgnoreCase))
+                return fileName;
+
+            string stem = Path.GetFileNameWithoutExtension(fileName);
+            string target = Path.Combine(directory, fileName);
+            int suffix = 2;
+            while (File.Exists(target))
+                target = Path.Combine(directory, stem + " (" + suffix++ + ").json");
+            File.Copy(source, target);
+            return Path.GetFileName(target);
+        }
+
+        private void SwitchGameConfiguration(string fileName)
+        {
+            if (!CanSwitchGameConfiguration()) return;
+            try
+            {
+                // Parsing and validation happen before the active config changes.
+                bool reloading = string.Equals(fileName, GameMemoryConfig.ActiveFileName,
+                    StringComparison.OrdinalIgnoreCase);
+                string previousVersionId = SelectedVersion?.Id;
+                bool wasAutomatic = IsAutomaticVersionSelected;
+                GameMemoryConfig.Load(fileName);
+                if (reloading)
+                {
+                    GameVersionProfile retained = GameMemoryConfig.Versions
+                        .FirstOrDefault(version => version.Id == previousVersionId);
+                    if (retained != null) GameMemoryConfig.SelectVersion(retained);
+                }
+                LiveData.ReinitializeDataLists();
+                ValuesGet = false;
+                GameVersionComboBox.BeginUpdate();
+                try
+                {
+                    GameVersionComboBox.Items.Clear();
+                    foreach (GameVersionProfile version in GameMemoryConfig.Versions)
+                        GameVersionComboBox.Items.Add(version);
+                    GameVersionComboBox.Items.Insert(0, AutomaticVersionOption);
+                    SelectedVersion = GameMemoryConfig.ActiveVersion;
+                    GameVersionComboBox.SelectedItem = wasAutomatic
+                        ? (object)AutomaticVersionOption : SelectedVersion;
+                    activeBaseAddressShift = SelectedVersion.BaseAddressShift;
+                }
+                finally { GameVersionComboBox.EndUpdate(); }
+                ApplyVersionSelection();
+                UpdateGameConfigTitle();
+                JsonFormSettings.SaveAllSettings(this);
+            }
+            catch (Exception ex) when (IsGameConfigFileError(ex)) { ShowGameConfigError(ex); }
+        }
+
+        private void SaveGameConfigurationAs()
+        {
+            using (var dialog = new System.Windows.Forms.SaveFileDialog
+            {
+                Title = "Save a copy of the game memory configuration",
+                Filter = "JSON game configuration (*.json)|*.json",
+                InitialDirectory = GameMemoryConfig.SettingsDirectory,
+                FileName = Path.GetFileNameWithoutExtension(GameMemoryConfig.ActiveFileName) + " Copy.json",
+                DefaultExt = "json",
+                AddExtension = true,
+                OverwritePrompt = true
+            })
+            {
+                if (dialog.ShowDialog(this) != DialogResult.OK) return;
+                try
+                {
+                    // Keep the original active configuration intact.
+                    File.Copy(GameMemoryConfig.FilePath, dialog.FileName, true);
+                }
+                catch (Exception ex) when (IsGameConfigFileError(ex)) { ShowGameConfigError(ex); }
+            }
+        }
+
+        private static void OpenGameConfigurationFolder()
+        {
+            try { Process.Start("explorer.exe", GameMemoryConfig.SettingsDirectory); }
+            catch (Exception ex) when (IsGameConfigFileError(ex)) { ShowGameConfigError(ex); }
+        }
+
+        private static bool IsGameConfigFileError(Exception ex) =>
+            ex is IOException || ex is UnauthorizedAccessException || ex is ArgumentException ||
+            ex is InvalidOperationException || ex is System.Security.SecurityException ||
+            ex is FormatException;
+
+        private static void ShowGameConfigError(Exception ex) =>
+            MessageBox.Show(ex.Message, "Game configuration", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         #region Methods
         public void ButtonVisibilities()
         {
-            if (LiveData.Logging == true) { toLogSettingsButton.Visible = false; }
-            if (LiveData.LogSettingsOpen == false && LiveData.Logging == false) { toLogSettingsButton.Visible = true; }
-            if (LiveData.LogSettingsOpen == true) { toLogSettingsButton.Visible = false; startFileLoggingButton.Visible = false; }
-            if (LiveData.LogSettingsOpen == false) { startFileLoggingButton.Visible = true; }
-            if (LiveData.FormTireStaticValues == true) { toTireStaticValues.Visible = false; }
-            if (LiveData.FormTireStaticValues == false) { toTireStaticValues.Visible = true; }
-            if (LiveData.TemperaturesChartOpen == true) { OpenTemperaturesChart.Visible = false; }
-            if (LiveData.TemperaturesChartOpen == false) { OpenTemperaturesChart.Visible = true; }
-            if (LiveData.GForceOpen == true) { toGForceButton.Visible = false; }
-            if (LiveData.GForceOpen == false) { toGForceButton.Visible = true; }
-            if (LiveData._4WheelsOpen == true) { to4WheelsButton.Visible = false; }
-            if (LiveData._4WheelsOpen == false) { to4WheelsButton.Visible = true; }
-            if (LiveData.FormSuspensionStaticValuesOpen == true) { toSuspensionStaticValues.Visible = false; }
-            if (LiveData.FormSuspensionStaticValuesOpen == false) { toSuspensionStaticValues.Visible = true; }
-            if (LiveData.FormSuspensionGeometryOpen == true) { toSuspensionGeometry.Visible = false; }
-            if (LiveData.FormSuspensionGeometryOpen == false) { toSuspensionGeometry.Visible = true; }
-
-
-
+            toLogSettingsButton.Visible = !LiveData.Logging && !LiveData.LogSettingsOpen;
+            startFileLoggingButton.Visible = !LiveData.LogSettingsOpen;
+            toTireStaticValues.Visible = !LiveData.FormTireStaticValues;
+            OpenTemperaturesChart.Visible = !LiveData.TemperaturesChartOpen;
+            toGForceButton.Visible = !LiveData.GForceOpen;
+            to4WheelsButton.Visible = !LiveData._4WheelsOpen;
+            toSuspensionStaticValues.Visible = !LiveData.FormSuspensionStaticValuesOpen;
+            toSuspensionGeometry.Visible = !LiveData.FormSuspensionGeometryOpen;
         }
-        private void labelTireWriter(Enum prefix,
-            Label angularVelocity, Label contactLength, Label currentContactBrakeTorque, Label maxCurrentContactBrakeTorque, Label deflection, Label effectiveRadius, Label lateralLoad, Label loadedRadius,
-            Label longitudinalLoad, Label slipRatio, Label travelSpeed, Label verticalLoad, Label lateralFriction, Label longitudinalFriction, Label treadTemperature, Label innerTemperature,
-            Label slipAngleDeg, Label totalFriction, Label totalFrictionAngle, Label lateralSlipSpeed, Label longitudinalSlipSpeed, Label camberAngle, Label steerAngle, Label suspensionLength, Label suspensionVelocity, Label mx, Label mz, Label my, Label pneumaticTrail, Label rollingResistance)
+        private sealed class TireLabelField
         {
-            LiveData.SetValueInLabel(angularVelocity, prefix, WF_TireDataOffset.AngularVelocity, 2);
-            LiveData.SetValueInLabel(contactLength, prefix, WF_TireDataOffset.ContactLength, 4);
-            LiveData.SetValueInLabel(currentContactBrakeTorque, prefix, WF_TireDataOffset.CurrentContactBrakeTorque, 2);
-            LiveData.SetValueInLabel(maxCurrentContactBrakeTorque, prefix, WF_TireDataOffset.CurrentContactBrakeTorqueMax, 2);
-            LiveData.SetValueInLabel(deflection, prefix, WF_TireDataOffset.VerticalDeflection, 4);
-            LiveData.SetValueInLabel(effectiveRadius, prefix, WF_TireDataOffset.EffectiveRadius, 4);
-            LiveData.SetValueInLabel(lateralLoad, prefix, WF_TireDataOffset.LateralLoad, 2);
-            LiveData.SetValueInLabel(loadedRadius, prefix, WF_TireDataOffset.LoadedRadius, 4);
-            LiveData.SetValueInLabel(longitudinalLoad, prefix, WF_TireDataOffset.LongitudinalLoad, 2);
-            LiveData.SetValueInLabel(slipRatio, prefix, WF_TireDataOffset.SlipRatio, 2);
-            LiveData.SetValueInLabel(travelSpeed, prefix, WF_TireDataOffset.TravelSpeed, 2);
-            LiveData.SetValueInLabel(verticalLoad, prefix, WF_TireDataOffset.VerticalLoad, 2);
-            LiveData.SetValueInLabel(lateralFriction, prefix, WF_TireDataOffset.LateralFriction, 2);
-            LiveData.SetValueInLabel(longitudinalFriction, prefix, WF_TireDataOffset.LongitudinalFriction, 2);
-            LiveData.SetValueInLabel(treadTemperature, prefix, WF_TireDataOffset.TreadTemperature, 2);
-            LiveData.SetValueInLabel(innerTemperature, prefix, WF_TireDataOffset.InnerTemperature, 2);
-            LiveData.SetValueInLabel(slipAngleDeg, prefix, WF_TireDataOffset.SlipAngleDeg, 2);
-            LiveData.SetValueInLabel(totalFriction, prefix, WF_TireDataOffset.TotalFriction, 2);
-            LiveData.SetValueInLabel(totalFrictionAngle, prefix, WF_TireDataOffset.TotalFrictionAngleDeg, 2);
-            LiveData.SetValueInLabel(lateralSlipSpeed, prefix, WF_TireDataOffset.LateralSlipSpeed, 2);
-            LiveData.SetValueInLabel(longitudinalSlipSpeed, prefix, WF_TireDataOffset.LongitudinalSlipSpeed, 2);
-            LiveData.SetValueInLabel(camberAngle, prefix, WF_TireDataOffset.CamberAngleDeg, 3);
-            LiveData.SetValueInLabel(steerAngle, prefix, WF_TireDataOffset.SteerAngleDeg, 3);
+            public readonly string Suffix;
+            public readonly GameMemoryField Offset;
+            public readonly int Decimals;
 
-
-            LiveData.SetValueInLabel(suspensionLength, prefix, WF_Suspension1DataOffset.SuspensionLength, 4);
-            LiveData.SetValueInLabel(suspensionVelocity, prefix, WF_Suspension1DataOffset.SuspensionVelocity, 4);
-
-
-            LiveData.SetValueInLabel(mx, prefix, WF_TireDataOffset.Mx, 2);
-            LiveData.SetValueInLabel(mz, prefix, WF_TireDataOffset.Mz, 2);
-            LiveData.SetValueInLabel(my, prefix, WF_TireDataOffset.My, 2);
-
-            LiveData.SetValueInLabel(pneumaticTrail, prefix, WF_TireDataOffset.PneumaticTrail, 6);
-            LiveData.SetValueInLabel(rollingResistance, prefix, WF_TireDataOffset.RollingResistance, 5);
+            public TireLabelField(string suffix, GameMemoryField offset, int decimals = 2)
+            {
+                Suffix = suffix;
+                Offset = offset;
+                Decimals = decimals;
+            }
         }
+
+        private static readonly TireLabelField[] TireFields =
+        {
+            new TireLabelField("AngularVelocity", GameMemoryConfig.Field("WF_TireDataOffset", "AngularVelocity")),
+            new TireLabelField("ContactLength", GameMemoryConfig.Field("WF_TireDataOffset", "ContactLength"), 8),
+            new TireLabelField("CurrentContactBrakeTorque", GameMemoryConfig.Field("WF_TireDataOffset", "CurrentContactBrakeTorque")),
+            new TireLabelField("MaxCurrentContactBrakeTorque", GameMemoryConfig.Field("WF_TireDataOffset", "CurrentContactBrakeTorqueMax")),
+            new TireLabelField("Deflection", GameMemoryConfig.Field("WF_TireDataOffset", "VerticalDeflection"), 8),
+            new TireLabelField("EffectiveRadius", GameMemoryConfig.Field("WF_TireDataOffset", "EffectiveRadius"), 8),
+            new TireLabelField("LateralLoad", GameMemoryConfig.Field("WF_TireDataOffset", "LateralLoad")),
+            new TireLabelField("LoadedRadius", GameMemoryConfig.Field("WF_TireDataOffset", "LoadedRadius"), 8),
+            new TireLabelField("LongitudinalLoad", GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalLoad")),
+            new TireLabelField("SlipRatio", GameMemoryConfig.Field("WF_TireDataOffset", "SlipRatio")),
+            new TireLabelField("TravelSpeed", GameMemoryConfig.Field("WF_TireDataOffset", "TravelSpeed")),
+            new TireLabelField("VerticalLoad", GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad")),
+            new TireLabelField("LateralFriction", GameMemoryConfig.Field("WF_TireDataOffset", "LateralFriction"), 6),
+            new TireLabelField("LongitudinalFriction", GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalFriction"), 6),
+            new TireLabelField("TreadTemperature", GameMemoryConfig.Field("WF_TireDataOffset", "TreadTemperature")),
+            new TireLabelField("InnerTemperature", GameMemoryConfig.Field("WF_TireDataOffset", "InnerTemperature")),
+            new TireLabelField("SlipAngleDeg", GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleDeg")),
+            new TireLabelField("TotalFriction", GameMemoryConfig.Field("WF_TireDataOffset", "TotalFriction")),
+            new TireLabelField("TotalFrictionAngle", GameMemoryConfig.Field("WF_TireDataOffset", "TotalFrictionAngleDeg")),
+            new TireLabelField("LateralSlipSpeed", GameMemoryConfig.Field("WF_TireDataOffset", "LateralSlipSpeed")),
+            new TireLabelField("LongitudinalSlipSpeed", GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalSlipSpeed")),
+            new TireLabelField("CamberAngle", GameMemoryConfig.Field("WF_TireDataOffset", "CamberAngleDeg"), 3),
+            new TireLabelField("TireSteerAngle", GameMemoryConfig.Field("WF_TireDataOffset", "SteerAngleDeg"), 3),
+            new TireLabelField("SuspensionLength", GameMemoryConfig.Field("WF_Suspension1DataOffset", "SuspensionLength"), 4),
+            new TireLabelField("SuspensionVelocity", GameMemoryConfig.Field("WF_Suspension1DataOffset", "SuspensionVelocity"), 4),
+            new TireLabelField("Mx", GameMemoryConfig.Field("WF_TireDataOffset", "Mx")),
+            new TireLabelField("Mz", GameMemoryConfig.Field("WF_TireDataOffset", "Mz")),
+            new TireLabelField("My", GameMemoryConfig.Field("WF_TireDataOffset", "My")),
+            new TireLabelField("PneumaticTrail", GameMemoryConfig.Field("WF_TireDataOffset", "PneumaticTrail"), 6),
+            new TireLabelField("RollingResistance", GameMemoryConfig.Field("WF_TireDataOffset", "RollingResistance"), 5)
+        };
+
+        private sealed class BoundTireLabel
+        {
+            public Label Label;
+            public string Wheel;
+            public TireLabelField Field;
+        }
+        private readonly List<BoundTireLabel> boundTireLabels = new List<BoundTireLabel>();
+
+        private void InitializeTireLabels()
+        {
+            foreach (string wheel in new[]
+                { TelemetryPrefix.FL, TelemetryPrefix.FR, TelemetryPrefix.RL, TelemetryPrefix.RR })
+            {
+                foreach (TireLabelField field in TireFields)
+                {
+                    string name = "label_" + wheel + "_" + field.Suffix;
+                    Label label = Controls.Find(name, true).OfType<Label>().FirstOrDefault();
+                    if (label == null) throw new InvalidOperationException("Missing tire label: " + name);
+                    boundTireLabels.Add(new BoundTireLabel { Label = label, Wheel = wheel, Field = field });
+                }
+            }
+        }
+
+        private void UpdateTireLabels()
+        {
+            foreach (BoundTireLabel binding in boundTireLabels)
+                LiveData.SetValueInLabel(binding.Label, binding.Wheel,
+                    binding.Field.Offset, binding.Field.Decimals);
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        //Current slide speed in m/s
+        ///double CurrentLateralSlideSpeed = 5.1;
+
+        //Current temperature Kelvins
+        //double CurrentSurfaceTempKelvins = 353.15;
+
+        //Glass Transition
+        //Glass transition temperature Tg, is rather critical and changes with compound. On the other hand, the remaining (XYZ) variables are pretty much the same for all rubbers, with the exception of butyl rubber (not typically used for tread compounds).
+        public static double Tg = 228.15; //Glass Transition Temperature in Kelvins -45C
+        public static double TgX = 50;
+        public static double TgY = -8.86;
+        public static double TgZ = 51.5;
+        //The default values fit into the following shift factor WLF equation:
+        //log10(aT) = log10(ln(-8.86 ((Tq - Tg - 50) / (51.5 + Tq -Tg))))
+        //or
+        //log10(aT) = -8.86 ((Tq - Tg - 50) / (51.5 + Tq -Tg))
+        //These have different results. WF1 seems to follow the first one.
+
+        //Adhesion
+        public static double SlidingAdhesionPointLog10aTv_X = -9.2;
+        public static double SlidingAdhesionPointLog10aTv_Y = -5.2;
+        public static double SlidingAdhesionPointLog10aTv_Z = -1.2;
+
+        public static double SlidingAdhesionGripX = 0.1;
+        public static double SlidingAdhesionGripY = 0.42;
+        public static double SlidingAdhesionGripZ = 0.05;
+
+        //Micro
+        public static double SlidingMicroPointLog10aTv_X = -5.2;
+        public static double SlidingMicroPointLog10aTv_Y = -1.2;
+        public static double SlidingMicroPointLog10aTv_Z = 2.5;
+
+        public static double SlidingMicroGripX = 0.15;
+        public static double SlidingMicroGripY = 0.9;
+        public static double SlidingMicroGripZ = 0.15;
+
+        //Macro
+        public static double SlidingMacroPointLog10aTv_X = -1.2;
+        public static double SlidingMacroPointLog10aTv_Y = 2.5;
+        public static double SlidingMacroPointLog10aTv_Z = 6.0;
+
+        public static double SlidingMacroGripX = 0.05;
+        public static double SlidingMacroGripY = 0.5;
+        public static double SlidingMacroGripZ = 0.1;
+
+        // Numerical shift/grip curves are now maintained in TireGripMath.cs.
+
+        public static double CurrentSurfaceTempKelvins;
+
+        public static double Log10aT;
+        //double Log10aT = TireGripMath.GetShiftFactor_Log10aT(CurrentSurfaceTempKelvins, Tg, TgX, TgY, TgZ)[1];
+
+        public static double CurrentLateralSlideSpeed;
+        public static double CurrentLongitudinalSlideSpeed;
+
+        //WLF Lateral Grip multiplier
+        public static double LateralAdhesionGrip;
+        public static double LateralMicroGrip;
+        public static double LateralMacroGrip;
+        public static double WLF_LateralSlidingFrictionGripMultiplier;
+
+        //WLF Longitudinal Grip multiplier
+        public static double LongitudinalAdhesionGrip;
+        public static double LongitudinalMicroGrip;
+        public static double LongitudinalMacroGrip;
+        public static double WLF_LongitudinalSlidingFrictionGripMultiplier;
+
+        // Load Sens multiplier
+        public static double VerticalLoad;
+        public static double LateralLoadSensGripMultiplier;
+        public static double LongitudinalLoadSensGripMultiplier;
+
+        public static double LateralFrictionNoMultis;
+        public static double LongitudinalFrictionNoMultis;
+        public static void WLFMultiplier()
+        {
+            CurrentSurfaceTempKelvins = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "TreadTemperatureKelvins"));
+
+            Log10aT = TireGripMath.GetShiftFactor_Log10aT(CurrentSurfaceTempKelvins, Tg, TgX, TgY, TgZ)[0];
+            //double Log10aT = TireGripMath.GetShiftFactor_Log10aT(CurrentSurfaceTempKelvins, Tg, TgX, TgY, TgZ)[1];
+
+            CurrentLateralSlideSpeed = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "LateralSlipSpeed"));
+            CurrentLongitudinalSlideSpeed = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalSlipSpeed"));
+
+            //WLF Lateral Grip multiplier
+            LateralAdhesionGrip = TireGripMath.CosineFunctionGrip(Log10aT, CurrentLateralSlideSpeed, SlidingAdhesionPointLog10aTv_X, SlidingAdhesionPointLog10aTv_Y, SlidingAdhesionPointLog10aTv_Z, SlidingAdhesionGripX, SlidingAdhesionGripY, SlidingAdhesionGripZ);
+            LateralMicroGrip = TireGripMath.CosineFunctionGrip(Log10aT, CurrentLateralSlideSpeed, SlidingMicroPointLog10aTv_X, SlidingMicroPointLog10aTv_Y, SlidingMicroPointLog10aTv_Z, SlidingMicroGripX, SlidingMicroGripY, SlidingMicroGripZ);
+            LateralMacroGrip = TireGripMath.CosineFunctionGrip(Log10aT, CurrentLateralSlideSpeed, SlidingMacroPointLog10aTv_X, SlidingMacroPointLog10aTv_Y, SlidingMacroPointLog10aTv_Z, SlidingMacroGripX, SlidingMacroGripY, SlidingMacroGripZ);
+            WLF_LateralSlidingFrictionGripMultiplier = LateralAdhesionGrip + LateralMicroGrip + LateralMacroGrip;
+
+            //WLF Longitudinal Grip multiplier
+            LongitudinalAdhesionGrip = TireGripMath.CosineFunctionGrip(Log10aT, CurrentLongitudinalSlideSpeed, SlidingAdhesionPointLog10aTv_X, SlidingAdhesionPointLog10aTv_Y, SlidingAdhesionPointLog10aTv_Z, SlidingAdhesionGripX, SlidingAdhesionGripY, SlidingAdhesionGripZ);
+            LongitudinalMicroGrip = TireGripMath.CosineFunctionGrip(Log10aT, CurrentLongitudinalSlideSpeed, SlidingMicroPointLog10aTv_X, SlidingMicroPointLog10aTv_Y, SlidingMicroPointLog10aTv_Z, SlidingMicroGripX, SlidingMicroGripY, SlidingMicroGripZ);
+            LongitudinalMacroGrip = TireGripMath.CosineFunctionGrip(Log10aT, CurrentLongitudinalSlideSpeed, SlidingMacroPointLog10aTv_X, SlidingMacroPointLog10aTv_Y, SlidingMacroPointLog10aTv_Z, SlidingMacroGripX, SlidingMacroGripY, SlidingMacroGripZ);
+            WLF_LongitudinalSlidingFrictionGripMultiplier = LongitudinalAdhesionGrip + LongitudinalMicroGrip + LongitudinalMacroGrip;
+
+            // Load Sens multiplier
+            VerticalLoad = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad"));
+            LateralLoadSensGripMultiplier = TireGripMath.LoadSensGrip(VerticalLoad, -0.05, 10300);
+            LongitudinalLoadSensGripMultiplier = TireGripMath.LoadSensGrip(VerticalLoad, -0.05, 10300);
+
+            LateralFrictionNoMultis = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "LateralFriction")) / (WLF_LateralSlidingFrictionGripMultiplier * LateralLoadSensGripMultiplier);
+            LongitudinalFrictionNoMultis = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalFriction")) / (WLF_LongitudinalSlidingFrictionGripMultiplier * LongitudinalLoadSensGripMultiplier);
+        }
+        public void WLFMultiplierTBWriter()
+        {
+            textBox6.Text = "RLLog10(aT): " + Log10aT + "\r\n" + "RLLonWLF: " + WLF_LongitudinalSlidingFrictionGripMultiplier + "\r\n" + "RLLonSens: " + LongitudinalLoadSensGripMultiplier + "\r\n" + "RLLonFric: " + LongitudinalFrictionNoMultis + "\r\n" + "RLLatWLF: " + WLF_LateralSlidingFrictionGripMultiplier + "\r\n" + "RLLatSens: " + LateralLoadSensGripMultiplier + "\r\n" + "RLLatFric: " + LateralFrictionNoMultis;
+        }
+        private void SomeCFaStiffnessTester()
+        {
+            //textBox5.Text = "RL_LonBristleStiffness: " + Math.Round(LiveData.RL_LonBristleStiffness, 2) + "\r\n" + "RL_LonForceSlide: " + Math.Round(LiveData.RL_LonForceSlide, 2) + "\r\n" + "RL_LonForceStatic: " + Math.Round(LiveData.RL_LonForceStatic, 2) + "\r\n" + "RL_LonForceTotal: " + Math.Round(LiveData.RL_LonForceTotal, 2);
+
+            
+            float lonLoad = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalLoad"));
+            float slipRatio = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipRatio"));
+            float CFK = 0;
+            float latLoad = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "LateralLoad"));
+            float slipAngleDeg = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleDeg"));
+            float slipAngleRad = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleRad"));
+            float CFa = 0;
+            float CFafz = 0;
+            float CFa2 = 0;
+            float c1 = 0;
+            float c12 = 60000;
+            float c2 = 5000;
+            float Fz = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad"));
+
+            if ((float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipRatio")) != 0)
+            {
+                CFK = lonLoad / slipRatio;
+            }
+            else
+            {
+                CFK = 0;
+            }
+            /*
+            if(slipAngle < 0.5f && slipAngle > -0.5f)
+            {
+                textBox6.Text = "CFKfl: " + CFK.ToString(CultureInfo.GetCultureInfo("en-US"));
+            }
+            */
+            
+            if ((float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleRad")) != 0 && Fz > 0)
+            {
+                CFa = latLoad / slipAngleRad;
+                CFafz = CFa / Fz;
+                CFa2 = c12 * (float)Math.Sin(2 * Math.Atan(Fz/c2));
+            }
+            else
+            {
+                CFa = 0;
+                CFafz = CFa;
+            }
+            
+            if (Fz > 0)
+            {
+                c1 = CFa / ((float)Math.Sin(2 * Math.Atan(Fz/c2)));
+                textBox6.Text = "c1: " + c1.ToString(CultureInfo.GetCultureInfo("en-US")) + "\n\r" + "\n\r" 
+                    + "CFafz: " + CFafz.ToString(CultureInfo.GetCultureInfo("en-US")) + "\n\r" + "\n\r" 
+                    + "CFa :" + CFa.ToString(CultureInfo.GetCultureInfo("en-US")) + "\n\r" + "\n\r"
+                    + "CFa2: " + CFa2.ToString(CultureInfo.GetCultureInfo("en-US"));
+            }
+            
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////
         private void TextBoxUpdates()
         {
+            WLFMultiplier();
+            if (debugEnabled) WLFMultiplierTBWriter();
+            //SomeCFaStiffnessTester();
+
             /*
             textBox1.Text = "X: " + LiveData.TXAccel + "\r\n" + "Y: " + LiveData.TYAccel + "\r\n" + "Z: " + LiveData.TZAccel;
             textBox2.Text = "R11: " + LiveData.R11Accel + "\r\n" + "R12: " + LiveData.R12Accel + "\r\n" + "R13: " + LiveData.R13Accel;
@@ -158,30 +513,33 @@ namespace Physics_Data_Debug
             textBox6.Text = "RY°: " + Math.Round(LiveData.rotationYDeg, 2) + "\r\n" + "RY°r: " + Math.Round(LiveData.rotationYRad, 2) + "\r\n" + "gX: " + Math.Round(LiveData.XG, 2) + "\r\n" + "gY: " + Math.Round(LiveData.YG, 2) + "\r\n" + "gZ: " + Math.Round(LiveData.ZG, 2) + "\r\n" + "XZ°: " + Math.Round(LiveData.XZAccelerationAngleDeg, 2) + "\r\n" + "XZ°r: " + Math.Round(LiveData.XZAccelerationAngleRad, 2) + "\r\n" + "gXZ: " +
                 Math.Round(LiveData.XZG, 2) + "\r\n" + "gXZ°: " + Math.Round(LiveData.XZGAngleDeg, 2) + "\r\n" + "gXZ°r: " + Math.Round(LiveData.XZGAngleRad, 2);
             */
-            //textBox1.Text = "Front Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.FL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.FL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.FL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FL_CamberAngleDeg, 3);
-            //textBox2.Text = "Front Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.FR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.FR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.FR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FR_CamberAngleDeg, 3);
-            //textBox3.Text = "Rear Left Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.RL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.RL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.RL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RL_CamberAngleDeg, 3);
-            //textBox4.Text = "Rear Right Angles" + "\r\n" + "Caster: " + Math.Round(LiveData.RadToDeg(LiveData.RR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(LiveData.RadToDeg(LiveData.RR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(LiveData.RadToDeg(LiveData.RR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RR_CamberAngleDeg, 3);
+            //textBox1.Text = "Front Left Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FL_CamberAngleDeg, 3);
+            //textBox2.Text = "Front Right Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FR_CamberAngleDeg, 3);
+            //textBox3.Text = "Rear Left Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RL_CamberAngleDeg, 3);
+            //textBox4.Text = "Rear Right Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RR_CamberAngleDeg, 3);
             //textBox5.Text = LiveData.FL_TireData[0].ToString() + "\r\n" + LiveData.FL_TireData[1].ToString() + "\r\n" + LiveData.FL_TireData[2].ToString() + "\r\n" + LiveData.FL_TireData[3].ToString();
-            //textBox5.Text = "RL_LonBristleStiffness: " + Math.Round(LiveData.RL_LonBristleStiffness, 2) + "\r\n" + "RL_LonForceSlide: " + Math.Round(LiveData.RL_LonForceSlide, 2) + "\r\n" + "RL_LonForceStatic: " + Math.Round(LiveData.RL_LonForceStatic, 2) + "\r\n" + "RL_LonForceTotal: " + Math.Round(LiveData.RL_LonForceTotal, 2);
 
             // Chassis, Engine and Differential stuff
-            CurrentSpeed.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.Speed, 2);
-            CurrentAcceleration.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZAcceleration, 2);
-            CurrentGForce.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_BodyAccelDataOffset.XYZG, 2);
-            CurrentXDrag.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.XDragLocal, 2, "X: ");
-            CurrentYDrag.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.YDragLocal, 2, "Y: ");
-            CurrentZDrag.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.ZDragLocal, 2, "Z: ");
-            CurrentTotalDrag.Text = "Total: " + Math.Round(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_AeroDataOffset.XDragLocal), 2) + Math.Pow(Math.Sqrt(Math.Pow(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_AeroDataOffset.YDragLocal), 2) + Math.Pow(LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_AeroDataOffset.ZDragLocal), 2)), 2)), 2).ToString();
-            CurrentFrontLift.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.FrontLift, 2, "Front: ");
-            CurrentRearLift.Text = LiveData.ValueString(WF_PrefixMain.Body, WF_AeroDataOffset.RearLift, 2, "Rear: ");
-            CurrentEngineRPM.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EngineRPM, 0, "", " RPM");
-            CurrentEngineRPMAxle.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EngineRPMAxle, 0, "(", ") RPM");
-            CurrentEngineTorque.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EngineTorqueNm, 2, "", " Nm");
-            CurrentEnginePower.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_EngineDataOffset.EnginePowerKW, 2, "", " kW") + " kW";
-            CurrentLeftDifferentialSpeedRad.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
-            CurrentLeftDifferentialTorque.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
-            int diffPrimClosed = LiveData.GetFullListDataValue(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft);
+            CurrentSpeed.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "Speed"), 2);
+            CurrentAcceleration.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XYZAcceleration"), 2);
+            CurrentGForce.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XYZG"), 2);
+            CurrentXDrag.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "XDragLocal"), 2, "X: ");
+            CurrentYDrag.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "YDragLocal"), 2, "Y: ");
+            CurrentZDrag.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "ZDragLocal"), 2, "Z: ");
+            double dragX = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "XDragLocal"));
+            double dragY = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "YDragLocal"));
+            double dragZ = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "ZDragLocal"));
+            CurrentTotalDrag.Text = "Total: " + Math.Round(
+                Math.Sqrt(dragX * dragX + dragY * dragY + dragZ * dragZ), 2);
+            CurrentFrontLift.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "FrontLift"), 2, "Front: ");
+            CurrentRearLift.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "RearLift"), 2, "Rear: ");
+            CurrentEngineRPM.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EngineRPM"), 0, "", " RPM");
+            CurrentEngineRPMAxle.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EngineRPMAxle"), 0, "(", ") RPM");
+            CurrentEngineTorque.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EngineTorqueNm"), 2, "", " Nm");
+            CurrentEnginePower.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EnginePowerKW"), 2, "", " kW");
+            CurrentLeftDifferentialSpeedRad.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialVelocityRadPrimaryLeft"), 2, "", " rad/s");
+            CurrentLeftDifferentialTorque.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialTorquePrimaryLeft"), 2, "", " Nm");
+            int diffPrimClosed = LiveData.GetFullListDataValue(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialOpenPrimaryLeft"));
             if (diffPrimClosed != 0)
             {
                 CurrentLeftDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
@@ -191,9 +549,9 @@ namespace Physics_Data_Debug
                CurrentLeftDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
             }
 
-            CurrentRightDifferentialSpeedRad.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialVelocityRadPrimaryLeft, 2, "", " rad/s");
-            CurrentRightDifferentialTorque.Text = LiveData.ValueString(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialTorquePrimaryLeft, 2, "", " Nm");
-            int diffSecClosed = LiveData.GetFullListDataValue(WF_PrefixMain.Powertrain, WF_DifferentialDataOffset.DifferentialOpenPrimaryRight);
+            CurrentRightDifferentialSpeedRad.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialVelocityRadPrimaryRight"), 2, "", " rad/s");
+            CurrentRightDifferentialTorque.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialTorquePrimaryRight"), 2, "", " Nm");
+            int diffSecClosed = LiveData.GetFullListDataValue(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialOpenPrimaryRight"));
             if (diffSecClosed != 0)
             {
                 CurrentRightDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
@@ -202,22 +560,7 @@ namespace Physics_Data_Debug
             {
                 CurrentRightDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
             }
-            labelTireWriter(WF_PrefixMain.FL, label_FL_AngularVelocity, label_FL_ContactLength, label_FL_CurrentContactBrakeTorque, label_FL_MaxCurrentContactBrakeTorque, label_FL_Deflection, label_FL_EffectiveRadius,
-                label_FL_LateralLoad, label_FL_LoadedRadius, label_FL_LongitudinalLoad, label_FL_SlipRatio, label_FL_TravelSpeed, label_FL_VerticalLoad, label_FL_LateralFriction, label_FL_LongitudinalFriction, label_FL_TreadTemperature,
-                label_FL_InnerTemperature, label_FL_SlipAngleDeg, label_FL_TotalFriction, label_FL_TotalFrictionAngle, label_FL_LateralSlipSpeed, label_FL_LongitudinalSlipSpeed, label_FL_CamberAngle, label_FL_TireSteerAngle,
-                label_FL_SuspensionLength, label_FL_SuspensionVelocity, label_FL_Mx, label_FL_Mz, label_FL_My, label_FL_PneumaticTrail, label_FL_RollingResistance);
-            labelTireWriter(WF_PrefixMain.FR, label_FR_AngularVelocity, label_FR_ContactLength, label_FR_CurrentContactBrakeTorque, label_FR_MaxCurrentContactBrakeTorque, label_FR_Deflection, label_FR_EffectiveRadius,
-                label_FR_LateralLoad, label_FR_LoadedRadius, label_FR_LongitudinalLoad, label_FR_SlipRatio, label_FR_TravelSpeed, label_FR_VerticalLoad, label_FR_LateralFriction, label_FR_LongitudinalFriction, label_FR_TreadTemperature,
-                label_FR_InnerTemperature, label_FR_SlipAngleDeg, label_FR_TotalFriction, label_FR_TotalFrictionAngle, label_FR_LateralSlipSpeed, label_FR_LongitudinalSlipSpeed, label_FR_CamberAngle, label_FR_TireSteerAngle,
-                label_FR_SuspensionLength, label_FR_SuspensionVelocity, label_FR_Mx, label_FR_Mz, label_FR_My, label_FR_PneumaticTrail, label_FR_RollingResistance);
-            labelTireWriter(WF_PrefixMain.RL, label_RL_AngularVelocity, label_RL_ContactLength, label_RL_CurrentContactBrakeTorque, label_RL_MaxCurrentContactBrakeTorque, label_RL_Deflection, label_RL_EffectiveRadius,
-                label_RL_LateralLoad, label_RL_LoadedRadius, label_RL_LongitudinalLoad, label_RL_SlipRatio, label_RL_TravelSpeed, label_RL_VerticalLoad, label_RL_LateralFriction, label_RL_LongitudinalFriction, label_RL_TreadTemperature,
-                label_RL_InnerTemperature, label_RL_SlipAngleDeg, label_RL_TotalFriction, label_RL_TotalFrictionAngle, label_RL_LateralSlipSpeed, label_RL_LongitudinalSlipSpeed, label_RL_CamberAngle, label_RL_TireSteerAngle,
-                label_RL_SuspensionLength, label_RL_SuspensionVelocity, label_RL_Mx, label_RL_Mz, label_RL_My, label_RL_PneumaticTrail, label_RL_RollingResistance);
-            labelTireWriter(WF_PrefixMain.RR, label_RR_AngularVelocity, label_RR_ContactLength, label_RR_CurrentContactBrakeTorque, label_RR_MaxCurrentContactBrakeTorque, label_RR_Deflection, label_RR_EffectiveRadius,
-                label_RR_LateralLoad, label_RR_LoadedRadius, label_RR_LongitudinalLoad, label_RR_SlipRatio, label_RR_TravelSpeed, label_RR_VerticalLoad, label_RR_LateralFriction, label_RR_LongitudinalFriction, label_RR_TreadTemperature,
-                label_RR_InnerTemperature, label_RR_SlipAngleDeg, label_RR_TotalFriction, label_RR_TotalFrictionAngle, label_RR_LateralSlipSpeed, label_RR_LongitudinalSlipSpeed, label_RR_CamberAngle, label_RR_TireSteerAngle,
-                label_RR_SuspensionLength, label_RR_SuspensionVelocity, label_RR_Mx, label_RR_Mz, label_RR_My, label_RR_PneumaticTrail, label_RR_RollingResistance);
+            UpdateTireLabels();
         }
         private void UpdateFormData()
         {
@@ -266,17 +609,22 @@ namespace Physics_Data_Debug
         }
         private void Start_Log_Click(object sender, EventArgs e)
         {
-            if (LiveData.Logging == true)
+            if (dataLogger.IsRunning)
             {
-                LiveData.Logging = false;
-                startFileLoggingButton.Text = "Start Logging";
+                dataLogger.StopSession();
             }
             else
             {
-                Directory.CreateDirectory(LogSettings.LogFileSaveLocationFolder);
-                LiveData.Logging = true;
-                startFileLoggingButton.Text = "Stop Logging";
+                try { dataLogger.StartSession(); }
+                catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException ||
+                                           ex is ArgumentException || ex is InvalidOperationException ||
+                                           ex is System.Security.SecurityException)
+                {
+                    MessageBox.Show(this, ex.Message, "Unable to start logging",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
+            startFileLoggingButton.Text = dataLogger.IsRunning ? "Stop Logging" : "Start Logging";
         }
         private void toSettingsButton_Click(object sender, EventArgs e)
         {
@@ -287,7 +635,7 @@ namespace Physics_Data_Debug
         }
         private void exitApplication_Click(object sender, EventArgs e)
         {
-            LiveData.Helper.Close();
+            LiveData.DetachProcess();
             Application.Exit();
         }
         private void toTireStaticValues_Click(object sender, EventArgs e)
@@ -299,12 +647,10 @@ namespace Physics_Data_Debug
         }
         private void FirstAllDataLoggerPage_Closing(object sender, FormClosingEventArgs e)
         {
-            //LiveData.Helper.Close();
-            //RegistryTools.SaveAllSettings(Application.ProductName, this);
-            if (LiveData.Process != null && ProcessGet == true)
-            {
-                timer1.Enabled = false;
-            }
+            JsonFormSettings.SaveAllSettings(this);
+            timer1.Enabled = false;
+            dataLogger.StopSession();
+            LiveData.DetachProcess();
         }
         private void OpenTemperaturesChart_Click(object sender, EventArgs e)
         {
@@ -322,39 +668,135 @@ namespace Physics_Data_Debug
         }
         private void toTestChartPageButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = LogSettings.LogFileSaveLocationFolder;
-            ofd.Filter = "Executable files (*exe)|*.exe|All files (*.*)|*.*";
-
-            DialogResult result = ofd.ShowDialog();
-
-            if (result == DialogResult.OK)
+            using (var ofd = new OpenFileDialog())
             {
-                LogSettings.ChartPlotterLocation = ofd.FileName;
-                try
+                ofd.InitialDirectory = LogSettings.LogFileSaveLocationFolder;
+                ofd.Filter = "Executable files (*.exe)|*.exe|All files (*.*)|*.*";
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    Process.Start(LogSettings.ChartPlotterLocation);
-                }
-                catch (Exception)
-                {
+                    LogSettings.ChartPlotterLocation = ofd.FileName;
+                    try { Process.Start(LogSettings.ChartPlotterLocation); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Unable to start chart plotter",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
         private void FirstAllDataLoggerPage_Load(object sender, EventArgs e)
         {
-            /*
-            // Load saved settings
-            RegistryTools.LoadAllSettings(Application.ProductName, this);
-            */
+            JsonFormSettings.LoadAllSettings(this);
+            // Automatic is the first-run default; still honor an explicitly
+            // saved manual choice in this form's JSON profile.
+            if (GameVersionComboBox.SelectedIndex < 0)
+                GameVersionComboBox.SelectedItem = AutomaticVersionOption;
+            ApplyVersionSelection();
         }
+        private bool IsAutomaticVersionSelected =>
+            string.Equals(GameVersionComboBox.SelectedItem as string,
+                AutomaticVersionOption, StringComparison.Ordinal);
+
+        private void ApplyVersionSelection()
+        {
+            if (IsAutomaticVersionSelected)
+            {
+                if (versionDetectionStatus != null)
+                    versionDetectionStatus.Text = "Auto: detect on Get Process";
+                UpdateGameConfigTitle();
+                // Do not guess a shift before the process executable is known.
+                return;
+            }
+            SelectedVersion = GameVersionComboBox.SelectedItem as GameVersionProfile
+                ?? GameMemoryConfig.ActiveVersion;
+            GameMemoryConfig.SelectVersion(SelectedVersion);
+            activeBaseAddressShift = SelectedVersion.BaseAddressShift;
+            if (versionDetectionStatus != null)
+                versionDetectionStatus.Text = "Manual: shift " + FormatHexShift(activeBaseAddressShift);
+            UpdateGameConfigTitle();
+        }
+
+        private static string FormatHexShift(long shift) =>
+            (shift < 0 ? "-0x" : "+0x") +
+            (shift < 0 ? unchecked((ulong)(-(shift + 1)) + 1) : (ulong)shift).ToString("X");
+
+        private bool TryResolveSelectedVersion()
+        {
+            if (!IsAutomaticVersionSelected)
+            {
+                ApplyVersionSelection();
+                return true;
+            }
+            try
+            {
+                Process process = LiveData.Process;
+                if (process == null) throw new InvalidOperationException("No Wreckfest process is attached.");
+                string executable = process.MainModule.FileName;
+                if (!string.Equals(Path.GetFileName(executable), "Wreckfest_x64.exe",
+                    StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidDataException("Automatic detection is supported only for Wreckfest_x64.exe.");
+
+                WreckfestDetectedVersion detected = WreckfestVersionDetector.Detect(executable);
+                GameVersionProfile profile;
+                long shift = GameMemoryConfig.SelectDetectedVersion(detected, out profile);
+                SelectedVersion = profile ?? GameMemoryConfig.ActiveVersion;
+                activeBaseAddressShift = shift;
+                string message = "Detected " + detected.VersionId + " | shift " + FormatHexShift(shift) +
+                    (profile == null ? " (unlisted build)" : " (JSON profile)");
+                if (versionDetectionStatus != null)
+                    versionDetectionStatus.Text = detected.VersionId + " | " + FormatHexShift(shift);
+                Text = originalWindowTitle + " - " + GameMemoryConfig.ActiveFileName + " - " + message;
+                return true;
+            }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException ||
+                                       ex is InvalidOperationException || ex is ArgumentException ||
+                                       ex is OverflowException || ex is FormatException ||
+                                       ex is KeyNotFoundException || ex is System.ComponentModel.Win32Exception ||
+                                       ex is System.Security.SecurityException)
+            {
+                if (versionDetectionStatus != null) versionDetectionStatus.Text = "Auto detection failed";
+                MessageBox.Show(this, "Automatic Wreckfest version detection failed:\n" + ex.Message +
+                    "\n\nSelect a manual JSON version to continue.", "Wreckfest version",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+        }
+
+        private void StopMemoryCapture()
+        {
+            timer1.Enabled = false;
+            ProcessGet = false;
+            ValuesGet = false;
+            dataLogger.StopSession();
+            startFileLoggingButton.Text = "Start Logging";
+            getProcessButton.Text = "Get Process";
+            LiveData.DetachProcess();
+        }
+
         private void getProcessButton_Click(object sender, EventArgs e)
         {
-            LiveData.Process = Process.GetProcessesByName("Wreckfest_x64").FirstOrDefault();
-            if (LiveData.Process != null && ProcessGet == false)
+            bool attached;
+            try
+            {
+                attached = LiveData.AttachProcess("Wreckfest_x64");
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                StopMemoryCapture();
+                MessageBox.Show(this, ex.Message, "Unable to attach to Wreckfest",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (attached && !TryResolveSelectedVersion())
+            {
+                StopMemoryCapture();
+                return;
+            }
+            if (attached && ProcessGet == false)
             {
                 ProcessStart();
             }
-            else if (LiveData.Process != null && ProcessGet == true)
+            else if (attached && ProcessGet == true)
             {
                 getProcessButton.Text = "Getting Process";
                 timer1.Enabled = false;
@@ -363,35 +805,62 @@ namespace Physics_Data_Debug
             }
             else
             {
-                timer1.Enabled = false;
-                ProcessGet = false;
-                getProcessButton.Text = "Get Process";
+                StopMemoryCapture();
                 return;
             }
         }
         public static bool ValuesGet { get; set; } = false;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            LiveData.GetData((long)SelectedVersion);
-            // Needs to be in order of WF_Prefix
-            LiveData.UpdateBodyDataValues(WF_PrefixMain.Body, LiveData.FullDataList, WF_BodyRotationChunks.DataStart, LiveData.Body_RotationData, WF_BodyAccelDataChunks.DataStart, LiveData.Body_AccelData, WF_AeroDataChunks.DataStart, LiveData.Body_AeroData, WF_MassDataChunks.DataStart, LiveData.Body_MassData);//0
-
-            LiveData.UpdateTireDataValues(WF_PrefixMain.FL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FL_TireData, WF_Suspension1DataChunks.DataStart, LiveData.FL_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.FL_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.FL_Suspension2Data);//1
-            LiveData.UpdateTireDataValues(WF_PrefixMain.FR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.FR_TireData, WF_Suspension1DataChunks.DataStart, LiveData.FR_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.FR_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.FR_Suspension2Data);//2
-            LiveData.UpdateTireDataValues(WF_PrefixMain.RL, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RL_TireData, WF_Suspension1DataChunks.DataStart, LiveData.RL_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.RL_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.RL_Suspension2Data);//3
-            LiveData.UpdateTireDataValues(WF_PrefixMain.RR, LiveData.FullDataList, WF_TireDataChunks.DataStart, LiveData.RR_TireData, WF_Suspension1DataChunks.DataStart, LiveData.RR_SuspensionData, WF_SuspensionGeometryDataChunks.DataStart, LiveData.RR_SuspensionGeometryData, WF_Suspension2DataChunks.DataStart, LiveData.RR_Suspension2Data);//4
-
-            LiveData.UpdatePowertrainDataValues(WF_PrefixMain.Powertrain, LiveData.FullDataList, WF_EngineDataChunks.DataStart, LiveData.Powertrain_EngineData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialPrimaryAxleData, WF_DifferentialDataChunks.DataStart, LiveData.Powertrain_DifferentialSecondaryAxleData);//5
-            //LiveData.ConsoleTireData(LiveData.TireDataList);
+            if (LiveData.Process == null || LiveData.Process.HasExited)
+            {
+                StopMemoryCapture();
+                return;
+            }
+            try
+            {
+                LiveData.RefreshTelemetry(activeBaseAddressShift);
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                StopMemoryCapture();
+                MessageBox.Show(this, ex.Message, "Unable to read game memory",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (OverflowException ex)
+            {
+                StopMemoryCapture();
+                MessageBox.Show(this,
+                    "Numeric overflow while reading telemetry. Check the selected " +
+                    "Wreckfest version and memory configuration.\n\n" + ex.ToString(),
+                    "Unable to read game telemetry", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             ValuesGet = true;
-            DataLogger.LogToFile();
+            try { dataLogger.LogToFile(); }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException ||
+                                       ex is InvalidOperationException || ex is System.Security.SecurityException)
+            {
+                dataLogger.StopSession("Log write failed");
+                MessageBox.Show(this, ex.Message, "Logging stopped", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            if (!dataLogger.IsRunning && startFileLoggingButton.Text != "Start Logging")
+            {
+                startFileLoggingButton.Text = "Start Logging";
+                if (!string.IsNullOrEmpty(dataLogger.LastStopReason))
+                    startFileLoggingButton.Tag = dataLogger.LastStopReason;
+            }
             //ButtonVisibilities();
             if (checkBox1.Checked == true)
             {
                 TextBoxUpdates();
             }
-            sTickTime = "Tick time " + LiveData.ElapsedTime + " ms";
-            TickTime.Text = sTickTime;
+            TickTime.Text = "Tick time " + LiveData.ElapsedTime + " ms";
+            if (!dataLogger.IsRunning && !string.IsNullOrEmpty(dataLogger.LastStopReason))
+                TickTime.Text += " | Logging stopped: " + dataLogger.LastStopReason;
             timer1.Interval = LiveData.TickInterval;
         }
 
@@ -414,22 +883,11 @@ namespace Physics_Data_Debug
             Form4Wheels s1 = new Form4Wheels();
             s1.Show();
         }
-        private void CheckFontColorAndSetBackGroundColor(ComboBox cb, Color fontColor)
-        {
-            if (fontColor == Color.White || fontColor == Color.WhiteSmoke || fontColor == Color.AntiqueWhite || fontColor == Color.FloralWhite || fontColor == Color.NavajoWhite)
-            {
-                cb.BackColor = Color.Black;
-            }
-            else
-            {
-                cb.BackColor = SystemColors.Window;
-            }
-            cb.ForeColor = fontColor;
-        }
-
         private void GameVersionComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            SelectedVersion = GameVersionComboBox.SelectedItem;
+            ApplyVersionSelection();
+            if (LiveData.Process != null && !TryResolveSelectedVersion())
+                StopMemoryCapture();
         }
 
         private void toSuspensionGeometryOpen_Click(object sender, EventArgs e)

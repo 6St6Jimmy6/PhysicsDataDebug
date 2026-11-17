@@ -1,14 +1,10 @@
-﻿using Memory.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace Physics_Data_Debug
 {
@@ -30,6 +26,8 @@ namespace Physics_Data_Debug
         #region Data
         public static int None { get; set; } = 1;
         public static int RaceTime { get; set; }
+        public static List<byte[]> Timing_TimeData { get; set; }
+        private static int TimingDataStart;
         public static List<byte[]> Body_RotationData { get; set; }
         public static List<byte[]> Body_AccelData { get; set; }
         public static List<byte[]> Body_AeroData { get; set; }
@@ -55,8 +53,23 @@ namespace Physics_Data_Debug
         public static List<byte[]> RR_Suspension2Data { get; set; }
         #endregion
 
-        public static Process Process;
-        public static Memory.Win64.MemoryHelper64 Helper { get; set; }
+        // One instance owns each attached Process and is reused for all samples.
+        private static MemoryReader reader;
+        public static Process Process => reader?.TargetProcess;
+
+        public static bool AttachProcess(string executableName)
+        {
+            // Release the previous Process object instead of closing its SafeHandle directly.
+            DetachProcess();
+            reader = MemoryReader.TryAttach(executableName);
+            return reader != null;
+        }
+
+        public static void DetachProcess()
+        {
+            reader?.Close();
+            reader = null;
+        }
 
         public static readonly int[] RaceTimeArray = new int[3];
         public static readonly int[] TickTimeArray = new int[3];
@@ -65,93 +78,113 @@ namespace Physics_Data_Debug
         public static string PathSource = @"F:\Program Files (x86)\Steam\steamapps\common\Wreckfest\Wreckfest_x64.exe";
         public static byte[] PatternToFind = { 0x00, 0x48, 0x0F, 0x44, 0xC2, 0x48 };
         //public static byte[] PatternToFind = { 0x48, 0xC2, 0x44, 0x0F, 0x48, 0x00 };
-        public static IEnumerable<int> PatternAtOffset;
 
         //int matchIndex = toBeSearched.AsSpan().IndexOf(pattern);
         public static IEnumerable<int> PatternAt(byte[] source, byte[] pattern)
         {
-            for (int i = 0; i < source.Length; i++)
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (pattern == null) throw new ArgumentNullException(nameof(pattern));
+            for (int i = 0; i <= source.Length - pattern.Length; i++)
             {
-                if (source.Skip(i).Take(pattern.Length).SequenceEqual(pattern))
-                {
-                    yield return i;
-                }
+                int j = 0;
+                while (j < pattern.Length && source[i + j] == pattern[j]) j++;
+                if (j == pattern.Length) yield return i;
             }
         }
         public static byte[] GetExeBytes(string pathSource)
         {
-            // Specify a file to read from and to create.
-            //string pathSource = @"F:\Program Files (x86)\Steam\steamapps\common\Wreckfest\Wreckfest_x64.exe";
-            //string pathNew = @"c:\tests\newfile.txt";
-
-
-            using (FileStream fsSource = new FileStream(pathSource, FileMode.Open, FileAccess.Read))
-            {
-
-                // Read the source file into a byte array.
-                byte[] bytes = new byte[fsSource.Length];
-                int numBytesToRead = (int)fsSource.Length;
-                int numBytesRead = 0;
-                while (numBytesToRead > 0)
-                {
-                    // Read may return anything from 0 to numBytesToRead.
-                    int n = fsSource.Read(bytes, numBytesRead, numBytesToRead);
-
-                    // Break when the end of the file is reached.
-                    if (n == 0)
-                        break;
-
-                    numBytesRead += n;
-                    numBytesToRead -= n;
-                }
-                /*
-                numBytesToRead = bytes.Length;
-
-                // Write the byte array to the other FileStream.
-                using (FileStream fsNew = new FileStream(pathNew,
-                    FileMode.Create, FileAccess.Write))
-                {
-                    fsNew.Write(bytes, 0, numBytesToRead);
-                }*/
-                return bytes;
-            }/*
-            try
-            {
-
-            }
-            catch (FileNotFoundException ioEx)
-            {
-                Console.WriteLine(ioEx.Message);
-            }*/
+            return File.ReadAllBytes(pathSource);
         }
         public static List<List<DataItem>> FullDataList { get; set; } = new List<List<DataItem>>();
-        public static dynamic GetFullListDataValue(Enum prefix, Enum dataValueToFind)
+        // Incremented once for each memory sample; DataItem caches requested
+        // calculations until this changes. Unused calculations never run.
+        internal static int TelemetryGeneration { get; private set; }
+
+        // Labels, charts and logging all resolve the same field names many
+        // times per tick. Cache the DataItem reference, not its changing value.
+        private sealed class DataListLookup
         {
-            //dynamic was float
-            string s = prefix + "_";
-            int index = Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix);
-            return FullDataList[index][FullDataList[index].FindIndex(r => r.Name == s + dataValueToFind)].Value;
+            public List<DataItem> Source;
+            public int Count;
+            public DataItem First;
+            public Dictionary<string, DataItem> ByName;
+            public Dictionary<string, DataItem> ByQualifiedName;
         }
-        private static dynamic GetDataValue<T>(List<byte[]> data, Enum dataStart, Enum dataValueToFind)
+        private static readonly Dictionary<int, DataListLookup> FieldLookups =
+            new Dictionary<int, DataListLookup>();
+        private static readonly CultureInfo TelemetryTextCulture = CultureInfo.GetCultureInfo("en-US");
+        private static int PrefixIndex(string prefix)
         {
-            //T was float
-            int size = 4;//ObjectType.GetSize<T>();
-            if(typeof(T) == typeof(float))//float
-            { return BitConverter.ToSingle(data[(Convert.ToInt32(dataValueToFind) - Convert.ToInt32(dataStart)) / size], 0); }
-            else//Int32
-            { return BitConverter.ToInt32(data[(Convert.ToInt32(dataValueToFind) - Convert.ToInt32(dataStart)) / size], 0); }
+            int index = Array.IndexOf(TelemetryPrefix.Order, prefix);
+            if (index < 0) throw new ArgumentException("Unknown data prefix", nameof(prefix));
+            return index;
         }
-        public static string ValueString(Enum prefix, Enum dataValue, int roundDigits = 9, string preText = "", string afterText = "")
+
+        private static DataListLookup BuildLookup(List<DataItem> fields)
         {
-            return preText + Math.Round(GetFullListDataValue(prefix, dataValue), roundDigits).ToString(CultureInfo.GetCultureInfo("en-US")) + afterText;
+            var byName = new Dictionary<string, DataItem>(StringComparer.Ordinal);
+            var byQualifiedName = new Dictionary<string, DataItem>(StringComparer.Ordinal);
+            foreach (DataItem item in fields)
+            {
+                if (!byName.ContainsKey(item.Name))
+                    byName.Add(item.Name, item);
+
+                if (item.SourceGroup != null)
+                    byQualifiedName[item.SourceGroup + "." + item.Name] = item;
+            }
+            return new DataListLookup
+            {
+                Source = fields,
+                Count = fields.Count,
+                First = fields.Count == 0 ? null : fields[0],
+                ByName = byName,
+                ByQualifiedName = byQualifiedName
+            };
         }
-        public static void SetValueInTB(TextBox tB, Enum prefix, Enum dataValue, int roundDigits = 9, string preText = "", string suffText = "")
+
+        public static dynamic GetFullListDataValue(string prefix, GameMemoryField dataValueToFind)
         {
-            tB.Text = ValueString(prefix, dataValue, roundDigits);
+            int index = PrefixIndex(prefix);
+            List<DataItem> fields = FullDataList[index];
+            if (!FieldLookups.TryGetValue(index, out DataListLookup lookup) ||
+                !ReferenceEquals(lookup.Source, fields) || lookup.Count != fields.Count ||
+                (fields.Count > 0 && !ReferenceEquals(lookup.First, fields[0])))
+            {
+                lookup = BuildLookup(fields);
+                FieldLookups[index] = lookup;
+            }
+            string name = prefix + "_" + dataValueToFind;
+            if (!lookup.ByQualifiedName.TryGetValue(dataValueToFind.Group + "." + name, out DataItem item) &&
+                !lookup.ByName.TryGetValue(name, out item))
+                throw new KeyNotFoundException("Telemetry value not found: " + name);
+            return item.Value;
         }
-        public static void SetValueInLabel(Label l, Enum prefix, Enum dataValue, int roundDigits = 9, string preText = "", string suffText = "")
+        private static int GetConfiguredDataIndex(int start, GameMemoryField value)
         {
-            l.Text = ValueString(prefix, dataValue, roundDigits);
+            // Calculated fields live immediately AFTER the raw bytes, regardless
+            // of how large a future game version makes that raw memory chunk.
+            if (CalculatedTelemetry.TryDataIndex(value.Group, value.Name, out int calculatedIndex))
+                return calculatedIndex;
+            int distance = checked(GameMemoryConfig.Int(value) - start);
+            if (distance < 0 || distance % sizeof(float) != 0)
+                throw new InvalidOperationException("Invalid configured 4-byte data offset: " + value.Group + "." + value.Name);
+            return distance / sizeof(float);
+        }
+        public static string ValueString(string prefix, GameMemoryField dataValue, int roundDigits = 9, string preText = "", string afterText = "")
+        {
+            return preText + Math.Round(GetFullListDataValue(prefix, dataValue), roundDigits).ToString(TelemetryTextCulture) + afterText;
+        }
+        public static void SetValueInTB(TextBox tB, string prefix, GameMemoryField dataValue, int roundDigits = 9, string preText = "", string suffText = "")
+        {
+            string value = ValueString(prefix, dataValue, roundDigits, preText, suffText);
+            if (!string.Equals(tB.Text, value, StringComparison.Ordinal))
+                tB.Text = value;
+        }
+        public static void SetValueInLabel(Label l, string prefix, GameMemoryField dataValue, int roundDigits = 9, string preText = "", string suffText = "")
+        {
+            string value = ValueString(prefix, dataValue, roundDigits, preText, suffText);
+            if (!string.Equals(l.Text, value, StringComparison.Ordinal))
+                l.Text = value;
         }
         public static int GetElapsedTime()
         {
@@ -159,679 +192,208 @@ namespace Physics_Data_Debug
             Array.Copy(RaceTimeArray, 1, RaceTimeArray, 0, RaceTimeArray.Length - 1);
             return RaceTimeArray[1] - RaceTimeArray[0];
         }
+
+        /// <summary>Initialize the telemetry lists in their stable prefix order.</summary>
+        public static void InitializeDataLists()
+        {
+            if (FullDataList.Count > 0) return;
+            GenerateBodyDataList(TelemetryPrefix.Body, FullDataList);
+            foreach (string wheel in new[]
+                { TelemetryPrefix.FL, TelemetryPrefix.FR, TelemetryPrefix.RL, TelemetryPrefix.RR })
+                GenerateTireDataList(wheel, FullDataList);
+            GeneratePowertrainDataList(TelemetryPrefix.Powertrain, FullDataList);
+            GenerateTimingDataList(TelemetryPrefix.Timing, FullDataList);
+            FieldLookups.Clear();
+        }
+
+        /// <summary>
+        /// A different game-memory profile can add or reorder raw fields.
+        /// Rebuild the data layout only while live memory reads are stopped.
+        /// </summary>
+        public static void ReinitializeDataLists()
+        {
+            FullDataList.Clear();
+            FieldLookups.Clear();
+            InitializeDataLists();
+        }
+
+        /// <summary>Read memory and update all accessible data values once.</summary>
+        public static void RefreshTelemetry(long baseAddressShift)
+        {
+            if (Process == null) return;
+            GetData(baseAddressShift);
+            UpdateBodyDataValues(TelemetryPrefix.Body, FullDataList,
+                GameMemoryConfig.Int("WF_BodyRotationChunks", "DataStart"), Body_RotationData,
+                GameMemoryConfig.Int("WF_BodyAccelDataChunks", "DataStart"), Body_AccelData,
+                GameMemoryConfig.Int("WF_AeroDataChunks", "DataStart"), Body_AeroData,
+                GameMemoryConfig.Int("WF_MassDataChunks", "DataStart"), Body_MassData);
+            UpdateTimingDataValues(TelemetryPrefix.Timing, FullDataList, TimingDataStart, Timing_TimeData);
+            RaceTime = (int)GetFullListDataValue(TelemetryPrefix.Timing,
+                GameMemoryConfig.Field("WF_TimeDataOffset", "RaceTime"));
+            // Time between ticks is only meaningful while the in-game clock advances.
+            ElapsedTime = GetElapsedTime();
+
+            // All four wheels use the same chunk starts. Resolve them once per
+            // sample, while still honoring any newly selected game profile.
+            int tireStart = GameMemoryConfig.Int("WF_TireDataChunks", "DataStart");
+            int suspensionStart = GameMemoryConfig.Int("WF_Suspension1DataChunks", "DataStart");
+            int geometryStart = GameMemoryConfig.Int("WF_SuspensionGeometryDataChunks", "DataStart");
+            int suspension2Start = GameMemoryConfig.Int("WF_Suspension2DataChunks", "DataStart");
+            UpdateTireDataValues(TelemetryPrefix.FL, FullDataList,
+                tireStart, FL_TireData, suspensionStart, FL_SuspensionData,
+                geometryStart, FL_SuspensionGeometryData, suspension2Start, FL_Suspension2Data);
+            UpdateTireDataValues(TelemetryPrefix.FR, FullDataList,
+                tireStart, FR_TireData, suspensionStart, FR_SuspensionData,
+                geometryStart, FR_SuspensionGeometryData, suspension2Start, FR_Suspension2Data);
+            UpdateTireDataValues(TelemetryPrefix.RL, FullDataList,
+                tireStart, RL_TireData, suspensionStart, RL_SuspensionData,
+                geometryStart, RL_SuspensionGeometryData, suspension2Start, RL_Suspension2Data);
+            UpdateTireDataValues(TelemetryPrefix.RR, FullDataList,
+                tireStart, RR_TireData, suspensionStart, RR_SuspensionData,
+                geometryStart, RR_SuspensionGeometryData, suspension2Start, RR_Suspension2Data);
+            UpdatePowertrainDataValues(TelemetryPrefix.Powertrain, FullDataList,
+                GameMemoryConfig.Int("WF_EngineDataChunks", "DataStart"), Powertrain_EngineData,
+                GameMemoryConfig.Int("WF_DifferentialDataChunks", "DataStart"), Powertrain_DifferentialPrimaryAxleData);
+        }
+
+        /// <summary>Store the raw memory snapshot; calculated values stay lazy in DataItem.</summary>
         public static void GetData(long baseAddrUpdt)
         {
-            //Dictionary<WF_Prefix, DataItem> Dict = WF_Dictionary.DefaultWF1Dictionary;
-            if (Process == null)
-            { return; }
-            Helper = new Memory.Win64.MemoryHelper64(Process);
-            #region Read Race Time
-            RaceTime = GetRawData<int>(Helper, (ulong)BaseAddress.RaceTime, baseAddrUpdt, new int[] { (int)WF_TimeDataOffset.RaceTime });
-            //Time interval between the last tick. It only naturally works when the race is going but pretty accurate then and no interference every second.
-            ElapsedTime = GetElapsedTime();
-            #endregion
+            if (reader == null) return;
+            TelemetryMemorySnapshot sample = reader.ReadSample(baseAddrUpdt);
+            unchecked { TelemetryGeneration++; }
 
-            #region Read Mass, Location, Heading, Accel, Lifts and Drag
-            Body_MassData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension2, baseAddrUpdt, (int)WF_BodyMassSide.AllSides, new int[] { }, (int)WF_MassDataChunks.DataStart, (int)WF_MassDataChunks.ChunkSize);
-            Body_RotationData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.BodyLocationHeading, baseAddrUpdt, (int)WF_BodyRotationSide.AllSides, new int[] { (int)WF_BodyRotationChunks.Offset1}, (int)WF_BodyRotationChunks.DataStart, (int)WF_BodyRotationChunks.ChunkSize);//Get raw data...
-            Matrix4x4 transformMatrixBody = TransformMatrixBody(Body_RotationData, WF_BodyRotationChunks.DataStart);
-            Body_RotationData = Body_RotationData.Concat(GetCalculatedRotationData(transformMatrixBody)).ToList();//...then Concat (expand) it with calculated data;
-            Body_AccelData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Acceleration, baseAddrUpdt, (int)WF_BodyAccelSide.AllSides, new int[] { }, (int)WF_BodyAccelDataChunks.DataStart, (int)WF_BodyAccelDataChunks.ChunkSize);//Get raw data...
-            Body_AccelData = Body_AccelData.Concat(GetCalculatedAccelData(transformMatrixBody, Body_AccelData)).ToList();//...then Concat (expand) it with calculated data;
-            Body_AeroData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Aero, baseAddrUpdt, (int)WF_AeroSide.AllSides, new int[] { }, (int)WF_AeroDataChunks.DataStart, (int)WF_AeroDataChunks.ChunkSize);//Get raw data...
-            Body_AeroData = Body_AeroData.Concat(GetCalculatedAeroData(transformMatrixBody)).ToList();//...then Concat (expand) it with calculated data;
-            #endregion
+            TimingDataStart = sample.TimingStart;
+            Timing_TimeData = sample.Timing;
+            Body_RotationData = sample.BodyRotation;
+            Body_AccelData = sample.BodyAcceleration;
+            Body_AeroData = sample.BodyAero;
+            Body_MassData = sample.BodyMass;
+            Powertrain_EngineData = sample.Engine;
+            Powertrain_DifferentialPrimaryAxleData = sample.Differential;
 
-            #region Read Speed, Engine Torque and Differential
-            Powertrain_EngineData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Engine, baseAddrUpdt, (int)WF_EngineSide.AllSides, new int[] { }, (int)WF_EngineDataChunks.DataStart, (int)WF_EngineDataChunks.ChunkSize);//Get raw data...
-            Powertrain_EngineData = Powertrain_EngineData.Concat(GetCalculatedEngineData(Powertrain_EngineData)).ToList();//...then Concat (expand) it with calculated data;
-            Powertrain_DifferentialPrimaryAxleData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Differential, baseAddrUpdt, (int)WF_DifferentialSide.Left, new int[] { }, (int)WF_DifferentialDataChunks.DataStart, (int)WF_DifferentialDataChunks.ChunkSize);
-            //Powertrain_DifferentialSecondaryAxleData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Differential, baseAddrUpdt, (int)WF_DifferentialSide.SecondaryAxle, new int[] { }, (int)WF_DifferentialDataChunks.DataStart, (int)WF_DifferentialDataChunks.ChunkSize);
-            #endregion
-
-            #region Read Tire Data
-            FL_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.FL, new int[] { (int)WF_TireDataChunks.Offset1}, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
-            FL_TireData = FL_TireData.Concat(GetCalcuatedTireData(FL_TireData)).ToList();//...then Concat (expand) it with calculated data
-            FL_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension1, baseAddrUpdt, (int)WF_Suspension1DataSideOffset.FL, new int[] { }, (int)WF_Suspension1DataChunks.DataStart, (int)WF_Suspension1DataChunks.ChunkSize);
-            FL_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.FL, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
-            FL_Suspension2Data = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension2, baseAddrUpdt, (int)WF_Suspension2DataSideOffset.FL, new int[] { }, (int)WF_Suspension2DataChunks.DataStart, (int)WF_Suspension2DataChunks.ChunkSize);
-
-
-            FR_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.FR, new int [] { (int)WF_TireDataChunks.Offset1}, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
-            FR_TireData = FR_TireData.Concat(GetCalcuatedTireData(FR_TireData)).ToList();//...then Concat (expand) it with calculated data
-            FR_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension1, baseAddrUpdt, (int)WF_Suspension1DataSideOffset.FR, new int[] { }, (int)WF_Suspension1DataChunks.DataStart, (int)WF_Suspension1DataChunks.ChunkSize);
-            FR_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.FR, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
-            FR_Suspension2Data = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension2, baseAddrUpdt, (int)WF_Suspension2DataSideOffset.FR, new int[] { }, (int)WF_Suspension2DataChunks.DataStart, (int)WF_Suspension2DataChunks.ChunkSize);
-
-            RL_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.RL, new int[] { (int)WF_TireDataChunks.Offset1 }, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
-            RL_TireData = RL_TireData.Concat(GetCalcuatedTireData(RL_TireData)).ToList();//...then Concat (expand) it with calculated data
-            RL_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension1, baseAddrUpdt, (int)WF_Suspension1DataSideOffset.RL, new int[] { }, (int)WF_Suspension1DataChunks.DataStart, (int)WF_Suspension1DataChunks.ChunkSize);
-            RL_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.RL, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
-            RL_Suspension2Data = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension2, baseAddrUpdt, (int)WF_Suspension2DataSideOffset.RL, new int[] { }, (int)WF_Suspension2DataChunks.DataStart, (int)WF_Suspension2DataChunks.ChunkSize);
-
-            RR_TireData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Tire, baseAddrUpdt, (int)WF_TireSide.RR, new int[] { (int)WF_TireDataChunks.Offset1 }, (int)WF_TireDataChunks.DataStart, (int)WF_TireDataChunks.ChunkSize);//Get raw data...
-            RR_TireData = RR_TireData.Concat(GetCalcuatedTireData(RR_TireData)).ToList();//...then Concat (expand) it with calculated data
-            RR_SuspensionData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension1, baseAddrUpdt, (int)WF_Suspension1DataSideOffset.RR, new int[] {  }, (int)WF_Suspension1DataChunks.DataStart, (int)WF_Suspension1DataChunks.ChunkSize);
-            RR_SuspensionGeometryData = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.SuspensionGeometry, baseAddrUpdt, (int)WF_SuspensionGeometrySideOffsets.RR, new int[] { }, (int)WF_SuspensionGeometryDataChunks.DataStart, (int)WF_SuspensionGeometryDataChunks.ChunkSize);
-            RR_Suspension2Data = GetRawFourBytesArrayData(Helper, (ulong)BaseAddress.Suspension2, baseAddrUpdt, (int)WF_Suspension2DataSideOffset.RR, new int[] { }, (int)WF_Suspension2DataChunks.DataStart, (int)WF_Suspension2DataChunks.ChunkSize);
-
-            #endregion
-            /*#region Stiffness and Lon/Lat Forces
-            RL_LonBristleStiffness = BristleStiffness(LonStiffness, RL_ContactLength);
-            RL_LonStiffness = Stiffness(LonStiffness, RL_ContactLength);
-            RL_LonForceStatic = ForceStatic(RL_ContactLength, RL_LonBristleStiffness, RL_LongitudinalFriction, RL_VerticalLoad, RL_SlipRatio, true);
-            RL_LonForceSlide = ForceSlide(RL_ContactLength, RL_LonBristleStiffness, RL_LongitudinalFriction, RL_VerticalLoad, RL_SlipAngleRad, false);
-            RL_LonForceTotal = ForceTotal(RL_LonForceStatic, RL_LonForceSlide);
-            #endregion*/
+            FL_TireData = sample.FrontLeft.Tire;
+            FL_SuspensionData = sample.FrontLeft.Suspension;
+            FL_SuspensionGeometryData = sample.FrontLeft.Geometry;
+            FL_Suspension2Data = sample.FrontLeft.Suspension2;
+            FR_TireData = sample.FrontRight.Tire;
+            FR_SuspensionData = sample.FrontRight.Suspension;
+            FR_SuspensionGeometryData = sample.FrontRight.Geometry;
+            FR_Suspension2Data = sample.FrontRight.Suspension2;
+            RL_TireData = sample.RearLeft.Tire;
+            RL_SuspensionData = sample.RearLeft.Suspension;
+            RL_SuspensionGeometryData = sample.RearLeft.Geometry;
+            RL_Suspension2Data = sample.RearLeft.Suspension2;
+            RR_TireData = sample.RearRight.Tire;
+            RR_SuspensionData = sample.RearRight.Suspension;
+            RR_SuspensionGeometryData = sample.RearRight.Geometry;
+            RR_Suspension2Data = sample.RearRight.Suspension2;
         }
-        public static dynamic RadToDeg(double toConvert)
+
+
+        private static int UpdateConfiguredFields(int ii, string prefix,
+            List<List<DataItem>> fullList, List<byte[]> byteData, int dataStart, string group)
         {
-            return toConvert * (float)(180 / Math.PI);
-        }
-        public static dynamic XZAngleRad(double x, double z)
-        {
-            if (x > 0)
+            List<DataItem> target = fullList[PrefixIndex(prefix)];
+            bool timingIntegers = group == "WF_TimeDataOffset";
+            // Group members are sorted by baseline JSON offsets. Version changes
+            // affect where values are read, but not their order in telemetry lists.
+            foreach (string memberName in GameMemoryConfig.Members(group))
             {
-                if (z > 0)
+                if (CalculatedTelemetry.IsCalculated(group, memberName))
                 {
-                    return (Math.PI + (Math.Atan(x / z)));
+                    // The corresponding DataItem computes this value on demand.
+                    ii++;
+                    continue;
                 }
-                else if (z < 0)
-                {
-                    return (2 * Math.PI + (Math.Atan(x / z)));
-                }
+                int index = GetConfiguredDataIndex(dataStart, GameMemoryConfig.Field(group, memberName));
+                if (index < 0 || index >= byteData.Count)
+                    throw new InvalidOperationException("Configured offset for " + group + "." + memberName + " is outside its memory chunk.");
+                byte[] valueByteArray = byteData[index];
+                if (timingIntegers ||
+                    (group == "WF_DifferentialDataOffset" &&
+                     (memberName == "DifferentialOpenPrimaryLeft" || memberName == "DifferentialOpenPrimaryRight")))
+                { target[ii].Value = BitConverter.ToInt32(valueByteArray, 0); }
                 else
-                {
-                    return 1.5 * Math.PI;
-                }
-            }
-            else if (x < 0)
-            {
-                if (z > 0)
-                {
-                    return (Math.PI + (Math.Atan(x / z)));
-                }
-                else if (z < 0)
-                {
-                    return (0d + (Math.Atan(x / z)));
-                }
-                else
-                {
-                    return 0.5 * Math.PI;
-                }
-            }
-            else
-            {
-                if (z > 0f)
-                {
-                    return Math.PI;
-                }
-                else if (z < 0f)
-                {
-                    return 2 * Math.PI;
-                }
-                else
-                {
-                    return 0d;
-                }
-            }
-        }
-        public static List<byte[]> GetRawFourBytesArrayData(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, long baseAddrUpdt, int sideOffset, int[] extraOffsets, int dataStartOffset, int arraySize)
-        {
-            int[] numberOfExtraOffsets = new int[1 + extraOffsets.Length];
-            int[] offsetList = numberOfExtraOffsets;
-
-            if(extraOffsets == null || extraOffsets.Length == 0)
-            {
-                offsetList[0] = dataStartOffset + sideOffset;
-            }
-            else
-            {
-                int i = 0;
-                foreach (int offset in extraOffsets) 
-                {
-                    offsetList[i] = offset;
-                    i++;
-                }
-                offsetList[numberOfExtraOffsets.Count() -1] = dataStartOffset + sideOffset;
-            }
-            ulong bAU = memoryHelper.GetBaseAddress((ulong)((long)baseAddr + baseAddrUpdt));
-            List<byte[]> dataRaw = memoryHelper.ReadMemoryArray(MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsetList), arraySize);
-            return dataRaw;
-        }
-        public static List<byte[]> GetCalculatedEngineData(List<byte[]> engineData)
-        {
-            float helperEngineTorqueNm = GetDataValue<float>(engineData, WF_EngineDataChunks.DataStart, WF_EngineDataOffset.EngineTorqueNm);
-            float helperEngineRPM = GetDataValue<float>(engineData, WF_EngineDataChunks.DataStart, WF_EngineDataOffset.EngineRPM);
-
-            float engineTorqueLbFt = 0.7375621493f * helperEngineTorqueNm;
-
-            float enginePowerKW = helperEngineTorqueNm * helperEngineRPM / 9548.8f;
-            float enginePowerHP = engineTorqueLbFt * helperEngineRPM / 5252.1f;
-            float enginePowerPS = enginePowerHP * 0.986f;
-            float enginePowerBHP = enginePowerKW * 1.34102f;
-
-            return new List<byte[]>() {
-                BitConverter.GetBytes(engineTorqueLbFt),
-                BitConverter.GetBytes(enginePowerKW),
-                BitConverter.GetBytes(enginePowerHP),
-                BitConverter.GetBytes(enginePowerPS),
-                BitConverter.GetBytes(enginePowerBHP), };// Needs to be in the same order as in WF_EngineDataOffset enumerator
-        }
-        public static List<byte[]> GetCalcuatedTireData(List<byte[]> tireData)
-        {
-            float lateralLoad = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad);
-            float longitudinalLoad = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LongitudinalLoad);
-            float verticalLoad = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.VerticalLoad);
-
-            var transformMatrix = new Matrix4x4(
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM11),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM12),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM13),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM14),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM21),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM22),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM23),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM24),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM31),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM32),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM33),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM34),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM41),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM42),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM43),
-                (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.TireM44));
-
-            float casterAngleRad = (float)-CalcAngles(transformMatrix).X;// caster not really
-            float casterAngleDeg = (float)RadToDeg(casterAngleRad);// RadToDeg(RL_TireM11);
-            float steerAngleRad = (float)-CalcAngles(transformMatrix).Y;// toe close
-            float steerAngleDeg = (float)RadToDeg(steerAngleRad);// RadToDeg(RL_TireM13);
-            float camberAngleRad = (float)LoopAngleRad(-CalcAngles(transformMatrix).Z, Math.PI * 0.5f);// camber close
-
-            float camberAngleDeg = (float)RadToDeg(camberAngleRad);// RadToDeg(RL_TireM12);
-            float lateralFriction = (float)GetFriction(lateralLoad, verticalLoad);
-            float longitudinalFriction = (float)GetFriction(longitudinalLoad, verticalLoad);
-            float totalFriction = (float)GetTotalFriction(lateralFriction, longitudinalFriction);
-            float totalFrictionAngleDeg = (float)GetTotalFrictionAngle(lateralFriction, longitudinalFriction);
-
-            float slipAngleDeg = (float)RadToDeg((float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.SlipAngleRad));
-            float rollingResistance;
-            if (verticalLoad != 0)
-            {
-                rollingResistance = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.Mx) / verticalLoad;
-            }
-            else
-            {
-                rollingResistance = 0;
-            }
-            float pneumaticTrail;
-            if ((float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad) != 0)
-            {
-                pneumaticTrail = (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.Mz) / (float)GetDataValue<float>(tireData, WF_TireDataChunks.DataStart, WF_TireDataOffset.LateralLoad);
-            }
-            else
-            {
-                pneumaticTrail = 0;
-            }
-
-                return new List<byte[]>() {
-                BitConverter.GetBytes(casterAngleRad),
-                BitConverter.GetBytes(casterAngleDeg),
-                BitConverter.GetBytes(steerAngleRad),
-                BitConverter.GetBytes(steerAngleDeg),
-                BitConverter.GetBytes(camberAngleRad),
-                BitConverter.GetBytes(camberAngleDeg),
-                BitConverter.GetBytes(lateralFriction),
-                BitConverter.GetBytes(longitudinalFriction),
-                BitConverter.GetBytes(totalFriction),
-                BitConverter.GetBytes(totalFrictionAngleDeg),
-                BitConverter.GetBytes(slipAngleDeg),
-                BitConverter.GetBytes(rollingResistance),
-                BitConverter.GetBytes(pneumaticTrail) };// Needs to be in the same order as in WF_TireDataOffset enumerator
-        }
-        public static T GetRawData<T>(Memory.Win64.MemoryHelper64 memoryHelper, ulong baseAddr, long baseAddrUpdt, int[] offsets)
-        {
-            ulong bAU = memoryHelper.GetBaseAddress((ulong)((long)baseAddr + baseAddrUpdt));
-
-            return memoryHelper.ReadMemory<T>(Memory.Utils.MemoryUtils.OffsetCalculator(memoryHelper, bAU, offsets));
-        }
-        public static Vector3 GetPitchYawRollFromQuaternion(Quaternion rotation)
-        {
-            float yaw = (float)Math.Atan2(2.0f * (rotation.Y * rotation.W + rotation.X * rotation.Z), 1.0f - 2.0f * (rotation.X * rotation.X + rotation.Y * rotation.Y));
-            float pitch = (float)Math.Asin(2.0f * (rotation.X * rotation.W - rotation.Y * rotation.Z));
-            float roll = (float)Math.Atan2(2.0f * (rotation.X * rotation.Y + rotation.Z * rotation.W), 1.0f - 2.0f * (rotation.X * rotation.X + rotation.Z * rotation.Z));
-
-            return new Vector3(pitch, yaw, roll);
-        }
-        public static Vector3 CalcAngles(Matrix4x4 transformMatrix)
-        {
-            Quaternion quat = Quaternion.CreateFromRotationMatrix(transformMatrix);
-
-            Vector3 pitchyawroll = GetPitchYawRollFromQuaternion(quat);
-            // Pitch Yaw and Roll or Caster Toe and Camber
-            //pitch = -pitchyawroll.X;// caster angle
-            //yaw = -pitchyawroll.Y;// toe angle
-            //roll = LoopAngleRad(-pitchyawroll.Z, (float)Math.PI * 0.5f);// camber angle
-            return pitchyawroll;
-        }
-        public static Vector3 WorldTransformToLocal(Vector3 worldXYZ, Vector3 worldPositionBody, Matrix4x4 transformMatrixBody)
-        {
-            worldXYZ.X = BigValueReducerFloat(worldXYZ.X);
-            worldXYZ.Y = BigValueReducerFloat(worldXYZ.Y);
-            worldXYZ.Z = BigValueReducerFloat(worldXYZ.Z);
-
-            Matrix4x4 rotationInvertedBody = Matrix4x4.Identity;
-            transformMatrixBody.Translation = worldPositionBody;
-            Matrix4x4 rotation = new Matrix4x4();
-            rotation = transformMatrixBody;
-            rotation.M41 = 0.0f;
-            rotation.M42 = 0.0f;
-            rotation.M43 = 0.0f;
-            rotation.M44 = 1.0f;
-
-            rotationInvertedBody = new Matrix4x4();
-            Matrix4x4.Invert(rotation, out rotationInvertedBody);
-
-            //transform world acceleration to local space
-            Vector3 local = Vector3.Transform(worldXYZ, rotationInvertedBody);
-            //Vector3 localAcceleration = worldAcceleration;
-            return local;
-        }
-        public static float BigValueReducerFloat(float value)
-        {
-            if (value > 10000 || value < -10000)
-            {
-                return 10000;
-            }
-            else
-            {
-                return value;
-            }
-        }
-        public static double LoopAngleRad(double angle, double minMag)
-        {
-            double absAngle = Math.Abs(angle);
-
-            if (absAngle <= minMag)
-            {
-                return angle;
-            }
-
-            double direction = angle / absAngle;
-
-            //(180.0f * 1) - 135 = 45
-            //(180.0f *-1) - -135 = -45
-            double loopedAngle = (Math.PI * direction) - angle;
-
-            return loopedAngle;
-        }
-        public static Vector3 WorldPositionBody(Matrix4x4 transformMatrixBody)
-        {
-            return new Vector3(transformMatrixBody.M41, transformMatrixBody.M42, transformMatrixBody.M43);
-        }
-        public static Matrix4x4 TransformMatrixBody(List<byte[]> bodyRotationData, Enum bodyDataStart)
-        {
-            return new Matrix4x4(
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM11),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM12),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM13),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM14),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM21),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM22),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM23),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM24),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM31),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM32),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM33),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM34),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM41),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM42),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM43),
-                (float)GetDataValue<float>(bodyRotationData, bodyDataStart, WF_BodyRotationDataOffset.BodyM44));
-        }
-        public static T GetEnum<T>(int enumAsInt)
-        {
-            //https://stackoverflow.com/questions/79126/create-generic-method-constraining-t-to-an-enum
-            Type enumType = typeof(T);
-
-            T value = (T)Enum.ToObject(enumType, enumAsInt);
-            if (Enum.IsDefined(enumType, value) == false)
-            {
-                throw new NotSupportedException("Unable to convert value to the type: " + enumType.ToString());
-            }
-
-            return value;
-        }
-        public static int ForEachValueUpdate<T>(int ii, Enum prefix, List<List<DataItem>> fullList, List<byte[]> byteData, Enum dataStart)
-        {
-            int size = 4;// ObjectType.GetSize<T>();
-            int indexOfInFullList = Array.IndexOf(Enum.GetValues(prefix.GetType()), prefix);
-
-            foreach (int i in Enum.GetValues(typeof(T)))
-            {
-                int test = Convert.ToInt32(GetEnum<T>(i));
-                byte[] valueByteArray = byteData[(Convert.ToInt32(GetEnum<T>(i)) - Convert.ToInt32(dataStart)) / size];
-                if (i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryLeft ||
-                    i == (int)WF_DifferentialDataOffset.DifferentialOpenPrimaryRight
-                    && Convert.ToInt32(prefix) == (int)WF_PrefixMain.Powertrain) //Just Powertrain differentials. When more are foud, need to find a better way. In the meanwhile just add more else ifs
-
-                { fullList[indexOfInFullList][ii].Value = BitConverter.ToInt32(valueByteArray, 0); }
-                else
-                { fullList[indexOfInFullList][ii].Value = BitConverter.ToSingle(valueByteArray, 0); }
+                { target[ii].Value = BitConverter.ToSingle(valueByteArray, 0); }
                 ii++;
             }
             return ii;
         }
-        public static void GeneratePowertrainDataList(Enum prefix, List<List<DataItem>> fullList, Enum bodyRotationDataStart, Enum bodyAccelDataStart, Enum bodyAeroDataStart)
+        private static void AddConfiguredItems(string prefix, List<DataItem> list, string group)
         {
-            List<DataItem> subList = new List<DataItem>();
-            foreach (int i in Enum.GetValues(typeof(WF_EngineDataOffset)))
+            foreach (string name in GameMemoryConfig.Members(group))
             {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_EngineDataOffset)i, Name = prefix + "_" + (WF_EngineDataOffset)i });
+                var field = new DataItem { Id = list.Count, Name = prefix + "_" + name, SourceGroup = group };
+                if (CalculatedTelemetry.IsCalculated(group, name))
+                {
+                    string formulaName = name;
+                    field.Calculator = () => TelemetryFormulas.Calculate(formulaName,
+                        dependency => Convert.ToDouble(GetFullListDataValue(prefix,
+                            // The dependency can be another calculated field, or
+                            // a raw field in any of this prefix's memory groups.
+                            new GameMemoryField(group, dependency))));
+                }
+                list.Add(field);
             }
-            foreach (int i in Enum.GetValues(typeof(WF_DifferentialDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) +(int)(WF_DifferentialDataOffset)i, Name = prefix + "_" + (WF_DifferentialDataOffset)i });
-            }
-            fullList.Add(subList);
         }
-        public static void UpdatePowertrainDataValues(Enum prefix, List<List<DataItem>> fullList, Enum powertrainEngineDataStart, List<byte[]> powertrainEngineData, Enum powertrainDifferentailPrimaryAxleDataStart, List<byte[]> DifferentailPrimaryAxle, Enum powertrainDifferentialSecondaryAxleDataStart, List<byte[]> powertrainDifferentialSecondaryAxleData)
+        public static void GeneratePowertrainDataList(string prefix, List<List<DataItem>> fullList)
+        {
+            var fields = new List<DataItem>();
+            AddConfiguredItems(prefix, fields, "WF_EngineDataOffset");
+            AddConfiguredItems(prefix, fields, "WF_DifferentialDataOffset");
+            fullList.Add(fields);
+        }
+        public static void UpdatePowertrainDataValues(string prefix, List<List<DataItem>> fullList,
+            int engineStart, List<byte[]> engineData, int differentialStart, List<byte[]> differentialData)
         {
             int ii = 0;
-            ii = ForEachValueUpdate<WF_EngineDataOffset>(ii, prefix, fullList, powertrainEngineData, powertrainEngineDataStart);
-            ii = ForEachValueUpdate<WF_DifferentialDataOffset>(ii, prefix, fullList, DifferentailPrimaryAxle, powertrainDifferentialSecondaryAxleDataStart);
+            ii = UpdateConfiguredFields(ii, prefix, fullList, engineData, engineStart, "WF_EngineDataOffset");
+            ii = UpdateConfiguredFields(ii, prefix, fullList, differentialData, differentialStart, "WF_DifferentialDataOffset");
         }
-        public static List<byte[]> GetCalculatedRotationData(Matrix4x4 transformMatrixBody)
-        {
-            //Vector3 worldPositionBody = new Vector3(transformMatrixBody.M41, transformMatrixBody.M42, transformMatrixBody.M43);
-            //CalcAngles(transformMatrixBody);// Needed?
-            float body_PitchRad = -CalcAngles(transformMatrixBody).X;
-            float body_PitchDeg = (float)RadToDeg(body_PitchRad);
-            float body_YawRad = -CalcAngles(transformMatrixBody).Y;
-            float body_YawDeg = (float)RadToDeg(body_YawRad);
-            float body_RollRad = (float)LoopAngleRad(-CalcAngles(transformMatrixBody).Z, Math.PI * 0.5f);
-            float body_RollDeg = (float)RadToDeg(body_RollRad);
-
-            return new List<byte[]>()
-            {
-                BitConverter.GetBytes(body_PitchRad),
-                BitConverter.GetBytes(body_PitchDeg),
-                BitConverter.GetBytes(body_YawRad),
-                BitConverter.GetBytes(body_YawDeg),
-                BitConverter.GetBytes(body_RollRad),
-                BitConverter.GetBytes(body_RollDeg),// Needs to be in the same order as in WF_BodyRotationDataOffset enumerator;
-            };
-        }
-        public static List<byte[]> GetCalculatedAccelData(Matrix4x4 transformMatrixBody, List<byte[]> bodyAccelData)
-        {
-            float worldAccelX = (float)GetDataValue<float>(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.XAccelerationWorld);
-            float worldAccelY = (float)GetDataValue<float>(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.YAccelerationWorld);
-            float worldAccelZ = (float)GetDataValue<float>(bodyAccelData, WF_BodyAccelDataChunks.DataStart, WF_BodyAccelDataOffset.ZAccelerationWorld);
-            Vector3 worldAcceleration = new Vector3(worldAccelX, worldAccelY, worldAccelZ);
-            Vector3 localAccel = WorldTransformToLocal(worldAcceleration, WorldPositionBody(transformMatrixBody), transformMatrixBody);
-
-            // Getting the XZ direction where in the world the car is going.
-            float body_XZAccelerationAngleRad = (float)XZAngleRad(localAccel.X, localAccel.Z);
-            float body_XZAccelerationAngleDeg = (float)RadToDeg(body_XZAccelerationAngleRad);
-
-            float body_XZAcceleration = (float)Math.Sqrt(Math.Pow(localAccel.X, 2) + Math.Pow(localAccel.Z, 2));
-            float body_XYZAcceleration = (float)Math.Sqrt(Math.Pow(body_XZAcceleration, 2) + Math.Pow(localAccel.Y, 2));
-
-            // G-Force
-            float body_XG = localAccel.X / g;
-            float body_YG = localAccel.Y / g;
-            float body_ZG = localAccel.Z / g;
-
-            float body_XZG = (float)Math.Sqrt(Math.Pow(body_XG, 2) + Math.Pow(body_ZG, 2));
-            float body_XYZG = (float)Math.Sqrt(Math.Pow(body_YG, 2) + Math.Pow(body_XZG, 2));
-
-            float body_XZGAngleRad = 0;
-            float body_XZGAngleDeg = 0;
-
-            if (body_XZAccelerationAngleRad < 3 * Math.PI && body_XZAccelerationAngleRad > -3 * Math.PI)// These are to make sure if there's some huge or almost small value, that it won't get calculated, because those throw errors. Usually can happen when changing car or track etc.
-            {
-                if (0 > body_XZAccelerationAngleRad)
-                {
-                    if (body_XZAccelerationAngleRad > 2 * Math.PI)
-                    {
-                        body_XZGAngleRad = (float)(body_XZAccelerationAngleRad - 2 * Math.PI);
-                        body_XZGAngleDeg = (float)RadToDeg(body_XZGAngleRad); // radians to degrees if needed.
-                    }
-                    else
-                    {
-                        body_XZGAngleRad = (float)(2 * Math.PI + body_XZAccelerationAngleRad);
-                        body_XZGAngleDeg = (float)RadToDeg(body_XZGAngleRad); // radians to degrees if needed.
-                    }
-                }
-                else
-                {
-                    if (body_XZAccelerationAngleRad - 0 > 2 * Math.PI)
-                    {
-                        body_XZGAngleRad = (float)(body_XZAccelerationAngleRad - 2 * Math.PI);
-                        body_XZGAngleDeg = (float)RadToDeg(body_XZGAngleRad); // radians to degrees if needed.
-                    }
-                    else
-                    {
-                        body_XZGAngleRad = body_XZAccelerationAngleRad;
-                        body_XZGAngleDeg = (float)RadToDeg(body_XZGAngleRad); // radians to degrees if needed.
-                    }
-                }
-            }
-            return new List<byte[]>() {
-                BitConverter.GetBytes(localAccel.X),
-                BitConverter.GetBytes(localAccel.Y),
-                BitConverter.GetBytes(localAccel.Z),
-
-                BitConverter.GetBytes((float)body_XZAccelerationAngleRad),
-                BitConverter.GetBytes((float)body_XZAccelerationAngleDeg),
-                BitConverter.GetBytes((float)body_XZAcceleration),
-                BitConverter.GetBytes((float)body_XYZAcceleration),
-                BitConverter.GetBytes((float)body_XG),
-                BitConverter.GetBytes((float)body_YG),
-                BitConverter.GetBytes((float)body_ZG),
-                BitConverter.GetBytes((float)body_XZG),
-                BitConverter.GetBytes((float)body_XYZG),
-                BitConverter.GetBytes((float)body_XZGAngleRad),
-                BitConverter.GetBytes(body_XZGAngleDeg) };// Needs to be in the same order as in WF_BodyAccelDataOffset enumerator;
-        }
-        public static List<byte[]> GetCalculatedAeroData(Matrix4x4 transformMatrixBody)
-        {
-            Vector3 worldAcceleration = new Vector3((float)GetDataValue<float>(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.XDragWorld), (float)GetDataValue<float>(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.YDragWorld), (float)GetDataValue<float>(Body_AeroData, WF_AeroDataChunks.DataStart, WF_AeroDataOffset.ZDragWorld));
-            Vector3 localDrag = WorldTransformToLocal(worldAcceleration, WorldPositionBody(transformMatrixBody), transformMatrixBody);
-
-            return new List<byte[]>() {
-                BitConverter.GetBytes(localDrag.X),
-                BitConverter.GetBytes(localDrag.Y),
-                BitConverter.GetBytes(localDrag.Z),};// Needs to be in the same order as in WF_AeroDataOffset enumerator;
-        }
-        public static void ConsoleTireData(List<List<DataItem>> tireDataList)
-        {
-            Console.WriteLine("----- Data Update -----");
-            foreach (var sublist in tireDataList)
-            {
-                foreach (var item in sublist)
-                {
-                    Console.WriteLine("Id:{0}; Name:{1}; Value:{2};", item.Id, item.Name, item.Value);
-                    Console.Write(' ');
-                }
-                Console.WriteLine();
-            }
-        }
-        public static void GenerateBodyDataList(Enum prefix, List<List<DataItem>> fullList)
+        public static void GenerateBodyDataList(string prefix, List<List<DataItem>> fullList)
         {
             List<DataItem> subList = new List<DataItem>();
-            foreach (int i in Enum.GetValues(typeof(WF_BodyRotationDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_BodyRotationChunks.Offset1 + (int)(WF_BodyRotationDataOffset)i, Name = prefix + "_" + (WF_BodyRotationDataOffset)i});
-            }
-            foreach (int i in Enum.GetValues(typeof(WF_BodyAccelDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_BodyAccelDataOffset)i, Name = prefix + "_" + (WF_BodyAccelDataOffset)i});
-            }
-            foreach (int i in Enum.GetValues(typeof(WF_AeroDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_AeroDataOffset)i, Name = prefix + "_" + (WF_AeroDataOffset)i });
-            }
-            foreach (int i in Enum.GetValues(typeof(WF_MassDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_MassDataOffset)i, Name = prefix + "_" + (WF_MassDataOffset)i });
-            }
+            AddConfiguredItems(prefix, subList, "WF_BodyRotationDataOffset");
+            AddConfiguredItems(prefix, subList, "WF_BodyAccelDataOffset");
+            AddConfiguredItems(prefix, subList, "WF_AeroDataOffset");
+            AddConfiguredItems(prefix, subList, "WF_MassDataOffset");
             fullList.Add(subList);
         }
-        public static void UpdateBodyDataValues(Enum prefix, List<List<DataItem>> fullList, Enum bodyRotationDataStart, List<byte[]> bodyRotationData, Enum bodyAccelDataStart, List<byte[]> bodyAccelData, Enum bodyAeroDataStart, List<byte[]> bodyAeroData, Enum massDataStart, List<byte[]> massData)
+        public static void UpdateBodyDataValues(string prefix, List<List<DataItem>> fullList, int bodyRotationDataStart, List<byte[]> bodyRotationData, int bodyAccelDataStart, List<byte[]> bodyAccelData, int bodyAeroDataStart, List<byte[]> bodyAeroData, int massDataStart, List<byte[]> massData)
         {
             int ii = 0;
-            ii = ForEachValueUpdate<WF_BodyRotationDataOffset>(ii, prefix, fullList, bodyRotationData, bodyRotationDataStart);
-            ii = ForEachValueUpdate<WF_BodyAccelDataOffset>(ii, prefix, fullList, bodyAccelData, bodyAccelDataStart);
-            ii = ForEachValueUpdate<WF_AeroDataOffset>(ii, prefix, fullList, bodyAeroData, bodyAeroDataStart);
-            ii = ForEachValueUpdate<WF_MassDataOffset>(ii, prefix, fullList, massData, massDataStart);
+            ii = UpdateConfiguredFields(ii, prefix, fullList, bodyRotationData, bodyRotationDataStart, "WF_BodyRotationDataOffset");
+            ii = UpdateConfiguredFields(ii, prefix, fullList, bodyAccelData, bodyAccelDataStart, "WF_BodyAccelDataOffset");
+            ii = UpdateConfiguredFields(ii, prefix, fullList, bodyAeroData, bodyAeroDataStart, "WF_AeroDataOffset");
+            ii = UpdateConfiguredFields(ii, prefix, fullList, massData, massDataStart, "WF_MassDataOffset");
         }
-        public static void GenerateTireDataList(Enum prefix, List<List<DataItem>> fullList, Enum tireDataStart, Enum suspensionDataStart)
+        public static void GenerateTimingDataList(string prefix, List<List<DataItem>> fullList)
+        {
+            List<DataItem> fields = new List<DataItem>();
+            AddConfiguredItems(prefix, fields, "WF_TimeDataOffset");
+            fullList.Add(fields);
+        }
+        public static void UpdateTimingDataValues(string prefix, List<List<DataItem>> fullList, int timeDataStart, List<byte[]> timeData)
+        {
+            UpdateConfiguredFields(0, prefix, fullList, timeData, timeDataStart, "WF_TimeDataOffset");
+        }
+        public static void GenerateTireDataList(string prefix, List<List<DataItem>> fullList)
         {
             List<DataItem> subList = new List<DataItem>();
-            //Tire data
-            foreach (int i in Enum.GetValues(typeof(WF_TireDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)(WF_TireDataOffset)i, Name = prefix + "_" + (WF_TireDataOffset)i});
-            }
-            //Suspension data gets added also in
-            foreach (int i in Enum.GetValues(typeof(WF_Suspension1DataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_TireDataOffset.PneumaticTrail + 0x4 + (int)(WF_Suspension1DataOffset)i, Name = prefix + "_" + (WF_Suspension1DataOffset)i});
-            }
-            //Suspension Geometry
-            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_Suspension1DataOffset.BumpStopDampGainDeflectionSquared + 0x4 + (int)(WF_SuspensionGeometryDataOffset)i, Name = prefix + "_" + (WF_SuspensionGeometryDataOffset)i });
-            }
-            //New suspension data. These are only front/rear but going to write them separately on each tire...
-            foreach (int i in Enum.GetValues(typeof(WF_Suspension2DataOffset)))
-            {
-                subList.Add(new DataItem { Id = Convert.ToInt32(prefix) + (int)WF_SuspensionGeometryDataOffset.XYZUnknownPushRod18 + 0x4 + (int)(WF_Suspension2DataOffset)i, Name = prefix + "_" + (WF_Suspension2DataOffset)i });
-            }
+            AddConfiguredItems(prefix, subList, "WF_TireDataOffset");
+            AddConfiguredItems(prefix, subList, "WF_Suspension1DataOffset");
+            AddConfiguredItems(prefix, subList, "WF_SuspensionGeometryDataOffset");
+            AddConfiguredItems(prefix, subList, "WF_Suspension2DataOffset");
             fullList.Add(subList);
         }
-        public static void UpdateTireDataValues(Enum prefix, List<List<DataItem>> fullList, Enum tireDataStart, List<byte[]> tireData, Enum suspensionDataStart, List<byte[]> suspensionData, Enum suspensionGeometryDataStart, List<byte[]>suspensionGeometryData, Enum suspension2DataStart, List<byte[]> suspension2Data)
+        public static void UpdateTireDataValues(string prefix, List<List<DataItem>> fullList, int tireDataStart, List<byte[]> tireData, int suspensionDataStart, List<byte[]> suspensionData, int suspensionGeometryDataStart, List<byte[]>suspensionGeometryData, int suspension2DataStart, List<byte[]> suspension2Data)
         {
             int ii = 0;
-            ii = ForEachValueUpdate<WF_TireDataOffset>(ii, prefix, fullList, tireData, tireDataStart);
-            ii = ForEachValueUpdate<WF_Suspension1DataOffset>(ii, prefix, fullList, suspensionData, suspensionDataStart);
-            ii = ForEachValueUpdate<WF_SuspensionGeometryDataOffset>(ii, prefix, fullList, suspensionGeometryData, suspensionGeometryDataStart);
-            ii = ForEachValueUpdate<WF_Suspension2DataOffset>(ii, prefix, fullList, suspension2Data, suspension2DataStart);
+            ii = UpdateConfiguredFields(ii, prefix, fullList, tireData, tireDataStart, "WF_TireDataOffset");
+            ii = UpdateConfiguredFields(ii, prefix, fullList, suspensionData, suspensionDataStart, "WF_Suspension1DataOffset");
+            ii = UpdateConfiguredFields(ii, prefix, fullList, suspensionGeometryData, suspensionGeometryDataStart, "WF_SuspensionGeometryDataOffset");
+            ii = UpdateConfiguredFields(ii, prefix, fullList, suspension2Data, suspension2DataStart, "WF_Suspension2DataOffset");
         }
-        private static float GetFriction(float latORlonLoad, float vertLoad)
-        {
-            if (vertLoad != 0)
-            {
-                return latORlonLoad / vertLoad;
-            }
-            else { return 0; }
-        }
-        private static float GetTotalFriction(float latFriction, float lonFriction)
-        {
-            return (float)Math.Sqrt(Math.Pow(latFriction, 2) + Math.Pow(lonFriction, 2));
-        }
-        private static float GetTotalFrictionAngle(float latFriction, float lonFriction)
-        {
-            if (latFriction > 0)
-            {
-                if (lonFriction > 0)
-                {
-                    return (float)(90 - (Math.Atan(lonFriction / latFriction) * RadDeg));
-                }
-                else if (lonFriction < 0)
-                {
-                    return (float)(90 - (Math.Atan(lonFriction / latFriction) * RadDeg));
-                }
-                else
-                {
-                    return 90;
-                }
-            }
-            else if (latFriction < 0)
-            {
-                if (lonFriction > 0)
-                {
-                    return (float)(270 + (Math.Atan(lonFriction / Math.Abs(latFriction)) * RadDeg));
-                }
-                else if (lonFriction < 0)
-                {
-                    return (float)(270 - (Math.Atan(lonFriction / latFriction) * RadDeg));
-                }
-                else
-                {
-                    return 270;
-                }
-            }
-            else
-            {
-                if (lonFriction > 0)
-                {
-                    return 360;
-                }
-                else if (lonFriction < 0)
-                {
-                    return 180;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
-        /*
-        public static float LonStiffness { get; set; } = 10000;
-        public static float RL_LonStiffness { get; set; } = 0;
-        public static float RL_LonBristleStiffness { get; set; } = 0;
-        public static float RL_LonForceStatic { get; set; } = 0;
-        public static float RL_LonForceSlide { get; set; } = 0;
-        public static float RL_LonForceTotal { get; set; } = 0;
-        public static float BristleStiffness(float stiffness, float tireContactLength)
-        {
-            return stiffness / (2 * (float)Math.Pow(tireContactLength/2, 2));
-        }
-        public static float Stiffness(float bristleStiffness, float tireContactLength)
-        {
-            return 2 * bristleStiffness * (float)Math.Pow(tireContactLength / 2, 2);
-        }
-        public static float LatStiffness { get; set; } = 5000;
-        public static float RL_LatForceStatic { get; set; } = 0;
-        public static float RL_LatForceSlide { get; set; } = 0;
-        public static float RL_LatForceTotal { get; set; } = 0;
-        public static float SelfAligningMomentStiffness(float latStiffness, float tireContactLength)
-        {
-            return 2/3 * latStiffness * (float)Math.Pow(tireContactLength / 2, 3);
-        }
-        public static float ForceStatic(float tireContactLength, float bristleStiffness, float friction, float verticalLoad, float slipRatioOrAngleRad, bool isSlipRatio)
-        {
-            float slip;
-
-            if (isSlipRatio == true)
-            {  
-                slip = slipRatioOrAngleRad;
-            }
-            else
-            {
-                slip = (float)Math.Tan(slipRatioOrAngleRad);
-            }
-            return 2 * (float)(Math.Pow(tireContactLength / 2, 2) * bristleStiffness * slip - 8 / 3 * (Math.Pow(Math.Pow(tireContactLength / 2, 2) * bristleStiffness * slip, 2)) / (friction * verticalLoad) + 8 / 9 * Math.Pow(Math.Pow(tireContactLength / 2, 2) * bristleStiffness * slip, 3) / (Math.Pow(friction * verticalLoad, 2)));
-        }
-        public static float ForceSlide(float tireContactLength, float bristleStiffness, float friction, float verticalLoad, float slipRatioOrAngleRad, bool isSlipRatio)
-        {
-            float slip;
-
-            if (isSlipRatio == true)
-            {
-                slip = slipRatioOrAngleRad;
-            }
-            else
-            {
-                slip = (float)Math.Tan(slipRatioOrAngleRad);
-            }
-            return 4 / 3 * (float)((Math.Pow(Math.Pow(tireContactLength / 2, 2) * bristleStiffness * slip, 2)) / (friction * verticalLoad) - 16 / 27 * (Math.Pow(Math.Pow(tireContactLength / 2, 2) * bristleStiffness * slip, 3)) / (Math.Pow(friction * verticalLoad, 2)));
-        }
-        public static float ForceTotal(float staticForce, float lonForce)
-        { return staticForce + lonForce; }
-        */
     }
 }

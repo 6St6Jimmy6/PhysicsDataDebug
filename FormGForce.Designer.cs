@@ -31,15 +31,11 @@ namespace Physics_Data_Debug
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine1 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
-            System.Windows.Forms.DataVisualization.Charting.StripLine stripLine2 = new System.Windows.Forms.DataVisualization.Charting.StripLine();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0.5D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 0.5D);
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -47,7 +43,16 @@ namespace Physics_Data_Debug
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.toSettingsButton = new System.Windows.Forms.Button();
             this.refreshAndClearButton = new System.Windows.Forms.Button();
+            this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.toolbarPanel = new System.Windows.Forms.Panel();
+            this.actionButtonsFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.chartAndBar = new System.Windows.Forms.TableLayoutPanel();
+            this.chartStatusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.mainLayout.SuspendLayout();
+            this.toolbarPanel.SuspendLayout();
+            this.actionButtonsFlow.SuspendLayout();
+            this.chartAndBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +68,7 @@ namespace Physics_Data_Debug
             chartArea1.AxisX.Interval = 90D;
             chartArea1.AxisX.IsLabelAutoFit = false;
             chartArea1.AxisX.LabelAutoFitMinFontSize = 5;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Arial", 8.25F);
             chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
             chartArea1.AxisX.LineColor = System.Drawing.Color.White;
             chartArea1.AxisX.MajorGrid.Interval = 90D;
@@ -73,14 +78,11 @@ namespace Physics_Data_Debug
             chartArea1.AxisX.Minimum = 0D;
             chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.White;
             chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.White;
-            stripLine1.BackColor = System.Drawing.Color.White;
-            stripLine1.StripWidth = 360D;
-            chartArea1.AxisX.StripLines.Add(stripLine1);
             chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
             chartArea1.AxisY.Interval = 2D;
             chartArea1.AxisY.IsLabelAutoFit = false;
             chartArea1.AxisY.LabelAutoFitMinFontSize = 5;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
             chartArea1.AxisY.LabelStyle.Interval = 2D;
             chartArea1.AxisY.LabelStyle.IntervalOffset = 0D;
@@ -94,9 +96,6 @@ namespace Physics_Data_Debug
             chartArea1.AxisY.Minimum = 0D;
             chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.White;
             chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.White;
-            stripLine2.BackColor = System.Drawing.Color.White;
-            stripLine2.StripWidth = 1D;
-            chartArea1.AxisY.StripLines.Add(stripLine2);
             chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
             chartArea1.BackColor = System.Drawing.Color.Black;
             chartArea1.BorderColor = System.Drawing.Color.Maroon;
@@ -114,6 +113,8 @@ namespace Physics_Data_Debug
             legend1.Position.Y = 10.4837F;
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 0);
+            this.chart1.MinimumSize = new System.Drawing.Size(10, 10);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart1.Margin = new System.Windows.Forms.Padding(0);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
@@ -152,13 +153,14 @@ namespace Physics_Data_Debug
             chartArea2.AxisX.Maximum = 1D;
             chartArea2.AxisX.Minimum = 0D;
             chartArea2.AxisX.Title = "phat";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Arial", 26F);
             chartArea2.AxisX.TitleForeColor = System.Drawing.Color.Transparent;
             chartArea2.AxisX2.Title = "jou";
-            chartArea2.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            chartArea2.AxisX2.TitleFont = new System.Drawing.Font("Arial", 10F);
             chartArea2.AxisX2.TitleForeColor = System.Drawing.Color.White;
             chartArea2.AxisY.Interval = 1D;
             chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Arial", 8.25F);
             chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
             chartArea2.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
             chartArea2.AxisY.MajorGrid.Interval = 1D;
@@ -171,7 +173,9 @@ namespace Physics_Data_Debug
             legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(880, 0);
+            this.chart2.Location = new System.Drawing.Point(0, 0);
+            this.chart2.MinimumSize = new System.Drawing.Size(10, 10);
+            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart2.Margin = new System.Windows.Forms.Padding(0);
             this.chart2.Name = "chart2";
             series2.BorderWidth = 3;
@@ -181,12 +185,8 @@ namespace Physics_Data_Debug
             series2.LabelForeColor = System.Drawing.Color.White;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            dataPoint1.IsValueShownAsLabel = true;
-            dataPoint1.LabelForeColor = System.Drawing.Color.White;
-            series2.Points.Add(dataPoint1);
-            series2.Points.Add(dataPoint2);
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(220, 846);
+            this.chart2.Size = new System.Drawing.Size(72, 846);
             this.chart2.TabIndex = 289;
             this.chart2.Text = "chart2";
             title1.ForeColor = System.Drawing.Color.Transparent;
@@ -202,44 +202,103 @@ namespace Physics_Data_Debug
             // toSettingsButton
             // 
             this.toSettingsButton.Location = new System.Drawing.Point(0, 0);
-            this.toSettingsButton.Margin = new System.Windows.Forms.Padding(6);
             this.toSettingsButton.Name = "toSettingsButton";
-            this.toSettingsButton.Size = new System.Drawing.Size(130, 44);
+            this.toSettingsButton.Size = new System.Drawing.Size(190, 44);
+            this.toSettingsButton.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.toSettingsButton.UseVisualStyleBackColor = false;
+            this.toSettingsButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.toSettingsButton.ForeColor = System.Drawing.Color.White;
             this.toSettingsButton.TabIndex = 290;
             this.toSettingsButton.Text = "Settings";
-            this.toSettingsButton.UseVisualStyleBackColor = true;
             this.toSettingsButton.Click += new System.EventHandler(this.toSettingsButton_Click);
             // 
             // refreshAndClearButton
             // 
             this.refreshAndClearButton.Location = new System.Drawing.Point(0, 58);
-            this.refreshAndClearButton.Margin = new System.Windows.Forms.Padding(6);
             this.refreshAndClearButton.Name = "refreshAndClearButton";
-            this.refreshAndClearButton.Size = new System.Drawing.Size(130, 75);
+            this.refreshAndClearButton.Size = new System.Drawing.Size(225, 44);
+            this.refreshAndClearButton.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.refreshAndClearButton.UseVisualStyleBackColor = false;
+            this.refreshAndClearButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.refreshAndClearButton.ForeColor = System.Drawing.Color.White;
             this.refreshAndClearButton.TabIndex = 291;
-            this.refreshAndClearButton.Text = "Clear / Refresh";
-            this.refreshAndClearButton.UseVisualStyleBackColor = true;
+            this.refreshAndClearButton.Text = "Clear Charts";
             this.refreshAndClearButton.Click += new System.EventHandler(this.refreshAndApplyButton_Click);
             // 
+            // mainLayout - same chart-first structure as Form4Wheels; no limiter rows.
+            //
+            this.mainLayout.Name = "mainLayout";
+            this.mainLayout.BackColor = System.Drawing.Color.Black;
+            this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainLayout.ColumnCount = 1;
+            this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mainLayout.RowCount = 3;
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.mainLayout.Padding = new System.Windows.Forms.Padding(5);
+            this.mainLayout.Margin = new System.Windows.Forms.Padding(0);
+            this.mainLayout.Controls.Add(this.toolbarPanel, 0, 0);
+            this.mainLayout.Controls.Add(this.chartAndBar, 0, 1);
+            this.mainLayout.Controls.Add(this.chartStatusLabel, 0, 2);
+            // toolbarPanel
+            this.toolbarPanel.Name = "toolbarPanel";
+            this.toolbarPanel.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.toolbarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolbarPanel.Controls.Add(this.actionButtonsFlow);
+            // actionButtonsFlow
+            this.actionButtonsFlow.Name = "actionButtonsFlow";
+            this.actionButtonsFlow.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.actionButtonsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.actionButtonsFlow.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.actionButtonsFlow.WrapContents = false;
+            this.actionButtonsFlow.AutoScroll = true;
+            this.actionButtonsFlow.Controls.Add(this.toSettingsButton);
+            this.actionButtonsFlow.Controls.Add(this.refreshAndClearButton);
+            // chartAndBar
+            this.chartAndBar.Name = "chartAndBar";
+            this.chartAndBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartAndBar.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // A fixed-width TableLayoutPanel avoids the SplitContainer's stale
+            // SplitterDistance being scaled with the form (which made chart2 huge).
+            // The 72-pixel right column is 40% narrower than the 120px Four Wheels legend.
+            // Editable directly in Visual Studio Designer under chartAndBar.
+            this.chartAndBar.ColumnCount = 2;
+            this.chartAndBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.chartAndBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.chartAndBar.RowCount = 1;
+            this.chartAndBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.chartAndBar.Margin = new System.Windows.Forms.Padding(0);
+            this.chartAndBar.Padding = new System.Windows.Forms.Padding(0);
+            this.chartAndBar.Controls.Add(this.chart1, 0, 0);
+            this.chartAndBar.Controls.Add(this.chart2, 1, 0);
+            // chartStatusLabel
+            this.chartStatusLabel.Name = "chartStatusLabel";
+            this.chartStatusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartStatusLabel.ForeColor = System.Drawing.Color.White;
+            this.chartStatusLabel.Text = "G-force telemetry  •  Polar G-force and vertical acceleration";
+            this.chartStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // FormGForce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
+            this.AutoScroll = false;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1100, 846);
-            this.Controls.Add(this.refreshAndClearButton);
-            this.Controls.Add(this.toSettingsButton);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
+            this.MinimumSize = new System.Drawing.Size(640, 480);
+            this.Controls.Add(this.mainLayout);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormGForce";
             this.Text = "FormGForce";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGForce_FormClosed);
             this.Load += new System.EventHandler(this.FormGForce_Load);
-            this.SizeChanged += new System.EventHandler(this.FormGForce_SizeChanged);
+            // Layout is maintained by the designer-owned TableLayoutPanel and SplitContainer.
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.mainLayout.ResumeLayout(false);
+            this.toolbarPanel.ResumeLayout(false);
+            this.actionButtonsFlow.ResumeLayout(false);
+            this.chartAndBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
 
@@ -252,5 +311,10 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button toSettingsButton;
         private System.Windows.Forms.Button refreshAndClearButton;
+        private System.Windows.Forms.TableLayoutPanel mainLayout;
+        private System.Windows.Forms.Panel toolbarPanel;
+        private System.Windows.Forms.FlowLayoutPanel actionButtonsFlow;
+        private System.Windows.Forms.TableLayoutPanel chartAndBar;
+        private System.Windows.Forms.Label chartStatusLabel;
     }
 }

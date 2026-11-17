@@ -7,8 +7,9 @@
     <ProjectGuid>{9B846937-B82F-4FD4-9F92-F379FB3A9E2C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Physics_Data_Debug</RootNamespace>
-    <AssemblyName>Physics_Data_Debug_Suspension_2026</AssemblyName>
+    <AssemblyName>Physics_Data_Debug_v0.10</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>8.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -75,14 +76,54 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="4Wheels.cs" />
-    <Compile Include="4WheelsSettings.cs" />
+    <Compile Include="FormPanelLayout.cs" />
+    <Compile Include="FormRowLayout.cs" />
+    <Compile Include="ChartLimiterRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChartLimiterRowHost.cs" />
+    <Compile Include="ChartLimiterRow.Designer.cs">
+      <DependentUpon>ChartLimiterRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GradientPalette.cs" />
+    <Compile Include="WheelPlotHistory.cs" />
+    <Compile Include="ComboBoxBehaviors.cs" />
+    <Compile Include="ChartSettingsUi.cs" />
+    <Compile Include="GameMemoryConfig.cs" />
+    <Compile Include="WreckfestVersionDetector.cs" />
+    <Compile Include="CalculatedTelemetry.cs" />
+    <Compile Include="TelemetryFormulas.cs" />
     <Compile Include="DataItem.cs" />
     <Compile Include="DataLogger.cs" />
+    <Compile Include="DelimitedTelemetryFile.cs" />
+    <Compile Include="OfflineChartOptions.cs" />
+    <Compile Include="ChartPointInspector.cs" />
+    <Compile Include="ChartAppearance.cs" />
+    <Compile Include="ChartZoomBehavior.cs" />
+    <Compile Include="Form4WheelsSettings.Appearance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOfflineChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOfflineChart.Designer.cs">
+      <DependentUpon>FormOfflineChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOfflineChartSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOfflineChartSettings.Designer.cs">
+      <DependentUpon>FormOfflineChartSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form4Wheels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4Wheels.Filters.cs">
+      <DependentUpon>Form4Wheels.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form4Wheels.Designer.cs">
@@ -112,27 +153,25 @@
     <Compile Include="FormSuspensionGeometry.Designer.cs">
       <DependentUpon>FormSuspensionGeometry.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTester.cs">
+    <Compile Include="LiveData.cs" />
+    <Compile Include="TireGripMath.cs" />
+    <Compile Include="LogData.cs" />
+    <Compile Include="LogFilterBinding.cs" />
+    <Compile Include="LogSettings.cs" />
+    <Compile Include="TextBoxBaseParsers.cs" />
+    <Compile Include="JsonFormSettings.cs" />
+    <Compile Include="FormLiveData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTester.Designer.cs">
-      <DependentUpon>FormTester.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GForce.cs" />
-    <Compile Include="GForceSettings.cs" />
-    <Compile Include="LiveData.cs" />
-    <Compile Include="LogData.cs" />
-    <Compile Include="LogSettings.cs" />
-    <Compile Include="RawTireData.cs" />
-    <Compile Include="TextBoxBaseParsers.cs" />
-    <Compile Include="Registry Tools.cs" />
-    <Compile Include="FormLiveData.cs">
+    <Compile Include="FormLiveData.Layout.cs">
+      <DependentUpon>FormLiveData.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLiveData.Designer.cs">
       <DependentUpon>FormLiveData.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryHelper.cs" />
+    <Compile Include="MemoryReader.cs" />
+    <Compile Include="LegacyMemoryUtilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormLogSettings.cs">
@@ -159,8 +198,9 @@
     <Compile Include="FormTireTemperatures.Designer.cs">
       <DependentUpon>FormTireTemperatures.cs</DependentUpon>
     </Compile>
-    <Compile Include="WF_Dictionary.cs" />
-    <Compile Include="WreckfestEnums.cs" />
+    <EmbeddedResource Include="ChartLimiterRow.resx">
+      <DependentUpon>ChartLimiterRow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form4Wheels.resx">
       <DependentUpon>Form4Wheels.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,14 +220,14 @@
     <EmbeddedResource Include="FormLogSettings.resx">
       <DependentUpon>FormLogSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormOfflineChart.resx">
+      <DependentUpon>FormOfflineChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSuspensionGeometry.resx">
       <DependentUpon>FormSuspensionGeometry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSuspensionStaticValues.resx">
       <DependentUpon>FormSuspensionStaticValues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTester.resx">
-      <DependentUpon>FormTester.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTireStaticValues.resx">
       <DependentUpon>FormTireStaticValues.cs</DependentUpon>
@@ -222,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="physics_debug_icon_big.ico" />
+    <EmbeddedResource Include="WreckfestGameMemoryConfig.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

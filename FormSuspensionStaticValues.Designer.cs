@@ -1,2136 +1,3283 @@
-﻿
 namespace Physics_Data_Debug
 {
     partial class FormSuspensionStaticValues
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
+            if (disposing && components != null)
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label_RR_BumpStopLength = new System.Windows.Forms.Label();
-            this.label_RR_ReboundEndPosition = new System.Windows.Forms.Label();
-            this.label_RR_CompressionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_RR_ExpansionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_RR_BumpDampX = new System.Windows.Forms.Label();
-            this.label_RR_ReboundLimitsX = new System.Windows.Forms.Label();
-            this.label_RR_BumpLimitsX = new System.Windows.Forms.Label();
-            this.label_RR_ProgressiveRate = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label_RR_SpringRate = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label_RL_BumpStopLength = new System.Windows.Forms.Label();
-            this.label_RL_ReboundEndPosition = new System.Windows.Forms.Label();
-            this.label_RL_CompressionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_RL_ExpansionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_RL_BumpDampX = new System.Windows.Forms.Label();
-            this.label_RL_ReboundLimitsX = new System.Windows.Forms.Label();
-            this.label_RL_BumpLimitsX = new System.Windows.Forms.Label();
-            this.label_RL_ProgressiveRate = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label_RL_SpringRate = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label_FR_BumpStopLength = new System.Windows.Forms.Label();
-            this.label_FR_ReboundEndPosition = new System.Windows.Forms.Label();
-            this.label_FR_CompressionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_FR_ExpansionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_FR_BumpDampX = new System.Windows.Forms.Label();
-            this.label_FR_ReboundLimitsX = new System.Windows.Forms.Label();
-            this.label_FR_BumpLimitsX = new System.Windows.Forms.Label();
-            this.label_FR_ProgressiveRate = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label_FR_SpringRate = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label_FL_BumpStopLength = new System.Windows.Forms.Label();
-            this.label_FL_ReboundEndPosition = new System.Windows.Forms.Label();
-            this.label_FL_CompressionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_FL_ExpansionLimitFromZero = new System.Windows.Forms.Label();
-            this.label_FL_BumpDampX = new System.Windows.Forms.Label();
-            this.label_FL_ReboundLimitsX = new System.Windows.Forms.Label();
-            this.label_FL_BumpLimitsX = new System.Windows.Forms.Label();
-            this.label_FL_ProgressiveRate = new System.Windows.Forms.Label();
-            this.flMomentOfInertia = new System.Windows.Forms.Label();
-            this.flMass = new System.Windows.Forms.Label();
-            this.flMaxDeflection = new System.Windows.Forms.Label();
-            this.flTireDamperRate = new System.Windows.Forms.Label();
-            this.flTireSpringRate = new System.Windows.Forms.Label();
-            this.flThermalInnerTransfer = new System.Windows.Forms.Label();
-            this.flThermalAirTransfer = new System.Windows.Forms.Label();
-            this.flWidth = new System.Windows.Forms.Label();
-            this.flRadius = new System.Windows.Forms.Label();
+            this.wheelValuesLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftGroup = new System.Windows.Forms.GroupBox();
+            this.frontLeftScroll = new System.Windows.Forms.Panel();
+            this.frontLeftSections = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftSection1Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftSpringRateCaption = new System.Windows.Forms.Label();
             this.label_FL_SpringRate = new System.Windows.Forms.Label();
-            this.label_FR_ReboundStartPosition = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label_FL_ReboundStartPosition = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label_RR_ReboundStartPosition = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label_RL_ReboundStartPosition = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label_FR_BumpStopRate = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label_FL_BumpStopRate = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label_FR_ReboundRate = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label_FL_ReboundRate = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label_RR_ReboundRate = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label_RL_ReboundRate = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label_FR_BumpStopDamp = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label_FL_BumpStopDamp = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label_RR_BumpStopRate = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label_RL_BumpStopRate = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label_FR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label_FL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label_FR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label_FL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label_RR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label_RL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label_RR_BumpStopDamp = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label_RL_BumpStopDamp = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label_RR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.label_RL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.frontLeftProgressiveRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftProgressiveRateCaption = new System.Windows.Forms.Label();
+            this.label_FL_ProgressiveRate = new System.Windows.Forms.Label();
+            this.frontLeftSection2Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpLimitsCaption = new System.Windows.Forms.Label();
+            this.label_FL_BumpLimitsX = new System.Windows.Forms.Label();
             this.label_FL_BumpLimitsY = new System.Windows.Forms.Label();
-            this.label_FR_BumpLimitsY = new System.Windows.Forms.Label();
+            this.frontLeftReboundLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftReboundLimitsCaption = new System.Windows.Forms.Label();
+            this.label_FL_ReboundLimitsX = new System.Windows.Forms.Label();
             this.label_FL_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.frontLeftExpansionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftExpansionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_FL_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.frontLeftCompressionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftCompressionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_FL_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.frontLeftSection3Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpDampCaption = new System.Windows.Forms.Label();
+            this.label_FL_BumpDampX = new System.Windows.Forms.Label();
             this.label_FL_BumpDampY = new System.Windows.Forms.Label();
+            this.frontLeftReboundRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftReboundRateCaption = new System.Windows.Forms.Label();
+            this.label_FL_ReboundRate = new System.Windows.Forms.Label();
+            this.frontLeftReboundStartPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftReboundStartPositionCaption = new System.Windows.Forms.Label();
+            this.label_FL_ReboundStartPosition = new System.Windows.Forms.Label();
+            this.frontLeftReboundEndPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftReboundEndPositionCaption = new System.Windows.Forms.Label();
+            this.label_FL_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.frontLeftSection4Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpStopLengthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpStopLengthCaption = new System.Windows.Forms.Label();
+            this.label_FL_BumpStopLength = new System.Windows.Forms.Label();
+            this.frontLeftBumpStopRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpStopRateCaption = new System.Windows.Forms.Label();
+            this.label_FL_BumpStopRate = new System.Windows.Forms.Label();
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_FL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.frontLeftBumpStopDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpStopDampCaption = new System.Windows.Forms.Label();
+            this.label_FL_BumpStopDamp = new System.Windows.Forms.Label();
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_FL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.frontRightGroup = new System.Windows.Forms.GroupBox();
+            this.frontRightScroll = new System.Windows.Forms.Panel();
+            this.frontRightSections = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightSection1Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightSpringRateCaption = new System.Windows.Forms.Label();
+            this.label_FR_SpringRate = new System.Windows.Forms.Label();
+            this.frontRightProgressiveRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightProgressiveRateCaption = new System.Windows.Forms.Label();
+            this.label_FR_ProgressiveRate = new System.Windows.Forms.Label();
+            this.frontRightSection2Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpLimitsCaption = new System.Windows.Forms.Label();
+            this.label_FR_BumpLimitsX = new System.Windows.Forms.Label();
+            this.label_FR_BumpLimitsY = new System.Windows.Forms.Label();
+            this.frontRightReboundLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightReboundLimitsCaption = new System.Windows.Forms.Label();
+            this.label_FR_ReboundLimitsX = new System.Windows.Forms.Label();
             this.label_FR_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.frontRightExpansionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightExpansionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_FR_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.frontRightCompressionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightCompressionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_FR_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.frontRightSection3Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpDampCaption = new System.Windows.Forms.Label();
+            this.label_FR_BumpDampX = new System.Windows.Forms.Label();
             this.label_FR_BumpDampY = new System.Windows.Forms.Label();
+            this.frontRightReboundRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightReboundRateCaption = new System.Windows.Forms.Label();
+            this.label_FR_ReboundRate = new System.Windows.Forms.Label();
+            this.frontRightReboundStartPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightReboundStartPositionCaption = new System.Windows.Forms.Label();
+            this.label_FR_ReboundStartPosition = new System.Windows.Forms.Label();
+            this.frontRightReboundEndPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightReboundEndPositionCaption = new System.Windows.Forms.Label();
+            this.label_FR_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.frontRightSection4Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpStopLengthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpStopLengthCaption = new System.Windows.Forms.Label();
+            this.label_FR_BumpStopLength = new System.Windows.Forms.Label();
+            this.frontRightBumpStopRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpStopRateCaption = new System.Windows.Forms.Label();
+            this.label_FR_BumpStopRate = new System.Windows.Forms.Label();
+            this.frontRightBumpStopRateGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_FR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.frontRightBumpStopDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpStopDampCaption = new System.Windows.Forms.Label();
+            this.label_FR_BumpStopDamp = new System.Windows.Forms.Label();
+            this.frontRightBumpStopDampGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_FR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.rearLeftGroup = new System.Windows.Forms.GroupBox();
+            this.rearLeftScroll = new System.Windows.Forms.Panel();
+            this.rearLeftSections = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftSection1Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftSpringRateCaption = new System.Windows.Forms.Label();
+            this.label_RL_SpringRate = new System.Windows.Forms.Label();
+            this.rearLeftProgressiveRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftProgressiveRateCaption = new System.Windows.Forms.Label();
+            this.label_RL_ProgressiveRate = new System.Windows.Forms.Label();
+            this.rearLeftSection2Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpLimitsCaption = new System.Windows.Forms.Label();
+            this.label_RL_BumpLimitsX = new System.Windows.Forms.Label();
             this.label_RL_BumpLimitsY = new System.Windows.Forms.Label();
+            this.rearLeftReboundLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftReboundLimitsCaption = new System.Windows.Forms.Label();
+            this.label_RL_ReboundLimitsX = new System.Windows.Forms.Label();
             this.label_RL_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.rearLeftExpansionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftExpansionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_RL_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.rearLeftCompressionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftCompressionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_RL_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.rearLeftSection3Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpDampCaption = new System.Windows.Forms.Label();
+            this.label_RL_BumpDampX = new System.Windows.Forms.Label();
             this.label_RL_BumpDampY = new System.Windows.Forms.Label();
+            this.rearLeftReboundRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftReboundRateCaption = new System.Windows.Forms.Label();
+            this.label_RL_ReboundRate = new System.Windows.Forms.Label();
+            this.rearLeftReboundStartPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftReboundStartPositionCaption = new System.Windows.Forms.Label();
+            this.label_RL_ReboundStartPosition = new System.Windows.Forms.Label();
+            this.rearLeftReboundEndPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftReboundEndPositionCaption = new System.Windows.Forms.Label();
+            this.label_RL_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.rearLeftSection4Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpStopLengthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpStopLengthCaption = new System.Windows.Forms.Label();
+            this.label_RL_BumpStopLength = new System.Windows.Forms.Label();
+            this.rearLeftBumpStopRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpStopRateCaption = new System.Windows.Forms.Label();
+            this.label_RL_BumpStopRate = new System.Windows.Forms.Label();
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_RL_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.rearLeftBumpStopDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpStopDampCaption = new System.Windows.Forms.Label();
+            this.label_RL_BumpStopDamp = new System.Windows.Forms.Label();
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_RL_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.rearRightGroup = new System.Windows.Forms.GroupBox();
+            this.rearRightScroll = new System.Windows.Forms.Panel();
+            this.rearRightSections = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightSection1Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightSpringRateCaption = new System.Windows.Forms.Label();
+            this.label_RR_SpringRate = new System.Windows.Forms.Label();
+            this.rearRightProgressiveRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightProgressiveRateCaption = new System.Windows.Forms.Label();
+            this.label_RR_ProgressiveRate = new System.Windows.Forms.Label();
+            this.rearRightSection2Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpLimitsCaption = new System.Windows.Forms.Label();
+            this.label_RR_BumpLimitsX = new System.Windows.Forms.Label();
             this.label_RR_BumpLimitsY = new System.Windows.Forms.Label();
+            this.rearRightReboundLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightReboundLimitsCaption = new System.Windows.Forms.Label();
+            this.label_RR_ReboundLimitsX = new System.Windows.Forms.Label();
             this.label_RR_ReboundLimitsY = new System.Windows.Forms.Label();
+            this.rearRightExpansionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightExpansionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_RR_ExpansionLimitFromZero = new System.Windows.Forms.Label();
+            this.rearRightCompressionLimitFromZeroRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightCompressionLimitFromZeroCaption = new System.Windows.Forms.Label();
+            this.label_RR_CompressionLimitFromZero = new System.Windows.Forms.Label();
+            this.rearRightSection3Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpDampCaption = new System.Windows.Forms.Label();
+            this.label_RR_BumpDampX = new System.Windows.Forms.Label();
             this.label_RR_BumpDampY = new System.Windows.Forms.Label();
+            this.rearRightReboundRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightReboundRateCaption = new System.Windows.Forms.Label();
+            this.label_RR_ReboundRate = new System.Windows.Forms.Label();
+            this.rearRightReboundStartPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightReboundStartPositionCaption = new System.Windows.Forms.Label();
+            this.label_RR_ReboundStartPosition = new System.Windows.Forms.Label();
+            this.rearRightReboundEndPositionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightReboundEndPositionCaption = new System.Windows.Forms.Label();
+            this.label_RR_ReboundEndPosition = new System.Windows.Forms.Label();
+            this.rearRightSection4Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpStopLengthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpStopLengthCaption = new System.Windows.Forms.Label();
+            this.label_RR_BumpStopLength = new System.Windows.Forms.Label();
+            this.rearRightBumpStopRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpStopRateCaption = new System.Windows.Forms.Label();
+            this.label_RR_BumpStopRate = new System.Windows.Forms.Label();
+            this.rearRightBumpStopRateGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_RR_BumpStopRateGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.rearRightBumpStopDampRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpStopDampCaption = new System.Windows.Forms.Label();
+            this.label_RR_BumpStopDamp = new System.Windows.Forms.Label();
+            this.rearRightBumpStopDampGainDeflectionSquaredRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption = new System.Windows.Forms.Label();
+            this.label_RR_BumpStopDampGainDeflectionSquared = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(515, 707);
-            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(140, 25);
-            this.label22.TabIndex = 161;
-            this.label22.Text = "REAR RIGHT";
-            // 
-            // label_RR_BumpStopLength
-            // 
-            this.label_RR_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpStopLength.Location = new System.Drawing.Point(747, 1182);
-            this.label_RR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_BumpStopLength.Name = "label_RR_BumpStopLength";
-            this.label_RR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_BumpStopLength.TabIndex = 160;
-            // 
-            // label_RR_ReboundEndPosition
-            // 
-            this.label_RR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ReboundEndPosition.Location = new System.Drawing.Point(747, 1140);
-            this.label_RR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ReboundEndPosition.Name = "label_RR_ReboundEndPosition";
-            this.label_RR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_ReboundEndPosition.TabIndex = 159;
-            // 
-            // label_RR_CompressionLimitFromZero
-            // 
-            this.label_RR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_RR_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_RR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 1009);
-            this.label_RR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_CompressionLimitFromZero.Name = "label_RR_CompressionLimitFromZero";
-            this.label_RR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_CompressionLimitFromZero.TabIndex = 158;
-            // 
-            // label_RR_ExpansionLimitFromZero
-            // 
-            this.label_RR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 967);
-            this.label_RR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ExpansionLimitFromZero.Name = "label_RR_ExpansionLimitFromZero";
-            this.label_RR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_ExpansionLimitFromZero.TabIndex = 157;
-            // 
-            // label_RR_BumpDampX
-            // 
-            this.label_RR_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpDampX.Location = new System.Drawing.Point(747, 924);
-            this.label_RR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_BumpDampX.Name = "label_RR_BumpDampX";
-            this.label_RR_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.label_RR_BumpDampX.TabIndex = 156;
-            // 
-            // label_RR_ReboundLimitsX
-            // 
-            this.label_RR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ReboundLimitsX.Location = new System.Drawing.Point(747, 880);
-            this.label_RR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ReboundLimitsX.Name = "label_RR_ReboundLimitsX";
-            this.label_RR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_RR_ReboundLimitsX.TabIndex = 155;
-            // 
-            // label_RR_BumpLimitsX
-            // 
-            this.label_RR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpLimitsX.Location = new System.Drawing.Point(747, 838);
-            this.label_RR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_BumpLimitsX.Name = "label_RR_BumpLimitsX";
-            this.label_RR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_RR_BumpLimitsX.TabIndex = 154;
-            // 
-            // label_RR_ProgressiveRate
-            // 
-            this.label_RR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ProgressiveRate.Location = new System.Drawing.Point(747, 796);
-            this.label_RR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ProgressiveRate.Name = "label_RR_ProgressiveRate";
-            this.label_RR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_ProgressiveRate.TabIndex = 153;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(515, 1188);
-            this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(189, 25);
-            this.label23.TabIndex = 152;
-            this.label23.Text = "Bump Stop Length";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(515, 1146);
-            this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(192, 25);
-            this.label24.TabIndex = 151;
-            this.label24.Text = "Rebound End Pos.";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(515, 1017);
-            this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(189, 25);
-            this.label25.TabIndex = 150;
-            this.label25.Text = "Compression Limit";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(515, 973);
-            this.label26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(136, 25);
-            this.label26.TabIndex = 149;
-            this.label26.Text = "Expand Limit";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(515, 930);
-            this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(190, 25);
-            this.label27.TabIndex = 148;
-            this.label27.Text = "Bump Damp (X, Y)";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(515, 888);
-            this.label28.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(222, 25);
-            this.label28.TabIndex = 147;
-            this.label28.Text = "Rebound Limits (X, Y)";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(515, 844);
-            this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(190, 25);
-            this.label29.TabIndex = 146;
-            this.label29.Text = "Bump Limits (X, Y)";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(515, 801);
-            this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(177, 25);
-            this.label30.TabIndex = 145;
-            this.label30.Text = "Progressive Rate";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(515, 757);
-            this.label31.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(125, 25);
-            this.label31.TabIndex = 144;
-            this.label31.Tag = "";
-            this.label31.Text = "Spring Rate";
-            // 
-            // label_RR_SpringRate
-            // 
-            this.label_RR_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_RR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_RR_SpringRate.Location = new System.Drawing.Point(747, 751);
-            this.label_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_SpringRate.Name = "label_RR_SpringRate";
-            this.label_RR_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_SpringRate.TabIndex = 143;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(15, 707);
-            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 25);
-            this.label11.TabIndex = 142;
-            this.label11.Text = "REAR LEFT";
-            // 
-            // label_RL_BumpStopLength
-            // 
-            this.label_RL_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpStopLength.Location = new System.Drawing.Point(247, 1182);
-            this.label_RL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_BumpStopLength.Name = "label_RL_BumpStopLength";
-            this.label_RL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_BumpStopLength.TabIndex = 141;
-            // 
-            // label_RL_ReboundEndPosition
-            // 
-            this.label_RL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ReboundEndPosition.Location = new System.Drawing.Point(247, 1140);
-            this.label_RL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ReboundEndPosition.Name = "label_RL_ReboundEndPosition";
-            this.label_RL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_ReboundEndPosition.TabIndex = 140;
-            // 
-            // label_RL_CompressionLimitFromZero
-            // 
-            this.label_RL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_RL_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_RL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 1009);
-            this.label_RL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_CompressionLimitFromZero.Name = "label_RL_CompressionLimitFromZero";
-            this.label_RL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_CompressionLimitFromZero.TabIndex = 139;
-            // 
-            // label_RL_ExpansionLimitFromZero
-            // 
-            this.label_RL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 967);
-            this.label_RL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ExpansionLimitFromZero.Name = "label_RL_ExpansionLimitFromZero";
-            this.label_RL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_ExpansionLimitFromZero.TabIndex = 138;
-            // 
-            // label_RL_BumpDampX
-            // 
-            this.label_RL_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpDampX.Location = new System.Drawing.Point(247, 924);
-            this.label_RL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_BumpDampX.Name = "label_RL_BumpDampX";
-            this.label_RL_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.label_RL_BumpDampX.TabIndex = 137;
-            // 
-            // label_RL_ReboundLimitsX
-            // 
-            this.label_RL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ReboundLimitsX.Location = new System.Drawing.Point(247, 880);
-            this.label_RL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ReboundLimitsX.Name = "label_RL_ReboundLimitsX";
-            this.label_RL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_RL_ReboundLimitsX.TabIndex = 136;
-            // 
-            // label_RL_BumpLimitsX
-            // 
-            this.label_RL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpLimitsX.Location = new System.Drawing.Point(247, 838);
-            this.label_RL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_BumpLimitsX.Name = "label_RL_BumpLimitsX";
-            this.label_RL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_RL_BumpLimitsX.TabIndex = 135;
-            // 
-            // label_RL_ProgressiveRate
-            // 
-            this.label_RL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ProgressiveRate.Location = new System.Drawing.Point(247, 796);
-            this.label_RL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ProgressiveRate.Name = "label_RL_ProgressiveRate";
-            this.label_RL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_ProgressiveRate.TabIndex = 134;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(15, 1188);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(189, 25);
-            this.label12.TabIndex = 133;
-            this.label12.Text = "Bump Stop Length";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(15, 1146);
-            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(192, 25);
-            this.label14.TabIndex = 132;
-            this.label14.Text = "Rebound End Pos.";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(15, 1017);
-            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(189, 25);
-            this.label15.TabIndex = 131;
-            this.label15.Text = "Compression Limit";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(15, 973);
-            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(136, 25);
-            this.label16.TabIndex = 130;
-            this.label16.Text = "Expand Limit";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(15, 930);
-            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(190, 25);
-            this.label17.TabIndex = 129;
-            this.label17.Text = "Bump Damp (X, Y)";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(15, 888);
-            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(222, 25);
-            this.label18.TabIndex = 128;
-            this.label18.Text = "Rebound Limits (X, Y)";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(15, 844);
-            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(190, 25);
-            this.label19.TabIndex = 127;
-            this.label19.Text = "Bump Limits (X, Y)";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(15, 801);
-            this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(177, 25);
-            this.label20.TabIndex = 126;
-            this.label20.Text = "Progressive Rate";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(15, 757);
-            this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(125, 25);
-            this.label21.TabIndex = 125;
-            this.label21.Text = "Spring Rate";
-            // 
-            // label_RL_SpringRate
-            // 
-            this.label_RL_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_RL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_RL_SpringRate.Location = new System.Drawing.Point(247, 751);
-            this.label_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_SpringRate.Name = "label_RL_SpringRate";
-            this.label_RL_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_SpringRate.TabIndex = 124;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(515, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 25);
-            this.label1.TabIndex = 123;
-            this.label1.Text = "FRONT RIGHT";
-            // 
-            // label_FR_BumpStopLength
-            // 
-            this.label_FR_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpStopLength.Location = new System.Drawing.Point(747, 482);
-            this.label_FR_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpStopLength.Name = "label_FR_BumpStopLength";
-            this.label_FR_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_BumpStopLength.TabIndex = 122;
-            // 
-            // label_FR_ReboundEndPosition
-            // 
-            this.label_FR_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ReboundEndPosition.Location = new System.Drawing.Point(747, 440);
-            this.label_FR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ReboundEndPosition.Name = "label_FR_ReboundEndPosition";
-            this.label_FR_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_ReboundEndPosition.TabIndex = 121;
-            // 
-            // label_FR_CompressionLimitFromZero
-            // 
-            this.label_FR_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_FR_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_FR_CompressionLimitFromZero.Location = new System.Drawing.Point(747, 311);
-            this.label_FR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_CompressionLimitFromZero.Name = "label_FR_CompressionLimitFromZero";
-            this.label_FR_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_CompressionLimitFromZero.TabIndex = 120;
-            // 
-            // label_FR_ExpansionLimitFromZero
-            // 
-            this.label_FR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ExpansionLimitFromZero.Location = new System.Drawing.Point(747, 269);
-            this.label_FR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ExpansionLimitFromZero.Name = "label_FR_ExpansionLimitFromZero";
-            this.label_FR_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_ExpansionLimitFromZero.TabIndex = 119;
-            // 
-            // label_FR_BumpDampX
-            // 
-            this.label_FR_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpDampX.Location = new System.Drawing.Point(747, 224);
-            this.label_FR_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpDampX.Name = "label_FR_BumpDampX";
-            this.label_FR_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.label_FR_BumpDampX.TabIndex = 118;
-            // 
-            // label_FR_ReboundLimitsX
-            // 
-            this.label_FR_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ReboundLimitsX.Location = new System.Drawing.Point(747, 182);
-            this.label_FR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ReboundLimitsX.Name = "label_FR_ReboundLimitsX";
-            this.label_FR_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_FR_ReboundLimitsX.TabIndex = 117;
-            // 
-            // label_FR_BumpLimitsX
-            // 
-            this.label_FR_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpLimitsX.Location = new System.Drawing.Point(747, 140);
-            this.label_FR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpLimitsX.Name = "label_FR_BumpLimitsX";
-            this.label_FR_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_FR_BumpLimitsX.TabIndex = 116;
-            // 
-            // label_FR_ProgressiveRate
-            // 
-            this.label_FR_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ProgressiveRate.Location = new System.Drawing.Point(747, 96);
-            this.label_FR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ProgressiveRate.Name = "label_FR_ProgressiveRate";
-            this.label_FR_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_ProgressiveRate.TabIndex = 115;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(515, 486);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 25);
-            this.label2.TabIndex = 114;
-            this.label2.Text = "Bump Stop Length";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(515, 446);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(192, 25);
-            this.label3.TabIndex = 113;
-            this.label3.Text = "Rebound End Pos.";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(515, 317);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(189, 25);
-            this.label4.TabIndex = 112;
-            this.label4.Text = "Compression Limit";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(515, 274);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 25);
-            this.label5.TabIndex = 111;
-            this.label5.Text = "Expand Limit";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(515, 230);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(190, 25);
-            this.label6.TabIndex = 110;
-            this.label6.Text = "Bump Damp (X, Y)";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(515, 188);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(222, 25);
-            this.label7.TabIndex = 109;
-            this.label7.Text = "Rebound Limits (X, Y)";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(515, 146);
-            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(190, 25);
-            this.label8.TabIndex = 108;
-            this.label8.Text = "Bump Limits (X, Y)";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(515, 101);
-            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(177, 25);
-            this.label9.TabIndex = 107;
-            this.label9.Text = "Progressive Rate";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(515, 59);
-            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 25);
-            this.label10.TabIndex = 106;
-            this.label10.Text = "Spring Rate";
-            // 
-            // label_FR_SpringRate
-            // 
-            this.label_FR_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_FR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_FR_SpringRate.Location = new System.Drawing.Point(747, 53);
-            this.label_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_SpringRate.Name = "label_FR_SpringRate";
-            this.label_FR_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_SpringRate.TabIndex = 105;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(15, 9);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(142, 25);
-            this.label13.TabIndex = 102;
-            this.label13.Text = "FRONT LEFT";
-            // 
-            // label_FL_BumpStopLength
-            // 
-            this.label_FL_BumpStopLength.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpStopLength.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpStopLength.Location = new System.Drawing.Point(247, 482);
-            this.label_FL_BumpStopLength.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_BumpStopLength.Name = "label_FL_BumpStopLength";
-            this.label_FL_BumpStopLength.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_BumpStopLength.TabIndex = 101;
-            // 
-            // label_FL_ReboundEndPosition
-            // 
-            this.label_FL_ReboundEndPosition.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ReboundEndPosition.Location = new System.Drawing.Point(247, 440);
-            this.label_FL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ReboundEndPosition.Name = "label_FL_ReboundEndPosition";
-            this.label_FL_ReboundEndPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_ReboundEndPosition.TabIndex = 100;
-            // 
-            // label_FL_CompressionLimitFromZero
-            // 
-            this.label_FL_CompressionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_FL_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_FL_CompressionLimitFromZero.Location = new System.Drawing.Point(247, 311);
-            this.label_FL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_CompressionLimitFromZero.Name = "label_FL_CompressionLimitFromZero";
-            this.label_FL_CompressionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_CompressionLimitFromZero.TabIndex = 99;
-            // 
-            // label_FL_ExpansionLimitFromZero
-            // 
-            this.label_FL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ExpansionLimitFromZero.Location = new System.Drawing.Point(247, 269);
-            this.label_FL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ExpansionLimitFromZero.Name = "label_FL_ExpansionLimitFromZero";
-            this.label_FL_ExpansionLimitFromZero.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_ExpansionLimitFromZero.TabIndex = 98;
-            // 
-            // label_FL_BumpDampX
-            // 
-            this.label_FL_BumpDampX.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpDampX.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpDampX.Location = new System.Drawing.Point(247, 224);
-            this.label_FL_BumpDampX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_BumpDampX.Name = "label_FL_BumpDampX";
-            this.label_FL_BumpDampX.Size = new System.Drawing.Size(96, 31);
-            this.label_FL_BumpDampX.TabIndex = 97;
-            // 
-            // label_FL_ReboundLimitsX
-            // 
-            this.label_FL_ReboundLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ReboundLimitsX.Location = new System.Drawing.Point(247, 182);
-            this.label_FL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ReboundLimitsX.Name = "label_FL_ReboundLimitsX";
-            this.label_FL_ReboundLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_FL_ReboundLimitsX.TabIndex = 96;
-            // 
-            // label_FL_BumpLimitsX
-            // 
-            this.label_FL_BumpLimitsX.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpLimitsX.Location = new System.Drawing.Point(247, 140);
-            this.label_FL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_BumpLimitsX.Name = "label_FL_BumpLimitsX";
-            this.label_FL_BumpLimitsX.Size = new System.Drawing.Size(96, 31);
-            this.label_FL_BumpLimitsX.TabIndex = 95;
-            // 
-            // label_FL_ProgressiveRate
-            // 
-            this.label_FL_ProgressiveRate.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ProgressiveRate.Location = new System.Drawing.Point(247, 96);
-            this.label_FL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ProgressiveRate.Name = "label_FL_ProgressiveRate";
-            this.label_FL_ProgressiveRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_ProgressiveRate.TabIndex = 94;
-            // 
-            // flMomentOfInertia
-            // 
-            this.flMomentOfInertia.AutoSize = true;
-            this.flMomentOfInertia.ForeColor = System.Drawing.Color.White;
-            this.flMomentOfInertia.Location = new System.Drawing.Point(15, 486);
-            this.flMomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flMomentOfInertia.Name = "flMomentOfInertia";
-            this.flMomentOfInertia.Size = new System.Drawing.Size(189, 25);
-            this.flMomentOfInertia.TabIndex = 93;
-            this.flMomentOfInertia.Text = "Bump Stop Length";
-            // 
-            // flMass
-            // 
-            this.flMass.AutoSize = true;
-            this.flMass.ForeColor = System.Drawing.Color.White;
-            this.flMass.Location = new System.Drawing.Point(15, 446);
-            this.flMass.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flMass.Name = "flMass";
-            this.flMass.Size = new System.Drawing.Size(192, 25);
-            this.flMass.TabIndex = 92;
-            this.flMass.Text = "Rebound End Pos.";
-            // 
-            // flMaxDeflection
-            // 
-            this.flMaxDeflection.AutoSize = true;
-            this.flMaxDeflection.ForeColor = System.Drawing.Color.White;
-            this.flMaxDeflection.Location = new System.Drawing.Point(15, 317);
-            this.flMaxDeflection.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flMaxDeflection.Name = "flMaxDeflection";
-            this.flMaxDeflection.Size = new System.Drawing.Size(189, 25);
-            this.flMaxDeflection.TabIndex = 91;
-            this.flMaxDeflection.Text = "Compression Limit";
-            // 
-            // flTireDamperRate
-            // 
-            this.flTireDamperRate.AutoSize = true;
-            this.flTireDamperRate.ForeColor = System.Drawing.Color.White;
-            this.flTireDamperRate.Location = new System.Drawing.Point(15, 274);
-            this.flTireDamperRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flTireDamperRate.Name = "flTireDamperRate";
-            this.flTireDamperRate.Size = new System.Drawing.Size(136, 25);
-            this.flTireDamperRate.TabIndex = 90;
-            this.flTireDamperRate.Text = "Expand Limit";
-            // 
-            // flTireSpringRate
-            // 
-            this.flTireSpringRate.AutoSize = true;
-            this.flTireSpringRate.ForeColor = System.Drawing.Color.White;
-            this.flTireSpringRate.Location = new System.Drawing.Point(15, 230);
-            this.flTireSpringRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flTireSpringRate.Name = "flTireSpringRate";
-            this.flTireSpringRate.Size = new System.Drawing.Size(190, 25);
-            this.flTireSpringRate.TabIndex = 89;
-            this.flTireSpringRate.Text = "Bump Damp (X, Y)";
-            // 
-            // flThermalInnerTransfer
-            // 
-            this.flThermalInnerTransfer.AutoSize = true;
-            this.flThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
-            this.flThermalInnerTransfer.Location = new System.Drawing.Point(15, 188);
-            this.flThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flThermalInnerTransfer.Name = "flThermalInnerTransfer";
-            this.flThermalInnerTransfer.Size = new System.Drawing.Size(222, 25);
-            this.flThermalInnerTransfer.TabIndex = 88;
-            this.flThermalInnerTransfer.Text = "Rebound Limits (X, Y)";
-            // 
-            // flThermalAirTransfer
-            // 
-            this.flThermalAirTransfer.AutoSize = true;
-            this.flThermalAirTransfer.ForeColor = System.Drawing.Color.White;
-            this.flThermalAirTransfer.Location = new System.Drawing.Point(15, 146);
-            this.flThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flThermalAirTransfer.Name = "flThermalAirTransfer";
-            this.flThermalAirTransfer.Size = new System.Drawing.Size(190, 25);
-            this.flThermalAirTransfer.TabIndex = 87;
-            this.flThermalAirTransfer.Text = "Bump Limits (X, Y)";
-            // 
-            // flWidth
-            // 
-            this.flWidth.AutoSize = true;
-            this.flWidth.ForeColor = System.Drawing.Color.White;
-            this.flWidth.Location = new System.Drawing.Point(15, 101);
-            this.flWidth.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flWidth.Name = "flWidth";
-            this.flWidth.Size = new System.Drawing.Size(177, 25);
-            this.flWidth.TabIndex = 86;
-            this.flWidth.Text = "Progressive Rate";
-            // 
-            // flRadius
-            // 
-            this.flRadius.AutoSize = true;
-            this.flRadius.ForeColor = System.Drawing.Color.White;
-            this.flRadius.Location = new System.Drawing.Point(15, 59);
-            this.flRadius.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flRadius.Name = "flRadius";
-            this.flRadius.Size = new System.Drawing.Size(125, 25);
-            this.flRadius.TabIndex = 85;
-            this.flRadius.Text = "Spring Rate";
-            // 
+            // wheelValuesLayout
+            this.wheelValuesLayout.Name = "wheelValuesLayout";
+            this.wheelValuesLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wheelValuesLayout.ColumnCount = 2;
+            this.wheelValuesLayout.RowCount = 2;
+            this.wheelValuesLayout.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.wheelValuesLayout.Padding = new System.Windows.Forms.Padding(4);
+            this.wheelValuesLayout.Margin = System.Windows.Forms.Padding.Empty;
+            this.wheelValuesLayout.BackColor = System.Drawing.Color.Black;
+            this.wheelValuesLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.wheelValuesLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.wheelValuesLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.wheelValuesLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            // frontLeftGroup
+            this.frontLeftGroup.Name = "frontLeftGroup";
+            this.frontLeftGroup.Text = "FRONT LEFT";
+            this.frontLeftGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.frontLeftGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.frontLeftGroup.ForeColor = System.Drawing.Color.White;
+            this.frontLeftGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontLeftScroll
+            this.frontLeftScroll.Name = "frontLeftScroll";
+            this.frontLeftScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftScroll.AutoScroll = true;
+            this.frontLeftScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontLeftSections
+            this.frontLeftSections.Name = "frontLeftSections";
+            this.frontLeftSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.frontLeftSections.AutoSize = true;
+            this.frontLeftSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.frontLeftSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSections.ColumnCount = 1;
+            this.frontLeftSections.RowCount = 4;
+            this.frontLeftSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.frontLeftSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.frontLeftSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontLeftSection1Group
+            this.frontLeftSection1Group.Name = "frontLeftSection1Group";
+            this.frontLeftSection1Group.Text = "Springs";
+            this.frontLeftSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection1Rows
+            this.frontLeftSection1Rows.Name = "frontLeftSection1Rows";
+            this.frontLeftSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection1Rows.ColumnCount = 1;
+            this.frontLeftSection1Rows.RowCount = 2;
+            this.frontLeftSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftSpringRateRow
+            this.frontLeftSpringRateRow.Name = "frontLeftSpringRateRow";
+            this.frontLeftSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSpringRateRow.ColumnCount = 2;
+            this.frontLeftSpringRateRow.RowCount = 1;
+            this.frontLeftSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftSpringRateCaption
+            this.frontLeftSpringRateCaption.Name = "frontLeftSpringRateCaption";
+            this.frontLeftSpringRateCaption.Text = "Spring rate";
+            this.frontLeftSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftSpringRateCaption.AutoEllipsis = true;
+            this.frontLeftSpringRateCaption.UseMnemonic = false;
+            this.frontLeftSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftSpringRateRow.Controls.Add(this.frontLeftSpringRateCaption, 0, 0);
             // label_FL_SpringRate
-            // 
-            this.label_FL_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_FL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_FL_SpringRate.Location = new System.Drawing.Point(247, 53);
-            this.label_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_SpringRate.Name = "label_FL_SpringRate";
-            this.label_FL_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_SpringRate.TabIndex = 83;
-            // 
-            // label_FR_ReboundStartPosition
-            // 
-            this.label_FR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ReboundStartPosition.Location = new System.Drawing.Point(747, 398);
-            this.label_FR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ReboundStartPosition.Name = "label_FR_ReboundStartPosition";
-            this.label_FR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_ReboundStartPosition.TabIndex = 165;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(515, 403);
-            this.label32.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(199, 25);
-            this.label32.TabIndex = 164;
-            this.label32.Text = "Rebound Start Pos.";
-            // 
-            // label_FL_ReboundStartPosition
-            // 
-            this.label_FL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ReboundStartPosition.Location = new System.Drawing.Point(247, 398);
-            this.label_FL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ReboundStartPosition.Name = "label_FL_ReboundStartPosition";
-            this.label_FL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_ReboundStartPosition.TabIndex = 163;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(15, 403);
-            this.label33.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(199, 25);
-            this.label33.TabIndex = 162;
-            this.label33.Text = "Rebound Start Pos.";
-            // 
-            // label_RR_ReboundStartPosition
-            // 
-            this.label_RR_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ReboundStartPosition.Location = new System.Drawing.Point(747, 1096);
-            this.label_RR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ReboundStartPosition.Name = "label_RR_ReboundStartPosition";
-            this.label_RR_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_ReboundStartPosition.TabIndex = 169;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.Color.White;
-            this.label34.Location = new System.Drawing.Point(515, 1101);
-            this.label34.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(199, 25);
-            this.label34.TabIndex = 168;
-            this.label34.Text = "Rebound Start Pos.";
-            // 
-            // label_RL_ReboundStartPosition
-            // 
-            this.label_RL_ReboundStartPosition.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ReboundStartPosition.Location = new System.Drawing.Point(247, 1096);
-            this.label_RL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ReboundStartPosition.Name = "label_RL_ReboundStartPosition";
-            this.label_RL_ReboundStartPosition.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_ReboundStartPosition.TabIndex = 167;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.ForeColor = System.Drawing.Color.White;
-            this.label35.Location = new System.Drawing.Point(15, 1101);
-            this.label35.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(199, 25);
-            this.label35.TabIndex = 166;
-            this.label35.Text = "Rebound Start Pos.";
-            // 
-            // label_FR_BumpStopRate
-            // 
-            this.label_FR_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpStopRate.Location = new System.Drawing.Point(747, 526);
-            this.label_FR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpStopRate.Name = "label_FR_BumpStopRate";
-            this.label_FR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_BumpStopRate.TabIndex = 173;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.Color.White;
-            this.label36.Location = new System.Drawing.Point(515, 532);
-            this.label36.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(168, 25);
-            this.label36.TabIndex = 172;
-            this.label36.Text = "Bump Stop Rate";
-            // 
-            // label_FL_BumpStopRate
-            // 
-            this.label_FL_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpStopRate.Location = new System.Drawing.Point(247, 526);
-            this.label_FL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_BumpStopRate.Name = "label_FL_BumpStopRate";
-            this.label_FL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_BumpStopRate.TabIndex = 171;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.ForeColor = System.Drawing.Color.White;
-            this.label37.Location = new System.Drawing.Point(15, 532);
-            this.label37.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(168, 25);
-            this.label37.TabIndex = 170;
-            this.label37.Text = "Bump Stop Rate";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.ForeColor = System.Drawing.Color.White;
-            this.label38.Location = new System.Drawing.Point(515, 1226);
-            this.label38.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(168, 25);
-            this.label38.TabIndex = 176;
-            this.label38.Text = "Bump Stop Rate";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.ForeColor = System.Drawing.Color.White;
-            this.label39.Location = new System.Drawing.Point(15, 1226);
-            this.label39.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(168, 25);
-            this.label39.TabIndex = 174;
-            this.label39.Text = "Bump Stop Rate";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.ForeColor = System.Drawing.Color.White;
-            this.label40.Location = new System.Drawing.Point(955, 275);
-            this.label40.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(888, 25);
-            this.label40.TabIndex = 178;
-            this.label40.Text = "Expand limit from 0 (Affected by Weight, FrMassDist, RideHeight, SpringRate and G" +
-    "eometry";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.ForeColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(955, 970);
-            this.label41.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(888, 25);
-            this.label41.TabIndex = 179;
-            this.label41.Text = "Expand limit from 0 (Affected by Weight, FrMassDist, RideHeight, SpringRate and G" +
-    "eometry";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.ForeColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(955, 312);
-            this.label42.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(248, 25);
-            this.label42.TabIndex = 180;
-            this.label42.Text = "Compression limit from 0";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.ForeColor = System.Drawing.Color.White;
-            this.label43.Location = new System.Drawing.Point(955, 1012);
-            this.label43.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(248, 25);
-            this.label43.TabIndex = 181;
-            this.label43.Text = "Compression limit from 0";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.ForeColor = System.Drawing.Color.White;
-            this.label44.Location = new System.Drawing.Point(955, 446);
-            this.label44.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(496, 25);
-            this.label44.TabIndex = 182;
-            this.label44.Text = "Ride Height + Bump Stop Down + Rebound Length";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(955, 1140);
-            this.label45.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(496, 25);
-            this.label45.TabIndex = 183;
-            this.label45.Text = "Ride Height + Bump Stop Down + Rebound Length";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(955, 403);
-            this.label46.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(313, 25);
-            this.label46.TabIndex = 184;
-            this.label46.Text = "Ride Height + Bump Stop Down";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.ForeColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(955, 1102);
-            this.label47.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(313, 25);
-            this.label47.TabIndex = 185;
-            this.label47.Text = "Ride Height + Bump Stop Down";
-            // 
-            // label_FR_ReboundRate
-            // 
-            this.label_FR_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ReboundRate.Location = new System.Drawing.Point(747, 353);
-            this.label_FR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ReboundRate.Name = "label_FR_ReboundRate";
-            this.label_FR_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_ReboundRate.TabIndex = 189;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.ForeColor = System.Drawing.Color.White;
-            this.label48.Location = new System.Drawing.Point(515, 359);
-            this.label48.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(150, 25);
-            this.label48.TabIndex = 188;
-            this.label48.Text = "Rebound Rate";
-            // 
-            // label_FL_ReboundRate
-            // 
-            this.label_FL_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ReboundRate.Location = new System.Drawing.Point(247, 353);
-            this.label_FL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ReboundRate.Name = "label_FL_ReboundRate";
-            this.label_FL_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_ReboundRate.TabIndex = 187;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.ForeColor = System.Drawing.Color.White;
-            this.label49.Location = new System.Drawing.Point(15, 359);
-            this.label49.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(150, 25);
-            this.label49.TabIndex = 186;
-            this.label49.Text = "Rebound Rate";
-            // 
-            // label_RR_ReboundRate
-            // 
-            this.label_RR_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ReboundRate.Location = new System.Drawing.Point(747, 1053);
-            this.label_RR_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ReboundRate.Name = "label_RR_ReboundRate";
-            this.label_RR_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_ReboundRate.TabIndex = 193;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.ForeColor = System.Drawing.Color.White;
-            this.label50.Location = new System.Drawing.Point(515, 1059);
-            this.label50.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(150, 25);
-            this.label50.TabIndex = 192;
-            this.label50.Text = "Rebound Rate";
-            // 
-            // label_RL_ReboundRate
-            // 
-            this.label_RL_ReboundRate.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ReboundRate.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ReboundRate.Location = new System.Drawing.Point(247, 1053);
-            this.label_RL_ReboundRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ReboundRate.Name = "label_RL_ReboundRate";
-            this.label_RL_ReboundRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_ReboundRate.TabIndex = 191;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.ForeColor = System.Drawing.Color.White;
-            this.label51.Location = new System.Drawing.Point(15, 1059);
-            this.label51.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(150, 25);
-            this.label51.TabIndex = 190;
-            this.label51.Text = "Rebound Rate";
-            // 
-            // label_FR_BumpStopDamp
-            // 
-            this.label_FR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpStopDamp.Location = new System.Drawing.Point(747, 613);
-            this.label_FR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpStopDamp.Name = "label_FR_BumpStopDamp";
-            this.label_FR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_BumpStopDamp.TabIndex = 197;
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.ForeColor = System.Drawing.Color.White;
-            this.label52.Location = new System.Drawing.Point(515, 615);
-            this.label52.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(179, 25);
-            this.label52.TabIndex = 196;
-            this.label52.Text = "Bump Stop Damp";
-            // 
-            // label_FL_BumpStopDamp
-            // 
-            this.label_FL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpStopDamp.Location = new System.Drawing.Point(247, 613);
-            this.label_FL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_BumpStopDamp.Name = "label_FL_BumpStopDamp";
-            this.label_FL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_BumpStopDamp.TabIndex = 195;
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.ForeColor = System.Drawing.Color.White;
-            this.label53.Location = new System.Drawing.Point(15, 615);
-            this.label53.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(179, 25);
-            this.label53.TabIndex = 194;
-            this.label53.Text = "Bump Stop Damp";
-            // 
-            // label_RR_BumpStopRate
-            // 
-            this.label_RR_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpStopRate.Location = new System.Drawing.Point(747, 1224);
-            this.label_RR_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_BumpStopRate.Name = "label_RR_BumpStopRate";
-            this.label_RR_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_BumpStopRate.TabIndex = 201;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.ForeColor = System.Drawing.Color.White;
-            this.label54.Location = new System.Drawing.Point(513, 1315);
-            this.label54.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(179, 25);
-            this.label54.TabIndex = 200;
-            this.label54.Text = "Bump Stop Damp";
-            // 
-            // label_RL_BumpStopRate
-            // 
-            this.label_RL_BumpStopRate.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpStopRate.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpStopRate.Location = new System.Drawing.Point(247, 1224);
-            this.label_RL_BumpStopRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_BumpStopRate.Name = "label_RL_BumpStopRate";
-            this.label_RL_BumpStopRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_BumpStopRate.TabIndex = 199;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.ForeColor = System.Drawing.Color.White;
-            this.label55.Location = new System.Drawing.Point(15, 1315);
-            this.label55.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(179, 25);
-            this.label55.TabIndex = 198;
-            this.label55.Text = "Bump Stop Damp";
-            // 
-            // label_FR_BumpStopRateGainDeflectionSquared
-            // 
-            this.label_FR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 569);
-            this.label_FR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpStopRateGainDeflectionSquared.Name = "label_FR_BumpStopRateGainDeflectionSquared";
-            this.label_FR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_BumpStopRateGainDeflectionSquared.TabIndex = 205;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.ForeColor = System.Drawing.Color.White;
-            this.label56.Location = new System.Drawing.Point(515, 574);
-            this.label56.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(219, 25);
-            this.label56.TabIndex = 204;
-            this.label56.Text = "Bump Stop Rate Gain";
-            // 
-            // label_FL_BumpStopRateGainDeflectionSquared
-            // 
-            this.label_FL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 569);
-            this.label_FL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_BumpStopRateGainDeflectionSquared.Name = "label_FL_BumpStopRateGainDeflectionSquared";
-            this.label_FL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_BumpStopRateGainDeflectionSquared.TabIndex = 203;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.ForeColor = System.Drawing.Color.White;
-            this.label57.Location = new System.Drawing.Point(17, 573);
-            this.label57.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(219, 25);
-            this.label57.TabIndex = 202;
-            this.label57.Text = "Bump Stop Rate Gain";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.ForeColor = System.Drawing.Color.White;
-            this.label58.Location = new System.Drawing.Point(955, 569);
-            this.label58.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(209, 25);
-            this.label58.TabIndex = 206;
-            this.label58.Text = "(Deflection Squared)";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.ForeColor = System.Drawing.Color.White;
-            this.label59.Location = new System.Drawing.Point(955, 656);
-            this.label59.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(209, 25);
-            this.label59.TabIndex = 211;
-            this.label59.Text = "(Deflection Squared)";
-            // 
-            // label_FR_BumpStopDampGainDeflectionSquared
-            // 
-            this.label_FR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 655);
-            this.label_FR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpStopDampGainDeflectionSquared.Name = "label_FR_BumpStopDampGainDeflectionSquared";
-            this.label_FR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_BumpStopDampGainDeflectionSquared.TabIndex = 210;
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.ForeColor = System.Drawing.Color.White;
-            this.label60.Location = new System.Drawing.Point(515, 657);
-            this.label60.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(230, 25);
-            this.label60.TabIndex = 209;
-            this.label60.Text = "Bump Stop Damp Gain";
-            // 
-            // label_FL_BumpStopDampGainDeflectionSquared
-            // 
-            this.label_FL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 655);
-            this.label_FL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_BumpStopDampGainDeflectionSquared.Name = "label_FL_BumpStopDampGainDeflectionSquared";
-            this.label_FL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_BumpStopDampGainDeflectionSquared.TabIndex = 208;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.ForeColor = System.Drawing.Color.White;
-            this.label61.Location = new System.Drawing.Point(15, 657);
-            this.label61.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(230, 25);
-            this.label61.TabIndex = 207;
-            this.label61.Text = "Bump Stop Damp Gain";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.ForeColor = System.Drawing.Color.White;
-            this.label62.Location = new System.Drawing.Point(955, 1353);
-            this.label62.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(209, 25);
-            this.label62.TabIndex = 221;
-            this.label62.Text = "(Deflection Squared)";
-            // 
-            // label_RR_BumpStopDampGainDeflectionSquared
-            // 
-            this.label_RR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(747, 1353);
-            this.label_RR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_BumpStopDampGainDeflectionSquared.Name = "label_RR_BumpStopDampGainDeflectionSquared";
-            this.label_RR_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_BumpStopDampGainDeflectionSquared.TabIndex = 220;
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.ForeColor = System.Drawing.Color.White;
-            this.label63.Location = new System.Drawing.Point(515, 1359);
-            this.label63.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(230, 25);
-            this.label63.TabIndex = 219;
-            this.label63.Text = "Bump Stop Damp Gain";
-            // 
-            // label_RL_BumpStopDampGainDeflectionSquared
-            // 
-            this.label_RL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpStopDampGainDeflectionSquared.Location = new System.Drawing.Point(247, 1353);
-            this.label_RL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_BumpStopDampGainDeflectionSquared.Name = "label_RL_BumpStopDampGainDeflectionSquared";
-            this.label_RL_BumpStopDampGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_BumpStopDampGainDeflectionSquared.TabIndex = 218;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.ForeColor = System.Drawing.Color.White;
-            this.label64.Location = new System.Drawing.Point(15, 1359);
-            this.label64.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(230, 25);
-            this.label64.TabIndex = 217;
-            this.label64.Text = "Bump Stop Damp Gain";
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.ForeColor = System.Drawing.Color.White;
-            this.label65.Location = new System.Drawing.Point(955, 1272);
-            this.label65.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(209, 25);
-            this.label65.TabIndex = 216;
-            this.label65.Text = "(Deflection Squared)";
-            // 
-            // label_RR_BumpStopDamp
-            // 
-            this.label_RR_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpStopDamp.Location = new System.Drawing.Point(747, 1311);
-            this.label_RR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_BumpStopDamp.Name = "label_RR_BumpStopDamp";
-            this.label_RR_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_BumpStopDamp.TabIndex = 215;
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.ForeColor = System.Drawing.Color.White;
-            this.label66.Location = new System.Drawing.Point(515, 1267);
-            this.label66.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(219, 25);
-            this.label66.TabIndex = 214;
-            this.label66.Text = "Bump Stop Rate Gain";
-            // 
-            // label_RL_BumpStopDamp
-            // 
-            this.label_RL_BumpStopDamp.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpStopDamp.Location = new System.Drawing.Point(247, 1311);
-            this.label_RL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_BumpStopDamp.Name = "label_RL_BumpStopDamp";
-            this.label_RL_BumpStopDamp.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_BumpStopDamp.TabIndex = 213;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.ForeColor = System.Drawing.Color.White;
-            this.label67.Location = new System.Drawing.Point(15, 1267);
-            this.label67.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(219, 25);
-            this.label67.TabIndex = 212;
-            this.label67.Text = "Bump Stop Rate Gain";
-            // 
-            // label_RR_BumpStopRateGainDeflectionSquared
-            // 
-            this.label_RR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(747, 1269);
-            this.label_RR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_BumpStopRateGainDeflectionSquared.Name = "label_RR_BumpStopRateGainDeflectionSquared";
-            this.label_RR_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_BumpStopRateGainDeflectionSquared.TabIndex = 224;
-            // 
-            // label_RL_BumpStopRateGainDeflectionSquared
-            // 
-            this.label_RL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpStopRateGainDeflectionSquared.Location = new System.Drawing.Point(247, 1269);
-            this.label_RL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_BumpStopRateGainDeflectionSquared.Name = "label_RL_BumpStopRateGainDeflectionSquared";
-            this.label_RL_BumpStopRateGainDeflectionSquared.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_BumpStopRateGainDeflectionSquared.TabIndex = 223;
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
+            this.label_FL_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_SpringRate.Text = "—";
+            this.frontLeftSpringRateRow.Controls.Add(this.label_FL_SpringRate, 1, 0);
+            this.frontLeftSection1Rows.Controls.Add(this.frontLeftSpringRateRow, 0, 0);
+            this.frontLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftProgressiveRateRow
+            this.frontLeftProgressiveRateRow.Name = "frontLeftProgressiveRateRow";
+            this.frontLeftProgressiveRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftProgressiveRateRow.ColumnCount = 2;
+            this.frontLeftProgressiveRateRow.RowCount = 1;
+            this.frontLeftProgressiveRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftProgressiveRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftProgressiveRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftProgressiveRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftProgressiveRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftProgressiveRateCaption
+            this.frontLeftProgressiveRateCaption.Name = "frontLeftProgressiveRateCaption";
+            this.frontLeftProgressiveRateCaption.Text = "Progressive rate";
+            this.frontLeftProgressiveRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftProgressiveRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftProgressiveRateCaption.AutoEllipsis = true;
+            this.frontLeftProgressiveRateCaption.UseMnemonic = false;
+            this.frontLeftProgressiveRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftProgressiveRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftProgressiveRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftProgressiveRateRow.Controls.Add(this.frontLeftProgressiveRateCaption, 0, 0);
+            // label_FL_ProgressiveRate
+            this.label_FL_ProgressiveRate.Name = "label_FL_ProgressiveRate";
+            this.label_FL_ProgressiveRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ProgressiveRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ProgressiveRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ProgressiveRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ProgressiveRate.Text = "—";
+            this.frontLeftProgressiveRateRow.Controls.Add(this.label_FL_ProgressiveRate, 1, 0);
+            this.frontLeftSection1Rows.Controls.Add(this.frontLeftProgressiveRateRow, 0, 1);
+            this.frontLeftSection1Group.Controls.Add(this.frontLeftSection1Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection1Group, 0, 0);
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // frontLeftSection2Group
+            this.frontLeftSection2Group.Name = "frontLeftSection2Group";
+            this.frontLeftSection2Group.Text = "Travel & Limits";
+            this.frontLeftSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection2Rows
+            this.frontLeftSection2Rows.Name = "frontLeftSection2Rows";
+            this.frontLeftSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection2Rows.ColumnCount = 1;
+            this.frontLeftSection2Rows.RowCount = 4;
+            this.frontLeftSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftBumpLimitsRow
+            this.frontLeftBumpLimitsRow.Name = "frontLeftBumpLimitsRow";
+            this.frontLeftBumpLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpLimitsRow.ColumnCount = 3;
+            this.frontLeftBumpLimitsRow.RowCount = 1;
+            this.frontLeftBumpLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftBumpLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftBumpLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftBumpLimitsRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftBumpLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.frontLeftBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.frontLeftBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // frontLeftBumpLimitsCaption
+            this.frontLeftBumpLimitsCaption.Name = "frontLeftBumpLimitsCaption";
+            this.frontLeftBumpLimitsCaption.Text = "Bump limits (X / Y)";
+            this.frontLeftBumpLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftBumpLimitsCaption.AutoEllipsis = true;
+            this.frontLeftBumpLimitsCaption.UseMnemonic = false;
+            this.frontLeftBumpLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftBumpLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftBumpLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftBumpLimitsRow.Controls.Add(this.frontLeftBumpLimitsCaption, 0, 0);
+            // label_FL_BumpLimitsX
+            this.label_FL_BumpLimitsX.Name = "label_FL_BumpLimitsX";
+            this.label_FL_BumpLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpLimitsX.Text = "—";
+            this.frontLeftBumpLimitsRow.Controls.Add(this.label_FL_BumpLimitsX, 1, 0);
             // label_FL_BumpLimitsY
-            // 
-            this.label_FL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpLimitsY.Location = new System.Drawing.Point(349, 140);
-            this.label_FL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_BumpLimitsY.Name = "label_FL_BumpLimitsY";
-            this.label_FL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_FL_BumpLimitsY.TabIndex = 225;
-            // 
-            // label_FR_BumpLimitsY
-            // 
-            this.label_FR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpLimitsY.Location = new System.Drawing.Point(849, 140);
-            this.label_FR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_BumpLimitsY.Name = "label_FR_BumpLimitsY";
-            this.label_FR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_FR_BumpLimitsY.TabIndex = 226;
-            // 
+            this.label_FL_BumpLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpLimitsY.Text = "—";
+            this.frontLeftBumpLimitsRow.Controls.Add(this.label_FL_BumpLimitsY, 2, 0);
+            this.frontLeftSection2Rows.Controls.Add(this.frontLeftBumpLimitsRow, 0, 0);
+            this.frontLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftReboundLimitsRow
+            this.frontLeftReboundLimitsRow.Name = "frontLeftReboundLimitsRow";
+            this.frontLeftReboundLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundLimitsRow.ColumnCount = 3;
+            this.frontLeftReboundLimitsRow.RowCount = 1;
+            this.frontLeftReboundLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftReboundLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftReboundLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftReboundLimitsRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftReboundLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.frontLeftReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.frontLeftReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // frontLeftReboundLimitsCaption
+            this.frontLeftReboundLimitsCaption.Name = "frontLeftReboundLimitsCaption";
+            this.frontLeftReboundLimitsCaption.Text = "Rebound limits (X / Y)";
+            this.frontLeftReboundLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftReboundLimitsCaption.AutoEllipsis = true;
+            this.frontLeftReboundLimitsCaption.UseMnemonic = false;
+            this.frontLeftReboundLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftReboundLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftReboundLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftReboundLimitsRow.Controls.Add(this.frontLeftReboundLimitsCaption, 0, 0);
+            // label_FL_ReboundLimitsX
+            this.label_FL_ReboundLimitsX.Name = "label_FL_ReboundLimitsX";
+            this.label_FL_ReboundLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ReboundLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ReboundLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ReboundLimitsX.Text = "—";
+            this.frontLeftReboundLimitsRow.Controls.Add(this.label_FL_ReboundLimitsX, 1, 0);
             // label_FL_ReboundLimitsY
-            // 
-            this.label_FL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ReboundLimitsY.Location = new System.Drawing.Point(349, 182);
-            this.label_FL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_ReboundLimitsY.Name = "label_FL_ReboundLimitsY";
-            this.label_FL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_FL_ReboundLimitsY.TabIndex = 227;
-            // 
+            this.label_FL_ReboundLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ReboundLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ReboundLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ReboundLimitsY.Text = "—";
+            this.frontLeftReboundLimitsRow.Controls.Add(this.label_FL_ReboundLimitsY, 2, 0);
+            this.frontLeftSection2Rows.Controls.Add(this.frontLeftReboundLimitsRow, 0, 1);
+            this.frontLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftExpansionLimitFromZeroRow
+            this.frontLeftExpansionLimitFromZeroRow.Name = "frontLeftExpansionLimitFromZeroRow";
+            this.frontLeftExpansionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftExpansionLimitFromZeroRow.ColumnCount = 2;
+            this.frontLeftExpansionLimitFromZeroRow.RowCount = 1;
+            this.frontLeftExpansionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftExpansionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftExpansionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftExpansionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftExpansionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftExpansionLimitFromZeroCaption
+            this.frontLeftExpansionLimitFromZeroCaption.Name = "frontLeftExpansionLimitFromZeroCaption";
+            this.frontLeftExpansionLimitFromZeroCaption.Text = "Expansion limit from zero";
+            this.frontLeftExpansionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftExpansionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftExpansionLimitFromZeroCaption.AutoEllipsis = true;
+            this.frontLeftExpansionLimitFromZeroCaption.UseMnemonic = false;
+            this.frontLeftExpansionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftExpansionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftExpansionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftExpansionLimitFromZeroRow.Controls.Add(this.frontLeftExpansionLimitFromZeroCaption, 0, 0);
+            // label_FL_ExpansionLimitFromZero
+            this.label_FL_ExpansionLimitFromZero.Name = "label_FL_ExpansionLimitFromZero";
+            this.label_FL_ExpansionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ExpansionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ExpansionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ExpansionLimitFromZero.Text = "—";
+            this.frontLeftExpansionLimitFromZeroRow.Controls.Add(this.label_FL_ExpansionLimitFromZero, 1, 0);
+            this.frontLeftSection2Rows.Controls.Add(this.frontLeftExpansionLimitFromZeroRow, 0, 2);
+            this.frontLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftCompressionLimitFromZeroRow
+            this.frontLeftCompressionLimitFromZeroRow.Name = "frontLeftCompressionLimitFromZeroRow";
+            this.frontLeftCompressionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftCompressionLimitFromZeroRow.ColumnCount = 2;
+            this.frontLeftCompressionLimitFromZeroRow.RowCount = 1;
+            this.frontLeftCompressionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftCompressionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftCompressionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftCompressionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftCompressionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftCompressionLimitFromZeroCaption
+            this.frontLeftCompressionLimitFromZeroCaption.Name = "frontLeftCompressionLimitFromZeroCaption";
+            this.frontLeftCompressionLimitFromZeroCaption.Text = "Compression limit from zero";
+            this.frontLeftCompressionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftCompressionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftCompressionLimitFromZeroCaption.AutoEllipsis = true;
+            this.frontLeftCompressionLimitFromZeroCaption.UseMnemonic = false;
+            this.frontLeftCompressionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftCompressionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftCompressionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftCompressionLimitFromZeroRow.Controls.Add(this.frontLeftCompressionLimitFromZeroCaption, 0, 0);
+            // label_FL_CompressionLimitFromZero
+            this.label_FL_CompressionLimitFromZero.Name = "label_FL_CompressionLimitFromZero";
+            this.label_FL_CompressionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_CompressionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_CompressionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FL_CompressionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_CompressionLimitFromZero.Text = "—";
+            this.frontLeftCompressionLimitFromZeroRow.Controls.Add(this.label_FL_CompressionLimitFromZero, 1, 0);
+            this.frontLeftSection2Rows.Controls.Add(this.frontLeftCompressionLimitFromZeroRow, 0, 3);
+            this.frontLeftSection2Group.Controls.Add(this.frontLeftSection2Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection2Group, 0, 1);
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // frontLeftSection3Group
+            this.frontLeftSection3Group.Name = "frontLeftSection3Group";
+            this.frontLeftSection3Group.Text = "Damping & Rebound";
+            this.frontLeftSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection3Rows
+            this.frontLeftSection3Rows.Name = "frontLeftSection3Rows";
+            this.frontLeftSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection3Rows.ColumnCount = 1;
+            this.frontLeftSection3Rows.RowCount = 4;
+            this.frontLeftSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftBumpDampRow
+            this.frontLeftBumpDampRow.Name = "frontLeftBumpDampRow";
+            this.frontLeftBumpDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpDampRow.ColumnCount = 3;
+            this.frontLeftBumpDampRow.RowCount = 1;
+            this.frontLeftBumpDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftBumpDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftBumpDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftBumpDampRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftBumpDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.frontLeftBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.frontLeftBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // frontLeftBumpDampCaption
+            this.frontLeftBumpDampCaption.Name = "frontLeftBumpDampCaption";
+            this.frontLeftBumpDampCaption.Text = "Bump damping (X / Y)";
+            this.frontLeftBumpDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftBumpDampCaption.AutoEllipsis = true;
+            this.frontLeftBumpDampCaption.UseMnemonic = false;
+            this.frontLeftBumpDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftBumpDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftBumpDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftBumpDampRow.Controls.Add(this.frontLeftBumpDampCaption, 0, 0);
+            // label_FL_BumpDampX
+            this.label_FL_BumpDampX.Name = "label_FL_BumpDampX";
+            this.label_FL_BumpDampX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpDampX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpDampX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpDampX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpDampX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpDampX.Text = "—";
+            this.frontLeftBumpDampRow.Controls.Add(this.label_FL_BumpDampX, 1, 0);
             // label_FL_BumpDampY
-            // 
-            this.label_FL_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.label_FL_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.label_FL_BumpDampY.Location = new System.Drawing.Point(349, 224);
-            this.label_FL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_BumpDampY.Name = "label_FL_BumpDampY";
-            this.label_FL_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.label_FL_BumpDampY.TabIndex = 228;
-            // 
+            this.label_FL_BumpDampY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpDampY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpDampY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpDampY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpDampY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpDampY.Text = "—";
+            this.frontLeftBumpDampRow.Controls.Add(this.label_FL_BumpDampY, 2, 0);
+            this.frontLeftSection3Rows.Controls.Add(this.frontLeftBumpDampRow, 0, 0);
+            this.frontLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftReboundRateRow
+            this.frontLeftReboundRateRow.Name = "frontLeftReboundRateRow";
+            this.frontLeftReboundRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundRateRow.ColumnCount = 2;
+            this.frontLeftReboundRateRow.RowCount = 1;
+            this.frontLeftReboundRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftReboundRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftReboundRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftReboundRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftReboundRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftReboundRateCaption
+            this.frontLeftReboundRateCaption.Name = "frontLeftReboundRateCaption";
+            this.frontLeftReboundRateCaption.Text = "Rebound rate";
+            this.frontLeftReboundRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftReboundRateCaption.AutoEllipsis = true;
+            this.frontLeftReboundRateCaption.UseMnemonic = false;
+            this.frontLeftReboundRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftReboundRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftReboundRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftReboundRateRow.Controls.Add(this.frontLeftReboundRateCaption, 0, 0);
+            // label_FL_ReboundRate
+            this.label_FL_ReboundRate.Name = "label_FL_ReboundRate";
+            this.label_FL_ReboundRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ReboundRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ReboundRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ReboundRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ReboundRate.Text = "—";
+            this.frontLeftReboundRateRow.Controls.Add(this.label_FL_ReboundRate, 1, 0);
+            this.frontLeftSection3Rows.Controls.Add(this.frontLeftReboundRateRow, 0, 1);
+            this.frontLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftReboundStartPositionRow
+            this.frontLeftReboundStartPositionRow.Name = "frontLeftReboundStartPositionRow";
+            this.frontLeftReboundStartPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundStartPositionRow.ColumnCount = 2;
+            this.frontLeftReboundStartPositionRow.RowCount = 1;
+            this.frontLeftReboundStartPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftReboundStartPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftReboundStartPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftReboundStartPositionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftReboundStartPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftReboundStartPositionCaption
+            this.frontLeftReboundStartPositionCaption.Name = "frontLeftReboundStartPositionCaption";
+            this.frontLeftReboundStartPositionCaption.Text = "Rebound start position";
+            this.frontLeftReboundStartPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundStartPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftReboundStartPositionCaption.AutoEllipsis = true;
+            this.frontLeftReboundStartPositionCaption.UseMnemonic = false;
+            this.frontLeftReboundStartPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftReboundStartPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftReboundStartPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftReboundStartPositionRow.Controls.Add(this.frontLeftReboundStartPositionCaption, 0, 0);
+            // label_FL_ReboundStartPosition
+            this.label_FL_ReboundStartPosition.Name = "label_FL_ReboundStartPosition";
+            this.label_FL_ReboundStartPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ReboundStartPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ReboundStartPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundStartPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ReboundStartPosition.Text = "—";
+            this.frontLeftReboundStartPositionRow.Controls.Add(this.label_FL_ReboundStartPosition, 1, 0);
+            this.frontLeftSection3Rows.Controls.Add(this.frontLeftReboundStartPositionRow, 0, 2);
+            this.frontLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftReboundEndPositionRow
+            this.frontLeftReboundEndPositionRow.Name = "frontLeftReboundEndPositionRow";
+            this.frontLeftReboundEndPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundEndPositionRow.ColumnCount = 2;
+            this.frontLeftReboundEndPositionRow.RowCount = 1;
+            this.frontLeftReboundEndPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftReboundEndPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftReboundEndPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftReboundEndPositionRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftReboundEndPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftReboundEndPositionCaption
+            this.frontLeftReboundEndPositionCaption.Name = "frontLeftReboundEndPositionCaption";
+            this.frontLeftReboundEndPositionCaption.Text = "Rebound end position";
+            this.frontLeftReboundEndPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftReboundEndPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftReboundEndPositionCaption.AutoEllipsis = true;
+            this.frontLeftReboundEndPositionCaption.UseMnemonic = false;
+            this.frontLeftReboundEndPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftReboundEndPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftReboundEndPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftReboundEndPositionRow.Controls.Add(this.frontLeftReboundEndPositionCaption, 0, 0);
+            // label_FL_ReboundEndPosition
+            this.label_FL_ReboundEndPosition.Name = "label_FL_ReboundEndPosition";
+            this.label_FL_ReboundEndPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ReboundEndPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ReboundEndPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ReboundEndPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ReboundEndPosition.Text = "—";
+            this.frontLeftReboundEndPositionRow.Controls.Add(this.label_FL_ReboundEndPosition, 1, 0);
+            this.frontLeftSection3Rows.Controls.Add(this.frontLeftReboundEndPositionRow, 0, 3);
+            this.frontLeftSection3Group.Controls.Add(this.frontLeftSection3Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection3Group, 0, 2);
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 184F));
+            // frontLeftSection4Group
+            this.frontLeftSection4Group.Name = "frontLeftSection4Group";
+            this.frontLeftSection4Group.Text = "Bump Stops";
+            this.frontLeftSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection4Rows
+            this.frontLeftSection4Rows.Name = "frontLeftSection4Rows";
+            this.frontLeftSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection4Rows.ColumnCount = 1;
+            this.frontLeftSection4Rows.RowCount = 5;
+            this.frontLeftSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftBumpStopLengthRow
+            this.frontLeftBumpStopLengthRow.Name = "frontLeftBumpStopLengthRow";
+            this.frontLeftBumpStopLengthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopLengthRow.ColumnCount = 2;
+            this.frontLeftBumpStopLengthRow.RowCount = 1;
+            this.frontLeftBumpStopLengthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftBumpStopLengthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftBumpStopLengthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftBumpStopLengthRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftBumpStopLengthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftBumpStopLengthCaption
+            this.frontLeftBumpStopLengthCaption.Name = "frontLeftBumpStopLengthCaption";
+            this.frontLeftBumpStopLengthCaption.Text = "Bump-stop length";
+            this.frontLeftBumpStopLengthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopLengthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftBumpStopLengthCaption.AutoEllipsis = true;
+            this.frontLeftBumpStopLengthCaption.UseMnemonic = false;
+            this.frontLeftBumpStopLengthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftBumpStopLengthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftBumpStopLengthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftBumpStopLengthRow.Controls.Add(this.frontLeftBumpStopLengthCaption, 0, 0);
+            // label_FL_BumpStopLength
+            this.label_FL_BumpStopLength.Name = "label_FL_BumpStopLength";
+            this.label_FL_BumpStopLength.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpStopLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpStopLength.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpStopLength.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopLength.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpStopLength.Text = "—";
+            this.frontLeftBumpStopLengthRow.Controls.Add(this.label_FL_BumpStopLength, 1, 0);
+            this.frontLeftSection4Rows.Controls.Add(this.frontLeftBumpStopLengthRow, 0, 0);
+            this.frontLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftBumpStopRateRow
+            this.frontLeftBumpStopRateRow.Name = "frontLeftBumpStopRateRow";
+            this.frontLeftBumpStopRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopRateRow.ColumnCount = 2;
+            this.frontLeftBumpStopRateRow.RowCount = 1;
+            this.frontLeftBumpStopRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftBumpStopRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftBumpStopRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftBumpStopRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftBumpStopRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftBumpStopRateCaption
+            this.frontLeftBumpStopRateCaption.Name = "frontLeftBumpStopRateCaption";
+            this.frontLeftBumpStopRateCaption.Text = "Bump-stop rate";
+            this.frontLeftBumpStopRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftBumpStopRateCaption.AutoEllipsis = true;
+            this.frontLeftBumpStopRateCaption.UseMnemonic = false;
+            this.frontLeftBumpStopRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftBumpStopRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftBumpStopRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftBumpStopRateRow.Controls.Add(this.frontLeftBumpStopRateCaption, 0, 0);
+            // label_FL_BumpStopRate
+            this.label_FL_BumpStopRate.Name = "label_FL_BumpStopRate";
+            this.label_FL_BumpStopRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpStopRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpStopRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpStopRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpStopRate.Text = "—";
+            this.frontLeftBumpStopRateRow.Controls.Add(this.label_FL_BumpStopRate, 1, 0);
+            this.frontLeftSection4Rows.Controls.Add(this.frontLeftBumpStopRateRow, 0, 1);
+            this.frontLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftBumpStopRateGainDeflectionSquaredRow
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.Name = "frontLeftBumpStopRateGainDeflectionSquaredRow";
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.ColumnCount = 2;
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.RowCount = 1;
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftBumpStopRateGainDeflectionSquaredCaption
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.Name = "frontLeftBumpStopRateGainDeflectionSquaredCaption";
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.Text = "Rate gain (deflection squared)";
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftBumpStopRateGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.frontLeftBumpStopRateGainDeflectionSquaredCaption, 0, 0);
+            // label_FL_BumpStopRateGainDeflectionSquared
+            this.label_FL_BumpStopRateGainDeflectionSquared.Name = "label_FL_BumpStopRateGainDeflectionSquared";
+            this.label_FL_BumpStopRateGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpStopRateGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpStopRateGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpStopRateGainDeflectionSquared.Text = "—";
+            this.frontLeftBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.label_FL_BumpStopRateGainDeflectionSquared, 1, 0);
+            this.frontLeftSection4Rows.Controls.Add(this.frontLeftBumpStopRateGainDeflectionSquaredRow, 0, 2);
+            this.frontLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftBumpStopDampRow
+            this.frontLeftBumpStopDampRow.Name = "frontLeftBumpStopDampRow";
+            this.frontLeftBumpStopDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopDampRow.ColumnCount = 2;
+            this.frontLeftBumpStopDampRow.RowCount = 1;
+            this.frontLeftBumpStopDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftBumpStopDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftBumpStopDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftBumpStopDampRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftBumpStopDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftBumpStopDampCaption
+            this.frontLeftBumpStopDampCaption.Name = "frontLeftBumpStopDampCaption";
+            this.frontLeftBumpStopDampCaption.Text = "Bump-stop damping";
+            this.frontLeftBumpStopDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftBumpStopDampCaption.AutoEllipsis = true;
+            this.frontLeftBumpStopDampCaption.UseMnemonic = false;
+            this.frontLeftBumpStopDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftBumpStopDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftBumpStopDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftBumpStopDampRow.Controls.Add(this.frontLeftBumpStopDampCaption, 0, 0);
+            // label_FL_BumpStopDamp
+            this.label_FL_BumpStopDamp.Name = "label_FL_BumpStopDamp";
+            this.label_FL_BumpStopDamp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpStopDamp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpStopDamp.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopDamp.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpStopDamp.Text = "—";
+            this.frontLeftBumpStopDampRow.Controls.Add(this.label_FL_BumpStopDamp, 1, 0);
+            this.frontLeftSection4Rows.Controls.Add(this.frontLeftBumpStopDampRow, 0, 3);
+            this.frontLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftBumpStopDampGainDeflectionSquaredRow
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.Name = "frontLeftBumpStopDampGainDeflectionSquaredRow";
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.ColumnCount = 2;
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.RowCount = 1;
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftBumpStopDampGainDeflectionSquaredCaption
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.Name = "frontLeftBumpStopDampGainDeflectionSquaredCaption";
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.Text = "Damping gain (deflection squared)";
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftBumpStopDampGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.frontLeftBumpStopDampGainDeflectionSquaredCaption, 0, 0);
+            // label_FL_BumpStopDampGainDeflectionSquared
+            this.label_FL_BumpStopDampGainDeflectionSquared.Name = "label_FL_BumpStopDampGainDeflectionSquared";
+            this.label_FL_BumpStopDampGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_BumpStopDampGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_BumpStopDampGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_BumpStopDampGainDeflectionSquared.Text = "—";
+            this.frontLeftBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.label_FL_BumpStopDampGainDeflectionSquared, 1, 0);
+            this.frontLeftSection4Rows.Controls.Add(this.frontLeftBumpStopDampGainDeflectionSquaredRow, 0, 4);
+            this.frontLeftSection4Group.Controls.Add(this.frontLeftSection4Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection4Group, 0, 3);
+            this.frontLeftScroll.Controls.Add(this.frontLeftSections);
+            this.frontLeftGroup.Controls.Add(this.frontLeftScroll);
+            this.wheelValuesLayout.Controls.Add(this.frontLeftGroup, 0, 0);
+            // frontRightGroup
+            this.frontRightGroup.Name = "frontRightGroup";
+            this.frontRightGroup.Text = "FRONT RIGHT";
+            this.frontRightGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.frontRightGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.frontRightGroup.ForeColor = System.Drawing.Color.White;
+            this.frontRightGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontRightScroll
+            this.frontRightScroll.Name = "frontRightScroll";
+            this.frontRightScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightScroll.AutoScroll = true;
+            this.frontRightScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontRightSections
+            this.frontRightSections.Name = "frontRightSections";
+            this.frontRightSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.frontRightSections.AutoSize = true;
+            this.frontRightSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.frontRightSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSections.ColumnCount = 1;
+            this.frontRightSections.RowCount = 4;
+            this.frontRightSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.frontRightSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.frontRightSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontRightSection1Group
+            this.frontRightSection1Group.Name = "frontRightSection1Group";
+            this.frontRightSection1Group.Text = "Springs";
+            this.frontRightSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection1Rows
+            this.frontRightSection1Rows.Name = "frontRightSection1Rows";
+            this.frontRightSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection1Rows.ColumnCount = 1;
+            this.frontRightSection1Rows.RowCount = 2;
+            this.frontRightSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightSpringRateRow
+            this.frontRightSpringRateRow.Name = "frontRightSpringRateRow";
+            this.frontRightSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSpringRateRow.ColumnCount = 2;
+            this.frontRightSpringRateRow.RowCount = 1;
+            this.frontRightSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightSpringRateCaption
+            this.frontRightSpringRateCaption.Name = "frontRightSpringRateCaption";
+            this.frontRightSpringRateCaption.Text = "Spring rate";
+            this.frontRightSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightSpringRateCaption.AutoEllipsis = true;
+            this.frontRightSpringRateCaption.UseMnemonic = false;
+            this.frontRightSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightSpringRateRow.Controls.Add(this.frontRightSpringRateCaption, 0, 0);
+            // label_FR_SpringRate
+            this.label_FR_SpringRate.Name = "label_FR_SpringRate";
+            this.label_FR_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_SpringRate.Text = "—";
+            this.frontRightSpringRateRow.Controls.Add(this.label_FR_SpringRate, 1, 0);
+            this.frontRightSection1Rows.Controls.Add(this.frontRightSpringRateRow, 0, 0);
+            this.frontRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightProgressiveRateRow
+            this.frontRightProgressiveRateRow.Name = "frontRightProgressiveRateRow";
+            this.frontRightProgressiveRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightProgressiveRateRow.ColumnCount = 2;
+            this.frontRightProgressiveRateRow.RowCount = 1;
+            this.frontRightProgressiveRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightProgressiveRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightProgressiveRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightProgressiveRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightProgressiveRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightProgressiveRateCaption
+            this.frontRightProgressiveRateCaption.Name = "frontRightProgressiveRateCaption";
+            this.frontRightProgressiveRateCaption.Text = "Progressive rate";
+            this.frontRightProgressiveRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightProgressiveRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightProgressiveRateCaption.AutoEllipsis = true;
+            this.frontRightProgressiveRateCaption.UseMnemonic = false;
+            this.frontRightProgressiveRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightProgressiveRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightProgressiveRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightProgressiveRateRow.Controls.Add(this.frontRightProgressiveRateCaption, 0, 0);
+            // label_FR_ProgressiveRate
+            this.label_FR_ProgressiveRate.Name = "label_FR_ProgressiveRate";
+            this.label_FR_ProgressiveRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ProgressiveRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ProgressiveRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ProgressiveRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ProgressiveRate.Text = "—";
+            this.frontRightProgressiveRateRow.Controls.Add(this.label_FR_ProgressiveRate, 1, 0);
+            this.frontRightSection1Rows.Controls.Add(this.frontRightProgressiveRateRow, 0, 1);
+            this.frontRightSection1Group.Controls.Add(this.frontRightSection1Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection1Group, 0, 0);
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // frontRightSection2Group
+            this.frontRightSection2Group.Name = "frontRightSection2Group";
+            this.frontRightSection2Group.Text = "Travel & Limits";
+            this.frontRightSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection2Rows
+            this.frontRightSection2Rows.Name = "frontRightSection2Rows";
+            this.frontRightSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection2Rows.ColumnCount = 1;
+            this.frontRightSection2Rows.RowCount = 4;
+            this.frontRightSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightBumpLimitsRow
+            this.frontRightBumpLimitsRow.Name = "frontRightBumpLimitsRow";
+            this.frontRightBumpLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpLimitsRow.ColumnCount = 3;
+            this.frontRightBumpLimitsRow.RowCount = 1;
+            this.frontRightBumpLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightBumpLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightBumpLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightBumpLimitsRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightBumpLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.frontRightBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.frontRightBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // frontRightBumpLimitsCaption
+            this.frontRightBumpLimitsCaption.Name = "frontRightBumpLimitsCaption";
+            this.frontRightBumpLimitsCaption.Text = "Bump limits (X / Y)";
+            this.frontRightBumpLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightBumpLimitsCaption.AutoEllipsis = true;
+            this.frontRightBumpLimitsCaption.UseMnemonic = false;
+            this.frontRightBumpLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightBumpLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightBumpLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightBumpLimitsRow.Controls.Add(this.frontRightBumpLimitsCaption, 0, 0);
+            // label_FR_BumpLimitsX
+            this.label_FR_BumpLimitsX.Name = "label_FR_BumpLimitsX";
+            this.label_FR_BumpLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpLimitsX.Text = "—";
+            this.frontRightBumpLimitsRow.Controls.Add(this.label_FR_BumpLimitsX, 1, 0);
+            // label_FR_BumpLimitsY
+            this.label_FR_BumpLimitsY.Name = "label_FR_BumpLimitsY";
+            this.label_FR_BumpLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpLimitsY.Text = "—";
+            this.frontRightBumpLimitsRow.Controls.Add(this.label_FR_BumpLimitsY, 2, 0);
+            this.frontRightSection2Rows.Controls.Add(this.frontRightBumpLimitsRow, 0, 0);
+            this.frontRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightReboundLimitsRow
+            this.frontRightReboundLimitsRow.Name = "frontRightReboundLimitsRow";
+            this.frontRightReboundLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundLimitsRow.ColumnCount = 3;
+            this.frontRightReboundLimitsRow.RowCount = 1;
+            this.frontRightReboundLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightReboundLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightReboundLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightReboundLimitsRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightReboundLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.frontRightReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.frontRightReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // frontRightReboundLimitsCaption
+            this.frontRightReboundLimitsCaption.Name = "frontRightReboundLimitsCaption";
+            this.frontRightReboundLimitsCaption.Text = "Rebound limits (X / Y)";
+            this.frontRightReboundLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightReboundLimitsCaption.AutoEllipsis = true;
+            this.frontRightReboundLimitsCaption.UseMnemonic = false;
+            this.frontRightReboundLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightReboundLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightReboundLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightReboundLimitsRow.Controls.Add(this.frontRightReboundLimitsCaption, 0, 0);
+            // label_FR_ReboundLimitsX
+            this.label_FR_ReboundLimitsX.Name = "label_FR_ReboundLimitsX";
+            this.label_FR_ReboundLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ReboundLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ReboundLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ReboundLimitsX.Text = "—";
+            this.frontRightReboundLimitsRow.Controls.Add(this.label_FR_ReboundLimitsX, 1, 0);
             // label_FR_ReboundLimitsY
-            // 
-            this.label_FR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ReboundLimitsY.Location = new System.Drawing.Point(849, 182);
-            this.label_FR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.label_FR_ReboundLimitsY.Name = "label_FR_ReboundLimitsY";
-            this.label_FR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_FR_ReboundLimitsY.TabIndex = 229;
-            // 
+            this.label_FR_ReboundLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ReboundLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ReboundLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ReboundLimitsY.Text = "—";
+            this.frontRightReboundLimitsRow.Controls.Add(this.label_FR_ReboundLimitsY, 2, 0);
+            this.frontRightSection2Rows.Controls.Add(this.frontRightReboundLimitsRow, 0, 1);
+            this.frontRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightExpansionLimitFromZeroRow
+            this.frontRightExpansionLimitFromZeroRow.Name = "frontRightExpansionLimitFromZeroRow";
+            this.frontRightExpansionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightExpansionLimitFromZeroRow.ColumnCount = 2;
+            this.frontRightExpansionLimitFromZeroRow.RowCount = 1;
+            this.frontRightExpansionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightExpansionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightExpansionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightExpansionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightExpansionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightExpansionLimitFromZeroCaption
+            this.frontRightExpansionLimitFromZeroCaption.Name = "frontRightExpansionLimitFromZeroCaption";
+            this.frontRightExpansionLimitFromZeroCaption.Text = "Expansion limit from zero";
+            this.frontRightExpansionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightExpansionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightExpansionLimitFromZeroCaption.AutoEllipsis = true;
+            this.frontRightExpansionLimitFromZeroCaption.UseMnemonic = false;
+            this.frontRightExpansionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightExpansionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightExpansionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightExpansionLimitFromZeroRow.Controls.Add(this.frontRightExpansionLimitFromZeroCaption, 0, 0);
+            // label_FR_ExpansionLimitFromZero
+            this.label_FR_ExpansionLimitFromZero.Name = "label_FR_ExpansionLimitFromZero";
+            this.label_FR_ExpansionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ExpansionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ExpansionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ExpansionLimitFromZero.Text = "—";
+            this.frontRightExpansionLimitFromZeroRow.Controls.Add(this.label_FR_ExpansionLimitFromZero, 1, 0);
+            this.frontRightSection2Rows.Controls.Add(this.frontRightExpansionLimitFromZeroRow, 0, 2);
+            this.frontRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightCompressionLimitFromZeroRow
+            this.frontRightCompressionLimitFromZeroRow.Name = "frontRightCompressionLimitFromZeroRow";
+            this.frontRightCompressionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightCompressionLimitFromZeroRow.ColumnCount = 2;
+            this.frontRightCompressionLimitFromZeroRow.RowCount = 1;
+            this.frontRightCompressionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightCompressionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightCompressionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightCompressionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightCompressionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightCompressionLimitFromZeroCaption
+            this.frontRightCompressionLimitFromZeroCaption.Name = "frontRightCompressionLimitFromZeroCaption";
+            this.frontRightCompressionLimitFromZeroCaption.Text = "Compression limit from zero";
+            this.frontRightCompressionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightCompressionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightCompressionLimitFromZeroCaption.AutoEllipsis = true;
+            this.frontRightCompressionLimitFromZeroCaption.UseMnemonic = false;
+            this.frontRightCompressionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightCompressionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightCompressionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightCompressionLimitFromZeroRow.Controls.Add(this.frontRightCompressionLimitFromZeroCaption, 0, 0);
+            // label_FR_CompressionLimitFromZero
+            this.label_FR_CompressionLimitFromZero.Name = "label_FR_CompressionLimitFromZero";
+            this.label_FR_CompressionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_CompressionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_CompressionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_FR_CompressionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_CompressionLimitFromZero.Text = "—";
+            this.frontRightCompressionLimitFromZeroRow.Controls.Add(this.label_FR_CompressionLimitFromZero, 1, 0);
+            this.frontRightSection2Rows.Controls.Add(this.frontRightCompressionLimitFromZeroRow, 0, 3);
+            this.frontRightSection2Group.Controls.Add(this.frontRightSection2Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection2Group, 0, 1);
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // frontRightSection3Group
+            this.frontRightSection3Group.Name = "frontRightSection3Group";
+            this.frontRightSection3Group.Text = "Damping & Rebound";
+            this.frontRightSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection3Rows
+            this.frontRightSection3Rows.Name = "frontRightSection3Rows";
+            this.frontRightSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection3Rows.ColumnCount = 1;
+            this.frontRightSection3Rows.RowCount = 4;
+            this.frontRightSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightBumpDampRow
+            this.frontRightBumpDampRow.Name = "frontRightBumpDampRow";
+            this.frontRightBumpDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpDampRow.ColumnCount = 3;
+            this.frontRightBumpDampRow.RowCount = 1;
+            this.frontRightBumpDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightBumpDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightBumpDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightBumpDampRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightBumpDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.frontRightBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.frontRightBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // frontRightBumpDampCaption
+            this.frontRightBumpDampCaption.Name = "frontRightBumpDampCaption";
+            this.frontRightBumpDampCaption.Text = "Bump damping (X / Y)";
+            this.frontRightBumpDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightBumpDampCaption.AutoEllipsis = true;
+            this.frontRightBumpDampCaption.UseMnemonic = false;
+            this.frontRightBumpDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightBumpDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightBumpDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightBumpDampRow.Controls.Add(this.frontRightBumpDampCaption, 0, 0);
+            // label_FR_BumpDampX
+            this.label_FR_BumpDampX.Name = "label_FR_BumpDampX";
+            this.label_FR_BumpDampX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpDampX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpDampX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpDampX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpDampX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpDampX.Text = "—";
+            this.frontRightBumpDampRow.Controls.Add(this.label_FR_BumpDampX, 1, 0);
             // label_FR_BumpDampY
-            // 
-            this.label_FR_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.label_FR_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.label_FR_BumpDampY.Location = new System.Drawing.Point(849, 224);
-            this.label_FR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.label_FR_BumpDampY.Name = "label_FR_BumpDampY";
-            this.label_FR_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.label_FR_BumpDampY.TabIndex = 230;
-            // 
+            this.label_FR_BumpDampY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpDampY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpDampY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpDampY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpDampY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpDampY.Text = "—";
+            this.frontRightBumpDampRow.Controls.Add(this.label_FR_BumpDampY, 2, 0);
+            this.frontRightSection3Rows.Controls.Add(this.frontRightBumpDampRow, 0, 0);
+            this.frontRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightReboundRateRow
+            this.frontRightReboundRateRow.Name = "frontRightReboundRateRow";
+            this.frontRightReboundRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundRateRow.ColumnCount = 2;
+            this.frontRightReboundRateRow.RowCount = 1;
+            this.frontRightReboundRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightReboundRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightReboundRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightReboundRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightReboundRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightReboundRateCaption
+            this.frontRightReboundRateCaption.Name = "frontRightReboundRateCaption";
+            this.frontRightReboundRateCaption.Text = "Rebound rate";
+            this.frontRightReboundRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightReboundRateCaption.AutoEllipsis = true;
+            this.frontRightReboundRateCaption.UseMnemonic = false;
+            this.frontRightReboundRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightReboundRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightReboundRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightReboundRateRow.Controls.Add(this.frontRightReboundRateCaption, 0, 0);
+            // label_FR_ReboundRate
+            this.label_FR_ReboundRate.Name = "label_FR_ReboundRate";
+            this.label_FR_ReboundRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ReboundRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ReboundRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ReboundRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ReboundRate.Text = "—";
+            this.frontRightReboundRateRow.Controls.Add(this.label_FR_ReboundRate, 1, 0);
+            this.frontRightSection3Rows.Controls.Add(this.frontRightReboundRateRow, 0, 1);
+            this.frontRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightReboundStartPositionRow
+            this.frontRightReboundStartPositionRow.Name = "frontRightReboundStartPositionRow";
+            this.frontRightReboundStartPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundStartPositionRow.ColumnCount = 2;
+            this.frontRightReboundStartPositionRow.RowCount = 1;
+            this.frontRightReboundStartPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightReboundStartPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightReboundStartPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightReboundStartPositionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightReboundStartPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightReboundStartPositionCaption
+            this.frontRightReboundStartPositionCaption.Name = "frontRightReboundStartPositionCaption";
+            this.frontRightReboundStartPositionCaption.Text = "Rebound start position";
+            this.frontRightReboundStartPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundStartPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightReboundStartPositionCaption.AutoEllipsis = true;
+            this.frontRightReboundStartPositionCaption.UseMnemonic = false;
+            this.frontRightReboundStartPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightReboundStartPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightReboundStartPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightReboundStartPositionRow.Controls.Add(this.frontRightReboundStartPositionCaption, 0, 0);
+            // label_FR_ReboundStartPosition
+            this.label_FR_ReboundStartPosition.Name = "label_FR_ReboundStartPosition";
+            this.label_FR_ReboundStartPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ReboundStartPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ReboundStartPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundStartPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ReboundStartPosition.Text = "—";
+            this.frontRightReboundStartPositionRow.Controls.Add(this.label_FR_ReboundStartPosition, 1, 0);
+            this.frontRightSection3Rows.Controls.Add(this.frontRightReboundStartPositionRow, 0, 2);
+            this.frontRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightReboundEndPositionRow
+            this.frontRightReboundEndPositionRow.Name = "frontRightReboundEndPositionRow";
+            this.frontRightReboundEndPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundEndPositionRow.ColumnCount = 2;
+            this.frontRightReboundEndPositionRow.RowCount = 1;
+            this.frontRightReboundEndPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightReboundEndPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightReboundEndPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightReboundEndPositionRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightReboundEndPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightReboundEndPositionCaption
+            this.frontRightReboundEndPositionCaption.Name = "frontRightReboundEndPositionCaption";
+            this.frontRightReboundEndPositionCaption.Text = "Rebound end position";
+            this.frontRightReboundEndPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightReboundEndPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightReboundEndPositionCaption.AutoEllipsis = true;
+            this.frontRightReboundEndPositionCaption.UseMnemonic = false;
+            this.frontRightReboundEndPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightReboundEndPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightReboundEndPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightReboundEndPositionRow.Controls.Add(this.frontRightReboundEndPositionCaption, 0, 0);
+            // label_FR_ReboundEndPosition
+            this.label_FR_ReboundEndPosition.Name = "label_FR_ReboundEndPosition";
+            this.label_FR_ReboundEndPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ReboundEndPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ReboundEndPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ReboundEndPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ReboundEndPosition.Text = "—";
+            this.frontRightReboundEndPositionRow.Controls.Add(this.label_FR_ReboundEndPosition, 1, 0);
+            this.frontRightSection3Rows.Controls.Add(this.frontRightReboundEndPositionRow, 0, 3);
+            this.frontRightSection3Group.Controls.Add(this.frontRightSection3Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection3Group, 0, 2);
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 184F));
+            // frontRightSection4Group
+            this.frontRightSection4Group.Name = "frontRightSection4Group";
+            this.frontRightSection4Group.Text = "Bump Stops";
+            this.frontRightSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection4Rows
+            this.frontRightSection4Rows.Name = "frontRightSection4Rows";
+            this.frontRightSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection4Rows.ColumnCount = 1;
+            this.frontRightSection4Rows.RowCount = 5;
+            this.frontRightSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightBumpStopLengthRow
+            this.frontRightBumpStopLengthRow.Name = "frontRightBumpStopLengthRow";
+            this.frontRightBumpStopLengthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopLengthRow.ColumnCount = 2;
+            this.frontRightBumpStopLengthRow.RowCount = 1;
+            this.frontRightBumpStopLengthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightBumpStopLengthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightBumpStopLengthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightBumpStopLengthRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightBumpStopLengthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightBumpStopLengthCaption
+            this.frontRightBumpStopLengthCaption.Name = "frontRightBumpStopLengthCaption";
+            this.frontRightBumpStopLengthCaption.Text = "Bump-stop length";
+            this.frontRightBumpStopLengthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopLengthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightBumpStopLengthCaption.AutoEllipsis = true;
+            this.frontRightBumpStopLengthCaption.UseMnemonic = false;
+            this.frontRightBumpStopLengthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightBumpStopLengthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightBumpStopLengthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightBumpStopLengthRow.Controls.Add(this.frontRightBumpStopLengthCaption, 0, 0);
+            // label_FR_BumpStopLength
+            this.label_FR_BumpStopLength.Name = "label_FR_BumpStopLength";
+            this.label_FR_BumpStopLength.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpStopLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpStopLength.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpStopLength.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopLength.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpStopLength.Text = "—";
+            this.frontRightBumpStopLengthRow.Controls.Add(this.label_FR_BumpStopLength, 1, 0);
+            this.frontRightSection4Rows.Controls.Add(this.frontRightBumpStopLengthRow, 0, 0);
+            this.frontRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightBumpStopRateRow
+            this.frontRightBumpStopRateRow.Name = "frontRightBumpStopRateRow";
+            this.frontRightBumpStopRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopRateRow.ColumnCount = 2;
+            this.frontRightBumpStopRateRow.RowCount = 1;
+            this.frontRightBumpStopRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightBumpStopRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightBumpStopRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightBumpStopRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightBumpStopRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightBumpStopRateCaption
+            this.frontRightBumpStopRateCaption.Name = "frontRightBumpStopRateCaption";
+            this.frontRightBumpStopRateCaption.Text = "Bump-stop rate";
+            this.frontRightBumpStopRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightBumpStopRateCaption.AutoEllipsis = true;
+            this.frontRightBumpStopRateCaption.UseMnemonic = false;
+            this.frontRightBumpStopRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightBumpStopRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightBumpStopRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightBumpStopRateRow.Controls.Add(this.frontRightBumpStopRateCaption, 0, 0);
+            // label_FR_BumpStopRate
+            this.label_FR_BumpStopRate.Name = "label_FR_BumpStopRate";
+            this.label_FR_BumpStopRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpStopRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpStopRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpStopRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpStopRate.Text = "—";
+            this.frontRightBumpStopRateRow.Controls.Add(this.label_FR_BumpStopRate, 1, 0);
+            this.frontRightSection4Rows.Controls.Add(this.frontRightBumpStopRateRow, 0, 1);
+            this.frontRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightBumpStopRateGainDeflectionSquaredRow
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.Name = "frontRightBumpStopRateGainDeflectionSquaredRow";
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.ColumnCount = 2;
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.RowCount = 1;
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightBumpStopRateGainDeflectionSquaredCaption
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.Name = "frontRightBumpStopRateGainDeflectionSquaredCaption";
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.Text = "Rate gain (deflection squared)";
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightBumpStopRateGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.frontRightBumpStopRateGainDeflectionSquaredCaption, 0, 0);
+            // label_FR_BumpStopRateGainDeflectionSquared
+            this.label_FR_BumpStopRateGainDeflectionSquared.Name = "label_FR_BumpStopRateGainDeflectionSquared";
+            this.label_FR_BumpStopRateGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpStopRateGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpStopRateGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpStopRateGainDeflectionSquared.Text = "—";
+            this.frontRightBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.label_FR_BumpStopRateGainDeflectionSquared, 1, 0);
+            this.frontRightSection4Rows.Controls.Add(this.frontRightBumpStopRateGainDeflectionSquaredRow, 0, 2);
+            this.frontRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightBumpStopDampRow
+            this.frontRightBumpStopDampRow.Name = "frontRightBumpStopDampRow";
+            this.frontRightBumpStopDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopDampRow.ColumnCount = 2;
+            this.frontRightBumpStopDampRow.RowCount = 1;
+            this.frontRightBumpStopDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightBumpStopDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightBumpStopDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightBumpStopDampRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightBumpStopDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightBumpStopDampCaption
+            this.frontRightBumpStopDampCaption.Name = "frontRightBumpStopDampCaption";
+            this.frontRightBumpStopDampCaption.Text = "Bump-stop damping";
+            this.frontRightBumpStopDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightBumpStopDampCaption.AutoEllipsis = true;
+            this.frontRightBumpStopDampCaption.UseMnemonic = false;
+            this.frontRightBumpStopDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightBumpStopDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightBumpStopDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightBumpStopDampRow.Controls.Add(this.frontRightBumpStopDampCaption, 0, 0);
+            // label_FR_BumpStopDamp
+            this.label_FR_BumpStopDamp.Name = "label_FR_BumpStopDamp";
+            this.label_FR_BumpStopDamp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpStopDamp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpStopDamp.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopDamp.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpStopDamp.Text = "—";
+            this.frontRightBumpStopDampRow.Controls.Add(this.label_FR_BumpStopDamp, 1, 0);
+            this.frontRightSection4Rows.Controls.Add(this.frontRightBumpStopDampRow, 0, 3);
+            this.frontRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightBumpStopDampGainDeflectionSquaredRow
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.Name = "frontRightBumpStopDampGainDeflectionSquaredRow";
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.ColumnCount = 2;
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.RowCount = 1;
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightBumpStopDampGainDeflectionSquaredCaption
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.Name = "frontRightBumpStopDampGainDeflectionSquaredCaption";
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.Text = "Damping gain (deflection squared)";
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightBumpStopDampGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.frontRightBumpStopDampGainDeflectionSquaredCaption, 0, 0);
+            // label_FR_BumpStopDampGainDeflectionSquared
+            this.label_FR_BumpStopDampGainDeflectionSquared.Name = "label_FR_BumpStopDampGainDeflectionSquared";
+            this.label_FR_BumpStopDampGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_BumpStopDampGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_BumpStopDampGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_FR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_BumpStopDampGainDeflectionSquared.Text = "—";
+            this.frontRightBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.label_FR_BumpStopDampGainDeflectionSquared, 1, 0);
+            this.frontRightSection4Rows.Controls.Add(this.frontRightBumpStopDampGainDeflectionSquaredRow, 0, 4);
+            this.frontRightSection4Group.Controls.Add(this.frontRightSection4Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection4Group, 0, 3);
+            this.frontRightScroll.Controls.Add(this.frontRightSections);
+            this.frontRightGroup.Controls.Add(this.frontRightScroll);
+            this.wheelValuesLayout.Controls.Add(this.frontRightGroup, 1, 0);
+            // rearLeftGroup
+            this.rearLeftGroup.Name = "rearLeftGroup";
+            this.rearLeftGroup.Text = "REAR LEFT";
+            this.rearLeftGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.rearLeftGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.rearLeftGroup.ForeColor = System.Drawing.Color.White;
+            this.rearLeftGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearLeftScroll
+            this.rearLeftScroll.Name = "rearLeftScroll";
+            this.rearLeftScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftScroll.AutoScroll = true;
+            this.rearLeftScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearLeftSections
+            this.rearLeftSections.Name = "rearLeftSections";
+            this.rearLeftSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rearLeftSections.AutoSize = true;
+            this.rearLeftSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rearLeftSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSections.ColumnCount = 1;
+            this.rearLeftSections.RowCount = 4;
+            this.rearLeftSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.rearLeftSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.rearLeftSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearLeftSection1Group
+            this.rearLeftSection1Group.Name = "rearLeftSection1Group";
+            this.rearLeftSection1Group.Text = "Springs";
+            this.rearLeftSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection1Rows
+            this.rearLeftSection1Rows.Name = "rearLeftSection1Rows";
+            this.rearLeftSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection1Rows.ColumnCount = 1;
+            this.rearLeftSection1Rows.RowCount = 2;
+            this.rearLeftSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftSpringRateRow
+            this.rearLeftSpringRateRow.Name = "rearLeftSpringRateRow";
+            this.rearLeftSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSpringRateRow.ColumnCount = 2;
+            this.rearLeftSpringRateRow.RowCount = 1;
+            this.rearLeftSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftSpringRateCaption
+            this.rearLeftSpringRateCaption.Name = "rearLeftSpringRateCaption";
+            this.rearLeftSpringRateCaption.Text = "Spring rate";
+            this.rearLeftSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftSpringRateCaption.AutoEllipsis = true;
+            this.rearLeftSpringRateCaption.UseMnemonic = false;
+            this.rearLeftSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftSpringRateRow.Controls.Add(this.rearLeftSpringRateCaption, 0, 0);
+            // label_RL_SpringRate
+            this.label_RL_SpringRate.Name = "label_RL_SpringRate";
+            this.label_RL_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_SpringRate.Text = "—";
+            this.rearLeftSpringRateRow.Controls.Add(this.label_RL_SpringRate, 1, 0);
+            this.rearLeftSection1Rows.Controls.Add(this.rearLeftSpringRateRow, 0, 0);
+            this.rearLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftProgressiveRateRow
+            this.rearLeftProgressiveRateRow.Name = "rearLeftProgressiveRateRow";
+            this.rearLeftProgressiveRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftProgressiveRateRow.ColumnCount = 2;
+            this.rearLeftProgressiveRateRow.RowCount = 1;
+            this.rearLeftProgressiveRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftProgressiveRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftProgressiveRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftProgressiveRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftProgressiveRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftProgressiveRateCaption
+            this.rearLeftProgressiveRateCaption.Name = "rearLeftProgressiveRateCaption";
+            this.rearLeftProgressiveRateCaption.Text = "Progressive rate";
+            this.rearLeftProgressiveRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftProgressiveRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftProgressiveRateCaption.AutoEllipsis = true;
+            this.rearLeftProgressiveRateCaption.UseMnemonic = false;
+            this.rearLeftProgressiveRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftProgressiveRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftProgressiveRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftProgressiveRateRow.Controls.Add(this.rearLeftProgressiveRateCaption, 0, 0);
+            // label_RL_ProgressiveRate
+            this.label_RL_ProgressiveRate.Name = "label_RL_ProgressiveRate";
+            this.label_RL_ProgressiveRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ProgressiveRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ProgressiveRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ProgressiveRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ProgressiveRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ProgressiveRate.Text = "—";
+            this.rearLeftProgressiveRateRow.Controls.Add(this.label_RL_ProgressiveRate, 1, 0);
+            this.rearLeftSection1Rows.Controls.Add(this.rearLeftProgressiveRateRow, 0, 1);
+            this.rearLeftSection1Group.Controls.Add(this.rearLeftSection1Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection1Group, 0, 0);
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // rearLeftSection2Group
+            this.rearLeftSection2Group.Name = "rearLeftSection2Group";
+            this.rearLeftSection2Group.Text = "Travel & Limits";
+            this.rearLeftSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection2Rows
+            this.rearLeftSection2Rows.Name = "rearLeftSection2Rows";
+            this.rearLeftSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection2Rows.ColumnCount = 1;
+            this.rearLeftSection2Rows.RowCount = 4;
+            this.rearLeftSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftBumpLimitsRow
+            this.rearLeftBumpLimitsRow.Name = "rearLeftBumpLimitsRow";
+            this.rearLeftBumpLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpLimitsRow.ColumnCount = 3;
+            this.rearLeftBumpLimitsRow.RowCount = 1;
+            this.rearLeftBumpLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftBumpLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftBumpLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftBumpLimitsRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftBumpLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.rearLeftBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.rearLeftBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // rearLeftBumpLimitsCaption
+            this.rearLeftBumpLimitsCaption.Name = "rearLeftBumpLimitsCaption";
+            this.rearLeftBumpLimitsCaption.Text = "Bump limits (X / Y)";
+            this.rearLeftBumpLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftBumpLimitsCaption.AutoEllipsis = true;
+            this.rearLeftBumpLimitsCaption.UseMnemonic = false;
+            this.rearLeftBumpLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftBumpLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftBumpLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftBumpLimitsRow.Controls.Add(this.rearLeftBumpLimitsCaption, 0, 0);
+            // label_RL_BumpLimitsX
+            this.label_RL_BumpLimitsX.Name = "label_RL_BumpLimitsX";
+            this.label_RL_BumpLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpLimitsX.Text = "—";
+            this.rearLeftBumpLimitsRow.Controls.Add(this.label_RL_BumpLimitsX, 1, 0);
             // label_RL_BumpLimitsY
-            // 
-            this.label_RL_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpLimitsY.Location = new System.Drawing.Point(349, 838);
-            this.label_RL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.label_RL_BumpLimitsY.Name = "label_RL_BumpLimitsY";
-            this.label_RL_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_RL_BumpLimitsY.TabIndex = 231;
-            // 
+            this.label_RL_BumpLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpLimitsY.Text = "—";
+            this.rearLeftBumpLimitsRow.Controls.Add(this.label_RL_BumpLimitsY, 2, 0);
+            this.rearLeftSection2Rows.Controls.Add(this.rearLeftBumpLimitsRow, 0, 0);
+            this.rearLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftReboundLimitsRow
+            this.rearLeftReboundLimitsRow.Name = "rearLeftReboundLimitsRow";
+            this.rearLeftReboundLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundLimitsRow.ColumnCount = 3;
+            this.rearLeftReboundLimitsRow.RowCount = 1;
+            this.rearLeftReboundLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftReboundLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftReboundLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftReboundLimitsRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftReboundLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.rearLeftReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.rearLeftReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // rearLeftReboundLimitsCaption
+            this.rearLeftReboundLimitsCaption.Name = "rearLeftReboundLimitsCaption";
+            this.rearLeftReboundLimitsCaption.Text = "Rebound limits (X / Y)";
+            this.rearLeftReboundLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftReboundLimitsCaption.AutoEllipsis = true;
+            this.rearLeftReboundLimitsCaption.UseMnemonic = false;
+            this.rearLeftReboundLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftReboundLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftReboundLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftReboundLimitsRow.Controls.Add(this.rearLeftReboundLimitsCaption, 0, 0);
+            // label_RL_ReboundLimitsX
+            this.label_RL_ReboundLimitsX.Name = "label_RL_ReboundLimitsX";
+            this.label_RL_ReboundLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ReboundLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ReboundLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ReboundLimitsX.Text = "—";
+            this.rearLeftReboundLimitsRow.Controls.Add(this.label_RL_ReboundLimitsX, 1, 0);
             // label_RL_ReboundLimitsY
-            // 
-            this.label_RL_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ReboundLimitsY.Location = new System.Drawing.Point(349, 880);
-            this.label_RL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.label_RL_ReboundLimitsY.Name = "label_RL_ReboundLimitsY";
-            this.label_RL_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_RL_ReboundLimitsY.TabIndex = 232;
-            // 
+            this.label_RL_ReboundLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ReboundLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ReboundLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ReboundLimitsY.Text = "—";
+            this.rearLeftReboundLimitsRow.Controls.Add(this.label_RL_ReboundLimitsY, 2, 0);
+            this.rearLeftSection2Rows.Controls.Add(this.rearLeftReboundLimitsRow, 0, 1);
+            this.rearLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftExpansionLimitFromZeroRow
+            this.rearLeftExpansionLimitFromZeroRow.Name = "rearLeftExpansionLimitFromZeroRow";
+            this.rearLeftExpansionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftExpansionLimitFromZeroRow.ColumnCount = 2;
+            this.rearLeftExpansionLimitFromZeroRow.RowCount = 1;
+            this.rearLeftExpansionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftExpansionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftExpansionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftExpansionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftExpansionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftExpansionLimitFromZeroCaption
+            this.rearLeftExpansionLimitFromZeroCaption.Name = "rearLeftExpansionLimitFromZeroCaption";
+            this.rearLeftExpansionLimitFromZeroCaption.Text = "Expansion limit from zero";
+            this.rearLeftExpansionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftExpansionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftExpansionLimitFromZeroCaption.AutoEllipsis = true;
+            this.rearLeftExpansionLimitFromZeroCaption.UseMnemonic = false;
+            this.rearLeftExpansionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftExpansionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftExpansionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftExpansionLimitFromZeroRow.Controls.Add(this.rearLeftExpansionLimitFromZeroCaption, 0, 0);
+            // label_RL_ExpansionLimitFromZero
+            this.label_RL_ExpansionLimitFromZero.Name = "label_RL_ExpansionLimitFromZero";
+            this.label_RL_ExpansionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ExpansionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ExpansionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ExpansionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ExpansionLimitFromZero.Text = "—";
+            this.rearLeftExpansionLimitFromZeroRow.Controls.Add(this.label_RL_ExpansionLimitFromZero, 1, 0);
+            this.rearLeftSection2Rows.Controls.Add(this.rearLeftExpansionLimitFromZeroRow, 0, 2);
+            this.rearLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftCompressionLimitFromZeroRow
+            this.rearLeftCompressionLimitFromZeroRow.Name = "rearLeftCompressionLimitFromZeroRow";
+            this.rearLeftCompressionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftCompressionLimitFromZeroRow.ColumnCount = 2;
+            this.rearLeftCompressionLimitFromZeroRow.RowCount = 1;
+            this.rearLeftCompressionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftCompressionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftCompressionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftCompressionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftCompressionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftCompressionLimitFromZeroCaption
+            this.rearLeftCompressionLimitFromZeroCaption.Name = "rearLeftCompressionLimitFromZeroCaption";
+            this.rearLeftCompressionLimitFromZeroCaption.Text = "Compression limit from zero";
+            this.rearLeftCompressionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftCompressionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftCompressionLimitFromZeroCaption.AutoEllipsis = true;
+            this.rearLeftCompressionLimitFromZeroCaption.UseMnemonic = false;
+            this.rearLeftCompressionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftCompressionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftCompressionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftCompressionLimitFromZeroRow.Controls.Add(this.rearLeftCompressionLimitFromZeroCaption, 0, 0);
+            // label_RL_CompressionLimitFromZero
+            this.label_RL_CompressionLimitFromZero.Name = "label_RL_CompressionLimitFromZero";
+            this.label_RL_CompressionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_CompressionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_CompressionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RL_CompressionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_CompressionLimitFromZero.Text = "—";
+            this.rearLeftCompressionLimitFromZeroRow.Controls.Add(this.label_RL_CompressionLimitFromZero, 1, 0);
+            this.rearLeftSection2Rows.Controls.Add(this.rearLeftCompressionLimitFromZeroRow, 0, 3);
+            this.rearLeftSection2Group.Controls.Add(this.rearLeftSection2Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection2Group, 0, 1);
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // rearLeftSection3Group
+            this.rearLeftSection3Group.Name = "rearLeftSection3Group";
+            this.rearLeftSection3Group.Text = "Damping & Rebound";
+            this.rearLeftSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection3Rows
+            this.rearLeftSection3Rows.Name = "rearLeftSection3Rows";
+            this.rearLeftSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection3Rows.ColumnCount = 1;
+            this.rearLeftSection3Rows.RowCount = 4;
+            this.rearLeftSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftBumpDampRow
+            this.rearLeftBumpDampRow.Name = "rearLeftBumpDampRow";
+            this.rearLeftBumpDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpDampRow.ColumnCount = 3;
+            this.rearLeftBumpDampRow.RowCount = 1;
+            this.rearLeftBumpDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftBumpDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftBumpDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftBumpDampRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftBumpDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.rearLeftBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.rearLeftBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // rearLeftBumpDampCaption
+            this.rearLeftBumpDampCaption.Name = "rearLeftBumpDampCaption";
+            this.rearLeftBumpDampCaption.Text = "Bump damping (X / Y)";
+            this.rearLeftBumpDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftBumpDampCaption.AutoEllipsis = true;
+            this.rearLeftBumpDampCaption.UseMnemonic = false;
+            this.rearLeftBumpDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftBumpDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftBumpDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftBumpDampRow.Controls.Add(this.rearLeftBumpDampCaption, 0, 0);
+            // label_RL_BumpDampX
+            this.label_RL_BumpDampX.Name = "label_RL_BumpDampX";
+            this.label_RL_BumpDampX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpDampX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpDampX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpDampX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpDampX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpDampX.Text = "—";
+            this.rearLeftBumpDampRow.Controls.Add(this.label_RL_BumpDampX, 1, 0);
             // label_RL_BumpDampY
-            // 
-            this.label_RL_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.label_RL_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.label_RL_BumpDampY.Location = new System.Drawing.Point(349, 924);
-            this.label_RL_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.label_RL_BumpDampY.Name = "label_RL_BumpDampY";
-            this.label_RL_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.label_RL_BumpDampY.TabIndex = 233;
-            // 
+            this.label_RL_BumpDampY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpDampY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpDampY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpDampY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpDampY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpDampY.Text = "—";
+            this.rearLeftBumpDampRow.Controls.Add(this.label_RL_BumpDampY, 2, 0);
+            this.rearLeftSection3Rows.Controls.Add(this.rearLeftBumpDampRow, 0, 0);
+            this.rearLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftReboundRateRow
+            this.rearLeftReboundRateRow.Name = "rearLeftReboundRateRow";
+            this.rearLeftReboundRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundRateRow.ColumnCount = 2;
+            this.rearLeftReboundRateRow.RowCount = 1;
+            this.rearLeftReboundRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftReboundRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftReboundRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftReboundRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftReboundRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftReboundRateCaption
+            this.rearLeftReboundRateCaption.Name = "rearLeftReboundRateCaption";
+            this.rearLeftReboundRateCaption.Text = "Rebound rate";
+            this.rearLeftReboundRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftReboundRateCaption.AutoEllipsis = true;
+            this.rearLeftReboundRateCaption.UseMnemonic = false;
+            this.rearLeftReboundRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftReboundRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftReboundRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftReboundRateRow.Controls.Add(this.rearLeftReboundRateCaption, 0, 0);
+            // label_RL_ReboundRate
+            this.label_RL_ReboundRate.Name = "label_RL_ReboundRate";
+            this.label_RL_ReboundRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ReboundRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ReboundRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ReboundRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ReboundRate.Text = "—";
+            this.rearLeftReboundRateRow.Controls.Add(this.label_RL_ReboundRate, 1, 0);
+            this.rearLeftSection3Rows.Controls.Add(this.rearLeftReboundRateRow, 0, 1);
+            this.rearLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftReboundStartPositionRow
+            this.rearLeftReboundStartPositionRow.Name = "rearLeftReboundStartPositionRow";
+            this.rearLeftReboundStartPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundStartPositionRow.ColumnCount = 2;
+            this.rearLeftReboundStartPositionRow.RowCount = 1;
+            this.rearLeftReboundStartPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftReboundStartPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftReboundStartPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftReboundStartPositionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftReboundStartPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftReboundStartPositionCaption
+            this.rearLeftReboundStartPositionCaption.Name = "rearLeftReboundStartPositionCaption";
+            this.rearLeftReboundStartPositionCaption.Text = "Rebound start position";
+            this.rearLeftReboundStartPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundStartPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftReboundStartPositionCaption.AutoEllipsis = true;
+            this.rearLeftReboundStartPositionCaption.UseMnemonic = false;
+            this.rearLeftReboundStartPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftReboundStartPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftReboundStartPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftReboundStartPositionRow.Controls.Add(this.rearLeftReboundStartPositionCaption, 0, 0);
+            // label_RL_ReboundStartPosition
+            this.label_RL_ReboundStartPosition.Name = "label_RL_ReboundStartPosition";
+            this.label_RL_ReboundStartPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ReboundStartPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ReboundStartPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundStartPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ReboundStartPosition.Text = "—";
+            this.rearLeftReboundStartPositionRow.Controls.Add(this.label_RL_ReboundStartPosition, 1, 0);
+            this.rearLeftSection3Rows.Controls.Add(this.rearLeftReboundStartPositionRow, 0, 2);
+            this.rearLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftReboundEndPositionRow
+            this.rearLeftReboundEndPositionRow.Name = "rearLeftReboundEndPositionRow";
+            this.rearLeftReboundEndPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundEndPositionRow.ColumnCount = 2;
+            this.rearLeftReboundEndPositionRow.RowCount = 1;
+            this.rearLeftReboundEndPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftReboundEndPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftReboundEndPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftReboundEndPositionRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftReboundEndPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftReboundEndPositionCaption
+            this.rearLeftReboundEndPositionCaption.Name = "rearLeftReboundEndPositionCaption";
+            this.rearLeftReboundEndPositionCaption.Text = "Rebound end position";
+            this.rearLeftReboundEndPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftReboundEndPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftReboundEndPositionCaption.AutoEllipsis = true;
+            this.rearLeftReboundEndPositionCaption.UseMnemonic = false;
+            this.rearLeftReboundEndPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftReboundEndPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftReboundEndPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftReboundEndPositionRow.Controls.Add(this.rearLeftReboundEndPositionCaption, 0, 0);
+            // label_RL_ReboundEndPosition
+            this.label_RL_ReboundEndPosition.Name = "label_RL_ReboundEndPosition";
+            this.label_RL_ReboundEndPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ReboundEndPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ReboundEndPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ReboundEndPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ReboundEndPosition.Text = "—";
+            this.rearLeftReboundEndPositionRow.Controls.Add(this.label_RL_ReboundEndPosition, 1, 0);
+            this.rearLeftSection3Rows.Controls.Add(this.rearLeftReboundEndPositionRow, 0, 3);
+            this.rearLeftSection3Group.Controls.Add(this.rearLeftSection3Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection3Group, 0, 2);
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 184F));
+            // rearLeftSection4Group
+            this.rearLeftSection4Group.Name = "rearLeftSection4Group";
+            this.rearLeftSection4Group.Text = "Bump Stops";
+            this.rearLeftSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection4Rows
+            this.rearLeftSection4Rows.Name = "rearLeftSection4Rows";
+            this.rearLeftSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection4Rows.ColumnCount = 1;
+            this.rearLeftSection4Rows.RowCount = 5;
+            this.rearLeftSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftBumpStopLengthRow
+            this.rearLeftBumpStopLengthRow.Name = "rearLeftBumpStopLengthRow";
+            this.rearLeftBumpStopLengthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopLengthRow.ColumnCount = 2;
+            this.rearLeftBumpStopLengthRow.RowCount = 1;
+            this.rearLeftBumpStopLengthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftBumpStopLengthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftBumpStopLengthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftBumpStopLengthRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftBumpStopLengthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftBumpStopLengthCaption
+            this.rearLeftBumpStopLengthCaption.Name = "rearLeftBumpStopLengthCaption";
+            this.rearLeftBumpStopLengthCaption.Text = "Bump-stop length";
+            this.rearLeftBumpStopLengthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopLengthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftBumpStopLengthCaption.AutoEllipsis = true;
+            this.rearLeftBumpStopLengthCaption.UseMnemonic = false;
+            this.rearLeftBumpStopLengthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftBumpStopLengthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftBumpStopLengthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftBumpStopLengthRow.Controls.Add(this.rearLeftBumpStopLengthCaption, 0, 0);
+            // label_RL_BumpStopLength
+            this.label_RL_BumpStopLength.Name = "label_RL_BumpStopLength";
+            this.label_RL_BumpStopLength.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpStopLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpStopLength.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpStopLength.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopLength.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpStopLength.Text = "—";
+            this.rearLeftBumpStopLengthRow.Controls.Add(this.label_RL_BumpStopLength, 1, 0);
+            this.rearLeftSection4Rows.Controls.Add(this.rearLeftBumpStopLengthRow, 0, 0);
+            this.rearLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftBumpStopRateRow
+            this.rearLeftBumpStopRateRow.Name = "rearLeftBumpStopRateRow";
+            this.rearLeftBumpStopRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopRateRow.ColumnCount = 2;
+            this.rearLeftBumpStopRateRow.RowCount = 1;
+            this.rearLeftBumpStopRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftBumpStopRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftBumpStopRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftBumpStopRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftBumpStopRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftBumpStopRateCaption
+            this.rearLeftBumpStopRateCaption.Name = "rearLeftBumpStopRateCaption";
+            this.rearLeftBumpStopRateCaption.Text = "Bump-stop rate";
+            this.rearLeftBumpStopRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftBumpStopRateCaption.AutoEllipsis = true;
+            this.rearLeftBumpStopRateCaption.UseMnemonic = false;
+            this.rearLeftBumpStopRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftBumpStopRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftBumpStopRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftBumpStopRateRow.Controls.Add(this.rearLeftBumpStopRateCaption, 0, 0);
+            // label_RL_BumpStopRate
+            this.label_RL_BumpStopRate.Name = "label_RL_BumpStopRate";
+            this.label_RL_BumpStopRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpStopRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpStopRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpStopRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpStopRate.Text = "—";
+            this.rearLeftBumpStopRateRow.Controls.Add(this.label_RL_BumpStopRate, 1, 0);
+            this.rearLeftSection4Rows.Controls.Add(this.rearLeftBumpStopRateRow, 0, 1);
+            this.rearLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftBumpStopRateGainDeflectionSquaredRow
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.Name = "rearLeftBumpStopRateGainDeflectionSquaredRow";
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.ColumnCount = 2;
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.RowCount = 1;
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftBumpStopRateGainDeflectionSquaredCaption
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.Name = "rearLeftBumpStopRateGainDeflectionSquaredCaption";
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.Text = "Rate gain (deflection squared)";
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftBumpStopRateGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.rearLeftBumpStopRateGainDeflectionSquaredCaption, 0, 0);
+            // label_RL_BumpStopRateGainDeflectionSquared
+            this.label_RL_BumpStopRateGainDeflectionSquared.Name = "label_RL_BumpStopRateGainDeflectionSquared";
+            this.label_RL_BumpStopRateGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpStopRateGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpStopRateGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpStopRateGainDeflectionSquared.Text = "—";
+            this.rearLeftBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.label_RL_BumpStopRateGainDeflectionSquared, 1, 0);
+            this.rearLeftSection4Rows.Controls.Add(this.rearLeftBumpStopRateGainDeflectionSquaredRow, 0, 2);
+            this.rearLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftBumpStopDampRow
+            this.rearLeftBumpStopDampRow.Name = "rearLeftBumpStopDampRow";
+            this.rearLeftBumpStopDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopDampRow.ColumnCount = 2;
+            this.rearLeftBumpStopDampRow.RowCount = 1;
+            this.rearLeftBumpStopDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftBumpStopDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftBumpStopDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftBumpStopDampRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftBumpStopDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftBumpStopDampCaption
+            this.rearLeftBumpStopDampCaption.Name = "rearLeftBumpStopDampCaption";
+            this.rearLeftBumpStopDampCaption.Text = "Bump-stop damping";
+            this.rearLeftBumpStopDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftBumpStopDampCaption.AutoEllipsis = true;
+            this.rearLeftBumpStopDampCaption.UseMnemonic = false;
+            this.rearLeftBumpStopDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftBumpStopDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftBumpStopDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftBumpStopDampRow.Controls.Add(this.rearLeftBumpStopDampCaption, 0, 0);
+            // label_RL_BumpStopDamp
+            this.label_RL_BumpStopDamp.Name = "label_RL_BumpStopDamp";
+            this.label_RL_BumpStopDamp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpStopDamp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpStopDamp.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpStopDamp.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopDamp.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpStopDamp.Text = "—";
+            this.rearLeftBumpStopDampRow.Controls.Add(this.label_RL_BumpStopDamp, 1, 0);
+            this.rearLeftSection4Rows.Controls.Add(this.rearLeftBumpStopDampRow, 0, 3);
+            this.rearLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftBumpStopDampGainDeflectionSquaredRow
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.Name = "rearLeftBumpStopDampGainDeflectionSquaredRow";
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.ColumnCount = 2;
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.RowCount = 1;
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftBumpStopDampGainDeflectionSquaredCaption
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.Name = "rearLeftBumpStopDampGainDeflectionSquaredCaption";
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.Text = "Damping gain (deflection squared)";
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftBumpStopDampGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.rearLeftBumpStopDampGainDeflectionSquaredCaption, 0, 0);
+            // label_RL_BumpStopDampGainDeflectionSquared
+            this.label_RL_BumpStopDampGainDeflectionSquared.Name = "label_RL_BumpStopDampGainDeflectionSquared";
+            this.label_RL_BumpStopDampGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_BumpStopDampGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_BumpStopDampGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RL_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_BumpStopDampGainDeflectionSquared.Text = "—";
+            this.rearLeftBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.label_RL_BumpStopDampGainDeflectionSquared, 1, 0);
+            this.rearLeftSection4Rows.Controls.Add(this.rearLeftBumpStopDampGainDeflectionSquaredRow, 0, 4);
+            this.rearLeftSection4Group.Controls.Add(this.rearLeftSection4Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection4Group, 0, 3);
+            this.rearLeftScroll.Controls.Add(this.rearLeftSections);
+            this.rearLeftGroup.Controls.Add(this.rearLeftScroll);
+            this.wheelValuesLayout.Controls.Add(this.rearLeftGroup, 0, 1);
+            // rearRightGroup
+            this.rearRightGroup.Name = "rearRightGroup";
+            this.rearRightGroup.Text = "REAR RIGHT";
+            this.rearRightGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.rearRightGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.rearRightGroup.ForeColor = System.Drawing.Color.White;
+            this.rearRightGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearRightScroll
+            this.rearRightScroll.Name = "rearRightScroll";
+            this.rearRightScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightScroll.AutoScroll = true;
+            this.rearRightScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearRightSections
+            this.rearRightSections.Name = "rearRightSections";
+            this.rearRightSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rearRightSections.AutoSize = true;
+            this.rearRightSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rearRightSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSections.ColumnCount = 1;
+            this.rearRightSections.RowCount = 4;
+            this.rearRightSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.rearRightSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.rearRightSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearRightSection1Group
+            this.rearRightSection1Group.Name = "rearRightSection1Group";
+            this.rearRightSection1Group.Text = "Springs";
+            this.rearRightSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection1Rows
+            this.rearRightSection1Rows.Name = "rearRightSection1Rows";
+            this.rearRightSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection1Rows.ColumnCount = 1;
+            this.rearRightSection1Rows.RowCount = 2;
+            this.rearRightSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightSpringRateRow
+            this.rearRightSpringRateRow.Name = "rearRightSpringRateRow";
+            this.rearRightSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSpringRateRow.ColumnCount = 2;
+            this.rearRightSpringRateRow.RowCount = 1;
+            this.rearRightSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightSpringRateCaption
+            this.rearRightSpringRateCaption.Name = "rearRightSpringRateCaption";
+            this.rearRightSpringRateCaption.Text = "Spring rate";
+            this.rearRightSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightSpringRateCaption.AutoEllipsis = true;
+            this.rearRightSpringRateCaption.UseMnemonic = false;
+            this.rearRightSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightSpringRateRow.Controls.Add(this.rearRightSpringRateCaption, 0, 0);
+            // label_RR_SpringRate
+            this.label_RR_SpringRate.Name = "label_RR_SpringRate";
+            this.label_RR_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_SpringRate.Text = "—";
+            this.rearRightSpringRateRow.Controls.Add(this.label_RR_SpringRate, 1, 0);
+            this.rearRightSection1Rows.Controls.Add(this.rearRightSpringRateRow, 0, 0);
+            this.rearRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightProgressiveRateRow
+            this.rearRightProgressiveRateRow.Name = "rearRightProgressiveRateRow";
+            this.rearRightProgressiveRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightProgressiveRateRow.ColumnCount = 2;
+            this.rearRightProgressiveRateRow.RowCount = 1;
+            this.rearRightProgressiveRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightProgressiveRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightProgressiveRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightProgressiveRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightProgressiveRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightProgressiveRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightProgressiveRateCaption
+            this.rearRightProgressiveRateCaption.Name = "rearRightProgressiveRateCaption";
+            this.rearRightProgressiveRateCaption.Text = "Progressive rate";
+            this.rearRightProgressiveRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightProgressiveRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightProgressiveRateCaption.AutoEllipsis = true;
+            this.rearRightProgressiveRateCaption.UseMnemonic = false;
+            this.rearRightProgressiveRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightProgressiveRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightProgressiveRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightProgressiveRateRow.Controls.Add(this.rearRightProgressiveRateCaption, 0, 0);
+            // label_RR_ProgressiveRate
+            this.label_RR_ProgressiveRate.Name = "label_RR_ProgressiveRate";
+            this.label_RR_ProgressiveRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ProgressiveRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ProgressiveRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ProgressiveRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ProgressiveRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ProgressiveRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ProgressiveRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ProgressiveRate.Text = "—";
+            this.rearRightProgressiveRateRow.Controls.Add(this.label_RR_ProgressiveRate, 1, 0);
+            this.rearRightSection1Rows.Controls.Add(this.rearRightProgressiveRateRow, 0, 1);
+            this.rearRightSection1Group.Controls.Add(this.rearRightSection1Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection1Group, 0, 0);
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // rearRightSection2Group
+            this.rearRightSection2Group.Name = "rearRightSection2Group";
+            this.rearRightSection2Group.Text = "Travel & Limits";
+            this.rearRightSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection2Rows
+            this.rearRightSection2Rows.Name = "rearRightSection2Rows";
+            this.rearRightSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection2Rows.ColumnCount = 1;
+            this.rearRightSection2Rows.RowCount = 4;
+            this.rearRightSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightBumpLimitsRow
+            this.rearRightBumpLimitsRow.Name = "rearRightBumpLimitsRow";
+            this.rearRightBumpLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpLimitsRow.ColumnCount = 3;
+            this.rearRightBumpLimitsRow.RowCount = 1;
+            this.rearRightBumpLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightBumpLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightBumpLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightBumpLimitsRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightBumpLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.rearRightBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.rearRightBumpLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // rearRightBumpLimitsCaption
+            this.rearRightBumpLimitsCaption.Name = "rearRightBumpLimitsCaption";
+            this.rearRightBumpLimitsCaption.Text = "Bump limits (X / Y)";
+            this.rearRightBumpLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightBumpLimitsCaption.AutoEllipsis = true;
+            this.rearRightBumpLimitsCaption.UseMnemonic = false;
+            this.rearRightBumpLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightBumpLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightBumpLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightBumpLimitsRow.Controls.Add(this.rearRightBumpLimitsCaption, 0, 0);
+            // label_RR_BumpLimitsX
+            this.label_RR_BumpLimitsX.Name = "label_RR_BumpLimitsX";
+            this.label_RR_BumpLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpLimitsX.Text = "—";
+            this.rearRightBumpLimitsRow.Controls.Add(this.label_RR_BumpLimitsX, 1, 0);
             // label_RR_BumpLimitsY
-            // 
-            this.label_RR_BumpLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpLimitsY.Location = new System.Drawing.Point(849, 838);
-            this.label_RR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.label_RR_BumpLimitsY.Name = "label_RR_BumpLimitsY";
-            this.label_RR_BumpLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_RR_BumpLimitsY.TabIndex = 234;
-            // 
+            this.label_RR_BumpLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpLimitsY.Text = "—";
+            this.rearRightBumpLimitsRow.Controls.Add(this.label_RR_BumpLimitsY, 2, 0);
+            this.rearRightSection2Rows.Controls.Add(this.rearRightBumpLimitsRow, 0, 0);
+            this.rearRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightReboundLimitsRow
+            this.rearRightReboundLimitsRow.Name = "rearRightReboundLimitsRow";
+            this.rearRightReboundLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundLimitsRow.ColumnCount = 3;
+            this.rearRightReboundLimitsRow.RowCount = 1;
+            this.rearRightReboundLimitsRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightReboundLimitsRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightReboundLimitsRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightReboundLimitsRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightReboundLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.rearRightReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.rearRightReboundLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // rearRightReboundLimitsCaption
+            this.rearRightReboundLimitsCaption.Name = "rearRightReboundLimitsCaption";
+            this.rearRightReboundLimitsCaption.Text = "Rebound limits (X / Y)";
+            this.rearRightReboundLimitsCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundLimitsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightReboundLimitsCaption.AutoEllipsis = true;
+            this.rearRightReboundLimitsCaption.UseMnemonic = false;
+            this.rearRightReboundLimitsCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightReboundLimitsCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightReboundLimitsCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightReboundLimitsRow.Controls.Add(this.rearRightReboundLimitsCaption, 0, 0);
+            // label_RR_ReboundLimitsX
+            this.label_RR_ReboundLimitsX.Name = "label_RR_ReboundLimitsX";
+            this.label_RR_ReboundLimitsX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ReboundLimitsX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ReboundLimitsX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ReboundLimitsX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ReboundLimitsX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ReboundLimitsX.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundLimitsX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ReboundLimitsX.Text = "—";
+            this.rearRightReboundLimitsRow.Controls.Add(this.label_RR_ReboundLimitsX, 1, 0);
             // label_RR_ReboundLimitsY
-            // 
-            this.label_RR_ReboundLimitsY.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ReboundLimitsY.Location = new System.Drawing.Point(849, 880);
-            this.label_RR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(6);
             this.label_RR_ReboundLimitsY.Name = "label_RR_ReboundLimitsY";
-            this.label_RR_ReboundLimitsY.Size = new System.Drawing.Size(96, 31);
-            this.label_RR_ReboundLimitsY.TabIndex = 235;
-            // 
+            this.label_RR_ReboundLimitsY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ReboundLimitsY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ReboundLimitsY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ReboundLimitsY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ReboundLimitsY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ReboundLimitsY.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundLimitsY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ReboundLimitsY.Text = "—";
+            this.rearRightReboundLimitsRow.Controls.Add(this.label_RR_ReboundLimitsY, 2, 0);
+            this.rearRightSection2Rows.Controls.Add(this.rearRightReboundLimitsRow, 0, 1);
+            this.rearRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightExpansionLimitFromZeroRow
+            this.rearRightExpansionLimitFromZeroRow.Name = "rearRightExpansionLimitFromZeroRow";
+            this.rearRightExpansionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightExpansionLimitFromZeroRow.ColumnCount = 2;
+            this.rearRightExpansionLimitFromZeroRow.RowCount = 1;
+            this.rearRightExpansionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightExpansionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightExpansionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightExpansionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightExpansionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightExpansionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightExpansionLimitFromZeroCaption
+            this.rearRightExpansionLimitFromZeroCaption.Name = "rearRightExpansionLimitFromZeroCaption";
+            this.rearRightExpansionLimitFromZeroCaption.Text = "Expansion limit from zero";
+            this.rearRightExpansionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightExpansionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightExpansionLimitFromZeroCaption.AutoEllipsis = true;
+            this.rearRightExpansionLimitFromZeroCaption.UseMnemonic = false;
+            this.rearRightExpansionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightExpansionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightExpansionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightExpansionLimitFromZeroRow.Controls.Add(this.rearRightExpansionLimitFromZeroCaption, 0, 0);
+            // label_RR_ExpansionLimitFromZero
+            this.label_RR_ExpansionLimitFromZero.Name = "label_RR_ExpansionLimitFromZero";
+            this.label_RR_ExpansionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ExpansionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ExpansionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ExpansionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ExpansionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ExpansionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ExpansionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ExpansionLimitFromZero.Text = "—";
+            this.rearRightExpansionLimitFromZeroRow.Controls.Add(this.label_RR_ExpansionLimitFromZero, 1, 0);
+            this.rearRightSection2Rows.Controls.Add(this.rearRightExpansionLimitFromZeroRow, 0, 2);
+            this.rearRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightCompressionLimitFromZeroRow
+            this.rearRightCompressionLimitFromZeroRow.Name = "rearRightCompressionLimitFromZeroRow";
+            this.rearRightCompressionLimitFromZeroRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightCompressionLimitFromZeroRow.ColumnCount = 2;
+            this.rearRightCompressionLimitFromZeroRow.RowCount = 1;
+            this.rearRightCompressionLimitFromZeroRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightCompressionLimitFromZeroRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightCompressionLimitFromZeroRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightCompressionLimitFromZeroRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightCompressionLimitFromZeroRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightCompressionLimitFromZeroRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightCompressionLimitFromZeroCaption
+            this.rearRightCompressionLimitFromZeroCaption.Name = "rearRightCompressionLimitFromZeroCaption";
+            this.rearRightCompressionLimitFromZeroCaption.Text = "Compression limit from zero";
+            this.rearRightCompressionLimitFromZeroCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightCompressionLimitFromZeroCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightCompressionLimitFromZeroCaption.AutoEllipsis = true;
+            this.rearRightCompressionLimitFromZeroCaption.UseMnemonic = false;
+            this.rearRightCompressionLimitFromZeroCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightCompressionLimitFromZeroCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightCompressionLimitFromZeroCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightCompressionLimitFromZeroRow.Controls.Add(this.rearRightCompressionLimitFromZeroCaption, 0, 0);
+            // label_RR_CompressionLimitFromZero
+            this.label_RR_CompressionLimitFromZero.Name = "label_RR_CompressionLimitFromZero";
+            this.label_RR_CompressionLimitFromZero.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_CompressionLimitFromZero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_CompressionLimitFromZero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_CompressionLimitFromZero.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_CompressionLimitFromZero.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_CompressionLimitFromZero.ForeColor = System.Drawing.Color.White;
+            this.label_RR_CompressionLimitFromZero.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_CompressionLimitFromZero.Text = "—";
+            this.rearRightCompressionLimitFromZeroRow.Controls.Add(this.label_RR_CompressionLimitFromZero, 1, 0);
+            this.rearRightSection2Rows.Controls.Add(this.rearRightCompressionLimitFromZeroRow, 0, 3);
+            this.rearRightSection2Group.Controls.Add(this.rearRightSection2Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection2Group, 0, 1);
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            // rearRightSection3Group
+            this.rearRightSection3Group.Name = "rearRightSection3Group";
+            this.rearRightSection3Group.Text = "Damping & Rebound";
+            this.rearRightSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection3Rows
+            this.rearRightSection3Rows.Name = "rearRightSection3Rows";
+            this.rearRightSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection3Rows.ColumnCount = 1;
+            this.rearRightSection3Rows.RowCount = 4;
+            this.rearRightSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightBumpDampRow
+            this.rearRightBumpDampRow.Name = "rearRightBumpDampRow";
+            this.rearRightBumpDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpDampRow.ColumnCount = 3;
+            this.rearRightBumpDampRow.RowCount = 1;
+            this.rearRightBumpDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightBumpDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightBumpDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightBumpDampRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightBumpDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58F));
+            this.rearRightBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            this.rearRightBumpDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21F));
+            // rearRightBumpDampCaption
+            this.rearRightBumpDampCaption.Name = "rearRightBumpDampCaption";
+            this.rearRightBumpDampCaption.Text = "Bump damping (X / Y)";
+            this.rearRightBumpDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightBumpDampCaption.AutoEllipsis = true;
+            this.rearRightBumpDampCaption.UseMnemonic = false;
+            this.rearRightBumpDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightBumpDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightBumpDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightBumpDampRow.Controls.Add(this.rearRightBumpDampCaption, 0, 0);
+            // label_RR_BumpDampX
+            this.label_RR_BumpDampX.Name = "label_RR_BumpDampX";
+            this.label_RR_BumpDampX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpDampX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpDampX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpDampX.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpDampX.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpDampX.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpDampX.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpDampX.Text = "—";
+            this.rearRightBumpDampRow.Controls.Add(this.label_RR_BumpDampX, 1, 0);
             // label_RR_BumpDampY
-            // 
-            this.label_RR_BumpDampY.BackColor = System.Drawing.Color.Black;
-            this.label_RR_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_BumpDampY.ForeColor = System.Drawing.Color.White;
-            this.label_RR_BumpDampY.Location = new System.Drawing.Point(849, 924);
-            this.label_RR_BumpDampY.Margin = new System.Windows.Forms.Padding(6);
             this.label_RR_BumpDampY.Name = "label_RR_BumpDampY";
-            this.label_RR_BumpDampY.Size = new System.Drawing.Size(96, 31);
-            this.label_RR_BumpDampY.TabIndex = 236;
-            // 
+            this.label_RR_BumpDampY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpDampY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpDampY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpDampY.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpDampY.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpDampY.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpDampY.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpDampY.Text = "—";
+            this.rearRightBumpDampRow.Controls.Add(this.label_RR_BumpDampY, 2, 0);
+            this.rearRightSection3Rows.Controls.Add(this.rearRightBumpDampRow, 0, 0);
+            this.rearRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightReboundRateRow
+            this.rearRightReboundRateRow.Name = "rearRightReboundRateRow";
+            this.rearRightReboundRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundRateRow.ColumnCount = 2;
+            this.rearRightReboundRateRow.RowCount = 1;
+            this.rearRightReboundRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightReboundRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightReboundRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightReboundRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightReboundRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightReboundRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightReboundRateCaption
+            this.rearRightReboundRateCaption.Name = "rearRightReboundRateCaption";
+            this.rearRightReboundRateCaption.Text = "Rebound rate";
+            this.rearRightReboundRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightReboundRateCaption.AutoEllipsis = true;
+            this.rearRightReboundRateCaption.UseMnemonic = false;
+            this.rearRightReboundRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightReboundRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightReboundRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightReboundRateRow.Controls.Add(this.rearRightReboundRateCaption, 0, 0);
+            // label_RR_ReboundRate
+            this.label_RR_ReboundRate.Name = "label_RR_ReboundRate";
+            this.label_RR_ReboundRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ReboundRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ReboundRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ReboundRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ReboundRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ReboundRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ReboundRate.Text = "—";
+            this.rearRightReboundRateRow.Controls.Add(this.label_RR_ReboundRate, 1, 0);
+            this.rearRightSection3Rows.Controls.Add(this.rearRightReboundRateRow, 0, 1);
+            this.rearRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightReboundStartPositionRow
+            this.rearRightReboundStartPositionRow.Name = "rearRightReboundStartPositionRow";
+            this.rearRightReboundStartPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundStartPositionRow.ColumnCount = 2;
+            this.rearRightReboundStartPositionRow.RowCount = 1;
+            this.rearRightReboundStartPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightReboundStartPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightReboundStartPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightReboundStartPositionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightReboundStartPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightReboundStartPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightReboundStartPositionCaption
+            this.rearRightReboundStartPositionCaption.Name = "rearRightReboundStartPositionCaption";
+            this.rearRightReboundStartPositionCaption.Text = "Rebound start position";
+            this.rearRightReboundStartPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundStartPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightReboundStartPositionCaption.AutoEllipsis = true;
+            this.rearRightReboundStartPositionCaption.UseMnemonic = false;
+            this.rearRightReboundStartPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightReboundStartPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightReboundStartPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightReboundStartPositionRow.Controls.Add(this.rearRightReboundStartPositionCaption, 0, 0);
+            // label_RR_ReboundStartPosition
+            this.label_RR_ReboundStartPosition.Name = "label_RR_ReboundStartPosition";
+            this.label_RR_ReboundStartPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ReboundStartPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ReboundStartPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ReboundStartPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ReboundStartPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ReboundStartPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundStartPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ReboundStartPosition.Text = "—";
+            this.rearRightReboundStartPositionRow.Controls.Add(this.label_RR_ReboundStartPosition, 1, 0);
+            this.rearRightSection3Rows.Controls.Add(this.rearRightReboundStartPositionRow, 0, 2);
+            this.rearRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightReboundEndPositionRow
+            this.rearRightReboundEndPositionRow.Name = "rearRightReboundEndPositionRow";
+            this.rearRightReboundEndPositionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundEndPositionRow.ColumnCount = 2;
+            this.rearRightReboundEndPositionRow.RowCount = 1;
+            this.rearRightReboundEndPositionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightReboundEndPositionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightReboundEndPositionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightReboundEndPositionRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightReboundEndPositionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightReboundEndPositionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightReboundEndPositionCaption
+            this.rearRightReboundEndPositionCaption.Name = "rearRightReboundEndPositionCaption";
+            this.rearRightReboundEndPositionCaption.Text = "Rebound end position";
+            this.rearRightReboundEndPositionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightReboundEndPositionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightReboundEndPositionCaption.AutoEllipsis = true;
+            this.rearRightReboundEndPositionCaption.UseMnemonic = false;
+            this.rearRightReboundEndPositionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightReboundEndPositionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightReboundEndPositionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightReboundEndPositionRow.Controls.Add(this.rearRightReboundEndPositionCaption, 0, 0);
+            // label_RR_ReboundEndPosition
+            this.label_RR_ReboundEndPosition.Name = "label_RR_ReboundEndPosition";
+            this.label_RR_ReboundEndPosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ReboundEndPosition.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ReboundEndPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ReboundEndPosition.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ReboundEndPosition.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ReboundEndPosition.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ReboundEndPosition.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ReboundEndPosition.Text = "—";
+            this.rearRightReboundEndPositionRow.Controls.Add(this.label_RR_ReboundEndPosition, 1, 0);
+            this.rearRightSection3Rows.Controls.Add(this.rearRightReboundEndPositionRow, 0, 3);
+            this.rearRightSection3Group.Controls.Add(this.rearRightSection3Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection3Group, 0, 2);
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 184F));
+            // rearRightSection4Group
+            this.rearRightSection4Group.Name = "rearRightSection4Group";
+            this.rearRightSection4Group.Text = "Bump Stops";
+            this.rearRightSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection4Rows
+            this.rearRightSection4Rows.Name = "rearRightSection4Rows";
+            this.rearRightSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection4Rows.ColumnCount = 1;
+            this.rearRightSection4Rows.RowCount = 5;
+            this.rearRightSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightBumpStopLengthRow
+            this.rearRightBumpStopLengthRow.Name = "rearRightBumpStopLengthRow";
+            this.rearRightBumpStopLengthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopLengthRow.ColumnCount = 2;
+            this.rearRightBumpStopLengthRow.RowCount = 1;
+            this.rearRightBumpStopLengthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightBumpStopLengthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightBumpStopLengthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightBumpStopLengthRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightBumpStopLengthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightBumpStopLengthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightBumpStopLengthCaption
+            this.rearRightBumpStopLengthCaption.Name = "rearRightBumpStopLengthCaption";
+            this.rearRightBumpStopLengthCaption.Text = "Bump-stop length";
+            this.rearRightBumpStopLengthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopLengthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightBumpStopLengthCaption.AutoEllipsis = true;
+            this.rearRightBumpStopLengthCaption.UseMnemonic = false;
+            this.rearRightBumpStopLengthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightBumpStopLengthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightBumpStopLengthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightBumpStopLengthRow.Controls.Add(this.rearRightBumpStopLengthCaption, 0, 0);
+            // label_RR_BumpStopLength
+            this.label_RR_BumpStopLength.Name = "label_RR_BumpStopLength";
+            this.label_RR_BumpStopLength.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpStopLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpStopLength.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpStopLength.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpStopLength.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpStopLength.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopLength.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpStopLength.Text = "—";
+            this.rearRightBumpStopLengthRow.Controls.Add(this.label_RR_BumpStopLength, 1, 0);
+            this.rearRightSection4Rows.Controls.Add(this.rearRightBumpStopLengthRow, 0, 0);
+            this.rearRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightBumpStopRateRow
+            this.rearRightBumpStopRateRow.Name = "rearRightBumpStopRateRow";
+            this.rearRightBumpStopRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopRateRow.ColumnCount = 2;
+            this.rearRightBumpStopRateRow.RowCount = 1;
+            this.rearRightBumpStopRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightBumpStopRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightBumpStopRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightBumpStopRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightBumpStopRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightBumpStopRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightBumpStopRateCaption
+            this.rearRightBumpStopRateCaption.Name = "rearRightBumpStopRateCaption";
+            this.rearRightBumpStopRateCaption.Text = "Bump-stop rate";
+            this.rearRightBumpStopRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightBumpStopRateCaption.AutoEllipsis = true;
+            this.rearRightBumpStopRateCaption.UseMnemonic = false;
+            this.rearRightBumpStopRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightBumpStopRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightBumpStopRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightBumpStopRateRow.Controls.Add(this.rearRightBumpStopRateCaption, 0, 0);
+            // label_RR_BumpStopRate
+            this.label_RR_BumpStopRate.Name = "label_RR_BumpStopRate";
+            this.label_RR_BumpStopRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpStopRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpStopRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpStopRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpStopRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpStopRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpStopRate.Text = "—";
+            this.rearRightBumpStopRateRow.Controls.Add(this.label_RR_BumpStopRate, 1, 0);
+            this.rearRightSection4Rows.Controls.Add(this.rearRightBumpStopRateRow, 0, 1);
+            this.rearRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightBumpStopRateGainDeflectionSquaredRow
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.Name = "rearRightBumpStopRateGainDeflectionSquaredRow";
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.ColumnCount = 2;
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.RowCount = 1;
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightBumpStopRateGainDeflectionSquaredCaption
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.Name = "rearRightBumpStopRateGainDeflectionSquaredCaption";
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.Text = "Rate gain (deflection squared)";
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightBumpStopRateGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.rearRightBumpStopRateGainDeflectionSquaredCaption, 0, 0);
+            // label_RR_BumpStopRateGainDeflectionSquared
+            this.label_RR_BumpStopRateGainDeflectionSquared.Name = "label_RR_BumpStopRateGainDeflectionSquared";
+            this.label_RR_BumpStopRateGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpStopRateGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpStopRateGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpStopRateGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpStopRateGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpStopRateGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopRateGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpStopRateGainDeflectionSquared.Text = "—";
+            this.rearRightBumpStopRateGainDeflectionSquaredRow.Controls.Add(this.label_RR_BumpStopRateGainDeflectionSquared, 1, 0);
+            this.rearRightSection4Rows.Controls.Add(this.rearRightBumpStopRateGainDeflectionSquaredRow, 0, 2);
+            this.rearRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightBumpStopDampRow
+            this.rearRightBumpStopDampRow.Name = "rearRightBumpStopDampRow";
+            this.rearRightBumpStopDampRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopDampRow.ColumnCount = 2;
+            this.rearRightBumpStopDampRow.RowCount = 1;
+            this.rearRightBumpStopDampRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightBumpStopDampRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightBumpStopDampRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightBumpStopDampRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightBumpStopDampRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightBumpStopDampRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightBumpStopDampCaption
+            this.rearRightBumpStopDampCaption.Name = "rearRightBumpStopDampCaption";
+            this.rearRightBumpStopDampCaption.Text = "Bump-stop damping";
+            this.rearRightBumpStopDampCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopDampCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightBumpStopDampCaption.AutoEllipsis = true;
+            this.rearRightBumpStopDampCaption.UseMnemonic = false;
+            this.rearRightBumpStopDampCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightBumpStopDampCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightBumpStopDampCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightBumpStopDampRow.Controls.Add(this.rearRightBumpStopDampCaption, 0, 0);
+            // label_RR_BumpStopDamp
+            this.label_RR_BumpStopDamp.Name = "label_RR_BumpStopDamp";
+            this.label_RR_BumpStopDamp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpStopDamp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpStopDamp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpStopDamp.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpStopDamp.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpStopDamp.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopDamp.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpStopDamp.Text = "—";
+            this.rearRightBumpStopDampRow.Controls.Add(this.label_RR_BumpStopDamp, 1, 0);
+            this.rearRightSection4Rows.Controls.Add(this.rearRightBumpStopDampRow, 0, 3);
+            this.rearRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightBumpStopDampGainDeflectionSquaredRow
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.Name = "rearRightBumpStopDampGainDeflectionSquaredRow";
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.ColumnCount = 2;
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.RowCount = 1;
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightBumpStopDampGainDeflectionSquaredCaption
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.Name = "rearRightBumpStopDampGainDeflectionSquaredCaption";
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.Text = "Damping gain (deflection squared)";
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.AutoEllipsis = true;
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.UseMnemonic = false;
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightBumpStopDampGainDeflectionSquaredCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.rearRightBumpStopDampGainDeflectionSquaredCaption, 0, 0);
+            // label_RR_BumpStopDampGainDeflectionSquared
+            this.label_RR_BumpStopDampGainDeflectionSquared.Name = "label_RR_BumpStopDampGainDeflectionSquared";
+            this.label_RR_BumpStopDampGainDeflectionSquared.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_BumpStopDampGainDeflectionSquared.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_BumpStopDampGainDeflectionSquared.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_BumpStopDampGainDeflectionSquared.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_BumpStopDampGainDeflectionSquared.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_BumpStopDampGainDeflectionSquared.ForeColor = System.Drawing.Color.White;
+            this.label_RR_BumpStopDampGainDeflectionSquared.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_BumpStopDampGainDeflectionSquared.Text = "—";
+            this.rearRightBumpStopDampGainDeflectionSquaredRow.Controls.Add(this.label_RR_BumpStopDampGainDeflectionSquared, 1, 0);
+            this.rearRightSection4Rows.Controls.Add(this.rearRightBumpStopDampGainDeflectionSquaredRow, 0, 4);
+            this.rearRightSection4Group.Controls.Add(this.rearRightSection4Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection4Group, 0, 3);
+            this.rearRightScroll.Controls.Add(this.rearRightSections);
+            this.rearRightGroup.Controls.Add(this.rearRightScroll);
+            this.wheelValuesLayout.Controls.Add(this.rearRightGroup, 1, 1);
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // FormSuspensionStaticValues
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1883, 1471);
-            this.Controls.Add(this.label_RR_BumpDampY);
-            this.Controls.Add(this.label_RR_ReboundLimitsY);
-            this.Controls.Add(this.label_RR_BumpLimitsY);
-            this.Controls.Add(this.label_RL_BumpDampY);
-            this.Controls.Add(this.label_RL_ReboundLimitsY);
-            this.Controls.Add(this.label_RL_BumpLimitsY);
-            this.Controls.Add(this.label_FR_BumpDampY);
-            this.Controls.Add(this.label_FR_ReboundLimitsY);
-            this.Controls.Add(this.label_FL_BumpDampY);
-            this.Controls.Add(this.label_FL_ReboundLimitsY);
-            this.Controls.Add(this.label_FR_BumpLimitsY);
-            this.Controls.Add(this.label_FL_BumpLimitsY);
-            this.Controls.Add(this.label_RR_BumpStopRateGainDeflectionSquared);
-            this.Controls.Add(this.label_RL_BumpStopRateGainDeflectionSquared);
-            this.Controls.Add(this.label62);
-            this.Controls.Add(this.label_RR_BumpStopDampGainDeflectionSquared);
-            this.Controls.Add(this.label63);
-            this.Controls.Add(this.label_RL_BumpStopDampGainDeflectionSquared);
-            this.Controls.Add(this.label64);
-            this.Controls.Add(this.label65);
-            this.Controls.Add(this.label_RR_BumpStopDamp);
-            this.Controls.Add(this.label66);
-            this.Controls.Add(this.label_RL_BumpStopDamp);
-            this.Controls.Add(this.label67);
-            this.Controls.Add(this.label59);
-            this.Controls.Add(this.label_FR_BumpStopDampGainDeflectionSquared);
-            this.Controls.Add(this.label60);
-            this.Controls.Add(this.label_FL_BumpStopDampGainDeflectionSquared);
-            this.Controls.Add(this.label61);
-            this.Controls.Add(this.label58);
-            this.Controls.Add(this.label_FR_BumpStopRateGainDeflectionSquared);
-            this.Controls.Add(this.label56);
-            this.Controls.Add(this.label_FL_BumpStopRateGainDeflectionSquared);
-            this.Controls.Add(this.label57);
-            this.Controls.Add(this.label_RR_BumpStopRate);
-            this.Controls.Add(this.label54);
-            this.Controls.Add(this.label_RL_BumpStopRate);
-            this.Controls.Add(this.label55);
-            this.Controls.Add(this.label_FR_BumpStopDamp);
-            this.Controls.Add(this.label52);
-            this.Controls.Add(this.label_FL_BumpStopDamp);
-            this.Controls.Add(this.label53);
-            this.Controls.Add(this.label_RR_ReboundRate);
-            this.Controls.Add(this.label50);
-            this.Controls.Add(this.label_RL_ReboundRate);
-            this.Controls.Add(this.label51);
-            this.Controls.Add(this.label_FR_ReboundRate);
-            this.Controls.Add(this.label48);
-            this.Controls.Add(this.label_FL_ReboundRate);
-            this.Controls.Add(this.label49);
-            this.Controls.Add(this.label47);
-            this.Controls.Add(this.label46);
-            this.Controls.Add(this.label45);
-            this.Controls.Add(this.label44);
-            this.Controls.Add(this.label43);
-            this.Controls.Add(this.label42);
-            this.Controls.Add(this.label41);
-            this.Controls.Add(this.label40);
-            this.Controls.Add(this.label38);
-            this.Controls.Add(this.label39);
-            this.Controls.Add(this.label_FR_BumpStopRate);
-            this.Controls.Add(this.label36);
-            this.Controls.Add(this.label_FL_BumpStopRate);
-            this.Controls.Add(this.label37);
-            this.Controls.Add(this.label_RR_ReboundStartPosition);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.label_RL_ReboundStartPosition);
-            this.Controls.Add(this.label35);
-            this.Controls.Add(this.label_FR_ReboundStartPosition);
-            this.Controls.Add(this.label32);
-            this.Controls.Add(this.label_FL_ReboundStartPosition);
-            this.Controls.Add(this.label33);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label_RR_BumpStopLength);
-            this.Controls.Add(this.label_RR_ReboundEndPosition);
-            this.Controls.Add(this.label_RR_CompressionLimitFromZero);
-            this.Controls.Add(this.label_RR_ExpansionLimitFromZero);
-            this.Controls.Add(this.label_RR_BumpDampX);
-            this.Controls.Add(this.label_RR_ReboundLimitsX);
-            this.Controls.Add(this.label_RR_BumpLimitsX);
-            this.Controls.Add(this.label_RR_ProgressiveRate);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.label28);
-            this.Controls.Add(this.label29);
-            this.Controls.Add(this.label30);
-            this.Controls.Add(this.label31);
-            this.Controls.Add(this.label_RR_SpringRate);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label_RL_BumpStopLength);
-            this.Controls.Add(this.label_RL_ReboundEndPosition);
-            this.Controls.Add(this.label_RL_CompressionLimitFromZero);
-            this.Controls.Add(this.label_RL_ExpansionLimitFromZero);
-            this.Controls.Add(this.label_RL_BumpDampX);
-            this.Controls.Add(this.label_RL_ReboundLimitsX);
-            this.Controls.Add(this.label_RL_BumpLimitsX);
-            this.Controls.Add(this.label_RL_ProgressiveRate);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label_RL_SpringRate);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label_FR_BumpStopLength);
-            this.Controls.Add(this.label_FR_ReboundEndPosition);
-            this.Controls.Add(this.label_FR_CompressionLimitFromZero);
-            this.Controls.Add(this.label_FR_ExpansionLimitFromZero);
-            this.Controls.Add(this.label_FR_BumpDampX);
-            this.Controls.Add(this.label_FR_ReboundLimitsX);
-            this.Controls.Add(this.label_FR_BumpLimitsX);
-            this.Controls.Add(this.label_FR_ProgressiveRate);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label_FR_SpringRate);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label_FL_BumpStopLength);
-            this.Controls.Add(this.label_FL_ReboundEndPosition);
-            this.Controls.Add(this.label_FL_CompressionLimitFromZero);
-            this.Controls.Add(this.label_FL_ExpansionLimitFromZero);
-            this.Controls.Add(this.label_FL_BumpDampX);
-            this.Controls.Add(this.label_FL_ReboundLimitsX);
-            this.Controls.Add(this.label_FL_BumpLimitsX);
-            this.Controls.Add(this.label_FL_ProgressiveRate);
-            this.Controls.Add(this.flMomentOfInertia);
-            this.Controls.Add(this.flMass);
-            this.Controls.Add(this.flMaxDeflection);
-            this.Controls.Add(this.flTireDamperRate);
-            this.Controls.Add(this.flTireSpringRate);
-            this.Controls.Add(this.flThermalInnerTransfer);
-            this.Controls.Add(this.flThermalAirTransfer);
-            this.Controls.Add(this.flWidth);
-            this.Controls.Add(this.flRadius);
-            this.Controls.Add(this.label_FL_SpringRate);
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.ForeColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1160, 850);
+            this.MinimumSize = new System.Drawing.Size(925, 600);
             this.Name = "FormSuspensionStaticValues";
-            this.Text = "SuspensionStaticValues";
+            this.Text = "Suspension Static Values";
+            this.Controls.Add(this.wheelValuesLayout);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSuspensionStaticValues_Closing);
             this.Load += new System.EventHandler(this.FormSuspensionStaticValues_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
-
         #endregion
 
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label_RR_BumpStopLength;
-        private System.Windows.Forms.Label label_RR_ReboundEndPosition;
-        private System.Windows.Forms.Label label_RR_CompressionLimitFromZero;
-        private System.Windows.Forms.Label label_RR_ExpansionLimitFromZero;
-        private System.Windows.Forms.Label label_RR_BumpDampX;
-        private System.Windows.Forms.Label label_RR_ReboundLimitsX;
-        private System.Windows.Forms.Label label_RR_BumpLimitsX;
-        private System.Windows.Forms.Label label_RR_ProgressiveRate;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label_RR_SpringRate;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label_RL_BumpStopLength;
-        private System.Windows.Forms.Label label_RL_ReboundEndPosition;
-        private System.Windows.Forms.Label label_RL_CompressionLimitFromZero;
-        private System.Windows.Forms.Label label_RL_ExpansionLimitFromZero;
-        private System.Windows.Forms.Label label_RL_BumpDampX;
-        private System.Windows.Forms.Label label_RL_ReboundLimitsX;
-        private System.Windows.Forms.Label label_RL_BumpLimitsX;
-        private System.Windows.Forms.Label label_RL_ProgressiveRate;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label_RL_SpringRate;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label_FR_BumpStopLength;
-        private System.Windows.Forms.Label label_FR_ReboundEndPosition;
-        private System.Windows.Forms.Label label_FR_CompressionLimitFromZero;
-        private System.Windows.Forms.Label label_FR_ExpansionLimitFromZero;
-        private System.Windows.Forms.Label label_FR_BumpDampX;
-        private System.Windows.Forms.Label label_FR_ReboundLimitsX;
-        private System.Windows.Forms.Label label_FR_BumpLimitsX;
-        private System.Windows.Forms.Label label_FR_ProgressiveRate;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label_FR_SpringRate;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label_FL_BumpStopLength;
-        private System.Windows.Forms.Label label_FL_ReboundEndPosition;
-        private System.Windows.Forms.Label label_FL_CompressionLimitFromZero;
-        private System.Windows.Forms.Label label_FL_ExpansionLimitFromZero;
-        private System.Windows.Forms.Label label_FL_BumpDampX;
-        private System.Windows.Forms.Label label_FL_ReboundLimitsX;
-        private System.Windows.Forms.Label label_FL_BumpLimitsX;
-        private System.Windows.Forms.Label label_FL_ProgressiveRate;
-        private System.Windows.Forms.Label flMomentOfInertia;
-        private System.Windows.Forms.Label flMass;
-        private System.Windows.Forms.Label flMaxDeflection;
-        private System.Windows.Forms.Label flTireDamperRate;
-        private System.Windows.Forms.Label flTireSpringRate;
-        private System.Windows.Forms.Label flThermalInnerTransfer;
-        private System.Windows.Forms.Label flThermalAirTransfer;
-        private System.Windows.Forms.Label flWidth;
-        private System.Windows.Forms.Label flRadius;
+        private System.Windows.Forms.TableLayoutPanel wheelValuesLayout;
+        private System.Windows.Forms.GroupBox frontLeftGroup;
+        private System.Windows.Forms.Panel frontLeftScroll;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSections;
+        private System.Windows.Forms.GroupBox frontLeftSection1Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSpringRateRow;
+        private System.Windows.Forms.Label frontLeftSpringRateCaption;
         private System.Windows.Forms.Label label_FL_SpringRate;
-        private System.Windows.Forms.Label label_FR_ReboundStartPosition;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label_FL_ReboundStartPosition;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label_RR_ReboundStartPosition;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label_RL_ReboundStartPosition;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label_FR_BumpStopRate;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label_FL_BumpStopRate;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label_FR_ReboundRate;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label_FL_ReboundRate;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label_RR_ReboundRate;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label_RL_ReboundRate;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label_FR_BumpStopDamp;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label_FL_BumpStopDamp;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label_RR_BumpStopRate;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.Label label_RL_BumpStopRate;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label_FR_BumpStopRateGainDeflectionSquared;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Label label_FL_BumpStopRateGainDeflectionSquared;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label_FR_BumpStopDampGainDeflectionSquared;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label_FL_BumpStopDampGainDeflectionSquared;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label_RR_BumpStopDampGainDeflectionSquared;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label_RL_BumpStopDampGainDeflectionSquared;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label_RR_BumpStopDamp;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.Label label_RL_BumpStopDamp;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label_RR_BumpStopRateGainDeflectionSquared;
-        private System.Windows.Forms.Label label_RL_BumpStopRateGainDeflectionSquared;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TableLayoutPanel frontLeftProgressiveRateRow;
+        private System.Windows.Forms.Label frontLeftProgressiveRateCaption;
+        private System.Windows.Forms.Label label_FL_ProgressiveRate;
+        private System.Windows.Forms.GroupBox frontLeftSection2Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftBumpLimitsRow;
+        private System.Windows.Forms.Label frontLeftBumpLimitsCaption;
+        private System.Windows.Forms.Label label_FL_BumpLimitsX;
         private System.Windows.Forms.Label label_FL_BumpLimitsY;
-        private System.Windows.Forms.Label label_FR_BumpLimitsY;
+        private System.Windows.Forms.TableLayoutPanel frontLeftReboundLimitsRow;
+        private System.Windows.Forms.Label frontLeftReboundLimitsCaption;
+        private System.Windows.Forms.Label label_FL_ReboundLimitsX;
         private System.Windows.Forms.Label label_FL_ReboundLimitsY;
+        private System.Windows.Forms.TableLayoutPanel frontLeftExpansionLimitFromZeroRow;
+        private System.Windows.Forms.Label frontLeftExpansionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_FL_ExpansionLimitFromZero;
+        private System.Windows.Forms.TableLayoutPanel frontLeftCompressionLimitFromZeroRow;
+        private System.Windows.Forms.Label frontLeftCompressionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_FL_CompressionLimitFromZero;
+        private System.Windows.Forms.GroupBox frontLeftSection3Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftBumpDampRow;
+        private System.Windows.Forms.Label frontLeftBumpDampCaption;
+        private System.Windows.Forms.Label label_FL_BumpDampX;
         private System.Windows.Forms.Label label_FL_BumpDampY;
+        private System.Windows.Forms.TableLayoutPanel frontLeftReboundRateRow;
+        private System.Windows.Forms.Label frontLeftReboundRateCaption;
+        private System.Windows.Forms.Label label_FL_ReboundRate;
+        private System.Windows.Forms.TableLayoutPanel frontLeftReboundStartPositionRow;
+        private System.Windows.Forms.Label frontLeftReboundStartPositionCaption;
+        private System.Windows.Forms.Label label_FL_ReboundStartPosition;
+        private System.Windows.Forms.TableLayoutPanel frontLeftReboundEndPositionRow;
+        private System.Windows.Forms.Label frontLeftReboundEndPositionCaption;
+        private System.Windows.Forms.Label label_FL_ReboundEndPosition;
+        private System.Windows.Forms.GroupBox frontLeftSection4Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftBumpStopLengthRow;
+        private System.Windows.Forms.Label frontLeftBumpStopLengthCaption;
+        private System.Windows.Forms.Label label_FL_BumpStopLength;
+        private System.Windows.Forms.TableLayoutPanel frontLeftBumpStopRateRow;
+        private System.Windows.Forms.Label frontLeftBumpStopRateCaption;
+        private System.Windows.Forms.Label label_FL_BumpStopRate;
+        private System.Windows.Forms.TableLayoutPanel frontLeftBumpStopRateGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label frontLeftBumpStopRateGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_FL_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.TableLayoutPanel frontLeftBumpStopDampRow;
+        private System.Windows.Forms.Label frontLeftBumpStopDampCaption;
+        private System.Windows.Forms.Label label_FL_BumpStopDamp;
+        private System.Windows.Forms.TableLayoutPanel frontLeftBumpStopDampGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label frontLeftBumpStopDampGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_FL_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.GroupBox frontRightGroup;
+        private System.Windows.Forms.Panel frontRightScroll;
+        private System.Windows.Forms.TableLayoutPanel frontRightSections;
+        private System.Windows.Forms.GroupBox frontRightSection1Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightSpringRateRow;
+        private System.Windows.Forms.Label frontRightSpringRateCaption;
+        private System.Windows.Forms.Label label_FR_SpringRate;
+        private System.Windows.Forms.TableLayoutPanel frontRightProgressiveRateRow;
+        private System.Windows.Forms.Label frontRightProgressiveRateCaption;
+        private System.Windows.Forms.Label label_FR_ProgressiveRate;
+        private System.Windows.Forms.GroupBox frontRightSection2Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightBumpLimitsRow;
+        private System.Windows.Forms.Label frontRightBumpLimitsCaption;
+        private System.Windows.Forms.Label label_FR_BumpLimitsX;
+        private System.Windows.Forms.Label label_FR_BumpLimitsY;
+        private System.Windows.Forms.TableLayoutPanel frontRightReboundLimitsRow;
+        private System.Windows.Forms.Label frontRightReboundLimitsCaption;
+        private System.Windows.Forms.Label label_FR_ReboundLimitsX;
         private System.Windows.Forms.Label label_FR_ReboundLimitsY;
+        private System.Windows.Forms.TableLayoutPanel frontRightExpansionLimitFromZeroRow;
+        private System.Windows.Forms.Label frontRightExpansionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_FR_ExpansionLimitFromZero;
+        private System.Windows.Forms.TableLayoutPanel frontRightCompressionLimitFromZeroRow;
+        private System.Windows.Forms.Label frontRightCompressionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_FR_CompressionLimitFromZero;
+        private System.Windows.Forms.GroupBox frontRightSection3Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightBumpDampRow;
+        private System.Windows.Forms.Label frontRightBumpDampCaption;
+        private System.Windows.Forms.Label label_FR_BumpDampX;
         private System.Windows.Forms.Label label_FR_BumpDampY;
+        private System.Windows.Forms.TableLayoutPanel frontRightReboundRateRow;
+        private System.Windows.Forms.Label frontRightReboundRateCaption;
+        private System.Windows.Forms.Label label_FR_ReboundRate;
+        private System.Windows.Forms.TableLayoutPanel frontRightReboundStartPositionRow;
+        private System.Windows.Forms.Label frontRightReboundStartPositionCaption;
+        private System.Windows.Forms.Label label_FR_ReboundStartPosition;
+        private System.Windows.Forms.TableLayoutPanel frontRightReboundEndPositionRow;
+        private System.Windows.Forms.Label frontRightReboundEndPositionCaption;
+        private System.Windows.Forms.Label label_FR_ReboundEndPosition;
+        private System.Windows.Forms.GroupBox frontRightSection4Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightBumpStopLengthRow;
+        private System.Windows.Forms.Label frontRightBumpStopLengthCaption;
+        private System.Windows.Forms.Label label_FR_BumpStopLength;
+        private System.Windows.Forms.TableLayoutPanel frontRightBumpStopRateRow;
+        private System.Windows.Forms.Label frontRightBumpStopRateCaption;
+        private System.Windows.Forms.Label label_FR_BumpStopRate;
+        private System.Windows.Forms.TableLayoutPanel frontRightBumpStopRateGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label frontRightBumpStopRateGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_FR_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.TableLayoutPanel frontRightBumpStopDampRow;
+        private System.Windows.Forms.Label frontRightBumpStopDampCaption;
+        private System.Windows.Forms.Label label_FR_BumpStopDamp;
+        private System.Windows.Forms.TableLayoutPanel frontRightBumpStopDampGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label frontRightBumpStopDampGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_FR_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.GroupBox rearLeftGroup;
+        private System.Windows.Forms.Panel rearLeftScroll;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSections;
+        private System.Windows.Forms.GroupBox rearLeftSection1Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSpringRateRow;
+        private System.Windows.Forms.Label rearLeftSpringRateCaption;
+        private System.Windows.Forms.Label label_RL_SpringRate;
+        private System.Windows.Forms.TableLayoutPanel rearLeftProgressiveRateRow;
+        private System.Windows.Forms.Label rearLeftProgressiveRateCaption;
+        private System.Windows.Forms.Label label_RL_ProgressiveRate;
+        private System.Windows.Forms.GroupBox rearLeftSection2Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftBumpLimitsRow;
+        private System.Windows.Forms.Label rearLeftBumpLimitsCaption;
+        private System.Windows.Forms.Label label_RL_BumpLimitsX;
         private System.Windows.Forms.Label label_RL_BumpLimitsY;
+        private System.Windows.Forms.TableLayoutPanel rearLeftReboundLimitsRow;
+        private System.Windows.Forms.Label rearLeftReboundLimitsCaption;
+        private System.Windows.Forms.Label label_RL_ReboundLimitsX;
         private System.Windows.Forms.Label label_RL_ReboundLimitsY;
+        private System.Windows.Forms.TableLayoutPanel rearLeftExpansionLimitFromZeroRow;
+        private System.Windows.Forms.Label rearLeftExpansionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_RL_ExpansionLimitFromZero;
+        private System.Windows.Forms.TableLayoutPanel rearLeftCompressionLimitFromZeroRow;
+        private System.Windows.Forms.Label rearLeftCompressionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_RL_CompressionLimitFromZero;
+        private System.Windows.Forms.GroupBox rearLeftSection3Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftBumpDampRow;
+        private System.Windows.Forms.Label rearLeftBumpDampCaption;
+        private System.Windows.Forms.Label label_RL_BumpDampX;
         private System.Windows.Forms.Label label_RL_BumpDampY;
+        private System.Windows.Forms.TableLayoutPanel rearLeftReboundRateRow;
+        private System.Windows.Forms.Label rearLeftReboundRateCaption;
+        private System.Windows.Forms.Label label_RL_ReboundRate;
+        private System.Windows.Forms.TableLayoutPanel rearLeftReboundStartPositionRow;
+        private System.Windows.Forms.Label rearLeftReboundStartPositionCaption;
+        private System.Windows.Forms.Label label_RL_ReboundStartPosition;
+        private System.Windows.Forms.TableLayoutPanel rearLeftReboundEndPositionRow;
+        private System.Windows.Forms.Label rearLeftReboundEndPositionCaption;
+        private System.Windows.Forms.Label label_RL_ReboundEndPosition;
+        private System.Windows.Forms.GroupBox rearLeftSection4Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftBumpStopLengthRow;
+        private System.Windows.Forms.Label rearLeftBumpStopLengthCaption;
+        private System.Windows.Forms.Label label_RL_BumpStopLength;
+        private System.Windows.Forms.TableLayoutPanel rearLeftBumpStopRateRow;
+        private System.Windows.Forms.Label rearLeftBumpStopRateCaption;
+        private System.Windows.Forms.Label label_RL_BumpStopRate;
+        private System.Windows.Forms.TableLayoutPanel rearLeftBumpStopRateGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label rearLeftBumpStopRateGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_RL_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.TableLayoutPanel rearLeftBumpStopDampRow;
+        private System.Windows.Forms.Label rearLeftBumpStopDampCaption;
+        private System.Windows.Forms.Label label_RL_BumpStopDamp;
+        private System.Windows.Forms.TableLayoutPanel rearLeftBumpStopDampGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label rearLeftBumpStopDampGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_RL_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.GroupBox rearRightGroup;
+        private System.Windows.Forms.Panel rearRightScroll;
+        private System.Windows.Forms.TableLayoutPanel rearRightSections;
+        private System.Windows.Forms.GroupBox rearRightSection1Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightSpringRateRow;
+        private System.Windows.Forms.Label rearRightSpringRateCaption;
+        private System.Windows.Forms.Label label_RR_SpringRate;
+        private System.Windows.Forms.TableLayoutPanel rearRightProgressiveRateRow;
+        private System.Windows.Forms.Label rearRightProgressiveRateCaption;
+        private System.Windows.Forms.Label label_RR_ProgressiveRate;
+        private System.Windows.Forms.GroupBox rearRightSection2Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightBumpLimitsRow;
+        private System.Windows.Forms.Label rearRightBumpLimitsCaption;
+        private System.Windows.Forms.Label label_RR_BumpLimitsX;
         private System.Windows.Forms.Label label_RR_BumpLimitsY;
+        private System.Windows.Forms.TableLayoutPanel rearRightReboundLimitsRow;
+        private System.Windows.Forms.Label rearRightReboundLimitsCaption;
+        private System.Windows.Forms.Label label_RR_ReboundLimitsX;
         private System.Windows.Forms.Label label_RR_ReboundLimitsY;
+        private System.Windows.Forms.TableLayoutPanel rearRightExpansionLimitFromZeroRow;
+        private System.Windows.Forms.Label rearRightExpansionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_RR_ExpansionLimitFromZero;
+        private System.Windows.Forms.TableLayoutPanel rearRightCompressionLimitFromZeroRow;
+        private System.Windows.Forms.Label rearRightCompressionLimitFromZeroCaption;
+        private System.Windows.Forms.Label label_RR_CompressionLimitFromZero;
+        private System.Windows.Forms.GroupBox rearRightSection3Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightBumpDampRow;
+        private System.Windows.Forms.Label rearRightBumpDampCaption;
+        private System.Windows.Forms.Label label_RR_BumpDampX;
         private System.Windows.Forms.Label label_RR_BumpDampY;
+        private System.Windows.Forms.TableLayoutPanel rearRightReboundRateRow;
+        private System.Windows.Forms.Label rearRightReboundRateCaption;
+        private System.Windows.Forms.Label label_RR_ReboundRate;
+        private System.Windows.Forms.TableLayoutPanel rearRightReboundStartPositionRow;
+        private System.Windows.Forms.Label rearRightReboundStartPositionCaption;
+        private System.Windows.Forms.Label label_RR_ReboundStartPosition;
+        private System.Windows.Forms.TableLayoutPanel rearRightReboundEndPositionRow;
+        private System.Windows.Forms.Label rearRightReboundEndPositionCaption;
+        private System.Windows.Forms.Label label_RR_ReboundEndPosition;
+        private System.Windows.Forms.GroupBox rearRightSection4Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightBumpStopLengthRow;
+        private System.Windows.Forms.Label rearRightBumpStopLengthCaption;
+        private System.Windows.Forms.Label label_RR_BumpStopLength;
+        private System.Windows.Forms.TableLayoutPanel rearRightBumpStopRateRow;
+        private System.Windows.Forms.Label rearRightBumpStopRateCaption;
+        private System.Windows.Forms.Label label_RR_BumpStopRate;
+        private System.Windows.Forms.TableLayoutPanel rearRightBumpStopRateGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label rearRightBumpStopRateGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_RR_BumpStopRateGainDeflectionSquared;
+        private System.Windows.Forms.TableLayoutPanel rearRightBumpStopDampRow;
+        private System.Windows.Forms.Label rearRightBumpStopDampCaption;
+        private System.Windows.Forms.Label label_RR_BumpStopDamp;
+        private System.Windows.Forms.TableLayoutPanel rearRightBumpStopDampGainDeflectionSquaredRow;
+        private System.Windows.Forms.Label rearRightBumpStopDampGainDeflectionSquaredCaption;
+        private System.Windows.Forms.Label label_RR_BumpStopDampGainDeflectionSquared;
+        private System.Windows.Forms.Timer timer1;
     }
 }

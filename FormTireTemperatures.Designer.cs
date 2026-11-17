@@ -1,4 +1,4 @@
-﻿
+
 namespace Physics_Data_Debug
 {
     partial class FormTireTemperatures
@@ -54,7 +54,6 @@ namespace Physics_Data_Debug
             this.chartRL = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartFR = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartFL = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.closeButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -88,7 +87,7 @@ namespace Physics_Data_Debug
             legend1.Position.Y = 90F;
             this.chartRR.Legends.Add(legend1);
             this.chartRR.Location = new System.Drawing.Point(666, 606);
-            this.chartRR.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chartRR.Margin = new System.Windows.Forms.Padding(6);
             this.chartRR.Name = "chartRR";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -127,7 +126,7 @@ namespace Physics_Data_Debug
             legend2.Position.Y = 90F;
             this.chartRL.Legends.Add(legend2);
             this.chartRL.Location = new System.Drawing.Point(26, 606);
-            this.chartRL.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chartRL.Margin = new System.Windows.Forms.Padding(6);
             this.chartRL.Name = "chartRL";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -167,7 +166,7 @@ namespace Physics_Data_Debug
             legend3.Position.Y = 90F;
             this.chartFR.Legends.Add(legend3);
             this.chartFR.Location = new System.Drawing.Point(666, 81);
-            this.chartFR.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chartFR.Margin = new System.Windows.Forms.Padding(6);
             this.chartFR.Name = "chartFR";
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -206,7 +205,7 @@ namespace Physics_Data_Debug
             legend4.Position.Y = 90F;
             this.chartFL.Legends.Add(legend4);
             this.chartFL.Location = new System.Drawing.Point(26, 81);
-            this.chartFL.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chartFL.Margin = new System.Windows.Forms.Padding(6);
             this.chartFL.Name = "chartFL";
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -226,25 +225,12 @@ namespace Physics_Data_Debug
             title4.Text = "Front Left Temperatures";
             this.chartFL.Titles.Add(title4);
             // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.closeButton.ForeColor = System.Drawing.Color.White;
-            this.closeButton.Location = new System.Drawing.Point(26, 25);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(120, 48);
-            this.closeButton.TabIndex = 11;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
             // startButton
             // 
             this.startButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.startButton.ForeColor = System.Drawing.Color.White;
-            this.startButton.Location = new System.Drawing.Point(266, 27);
-            this.startButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.startButton.Location = new System.Drawing.Point(15, 25);
+            this.startButton.Margin = new System.Windows.Forms.Padding(6);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(150, 44);
             this.startButton.TabIndex = 225;
@@ -256,8 +242,8 @@ namespace Physics_Data_Debug
             // 
             this.stopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.stopButton.ForeColor = System.Drawing.Color.White;
-            this.stopButton.Location = new System.Drawing.Point(428, 29);
-            this.stopButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.stopButton.Location = new System.Drawing.Point(177, 27);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(6);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(150, 44);
             this.stopButton.TabIndex = 226;
@@ -323,12 +309,11 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.label1);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.chartRR);
             this.Controls.Add(this.chartRL);
             this.Controls.Add(this.chartFR);
             this.Controls.Add(this.chartFL);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormTireTemperatures";
             this.Text = "TireTemperatures";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TireTemperatures_FormClosing);
@@ -348,7 +333,6 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.DataVisualization.Charting.Chart chartRL;
         public System.Windows.Forms.DataVisualization.Charting.Chart chartFR;
         public System.Windows.Forms.DataVisualization.Charting.Chart chartFL;
-        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;
         public System.Windows.Forms.Timer timer1;

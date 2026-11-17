@@ -1,1165 +1,2107 @@
-﻿
 namespace Physics_Data_Debug
 {
     partial class FormTireStaticValues
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
+            if (disposing && components != null)
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.wheelValuesLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftGroup = new System.Windows.Forms.GroupBox();
+            this.frontLeftScroll = new System.Windows.Forms.Panel();
+            this.frontLeftSections = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftSection1Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftRadiusRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftRadiusCaption = new System.Windows.Forms.Label();
             this.label_FL_Radius = new System.Windows.Forms.Label();
-            this.flRadius = new System.Windows.Forms.Label();
-            this.flWidth = new System.Windows.Forms.Label();
-            this.flThermalAirTransfer = new System.Windows.Forms.Label();
-            this.flThermalInnerTransfer = new System.Windows.Forms.Label();
-            this.flTireSpringRate = new System.Windows.Forms.Label();
-            this.flTireDamperRate = new System.Windows.Forms.Label();
-            this.flMaxDeflection = new System.Windows.Forms.Label();
-            this.flMass = new System.Windows.Forms.Label();
-            this.flMomentOfInertia = new System.Windows.Forms.Label();
+            this.frontLeftWidthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftWidthCaption = new System.Windows.Forms.Label();
             this.label_FL_Width = new System.Windows.Forms.Label();
-            this.label_FL_ThermalAirTransfer = new System.Windows.Forms.Label();
-            this.label_FL_ThermalInnerTransfer = new System.Windows.Forms.Label();
+            this.frontLeftSection2Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftSpringRateCaption = new System.Windows.Forms.Label();
             this.label_FL_SpringRate = new System.Windows.Forms.Label();
+            this.frontLeftDamperRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftDamperRateCaption = new System.Windows.Forms.Label();
             this.label_FL_DamperRate = new System.Windows.Forms.Label();
+            this.frontLeftMaxDeflectionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftMaxDeflectionCaption = new System.Windows.Forms.Label();
             this.label_FL_MaxDeflection = new System.Windows.Forms.Label();
+            this.frontLeftSection3Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftThermalAirTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftThermalAirTransferCaption = new System.Windows.Forms.Label();
+            this.label_FL_ThermalAirTransfer = new System.Windows.Forms.Label();
+            this.frontLeftThermalInnerTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftThermalInnerTransferCaption = new System.Windows.Forms.Label();
+            this.label_FL_ThermalInnerTransfer = new System.Windows.Forms.Label();
+            this.frontLeftSection4Group = new System.Windows.Forms.GroupBox();
+            this.frontLeftSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftMassRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftMassCaption = new System.Windows.Forms.Label();
             this.label_FL_Mass = new System.Windows.Forms.Label();
+            this.frontLeftMomentOfInertiaRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontLeftMomentOfInertiaCaption = new System.Windows.Forms.Label();
             this.label_FL_MomentOfInertia = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label_FR_MomentOfInertia = new System.Windows.Forms.Label();
-            this.label_FR_Mass = new System.Windows.Forms.Label();
-            this.label_FR_MaxDeflection = new System.Windows.Forms.Label();
-            this.label_FR_DamperRate = new System.Windows.Forms.Label();
-            this.label_FR_SpringRate = new System.Windows.Forms.Label();
-            this.label_FR_ThermalInnerTransfer = new System.Windows.Forms.Label();
-            this.label_FR_ThermalAirTransfer = new System.Windows.Forms.Label();
-            this.label_FR_Width = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.frontRightGroup = new System.Windows.Forms.GroupBox();
+            this.frontRightScroll = new System.Windows.Forms.Panel();
+            this.frontRightSections = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightSection1Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightRadiusRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightRadiusCaption = new System.Windows.Forms.Label();
             this.label_FR_Radius = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label_RL_MomentOfInertia = new System.Windows.Forms.Label();
-            this.label_RL_Mass = new System.Windows.Forms.Label();
-            this.label_RL_MaxDeflection = new System.Windows.Forms.Label();
-            this.label_RL_DamperRate = new System.Windows.Forms.Label();
-            this.label_RL_SpringRate = new System.Windows.Forms.Label();
-            this.label_RL_ThermalInnerTransfer = new System.Windows.Forms.Label();
-            this.label_RL_ThermalAirTransfer = new System.Windows.Forms.Label();
-            this.label_RL_Width = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.frontRightWidthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightWidthCaption = new System.Windows.Forms.Label();
+            this.label_FR_Width = new System.Windows.Forms.Label();
+            this.frontRightSection2Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightSpringRateCaption = new System.Windows.Forms.Label();
+            this.label_FR_SpringRate = new System.Windows.Forms.Label();
+            this.frontRightDamperRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightDamperRateCaption = new System.Windows.Forms.Label();
+            this.label_FR_DamperRate = new System.Windows.Forms.Label();
+            this.frontRightMaxDeflectionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightMaxDeflectionCaption = new System.Windows.Forms.Label();
+            this.label_FR_MaxDeflection = new System.Windows.Forms.Label();
+            this.frontRightSection3Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightThermalAirTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightThermalAirTransferCaption = new System.Windows.Forms.Label();
+            this.label_FR_ThermalAirTransfer = new System.Windows.Forms.Label();
+            this.frontRightThermalInnerTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightThermalInnerTransferCaption = new System.Windows.Forms.Label();
+            this.label_FR_ThermalInnerTransfer = new System.Windows.Forms.Label();
+            this.frontRightSection4Group = new System.Windows.Forms.GroupBox();
+            this.frontRightSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightMassRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightMassCaption = new System.Windows.Forms.Label();
+            this.label_FR_Mass = new System.Windows.Forms.Label();
+            this.frontRightMomentOfInertiaRow = new System.Windows.Forms.TableLayoutPanel();
+            this.frontRightMomentOfInertiaCaption = new System.Windows.Forms.Label();
+            this.label_FR_MomentOfInertia = new System.Windows.Forms.Label();
+            this.rearLeftGroup = new System.Windows.Forms.GroupBox();
+            this.rearLeftScroll = new System.Windows.Forms.Panel();
+            this.rearLeftSections = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftSection1Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftRadiusRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftRadiusCaption = new System.Windows.Forms.Label();
             this.label_RL_Radius = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label_RR_MomentOfInertia = new System.Windows.Forms.Label();
-            this.label_RR_Mass = new System.Windows.Forms.Label();
-            this.label_RR_MaxDeflection = new System.Windows.Forms.Label();
-            this.label_RR_DamperRate = new System.Windows.Forms.Label();
-            this.label_RR_SpringRate = new System.Windows.Forms.Label();
-            this.label_RR_ThermalInnerTransfer = new System.Windows.Forms.Label();
-            this.label_RR_ThermalAirTransfer = new System.Windows.Forms.Label();
-            this.label_RR_Width = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.rearLeftWidthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftWidthCaption = new System.Windows.Forms.Label();
+            this.label_RL_Width = new System.Windows.Forms.Label();
+            this.rearLeftSection2Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftSpringRateCaption = new System.Windows.Forms.Label();
+            this.label_RL_SpringRate = new System.Windows.Forms.Label();
+            this.rearLeftDamperRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftDamperRateCaption = new System.Windows.Forms.Label();
+            this.label_RL_DamperRate = new System.Windows.Forms.Label();
+            this.rearLeftMaxDeflectionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftMaxDeflectionCaption = new System.Windows.Forms.Label();
+            this.label_RL_MaxDeflection = new System.Windows.Forms.Label();
+            this.rearLeftSection3Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftThermalAirTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftThermalAirTransferCaption = new System.Windows.Forms.Label();
+            this.label_RL_ThermalAirTransfer = new System.Windows.Forms.Label();
+            this.rearLeftThermalInnerTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftThermalInnerTransferCaption = new System.Windows.Forms.Label();
+            this.label_RL_ThermalInnerTransfer = new System.Windows.Forms.Label();
+            this.rearLeftSection4Group = new System.Windows.Forms.GroupBox();
+            this.rearLeftSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftMassRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftMassCaption = new System.Windows.Forms.Label();
+            this.label_RL_Mass = new System.Windows.Forms.Label();
+            this.rearLeftMomentOfInertiaRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearLeftMomentOfInertiaCaption = new System.Windows.Forms.Label();
+            this.label_RL_MomentOfInertia = new System.Windows.Forms.Label();
+            this.rearRightGroup = new System.Windows.Forms.GroupBox();
+            this.rearRightScroll = new System.Windows.Forms.Panel();
+            this.rearRightSections = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightSection1Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection1Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightRadiusRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightRadiusCaption = new System.Windows.Forms.Label();
             this.label_RR_Radius = new System.Windows.Forms.Label();
+            this.rearRightWidthRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightWidthCaption = new System.Windows.Forms.Label();
+            this.label_RR_Width = new System.Windows.Forms.Label();
+            this.rearRightSection2Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection2Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightSpringRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightSpringRateCaption = new System.Windows.Forms.Label();
+            this.label_RR_SpringRate = new System.Windows.Forms.Label();
+            this.rearRightDamperRateRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightDamperRateCaption = new System.Windows.Forms.Label();
+            this.label_RR_DamperRate = new System.Windows.Forms.Label();
+            this.rearRightMaxDeflectionRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightMaxDeflectionCaption = new System.Windows.Forms.Label();
+            this.label_RR_MaxDeflection = new System.Windows.Forms.Label();
+            this.rearRightSection3Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection3Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightThermalAirTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightThermalAirTransferCaption = new System.Windows.Forms.Label();
+            this.label_RR_ThermalAirTransfer = new System.Windows.Forms.Label();
+            this.rearRightThermalInnerTransferRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightThermalInnerTransferCaption = new System.Windows.Forms.Label();
+            this.label_RR_ThermalInnerTransfer = new System.Windows.Forms.Label();
+            this.rearRightSection4Group = new System.Windows.Forms.GroupBox();
+            this.rearRightSection4Rows = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightMassRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightMassCaption = new System.Windows.Forms.Label();
+            this.label_RR_Mass = new System.Windows.Forms.Label();
+            this.rearRightMomentOfInertiaRow = new System.Windows.Forms.TableLayoutPanel();
+            this.rearRightMomentOfInertiaCaption = new System.Windows.Forms.Label();
+            this.label_RR_MomentOfInertia = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
+            // wheelValuesLayout
+            this.wheelValuesLayout.Name = "wheelValuesLayout";
+            this.wheelValuesLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wheelValuesLayout.ColumnCount = 2;
+            this.wheelValuesLayout.RowCount = 2;
+            this.wheelValuesLayout.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.wheelValuesLayout.Padding = new System.Windows.Forms.Padding(4);
+            this.wheelValuesLayout.Margin = System.Windows.Forms.Padding.Empty;
+            this.wheelValuesLayout.BackColor = System.Drawing.Color.Black;
+            this.wheelValuesLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.wheelValuesLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.wheelValuesLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.wheelValuesLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            // frontLeftGroup
+            this.frontLeftGroup.Name = "frontLeftGroup";
+            this.frontLeftGroup.Text = "FRONT LEFT";
+            this.frontLeftGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.frontLeftGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.frontLeftGroup.ForeColor = System.Drawing.Color.White;
+            this.frontLeftGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontLeftScroll
+            this.frontLeftScroll.Name = "frontLeftScroll";
+            this.frontLeftScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftScroll.AutoScroll = true;
+            this.frontLeftScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontLeftSections
+            this.frontLeftSections.Name = "frontLeftSections";
+            this.frontLeftSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.frontLeftSections.AutoSize = true;
+            this.frontLeftSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.frontLeftSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSections.ColumnCount = 1;
+            this.frontLeftSections.RowCount = 4;
+            this.frontLeftSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.frontLeftSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.frontLeftSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontLeftSection1Group
+            this.frontLeftSection1Group.Name = "frontLeftSection1Group";
+            this.frontLeftSection1Group.Text = "Dimensions";
+            this.frontLeftSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection1Rows
+            this.frontLeftSection1Rows.Name = "frontLeftSection1Rows";
+            this.frontLeftSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection1Rows.ColumnCount = 1;
+            this.frontLeftSection1Rows.RowCount = 2;
+            this.frontLeftSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftRadiusRow
+            this.frontLeftRadiusRow.Name = "frontLeftRadiusRow";
+            this.frontLeftRadiusRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftRadiusRow.ColumnCount = 2;
+            this.frontLeftRadiusRow.RowCount = 1;
+            this.frontLeftRadiusRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftRadiusRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftRadiusRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftRadiusRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftRadiusRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftRadiusCaption
+            this.frontLeftRadiusCaption.Name = "frontLeftRadiusCaption";
+            this.frontLeftRadiusCaption.Text = "Radius";
+            this.frontLeftRadiusCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftRadiusCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftRadiusCaption.AutoEllipsis = true;
+            this.frontLeftRadiusCaption.UseMnemonic = false;
+            this.frontLeftRadiusCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftRadiusCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftRadiusCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftRadiusRow.Controls.Add(this.frontLeftRadiusCaption, 0, 0);
             // label_FL_Radius
-            // 
-            this.label_FL_Radius.BackColor = System.Drawing.Color.Black;
-            this.label_FL_Radius.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_Radius.ForeColor = System.Drawing.Color.White;
-            this.label_FL_Radius.Location = new System.Drawing.Point(247, 54);
-            this.label_FL_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_Radius.Name = "label_FL_Radius";
-            this.label_FL_Radius.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_Radius.TabIndex = 0;
-            // 
-            // flRadius
-            // 
-            this.flRadius.AutoSize = true;
-            this.flRadius.BackColor = System.Drawing.Color.Black;
-            this.flRadius.ForeColor = System.Drawing.Color.White;
-            this.flRadius.Location = new System.Drawing.Point(15, 59);
-            this.flRadius.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flRadius.Name = "flRadius";
-            this.flRadius.Size = new System.Drawing.Size(79, 25);
-            this.flRadius.TabIndex = 3;
-            this.flRadius.Text = "Radius";
-            // 
-            // flWidth
-            // 
-            this.flWidth.AutoSize = true;
-            this.flWidth.BackColor = System.Drawing.Color.Black;
-            this.flWidth.ForeColor = System.Drawing.Color.White;
-            this.flWidth.Location = new System.Drawing.Point(15, 109);
-            this.flWidth.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flWidth.Name = "flWidth";
-            this.flWidth.Size = new System.Drawing.Size(67, 25);
-            this.flWidth.TabIndex = 4;
-            this.flWidth.Text = "Width";
-            // 
-            // flThermalAirTransfer
-            // 
-            this.flThermalAirTransfer.AutoSize = true;
-            this.flThermalAirTransfer.BackColor = System.Drawing.Color.Black;
-            this.flThermalAirTransfer.ForeColor = System.Drawing.Color.White;
-            this.flThermalAirTransfer.Location = new System.Drawing.Point(15, 159);
-            this.flThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flThermalAirTransfer.Name = "flThermalAirTransfer";
-            this.flThermalAirTransfer.Size = new System.Drawing.Size(208, 25);
-            this.flThermalAirTransfer.TabIndex = 5;
-            this.flThermalAirTransfer.Text = "Thermal Air Transfer";
-            // 
-            // flThermalInnerTransfer
-            // 
-            this.flThermalInnerTransfer.AutoSize = true;
-            this.flThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
-            this.flThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
-            this.flThermalInnerTransfer.Location = new System.Drawing.Point(15, 209);
-            this.flThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flThermalInnerTransfer.Name = "flThermalInnerTransfer";
-            this.flThermalInnerTransfer.Size = new System.Drawing.Size(230, 25);
-            this.flThermalInnerTransfer.TabIndex = 6;
-            this.flThermalInnerTransfer.Text = "Thermal Inner Transfer";
-            // 
-            // flTireSpringRate
-            // 
-            this.flTireSpringRate.AutoSize = true;
-            this.flTireSpringRate.BackColor = System.Drawing.Color.Black;
-            this.flTireSpringRate.ForeColor = System.Drawing.Color.White;
-            this.flTireSpringRate.Location = new System.Drawing.Point(15, 259);
-            this.flTireSpringRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flTireSpringRate.Name = "flTireSpringRate";
-            this.flTireSpringRate.Size = new System.Drawing.Size(125, 25);
-            this.flTireSpringRate.TabIndex = 7;
-            this.flTireSpringRate.Text = "Spring Rate";
-            // 
-            // flTireDamperRate
-            // 
-            this.flTireDamperRate.AutoSize = true;
-            this.flTireDamperRate.BackColor = System.Drawing.Color.Black;
-            this.flTireDamperRate.ForeColor = System.Drawing.Color.White;
-            this.flTireDamperRate.Location = new System.Drawing.Point(15, 309);
-            this.flTireDamperRate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flTireDamperRate.Name = "flTireDamperRate";
-            this.flTireDamperRate.Size = new System.Drawing.Size(138, 25);
-            this.flTireDamperRate.TabIndex = 8;
-            this.flTireDamperRate.Text = "Damper Rate";
-            // 
-            // flMaxDeflection
-            // 
-            this.flMaxDeflection.AutoSize = true;
-            this.flMaxDeflection.BackColor = System.Drawing.Color.Black;
-            this.flMaxDeflection.ForeColor = System.Drawing.Color.White;
-            this.flMaxDeflection.Location = new System.Drawing.Point(15, 359);
-            this.flMaxDeflection.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flMaxDeflection.Name = "flMaxDeflection";
-            this.flMaxDeflection.Size = new System.Drawing.Size(155, 25);
-            this.flMaxDeflection.TabIndex = 9;
-            this.flMaxDeflection.Text = "Max Deflection";
-            // 
-            // flMass
-            // 
-            this.flMass.AutoSize = true;
-            this.flMass.BackColor = System.Drawing.Color.Black;
-            this.flMass.ForeColor = System.Drawing.Color.White;
-            this.flMass.Location = new System.Drawing.Point(15, 409);
-            this.flMass.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flMass.Name = "flMass";
-            this.flMass.Size = new System.Drawing.Size(64, 25);
-            this.flMass.TabIndex = 10;
-            this.flMass.Text = "Mass";
-            // 
-            // flMomentOfInertia
-            // 
-            this.flMomentOfInertia.AutoSize = true;
-            this.flMomentOfInertia.BackColor = System.Drawing.Color.Black;
-            this.flMomentOfInertia.ForeColor = System.Drawing.Color.White;
-            this.flMomentOfInertia.Location = new System.Drawing.Point(15, 459);
-            this.flMomentOfInertia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.flMomentOfInertia.Name = "flMomentOfInertia";
-            this.flMomentOfInertia.Size = new System.Drawing.Size(182, 25);
-            this.flMomentOfInertia.TabIndex = 11;
-            this.flMomentOfInertia.Text = "Moment Of Inertia";
-            // 
+            this.label_FL_Radius.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_Radius.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_Radius.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_Radius.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_Radius.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_Radius.ForeColor = System.Drawing.Color.White;
+            this.label_FL_Radius.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_Radius.Text = "—";
+            this.frontLeftRadiusRow.Controls.Add(this.label_FL_Radius, 1, 0);
+            this.frontLeftSection1Rows.Controls.Add(this.frontLeftRadiusRow, 0, 0);
+            this.frontLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftWidthRow
+            this.frontLeftWidthRow.Name = "frontLeftWidthRow";
+            this.frontLeftWidthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftWidthRow.ColumnCount = 2;
+            this.frontLeftWidthRow.RowCount = 1;
+            this.frontLeftWidthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftWidthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftWidthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftWidthRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftWidthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftWidthCaption
+            this.frontLeftWidthCaption.Name = "frontLeftWidthCaption";
+            this.frontLeftWidthCaption.Text = "Width";
+            this.frontLeftWidthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftWidthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftWidthCaption.AutoEllipsis = true;
+            this.frontLeftWidthCaption.UseMnemonic = false;
+            this.frontLeftWidthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftWidthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftWidthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftWidthRow.Controls.Add(this.frontLeftWidthCaption, 0, 0);
             // label_FL_Width
-            // 
-            this.label_FL_Width.BackColor = System.Drawing.Color.Black;
-            this.label_FL_Width.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_Width.ForeColor = System.Drawing.Color.White;
-            this.label_FL_Width.Location = new System.Drawing.Point(247, 104);
-            this.label_FL_Width.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_Width.Name = "label_FL_Width";
-            this.label_FL_Width.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_Width.TabIndex = 12;
-            // 
-            // label_FL_ThermalAirTransfer
-            // 
-            this.label_FL_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ThermalAirTransfer.Location = new System.Drawing.Point(247, 154);
-            this.label_FL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ThermalAirTransfer.Name = "label_FL_ThermalAirTransfer";
-            this.label_FL_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_ThermalAirTransfer.TabIndex = 13;
-            // 
-            // label_FL_ThermalInnerTransfer
-            // 
-            this.label_FL_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_FL_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_FL_ThermalInnerTransfer.Location = new System.Drawing.Point(247, 204);
-            this.label_FL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FL_ThermalInnerTransfer.Name = "label_FL_ThermalInnerTransfer";
-            this.label_FL_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_ThermalInnerTransfer.TabIndex = 14;
-            // 
+            this.label_FL_Width.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_Width.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_Width.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_Width.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_Width.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_Width.ForeColor = System.Drawing.Color.White;
+            this.label_FL_Width.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_Width.Text = "—";
+            this.frontLeftWidthRow.Controls.Add(this.label_FL_Width, 1, 0);
+            this.frontLeftSection1Rows.Controls.Add(this.frontLeftWidthRow, 0, 1);
+            this.frontLeftSection1Group.Controls.Add(this.frontLeftSection1Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection1Group, 0, 0);
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            // frontLeftSection2Group
+            this.frontLeftSection2Group.Name = "frontLeftSection2Group";
+            this.frontLeftSection2Group.Text = "Spring & Damper";
+            this.frontLeftSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection2Rows
+            this.frontLeftSection2Rows.Name = "frontLeftSection2Rows";
+            this.frontLeftSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection2Rows.ColumnCount = 1;
+            this.frontLeftSection2Rows.RowCount = 3;
+            this.frontLeftSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftSpringRateRow
+            this.frontLeftSpringRateRow.Name = "frontLeftSpringRateRow";
+            this.frontLeftSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSpringRateRow.ColumnCount = 2;
+            this.frontLeftSpringRateRow.RowCount = 1;
+            this.frontLeftSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftSpringRateCaption
+            this.frontLeftSpringRateCaption.Name = "frontLeftSpringRateCaption";
+            this.frontLeftSpringRateCaption.Text = "Spring rate";
+            this.frontLeftSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftSpringRateCaption.AutoEllipsis = true;
+            this.frontLeftSpringRateCaption.UseMnemonic = false;
+            this.frontLeftSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftSpringRateRow.Controls.Add(this.frontLeftSpringRateCaption, 0, 0);
             // label_FL_SpringRate
-            // 
-            this.label_FL_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_FL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_FL_SpringRate.Location = new System.Drawing.Point(247, 254);
-            this.label_FL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_SpringRate.Name = "label_FL_SpringRate";
-            this.label_FL_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_SpringRate.TabIndex = 15;
-            // 
+            this.label_FL_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_SpringRate.Text = "—";
+            this.frontLeftSpringRateRow.Controls.Add(this.label_FL_SpringRate, 1, 0);
+            this.frontLeftSection2Rows.Controls.Add(this.frontLeftSpringRateRow, 0, 0);
+            this.frontLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftDamperRateRow
+            this.frontLeftDamperRateRow.Name = "frontLeftDamperRateRow";
+            this.frontLeftDamperRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftDamperRateRow.ColumnCount = 2;
+            this.frontLeftDamperRateRow.RowCount = 1;
+            this.frontLeftDamperRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftDamperRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftDamperRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftDamperRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftDamperRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftDamperRateCaption
+            this.frontLeftDamperRateCaption.Name = "frontLeftDamperRateCaption";
+            this.frontLeftDamperRateCaption.Text = "Damper rate";
+            this.frontLeftDamperRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftDamperRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftDamperRateCaption.AutoEllipsis = true;
+            this.frontLeftDamperRateCaption.UseMnemonic = false;
+            this.frontLeftDamperRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftDamperRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftDamperRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftDamperRateRow.Controls.Add(this.frontLeftDamperRateCaption, 0, 0);
             // label_FL_DamperRate
-            // 
-            this.label_FL_DamperRate.BackColor = System.Drawing.Color.Black;
-            this.label_FL_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_DamperRate.ForeColor = System.Drawing.Color.White;
-            this.label_FL_DamperRate.Location = new System.Drawing.Point(247, 304);
-            this.label_FL_DamperRate.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_DamperRate.Name = "label_FL_DamperRate";
-            this.label_FL_DamperRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_DamperRate.TabIndex = 16;
-            // 
+            this.label_FL_DamperRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_DamperRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_DamperRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_DamperRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_DamperRate.ForeColor = System.Drawing.Color.White;
+            this.label_FL_DamperRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_DamperRate.Text = "—";
+            this.frontLeftDamperRateRow.Controls.Add(this.label_FL_DamperRate, 1, 0);
+            this.frontLeftSection2Rows.Controls.Add(this.frontLeftDamperRateRow, 0, 1);
+            this.frontLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftMaxDeflectionRow
+            this.frontLeftMaxDeflectionRow.Name = "frontLeftMaxDeflectionRow";
+            this.frontLeftMaxDeflectionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftMaxDeflectionRow.ColumnCount = 2;
+            this.frontLeftMaxDeflectionRow.RowCount = 1;
+            this.frontLeftMaxDeflectionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftMaxDeflectionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftMaxDeflectionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftMaxDeflectionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftMaxDeflectionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftMaxDeflectionCaption
+            this.frontLeftMaxDeflectionCaption.Name = "frontLeftMaxDeflectionCaption";
+            this.frontLeftMaxDeflectionCaption.Text = "Maximum deflection";
+            this.frontLeftMaxDeflectionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftMaxDeflectionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftMaxDeflectionCaption.AutoEllipsis = true;
+            this.frontLeftMaxDeflectionCaption.UseMnemonic = false;
+            this.frontLeftMaxDeflectionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftMaxDeflectionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftMaxDeflectionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftMaxDeflectionRow.Controls.Add(this.frontLeftMaxDeflectionCaption, 0, 0);
             // label_FL_MaxDeflection
-            // 
-            this.label_FL_MaxDeflection.BackColor = System.Drawing.Color.Black;
-            this.label_FL_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_MaxDeflection.ForeColor = System.Drawing.Color.White;
-            this.label_FL_MaxDeflection.Location = new System.Drawing.Point(247, 354);
-            this.label_FL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_MaxDeflection.Name = "label_FL_MaxDeflection";
-            this.label_FL_MaxDeflection.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_MaxDeflection.TabIndex = 17;
-            // 
+            this.label_FL_MaxDeflection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_MaxDeflection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_MaxDeflection.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_MaxDeflection.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_MaxDeflection.ForeColor = System.Drawing.Color.White;
+            this.label_FL_MaxDeflection.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_MaxDeflection.Text = "—";
+            this.frontLeftMaxDeflectionRow.Controls.Add(this.label_FL_MaxDeflection, 1, 0);
+            this.frontLeftSection2Rows.Controls.Add(this.frontLeftMaxDeflectionRow, 0, 2);
+            this.frontLeftSection2Group.Controls.Add(this.frontLeftSection2Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection2Group, 0, 1);
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontLeftSection3Group
+            this.frontLeftSection3Group.Name = "frontLeftSection3Group";
+            this.frontLeftSection3Group.Text = "Thermal";
+            this.frontLeftSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection3Rows
+            this.frontLeftSection3Rows.Name = "frontLeftSection3Rows";
+            this.frontLeftSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection3Rows.ColumnCount = 1;
+            this.frontLeftSection3Rows.RowCount = 2;
+            this.frontLeftSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftThermalAirTransferRow
+            this.frontLeftThermalAirTransferRow.Name = "frontLeftThermalAirTransferRow";
+            this.frontLeftThermalAirTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftThermalAirTransferRow.ColumnCount = 2;
+            this.frontLeftThermalAirTransferRow.RowCount = 1;
+            this.frontLeftThermalAirTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftThermalAirTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftThermalAirTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftThermalAirTransferRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftThermalAirTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftThermalAirTransferCaption
+            this.frontLeftThermalAirTransferCaption.Name = "frontLeftThermalAirTransferCaption";
+            this.frontLeftThermalAirTransferCaption.Text = "Air heat transfer";
+            this.frontLeftThermalAirTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftThermalAirTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftThermalAirTransferCaption.AutoEllipsis = true;
+            this.frontLeftThermalAirTransferCaption.UseMnemonic = false;
+            this.frontLeftThermalAirTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftThermalAirTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftThermalAirTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftThermalAirTransferRow.Controls.Add(this.frontLeftThermalAirTransferCaption, 0, 0);
+            // label_FL_ThermalAirTransfer
+            this.label_FL_ThermalAirTransfer.Name = "label_FL_ThermalAirTransfer";
+            this.label_FL_ThermalAirTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ThermalAirTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ThermalAirTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ThermalAirTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ThermalAirTransfer.Text = "—";
+            this.frontLeftThermalAirTransferRow.Controls.Add(this.label_FL_ThermalAirTransfer, 1, 0);
+            this.frontLeftSection3Rows.Controls.Add(this.frontLeftThermalAirTransferRow, 0, 0);
+            this.frontLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftThermalInnerTransferRow
+            this.frontLeftThermalInnerTransferRow.Name = "frontLeftThermalInnerTransferRow";
+            this.frontLeftThermalInnerTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftThermalInnerTransferRow.ColumnCount = 2;
+            this.frontLeftThermalInnerTransferRow.RowCount = 1;
+            this.frontLeftThermalInnerTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftThermalInnerTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftThermalInnerTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftThermalInnerTransferRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftThermalInnerTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftThermalInnerTransferCaption
+            this.frontLeftThermalInnerTransferCaption.Name = "frontLeftThermalInnerTransferCaption";
+            this.frontLeftThermalInnerTransferCaption.Text = "Inner heat transfer";
+            this.frontLeftThermalInnerTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftThermalInnerTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftThermalInnerTransferCaption.AutoEllipsis = true;
+            this.frontLeftThermalInnerTransferCaption.UseMnemonic = false;
+            this.frontLeftThermalInnerTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftThermalInnerTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftThermalInnerTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftThermalInnerTransferRow.Controls.Add(this.frontLeftThermalInnerTransferCaption, 0, 0);
+            // label_FL_ThermalInnerTransfer
+            this.label_FL_ThermalInnerTransfer.Name = "label_FL_ThermalInnerTransfer";
+            this.label_FL_ThermalInnerTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_ThermalInnerTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_ThermalInnerTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_FL_ThermalInnerTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_ThermalInnerTransfer.Text = "—";
+            this.frontLeftThermalInnerTransferRow.Controls.Add(this.label_FL_ThermalInnerTransfer, 1, 0);
+            this.frontLeftSection3Rows.Controls.Add(this.frontLeftThermalInnerTransferRow, 0, 1);
+            this.frontLeftSection3Group.Controls.Add(this.frontLeftSection3Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection3Group, 0, 2);
+            this.frontLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontLeftSection4Group
+            this.frontLeftSection4Group.Name = "frontLeftSection4Group";
+            this.frontLeftSection4Group.Text = "Mass & Inertia";
+            this.frontLeftSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontLeftSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontLeftSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontLeftSection4Rows
+            this.frontLeftSection4Rows.Name = "frontLeftSection4Rows";
+            this.frontLeftSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftSection4Rows.ColumnCount = 1;
+            this.frontLeftSection4Rows.RowCount = 2;
+            this.frontLeftSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontLeftSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontLeftSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftMassRow
+            this.frontLeftMassRow.Name = "frontLeftMassRow";
+            this.frontLeftMassRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftMassRow.ColumnCount = 2;
+            this.frontLeftMassRow.RowCount = 1;
+            this.frontLeftMassRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftMassRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftMassRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftMassRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontLeftMassRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftMassCaption
+            this.frontLeftMassCaption.Name = "frontLeftMassCaption";
+            this.frontLeftMassCaption.Text = "Mass";
+            this.frontLeftMassCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftMassCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftMassCaption.AutoEllipsis = true;
+            this.frontLeftMassCaption.UseMnemonic = false;
+            this.frontLeftMassCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftMassCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftMassCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftMassRow.Controls.Add(this.frontLeftMassCaption, 0, 0);
             // label_FL_Mass
-            // 
-            this.label_FL_Mass.BackColor = System.Drawing.Color.Black;
-            this.label_FL_Mass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_Mass.ForeColor = System.Drawing.Color.White;
-            this.label_FL_Mass.Location = new System.Drawing.Point(247, 404);
-            this.label_FL_Mass.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_Mass.Name = "label_FL_Mass";
-            this.label_FL_Mass.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_Mass.TabIndex = 18;
-            // 
+            this.label_FL_Mass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_Mass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_Mass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_Mass.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_Mass.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_Mass.ForeColor = System.Drawing.Color.White;
+            this.label_FL_Mass.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_Mass.Text = "—";
+            this.frontLeftMassRow.Controls.Add(this.label_FL_Mass, 1, 0);
+            this.frontLeftSection4Rows.Controls.Add(this.frontLeftMassRow, 0, 0);
+            this.frontLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontLeftMomentOfInertiaRow
+            this.frontLeftMomentOfInertiaRow.Name = "frontLeftMomentOfInertiaRow";
+            this.frontLeftMomentOfInertiaRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftMomentOfInertiaRow.ColumnCount = 2;
+            this.frontLeftMomentOfInertiaRow.RowCount = 1;
+            this.frontLeftMomentOfInertiaRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontLeftMomentOfInertiaRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontLeftMomentOfInertiaRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontLeftMomentOfInertiaRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontLeftMomentOfInertiaRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontLeftMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontLeftMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontLeftMomentOfInertiaCaption
+            this.frontLeftMomentOfInertiaCaption.Name = "frontLeftMomentOfInertiaCaption";
+            this.frontLeftMomentOfInertiaCaption.Text = "Moment of inertia";
+            this.frontLeftMomentOfInertiaCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontLeftMomentOfInertiaCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontLeftMomentOfInertiaCaption.AutoEllipsis = true;
+            this.frontLeftMomentOfInertiaCaption.UseMnemonic = false;
+            this.frontLeftMomentOfInertiaCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontLeftMomentOfInertiaCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontLeftMomentOfInertiaCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontLeftMomentOfInertiaRow.Controls.Add(this.frontLeftMomentOfInertiaCaption, 0, 0);
             // label_FL_MomentOfInertia
-            // 
-            this.label_FL_MomentOfInertia.BackColor = System.Drawing.Color.Black;
-            this.label_FL_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FL_MomentOfInertia.ForeColor = System.Drawing.Color.White;
-            this.label_FL_MomentOfInertia.Location = new System.Drawing.Point(247, 454);
-            this.label_FL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
             this.label_FL_MomentOfInertia.Name = "label_FL_MomentOfInertia";
-            this.label_FL_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
-            this.label_FL_MomentOfInertia.TabIndex = 19;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Black;
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(15, 9);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(142, 25);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "FRONT LEFT";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(513, 15);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 25);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "FRONT RIGHT";
-            // 
-            // label_FR_MomentOfInertia
-            // 
-            this.label_FR_MomentOfInertia.BackColor = System.Drawing.Color.Black;
-            this.label_FR_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_MomentOfInertia.ForeColor = System.Drawing.Color.White;
-            this.label_FR_MomentOfInertia.Location = new System.Drawing.Point(745, 459);
-            this.label_FR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_MomentOfInertia.Name = "label_FR_MomentOfInertia";
-            this.label_FR_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_MomentOfInertia.TabIndex = 43;
-            // 
-            // label_FR_Mass
-            // 
-            this.label_FR_Mass.BackColor = System.Drawing.Color.Black;
-            this.label_FR_Mass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_Mass.ForeColor = System.Drawing.Color.White;
-            this.label_FR_Mass.Location = new System.Drawing.Point(745, 409);
-            this.label_FR_Mass.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_Mass.Name = "label_FR_Mass";
-            this.label_FR_Mass.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_Mass.TabIndex = 42;
-            // 
-            // label_FR_MaxDeflection
-            // 
-            this.label_FR_MaxDeflection.BackColor = System.Drawing.Color.Black;
-            this.label_FR_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_MaxDeflection.ForeColor = System.Drawing.Color.White;
-            this.label_FR_MaxDeflection.Location = new System.Drawing.Point(745, 359);
-            this.label_FR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_MaxDeflection.Name = "label_FR_MaxDeflection";
-            this.label_FR_MaxDeflection.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_MaxDeflection.TabIndex = 41;
-            // 
-            // label_FR_DamperRate
-            // 
-            this.label_FR_DamperRate.BackColor = System.Drawing.Color.Black;
-            this.label_FR_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_DamperRate.ForeColor = System.Drawing.Color.White;
-            this.label_FR_DamperRate.Location = new System.Drawing.Point(745, 309);
-            this.label_FR_DamperRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_DamperRate.Name = "label_FR_DamperRate";
-            this.label_FR_DamperRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_DamperRate.TabIndex = 40;
-            // 
-            // label_FR_SpringRate
-            // 
-            this.label_FR_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_FR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_FR_SpringRate.Location = new System.Drawing.Point(745, 259);
-            this.label_FR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_SpringRate.Name = "label_FR_SpringRate";
-            this.label_FR_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_SpringRate.TabIndex = 39;
-            // 
-            // label_FR_ThermalInnerTransfer
-            // 
-            this.label_FR_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ThermalInnerTransfer.Location = new System.Drawing.Point(745, 209);
-            this.label_FR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ThermalInnerTransfer.Name = "label_FR_ThermalInnerTransfer";
-            this.label_FR_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_ThermalInnerTransfer.TabIndex = 38;
-            // 
-            // label_FR_ThermalAirTransfer
-            // 
-            this.label_FR_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_FR_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_FR_ThermalAirTransfer.Location = new System.Drawing.Point(745, 159);
-            this.label_FR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_ThermalAirTransfer.Name = "label_FR_ThermalAirTransfer";
-            this.label_FR_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_ThermalAirTransfer.TabIndex = 37;
-            // 
-            // label_FR_Width
-            // 
-            this.label_FR_Width.BackColor = System.Drawing.Color.Black;
-            this.label_FR_Width.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_Width.ForeColor = System.Drawing.Color.White;
-            this.label_FR_Width.Location = new System.Drawing.Point(745, 109);
-            this.label_FR_Width.Margin = new System.Windows.Forms.Padding(6);
-            this.label_FR_Width.Name = "label_FR_Width";
-            this.label_FR_Width.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_Width.TabIndex = 36;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(513, 465);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 25);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Moment Of Inertia";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Black;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(513, 415);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 25);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Mass";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Black;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(513, 365);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 25);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Max Deflection";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(513, 315);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 25);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "Damper Rate";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Black;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(513, 265);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 25);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Spring Rate";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Black;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(513, 215);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(230, 25);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "Thermal Inner Transfer";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Black;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(513, 165);
-            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(208, 25);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Thermal Air Transfer";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Black;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(513, 115);
-            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 25);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Width";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Black;
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(513, 65);
-            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 25);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "Radius";
-            // 
+            this.label_FL_MomentOfInertia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FL_MomentOfInertia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FL_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FL_MomentOfInertia.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FL_MomentOfInertia.ForeColor = System.Drawing.Color.White;
+            this.label_FL_MomentOfInertia.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FL_MomentOfInertia.Text = "—";
+            this.frontLeftMomentOfInertiaRow.Controls.Add(this.label_FL_MomentOfInertia, 1, 0);
+            this.frontLeftSection4Rows.Controls.Add(this.frontLeftMomentOfInertiaRow, 0, 1);
+            this.frontLeftSection4Group.Controls.Add(this.frontLeftSection4Rows);
+            this.frontLeftSections.Controls.Add(this.frontLeftSection4Group, 0, 3);
+            this.frontLeftScroll.Controls.Add(this.frontLeftSections);
+            this.frontLeftGroup.Controls.Add(this.frontLeftScroll);
+            this.wheelValuesLayout.Controls.Add(this.frontLeftGroup, 0, 0);
+            // frontRightGroup
+            this.frontRightGroup.Name = "frontRightGroup";
+            this.frontRightGroup.Text = "FRONT RIGHT";
+            this.frontRightGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.frontRightGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.frontRightGroup.ForeColor = System.Drawing.Color.White;
+            this.frontRightGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontRightScroll
+            this.frontRightScroll.Name = "frontRightScroll";
+            this.frontRightScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightScroll.AutoScroll = true;
+            this.frontRightScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // frontRightSections
+            this.frontRightSections.Name = "frontRightSections";
+            this.frontRightSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.frontRightSections.AutoSize = true;
+            this.frontRightSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.frontRightSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSections.ColumnCount = 1;
+            this.frontRightSections.RowCount = 4;
+            this.frontRightSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.frontRightSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.frontRightSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontRightSection1Group
+            this.frontRightSection1Group.Name = "frontRightSection1Group";
+            this.frontRightSection1Group.Text = "Dimensions";
+            this.frontRightSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection1Rows
+            this.frontRightSection1Rows.Name = "frontRightSection1Rows";
+            this.frontRightSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection1Rows.ColumnCount = 1;
+            this.frontRightSection1Rows.RowCount = 2;
+            this.frontRightSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightRadiusRow
+            this.frontRightRadiusRow.Name = "frontRightRadiusRow";
+            this.frontRightRadiusRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightRadiusRow.ColumnCount = 2;
+            this.frontRightRadiusRow.RowCount = 1;
+            this.frontRightRadiusRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightRadiusRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightRadiusRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightRadiusRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightRadiusRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightRadiusCaption
+            this.frontRightRadiusCaption.Name = "frontRightRadiusCaption";
+            this.frontRightRadiusCaption.Text = "Radius";
+            this.frontRightRadiusCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightRadiusCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightRadiusCaption.AutoEllipsis = true;
+            this.frontRightRadiusCaption.UseMnemonic = false;
+            this.frontRightRadiusCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightRadiusCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightRadiusCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightRadiusRow.Controls.Add(this.frontRightRadiusCaption, 0, 0);
             // label_FR_Radius
-            // 
-            this.label_FR_Radius.BackColor = System.Drawing.Color.Black;
-            this.label_FR_Radius.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_FR_Radius.ForeColor = System.Drawing.Color.White;
-            this.label_FR_Radius.Location = new System.Drawing.Point(745, 59);
-            this.label_FR_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.label_FR_Radius.Name = "label_FR_Radius";
-            this.label_FR_Radius.Size = new System.Drawing.Size(196, 31);
-            this.label_FR_Radius.TabIndex = 26;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Black;
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(15, 536);
-            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 25);
-            this.label11.TabIndex = 63;
-            this.label11.Text = "REAR LEFT";
-            // 
-            // label_RL_MomentOfInertia
-            // 
-            this.label_RL_MomentOfInertia.BackColor = System.Drawing.Color.Black;
-            this.label_RL_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_MomentOfInertia.ForeColor = System.Drawing.Color.White;
-            this.label_RL_MomentOfInertia.Location = new System.Drawing.Point(247, 980);
-            this.label_RL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_MomentOfInertia.Name = "label_RL_MomentOfInertia";
-            this.label_RL_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_MomentOfInertia.TabIndex = 62;
-            // 
-            // label_RL_Mass
-            // 
-            this.label_RL_Mass.BackColor = System.Drawing.Color.Black;
-            this.label_RL_Mass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_Mass.ForeColor = System.Drawing.Color.White;
-            this.label_RL_Mass.Location = new System.Drawing.Point(247, 930);
-            this.label_RL_Mass.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_Mass.Name = "label_RL_Mass";
-            this.label_RL_Mass.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_Mass.TabIndex = 61;
-            // 
-            // label_RL_MaxDeflection
-            // 
-            this.label_RL_MaxDeflection.BackColor = System.Drawing.Color.Black;
-            this.label_RL_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_MaxDeflection.ForeColor = System.Drawing.Color.White;
-            this.label_RL_MaxDeflection.Location = new System.Drawing.Point(247, 880);
-            this.label_RL_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_MaxDeflection.Name = "label_RL_MaxDeflection";
-            this.label_RL_MaxDeflection.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_MaxDeflection.TabIndex = 60;
-            // 
-            // label_RL_DamperRate
-            // 
-            this.label_RL_DamperRate.BackColor = System.Drawing.Color.Black;
-            this.label_RL_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_DamperRate.ForeColor = System.Drawing.Color.White;
-            this.label_RL_DamperRate.Location = new System.Drawing.Point(247, 830);
-            this.label_RL_DamperRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_DamperRate.Name = "label_RL_DamperRate";
-            this.label_RL_DamperRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_DamperRate.TabIndex = 59;
-            // 
-            // label_RL_SpringRate
-            // 
-            this.label_RL_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_RL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_RL_SpringRate.Location = new System.Drawing.Point(247, 780);
-            this.label_RL_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_SpringRate.Name = "label_RL_SpringRate";
-            this.label_RL_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_SpringRate.TabIndex = 58;
-            // 
-            // label_RL_ThermalInnerTransfer
-            // 
-            this.label_RL_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ThermalInnerTransfer.Location = new System.Drawing.Point(247, 730);
-            this.label_RL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ThermalInnerTransfer.Name = "label_RL_ThermalInnerTransfer";
-            this.label_RL_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_ThermalInnerTransfer.TabIndex = 57;
-            // 
-            // label_RL_ThermalAirTransfer
-            // 
-            this.label_RL_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_RL_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_RL_ThermalAirTransfer.Location = new System.Drawing.Point(247, 680);
-            this.label_RL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_ThermalAirTransfer.Name = "label_RL_ThermalAirTransfer";
-            this.label_RL_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_ThermalAirTransfer.TabIndex = 56;
-            // 
-            // label_RL_Width
-            // 
-            this.label_RL_Width.BackColor = System.Drawing.Color.Black;
-            this.label_RL_Width.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_Width.ForeColor = System.Drawing.Color.White;
-            this.label_RL_Width.Location = new System.Drawing.Point(247, 630);
-            this.label_RL_Width.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RL_Width.Name = "label_RL_Width";
-            this.label_RL_Width.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_Width.TabIndex = 55;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Black;
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(15, 986);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(182, 25);
-            this.label12.TabIndex = 54;
-            this.label12.Text = "Moment Of Inertia";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Black;
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(15, 936);
-            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(64, 25);
-            this.label14.TabIndex = 53;
-            this.label14.Text = "Mass";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Black;
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(15, 886);
-            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(155, 25);
-            this.label15.TabIndex = 52;
-            this.label15.Text = "Max Deflection";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Black;
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(15, 836);
-            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(138, 25);
-            this.label16.TabIndex = 51;
-            this.label16.Text = "Damper Rate";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Black;
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(15, 786);
-            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(125, 25);
-            this.label17.TabIndex = 50;
-            this.label17.Text = "Spring Rate";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Black;
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(15, 736);
-            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(230, 25);
-            this.label18.TabIndex = 49;
-            this.label18.Text = "Thermal Inner Transfer";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Black;
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(15, 686);
-            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(208, 25);
-            this.label19.TabIndex = 48;
-            this.label19.Text = "Thermal Air Transfer";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Black;
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(15, 636);
-            this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(67, 25);
-            this.label20.TabIndex = 47;
-            this.label20.Text = "Width";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Black;
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(15, 586);
-            this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 25);
-            this.label21.TabIndex = 46;
-            this.label21.Text = "Radius";
-            // 
+            this.label_FR_Radius.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_Radius.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_Radius.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_Radius.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_Radius.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_Radius.ForeColor = System.Drawing.Color.White;
+            this.label_FR_Radius.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_Radius.Text = "—";
+            this.frontRightRadiusRow.Controls.Add(this.label_FR_Radius, 1, 0);
+            this.frontRightSection1Rows.Controls.Add(this.frontRightRadiusRow, 0, 0);
+            this.frontRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightWidthRow
+            this.frontRightWidthRow.Name = "frontRightWidthRow";
+            this.frontRightWidthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightWidthRow.ColumnCount = 2;
+            this.frontRightWidthRow.RowCount = 1;
+            this.frontRightWidthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightWidthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightWidthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightWidthRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightWidthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightWidthCaption
+            this.frontRightWidthCaption.Name = "frontRightWidthCaption";
+            this.frontRightWidthCaption.Text = "Width";
+            this.frontRightWidthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightWidthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightWidthCaption.AutoEllipsis = true;
+            this.frontRightWidthCaption.UseMnemonic = false;
+            this.frontRightWidthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightWidthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightWidthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightWidthRow.Controls.Add(this.frontRightWidthCaption, 0, 0);
+            // label_FR_Width
+            this.label_FR_Width.Name = "label_FR_Width";
+            this.label_FR_Width.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_Width.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_Width.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_Width.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_Width.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_Width.ForeColor = System.Drawing.Color.White;
+            this.label_FR_Width.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_Width.Text = "—";
+            this.frontRightWidthRow.Controls.Add(this.label_FR_Width, 1, 0);
+            this.frontRightSection1Rows.Controls.Add(this.frontRightWidthRow, 0, 1);
+            this.frontRightSection1Group.Controls.Add(this.frontRightSection1Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection1Group, 0, 0);
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            // frontRightSection2Group
+            this.frontRightSection2Group.Name = "frontRightSection2Group";
+            this.frontRightSection2Group.Text = "Spring & Damper";
+            this.frontRightSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection2Rows
+            this.frontRightSection2Rows.Name = "frontRightSection2Rows";
+            this.frontRightSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection2Rows.ColumnCount = 1;
+            this.frontRightSection2Rows.RowCount = 3;
+            this.frontRightSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightSpringRateRow
+            this.frontRightSpringRateRow.Name = "frontRightSpringRateRow";
+            this.frontRightSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSpringRateRow.ColumnCount = 2;
+            this.frontRightSpringRateRow.RowCount = 1;
+            this.frontRightSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightSpringRateCaption
+            this.frontRightSpringRateCaption.Name = "frontRightSpringRateCaption";
+            this.frontRightSpringRateCaption.Text = "Spring rate";
+            this.frontRightSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightSpringRateCaption.AutoEllipsis = true;
+            this.frontRightSpringRateCaption.UseMnemonic = false;
+            this.frontRightSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightSpringRateRow.Controls.Add(this.frontRightSpringRateCaption, 0, 0);
+            // label_FR_SpringRate
+            this.label_FR_SpringRate.Name = "label_FR_SpringRate";
+            this.label_FR_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_SpringRate.Text = "—";
+            this.frontRightSpringRateRow.Controls.Add(this.label_FR_SpringRate, 1, 0);
+            this.frontRightSection2Rows.Controls.Add(this.frontRightSpringRateRow, 0, 0);
+            this.frontRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightDamperRateRow
+            this.frontRightDamperRateRow.Name = "frontRightDamperRateRow";
+            this.frontRightDamperRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightDamperRateRow.ColumnCount = 2;
+            this.frontRightDamperRateRow.RowCount = 1;
+            this.frontRightDamperRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightDamperRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightDamperRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightDamperRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightDamperRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightDamperRateCaption
+            this.frontRightDamperRateCaption.Name = "frontRightDamperRateCaption";
+            this.frontRightDamperRateCaption.Text = "Damper rate";
+            this.frontRightDamperRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightDamperRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightDamperRateCaption.AutoEllipsis = true;
+            this.frontRightDamperRateCaption.UseMnemonic = false;
+            this.frontRightDamperRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightDamperRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightDamperRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightDamperRateRow.Controls.Add(this.frontRightDamperRateCaption, 0, 0);
+            // label_FR_DamperRate
+            this.label_FR_DamperRate.Name = "label_FR_DamperRate";
+            this.label_FR_DamperRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_DamperRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_DamperRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_DamperRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_DamperRate.ForeColor = System.Drawing.Color.White;
+            this.label_FR_DamperRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_DamperRate.Text = "—";
+            this.frontRightDamperRateRow.Controls.Add(this.label_FR_DamperRate, 1, 0);
+            this.frontRightSection2Rows.Controls.Add(this.frontRightDamperRateRow, 0, 1);
+            this.frontRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightMaxDeflectionRow
+            this.frontRightMaxDeflectionRow.Name = "frontRightMaxDeflectionRow";
+            this.frontRightMaxDeflectionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightMaxDeflectionRow.ColumnCount = 2;
+            this.frontRightMaxDeflectionRow.RowCount = 1;
+            this.frontRightMaxDeflectionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightMaxDeflectionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightMaxDeflectionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightMaxDeflectionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightMaxDeflectionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightMaxDeflectionCaption
+            this.frontRightMaxDeflectionCaption.Name = "frontRightMaxDeflectionCaption";
+            this.frontRightMaxDeflectionCaption.Text = "Maximum deflection";
+            this.frontRightMaxDeflectionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightMaxDeflectionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightMaxDeflectionCaption.AutoEllipsis = true;
+            this.frontRightMaxDeflectionCaption.UseMnemonic = false;
+            this.frontRightMaxDeflectionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightMaxDeflectionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightMaxDeflectionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightMaxDeflectionRow.Controls.Add(this.frontRightMaxDeflectionCaption, 0, 0);
+            // label_FR_MaxDeflection
+            this.label_FR_MaxDeflection.Name = "label_FR_MaxDeflection";
+            this.label_FR_MaxDeflection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_MaxDeflection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_MaxDeflection.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_MaxDeflection.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_MaxDeflection.ForeColor = System.Drawing.Color.White;
+            this.label_FR_MaxDeflection.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_MaxDeflection.Text = "—";
+            this.frontRightMaxDeflectionRow.Controls.Add(this.label_FR_MaxDeflection, 1, 0);
+            this.frontRightSection2Rows.Controls.Add(this.frontRightMaxDeflectionRow, 0, 2);
+            this.frontRightSection2Group.Controls.Add(this.frontRightSection2Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection2Group, 0, 1);
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontRightSection3Group
+            this.frontRightSection3Group.Name = "frontRightSection3Group";
+            this.frontRightSection3Group.Text = "Thermal";
+            this.frontRightSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection3Rows
+            this.frontRightSection3Rows.Name = "frontRightSection3Rows";
+            this.frontRightSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection3Rows.ColumnCount = 1;
+            this.frontRightSection3Rows.RowCount = 2;
+            this.frontRightSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightThermalAirTransferRow
+            this.frontRightThermalAirTransferRow.Name = "frontRightThermalAirTransferRow";
+            this.frontRightThermalAirTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightThermalAirTransferRow.ColumnCount = 2;
+            this.frontRightThermalAirTransferRow.RowCount = 1;
+            this.frontRightThermalAirTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightThermalAirTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightThermalAirTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightThermalAirTransferRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightThermalAirTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightThermalAirTransferCaption
+            this.frontRightThermalAirTransferCaption.Name = "frontRightThermalAirTransferCaption";
+            this.frontRightThermalAirTransferCaption.Text = "Air heat transfer";
+            this.frontRightThermalAirTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightThermalAirTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightThermalAirTransferCaption.AutoEllipsis = true;
+            this.frontRightThermalAirTransferCaption.UseMnemonic = false;
+            this.frontRightThermalAirTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightThermalAirTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightThermalAirTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightThermalAirTransferRow.Controls.Add(this.frontRightThermalAirTransferCaption, 0, 0);
+            // label_FR_ThermalAirTransfer
+            this.label_FR_ThermalAirTransfer.Name = "label_FR_ThermalAirTransfer";
+            this.label_FR_ThermalAirTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ThermalAirTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ThermalAirTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ThermalAirTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ThermalAirTransfer.Text = "—";
+            this.frontRightThermalAirTransferRow.Controls.Add(this.label_FR_ThermalAirTransfer, 1, 0);
+            this.frontRightSection3Rows.Controls.Add(this.frontRightThermalAirTransferRow, 0, 0);
+            this.frontRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightThermalInnerTransferRow
+            this.frontRightThermalInnerTransferRow.Name = "frontRightThermalInnerTransferRow";
+            this.frontRightThermalInnerTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightThermalInnerTransferRow.ColumnCount = 2;
+            this.frontRightThermalInnerTransferRow.RowCount = 1;
+            this.frontRightThermalInnerTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightThermalInnerTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightThermalInnerTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightThermalInnerTransferRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightThermalInnerTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightThermalInnerTransferCaption
+            this.frontRightThermalInnerTransferCaption.Name = "frontRightThermalInnerTransferCaption";
+            this.frontRightThermalInnerTransferCaption.Text = "Inner heat transfer";
+            this.frontRightThermalInnerTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightThermalInnerTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightThermalInnerTransferCaption.AutoEllipsis = true;
+            this.frontRightThermalInnerTransferCaption.UseMnemonic = false;
+            this.frontRightThermalInnerTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightThermalInnerTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightThermalInnerTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightThermalInnerTransferRow.Controls.Add(this.frontRightThermalInnerTransferCaption, 0, 0);
+            // label_FR_ThermalInnerTransfer
+            this.label_FR_ThermalInnerTransfer.Name = "label_FR_ThermalInnerTransfer";
+            this.label_FR_ThermalInnerTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_ThermalInnerTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_ThermalInnerTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_FR_ThermalInnerTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_ThermalInnerTransfer.Text = "—";
+            this.frontRightThermalInnerTransferRow.Controls.Add(this.label_FR_ThermalInnerTransfer, 1, 0);
+            this.frontRightSection3Rows.Controls.Add(this.frontRightThermalInnerTransferRow, 0, 1);
+            this.frontRightSection3Group.Controls.Add(this.frontRightSection3Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection3Group, 0, 2);
+            this.frontRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // frontRightSection4Group
+            this.frontRightSection4Group.Name = "frontRightSection4Group";
+            this.frontRightSection4Group.Text = "Mass & Inertia";
+            this.frontRightSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.frontRightSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.frontRightSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // frontRightSection4Rows
+            this.frontRightSection4Rows.Name = "frontRightSection4Rows";
+            this.frontRightSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightSection4Rows.ColumnCount = 1;
+            this.frontRightSection4Rows.RowCount = 2;
+            this.frontRightSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.frontRightSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.frontRightSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightMassRow
+            this.frontRightMassRow.Name = "frontRightMassRow";
+            this.frontRightMassRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightMassRow.ColumnCount = 2;
+            this.frontRightMassRow.RowCount = 1;
+            this.frontRightMassRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightMassRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightMassRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightMassRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.frontRightMassRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightMassCaption
+            this.frontRightMassCaption.Name = "frontRightMassCaption";
+            this.frontRightMassCaption.Text = "Mass";
+            this.frontRightMassCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightMassCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightMassCaption.AutoEllipsis = true;
+            this.frontRightMassCaption.UseMnemonic = false;
+            this.frontRightMassCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightMassCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightMassCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightMassRow.Controls.Add(this.frontRightMassCaption, 0, 0);
+            // label_FR_Mass
+            this.label_FR_Mass.Name = "label_FR_Mass";
+            this.label_FR_Mass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_Mass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_Mass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_Mass.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_Mass.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_Mass.ForeColor = System.Drawing.Color.White;
+            this.label_FR_Mass.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_Mass.Text = "—";
+            this.frontRightMassRow.Controls.Add(this.label_FR_Mass, 1, 0);
+            this.frontRightSection4Rows.Controls.Add(this.frontRightMassRow, 0, 0);
+            this.frontRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // frontRightMomentOfInertiaRow
+            this.frontRightMomentOfInertiaRow.Name = "frontRightMomentOfInertiaRow";
+            this.frontRightMomentOfInertiaRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightMomentOfInertiaRow.ColumnCount = 2;
+            this.frontRightMomentOfInertiaRow.RowCount = 1;
+            this.frontRightMomentOfInertiaRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.frontRightMomentOfInertiaRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.frontRightMomentOfInertiaRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.frontRightMomentOfInertiaRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.frontRightMomentOfInertiaRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.frontRightMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.frontRightMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // frontRightMomentOfInertiaCaption
+            this.frontRightMomentOfInertiaCaption.Name = "frontRightMomentOfInertiaCaption";
+            this.frontRightMomentOfInertiaCaption.Text = "Moment of inertia";
+            this.frontRightMomentOfInertiaCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frontRightMomentOfInertiaCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frontRightMomentOfInertiaCaption.AutoEllipsis = true;
+            this.frontRightMomentOfInertiaCaption.UseMnemonic = false;
+            this.frontRightMomentOfInertiaCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.frontRightMomentOfInertiaCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.frontRightMomentOfInertiaCaption.BackColor = System.Drawing.Color.Transparent;
+            this.frontRightMomentOfInertiaRow.Controls.Add(this.frontRightMomentOfInertiaCaption, 0, 0);
+            // label_FR_MomentOfInertia
+            this.label_FR_MomentOfInertia.Name = "label_FR_MomentOfInertia";
+            this.label_FR_MomentOfInertia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_FR_MomentOfInertia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_FR_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_FR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_FR_MomentOfInertia.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_FR_MomentOfInertia.ForeColor = System.Drawing.Color.White;
+            this.label_FR_MomentOfInertia.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_FR_MomentOfInertia.Text = "—";
+            this.frontRightMomentOfInertiaRow.Controls.Add(this.label_FR_MomentOfInertia, 1, 0);
+            this.frontRightSection4Rows.Controls.Add(this.frontRightMomentOfInertiaRow, 0, 1);
+            this.frontRightSection4Group.Controls.Add(this.frontRightSection4Rows);
+            this.frontRightSections.Controls.Add(this.frontRightSection4Group, 0, 3);
+            this.frontRightScroll.Controls.Add(this.frontRightSections);
+            this.frontRightGroup.Controls.Add(this.frontRightScroll);
+            this.wheelValuesLayout.Controls.Add(this.frontRightGroup, 1, 0);
+            // rearLeftGroup
+            this.rearLeftGroup.Name = "rearLeftGroup";
+            this.rearLeftGroup.Text = "REAR LEFT";
+            this.rearLeftGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.rearLeftGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.rearLeftGroup.ForeColor = System.Drawing.Color.White;
+            this.rearLeftGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearLeftScroll
+            this.rearLeftScroll.Name = "rearLeftScroll";
+            this.rearLeftScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftScroll.AutoScroll = true;
+            this.rearLeftScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearLeftSections
+            this.rearLeftSections.Name = "rearLeftSections";
+            this.rearLeftSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rearLeftSections.AutoSize = true;
+            this.rearLeftSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rearLeftSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSections.ColumnCount = 1;
+            this.rearLeftSections.RowCount = 4;
+            this.rearLeftSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.rearLeftSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.rearLeftSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearLeftSection1Group
+            this.rearLeftSection1Group.Name = "rearLeftSection1Group";
+            this.rearLeftSection1Group.Text = "Dimensions";
+            this.rearLeftSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection1Rows
+            this.rearLeftSection1Rows.Name = "rearLeftSection1Rows";
+            this.rearLeftSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection1Rows.ColumnCount = 1;
+            this.rearLeftSection1Rows.RowCount = 2;
+            this.rearLeftSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftRadiusRow
+            this.rearLeftRadiusRow.Name = "rearLeftRadiusRow";
+            this.rearLeftRadiusRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftRadiusRow.ColumnCount = 2;
+            this.rearLeftRadiusRow.RowCount = 1;
+            this.rearLeftRadiusRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftRadiusRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftRadiusRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftRadiusRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftRadiusRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftRadiusCaption
+            this.rearLeftRadiusCaption.Name = "rearLeftRadiusCaption";
+            this.rearLeftRadiusCaption.Text = "Radius";
+            this.rearLeftRadiusCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftRadiusCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftRadiusCaption.AutoEllipsis = true;
+            this.rearLeftRadiusCaption.UseMnemonic = false;
+            this.rearLeftRadiusCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftRadiusCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftRadiusCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftRadiusRow.Controls.Add(this.rearLeftRadiusCaption, 0, 0);
             // label_RL_Radius
-            // 
-            this.label_RL_Radius.BackColor = System.Drawing.Color.Black;
-            this.label_RL_Radius.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RL_Radius.ForeColor = System.Drawing.Color.White;
-            this.label_RL_Radius.Location = new System.Drawing.Point(247, 580);
-            this.label_RL_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.label_RL_Radius.Name = "label_RL_Radius";
-            this.label_RL_Radius.Size = new System.Drawing.Size(196, 31);
-            this.label_RL_Radius.TabIndex = 45;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Black;
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(515, 536);
-            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(140, 25);
-            this.label22.TabIndex = 82;
-            this.label22.Text = "REAR RIGHT";
-            // 
-            // label_RR_MomentOfInertia
-            // 
-            this.label_RR_MomentOfInertia.BackColor = System.Drawing.Color.Black;
-            this.label_RR_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_MomentOfInertia.ForeColor = System.Drawing.Color.White;
-            this.label_RR_MomentOfInertia.Location = new System.Drawing.Point(747, 980);
-            this.label_RR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_MomentOfInertia.Name = "label_RR_MomentOfInertia";
-            this.label_RR_MomentOfInertia.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_MomentOfInertia.TabIndex = 81;
-            // 
-            // label_RR_Mass
-            // 
-            this.label_RR_Mass.BackColor = System.Drawing.Color.Black;
-            this.label_RR_Mass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_Mass.ForeColor = System.Drawing.Color.White;
-            this.label_RR_Mass.Location = new System.Drawing.Point(747, 930);
-            this.label_RR_Mass.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_Mass.Name = "label_RR_Mass";
-            this.label_RR_Mass.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_Mass.TabIndex = 80;
-            // 
-            // label_RR_MaxDeflection
-            // 
-            this.label_RR_MaxDeflection.BackColor = System.Drawing.Color.Black;
-            this.label_RR_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_MaxDeflection.ForeColor = System.Drawing.Color.White;
-            this.label_RR_MaxDeflection.Location = new System.Drawing.Point(747, 880);
-            this.label_RR_MaxDeflection.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_MaxDeflection.Name = "label_RR_MaxDeflection";
-            this.label_RR_MaxDeflection.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_MaxDeflection.TabIndex = 79;
-            // 
-            // label_RR_DamperRate
-            // 
-            this.label_RR_DamperRate.BackColor = System.Drawing.Color.Black;
-            this.label_RR_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_DamperRate.ForeColor = System.Drawing.Color.White;
-            this.label_RR_DamperRate.Location = new System.Drawing.Point(747, 830);
-            this.label_RR_DamperRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_DamperRate.Name = "label_RR_DamperRate";
-            this.label_RR_DamperRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_DamperRate.TabIndex = 78;
-            // 
-            // label_RR_SpringRate
-            // 
-            this.label_RR_SpringRate.BackColor = System.Drawing.Color.Black;
-            this.label_RR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_SpringRate.ForeColor = System.Drawing.Color.White;
-            this.label_RR_SpringRate.Location = new System.Drawing.Point(747, 780);
-            this.label_RR_SpringRate.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_SpringRate.Name = "label_RR_SpringRate";
-            this.label_RR_SpringRate.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_SpringRate.TabIndex = 77;
-            // 
-            // label_RR_ThermalInnerTransfer
-            // 
-            this.label_RR_ThermalInnerTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ThermalInnerTransfer.Location = new System.Drawing.Point(747, 730);
-            this.label_RR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ThermalInnerTransfer.Name = "label_RR_ThermalInnerTransfer";
-            this.label_RR_ThermalInnerTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_ThermalInnerTransfer.TabIndex = 76;
-            // 
-            // label_RR_ThermalAirTransfer
-            // 
-            this.label_RR_ThermalAirTransfer.BackColor = System.Drawing.Color.Black;
-            this.label_RR_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
-            this.label_RR_ThermalAirTransfer.Location = new System.Drawing.Point(747, 680);
-            this.label_RR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_ThermalAirTransfer.Name = "label_RR_ThermalAirTransfer";
-            this.label_RR_ThermalAirTransfer.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_ThermalAirTransfer.TabIndex = 75;
-            // 
-            // label_RR_Width
-            // 
-            this.label_RR_Width.BackColor = System.Drawing.Color.Black;
-            this.label_RR_Width.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_Width.ForeColor = System.Drawing.Color.White;
-            this.label_RR_Width.Location = new System.Drawing.Point(747, 630);
-            this.label_RR_Width.Margin = new System.Windows.Forms.Padding(6);
-            this.label_RR_Width.Name = "label_RR_Width";
-            this.label_RR_Width.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_Width.TabIndex = 74;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Black;
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(515, 986);
-            this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(182, 25);
-            this.label23.TabIndex = 73;
-            this.label23.Text = "Moment Of Inertia";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Black;
-            this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(515, 936);
-            this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(64, 25);
-            this.label24.TabIndex = 72;
-            this.label24.Text = "Mass";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Black;
-            this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(515, 886);
-            this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(155, 25);
-            this.label25.TabIndex = 71;
-            this.label25.Text = "Max Deflection";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Black;
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(515, 836);
-            this.label26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(138, 25);
-            this.label26.TabIndex = 70;
-            this.label26.Text = "Damper Rate";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Black;
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(515, 786);
-            this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(125, 25);
-            this.label27.TabIndex = 69;
-            this.label27.Text = "Spring Rate";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Black;
-            this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(515, 736);
-            this.label28.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(230, 25);
-            this.label28.TabIndex = 68;
-            this.label28.Text = "Thermal Inner Transfer";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Black;
-            this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(515, 686);
-            this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(208, 25);
-            this.label29.TabIndex = 67;
-            this.label29.Text = "Thermal Air Transfer";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Black;
-            this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(515, 636);
-            this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(67, 25);
-            this.label30.TabIndex = 66;
-            this.label30.Text = "Width";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Black;
-            this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(515, 586);
-            this.label31.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(79, 25);
-            this.label31.TabIndex = 65;
-            this.label31.Text = "Radius";
-            // 
+            this.label_RL_Radius.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_Radius.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_Radius.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_Radius.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_Radius.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_Radius.ForeColor = System.Drawing.Color.White;
+            this.label_RL_Radius.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_Radius.Text = "—";
+            this.rearLeftRadiusRow.Controls.Add(this.label_RL_Radius, 1, 0);
+            this.rearLeftSection1Rows.Controls.Add(this.rearLeftRadiusRow, 0, 0);
+            this.rearLeftSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftWidthRow
+            this.rearLeftWidthRow.Name = "rearLeftWidthRow";
+            this.rearLeftWidthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftWidthRow.ColumnCount = 2;
+            this.rearLeftWidthRow.RowCount = 1;
+            this.rearLeftWidthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftWidthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftWidthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftWidthRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftWidthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftWidthCaption
+            this.rearLeftWidthCaption.Name = "rearLeftWidthCaption";
+            this.rearLeftWidthCaption.Text = "Width";
+            this.rearLeftWidthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftWidthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftWidthCaption.AutoEllipsis = true;
+            this.rearLeftWidthCaption.UseMnemonic = false;
+            this.rearLeftWidthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftWidthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftWidthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftWidthRow.Controls.Add(this.rearLeftWidthCaption, 0, 0);
+            // label_RL_Width
+            this.label_RL_Width.Name = "label_RL_Width";
+            this.label_RL_Width.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_Width.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_Width.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_Width.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_Width.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_Width.ForeColor = System.Drawing.Color.White;
+            this.label_RL_Width.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_Width.Text = "—";
+            this.rearLeftWidthRow.Controls.Add(this.label_RL_Width, 1, 0);
+            this.rearLeftSection1Rows.Controls.Add(this.rearLeftWidthRow, 0, 1);
+            this.rearLeftSection1Group.Controls.Add(this.rearLeftSection1Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection1Group, 0, 0);
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            // rearLeftSection2Group
+            this.rearLeftSection2Group.Name = "rearLeftSection2Group";
+            this.rearLeftSection2Group.Text = "Spring & Damper";
+            this.rearLeftSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection2Rows
+            this.rearLeftSection2Rows.Name = "rearLeftSection2Rows";
+            this.rearLeftSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection2Rows.ColumnCount = 1;
+            this.rearLeftSection2Rows.RowCount = 3;
+            this.rearLeftSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftSpringRateRow
+            this.rearLeftSpringRateRow.Name = "rearLeftSpringRateRow";
+            this.rearLeftSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSpringRateRow.ColumnCount = 2;
+            this.rearLeftSpringRateRow.RowCount = 1;
+            this.rearLeftSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftSpringRateCaption
+            this.rearLeftSpringRateCaption.Name = "rearLeftSpringRateCaption";
+            this.rearLeftSpringRateCaption.Text = "Spring rate";
+            this.rearLeftSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftSpringRateCaption.AutoEllipsis = true;
+            this.rearLeftSpringRateCaption.UseMnemonic = false;
+            this.rearLeftSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftSpringRateRow.Controls.Add(this.rearLeftSpringRateCaption, 0, 0);
+            // label_RL_SpringRate
+            this.label_RL_SpringRate.Name = "label_RL_SpringRate";
+            this.label_RL_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_SpringRate.Text = "—";
+            this.rearLeftSpringRateRow.Controls.Add(this.label_RL_SpringRate, 1, 0);
+            this.rearLeftSection2Rows.Controls.Add(this.rearLeftSpringRateRow, 0, 0);
+            this.rearLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftDamperRateRow
+            this.rearLeftDamperRateRow.Name = "rearLeftDamperRateRow";
+            this.rearLeftDamperRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftDamperRateRow.ColumnCount = 2;
+            this.rearLeftDamperRateRow.RowCount = 1;
+            this.rearLeftDamperRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftDamperRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftDamperRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftDamperRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftDamperRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftDamperRateCaption
+            this.rearLeftDamperRateCaption.Name = "rearLeftDamperRateCaption";
+            this.rearLeftDamperRateCaption.Text = "Damper rate";
+            this.rearLeftDamperRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftDamperRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftDamperRateCaption.AutoEllipsis = true;
+            this.rearLeftDamperRateCaption.UseMnemonic = false;
+            this.rearLeftDamperRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftDamperRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftDamperRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftDamperRateRow.Controls.Add(this.rearLeftDamperRateCaption, 0, 0);
+            // label_RL_DamperRate
+            this.label_RL_DamperRate.Name = "label_RL_DamperRate";
+            this.label_RL_DamperRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_DamperRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_DamperRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_DamperRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_DamperRate.ForeColor = System.Drawing.Color.White;
+            this.label_RL_DamperRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_DamperRate.Text = "—";
+            this.rearLeftDamperRateRow.Controls.Add(this.label_RL_DamperRate, 1, 0);
+            this.rearLeftSection2Rows.Controls.Add(this.rearLeftDamperRateRow, 0, 1);
+            this.rearLeftSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftMaxDeflectionRow
+            this.rearLeftMaxDeflectionRow.Name = "rearLeftMaxDeflectionRow";
+            this.rearLeftMaxDeflectionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftMaxDeflectionRow.ColumnCount = 2;
+            this.rearLeftMaxDeflectionRow.RowCount = 1;
+            this.rearLeftMaxDeflectionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftMaxDeflectionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftMaxDeflectionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftMaxDeflectionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftMaxDeflectionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftMaxDeflectionCaption
+            this.rearLeftMaxDeflectionCaption.Name = "rearLeftMaxDeflectionCaption";
+            this.rearLeftMaxDeflectionCaption.Text = "Maximum deflection";
+            this.rearLeftMaxDeflectionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftMaxDeflectionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftMaxDeflectionCaption.AutoEllipsis = true;
+            this.rearLeftMaxDeflectionCaption.UseMnemonic = false;
+            this.rearLeftMaxDeflectionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftMaxDeflectionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftMaxDeflectionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftMaxDeflectionRow.Controls.Add(this.rearLeftMaxDeflectionCaption, 0, 0);
+            // label_RL_MaxDeflection
+            this.label_RL_MaxDeflection.Name = "label_RL_MaxDeflection";
+            this.label_RL_MaxDeflection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_MaxDeflection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_MaxDeflection.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_MaxDeflection.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_MaxDeflection.ForeColor = System.Drawing.Color.White;
+            this.label_RL_MaxDeflection.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_MaxDeflection.Text = "—";
+            this.rearLeftMaxDeflectionRow.Controls.Add(this.label_RL_MaxDeflection, 1, 0);
+            this.rearLeftSection2Rows.Controls.Add(this.rearLeftMaxDeflectionRow, 0, 2);
+            this.rearLeftSection2Group.Controls.Add(this.rearLeftSection2Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection2Group, 0, 1);
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearLeftSection3Group
+            this.rearLeftSection3Group.Name = "rearLeftSection3Group";
+            this.rearLeftSection3Group.Text = "Thermal";
+            this.rearLeftSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection3Rows
+            this.rearLeftSection3Rows.Name = "rearLeftSection3Rows";
+            this.rearLeftSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection3Rows.ColumnCount = 1;
+            this.rearLeftSection3Rows.RowCount = 2;
+            this.rearLeftSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftThermalAirTransferRow
+            this.rearLeftThermalAirTransferRow.Name = "rearLeftThermalAirTransferRow";
+            this.rearLeftThermalAirTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftThermalAirTransferRow.ColumnCount = 2;
+            this.rearLeftThermalAirTransferRow.RowCount = 1;
+            this.rearLeftThermalAirTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftThermalAirTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftThermalAirTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftThermalAirTransferRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftThermalAirTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftThermalAirTransferCaption
+            this.rearLeftThermalAirTransferCaption.Name = "rearLeftThermalAirTransferCaption";
+            this.rearLeftThermalAirTransferCaption.Text = "Air heat transfer";
+            this.rearLeftThermalAirTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftThermalAirTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftThermalAirTransferCaption.AutoEllipsis = true;
+            this.rearLeftThermalAirTransferCaption.UseMnemonic = false;
+            this.rearLeftThermalAirTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftThermalAirTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftThermalAirTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftThermalAirTransferRow.Controls.Add(this.rearLeftThermalAirTransferCaption, 0, 0);
+            // label_RL_ThermalAirTransfer
+            this.label_RL_ThermalAirTransfer.Name = "label_RL_ThermalAirTransfer";
+            this.label_RL_ThermalAirTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ThermalAirTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ThermalAirTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ThermalAirTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ThermalAirTransfer.Text = "—";
+            this.rearLeftThermalAirTransferRow.Controls.Add(this.label_RL_ThermalAirTransfer, 1, 0);
+            this.rearLeftSection3Rows.Controls.Add(this.rearLeftThermalAirTransferRow, 0, 0);
+            this.rearLeftSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftThermalInnerTransferRow
+            this.rearLeftThermalInnerTransferRow.Name = "rearLeftThermalInnerTransferRow";
+            this.rearLeftThermalInnerTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftThermalInnerTransferRow.ColumnCount = 2;
+            this.rearLeftThermalInnerTransferRow.RowCount = 1;
+            this.rearLeftThermalInnerTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftThermalInnerTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftThermalInnerTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftThermalInnerTransferRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftThermalInnerTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftThermalInnerTransferCaption
+            this.rearLeftThermalInnerTransferCaption.Name = "rearLeftThermalInnerTransferCaption";
+            this.rearLeftThermalInnerTransferCaption.Text = "Inner heat transfer";
+            this.rearLeftThermalInnerTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftThermalInnerTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftThermalInnerTransferCaption.AutoEllipsis = true;
+            this.rearLeftThermalInnerTransferCaption.UseMnemonic = false;
+            this.rearLeftThermalInnerTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftThermalInnerTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftThermalInnerTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftThermalInnerTransferRow.Controls.Add(this.rearLeftThermalInnerTransferCaption, 0, 0);
+            // label_RL_ThermalInnerTransfer
+            this.label_RL_ThermalInnerTransfer.Name = "label_RL_ThermalInnerTransfer";
+            this.label_RL_ThermalInnerTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_ThermalInnerTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_ThermalInnerTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_RL_ThermalInnerTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_ThermalInnerTransfer.Text = "—";
+            this.rearLeftThermalInnerTransferRow.Controls.Add(this.label_RL_ThermalInnerTransfer, 1, 0);
+            this.rearLeftSection3Rows.Controls.Add(this.rearLeftThermalInnerTransferRow, 0, 1);
+            this.rearLeftSection3Group.Controls.Add(this.rearLeftSection3Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection3Group, 0, 2);
+            this.rearLeftSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearLeftSection4Group
+            this.rearLeftSection4Group.Name = "rearLeftSection4Group";
+            this.rearLeftSection4Group.Text = "Mass & Inertia";
+            this.rearLeftSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearLeftSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearLeftSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearLeftSection4Rows
+            this.rearLeftSection4Rows.Name = "rearLeftSection4Rows";
+            this.rearLeftSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftSection4Rows.ColumnCount = 1;
+            this.rearLeftSection4Rows.RowCount = 2;
+            this.rearLeftSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearLeftSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearLeftSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftMassRow
+            this.rearLeftMassRow.Name = "rearLeftMassRow";
+            this.rearLeftMassRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftMassRow.ColumnCount = 2;
+            this.rearLeftMassRow.RowCount = 1;
+            this.rearLeftMassRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftMassRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftMassRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftMassRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearLeftMassRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftMassCaption
+            this.rearLeftMassCaption.Name = "rearLeftMassCaption";
+            this.rearLeftMassCaption.Text = "Mass";
+            this.rearLeftMassCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftMassCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftMassCaption.AutoEllipsis = true;
+            this.rearLeftMassCaption.UseMnemonic = false;
+            this.rearLeftMassCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftMassCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftMassCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftMassRow.Controls.Add(this.rearLeftMassCaption, 0, 0);
+            // label_RL_Mass
+            this.label_RL_Mass.Name = "label_RL_Mass";
+            this.label_RL_Mass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_Mass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_Mass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_Mass.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_Mass.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_Mass.ForeColor = System.Drawing.Color.White;
+            this.label_RL_Mass.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_Mass.Text = "—";
+            this.rearLeftMassRow.Controls.Add(this.label_RL_Mass, 1, 0);
+            this.rearLeftSection4Rows.Controls.Add(this.rearLeftMassRow, 0, 0);
+            this.rearLeftSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearLeftMomentOfInertiaRow
+            this.rearLeftMomentOfInertiaRow.Name = "rearLeftMomentOfInertiaRow";
+            this.rearLeftMomentOfInertiaRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftMomentOfInertiaRow.ColumnCount = 2;
+            this.rearLeftMomentOfInertiaRow.RowCount = 1;
+            this.rearLeftMomentOfInertiaRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearLeftMomentOfInertiaRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearLeftMomentOfInertiaRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearLeftMomentOfInertiaRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearLeftMomentOfInertiaRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearLeftMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearLeftMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearLeftMomentOfInertiaCaption
+            this.rearLeftMomentOfInertiaCaption.Name = "rearLeftMomentOfInertiaCaption";
+            this.rearLeftMomentOfInertiaCaption.Text = "Moment of inertia";
+            this.rearLeftMomentOfInertiaCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearLeftMomentOfInertiaCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearLeftMomentOfInertiaCaption.AutoEllipsis = true;
+            this.rearLeftMomentOfInertiaCaption.UseMnemonic = false;
+            this.rearLeftMomentOfInertiaCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearLeftMomentOfInertiaCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearLeftMomentOfInertiaCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearLeftMomentOfInertiaRow.Controls.Add(this.rearLeftMomentOfInertiaCaption, 0, 0);
+            // label_RL_MomentOfInertia
+            this.label_RL_MomentOfInertia.Name = "label_RL_MomentOfInertia";
+            this.label_RL_MomentOfInertia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RL_MomentOfInertia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RL_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RL_MomentOfInertia.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RL_MomentOfInertia.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RL_MomentOfInertia.ForeColor = System.Drawing.Color.White;
+            this.label_RL_MomentOfInertia.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RL_MomentOfInertia.Text = "—";
+            this.rearLeftMomentOfInertiaRow.Controls.Add(this.label_RL_MomentOfInertia, 1, 0);
+            this.rearLeftSection4Rows.Controls.Add(this.rearLeftMomentOfInertiaRow, 0, 1);
+            this.rearLeftSection4Group.Controls.Add(this.rearLeftSection4Rows);
+            this.rearLeftSections.Controls.Add(this.rearLeftSection4Group, 0, 3);
+            this.rearLeftScroll.Controls.Add(this.rearLeftSections);
+            this.rearLeftGroup.Controls.Add(this.rearLeftScroll);
+            this.wheelValuesLayout.Controls.Add(this.rearLeftGroup, 0, 1);
+            // rearRightGroup
+            this.rearRightGroup.Name = "rearRightGroup";
+            this.rearRightGroup.Text = "REAR RIGHT";
+            this.rearRightGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightGroup.Margin = new System.Windows.Forms.Padding(3);
+            this.rearRightGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 4);
+            this.rearRightGroup.ForeColor = System.Drawing.Color.White;
+            this.rearRightGroup.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearRightScroll
+            this.rearRightScroll.Name = "rearRightScroll";
+            this.rearRightScroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightScroll.AutoScroll = true;
+            this.rearRightScroll.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightScroll.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            // rearRightSections
+            this.rearRightSections.Name = "rearRightSections";
+            this.rearRightSections.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rearRightSections.AutoSize = true;
+            this.rearRightSections.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rearRightSections.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSections.ColumnCount = 1;
+            this.rearRightSections.RowCount = 4;
+            this.rearRightSections.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.rearRightSections.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSections.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            this.rearRightSections.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearRightSection1Group
+            this.rearRightSection1Group.Name = "rearRightSection1Group";
+            this.rearRightSection1Group.Text = "Dimensions";
+            this.rearRightSection1Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection1Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection1Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection1Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection1Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection1Rows
+            this.rearRightSection1Rows.Name = "rearRightSection1Rows";
+            this.rearRightSection1Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection1Rows.ColumnCount = 1;
+            this.rearRightSection1Rows.RowCount = 2;
+            this.rearRightSection1Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection1Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection1Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection1Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection1Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightRadiusRow
+            this.rearRightRadiusRow.Name = "rearRightRadiusRow";
+            this.rearRightRadiusRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightRadiusRow.ColumnCount = 2;
+            this.rearRightRadiusRow.RowCount = 1;
+            this.rearRightRadiusRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightRadiusRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightRadiusRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightRadiusRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightRadiusRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightRadiusRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightRadiusCaption
+            this.rearRightRadiusCaption.Name = "rearRightRadiusCaption";
+            this.rearRightRadiusCaption.Text = "Radius";
+            this.rearRightRadiusCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightRadiusCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightRadiusCaption.AutoEllipsis = true;
+            this.rearRightRadiusCaption.UseMnemonic = false;
+            this.rearRightRadiusCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightRadiusCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightRadiusCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightRadiusRow.Controls.Add(this.rearRightRadiusCaption, 0, 0);
             // label_RR_Radius
-            // 
-            this.label_RR_Radius.BackColor = System.Drawing.Color.Black;
-            this.label_RR_Radius.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_RR_Radius.ForeColor = System.Drawing.Color.White;
-            this.label_RR_Radius.Location = new System.Drawing.Point(747, 580);
-            this.label_RR_Radius.Margin = new System.Windows.Forms.Padding(6);
             this.label_RR_Radius.Name = "label_RR_Radius";
-            this.label_RR_Radius.Size = new System.Drawing.Size(196, 31);
-            this.label_RR_Radius.TabIndex = 64;
-            // 
-            // timer1
-            // 
+            this.label_RR_Radius.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_Radius.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_Radius.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_Radius.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_Radius.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_Radius.ForeColor = System.Drawing.Color.White;
+            this.label_RR_Radius.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_Radius.Text = "—";
+            this.rearRightRadiusRow.Controls.Add(this.label_RR_Radius, 1, 0);
+            this.rearRightSection1Rows.Controls.Add(this.rearRightRadiusRow, 0, 0);
+            this.rearRightSection1Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightWidthRow
+            this.rearRightWidthRow.Name = "rearRightWidthRow";
+            this.rearRightWidthRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightWidthRow.ColumnCount = 2;
+            this.rearRightWidthRow.RowCount = 1;
+            this.rearRightWidthRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightWidthRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightWidthRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightWidthRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightWidthRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightWidthRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightWidthCaption
+            this.rearRightWidthCaption.Name = "rearRightWidthCaption";
+            this.rearRightWidthCaption.Text = "Width";
+            this.rearRightWidthCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightWidthCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightWidthCaption.AutoEllipsis = true;
+            this.rearRightWidthCaption.UseMnemonic = false;
+            this.rearRightWidthCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightWidthCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightWidthCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightWidthRow.Controls.Add(this.rearRightWidthCaption, 0, 0);
+            // label_RR_Width
+            this.label_RR_Width.Name = "label_RR_Width";
+            this.label_RR_Width.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_Width.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_Width.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_Width.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_Width.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_Width.ForeColor = System.Drawing.Color.White;
+            this.label_RR_Width.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_Width.Text = "—";
+            this.rearRightWidthRow.Controls.Add(this.label_RR_Width, 1, 0);
+            this.rearRightSection1Rows.Controls.Add(this.rearRightWidthRow, 0, 1);
+            this.rearRightSection1Group.Controls.Add(this.rearRightSection1Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection1Group, 0, 0);
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            // rearRightSection2Group
+            this.rearRightSection2Group.Name = "rearRightSection2Group";
+            this.rearRightSection2Group.Text = "Spring & Damper";
+            this.rearRightSection2Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection2Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection2Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection2Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection2Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection2Rows
+            this.rearRightSection2Rows.Name = "rearRightSection2Rows";
+            this.rearRightSection2Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection2Rows.ColumnCount = 1;
+            this.rearRightSection2Rows.RowCount = 3;
+            this.rearRightSection2Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection2Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection2Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection2Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection2Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightSpringRateRow
+            this.rearRightSpringRateRow.Name = "rearRightSpringRateRow";
+            this.rearRightSpringRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSpringRateRow.ColumnCount = 2;
+            this.rearRightSpringRateRow.RowCount = 1;
+            this.rearRightSpringRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSpringRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightSpringRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSpringRateRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightSpringRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightSpringRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightSpringRateCaption
+            this.rearRightSpringRateCaption.Name = "rearRightSpringRateCaption";
+            this.rearRightSpringRateCaption.Text = "Spring rate";
+            this.rearRightSpringRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSpringRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightSpringRateCaption.AutoEllipsis = true;
+            this.rearRightSpringRateCaption.UseMnemonic = false;
+            this.rearRightSpringRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightSpringRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightSpringRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightSpringRateRow.Controls.Add(this.rearRightSpringRateCaption, 0, 0);
+            // label_RR_SpringRate
+            this.label_RR_SpringRate.Name = "label_RR_SpringRate";
+            this.label_RR_SpringRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_SpringRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_SpringRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_SpringRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_SpringRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_SpringRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_SpringRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_SpringRate.Text = "—";
+            this.rearRightSpringRateRow.Controls.Add(this.label_RR_SpringRate, 1, 0);
+            this.rearRightSection2Rows.Controls.Add(this.rearRightSpringRateRow, 0, 0);
+            this.rearRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightDamperRateRow
+            this.rearRightDamperRateRow.Name = "rearRightDamperRateRow";
+            this.rearRightDamperRateRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightDamperRateRow.ColumnCount = 2;
+            this.rearRightDamperRateRow.RowCount = 1;
+            this.rearRightDamperRateRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightDamperRateRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightDamperRateRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightDamperRateRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightDamperRateRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightDamperRateRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightDamperRateCaption
+            this.rearRightDamperRateCaption.Name = "rearRightDamperRateCaption";
+            this.rearRightDamperRateCaption.Text = "Damper rate";
+            this.rearRightDamperRateCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightDamperRateCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightDamperRateCaption.AutoEllipsis = true;
+            this.rearRightDamperRateCaption.UseMnemonic = false;
+            this.rearRightDamperRateCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightDamperRateCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightDamperRateCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightDamperRateRow.Controls.Add(this.rearRightDamperRateCaption, 0, 0);
+            // label_RR_DamperRate
+            this.label_RR_DamperRate.Name = "label_RR_DamperRate";
+            this.label_RR_DamperRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_DamperRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_DamperRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_DamperRate.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_DamperRate.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_DamperRate.ForeColor = System.Drawing.Color.White;
+            this.label_RR_DamperRate.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_DamperRate.Text = "—";
+            this.rearRightDamperRateRow.Controls.Add(this.label_RR_DamperRate, 1, 0);
+            this.rearRightSection2Rows.Controls.Add(this.rearRightDamperRateRow, 0, 1);
+            this.rearRightSection2Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightMaxDeflectionRow
+            this.rearRightMaxDeflectionRow.Name = "rearRightMaxDeflectionRow";
+            this.rearRightMaxDeflectionRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightMaxDeflectionRow.ColumnCount = 2;
+            this.rearRightMaxDeflectionRow.RowCount = 1;
+            this.rearRightMaxDeflectionRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightMaxDeflectionRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightMaxDeflectionRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightMaxDeflectionRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightMaxDeflectionRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightMaxDeflectionRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightMaxDeflectionCaption
+            this.rearRightMaxDeflectionCaption.Name = "rearRightMaxDeflectionCaption";
+            this.rearRightMaxDeflectionCaption.Text = "Maximum deflection";
+            this.rearRightMaxDeflectionCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightMaxDeflectionCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightMaxDeflectionCaption.AutoEllipsis = true;
+            this.rearRightMaxDeflectionCaption.UseMnemonic = false;
+            this.rearRightMaxDeflectionCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightMaxDeflectionCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightMaxDeflectionCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightMaxDeflectionRow.Controls.Add(this.rearRightMaxDeflectionCaption, 0, 0);
+            // label_RR_MaxDeflection
+            this.label_RR_MaxDeflection.Name = "label_RR_MaxDeflection";
+            this.label_RR_MaxDeflection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_MaxDeflection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_MaxDeflection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_MaxDeflection.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_MaxDeflection.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_MaxDeflection.ForeColor = System.Drawing.Color.White;
+            this.label_RR_MaxDeflection.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_MaxDeflection.Text = "—";
+            this.rearRightMaxDeflectionRow.Controls.Add(this.label_RR_MaxDeflection, 1, 0);
+            this.rearRightSection2Rows.Controls.Add(this.rearRightMaxDeflectionRow, 0, 2);
+            this.rearRightSection2Group.Controls.Add(this.rearRightSection2Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection2Group, 0, 1);
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearRightSection3Group
+            this.rearRightSection3Group.Name = "rearRightSection3Group";
+            this.rearRightSection3Group.Text = "Thermal";
+            this.rearRightSection3Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection3Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection3Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection3Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection3Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection3Rows
+            this.rearRightSection3Rows.Name = "rearRightSection3Rows";
+            this.rearRightSection3Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection3Rows.ColumnCount = 1;
+            this.rearRightSection3Rows.RowCount = 2;
+            this.rearRightSection3Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection3Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection3Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection3Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection3Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightThermalAirTransferRow
+            this.rearRightThermalAirTransferRow.Name = "rearRightThermalAirTransferRow";
+            this.rearRightThermalAirTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightThermalAirTransferRow.ColumnCount = 2;
+            this.rearRightThermalAirTransferRow.RowCount = 1;
+            this.rearRightThermalAirTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightThermalAirTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightThermalAirTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightThermalAirTransferRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightThermalAirTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightThermalAirTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightThermalAirTransferCaption
+            this.rearRightThermalAirTransferCaption.Name = "rearRightThermalAirTransferCaption";
+            this.rearRightThermalAirTransferCaption.Text = "Air heat transfer";
+            this.rearRightThermalAirTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightThermalAirTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightThermalAirTransferCaption.AutoEllipsis = true;
+            this.rearRightThermalAirTransferCaption.UseMnemonic = false;
+            this.rearRightThermalAirTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightThermalAirTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightThermalAirTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightThermalAirTransferRow.Controls.Add(this.rearRightThermalAirTransferCaption, 0, 0);
+            // label_RR_ThermalAirTransfer
+            this.label_RR_ThermalAirTransfer.Name = "label_RR_ThermalAirTransfer";
+            this.label_RR_ThermalAirTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ThermalAirTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ThermalAirTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ThermalAirTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ThermalAirTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ThermalAirTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ThermalAirTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ThermalAirTransfer.Text = "—";
+            this.rearRightThermalAirTransferRow.Controls.Add(this.label_RR_ThermalAirTransfer, 1, 0);
+            this.rearRightSection3Rows.Controls.Add(this.rearRightThermalAirTransferRow, 0, 0);
+            this.rearRightSection3Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightThermalInnerTransferRow
+            this.rearRightThermalInnerTransferRow.Name = "rearRightThermalInnerTransferRow";
+            this.rearRightThermalInnerTransferRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightThermalInnerTransferRow.ColumnCount = 2;
+            this.rearRightThermalInnerTransferRow.RowCount = 1;
+            this.rearRightThermalInnerTransferRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightThermalInnerTransferRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightThermalInnerTransferRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightThermalInnerTransferRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightThermalInnerTransferRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightThermalInnerTransferRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightThermalInnerTransferCaption
+            this.rearRightThermalInnerTransferCaption.Name = "rearRightThermalInnerTransferCaption";
+            this.rearRightThermalInnerTransferCaption.Text = "Inner heat transfer";
+            this.rearRightThermalInnerTransferCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightThermalInnerTransferCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightThermalInnerTransferCaption.AutoEllipsis = true;
+            this.rearRightThermalInnerTransferCaption.UseMnemonic = false;
+            this.rearRightThermalInnerTransferCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightThermalInnerTransferCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightThermalInnerTransferCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightThermalInnerTransferRow.Controls.Add(this.rearRightThermalInnerTransferCaption, 0, 0);
+            // label_RR_ThermalInnerTransfer
+            this.label_RR_ThermalInnerTransfer.Name = "label_RR_ThermalInnerTransfer";
+            this.label_RR_ThermalInnerTransfer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_ThermalInnerTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_ThermalInnerTransfer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_ThermalInnerTransfer.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_ThermalInnerTransfer.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_ThermalInnerTransfer.ForeColor = System.Drawing.Color.White;
+            this.label_RR_ThermalInnerTransfer.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_ThermalInnerTransfer.Text = "—";
+            this.rearRightThermalInnerTransferRow.Controls.Add(this.label_RR_ThermalInnerTransfer, 1, 0);
+            this.rearRightSection3Rows.Controls.Add(this.rearRightThermalInnerTransferRow, 0, 1);
+            this.rearRightSection3Group.Controls.Add(this.rearRightSection3Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection3Group, 0, 2);
+            this.rearRightSections.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            // rearRightSection4Group
+            this.rearRightSection4Group.Name = "rearRightSection4Group";
+            this.rearRightSection4Group.Text = "Mass & Inertia";
+            this.rearRightSection4Group.ForeColor = System.Drawing.Color.FromArgb(210, 220, 235);
+            this.rearRightSection4Group.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection4Group.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection4Group.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rearRightSection4Group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            // rearRightSection4Rows
+            this.rearRightSection4Rows.Name = "rearRightSection4Rows";
+            this.rearRightSection4Rows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightSection4Rows.ColumnCount = 1;
+            this.rearRightSection4Rows.RowCount = 2;
+            this.rearRightSection4Rows.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightSection4Rows.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection4Rows.Padding = System.Windows.Forms.Padding.Empty;
+            this.rearRightSection4Rows.BackColor = System.Drawing.Color.FromArgb(31, 31, 31);
+            this.rearRightSection4Rows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightMassRow
+            this.rearRightMassRow.Name = "rearRightMassRow";
+            this.rearRightMassRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightMassRow.ColumnCount = 2;
+            this.rearRightMassRow.RowCount = 1;
+            this.rearRightMassRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightMassRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightMassRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightMassRow.BackColor = System.Drawing.Color.FromArgb(37, 37, 37);
+            this.rearRightMassRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightMassRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightMassCaption
+            this.rearRightMassCaption.Name = "rearRightMassCaption";
+            this.rearRightMassCaption.Text = "Mass";
+            this.rearRightMassCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightMassCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightMassCaption.AutoEllipsis = true;
+            this.rearRightMassCaption.UseMnemonic = false;
+            this.rearRightMassCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightMassCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightMassCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightMassRow.Controls.Add(this.rearRightMassCaption, 0, 0);
+            // label_RR_Mass
+            this.label_RR_Mass.Name = "label_RR_Mass";
+            this.label_RR_Mass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_Mass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_Mass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_Mass.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_Mass.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_Mass.ForeColor = System.Drawing.Color.White;
+            this.label_RR_Mass.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_Mass.Text = "—";
+            this.rearRightMassRow.Controls.Add(this.label_RR_Mass, 1, 0);
+            this.rearRightSection4Rows.Controls.Add(this.rearRightMassRow, 0, 0);
+            this.rearRightSection4Rows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            // rearRightMomentOfInertiaRow
+            this.rearRightMomentOfInertiaRow.Name = "rearRightMomentOfInertiaRow";
+            this.rearRightMomentOfInertiaRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightMomentOfInertiaRow.ColumnCount = 2;
+            this.rearRightMomentOfInertiaRow.RowCount = 1;
+            this.rearRightMomentOfInertiaRow.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.rearRightMomentOfInertiaRow.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.rearRightMomentOfInertiaRow.Margin = System.Windows.Forms.Padding.Empty;
+            this.rearRightMomentOfInertiaRow.BackColor = System.Drawing.Color.FromArgb(29, 29, 29);
+            this.rearRightMomentOfInertiaRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rearRightMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
+            this.rearRightMomentOfInertiaRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
+            // rearRightMomentOfInertiaCaption
+            this.rearRightMomentOfInertiaCaption.Name = "rearRightMomentOfInertiaCaption";
+            this.rearRightMomentOfInertiaCaption.Text = "Moment of inertia";
+            this.rearRightMomentOfInertiaCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rearRightMomentOfInertiaCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rearRightMomentOfInertiaCaption.AutoEllipsis = true;
+            this.rearRightMomentOfInertiaCaption.UseMnemonic = false;
+            this.rearRightMomentOfInertiaCaption.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.rearRightMomentOfInertiaCaption.ForeColor = System.Drawing.Color.FromArgb(220, 220, 220);
+            this.rearRightMomentOfInertiaCaption.BackColor = System.Drawing.Color.Transparent;
+            this.rearRightMomentOfInertiaRow.Controls.Add(this.rearRightMomentOfInertiaCaption, 0, 0);
+            // label_RR_MomentOfInertia
+            this.label_RR_MomentOfInertia.Name = "label_RR_MomentOfInertia";
+            this.label_RR_MomentOfInertia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_RR_MomentOfInertia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_RR_MomentOfInertia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_RR_MomentOfInertia.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.label_RR_MomentOfInertia.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.label_RR_MomentOfInertia.ForeColor = System.Drawing.Color.White;
+            this.label_RR_MomentOfInertia.BackColor = System.Drawing.Color.FromArgb(9, 9, 9);
+            this.label_RR_MomentOfInertia.Text = "—";
+            this.rearRightMomentOfInertiaRow.Controls.Add(this.label_RR_MomentOfInertia, 1, 0);
+            this.rearRightSection4Rows.Controls.Add(this.rearRightMomentOfInertiaRow, 0, 1);
+            this.rearRightSection4Group.Controls.Add(this.rearRightSection4Rows);
+            this.rearRightSections.Controls.Add(this.rearRightSection4Group, 0, 3);
+            this.rearRightScroll.Controls.Add(this.rearRightSections);
+            this.rearRightGroup.Controls.Add(this.rearRightScroll);
+            this.wheelValuesLayout.Controls.Add(this.rearRightGroup, 1, 1);
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // FormTireStaticValues
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(958, 1031);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label_RR_MomentOfInertia);
-            this.Controls.Add(this.label_RR_Mass);
-            this.Controls.Add(this.label_RR_MaxDeflection);
-            this.Controls.Add(this.label_RR_DamperRate);
-            this.Controls.Add(this.label_RR_SpringRate);
-            this.Controls.Add(this.label_RR_ThermalInnerTransfer);
-            this.Controls.Add(this.label_RR_ThermalAirTransfer);
-            this.Controls.Add(this.label_RR_Width);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.label28);
-            this.Controls.Add(this.label29);
-            this.Controls.Add(this.label30);
-            this.Controls.Add(this.label31);
-            this.Controls.Add(this.label_RR_Radius);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label_RL_MomentOfInertia);
-            this.Controls.Add(this.label_RL_Mass);
-            this.Controls.Add(this.label_RL_MaxDeflection);
-            this.Controls.Add(this.label_RL_DamperRate);
-            this.Controls.Add(this.label_RL_SpringRate);
-            this.Controls.Add(this.label_RL_ThermalInnerTransfer);
-            this.Controls.Add(this.label_RL_ThermalAirTransfer);
-            this.Controls.Add(this.label_RL_Width);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label_RL_Radius);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label_FR_MomentOfInertia);
-            this.Controls.Add(this.label_FR_Mass);
-            this.Controls.Add(this.label_FR_MaxDeflection);
-            this.Controls.Add(this.label_FR_DamperRate);
-            this.Controls.Add(this.label_FR_SpringRate);
-            this.Controls.Add(this.label_FR_ThermalInnerTransfer);
-            this.Controls.Add(this.label_FR_ThermalAirTransfer);
-            this.Controls.Add(this.label_FR_Width);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label_FR_Radius);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label_FL_MomentOfInertia);
-            this.Controls.Add(this.label_FL_Mass);
-            this.Controls.Add(this.label_FL_MaxDeflection);
-            this.Controls.Add(this.label_FL_DamperRate);
-            this.Controls.Add(this.label_FL_SpringRate);
-            this.Controls.Add(this.label_FL_ThermalInnerTransfer);
-            this.Controls.Add(this.label_FL_ThermalAirTransfer);
-            this.Controls.Add(this.label_FL_Width);
-            this.Controls.Add(this.flMomentOfInertia);
-            this.Controls.Add(this.flMass);
-            this.Controls.Add(this.flMaxDeflection);
-            this.Controls.Add(this.flTireDamperRate);
-            this.Controls.Add(this.flTireSpringRate);
-            this.Controls.Add(this.flThermalInnerTransfer);
-            this.Controls.Add(this.flThermalAirTransfer);
-            this.Controls.Add(this.flWidth);
-            this.Controls.Add(this.flRadius);
-            this.Controls.Add(this.label_FL_Radius);
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.ForeColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1000, 825);
+            this.MinimumSize = new System.Drawing.Size(790, 570);
             this.Name = "FormTireStaticValues";
             this.Text = "Tire Static Values";
+            this.Controls.Add(this.wheelValuesLayout);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormTireStaticValues_Close);
             this.Load += new System.EventHandler(this.FormTireStaticValues_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
-
         #endregion
 
+        private System.Windows.Forms.TableLayoutPanel wheelValuesLayout;
+        private System.Windows.Forms.GroupBox frontLeftGroup;
+        private System.Windows.Forms.Panel frontLeftScroll;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSections;
+        private System.Windows.Forms.GroupBox frontLeftSection1Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftRadiusRow;
+        private System.Windows.Forms.Label frontLeftRadiusCaption;
         private System.Windows.Forms.Label label_FL_Radius;
-        private System.Windows.Forms.Label flRadius;
-        private System.Windows.Forms.Label flWidth;
-        private System.Windows.Forms.Label flThermalAirTransfer;
-        private System.Windows.Forms.Label flThermalInnerTransfer;
-        private System.Windows.Forms.Label flTireSpringRate;
-        private System.Windows.Forms.Label flTireDamperRate;
-        private System.Windows.Forms.Label flMaxDeflection;
-        private System.Windows.Forms.Label flMass;
-        private System.Windows.Forms.Label flMomentOfInertia;
+        private System.Windows.Forms.TableLayoutPanel frontLeftWidthRow;
+        private System.Windows.Forms.Label frontLeftWidthCaption;
         private System.Windows.Forms.Label label_FL_Width;
-        private System.Windows.Forms.Label label_FL_ThermalAirTransfer;
-        private System.Windows.Forms.Label label_FL_ThermalInnerTransfer;
+        private System.Windows.Forms.GroupBox frontLeftSection2Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSpringRateRow;
+        private System.Windows.Forms.Label frontLeftSpringRateCaption;
         private System.Windows.Forms.Label label_FL_SpringRate;
+        private System.Windows.Forms.TableLayoutPanel frontLeftDamperRateRow;
+        private System.Windows.Forms.Label frontLeftDamperRateCaption;
         private System.Windows.Forms.Label label_FL_DamperRate;
+        private System.Windows.Forms.TableLayoutPanel frontLeftMaxDeflectionRow;
+        private System.Windows.Forms.Label frontLeftMaxDeflectionCaption;
         private System.Windows.Forms.Label label_FL_MaxDeflection;
+        private System.Windows.Forms.GroupBox frontLeftSection3Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftThermalAirTransferRow;
+        private System.Windows.Forms.Label frontLeftThermalAirTransferCaption;
+        private System.Windows.Forms.Label label_FL_ThermalAirTransfer;
+        private System.Windows.Forms.TableLayoutPanel frontLeftThermalInnerTransferRow;
+        private System.Windows.Forms.Label frontLeftThermalInnerTransferCaption;
+        private System.Windows.Forms.Label label_FL_ThermalInnerTransfer;
+        private System.Windows.Forms.GroupBox frontLeftSection4Group;
+        private System.Windows.Forms.TableLayoutPanel frontLeftSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel frontLeftMassRow;
+        private System.Windows.Forms.Label frontLeftMassCaption;
         private System.Windows.Forms.Label label_FL_Mass;
+        private System.Windows.Forms.TableLayoutPanel frontLeftMomentOfInertiaRow;
+        private System.Windows.Forms.Label frontLeftMomentOfInertiaCaption;
         private System.Windows.Forms.Label label_FL_MomentOfInertia;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label_FR_MomentOfInertia;
-        private System.Windows.Forms.Label label_FR_Mass;
-        private System.Windows.Forms.Label label_FR_MaxDeflection;
-        private System.Windows.Forms.Label label_FR_DamperRate;
-        private System.Windows.Forms.Label label_FR_SpringRate;
-        private System.Windows.Forms.Label label_FR_ThermalInnerTransfer;
-        private System.Windows.Forms.Label label_FR_ThermalAirTransfer;
-        private System.Windows.Forms.Label label_FR_Width;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox frontRightGroup;
+        private System.Windows.Forms.Panel frontRightScroll;
+        private System.Windows.Forms.TableLayoutPanel frontRightSections;
+        private System.Windows.Forms.GroupBox frontRightSection1Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightRadiusRow;
+        private System.Windows.Forms.Label frontRightRadiusCaption;
         private System.Windows.Forms.Label label_FR_Radius;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label_RL_MomentOfInertia;
-        private System.Windows.Forms.Label label_RL_Mass;
-        private System.Windows.Forms.Label label_RL_MaxDeflection;
-        private System.Windows.Forms.Label label_RL_DamperRate;
-        private System.Windows.Forms.Label label_RL_SpringRate;
-        private System.Windows.Forms.Label label_RL_ThermalInnerTransfer;
-        private System.Windows.Forms.Label label_RL_ThermalAirTransfer;
-        private System.Windows.Forms.Label label_RL_Width;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TableLayoutPanel frontRightWidthRow;
+        private System.Windows.Forms.Label frontRightWidthCaption;
+        private System.Windows.Forms.Label label_FR_Width;
+        private System.Windows.Forms.GroupBox frontRightSection2Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightSpringRateRow;
+        private System.Windows.Forms.Label frontRightSpringRateCaption;
+        private System.Windows.Forms.Label label_FR_SpringRate;
+        private System.Windows.Forms.TableLayoutPanel frontRightDamperRateRow;
+        private System.Windows.Forms.Label frontRightDamperRateCaption;
+        private System.Windows.Forms.Label label_FR_DamperRate;
+        private System.Windows.Forms.TableLayoutPanel frontRightMaxDeflectionRow;
+        private System.Windows.Forms.Label frontRightMaxDeflectionCaption;
+        private System.Windows.Forms.Label label_FR_MaxDeflection;
+        private System.Windows.Forms.GroupBox frontRightSection3Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightThermalAirTransferRow;
+        private System.Windows.Forms.Label frontRightThermalAirTransferCaption;
+        private System.Windows.Forms.Label label_FR_ThermalAirTransfer;
+        private System.Windows.Forms.TableLayoutPanel frontRightThermalInnerTransferRow;
+        private System.Windows.Forms.Label frontRightThermalInnerTransferCaption;
+        private System.Windows.Forms.Label label_FR_ThermalInnerTransfer;
+        private System.Windows.Forms.GroupBox frontRightSection4Group;
+        private System.Windows.Forms.TableLayoutPanel frontRightSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel frontRightMassRow;
+        private System.Windows.Forms.Label frontRightMassCaption;
+        private System.Windows.Forms.Label label_FR_Mass;
+        private System.Windows.Forms.TableLayoutPanel frontRightMomentOfInertiaRow;
+        private System.Windows.Forms.Label frontRightMomentOfInertiaCaption;
+        private System.Windows.Forms.Label label_FR_MomentOfInertia;
+        private System.Windows.Forms.GroupBox rearLeftGroup;
+        private System.Windows.Forms.Panel rearLeftScroll;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSections;
+        private System.Windows.Forms.GroupBox rearLeftSection1Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftRadiusRow;
+        private System.Windows.Forms.Label rearLeftRadiusCaption;
         private System.Windows.Forms.Label label_RL_Radius;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label_RR_MomentOfInertia;
-        private System.Windows.Forms.Label label_RR_Mass;
-        private System.Windows.Forms.Label label_RR_MaxDeflection;
-        private System.Windows.Forms.Label label_RR_DamperRate;
-        private System.Windows.Forms.Label label_RR_SpringRate;
-        private System.Windows.Forms.Label label_RR_ThermalInnerTransfer;
-        private System.Windows.Forms.Label label_RR_ThermalAirTransfer;
-        private System.Windows.Forms.Label label_RR_Width;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TableLayoutPanel rearLeftWidthRow;
+        private System.Windows.Forms.Label rearLeftWidthCaption;
+        private System.Windows.Forms.Label label_RL_Width;
+        private System.Windows.Forms.GroupBox rearLeftSection2Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSpringRateRow;
+        private System.Windows.Forms.Label rearLeftSpringRateCaption;
+        private System.Windows.Forms.Label label_RL_SpringRate;
+        private System.Windows.Forms.TableLayoutPanel rearLeftDamperRateRow;
+        private System.Windows.Forms.Label rearLeftDamperRateCaption;
+        private System.Windows.Forms.Label label_RL_DamperRate;
+        private System.Windows.Forms.TableLayoutPanel rearLeftMaxDeflectionRow;
+        private System.Windows.Forms.Label rearLeftMaxDeflectionCaption;
+        private System.Windows.Forms.Label label_RL_MaxDeflection;
+        private System.Windows.Forms.GroupBox rearLeftSection3Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftThermalAirTransferRow;
+        private System.Windows.Forms.Label rearLeftThermalAirTransferCaption;
+        private System.Windows.Forms.Label label_RL_ThermalAirTransfer;
+        private System.Windows.Forms.TableLayoutPanel rearLeftThermalInnerTransferRow;
+        private System.Windows.Forms.Label rearLeftThermalInnerTransferCaption;
+        private System.Windows.Forms.Label label_RL_ThermalInnerTransfer;
+        private System.Windows.Forms.GroupBox rearLeftSection4Group;
+        private System.Windows.Forms.TableLayoutPanel rearLeftSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel rearLeftMassRow;
+        private System.Windows.Forms.Label rearLeftMassCaption;
+        private System.Windows.Forms.Label label_RL_Mass;
+        private System.Windows.Forms.TableLayoutPanel rearLeftMomentOfInertiaRow;
+        private System.Windows.Forms.Label rearLeftMomentOfInertiaCaption;
+        private System.Windows.Forms.Label label_RL_MomentOfInertia;
+        private System.Windows.Forms.GroupBox rearRightGroup;
+        private System.Windows.Forms.Panel rearRightScroll;
+        private System.Windows.Forms.TableLayoutPanel rearRightSections;
+        private System.Windows.Forms.GroupBox rearRightSection1Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection1Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightRadiusRow;
+        private System.Windows.Forms.Label rearRightRadiusCaption;
         private System.Windows.Forms.Label label_RR_Radius;
+        private System.Windows.Forms.TableLayoutPanel rearRightWidthRow;
+        private System.Windows.Forms.Label rearRightWidthCaption;
+        private System.Windows.Forms.Label label_RR_Width;
+        private System.Windows.Forms.GroupBox rearRightSection2Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection2Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightSpringRateRow;
+        private System.Windows.Forms.Label rearRightSpringRateCaption;
+        private System.Windows.Forms.Label label_RR_SpringRate;
+        private System.Windows.Forms.TableLayoutPanel rearRightDamperRateRow;
+        private System.Windows.Forms.Label rearRightDamperRateCaption;
+        private System.Windows.Forms.Label label_RR_DamperRate;
+        private System.Windows.Forms.TableLayoutPanel rearRightMaxDeflectionRow;
+        private System.Windows.Forms.Label rearRightMaxDeflectionCaption;
+        private System.Windows.Forms.Label label_RR_MaxDeflection;
+        private System.Windows.Forms.GroupBox rearRightSection3Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection3Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightThermalAirTransferRow;
+        private System.Windows.Forms.Label rearRightThermalAirTransferCaption;
+        private System.Windows.Forms.Label label_RR_ThermalAirTransfer;
+        private System.Windows.Forms.TableLayoutPanel rearRightThermalInnerTransferRow;
+        private System.Windows.Forms.Label rearRightThermalInnerTransferCaption;
+        private System.Windows.Forms.Label label_RR_ThermalInnerTransfer;
+        private System.Windows.Forms.GroupBox rearRightSection4Group;
+        private System.Windows.Forms.TableLayoutPanel rearRightSection4Rows;
+        private System.Windows.Forms.TableLayoutPanel rearRightMassRow;
+        private System.Windows.Forms.Label rearRightMassCaption;
+        private System.Windows.Forms.Label label_RR_Mass;
+        private System.Windows.Forms.TableLayoutPanel rearRightMomentOfInertiaRow;
+        private System.Windows.Forms.Label rearRightMomentOfInertiaCaption;
+        private System.Windows.Forms.Label label_RR_MomentOfInertia;
         private System.Windows.Forms.Timer timer1;
     }
 }

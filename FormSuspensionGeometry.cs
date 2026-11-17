@@ -14,31 +14,87 @@ namespace Physics_Data_Debug
 {
     public partial class FormSuspensionGeometry : Form
     {
+        // Both charts use the same coordinate limits. The values and update interval
+        // are edited in the Designer-owned top toolbar and persisted with the form.
+        private bool chartInitialized;
+        private bool isRestoringSettings;
+
         public FormSuspensionGeometry()
         {
             InitializeComponent();
-            this.BackColor = Color.Black;
-            this.AutoScroll = true;
-            timer1.Enabled = true;
-            timer1.Interval = 100;
-            SetChart(chart1);
+            timer1.Enabled = false;
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
+                return;
 
-            textBox_FL_SuspensionGeometry.Visible = true;
-            textBox_FL_SuspensionGeometry.ReadOnly = true;
-            textBox_FL_SuspensionGeometry.Enabled = false;
-
-            textBox_FR_SuspensionGeometry.Visible = true;
-            textBox_FR_SuspensionGeometry.ReadOnly = true;
-            textBox_FR_SuspensionGeometry.Enabled = false;
-
-            textBox_RL_SuspensionGeometry.Visible = true;
-            textBox_RL_SuspensionGeometry.ReadOnly = true;
-            textBox_RL_SuspensionGeometry.Enabled = false;
-
-            textBox_RR_SuspensionGeometry.Visible = true;
-            textBox_RR_SuspensionGeometry.ReadOnly = true;
-            textBox_RR_SuspensionGeometry.Enabled = false;
+            // Save untouched controls as factory defaults before restoring autosaved values.
+            JsonFormSettings.EnsureFactoryDefaults(this);
+            Shown += FormSuspensionGeometry_Shown;
         }
+
+        private void FormSuspensionGeometry_Shown(object sender, EventArgs e)
+        {
+            if (chartInitialized) return;
+            SetChart(chart1);
+            chartInitialized = true;
+            ApplyAxisSettings();
+            ApplyUpdateInterval();
+            timer1.Enabled = true;
+        }
+
+        private void SuspensionGeometrySetting_ValueChanged(object sender, EventArgs e)
+        {
+            if (isRestoringSettings) return;
+            ApplyUpdateInterval();
+            if (chartInitialized) ApplyAxisSettings();
+        }
+
+        private void ApplyUpdateInterval()
+        {
+            int interval = Decimal.ToInt32(updateIntervalNumericUpDown.Value);
+            if (interval > 0) timer1.Interval = interval;
+        }
+
+        private void ApplyAxisSettings()
+        {
+            double xMin = (double)axisXMinimumNumericUpDown.Value;
+            double xMax = (double)axisXMaximumNumericUpDown.Value;
+            double yMin = (double)axisYMinimumNumericUpDown.Value;
+            double yMax = (double)axisYMaximumNumericUpDown.Value;
+            bool xValid = xMin < xMax;
+            bool yValid = yMin < yMax;
+            axisXMinimumNumericUpDown.BackColor = xValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
+            axisXMaximumNumericUpDown.BackColor = xValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
+            axisYMinimumNumericUpDown.BackColor = yValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
+            axisYMaximumNumericUpDown.BackColor = yValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
+            if (!chartInitialized || !xValid || !yValid) return;
+            foreach (string name in new[] { "FrontSuspension", "RearSuspension" })
+            {
+                ChartArea area = chart1.ChartAreas.FindByName(name);
+                if (area == null) continue;
+                // Order can matter when replacing an existing scale with a new
+                // range entirely outside it. Auto first, then apply the pair.
+                area.AxisX.Minimum = double.NaN;
+                area.AxisX.Maximum = double.NaN;
+                area.AxisY.Minimum = double.NaN;
+                area.AxisY.Maximum = double.NaN;
+                area.AxisX.Minimum = xMin;
+                area.AxisX.Maximum = xMax;
+                area.AxisY.Minimum = yMin;
+                area.AxisY.Maximum = yMax;
+                area.AxisX.Interval = NiceAxisInterval(xMax - xMin);
+                area.AxisY.Interval = NiceAxisInterval(yMax - yMin);
+            }
+        }
+
+        private static double NiceAxisInterval(double range)
+        {
+            double desired = range / 6d;
+            if (!IsFinite(desired) || desired <= 0d) return 0.5d;
+            double magnitude = Math.Pow(10d, Math.Floor(Math.Log10(desired)));
+            double fraction = desired / magnitude;
+            return (fraction <= 1d ? 1d : fraction <= 2d ? 2d : fraction <= 5d ? 5d : 10d) * magnitude;
+        }
+
         void FrontRearChartSet(Chart chartName, string sideName, string suspension, string legendName, Color textColor, Color chartLineColors)
         {
             #region ChartAreas
@@ -1665,8 +1721,8 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
             string sideName;
             string suspension;
             string legendName = "Legend1";
-            Color textColor = Color.FromArgb(16, 255, 255, 255);
-            Color chartLineColors = Color.FromArgb(32, 32, 32);
+            Color textColor = Color.Gainsboro;
+            Color chartLineColors = Color.FromArgb(85, 85, 85);
             #region Legends
             chartName.Legends.Add(legendName);
             chartName.Legends[legendName].ForeColor = textColor;
@@ -1687,21 +1743,15 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
             #endregion
 
 
-            chartName.ChartAreas.Add("Left");
-            chartName.ChartAreas["Left"].BackColor = Color.Transparent;
-            chartName.ChartAreas.Add("Right");
-            chartName.ChartAreas["Right"].BackColor = Color.Transparent;
 
         }
-        Vector4 SuspensionGeometry(string chartSideName, Enum side, bool isStatic, Chart chart)
+        Vector4 SuspensionGeometry(string chartSideName, string side, bool isStatic, Chart chart)
         {
-            float rideHeight = LiveData.GetFullListDataValue(side, WF_Suspension2DataOffset.RideHeight);
-            chart.Series[chartSideName + "RideHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
-            chart.Series[chartSideName + "RideHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + rideHeight };
+            float rideHeight = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
+            SetGeometryPoint(chart.Series[chartSideName + "RideHeight"].Points[0], 0.000000000000000000000000000000000000001d, 0.000000000000000000000000000000000000001d + rideHeight);
 
-            float centerOfMassHeight = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_MassDataOffset.CenterOfMassHeight);
-            chart.Series[chartSideName + "CenterOfMassHeight"].Points[0].XValue = 0.000000000000000000000000000000000000001d;
-            chart.Series[chartSideName + "CenterOfMassHeight"].Points[0].YValues = new double[] { 0.000000000000000000000000000000000000001d + centerOfMassHeight };
+            float centerOfMassHeight = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_MassDataOffset", "CenterOfMassHeight"));
+            SetGeometryPoint(chart.Series[chartSideName + "CenterOfMassHeight"].Points[0], 0.000000000000000000000000000000000000001d, 0.000000000000000000000000000000000000001d + centerOfMassHeight);
 
             #region TirePivot
             Vector4 staticTirePivot = StaticTirePivot(side, rideHeight, centerOfMassHeight);
@@ -1711,111 +1761,111 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
 
             #region UpperFront
             Vector4 staticBodyUpperFrontArm = StaticBodyArmPivot(side,
-                WF_SuspensionGeometryDataOffset.BodyUpperFrontArmX,
-                WF_SuspensionGeometryDataOffset.BodyUpperFrontArmY,
-                WF_SuspensionGeometryDataOffset.BodyUpperFrontArmZ,
-                WF_SuspensionGeometryDataOffset.BodyUpperFrontArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmW"),
                 rideHeight, centerOfMassHeight);
             Vector4 staticSpindleUpperFrontArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmX,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmY,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmW"),
                 staticTirePivot);
             Vector4 dynamicSpindleUpperFrontArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmX,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmY,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleUpperFrontArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmW"),
                 dynamicTirePivot);
             ArmChartPoints(chartSideName, side, staticBodyUpperFrontArm, staticSpindleUpperFrontArm, dynamicSpindleUpperFrontArm, chart, "UpperFrontArmXY", isStatic);
             #endregion
 
             #region UpperRear
             Vector4 staticBodyUpperRearArm = StaticBodyArmPivot(side,
-                WF_SuspensionGeometryDataOffset.BodyUpperRearArmX,
-                WF_SuspensionGeometryDataOffset.BodyUpperRearArmY,
-                WF_SuspensionGeometryDataOffset.BodyUpperRearArmZ,
-                WF_SuspensionGeometryDataOffset.BodyUpperRearArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmW"),
                 rideHeight, centerOfMassHeight);
             Vector4 staticSpindleUpperRearArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmX,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmY,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmW"),
                 staticTirePivot);
             Vector4 dynamicSpindleUpperRearArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmX,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmY,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleUpperRearArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmW"),
                 dynamicTirePivot);
             ArmChartPoints(chartSideName, side, staticBodyUpperRearArm, staticSpindleUpperRearArm, dynamicSpindleUpperRearArm, chart, "UpperRearArmXY", isStatic);
             #endregion
 
             #region LowerFront
             Vector4 staticBodyLowerFrontArm = StaticBodyArmPivot(side,
-                WF_SuspensionGeometryDataOffset.BodyLowerFrontArmX,
-                WF_SuspensionGeometryDataOffset.BodyLowerFrontArmY,
-                WF_SuspensionGeometryDataOffset.BodyLowerFrontArmZ,
-                WF_SuspensionGeometryDataOffset.BodyLowerFrontArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmW"),
                 rideHeight, centerOfMassHeight);
             Vector4 staticSpindleLowerFrontArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmX,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmY,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmW"),
                 staticTirePivot);
             Vector4 dynamicSpindleLowerFrontArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmX,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmY,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleLowerFrontArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmW"),
                 dynamicTirePivot);
             ArmChartPoints(chartSideName, side, staticBodyLowerFrontArm, staticSpindleLowerFrontArm, dynamicSpindleLowerFrontArm, chart, "LowerFrontArmXY", isStatic);
             #endregion
 
             #region LowerRear
             Vector4 staticBodyLowerRearArm = StaticBodyArmPivot(side,
-                WF_SuspensionGeometryDataOffset.BodyLowerRearArmX,
-                WF_SuspensionGeometryDataOffset.BodyLowerRearArmY,
-                WF_SuspensionGeometryDataOffset.BodyLowerRearArmZ,
-                WF_SuspensionGeometryDataOffset.BodyLowerRearArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmW"),
                 rideHeight, centerOfMassHeight);
             Vector4 staticSpindleLowerRearArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmX,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmY,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmW"),
                 staticTirePivot);
             Vector4 dynamicSpindleLowerRearArm = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmX,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmY,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmZ,
-                WF_SuspensionGeometryDataOffset.SpindleLowerRearArmW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmW"),
                 dynamicTirePivot);
             ArmChartPoints(chartSideName, side, staticBodyLowerRearArm, staticSpindleLowerRearArm, dynamicSpindleLowerRearArm, chart, "LowerRearArmXY", isStatic);
             #endregion
 
             #region SteeringRod
             Vector4 staticBodySteeringRod = StaticBodyArmPivot(side,
-                WF_SuspensionGeometryDataOffset.BodySteeringRodX,
-                WF_SuspensionGeometryDataOffset.BodySteeringRodY,
-                WF_SuspensionGeometryDataOffset.BodySteeringRodZ,
-                WF_SuspensionGeometryDataOffset.BodySteeringRodW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodW"),
                 rideHeight, centerOfMassHeight);
             Vector4 staticSpindleSteeringRod = SpindleArmPivot(side,
-                WF_SuspensionGeometryDataOffset.SpindleSteeringRodX,
-                WF_SuspensionGeometryDataOffset.SpindleSteeringRodY,
-                WF_SuspensionGeometryDataOffset.SpindleSteeringRodZ,
-                WF_SuspensionGeometryDataOffset.SpindleSteeringRodW,
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodX"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodY"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodZ"),
+                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodW"),
                 staticTirePivot);
             Vector4 dynamicSpindleSteeringRod = new Vector4
             {
-                X = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodX) + dynamicTirePivot.X,//?? Needs also to + tire X rotation and offset the offset with that
-                Y = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodY) + dynamicTirePivot.Y,// Needs also to + tire Y rotation and offset the offset with that
-                Z = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodZ) + dynamicTirePivot.Z,//?? Needs also to + tire Z rotation and offset the offset with that
-                W = LiveData.GetFullListDataValue(side, WF_SuspensionGeometryDataOffset.SpindleSteeringRodW) + dynamicTirePivot.W
+                X = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodX")) + dynamicTirePivot.X,//?? Needs also to + tire X rotation and offset the offset with that
+                Y = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodY")) + dynamicTirePivot.Y,// Needs also to + tire Y rotation and offset the offset with that
+                Z = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodZ")) + dynamicTirePivot.Z,//?? Needs also to + tire Z rotation and offset the offset with that
+                W = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodW")) + dynamicTirePivot.W
             };
             ArmChartPoints(chartSideName, side, staticBodySteeringRod, staticSpindleSteeringRod, dynamicSpindleSteeringRod, chart, "SteeringRodXY", isStatic);
             #endregion
@@ -1840,52 +1890,47 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
             bodyUpperArmMidpoint);
 
             string InstantCenterXY = chartSideName + side + "InstantCenterXY";
-            chart.Series[InstantCenterXY].Points[0].XValue = bodyUpperArmMidpoint.X;
-            chart.Series[InstantCenterXY].Points[0].YValues = new double[] { bodyUpperArmMidpoint.Y };
-            chart.Series[InstantCenterXY].Points[1].XValue = instantCenter.X;
-            chart.Series[InstantCenterXY].Points[1].YValues = new double[] { instantCenter.Y };
-            chart.Series[InstantCenterXY].Points[2].XValue = bodyLowerArmMidpoint.X;
-            chart.Series[InstantCenterXY].Points[2].YValues = new double[] { bodyLowerArmMidpoint.Y };
+            SetGeometryPoint(chart.Series[InstantCenterXY].Points[0], bodyUpperArmMidpoint.X, bodyUpperArmMidpoint.Y);
+            SetGeometryPoint(chart.Series[InstantCenterXY].Points[1], instantCenter.X, instantCenter.Y);
+            SetGeometryPoint(chart.Series[InstantCenterXY].Points[2], bodyLowerArmMidpoint.X, bodyLowerArmMidpoint.Y);
             #endregion
 
             #endregion
             return instantCenter;
         }
-        Vector4 StaticTirePivot(Enum side, float rideHeight, float centerOfMassHeight)
+        Vector4 StaticTirePivot(string side, float rideHeight, float centerOfMassHeight)
         {
             return new Vector4
             {
-                X = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotX),
-                Y = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotY) + rideHeight + centerOfMassHeight,
-                Z = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireStaticPivotZ),
+                X = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireStaticPivotX")),
+                Y = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireStaticPivotY")) + rideHeight + centerOfMassHeight,
+                Z = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireStaticPivotZ")),
                 W = 1,
             };
         }
-        Vector4 DynamicTirePivot(Enum side, float rideHeight, float centerOfMassHeight)
+        Vector4 DynamicTirePivot(string side, float rideHeight, float centerOfMassHeight)
         {
             return new Vector4
             {
-                X = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM41),
-                Y = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM42) + rideHeight + centerOfMassHeight,
-                Z = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM43),
-                W = LiveData.GetFullListDataValue(side, WF_TireDataOffset.TireM44)
+                X = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM41")),
+                Y = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM42")) + rideHeight + centerOfMassHeight,
+                Z = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM43")),
+                W = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM44"))
             };
         }
-        void TirePivotChartPoints(string chartSideName, Enum side, Vector4 staticTirePivot, Vector4 dynamicTirePivot, Chart chart, string seriesName, bool isStatic)
+        void TirePivotChartPoints(string chartSideName, string side, Vector4 staticTirePivot, Vector4 dynamicTirePivot, Chart chart, string seriesName, bool isStatic)
         {
             string fullSeriesName = chartSideName + side + seriesName;
             if (isStatic == true)
             {
-                chart.Series[fullSeriesName].Points[0].XValue = staticTirePivot.X;
-                chart.Series[fullSeriesName].Points[0].YValues = new double[] { staticTirePivot.Y };
+                SetGeometryPoint(chart.Series[fullSeriesName].Points[0], staticTirePivot.X, staticTirePivot.Y);
             }
             else
             {
-                chart.Series[fullSeriesName].Points[0].XValue = dynamicTirePivot.X;
-                chart.Series[fullSeriesName].Points[0].YValues = new double[] { dynamicTirePivot.Y };
+                SetGeometryPoint(chart.Series[fullSeriesName].Points[0], dynamicTirePivot.X, dynamicTirePivot.Y);
             }
         }
-        Vector4 StaticBodyArmPivot(Enum side, Enum x, Enum y, Enum z, Enum w, float rideHeight, float centerOfMassHeight)
+        Vector4 StaticBodyArmPivot(string side, GameMemoryField x, GameMemoryField y, GameMemoryField z, GameMemoryField w, float rideHeight, float centerOfMassHeight)
         {
             return new Vector4
             {
@@ -1895,7 +1940,7 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
                 W = LiveData.GetFullListDataValue(side, w)
             };
         }
-        Vector4 SpindleArmPivot(Enum side, Enum x, Enum y, Enum z, Enum w, Vector4 tirePivot)
+        Vector4 SpindleArmPivot(string side, GameMemoryField x, GameMemoryField y, GameMemoryField z, GameMemoryField w, Vector4 tirePivot)
         {
             return new Vector4
             {
@@ -1905,37 +1950,31 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
                 W = LiveData.GetFullListDataValue(side, w)/* + tirePivot.W*///??
             };
         }
-        void ArmChartPoints(string chartSideName, Enum side, Vector4 staticBodyArm, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
+        void ArmChartPoints(string chartSideName, string side, Vector4 staticBodyArm, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
         {
             string fullSeriesName = chartSideName + side + seriesName;
-            chart.Series[fullSeriesName].Points[0].XValue = staticBodyArm.X;
-            chart.Series[fullSeriesName].Points[0].YValues = new double[] { staticBodyArm.Y };
+            SetGeometryPoint(chart.Series[fullSeriesName].Points[0], staticBodyArm.X, staticBodyArm.Y);
             if (isStatic == true)
             {
-                chart.Series[fullSeriesName].Points[1].XValue = staticSpindleArm.X;
-                chart.Series[fullSeriesName].Points[1].YValues = new double[] { staticSpindleArm.Y };
+                SetGeometryPoint(chart.Series[fullSeriesName].Points[1], staticSpindleArm.X, staticSpindleArm.Y);
             }
             else
             {
-                chart.Series[fullSeriesName].Points[1].XValue = dynamicSpindleArm.X;
-                chart.Series[fullSeriesName].Points[1].YValues = new double[] { dynamicSpindleArm.Y };
+                SetGeometryPoint(chart.Series[fullSeriesName].Points[1], dynamicSpindleArm.X, dynamicSpindleArm.Y);
             }
         }
-        void ArmMidpointChartPoints(string chartSideName, Enum side, Vector4 bodyArmMidpoint, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
+        void ArmMidpointChartPoints(string chartSideName, string side, Vector4 bodyArmMidpoint, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
         {
             string fullSeriesName = chartSideName + side + seriesName;
-            chart1.Series[fullSeriesName].Points[0].XValue = bodyArmMidpoint.X;//BodyUpperArmMidpointX
-            chart1.Series[fullSeriesName].Points[0].YValues = new double[] { bodyArmMidpoint.Y };//BodyUpperArmMidpointY
+            SetGeometryPoint(chart1.Series[fullSeriesName].Points[0], bodyArmMidpoint.X, bodyArmMidpoint.Y);
 
             if (isStatic == true)
             {
-                chart1.Series[fullSeriesName].Points[1].XValue = staticSpindleArm.X;
-                chart1.Series[fullSeriesName].Points[1].YValues = new double[] { staticSpindleArm.Y };
+                SetGeometryPoint(chart1.Series[fullSeriesName].Points[1], staticSpindleArm.X, staticSpindleArm.Y);
             }
             else
             {
-                chart1.Series[fullSeriesName].Points[1].XValue = dynamicSpindleArm.X;//chart.Series[side + "UpperFrontArmXY"].Points[1].XValue;//DynamicSpindleUpperFrontArmX
-                chart1.Series[fullSeriesName].Points[1].YValues = new double[] { dynamicSpindleArm.Y };//chart.Series[side + "UpperFrontArmXY"].Points[1].YValues;//DynamicSpindleUpperFrontArmY
+                SetGeometryPoint(chart1.Series[fullSeriesName].Points[1], dynamicSpindleArm.X, dynamicSpindleArm.Y);
             }
         }
         void SuspensionRollCenter(string chartSideName, bool isStatic, Chart chart, Vector4 instantCenterFL, Vector4 instantCenterFR)
@@ -1948,36 +1987,36 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
             if (chartSideName == "Front")
             {
                 cornerNameLeft = "FL";
-                rideHeightLeft = LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_Suspension2DataOffset.RideHeight);
+                rideHeightLeft = LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
                 cornerNameRight = "FR";
-                rideHeightRight = LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_Suspension2DataOffset.RideHeight);
+                rideHeightRight = LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
             }
             else
             {
                 cornerNameLeft = "RL";
-                rideHeightLeft = LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_Suspension2DataOffset.RideHeight);
+                rideHeightLeft = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
                 cornerNameRight = "RR";
-                rideHeightRight = LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_Suspension2DataOffset.RideHeight);
+                rideHeightRight = LiveData.GetFullListDataValue(TelemetryPrefix.RR, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
             }
 
-            float centerOfMassHeight = LiveData.GetFullListDataValue(WF_PrefixMain.Body, WF_MassDataOffset.CenterOfMassHeight);
-            Vector4 dynamicTirePivotFL = DynamicTirePivot(WF_PrefixMain.FL, rideHeightLeft, centerOfMassHeight);
+            float centerOfMassHeight = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_MassDataOffset", "CenterOfMassHeight"));
+            Vector4 dynamicTirePivotFL = DynamicTirePivot(TelemetryPrefix.FL, rideHeightLeft, centerOfMassHeight);
 
             #region Left
             Vector4 tireMiddleContactPointFL = new Vector4
             {
                 X = dynamicTirePivotFL.X,
-                Y = dynamicTirePivotFL.Y - LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.TireRadius)/* - LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.LoadedRadius)*/,
+                Y = dynamicTirePivotFL.Y - LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "TireRadius"))/* - LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "LoadedRadius"))*/,
                 Z = dynamicTirePivotFL.Z,
                 W = dynamicTirePivotFL.W,
             };
-            Vector4 dynamicTirePivotFR = DynamicTirePivot(WF_PrefixMain.FR, rideHeightRight, centerOfMassHeight);
+            Vector4 dynamicTirePivotFR = DynamicTirePivot(TelemetryPrefix.FR, rideHeightRight, centerOfMassHeight);
             #endregion
             #region Right
             Vector4 tireMiddleContactPointFR = new Vector4
             {
                 X = dynamicTirePivotFR.X,
-                Y = dynamicTirePivotFR.Y - LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.TireRadius)/* - LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.LoadedRadius)*/,
+                Y = dynamicTirePivotFR.Y - LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_TireDataOffset", "TireRadius"))/* - LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_TireDataOffset", "LoadedRadius"))*/,
                 Z = dynamicTirePivotFR.Z,
                 W = dynamicTirePivotFR.W,
             };
@@ -1989,20 +2028,15 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
                 instantCenterFR,
                 tireMiddleContactPointFR);
             string rollCenterXY = chartSideName + "RollCenterXY";
-            chart.Series[rollCenterXY].Points[0].XValue = rollCenter.X;
-            chart.Series[rollCenterXY].Points[0].YValues = new double[] { rollCenter.Y };
+            SetGeometryPoint(chart.Series[rollCenterXY].Points[0], rollCenter.X, rollCenter.Y);
 
             string FLRCLine = chartSideName + cornerNameLeft + "RollCenterLine";
-            chart.Series[FLRCLine].Points[0].XValue = instantCenterFL.X;
-            chart.Series[FLRCLine].Points[0].YValues = new double[] { instantCenterFL.Y };
-            chart.Series[FLRCLine].Points[1].XValue = tireMiddleContactPointFL.X;
-            chart.Series[FLRCLine].Points[1].YValues = new double[] { tireMiddleContactPointFL.Y };
+            SetGeometryPoint(chart.Series[FLRCLine].Points[0], instantCenterFL.X, instantCenterFL.Y);
+            SetGeometryPoint(chart.Series[FLRCLine].Points[1], tireMiddleContactPointFL.X, tireMiddleContactPointFL.Y);
 
             string FRRCLine = chartSideName + cornerNameRight + "RollCenterLine";
-            chart.Series[FRRCLine].Points[0].XValue = instantCenterFR.X;
-            chart.Series[FRRCLine].Points[0].YValues = new double[] { instantCenterFR.Y };
-            chart.Series[FRRCLine].Points[1].XValue = tireMiddleContactPointFR.X;
-            chart.Series[FRRCLine].Points[1].YValues = new double[] { tireMiddleContactPointFR.Y };
+            SetGeometryPoint(chart.Series[FRRCLine].Points[0], instantCenterFR.X, instantCenterFR.Y);
+            SetGeometryPoint(chart.Series[FRRCLine].Points[1], tireMiddleContactPointFR.X, tireMiddleContactPointFR.Y);
 
             #endregion
         }
@@ -2016,87 +2050,97 @@ chartName.Series[sideName + seriesName].LegendText = legendText;
                 W = 1,
             };
         }
-        private Vector4 XYLineIntersectionVector(
-            Vector4 vector1,
-            Vector4 vector2,
-            Vector4 vector3,
-            Vector4 vector4)//https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
+        // Use a determinant instead of slope division: vertical arm lines are
+        // valid geometry, while parallel/coincident lines have NO finite point
+        // of intersection. The previous m=(dy/dx) calculation could produce
+        // Infinity/NaN and crash System.Windows.Forms.DataVisualization during paint.
+        private static Vector4 XYLineIntersectionVector(
+            Vector4 vector1, Vector4 vector2, Vector4 vector3, Vector4 vector4)
         {
-            float m1 = (vector2.Y - vector1.Y) / (vector2.X - vector1.X);//why one of these needs to be minus instead??
-            float c1 = -m1 * vector1.X + vector1.Y;
-            float m2 = (vector4.Y - vector3.Y) / (vector4.X - vector3.X);
-            float c2 = -m2 * vector3.X + vector3.Y;
-            return new Vector4
-            {
-                X = (c2 - c1) / (m1 - m2),
-                Y = m1 * (c2 - c1) / (m1 - m2) + c1,
-                Z = 0,
-                W = 1,
-            };
+            double dx1 = (double)vector2.X - vector1.X;
+            double dy1 = (double)vector2.Y - vector1.Y;
+            double dx2 = (double)vector4.X - vector3.X;
+            double dy2 = (double)vector4.Y - vector3.Y;
+            double len1 = Math.Sqrt(dx1 * dx1 + dy1 * dy1);
+            double len2 = Math.Sqrt(dx2 * dx2 + dy2 * dy2);
+            double determinant = dx1 * dy2 - dy1 * dx2;
+            if (!IsFinite(len1) || !IsFinite(len2) ||
+                len1 < 1e-7 || len2 < 1e-7 ||
+                !IsFinite(determinant) ||
+                Math.Abs(determinant) <= 1e-7 * len1 * len2)
+                return new Vector4(float.NaN, float.NaN, 0f, 1f);
+
+            double xOffset = (double)vector3.X - vector1.X;
+            double yOffset = (double)vector3.Y - vector1.Y;
+            double t = (xOffset * dy2 - yOffset * dx2) / determinant;
+            double x = vector1.X + t * dx1;
+            double y = vector1.Y + t * dy1;
+            if (!IsFinite(x) || !IsFinite(y) ||
+                Math.Abs(x) > 1000000d || Math.Abs(y) > 1000000d)
+                return new Vector4(float.NaN, float.NaN, 0f, 1f);
+            return new Vector4((float)x, (float)y, 0f, 1f);
         }
-        private void GeometryTextboxWrites()
+
+        private static bool IsFinite(double value) =>
+            !double.IsNaN(value) && !double.IsInfinity(value);
+
+        // Never submit NaN/Infinity or extreme intersection coordinates to
+        // WinForms Chart. An invalid geometric point is omitted, not drawn at
+        // (0, 0). A later valid sample restores it automatically.
+        private static void SetGeometryPoint(DataPoint point, double x, double y)
         {
-            List<string> FL = new List<string>();
-            //Write text
-            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
+            bool valid = IsFinite(x) && IsFinite(y) &&
+                         Math.Abs(x) <= 1000000d && Math.Abs(y) <= 1000000d;
+            if (!valid)
             {
-                string s = "" + WF_PrefixMain.FL + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.FL, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
-                FL.Add(s);
+                point.XValue = 0d;
+                point.YValues = new double[] { 0d };
+                point.IsEmpty = true;
+                return;
             }
-            var resultFL = String.Join("", FL.ToArray());
-            textBox_FL_SuspensionGeometry.Text = resultFL;
-
-            List<string> RL = new List<string>();
-            //Write text
-            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
-            {
-                string s = "" + WF_PrefixMain.RL + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.RL, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
-                RL.Add(s);
-            }
-            var resultRL = String.Join("", RL.ToArray());
-            textBox_RL_SuspensionGeometry.Text = resultRL;
-
-            List<string> FR = new List<string>();
-            //Write text
-            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
-            {
-                string s = "" + WF_PrefixMain.FR + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.FR, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
-                FR.Add(s);
-            }
-            var resultFR = String.Join("", FR.ToArray());
-            textBox_FR_SuspensionGeometry.Text = resultFR;
-
-            List<string> RR = new List<string>();
-            //Write text
-            foreach (int i in Enum.GetValues(typeof(WF_SuspensionGeometryDataOffset)))
-            {
-                string s = "" + WF_PrefixMain.RR + "_" + Enum.GetName(typeof(WF_SuspensionGeometryDataOffset), (WF_SuspensionGeometryDataOffset)i) + ": " + LiveData.GetFullListDataValue(WF_PrefixMain.RR, (WF_SuspensionGeometryDataOffset)i) + "\r\n";
-                RR.Add(s);
-            }
-            var resultRR = String.Join("", RR.ToArray());
-            textBox_RR_SuspensionGeometry.Text = resultRR;
+            point.XValue = x;
+            point.YValues = new double[] { y };
+            point.IsEmpty = false;
         }
         private void FormSuspensionGeometry_Load(object sender, EventArgs e)
         {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
+                return;
+            isRestoringSettings = true;
+            try { JsonFormSettings.LoadAllSettings(this); }
+            finally { isRestoringSettings = false; }
+            ApplyUpdateInterval();
             LiveData.FormSuspensionGeometryOpen = true;
         }
         private void FormSuspensionGeometry_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Enabled = false;
+            JsonFormSettings.SaveAllSettings(this);
             LiveData.FormSuspensionGeometryOpen = false;
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (LiveData.Process != null && FormLiveData.ProcessGet == true && FormLiveData.FirstTimeLoad == true && LiveData.FullDataList.Count > 0 && FormLiveData.ValuesGet == true)
+            if (LiveData.Process == null || !FormLiveData.ProcessGet ||
+                !FormLiveData.FirstTimeLoad || LiveData.FullDataList.Count == 0 ||
+                !FormLiveData.ValuesGet) return;
+
+            try
             {
-                GeometryTextboxWrites();
-                Vector4 instantCenterFL = SuspensionGeometry("Front", WF_PrefixMain.FL, false, chart1);
-                Vector4 instantCenterFR = SuspensionGeometry("Front", WF_PrefixMain.FR, false, chart1);
+                Vector4 instantCenterFL = SuspensionGeometry("Front", TelemetryPrefix.FL, false, chart1);
+                Vector4 instantCenterFR = SuspensionGeometry("Front", TelemetryPrefix.FR, false, chart1);
                 SuspensionRollCenter("Front", false, chart1, instantCenterFL, instantCenterFR);
 
-                Vector4 instantCenterRL = SuspensionGeometry("Rear", WF_PrefixMain.RL, false, chart1);
-                Vector4 instantCenterRR = SuspensionGeometry("Rear", WF_PrefixMain.RR, false, chart1);
+                Vector4 instantCenterRL = SuspensionGeometry("Rear", TelemetryPrefix.RL, false, chart1);
+                Vector4 instantCenterRR = SuspensionGeometry("Rear", TelemetryPrefix.RR, false, chart1);
                 SuspensionRollCenter("Rear", false, chart1, instantCenterRL, instantCenterRR);
+            }
+            catch (OverflowException ex)
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(this,
+                    "A numeric overflow occurred while updating suspension geometry. " +
+                    "This chart's timer has been stopped.\n\n" + ex.ToString(),
+                    "Suspension geometry update error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

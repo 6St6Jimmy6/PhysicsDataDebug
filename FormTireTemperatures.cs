@@ -1,26 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Physics_Data_Debug
 {
     public partial class FormTireTemperatures : Form
     {
-        #region Fields variables
-        //private readonly Thread update;
-        private bool updatedEnabled;
-        #endregion
-
         public FormTireTemperatures()
         {
             InitializeComponent();
             timer1.Interval = 100;
-            updatedEnabled = false;
+            timer1.Enabled = false;
         }
 
         #region Methods
@@ -56,23 +48,23 @@ namespace Physics_Data_Debug
         private void SetChart(Chart chartName)
         {
             string chartAreaName = "ChartArea1";
-            chartName.ChartAreas[chartAreaName].BackColor = _4WheelsSettings.BackgroundColor;
+            chartName.ChartAreas[chartAreaName].BackColor = Form4WheelsSettings.BackgroundColor;
 
             // X Axis
-            chartName.ChartAreas[chartAreaName].AxisX.LabelStyle.ForeColor = _4WheelsSettings.X1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisX.LabelStyle.ForeColor = Form4WheelsSettings.X1FontColor;
 
-            chartName.ChartAreas[chartAreaName].AxisX.TitleForeColor = _4WheelsSettings.X1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisX.TitleForeColor = Form4WheelsSettings.X1FontColor;
 
-            chartName.ChartAreas[chartAreaName].AxisX.MajorGrid.LineColor = _4WheelsSettings.X1MajorColor;
-            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.LineColor = _4WheelsSettings.X1MinorColor;
+            chartName.ChartAreas[chartAreaName].AxisX.MajorGrid.LineColor = Form4WheelsSettings.X1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisX.MinorGrid.LineColor = Form4WheelsSettings.X1MinorColor;
 
             // Y Axis
-            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.ForeColor = _4WheelsSettings.Y1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisY.LabelStyle.ForeColor = Form4WheelsSettings.Y1FontColor;
 
-            chartName.ChartAreas[chartAreaName].AxisY.TitleForeColor = _4WheelsSettings.Y1FontColor;
+            chartName.ChartAreas[chartAreaName].AxisY.TitleForeColor = Form4WheelsSettings.Y1FontColor;
 
-            chartName.ChartAreas[chartAreaName].AxisY.MajorGrid.LineColor = _4WheelsSettings.Y1MajorColor;
-            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.LineColor = _4WheelsSettings.Y1MinorColor;
+            chartName.ChartAreas[chartAreaName].AxisY.MajorGrid.LineColor = Form4WheelsSettings.Y1MajorColor;
+            chartName.ChartAreas[chartAreaName].AxisY.MinorGrid.LineColor = Form4WheelsSettings.Y1MinorColor;
 
             chartName.ChartAreas["ChartArea1"].Position.Height = 80;
             chartName.ChartAreas["ChartArea1"].Position.Width = 100;
@@ -109,55 +101,45 @@ namespace Physics_Data_Debug
         {
             LiveData.TemperaturesChartOpen = false;
             timer1.Enabled = false;
-            updatedEnabled = false;
 
         }
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
         private void startButton_Click(object sender, EventArgs e)
         {
-            if (updatedEnabled == false)
-            {
-                updatedEnabled = true;
-                timer1.Enabled = true;
-            }
+            timer1.Enabled = true;
         }
         private void stopButton_Click(object sender, EventArgs e)
         {
-            if (updatedEnabled == true)
-            {
-                updatedEnabled = false;
-                timer1.Enabled = false;
-            }
+            timer1.Enabled = false;
         }
         private double RaceTimeToSeconds(int raceTime)
         {
-            return Convert.ToDouble(raceTime)/1000;
+            return raceTime / 1000.0;
         }
         private double racetime = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (LiveData.ElapsedTime > 0 && updatedEnabled == true)
+            if (LiveData.ElapsedTime > 0)
             {
-                double raceTime = RaceTimeToSeconds(LiveData.RaceTime);
+                int raceTimeMilliseconds = (int)LiveData.GetFullListDataValue(
+                    TelemetryPrefix.Timing, GameMemoryConfig.Field("WF_TimeDataOffset", "RaceTime"));
+                double raceTime = RaceTimeToSeconds(raceTimeMilliseconds);
                 racetime = raceTime;
-                if (XValues.Contains<double>(racetime) == false)
+                if (!XValues.Contains(racetime))
                 {
                     XValues.Add(racetime);
                     if (XValues.Count > historyPointsCorrect)
                     {
                         XValues.RemoveAt(0);
                     }
-                    TemperatureSeries(chartFL, "Tread °C", LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.TreadTemperature), FL_TreadYValues);
-                    TemperatureSeries(chartFL, "Inner °C", LiveData.GetFullListDataValue(WF_PrefixMain.FL, WF_TireDataOffset.InnerTemperature), FL_InnerYValues);
-                    TemperatureSeries(chartFR, "Tread °C", LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.TreadTemperature), FR_TreadYValues);
-                    TemperatureSeries(chartFR, "Inner °C", LiveData.GetFullListDataValue(WF_PrefixMain.FR, WF_TireDataOffset.InnerTemperature), FR_InnerYValues);
-                    TemperatureSeries(chartRL, "Tread °C", LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.TreadTemperature), RL_TreadYValues);
-                    TemperatureSeries(chartRL, "Inner °C", LiveData.GetFullListDataValue(WF_PrefixMain.RL, WF_TireDataOffset.InnerTemperature), RL_InnerYValues);
-                    TemperatureSeries(chartRR, "Tread °C", LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.TreadTemperature), RR_TreadYValues);
-                    TemperatureSeries(chartRR, "Inner °C", LiveData.GetFullListDataValue(WF_PrefixMain.RR, WF_TireDataOffset.InnerTemperature), RR_InnerYValues);
+                    TemperatureSeries(chartFL, "Tread °C", LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "TreadTemperature")), FL_TreadYValues);
+                    TemperatureSeries(chartFL, "Inner °C", LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "InnerTemperature")), FL_InnerYValues);
+                    TemperatureSeries(chartFR, "Tread °C", LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_TireDataOffset", "TreadTemperature")), FR_TreadYValues);
+                    TemperatureSeries(chartFR, "Inner °C", LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_TireDataOffset", "InnerTemperature")), FR_InnerYValues);
+                    TemperatureSeries(chartRL, "Tread °C", LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "TreadTemperature")), RL_TreadYValues);
+                    TemperatureSeries(chartRL, "Inner °C", LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_TireDataOffset", "InnerTemperature")), RL_InnerYValues);
+                    TemperatureSeries(chartRR, "Tread °C", LiveData.GetFullListDataValue(TelemetryPrefix.RR, GameMemoryConfig.Field("WF_TireDataOffset", "TreadTemperature")), RR_TreadYValues);
+                    TemperatureSeries(chartRR, "Inner °C", LiveData.GetFullListDataValue(TelemetryPrefix.RR, GameMemoryConfig.Field("WF_TireDataOffset", "InnerTemperature")), RR_InnerYValues);
                 }
             }
         }
