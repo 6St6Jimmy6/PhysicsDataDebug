@@ -4,6 +4,10 @@ A Windows desktop application for inspecting, charting, and logging physics tele
 
 The application also includes an **Offline Four Wheels / CSV Chart**, which can plot imported files without connecting to the game.
 
+# Example pictures (outdated)
+![LiveData page](https://github.com/user-attachments/assets/c68f05b9-0a75-47ca-88be-779a9ff533a7)
+![4wheels_gradient](https://github.com/user-attachments/assets/b9b06097-d5fb-41b0-ab7a-59061e778523)
+
 ## Requirements
 
 - Windows and a Wreckfest installation for **live** telemetry.
