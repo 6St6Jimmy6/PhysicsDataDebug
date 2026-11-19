@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -64,6 +64,7 @@ namespace Physics_Data_Debug
                     Math.Max(0, (decimal)LogSettings.TotalSizeLimitBytes / 1048576m));
             }
             finally { checkedListBoxLogging.EndUpdate(); updatingSelections = false; }
+            ComboBoxBehaviors.EnableSearch(this);
             checkedListBoxLogging.ItemCheck += CheckedListBoxLogging_ItemCheck;
             UpdateSelectionCounter();
             JsonFormSettings.AttachProfileButton(this, () =>

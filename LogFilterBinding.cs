@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
@@ -39,8 +39,9 @@ namespace Physics_Data_Debug
             foreach (var field in fields) fieldComboBox.Items.Add(field.DisplayName);
             fieldComboBox.SelectedIndex = 0;
             fieldComboBox.DropDownStyle = ComboBoxStyle.DropDown;
-            fieldComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            fieldComboBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            // ComboBoxBehaviors installs the shared substring search on the form.
+            // Do not enable native Suggest: it only matches prefixes and can
+            // swallow the first click in the dropdown.
             fieldComboBox.DropDownWidth = Math.Max(425, fieldComboBox.Width);
             modeComboBox.Items.Clear();
             modeComboBox.Items.Add("Inside range");
