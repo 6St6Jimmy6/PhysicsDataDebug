@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -123,7 +123,9 @@ namespace Physics_Data_Debug
 
         private static void SetCombo(ComboBox box, string name)
         {
-            if (box.Items.Contains(name)) box.SelectedItem = name;
+            string canonical = FormOfflineChart.CanonicalAvailableField(name,
+                box.Items.Cast<object>().Select(item => box.GetItemText(item)));
+            if (canonical != null) box.SelectedItem = canonical;
             else if (box.Items.Count > 0) box.SelectedIndex = 0;
         }
 

@@ -53,10 +53,21 @@ namespace Physics_Data_Debug
         public void SetField(string field)
         {
             if (field == null) return;
+            if (!selectionComboBox.Items.Contains(field))
+            {
+                string mapped = TelemetryNames.Canonicalize(field);
+                if (selectionComboBox.Items.Contains(mapped)) field = mapped;
+                else
+                    foreach (string wheel in TelemetryNames.Wheels)
+                    {
+                        mapped = TelemetryNames.Canonicalize(field, wheel);
+                        if (selectionComboBox.Items.Contains(mapped)) { field = mapped; break; }
+                    }
+            }
             if (selectionComboBox.Items.Contains(field))
                 selectionComboBox.SelectedItem = field;
-            else
-                selectionComboBox.Text = field;
+            else if (selectionComboBox.Items.Contains("None"))
+                selectionComboBox.SelectedItem = "None";
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Physics_Data_Debug
         public const char DefaultDelimiter = ';';
         public static char Delimiter { get; set; } = DefaultDelimiter;
         public static int TimeLimitSeconds { get; set; } // 0 means unlimited
-        public static long TotalSizeLimitBytes { get; set; } // 0 means unlimited; combined across four files
+        public static long TotalSizeLimitBytes { get; set; } // 0 means unlimited; applies to the single log file
         public static LogRangeFilter[] Filters { get; set; } = Enumerable.Range(0, 10)
             .Select(i => new LogRangeFilter()).ToArray();
         public static string ChartPlotterLocation { get; set; } = "";

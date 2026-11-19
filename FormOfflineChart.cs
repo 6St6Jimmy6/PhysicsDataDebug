@@ -136,7 +136,7 @@ namespace Physics_Data_Debug
                     filter.SelectionBox.Items.Clear();
                     filter.SelectionBox.Items.Add("None");
                     foreach (string name in headers) filter.SelectionBox.Items.Add(name);
-                    filter.SetField(old != "" && filter.SelectionBox.Items.Contains(old) ? old : "None");
+                    filter.SetField(CanonicalAvailableField(old, headers) ?? "None");
                 }
                 finally { filter.SelectionBox.EndUpdate(); }
             }
@@ -185,6 +185,30 @@ namespace Physics_Data_Debug
             }
         }
 
+        internal static string CanonicalAvailableField(string value, IEnumerable<string> available)
+        {
+            var names = available.ToList();
+            string match = names.FirstOrDefault(n => string.Equals(n, value, StringComparison.OrdinalIgnoreCase));
+            if (match != null) return match;
+            foreach (string wheel in TelemetryNames.Wheels)
+            {
+                string canonical = TelemetryNames.Canonicalize(value, wheel);
+                match = names.FirstOrDefault(n => string.Equals(n, canonical, StringComparison.OrdinalIgnoreCase));
+                if (match != null) return match;
+            }
+            // If an old single-wheel file was imported under a different
+            // wheel name, keep the measurement instead of picking a random axis.
+            string relative = TelemetryNames.RelativeWheelName(value);
+            if (!string.Equals(relative, value, StringComparison.Ordinal))
+                foreach (string wheel in TelemetryNames.Wheels)
+                {
+                    match = names.FirstOrDefault(n =>
+                        string.Equals(n, wheel + "_" + relative, StringComparison.OrdinalIgnoreCase));
+                    if (match != null) return match;
+                }
+            return null;
+        }
+
         internal IEnumerable<string> GetColumnNames() => files.SelectMany(file => file.Headers)
             .Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(name => name,StringComparer.OrdinalIgnoreCase);
 
@@ -194,16 +218,22 @@ namespace Physics_Data_Debug
             maximum = double.NegativeInfinity;
             foreach (var file in files)
             {
-                if (!file.TryIndex(name,out int col)) continue;
-                var reader = file.CreateReader();
-                foreach (var row in file.Rows)
+                var choices = file.AvailableWheels(name, name, name);
+                IEnumerable<string> wheelChoices = choices.Count > 0
+                    ? choices : new string[] { null };
+                foreach (string wheel in wheelChoices)
                 {
-                    reader.SetRow(row);
-                    double value = reader.Value(col);
-                    if (double.IsNaN(value) || double.IsInfinity(value)) continue;
-                    if (absolute) value = Math.Abs(value);
-                    if (value < minimum) minimum = value;
-                    if (value > maximum) maximum = value;
+                    if (!file.TryWheelIndex(name, wheel, out int col)) continue;
+                    var reader = file.CreateReader();
+                    foreach (var row in file.Rows)
+                    {
+                        reader.SetRow(row);
+                        double value = reader.Value(col);
+                        if (double.IsNaN(value) || double.IsInfinity(value)) continue;
+                        if (absolute) value = Math.Abs(value);
+                        if (value < minimum) minimum = value;
+                        if (value > maximum) maximum = value;
+                    }
                 }
             }
             if (double.IsInfinity(minimum) || double.IsInfinity(maximum))
@@ -262,9 +292,9 @@ namespace Physics_Data_Debug
                 {
                     // Newly available headers populate the three axis selectors and 13 filters.
                     var all = GetColumnNames().ToList();
-                    if (!all.Contains(options.X,StringComparer.OrdinalIgnoreCase)) options.X = all.FirstOrDefault() ?? "";
-                    if (!all.Contains(options.Y,StringComparer.OrdinalIgnoreCase)) options.Y = all.Skip(1).FirstOrDefault() ?? options.X;
-                    if (!all.Contains(options.Z,StringComparer.OrdinalIgnoreCase)) options.Z = all.Skip(2).FirstOrDefault() ?? options.Y;
+                    options.X = CanonicalAvailableField(options.X, all) ?? all.FirstOrDefault() ?? "";
+                    options.Y = CanonicalAvailableField(options.Y, all) ?? all.Skip(1).FirstOrDefault() ?? options.X;
+                    options.Z = CanonicalAvailableField(options.Z, all) ?? all.Skip(2).FirstOrDefault() ?? options.Y;
                     UpdateChoices();
                     if (!loadedSavedFilters)
                     {
@@ -523,20 +553,27 @@ namespace Physics_Data_Debug
                 for (int index = 0; index < visible.Count; index++)
                 {
                     DelimitedTelemetryFile file = visible[index];
-                    string areaName = separate ? "DatasetArea" + index : "AllDatasets";
+                    var availableWheels = file.AvailableWheels(options.X, options.Y, options.Z);
+                    IEnumerable<string> selectedWheels = availableWheels.Count > 0
+                        ? availableWheels : new string[] { null };
+                    foreach (string wheel in selectedWheels)
+                    {
+                    string uniqueFileKey = "File" + index + (wheel == null ? "" : "_" + wheel);
+                    string areaName = separate ? "DatasetArea" + index + (wheel == null ? "" : "_" + wheel) : "AllDatasets";
                     if (chart1.ChartAreas.FindByName(areaName) == null)
                     {
                         var area = new ChartArea(areaName);
                         ConfigureArea(area);
                         chart1.ChartAreas.Add(area);
                     }
-                    if (!file.TryIndex(options.X,out int xIndex) || !file.TryIndex(options.Y,out int yIndex) ||
-                        !file.TryIndex(options.Z,out int zIndex))
+                    if (!file.TryWheelIndex(options.X, wheel, out int xIndex) ||
+                        !file.TryWheelIndex(options.Y, wheel, out int yIndex) ||
+                        !file.TryWheelIndex(options.Z, wheel, out int zIndex))
                     { skipped += file.Rows.Count; continue; }
                     var indices = new int[active.Count];
                     bool hasAll = true;
                     for (int i = 0; i < active.Count; i++)
-                        if (!file.TryIndex(active[i].Field,out indices[i])) hasAll = false;
+                        if (!file.TryWheelIndex(active[i].Field, wheel, out indices[i])) hasAll = false;
                     if (!hasAll) { skipped += file.Rows.Count; continue; }
 
                     var series = new Series[options.Bands + 1];
@@ -554,8 +591,8 @@ namespace Physics_Data_Debug
                             BorderWidth = Math.Max(1,options.MarkerSize / 2),
                             IsVisibleInLegend = band == 1,
                             Legend = "Datasets",
-                            LegendText = file.Name,
-                            Tag = file.Name
+                            LegendText = file.Name + (wheel == null ? "" : " [" + wheel + "]"),
+                            Tag = file.Name + (wheel == null ? "" : " [" + wheel + "]")
                         };
                         chart1.Series.Add(s);
                         series[band] = s;
@@ -609,6 +646,7 @@ namespace Physics_Data_Debug
                         priorBand = band;
                         matching++;
                     }
+                    } // wheel channel / combined telemetry source
                 }
                 UpdateGradient(zMin,zMax,palette);
                 statusLabel.Text = visible.Count + " active file(s); " + matching.ToString("N0") +

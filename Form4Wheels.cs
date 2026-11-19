@@ -182,6 +182,10 @@ namespace Physics_Data_Debug
 
         public List<object> SelectionDefaults(string axisSelection, bool isAbsolute)
         {
+            // Existing defaults are keyed by relative/raw JSON members. New
+            // global prefixes must resolve to those same settings.
+            string rawSelection = GameMemoryConfig.LegacySelectionName(axisSelection);
+            if (!string.IsNullOrEmpty(rawSelection)) axisSelection = rawSelection;
             // ---------------------------------------------------------
             // Special case: Race Time
             // ---------------------------------------------------------
@@ -825,10 +829,18 @@ namespace Physics_Data_Debug
         private static readonly Dictionary<string, WheelPlotHistory> Histories =
             new Dictionary<string, WheelPlotHistory>(StringComparer.Ordinal);
         private static readonly string[] PrefixOrder = TelemetryPrefix.Order;
-        private static Dictionary<string, int> tireFieldIndex;
-        private static int tireFieldCount = -1;
-        private static List<DataItem> indexedTireFields;
-        private static DataItem firstTireField;
+        // A separate index per wheel avoids rebuilding on every timer tick.
+        // The canonical name index also disambiguates identically named
+        // suspension fields using the same headers as the single-file logger.
+        private sealed class WheelFieldIndex
+        {
+            public List<DataItem> Source;
+            public int Count;
+            public DataItem First;
+            public Dictionary<string, int> Names;
+        }
+        private static readonly Dictionary<string, WheelFieldIndex> WheelFieldIndexes =
+            new Dictionary<string, WheelFieldIndex>(StringComparer.Ordinal);
         private static Dictionary<string, DataItem> sharedFieldIndex;
         private static List<DataItem>[] indexedSharedLists;
         private static int[] indexedSharedCounts;
@@ -861,37 +873,72 @@ namespace Physics_Data_Debug
                 throw new ArgumentOutOfRangeException(nameof(prefix));
 
             var data = LiveData.FullDataList[prefixIndex];
-            if (tireFieldIndex == null || tireFieldCount != data.Count ||
-                !ReferenceEquals(indexedTireFields, data) ||
-                (data.Count > 0 && !ReferenceEquals(firstTireField, data[0])))
+            if (!WheelFieldIndexes.TryGetValue(prefix, out WheelFieldIndex wheelFields) ||
+                !ReferenceEquals(wheelFields.Source, data) ||
+                wheelFields.Count != data.Count ||
+                (data.Count > 0 && !ReferenceEquals(wheelFields.First, data[0])))
             {
-                tireFieldIndex = new Dictionary<string, int>(StringComparer.Ordinal);
+                var names = new Dictionary<string, int>(StringComparer.Ordinal);
+                var canonicalByMember = LogData.AllColumns
+                    .Where(column => column.Wheel == prefix)
+                    .ToDictionary(column => column.Group + "." + column.Member,
+                        column => column.Header, StringComparer.Ordinal);
+
                 string prefixName = prefix + "_";
                 for (int i = 0; i < data.Count; i++)
                 {
-                    if (data[i].Name.StartsWith(prefixName, StringComparison.Ordinal))
-                        tireFieldIndex[data[i].Name.Substring(prefixName.Length)] = i;
+                    DataItem item = data[i];
+                    if (!item.Name.StartsWith(prefixName, StringComparison.Ordinal))
+                        continue;
+
+                    string raw = item.Name.Substring(prefixName.Length);
+                    // Original member keys remain available for older profiles.
+                    if (!names.ContainsKey(raw)) names.Add(raw, i);
+                    if (item.SourceGroup != null &&
+                        canonicalByMember.TryGetValue(item.SourceGroup + "." + raw,
+                            out string canonical))
+                    {
+                        names[canonical] = i;
+                        names[TelemetryNames.RelativeWheelName(canonical)] = i;
+                    }
                 }
-                tireFieldCount = data.Count;
-                indexedTireFields = data;
-                firstTireField = data.Count > 0 ? data[0] : null;
+
+                wheelFields = new WheelFieldIndex
+                {
+                    Source = data,
+                    Count = data.Count,
+                    First = data.Count > 0 ? data[0] : null,
+                    Names = names
+                };
+                WheelFieldIndexes[prefix] = wheelFields;
             }
+            Dictionary<string, int> tireFieldIndex = wheelFields.Names;
 
             // The selector also offers shared Body, Powertrain and Timing data.
             // Index their DataItem references, so changes in Value are visible
             // without repeatedly scanning every field during plotting.
             EnsureSharedFieldIndex();
 
-            foreach (string name in xyzSelection)
+            foreach (string selected in xyzSelection)
             {
-                // Resolve by symbolic name, never by an enum's compiled offset.
-                // This also supports extra tire fields introduced only in JSON.
-                if (tireFieldIndex.TryGetValue(name, out int index))
+                // A relative wheel measurement (SlipRatio) is resolved in
+                // the current wheel's data list. Historical FL_/FR_ choices
+                // are also treated as wheel-relative while plotting.
+                string relative = TelemetryNames.RelativeWheelName(selected);
+                if (relative != null &&
+                    tireFieldIndex.TryGetValue(relative, out int wheelIndex))
                 {
-                    xyzValues.Add(Convert.ToSingle(data[index].Value));
+                    xyzValues.Add(Convert.ToSingle(data[wheelIndex].Value));
                 }
-                else if (sharedFieldIndex.TryGetValue(name, out DataItem shared))
+                else if (selected != null &&
+                    sharedFieldIndex.TryGetValue(selected, out DataItem shared))
                 {
+                    xyzValues.Add(Convert.ToSingle(shared.Value));
+                }
+                else if (relative != null &&
+                    sharedFieldIndex.TryGetValue(relative, out shared))
+                {
+                    // Compatibility with old unprefixed global settings.
                     xyzValues.Add(Convert.ToSingle(shared.Value));
                 }
                 else
@@ -930,6 +977,11 @@ namespace Physics_Data_Debug
                     {
                         string key = item.Name.Substring(prefix.Length);
                         if (!sharedFieldIndex.ContainsKey(key)) sharedFieldIndex.Add(key, item);
+                        if (item.SourceGroup != null)
+                        {
+                            string canonical = TelemetryNames.Name(item.SourceGroup, key);
+                            if (!sharedFieldIndex.ContainsKey(canonical)) sharedFieldIndex.Add(canonical, item);
+                        }
                     }
                 }
             }

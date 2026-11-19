@@ -1,4 +1,4 @@
-namespace Physics_Data_Debug
+﻿namespace Physics_Data_Debug
 {
     partial class FormLogSettings
     {
@@ -1276,7 +1276,7 @@ namespace Physics_Data_Debug
             this.TimeLimitSecondsNumericUpDown.ForeColor = System.Drawing.Color.White;
             this.outputLayout.Controls.Add(this.TimeLimitSecondsNumericUpDown, 3, 1);
             this.sizeLimitLabel.Name = "sizeLimitLabel";
-            this.sizeLimitLabel.Text = "Total size (MiB)";
+            this.sizeLimitLabel.Text = "File size limit (MiB)";
             this.sizeLimitLabel.AutoSize = true;
             this.outputLayout.Controls.Add(this.sizeLimitLabel, 0, 2);
             this.TotalSizeMiBNumericUpDown.Name = "TotalSizeMiBNumericUpDown";

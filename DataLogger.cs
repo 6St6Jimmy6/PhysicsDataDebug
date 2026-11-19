@@ -9,25 +9,22 @@ using System.Text;
 namespace Physics_Data_Debug
 {
     /// <summary>
-    /// Four wheel-specific files per session, one common start timestamp.
-    /// Both limits are global to the session: wall-clock elapsed time and total
-    /// UTF-8 bytes written to all four logs (including their headers).
+    /// One synchronized telemetry row per memory sample, wheel fields prefixed
+    /// FL/FR/RL/RR and shared fields written once. Both stop limits apply to the
+    /// single output file (including its header).
     /// </summary>
     public sealed class DataLogger : IDisposable
     {
-        private static readonly string[] WheelPrefixes =
-            { TelemetryPrefix.FL, TelemetryPrefix.FR, TelemetryPrefix.RL, TelemetryPrefix.RR };
-        private static readonly string[] WheelFileNames =
-            { "FrontLeft", "FrontRight", "RearLeft", "RearRight" };
-        private readonly Dictionary<string, StreamWriter> writers =
-            new Dictionary<string, StreamWriter>(StringComparer.Ordinal);
+        private StreamWriter writer;
         private readonly Stopwatch timer = new Stopwatch();
         private LogData.Column[] columns;
+        private LogData.Column[] filterColumns;
         private LogRangeFilter[] filters;
         private char delimiter;
         private int limitSeconds;
         private long limitBytes;
         private long writtenBytes;
+        public string CurrentFilePath { get; private set; }
         public string LastStopReason { get; private set; } = "";
         public bool IsRunning => timer.IsRunning;
 
@@ -38,17 +35,21 @@ namespace Physics_Data_Debug
             if (columns.Length == 0)
                 throw new InvalidOperationException("Select at least one telemetry parameter to log.");
             var active = new List<LogRangeFilter>();
+            var selectedFilterColumns = new List<LogData.Column>();
             foreach (LogRangeFilter setting in LogSettings.Filters.Where(f => f.Enabled))
             {
-                if (LogData.FindDisplay(setting.Field) == null)
+                LogData.Column column = LogData.FindDisplay(setting.Field);
+                if (column == null)
                     throw new InvalidOperationException("Unknown log filter field: " + setting.Field);
                 if (setting.Minimum > setting.Maximum || double.IsNaN(setting.Minimum) ||
                     double.IsNaN(setting.Maximum) || double.IsInfinity(setting.Minimum) ||
                     double.IsInfinity(setting.Maximum))
                     throw new InvalidOperationException("Invalid range for " + setting.Field);
                 active.Add(setting.Copy());
+                selectedFilterColumns.Add(column);
             }
             filters = active.ToArray();
+            filterColumns = selectedFilterColumns.ToArray();
             delimiter = LogSettings.Delimiter;
             limitSeconds = LogSettings.TimeLimitSeconds;
             limitBytes = LogSettings.TotalSizeLimitBytes;
@@ -60,90 +61,69 @@ namespace Physics_Data_Debug
                 throw new InvalidOperationException("Select a log output folder.");
             Directory.CreateDirectory(folder);
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture);
-            string suffix = "";
+            string basename = "Telemetry_" + timestamp;
+            string path = Path.Combine(folder, basename + ".txt");
             int counter = 2;
-            while (WheelFileNames.Any(name => File.Exists(Path.Combine(folder,
-                       name + "_" + timestamp + suffix + ".txt"))))
-                suffix = "_" + (counter++).ToString(CultureInfo.InvariantCulture);
-
+            while (File.Exists(path))
+                path = Path.Combine(folder, basename + "_" + (counter++).ToString(CultureInfo.InvariantCulture) + ".txt");
             try
             {
+                writer = new StreamWriter(new FileStream(path, FileMode.CreateNew,
+                    FileAccess.Write, FileShare.Read), new UTF8Encoding(false)) { AutoFlush = true };
+                CurrentFilePath = path;
                 string header = LogData.HeaderLine(columns, delimiter);
-                foreach (string wheel in WheelPrefixes)
-                {
-                    int i = Array.IndexOf(WheelPrefixes, wheel);
-                    string path = Path.Combine(folder, WheelFileNames[i] + "_" + timestamp + suffix + ".txt");
-                    // CreateNew protects existing logs even if another process races us.
-                    var writer = new StreamWriter(new FileStream(path, FileMode.CreateNew,
-                        FileAccess.Write, FileShare.Read), new UTF8Encoding(false)) { AutoFlush = true };
-                    writers.Add(wheel, writer);
-                    writer.WriteLine(header);
-                    writtenBytes += LineBytes(header);
-                }
+                writer.WriteLine(header);
+                writtenBytes = LineBytes(header);
                 LiveData.Logging = true;
-                timer.Start();
+                timer.Restart();
                 CheckLimits();
             }
-            catch
-            {
-                StopSession();
-                throw;
-            }
+            catch { StopSession(); throw; }
         }
 
         public void StopSession(string reason = null)
         {
             timer.Stop();
-            foreach (StreamWriter writer in writers.Values) writer.Dispose();
-            writers.Clear();
+            if (writer != null) { writer.Dispose(); writer = null; }
             LiveData.Logging = false;
             if (!string.IsNullOrEmpty(reason)) LastStopReason = reason;
         }
 
-        private long LineBytes(string line) => Encoding.UTF8.GetByteCount(line) + Encoding.UTF8.GetByteCount(Environment.NewLine);
+        private static long LineBytes(string line) =>
+            Encoding.UTF8.GetByteCount(line) + Encoding.UTF8.GetByteCount(Environment.NewLine);
 
         private void CheckLimits()
         {
             if (limitSeconds > 0 && timer.Elapsed.TotalSeconds >= limitSeconds)
                 StopSession("Time limit reached");
             else if (limitBytes > 0 && writtenBytes >= limitBytes)
-                StopSession("Combined file size limit reached");
+                StopSession("File size limit reached");
         }
 
         public void LogToFile()
         {
-            if (!LiveData.Logging || !timer.IsRunning) return;
+            if (!LiveData.Logging || !timer.IsRunning || writer == null) return;
             CheckLimits();
             if (!timer.IsRunning) return;
-            foreach (string wheel in WheelPrefixes)
+            for (int i = 0; i < filters.Length; i++)
             {
-                if (!PassesFilters(wheel)) continue;
-                string line = LogData.ValuesLine(wheel, columns, delimiter);
-                long size = LineBytes(line);
-                if (limitBytes > 0 && writtenBytes + size > limitBytes)
-                {
-                    StopSession("Combined file size limit reached");
-                    return;
-                }
-                writers[wheel].WriteLine(line);
-                writtenBytes += size;
-                CheckLimits();
-                if (!timer.IsRunning) return;
-            }
-        }
-
-        private bool PassesFilters(string wheel)
-        {
-            foreach (LogRangeFilter filter in filters)
-            {
-                LogData.Column field = LogData.FindDisplay(filter.Field);
-                double value = field.ReadDouble(wheel);
-                if (filter.Absolute) value = Math.Abs(value);
-                bool inside = !double.IsNaN(value) && value >= filter.Minimum && value <= filter.Maximum;
+                double value = filterColumns[i].ReadDouble();
+                if (filters[i].Absolute) value = Math.Abs(value);
+                bool inside = !double.IsNaN(value) && !double.IsInfinity(value) &&
+                    value >= filters[i].Minimum && value <= filters[i].Maximum;
                 if (double.IsNaN(value) || double.IsInfinity(value) ||
-                    (filter.Outside ? inside : !inside)) return false;
+                    (filters[i].Outside ? inside : !inside)) return;
             }
-            return true;
+            string line = LogData.ValuesLine(columns, delimiter);
+            long size = LineBytes(line);
+            if (limitBytes > 0 && writtenBytes + size > limitBytes)
+            {
+                StopSession("File size limit reached");
+                return;
+            }
+            writer.WriteLine(line);
+            writtenBytes += size;
+            CheckLimits();
         }
 
         public void Dispose() => StopSession();

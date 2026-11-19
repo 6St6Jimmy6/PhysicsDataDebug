@@ -62,11 +62,11 @@ Load CSV/TXT to import them in a new session.
 
 ## Validation checklist
 
-- Load `FrontLeftWreckfestDebugLog.txt` with `;` separators and decimal commas;
-  choose SlipAngleDeg / LateralFriction / CamberAngleDeg.
+- Load an older `FrontLeftWreckfestDebugLog.txt` with `;` separators and decimal commas;
+  select `FL_SlipAngleDeg`, `FL_LateralFriction`, and `FL_CamberAngleDeg` after import.
 - Load a second file, verify All In One vs Separate, and uncheck each file.
 - Change each of X, Y, and Z, chart type and palette, then Apply Settings.
-- Enable an extra `VerticalLoad` filter and tighten Min/Max; verify the visible
+- Enable an extra `FL_VerticalLoad` filter and tighten Min/Max; verify the visible
   count drops, then disable the filter and verify the points return.
 - Set a custom X/Y range, test Z color limits, and save/reload a JSON profile.
 - Reopen the app, load a log, verify last saved axes and palette apply.
@@ -115,3 +115,19 @@ When a dataset, filter, selected column, axis or chart type is changed and the c
   values take precedence until you restore factory defaults or change them.
   `Factory Defaults.json` snapshots are only generated once by the app; delete
   the corresponding existing factory snapshot to regenerate with the new defaults.
+
+## Combined telemetry files (current logger)
+
+The live logger creates one synchronized `Telemetry_yyyyMMdd_HHmmss.txt` file.
+Import it normally using **Load CSV / TXT**. All prefixed channels become available
+in X/Y/Z and filter selectors, for example `FL_SlipAngleDeg`,
+`FR_LateralFriction`, `RR_VerticalLoad`, and `TIME_RaceTime`.
+
+Every dropdown shows only prefixed names. Explicitly choosing `FL_...`,
+`FR_...`, `RL_...`, or `RR_...` displays that exact wheel channel, and
+`TIME_RaceTime` or another shared signal may be used with it. The same
+combined file provides all four wheel channels. To compare them, select the
+relevant channels explicitly. Older files with unprefixed headers are accepted
+and normalized in memory during import; the original files remain unchanged.
+
+See [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).

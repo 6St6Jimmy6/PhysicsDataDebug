@@ -1,4 +1,4 @@
-# Form4Wheels chart filters
+﻿# Form4Wheels chart filters
 
 `Form4Wheels` has **13 independent Min/Max filters**. All enabled filters must
 pass for a wheel sample to appear in a chart. If none are enabled, no Min/Max
@@ -49,6 +49,14 @@ In **Form4WheelsSettings**, use **Separate, Front/Rear or All In One** to
 record all four tires in four, two or one chart area respectively. Choose
 **Front Left, Front Right, Rear Left or Rear Right** to record and display
 only that tire, using the full single chart area.
+
+In all-wheel layouts the X/Y/Z settings and the ten extra filter lists show
+wheel-relative measurements once, such as `SlipAngleDeg` or `SlipRatio`, rather
+than separate `FL_...`, `FR_...`, `RL_...`, `RR_...` choices. Selecting a
+single tire switches wheel field choices to that tire's prefix (for example,
+`RL_SlipRatio`), while shared `ENG_`, `BODY_`, `TIME_`, and other category names
+remain prefixed. Saved choices automatically follow the layout when it changes;
+this doesn't rename the actual per-wheel CSV/log headers.
 
 Apply Chart Settings to rebuild the chart with the chosen layout. Existing
 history for other tires is preserved but hidden while a single-tire mode is

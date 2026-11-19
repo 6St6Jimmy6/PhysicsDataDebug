@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,8 +39,13 @@ namespace Physics_Data_Debug
             LoadOtherDefaults();
             InitializeLiveAppearance();
             ComboBoxBehaviors.EnableSearch(this);
+            // Rebuild the visible axis choices whenever the wheel layout changes.
+            // One field represents all plotted wheels in multi-wheel layouts.
+            WheelChartsSelectComboBox.SelectedIndexChanged +=
+                (sender, args) => RefreshAxisChoices();
             JsonFormSettings.AttachProfileButton(this, () =>
             {
+                RefreshAxisChoices();
                 AbsoluteValues = AbsoluteValuesCheckBox.Checked;
                 ApplySettings(clearHistory: false);
             });
@@ -57,6 +62,7 @@ namespace Physics_Data_Debug
             using (var settings = new Form4WheelsSettings())
             {
                 JsonFormSettings.LoadAllSettings(settings);
+                settings.RefreshAxisChoices();
                 AbsoluteValues = settings.AbsoluteValuesCheckBox.Checked;
                 settings.ApplyControlsToModel();
             }
@@ -84,19 +90,47 @@ namespace Physics_Data_Debug
             AxisSelectionComboboxAdd(Y1SelectionComboBox);
             AxisSelectionComboboxAdd(Z1SelectionComboBox);
         }
-        /// <summary>Offer both built-in and JSON-configured wheel measurements.</summary>
-        public static void AxisSelectionComboboxAdd(ComboBox axisSelectionCombobox)
+        /// <summary>
+        /// Four Wheels uses a *measurement* on each wheel, rather than one
+        /// independently selected FL/FR/RL/RR channel. Keep the shared
+        /// category prefixes (ENG_, BODY_, etc.) in every layout.
+        /// </summary>
+        public static void AxisSelectionComboboxAdd(ComboBox axisSelectionCombobox,
+                                                    string wheelLayout = null)
         {
-            foreach (string names in GameMemoryConfig.TelemetrySelections)
+            string saved = axisSelectionCombobox.SelectedItem as string ??
+                axisSelectionCombobox.Text;
+            string layout = wheelLayout ?? WheelChartsSelect;
+            axisSelectionCombobox.BeginUpdate();
+            try
             {
-                axisSelectionCombobox.Items.Add(names);
+                axisSelectionCombobox.Items.Clear();
+                axisSelectionCombobox.Items.AddRange(
+                    FourWheelsFieldSelection.Options(layout).Cast<object>().ToArray());
+                axisSelectionCombobox.SelectedItem =
+                    FourWheelsFieldSelection.MatchAvailable(saved,
+                        axisSelectionCombobox.Items.Cast<string>());
             }
-            foreach (string name in GameMemoryConfig.Members("WF_TireDataOffset"))
+            finally
             {
-                if (!axisSelectionCombobox.Items.Contains(name))
-                    axisSelectionCombobox.Items.Add(name);
+                axisSelectionCombobox.EndUpdate();
             }
         }
+
+        private void RefreshAxisChoices()
+        {
+            string layout = WheelChartsSelectComboBox.Text;
+            AxisSelectionComboboxAdd(X1SelectionComboBox, layout);
+            AxisSelectionComboboxAdd(Y1SelectionComboBox, layout);
+            AxisSelectionComboboxAdd(Z1SelectionComboBox, layout);
+        }
+
+        private static void SelectAxis(ComboBox box, string selection)
+        {
+            box.SelectedItem = FourWheelsFieldSelection.MatchAvailable(
+                selection, box.Items.Cast<string>());
+        }
+
         private void LoadOtherDefaults()
         {
             gradientStepsNumericUpDown.Value = ClampGradientSteps(
@@ -120,10 +154,11 @@ namespace Physics_Data_Debug
                 SchemeComboBox.SelectedItem = Scheme;
                 WheelChartsSelectComboBox.SelectedItem = WheelChartsSelect;
             }
+            RefreshAxisChoices();
         }
         private void LoadX1Defaults()
         {
-            X1SelectionComboBox.SelectedItem = X1Selection;
+            SelectAxis(X1SelectionComboBox, X1Selection);
 
             // Default X1 selections
             if (X1DefaultsCheckBox.Checked == true)
@@ -179,7 +214,7 @@ namespace Physics_Data_Debug
         }
         private void LoadY1Defaults()
         {
-            Y1SelectionComboBox.SelectedItem = Y1Selection;
+            SelectAxis(Y1SelectionComboBox, Y1Selection);
 
             // Default Y1 selections
             if (Y1DefaultsCheckBox.Checked == true)
@@ -235,7 +270,7 @@ namespace Physics_Data_Debug
         }
         private void LoadZ1Defaults()
         {
-            Z1SelectionComboBox.SelectedItem = Z1Selection;
+            SelectAxis(Z1SelectionComboBox, Z1Selection);
             ZLegendWidthNumericUpDown.Value = Math.Max(ZLegendWidthNumericUpDown.Minimum,
                 Math.Min(ZLegendWidthNumericUpDown.Maximum, LegendWidthPixels));
             ZLegendDecimalsNumericUpDown.Value = Math.Max(ZLegendDecimalsNumericUpDown.Minimum,
@@ -304,6 +339,7 @@ namespace Physics_Data_Debug
         {
             SettingsOpen = true;
             JsonFormSettings.LoadAllSettings(this);
+            RefreshAxisChoices();
             AbsoluteValues = AbsoluteValuesCheckBox.Checked;
             ApplySettings(clearHistory: false);
         }
@@ -350,7 +386,7 @@ namespace Physics_Data_Debug
 
                 form4Wheels.SetChartsForForm();
                 form4Wheels.ApplyLegendWidth();
-                form4Wheels.UpdateAllLimiters();
+                form4Wheels.RefreshFilterFieldChoices();
                 LoadValuesInTextBox();
                 JsonFormSettings.SaveAllSettings(this);
             }
@@ -363,6 +399,7 @@ namespace Physics_Data_Debug
         private void ApplyControlsToModel()
         {
             ApplyOtherSettings();
+            RefreshAxisChoices();
             ApplyXAxisSettings();
             ApplyYAxisSettings();
             ApplyZAxisSettings();
@@ -397,7 +434,8 @@ namespace Physics_Data_Debug
         private void ApplyXAxisSettings()
         {
             // X-Axis
-            X1Selection = X1SelectionComboBox.Text;
+            X1Selection = FourWheelsFieldSelection.MatchAvailable(
+                X1SelectionComboBox.Text, X1SelectionComboBox.Items.Cast<string>());
             if (X1DefaultsCheckBox.Checked == true)
             {
                 X1Min = X1DefaultMin;
@@ -446,7 +484,8 @@ namespace Physics_Data_Debug
         private void ApplyYAxisSettings()
         {
             // Y-Axis
-            Y1Selection = Y1SelectionComboBox.Text;
+            Y1Selection = FourWheelsFieldSelection.MatchAvailable(
+                Y1SelectionComboBox.Text, Y1SelectionComboBox.Items.Cast<string>());
             if (Y1DefaultsCheckBox.Checked == true)
             {
                 Y1Min = Y1DefaultMin;
@@ -496,7 +535,8 @@ namespace Physics_Data_Debug
         {
             LegendWidthPixels = (int)ZLegendWidthNumericUpDown.Value;
             ZLegendLabelDecimals = (int)ZLegendDecimalsNumericUpDown.Value;
-            Z1Selection = Z1SelectionComboBox.Text;
+            Z1Selection = FourWheelsFieldSelection.MatchAvailable(
+                Z1SelectionComboBox.Text, Z1SelectionComboBox.Items.Cast<string>());
             if (Z1DefaultsCheckBox.Checked)
             {
                 Z1Min = Z1DefaultMin;

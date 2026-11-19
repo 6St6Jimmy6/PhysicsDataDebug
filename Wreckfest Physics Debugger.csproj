@@ -7,7 +7,7 @@
     <ProjectGuid>{9B846937-B82F-4FD4-9F92-F379FB3A9E2C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Physics_Data_Debug</RootNamespace>
-    <AssemblyName>Physics_Data_Debug_v0.10</AssemblyName>
+    <AssemblyName>Physics_Data_Debug_Suspension_2026</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <LangVersion>8.0</LangVersion>
     <FileAlignment>512</FileAlignment>
@@ -96,6 +96,8 @@
     <Compile Include="GameMemoryConfig.cs" />
     <Compile Include="WreckfestVersionDetector.cs" />
     <Compile Include="CalculatedTelemetry.cs" />
+    <Compile Include="TelemetryNames.cs" />
+    <Compile Include="FourWheelsFieldSelection.cs" />
     <Compile Include="TelemetryFormulas.cs" />
     <Compile Include="DataItem.cs" />
     <Compile Include="DataLogger.cs" />

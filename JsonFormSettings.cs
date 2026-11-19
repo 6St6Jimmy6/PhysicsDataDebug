@@ -486,9 +486,16 @@ namespace Physics_Data_Debug
                     {
                         // Older registry and early JSON autosaves used indexes.
                         // Continue to read those, but prefer stable named keys.
-                        if ((values.TryGetValue(CheckedItemKey(checks, i), out string text) ||
-                             values.TryGetValue(child.Name + "[" + i.ToString(Culture) + "]", out text)) &&
-                            TryBool(text, out bool selected))
+                        string text;
+                        bool hasValue = values.TryGetValue(CheckedItemKey(checks, i), out text);
+                        // Migration: the original four-file logger saved one
+                        // selection per raw field. Apply that former choice to
+                        // all four corresponding wheel columns in the new logger.
+                        if (!hasValue && checks.Items[i] is LogData.Column logColumn)
+                            hasValue = values.TryGetValue(child.Name + ".Items." + logColumn.OldDisplay, out text);
+                        if (!hasValue)
+                            hasValue = values.TryGetValue(child.Name + "[" + i.ToString(Culture) + "]", out text);
+                        if (hasValue && TryBool(text, out bool selected))
                             checks.SetItemChecked(i, selected);
                     }
                 }
@@ -519,6 +526,52 @@ namespace Physics_Data_Debug
 
         private static void RestoreComboBox(ComboBox combo, string saved)
         {
+            // Upgrade saved filter choices from the original four-file logger.
+            if (combo.Name.StartsWith("logFilter", StringComparison.Ordinal) &&
+                combo.Name.EndsWith("Field", StringComparison.Ordinal))
+            {
+                var canonicalField = LogData.FindDisplay(saved);
+                if (canonicalField != null) saved = canonicalField.DisplayName;
+            }
+            // Four Wheels is different from logging and Offline Chart:
+            // multi-wheel plots use a single wheel-relative measurement name.
+            // Only a single-wheel layout displays the chosen wheel's prefix.
+            bool fourWheelsAxis = combo.FindForm() is Form4WheelsSettings &&
+                (combo.Name == "X1SelectionComboBox" ||
+                 combo.Name == "Y1SelectionComboBox" ||
+                 combo.Name == "Z1SelectionComboBox");
+            bool fourWheelsFilter = combo.Name.StartsWith("ChartFilter", StringComparison.Ordinal) &&
+                combo.Name.EndsWith("Selection", StringComparison.Ordinal);
+            if (fourWheelsAxis || fourWheelsFilter)
+                saved = FourWheelsFieldSelection.MatchAvailable(saved,
+                    combo.Items.Cast<object>().Select(combo.GetItemText));
+
+            // Previously saved chart axes/filters may still use old raw
+            // telemetry members. Restore a supported item, never add a
+            // duplicate legacy choice to the dropdown.
+            bool telemetryField = combo.Name == "X1SelectionComboBox" ||
+                combo.Name == "Y1SelectionComboBox" ||
+                combo.Name == "Z1SelectionComboBox" ||
+                combo.Name == "xColumnComboBox" ||
+                combo.Name == "yColumnComboBox" ||
+                combo.Name == "zColumnComboBox" ||
+                combo.Name == "selectionComboBox" ||
+                ((combo.Name.StartsWith("ChartFilter", StringComparison.Ordinal) ||
+                  combo.Name.StartsWith("OfflineFilter", StringComparison.Ordinal)) &&
+                 combo.Name.EndsWith("Selection", StringComparison.Ordinal)) ||
+                (combo.Name.StartsWith("logFilter", StringComparison.Ordinal) &&
+                 combo.Name.EndsWith("Field", StringComparison.Ordinal));
+            if (telemetryField && !combo.Items.Contains(saved))
+            {
+                string canonical = TelemetryNames.Canonicalize(saved);
+                if (combo.Items.Contains(canonical)) saved = canonical;
+                else
+                    foreach (string wheel in TelemetryNames.Wheels)
+                    {
+                        canonical = TelemetryNames.Canonicalize(saved, wheel);
+                        if (combo.Items.Contains(canonical)) { saved = canonical; break; }
+                    }
+            }
             // Old "Default" palette is now displayed as "Blue Red".
             if ((combo.Name == "SchemeComboBox" || combo.Name == "schemeComboBox") &&
                 string.Equals(saved, "Default", StringComparison.OrdinalIgnoreCase) &&

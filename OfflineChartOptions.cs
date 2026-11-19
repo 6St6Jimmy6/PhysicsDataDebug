@@ -6,9 +6,9 @@ namespace Physics_Data_Debug
 {
     internal sealed class OfflineChartOptions
     {
-        public string X = "SlipAngleDeg";
-        public string Y = "LateralFriction";
-        public string Z = "VerticalLoad";
+        public string X = "FL_SlipAngleDeg";
+        public string Y = "FL_LateralFriction";
+        public string Z = "FL_VerticalLoad";
         public bool Absolute = true;
         public string Scheme = "Colorblind";
         public int Bands = 10;

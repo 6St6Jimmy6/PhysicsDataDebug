@@ -2,95 +2,116 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace Physics_Data_Debug
 {
-    /// <summary>Every telemetry field exposed by the active game-memory JSON, including calculated fields.</summary>
+    /// <summary>Canonical, uniquely named selectable columns for a single synchronized telemetry file.</summary>
     internal static class LogData
     {
         internal sealed class Column
         {
             public string Key { get; }
-            public string DisplayName { get; }
+            public string DisplayName => Header;
             public string Header { get; internal set; }
             public string Member { get; }
+            public string Group { get; }
+            public string Wheel { get; }
             public GameMemoryField Field { get; }
-            private readonly string prefix;
+            public string OldDisplay { get; }
 
-            public Column(string group, string displayGroup, string member, string targetPrefix)
+            internal Column(string group, string label, string member, string wheel)
             {
-                Key = group + "." + member;
+                Group = group;
                 Member = member;
-                // When JSON exposes a Body_* alias, show that exact selection
-                // name; otherwise use the raw or calculated member verbatim.
-                string selectionName = targetPrefix == TelemetryPrefix.Body &&
-                    GameMemoryConfig.TelemetrySelections.Contains("Body_" + member)
-                    ? "Body_" + member : member;
-                DisplayName = displayGroup + " / " + selectionName;
-                Header = selectionName;
+                Wheel = wheel;
+                Key = group + "." + member + (wheel == null ? "" : "." + wheel);
+                Header = TelemetryNames.Name(group, member, wheel);
+                OldDisplay = label + " / " + member;
                 Field = GameMemoryConfig.Field(group, member);
-                prefix = targetPrefix;
             }
 
-            public object Read(string wheel)
+            public object Read()
             {
-                try { return LiveData.GetFullListDataValue(prefix == null ? wheel : prefix, Field); }
+                string prefix = Wheel ?? (Group == "WF_TimeDataOffset" ? TelemetryPrefix.Timing :
+                    (Group == "WF_EngineDataOffset" || Group == "WF_DifferentialDataOffset"
+                    ? TelemetryPrefix.Powertrain : TelemetryPrefix.Body));
+                try { return LiveData.GetFullListDataValue(prefix, Field); }
                 catch (KeyNotFoundException) { return double.NaN; }
                 catch (InvalidOperationException) { return double.NaN; }
             }
 
-            public double ReadDouble(string wheel) => Convert.ToDouble(Read(wheel), CultureInfo.InvariantCulture);
+            public double ReadDouble() => Convert.ToDouble(Read(), CultureInfo.InvariantCulture);
             public override string ToString() => DisplayName;
         }
 
-        private static readonly (string Group, string Label, string Prefix)[] Categories =
+        private static readonly (string Group, string Label)[] Categories =
         {
-            ("WF_TimeDataOffset", "Timing", TelemetryPrefix.Timing),
-            ("WF_BodyRotationDataOffset", "Body rotation", TelemetryPrefix.Body),
-            ("WF_BodyAccelDataOffset", "Body acceleration", TelemetryPrefix.Body),
-            ("WF_AeroDataOffset", "Aerodynamics", TelemetryPrefix.Body),
-            ("WF_MassDataOffset", "Body mass", TelemetryPrefix.Body),
-            ("WF_EngineDataOffset", "Engine", TelemetryPrefix.Powertrain),
-            ("WF_DifferentialDataOffset", "Differential", TelemetryPrefix.Powertrain),
-            ("WF_TireDataOffset", "Tire", null),
-            ("WF_Suspension1DataOffset", "Suspension 1", null),
-            ("WF_SuspensionGeometryDataOffset", "Suspension geometry", null),
-            ("WF_Suspension2DataOffset", "Suspension 2", null)
+            ("WF_TimeDataOffset", "Timing"),
+            ("WF_BodyRotationDataOffset", "Body rotation"),
+            ("WF_BodyAccelDataOffset", "Body acceleration"),
+            ("WF_AeroDataOffset", "Aerodynamics"),
+            ("WF_MassDataOffset", "Body mass"),
+            ("WF_EngineDataOffset", "Engine"),
+            ("WF_DifferentialDataOffset", "Differential"),
+            ("WF_TireDataOffset", "Tire"),
+            ("WF_Suspension1DataOffset", "Suspension 1"),
+            ("WF_SuspensionGeometryDataOffset", "Suspension geometry"),
+            ("WF_Suspension2DataOffset", "Suspension 2")
         };
-
         private static Column[] columns;
         private static Dictionary<string, Column> byDisplay;
 
         public static IReadOnlyList<Column> AllColumns
         {
-            get
-            {
-                if (columns == null) RebuildColumns();
-                return columns;
-            }
+            get { if (columns == null) RebuildColumns(); return columns; }
         }
 
-        // Call after a game-memory JSON profile is switched, while sampling is stopped.
         public static void RebuildColumns()
         {
             var result = new List<Column>();
             foreach (var category in Categories)
                 foreach (string member in GameMemoryConfig.Members(category.Group))
-                    result.Add(new Column(category.Group, category.Label, member, category.Prefix));
-            foreach (var group in result.GroupBy(c => c.Header, StringComparer.Ordinal))
-                if (group.Count() > 1)
-                    foreach (Column col in group)
-                        col.Header = col.DisplayName.Substring(0, col.DisplayName.IndexOf(" / ", StringComparison.Ordinal))
-                            .Replace(" ", "") + "_" + col.Member;
+                {
+                    if (TelemetryNames.IsWheelGroup(category.Group))
+                    {
+                        foreach (string wheel in TelemetryNames.Wheels)
+                            result.Add(new Column(category.Group, category.Label, member, wheel));
+                    }
+                    else result.Add(new Column(category.Group, category.Label, member, null));
+                }
+            // The two suspension blocks contain fields with identical names.
+            // Disambiguate only collisions; simple names stay FL_SlipRatio etc.
+            foreach (var duplicate in result.GroupBy(c => c.Header, StringComparer.Ordinal)
+                .Where(g => g.Count() > 1))
+                foreach (Column column in duplicate)
+                {
+                    string prefix = column.Wheel ?? TelemetryNames.PrefixForGroup(column.Group);
+                    column.Header = prefix + "_" + TelemetryNames.CollisionGroup(column.Group) +
+                        TelemetryNames.MemberAlias(column.Group, column.Member);
+                }
+            // Custom JSON aliases must not be allowed to create an ambiguous log header.
+            var collisions = result.GroupBy(c => c.Header, StringComparer.Ordinal).Where(g => g.Count() > 1).ToList();
+            if (collisions.Count > 0)
+                throw new InvalidOperationException("Duplicate telemetry header: " + collisions[0].Key +
+                    ". Adjust telemetryAliases in WreckfestGameMemoryConfig.json.");
             columns = result.ToArray();
-            byDisplay = columns.ToDictionary(c => c.DisplayName, StringComparer.Ordinal);
+            byDisplay = columns.ToDictionary(c => c.Header, StringComparer.Ordinal);
         }
 
         public static Column FindDisplay(string display)
         {
             if (columns == null) RebuildColumns();
-            return display != null && byDisplay.TryGetValue(display, out Column col) ? col : null;
+            if (display != null && byDisplay.TryGetValue(display, out Column column)) return column;
+            // Migrates both the old group/field labels and unprefixed names.
+            if (!string.IsNullOrWhiteSpace(display))
+            {
+                string canonical = TelemetryNames.Canonicalize(display);
+                if (byDisplay.TryGetValue(canonical, out column)) return column;
+            }
+            // Upgrade old saved filter labels. Without a wheel name they now
+            // resolve to FL_*, as an explicit, predictable migration default.
+            return columns.FirstOrDefault(c => c.OldDisplay == display &&
+                (c.Wheel == null || c.Wheel == "FL"));
         }
 
         public static Column[] SelectedColumns() => AllColumns.Where(c =>
@@ -99,8 +120,8 @@ namespace Physics_Data_Debug
         public static string HeaderLine(IEnumerable<Column> selected, char delimiter) =>
             string.Join(delimiter.ToString(), selected.Select(c => c.Header));
 
-        public static string ValuesLine(string wheel, IEnumerable<Column> selected, char delimiter) =>
+        public static string ValuesLine(IEnumerable<Column> selected, char delimiter) =>
             string.Join(delimiter.ToString(), selected.Select(c =>
-                Convert.ToString(c.Read(wheel), CultureInfo.InvariantCulture)));
+                Convert.ToString(c.Read(), CultureInfo.InvariantCulture)));
     }
 }

@@ -1,4 +1,4 @@
-# Configuring Wreckfest game versions, offsets and chart defaults
+﻿# Configuring Wreckfest game versions, offsets and chart defaults
 
 Game-memory configurations now live in the same user-editable directory as
 the form preferences:
@@ -160,10 +160,14 @@ saved through the UI still take priority until you reset/apply defaults.
 `absoluteValueFields` is also editable: it lists the field names for which
 the axis/limiter defaults should use absolute-value behavior.
 
-`telemetrySelections` is an ordered list of names shown in the Four Wheels
-axis selectors (including calculated names and `None` / `RaceTime`). These
-are **names, not hexadecimal offsets**. Any new raw tire field added under
-`enumValues.WF_TireDataOffset` is also offered automatically.
+`telemetrySelections` records the canonical prefixed telemetry names
+in the supplied JSON. The live Four Wheels X/Y/Z selectors are built from
+the available configured fields, showing each wheel measurement once without
+FL_/FR_/RL_/RR_ in multi-wheel layouts, and showing only the chosen wheel's
+prefix in single-wheel layouts. Global fields keep their category prefixes.
+The logger and Offline Chart retain the full prefixed channel names.
+These are **names, not hexadecimal offsets**. Any new raw tire field added under
+`enumValues.WF_TireDataOffset` is offered automatically.
 
 The `gForce` block has two options:
 

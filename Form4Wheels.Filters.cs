@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -99,6 +99,30 @@ namespace Physics_Data_Debug
             this.Resize += (sender, args) => SizeFilterGroups();
         }
 
+        /// <summary>
+        /// Refresh all thirteen selectors when the chart layout changes.
+        /// Preserve each extra filter's chosen measurement and numeric bounds.
+        /// The first three selectors continue to follow the current X/Y/Z axes.
+        /// </summary>
+        public void RefreshFilterFieldChoices()
+        {
+            if (filterRows == null) return;
+            bool wasRefreshing = refreshingFilters;
+            refreshingFilters = true;
+            try
+            {
+                foreach (ChartLimiterRow row in filterRows)
+                    Form4WheelsSettings.AxisSelectionComboboxAdd(row.SelectionBox);
+            }
+            finally
+            {
+                refreshingFilters = wasRefreshing;
+            }
+
+            UpdateFollowedAxes();
+            UpdateAllLimiters();
+        }
+
         private void SizeFilterGroups()
         {
             if (filterRows == null || filterRows.Length != 13) return;
@@ -154,7 +178,7 @@ namespace Physics_Data_Debug
 
             // Only fields explicitly configured for absolute filtering use abs().
             // The remaining measurements retain their signed default bounds.
-            bool absolute = GameMemoryConfig.AbsoluteValueFields.Contains(row.SelectedField);
+            bool absolute = GameMemoryConfig.IsAbsoluteValueField(row.SelectedField);
             List<object> defaults = SelectionDefaults(row.SelectedField, absolute);
             double maximum = Convert.ToDouble(defaults[0]);
             double minimum = Convert.ToDouble(defaults[1]);

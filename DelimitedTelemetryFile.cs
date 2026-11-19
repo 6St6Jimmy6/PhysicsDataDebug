@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Linq;
 
 namespace Physics_Data_Debug
 {
@@ -23,6 +24,7 @@ namespace Physics_Data_Debug
         public string[] Headers { get; private set; }
         public IReadOnlyList<double[]> Rows { get; private set; }
         private Dictionary<string, int> indices;
+        private Dictionary<int, LogData.Column> virtualFields;
         private int rawColumnCount;
         public int RawColumnCount => rawColumnCount;
 
@@ -30,7 +32,58 @@ namespace Physics_Data_Debug
 
         // The index may refer to a physical column or a virtual, calculated
         // column. Virtual columns are never stored in Rows.
-        public bool TryIndex(string field, out int index) => indices.TryGetValue(field ?? "", out index);
+        public bool TryIndex(string field, out int index)
+        {
+            if (indices.TryGetValue(field ?? "", out index)) return true;
+            // Compatibility: older chart profiles stored wheel-relative axes.
+            // Resolve them to FL when a single value is requested. Redraw can
+            // separately expand relative axes across all available wheels.
+            if (!string.IsNullOrWhiteSpace(field) &&
+                !TelemetryNames.Wheels.Any(w => field.StartsWith(w + "_", StringComparison.OrdinalIgnoreCase)))
+                return indices.TryGetValue("FL_" + field, out index);
+            return false;
+        }
+
+        internal bool TryWheelIndex(string field, string wheel, out int index)
+        {
+            // An explicitly prefixed field always refers to exactly that source.
+            if (wheel != null && !string.IsNullOrWhiteSpace(field) &&
+                !TelemetryNames.Wheels.Any(w => field.StartsWith(w + "_", StringComparison.OrdinalIgnoreCase)))
+            {
+                // Don't silently substitute FL values into a missing FR/RL/RR
+                // channel; shared columns are allowed as-is.
+                return indices.TryGetValue(wheel + "_" + field, out index) ||
+                    indices.TryGetValue(field, out index);
+            }
+            return TryIndex(field, out index);
+        }
+
+        internal IReadOnlyList<string> AvailableWheels(string x, string y, string z)
+        {
+            string[] axes = { x, y, z };
+            if (axes.Any(field => TelemetryNames.Wheels.Any(w =>
+                field != null && field.StartsWith(w + "_", StringComparison.OrdinalIgnoreCase))))
+                return new string[0]; // explicit channel: plot exactly one dataset
+            var wheels = TelemetryNames.Wheels.Where(w =>
+                axes.All(field => TryWheelIndex(field, w, out int ignored))).ToArray();
+            // A file that only contains shared fields is not four datasets.
+            return wheels.Length > 1 && axes.Any(field =>
+                indices.ContainsKey("FL_" + field)) ? wheels : new string[0];
+        }
+
+        private static bool TryDependencyIndex(Dictionary<string, int> lookup,
+            LogData.Column column, string dependency, out int index)
+        {
+            // A formula may use another field in the same source group, or
+            // (e.g. acceleration) a shared field in a different source group.
+            string sameGroup = TelemetryNames.Name(column.Group, dependency, column.Wheel);
+            if (lookup.TryGetValue(sameGroup, out index)) return true;
+            string canonical = TelemetryNames.Canonicalize(dependency, column.Wheel);
+            return lookup.TryGetValue(canonical, out index);
+        }
+
+        private bool TryDependencyIndex(LogData.Column column, string dependency, out int index) =>
+            TryDependencyIndex(indices, column, dependency, out index);
 
         internal RowReader CreateReader() => new RowReader(this);
 
@@ -76,9 +129,12 @@ namespace Physics_Data_Debug
                 double result;
                 try
                 {
-                    result = TelemetryFormulas.Calculate(file.Headers[index], name =>
+                    if (!file.virtualFields.TryGetValue(index, out LogData.Column field))
+                        return double.NaN;
+                    result = TelemetryFormulas.Calculate(field.Member, dependencyName =>
                     {
-                        if (!file.TryIndex(name, out int dependency)) return double.NaN;
+                        if (!file.TryDependencyIndex(field, dependencyName, out int dependency))
+                            return double.NaN;
                         return Value(dependency);
                     });
                 }
@@ -110,15 +166,18 @@ namespace Physics_Data_Debug
 
                 var names = new string[headerCells.Count];
                 var indices = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+                string sourceWheel = TelemetryNames.WheelFromFilename(path);
                 for (int i = 0; i < names.Length; i++)
                 {
-                    string name = headerCells[i].Trim().TrimStart('\uFEFF');
-                    if (name.Length == 0) name = "Column " + (i + 1).ToString(CultureInfo.InvariantCulture);
-                    string baseName = name;
-                    int suffix = 2;
-                    while (indices.ContainsKey(name)) name = baseName + " (" + suffix++ + ")";
+                    string original = headerCells[i].Trim().TrimStart('\uFEFF');
+                    if (original.Length == 0) original = "Column" + (i + 1).ToString(CultureInfo.InvariantCulture);
+                    string name = TelemetryNames.Canonicalize(original, sourceWheel);
                     names[i] = name;
-                    indices.Add(name, i);
+                    // If a file contains both old and new headers, show only
+                    // one canonical field. Prefer the actual prefixed column.
+                    if (!indices.ContainsKey(name) ||
+                        string.Equals(original, name, StringComparison.OrdinalIgnoreCase))
+                        indices[name] = i;
                 }
 
                 var rows = new List<double[]>();
@@ -144,13 +203,21 @@ namespace Physics_Data_Debug
                 // If the original CSV already has that field, its values win.
                 // Formulas stay virtual; this does not modify the imported rows.
                 var allNames = new List<string>(names);
-                foreach (string formula in TelemetryFormulas.Names)
+                var virtualFields = new Dictionary<int, LogData.Column>();
+                // Generate derived fields with the same public names as live
+                // telemetry and the logger, including shared ENG_/ACC_/BODY_
+                // formulas. Only expose those whose dependencies can be read.
+                foreach (LogData.Column column in LogData.AllColumns)
                 {
-                    if (indices.ContainsKey(formula)) continue;
-                    if (!TelemetryFormulas.CanResolve(formula,
-                        candidate => indices.ContainsKey(candidate))) continue;
-                    indices.Add(formula, allNames.Count);
-                    allNames.Add(formula);
+                    if (indices.ContainsKey(column.Header) ||
+                        !CalculatedTelemetry.IsCalculated(column.Group, column.Member) ||
+                        !TelemetryFormulas.IsCalculated(column.Member)) continue;
+                    if (!TelemetryFormulas.CanResolve(column.Member, dependency =>
+                        TryDependencyIndex(indices, column, dependency, out int ignored))) continue;
+                    int at = allNames.Count;
+                    indices.Add(column.Header, at);
+                    allNames.Add(column.Header);
+                    virtualFields.Add(at, column);
                 }
                 return new DelimitedTelemetryFile
                 {
@@ -159,7 +226,8 @@ namespace Physics_Data_Debug
                     Headers = allNames.ToArray(),
                     Rows = rows,
                     rawColumnCount = names.Length,
-                    indices = indices
+                    indices = indices,
+                    virtualFields = virtualFields
                 };
             }
         }

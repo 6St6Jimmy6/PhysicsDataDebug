@@ -153,7 +153,7 @@ namespace Physics_Data_Debug
         {
             using (var dialog = new FolderBrowserDialog
             {
-                Description = "Choose folder for the four wheel log files",
+                Description = "Choose folder for the combined telemetry log file",
                 ShowNewFolderButton = true
             })
             {

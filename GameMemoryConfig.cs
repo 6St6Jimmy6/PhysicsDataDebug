@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -92,6 +92,10 @@ namespace Physics_Data_Debug
         public static string FilePath => Path.Combine(SettingsDirectory, ActiveFileName);
         public static IReadOnlyList<string> AbsoluteValueFields { get; private set; } = new string[0];
         public static IReadOnlyList<string> TelemetrySelections { get; private set; } = new string[0];
+        public static IReadOnlyDictionary<string, string> TelemetryPrefixes { get; private set; } =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        public static IReadOnlyDictionary<string, string> TelemetryAliases { get; private set; } =
+            new Dictionary<string, string>(StringComparer.Ordinal);
         private static Dictionary<string, string[]> orderedMembers =
             new Dictionary<string, string[]>(StringComparer.Ordinal);
 
@@ -217,6 +221,8 @@ namespace Physics_Data_Debug
             var axisDefaults = new Dictionary<string, WheelAxisProfile>(StringComparer.Ordinal);
             List<string> absoluteFields = null;
             List<string> selectableFields = null;
+            var configuredTelemetryPrefixes = new Dictionary<string, string>(StringComparer.Ordinal);
+            var configuredTelemetryAliases = new Dictionary<string, string>(StringComparer.Ordinal);
 
             try
             {
@@ -278,6 +284,28 @@ namespace Physics_Data_Debug
                             if (string.IsNullOrWhiteSpace(text))
                                 throw new FormatException("absoluteValueFields cannot contain blank entries.");
                             absoluteFields.Add(text);
+                        }
+                    }
+                    if (document.TryGetValue("telemetryPrefixes", out object prefixMappings))
+                    {
+                        foreach (var entry in AsObject(prefixMappings, "telemetryPrefixes"))
+                        {
+                            string value = Convert.ToString(entry.Value, CultureInfo.InvariantCulture);
+                            if (string.IsNullOrWhiteSpace(value) ||
+                                !System.Text.RegularExpressions.Regex.IsMatch(value, "^[A-Z][A-Z0-9]*$"))
+                                throw new FormatException("Invalid telemetry prefix: " + entry.Key);
+                            configuredTelemetryPrefixes.Add(entry.Key, value);
+                        }
+                    }
+                    if (document.TryGetValue("telemetryAliases", out object aliasMappings))
+                    {
+                        foreach (var entry in AsObject(aliasMappings, "telemetryAliases"))
+                        {
+                            string value = Convert.ToString(entry.Value, CultureInfo.InvariantCulture);
+                            if (string.IsNullOrWhiteSpace(value) ||
+                                !System.Text.RegularExpressions.Regex.IsMatch(value, "^[A-Za-z][A-Za-z0-9]*$"))
+                                throw new FormatException("Invalid telemetry alias: " + entry.Key);
+                            configuredTelemetryAliases.Add(entry.Key, value);
                         }
                     }
                     if (document.TryGetValue("telemetrySelections", out object selections))
@@ -347,6 +375,8 @@ namespace Physics_Data_Debug
             AbsoluteValueFields = absoluteFields != null
                 ? (IReadOnlyList<string>)absoluteFields
                 : Array.Empty<string>();
+            TelemetryPrefixes = configuredTelemetryPrefixes;
+            TelemetryAliases = configuredTelemetryAliases;
             orderedMembers = BuildOrderedMembers(globals);
             // Older JSON files stored the names in AllValueNames; preserve
             // compatibility when users upgrade the executable first.
@@ -420,7 +450,25 @@ namespace Physics_Data_Debug
         public static GameMemoryField Field(string group, string name) => new GameMemoryField(group, name);
         public static ulong Address(string member) => checked((ulong)Value("BaseAddress", member));
         public static bool TryGetWheelAxisDefaults(string name, out WheelAxisProfile profile) =>
-            wheelAxisDefaults.TryGetValue(name, out profile);
+            wheelAxisDefaults.TryGetValue(LegacySelectionName(name), out profile);
+
+        // Public prefixed aliases and historical unprefixed profile selections
+        // remain interchangeable for chart-axis defaults and saved preferences.
+        public static string LegacySelectionName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) return name;
+            name = TelemetryNames.RelativeWheelName(name);
+            foreach (string group in new[] { "WF_TimeDataOffset", "WF_BodyRotationDataOffset",
+                "WF_BodyAccelDataOffset", "WF_AeroDataOffset", "WF_MassDataOffset",
+                "WF_EngineDataOffset", "WF_DifferentialDataOffset" })
+                foreach (string member in Members(group))
+                    if (string.Equals(name, TelemetryNames.Name(group, member), StringComparison.Ordinal))
+                        return member;
+            return name;
+        }
+
+        public static bool IsAbsoluteValueField(string name) =>
+            AbsoluteValueFields.Contains(name) || AbsoluteValueFields.Contains(LegacySelectionName(name));
 
         /// <summary>
         /// Names are ordered by their baseline JSON offsets, independently of

@@ -56,6 +56,16 @@ The live Four Wheels page supports:
 - Separate **Apply Chart Settings** and **Clear Charts and Apply** actions in the settings window. Applying appearance changes does not necessarily discard recorded history.
 - Searchable selectors and JSON settings profiles.
 
+**Four Wheels field selection follows the tire layout.** When viewing several
+wheels (**Separate**, **Front/Rear**, or **All In One**), each wheel measurement
+appears just once as `SlipRatio`, `SlipAngleDeg`, `LateralFriction`, etc. The chart
+resolves that field independently for every displayed tire. In an individual-tire
+layout, the same selector displays only that tire's channels, e.g. `FR_SlipRatio`
+when **Front Right** is selected. Shared fields retain their category prefixes
+(e.g. `ENG_RPM`, `BODY_YawDeg`, `TIME_RaceTime`) in every layout. The 13 live
+chart filters use these same choices. This UI exception does **not** change log
+headers or Offline Chart field names, which stay fully prefixed.
+
 The four-wheel settings window uses dark, **Designer-editable groups**. Related fields share horizontal rows, and the four main settings sections have equal-width columns.
 
 ### G-Force
@@ -111,58 +121,50 @@ For details, see [OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md).
 
 ## Logging telemetry
 
-Open **Log Settings** from Live Data, choose the fields to record, and apply your settings before selecting **Start Logging**.
+Open **Log Settings** from Live Data, choose the channels to record, and select **Start Logging**.
+The logger records **one synchronized file per session**, rather than four separate wheel files.
 
-### Selectable fields
+### Selectable fields and names
 
-The logging checklist is populated from the **active game-memory JSON** and calculated-telemetry registry, rather than a fixed list of older measurements. It includes fields from tire, suspension, geometry, body, acceleration, engine, differential, aerodynamics, timing, and related groups.
+The logging checklist is populated from the active game-memory JSON and the lazy calculated-telemetry registry. Available tire and suspension measurements are selectable separately for **FL**, **FR**, **RL**, and **RR**. Shared engine, body, acceleration, aerodynamic, differential, vehicle, and timing measurements appear only once. Examples:
 
-- Field selection is saved **by field name**, not checklist position.
-- The initial field selection is a smaller, familiar set; you can enable any additional available fields.
-- When names would collide in the output, the logger uses qualified column names to keep them distinct.
+```text
+TIME_RaceTime;FL_SlipRatio;FR_SlipRatio;RL_SlipRatio;RR_SlipRatio;ENG_RPM;VEH_TravelSpeed
+15000;0.01;0.02;0.01;0.03;4500;28.4
+```
+
+The row above is an **illustrative example**, not a recorded game sample. `TIME_RaceTime` is measured in **milliseconds**. Public column names use these prefixes: `FL_`, `FR_`, `RL_`, `RR_`, `ENG_`, `GBX_`, `DIFF_`, `BODY_`, `ACC_`, `AERO_`, `VEH_`, `ENV_`, and `TIME_`. `GBX_` and `ENV_` are reserved until memory fields for those categories become available. Duplicate suspension member names receive `Suspension1` or `Suspension2` qualifiers.
+
+Field selection is saved by name, not checklist index. The raw memory keys in `enumValues` remain stable for backwards compatibility; `telemetryPrefixes` and `telemetryAliases` in the game-memory JSON control exported names.
 
 ### Ten logging filters
 
-Configure up to **10 independent** filters. Each has a telemetry selection, enable checkbox, minimum/maximum bounds, optional absolute-value comparison, and one of two modes:
+You can configure up to **10 independent filters**, each with a telemetry column, an enabled checkbox, minimum and maximum bounds, optional absolute value, and an **Inside range** or **Outside range** mode. Every active filter must pass before the **whole synchronized row** is written. For example, filtering `FL_SlipRatio` controls whether the sample containing all four wheels is recorded.
 
-- **Inside range:** record only values between the inclusive minimum and maximum.
-- **Outside range:** record only values below the minimum or above the maximum.
+### Log filenames and location
 
-**All enabled filters must pass** for a wheel's row to be written. Wheel-specific fields are evaluated separately for each tire; shared vehicle measurements use the same value for all four. Non-numeric or non-finite filter values do not pass.
-
-### Log files and location
-
-The default destination is:
+The default output directory is:
 
 ```text
 %APPDATA%\PhysicsDataDebug\Logs\
 ```
 
-You can choose a different folder in **Log Settings**. Each logging session creates **four new files**, with a shared start timestamp:
-
-```text
-FrontLeft_20261117_151725.txt
-FrontRight_20261117_151725.txt
-RearLeft_20261117_151725.txt
-RearRight_20261117_151725.txt
-```
-
-The filename format is `<Wheel>_yyyyMMdd_HHmmss.txt`. Existing files are **not** appended to or overwritten; a suffix is added if the chosen timestamp already exists. The default field delimiter is a **semicolon (`;`)**, which can be changed in Log Settings. Data is written as UTF-8 text with a header row.
+A logging session creates a single file named, for example, `Telemetry_20261119_151725.txt`. Its header and rows use the chosen delimiter (semicolon by default) and UTF-8 encoding. You may choose a different output folder. Existing files are never overwritten; filename collisions receive a numeric suffix.
 
 ### Automatic stop conditions
 
-Two optional limits can stop an active logging session:
+Two optional limits can stop the active logging session:
 
 | Limit | Behavior |
-| --- | --- |
-| **Time** | Maximum elapsed session time, in seconds. |
-| **Total size** | Maximum combined size of all four files, in MiB. |
+|---|---|
+| **Time** | Maximum elapsed recording time, in seconds. |
+| **File size** | Maximum size of the single log file, in MiB (including the header). |
 
-A value of **0** disables that limit. When both limits are enabled, **the first one reached stops logging** and closes the files. The size limit includes the file headers. Logging settings are captured when the session starts; changes made afterward take effect on the **next** session.
+A value of **0** disables that limit. If both are enabled, the first reached stops logging. Settings changed during a session apply to the next recording. The Live Data sampling interval is configurable (50 ms by default), but actual sampling cadence depends on game and PC workload.
 
-The main Live Data sampling interval is configurable; its default is **50 ms**. This is a requested timer interval, not a guarantee of exact memory-read timing. Actual update timing depends on system and application workload.
+The **Offline Chart** imports combined TXT files and older CSV/TXT logs. Axis and filter dropdowns now show only canonical prefixed fields such as `FL_SlipAngleDeg`, `FR_LateralFriction`, `RR_VerticalLoad`, and `TIME_RaceTime`; unprefixed legacy file headers are mapped to the canonical names during import.
 
-The exported files can be opened in compatible spreadsheet and plotting programs. A separate log-file plotting project is available at [Log File Reader and Plotter](https://github.com/6St6Jimmy6/Log-File-Reader-and-Plotter).
+For field naming and compatibility details see [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).
 
 ## Saved settings and profiles
 
@@ -223,10 +225,26 @@ If attaching or drawing geometry causes an exception, inspect the **exception ty
 - [SETTINGS_PROFILES_GUIDE.md](SETTINGS_PROFILES_GUIDE.md) — autosaved preferences and named profiles.
 - [OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md) — importing files and chart controls.
 - [LAZY_TELEMETRY_GUIDE.md](LAZY_TELEMETRY_GUIDE.md) — telemetry-reading architecture and performance.
-- [OPTIMIZATION_REVIEW.md](OPTIMIZATION_REVIEW.md) — performance notes and further refactoring opportunities.
+- [OPTIMIZATION_REVIEW.md](changelogs/OPTIMIZATION_REVIEW.md) — performance notes and further refactoring opportunities.
 
 ## Acknowledgments
 
 - **Cartoons** — help with discovering and confirming the first in-game memory values.
 - **N4T4NM** and **iGutobreks** — earlier memory-helper code and usage.
 - **Rod Stephens** — the original registry-persistence example used in older versions.
+
+See [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md) for the combined log format and field prefixes.
+
+### Telemetry field names in selectors
+
+All telemetry selection menus (live Four Wheels, logging, and Offline Chart) use
+category-prefixed field names. Wheel values use `FL_`, `FR_`, `RL_`, or `RR_`;
+shared signals use `ENG_`, `GBX_`, `DIFF_`, `BODY_`, `ACC_`, `AERO_`, `VEH_`,
+`ENV_`, or `TIME_` as appropriate. For example: `FL_SlipRatio`, `ENG_RPM`,
+`BODY_YawDeg`, and `TIME_RaceTime`. `None` is the only unprefixed sentinel.
+
+The live Four Wheels window still uses one axis definition across its four
+per-wheel charts: a wheel-prefixed measurement selection is evaluated for each
+chart's respective wheel. Offline Chart selections identify the explicit logged
+wheel channel. Older separate-wheel logs and saved chart profiles are translated
+to the current names on import without changing memory offset identifiers.

@@ -51,7 +51,9 @@ namespace Physics_Data_Debug
         internal void FillFrom(LogRangeFilter setting)
         {
             enabledCheckBox.Checked = setting.Enabled;
-            fieldComboBox.Text = fieldComboBox.Items.Contains(setting.Field) ? setting.Field : "None";
+            var mapped = LogData.FindDisplay(setting.Field);
+            fieldComboBox.Text = mapped != null && fieldComboBox.Items.Contains(mapped.DisplayName)
+                ? mapped.DisplayName : "None";
             modeComboBox.SelectedIndex = setting.Outside ? 1 : 0;
             absoluteCheckBox.Checked = setting.Absolute;
             minimumTextBox.Text = setting.Minimum.ToString("G17", CultureInfo.InvariantCulture);
