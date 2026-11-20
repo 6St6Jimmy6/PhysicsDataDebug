@@ -11,6 +11,7 @@ namespace Physics_Data_Debug
     public partial class FormLogSettings : Form
     {
         private bool updatingSelections;
+        private RapidTreeCheckboxClicks rapidTreeCheckboxClicks;
         private LogFilterBinding[] rows;
         private readonly List<TreeNode> loggingLeaves = new List<TreeNode>();
 
@@ -63,6 +64,7 @@ namespace Physics_Data_Debug
             finally { logFieldsTreeView.EndUpdate(); updatingSelections = false; }
             ComboBoxBehaviors.EnableSearch(this);
             logFieldsTreeView.AfterCheck += LogFieldsTreeView_AfterCheck;
+            rapidTreeCheckboxClicks = new RapidTreeCheckboxClicks(logFieldsTreeView);
             UpdateSelectionCounter();
             JsonFormSettings.AttachProfileButton(this, () =>
             {
@@ -101,7 +103,12 @@ namespace Physics_Data_Debug
             else e.Cancel = true;
         }
 
-        private void Settings_Closed(object sender, FormClosedEventArgs e) => LiveData.LogSettingsOpen = false;
+        private void Settings_Closed(object sender, FormClosedEventArgs e)
+        {
+            rapidTreeCheckboxClicks?.Dispose();
+            rapidTreeCheckboxClicks = null;
+            LiveData.LogSettingsOpen = false;
+        }
 
         private void ApplyLogSettings_Click(object sender, EventArgs e)
         {
@@ -220,20 +227,25 @@ namespace Physics_Data_Debug
         {
             if (updatingSelections) return;
             updatingSelections = true;
-            logFieldsTreeView.BeginUpdate();
             try
             {
-                // A parent click means select/deselect the whole subtree.
-                // A leaf click changes ONLY that wheel, never its siblings.
+                // Do not BeginUpdate/EndUpdate for each click. Restarting a native
+                // TreeView redraw in the middle of mouse input can make repeated
+                // clicks feel unresponsive, especially on large field lists.
+                // A parent click sets its subtree; a leaf changes only that wheel.
                 if (!(e.Node.Tag is LogData.Column))
+                {
                     SetDescendantChecked(e.Node, e.Node.Checked);
-                RefreshLoggingTreeCore();
+                    RefreshParent(e.Node);
+                }
+
+                // Only the clicked node's ancestors need recounting. Leave all
+                // unrelated category/measurement nodes untouched.
+                for (TreeNode parent = e.Node.Parent; parent != null; parent = parent.Parent)
+                    RefreshParent(parent);
+                UpdateSelectionCounter();
             }
-            finally
-            {
-                logFieldsTreeView.EndUpdate();
-                updatingSelections = false;
-            }
+            finally { updatingSelections = false; }
         }
 
         private static void SetDescendantChecked(TreeNode node, bool value)
@@ -281,11 +293,15 @@ namespace Physics_Data_Debug
                 selected += counts.Selected;
                 total += counts.Total;
             }
-            node.Checked = total > 0 && selected == total;
+            bool fullyChecked = total > 0 && selected == total;
+            if (node.Checked != fullyChecked) node.Checked = fullyChecked;
             string label = node.Tag as string ?? node.Text;
-            // Counts clarify partial selections at both group and category levels.
-            node.Text = label + " (" + selected.ToString(CultureInfo.InvariantCulture) +
+            // Avoid resetting a node's caption when its count has not changed.
+            // Reassigning Text on every click causes redundant native redraws.
+            string caption = label + " (" + selected.ToString(CultureInfo.InvariantCulture) +
                 "/" + total.ToString(CultureInfo.InvariantCulture) + ")";
+            if (!string.Equals(node.Text, caption, StringComparison.Ordinal))
+                node.Text = caption;
             return (selected, total);
         }
 
@@ -313,6 +329,62 @@ namespace Physics_Data_Debug
             updatingSelections = true;
             try { selectAll.Checked = loggingLeaves.Count > 0 && selected == loggingLeaves.Count; }
             finally { updatingSelections = previous; }
+        }
+
+        /// <summary>
+        /// Native WinForms TreeView checkboxes have a double-click bug: a rapid
+        /// second click reaches the control as WM_LBUTTONDBLCLK, and the native
+        /// checkbox can change without raising AfterCheck (or ignore the click).
+        /// Convert ONLY checkbox double-click messages into normal mouse-down
+        /// messages so every physical click takes the normal checkbox path.
+        /// Keep the standard Designer-owned TreeView; no custom Designer control.
+        /// </summary>
+        private sealed class RapidTreeCheckboxClicks : NativeWindow, IDisposable
+        {
+            private const int WM_LBUTTONDOWN = 0x0201;
+            private const int WM_LBUTTONDBLCLK = 0x0203;
+            private readonly TreeView tree;
+
+            public RapidTreeCheckboxClicks(TreeView tree)
+            {
+                this.tree = tree;
+                tree.HandleCreated += Tree_HandleCreated;
+                tree.HandleDestroyed += Tree_HandleDestroyed;
+                if (tree.IsHandleCreated) AssignHandle(tree.Handle);
+            }
+
+            private void Tree_HandleCreated(object sender, EventArgs e)
+            {
+                if (Handle != IntPtr.Zero) ReleaseHandle();
+                AssignHandle(tree.Handle);
+            }
+
+            private void Tree_HandleDestroyed(object sender, EventArgs e)
+            {
+                if (Handle != IntPtr.Zero) ReleaseHandle();
+            }
+
+            protected override void WndProc(ref Message m)
+            {
+                if (m.Msg == WM_LBUTTONDBLCLK)
+                {
+                    // LParam contains the client-area mouse coordinates.
+                    long point = m.LParam.ToInt64();
+                    int x = unchecked((short)(point & 0xffff));
+                    int y = unchecked((short)((point >> 16) & 0xffff));
+                    var hit = tree.HitTest(x, y);
+                    if ((hit.Location & TreeViewHitTestLocations.StateImage) != 0)
+                        m.Msg = WM_LBUTTONDOWN;
+                }
+                base.WndProc(ref m);
+            }
+
+            public void Dispose()
+            {
+                tree.HandleCreated -= Tree_HandleCreated;
+                tree.HandleDestroyed -= Tree_HandleDestroyed;
+                if (Handle != IntPtr.Zero) ReleaseHandle();
+            }
         }
     }
 }
