@@ -12,6 +12,7 @@ namespace Physics_Data_Debug
     {
         private bool updatingSelections;
         private LogFilterBinding[] rows;
+        private readonly List<TreeNode> loggingLeaves = new List<TreeNode>();
 
         public FormLogSettings()
         {
@@ -43,14 +44,10 @@ namespace Physics_Data_Debug
             };
             IReadOnlyList<LogData.Column> columns = LogData.AllColumns;
             updatingSelections = true;
-            checkedListBoxLogging.BeginUpdate();
+            logFieldsTreeView.BeginUpdate();
             try
             {
-                foreach (LogData.Column column in columns)
-                {
-                    int index = checkedListBoxLogging.Items.Add(column);
-                    checkedListBoxLogging.SetItemChecked(index, LogSettings.IsEnabled(column.Key, column.Member));
-                }
+                BuildLoggingHierarchy(columns);
                 for (int i = 0; i < rows.Length; i++)
                 {
                     rows[i].Configure(i, columns);
@@ -63,14 +60,14 @@ namespace Physics_Data_Debug
                 TotalSizeMiBNumericUpDown.Value = Math.Min(TotalSizeMiBNumericUpDown.Maximum,
                     Math.Max(0, (decimal)LogSettings.TotalSizeLimitBytes / 1048576m));
             }
-            finally { checkedListBoxLogging.EndUpdate(); updatingSelections = false; }
+            finally { logFieldsTreeView.EndUpdate(); updatingSelections = false; }
             ComboBoxBehaviors.EnableSearch(this);
-            checkedListBoxLogging.ItemCheck += CheckedListBoxLogging_ItemCheck;
+            logFieldsTreeView.AfterCheck += LogFieldsTreeView_AfterCheck;
             UpdateSelectionCounter();
             JsonFormSettings.AttachProfileButton(this, () =>
             {
                 updatingSelections = false;
-                UpdateSelectionCounter();
+                RefreshLoggingTree();
                 ApplyControlsToSettings(true);
             }, () => updatingSelections = true, () => updatingSelections = false);
         }
@@ -82,6 +79,7 @@ namespace Physics_Data_Debug
                 settings.updatingSelections = true;
                 try { JsonFormSettings.LoadAllSettings(settings); }
                 finally { settings.updatingSelections = false; }
+                settings.RefreshLoggingTree();
                 settings.ApplyControlsToSettings(false);
             }
         }
@@ -92,7 +90,7 @@ namespace Physics_Data_Debug
             updatingSelections = true;
             try { JsonFormSettings.LoadAllSettings(this); }
             finally { updatingSelections = false; }
-            UpdateSelectionCounter();
+            RefreshLoggingTree();
             ApplyControlsToSettings(false);
         }
 
@@ -127,9 +125,9 @@ namespace Physics_Data_Debug
             }
 
             var enabled = new List<string>();
-            for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
-                if (checkedListBoxLogging.GetItemChecked(i))
-                    enabled.Add(((LogData.Column)checkedListBoxLogging.Items[i]).Key);
+            foreach (TreeNode leaf in loggingLeaves)
+                if (leaf.Checked)
+                    enabled.Add(((LogData.Column)leaf.Tag).Key);
             if (enabled.Count == 0)
                 return Error("Select at least one telemetry field.", showErrors);
 
@@ -165,35 +163,156 @@ namespace Physics_Data_Debug
             }
         }
 
+        /// <summary>
+        /// Category -> measurement -> FL/FR/RL/RR leaves. Shared fields
+        /// have one leaf under their category rather than four duplicates.
+        /// All leaves carry the canonical LogData.Column used by the logger.
+        /// </summary>
+        private void BuildLoggingHierarchy(IReadOnlyList<LogData.Column> columns)
+        {
+            loggingLeaves.Clear();
+            logFieldsTreeView.Nodes.Clear();
+            var categories = new Dictionary<string, TreeNode>(StringComparer.Ordinal);
+            var measurements = new Dictionary<string, TreeNode>(StringComparer.Ordinal);
+
+            foreach (LogData.Column column in columns)
+            {
+                if (!categories.TryGetValue(column.Group, out TreeNode category))
+                {
+                    string display = column.OldDisplay;
+                    int divider = display.IndexOf(" / ", StringComparison.Ordinal);
+                    if (divider >= 0) display = display.Substring(0, divider);
+                    category = new TreeNode(display) { Tag = display };
+                    logFieldsTreeView.Nodes.Add(category);
+                    categories.Add(column.Group, category);
+                }
+
+                TreeNode container = category;
+                if (column.Wheel != null)
+                {
+                    string key = column.Group + "." + column.Member;
+                    if (!measurements.TryGetValue(key, out container))
+                    {
+                        string name = column.Header.Substring(column.Wheel.Length + 1);
+                        container = new TreeNode(name) { Tag = name };
+                        category.Nodes.Add(container);
+                        measurements.Add(key, container);
+                    }
+                }
+
+                var leaf = new TreeNode(column.Header)
+                {
+                    Tag = column,
+                    Checked = LogSettings.IsEnabled(column.Key, column.Member)
+                };
+                container.Nodes.Add(leaf);
+                loggingLeaves.Add(leaf);
+            }
+
+            // Show measurements immediately, but keep their four wheel
+            // children collapsed until the user wants to edit individual wheels.
+            foreach (TreeNode category in logFieldsTreeView.Nodes)
+                category.Expand();
+            RefreshLoggingTree();
+        }
+
+        private void LogFieldsTreeView_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (updatingSelections) return;
+            updatingSelections = true;
+            logFieldsTreeView.BeginUpdate();
+            try
+            {
+                // A parent click means select/deselect the whole subtree.
+                // A leaf click changes ONLY that wheel, never its siblings.
+                if (!(e.Node.Tag is LogData.Column))
+                    SetDescendantChecked(e.Node, e.Node.Checked);
+                RefreshLoggingTreeCore();
+            }
+            finally
+            {
+                logFieldsTreeView.EndUpdate();
+                updatingSelections = false;
+            }
+        }
+
+        private static void SetDescendantChecked(TreeNode node, bool value)
+        {
+            foreach (TreeNode child in node.Nodes)
+            {
+                child.Checked = value;
+                SetDescendantChecked(child, value);
+            }
+        }
+
+        private void RefreshLoggingTree()
+        {
+            bool previous = updatingSelections;
+            updatingSelections = true;
+            logFieldsTreeView.BeginUpdate();
+            try { RefreshLoggingTreeCore(); }
+            finally
+            {
+                logFieldsTreeView.EndUpdate();
+                updatingSelections = previous;
+            }
+        }
+
+        private void RefreshLoggingTreeCore()
+        {
+            foreach (TreeNode category in logFieldsTreeView.Nodes)
+                RefreshParent(category);
+            UpdateSelectionCounter();
+        }
+
+        // Returns (selected leaf count, total leaf count). Parent checkboxes
+        // are checked only when all their descendants are selected; partial
+        // selections stay visible as (3/4), without affecting the other wheels.
+        private static (int Selected, int Total) RefreshParent(TreeNode node)
+        {
+            if (node.Tag is LogData.Column)
+                return (node.Checked ? 1 : 0, 1);
+
+            int selected = 0;
+            int total = 0;
+            foreach (TreeNode child in node.Nodes)
+            {
+                var counts = RefreshParent(child);
+                selected += counts.Selected;
+                total += counts.Total;
+            }
+            node.Checked = total > 0 && selected == total;
+            string label = node.Tag as string ?? node.Text;
+            // Counts clarify partial selections at both group and category levels.
+            node.Text = label + " (" + selected.ToString(CultureInfo.InvariantCulture) +
+                "/" + total.ToString(CultureInfo.InvariantCulture) + ")";
+            return (selected, total);
+        }
+
         private void selectAll_CheckedChanged(object sender, EventArgs e)
         {
             if (updatingSelections) return;
             updatingSelections = true;
+            logFieldsTreeView.BeginUpdate();
             try
             {
-                for (int i = 0; i < checkedListBoxLogging.Items.Count; i++)
-                    checkedListBoxLogging.SetItemChecked(i, selectAll.Checked);
+                foreach (TreeNode leaf in loggingLeaves)
+                    leaf.Checked = selectAll.Checked;
+                RefreshLoggingTreeCore();
             }
-            finally { updatingSelections = false; }
-            UpdateSelectionCounter();
-        }
-
-        private void CheckedListBoxLogging_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (updatingSelections) return;
-            BeginInvoke(new Action(UpdateSelectionCounter));
+            finally { logFieldsTreeView.EndUpdate(); updatingSelections = false; }
         }
 
         private void UpdateSelectionCounter()
         {
             if (rows == null) return;
-            int selected = checkedListBoxLogging.CheckedItems.Count;
+            int selected = loggingLeaves.Count(leaf => leaf.Checked);
             selectionCountLabel.Text = selected.ToString(CultureInfo.InvariantCulture) + " / " +
-                checkedListBoxLogging.Items.Count.ToString(CultureInfo.InvariantCulture) + " selected";
+                loggingLeaves.Count.ToString(CultureInfo.InvariantCulture) + " selected";
+            bool previous = updatingSelections;
             updatingSelections = true;
-            try { selectAll.Checked = checkedListBoxLogging.Items.Count > 0 &&
-                    selected == checkedListBoxLogging.Items.Count; }
-            finally { updatingSelections = false; }
+            try { selectAll.Checked = loggingLeaves.Count > 0 && selected == loggingLeaves.Count; }
+            finally { updatingSelections = previous; }
         }
     }
 }

@@ -420,6 +420,17 @@ namespace Physics_Data_Debug
                         values[CheckedItemKey(checks, i)] =
                             checks.GetItemChecked(i) ? "true" : "false";
                 }
+                else if (child is TreeView logTree && child.Name == "logFieldsTreeView")
+                {
+                    // Persist only actual telemetry leaves, by stable internal
+                    // field key. Category/measurement parent checks are derived.
+                    foreach (TreeNode leaf in LoggingFieldNodes(logTree.Nodes))
+                    {
+                        var column = (LogData.Column)leaf.Tag;
+                        values[logTree.Name + ".Fields." + column.Key] =
+                            leaf.Checked ? "true" : "false";
+                    }
+                }
                 else if (child is ComboBox combo) values[child.Name] = ComboSelection(combo);
                 else if (child is CheckBox check) values[child.Name] = check.Checked ? "true" : "false";
                 else if (child is RadioButton radio) values[child.Name] = radio.Checked ? "true" : "false";
@@ -499,6 +510,29 @@ namespace Physics_Data_Debug
                             checks.SetItemChecked(i, selected);
                     }
                 }
+                else if (child is TreeView logTree && child.Name == "logFieldsTreeView")
+                {
+                    int oldIndex = 0;
+                    foreach (TreeNode leaf in LoggingFieldNodes(logTree.Nodes))
+                    {
+                        var column = (LogData.Column)leaf.Tag;
+                        string text;
+                        // Current schema saves by stable group/member/wheel.
+                        bool found = values.TryGetValue(logTree.Name + ".Fields." + column.Key, out text);
+                        // Legacy flat CheckedListBox profiles saved a public
+                        // header or, before that, source-group / field labels.
+                        if (!found)
+                            found = values.TryGetValue("checkedListBoxLogging.Items." + column.Header, out text);
+                        if (!found)
+                            found = values.TryGetValue("checkedListBoxLogging.Items." + column.OldDisplay, out text);
+                        if (!found)
+                            found = values.TryGetValue("checkedListBoxLogging[" +
+                                oldIndex.ToString(Culture) + "]", out text);
+                        if (found && TryBool(text, out bool check)) leaf.Checked = check;
+                        oldIndex++;
+                    }
+                    // FormLogSettings refreshes the parent states after loading.
+                }
                 else if (values.TryGetValue(child.Name, out string saved))
                 {
                     if (child is ComboBox combo) RestoreComboBox(combo, saved);
@@ -514,6 +548,17 @@ namespace Physics_Data_Debug
                     else if (child is ListBox list) list.Text = saved;
                 }
                 if (IsSettingsContainer(child)) ApplyChildren(child, values);
+            }
+        }
+
+        // Iterate only concrete telemetry leaves, in the same order as the
+        // previous flat list for migration of old index-based profiles.
+        private static IEnumerable<TreeNode> LoggingFieldNodes(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Tag is LogData.Column) yield return node;
+                foreach (TreeNode leaf in LoggingFieldNodes(node.Nodes)) yield return leaf;
             }
         }
 
