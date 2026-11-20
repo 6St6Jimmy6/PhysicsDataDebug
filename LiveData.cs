@@ -295,7 +295,6 @@ namespace Physics_Data_Debug
             List<List<DataItem>> fullList, List<byte[]> byteData, int dataStart, string group)
         {
             List<DataItem> target = fullList[PrefixIndex(prefix)];
-            bool timingIntegers = group == "WF_TimeDataOffset";
             // Group members are sorted by baseline JSON offsets. Version changes
             // affect where values are read, but not their order in telemetry lists.
             foreach (string memberName in GameMemoryConfig.Members(group))
@@ -310,9 +309,7 @@ namespace Physics_Data_Debug
                 if (index < 0 || index >= byteData.Count)
                     throw new InvalidOperationException("Configured offset for " + group + "." + memberName + " is outside its memory chunk.");
                 byte[] valueByteArray = byteData[index];
-                if (timingIntegers ||
-                    (group == "WF_DifferentialDataOffset" &&
-                     (memberName == "DifferentialOpenPrimaryLeft" || memberName == "DifferentialOpenPrimaryRight")))
+                if (GameMemoryConfig.IsInt32Field(group, memberName))
                 { target[ii].Value = BitConverter.ToInt32(valueByteArray, 0); }
                 else
                 { target[ii].Value = BitConverter.ToSingle(valueByteArray, 0); }
@@ -328,11 +325,19 @@ namespace Physics_Data_Debug
                 if (CalculatedTelemetry.IsCalculated(group, name))
                 {
                     string formulaName = name;
-                    field.Calculator = () => TelemetryFormulas.Calculate(formulaName,
-                        dependency => Convert.ToDouble(GetFullListDataValue(prefix,
-                            // The dependency can be another calculated field, or
-                            // a raw field in any of this prefix's memory groups.
-                            new GameMemoryField(group, dependency))));
+                    field.Calculator = () => TelemetryFormulas.Calculate(group, formulaName,
+                        dependency =>
+                        {
+                            // Fully prefixed fields explicitly identify the source,
+                            // including fields belonging to a different category.
+                            if (TelemetryNames.HasExplicitPrefix(dependency))
+                            {
+                                LogData.Column source = LogData.FindDisplay(dependency);
+                                if (source != null) return source.ReadDouble();
+                            }
+                            return Convert.ToDouble(GetFullListDataValue(prefix,
+                                new GameMemoryField(group, dependency)));
+                        });
                 }
                 list.Add(field);
             }

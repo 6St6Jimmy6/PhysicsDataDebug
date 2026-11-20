@@ -188,7 +188,7 @@ namespace Physics_Data_Debug
         private static double DivideOrZero(double numerator, double denominator) =>
             denominator == 0 ? 0 : numerator / denominator;
 
-        private static double TotalFrictionAngle(double lateral, double longitudinal)
+        internal static double FrictionAngleDeg(double lateral, double longitudinal)
         {
             // Keep the original Wreckfest debugger quadrant/sign convention.
             if (lateral > 0)
@@ -204,7 +204,7 @@ namespace Physics_Data_Debug
             return 0;
         }
 
-        private static double Grip(double log10aT, double slideSpeed, string kind)
+        internal static double GripForExpression(double log10aT, double slideSpeed, string kind)
         {
             if (kind == "Adhesion")
                 return TireGripMath.CosineFunctionGrip(log10aT, slideSpeed,
@@ -231,7 +231,7 @@ namespace Physics_Data_Debug
             return component == 0 ? local.X : component == 1 ? local.Y : local.Z;
         }
 
-        private static double XZGAngle(double angle)
+        internal static double NormalizeXZAngle(double angle)
         {
             if (angle >= 3 * Math.PI || angle <= -3 * Math.PI) return 0;
             if (angle < 0)
@@ -258,7 +258,7 @@ namespace Physics_Data_Debug
             Add("TotalFriction", new[] { "LateralFriction", "LongitudinalFriction" },
                 v => Math.Sqrt(Math.Pow(v("LateralFriction"), 2) + Math.Pow(v("LongitudinalFriction"), 2)));
             Add("TotalFrictionAngleDeg", new[] { "LateralFriction", "LongitudinalFriction" },
-                v => TotalFrictionAngle(v("LateralFriction"), v("LongitudinalFriction")));
+                v => FrictionAngleDeg(v("LateralFriction"), v("LongitudinalFriction")));
             Add("SlipAngleDeg", new[] { "SlipAngleRad" }, v => RadToDeg(v("SlipAngleRad")));
             Add("RollingResistance", new[] { "Mx", "VerticalLoad" },
                 v => DivideOrZero(v("Mx"), v("VerticalLoad")));
@@ -277,7 +277,7 @@ namespace Physics_Data_Debug
                 {
                     string kind = gripType;
                     Add(prefix + kind + "Grip", new[] { "Log10aT", prefix + "SlipSpeed" },
-                        v => Grip(v("Log10aT"), v(prefix + "SlipSpeed"), kind));
+                        v => GripForExpression(v("Log10aT"), v(prefix + "SlipSpeed"), kind));
                 }
                 Add("WLF_" + prefix + "SlidingFrictionGripMultiplier",
                     new[] { prefix + "AdhesionGrip", prefix + "MicroGrip", prefix + "MacroGrip" },
@@ -329,7 +329,7 @@ namespace Physics_Data_Debug
             Add("ZG", new[] { "Body_ZAccelerationLocal" }, v => v("Body_ZAccelerationLocal") / LiveData.g);
             Add("XZG", new[] { "XG", "ZG" }, v => Math.Sqrt(Math.Pow(v("XG"), 2) + Math.Pow(v("ZG"), 2)));
             Add("XYZG", new[] { "YG", "XZG" }, v => Math.Sqrt(Math.Pow(v("YG"), 2) + Math.Pow(v("XZG"), 2)));
-            Add("XZGAngleRad", new[] { "XZAccelerationAngleRad" }, v => XZGAngle(v("XZAccelerationAngleRad")));
+            Add("XZGAngleRad", new[] { "XZAccelerationAngleRad" }, v => NormalizeXZAngle(v("XZAccelerationAngleRad")));
             Add("Body_XZGAngleDeg", new[] { "XZGAngleRad" }, v => RadToDeg(v("XZGAngleRad")));
             string[] dragDependencies = bodyMatrix.Concat(new[] { "XDragWorld", "YDragWorld", "ZDragWorld" }).ToArray();
             Add("XDragLocal", dragDependencies, v => LocalComponent(v, "Drag", 0));
@@ -337,8 +337,91 @@ namespace Physics_Data_Debug
             Add("ZDragLocal", dragDependencies, v => LocalComponent(v, "Drag", 2));
         }
 
-        public static IReadOnlyList<string> Names => PublicNames;
-        public static bool IsCalculated(string field) => Definitions.ContainsKey(field ?? "");
+        private static Dictionary<string, TelemetryExpression> configured =
+            new Dictionary<string, TelemetryExpression>(StringComparer.Ordinal);
+
+        public static bool HasBuiltIn(string field) => Definitions.ContainsKey(field ?? "");
+
+        /// <summary>Compile JSON formulas once. Built-in formulas remain as fallbacks for
+        /// quaternion transforms, WLF functions and legacy configurations.</summary>
+        public static void Configure(IDictionary<string, string> expressions)
+        {
+            var next = new Dictionary<string, TelemetryExpression>(StringComparer.Ordinal);
+            foreach (var entry in expressions)
+                next.Add(entry.Key, TelemetryExpression.Compile(entry.Value));
+            configured = next;
+        }
+
+        public static IReadOnlyList<string> Names => PublicNames.Concat(
+            configured.Keys.Select(key => key.Substring(key.IndexOf('.') + 1)))
+            .Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+        public static bool IsCalculated(string field) => Definitions.ContainsKey(field ?? "") ||
+            configured.Keys.Any(key => key.EndsWith("." + field, StringComparison.Ordinal));
+        public static bool IsCalculated(string group, string field) =>
+            configured.ContainsKey(group + "." + field) ||
+                (CalculatedTelemetry.IsCalculated(group, field) && Definitions.ContainsKey(field ?? ""));
+
+        public static IReadOnlyList<string> Dependencies(string group, string field)
+        {
+            if (configured.TryGetValue(group + "." + field, out TelemetryExpression expression))
+                return expression.Dependencies;
+            if (CalculatedTelemetry.IsCalculated(group, field) &&
+                Definitions.TryGetValue(field ?? "", out Definition definition))
+                return definition.Dependencies;
+            return Array.Empty<string>();
+        }
+
+        public static double Calculate(string group, string field, Func<string, double> read)
+        {
+            if (configured.TryGetValue(group + "." + field, out TelemetryExpression expression))
+                return expression.Evaluate(read);
+            return Calculate(field, read);
+        }
+
+        /// <summary>Check configured names, source dependencies and cycles after the
+        /// canonical LogData columns have been built.</summary>
+        public static void ValidateConfiguration()
+        {
+            var byHeader = LogData.AllColumns.ToDictionary(c => c.Header,
+                StringComparer.OrdinalIgnoreCase);
+            var byKey = LogData.AllColumns.ToDictionary(c => c.Group + "." + c.Member + "." +
+                (c.Wheel ?? ""), StringComparer.Ordinal);
+            var visiting = new HashSet<string>(StringComparer.Ordinal);
+            var complete = new HashSet<string>(StringComparer.Ordinal);
+            foreach (LogData.Column column in LogData.AllColumns)
+                if (IsCalculated(column.Group, column.Member)) Visit(column);
+
+            void Visit(LogData.Column column)
+            {
+                string key = column.Key;
+                if (complete.Contains(key)) return;
+                if (!visiting.Add(key)) throw new FormatException("Circular calculated telemetry dependency: " + key);
+                foreach (string dependency in Dependencies(column.Group, column.Member))
+                {
+                    LogData.Column target = Resolve(column, dependency);
+                    if (target == null)
+                        throw new FormatException("Unknown dependency '" + dependency + "' in calculated field " + key);
+                    if (IsCalculated(target.Group, target.Member)) Visit(target);
+                }
+                visiting.Remove(key);
+                complete.Add(key);
+            }
+            LogData.Column Resolve(LogData.Column origin, string name)
+            {
+                if (byHeader.TryGetValue(name, out LogData.Column direct)) return direct;
+                // A bare field name first resolves within its own memory category.
+                string key = origin.Group + "." + name + "." + (origin.Wheel ?? "");
+                if (byKey.TryGetValue(key, out LogData.Column same)) return same;
+                // Older built-ins refer to a field in a sibling category (such
+                // as the body matrix used to calculate aerodynamic drag).
+                var candidates = LogData.AllColumns.Where(c => c.Member == name && c.Wheel == origin.Wheel).ToArray();
+                if (candidates.Length == 1) return candidates[0];
+                if (candidates.Length > 1)
+                    throw new FormatException("Ambiguous formula dependency '" + name + "' in " + origin.Key +
+                        ". Use its category-prefixed public name.");
+                return null;
+            }
+        }
 
         // Availability is structural: only show a formula if *all* inputs exist.
         // Physical CSV columns are checked first and always win (no duplicates).

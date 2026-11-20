@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Physics_Data_Debug
 {
@@ -43,20 +44,57 @@ namespace Physics_Data_Debug
                     "XDragLocal", "YDragLocal", "ZDragLocal" } } }
             };
 
+        private static readonly Dictionary<string, string[]> BuiltInNames =
+            new Dictionary<string, string[]>(StringComparer.Ordinal);
+
         static CalculatedTelemetry()
         {
-            foreach (Layout layout in Layouts.Values)
+            foreach (var entry in Layouts)
             {
+                Layout layout = entry.Value;
+                BuiltInNames.Add(entry.Key, (string[])layout.Fields.Clone());
                 layout.Indexes = new Dictionary<string, int>(StringComparer.Ordinal);
                 for (int i = 0; i < layout.Fields.Length; i++)
                     layout.Indexes.Add(layout.Fields[i], i);
             }
         }
 
+        /// <summary>Extend the original calculated layouts using JSON field definitions.
+        /// Existing built-ins remain available for schema 1 and older schema 2 profiles.</summary>
+        public static void Configure(IDictionary<string, List<string>> configured)
+        {
+            var next = new Dictionary<string, Layout>(StringComparer.Ordinal);
+            foreach (var entry in BuiltInNames)
+                next.Add(entry.Key, Build(entry.Key, entry.Value));
+            if (configured != null)
+                foreach (var entry in configured)
+                {
+                    string[] current = next.TryGetValue(entry.Key, out Layout layout)
+                        ? layout.Fields : Array.Empty<string>();
+                    string[] merged = current.Concat(entry.Value)
+                        .Distinct(StringComparer.Ordinal).ToArray();
+                    next[entry.Key] = Build(entry.Key, merged);
+                }
+            Layouts.Clear();
+            foreach (var entry in next) Layouts.Add(entry.Key, entry.Value);
+        }
+
+        private static Layout Build(string group, string[] names)
+        {
+            string chunk = GameMemoryConfig.ChunkForFieldGroup(group);
+            var indexes = new Dictionary<string, int>(StringComparer.Ordinal);
+            for (int i = 0; i < names.Length; i++) indexes.Add(names[i], i);
+            return new Layout { Chunk = chunk, Fields = names, Indexes = indexes };
+        }
+
         public static IEnumerable<string> Groups => Layouts.Keys;
 
         public static IReadOnlyList<string> Names(string group) =>
             Layouts.TryGetValue(group, out Layout layout) ? layout.Fields : Array.Empty<string>();
+
+        internal static bool IsBuiltIn(string group, string member) =>
+            BuiltInNames.TryGetValue(group, out string[] names) &&
+            names.Contains(member, StringComparer.Ordinal);
 
         public static bool IsCalculated(string group, string member) =>
             Layouts.TryGetValue(group, out Layout layout) &&
@@ -68,7 +106,8 @@ namespace Physics_Data_Debug
             {
                 if (layout.Indexes.TryGetValue(member, out int position))
                 {
-                    index = checked(GameMemoryConfig.Int(layout.Chunk, "ChunkSize") / sizeof(float) + position);
+                    index = layout.Chunk == null ? -1 :
+                        checked(GameMemoryConfig.Int(layout.Chunk, "ChunkSize") / sizeof(float) + position);
                     return true;
                 }
             }

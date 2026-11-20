@@ -99,6 +99,7 @@
     <Compile Include="TelemetryNames.cs" />
     <Compile Include="FourWheelsFieldSelection.cs" />
     <Compile Include="TelemetryFormulas.cs" />
+    <Compile Include="TelemetryExpression.cs" />
     <Compile Include="DataItem.cs" />
     <Compile Include="DataLogger.cs" />
     <Compile Include="DelimitedTelemetryFile.cs" />

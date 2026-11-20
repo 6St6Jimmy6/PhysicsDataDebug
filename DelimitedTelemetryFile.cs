@@ -76,6 +76,8 @@ namespace Physics_Data_Debug
         {
             // A formula may use another field in the same source group, or
             // (e.g. acceleration) a shared field in a different source group.
+            // A fully qualified reference (ENG_RPM, FR_SlipRatio) has priority.
+            if (lookup.TryGetValue(dependency, out index)) return true;
             string sameGroup = TelemetryNames.Name(column.Group, dependency, column.Wheel);
             if (lookup.TryGetValue(sameGroup, out index)) return true;
             string canonical = TelemetryNames.Canonicalize(dependency, column.Wheel);
@@ -131,7 +133,7 @@ namespace Physics_Data_Debug
                 {
                     if (!file.virtualFields.TryGetValue(index, out LogData.Column field))
                         return double.NaN;
-                    result = TelemetryFormulas.Calculate(field.Member, dependencyName =>
+                    result = TelemetryFormulas.Calculate(field.Group, field.Member, dependencyName =>
                     {
                         if (!file.TryDependencyIndex(field, dependencyName, out int dependency))
                             return double.NaN;
@@ -207,18 +209,26 @@ namespace Physics_Data_Debug
                 // Generate derived fields with the same public names as live
                 // telemetry and the logger, including shared ENG_/ACC_/BODY_
                 // formulas. Only expose those whose dependencies can be read.
-                foreach (LogData.Column column in LogData.AllColumns)
+                // Iterate to a fixed point so formulas may reference another
+                // configured formula regardless of category or JSON order.
+                bool discovered;
+                do
                 {
-                    if (indices.ContainsKey(column.Header) ||
-                        !CalculatedTelemetry.IsCalculated(column.Group, column.Member) ||
-                        !TelemetryFormulas.IsCalculated(column.Member)) continue;
-                    if (!TelemetryFormulas.CanResolve(column.Member, dependency =>
-                        TryDependencyIndex(indices, column, dependency, out int ignored))) continue;
-                    int at = allNames.Count;
-                    indices.Add(column.Header, at);
-                    allNames.Add(column.Header);
-                    virtualFields.Add(at, column);
-                }
+                    discovered = false;
+                    foreach (LogData.Column column in LogData.AllColumns)
+                    {
+                        if (indices.ContainsKey(column.Header) ||
+                            !CalculatedTelemetry.IsCalculated(column.Group, column.Member) ||
+                            !TelemetryFormulas.IsCalculated(column.Group, column.Member)) continue;
+                        if (!TelemetryFormulas.Dependencies(column.Group, column.Member).All(
+                            dependency => TryDependencyIndex(indices, column, dependency, out int ignored))) continue;
+                        int at = allNames.Count;
+                        indices.Add(column.Header, at);
+                        allNames.Add(column.Header);
+                        virtualFields.Add(at, column);
+                        discovered = true;
+                    }
+                } while (discovered);
                 return new DelimitedTelemetryFile
                 {
                     Path = System.IO.Path.GetFullPath(path),

@@ -1,4 +1,4 @@
-﻿# Combined telemetry file and public field naming
+# Combined telemetry file and public field naming
 
 Every recording writes **one** `Telemetry_yyyyMMdd_HHmmss.txt` file into the configured Logs directory.
 The file is a semicolon-delimited table by default, with **one row per sampled tick**.
@@ -25,8 +25,8 @@ The qualifier is used only for collisions. All generated columns are checked for
 
 ## JSON and compatibility
 
-`WreckfestGameMemoryConfig.json` contains `telemetryPrefixes` and `telemetryAliases` for naming.
-`enumValues` retains original memory symbols (e.g. `WF_EngineDataOffset.EngineRPM`),
+In JSON schema 2, category `prefix` and optional per-field `alias` control public names.
+The loader generates compatible internal memory symbols (e.g. `WF_EngineDataOffset.EngineRPM`),
 because renamed offsets would break the reader and calculated formulas.
 The public name for that field is `ENG_RPM`. The UI and the output file share these
 public names. A legacy chart can still read its former unprefixed field names.

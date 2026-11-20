@@ -11,6 +11,9 @@ namespace Physics_Data_Debug
     {
         private readonly Process process;
         private readonly IntPtr processHandle;
+        // Unconfigured gaps are never consumed. Share one read-only placeholder
+        // rather than allocating hundreds of small arrays per wheel and tick.
+        private static readonly byte[] UnreadFourBytes = new byte[sizeof(float)];
         private readonly ulong moduleBase;
         public Process TargetProcess => process;
 
@@ -153,15 +156,61 @@ namespace Physics_Data_Debug
             return ReadMemoryArray(address, chunkSize);
         }
 
+        /// <summary>
+        /// Read only the configured neighboring field ranges, not all the gaps
+        /// in a legacy chunk. Return a sparse virtual 4-byte array at the same
+        /// indexes existing chart/formula code expects.
+        /// </summary>
         private List<byte[]> ReadChunk(string baseName, long versionShift,
             string sideGroup, string sideName, string chunkGroup, string extraPointerName = null)
         {
             int sideOffset = sideGroup == null ? 0 : GameMemoryConfig.Int(sideGroup, sideName);
             int start = GameMemoryConfig.Int(chunkGroup, "DataStart");
             int size = GameMemoryConfig.Int(chunkGroup, "ChunkSize");
-            int? extra = extraPointerName == null ? (int?)null : GameMemoryConfig.Int(chunkGroup, extraPointerName);
-            return ReadConfiguredChunk(GameMemoryConfig.Address(baseName), versionShift,
-                sideOffset, start, size, extra);
+            IReadOnlyList<int> configuredChain = GameMemoryConfig.PointerChain(chunkGroup);
+            int[] extraOffsets;
+            if (configuredChain.Count > 0)
+            {
+                extraOffsets = new int[configuredChain.Count];
+                for (int i = 0; i < extraOffsets.Length; i++) extraOffsets[i] = configuredChain[i];
+            }
+            else if (extraPointerName != null)
+                extraOffsets = new[] { GameMemoryConfig.Int(chunkGroup, extraPointerName) };
+            else extraOffsets = Array.Empty<int>();
+            return ReadSparseMemoryChunk(GameMemoryConfig.Address(baseName), versionShift,
+                sideOffset, extraOffsets, start, size, GameMemoryConfig.ReadRanges(chunkGroup));
+        }
+
+        private List<byte[]> ReadSparseMemoryChunk(ulong baseAddress, long versionShift,
+            int sideOffset, int[] extraOffsets, int start, int size,
+            IReadOnlyList<MemoryReadRange> ranges)
+        {
+            if (size <= 0 || size > 4 * 1024 * 1024 || (size & 3) != 0)
+                throw new ArgumentOutOfRangeException(nameof(size));
+            if (ranges == null || ranges.Count == 0)
+                throw new InvalidOperationException("No memory read ranges configured.");
+            ulong address = GetBaseAddress(unchecked((ulong)((long)baseAddress + versionShift)));
+            // Each pointerOffsets entry dereferences the previous address.
+            foreach (int offset in extraOffsets)
+                address = unchecked(ReadMemory<ulong>(address) + (ulong)unchecked((uint)offset));
+            address = unchecked(ReadMemory<ulong>(address) + (ulong)unchecked((uint)sideOffset));
+            var result = new List<byte[]>(size / sizeof(float));
+            for (int i = 0; i < size / sizeof(float); i++) result.Add(UnreadFourBytes);
+            foreach (MemoryReadRange range in ranges)
+            {
+                int destination = checked(range.Start - start);
+                if (destination < 0 || destination + range.Length > size ||
+                    (destination & 3) != 0 || (range.Length & 3) != 0)
+                    throw new FormatException("Read range falls outside the configured category span.");
+                byte[] data = ReadMemoryBytes(unchecked(address + (ulong)(uint)range.Start), range.Length);
+                for (int offset = 0; offset < data.Length; offset += sizeof(float))
+                {
+                    var word = new byte[sizeof(float)];
+                    Buffer.BlockCopy(data, offset, word, 0, sizeof(float));
+                    result[(destination + offset) / sizeof(float)] = word;
+                }
+            }
+            return result;
         }
 
         public ulong ResolvePointer(ulong address, IReadOnlyList<int> offsets)
@@ -184,8 +233,9 @@ namespace Physics_Data_Debug
             var sample = new TelemetryMemorySnapshot();
             GetTimingSpan(out int timingStart, out int timingSize);
             sample.TimingStart = timingStart;
-            sample.Timing = ReadConfiguredChunk(GameMemoryConfig.Address("RaceTime"), baseShift,
-                0, timingStart, timingSize);
+            sample.Timing = ReadSparseMemoryChunk(GameMemoryConfig.Address("RaceTime"), baseShift,
+                0, Array.Empty<int>(), timingStart, timingSize,
+                GameMemoryConfig.ReadRanges("WF_TimeDataOffset"));
 
             sample.BodyMass = ReadChunk("Suspension2", baseShift,
                 "WF_BodyMassSide", "AllSides", "WF_MassDataChunks");

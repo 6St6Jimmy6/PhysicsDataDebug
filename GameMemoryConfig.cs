@@ -72,6 +72,14 @@ namespace Physics_Data_Debug
     /// from the selected JSON file in the per-user Settings folder.
     /// No compiled Wreckfest enums are needed.
     /// </summary>
+    /// <summary>One contiguous process-memory read needed for the configured fields.</summary>
+    internal sealed class MemoryReadRange
+    {
+        public int Start { get; }
+        public int Length { get; }
+        public MemoryReadRange(int start, int length) { Start = start; Length = length; }
+    }
+
     internal static class GameMemoryConfig
     {
         public const string DefaultFileName = "WreckfestGameMemoryConfig.json";
@@ -96,6 +104,71 @@ namespace Physics_Data_Debug
             new Dictionary<string, string>(StringComparer.Ordinal);
         public static IReadOnlyDictionary<string, string> TelemetryAliases { get; private set; } =
             new Dictionary<string, string>(StringComparer.Ordinal);
+        private static bool categorizedSchema;
+        private static int maxReadGapBytes = 32;
+        private static Dictionary<string, string> configuredExpressions =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        private static int maxReadBytes = 4096;
+        private static Dictionary<string, string> configuredFieldTypes =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        private static Dictionary<string, int[]> configuredPointerChains =
+            new Dictionary<string, int[]>(StringComparer.Ordinal);
+        private static Dictionary<string, int[]> activePointerChains =
+            new Dictionary<string, int[]>(StringComparer.Ordinal);
+        private static Dictionary<string, MemoryReadRange[]> configuredReadRanges =
+            new Dictionary<string, MemoryReadRange[]>(StringComparer.Ordinal);
+
+        // A stable bridge from the readable category names in schema 2 to the
+        // internal data layouts used by existing charts, formulas and labels.
+        // Adding a field inside an existing category needs no C# changes.
+        private sealed class CategoryBinding
+        {
+            public string BaseName, FieldGroup, ChunkGroup, SideGroup;
+            public CategoryBinding(string baseName, string group, string chunk, string side)
+            { BaseName = baseName; FieldGroup = group; ChunkGroup = chunk; SideGroup = side; }
+        }
+        private static readonly Dictionary<string, CategoryBinding> CategoryBindings =
+            new Dictionary<string, CategoryBinding>(StringComparer.Ordinal)
+            {
+                { "tire", new CategoryBinding("Tire", "WF_TireDataOffset", "WF_TireDataChunks", "WF_TireSide") },
+                { "suspension1", new CategoryBinding("Suspension1", "WF_Suspension1DataOffset", "WF_Suspension1DataChunks", "WF_Suspension1DataSideOffset") },
+                { "suspension2", new CategoryBinding("Suspension2", "WF_Suspension2DataOffset", "WF_Suspension2DataChunks", "WF_Suspension2DataSideOffset") },
+                { "suspensionGeometry", new CategoryBinding("SuspensionGeometry", "WF_SuspensionGeometryDataOffset", "WF_SuspensionGeometryDataChunks", "WF_SuspensionGeometrySideOffsets") },
+                { "bodyMass", new CategoryBinding("Suspension2", "WF_MassDataOffset", "WF_MassDataChunks", "WF_BodyMassSide") },
+                { "bodyRotation", new CategoryBinding("BodyLocationHeading", "WF_BodyRotationDataOffset", "WF_BodyRotationChunks", "WF_BodyRotationSide") },
+                { "bodyAcceleration", new CategoryBinding("Acceleration", "WF_BodyAccelDataOffset", "WF_BodyAccelDataChunks", "WF_BodyAccelSide") },
+                { "aerodynamics", new CategoryBinding("Aero", "WF_AeroDataOffset", "WF_AeroDataChunks", "WF_AeroSide") },
+                { "engine", new CategoryBinding("Engine", "WF_EngineDataOffset", "WF_EngineDataChunks", "WF_EngineSide") },
+                { "differential", new CategoryBinding("Differential", "WF_DifferentialDataOffset", "WF_DifferentialDataChunks", "WF_DifferentialSide") },
+                { "timing", new CategoryBinding("RaceTime", "WF_TimeDataOffset", null, null) }
+            };
+        private static readonly Dictionary<string, string[]> BaseAliases =
+            new Dictionary<string, string[]>(StringComparer.Ordinal)
+            {
+                { "vehicle", new[] { "Tire", "Suspension1", "Suspension2", "Aero", "Differential", "BodyLocationHeading" } },
+                { "engine", new[] { "Engine", "Speed" } },
+                { "timing", new[] { "RaceTime" } },
+                { "acceleration", new[] { "Acceleration" } },
+                { "geometry", new[] { "SuspensionGeometry" } }
+            };
+        internal static string ChunkForFieldGroup(string group)
+        {
+            foreach (var binding in CategoryBindings.Values)
+                if (binding.FieldGroup == group) return binding.ChunkGroup;
+            return null;
+        }
+        public static IReadOnlyList<MemoryReadRange> ReadRanges(string chunkGroup) =>
+            configuredReadRanges.TryGetValue(chunkGroup, out MemoryReadRange[] ranges)
+                ? ranges : Array.Empty<MemoryReadRange>();
+        public static IReadOnlyList<int> PointerChain(string chunkGroup) =>
+            activePointerChains.TryGetValue(chunkGroup, out int[] offsets)
+                ? offsets : Array.Empty<int>();
+        public static bool IsInt32Field(string group, string name) =>
+            configuredFieldTypes.TryGetValue(group + "." + name, out string type)
+                ? type == "int32"
+                : group == "WF_TimeDataOffset" ||
+                    (group == "WF_DifferentialDataOffset" && name.StartsWith("DifferentialOpen", StringComparison.Ordinal));
+
         private static Dictionary<string, string[]> orderedMembers =
             new Dictionary<string, string[]>(StringComparer.Ordinal);
 
@@ -218,9 +291,17 @@ namespace Physics_Data_Debug
             string preferredVersion = "V1_308438";
             int gradientSteps = 10;
             int maxInfiniteHistoryPoints = 0;
+            bool parsedSchema2 = false;
+            int configuredMaxReadGap = 32;
+            int configuredMaxReadBytes = 4096;
             var axisDefaults = new Dictionary<string, WheelAxisProfile>(StringComparer.Ordinal);
             List<string> absoluteFields = null;
             List<string> selectableFields = null;
+            var parsedFieldTypes = new Dictionary<string, string>(StringComparer.Ordinal);
+            var parsedExpressions = new Dictionary<string, string>(StringComparer.Ordinal);
+            var parsedCalculatedNames = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+            var parsedPointerChains = new Dictionary<string, int[]>(StringComparer.Ordinal);
+
             var configuredTelemetryPrefixes = new Dictionary<string, string>(StringComparer.Ordinal);
             var configuredTelemetryAliases = new Dictionary<string, string>(StringComparer.Ordinal);
 
@@ -230,15 +311,39 @@ namespace Physics_Data_Debug
                 {
                     var serializer = new JavaScriptSerializer { MaxJsonLength = int.MaxValue };
                     var document = AsObject(serializer.DeserializeObject(File.ReadAllText(configPath)), "root");
-                    if (!document.TryGetValue("schemaVersion", out object schema) ||
-                        Convert.ToInt32(schema, CultureInfo.InvariantCulture) != 1)
-                        throw new FormatException("Unsupported schemaVersion (expected 1).");
+                    if (!document.TryGetValue("schemaVersion", out object schema))
+                        throw new FormatException("Missing schemaVersion.");
+                    int schemaVersion = Convert.ToInt32(schema, CultureInfo.InvariantCulture);
+                    if (schemaVersion == 1)
+                    {
+                        if (document.TryGetValue("enumValues", out object values))
+                            MergeValues(globals, AsObject(values, "enumValues"));
+                        if (globals.Count == 0)
+                            throw new FormatException("enumValues must provide the default offsets.");
+                    }
+                    else if (schemaVersion == 2)
+                    {
+                        parsedSchema2 = true;
+                        ParseCategorizedFields(document, globals, axisDefaults,
+                            ref absoluteFields, configuredTelemetryPrefixes,
+                            configuredTelemetryAliases, parsedFieldTypes, parsedPointerChains,
+                            parsedExpressions, parsedCalculatedNames);
+                    }
+                    else throw new FormatException("Unsupported schemaVersion: " + schemaVersion + ". Expected 1 or 2.");
 
-                    if (document.TryGetValue("enumValues", out object values))
-                        MergeValues(globals, AsObject(values, "enumValues"));
-                    if (globals.Count == 0)
-                        throw new FormatException("enumValues must provide the default offsets.");
 
+                    if (document.TryGetValue("readOptimization", out object optimizationRaw))
+                    {
+                        var optimization = AsObject(optimizationRaw, "readOptimization");
+                        if (optimization.TryGetValue("maxGapBytes", out object gap))
+                            configuredMaxReadGap = checked((int)ParseNumber(gap, "maxGapBytes"));
+                        if (optimization.TryGetValue("maxReadBytes", out object maxRead))
+                            configuredMaxReadBytes = checked((int)ParseNumber(maxRead, "maxReadBytes"));
+                        if (configuredMaxReadGap < 0 || configuredMaxReadGap > 1024 ||
+                            configuredMaxReadBytes < 4 || configuredMaxReadBytes > 1024 * 1024 ||
+                            (configuredMaxReadBytes & 3) != 0 || (configuredMaxReadGap & 3) != 0)
+                            throw new FormatException("readOptimization settings must be four-byte aligned; gap 0-1024, read 4-1048576.");
+                    }
 
                     if (document.TryGetValue("defaultVersion", out object defaultId))
                         preferredVersion = NormalizeLegacyVersionId(
@@ -369,24 +474,92 @@ namespace Physics_Data_Debug
                             ". Add it to enumValues first.");
             }
 
-            versions = configuredVersions;
-            baseValues = globals;
-            wheelAxisDefaults = axisDefaults;
-            AbsoluteValueFields = absoluteFields != null
-                ? (IReadOnlyList<string>)absoluteFields
-                : Array.Empty<string>();
-            TelemetryPrefixes = configuredTelemetryPrefixes;
-            TelemetryAliases = configuredTelemetryAliases;
-            orderedMembers = BuildOrderedMembers(globals);
-            // Older JSON files stored the names in AllValueNames; preserve
-            // compatibility when users upgrade the executable first.
-            TelemetrySelections = selectableFields != null
-                ? (IReadOnlyList<string>)selectableFields
-                : Members("AllValueNames");
-            FormGForceSettings.GradientSteps = gradientSteps;
-            FormGForceSettings.MaxInfiniteHistoryPoints = maxInfiniteHistoryPoints;
-            SelectVersion(versions.FirstOrDefault(v => v.Id == preferredVersion) ?? versions[0]);
-            LogData.RebuildColumns();
+            // Commit as a transaction: invalid dependencies and alias collisions
+            // must not leave a previously working game configuration half-applied.
+            var oldVersions = versions;
+            var oldBaseValues = baseValues;
+            var oldAxisDefaults = wheelAxisDefaults;
+            var oldAbsoluteFields = AbsoluteValueFields;
+            var oldPrefixes = TelemetryPrefixes;
+            var oldAliases = TelemetryAliases;
+            var oldMembers = orderedMembers;
+            var oldSchema = categorizedSchema;
+            int oldGap = maxReadGapBytes, oldMaxRead = maxReadBytes;
+            var oldTypes = configuredFieldTypes;
+            var oldPointers = configuredPointerChains;
+            var oldExpressions = configuredExpressions;
+            var oldActive = activeValues;
+            var oldActivePointers = activePointerChains;
+            var oldReadRanges = configuredReadRanges;
+            var oldVersion = ActiveVersion;
+            var oldSelections = TelemetrySelections;
+            int oldGradientSteps = FormGForceSettings.GradientSteps;
+            int oldMaxPoints = FormGForceSettings.MaxInfiniteHistoryPoints;
+            var oldCalculations = CalculatedTelemetry.Groups.ToDictionary(
+                group => group, group => CalculatedTelemetry.Names(group).ToList(),
+                StringComparer.Ordinal);
+            try
+            {
+                versions = configuredVersions;
+                baseValues = globals;
+                wheelAxisDefaults = axisDefaults;
+                AbsoluteValueFields = absoluteFields != null
+                    ? (IReadOnlyList<string>)absoluteFields
+                    : Array.Empty<string>();
+                TelemetryPrefixes = configuredTelemetryPrefixes;
+                TelemetryAliases = configuredTelemetryAliases;
+                CalculatedTelemetry.Configure(parsedCalculatedNames);
+                orderedMembers = BuildOrderedMembers(globals);
+                // Older JSON files stored the names in AllValueNames; preserve
+                // compatibility when users upgrade the executable first.
+                categorizedSchema = parsedSchema2;
+                maxReadGapBytes = configuredMaxReadGap;
+                maxReadBytes = configuredMaxReadBytes;
+                configuredFieldTypes = parsedFieldTypes;
+                configuredPointerChains = parsedPointerChains;
+                configuredExpressions = parsedExpressions;
+                // Compile JSON expressions once during config loading. The existing
+                // built-ins are used for fields with no expression.
+                TelemetryFormulas.Configure(configuredExpressions);
+                // Lists are derived from the configured fields (including formulas),
+                // never duplicated manually in telemetrySelections.
+                TelemetrySelections = Array.Empty<string>();
+                FormGForceSettings.GradientSteps = gradientSteps;
+                FormGForceSettings.MaxInfiniteHistoryPoints = maxInfiniteHistoryPoints;
+                SelectVersion(versions.FirstOrDefault(v => v.Id == preferredVersion) ?? versions[0]);
+                LogData.RebuildColumns();
+                TelemetryFormulas.ValidateConfiguration();
+                TelemetrySelections = (new[] { "None" }).Concat(
+                    LogData.AllColumns.Select(column => column.Header)).ToArray();
+
+            }
+            catch
+            {
+                versions = oldVersions;
+                baseValues = oldBaseValues;
+                wheelAxisDefaults = oldAxisDefaults;
+                AbsoluteValueFields = oldAbsoluteFields;
+                TelemetryPrefixes = oldPrefixes;
+                TelemetryAliases = oldAliases;
+                orderedMembers = oldMembers;
+                categorizedSchema = oldSchema;
+                maxReadGapBytes = oldGap;
+                maxReadBytes = oldMaxRead;
+                configuredFieldTypes = oldTypes;
+                configuredPointerChains = oldPointers;
+                configuredExpressions = oldExpressions;
+                activeValues = oldActive;
+                activePointerChains = oldActivePointers;
+                configuredReadRanges = oldReadRanges;
+                ActiveVersion = oldVersion;
+                TelemetrySelections = oldSelections;
+                FormGForceSettings.GradientSteps = oldGradientSteps;
+                FormGForceSettings.MaxInfiniteHistoryPoints = oldMaxPoints;
+                CalculatedTelemetry.Configure(oldCalculations);
+                TelemetryFormulas.Configure(oldExpressions);
+                if (oldMembers.Count > 0) LogData.RebuildColumns();
+                throw;
+            }
         }
 
         public static void SelectVersion(GameVersionProfile version)
@@ -398,7 +571,20 @@ namespace Physics_Data_Debug
             var selected = new Dictionary<string, long>(baseValues, StringComparer.Ordinal);
             foreach (var entry in version.Overrides)
                 selected[entry.Key] = entry.Value;
+            if (categorizedSchema)
+                RecomputeCategorySpans(selected);
             activeValues = selected;
+            var selectedPointers = new Dictionary<string, int[]>(StringComparer.Ordinal);
+            foreach (var entry in configuredPointerChains)
+            {
+                var chain = (int[])entry.Value.Clone();
+                if (chain.Length > 0 && selected.TryGetValue(entry.Key + ".Offset1", out long first))
+                    chain[0] = checked((int)first);
+                selectedPointers.Add(entry.Key, chain);
+            }
+            activePointerChains = selectedPointers;
+            // Build the optimized read plan once per selected game version.
+            configuredReadRanges = BuildReadRanges(selected);
             ActiveVersion = version;
         }
 
@@ -493,6 +679,240 @@ namespace Physics_Data_Debug
             {
                 string[] raw = result.TryGetValue(group, out string[] names) ? names : Array.Empty<string>();
                 result[group] = raw.Concat(CalculatedTelemetry.Names(group)).ToArray();
+            }
+            return result;
+        }
+
+        private static WheelAxisProfile ParseAxisProfile(object raw, string location)
+        {
+            var fields = AsObject(raw, location);
+            var profile = new WheelAxisProfile
+            {
+                Max = Convert.ToSingle(fields["max"], CultureInfo.InvariantCulture),
+                Min = Convert.ToSingle(fields["min"], CultureInfo.InvariantCulture),
+                MajorInterval = Convert.ToDouble(fields["majorInterval"], CultureInfo.InvariantCulture),
+                Decimals = Convert.ToInt32(fields["decimals"], CultureInfo.InvariantCulture),
+                MinorEnabled = Convert.ToBoolean(fields["minorEnabled"], CultureInfo.InvariantCulture),
+                MinorIntervalFraction = Convert.ToInt32(fields["minorIntervalFraction"], CultureInfo.InvariantCulture)
+            };
+            if (profile.MinorIntervalFraction < 1 || profile.Decimals < 0 ||
+                profile.Min >= profile.Max || double.IsNaN(profile.MajorInterval) ||
+                double.IsInfinity(profile.MajorInterval) || profile.MajorInterval <= 0)
+                throw new FormatException("Invalid axisDefaults at " + location);
+            return profile;
+        }
+
+        /// <summary>Schema 2: categories inherit bases and wheel strides;
+        /// every field owns its offset, display metadata, and value type.</summary>
+        private static void ParseCategorizedFields(IDictionary<string, object> document,
+            Dictionary<string, long> values, Dictionary<string, WheelAxisProfile> axes,
+            ref List<string> absolute, Dictionary<string, string> prefixes,
+            Dictionary<string, string> aliases, Dictionary<string, string> types,
+            Dictionary<string, int[]> pointerChains,
+            Dictionary<string, string> expressions,
+            Dictionary<string, List<string>> calculatedNames)
+        {
+            absolute = new List<string>();
+            var configuredBases = AsObject(document["baseAddresses"], "baseAddresses");
+            var resolvedBases = new Dictionary<string, long>(StringComparer.Ordinal);
+            foreach (var entry in configuredBases)
+            {
+                if (!BaseAliases.TryGetValue(entry.Key, out string[] baseNames))
+                    throw new FormatException("Unknown baseAddresses category: " + entry.Key);
+                long address = ParseNumber(entry.Value, "baseAddresses." + entry.Key);
+                resolvedBases[entry.Key] = address;
+                foreach (string name in baseNames) values.Add("BaseAddress." + name, address);
+            }
+            foreach (var entry in AsObject(document["categories"], "categories"))
+            {
+                if (!CategoryBindings.TryGetValue(entry.Key, out CategoryBinding binding))
+                    throw new FormatException("Unknown memory category: " + entry.Key +
+                        ". Add a category binding in GameMemoryConfig before introducing a new memory structure.");
+                var category = AsObject(entry.Value, "categories." + entry.Key);
+                string baseAlias = RequiredString(category, "base");
+                if (!resolvedBases.TryGetValue(baseAlias, out long address) ||
+                    !values.TryGetValue("BaseAddress." + binding.BaseName, out long expectedAddress) ||
+                    address != expectedAddress)
+                    throw new FormatException("Incorrect memory base for categories." + entry.Key);
+                if (category.TryGetValue("prefix", out object prefix))
+                    prefixes[binding.FieldGroup] = Convert.ToString(prefix, CultureInfo.InvariantCulture);
+                if (binding.SideGroup != null)
+                {
+                    if (category.TryGetValue("wheelOffsets", out object wheelOffsets))
+                    {
+                        foreach (var wheel in AsObject(wheelOffsets, "wheelOffsets"))
+                            values.Add(binding.SideGroup + "." + wheel.Key,
+                                ParseNumber(wheel.Value, entry.Key + ".wheelOffsets." + wheel.Key));
+                    }
+                    else
+                    {
+                        string name = binding.SideGroup == "WF_DifferentialSide" ? "Left" : "AllSides";
+                        values.Add(binding.SideGroup + "." + name, 0);
+                    }
+                }
+                if (category.TryGetValue("pointerOffsets", out object chain))
+                {
+                    var offsets = new List<int>();
+                    foreach (var value in AsArray(chain, entry.Key + ".pointerOffsets"))
+                        offsets.Add(checked((int)ParseNumber(value, entry.Key + ".pointerOffsets")));
+                    if (binding.ChunkGroup == null && offsets.Count != 0)
+                        throw new FormatException("Timing memory does not support pointerOffsets.");
+                    if (binding.ChunkGroup != null) pointerChains.Add(binding.ChunkGroup, offsets.ToArray());
+                    if (binding.ChunkGroup != null && offsets.Count > 0)
+                        values.Add(binding.ChunkGroup + ".Offset1", offsets[0]);
+                }
+                var fields = AsObject(category["fields"], entry.Key + ".fields");
+                if (fields.Count == 0)
+                    throw new FormatException("Category has no fields: " + entry.Key);
+                int low = int.MaxValue, high = int.MinValue;
+                foreach (var field in fields)
+                {
+                    string location = entry.Key + ".fields." + field.Key;
+                    if (CalculatedTelemetry.IsBuiltIn(binding.FieldGroup, field.Key))
+                        throw new FormatException("Raw field conflicts with a calculated built-in: " + location);
+                    IDictionary<string, object> metadata = field.Value as IDictionary<string, object>;
+                    object rawOffset = metadata != null ? metadata["offset"] : field.Value;
+                    int offset = checked((int)ParseNumber(rawOffset, location));
+                    if (offset < 0 || (offset & 3) != 0)
+                        throw new FormatException("Offsets must be nonnegative and four-byte aligned: " + location);
+                    values.Add(binding.FieldGroup + "." + field.Key, offset);
+                    low = Math.Min(low, offset);
+                    high = Math.Max(high, offset);
+                    if (metadata != null) ExtractFieldMetadata(binding.FieldGroup, field.Key,
+                        metadata, axes, absolute, aliases, types, location);
+                }
+                if (binding.ChunkGroup != null)
+                {
+                    int size = checked(high - low + sizeof(float));
+                    // Consumer indexing still uses a virtual sparse chunk. Only
+                    // the actual reads will be split into small contiguous ranges.
+                    if (size > 4 * 1024 * 1024)
+                        throw new FormatException("Category span exceeds 4 MiB: " + entry.Key);
+                    values.Add(binding.ChunkGroup + ".DataStart", low);
+                    values.Add(binding.ChunkGroup + ".ChunkSize", size);
+                }
+                if (category.TryGetValue("calculated", out object computedRaw))
+                {
+                    foreach (var computed in AsObject(computedRaw, entry.Key + ".calculated"))
+                    {
+                        string location = entry.Key + ".calculated." + computed.Key;
+                        if (fields.ContainsKey(computed.Key))
+                            throw new FormatException("Calculated field conflicts with raw field: " + location);
+                        if (!System.Text.RegularExpressions.Regex.IsMatch(computed.Key, "^[A-Za-z][A-Za-z0-9_]*$"))
+                            throw new FormatException("Invalid calculated name: " + location);
+                        var metadata = AsObject(computed.Value, location);
+                        if (!calculatedNames.TryGetValue(binding.FieldGroup, out List<string> names))
+                            calculatedNames[binding.FieldGroup] = names = new List<string>();
+                        names.Add(computed.Key);
+                        bool hasExpression = metadata.TryGetValue("expression", out object expressionRaw);
+                        bool hasBuiltin = metadata.TryGetValue("builtin", out object builtinRaw) &&
+                            Convert.ToBoolean(builtinRaw, CultureInfo.InvariantCulture);
+                        if (hasExpression && hasBuiltin)
+                            throw new FormatException("Use either expression or builtin, not both: " + location);
+                        if (hasBuiltin && !TelemetryFormulas.HasBuiltIn(computed.Key))
+                            throw new FormatException("Unknown builtin formula: " + location);
+                        if (hasExpression)
+                        {
+                            string expression = Convert.ToString(expressionRaw, CultureInfo.InvariantCulture);
+                            // Validate syntax immediately, before installing a new configuration.
+                            TelemetryExpression.Compile(expression);
+                            expressions.Add(binding.FieldGroup + "." + computed.Key, expression);
+                        }
+                        else if (!TelemetryFormulas.HasBuiltIn(computed.Key))
+                            throw new FormatException("New calculated field needs an expression: " + location);
+                        ExtractFieldMetadata(binding.FieldGroup, computed.Key,
+                            metadata, axes, absolute, aliases, types, location);
+                    }
+                }
+            }
+            foreach (string id in CategoryBindings.Keys)
+                if (!AsObject(document["categories"], "categories").ContainsKey(id))
+                    throw new FormatException("Missing required memory category: " + id);
+        }
+
+        private static void ExtractFieldMetadata(string group, string member,
+            IDictionary<string, object> fields, Dictionary<string, WheelAxisProfile> axes,
+            List<string> absolute, Dictionary<string, string> aliases,
+            Dictionary<string, string> types, string location)
+        {
+            if (fields.TryGetValue("axisDefaults", out object axis))
+            {
+                WheelAxisProfile profile = ParseAxisProfile(axis, location + ".axisDefaults");
+                if (!axes.ContainsKey(member)) axes.Add(member, profile);
+            }
+            if (fields.TryGetValue("absolute", out object absoluteRaw) &&
+                Convert.ToBoolean(absoluteRaw, CultureInfo.InvariantCulture) &&
+                !absolute.Contains(member)) absolute.Add(member);
+            if (fields.TryGetValue("alias", out object alias))
+            {
+                string name = Convert.ToString(alias, CultureInfo.InvariantCulture);
+                if (string.IsNullOrWhiteSpace(name))
+                    throw new FormatException("Empty alias: " + location);
+                aliases.Add(group + "." + member, name);
+            }
+            if (fields.TryGetValue("type", out object type))
+            {
+                string value = Convert.ToString(type, CultureInfo.InvariantCulture);
+                if (value != "int32" && value != "float32")
+                    throw new FormatException("Only float32 and int32 types are supported: " + location);
+                types.Add(group + "." + member, value);
+            }
+        }
+
+        private static void RecomputeCategorySpans(Dictionary<string, long> values)
+        {
+            foreach (CategoryBinding binding in CategoryBindings.Values)
+            {
+                if (binding.ChunkGroup == null) continue;
+                string groupPrefix = binding.FieldGroup + ".";
+                long[] offsets = values.Where(e => e.Key.StartsWith(groupPrefix, StringComparison.Ordinal))
+                    .Select(e => e.Value).ToArray();
+                if (offsets.Length == 0) throw new FormatException("Empty memory category: " + binding.FieldGroup);
+                long first = offsets.Min(), last = offsets.Max();
+                if (first < 0 || first % 4 != 0 || last % 4 != 0 ||
+                    last - first + 4 > 4 * 1024 * 1024)
+                    throw new FormatException("Invalid field offset range in " + binding.FieldGroup);
+                values[binding.ChunkGroup + ".DataStart"] = first;
+                values[binding.ChunkGroup + ".ChunkSize"] = checked(last - first + 4);
+            }
+        }
+
+        private static Dictionary<string, MemoryReadRange[]> BuildReadRanges(
+            Dictionary<string, long> values)
+        {
+            var result = new Dictionary<string, MemoryReadRange[]>(StringComparer.Ordinal);
+            foreach (var binding in CategoryBindings.Values)
+            {
+                string group = binding.FieldGroup;
+                var offsets = values.Where(kv => kv.Key.StartsWith(group + ".", StringComparison.Ordinal))
+                    .Select(kv => checked((int)kv.Value)).Distinct().OrderBy(x => x).ToArray();
+                if (offsets.Length == 0) throw new FormatException("No raw fields for " + group);
+                string planKey = binding.ChunkGroup ?? binding.FieldGroup;
+                int start = binding.ChunkGroup != null
+                    ? checked((int)values[binding.ChunkGroup + ".DataStart"]) : offsets[0];
+                int size = binding.ChunkGroup != null
+                    ? checked((int)values[binding.ChunkGroup + ".ChunkSize"])
+                    : checked(offsets[offsets.Length - 1] - offsets[0] + sizeof(float));
+                if (size <= 0 || size > 4 * 1024 * 1024 || (size & 3) != 0)
+                    throw new FormatException("Invalid generated memory span for " + group);
+                var ranges = new List<MemoryReadRange>();
+                int lower = offsets[0], upper = checked(lower + sizeof(float));
+                foreach (int offset in offsets.Skip(1))
+                {
+                    if (offset - upper <= maxReadGapBytes && offset - lower + sizeof(float) <= maxReadBytes)
+                        upper = checked(offset + sizeof(float));
+                    else
+                    {
+                        ranges.Add(new MemoryReadRange(lower, upper - lower));
+                        lower = offset;
+                        upper = checked(offset + sizeof(float));
+                    }
+                }
+                ranges.Add(new MemoryReadRange(lower, upper - lower));
+                if (ranges[0].Start < start ||
+                    ranges[ranges.Count - 1].Start + ranges[ranges.Count - 1].Length > start + size)
+                    throw new FormatException("Version offsets exceed configured span for " + group);
+                result.Add(planKey, ranges.ToArray());
             }
             return result;
         }

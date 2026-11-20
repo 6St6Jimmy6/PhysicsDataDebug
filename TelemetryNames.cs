@@ -7,11 +7,21 @@ namespace Physics_Data_Debug
     /// <summary>
     /// Public names for logging, CSV headers and chart selectors. Never rename
     /// Wreckfest memory-offset keys: those are stable identifiers used by the reader.
-    /// Optional JSON telemetryPrefixes/telemetryAliases customize these names.
+    /// In schema 2, category prefixes and per-field aliases customize these names;
+    /// schema 1 still accepts telemetryPrefixes/telemetryAliases.
     /// </summary>
     internal static class TelemetryNames
     {
         internal static readonly string[] Wheels = { "FL", "FR", "RL", "RR" };
+        private static readonly string[] ExplicitPrefixes =
+            { "FL_", "FR_", "RL_", "RR_", "ENG_", "GBX_", "DIFF_",
+              "BODY_", "ACC_", "AERO_", "VEH_", "ENV_", "TIME_" };
+        /// <summary>Only names with a complete public prefix select a different
+        /// source. Formula names such as WLF_LateralGrip and Body_ZAccelerationLocal
+        /// are local member names, not category selectors.</summary>
+        internal static bool HasExplicitPrefix(string name) =>
+            name != null && ExplicitPrefixes.Any(prefix =>
+                name.StartsWith(prefix, StringComparison.Ordinal));
         internal static bool IsWheelGroup(string group) =>
             group == "WF_TireDataOffset" || group == "WF_Suspension1DataOffset" ||
             group == "WF_SuspensionGeometryDataOffset" || group == "WF_Suspension2DataOffset";
