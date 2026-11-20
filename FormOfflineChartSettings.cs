@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -83,22 +83,11 @@ namespace Physics_Data_Debug
                 box.Items.AddRange(dashStyles.Cast<object>().ToArray());
         }
 
-        private static string ColorText(Color color) =>
-            color.IsNamedColor ? color.Name : ColorTranslator.ToHtml(color);
+        private static void SetColor(ComboBox box, Color color) =>
+            ChartSettingsUi.SelectColor(box, color);
 
-        private static void SetColor(ComboBox box, Color color)
-        {
-            string name = ColorText(color);
-            if (!box.Items.Contains(name)) box.Items.Add(name);
-            box.SelectedItem = name;
-        }
-
-        private static Color ReadColor(ComboBox box)
-        {
-            string name = box.Text;
-            return name.StartsWith("#", StringComparison.Ordinal)
-                ? ColorTranslator.FromHtml(name) : Color.FromName(name);
-        }
+        private static Color ReadColor(ComboBox box) =>
+            ChartSettingsUi.ReadColor(box);
 
         private static void DrawFontFamilyItem(object sender, DrawItemEventArgs e)
         {
@@ -288,7 +277,7 @@ namespace Physics_Data_Debug
                     throw new FormatException(result.ChartType + " requires multiple Y fields. " +
                         "It is listed for completeness, but this XY/Z importer cannot draw it from one Y column.");
                 result.Marker = (MarkerStyle)Enum.Parse(typeof(MarkerStyle),markerComboBox.Text);
-                result.Background = Color.FromName(backgroundComboBox.Text);
+                result.Background = ReadColor(backgroundComboBox);
                 FillMissingAxisBounds();
                 ReadBounds(xAutoCheckBox,xMinimumBox,xMaximumBox,"X axis",out result.XMinimum,out result.XMaximum);
                 ReadBounds(yAutoCheckBox,yMinimumBox,yMaximumBox,"Y axis",out result.YMinimum,out result.YMaximum);

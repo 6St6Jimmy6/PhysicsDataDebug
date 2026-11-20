@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
@@ -287,14 +287,11 @@ namespace Physics_Data_Debug
                     itemColor = actual;
                     colorEntry = true;
                 }
-                else if (active != null && active.IsColorSelector && entry.Value is string name)
+                else if (active != null && active.IsColorSelector &&
+                    ChartSettingsUi.TryGetColor(entry.Value, out Color candidate, out string ignored))
                 {
-                    Color candidate = Color.FromName(name);
-                    if (candidate.IsKnownColor || candidate.IsNamedColor)
-                    {
-                        itemColor = candidate;
-                        colorEntry = true;
-                    }
+                    itemColor = candidate;
+                    colorEntry = true;
                 }
                 if (colorEntry)
                 {
@@ -404,7 +401,7 @@ namespace Physics_Data_Debug
             private static void FormatSpecialItems(object sender, ListControlConvertEventArgs e)
             {
                 if (e.ListItem is Color color)
-                    e.Value = color.Name;
+                    e.Value = ChartSettingsUi.ColorText(color);
                 else if (e.ListItem is FontFamily family)
                     e.Value = family.Name;
                 else if (e.ListItem is GameVersionProfile version)
@@ -413,7 +410,7 @@ namespace Physics_Data_Debug
 
             internal string ItemText(object item)
             {
-                if (item is Color color) return color.Name;
+                if (item is Color color) return ChartSettingsUi.ColorText(color);
                 if (item is FontFamily family) return family.Name;
                 if (item is GameVersionProfile version) return version.DisplayName;
                 return combo.GetItemText(item);
@@ -429,6 +426,14 @@ namespace Physics_Data_Debug
 
             private void Combo_KeyDown(object sender, KeyEventArgs e)
             {
+                if (e.KeyCode == Keys.Enter && ChartSettingsUi.TryCommitHexColor(combo))
+                {
+                    GetOverlay()?.Hide(this);
+                    lastSelectedItem = combo.SelectedItem;
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                    return;
+                }
                 GetOverlay()?.HandleKey(this, e);
             }
 
@@ -459,6 +464,11 @@ namespace Physics_Data_Debug
             private void Combo_Validating(object sender, CancelEventArgs e)
             {
                 if (committing || (overlay != null && overlay.IsFor(this))) return;
+                if (ChartSettingsUi.TryCommitHexColor(combo))
+                {
+                    lastSelectedItem = combo.SelectedItem;
+                    return;
+                }
                 if (combo.SelectedIndex >= 0 &&
                     string.Equals(combo.Text, ItemText(combo.SelectedItem),
                         StringComparison.CurrentCultureIgnoreCase)) return;

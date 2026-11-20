@@ -564,6 +564,7 @@ namespace Physics_Data_Debug
 
         private static string ComboSelection(ComboBox combo) =>
             combo.SelectedItem is GameVersionProfile version ? version.Id :
+            combo.SelectedItem is System.Drawing.Color color ? ChartSettingsUi.ColorText(color) :
             combo.SelectedItem != null ? combo.GetItemText(combo.SelectedItem) : combo.Text;
 
         private static string CheckedItemKey(CheckedListBox list, int index) =>
@@ -571,6 +572,9 @@ namespace Physics_Data_Debug
 
         private static void RestoreComboBox(ComboBox combo, string saved)
         {
+            // Custom hex entries are not part of the original designer items.
+            // Recreate them before restoring the saved selection.
+            if (ChartSettingsUi.TrySelectColor(combo, saved)) return;
             // Upgrade saved filter choices from the original four-file logger.
             if (combo.Name.StartsWith("logFilter", StringComparison.Ordinal) &&
                 combo.Name.EndsWith("Field", StringComparison.Ordinal))

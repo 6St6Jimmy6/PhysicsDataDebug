@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Physics_Data_Debug
@@ -78,7 +80,7 @@ namespace Physics_Data_Debug
                 foreach (ComboBox combo in combos) combo.Items.Add(color);
             }
             foreach (ComboBox combo in combos)
-                combo.SelectedIndexChanged += UpdateSelectedColorPreview;
+                RegisterColorCombo(combo, true);
         }
 
         public static void AddIntegers(int minimum, int maximum, params ComboBox[] combos)
@@ -110,18 +112,154 @@ namespace Physics_Data_Debug
             e.Index >= 0 && e.Index < combo.Items.Count;
 
         /// <summary>
-        /// Also used for color dropdowns storing KnownColor names as strings
-        /// (Offline Chart and the live chart cursor). No changes to stored data.
+        /// Identifies whether a registered color ComboBox stores Color values
+        /// or names/hex strings, without changing its existing data model.
         /// </summary>
+        private sealed class ColorComboTag
+        {
+            public bool StoresColorObjects;
+        }
+
+        // A weak registry identifies actual color selectors; name-based guesses
+        // could inadvertently treat a color scheme/palette selector as a color.
+        private static readonly ConditionalWeakTable<ComboBox, ColorComboTag> ColorCombos =
+            new ConditionalWeakTable<ComboBox, ColorComboTag>();
+
+        public static bool IsColorCombo(ComboBox combo) =>
+            combo != null && ColorCombos.TryGetValue(combo, out ColorComboTag unused);
+
+        private static void RegisterColorCombo(ComboBox combo, bool objects)
+        {
+            if (combo == null) return;
+            if (!ColorCombos.TryGetValue(combo, out ColorComboTag tag))
+            {
+                tag = new ColorComboTag { StoresColorObjects = objects };
+                ColorCombos.Add(combo, tag);
+                combo.SelectedIndexChanged += UpdateSelectedColorPreview;
+            }
+            else tag.StoresColorObjects = objects;
+            // The shared ComboBox search helper also sets DropDown to editable.
+            // Keep it editable even if search is not attached yet.
+            combo.DropDownStyle = ComboBoxStyle.DropDown;
+            combo.AutoCompleteMode = AutoCompleteMode.None;
+            combo.AutoCompleteSource = AutoCompleteSource.None;
+        }
+
         public static void ConfigureNamedColorCombos(params ComboBox[] combos)
         {
             foreach (ComboBox combo in combos)
             {
-                combo.DropDownStyle = ComboBoxStyle.DropDownList;
                 combo.DrawMode = DrawMode.OwnerDrawFixed;
                 combo.DrawItem += (sender, e) => DrawColor((ComboBox)sender, e);
-                combo.SelectedIndexChanged += UpdateSelectedColorPreview;
+                RegisterColorCombo(combo, false);
             }
+        }
+
+        // The canonical textual form for arbitrary colors is #RRGGBB or
+        // #AARRGGBB when the alpha channel is not opaque.
+        public static string ColorText(Color color) =>
+            color.IsKnownColor || color.IsNamedColor ? color.Name :
+            color.A == 255
+                ? string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}",
+                    color.R, color.G, color.B)
+                : string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}{3:X2}",
+                    color.A, color.R, color.G, color.B);
+
+        public static bool TryParseHexColor(string text, out Color color)
+        {
+            color = Color.Empty;
+            if (string.IsNullOrWhiteSpace(text)) return false;
+            string digits = text.Trim();
+            if (digits.Length != 7 && digits.Length != 9 || digits[0] != '#') return false;
+            for (int i = 1; i < digits.Length; i++)
+                if (!Uri.IsHexDigit(digits[i])) return false;
+            if (digits.Length == 7)
+            {
+                int rgb = int.Parse(digits.Substring(1), NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+                color = Color.FromArgb((rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255);
+            }
+            else
+            {
+                uint argb = uint.Parse(digits.Substring(1), NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+                color = Color.FromArgb((int)(argb >> 24), (int)((argb >> 16) & 255),
+                    (int)((argb >> 8) & 255), (int)(argb & 255));
+            }
+            return true;
+        }
+
+        public static bool TryGetColor(object item, out Color color, out string label)
+        {
+            color = Color.Empty;
+            label = null;
+            if (item is Color selected)
+            {
+                color = selected;
+                label = ColorText(selected);
+                return true;
+            }
+            if (!(item is string name) || string.IsNullOrWhiteSpace(name)) return false;
+            name = name.Trim();
+            if (TryParseHexColor(name, out color))
+            {
+                label = ColorText(color);
+                return true;
+            }
+            if (Enum.TryParse(name, true, out KnownColor known) &&
+                Enum.IsDefined(typeof(KnownColor), known))
+            {
+                color = Color.FromKnownColor(known);
+                label = color.Name;
+                return true;
+            }
+            return false;
+        }
+
+        // Materialize a selected color in the correct item type (Color for
+        // Four Wheels/G-Force, string for Offline Chart/live cursor).
+        public static bool SelectColor(ComboBox combo, Color color)
+        {
+            if (!IsColorCombo(combo)) return false;
+            var tag = ColorCombos.GetValue(combo, source => new ColorComboTag());
+            string text = ColorText(color);
+            for (int i = 0; i < combo.Items.Count; i++)
+            {
+                object item = combo.Items[i];
+                if (TryGetColor(item, out Color existing, out string label) &&
+                    existing.ToArgb() == color.ToArgb() &&
+                    string.Equals(label, text, StringComparison.OrdinalIgnoreCase))
+                {
+                    combo.SelectedIndex = i;
+                    return true;
+                }
+            }
+            object entry = tag.StoresColorObjects ? (object)color : text;
+            int index = combo.Items.Add(entry);
+            combo.SelectedIndex = index;
+            return true;
+        }
+
+        public static bool TrySelectColor(ComboBox combo, string text)
+        {
+            if (!IsColorCombo(combo) || !TryGetColor(text, out Color color, out string label))
+                return false;
+            return SelectColor(combo, color);
+        }
+
+        // A typed hex code becomes an actual selected item rather than an
+        // uncommitted edit. Called on Enter and on validation/focus loss.
+        public static bool TryCommitHexColor(ComboBox combo)
+        {
+            if (!IsColorCombo(combo) || !TryParseHexColor(combo.Text, out Color color))
+                return false;
+            return SelectColor(combo, color);
+        }
+
+        public static Color ReadColor(ComboBox combo)
+        {
+            if (TryGetColor(combo.SelectedItem, out Color selected, out string ignored))
+                return selected;
+            if (TryGetColor(combo.Text, out selected, out ignored)) return selected;
+            throw new FormatException("Invalid color. Use a named color or #RRGGBB (optionally #AARRGGBB).");
         }
 
         private static void UpdateSelectedColorPreview(object sender, EventArgs e)
@@ -129,32 +267,6 @@ namespace Physics_Data_Debug
             var combo = (ComboBox)sender;
             if (TryGetColor(combo.SelectedItem, out Color color, out string unused))
                 SetContrast(combo, color);
-        }
-
-        private static bool TryGetColor(object item, out Color color, out string label)
-        {
-            color = Color.Empty;
-            label = null;
-            if (item is Color selected)
-            {
-                color = selected;
-                label = selected.Name;
-                return true;
-            }
-            if (!(item is string name) || string.IsNullOrWhiteSpace(name)) return false;
-            try
-            {
-                color = name.StartsWith("#", StringComparison.Ordinal)
-                    ? ColorTranslator.FromHtml(name) : Color.FromName(name);
-                if (!color.IsKnownColor && !color.IsNamedColor && !name.StartsWith("#", StringComparison.Ordinal))
-                    return false;
-                label = name;
-                return true;
-            }
-            catch (Exception ex) when (ex is ArgumentException || ex is FormatException)
-            {
-                return false;
-            }
         }
 
         private static Color PreviewColor(Color color)

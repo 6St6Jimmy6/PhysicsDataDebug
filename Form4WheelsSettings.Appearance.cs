@@ -49,7 +49,7 @@ namespace Physics_Data_Debug
             ChartSettingsUi.ConfigureNamedColorCombos(liveCursorColorBox);
             Select(liveChartTypeBox, Form4WheelsSettings.SeriesChartType.ToString());
             Select(liveHistoryMarkerBox, Form4Wheels.HistoryMarkerStyle.ToString());
-            Select(liveCursorColorBox, CursorColor.Name);
+            ChartSettingsUi.SelectColor(liveCursorColorBox, CursorColor);
             Select(liveCursorDashBox, CursorDash.ToString());
             Select(liveXMajorDashBox, XMajorDashStyle.ToString());
             Select(liveYMajorDashBox, YMajorDashStyle.ToString());
@@ -92,7 +92,7 @@ namespace Physics_Data_Debug
             YMinorAlpha = (int)liveYMinorAlphaBox.Value;
             LiveCursorEnabled = liveCursorEnabledBox.Checked;
             LiveCursorZoomable = liveCursorZoomBox.Checked;
-            CursorColor = Color.FromName(liveCursorColorBox.Text);
+            CursorColor = ChartSettingsUi.ReadColor(liveCursorColorBox);
             CursorAlpha = (int)liveCursorAlphaBox.Value;
             CursorWidth = liveCursorWidthBox.Value;
             if (Enum.TryParse(liveCursorDashBox.Text, out ChartDashStyle cd)) CursorDash = cd;

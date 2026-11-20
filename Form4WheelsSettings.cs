@@ -138,16 +138,16 @@ namespace Physics_Data_Debug
             //Default background color
             if (DefaultsCheckBox.Checked == true)
             {
-                BackgroundColorComboBox.SelectedItem = DefaultBackgroundColor;
-                MarkerColorComboBox.SelectedItem = DefaultMarkerColor;
+                ChartSettingsUi.SelectColor(BackgroundColorComboBox, DefaultBackgroundColor);
+                ChartSettingsUi.SelectColor(MarkerColorComboBox, DefaultMarkerColor);
                 HistoryAmountPointsMaskedTextBox.Text = DefaultHistoryAmountPoints.ToString();
                 SchemeComboBox.SelectedItem = DefaultScheme;
                 WheelChartsSelectComboBox.SelectedItem = DefaultWheelChartsSelect;
             }
             else
             {
-                BackgroundColorComboBox.SelectedItem = BackgroundColor;
-                MarkerColorComboBox.SelectedItem = MarkerColor;
+                ChartSettingsUi.SelectColor(BackgroundColorComboBox, BackgroundColor);
+                ChartSettingsUi.SelectColor(MarkerColorComboBox, MarkerColor);
                 HistoryAmountPointsMaskedTextBox.Text = HistoryAmountPoints.ToString();
                 SchemeComboBox.SelectedItem = Scheme;
                 WheelChartsSelectComboBox.SelectedItem = WheelChartsSelect;
@@ -172,13 +172,13 @@ namespace Physics_Data_Debug
 
                 X1FontStyleComboBox.SelectedItem = X1DefaultFontStyle;
 
-                X1FontColorComboBox.SelectedItem = X1DefaultFontColor;
+                ChartSettingsUi.SelectColor(X1FontColorComboBox, X1DefaultFontColor);
 
-                X1MajorColorComboBox.SelectedItem = X1DefaultMajorColor;
+                ChartSettingsUi.SelectColor(X1MajorColorComboBox, X1DefaultMajorColor);
                 X1MajorDecimalsComboBox.SelectedItem = X1DefaultMajorDecimals;
                 X1MajorIntervalFractionTextBox.Text = X1DefaultMajorInterval.ToString();
                 X1MajorLineWidthComboBox.SelectedItem = X1DefaultMajorLineWidth;
-                X1MinorColorComboBox.SelectedItem = X1DefaultMinorColor;
+                ChartSettingsUi.SelectColor(X1MinorColorComboBox, X1DefaultMinorColor);
                 X1MinorDashStyleComboBox.SelectedItem = X1DefaultMinorDashStyle;
                 X1MinorEnabledCheckBox.Checked = X1DefaultMinorEnabled;
                 X1MinorIntervalComboBox.SelectedItem = X1DefaultMinorIntervalFraction;
@@ -197,13 +197,13 @@ namespace Physics_Data_Debug
 
                 X1FontStyleComboBox.SelectedItem = X1FontStyle;
 
-                X1FontColorComboBox.SelectedItem = X1FontColor;
+                ChartSettingsUi.SelectColor(X1FontColorComboBox, X1FontColor);
 
-                X1MajorColorComboBox.SelectedItem = X1MajorColor;
+                ChartSettingsUi.SelectColor(X1MajorColorComboBox, X1MajorColor);
                 X1MajorDecimalsComboBox.SelectedItem = X1MajorDecimals;
                 X1MajorIntervalFractionTextBox.Text = X1MajorInterval.ToString();
                 X1MajorLineWidthComboBox.SelectedItem = X1MajorLineWidth;
-                X1MinorColorComboBox.SelectedItem = X1MinorColor;
+                ChartSettingsUi.SelectColor(X1MinorColorComboBox, X1MinorColor);
                 X1MinorDashStyleComboBox.SelectedItem = X1MinorDashStyle;
                 X1MinorEnabledCheckBox.Checked = X1MinorEnabled;
                 X1MinorIntervalComboBox.SelectedItem = X1MinorIntervalFraction;
@@ -228,13 +228,13 @@ namespace Physics_Data_Debug
 
                 Y1FontStyleComboBox.SelectedItem = Y1DefaultFontStyle;
 
-                Y1FontColorComboBox.SelectedItem = Y1DefaultFontColor;
+                ChartSettingsUi.SelectColor(Y1FontColorComboBox, Y1DefaultFontColor);
 
-                Y1MajorColorComboBox.SelectedItem = Y1DefaultMajorColor;
+                ChartSettingsUi.SelectColor(Y1MajorColorComboBox, Y1DefaultMajorColor);
                 Y1MajorDecimalsComboBox.SelectedItem = Y1DefaultMajorDecimals;
                 Y1IntervalDividerTextBox.Text = Y1DefaultMajorInterval.ToString();
                 Y1MajorLineWidthComboBox.SelectedItem = Y1DefaultMajorLineWidth;
-                Y1MinorColorComboBox.SelectedItem = Y1DefaultMinorColor;
+                ChartSettingsUi.SelectColor(Y1MinorColorComboBox, Y1DefaultMinorColor);
                 Y1MinorDashStyleComboBox.SelectedItem = Y1DefaultMinorDashStyle;
                 Y1MinorEnabledCheckBox.Checked = Y1DefaultMinorEnabled;
                 Y1MinorIntervalComboBox.SelectedItem = Y1DefaultMinorIntervalFraction;
@@ -253,13 +253,13 @@ namespace Physics_Data_Debug
 
                 Y1FontStyleComboBox.SelectedItem = Y1FontStyle;
 
-                Y1FontColorComboBox.SelectedItem = Y1FontColor;
+                ChartSettingsUi.SelectColor(Y1FontColorComboBox, Y1FontColor);
 
-                Y1MajorColorComboBox.SelectedItem = Y1MajorColor;
+                ChartSettingsUi.SelectColor(Y1MajorColorComboBox, Y1MajorColor);
                 Y1MajorDecimalsComboBox.SelectedItem = Y1MajorDecimals;
                 Y1IntervalDividerTextBox.Text = Y1MajorInterval.ToString();
                 Y1MajorLineWidthComboBox.SelectedItem = Y1MajorLineWidth;
-                Y1MinorColorComboBox.SelectedItem = Y1MinorColor;
+                ChartSettingsUi.SelectColor(Y1MinorColorComboBox, Y1MinorColor);
                 Y1MinorDashStyleComboBox.SelectedItem = Y1MinorDashStyle;
                 Y1MinorEnabledCheckBox.Checked = Y1MinorEnabled;
                 Y1MinorIntervalComboBox.SelectedItem = Y1MinorIntervalFraction;
