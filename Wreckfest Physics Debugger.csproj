@@ -201,6 +201,12 @@
     <Compile Include="FormTireTemperatures.Designer.cs">
       <DependentUpon>FormTireTemperatures.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTireTemperaturesSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTireTemperaturesSettings.Designer.cs">
+      <DependentUpon>FormTireTemperaturesSettings.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChartLimiterRow.resx">
       <DependentUpon>ChartLimiterRow.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,6 +271,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="physics_debug_icon_big.ico" />
+    <EmbeddedResource Include="FormTireTemperaturesSettings.resx">
+      <DependentUpon>FormTireTemperaturesSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WreckfestGameMemoryConfig.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

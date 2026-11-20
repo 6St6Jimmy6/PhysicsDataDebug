@@ -653,7 +653,7 @@ namespace Physics_Data_Debug
             this.OpenTemperaturesChart.Name = "OpenTemperaturesChart";
             this.OpenTemperaturesChart.Size = new System.Drawing.Size(120, 40);
             this.OpenTemperaturesChart.TabIndex = 240;
-            this.OpenTemperaturesChart.Text = "Tire Temperatures Page";
+            this.OpenTemperaturesChart.Text = "Live Time Chart";
             this.OpenTemperaturesChart.UseVisualStyleBackColor = false;
             this.OpenTemperaturesChart.Click += new System.EventHandler(this.OpenTemperaturesChart_Click);
             // 
