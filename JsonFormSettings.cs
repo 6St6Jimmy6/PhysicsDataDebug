@@ -533,9 +533,8 @@ namespace Physics_Data_Debug
                 var canonicalField = LogData.FindDisplay(saved);
                 if (canonicalField != null) saved = canonicalField.DisplayName;
             }
-            // Four Wheels is different from logging and Offline Chart:
-            // multi-wheel plots use a single wheel-relative measurement name.
-            // Only a single-wheel layout displays the chosen wheel's prefix.
+            // Both Four Wheels and Offline Chart choose a measurement, while
+            // their dataset layout decides which prefixed wheel columns to read.
             bool fourWheelsAxis = combo.FindForm() is Form4WheelsSettings &&
                 (combo.Name == "X1SelectionComboBox" ||
                  combo.Name == "Y1SelectionComboBox" ||
@@ -545,6 +544,14 @@ namespace Physics_Data_Debug
             if (fourWheelsAxis || fourWheelsFilter)
                 saved = FourWheelsFieldSelection.MatchAvailable(saved,
                     combo.Items.Cast<object>().Select(combo.GetItemText));
+            bool offlineAxisOrFilter = combo.FindForm() is FormOfflineChartSettings &&
+                (combo.Name == "xColumnComboBox" || combo.Name == "yColumnComboBox" ||
+                 combo.Name == "zColumnComboBox") ||
+                (combo.Name.StartsWith("OfflineFilter", StringComparison.Ordinal) &&
+                 combo.Name.EndsWith("Selection", StringComparison.Ordinal));
+            if (offlineAxisOrFilter)
+                saved = FormOfflineChart.CanonicalAvailableField(saved,
+                    combo.Items.Cast<object>().Select(combo.GetItemText)) ?? saved;
 
             // Previously saved chart axes/filters may still use old raw
             // telemetry members. Restore a supported item, never add a

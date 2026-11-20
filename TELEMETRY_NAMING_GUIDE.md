@@ -31,18 +31,16 @@ because renamed offsets would break the reader and calculated formulas.
 The public name for that field is `ENG_RPM`. The UI and the output file share these
 public names. A legacy chart can still read its former unprefixed field names.
 
-The live **Four Wheels** chart selects a *measurement shared across its visible
-wheels*, so multi-wheel layouts offer `SlipRatio`, `SlipAngleDeg`, or
-`Suspension1SpringRate` once, without a wheel prefix. A single-wheel layout
-displays only its selected wheel's prefixed fields (for example,
-`FR_SlipRatio` in Front Right mode). Global selections such as `ENG_RPM`
-remain prefixed in both modes. The X/Y/Z settings and live extra filters follow
-this rule. When changing the layout, the saved measurement is preserved and
-translated to the new display name.
+Both **Four Wheels** and **Offline Chart** select wheel measurements without
+wheel prefixes: `SlipRatio`, `SlipAngleDeg`, `Suspension1SpringRate`, etc. The
+**dataset layout** selects FL, FR, RL or RR, and chooses how their chart areas
+are grouped. Single-wheel layouts keep the very same measurement choices.
+Shared values such as `ENG_RPM` remain prefixed. X/Y/Z and chart filter
+selectors follow this rule, including older saved selections migrated from
+`FR_SlipRatio` to `SlipRatio`.
 
-Logging and Offline Chart selectors instead refer to exact prefixed channels,
-such as `FL_SlipRatio` and `FR_SlipRatio`. Older preferences are migrated on
-load; the raw game-memory offset keys and combined log headers do not change.
+**Logging and CSV/TXT headers always retain exact source prefixes** (`FL_`,
+`FR_`, `RL_`, `RR_`, etc.). Memory-offset keys are not renamed.
 
 Logging range filters now target **specific** columns such as `FL_SlipRatio`;
 all ten enabled filters are ANDed to decide whether the single synchronized row
@@ -50,11 +48,11 @@ is written. Old generic wheel filter labels resolve to the Front Left wheel as a
 migration fallback; review any previously saved filter profile.
 
 Offline Chart opens both new combined files and older per-wheel CSV/TXT files.
-The Offline Chart selector always shows the full channel name. Choose
-`FL_SlipRatio` to see Front Left, `FR_SlipRatio` to see Front Right, etc.;
-there are no separate unprefixed wheel-relative entries. Shared columns such as
-`TIME_RaceTime` may be plotted against a wheel channel. Legacy imported headers
-are converted in memory; the underlying CSV/TXT files are not modified.
+Choose `SlipRatio` once and use **Dataset layout** to plot all wheels together,
+separately, front/rear, left/right, axle-only, side-only, or a single wheel.
+Shared columns such as `TIME_RaceTime` can be plotted against wheel measurements.
+Old prefixed axis preferences are mapped to their relative measurement names.
+Legacy imported headers are normalized in memory without editing source files.
 Native values take precedence over dynamically calculated columns, whose
 names use the same prefixes when their dependencies are available.
 

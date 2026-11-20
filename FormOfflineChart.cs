@@ -187,30 +187,33 @@ namespace Physics_Data_Debug
 
         internal static string CanonicalAvailableField(string value, IEnumerable<string> available)
         {
+            if (string.IsNullOrWhiteSpace(value)) return null;
             var names = available.ToList();
-            string match = names.FirstOrDefault(n => string.Equals(n, value, StringComparison.OrdinalIgnoreCase));
+            string match = names.FirstOrDefault(n =>
+                string.Equals(n, value, StringComparison.OrdinalIgnoreCase));
             if (match != null) return match;
+
+            // A saved FR_SlipRatio (or the old raw field name) selects the
+            // measurement SlipRatio, not a hardwired FR channel. The dataset
+            // layout determines which actual columns are read.
             foreach (string wheel in TelemetryNames.Wheels)
             {
-                string canonical = TelemetryNames.Canonicalize(value, wheel);
-                match = names.FirstOrDefault(n => string.Equals(n, canonical, StringComparison.OrdinalIgnoreCase));
+                string candidate = TelemetryNames.RelativeWheelName(
+                    TelemetryNames.Canonicalize(value, wheel));
+                match = names.FirstOrDefault(n =>
+                    string.Equals(n, candidate, StringComparison.OrdinalIgnoreCase));
                 if (match != null) return match;
             }
-            // If an old single-wheel file was imported under a different
-            // wheel name, keep the measurement instead of picking a random axis.
-            string relative = TelemetryNames.RelativeWheelName(value);
-            if (!string.Equals(relative, value, StringComparison.Ordinal))
-                foreach (string wheel in TelemetryNames.Wheels)
-                {
-                    match = names.FirstOrDefault(n =>
-                        string.Equals(n, wheel + "_" + relative, StringComparison.OrdinalIgnoreCase));
-                    if (match != null) return match;
-                }
             return null;
         }
 
-        internal IEnumerable<string> GetColumnNames() => files.SelectMany(file => file.Headers)
-            .Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(name => name,StringComparer.OrdinalIgnoreCase);
+        // Imported column headers stay fully prefixed internally. The UI only
+        // exposes a wheel measurement once, regardless of the selected layout.
+        internal IEnumerable<string> GetColumnNames() => files
+            .SelectMany(file => file.Headers)
+            .Select(TelemetryNames.RelativeWheelName)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(name => name, StringComparer.OrdinalIgnoreCase);
 
         internal bool TryGetFieldRange(string name, bool absolute, out double minimum, out double maximum)
         {
@@ -220,7 +223,8 @@ namespace Physics_Data_Debug
             {
                 var choices = file.AvailableWheels(name, name, name);
                 IEnumerable<string> wheelChoices = choices.Count > 0
-                    ? choices : new string[] { null };
+                    ? choices.Where(w => FourWheelsFieldSelection.IncludesWheel(options.Layout, w))
+                    : new string[] { null };
                 foreach (string wheel in wheelChoices)
                 {
                     if (!file.TryWheelIndex(name, wheel, out int col)) continue;
@@ -290,7 +294,8 @@ namespace Physics_Data_Debug
                 finally { importingFiles = false; Cursor = Cursors.Default; }
                 if (added)
                 {
-                    // Newly available headers populate the three axis selectors and 13 filters.
+                    // Measurements populate the selectors once per field;
+                    // wheel prefixes are resolved only when datasets are drawn.
                     var all = GetColumnNames().ToList();
                     options.X = CanonicalAvailableField(options.X, all) ?? all.FirstOrDefault() ?? "";
                     options.Y = CanonicalAvailableField(options.Y, all) ?? all.Skip(1).FirstOrDefault() ?? options.X;
@@ -523,7 +528,8 @@ namespace Physics_Data_Debug
             chart1.SuspendLayout();
             try
             {
-                chart1.Series.Clear(); chart1.ChartAreas.Clear(); chart1.Legends.Clear();
+                chart1.Series.Clear(); chart1.ChartAreas.Clear();
+                chart1.Legends.Clear(); chart1.Titles.Clear();
                 chart1.BackColor = Color.Black;
                 var visible = files.Where((file,index) => index < importedFilesList.Items.Count && importedFilesList.GetItemChecked(index)).ToList();
                 if (visible.Count == 0)
@@ -548,24 +554,29 @@ namespace Physics_Data_Debug
                     options.ChartType == SeriesChartType.Doughnut ||
                     options.ChartType == SeriesChartType.Funnel ||
                     options.ChartType == SeriesChartType.Pyramid;
-                bool separate = options.Layout == "Separate" || circular;
                 long matching = 0, skipped = 0;
                 for (int index = 0; index < visible.Count; index++)
                 {
                     DelimitedTelemetryFile file = visible[index];
-                    var availableWheels = file.AvailableWheels(options.X, options.Y, options.Z);
+                    // Resolve relative fields to each available wheel in this
+                    // file. A single-wheel layout selects only that channel;
+                    // global-only fields remain one dataset, not four copies.
+                    var requestedFields = new[] { options.X, options.Y, options.Z }
+                        .Concat(active.Select(filter => filter.Field)).ToArray();
+                    var availableWheels = file.AvailableWheels(requestedFields);
                     IEnumerable<string> selectedWheels = availableWheels.Count > 0
-                        ? availableWheels : new string[] { null };
+                        ? FourWheelsFieldSelection.WheelsForLayout(options.Layout)
+                            .Where(w => availableWheels.Contains(w))
+                        : new string[] { null };
                     foreach (string wheel in selectedWheels)
                     {
-                    string uniqueFileKey = "File" + index + (wheel == null ? "" : "_" + wheel);
-                    string areaName = separate ? "DatasetArea" + index + (wheel == null ? "" : "_" + wheel) : "AllDatasets";
-                    if (chart1.ChartAreas.FindByName(areaName) == null)
-                    {
-                        var area = new ChartArea(areaName);
-                        ConfigureArea(area);
-                        chart1.ChartAreas.Add(area);
-                    }
+                    string uniqueFileKey = "File" + index + "_" + (wheel ?? "Shared");
+                    string areaName = circular ? "Circular_" + uniqueFileKey :
+                        wheel == null && options.Layout == "Separate" ? "Shared_" + index :
+                        wheel == null ? "ChartAreaShared" :
+                        FourWheelsFieldSelection.AreaForLayout(options.Layout, wheel);
+                    // Resolve columns before creating areas, otherwise an
+                    // incomplete data source leaves empty chart panels behind.
                     if (!file.TryWheelIndex(options.X, wheel, out int xIndex) ||
                         !file.TryWheelIndex(options.Y, wheel, out int yIndex) ||
                         !file.TryWheelIndex(options.Z, wheel, out int zIndex))
@@ -575,11 +586,32 @@ namespace Physics_Data_Debug
                     for (int i = 0; i < active.Count; i++)
                         if (!file.TryWheelIndex(active[i].Field, wheel, out indices[i])) hasAll = false;
                     if (!hasAll) { skipped += file.Rows.Count; continue; }
+                    if (chart1.ChartAreas.FindByName(areaName) == null)
+                    {
+                        var area = new ChartArea(areaName);
+                        ConfigureArea(area);
+                        chart1.ChartAreas.Add(area);
+                        if (!circular && wheel != null)
+                        {
+                            chart1.Titles.Add(new Title
+                            {
+                                Name = "Heading_" + areaName,
+                                Text = FourWheelsFieldSelection.AreaTitle(options.Layout, wheel),
+                                DockedToChartArea = areaName,
+                                IsDockedInsideChartArea = false,
+                                Docking = Docking.Top,
+                                Alignment = ContentAlignment.TopCenter,
+                                BackColor = Color.Transparent,
+                                ForeColor = Color.White,
+                                Font = new Font("Segoe UI", 10f, FontStyle.Bold)
+                            });
+                        }
+                    }
 
                     var series = new Series[options.Bands + 1];
                     for (int band = 1; band <= (circular ? 1 : options.Bands); band++)
                     {
-                        var s = new Series("File" + index + GradientPalette.SeriesSuffix(band))
+                        var s = new Series(uniqueFileKey + GradientPalette.SeriesSuffix(band))
                         {
                             ChartArea = areaName,
                             ChartType = options.ChartType,
@@ -648,7 +680,13 @@ namespace Physics_Data_Debug
                     }
                     } // wheel channel / combined telemetry source
                 }
-                UpdateGradient(zMin,zMax,palette);
+                if (chart1.ChartAreas.Count == 0)
+                {
+                    chart1.ChartAreas.Add(new ChartArea("Empty") { BackColor = options.Background });
+                    GradientChart.Series.Clear(); GradientChart.ChartAreas.Clear();
+                    GradientChart.Visible = false;
+                }
+                else UpdateGradient(zMin,zMax,palette);
                 statusLabel.Text = visible.Count + " active file(s); " + matching.ToString("N0") +
                     " displayed points; " + skipped.ToString("N0") + " hidden or unavailable samples. Data retained in memory.";
             }

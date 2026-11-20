@@ -56,7 +56,8 @@ namespace Physics_Data_Debug
             chartTypeComboBox.Items.AddRange(Enum.GetNames(typeof(SeriesChartType)).Cast<object>().ToArray());
             markerComboBox.Items.AddRange(new object[] { "Circle", "Square", "Diamond", "Triangle", "Cross", "Star4", "Star5", "None" });
             backgroundComboBox.Items.AddRange(new object[] { "Black", "White", "DarkGray", "Gray", "MidnightBlue" });
-            layoutComboBox.Items.AddRange(new object[] { "All In One", "Separate" });
+            layoutComboBox.Items.AddRange(
+                FourWheelsFieldSelection.Layouts.Cast<object>().ToArray());
             string[] colors = Enum.GetNames(typeof(KnownColor));
             foreach (ComboBox box in new[] { xFontColorComboBox, yFontColorComboBox, xGridColorComboBox, yGridColorComboBox,
                 xMinorColorComboBox, yMinorColorComboBox, cursorColorComboBox })

@@ -58,17 +58,24 @@ namespace Physics_Data_Debug
             return TryIndex(field, out index);
         }
 
-        internal IReadOnlyList<string> AvailableWheels(string x, string y, string z)
+        internal IReadOnlyList<string> AvailableWheels(params string[] fields)
         {
-            string[] axes = { x, y, z };
-            if (axes.Any(field => TelemetryNames.Wheels.Any(w =>
+            if (fields == null || fields.Length == 0) return new string[0];
+            // Explicitly prefixed legacy choices still select exactly one
+            // channel. The current UI uses only relative wheel measurements.
+            if (fields.Any(field => TelemetryNames.Wheels.Any(w =>
                 field != null && field.StartsWith(w + "_", StringComparison.OrdinalIgnoreCase))))
-                return new string[0]; // explicit channel: plot exactly one dataset
-            var wheels = TelemetryNames.Wheels.Where(w =>
-                axes.All(field => TryWheelIndex(field, w, out int ignored))).ToArray();
-            // A file that only contains shared fields is not four datasets.
-            return wheels.Length > 1 && axes.Any(field =>
-                indices.ContainsKey("FL_" + field)) ? wheels : new string[0];
+                return new string[0];
+
+            bool wheelMeasurement = fields.Any(field =>
+                !string.IsNullOrWhiteSpace(field) && TelemetryNames.Wheels.Any(w =>
+                    indices.ContainsKey(w + "_" + field)));
+            if (!wheelMeasurement) return new string[0]; // shared dataset
+
+            // Include one-wheel CSVs too (e.g. an old FrontRight log). Never
+            // silently substitute FL data for an absent wheel.
+            return TelemetryNames.Wheels.Where(w =>
+                fields.All(field => TryWheelIndex(field, w, out int ignored))).ToArray();
         }
 
         private static bool TryDependencyIndex(Dictionary<string, int> lookup,

@@ -5,7 +5,7 @@
 1. Open Live Data and click **Offline CSV Chart** in the navigation bar.
 2. Click **Load CSV / TXT...** and select one or more exported telemetry files.
 3. Check/uncheck file names to overlay or hide them; select one and use **Remove selected** to unload it.
-4. Click **Chart settings**, choose X, Y, Z from the actual CSV column headers, and click **Apply Settings**.
+4. Click **Chart settings**, choose X, Y, Z measurements (wheel measurements have no `FL_`/`FR_`/`RL_`/`RR_` prefix), choose a dataset layout, and click **Apply Settings**.
 5. The plot rebuilds from the *original imported rows* whenever an axis, color, chart type, limiter or file visibility is changed.
 
 The importer automatically detects `;`, comma, tab, and `|` separators, handles
@@ -29,8 +29,12 @@ is not plotted, but remains loaded.
 - Defaults uses the actual imported range, falling back to the JSON axis
   defaults where appropriate. Filter fields marked as absolute in the current
   game configuration are filtered by their absolute value, like Four Wheels.
-- Use **All In One** to overlay checked files, or **Separate** to put the files
-  into individual chart areas. The main legend identifies the imported file.
+- **Dataset layout** determines which wheel channels appear, not the X/Y/Z
+  measurement selectors. **All In One** overlays all four, **Separate** creates
+  one chart area per wheel, **Front/Rear** and **Left/Right** group wheels,
+  and axle-only, side-only, or individual-wheel layouts hide unwanted wheels.
+  Multiple imported files for the same wheel can overlay in one chart area.
+  The legend identifies the file and wheel; global-only data is plotted once.
 - For line charts, a filtered-out sample and a color-band transition introduce
   breaks rather than connecting unrelated portions of the data.
 
@@ -63,10 +67,10 @@ Load CSV/TXT to import them in a new session.
 ## Validation checklist
 
 - Load an older `FrontLeftWreckfestDebugLog.txt` with `;` separators and decimal commas;
-  select `FL_SlipAngleDeg`, `FL_LateralFriction`, and `FL_CamberAngleDeg` after import.
+  select `SlipAngleDeg`, `LateralFriction`, and `CamberAngleDeg` after import.
 - Load a second file, verify All In One vs Separate, and uncheck each file.
 - Change each of X, Y, and Z, chart type and palette, then Apply Settings.
-- Enable an extra `FL_VerticalLoad` filter and tighten Min/Max; verify the visible
+- Enable an extra `VerticalLoad` filter and tighten Min/Max; verify the visible
   count drops, then disable the filter and verify the points return.
 - Set a custom X/Y range, test Z color limits, and save/reload a JSON profile.
 - Reopen the app, load a log, verify last saved axes and palette apply.
@@ -119,15 +123,13 @@ When a dataset, filter, selected column, axis or chart type is changed and the c
 ## Combined telemetry files (current logger)
 
 The live logger creates one synchronized `Telemetry_yyyyMMdd_HHmmss.txt` file.
-Import it normally using **Load CSV / TXT**. All prefixed channels become available
-in X/Y/Z and filter selectors, for example `FL_SlipAngleDeg`,
-`FR_LateralFriction`, `RR_VerticalLoad`, and `TIME_RaceTime`.
+Import it normally using **Load CSV / TXT**. Wheel measurements become available
+in X/Y/Z and filter selectors once as `SlipAngleDeg`, `LateralFriction`,
+`VerticalLoad`, etc. Global fields such as `TIME_RaceTime` retain their prefix.
 
-Every dropdown shows only prefixed names. Explicitly choosing `FL_...`,
-`FR_...`, `RL_...`, or `RR_...` displays that exact wheel channel, and
-`TIME_RaceTime` or another shared signal may be used with it. The same
-combined file provides all four wheel channels. To compare them, select the
-relevant channels explicitly. Older files with unprefixed headers are accepted
+To choose FL, FR, RL, or RR, change **Dataset layout**; do not choose a separate
+prefixed field. The combined file still contains four physically distinct
+prefixed sets of columns. Older files with unprefixed headers are accepted
 and normalized in memory during import; the original files remain unchanged.
 
 See [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).

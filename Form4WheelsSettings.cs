@@ -83,17 +83,15 @@ namespace Physics_Data_Debug
             ChartSettingsUi.AddIntegers(0, 10, X1MajorDecimalsComboBox, Y1MajorDecimalsComboBox);
             ChartSettingsUi.AddOptions(SchemeComboBox, GradientPalette.AvailableSchemes);
             ChartSettingsUi.AddOptions(WheelChartsSelectComboBox,
-                "Separate", "Front/Rear", "All In One",
-                "Front Left", "Front Right", "Rear Left", "Rear Right");
+                FourWheelsFieldSelection.Layouts);
 
             AxisSelectionComboboxAdd(X1SelectionComboBox);
             AxisSelectionComboboxAdd(Y1SelectionComboBox);
             AxisSelectionComboboxAdd(Z1SelectionComboBox);
         }
         /// <summary>
-        /// Four Wheels uses a *measurement* on each wheel, rather than one
-        /// independently selected FL/FR/RL/RR channel. Keep the shared
-        /// category prefixes (ENG_, BODY_, etc.) in every layout.
+        /// Four Wheels selects *measurements* independently of the layout.
+        /// Only shared fields retain category prefixes (ENG_, BODY_, etc.).
         /// </summary>
         public static void AxisSelectionComboboxAdd(ComboBox axisSelectionCombobox,
                                                     string wheelLayout = null)

@@ -630,79 +630,27 @@ namespace Physics_Data_Debug
         {
             ApplyAxisSelectionDefaults();
             GetColorSchemeColors();
-            string chartAllWheels = "ChartAreaAllWheels";
-            string chartFrontWheels = "ChartAreaFront";
-            string chartRearWheels = "ChartAreaRear";
-            string chartFL = "ChartAreaFL";
-            string chartFR = "ChartAreaFR";
-            string chartRL = "ChartAreaRL";
-            string chartRR = "ChartAreaRR";
-            // Clear area-docked titles before removing their chart areas.
+            string selectedLayout = Form4WheelsSettings.WheelChartsSelect;
             chart1.Titles.Clear();
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
-            // Recreate the chart layout, then restore history from WheelPlotHistory.
-            switch (Form4WheelsSettings.WheelChartsSelect)
+            // Chart placement and wheel selection share one layout definition
+            // with the Offline Chart; axis field names never change by layout.
+            foreach (string wheel in FourWheelsFieldSelection.WheelsForLayout(selectedLayout))
             {
-                case "All In One":
-                    SetChart(chart1, FL_SeriesString, chartAllWheels);
-                    SetChart(chart1, RL_SeriesString, chartAllWheels);
-                    SetChart(chart1, FR_SeriesString, chartAllWheels);
-                    SetChart(chart1, RR_SeriesString, chartAllWheels);
-                    break;
-
-                case "Front Left":
-                    SetChart(chart1, FL_SeriesString, chartAllWheels);
-                    break;
-
-                case "Front Right":
-                    SetChart(chart1, FR_SeriesString, chartAllWheels);
-                    break;
-
-                case "Rear Left":
-                    SetChart(chart1, RL_SeriesString, chartAllWheels);
-                    break;
-
-                case "Rear Right":
-                    SetChart(chart1, RR_SeriesString, chartAllWheels);
-                    break;
-
-                case "Front/Rear":
-                    SetChart(chart1, FL_SeriesString, chartFrontWheels);
-                    SetChart(chart1, FR_SeriesString, chartFrontWheels);
-                    SetChart(chart1, RL_SeriesString, chartRearWheels);
-                    SetChart(chart1, RR_SeriesString, chartRearWheels);
-                    break;
-
-                case "Separate":
-                default:
-                    // Keep the original left/right chart ordering.
-                    SetChart(chart1, FL_SeriesString, chartFL);
-                    SetChart(chart1, RL_SeriesString, chartRL);
-                    SetChart(chart1, FR_SeriesString, chartFR);
-                    SetChart(chart1, RR_SeriesString, chartRR);
-                    break;
+                string seriesName = wheel == "FL" ? FL_SeriesString :
+                    wheel == "FR" ? FR_SeriesString :
+                    wheel == "RL" ? RL_SeriesString : RR_SeriesString;
+                SetChart(chart1, seriesName,
+                    FourWheelsFieldSelection.AreaForLayout(selectedLayout, wheel));
             }
-            // Titles are attached to the *actual* areas, not a shared header
-            // strip. The single-tire layouts reuse ChartAreaAllWheels.
-            string selectedLayout = Form4WheelsSettings.WheelChartsSelect;
-            string allWheelHeading = selectedLayout == "Front Left" ||
-                selectedLayout == "Front Right" ||
-                selectedLayout == "Rear Left" ||
-                selectedLayout == "Rear Right"
-                    ? selectedLayout : "All Wheels";
-            var headings = new Dictionary<string, string>
-            {
-                { chartAllWheels, allWheelHeading },
-                { chartFrontWheels, "Front Tires" },
-                { chartRearWheels, "Rear Tires" },
-                { chartFL, "Front Left" },
-                { chartFR, "Front Right" },
-                { chartRL, "Rear Left" },
-                { chartRR, "Rear Right" }
-            };
             foreach (ChartArea area in chart1.ChartAreas)
-                AddChartAreaHeading(chart1, area.Name, headings[area.Name]);
+            {
+                string areaWheel = FourWheelsFieldSelection.WheelsForLayout(selectedLayout)
+                    .FirstOrDefault(w => FourWheelsFieldSelection.AreaForLayout(selectedLayout, w) == area.Name);
+                AddChartAreaHeading(chart1, area.Name,
+                    FourWheelsFieldSelection.AreaTitle(selectedLayout, areaWheel));
+            }
 
             // Apply the palette to all points restored by RebindHistory, not only
             // to series-level styles or newly incoming points.
@@ -990,28 +938,14 @@ namespace Physics_Data_Debug
         public static void PlotAllWheels(Chart chart, List<string> selections,
                                          List<string> limiterSelections)
         {
-            // A single-wheel layout must also stop recording the other wheels;
-            // creating one visible series alone would still collect their histories.
-            switch (Form4WheelsSettings.WheelChartsSelect)
-            {
-                case "Front Left":
-                    PlotWheel(chart, TelemetryPrefix.FL, FL_SeriesString, selections, limiterSelections);
-                    return;
-                case "Front Right":
-                    PlotWheel(chart, TelemetryPrefix.FR, FR_SeriesString, selections, limiterSelections);
-                    return;
-                case "Rear Left":
-                    PlotWheel(chart, TelemetryPrefix.RL, RL_SeriesString, selections, limiterSelections);
-                    return;
-                case "Rear Right":
-                    PlotWheel(chart, TelemetryPrefix.RR, RR_SeriesString, selections, limiterSelections);
-                    return;
-            }
-
-            PlotWheel(chart, TelemetryPrefix.FL, FL_SeriesString, selections, limiterSelections);
-            PlotWheel(chart, TelemetryPrefix.FR, FR_SeriesString, selections, limiterSelections);
-            PlotWheel(chart, TelemetryPrefix.RL, RL_SeriesString, selections, limiterSelections);
-            PlotWheel(chart, TelemetryPrefix.RR, RR_SeriesString, selections, limiterSelections);
+            // Dataset layout controls which wheels generate history, not which
+            // wheel prefix appears in the X/Y/Z selectors.
+            var wheels = new HashSet<string>(FourWheelsFieldSelection.WheelsForLayout(
+                Form4WheelsSettings.WheelChartsSelect));
+            if (wheels.Contains("FL")) PlotWheel(chart, TelemetryPrefix.FL, FL_SeriesString, selections, limiterSelections);
+            if (wheels.Contains("FR")) PlotWheel(chart, TelemetryPrefix.FR, FR_SeriesString, selections, limiterSelections);
+            if (wheels.Contains("RL")) PlotWheel(chart, TelemetryPrefix.RL, RL_SeriesString, selections, limiterSelections);
+            if (wheels.Contains("RR")) PlotWheel(chart, TelemetryPrefix.RR, RR_SeriesString, selections, limiterSelections);
         }
 
         private static void PlotWheel(Chart chart, string wheel, string seriesName,
