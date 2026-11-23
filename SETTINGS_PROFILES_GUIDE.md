@@ -1,81 +1,86 @@
 # Per-form JSON settings and profiles
 
-The application saves its current UI preferences as readable JSON files in your
-Windows user profile. Settings automatically load again the next time you open
-the app. **You do not need to press Apply first after restarting**: the
-four-wheel, G-force, and logging models restore their settings at startup.
+Physics Debugger saves UI preferences as editable JSON under your Windows user
+profile. Each form has its own autosave and, where the **Profiles** menu is
+available, its own folder of named profiles. This is separate from the
+Wreckfest memory-offset configuration.
 
 ## Automatic settings files
 
-Press **Win + R**, paste the following, and press Enter:
+Press **Win + R**, enter the following path and press Enter:
 
+```text
+%APPDATA%\PhysicsDataDebug\Settings\
 ```
-%APPDATA%\PhysicsDataDebug\Settings
-```
 
-You will see individual files after the corresponding form has saved settings:
+Files are created or updated as their corresponding windows are used. Current
+examples include:
 
-| File | Saved preferences |
+| File | Contents |
 | --- | --- |
-| `FormLiveData.json` | Selected game version, logging interval, window bounds |
-| `Form4Wheels.json` | Wheel chart axis-limit selections and controls |
-| `Form4WheelsSettings.json` | Wheel chart styling, axis choices, palettes, history, gradient bands |
-| `FormGForceSettings.json` | G-force chart styling, colors, history and axis options |
-| `FormLogSettings.json` | Log fields, delimiter, filters and numeric inputs |
+| `FormLiveData.json` | Game-version selection, refresh interval, window settings |
+| `LiveMonitorSelections.json` | Selected measurements in the JSON-driven Live Data monitor (separate from per-form snapshots) |
+| `Form4Wheels.json` | Live chart controls, limiter states and window settings |
+| `Form4WheelsSettings.json` | X/Y/Z measurements, chart appearance, dataset layout and related settings |
+| `FormGForceSettings.json` | G-Force axis and appearance options |
+| `FormOfflineChart.json` | Offline chart window and filter controls |
+| `FormOfflineChartSettings.json` | Offline axis, dataset layout, appearance and cursor settings |
+| `FormLogSettings.json` | Logging-tree field selection, output folder, delimiter, ten filters and time/size limits |
+| `FormLiveTimeChart.json` | Up to five plotted measurements, enabled lanes and individual wheel visibility |
+| `FormLiveTimeChartSettings.json` | Time window, time units, update interval, colors, grid and per-lane Y ranges |
+| `FormSuspensionGeometry.json` | Geometry chart axis bounds and update interval |
 
-Current settings are automatically saved by the forms' existing Apply and
-Close actions. The main window also saves when you exit the program. Each
-form saves to its **own file**, so changes to another form cannot overwrite it.
+This table lists the relevant current implementations, not a guarantee that
+every file exists before its form has been used.
 
-The `WreckfestGameMemoryConfig.json` file is also placed in this Settings
-folder on first launch. It defines game versions, offsets, memory fields,
-and defaults. It is a **game-memory config**, not a per-form UI profile.
-Switch between game configs from **Config ▼** on the Live Data page.
+**Game memory:** `WreckfestGameMemoryConfig.json` supplies versions, addresses,
+raw/calculated fields and defaults. The active configuration filename is
+tracked in `ActiveGameMemoryConfig.json`. Those are not form-profile snapshots.
+Use **Config ▼** in Live Data to switch or reload game configurations.
 
 ## Saving and loading named profiles
 
-Every relevant form has a **Profiles ▼** button, with these commands:
+Where a form has a **Profiles ▼** button, the shared `JsonFormSettings.cs` menu
+supports:
 
-1. **Save profile as...** — saves a snapshot of that form's current controls
-   to a `.json` file with a name of your choice, e.g. `Drifting.json`.
-2. **Load profile...** — restores the controls from an existing JSON profile,
-   updates the chart or logging model, and makes those values the current
-   automatic settings. Future startups use the loaded values.
-3. **Restore factory defaults** — loads that form's original settings captured
-   before your saved preferences were applied. This also updates the active
-   autosave, so the defaults remain selected after restarting.
-4. **Open settings folder** — opens the location of your automatic JSON files.
+1. **Save profile as...** — save the current controls as a named JSON file.
+2. **Load profile...** — restore a previously saved profile; the restored values
+   also become the current autosave.
+3. **Restore factory defaults** — load the captured initial settings for that
+   form, if its factory snapshot exists.
+4. **Restore previous autosave (.bak)** — recover a backup when available.
+5. **Reset this form's settings and profiles...** — archive and reset one form's
+   settings, then restart.
+6. **Reset ALL form settings and profiles...** — archive and reset the per-form
+   settings/profiles, preserving game-memory configurations; restart afterwards.
+7. **Open settings folder** — open the AppData directory.
 
-You can also press **Ctrl + Shift + P** in any of these forms to open the same
-profile menu (handy on large charts where the button may be off-screen).
+**Ctrl + Shift + P** also opens the profile menu on forms where it is attached.
+Menus and autosave behavior differ slightly by form; settings dialogs may
+apply changes immediately or when you click their Apply button.
 
-The default named-profile folders are:
+Named profiles are stored in folders such as:
 
+```text
+%APPDATA%\PhysicsDataDebug\Settings\Profiles\Form4WheelsSettings\
+%APPDATA%\PhysicsDataDebug\Settings\Profiles\FormGForceSettings\
+%APPDATA%\PhysicsDataDebug\Settings\Profiles\FormLogSettings\
+%APPDATA%\PhysicsDataDebug\Settings\Profiles\FormOfflineChartSettings\
+%APPDATA%\PhysicsDataDebug\Settings\Profiles\FormLiveTimeChartSettings\
 ```
-%APPDATA%\PhysicsDataDebug\Settings\Profiles\Form4Wheels
-%APPDATA%\PhysicsDataDebug\Settings\Profiles\Form4WheelsSettings
-%APPDATA%\PhysicsDataDebug\Settings\Profiles\FormGForceSettings
-%APPDATA%\PhysicsDataDebug\Settings\Profiles\FormLogSettings
-%APPDATA%\PhysicsDataDebug\Settings\Profiles\FormLiveData
-```
 
-You can back up, copy, rename, and edit profile files with a text editor. The
-profile chooser also lets you navigate to a file elsewhere on your computer.
-Profiles are **per form** to prevent unrelated wheel/chart/logging preferences
-from being mixed together.
+The shared code uses a `Profiles\<FormName>` directory for whichever form
+opens the menu. **`Factory Defaults.json` is created if missing** for the forms
+that initialize factory profiles. Existing baseline files are not replaced
+silently when the application is updated; an older factory snapshot can retain
+older defaults. To deliberately regenerate one, close the application, back up
+that file, and delete only the relevant `Factory Defaults.json` before opening
+the form again.
 
-On the first startup, the app also creates a **`Factory Defaults.json`** file
-in each of the five folders above. Unlike a partial template, it captures all
-the initialized controls, including the current defaults configured in
-the selected game-memory JSON file. These baseline files are generated **before** saved
-user preferences are restored. The app never overwrites existing baseline
-files, so your original defaults remain available. To generate a fresh
-baseline after intentionally changing the program's defaults, close the app,
-delete just the corresponding `Factory Defaults.json`, and launch it again.
+## Editing a settings JSON yourself
 
-## Editing JSON yourself
-
-Settings are plain UTF-8 JSON with indented values. A shortened example:
+Per-form snapshots use a schema independent of game-memory schema 2. A shortened,
+illustrative example of the **settings** format is:
 
 ```json
 {
@@ -88,33 +93,38 @@ Settings are plain UTF-8 JSON with indented values. A shortened example:
   "WindowState": "Normal",
   "Controls": {
     "DelimiterTextBox": ";",
-    "checkBoxFiltersOn": "false",
-    "checkedListBoxLogging.Items.SlipRatio": "true"
+    "logFieldsTreeView.Fields.WF_TireDataOffset.SlipRatio.FL": "true"
   }
 }
 ```
 
-The `Controls` keys are the WinForms control names. Checkbox values are the
-strings `"true"` or `"false"`; numeric values are strings using a dot as the
-decimal separator. For logging field checkboxes, the key contains the field
-**name**, so reordering configured fields won't change which ones are enabled.
-The exact field names in your own JSON may differ from this example.
+A `Controls` key normally corresponds to a WinForms control name. Boolean
+values are stored as the strings `"true"` / `"false"`; number entries normally
+use an invariant decimal point. The logging selection tree saves **leaf keys**
+by stable source group/member/wheel, not by visible tree position. For example,
+`WF_TireDataOffset.SlipRatio.FL` represents the FL Slip Ratio column. Parent
+categories and measurement checkboxes are reconstructed from their children.
+Older flat `CheckedListBox` selections can still be migrated, but the old
+`checkedListBoxLogging` is no longer part of the UI.
 
-You can edit a JSON file while the application is closed and its changes will
-load on the next start. For changes while the app is open, edit a **named
-profile** and use **Load profile...**; the active autosave can be overwritten
-when the form is next applied or closed.
+For manual edits, close the application first. While it is open, its next Apply
+or Close action may overwrite changes to an active autosave. To load a modified
+file during a session, use a **named profile** and **Load profile...**. A bad or
+obsolete control key will not create a new WinForms control; missing choices
+fall back to valid current values where possible.
 
-If a saved control name or dropdown item no longer exists, the application
-keeps its current valid/default value. If JSON is malformed or belongs to a
-different form, a warning is shown instead of applying the file.
+The logging tree, combined log headers and the Four Wheels/Offline relative
+wheel selection names represent different purposes: saved logging leaf keys
+identify a specific wheel, while X/Y/Z selector choices such as `SlipRatio`
+identify a measurement whose wheel is chosen by the dataset layout.
 
-## Old registry migration
+## Older registry migration
 
-When an automatic JSON file does not yet exist, the app tries to read that
-form's settings from its old Windows registry location and writes an initial
-JSON file. This is a **read-only, one-time import**. New preferences are saved
-only to JSON; the previous registry settings are not deleted.
+When an autosave does not exist, the code may import settings from older
+registry-based versions once. After migration, new preferences are saved in
+JSON; the old registry keys are not actively updated. A reset can disable
+subsequent legacy registry import without deleting the old registry entries.
 
-To restore a named profile later, use **Profiles ▼ → Load profile...** rather
-than deleting the current autosave.
+For configuration offsets, expressions and `displayName` / `unit` metadata, see
+[GAME_CONFIG_GUIDE.md](GAME_CONFIG_GUIDE.md). For file-header prefixes, see
+[TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).

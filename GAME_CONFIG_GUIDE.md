@@ -60,7 +60,9 @@ supporting a completely different game will also require adapting that reader.
 
 The bundled configuration now uses JSON **objects inside objects**, just as XML
 can nest elements. There are eleven Wreckfest memory categories under
-`categories`, and shared starting addresses under `baseAddresses`.
+`categories`, and shared starting addresses under `baseAddresses`. The
+bundled configuration currently describes 271 raw fields and 56 calculated
+fields (55 expressions plus the specialized `Log10aT` built-in).
 
 ```json
 {
@@ -125,6 +127,9 @@ chart). You do not edit `telemetrySelections`.
   "offset": "0x4E0",
   "type": "float32",
   "absolute": true,
+  "displayName": "My New Tire Value",
+  "unit": "N",
+  "unitName": "newtons",
   "axisDefaults": {
     "min": -5.0,
     "max": 5.0,
@@ -138,6 +143,9 @@ chart). You do not edit `telemetrySelections`.
 
 `float32` is the default and can be omitted. Use `"type": "int32"`
 when the raw four-byte value is a signed integer (as with RaceTime).
+`displayName` is an optional Live Data label. `unit` and `unitName` supply
+the abbreviated unit and its full hover tooltip; choose the actual physical
+unit of the field (the `N` example above is illustrative).
 A field may also have an optional `alias` for the public prefixed name, e.g.
 `"alias": "TireNewName"`. Do not include the FL/FR/RL/RR prefix yourself:
 the application adds it for a wheel category.
@@ -277,10 +285,13 @@ are `V1_285308` (`0x0`) and `V1_308438` (`0x9E00`).
 ## Selections and defaults
 
 `telemetrySelections` is no longer stored in schema 2: the program builds it
-from all configured raw fields and the available calculated fields. Public
-names use the appropriate telemetry prefix (`FL_`, `FR_`, `ENG_`, `BODY_`,
-`TIME_`, etc.). The live Four Wheels form shows one relative tire field for
-multi-wheel layouts and the selected wheel's prefix for a single-wheel layout.
+from all configured raw fields and calculated fields. Public names use the
+appropriate telemetry prefix (`FL_`, `FR_`, `ENG_`, `BODY_`, `TIME_`, etc.).
+**Logging and file headers** use these fully qualified names. **Four Wheels,
+Offline Chart, and the Live Time Chart** show wheel measurements without
+FL/FR/RL/RR prefixes in their selectors, including in single-wheel layouts.
+The selected dataset layout or wheel-visibility controls determine which
+channels are used. Shared fields such as `ENG_RPM` remain prefixed.
 
 `wheelAxisDefaults` and `absoluteValueFields` are no longer separate top-level
 lists in schema 2. Their values live beside the field to which they apply.
@@ -336,10 +347,11 @@ The shipped config includes display names for all raw and calculated fields,
 and units for measurements whose units are known. Leave the unit blank for
 unitless quantities or quantities whose physical meaning is not verified.
 
-The Live Data form now has a category/measurement checkbox tree. Checking
+The Live Data form has a category/measurement checkbox tree. Checking
 Aerodynamics selects its drag and lift fields; individual fields may be
 unchecked separately. Every monitored measurement occupies one row; tire and
-suspension measurements display four wheel values on that row. Selections are
-stored in `%APPDATA%\PhysicsDataDebug\Settings\LiveMonitorSelections.json`.
-Fields added to the active JSON appear automatically the next time the config
-is reloaded or the app is opened.
+suspension measurements display FL/FR/RL/RR values on that row. Selections
+are stored in `%APPDATA%\PhysicsDataDebug\Settings\LiveMonitorSelections.json`.
+Fields added to the active JSON become available when the configuration is
+reloaded or the application is restarted. Display metadata never changes
+public telemetry/log headers or memory-offset identifiers.

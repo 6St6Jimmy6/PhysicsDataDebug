@@ -5,7 +5,7 @@
 1. Open Live Data and click **Offline CSV Chart** in the navigation bar.
 2. Click **Load CSV / TXT...** and select one or more exported telemetry files.
 3. Check/uncheck file names to overlay or hide them; select one and use **Remove selected** to unload it.
-4. Click **Chart settings**, choose X, Y, Z measurements (wheel measurements have no `FL_`/`FR_`/`RL_`/`RR_` prefix), choose a dataset layout, and click **Apply Settings**.
+4. Click **Chart Settings**, choose X, Y, Z measurements (wheel measurements have no `FL_`/`FR_`/`RL_`/`RR_` prefix), choose a dataset layout, and click **Apply Settings**. The thirteen filters and their **Apply Filters** action are in this settings window.
 5. The plot rebuilds from the *original imported rows* whenever an axis, color, chart type, limiter or file visibility is changed.
 
 The importer automatically detects `;`, comma, tab, and `|` separators, handles
@@ -20,11 +20,16 @@ is not plotted, but remains loaded.
 
 ## Layout and filters
 
-- `FormOfflineChart.Designer.cs` contains visible Designer panels for **Files**,
-  **X/Y/Z filters**, **10 extra filters**, and the separate chart/legend area.
+- `FormOfflineChart.Designer.cs` owns the file list, chart and legend. Its
+  existing filter groups are **hidden parking controls** when Settings is
+  closed; they do not occupy space above the chart.
+- Opening **FormOfflineChartSettings** temporarily hosts those same groups in
+  its filter section, between the action buttons and the chart settings. They
+  return to the chart form when the dialog closes, retaining their values.
 - The three fixed filters always follow the chosen axes. Each of the 13 filters
-  has its own checkbox, Min, Max and Defaults button.
-- **Apply filters** redraws without dropping rows from the imported datasets.
+  has its own enabled checkbox, Min, Max and Defaults action.
+- **Apply Filters**, in the Settings window, redraws without dropping rows
+  from the imported datasets.
   Empty bounds mean unlimited; invalid enabled bounds are highlighted.
 - Defaults uses the actual imported range, falling back to the JSON axis
   defaults where appropriate. Filter fields marked as absolute in the current
@@ -44,8 +49,9 @@ is not plotted, but remains loaded.
 **Chart and data**, **X axis**, **Y axis**, **Z / color axis**. These include
 configurable chart type, marker style/size, background, palette, gradient bands,
 absolute values, axis selection, scaling, label font/colors, major/minor grid
-styles, and logarithmic axes. There is one **Apply Settings** action; there is
-no history-limit or separate Clear/Apply control.
+styles, and logarithmic axes. The Settings window has **Apply Settings** for
+chart options and **Apply Filters** to redraw using the current filter values.
+There is no live-history limit or separate Clear/Apply control.
 
 `GradientPalette.cs` provides the same three gradient schemes as live Four
 Wheels. The Z legend represents the selected Z column; axes and filters are
@@ -80,16 +86,16 @@ visual testing must be completed in Visual Studio on Windows.
 
 ## Inspecting XYZ points
 
-Open **Chart settings** → **Chart and data settings** to control point inspection:
+Open **Chart Settings → Chart and data settings** to control point inspection:
 
 - **Show XYZ point tooltips** enables point inspection (on by default).
-- **Point hover delay (milliseconds)** defaults to `500`. Values from 0 through 10,000 ms are allowed; 0 is effectively immediate.
+- **Point hover delay (milliseconds)** defaults to `1000` in `OfflineChartOptions.cs`. Values from 0 through 10,000 ms are allowed; 0 is effectively immediate. Previously saved profiles can override the default.
 
 For chart types where Windows Forms Chart can hit-test a rendered data point, keep the mouse over that point until the hover delay expires. A transient tooltip shows the imported file name and **X, Y, Z** values after all display transformations (such as Absolute). **Left-click a point** to pin a tooltip on the chart, then click **×** to dismiss it. Clicking another point replaces the pinned point. Pinning does not affect the underlying file data or filters.
 
 When a dataset, filter, selected column, axis or chart type is changed and the chart is redrawn, the pinned popup closes automatically because the old series/data-point objects were replaced. Data points with missing/invalid measurements are not inspectable. Lines without visible markers, or very dense FastLine/FastPoint rendering, may not be individually hit-testable; for the most reliable inspection choose **Point** with visible markers. Point inspection is implemented in reusable `ChartPointInspector.cs`.
 
-## Offline chart customization — November 2026
+## Chart types, grid styling and cursor options
 
 - All 35 `SeriesChartType` enum choices appear in the chart type dropdown. Most
   single-Y chart types can render from X/Y/Z data. Bubble size uses `abs(Z)`.

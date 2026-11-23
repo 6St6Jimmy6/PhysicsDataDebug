@@ -1,6 +1,7 @@
 # Live Time Chart
 
-`FormTireTemperatures` is now the live, five-lane telemetry time-history chart.
+`FormLiveTimeChart` is the live, five-lane telemetry time-history chart
+(previously implemented as `FormTireTemperatures`).
 Open it from **Live Data > Live Time Chart** after connecting to Wreckfest with **Get Process**.
 
 ## What a plot represents
@@ -31,7 +32,7 @@ Open **Chart Settings** to change:
 | Axis/grid text | Arial, white | Font family, axis and title font sizes, major/minor grid colors and visibility |
 | Plot Y minimum / maximum | Auto | Each lane can use automatic scaling or its own fixed bounds |
 
-Click **Apply Settings** to keep existing time samples while rebuilding the display. Your choices save to `%APPDATA%\PhysicsDataDebug\Settings\FormTireTemperaturesSettings.json` and track selections save separately to `FormTireTemperatures.json`.
+Click **Apply Settings** to keep existing time samples while rebuilding the display. Your choices save to `%APPDATA%\PhysicsDataDebug\Settings\FormLiveTimeChartSettings.json` and the track selections save separately to `FormLiveTimeChart.json`.
 
 ## Live behavior
 
@@ -43,6 +44,10 @@ Click **Apply Settings** to keep existing time samples while rebuilding the disp
 
 ## Designer and source
 
-The form and its separate settings dialog use standard WinForms controls (`Chart`, `TableLayoutPanel`, `ComboBox`, `CheckBox`, and `NumericUpDown`) owned by their `.Designer.cs` files. The individual five selector rows and grouped settings can be edited in Visual Studio Designer.
+`FormLiveTimeChart` and `FormLiveTimeChartSettings` use standard WinForms controls (`Chart`, `TableLayoutPanel`, `ComboBox`, `CheckBox`, and `NumericUpDown`) owned by their `.Designer.cs` files. The individual five selector rows and grouped settings can be edited in Visual Studio Designer.
 
-The plotted values are resolved through `LogData.AllColumns` and `LiveData`; complex calculated fields continue to use the active JSON schema and shared formula evaluator. No separate tire-temperature-only memory reader is required.
+The plotted values are resolved through `LogData.AllColumns` and `LiveData`;
+calculated telemetry uses the active JSON schema 2 expressions and shared
+formula evaluator. No separate tire-temperature-only memory reader is
+required. Default chart areas and selector rows are represented in the
+Designer; actual telemetry series are populated at runtime.

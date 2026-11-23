@@ -1,10 +1,10 @@
-﻿# Wreckfest Physics Debugger
+# Wreckfest Physics Debugger
 
 A Windows desktop application for inspecting, charting, and logging physics telemetry from **Wreckfest**. It reads game memory, provides live wheel and vehicle measurements, supports configurable charts and filters, and exports telemetry into text files for later analysis.
 
 The application also includes an **Offline Four Wheels / CSV Chart**, which can plot imported files without connecting to the game.
 
-# Example pictures (outdated)
+## Example pictures (outdated)
 
 ![LiveData page](https://github.com/user-attachments/assets/c68f05b9-0a75-47ca-88be-779a9ff533a7)
 ![4wheels_gradient](https://github.com/user-attachments/assets/b9b06097-d5fb-41b0-ab7a-59061e778523)
@@ -31,40 +31,43 @@ The application also includes an **Offline Four Wheels / CSV Chart**, which can 
 
 ### Live Data
 
-The main window displays live measurements and provides navigation to the other tools, including:
+**Live Data** is the main navigation and telemetry-monitoring window. It provides game-version and memory-configuration selection, **Get Process**, logging controls, and access to:
 
-- **Four Wheels** — live X/Y plots for individual tires, front/rear pairs, or combined wheel layouts.
+- **Four Wheels** — live X/Y plots for individual tires, axle/side pairs, or combined wheel layouts.
 - **G-Force** — polar acceleration plot with a vertical acceleration chart.
 - **Tire Static Values** — tire dimensions, spring/damper, thermal, and mass/inertia data.
 - **Suspension Static Values** — spring, travel-limit, damping/rebound, and bump-stop data.
-- **Suspension Geometry** — front and rear geometry visualization.
-- **Live Time Chart** (`FormTireTemperatures`) — up to five vertically stacked synchronized telemetry plots, including tire temperatures, with a configurable RaceTime window.
+- **Suspension Geometry** — front and rear suspension geometry visualization.
+- **Live Time Chart** (`FormTireTemperatures`) — up to five stacked telemetry plots sharing RaceTime.
 - **Offline Four Wheels / CSV Chart** — imported-file plotting without a live game connection.
-- **Log Settings** — choose recorded fields, filters, output directory, and logging limits.
+- **Log Settings** — choose recorded channels, filters, output directory, and logging limits.
 
-The available memory measurements include tire, suspension, body, engine, differential, acceleration, aerodynamics, timing, and other categories defined in the active game-memory JSON. Some additional selections are **calculated telemetry**, derived from raw readings. Schema 2 allows you to define most new calculated fields directly in JSON using mathematical expressions; more complex quaternion and tire-grip calculations remain available as named built-ins.
+#### Configurable telemetry monitor
+
+The Live Data monitor is populated from the active game-memory JSON, rather than a fixed list of labels. Expand categories such as **Aerodynamics** to select individual drag or lift measurements, or check a category to display everything it contains. Each selected measurement appears in its own row:
+
+- Tire and suspension measurements use **FL / FR / RL / RR** value columns in the same row.
+- Shared vehicle measurements appear **once**, rather than once per wheel.
+- Labels and units come from each field's JSON `displayName`, `unit`, and `unitName` properties. Hover over a unit abbreviation, such as `N` or `m/s`, to see its full description (for example, *newtons* or *meters per second*).
+
+Your visible measurement selections are stored separately from the game-memory configuration, so changing what you monitor does not change memory offsets or log field names.
+
+Available measurements include tire, suspension, body, engine, differential, acceleration, aerodynamics, timing, and any other groups supplied by the active JSON. Calculated telemetry can also be defined by JSON expressions; specialized calculations remain available as named built-ins.
 
 ### Four Wheels
 
-The live Four Wheels page supports:
+The live **Four Wheels** chart supports:
 
 - Configurable **X**, **Y**, and **Z/color** measurements.
-- **Separate**, **Front/Rear**, **Left/Right**, **All In One**, axle-only, side-only, and individual-wheel layouts.
-- A configurable Z-axis gradient palette, number of color bands, and legend.
+- **Separate**, **Front/Rear**, **Left/Right**, **All In One**, axle-only, side-only, and individual-wheel dataset layouts.
+- A configurable Z-axis gradient palette, color bands, and legend.
 - Per-band history limits and current-value markers.
-- **13 chart filters:** three that follow the selected X/Y/Z fields, plus ten optional extra telemetry filters.
-- Independent filter limits and reset/default controls.
-- Separate **Apply Chart Settings** and **Clear Charts and Apply** actions in the settings window. Applying appearance changes does not necessarily discard recorded history.
-- Searchable selectors and JSON settings profiles.
+- **13 filters**: three based on the selected X/Y/Z measurements, plus ten optional telemetry filters.
+- Searchable selectors and named JSON settings profiles.
 
-**Four Wheels field selection is independent of dataset layout.** All layouts,
-including single-wheel layouts, offer each wheel measurement only once as
-`SlipRatio`, `SlipAngleDeg`, `LateralFriction`, etc. The chart resolves the
-measurement for the FL/FR/RL/RR datasets selected by the layout. Shared fields
-retain category prefixes (`ENG_RPM`, `BODY_YawDeg`, `TIME_RaceTime`). The 13 live
-chart filters use the same choices. Log file headers remain fully prefixed.
+**Measurement choice is independent of dataset layout.** Select a wheel measurement once—for example, `SlipRatio`, `SlipAngleDeg`, or `LateralFriction`—and the dataset layout determines which of **FL / FR / RL / RR** is drawn and where. Single-wheel layouts use the same unprefixed wheel choices. Shared measurements remain prefixed, such as `ENG_RPM`, `BODY_YawDeg`, and `TIME_RaceTime`.
 
-The four-wheel settings window uses dark, **Designer-editable groups**. Related fields share horizontal rows, and the four main settings sections have equal-width columns.
+`Form4WheelsSettings` uses dark, Designer-editable setting groups. Its **Chart Settings** tab holds the appearance and axis controls. Its **Filters** tab holds all 13 filters and their **Apply Filters** action; the filter controls are no longer on the main chart window. Chart settings have separate **Apply Chart Settings** and **Clear Charts and Apply** actions, allowing changes without necessarily discarding history.
 
 ### G-Force
 
@@ -113,19 +116,21 @@ See [LIVE_TIME_CHART_GUIDE.md](LIVE_TIME_CHART_GUIDE.md).
 
 ## Offline Four Wheels / CSV Chart
 
-Use this window to visualize recorded or imported delimited telemetry independently of Wreckfest.
+Use **Offline Chart** to visualize recorded or imported delimited telemetry without Wreckfest running.
 
-- Import multiple **CSV, TXT, TSV, or LOG** files and choose which files are visible.
-- Map imported column headers to **X**, **Y**, and **Z/color** selections.
-- Use the same general arrangement of **13 filters** as the live Four Wheels page (three axis-following filters and ten additional filters).
-- Change chart types, palettes, gradient bands, axis ranges, fonts, and grid styling.
-- Configure cursor appearance and X/Y zoom behavior.
-- Inspect supported data points using hover tooltips or click to pin a point-information popup.
-- Save and restore settings using JSON profiles.
+- Import multiple **CSV, TXT, TSV, or LOG** files and choose which datasets are visible.
+- Select **X**, **Y**, and **Z/color** measurements, chart type, palette, gradient bands, axis ranges, fonts, and grid styles.
+- Choose a **dataset layout** to route FL/FR/RL/RR channels into separate, grouped, or combined chart areas. Single-wheel layouts display only that wheel's series.
+- Configure cursor appearance and X/Y zoom, and inspect data points using hover tooltips or pinned information popups.
+- Save and restore chart settings through named JSON profiles.
 
-**Apply Filters** redraws the view without changing the original imported rows. Some WinForms chart types require multiple Y values and cannot be rendered from a single X/Y/Z row; the application reports those combinations rather than treating them as ordinary single-Y plots.
+The selectors follow the same rule as live Four Wheels: a wheel measurement such as `SlipAngleDeg` appears **once**, without a wheel prefix. The dataset layout resolves `FL_SlipAngleDeg`, `FR_SlipAngleDeg`, `RL_SlipAngleDeg`, and `RR_SlipAngleDeg` from the imported file as needed. Shared measurements such as `TIME_RaceTime` keep their prefixes. Combined logs and older individual-wheel files are supported; imported file headers are not rewritten.
 
-For details, see [OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md).
+**All 13 chart filters and the Apply Filters button are inside `FormOfflineChartSettings`**, between the Settings action controls and the other chart options—not on the main Offline Chart window. Applying filters changes the displayed points without altering the source file.
+
+Some WinForms chart types require multiple Y values and cannot be rendered from a single X/Y/Z row; these combinations are reported instead of being treated as ordinary single-Y plots.
+
+For details, see [OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md) and [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).
 
 ## Logging telemetry
 
@@ -143,7 +148,7 @@ TIME_RaceTime;FL_SlipRatio;FR_SlipRatio;RL_SlipRatio;RR_SlipRatio;ENG_RPM;VEH_Tr
 
 The row above is an **illustrative example**, not a recorded game sample. `TIME_RaceTime` is measured in **milliseconds**. Public column names use these prefixes: `FL_`, `FR_`, `RL_`, `RR_`, `ENG_`, `GBX_`, `DIFF_`, `BODY_`, `ACC_`, `AERO_`, `VEH_`, `ENV_`, and `TIME_`. `GBX_` and `ENV_` are reserved until memory fields for those categories become available. Duplicate suspension member names receive `Suspension1` or `Suspension2` qualifiers.
 
-Field selection is saved by the stable field and wheel identity, not checklist index. Older flat-list settings are migrated. The grouped JSON **schema 2** stores raw field offsets, types, axis defaults and absolute-value behavior in one category-owned definition; public prefixes/aliases are derived from that definition. The application also supports legacy schema 1 game configurations.
+Field selection is saved using stable field and wheel identities, rather than checklist positions. Older flat-list logging selections are migrated where possible.
 
 ### Ten logging filters
 
@@ -170,10 +175,6 @@ Two optional limits can stop the active logging session:
 
 A value of **0** disables that limit. If both are enabled, the first reached stops logging. Settings changed during a session apply to the next recording. The Live Data sampling interval is configurable (50 ms by default), but actual sampling cadence depends on game and PC workload.
 
-The **Offline Chart** imports combined TXT files and older CSV/TXT logs. Axis and filter dropdowns display wheel measurements without prefixes (for example `SlipAngleDeg`, `LateralFriction` and `VerticalLoad`) and shared fields with category prefixes (`TIME_RaceTime`). Its dataset layout chooses the wheel channels and chart areas. Import preserves fully prefixed file headers internally and accepts legacy names.
-
-For field naming and compatibility details see [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).
-
 ## Saved settings and profiles
 
 Current UI settings are saved in editable JSON files under:
@@ -199,13 +200,36 @@ For more information, see [SETTINGS_PROFILES_GUIDE.md](SETTINGS_PROFILES_GUIDE.m
 
 ## Game-memory JSON configuration
 
-`WreckfestGameMemoryConfig.json` defines available game versions, shared base addresses, categorized raw telemetry fields, and per-field defaults. The memory reader dynamically batches nearby configured offsets instead of relying on manually fixed chunk sizes. The built-in configuration is installed into the user Settings folder on first launch. You can maintain additional named JSON configurations and select them using **Config ▼** on Live Data.
+`WreckfestGameMemoryConfig.json` defines game versions, shared base addresses, categorized raw telemetry, calculated fields, and per-field display defaults. The reader dynamically batches nearby memory offsets instead of depending on manually specified fixed chunk sizes.
 
-Available actions include loading a configuration, saving a copy, reloading the active configuration, selecting the default Wreckfest configuration, and opening the folder.
+In **schema 2**, a field belongs to a category and can inherit its base address and wheel offsets. Adding an ordinary raw field can be as simple as specifying its final offset; optional field settings include:
 
-To edit a configuration, **stop sampling and logging** and close other chart/settings windows before switching it. Be careful when editing memory offsets: an incorrect offset can produce invalid values or make attachment/read operations fail.
+| Property | Purpose |
+|---|---|
+| `offset` | Raw memory offset relative to the field's configured base/pointer structure. |
+| `type` | Data interpretation, such as `float32`. |
+| `axisDefaults` | Suggested axes, intervals, and decimal precision for charts. |
+| `absolute` | Mark a field for absolute-value behavior where applicable. |
+| `displayName` | Human-readable monitoring label, e.g. `Front Lift`. |
+| `unit` | Short unit symbol, e.g. `N`. |
+| `unitName` | Full unit label for tooltips, e.g. `newtons`. |
+| `expression` | Formula for a calculated field, under the category's `calculated` section. |
 
-See [GAME_CONFIG_GUIDE.md](GAME_CONFIG_GUIDE.md) and [WRECKFEST_AUTO_DETECTION.md](WRECKFEST_AUTO_DETECTION.md) for version profiles and automatic detection details.
+For example, an existing `FrontLift` field can have presentation properties like these alongside its **actual configured offset**:
+
+```json
+"displayName": "Front Lift",
+"unit": "N",
+"unitName": "newtons"
+```
+
+The field's raw identity and public telemetry prefix do not change when its presentation label changes. Likewise, a calculated tire value can be added under `tire.calculated` with an expression such as `LateralLoad / VerticalLoad`; the calculation system resolves wheel-specific dependencies and makes the result available to compatible charts and logging. More complex operations can use named built-in functions. Public telemetry selections are generated from the configuration, so duplicate hand-maintained selector lists are unnecessary. Legacy schema 1 configurations remain supported.
+
+The bundled game configuration is installed into the user's Settings folder on first use. You can maintain additional named JSON configurations and choose them with **Config ▼** in Live Data. Options include loading, saving a copy, reloading, selecting the default Wreckfest configuration, and opening its folder.
+
+**Before switching or editing memory configurations**, stop sampling and logging and close other chart/settings windows. Back up customized files: updates do not automatically overwrite your saved configuration, and incorrect memory offsets can cause invalid reads or attachment failures.
+
+See [GAME_CONFIG_GUIDE.md](GAME_CONFIG_GUIDE.md), [LAZY_TELEMETRY_GUIDE.md](LAZY_TELEMETRY_GUIDE.md), and [WRECKFEST_AUTO_DETECTION.md](WRECKFEST_AUTO_DETECTION.md) for the schema and memory-reader details.
 
 ## Interface and Designer organization
 
@@ -228,43 +252,17 @@ If attaching or drawing geometry causes an exception, inspect the **exception ty
 
 ## Further documentation
 
-- [GAME_CONFIG_GUIDE.md](GAME_CONFIG_GUIDE.md) — memory configuration, versions, and fields.
-- [WRECKFEST_AUTO_DETECTION.md](WRECKFEST_AUTO_DETECTION.md) — automatic executable-version detection.
-- [SETTINGS_PROFILES_GUIDE.md](SETTINGS_PROFILES_GUIDE.md) — autosaved preferences and named profiles.
-- [OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md) — importing files and chart controls.
+- [GAME_CONFIG_GUIDE.md](GAME_CONFIG_GUIDE.md) — memory configuration, schema 2, calculated expressions, versions, and fields.
+- [WRECKFEST_AUTO_DETECTION.md](WRECKFEST_AUTO_DETECTION.md) — executable-version detection.
+- [SETTINGS_PROFILES_GUIDE.md](SETTINGS_PROFILES_GUIDE.md) — saved preferences and named profiles.
+- [OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md) — importing files, dataset layouts, and chart controls.
+- [LIVE_TIME_CHART_GUIDE.md](LIVE_TIME_CHART_GUIDE.md) — synchronized live time-history charts.
+- [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md) — prefixes, combined logs, and measurement selectors.
 - [LAZY_TELEMETRY_GUIDE.md](LAZY_TELEMETRY_GUIDE.md) — telemetry-reading architecture and performance.
-- [OPTIMIZATION_REVIEW.md](changelogs/OPTIMIZATION_REVIEW.md) — performance notes and further refactoring opportunities.
+- [OPTIMIZATION_REVIEW.md](changelogs/OPTIMIZATION_REVIEW.md) — development notes and further refactoring opportunities.
 
 ## Acknowledgments
 
 - **Cartoons** — help with discovering and confirming the first in-game memory values.
 - **N4T4NM** and **iGutobreks** — earlier memory-helper code and usage.
 - **Rod Stephens** — the original registry-persistence example used in older versions.
-
-See [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md) for the combined log format and field prefixes.
-
-### Telemetry field names in selectors
-
-Logging and stored file headers always use fully prefixed telemetry names.
-Wheel values use `FL_`, `FR_`, `RL_` and `RR_`; shared signals use `ENG_`,
-`GBX_`, `DIFF_`, `BODY_`, `ACC_`, `AERO_`, `VEH_`, `ENV_` and `TIME_`.
-
-Live Four Wheels and Offline Chart selectors instead choose a wheel measurement
-once (for example `SlipRatio`), and their **dataset layout** determines which
-wheels to display and where. Shared signals such as `ENG_RPM` and `TIME_RaceTime`
-retain their category prefixes. Older files and saved profiles are mapped to
-these selection names without modifying the stored telemetry headers.
-
-## Configurable Live Data monitoring
-
-The Live Data window includes a selectable telemetry monitor driven by the
-active game-memory configuration. Expand a category such as Aerodynamics to
-choose individual drag and lift measurements, or check the category to show
-all its values. Every selected measurement gets one live row. Tire and
-suspension measurements share a row with FL/FR/RL/RR columns; global values
-are shown once. The visible label, unit abbreviation, and full unit tooltip
-come from each JSON field's `displayName`, `unit`, and optional `unitName`.
-These presentation labels do not alter prefixed telemetry/logging identities.
-
-Offline Chart's thirteen range filters are available in Chart Settings,
-between the Settings action buttons and the other chart options.

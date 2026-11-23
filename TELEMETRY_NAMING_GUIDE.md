@@ -28,8 +28,10 @@ The qualifier is used only for collisions. All generated columns are checked for
 In JSON schema 2, category `prefix` and optional per-field `alias` control public names.
 The loader generates compatible internal memory symbols (e.g. `WF_EngineDataOffset.EngineRPM`),
 because renamed offsets would break the reader and calculated formulas.
-The public name for that field is `ENG_RPM`. The UI and the output file share these
-public names. A legacy chart can still read its former unprefixed field names.
+The public name for that field is `ENG_RPM`. The logger, saved file headers and
+wheel-specific logging filters use canonical names. Chart measurement selectors
+use relative wheel names (see below); legacy imports and saved preferences can
+still resolve older names.
 
 Both **Four Wheels** and **Offline Chart** select wheel measurements without
 wheel prefixes: `SlipRatio`, `SlipAngleDeg`, `Suspension1SpringRate`, etc. The
@@ -56,6 +58,17 @@ Legacy imported headers are normalized in memory without editing source files.
 Native values take precedence over dynamically calculated columns, whose
 names use the same prefixes when their dependencies are available.
 
-For custom memory configurations, `telemetryPrefixes` maps JSON field groups to
-output categories and `telemetryAliases` maps `Group.Member` to public member names.
-The original JSON offset keys must remain unchanged.
+For **schema 2**, each category sets its `prefix` (`WHEEL`, `ENG`, `ACC`, etc.),
+and an optional field-level `alias` changes the public member name. For
+example, raw engine field `EngineRPM` has alias `RPM`, resulting in `ENG_RPM`.
+`displayName`, `unit`, and `unitName` affect Live Data presentation only;
+logging headers and memory-offset keys are not renamed. Legacy schema 1 also
+supports top-level `telemetryPrefixes` and `telemetryAliases` mappings.
+
+One logging session writes one `Telemetry_yyyyMMdd_HHmmss.txt` file, with one
+selected column per canonical field and one synchronized sample per row. The
+logger has ten optional range filters; those target specific prefixed columns
+and determine whether the **entire row** is written.
+
+See [GAME_CONFIG_GUIDE.md](GAME_CONFIG_GUIDE.md) for schema 2 definitions and
+[OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md) for relative selector names.
