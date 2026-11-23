@@ -179,7 +179,6 @@
       <DependentUpon>FormLiveData.cs</DependentUpon>
     </Compile>
     <Compile Include="MemoryReader.cs" />
-    <Compile Include="LegacyMemoryUtilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormLogSettings.cs">
