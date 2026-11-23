@@ -303,14 +303,14 @@
             this.gameVersionFieldsLayout.Controls.Add(this.SettingsProfilesHost, 0, 2);
             this.gameVersionFieldsLayout.Controls.Add(this.versionDetectionStatus, 0, 3);
             this.gameVersionFieldsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gameVersionFieldsLayout.Location = new System.Drawing.Point(8, 21);
+            this.gameVersionFieldsLayout.Location = new System.Drawing.Point(8, 32);
             this.gameVersionFieldsLayout.Name = "gameVersionFieldsLayout";
             this.gameVersionFieldsLayout.RowCount = 4;
             this.gameVersionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.gameVersionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.gameVersionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.gameVersionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.gameVersionFieldsLayout.Size = new System.Drawing.Size(228, 171);
+            this.gameVersionFieldsLayout.Size = new System.Drawing.Size(228, 160);
             this.gameVersionFieldsLayout.TabIndex = 0;
             // 
             // GameVersionComboBox
@@ -319,7 +319,7 @@
             this.GameVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GameVersionComboBox.Location = new System.Drawing.Point(3, 3);
             this.GameVersionComboBox.Name = "GameVersionComboBox";
-            this.GameVersionComboBox.Size = new System.Drawing.Size(222, 21);
+            this.GameVersionComboBox.Size = new System.Drawing.Size(222, 33);
             this.GameVersionComboBox.TabIndex = 0;
             this.GameVersionComboBox.SelectionChangeCommitted += new System.EventHandler(this.GameVersionComboBox_SelectionChangeCommitted);
             // 
@@ -349,7 +349,7 @@
             this.versionDetectionStatus.ForeColor = System.Drawing.Color.Gainsboro;
             this.versionDetectionStatus.Location = new System.Drawing.Point(3, 108);
             this.versionDetectionStatus.Name = "versionDetectionStatus";
-            this.versionDetectionStatus.Size = new System.Drawing.Size(222, 63);
+            this.versionDetectionStatus.Size = new System.Drawing.Size(222, 52);
             this.versionDetectionStatus.TabIndex = 3;
             this.versionDetectionStatus.Text = "Auto: detects on Get Process";
             // 
@@ -379,7 +379,7 @@
             this.sessionFieldsLayout.Controls.Add(this.logInterval_textBox, 1, 4);
             this.sessionFieldsLayout.Controls.Add(this.TickTime, 0, 5);
             this.sessionFieldsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sessionFieldsLayout.Location = new System.Drawing.Point(8, 21);
+            this.sessionFieldsLayout.Location = new System.Drawing.Point(8, 32);
             this.sessionFieldsLayout.Name = "sessionFieldsLayout";
             this.sessionFieldsLayout.RowCount = 6;
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
@@ -388,7 +388,7 @@
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.sessionFieldsLayout.Size = new System.Drawing.Size(228, 240);
+            this.sessionFieldsLayout.Size = new System.Drawing.Size(228, 229);
             this.sessionFieldsLayout.TabIndex = 0;
             // 
             // getProcessButton
@@ -465,7 +465,7 @@
             this.logInterval_textBox.ForeColor = System.Drawing.Color.White;
             this.logInterval_textBox.Location = new System.Drawing.Point(128, 146);
             this.logInterval_textBox.Name = "logInterval_textBox";
-            this.logInterval_textBox.Size = new System.Drawing.Size(97, 20);
+            this.logInterval_textBox.Size = new System.Drawing.Size(97, 31);
             this.logInterval_textBox.TabIndex = 5;
             this.logInterval_textBox.Text = "50";
             this.logInterval_textBox.TextChanged += new System.EventHandler(this.logInterval_textBox_TextChanged);
@@ -478,7 +478,7 @@
             this.TickTime.ForeColor = System.Drawing.Color.Silver;
             this.TickTime.Location = new System.Drawing.Point(3, 175);
             this.TickTime.Name = "TickTime";
-            this.TickTime.Size = new System.Drawing.Size(222, 65);
+            this.TickTime.Size = new System.Drawing.Size(222, 54);
             this.TickTime.TabIndex = 6;
             this.TickTime.Text = "Tick time —";
             // 
@@ -554,7 +554,7 @@
             this.monitorFieldTree.CheckBoxes = true;
             this.monitorFieldTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.monitorFieldTree.ForeColor = System.Drawing.Color.White;
-            this.monitorFieldTree.Location = new System.Drawing.Point(3, 16);
+            this.monitorFieldTree.Location = new System.Drawing.Point(3, 27);
             this.monitorFieldTree.Name = "monitorFieldTree";
             treeNode1.Name = "";
             treeNode1.Text = "Front Lift";
@@ -573,7 +573,7 @@
             treeNode4,
             treeNode5,
             treeNode6});
-            this.monitorFieldTree.Size = new System.Drawing.Size(184, 659);
+            this.monitorFieldTree.Size = new System.Drawing.Size(184, 648);
             this.monitorFieldTree.TabIndex = 0;
             // 
             // monitorRowsHost
@@ -616,9 +616,9 @@
             // 
             this.monitorPreviewRow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.monitorPreviewRow.ForeColor = System.Drawing.Color.White;
-            this.monitorPreviewRow.Location = new System.Drawing.Point(3, 16);
+            this.monitorPreviewRow.Location = new System.Drawing.Point(3, 27);
             this.monitorPreviewRow.Name = "monitorPreviewRow";
-            this.monitorPreviewRow.Size = new System.Drawing.Size(494, 51);
+            this.monitorPreviewRow.Size = new System.Drawing.Size(494, 40);
             this.monitorPreviewRow.TabIndex = 0;
             this.monitorPreviewRow.Text = "Front Lift                     — N";
             this.monitorPreviewRow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -668,11 +668,11 @@
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(3, 16);
+            this.textBox1.Location = new System.Drawing.Point(3, 27);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(324, 131);
+            this.textBox1.Size = new System.Drawing.Size(324, 120);
             this.textBox1.TabIndex = 0;
             // 
             // debug2Section
@@ -691,11 +691,11 @@
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(3, 16);
+            this.textBox2.Location = new System.Drawing.Point(3, 27);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(324, 131);
+            this.textBox2.Size = new System.Drawing.Size(324, 120);
             this.textBox2.TabIndex = 0;
             // 
             // debug3Section
@@ -714,11 +714,11 @@
             this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(3, 16);
+            this.textBox3.Location = new System.Drawing.Point(3, 27);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox3.Size = new System.Drawing.Size(324, 131);
+            this.textBox3.Size = new System.Drawing.Size(324, 120);
             this.textBox3.TabIndex = 0;
             // 
             // debug4Section
@@ -737,11 +737,11 @@
             this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(3, 16);
+            this.textBox4.Location = new System.Drawing.Point(3, 27);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox4.Size = new System.Drawing.Size(324, 131);
+            this.textBox4.Size = new System.Drawing.Size(324, 120);
             this.textBox4.TabIndex = 0;
             // 
             // debug5Section
@@ -760,11 +760,11 @@
             this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox5.ForeColor = System.Drawing.Color.White;
-            this.textBox5.Location = new System.Drawing.Point(3, 16);
+            this.textBox5.Location = new System.Drawing.Point(3, 27);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox5.Size = new System.Drawing.Size(324, 131);
+            this.textBox5.Size = new System.Drawing.Size(324, 120);
             this.textBox5.TabIndex = 0;
             // 
             // debug6Section
@@ -783,11 +783,11 @@
             this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox6.ForeColor = System.Drawing.Color.White;
-            this.textBox6.Location = new System.Drawing.Point(3, 16);
+            this.textBox6.Location = new System.Drawing.Point(3, 27);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox6.Size = new System.Drawing.Size(324, 131);
+            this.textBox6.Size = new System.Drawing.Size(324, 120);
             this.textBox6.TabIndex = 0;
             // 
             // timer1

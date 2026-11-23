@@ -780,6 +780,17 @@ namespace Physics_Data_Debug
                                 break;
                         }
                     }
+                    // The old registry stores a manual Wreckfest version and predates
+                    // Automatic (Wreckfest_x64.exe). Importing that version on a
+                    // fresh JSON installation silently overrides the intended
+                    // first-run Automatic selection (often with V1_285308).
+                    // Preserve other legacy UI preferences, but let FormLiveData's
+                    // constructor choose Automatic when there is no JSON autosave.
+                    // Explicit selections in an existing FormLiveData.json remain
+                    // supported and are restored by LoadAllSettings as before.
+                    if (form.Name == "FormLiveData")
+                        state.Controls.Remove("GameVersionComboBox");
+
                     WriteFile(jsonPath, state);
                 }
             }
