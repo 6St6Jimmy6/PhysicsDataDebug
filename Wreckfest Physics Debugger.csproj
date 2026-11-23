@@ -80,8 +80,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormPanelLayout.cs" />
-    <Compile Include="FormRowLayout.cs" />
     <Compile Include="ChartLimiterRow.cs">
       <SubType>UserControl</SubType>
     </Compile>

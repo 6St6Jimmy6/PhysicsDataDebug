@@ -28,12 +28,6 @@ namespace Physics_Data_Debug
             LiveData.FormSuspensionStaticValuesOpen = true;
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            LiveData.FormSuspensionStaticValuesOpen = false;
-        }
-
         private void FormSuspensionStaticValues_Closing(object sender, FormClosingEventArgs e)
         {
             timer1.Enabled = false;

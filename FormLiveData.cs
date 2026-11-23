@@ -11,7 +11,6 @@ namespace Physics_Data_Debug
 {
     public partial class FormLiveData : Form
     {
-        #region Field variables
         public static bool ProcessGet { get; set; } = false;
         public static bool FirstTimeLoad = false;
         private const string AutomaticVersionOption = "Automatic (Wreckfest_x64.exe)";
@@ -26,7 +25,6 @@ namespace Physics_Data_Debug
         public static bool debugEnabled = false;
 #endif
 
-        #endregion
         public FormLiveData()
         {
             InitializeComponent();
@@ -238,7 +236,7 @@ namespace Physics_Data_Debug
 
         private static void ShowGameConfigError(Exception ex) =>
             MessageBox.Show(ex.Message, "Game configuration", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        #region Methods
+        
         public void ButtonVisibilities()
         {
             toLogSettingsButton.Visible = !LiveData.Logging && !LiveData.LogSettingsOpen;
@@ -359,63 +357,7 @@ namespace Physics_Data_Debug
         {
             textBox6.Text = "RLLog10(aT): " + Log10aT + "\r\n" + "RLLonWLF: " + WLF_LongitudinalSlidingFrictionGripMultiplier + "\r\n" + "RLLonSens: " + LongitudinalLoadSensGripMultiplier + "\r\n" + "RLLonFric: " + LongitudinalFrictionNoMultis + "\r\n" + "RLLatWLF: " + WLF_LateralSlidingFrictionGripMultiplier + "\r\n" + "RLLatSens: " + LateralLoadSensGripMultiplier + "\r\n" + "RLLatFric: " + LateralFrictionNoMultis;
         }
-        private void SomeCFaStiffnessTester()
-        {
-            //textBox5.Text = "RL_LonBristleStiffness: " + Math.Round(LiveData.RL_LonBristleStiffness, 2) + "\r\n" + "RL_LonForceSlide: " + Math.Round(LiveData.RL_LonForceSlide, 2) + "\r\n" + "RL_LonForceStatic: " + Math.Round(LiveData.RL_LonForceStatic, 2) + "\r\n" + "RL_LonForceTotal: " + Math.Round(LiveData.RL_LonForceTotal, 2);
-
-            
-            float lonLoad = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalLoad"));
-            float slipRatio = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipRatio"));
-            float CFK = 0;
-            float latLoad = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "LateralLoad"));
-            float slipAngleDeg = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleDeg"));
-            float slipAngleRad = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleRad"));
-            float CFa = 0;
-            float CFafz = 0;
-            float CFa2 = 0;
-            float c1 = 0;
-            float c12 = 60000;
-            float c2 = 5000;
-            float Fz = (float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad"));
-
-            if ((float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipRatio")) != 0)
-            {
-                CFK = lonLoad / slipRatio;
-            }
-            else
-            {
-                CFK = 0;
-            }
-            /*
-            if(slipAngle < 0.5f && slipAngle > -0.5f)
-            {
-                textBox6.Text = "CFKfl: " + CFK.ToString(CultureInfo.GetCultureInfo("en-US"));
-            }
-            */
-            
-            if ((float)LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleRad")) != 0 && Fz > 0)
-            {
-                CFa = latLoad / slipAngleRad;
-                CFafz = CFa / Fz;
-                CFa2 = c12 * (float)Math.Sin(2 * Math.Atan(Fz/c2));
-            }
-            else
-            {
-                CFa = 0;
-                CFafz = CFa;
-            }
-            
-            if (Fz > 0)
-            {
-                c1 = CFa / ((float)Math.Sin(2 * Math.Atan(Fz/c2)));
-                textBox6.Text = "c1: " + c1.ToString(CultureInfo.GetCultureInfo("en-US")) + "\n\r" + "\n\r" 
-                    + "CFafz: " + CFafz.ToString(CultureInfo.GetCultureInfo("en-US")) + "\n\r" + "\n\r" 
-                    + "CFa :" + CFa.ToString(CultureInfo.GetCultureInfo("en-US")) + "\n\r" + "\n\r"
-                    + "CFa2: " + CFa2.ToString(CultureInfo.GetCultureInfo("en-US"));
-            }
-            
-        }
-        //////////////////////////////////////////////////////////////////////////////////////////////
+        
         private void UpdateFormData()
         {
             ButtonVisibilities();
@@ -427,8 +369,7 @@ namespace Physics_Data_Debug
             getProcessButton.Text = "Refresh Process";
             timer1.Enabled = true;
         }
-        #endregion
-        #region Form and Buttons stuff
+        
         private void logInterval_textBox_Keypress(object sender, KeyPressEventArgs e)
         {
             char ch1 = e.KeyChar;
@@ -736,7 +677,7 @@ namespace Physics_Data_Debug
             FormGForce s1 = new FormGForce();
             s1.Show();
         }
-        #endregion
+
         private void to4WheelsButton_Click(object sender, EventArgs e)
         {
             to4WheelsButton.Visible = false;

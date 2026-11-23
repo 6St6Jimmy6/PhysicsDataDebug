@@ -43,6 +43,28 @@ namespace Physics_Data_Debug
         public static List<string> xyzAxisSelection { get; set; } = new List<string> { Form4WheelsSettings.X1Selection, Form4WheelsSettings.Y1Selection, Form4WheelsSettings.Z1Selection };
         public static List<string> xyzAxisLimiterSelection { get; set; } = new List<string> { X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection };
 
+        // ----- Consolidated chart/settings members -----
+        public static int Alpha { get; set; } = 255;
+        public static int Divider { get; set; } = 2;
+        public static int HistoryAlpha { get; set; } = 255;
+        public static int HistoryColorDivider { get; set; } = 2;
+
+        public static int Steps
+        {
+            get => Form4WheelsSettings.GradientSteps;
+            set => Form4WheelsSettings.GradientSteps = value;
+        }
+
+        public static string FL_SeriesString { get; set; } = "SeriesFL";
+        public static string FR_SeriesString { get; set; } = "SeriesFR";
+        public static string RL_SeriesString { get; set; } = "SeriesRL";
+        public static string RR_SeriesString { get; set; } = "SeriesRR";
+
+        public static SeriesChartType ChartType { get; set; } = Form4WheelsSettings.SeriesChartType;
+        public static MarkerStyle HistoryMarkerStyle { get; set; } = MarkerStyle.Circle;
+        public static int MarkerSizeHistory { get; set; } = 2;
+        public static List<Color> MarkerColors { get; set; } = new List<Color>();
+
         public Form4Wheels()
         {
             InitializeComponent();
@@ -766,28 +788,6 @@ namespace Physics_Data_Debug
         }
 
         #endregion
-        // ----- Consolidated chart/settings members -----
-
-        public static int Alpha { get; set; } = 255;
-        public static int Divider { get; set; } = 2;
-        public static int HistoryAlpha { get; set; } = 255;
-        public static int HistoryColorDivider { get; set; } = 2;
-
-        public static int Steps
-        {
-            get => Form4WheelsSettings.GradientSteps;
-            set => Form4WheelsSettings.GradientSteps = value;
-        }
-
-        public static string FL_SeriesString { get; set; } = "SeriesFL";
-        public static string FR_SeriesString { get; set; } = "SeriesFR";
-        public static string RL_SeriesString { get; set; } = "SeriesRL";
-        public static string RR_SeriesString { get; set; } = "SeriesRR";
-
-        public static SeriesChartType ChartType { get; set; } = Form4WheelsSettings.SeriesChartType;
-        public static MarkerStyle HistoryMarkerStyle { get; set; } = MarkerStyle.Circle;
-        public static int MarkerSizeHistory { get; set; } = 2;
-        public static List<Color> MarkerColors { get; set; } = new List<Color>();
 
         private static readonly Dictionary<string, WheelPlotHistory> Histories =
             new Dictionary<string, WheelPlotHistory>(StringComparer.Ordinal);

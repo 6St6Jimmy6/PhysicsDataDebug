@@ -19,10 +19,6 @@ namespace Physics_Data_Debug
         {
             LiveData.FormTireStaticValues = true;
         }
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         private void ReadData()
         {
             labelTireWrite(TelemetryPrefix.FL, label_FL_Radius, label_FL_Width, label_FL_ThermalAirTransfer, label_FL_ThermalInnerTransfer, label_FL_SpringRate, label_FL_DamperRate, label_FL_MaxDeflection, label_FL_Mass, label_FL_MomentOfInertia);

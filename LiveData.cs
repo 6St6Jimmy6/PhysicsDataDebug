@@ -96,26 +96,6 @@ namespace Physics_Data_Debug
         public static readonly int[] TickTimeArray = new int[3];
         public static int ElapsedTime = 0;
 
-        public static string PathSource = @"F:\Program Files (x86)\Steam\steamapps\common\Wreckfest\Wreckfest_x64.exe";
-        public static byte[] PatternToFind = { 0x00, 0x48, 0x0F, 0x44, 0xC2, 0x48 };
-        //public static byte[] PatternToFind = { 0x48, 0xC2, 0x44, 0x0F, 0x48, 0x00 };
-
-        //int matchIndex = toBeSearched.AsSpan().IndexOf(pattern);
-        public static IEnumerable<int> PatternAt(byte[] source, byte[] pattern)
-        {
-            if (source == null) throw new ArgumentNullException(nameof(source));
-            if (pattern == null) throw new ArgumentNullException(nameof(pattern));
-            for (int i = 0; i <= source.Length - pattern.Length; i++)
-            {
-                int j = 0;
-                while (j < pattern.Length && source[i + j] == pattern[j]) j++;
-                if (j == pattern.Length) yield return i;
-            }
-        }
-        public static byte[] GetExeBytes(string pathSource)
-        {
-            return File.ReadAllBytes(pathSource);
-        }
         public static List<List<DataItem>> FullDataList { get; set; } = new List<List<DataItem>>();
         // Incremented once for each memory sample; DataItem caches requested
         // calculations until this changes. Unused calculations never run.
@@ -345,7 +325,6 @@ namespace Physics_Data_Debug
             RR_SuspensionGeometryData = sample.RearRight.Geometry;
             RR_Suspension2Data = sample.RearRight.Suspension2;
         }
-
 
         private static int UpdateConfiguredFields(int ii, string prefix,
             List<List<DataItem>> fullList, List<byte[]> byteData, int dataStart, string group)
