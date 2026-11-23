@@ -240,9 +240,9 @@ namespace Physics_Data_Debug
             this.rootLayout.Location = new System.Drawing.Point(0, 0);
             this.rootLayout.Name = "rootLayout";
             this.rootLayout.RowCount = 2;
-            this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.rootLayout.Size = new System.Drawing.Size(720, 760);
+            this.rootLayout.Size = new System.Drawing.Size(704, 711);
             this.rootLayout.TabIndex = 0;
             // 
             // headerLayout
@@ -250,13 +250,12 @@ namespace Physics_Data_Debug
             this.headerLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.headerLayout.ColumnCount = 1;
             this.headerLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.headerLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.headerLayout.Controls.Add(this.actionButtons, 0, 0);
             this.headerLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.headerLayout.Location = new System.Drawing.Point(3, 3);
             this.headerLayout.Name = "headerLayout";
-            this.headerLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.headerLayout.Size = new System.Drawing.Size(714, 52);
+            this.headerLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.headerLayout.Size = new System.Drawing.Size(698, 34);
             this.headerLayout.TabIndex = 0;
             // 
             // actionButtons
@@ -267,8 +266,8 @@ namespace Physics_Data_Debug
             this.actionButtons.Location = new System.Drawing.Point(3, 1);
             this.actionButtons.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.actionButtons.Name = "actionButtons";
-            this.actionButtons.Padding = new System.Windows.Forms.Padding(8, 9, 0, 0);
-            this.actionButtons.Size = new System.Drawing.Size(708, 50);
+            this.actionButtons.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.actionButtons.Size = new System.Drawing.Size(692, 32);
             this.actionButtons.TabIndex = 0;
             this.actionButtons.WrapContents = false;
             // 
@@ -276,10 +275,10 @@ namespace Physics_Data_Debug
             // 
             this.applyButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
             this.applyButton.ForeColor = System.Drawing.Color.White;
-            this.applyButton.Location = new System.Drawing.Point(10, 10);
+            this.applyButton.Location = new System.Drawing.Point(10, 1);
             this.applyButton.Margin = new System.Windows.Forms.Padding(2, 1, 8, 2);
             this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(168, 37);
+            this.applyButton.Size = new System.Drawing.Size(168, 28);
             this.applyButton.TabIndex = 0;
             this.applyButton.Text = "Apply Settings";
             this.applyButton.UseVisualStyleBackColor = false;
@@ -289,11 +288,11 @@ namespace Physics_Data_Debug
             // 
             this.SettingsProfilesHost.Controls.Add(this.SettingsProfilesButton);
             this.SettingsProfilesHost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(186, 9);
+            this.SettingsProfilesHost.Location = new System.Drawing.Point(186, 0);
             this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(0);
             this.SettingsProfilesHost.Name = "SettingsProfilesHost";
             this.SettingsProfilesHost.Padding = new System.Windows.Forms.Padding(0, 1, 0, 2);
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(127, 40);
+            this.SettingsProfilesHost.Size = new System.Drawing.Size(127, 31);
             this.SettingsProfilesHost.TabIndex = 1;
             // 
             // SettingsProfilesButton
@@ -304,7 +303,7 @@ namespace Physics_Data_Debug
             this.SettingsProfilesButton.Location = new System.Drawing.Point(0, 1);
             this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(0);
             this.SettingsProfilesButton.Name = "SettingsProfilesButton";
-            this.SettingsProfilesButton.Size = new System.Drawing.Size(127, 37);
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(127, 28);
             this.SettingsProfilesButton.TabIndex = 0;
             this.SettingsProfilesButton.TabStop = false;
             this.SettingsProfilesButton.Text = "Profiles ▼";
@@ -318,11 +317,11 @@ namespace Physics_Data_Debug
             this.contentColumns.Controls.Add(this.leftScroll, 0, 0);
             this.contentColumns.Controls.Add(this.rightScroll, 1, 0);
             this.contentColumns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentColumns.Location = new System.Drawing.Point(3, 61);
+            this.contentColumns.Location = new System.Drawing.Point(3, 43);
             this.contentColumns.Name = "contentColumns";
             this.contentColumns.Padding = new System.Windows.Forms.Padding(3);
             this.contentColumns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.contentColumns.Size = new System.Drawing.Size(714, 696);
+            this.contentColumns.Size = new System.Drawing.Size(698, 665);
             this.contentColumns.TabIndex = 1;
             // 
             // leftScroll
@@ -333,7 +332,7 @@ namespace Physics_Data_Debug
             this.leftScroll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leftScroll.Location = new System.Drawing.Point(6, 6);
             this.leftScroll.Name = "leftScroll";
-            this.leftScroll.Size = new System.Drawing.Size(348, 684);
+            this.leftScroll.Size = new System.Drawing.Size(340, 653);
             this.leftScroll.TabIndex = 0;
             // 
             // leftStack
@@ -350,7 +349,7 @@ namespace Physics_Data_Debug
             this.leftStack.RowCount = 2;
             this.leftStack.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.leftStack.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.leftStack.Size = new System.Drawing.Size(331, 808);
+            this.leftStack.Size = new System.Drawing.Size(340, 648);
             this.leftStack.TabIndex = 0;
             // 
             // generalGroup
@@ -362,8 +361,8 @@ namespace Physics_Data_Debug
             this.generalGroup.Location = new System.Drawing.Point(4, 5);
             this.generalGroup.Margin = new System.Windows.Forms.Padding(4, 5, 7, 5);
             this.generalGroup.Name = "generalGroup";
-            this.generalGroup.Padding = new System.Windows.Forms.Padding(7, 12, 7, 5);
-            this.generalGroup.Size = new System.Drawing.Size(320, 309);
+            this.generalGroup.Padding = new System.Windows.Forms.Padding(2);
+            this.generalGroup.Size = new System.Drawing.Size(329, 244);
             this.generalGroup.TabIndex = 0;
             this.generalGroup.TabStop = false;
             this.generalGroup.Text = "Time window and series";
@@ -371,8 +370,8 @@ namespace Physics_Data_Debug
             // generalFields
             // 
             this.generalFields.ColumnCount = 2;
-            this.generalFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49F));
-            this.generalFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51F));
+            this.generalFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.generalFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54F));
             this.generalFields.Controls.Add(this.historyLengthNumericLabel, 0, 0);
             this.generalFields.Controls.Add(this.historyLengthNumeric, 1, 0);
             this.generalFields.Controls.Add(this.historyUnitComboLabel, 0, 1);
@@ -390,18 +389,18 @@ namespace Physics_Data_Debug
             this.generalFields.Controls.Add(this.markerSizeNumericLabel, 0, 7);
             this.generalFields.Controls.Add(this.markerSizeNumeric, 1, 7);
             this.generalFields.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.generalFields.Location = new System.Drawing.Point(7, 28);
+            this.generalFields.Location = new System.Drawing.Point(2, 18);
             this.generalFields.Name = "generalFields";
             this.generalFields.RowCount = 8;
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.generalFields.Size = new System.Drawing.Size(306, 276);
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.generalFields.Size = new System.Drawing.Size(325, 224);
             this.generalFields.TabIndex = 0;
             // 
             // historyLengthNumericLabel
@@ -411,7 +410,7 @@ namespace Physics_Data_Debug
             this.historyLengthNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.historyLengthNumericLabel.Location = new System.Drawing.Point(3, 0);
             this.historyLengthNumericLabel.Name = "historyLengthNumericLabel";
-            this.historyLengthNumericLabel.Size = new System.Drawing.Size(143, 34);
+            this.historyLengthNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.historyLengthNumericLabel.TabIndex = 0;
             this.historyLengthNumericLabel.Text = "Visible history";
             this.historyLengthNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -434,7 +433,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.historyLengthNumeric.Name = "historyLengthNumeric";
-            this.historyLengthNumeric.Size = new System.Drawing.Size(153, 23);
+            this.historyLengthNumeric.Size = new System.Drawing.Size(172, 23);
             this.historyLengthNumeric.TabIndex = 1;
             this.historyLengthNumeric.Value = new decimal(new int[] {
             60,
@@ -447,9 +446,9 @@ namespace Physics_Data_Debug
             this.historyUnitComboLabel.AutoEllipsis = true;
             this.historyUnitComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.historyUnitComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.historyUnitComboLabel.Location = new System.Drawing.Point(3, 34);
+            this.historyUnitComboLabel.Location = new System.Drawing.Point(3, 28);
             this.historyUnitComboLabel.Name = "historyUnitComboLabel";
-            this.historyUnitComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.historyUnitComboLabel.Size = new System.Drawing.Size(143, 28);
             this.historyUnitComboLabel.TabIndex = 2;
             this.historyUnitComboLabel.Text = "History unit";
             this.historyUnitComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -463,10 +462,10 @@ namespace Physics_Data_Debug
             this.historyUnitCombo.Items.AddRange(new object[] {
             "Seconds",
             "Minutes"});
-            this.historyUnitCombo.Location = new System.Drawing.Point(151, 38);
+            this.historyUnitCombo.Location = new System.Drawing.Point(151, 32);
             this.historyUnitCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.historyUnitCombo.Name = "historyUnitCombo";
-            this.historyUnitCombo.Size = new System.Drawing.Size(153, 23);
+            this.historyUnitCombo.Size = new System.Drawing.Size(172, 23);
             this.historyUnitCombo.TabIndex = 3;
             // 
             // timeAxisUnitComboLabel
@@ -474,9 +473,9 @@ namespace Physics_Data_Debug
             this.timeAxisUnitComboLabel.AutoEllipsis = true;
             this.timeAxisUnitComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timeAxisUnitComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.timeAxisUnitComboLabel.Location = new System.Drawing.Point(3, 68);
+            this.timeAxisUnitComboLabel.Location = new System.Drawing.Point(3, 56);
             this.timeAxisUnitComboLabel.Name = "timeAxisUnitComboLabel";
-            this.timeAxisUnitComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.timeAxisUnitComboLabel.Size = new System.Drawing.Size(143, 28);
             this.timeAxisUnitComboLabel.TabIndex = 4;
             this.timeAxisUnitComboLabel.Text = "X axis display";
             this.timeAxisUnitComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -490,10 +489,10 @@ namespace Physics_Data_Debug
             this.timeAxisUnitCombo.Items.AddRange(new object[] {
             "Seconds",
             "Minutes"});
-            this.timeAxisUnitCombo.Location = new System.Drawing.Point(151, 72);
+            this.timeAxisUnitCombo.Location = new System.Drawing.Point(151, 60);
             this.timeAxisUnitCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.timeAxisUnitCombo.Name = "timeAxisUnitCombo";
-            this.timeAxisUnitCombo.Size = new System.Drawing.Size(153, 23);
+            this.timeAxisUnitCombo.Size = new System.Drawing.Size(172, 23);
             this.timeAxisUnitCombo.TabIndex = 5;
             // 
             // updateIntervalNumericLabel
@@ -501,9 +500,9 @@ namespace Physics_Data_Debug
             this.updateIntervalNumericLabel.AutoEllipsis = true;
             this.updateIntervalNumericLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updateIntervalNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.updateIntervalNumericLabel.Location = new System.Drawing.Point(3, 102);
+            this.updateIntervalNumericLabel.Location = new System.Drawing.Point(3, 84);
             this.updateIntervalNumericLabel.Name = "updateIntervalNumericLabel";
-            this.updateIntervalNumericLabel.Size = new System.Drawing.Size(143, 34);
+            this.updateIntervalNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.updateIntervalNumericLabel.TabIndex = 6;
             this.updateIntervalNumericLabel.Text = "Refresh interval (ms)";
             this.updateIntervalNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -513,7 +512,7 @@ namespace Physics_Data_Debug
             this.updateIntervalNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.updateIntervalNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updateIntervalNumeric.ForeColor = System.Drawing.Color.White;
-            this.updateIntervalNumeric.Location = new System.Drawing.Point(151, 106);
+            this.updateIntervalNumeric.Location = new System.Drawing.Point(151, 88);
             this.updateIntervalNumeric.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.updateIntervalNumeric.Maximum = new decimal(new int[] {
             10000,
@@ -526,7 +525,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.updateIntervalNumeric.Name = "updateIntervalNumeric";
-            this.updateIntervalNumeric.Size = new System.Drawing.Size(153, 23);
+            this.updateIntervalNumeric.Size = new System.Drawing.Size(172, 23);
             this.updateIntervalNumeric.TabIndex = 7;
             this.updateIntervalNumeric.Value = new decimal(new int[] {
             100,
@@ -539,9 +538,9 @@ namespace Physics_Data_Debug
             this.maxSamplesNumericLabel.AutoEllipsis = true;
             this.maxSamplesNumericLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.maxSamplesNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.maxSamplesNumericLabel.Location = new System.Drawing.Point(3, 136);
+            this.maxSamplesNumericLabel.Location = new System.Drawing.Point(3, 112);
             this.maxSamplesNumericLabel.Name = "maxSamplesNumericLabel";
-            this.maxSamplesNumericLabel.Size = new System.Drawing.Size(143, 34);
+            this.maxSamplesNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.maxSamplesNumericLabel.TabIndex = 8;
             this.maxSamplesNumericLabel.Text = "Max points per trace";
             this.maxSamplesNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -551,7 +550,7 @@ namespace Physics_Data_Debug
             this.maxSamplesNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.maxSamplesNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.maxSamplesNumeric.ForeColor = System.Drawing.Color.White;
-            this.maxSamplesNumeric.Location = new System.Drawing.Point(151, 140);
+            this.maxSamplesNumeric.Location = new System.Drawing.Point(151, 116);
             this.maxSamplesNumeric.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.maxSamplesNumeric.Maximum = new decimal(new int[] {
             100000,
@@ -564,7 +563,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.maxSamplesNumeric.Name = "maxSamplesNumeric";
-            this.maxSamplesNumeric.Size = new System.Drawing.Size(153, 23);
+            this.maxSamplesNumeric.Size = new System.Drawing.Size(172, 23);
             this.maxSamplesNumeric.TabIndex = 9;
             this.maxSamplesNumeric.Value = new decimal(new int[] {
             10000,
@@ -577,9 +576,9 @@ namespace Physics_Data_Debug
             this.plotStyleComboLabel.AutoEllipsis = true;
             this.plotStyleComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotStyleComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plotStyleComboLabel.Location = new System.Drawing.Point(3, 170);
+            this.plotStyleComboLabel.Location = new System.Drawing.Point(3, 140);
             this.plotStyleComboLabel.Name = "plotStyleComboLabel";
-            this.plotStyleComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.plotStyleComboLabel.Size = new System.Drawing.Size(143, 28);
             this.plotStyleComboLabel.TabIndex = 10;
             this.plotStyleComboLabel.Text = "Series type";
             this.plotStyleComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -594,10 +593,10 @@ namespace Physics_Data_Debug
             "FastLine",
             "Line",
             "Spline"});
-            this.plotStyleCombo.Location = new System.Drawing.Point(151, 174);
+            this.plotStyleCombo.Location = new System.Drawing.Point(151, 144);
             this.plotStyleCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.plotStyleCombo.Name = "plotStyleCombo";
-            this.plotStyleCombo.Size = new System.Drawing.Size(153, 23);
+            this.plotStyleCombo.Size = new System.Drawing.Size(172, 23);
             this.plotStyleCombo.TabIndex = 11;
             // 
             // lineWidthNumericLabel
@@ -605,9 +604,9 @@ namespace Physics_Data_Debug
             this.lineWidthNumericLabel.AutoEllipsis = true;
             this.lineWidthNumericLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lineWidthNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lineWidthNumericLabel.Location = new System.Drawing.Point(3, 204);
+            this.lineWidthNumericLabel.Location = new System.Drawing.Point(3, 168);
             this.lineWidthNumericLabel.Name = "lineWidthNumericLabel";
-            this.lineWidthNumericLabel.Size = new System.Drawing.Size(143, 34);
+            this.lineWidthNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.lineWidthNumericLabel.TabIndex = 12;
             this.lineWidthNumericLabel.Text = "Line thickness (px)";
             this.lineWidthNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -617,7 +616,7 @@ namespace Physics_Data_Debug
             this.lineWidthNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.lineWidthNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lineWidthNumeric.ForeColor = System.Drawing.Color.White;
-            this.lineWidthNumeric.Location = new System.Drawing.Point(151, 208);
+            this.lineWidthNumeric.Location = new System.Drawing.Point(151, 172);
             this.lineWidthNumeric.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.lineWidthNumeric.Maximum = new decimal(new int[] {
             10,
@@ -630,7 +629,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.lineWidthNumeric.Name = "lineWidthNumeric";
-            this.lineWidthNumeric.Size = new System.Drawing.Size(153, 23);
+            this.lineWidthNumeric.Size = new System.Drawing.Size(172, 23);
             this.lineWidthNumeric.TabIndex = 13;
             this.lineWidthNumeric.Value = new decimal(new int[] {
             2,
@@ -643,9 +642,9 @@ namespace Physics_Data_Debug
             this.markerSizeNumericLabel.AutoEllipsis = true;
             this.markerSizeNumericLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.markerSizeNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.markerSizeNumericLabel.Location = new System.Drawing.Point(3, 238);
+            this.markerSizeNumericLabel.Location = new System.Drawing.Point(3, 196);
             this.markerSizeNumericLabel.Name = "markerSizeNumericLabel";
-            this.markerSizeNumericLabel.Size = new System.Drawing.Size(143, 38);
+            this.markerSizeNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.markerSizeNumericLabel.TabIndex = 14;
             this.markerSizeNumericLabel.Text = "Marker diameter (0=off)";
             this.markerSizeNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -655,7 +654,7 @@ namespace Physics_Data_Debug
             this.markerSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.markerSizeNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.markerSizeNumeric.ForeColor = System.Drawing.Color.White;
-            this.markerSizeNumeric.Location = new System.Drawing.Point(151, 242);
+            this.markerSizeNumeric.Location = new System.Drawing.Point(151, 200);
             this.markerSizeNumeric.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.markerSizeNumeric.Maximum = new decimal(new int[] {
             15,
@@ -663,7 +662,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.markerSizeNumeric.Name = "markerSizeNumeric";
-            this.markerSizeNumeric.Size = new System.Drawing.Size(153, 23);
+            this.markerSizeNumeric.Size = new System.Drawing.Size(172, 23);
             this.markerSizeNumeric.TabIndex = 15;
             // 
             // appearanceGroup
@@ -672,11 +671,11 @@ namespace Physics_Data_Debug
             this.appearanceGroup.Controls.Add(this.appearanceFields);
             this.appearanceGroup.Dock = System.Windows.Forms.DockStyle.Top;
             this.appearanceGroup.ForeColor = System.Drawing.Color.Gainsboro;
-            this.appearanceGroup.Location = new System.Drawing.Point(4, 324);
+            this.appearanceGroup.Location = new System.Drawing.Point(4, 259);
             this.appearanceGroup.Margin = new System.Windows.Forms.Padding(4, 5, 7, 5);
             this.appearanceGroup.Name = "appearanceGroup";
-            this.appearanceGroup.Padding = new System.Windows.Forms.Padding(7, 12, 7, 5);
-            this.appearanceGroup.Size = new System.Drawing.Size(320, 479);
+            this.appearanceGroup.Padding = new System.Windows.Forms.Padding(2);
+            this.appearanceGroup.Size = new System.Drawing.Size(329, 384);
             this.appearanceGroup.TabIndex = 1;
             this.appearanceGroup.TabStop = false;
             this.appearanceGroup.Text = "Chart appearance and axes";
@@ -684,8 +683,8 @@ namespace Physics_Data_Debug
             // appearanceFields
             // 
             this.appearanceFields.ColumnCount = 2;
-            this.appearanceFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49F));
-            this.appearanceFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51F));
+            this.appearanceFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.appearanceFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54F));
             this.appearanceFields.Controls.Add(this.chartBackgroundComboLabel, 0, 0);
             this.appearanceFields.Controls.Add(this.chartBackgroundCombo, 1, 0);
             this.appearanceFields.Controls.Add(this.plotBackgroundComboLabel, 0, 1);
@@ -713,23 +712,23 @@ namespace Physics_Data_Debug
             this.appearanceFields.Controls.Add(this.yAxisTitleCheckLabel, 0, 12);
             this.appearanceFields.Controls.Add(this.yAxisTitleCheck, 1, 12);
             this.appearanceFields.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.appearanceFields.Location = new System.Drawing.Point(7, 28);
+            this.appearanceFields.Location = new System.Drawing.Point(2, 18);
             this.appearanceFields.Name = "appearanceFields";
             this.appearanceFields.RowCount = 13;
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.appearanceFields.Size = new System.Drawing.Size(306, 446);
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.appearanceFields.Size = new System.Drawing.Size(325, 364);
             this.appearanceFields.TabIndex = 0;
             // 
             // chartBackgroundComboLabel
@@ -739,7 +738,7 @@ namespace Physics_Data_Debug
             this.chartBackgroundComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.chartBackgroundComboLabel.Location = new System.Drawing.Point(3, 0);
             this.chartBackgroundComboLabel.Name = "chartBackgroundComboLabel";
-            this.chartBackgroundComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.chartBackgroundComboLabel.Size = new System.Drawing.Size(143, 28);
             this.chartBackgroundComboLabel.TabIndex = 0;
             this.chartBackgroundComboLabel.Text = "Chart background";
             this.chartBackgroundComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -755,7 +754,7 @@ namespace Physics_Data_Debug
             this.chartBackgroundCombo.Location = new System.Drawing.Point(151, 4);
             this.chartBackgroundCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.chartBackgroundCombo.Name = "chartBackgroundCombo";
-            this.chartBackgroundCombo.Size = new System.Drawing.Size(153, 23);
+            this.chartBackgroundCombo.Size = new System.Drawing.Size(172, 23);
             this.chartBackgroundCombo.TabIndex = 1;
             // 
             // plotBackgroundComboLabel
@@ -763,9 +762,9 @@ namespace Physics_Data_Debug
             this.plotBackgroundComboLabel.AutoEllipsis = true;
             this.plotBackgroundComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotBackgroundComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plotBackgroundComboLabel.Location = new System.Drawing.Point(3, 34);
+            this.plotBackgroundComboLabel.Location = new System.Drawing.Point(3, 28);
             this.plotBackgroundComboLabel.Name = "plotBackgroundComboLabel";
-            this.plotBackgroundComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.plotBackgroundComboLabel.Size = new System.Drawing.Size(143, 28);
             this.plotBackgroundComboLabel.TabIndex = 2;
             this.plotBackgroundComboLabel.Text = "Plot background";
             this.plotBackgroundComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -778,10 +777,10 @@ namespace Physics_Data_Debug
             this.plotBackgroundCombo.ForeColor = System.Drawing.Color.White;
             this.plotBackgroundCombo.Items.AddRange(new object[] {
             "Black"});
-            this.plotBackgroundCombo.Location = new System.Drawing.Point(151, 38);
+            this.plotBackgroundCombo.Location = new System.Drawing.Point(151, 32);
             this.plotBackgroundCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.plotBackgroundCombo.Name = "plotBackgroundCombo";
-            this.plotBackgroundCombo.Size = new System.Drawing.Size(153, 23);
+            this.plotBackgroundCombo.Size = new System.Drawing.Size(172, 23);
             this.plotBackgroundCombo.TabIndex = 3;
             // 
             // majorGridColorComboLabel
@@ -789,9 +788,9 @@ namespace Physics_Data_Debug
             this.majorGridColorComboLabel.AutoEllipsis = true;
             this.majorGridColorComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.majorGridColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.majorGridColorComboLabel.Location = new System.Drawing.Point(3, 68);
+            this.majorGridColorComboLabel.Location = new System.Drawing.Point(3, 56);
             this.majorGridColorComboLabel.Name = "majorGridColorComboLabel";
-            this.majorGridColorComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.majorGridColorComboLabel.Size = new System.Drawing.Size(143, 28);
             this.majorGridColorComboLabel.TabIndex = 4;
             this.majorGridColorComboLabel.Text = "Major grid color";
             this.majorGridColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -804,10 +803,10 @@ namespace Physics_Data_Debug
             this.majorGridColorCombo.ForeColor = System.Drawing.Color.White;
             this.majorGridColorCombo.Items.AddRange(new object[] {
             "#3E3E3E"});
-            this.majorGridColorCombo.Location = new System.Drawing.Point(151, 72);
+            this.majorGridColorCombo.Location = new System.Drawing.Point(151, 60);
             this.majorGridColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.majorGridColorCombo.Name = "majorGridColorCombo";
-            this.majorGridColorCombo.Size = new System.Drawing.Size(153, 23);
+            this.majorGridColorCombo.Size = new System.Drawing.Size(172, 23);
             this.majorGridColorCombo.TabIndex = 5;
             // 
             // minorGridColorComboLabel
@@ -815,9 +814,9 @@ namespace Physics_Data_Debug
             this.minorGridColorComboLabel.AutoEllipsis = true;
             this.minorGridColorComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.minorGridColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.minorGridColorComboLabel.Location = new System.Drawing.Point(3, 102);
+            this.minorGridColorComboLabel.Location = new System.Drawing.Point(3, 84);
             this.minorGridColorComboLabel.Name = "minorGridColorComboLabel";
-            this.minorGridColorComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.minorGridColorComboLabel.Size = new System.Drawing.Size(143, 28);
             this.minorGridColorComboLabel.TabIndex = 6;
             this.minorGridColorComboLabel.Text = "Minor grid color";
             this.minorGridColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -830,10 +829,10 @@ namespace Physics_Data_Debug
             this.minorGridColorCombo.ForeColor = System.Drawing.Color.White;
             this.minorGridColorCombo.Items.AddRange(new object[] {
             "#2A2A2A"});
-            this.minorGridColorCombo.Location = new System.Drawing.Point(151, 106);
+            this.minorGridColorCombo.Location = new System.Drawing.Point(151, 88);
             this.minorGridColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.minorGridColorCombo.Name = "minorGridColorCombo";
-            this.minorGridColorCombo.Size = new System.Drawing.Size(153, 23);
+            this.minorGridColorCombo.Size = new System.Drawing.Size(172, 23);
             this.minorGridColorCombo.TabIndex = 7;
             // 
             // fontColorComboLabel
@@ -841,9 +840,9 @@ namespace Physics_Data_Debug
             this.fontColorComboLabel.AutoEllipsis = true;
             this.fontColorComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fontColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.fontColorComboLabel.Location = new System.Drawing.Point(3, 136);
+            this.fontColorComboLabel.Location = new System.Drawing.Point(3, 112);
             this.fontColorComboLabel.Name = "fontColorComboLabel";
-            this.fontColorComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.fontColorComboLabel.Size = new System.Drawing.Size(143, 28);
             this.fontColorComboLabel.TabIndex = 8;
             this.fontColorComboLabel.Text = "Text / axis color";
             this.fontColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -856,10 +855,10 @@ namespace Physics_Data_Debug
             this.fontColorCombo.ForeColor = System.Drawing.Color.Black;
             this.fontColorCombo.Items.AddRange(new object[] {
             "White"});
-            this.fontColorCombo.Location = new System.Drawing.Point(151, 140);
+            this.fontColorCombo.Location = new System.Drawing.Point(151, 116);
             this.fontColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.fontColorCombo.Name = "fontColorCombo";
-            this.fontColorCombo.Size = new System.Drawing.Size(153, 23);
+            this.fontColorCombo.Size = new System.Drawing.Size(172, 23);
             this.fontColorCombo.TabIndex = 9;
             // 
             // fontNameComboLabel
@@ -867,9 +866,9 @@ namespace Physics_Data_Debug
             this.fontNameComboLabel.AutoEllipsis = true;
             this.fontNameComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fontNameComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.fontNameComboLabel.Location = new System.Drawing.Point(3, 170);
+            this.fontNameComboLabel.Location = new System.Drawing.Point(3, 140);
             this.fontNameComboLabel.Name = "fontNameComboLabel";
-            this.fontNameComboLabel.Size = new System.Drawing.Size(143, 34);
+            this.fontNameComboLabel.Size = new System.Drawing.Size(143, 28);
             this.fontNameComboLabel.TabIndex = 10;
             this.fontNameComboLabel.Text = "Font family";
             this.fontNameComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -885,10 +884,10 @@ namespace Physics_Data_Debug
             "Calibri",
             "Segoe UI",
             "Tahoma"});
-            this.fontNameCombo.Location = new System.Drawing.Point(151, 174);
+            this.fontNameCombo.Location = new System.Drawing.Point(151, 144);
             this.fontNameCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.fontNameCombo.Name = "fontNameCombo";
-            this.fontNameCombo.Size = new System.Drawing.Size(153, 23);
+            this.fontNameCombo.Size = new System.Drawing.Size(172, 23);
             this.fontNameCombo.TabIndex = 11;
             // 
             // axisFontSizeNumericLabel
@@ -896,9 +895,9 @@ namespace Physics_Data_Debug
             this.axisFontSizeNumericLabel.AutoEllipsis = true;
             this.axisFontSizeNumericLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axisFontSizeNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.axisFontSizeNumericLabel.Location = new System.Drawing.Point(3, 204);
+            this.axisFontSizeNumericLabel.Location = new System.Drawing.Point(3, 168);
             this.axisFontSizeNumericLabel.Name = "axisFontSizeNumericLabel";
-            this.axisFontSizeNumericLabel.Size = new System.Drawing.Size(143, 34);
+            this.axisFontSizeNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.axisFontSizeNumericLabel.TabIndex = 12;
             this.axisFontSizeNumericLabel.Text = "Axis text size";
             this.axisFontSizeNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -909,7 +908,7 @@ namespace Physics_Data_Debug
             this.axisFontSizeNumeric.DecimalPlaces = 1;
             this.axisFontSizeNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axisFontSizeNumeric.ForeColor = System.Drawing.Color.White;
-            this.axisFontSizeNumeric.Location = new System.Drawing.Point(151, 208);
+            this.axisFontSizeNumeric.Location = new System.Drawing.Point(151, 172);
             this.axisFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.axisFontSizeNumeric.Maximum = new decimal(new int[] {
             28,
@@ -922,7 +921,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.axisFontSizeNumeric.Name = "axisFontSizeNumeric";
-            this.axisFontSizeNumeric.Size = new System.Drawing.Size(153, 23);
+            this.axisFontSizeNumeric.Size = new System.Drawing.Size(172, 23);
             this.axisFontSizeNumeric.TabIndex = 13;
             this.axisFontSizeNumeric.Value = new decimal(new int[] {
             9,
@@ -935,9 +934,9 @@ namespace Physics_Data_Debug
             this.titleFontSizeNumericLabel.AutoEllipsis = true;
             this.titleFontSizeNumericLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleFontSizeNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.titleFontSizeNumericLabel.Location = new System.Drawing.Point(3, 238);
+            this.titleFontSizeNumericLabel.Location = new System.Drawing.Point(3, 196);
             this.titleFontSizeNumericLabel.Name = "titleFontSizeNumericLabel";
-            this.titleFontSizeNumericLabel.Size = new System.Drawing.Size(143, 34);
+            this.titleFontSizeNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.titleFontSizeNumericLabel.TabIndex = 14;
             this.titleFontSizeNumericLabel.Text = "Plot title size";
             this.titleFontSizeNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -948,7 +947,7 @@ namespace Physics_Data_Debug
             this.titleFontSizeNumeric.DecimalPlaces = 1;
             this.titleFontSizeNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleFontSizeNumeric.ForeColor = System.Drawing.Color.White;
-            this.titleFontSizeNumeric.Location = new System.Drawing.Point(151, 242);
+            this.titleFontSizeNumeric.Location = new System.Drawing.Point(151, 200);
             this.titleFontSizeNumeric.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.titleFontSizeNumeric.Maximum = new decimal(new int[] {
             28,
@@ -961,7 +960,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.titleFontSizeNumeric.Name = "titleFontSizeNumeric";
-            this.titleFontSizeNumeric.Size = new System.Drawing.Size(153, 23);
+            this.titleFontSizeNumeric.Size = new System.Drawing.Size(172, 23);
             this.titleFontSizeNumeric.TabIndex = 15;
             this.titleFontSizeNumeric.Value = new decimal(new int[] {
             10,
@@ -974,9 +973,9 @@ namespace Physics_Data_Debug
             this.majorGridWidthNumericLabel.AutoEllipsis = true;
             this.majorGridWidthNumericLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.majorGridWidthNumericLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.majorGridWidthNumericLabel.Location = new System.Drawing.Point(3, 272);
+            this.majorGridWidthNumericLabel.Location = new System.Drawing.Point(3, 224);
             this.majorGridWidthNumericLabel.Name = "majorGridWidthNumericLabel";
-            this.majorGridWidthNumericLabel.Size = new System.Drawing.Size(143, 34);
+            this.majorGridWidthNumericLabel.Size = new System.Drawing.Size(143, 28);
             this.majorGridWidthNumericLabel.TabIndex = 16;
             this.majorGridWidthNumericLabel.Text = "Grid line width (px)";
             this.majorGridWidthNumericLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -986,7 +985,7 @@ namespace Physics_Data_Debug
             this.majorGridWidthNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.majorGridWidthNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.majorGridWidthNumeric.ForeColor = System.Drawing.Color.White;
-            this.majorGridWidthNumeric.Location = new System.Drawing.Point(151, 276);
+            this.majorGridWidthNumeric.Location = new System.Drawing.Point(151, 228);
             this.majorGridWidthNumeric.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.majorGridWidthNumeric.Maximum = new decimal(new int[] {
             5,
@@ -999,7 +998,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.majorGridWidthNumeric.Name = "majorGridWidthNumeric";
-            this.majorGridWidthNumeric.Size = new System.Drawing.Size(153, 23);
+            this.majorGridWidthNumeric.Size = new System.Drawing.Size(172, 23);
             this.majorGridWidthNumeric.TabIndex = 17;
             this.majorGridWidthNumeric.Value = new decimal(new int[] {
             1,
@@ -1012,9 +1011,9 @@ namespace Physics_Data_Debug
             this.majorGridCheckLabel.AutoEllipsis = true;
             this.majorGridCheckLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.majorGridCheckLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.majorGridCheckLabel.Location = new System.Drawing.Point(3, 306);
+            this.majorGridCheckLabel.Location = new System.Drawing.Point(3, 252);
             this.majorGridCheckLabel.Name = "majorGridCheckLabel";
-            this.majorGridCheckLabel.Size = new System.Drawing.Size(143, 34);
+            this.majorGridCheckLabel.Size = new System.Drawing.Size(143, 28);
             this.majorGridCheckLabel.TabIndex = 18;
             this.majorGridCheckLabel.Text = "Show major grid";
             this.majorGridCheckLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1026,10 +1025,10 @@ namespace Physics_Data_Debug
             this.majorGridCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.majorGridCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.majorGridCheck.ForeColor = System.Drawing.Color.White;
-            this.majorGridCheck.Location = new System.Drawing.Point(151, 310);
+            this.majorGridCheck.Location = new System.Drawing.Point(151, 256);
             this.majorGridCheck.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.majorGridCheck.Name = "majorGridCheck";
-            this.majorGridCheck.Size = new System.Drawing.Size(153, 26);
+            this.majorGridCheck.Size = new System.Drawing.Size(172, 20);
             this.majorGridCheck.TabIndex = 19;
             this.majorGridCheck.Text = "Enabled";
             this.majorGridCheck.UseVisualStyleBackColor = false;
@@ -1039,9 +1038,9 @@ namespace Physics_Data_Debug
             this.minorGridCheckLabel.AutoEllipsis = true;
             this.minorGridCheckLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.minorGridCheckLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.minorGridCheckLabel.Location = new System.Drawing.Point(3, 340);
+            this.minorGridCheckLabel.Location = new System.Drawing.Point(3, 280);
             this.minorGridCheckLabel.Name = "minorGridCheckLabel";
-            this.minorGridCheckLabel.Size = new System.Drawing.Size(143, 34);
+            this.minorGridCheckLabel.Size = new System.Drawing.Size(143, 28);
             this.minorGridCheckLabel.TabIndex = 20;
             this.minorGridCheckLabel.Text = "Show minor grid";
             this.minorGridCheckLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1051,10 +1050,10 @@ namespace Physics_Data_Debug
             this.minorGridCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.minorGridCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.minorGridCheck.ForeColor = System.Drawing.Color.White;
-            this.minorGridCheck.Location = new System.Drawing.Point(151, 344);
+            this.minorGridCheck.Location = new System.Drawing.Point(151, 284);
             this.minorGridCheck.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.minorGridCheck.Name = "minorGridCheck";
-            this.minorGridCheck.Size = new System.Drawing.Size(153, 26);
+            this.minorGridCheck.Size = new System.Drawing.Size(172, 20);
             this.minorGridCheck.TabIndex = 21;
             this.minorGridCheck.Text = "Enabled";
             this.minorGridCheck.UseVisualStyleBackColor = false;
@@ -1064,9 +1063,9 @@ namespace Physics_Data_Debug
             this.antialiasCheckLabel.AutoEllipsis = true;
             this.antialiasCheckLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.antialiasCheckLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.antialiasCheckLabel.Location = new System.Drawing.Point(3, 374);
+            this.antialiasCheckLabel.Location = new System.Drawing.Point(3, 308);
             this.antialiasCheckLabel.Name = "antialiasCheckLabel";
-            this.antialiasCheckLabel.Size = new System.Drawing.Size(143, 34);
+            this.antialiasCheckLabel.Size = new System.Drawing.Size(143, 28);
             this.antialiasCheckLabel.TabIndex = 22;
             this.antialiasCheckLabel.Text = "Antialias chart";
             this.antialiasCheckLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1078,10 +1077,10 @@ namespace Physics_Data_Debug
             this.antialiasCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.antialiasCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.antialiasCheck.ForeColor = System.Drawing.Color.White;
-            this.antialiasCheck.Location = new System.Drawing.Point(151, 378);
+            this.antialiasCheck.Location = new System.Drawing.Point(151, 312);
             this.antialiasCheck.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.antialiasCheck.Name = "antialiasCheck";
-            this.antialiasCheck.Size = new System.Drawing.Size(153, 26);
+            this.antialiasCheck.Size = new System.Drawing.Size(172, 20);
             this.antialiasCheck.TabIndex = 23;
             this.antialiasCheck.Text = "Enabled";
             this.antialiasCheck.UseVisualStyleBackColor = false;
@@ -1091,9 +1090,9 @@ namespace Physics_Data_Debug
             this.yAxisTitleCheckLabel.AutoEllipsis = true;
             this.yAxisTitleCheckLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yAxisTitleCheckLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.yAxisTitleCheckLabel.Location = new System.Drawing.Point(3, 408);
+            this.yAxisTitleCheckLabel.Location = new System.Drawing.Point(3, 336);
             this.yAxisTitleCheckLabel.Name = "yAxisTitleCheckLabel";
-            this.yAxisTitleCheckLabel.Size = new System.Drawing.Size(143, 38);
+            this.yAxisTitleCheckLabel.Size = new System.Drawing.Size(143, 28);
             this.yAxisTitleCheckLabel.TabIndex = 24;
             this.yAxisTitleCheckLabel.Text = "Show Y-axis title";
             this.yAxisTitleCheckLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1103,10 +1102,10 @@ namespace Physics_Data_Debug
             this.yAxisTitleCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.yAxisTitleCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yAxisTitleCheck.ForeColor = System.Drawing.Color.White;
-            this.yAxisTitleCheck.Location = new System.Drawing.Point(151, 412);
+            this.yAxisTitleCheck.Location = new System.Drawing.Point(151, 340);
             this.yAxisTitleCheck.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.yAxisTitleCheck.Name = "yAxisTitleCheck";
-            this.yAxisTitleCheck.Size = new System.Drawing.Size(153, 30);
+            this.yAxisTitleCheck.Size = new System.Drawing.Size(172, 20);
             this.yAxisTitleCheck.TabIndex = 25;
             this.yAxisTitleCheck.Text = "Enabled";
             this.yAxisTitleCheck.UseVisualStyleBackColor = false;
@@ -1117,9 +1116,9 @@ namespace Physics_Data_Debug
             this.rightScroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.rightScroll.Controls.Add(this.rightStack);
             this.rightScroll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rightScroll.Location = new System.Drawing.Point(360, 6);
+            this.rightScroll.Location = new System.Drawing.Point(352, 6);
             this.rightScroll.Name = "rightScroll";
-            this.rightScroll.Size = new System.Drawing.Size(348, 684);
+            this.rightScroll.Size = new System.Drawing.Size(340, 653);
             this.rightScroll.TabIndex = 1;
             // 
             // rightStack
@@ -1136,7 +1135,7 @@ namespace Physics_Data_Debug
             this.rightStack.RowCount = 2;
             this.rightStack.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.rightStack.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.rightStack.Size = new System.Drawing.Size(348, 486);
+            this.rightStack.Size = new System.Drawing.Size(340, 368);
             this.rightStack.TabIndex = 0;
             // 
             // wheelColorGroup
@@ -1148,8 +1147,8 @@ namespace Physics_Data_Debug
             this.wheelColorGroup.Location = new System.Drawing.Point(4, 5);
             this.wheelColorGroup.Margin = new System.Windows.Forms.Padding(4, 5, 7, 5);
             this.wheelColorGroup.Name = "wheelColorGroup";
-            this.wheelColorGroup.Padding = new System.Windows.Forms.Padding(7, 12, 7, 5);
-            this.wheelColorGroup.Size = new System.Drawing.Size(337, 207);
+            this.wheelColorGroup.Padding = new System.Windows.Forms.Padding(2);
+            this.wheelColorGroup.Size = new System.Drawing.Size(329, 160);
             this.wheelColorGroup.TabIndex = 0;
             this.wheelColorGroup.TabStop = false;
             this.wheelColorGroup.Text = "Trace colors (named or hex)";
@@ -1157,8 +1156,8 @@ namespace Physics_Data_Debug
             // wheelColorFields
             // 
             this.wheelColorFields.ColumnCount = 2;
-            this.wheelColorFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49F));
-            this.wheelColorFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51F));
+            this.wheelColorFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.wheelColorFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.wheelColorFields.Controls.Add(this.flColorComboLabel, 0, 0);
             this.wheelColorFields.Controls.Add(this.flColorCombo, 1, 0);
             this.wheelColorFields.Controls.Add(this.frColorComboLabel, 0, 1);
@@ -1170,15 +1169,15 @@ namespace Physics_Data_Debug
             this.wheelColorFields.Controls.Add(this.sharedColorComboLabel, 0, 4);
             this.wheelColorFields.Controls.Add(this.sharedColorCombo, 1, 4);
             this.wheelColorFields.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wheelColorFields.Location = new System.Drawing.Point(7, 28);
+            this.wheelColorFields.Location = new System.Drawing.Point(2, 18);
             this.wheelColorFields.Name = "wheelColorFields";
             this.wheelColorFields.RowCount = 5;
-            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.wheelColorFields.Size = new System.Drawing.Size(323, 174);
+            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.wheelColorFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.wheelColorFields.Size = new System.Drawing.Size(325, 140);
             this.wheelColorFields.TabIndex = 0;
             // 
             // flColorComboLabel
@@ -1188,7 +1187,7 @@ namespace Physics_Data_Debug
             this.flColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.flColorComboLabel.Location = new System.Drawing.Point(3, 0);
             this.flColorComboLabel.Name = "flColorComboLabel";
-            this.flColorComboLabel.Size = new System.Drawing.Size(152, 34);
+            this.flColorComboLabel.Size = new System.Drawing.Size(124, 28);
             this.flColorComboLabel.TabIndex = 0;
             this.flColorComboLabel.Text = "Front left (FL)";
             this.flColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1201,10 +1200,10 @@ namespace Physics_Data_Debug
             this.flColorCombo.ForeColor = System.Drawing.Color.Black;
             this.flColorCombo.Items.AddRange(new object[] {
             "LimeGreen"});
-            this.flColorCombo.Location = new System.Drawing.Point(160, 4);
+            this.flColorCombo.Location = new System.Drawing.Point(132, 4);
             this.flColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.flColorCombo.Name = "flColorCombo";
-            this.flColorCombo.Size = new System.Drawing.Size(161, 23);
+            this.flColorCombo.Size = new System.Drawing.Size(191, 23);
             this.flColorCombo.TabIndex = 1;
             // 
             // frColorComboLabel
@@ -1212,9 +1211,9 @@ namespace Physics_Data_Debug
             this.frColorComboLabel.AutoEllipsis = true;
             this.frColorComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.frColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.frColorComboLabel.Location = new System.Drawing.Point(3, 34);
+            this.frColorComboLabel.Location = new System.Drawing.Point(3, 28);
             this.frColorComboLabel.Name = "frColorComboLabel";
-            this.frColorComboLabel.Size = new System.Drawing.Size(152, 34);
+            this.frColorComboLabel.Size = new System.Drawing.Size(124, 28);
             this.frColorComboLabel.TabIndex = 2;
             this.frColorComboLabel.Text = "Front right (FR)";
             this.frColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1227,10 +1226,10 @@ namespace Physics_Data_Debug
             this.frColorCombo.ForeColor = System.Drawing.Color.Black;
             this.frColorCombo.Items.AddRange(new object[] {
             "DeepSkyBlue"});
-            this.frColorCombo.Location = new System.Drawing.Point(160, 38);
+            this.frColorCombo.Location = new System.Drawing.Point(132, 32);
             this.frColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.frColorCombo.Name = "frColorCombo";
-            this.frColorCombo.Size = new System.Drawing.Size(161, 23);
+            this.frColorCombo.Size = new System.Drawing.Size(191, 23);
             this.frColorCombo.TabIndex = 3;
             // 
             // rlColorComboLabel
@@ -1238,9 +1237,9 @@ namespace Physics_Data_Debug
             this.rlColorComboLabel.AutoEllipsis = true;
             this.rlColorComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rlColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.rlColorComboLabel.Location = new System.Drawing.Point(3, 68);
+            this.rlColorComboLabel.Location = new System.Drawing.Point(3, 56);
             this.rlColorComboLabel.Name = "rlColorComboLabel";
-            this.rlColorComboLabel.Size = new System.Drawing.Size(152, 34);
+            this.rlColorComboLabel.Size = new System.Drawing.Size(124, 28);
             this.rlColorComboLabel.TabIndex = 4;
             this.rlColorComboLabel.Text = "Rear left (RL)";
             this.rlColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1253,10 +1252,10 @@ namespace Physics_Data_Debug
             this.rlColorCombo.ForeColor = System.Drawing.Color.Black;
             this.rlColorCombo.Items.AddRange(new object[] {
             "Gold"});
-            this.rlColorCombo.Location = new System.Drawing.Point(160, 72);
+            this.rlColorCombo.Location = new System.Drawing.Point(132, 60);
             this.rlColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.rlColorCombo.Name = "rlColorCombo";
-            this.rlColorCombo.Size = new System.Drawing.Size(161, 23);
+            this.rlColorCombo.Size = new System.Drawing.Size(191, 23);
             this.rlColorCombo.TabIndex = 5;
             // 
             // rrColorComboLabel
@@ -1264,9 +1263,9 @@ namespace Physics_Data_Debug
             this.rrColorComboLabel.AutoEllipsis = true;
             this.rrColorComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rrColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.rrColorComboLabel.Location = new System.Drawing.Point(3, 102);
+            this.rrColorComboLabel.Location = new System.Drawing.Point(3, 84);
             this.rrColorComboLabel.Name = "rrColorComboLabel";
-            this.rrColorComboLabel.Size = new System.Drawing.Size(152, 34);
+            this.rrColorComboLabel.Size = new System.Drawing.Size(124, 28);
             this.rrColorComboLabel.TabIndex = 6;
             this.rrColorComboLabel.Text = "Rear right (RR)";
             this.rrColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1279,10 +1278,10 @@ namespace Physics_Data_Debug
             this.rrColorCombo.ForeColor = System.Drawing.Color.Black;
             this.rrColorCombo.Items.AddRange(new object[] {
             "MediumOrchid"});
-            this.rrColorCombo.Location = new System.Drawing.Point(160, 106);
+            this.rrColorCombo.Location = new System.Drawing.Point(132, 88);
             this.rrColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.rrColorCombo.Name = "rrColorCombo";
-            this.rrColorCombo.Size = new System.Drawing.Size(161, 23);
+            this.rrColorCombo.Size = new System.Drawing.Size(191, 23);
             this.rrColorCombo.TabIndex = 7;
             // 
             // sharedColorComboLabel
@@ -1290,9 +1289,9 @@ namespace Physics_Data_Debug
             this.sharedColorComboLabel.AutoEllipsis = true;
             this.sharedColorComboLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sharedColorComboLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.sharedColorComboLabel.Location = new System.Drawing.Point(3, 136);
+            this.sharedColorComboLabel.Location = new System.Drawing.Point(3, 112);
             this.sharedColorComboLabel.Name = "sharedColorComboLabel";
-            this.sharedColorComboLabel.Size = new System.Drawing.Size(152, 38);
+            this.sharedColorComboLabel.Size = new System.Drawing.Size(124, 28);
             this.sharedColorComboLabel.TabIndex = 8;
             this.sharedColorComboLabel.Text = "Shared telemetry";
             this.sharedColorComboLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1305,10 +1304,10 @@ namespace Physics_Data_Debug
             this.sharedColorCombo.ForeColor = System.Drawing.Color.Black;
             this.sharedColorCombo.Items.AddRange(new object[] {
             "WhiteSmoke"});
-            this.sharedColorCombo.Location = new System.Drawing.Point(160, 140);
+            this.sharedColorCombo.Location = new System.Drawing.Point(132, 116);
             this.sharedColorCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.sharedColorCombo.Name = "sharedColorCombo";
-            this.sharedColorCombo.Size = new System.Drawing.Size(161, 23);
+            this.sharedColorCombo.Size = new System.Drawing.Size(191, 23);
             this.sharedColorCombo.TabIndex = 9;
             // 
             // yRangeGroup
@@ -1317,11 +1316,11 @@ namespace Physics_Data_Debug
             this.yRangeGroup.Controls.Add(this.yRangeFields);
             this.yRangeGroup.Dock = System.Windows.Forms.DockStyle.Top;
             this.yRangeGroup.ForeColor = System.Drawing.Color.Gainsboro;
-            this.yRangeGroup.Location = new System.Drawing.Point(4, 222);
+            this.yRangeGroup.Location = new System.Drawing.Point(4, 175);
             this.yRangeGroup.Margin = new System.Windows.Forms.Padding(4, 5, 7, 5);
             this.yRangeGroup.Name = "yRangeGroup";
-            this.yRangeGroup.Padding = new System.Windows.Forms.Padding(7, 12, 7, 5);
-            this.yRangeGroup.Size = new System.Drawing.Size(337, 259);
+            this.yRangeGroup.Padding = new System.Windows.Forms.Padding(2);
+            this.yRangeGroup.Size = new System.Drawing.Size(329, 188);
             this.yRangeGroup.TabIndex = 1;
             this.yRangeGroup.TabStop = false;
             this.yRangeGroup.Text = "Optional Y-axis ranges (per plot)";
@@ -1358,16 +1357,16 @@ namespace Physics_Data_Debug
             this.yRangeFields.Controls.Add(this.plot5YMin, 2, 5);
             this.yRangeFields.Controls.Add(this.plot5YMax, 3, 5);
             this.yRangeFields.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yRangeFields.Location = new System.Drawing.Point(7, 28);
+            this.yRangeFields.Location = new System.Drawing.Point(2, 18);
             this.yRangeFields.Name = "yRangeFields";
             this.yRangeFields.RowCount = 6;
-            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.yRangeFields.Size = new System.Drawing.Size(323, 226);
+            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.yRangeFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.yRangeFields.Size = new System.Drawing.Size(325, 168);
             this.yRangeFields.TabIndex = 0;
             // 
             // yHeader0
@@ -1376,7 +1375,7 @@ namespace Physics_Data_Debug
             this.yHeader0.ForeColor = System.Drawing.Color.Gainsboro;
             this.yHeader0.Location = new System.Drawing.Point(3, 0);
             this.yHeader0.Name = "yHeader0";
-            this.yHeader0.Size = new System.Drawing.Size(57, 33);
+            this.yHeader0.Size = new System.Drawing.Size(57, 28);
             this.yHeader0.TabIndex = 0;
             this.yHeader0.Text = "Plot";
             this.yHeader0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1387,7 +1386,7 @@ namespace Physics_Data_Debug
             this.yHeader1.ForeColor = System.Drawing.Color.Gainsboro;
             this.yHeader1.Location = new System.Drawing.Point(66, 0);
             this.yHeader1.Name = "yHeader1";
-            this.yHeader1.Size = new System.Drawing.Size(69, 33);
+            this.yHeader1.Size = new System.Drawing.Size(69, 28);
             this.yHeader1.TabIndex = 1;
             this.yHeader1.Text = "Auto Y";
             this.yHeader1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1398,7 +1397,7 @@ namespace Physics_Data_Debug
             this.yHeader2.ForeColor = System.Drawing.Color.Gainsboro;
             this.yHeader2.Location = new System.Drawing.Point(141, 0);
             this.yHeader2.Name = "yHeader2";
-            this.yHeader2.Size = new System.Drawing.Size(86, 33);
+            this.yHeader2.Size = new System.Drawing.Size(87, 28);
             this.yHeader2.TabIndex = 2;
             this.yHeader2.Text = "Minimum";
             this.yHeader2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1407,9 +1406,9 @@ namespace Physics_Data_Debug
             // 
             this.yHeader3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yHeader3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.yHeader3.Location = new System.Drawing.Point(233, 0);
+            this.yHeader3.Location = new System.Drawing.Point(234, 0);
             this.yHeader3.Name = "yHeader3";
-            this.yHeader3.Size = new System.Drawing.Size(87, 33);
+            this.yHeader3.Size = new System.Drawing.Size(88, 28);
             this.yHeader3.TabIndex = 3;
             this.yHeader3.Text = "Maximum";
             this.yHeader3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1418,9 +1417,9 @@ namespace Physics_Data_Debug
             // 
             this.plotLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotLabel1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plotLabel1.Location = new System.Drawing.Point(3, 33);
+            this.plotLabel1.Location = new System.Drawing.Point(3, 28);
             this.plotLabel1.Name = "plotLabel1";
-            this.plotLabel1.Size = new System.Drawing.Size(57, 33);
+            this.plotLabel1.Size = new System.Drawing.Size(57, 28);
             this.plotLabel1.TabIndex = 4;
             this.plotLabel1.Text = "Plot 1";
             this.plotLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1432,9 +1431,9 @@ namespace Physics_Data_Debug
             this.plot1AutoY.CheckState = System.Windows.Forms.CheckState.Checked;
             this.plot1AutoY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plot1AutoY.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plot1AutoY.Location = new System.Drawing.Point(66, 36);
+            this.plot1AutoY.Location = new System.Drawing.Point(66, 31);
             this.plot1AutoY.Name = "plot1AutoY";
-            this.plot1AutoY.Size = new System.Drawing.Size(69, 27);
+            this.plot1AutoY.Size = new System.Drawing.Size(69, 22);
             this.plot1AutoY.TabIndex = 5;
             this.plot1AutoY.Text = "Auto";
             this.plot1AutoY.UseVisualStyleBackColor = false;
@@ -1450,7 +1449,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot1YMin.Location = new System.Drawing.Point(140, 36);
+            this.plot1YMin.Location = new System.Drawing.Point(140, 31);
             this.plot1YMin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot1YMin.Maximum = new decimal(new int[] {
             1000000,
@@ -1463,7 +1462,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot1YMin.Name = "plot1YMin";
-            this.plot1YMin.Size = new System.Drawing.Size(88, 23);
+            this.plot1YMin.Size = new System.Drawing.Size(89, 23);
             this.plot1YMin.TabIndex = 6;
             this.plot1YMin.Value = new decimal(new int[] {
             10,
@@ -1482,7 +1481,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot1YMax.Location = new System.Drawing.Point(232, 36);
+            this.plot1YMax.Location = new System.Drawing.Point(233, 31);
             this.plot1YMax.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot1YMax.Maximum = new decimal(new int[] {
             1000000,
@@ -1495,7 +1494,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot1YMax.Name = "plot1YMax";
-            this.plot1YMax.Size = new System.Drawing.Size(89, 23);
+            this.plot1YMax.Size = new System.Drawing.Size(90, 23);
             this.plot1YMax.TabIndex = 7;
             this.plot1YMax.Value = new decimal(new int[] {
             10,
@@ -1507,9 +1506,9 @@ namespace Physics_Data_Debug
             // 
             this.plotLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotLabel2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plotLabel2.Location = new System.Drawing.Point(3, 66);
+            this.plotLabel2.Location = new System.Drawing.Point(3, 56);
             this.plotLabel2.Name = "plotLabel2";
-            this.plotLabel2.Size = new System.Drawing.Size(57, 33);
+            this.plotLabel2.Size = new System.Drawing.Size(57, 28);
             this.plotLabel2.TabIndex = 8;
             this.plotLabel2.Text = "Plot 2";
             this.plotLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1521,9 +1520,9 @@ namespace Physics_Data_Debug
             this.plot2AutoY.CheckState = System.Windows.Forms.CheckState.Checked;
             this.plot2AutoY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plot2AutoY.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plot2AutoY.Location = new System.Drawing.Point(66, 69);
+            this.plot2AutoY.Location = new System.Drawing.Point(66, 59);
             this.plot2AutoY.Name = "plot2AutoY";
-            this.plot2AutoY.Size = new System.Drawing.Size(69, 27);
+            this.plot2AutoY.Size = new System.Drawing.Size(69, 22);
             this.plot2AutoY.TabIndex = 9;
             this.plot2AutoY.Text = "Auto";
             this.plot2AutoY.UseVisualStyleBackColor = false;
@@ -1539,7 +1538,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot2YMin.Location = new System.Drawing.Point(140, 69);
+            this.plot2YMin.Location = new System.Drawing.Point(140, 59);
             this.plot2YMin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot2YMin.Maximum = new decimal(new int[] {
             1000000,
@@ -1552,7 +1551,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot2YMin.Name = "plot2YMin";
-            this.plot2YMin.Size = new System.Drawing.Size(88, 23);
+            this.plot2YMin.Size = new System.Drawing.Size(89, 23);
             this.plot2YMin.TabIndex = 10;
             this.plot2YMin.Value = new decimal(new int[] {
             10,
@@ -1571,7 +1570,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot2YMax.Location = new System.Drawing.Point(232, 69);
+            this.plot2YMax.Location = new System.Drawing.Point(233, 59);
             this.plot2YMax.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot2YMax.Maximum = new decimal(new int[] {
             1000000,
@@ -1584,7 +1583,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot2YMax.Name = "plot2YMax";
-            this.plot2YMax.Size = new System.Drawing.Size(89, 23);
+            this.plot2YMax.Size = new System.Drawing.Size(90, 23);
             this.plot2YMax.TabIndex = 11;
             this.plot2YMax.Value = new decimal(new int[] {
             10,
@@ -1596,9 +1595,9 @@ namespace Physics_Data_Debug
             // 
             this.plotLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotLabel3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plotLabel3.Location = new System.Drawing.Point(3, 99);
+            this.plotLabel3.Location = new System.Drawing.Point(3, 84);
             this.plotLabel3.Name = "plotLabel3";
-            this.plotLabel3.Size = new System.Drawing.Size(57, 33);
+            this.plotLabel3.Size = new System.Drawing.Size(57, 28);
             this.plotLabel3.TabIndex = 12;
             this.plotLabel3.Text = "Plot 3";
             this.plotLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1610,9 +1609,9 @@ namespace Physics_Data_Debug
             this.plot3AutoY.CheckState = System.Windows.Forms.CheckState.Checked;
             this.plot3AutoY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plot3AutoY.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plot3AutoY.Location = new System.Drawing.Point(66, 102);
+            this.plot3AutoY.Location = new System.Drawing.Point(66, 87);
             this.plot3AutoY.Name = "plot3AutoY";
-            this.plot3AutoY.Size = new System.Drawing.Size(69, 27);
+            this.plot3AutoY.Size = new System.Drawing.Size(69, 22);
             this.plot3AutoY.TabIndex = 13;
             this.plot3AutoY.Text = "Auto";
             this.plot3AutoY.UseVisualStyleBackColor = false;
@@ -1628,7 +1627,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot3YMin.Location = new System.Drawing.Point(140, 102);
+            this.plot3YMin.Location = new System.Drawing.Point(140, 87);
             this.plot3YMin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot3YMin.Maximum = new decimal(new int[] {
             1000000,
@@ -1641,7 +1640,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot3YMin.Name = "plot3YMin";
-            this.plot3YMin.Size = new System.Drawing.Size(88, 23);
+            this.plot3YMin.Size = new System.Drawing.Size(89, 23);
             this.plot3YMin.TabIndex = 14;
             this.plot3YMin.Value = new decimal(new int[] {
             10,
@@ -1660,7 +1659,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot3YMax.Location = new System.Drawing.Point(232, 102);
+            this.plot3YMax.Location = new System.Drawing.Point(233, 87);
             this.plot3YMax.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot3YMax.Maximum = new decimal(new int[] {
             1000000,
@@ -1673,7 +1672,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot3YMax.Name = "plot3YMax";
-            this.plot3YMax.Size = new System.Drawing.Size(89, 23);
+            this.plot3YMax.Size = new System.Drawing.Size(90, 23);
             this.plot3YMax.TabIndex = 15;
             this.plot3YMax.Value = new decimal(new int[] {
             10,
@@ -1685,9 +1684,9 @@ namespace Physics_Data_Debug
             // 
             this.plotLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotLabel4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plotLabel4.Location = new System.Drawing.Point(3, 132);
+            this.plotLabel4.Location = new System.Drawing.Point(3, 112);
             this.plotLabel4.Name = "plotLabel4";
-            this.plotLabel4.Size = new System.Drawing.Size(57, 33);
+            this.plotLabel4.Size = new System.Drawing.Size(57, 28);
             this.plotLabel4.TabIndex = 16;
             this.plotLabel4.Text = "Plot 4";
             this.plotLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1699,9 +1698,9 @@ namespace Physics_Data_Debug
             this.plot4AutoY.CheckState = System.Windows.Forms.CheckState.Checked;
             this.plot4AutoY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plot4AutoY.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plot4AutoY.Location = new System.Drawing.Point(66, 135);
+            this.plot4AutoY.Location = new System.Drawing.Point(66, 115);
             this.plot4AutoY.Name = "plot4AutoY";
-            this.plot4AutoY.Size = new System.Drawing.Size(69, 27);
+            this.plot4AutoY.Size = new System.Drawing.Size(69, 22);
             this.plot4AutoY.TabIndex = 17;
             this.plot4AutoY.Text = "Auto";
             this.plot4AutoY.UseVisualStyleBackColor = false;
@@ -1717,7 +1716,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot4YMin.Location = new System.Drawing.Point(140, 135);
+            this.plot4YMin.Location = new System.Drawing.Point(140, 115);
             this.plot4YMin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot4YMin.Maximum = new decimal(new int[] {
             1000000,
@@ -1730,7 +1729,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot4YMin.Name = "plot4YMin";
-            this.plot4YMin.Size = new System.Drawing.Size(88, 23);
+            this.plot4YMin.Size = new System.Drawing.Size(89, 23);
             this.plot4YMin.TabIndex = 18;
             this.plot4YMin.Value = new decimal(new int[] {
             10,
@@ -1749,7 +1748,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot4YMax.Location = new System.Drawing.Point(232, 135);
+            this.plot4YMax.Location = new System.Drawing.Point(233, 115);
             this.plot4YMax.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot4YMax.Maximum = new decimal(new int[] {
             1000000,
@@ -1762,7 +1761,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot4YMax.Name = "plot4YMax";
-            this.plot4YMax.Size = new System.Drawing.Size(89, 23);
+            this.plot4YMax.Size = new System.Drawing.Size(90, 23);
             this.plot4YMax.TabIndex = 19;
             this.plot4YMax.Value = new decimal(new int[] {
             10,
@@ -1774,9 +1773,9 @@ namespace Physics_Data_Debug
             // 
             this.plotLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotLabel5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plotLabel5.Location = new System.Drawing.Point(3, 165);
+            this.plotLabel5.Location = new System.Drawing.Point(3, 140);
             this.plotLabel5.Name = "plotLabel5";
-            this.plotLabel5.Size = new System.Drawing.Size(57, 61);
+            this.plotLabel5.Size = new System.Drawing.Size(57, 28);
             this.plotLabel5.TabIndex = 20;
             this.plotLabel5.Text = "Plot 5";
             this.plotLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1788,9 +1787,9 @@ namespace Physics_Data_Debug
             this.plot5AutoY.CheckState = System.Windows.Forms.CheckState.Checked;
             this.plot5AutoY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plot5AutoY.ForeColor = System.Drawing.Color.Gainsboro;
-            this.plot5AutoY.Location = new System.Drawing.Point(66, 168);
+            this.plot5AutoY.Location = new System.Drawing.Point(66, 143);
             this.plot5AutoY.Name = "plot5AutoY";
-            this.plot5AutoY.Size = new System.Drawing.Size(69, 55);
+            this.plot5AutoY.Size = new System.Drawing.Size(69, 22);
             this.plot5AutoY.TabIndex = 21;
             this.plot5AutoY.Text = "Auto";
             this.plot5AutoY.UseVisualStyleBackColor = false;
@@ -1806,7 +1805,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot5YMin.Location = new System.Drawing.Point(140, 168);
+            this.plot5YMin.Location = new System.Drawing.Point(140, 143);
             this.plot5YMin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot5YMin.Maximum = new decimal(new int[] {
             1000000,
@@ -1819,7 +1818,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot5YMin.Name = "plot5YMin";
-            this.plot5YMin.Size = new System.Drawing.Size(88, 23);
+            this.plot5YMin.Size = new System.Drawing.Size(89, 23);
             this.plot5YMin.TabIndex = 22;
             this.plot5YMin.Value = new decimal(new int[] {
             10,
@@ -1838,7 +1837,7 @@ namespace Physics_Data_Debug
             0,
             0,
             65536});
-            this.plot5YMax.Location = new System.Drawing.Point(232, 168);
+            this.plot5YMax.Location = new System.Drawing.Point(233, 143);
             this.plot5YMax.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.plot5YMax.Maximum = new decimal(new int[] {
             1000000,
@@ -1851,7 +1850,7 @@ namespace Physics_Data_Debug
             0,
             -2147483648});
             this.plot5YMax.Name = "plot5YMax";
-            this.plot5YMax.Size = new System.Drawing.Size(89, 23);
+            this.plot5YMax.Size = new System.Drawing.Size(90, 23);
             this.plot5YMax.TabIndex = 23;
             this.plot5YMax.Value = new decimal(new int[] {
             10,
@@ -1865,7 +1864,7 @@ namespace Physics_Data_Debug
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(720, 760);
+            this.ClientSize = new System.Drawing.Size(704, 711);
             this.Controls.Add(this.rootLayout);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ForeColor = System.Drawing.Color.White;

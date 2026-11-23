@@ -130,7 +130,7 @@ namespace Physics_Data_Debug
             this.toolbarLayout.Location = new System.Drawing.Point(4, 4);
             this.toolbarLayout.Margin = new System.Windows.Forms.Padding(0);
             this.toolbarLayout.Name = "toolbarLayout";
-            this.toolbarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.toolbarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.toolbarLayout.Size = new System.Drawing.Size(1252, 53);
             this.toolbarLayout.TabIndex = 0;
             // 
