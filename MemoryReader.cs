@@ -60,15 +60,6 @@ namespace Physics_Data_Debug
 
             return t;
         }
-        public bool WriteMemory<T>(ulong MemoryAddress, T Value)
-        {
-            IntPtr bw = IntPtr.Zero;
-
-            int sz = ObjectType.GetSize<T>();
-            byte[] data = ObjectType.GetBytes<T>(Value);
-            bool result = WriteProcessMemory(processHandle, new IntPtr(unchecked((long)MemoryAddress)), data, sz, out bw);
-            return result && bw != IntPtr.Zero;
-        }
         // ADDED array reader, since tons of stuff are at that and can that way just read a bigger array of data.
         // Need to at some point use just the ReadMemoryBytesArray() and convert the byte arrays somewhere else to the certain type.
         //Removed <T> and made size always 4, because all the values are 4 byte arrays like Int32 or floats
