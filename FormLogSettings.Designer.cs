@@ -286,11 +286,10 @@
             this.rootLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rootLayout.Location = new System.Drawing.Point(0, 0);
             this.rootLayout.Name = "rootLayout";
-            this.rootLayout.Padding = new System.Windows.Forms.Padding(4);
             this.rootLayout.RowCount = 2;
-            this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.rootLayout.Size = new System.Drawing.Size(1270, 820);
+            this.rootLayout.Size = new System.Drawing.Size(1270, 601);
             this.rootLayout.TabIndex = 0;
             // 
             // toolbarLayout
@@ -305,12 +304,12 @@
             this.toolbarLayout.Controls.Add(this.toolbarInfoLabel, 1, 0);
             this.toolbarLayout.Controls.Add(this.SettingsProfilesHost, 2, 0);
             this.toolbarLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolbarLayout.Location = new System.Drawing.Point(4, 4);
+            this.toolbarLayout.Location = new System.Drawing.Point(0, 0);
             this.toolbarLayout.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.toolbarLayout.Name = "toolbarLayout";
             this.toolbarLayout.RowCount = 1;
             this.toolbarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.toolbarLayout.Size = new System.Drawing.Size(1262, 46);
+            this.toolbarLayout.Size = new System.Drawing.Size(1270, 36);
             this.toolbarLayout.TabIndex = 0;
             // 
             // FLApplyLogSettings
@@ -321,7 +320,7 @@
             this.FLApplyLogSettings.Location = new System.Drawing.Point(5, 6);
             this.FLApplyLogSettings.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.FLApplyLogSettings.Name = "FLApplyLogSettings";
-            this.FLApplyLogSettings.Size = new System.Drawing.Size(190, 34);
+            this.FLApplyLogSettings.Size = new System.Drawing.Size(190, 24);
             this.FLApplyLogSettings.TabIndex = 0;
             this.FLApplyLogSettings.Text = "Apply Logging Settings";
             this.FLApplyLogSettings.UseVisualStyleBackColor = false;
@@ -333,7 +332,7 @@
             this.toolbarInfoLabel.ForeColor = System.Drawing.Color.LightGray;
             this.toolbarInfoLabel.Location = new System.Drawing.Point(203, 0);
             this.toolbarInfoLabel.Name = "toolbarInfoLabel";
-            this.toolbarInfoLabel.Size = new System.Drawing.Size(294, 46);
+            this.toolbarInfoLabel.Size = new System.Drawing.Size(294, 36);
             this.toolbarInfoLabel.TabIndex = 1;
             this.toolbarInfoLabel.Text = "Changes take effect when the next logging session starts";
             this.toolbarInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -344,7 +343,7 @@
             this.SettingsProfilesHost.Location = new System.Drawing.Point(504, 4);
             this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(4);
             this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(130, 38);
+            this.SettingsProfilesHost.Size = new System.Drawing.Size(130, 28);
             this.SettingsProfilesHost.TabIndex = 2;
             // 
             // contentLayout
@@ -355,11 +354,11 @@
             this.contentLayout.Controls.Add(this.selectedFieldsGroup, 0, 0);
             this.contentLayout.Controls.Add(this.filterAndOutputLayout, 1, 0);
             this.contentLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentLayout.Location = new System.Drawing.Point(7, 57);
+            this.contentLayout.Location = new System.Drawing.Point(3, 43);
             this.contentLayout.Name = "contentLayout";
             this.contentLayout.RowCount = 1;
             this.contentLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.contentLayout.Size = new System.Drawing.Size(1256, 756);
+            this.contentLayout.Size = new System.Drawing.Size(1264, 555);
             this.contentLayout.TabIndex = 1;
             // 
             // selectedFieldsGroup
@@ -372,7 +371,7 @@
             this.selectedFieldsGroup.Margin = new System.Windows.Forms.Padding(2, 2, 5, 2);
             this.selectedFieldsGroup.Name = "selectedFieldsGroup";
             this.selectedFieldsGroup.Padding = new System.Windows.Forms.Padding(7, 9, 7, 7);
-            this.selectedFieldsGroup.Size = new System.Drawing.Size(432, 752);
+            this.selectedFieldsGroup.Size = new System.Drawing.Size(435, 551);
             this.selectedFieldsGroup.TabIndex = 0;
             this.selectedFieldsGroup.TabStop = false;
             this.selectedFieldsGroup.Text = "Log fields — parent checkbox selects all wheels";
@@ -391,7 +390,7 @@
             this.selectionsLayout.RowCount = 2;
             this.selectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.selectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.selectionsLayout.Size = new System.Drawing.Size(418, 723);
+            this.selectionsLayout.Size = new System.Drawing.Size(421, 522);
             this.selectionsLayout.TabIndex = 0;
             // 
             // selectAll
@@ -413,7 +412,7 @@
             this.selectionCountLabel.ForeColor = System.Drawing.Color.LightGray;
             this.selectionCountLabel.Location = new System.Drawing.Point(118, 0);
             this.selectionCountLabel.Name = "selectionCountLabel";
-            this.selectionCountLabel.Size = new System.Drawing.Size(297, 35);
+            this.selectionCountLabel.Size = new System.Drawing.Size(300, 35);
             this.selectionCountLabel.TabIndex = 1;
             this.selectionCountLabel.Text = "0 selected";
             this.selectionCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -431,7 +430,7 @@
             this.logFieldsTreeView.Location = new System.Drawing.Point(1, 36);
             this.logFieldsTreeView.Margin = new System.Windows.Forms.Padding(1);
             this.logFieldsTreeView.Name = "logFieldsTreeView";
-            this.logFieldsTreeView.Size = new System.Drawing.Size(416, 686);
+            this.logFieldsTreeView.Size = new System.Drawing.Size(419, 485);
             this.logFieldsTreeView.TabIndex = 2;
             // 
             // filterAndOutputLayout
@@ -441,12 +440,12 @@
             this.filterAndOutputLayout.Controls.Add(this.filtersGroup, 0, 0);
             this.filterAndOutputLayout.Controls.Add(this.outputGroup, 0, 1);
             this.filterAndOutputLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filterAndOutputLayout.Location = new System.Drawing.Point(442, 3);
+            this.filterAndOutputLayout.Location = new System.Drawing.Point(445, 3);
             this.filterAndOutputLayout.Name = "filterAndOutputLayout";
             this.filterAndOutputLayout.RowCount = 2;
             this.filterAndOutputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.filterAndOutputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 190F));
-            this.filterAndOutputLayout.Size = new System.Drawing.Size(811, 750);
+            this.filterAndOutputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.filterAndOutputLayout.Size = new System.Drawing.Size(816, 549);
             this.filterAndOutputLayout.TabIndex = 1;
             // 
             // filtersGroup
@@ -458,7 +457,7 @@
             this.filtersGroup.Location = new System.Drawing.Point(2, 2);
             this.filtersGroup.Margin = new System.Windows.Forms.Padding(2);
             this.filtersGroup.Name = "filtersGroup";
-            this.filtersGroup.Size = new System.Drawing.Size(807, 556);
+            this.filtersGroup.Size = new System.Drawing.Size(812, 425);
             this.filtersGroup.TabIndex = 0;
             this.filtersGroup.TabStop = false;
             this.filtersGroup.Text = "10 optional range filters — all enabled filters must pass";
@@ -471,7 +470,7 @@
             this.filtersScrollPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filtersScrollPanel.Location = new System.Drawing.Point(3, 16);
             this.filtersScrollPanel.Name = "filtersScrollPanel";
-            this.filtersScrollPanel.Size = new System.Drawing.Size(801, 537);
+            this.filtersScrollPanel.Size = new System.Drawing.Size(806, 406);
             this.filtersScrollPanel.TabIndex = 0;
             // 
             // filterRowsLayout
@@ -505,7 +504,7 @@
             this.filterRowsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.filterRowsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.filterRowsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.filterRowsLayout.Size = new System.Drawing.Size(801, 400);
+            this.filterRowsLayout.Size = new System.Drawing.Size(806, 400);
             this.filterRowsLayout.TabIndex = 0;
             // 
             // logFilter01
@@ -536,7 +535,7 @@
             this.logFilter01.RowCount = 2;
             this.logFilter01.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter01.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter01.Size = new System.Drawing.Size(799, 38);
+            this.logFilter01.Size = new System.Drawing.Size(804, 38);
             this.logFilter01.TabIndex = 0;
             // 
             // logFilter01Heading
@@ -553,7 +552,7 @@
             // 
             this.logFilter01MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter01MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter01MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter01MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter01MinimumLabel.Name = "logFilter01MinimumLabel";
             this.logFilter01MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter01MinimumLabel.TabIndex = 1;
@@ -563,7 +562,7 @@
             // 
             this.logFilter01MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter01MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter01MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter01MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter01MaximumLabel.Name = "logFilter01MaximumLabel";
             this.logFilter01MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter01MaximumLabel.TabIndex = 2;
@@ -589,7 +588,7 @@
             this.logFilter01Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter01Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter01Field.Name = "logFilter01Field";
-            this.logFilter01Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter01Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter01Field.TabIndex = 4;
             // 
             // logFilter01Mode
@@ -599,7 +598,7 @@
             this.logFilter01Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter01Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter01Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter01Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter01Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter01Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter01Mode.Name = "logFilter01Mode";
             this.logFilter01Mode.Size = new System.Drawing.Size(106, 21);
@@ -609,7 +608,7 @@
             // 
             this.logFilter01Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter01Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter01Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter01Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter01Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter01Absolute.Name = "logFilter01Absolute";
             this.logFilter01Absolute.Size = new System.Drawing.Size(71, 26);
@@ -621,7 +620,7 @@
             this.logFilter01Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter01Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter01Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter01Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter01Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter01Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter01Minimum.Name = "logFilter01Minimum";
             this.logFilter01Minimum.Size = new System.Drawing.Size(88, 20);
@@ -632,7 +631,7 @@
             this.logFilter01Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter01Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter01Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter01Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter01Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter01Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter01Maximum.Name = "logFilter01Maximum";
             this.logFilter01Maximum.Size = new System.Drawing.Size(88, 20);
@@ -666,7 +665,7 @@
             this.logFilter02.RowCount = 2;
             this.logFilter02.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter02.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter02.Size = new System.Drawing.Size(799, 38);
+            this.logFilter02.Size = new System.Drawing.Size(804, 38);
             this.logFilter02.TabIndex = 1;
             // 
             // logFilter02Heading
@@ -683,7 +682,7 @@
             // 
             this.logFilter02MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter02MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter02MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter02MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter02MinimumLabel.Name = "logFilter02MinimumLabel";
             this.logFilter02MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter02MinimumLabel.TabIndex = 1;
@@ -693,7 +692,7 @@
             // 
             this.logFilter02MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter02MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter02MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter02MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter02MaximumLabel.Name = "logFilter02MaximumLabel";
             this.logFilter02MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter02MaximumLabel.TabIndex = 2;
@@ -719,7 +718,7 @@
             this.logFilter02Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter02Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter02Field.Name = "logFilter02Field";
-            this.logFilter02Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter02Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter02Field.TabIndex = 4;
             // 
             // logFilter02Mode
@@ -729,7 +728,7 @@
             this.logFilter02Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter02Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter02Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter02Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter02Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter02Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter02Mode.Name = "logFilter02Mode";
             this.logFilter02Mode.Size = new System.Drawing.Size(106, 21);
@@ -739,7 +738,7 @@
             // 
             this.logFilter02Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter02Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter02Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter02Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter02Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter02Absolute.Name = "logFilter02Absolute";
             this.logFilter02Absolute.Size = new System.Drawing.Size(71, 26);
@@ -751,7 +750,7 @@
             this.logFilter02Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter02Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter02Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter02Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter02Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter02Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter02Minimum.Name = "logFilter02Minimum";
             this.logFilter02Minimum.Size = new System.Drawing.Size(88, 20);
@@ -762,7 +761,7 @@
             this.logFilter02Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter02Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter02Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter02Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter02Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter02Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter02Maximum.Name = "logFilter02Maximum";
             this.logFilter02Maximum.Size = new System.Drawing.Size(88, 20);
@@ -796,7 +795,7 @@
             this.logFilter03.RowCount = 2;
             this.logFilter03.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter03.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter03.Size = new System.Drawing.Size(799, 38);
+            this.logFilter03.Size = new System.Drawing.Size(804, 38);
             this.logFilter03.TabIndex = 2;
             // 
             // logFilter03Heading
@@ -813,7 +812,7 @@
             // 
             this.logFilter03MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter03MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter03MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter03MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter03MinimumLabel.Name = "logFilter03MinimumLabel";
             this.logFilter03MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter03MinimumLabel.TabIndex = 1;
@@ -823,7 +822,7 @@
             // 
             this.logFilter03MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter03MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter03MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter03MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter03MaximumLabel.Name = "logFilter03MaximumLabel";
             this.logFilter03MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter03MaximumLabel.TabIndex = 2;
@@ -849,7 +848,7 @@
             this.logFilter03Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter03Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter03Field.Name = "logFilter03Field";
-            this.logFilter03Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter03Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter03Field.TabIndex = 4;
             // 
             // logFilter03Mode
@@ -859,7 +858,7 @@
             this.logFilter03Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter03Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter03Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter03Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter03Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter03Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter03Mode.Name = "logFilter03Mode";
             this.logFilter03Mode.Size = new System.Drawing.Size(106, 21);
@@ -869,7 +868,7 @@
             // 
             this.logFilter03Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter03Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter03Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter03Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter03Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter03Absolute.Name = "logFilter03Absolute";
             this.logFilter03Absolute.Size = new System.Drawing.Size(71, 26);
@@ -881,7 +880,7 @@
             this.logFilter03Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter03Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter03Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter03Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter03Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter03Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter03Minimum.Name = "logFilter03Minimum";
             this.logFilter03Minimum.Size = new System.Drawing.Size(88, 20);
@@ -892,7 +891,7 @@
             this.logFilter03Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter03Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter03Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter03Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter03Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter03Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter03Maximum.Name = "logFilter03Maximum";
             this.logFilter03Maximum.Size = new System.Drawing.Size(88, 20);
@@ -926,7 +925,7 @@
             this.logFilter04.RowCount = 2;
             this.logFilter04.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter04.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter04.Size = new System.Drawing.Size(799, 38);
+            this.logFilter04.Size = new System.Drawing.Size(804, 38);
             this.logFilter04.TabIndex = 3;
             // 
             // logFilter04Heading
@@ -943,7 +942,7 @@
             // 
             this.logFilter04MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter04MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter04MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter04MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter04MinimumLabel.Name = "logFilter04MinimumLabel";
             this.logFilter04MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter04MinimumLabel.TabIndex = 1;
@@ -953,7 +952,7 @@
             // 
             this.logFilter04MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter04MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter04MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter04MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter04MaximumLabel.Name = "logFilter04MaximumLabel";
             this.logFilter04MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter04MaximumLabel.TabIndex = 2;
@@ -979,7 +978,7 @@
             this.logFilter04Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter04Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter04Field.Name = "logFilter04Field";
-            this.logFilter04Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter04Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter04Field.TabIndex = 4;
             // 
             // logFilter04Mode
@@ -989,7 +988,7 @@
             this.logFilter04Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter04Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter04Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter04Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter04Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter04Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter04Mode.Name = "logFilter04Mode";
             this.logFilter04Mode.Size = new System.Drawing.Size(106, 21);
@@ -999,7 +998,7 @@
             // 
             this.logFilter04Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter04Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter04Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter04Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter04Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter04Absolute.Name = "logFilter04Absolute";
             this.logFilter04Absolute.Size = new System.Drawing.Size(71, 26);
@@ -1011,7 +1010,7 @@
             this.logFilter04Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter04Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter04Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter04Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter04Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter04Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter04Minimum.Name = "logFilter04Minimum";
             this.logFilter04Minimum.Size = new System.Drawing.Size(88, 20);
@@ -1022,7 +1021,7 @@
             this.logFilter04Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter04Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter04Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter04Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter04Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter04Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter04Maximum.Name = "logFilter04Maximum";
             this.logFilter04Maximum.Size = new System.Drawing.Size(88, 20);
@@ -1056,7 +1055,7 @@
             this.logFilter05.RowCount = 2;
             this.logFilter05.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter05.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter05.Size = new System.Drawing.Size(799, 38);
+            this.logFilter05.Size = new System.Drawing.Size(804, 38);
             this.logFilter05.TabIndex = 4;
             // 
             // logFilter05Heading
@@ -1073,7 +1072,7 @@
             // 
             this.logFilter05MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter05MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter05MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter05MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter05MinimumLabel.Name = "logFilter05MinimumLabel";
             this.logFilter05MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter05MinimumLabel.TabIndex = 1;
@@ -1083,7 +1082,7 @@
             // 
             this.logFilter05MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter05MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter05MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter05MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter05MaximumLabel.Name = "logFilter05MaximumLabel";
             this.logFilter05MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter05MaximumLabel.TabIndex = 2;
@@ -1109,7 +1108,7 @@
             this.logFilter05Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter05Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter05Field.Name = "logFilter05Field";
-            this.logFilter05Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter05Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter05Field.TabIndex = 4;
             // 
             // logFilter05Mode
@@ -1119,7 +1118,7 @@
             this.logFilter05Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter05Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter05Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter05Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter05Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter05Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter05Mode.Name = "logFilter05Mode";
             this.logFilter05Mode.Size = new System.Drawing.Size(106, 21);
@@ -1129,7 +1128,7 @@
             // 
             this.logFilter05Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter05Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter05Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter05Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter05Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter05Absolute.Name = "logFilter05Absolute";
             this.logFilter05Absolute.Size = new System.Drawing.Size(71, 26);
@@ -1141,7 +1140,7 @@
             this.logFilter05Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter05Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter05Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter05Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter05Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter05Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter05Minimum.Name = "logFilter05Minimum";
             this.logFilter05Minimum.Size = new System.Drawing.Size(88, 20);
@@ -1152,7 +1151,7 @@
             this.logFilter05Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter05Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter05Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter05Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter05Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter05Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter05Maximum.Name = "logFilter05Maximum";
             this.logFilter05Maximum.Size = new System.Drawing.Size(88, 20);
@@ -1186,7 +1185,7 @@
             this.logFilter06.RowCount = 2;
             this.logFilter06.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter06.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter06.Size = new System.Drawing.Size(799, 38);
+            this.logFilter06.Size = new System.Drawing.Size(804, 38);
             this.logFilter06.TabIndex = 5;
             // 
             // logFilter06Heading
@@ -1203,7 +1202,7 @@
             // 
             this.logFilter06MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter06MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter06MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter06MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter06MinimumLabel.Name = "logFilter06MinimumLabel";
             this.logFilter06MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter06MinimumLabel.TabIndex = 1;
@@ -1213,7 +1212,7 @@
             // 
             this.logFilter06MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter06MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter06MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter06MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter06MaximumLabel.Name = "logFilter06MaximumLabel";
             this.logFilter06MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter06MaximumLabel.TabIndex = 2;
@@ -1239,7 +1238,7 @@
             this.logFilter06Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter06Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter06Field.Name = "logFilter06Field";
-            this.logFilter06Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter06Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter06Field.TabIndex = 4;
             // 
             // logFilter06Mode
@@ -1249,7 +1248,7 @@
             this.logFilter06Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter06Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter06Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter06Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter06Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter06Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter06Mode.Name = "logFilter06Mode";
             this.logFilter06Mode.Size = new System.Drawing.Size(106, 21);
@@ -1259,7 +1258,7 @@
             // 
             this.logFilter06Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter06Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter06Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter06Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter06Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter06Absolute.Name = "logFilter06Absolute";
             this.logFilter06Absolute.Size = new System.Drawing.Size(71, 26);
@@ -1271,7 +1270,7 @@
             this.logFilter06Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter06Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter06Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter06Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter06Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter06Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter06Minimum.Name = "logFilter06Minimum";
             this.logFilter06Minimum.Size = new System.Drawing.Size(88, 20);
@@ -1282,7 +1281,7 @@
             this.logFilter06Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter06Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter06Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter06Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter06Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter06Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter06Maximum.Name = "logFilter06Maximum";
             this.logFilter06Maximum.Size = new System.Drawing.Size(88, 20);
@@ -1316,7 +1315,7 @@
             this.logFilter07.RowCount = 2;
             this.logFilter07.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter07.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter07.Size = new System.Drawing.Size(799, 38);
+            this.logFilter07.Size = new System.Drawing.Size(804, 38);
             this.logFilter07.TabIndex = 6;
             // 
             // logFilter07Heading
@@ -1333,7 +1332,7 @@
             // 
             this.logFilter07MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter07MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter07MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter07MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter07MinimumLabel.Name = "logFilter07MinimumLabel";
             this.logFilter07MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter07MinimumLabel.TabIndex = 1;
@@ -1343,7 +1342,7 @@
             // 
             this.logFilter07MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter07MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter07MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter07MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter07MaximumLabel.Name = "logFilter07MaximumLabel";
             this.logFilter07MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter07MaximumLabel.TabIndex = 2;
@@ -1369,7 +1368,7 @@
             this.logFilter07Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter07Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter07Field.Name = "logFilter07Field";
-            this.logFilter07Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter07Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter07Field.TabIndex = 4;
             // 
             // logFilter07Mode
@@ -1379,7 +1378,7 @@
             this.logFilter07Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter07Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter07Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter07Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter07Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter07Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter07Mode.Name = "logFilter07Mode";
             this.logFilter07Mode.Size = new System.Drawing.Size(106, 21);
@@ -1389,7 +1388,7 @@
             // 
             this.logFilter07Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter07Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter07Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter07Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter07Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter07Absolute.Name = "logFilter07Absolute";
             this.logFilter07Absolute.Size = new System.Drawing.Size(71, 26);
@@ -1401,7 +1400,7 @@
             this.logFilter07Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter07Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter07Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter07Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter07Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter07Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter07Minimum.Name = "logFilter07Minimum";
             this.logFilter07Minimum.Size = new System.Drawing.Size(88, 20);
@@ -1412,7 +1411,7 @@
             this.logFilter07Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter07Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter07Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter07Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter07Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter07Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter07Maximum.Name = "logFilter07Maximum";
             this.logFilter07Maximum.Size = new System.Drawing.Size(88, 20);
@@ -1446,7 +1445,7 @@
             this.logFilter08.RowCount = 2;
             this.logFilter08.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter08.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter08.Size = new System.Drawing.Size(799, 38);
+            this.logFilter08.Size = new System.Drawing.Size(804, 38);
             this.logFilter08.TabIndex = 7;
             // 
             // logFilter08Heading
@@ -1463,7 +1462,7 @@
             // 
             this.logFilter08MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter08MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter08MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter08MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter08MinimumLabel.Name = "logFilter08MinimumLabel";
             this.logFilter08MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter08MinimumLabel.TabIndex = 1;
@@ -1473,7 +1472,7 @@
             // 
             this.logFilter08MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter08MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter08MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter08MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter08MaximumLabel.Name = "logFilter08MaximumLabel";
             this.logFilter08MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter08MaximumLabel.TabIndex = 2;
@@ -1499,7 +1498,7 @@
             this.logFilter08Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter08Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter08Field.Name = "logFilter08Field";
-            this.logFilter08Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter08Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter08Field.TabIndex = 4;
             // 
             // logFilter08Mode
@@ -1509,7 +1508,7 @@
             this.logFilter08Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter08Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter08Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter08Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter08Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter08Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter08Mode.Name = "logFilter08Mode";
             this.logFilter08Mode.Size = new System.Drawing.Size(106, 21);
@@ -1519,7 +1518,7 @@
             // 
             this.logFilter08Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter08Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter08Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter08Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter08Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter08Absolute.Name = "logFilter08Absolute";
             this.logFilter08Absolute.Size = new System.Drawing.Size(71, 26);
@@ -1531,7 +1530,7 @@
             this.logFilter08Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter08Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter08Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter08Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter08Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter08Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter08Minimum.Name = "logFilter08Minimum";
             this.logFilter08Minimum.Size = new System.Drawing.Size(88, 20);
@@ -1542,7 +1541,7 @@
             this.logFilter08Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter08Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter08Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter08Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter08Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter08Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter08Maximum.Name = "logFilter08Maximum";
             this.logFilter08Maximum.Size = new System.Drawing.Size(88, 20);
@@ -1576,7 +1575,7 @@
             this.logFilter09.RowCount = 2;
             this.logFilter09.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter09.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter09.Size = new System.Drawing.Size(799, 38);
+            this.logFilter09.Size = new System.Drawing.Size(804, 38);
             this.logFilter09.TabIndex = 8;
             // 
             // logFilter09Heading
@@ -1593,7 +1592,7 @@
             // 
             this.logFilter09MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter09MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter09MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter09MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter09MinimumLabel.Name = "logFilter09MinimumLabel";
             this.logFilter09MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter09MinimumLabel.TabIndex = 1;
@@ -1603,7 +1602,7 @@
             // 
             this.logFilter09MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter09MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter09MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter09MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter09MaximumLabel.Name = "logFilter09MaximumLabel";
             this.logFilter09MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter09MaximumLabel.TabIndex = 2;
@@ -1629,7 +1628,7 @@
             this.logFilter09Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter09Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter09Field.Name = "logFilter09Field";
-            this.logFilter09Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter09Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter09Field.TabIndex = 4;
             // 
             // logFilter09Mode
@@ -1639,7 +1638,7 @@
             this.logFilter09Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter09Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter09Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter09Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter09Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter09Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter09Mode.Name = "logFilter09Mode";
             this.logFilter09Mode.Size = new System.Drawing.Size(106, 21);
@@ -1649,7 +1648,7 @@
             // 
             this.logFilter09Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter09Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter09Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter09Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter09Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter09Absolute.Name = "logFilter09Absolute";
             this.logFilter09Absolute.Size = new System.Drawing.Size(71, 26);
@@ -1661,7 +1660,7 @@
             this.logFilter09Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter09Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter09Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter09Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter09Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter09Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter09Minimum.Name = "logFilter09Minimum";
             this.logFilter09Minimum.Size = new System.Drawing.Size(88, 20);
@@ -1672,7 +1671,7 @@
             this.logFilter09Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter09Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter09Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter09Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter09Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter09Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter09Maximum.Name = "logFilter09Maximum";
             this.logFilter09Maximum.Size = new System.Drawing.Size(88, 20);
@@ -1706,7 +1705,7 @@
             this.logFilter10.RowCount = 2;
             this.logFilter10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.logFilter10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.logFilter10.Size = new System.Drawing.Size(799, 38);
+            this.logFilter10.Size = new System.Drawing.Size(804, 38);
             this.logFilter10.TabIndex = 9;
             // 
             // logFilter10Heading
@@ -1723,7 +1722,7 @@
             // 
             this.logFilter10MinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter10MinimumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter10MinimumLabel.Location = new System.Drawing.Point(609, 1);
+            this.logFilter10MinimumLabel.Location = new System.Drawing.Point(614, 1);
             this.logFilter10MinimumLabel.Name = "logFilter10MinimumLabel";
             this.logFilter10MinimumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter10MinimumLabel.TabIndex = 1;
@@ -1733,7 +1732,7 @@
             // 
             this.logFilter10MaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter10MaximumLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.logFilter10MaximumLabel.Location = new System.Drawing.Point(703, 1);
+            this.logFilter10MaximumLabel.Location = new System.Drawing.Point(708, 1);
             this.logFilter10MaximumLabel.Name = "logFilter10MaximumLabel";
             this.logFilter10MaximumLabel.Size = new System.Drawing.Size(88, 13);
             this.logFilter10MaximumLabel.TabIndex = 2;
@@ -1759,7 +1758,7 @@
             this.logFilter10Field.Location = new System.Drawing.Point(77, 16);
             this.logFilter10Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter10Field.Name = "logFilter10Field";
-            this.logFilter10Field.Size = new System.Drawing.Size(341, 21);
+            this.logFilter10Field.Size = new System.Drawing.Size(346, 21);
             this.logFilter10Field.TabIndex = 4;
             // 
             // logFilter10Mode
@@ -1769,7 +1768,7 @@
             this.logFilter10Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.logFilter10Mode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logFilter10Mode.ForeColor = System.Drawing.Color.White;
-            this.logFilter10Mode.Location = new System.Drawing.Point(424, 16);
+            this.logFilter10Mode.Location = new System.Drawing.Point(429, 16);
             this.logFilter10Mode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter10Mode.Name = "logFilter10Mode";
             this.logFilter10Mode.Size = new System.Drawing.Size(106, 21);
@@ -1779,7 +1778,7 @@
             // 
             this.logFilter10Absolute.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter10Absolute.ForeColor = System.Drawing.Color.White;
-            this.logFilter10Absolute.Location = new System.Drawing.Point(535, 14);
+            this.logFilter10Absolute.Location = new System.Drawing.Point(540, 14);
             this.logFilter10Absolute.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.logFilter10Absolute.Name = "logFilter10Absolute";
             this.logFilter10Absolute.Size = new System.Drawing.Size(71, 26);
@@ -1791,7 +1790,7 @@
             this.logFilter10Minimum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter10Minimum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter10Minimum.ForeColor = System.Drawing.Color.White;
-            this.logFilter10Minimum.Location = new System.Drawing.Point(609, 16);
+            this.logFilter10Minimum.Location = new System.Drawing.Point(614, 16);
             this.logFilter10Minimum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter10Minimum.Name = "logFilter10Minimum";
             this.logFilter10Minimum.Size = new System.Drawing.Size(88, 20);
@@ -1802,7 +1801,7 @@
             this.logFilter10Maximum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.logFilter10Maximum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logFilter10Maximum.ForeColor = System.Drawing.Color.White;
-            this.logFilter10Maximum.Location = new System.Drawing.Point(703, 16);
+            this.logFilter10Maximum.Location = new System.Drawing.Point(708, 16);
             this.logFilter10Maximum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logFilter10Maximum.Name = "logFilter10Maximum";
             this.logFilter10Maximum.Size = new System.Drawing.Size(88, 20);
@@ -1814,10 +1813,10 @@
             this.outputGroup.Controls.Add(this.outputLayout);
             this.outputGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.outputGroup.ForeColor = System.Drawing.Color.White;
-            this.outputGroup.Location = new System.Drawing.Point(2, 562);
+            this.outputGroup.Location = new System.Drawing.Point(2, 431);
             this.outputGroup.Margin = new System.Windows.Forms.Padding(2);
             this.outputGroup.Name = "outputGroup";
-            this.outputGroup.Size = new System.Drawing.Size(807, 186);
+            this.outputGroup.Size = new System.Drawing.Size(812, 116);
             this.outputGroup.TabIndex = 1;
             this.outputGroup.TabStop = false;
             this.outputGroup.Text = "Output directory and session limits (0 = unlimited)";
@@ -1841,21 +1840,21 @@
             this.outputLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.outputLayout.Location = new System.Drawing.Point(3, 16);
             this.outputLayout.Name = "outputLayout";
-            this.outputLayout.Padding = new System.Windows.Forms.Padding(8, 6, 8, 5);
+            this.outputLayout.Padding = new System.Windows.Forms.Padding(8, 2, 8, 5);
             this.outputLayout.RowCount = 4;
-            this.outputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.outputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.outputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.outputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.outputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.outputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.outputLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.outputLayout.Size = new System.Drawing.Size(801, 167);
+            this.outputLayout.Size = new System.Drawing.Size(806, 97);
             this.outputLayout.TabIndex = 0;
             // 
             // pathLabel
             // 
             this.pathLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pathLabel.Location = new System.Drawing.Point(11, 6);
+            this.pathLabel.Location = new System.Drawing.Point(11, 2);
             this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(110, 32);
+            this.pathLabel.Size = new System.Drawing.Size(110, 28);
             this.pathLabel.TabIndex = 0;
             this.pathLabel.Text = "Save folder";
             this.pathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1866,9 +1865,9 @@
             this.outputLayout.SetColumnSpan(this.LogFolderTextBox, 2);
             this.LogFolderTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LogFolderTextBox.ForeColor = System.Drawing.Color.White;
-            this.LogFolderTextBox.Location = new System.Drawing.Point(127, 9);
+            this.LogFolderTextBox.Location = new System.Drawing.Point(127, 5);
             this.LogFolderTextBox.Name = "LogFolderTextBox";
-            this.LogFolderTextBox.Size = new System.Drawing.Size(537, 20);
+            this.LogFolderTextBox.Size = new System.Drawing.Size(542, 20);
             this.LogFolderTextBox.TabIndex = 1;
             // 
             // BrowseLogFolderButton
@@ -1876,10 +1875,10 @@
             this.BrowseLogFolderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BrowseLogFolderButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BrowseLogFolderButton.ForeColor = System.Drawing.Color.White;
-            this.BrowseLogFolderButton.Location = new System.Drawing.Point(669, 6);
+            this.BrowseLogFolderButton.Location = new System.Drawing.Point(674, 2);
             this.BrowseLogFolderButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BrowseLogFolderButton.Name = "BrowseLogFolderButton";
-            this.BrowseLogFolderButton.Size = new System.Drawing.Size(122, 32);
+            this.BrowseLogFolderButton.Size = new System.Drawing.Size(122, 28);
             this.BrowseLogFolderButton.TabIndex = 2;
             this.BrowseLogFolderButton.Text = "Browse...";
             this.BrowseLogFolderButton.UseVisualStyleBackColor = false;
@@ -1888,9 +1887,9 @@
             // delimiterLabel
             // 
             this.delimiterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.delimiterLabel.Location = new System.Drawing.Point(11, 38);
+            this.delimiterLabel.Location = new System.Drawing.Point(11, 30);
             this.delimiterLabel.Name = "delimiterLabel";
-            this.delimiterLabel.Size = new System.Drawing.Size(110, 35);
+            this.delimiterLabel.Size = new System.Drawing.Size(110, 28);
             this.delimiterLabel.TabIndex = 3;
             this.delimiterLabel.Text = "Delimiter";
             this.delimiterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1900,7 +1899,7 @@
             this.DelimiterTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.DelimiterTextBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.DelimiterTextBox.ForeColor = System.Drawing.Color.White;
-            this.DelimiterTextBox.Location = new System.Drawing.Point(127, 41);
+            this.DelimiterTextBox.Location = new System.Drawing.Point(127, 33);
             this.DelimiterTextBox.MaxLength = 1;
             this.DelimiterTextBox.Name = "DelimiterTextBox";
             this.DelimiterTextBox.Size = new System.Drawing.Size(62, 20);
@@ -1910,9 +1909,9 @@
             // timeLimitLabel
             // 
             this.timeLimitLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeLimitLabel.Location = new System.Drawing.Point(540, 38);
+            this.timeLimitLabel.Location = new System.Drawing.Point(545, 30);
             this.timeLimitLabel.Name = "timeLimitLabel";
-            this.timeLimitLabel.Size = new System.Drawing.Size(124, 35);
+            this.timeLimitLabel.Size = new System.Drawing.Size(124, 28);
             this.timeLimitLabel.TabIndex = 5;
             this.timeLimitLabel.Text = "Time limit (s)";
             this.timeLimitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1922,7 +1921,7 @@
             this.TimeLimitSecondsNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.TimeLimitSecondsNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TimeLimitSecondsNumericUpDown.ForeColor = System.Drawing.Color.White;
-            this.TimeLimitSecondsNumericUpDown.Location = new System.Drawing.Point(670, 41);
+            this.TimeLimitSecondsNumericUpDown.Location = new System.Drawing.Point(675, 33);
             this.TimeLimitSecondsNumericUpDown.Maximum = new decimal(new int[] {
             604800,
             0,
@@ -1936,9 +1935,9 @@
             // 
             this.sizeLimitLabel.AutoSize = true;
             this.sizeLimitLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sizeLimitLabel.Location = new System.Drawing.Point(11, 73);
+            this.sizeLimitLabel.Location = new System.Drawing.Point(11, 58);
             this.sizeLimitLabel.Name = "sizeLimitLabel";
-            this.sizeLimitLabel.Size = new System.Drawing.Size(110, 35);
+            this.sizeLimitLabel.Size = new System.Drawing.Size(110, 28);
             this.sizeLimitLabel.TabIndex = 7;
             this.sizeLimitLabel.Text = "File size limit (MiB)";
             this.sizeLimitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1949,7 +1948,7 @@
             this.TotalSizeMiBNumericUpDown.DecimalPlaces = 2;
             this.TotalSizeMiBNumericUpDown.Dock = System.Windows.Forms.DockStyle.Left;
             this.TotalSizeMiBNumericUpDown.ForeColor = System.Drawing.Color.White;
-            this.TotalSizeMiBNumericUpDown.Location = new System.Drawing.Point(127, 76);
+            this.TotalSizeMiBNumericUpDown.Location = new System.Drawing.Point(127, 61);
             this.TotalSizeMiBNumericUpDown.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -1964,7 +1963,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(1270, 820);
+            this.ClientSize = new System.Drawing.Size(1270, 601);
             this.Controls.Add(this.rootLayout);
             this.ForeColor = System.Drawing.Color.White;
             this.MinimumSize = new System.Drawing.Size(970, 600);
