@@ -292,10 +292,10 @@ namespace Physics_Data_Debug
             int limit = Math.Max(2, FormGForceSettings.HistoryAmountPoints);
             var colors = Palette;
             double angle = FormGForceSettings.X1AngleType == "Degrees"
-                ? LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "Body_XZGAngleDeg"))
-                : LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZGAngleRad"));
+                ? LiveData.GetFullListDoubleValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "Body_XZGAngleDeg"))
+                : LiveData.GetFullListDoubleValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZGAngleRad"));
             double magnitude = Math.Round(
-                LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZG")), 2);
+                LiveData.GetFullListDoubleValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZG")), 2);
             if (double.IsNaN(angle) || double.IsInfinity(angle) ||
                 double.IsNaN(magnitude) || double.IsInfinity(magnitude)) return;
             // Preserve the last good live marker if the new sample is missing.
@@ -396,7 +396,7 @@ namespace Physics_Data_Debug
         {
             Series series = chart.Series[CurrentSeriesName];
             double value = Math.Round(
-                LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "YG")), 2);
+                LiveData.GetFullListDoubleValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "YG")), 2);
             if (double.IsNaN(value) || double.IsInfinity(value)) return;
             series.Points.Clear();
             series.Color = FormGForceSettings.MarkerColor;

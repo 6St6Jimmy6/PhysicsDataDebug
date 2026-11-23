@@ -968,8 +968,12 @@ namespace Physics_Data_Debug
         {
             List<float> xyz = ListSelections(selections, LiveData.None, wheel);
             List<float> limiter = ListSelections(limiterSelections, LiveData.None, wheel);
-            ListSeries(chart, seriesName, xyz, limiter,
-                LiveData.GetFullListDataValue(wheel, GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad")));
+            float verticalLoad = LiveData.GetFullListFloatValue(wheel,
+                GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad"));
+            // Wheel memory may not exist yet on the first race tick. There is
+            // no point plotting X/Y/Z while the wheel's load is unavailable.
+            if (float.IsNaN(verticalLoad) || float.IsInfinity(verticalLoad)) return;
+            ListSeries(chart, seriesName, xyz, limiter, verticalLoad);
         }
 
         public static bool OverTheChosenLimiter(float limiter, string limiterSelection,

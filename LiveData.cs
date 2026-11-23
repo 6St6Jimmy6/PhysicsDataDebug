@@ -180,6 +180,31 @@ namespace Physics_Data_Debug
                 throw new KeyNotFoundException("Telemetry value not found: " + name);
             return item.Value;
         }
+
+        // The historical getter returns dynamic because source fields can be
+        // float32 or int32. At call sites that need a specific numeric type,
+        // explicitly convert rather than letting the runtime binder decide.
+        // In particular, an unavailable raw field must never turn a chart
+        // update into a RuntimeBinderException (double -> float).
+        public static float GetFullListFloatValue(string prefix, GameMemoryField field)
+        {
+            object value = GetFullListDataValue(prefix, field);
+            if (value == null) return float.NaN;
+            try { return Convert.ToSingle(value, CultureInfo.InvariantCulture); }
+            catch (InvalidCastException) { return float.NaN; }
+            catch (FormatException) { return float.NaN; }
+            catch (OverflowException) { return float.NaN; }
+        }
+
+        public static double GetFullListDoubleValue(string prefix, GameMemoryField field)
+        {
+            object value = GetFullListDataValue(prefix, field);
+            if (value == null) return double.NaN;
+            try { return Convert.ToDouble(value, CultureInfo.InvariantCulture); }
+            catch (InvalidCastException) { return double.NaN; }
+            catch (FormatException) { return double.NaN; }
+            catch (OverflowException) { return double.NaN; }
+        }
         private static int GetConfiguredDataIndex(int start, GameMemoryField value)
         {
             // Calculated fields live immediately AFTER the raw bytes, regardless
@@ -342,7 +367,10 @@ namespace Physics_Data_Debug
                 byte[] valueByteArray = byteData[index];
                 if (ReferenceEquals(valueByteArray, MemoryReader.UnavailableFourBytes))
                 {
-                    target[ii].Value = double.NaN;
+                    // These are float32 raw fields. Keep the missing-value
+                    // sentinel float32 too: dynamic consumers may require a
+                    // float parameter (e.g. Form4Wheels.ListSeries).
+                    target[ii].Value = float.NaN;
                     ii++;
                     continue;
                 }

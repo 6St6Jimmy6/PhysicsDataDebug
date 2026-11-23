@@ -19,7 +19,10 @@ namespace Physics_Data_Debug
         internal string SourceGroup { get; set; }
         // Raw values are assigned on each telemetry refresh. Derived values use a
         // per-sample lazy getter, so unrequested formulas cost nothing.
-        private dynamic storedValue;
+        // A newly initialized field is unavailable until its first sample.
+        // Preserve a consistent float32 type rather than exposing null to
+        // chart calculations during menu -> race transitions.
+        private dynamic storedValue = float.NaN;
         private int cachedSample = -1;
         private bool evaluating;
         internal Func<double> Calculator { get; set; }
