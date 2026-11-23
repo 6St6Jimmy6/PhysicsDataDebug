@@ -14,8 +14,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.settingsToolbar = new System.Windows.Forms.TableLayoutPanel();
@@ -50,25 +50,26 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.Maximum = 1.5D;
-            chartArea1.AxisX.Minimum = -1.5D;
-            chartArea1.AxisY.Maximum = 1.5D;
-            chartArea1.AxisY.Minimum = -0.5D;
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "FrontSuspension";
-            chartArea2.AxisX.Maximum = 1.5D;
-            chartArea2.AxisX.Minimum = -1.5D;
-            chartArea2.AxisY.Maximum = 1.5D;
-            chartArea2.AxisY.Minimum = -0.5D;
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "RearSuspension";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea3.AxisX.Maximum = 1.5D;
+            chartArea3.AxisX.Minimum = -1.5D;
+            chartArea3.AxisY.Maximum = 1.5D;
+            chartArea3.AxisY.Minimum = -0.5D;
+            chartArea3.BackColor = System.Drawing.Color.Transparent;
+            chartArea3.Name = "FrontSuspension";
+            chartArea4.AxisX.Maximum = 1.5D;
+            chartArea4.AxisX.Minimum = -1.5D;
+            chartArea4.AxisY.Maximum = 1.5D;
+            chartArea4.AxisY.Minimum = -0.5D;
+            chartArea4.BackColor = System.Drawing.Color.Transparent;
+            chartArea4.Name = "RearSuspension";
+            this.chart1.ChartAreas.Add(chartArea3);
+            this.chart1.ChartAreas.Add(chartArea4);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart1.Location = new System.Drawing.Point(0, 37);
             this.chart1.Margin = new System.Windows.Forms.Padding(0);
@@ -408,7 +409,7 @@
             this.updateIntervalNumericUpDown.Size = new System.Drawing.Size(94, 20);
             this.updateIntervalNumericUpDown.TabIndex = 1;
             this.updateIntervalNumericUpDown.Value = new decimal(new int[] {
-            100,
+            50,
             0,
             0,
             0});
