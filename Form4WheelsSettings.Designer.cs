@@ -290,6 +290,7 @@ namespace Physics_Data_Debug
             this.Z1SelectionComboBoxRowLabel = new System.Windows.Forms.Label();
             this.Z1DefaultsCheckBoxRow = new System.Windows.Forms.Panel();
             this.settingsActionsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.settingsApplyFiltersButton = new System.Windows.Forms.Button();
             this.SettingsProfilesHost = new System.Windows.Forms.Panel();
             this.settingsTabs = new System.Windows.Forms.TabControl();
             this.chartSettingsTab = new System.Windows.Forms.TabPage();
@@ -297,7 +298,6 @@ namespace Physics_Data_Debug
             this.filterSettingsRows = new System.Windows.Forms.TableLayoutPanel();
             this.filterAxisPlaceholder = new System.Windows.Forms.GroupBox();
             this.filterExtraPlaceholder = new System.Windows.Forms.GroupBox();
-            this.settingsApplyFiltersButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ZLegendWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZLegendDecimalsNumericUpDown)).BeginInit();
             this.settingsSectionsLayout.SuspendLayout();
@@ -736,9 +736,9 @@ namespace Physics_Data_Debug
             this.X1SelectionComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.X1SelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.X1SelectionComboBox.FormattingEnabled = true;
-            this.X1SelectionComboBox.Location = new System.Drawing.Point(6, 12);
+            this.X1SelectionComboBox.Location = new System.Drawing.Point(2, 12);
             this.X1SelectionComboBox.Name = "X1SelectionComboBox";
-            this.X1SelectionComboBox.Size = new System.Drawing.Size(230, 21);
+            this.X1SelectionComboBox.Size = new System.Drawing.Size(238, 21);
             this.X1SelectionComboBox.TabIndex = 473;
             // 
             // X1MajorIntervalFractionTextBox
@@ -1067,9 +1067,9 @@ namespace Physics_Data_Debug
             this.Y1SelectionComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Y1SelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Y1SelectionComboBox.FormattingEnabled = true;
-            this.Y1SelectionComboBox.Location = new System.Drawing.Point(6, 12);
+            this.Y1SelectionComboBox.Location = new System.Drawing.Point(2, 12);
             this.Y1SelectionComboBox.Name = "Y1SelectionComboBox";
-            this.Y1SelectionComboBox.Size = new System.Drawing.Size(230, 21);
+            this.Y1SelectionComboBox.Size = new System.Drawing.Size(238, 21);
             this.Y1SelectionComboBox.TabIndex = 509;
             // 
             // label6
@@ -1157,9 +1157,9 @@ namespace Physics_Data_Debug
             this.Z1SelectionComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Z1SelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Z1SelectionComboBox.FormattingEnabled = true;
-            this.Z1SelectionComboBox.Location = new System.Drawing.Point(6, 12);
+            this.Z1SelectionComboBox.Location = new System.Drawing.Point(2, 12);
             this.Z1SelectionComboBox.Name = "Z1SelectionComboBox";
-            this.Z1SelectionComboBox.Size = new System.Drawing.Size(230, 21);
+            this.Z1SelectionComboBox.Size = new System.Drawing.Size(238, 21);
             this.Z1SelectionComboBox.TabIndex = 517;
             // 
             // label2
@@ -1197,7 +1197,7 @@ namespace Physics_Data_Debug
             0,
             0});
             this.ZLegendWidthNumericUpDown.Location = new System.Drawing.Point(2, 13);
-            this.ZLegendWidthNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ZLegendWidthNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.ZLegendWidthNumericUpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -1221,7 +1221,7 @@ namespace Physics_Data_Debug
             // 
             this.ZLegendDecimalsNumericUpDown.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ZLegendDecimalsNumericUpDown.Location = new System.Drawing.Point(2, 13);
-            this.ZLegendDecimalsNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ZLegendDecimalsNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.ZLegendDecimalsNumericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1296,9 +1296,9 @@ namespace Physics_Data_Debug
             this.WheelChartsSelectComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.WheelChartsSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WheelChartsSelectComboBox.FormattingEnabled = true;
-            this.WheelChartsSelectComboBox.Location = new System.Drawing.Point(6, 12);
+            this.WheelChartsSelectComboBox.Location = new System.Drawing.Point(2, 12);
             this.WheelChartsSelectComboBox.Name = "WheelChartsSelectComboBox";
-            this.WheelChartsSelectComboBox.Size = new System.Drawing.Size(230, 21);
+            this.WheelChartsSelectComboBox.Size = new System.Drawing.Size(238, 21);
             this.WheelChartsSelectComboBox.TabIndex = 525;
             // 
             // label30
@@ -1324,9 +1324,9 @@ namespace Physics_Data_Debug
             this.settingsSectionsLayout.Controls.Add(this.zAxisSettingsGroup, 3, 0);
             this.settingsSectionsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsSectionsLayout.Location = new System.Drawing.Point(0, 0);
-            this.settingsSectionsLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsSectionsLayout.Margin = new System.Windows.Forms.Padding(2);
             this.settingsSectionsLayout.Name = "settingsSectionsLayout";
-            this.settingsSectionsLayout.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.settingsSectionsLayout.Padding = new System.Windows.Forms.Padding(1);
             this.settingsSectionsLayout.RowCount = 1;
             this.settingsSectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.settingsSectionsLayout.Size = new System.Drawing.Size(994, 426);
@@ -1338,9 +1338,9 @@ namespace Physics_Data_Debug
             this.settingsSidebarGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsSidebarGroup.ForeColor = System.Drawing.Color.White;
             this.settingsSidebarGroup.Location = new System.Drawing.Point(2, 2);
-            this.settingsSidebarGroup.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.settingsSidebarGroup.Margin = new System.Windows.Forms.Padding(1);
             this.settingsSidebarGroup.Name = "settingsSidebarGroup";
-            this.settingsSidebarGroup.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsSidebarGroup.Padding = new System.Windows.Forms.Padding(2);
             this.settingsSidebarGroup.Size = new System.Drawing.Size(246, 422);
             this.settingsSidebarGroup.TabIndex = 0;
             this.settingsSidebarGroup.TabStop = false;
@@ -1362,7 +1362,7 @@ namespace Physics_Data_Debug
             this.settingsSidebarPanel.Controls.Add(this.DefaultsCheckBoxRow);
             this.settingsSidebarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsSidebarPanel.Location = new System.Drawing.Point(2, 15);
-            this.settingsSidebarPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsSidebarPanel.Margin = new System.Windows.Forms.Padding(2);
             this.settingsSidebarPanel.Name = "settingsSidebarPanel";
             this.settingsSidebarPanel.Size = new System.Drawing.Size(242, 405);
             this.settingsSidebarPanel.TabIndex = 0;
@@ -1419,7 +1419,7 @@ namespace Physics_Data_Debug
             0,
             131072});
             this.liveCursorWidthBox.Location = new System.Drawing.Point(2, 13);
-            this.liveCursorWidthBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveCursorWidthBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveCursorWidthBox.Maximum = new decimal(new int[] {
             8,
             0,
@@ -1470,7 +1470,7 @@ namespace Physics_Data_Debug
             this.liveCursorDashBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.liveCursorDashBox.IntegralHeight = false;
             this.liveCursorDashBox.Location = new System.Drawing.Point(2, 12);
-            this.liveCursorDashBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveCursorDashBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveCursorDashBox.Name = "liveCursorDashBox";
             this.liveCursorDashBox.Size = new System.Drawing.Size(117, 21);
             this.liveCursorDashBox.TabIndex = 1;
@@ -1523,7 +1523,7 @@ namespace Physics_Data_Debug
             this.liveCursorColorBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.liveCursorColorBox.IntegralHeight = false;
             this.liveCursorColorBox.Location = new System.Drawing.Point(2, 12);
-            this.liveCursorColorBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveCursorColorBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveCursorColorBox.Name = "liveCursorColorBox";
             this.liveCursorColorBox.Size = new System.Drawing.Size(117, 21);
             this.liveCursorColorBox.TabIndex = 1;
@@ -1557,7 +1557,7 @@ namespace Physics_Data_Debug
             // 
             this.liveCursorAlphaBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.liveCursorAlphaBox.Location = new System.Drawing.Point(2, 13);
-            this.liveCursorAlphaBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveCursorAlphaBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveCursorAlphaBox.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1608,7 +1608,7 @@ namespace Physics_Data_Debug
             this.liveCursorEnabledBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.liveCursorEnabledBox.ForeColor = System.Drawing.Color.White;
             this.liveCursorEnabledBox.Location = new System.Drawing.Point(2, 0);
-            this.liveCursorEnabledBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveCursorEnabledBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveCursorEnabledBox.Name = "liveCursorEnabledBox";
             this.liveCursorEnabledBox.Size = new System.Drawing.Size(117, 33);
             this.liveCursorEnabledBox.TabIndex = 0;
@@ -1633,7 +1633,7 @@ namespace Physics_Data_Debug
             this.liveCursorZoomBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.liveCursorZoomBox.ForeColor = System.Drawing.Color.White;
             this.liveCursorZoomBox.Location = new System.Drawing.Point(2, 0);
-            this.liveCursorZoomBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveCursorZoomBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveCursorZoomBox.Name = "liveCursorZoomBox";
             this.liveCursorZoomBox.Size = new System.Drawing.Size(117, 33);
             this.liveCursorZoomBox.TabIndex = 0;
@@ -1685,7 +1685,7 @@ namespace Physics_Data_Debug
             // 
             this.livePaletteAlpha.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.livePaletteAlpha.Location = new System.Drawing.Point(2, 13);
-            this.livePaletteAlpha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.livePaletteAlpha.Margin = new System.Windows.Forms.Padding(2);
             this.livePaletteAlpha.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1729,7 +1729,7 @@ namespace Physics_Data_Debug
             // 
             this.livePaletteDivider.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.livePaletteDivider.Location = new System.Drawing.Point(2, 13);
-            this.livePaletteDivider.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.livePaletteDivider.Margin = new System.Windows.Forms.Padding(2);
             this.livePaletteDivider.Maximum = new decimal(new int[] {
             8,
             0,
@@ -1864,7 +1864,7 @@ namespace Physics_Data_Debug
             this.liveHistoryMarkerBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.liveHistoryMarkerBox.IntegralHeight = false;
             this.liveHistoryMarkerBox.Location = new System.Drawing.Point(2, 12);
-            this.liveHistoryMarkerBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveHistoryMarkerBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveHistoryMarkerBox.Name = "liveHistoryMarkerBox";
             this.liveHistoryMarkerBox.Size = new System.Drawing.Size(117, 21);
             this.liveHistoryMarkerBox.TabIndex = 1;
@@ -1898,7 +1898,7 @@ namespace Physics_Data_Debug
             // 
             this.liveHistoryMarkerSize.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.liveHistoryMarkerSize.Location = new System.Drawing.Point(2, 13);
-            this.liveHistoryMarkerSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveHistoryMarkerSize.Margin = new System.Windows.Forms.Padding(2);
             this.liveHistoryMarkerSize.Maximum = new decimal(new int[] {
             20,
             0,
@@ -1991,7 +1991,7 @@ namespace Physics_Data_Debug
             this.liveChartTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.liveChartTypeBox.IntegralHeight = false;
             this.liveChartTypeBox.Location = new System.Drawing.Point(2, 12);
-            this.liveChartTypeBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveChartTypeBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveChartTypeBox.Name = "liveChartTypeBox";
             this.liveChartTypeBox.Size = new System.Drawing.Size(117, 21);
             this.liveChartTypeBox.TabIndex = 1;
@@ -2003,9 +2003,9 @@ namespace Physics_Data_Debug
             this.WheelChartsSelectComboBoxRow.Controls.Add(this.WheelChartsSelectComboBox);
             this.WheelChartsSelectComboBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.WheelChartsSelectComboBoxRow.Location = new System.Drawing.Point(0, 58);
-            this.WheelChartsSelectComboBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WheelChartsSelectComboBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.WheelChartsSelectComboBoxRow.Name = "WheelChartsSelectComboBoxRow";
-            this.WheelChartsSelectComboBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.WheelChartsSelectComboBoxRow.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WheelChartsSelectComboBoxRow.Size = new System.Drawing.Size(242, 33);
             this.WheelChartsSelectComboBoxRow.TabIndex = 7;
             // 
@@ -2014,10 +2014,10 @@ namespace Physics_Data_Debug
             this.WheelChartsSelectComboBoxRowLabel.AutoEllipsis = true;
             this.WheelChartsSelectComboBoxRowLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.WheelChartsSelectComboBoxRowLabel.ForeColor = System.Drawing.Color.White;
-            this.WheelChartsSelectComboBoxRowLabel.Location = new System.Drawing.Point(6, 0);
+            this.WheelChartsSelectComboBoxRowLabel.Location = new System.Drawing.Point(2, 0);
             this.WheelChartsSelectComboBoxRowLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WheelChartsSelectComboBoxRowLabel.Name = "WheelChartsSelectComboBoxRowLabel";
-            this.WheelChartsSelectComboBoxRowLabel.Size = new System.Drawing.Size(230, 12);
+            this.WheelChartsSelectComboBoxRowLabel.Size = new System.Drawing.Size(238, 12);
             this.WheelChartsSelectComboBoxRowLabel.TabIndex = 0;
             this.WheelChartsSelectComboBoxRowLabel.Text = "Tire chart layout";
             // 
@@ -2027,7 +2027,7 @@ namespace Physics_Data_Debug
             this.AbsoluteValuesCheckBoxRow.Controls.Add(this.AbsoluteValuesCheckBox);
             this.AbsoluteValuesCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.AbsoluteValuesCheckBoxRow.Location = new System.Drawing.Point(0, 22);
-            this.AbsoluteValuesCheckBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AbsoluteValuesCheckBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.AbsoluteValuesCheckBoxRow.Name = "AbsoluteValuesCheckBoxRow";
             this.AbsoluteValuesCheckBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.AbsoluteValuesCheckBoxRow.Size = new System.Drawing.Size(242, 36);
@@ -2039,7 +2039,7 @@ namespace Physics_Data_Debug
             this.DefaultsCheckBoxRow.Controls.Add(this.DefaultsCheckBox);
             this.DefaultsCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.DefaultsCheckBoxRow.Location = new System.Drawing.Point(0, 0);
-            this.DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.DefaultsCheckBoxRow.Name = "DefaultsCheckBoxRow";
             this.DefaultsCheckBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.DefaultsCheckBoxRow.Size = new System.Drawing.Size(242, 22);
@@ -2051,9 +2051,9 @@ namespace Physics_Data_Debug
             this.xAxisSettingsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xAxisSettingsGroup.ForeColor = System.Drawing.Color.White;
             this.xAxisSettingsGroup.Location = new System.Drawing.Point(250, 2);
-            this.xAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.xAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1);
             this.xAxisSettingsGroup.Name = "xAxisSettingsGroup";
-            this.xAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.xAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2);
             this.xAxisSettingsGroup.Size = new System.Drawing.Size(246, 422);
             this.xAxisSettingsGroup.TabIndex = 1;
             this.xAxisSettingsGroup.TabStop = false;
@@ -2077,7 +2077,7 @@ namespace Physics_Data_Debug
             this.xAxisSettingsPanel.Controls.Add(this.X1DefaultsCheckBoxRow);
             this.xAxisSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xAxisSettingsPanel.Location = new System.Drawing.Point(2, 15);
-            this.xAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.xAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.xAxisSettingsPanel.Name = "xAxisSettingsPanel";
             this.xAxisSettingsPanel.Size = new System.Drawing.Size(242, 405);
             this.xAxisSettingsPanel.TabIndex = 0;
@@ -2089,9 +2089,9 @@ namespace Physics_Data_Debug
             this.liveXMinorAlphaBoxRow.Controls.Add(this.liveXMinorAlphaBox);
             this.liveXMinorAlphaBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.liveXMinorAlphaBoxRow.Location = new System.Drawing.Point(0, 341);
-            this.liveXMinorAlphaBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveXMinorAlphaBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.liveXMinorAlphaBoxRow.Name = "liveXMinorAlphaBoxRow";
-            this.liveXMinorAlphaBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.liveXMinorAlphaBoxRow.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.liveXMinorAlphaBoxRow.Size = new System.Drawing.Size(242, 33);
             this.liveXMinorAlphaBoxRow.TabIndex = 0;
             // 
@@ -2100,25 +2100,25 @@ namespace Physics_Data_Debug
             this.liveXMinorAlphaBoxRowLabel.AutoEllipsis = true;
             this.liveXMinorAlphaBoxRowLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.liveXMinorAlphaBoxRowLabel.ForeColor = System.Drawing.Color.White;
-            this.liveXMinorAlphaBoxRowLabel.Location = new System.Drawing.Point(6, 0);
+            this.liveXMinorAlphaBoxRowLabel.Location = new System.Drawing.Point(2, 0);
             this.liveXMinorAlphaBoxRowLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.liveXMinorAlphaBoxRowLabel.Name = "liveXMinorAlphaBoxRowLabel";
-            this.liveXMinorAlphaBoxRowLabel.Size = new System.Drawing.Size(230, 12);
+            this.liveXMinorAlphaBoxRowLabel.Size = new System.Drawing.Size(238, 12);
             this.liveXMinorAlphaBoxRowLabel.TabIndex = 0;
             this.liveXMinorAlphaBoxRowLabel.Text = "Minor grid alpha";
             // 
             // liveXMinorAlphaBox
             // 
             this.liveXMinorAlphaBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.liveXMinorAlphaBox.Location = new System.Drawing.Point(6, 13);
-            this.liveXMinorAlphaBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveXMinorAlphaBox.Location = new System.Drawing.Point(2, 13);
+            this.liveXMinorAlphaBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveXMinorAlphaBox.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.liveXMinorAlphaBox.Name = "liveXMinorAlphaBox";
-            this.liveXMinorAlphaBox.Size = new System.Drawing.Size(230, 20);
+            this.liveXMinorAlphaBox.Size = new System.Drawing.Size(238, 20);
             this.liveXMinorAlphaBox.TabIndex = 1;
             this.liveXMinorAlphaBox.Value = new decimal(new int[] {
             255,
@@ -2178,7 +2178,7 @@ namespace Physics_Data_Debug
             0,
             131072});
             this.liveXMinorWidthBox.Location = new System.Drawing.Point(2, 13);
-            this.liveXMinorWidthBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveXMinorWidthBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveXMinorWidthBox.Maximum = new decimal(new int[] {
             10,
             0,
@@ -2296,7 +2296,7 @@ namespace Physics_Data_Debug
             this.X1MinorEnabledCheckBoxRow.Controls.Add(this.X1MinorEnabledCheckBox);
             this.X1MinorEnabledCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.X1MinorEnabledCheckBoxRow.Location = new System.Drawing.Point(0, 253);
-            this.X1MinorEnabledCheckBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.X1MinorEnabledCheckBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.X1MinorEnabledCheckBoxRow.Name = "X1MinorEnabledCheckBoxRow";
             this.X1MinorEnabledCheckBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.X1MinorEnabledCheckBoxRow.Size = new System.Drawing.Size(242, 22);
@@ -2350,7 +2350,7 @@ namespace Physics_Data_Debug
             this.liveXMajorDashBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.liveXMajorDashBox.IntegralHeight = false;
             this.liveXMajorDashBox.Location = new System.Drawing.Point(2, 12);
-            this.liveXMajorDashBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveXMajorDashBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveXMajorDashBox.Name = "liveXMajorDashBox";
             this.liveXMajorDashBox.Size = new System.Drawing.Size(117, 21);
             this.liveXMajorDashBox.TabIndex = 1;
@@ -2384,7 +2384,7 @@ namespace Physics_Data_Debug
             // 
             this.liveXMajorAlphaBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.liveXMajorAlphaBox.Location = new System.Drawing.Point(2, 13);
-            this.liveXMajorAlphaBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveXMajorAlphaBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveXMajorAlphaBox.Maximum = new decimal(new int[] {
             255,
             0,
@@ -2476,7 +2476,7 @@ namespace Physics_Data_Debug
             0,
             131072});
             this.liveXMajorWidthBox.Location = new System.Drawing.Point(2, 13);
-            this.liveXMajorWidthBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveXMajorWidthBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveXMajorWidthBox.Maximum = new decimal(new int[] {
             10,
             0,
@@ -2771,9 +2771,9 @@ namespace Physics_Data_Debug
             this.X1SelectionComboBoxRow.Controls.Add(this.X1SelectionComboBox);
             this.X1SelectionComboBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.X1SelectionComboBoxRow.Location = new System.Drawing.Point(0, 22);
-            this.X1SelectionComboBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.X1SelectionComboBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.X1SelectionComboBoxRow.Name = "X1SelectionComboBoxRow";
-            this.X1SelectionComboBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.X1SelectionComboBoxRow.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.X1SelectionComboBoxRow.Size = new System.Drawing.Size(242, 33);
             this.X1SelectionComboBoxRow.TabIndex = 10;
             // 
@@ -2782,10 +2782,10 @@ namespace Physics_Data_Debug
             this.X1SelectionComboBoxRowLabel.AutoEllipsis = true;
             this.X1SelectionComboBoxRowLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.X1SelectionComboBoxRowLabel.ForeColor = System.Drawing.Color.White;
-            this.X1SelectionComboBoxRowLabel.Location = new System.Drawing.Point(6, 0);
+            this.X1SelectionComboBoxRowLabel.Location = new System.Drawing.Point(2, 0);
             this.X1SelectionComboBoxRowLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.X1SelectionComboBoxRowLabel.Name = "X1SelectionComboBoxRowLabel";
-            this.X1SelectionComboBoxRowLabel.Size = new System.Drawing.Size(230, 12);
+            this.X1SelectionComboBoxRowLabel.Size = new System.Drawing.Size(238, 12);
             this.X1SelectionComboBoxRowLabel.TabIndex = 0;
             this.X1SelectionComboBoxRowLabel.Text = "X selection";
             // 
@@ -2795,7 +2795,7 @@ namespace Physics_Data_Debug
             this.X1DefaultsCheckBoxRow.Controls.Add(this.X1DefaultsCheckBox);
             this.X1DefaultsCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.X1DefaultsCheckBoxRow.Location = new System.Drawing.Point(0, 0);
-            this.X1DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.X1DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.X1DefaultsCheckBoxRow.Name = "X1DefaultsCheckBoxRow";
             this.X1DefaultsCheckBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.X1DefaultsCheckBoxRow.Size = new System.Drawing.Size(242, 22);
@@ -2807,9 +2807,9 @@ namespace Physics_Data_Debug
             this.yAxisSettingsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yAxisSettingsGroup.ForeColor = System.Drawing.Color.White;
             this.yAxisSettingsGroup.Location = new System.Drawing.Point(498, 2);
-            this.yAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.yAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1);
             this.yAxisSettingsGroup.Name = "yAxisSettingsGroup";
-            this.yAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.yAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2);
             this.yAxisSettingsGroup.Size = new System.Drawing.Size(246, 422);
             this.yAxisSettingsGroup.TabIndex = 2;
             this.yAxisSettingsGroup.TabStop = false;
@@ -2833,7 +2833,7 @@ namespace Physics_Data_Debug
             this.yAxisSettingsPanel.Controls.Add(this.Y1DefaultsCheckBoxRow);
             this.yAxisSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yAxisSettingsPanel.Location = new System.Drawing.Point(2, 15);
-            this.yAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.yAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.yAxisSettingsPanel.Name = "yAxisSettingsPanel";
             this.yAxisSettingsPanel.Size = new System.Drawing.Size(242, 405);
             this.yAxisSettingsPanel.TabIndex = 0;
@@ -2845,9 +2845,9 @@ namespace Physics_Data_Debug
             this.liveYMinorAlphaBoxRow.Controls.Add(this.liveYMinorAlphaBox);
             this.liveYMinorAlphaBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.liveYMinorAlphaBoxRow.Location = new System.Drawing.Point(0, 341);
-            this.liveYMinorAlphaBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveYMinorAlphaBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.liveYMinorAlphaBoxRow.Name = "liveYMinorAlphaBoxRow";
-            this.liveYMinorAlphaBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.liveYMinorAlphaBoxRow.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.liveYMinorAlphaBoxRow.Size = new System.Drawing.Size(242, 33);
             this.liveYMinorAlphaBoxRow.TabIndex = 0;
             // 
@@ -2856,25 +2856,25 @@ namespace Physics_Data_Debug
             this.liveYMinorAlphaBoxRowLabel.AutoEllipsis = true;
             this.liveYMinorAlphaBoxRowLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.liveYMinorAlphaBoxRowLabel.ForeColor = System.Drawing.Color.White;
-            this.liveYMinorAlphaBoxRowLabel.Location = new System.Drawing.Point(6, 0);
+            this.liveYMinorAlphaBoxRowLabel.Location = new System.Drawing.Point(2, 0);
             this.liveYMinorAlphaBoxRowLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.liveYMinorAlphaBoxRowLabel.Name = "liveYMinorAlphaBoxRowLabel";
-            this.liveYMinorAlphaBoxRowLabel.Size = new System.Drawing.Size(230, 12);
+            this.liveYMinorAlphaBoxRowLabel.Size = new System.Drawing.Size(238, 12);
             this.liveYMinorAlphaBoxRowLabel.TabIndex = 0;
             this.liveYMinorAlphaBoxRowLabel.Text = "Minor grid alpha";
             // 
             // liveYMinorAlphaBox
             // 
             this.liveYMinorAlphaBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.liveYMinorAlphaBox.Location = new System.Drawing.Point(6, 13);
-            this.liveYMinorAlphaBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveYMinorAlphaBox.Location = new System.Drawing.Point(2, 13);
+            this.liveYMinorAlphaBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveYMinorAlphaBox.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.liveYMinorAlphaBox.Name = "liveYMinorAlphaBox";
-            this.liveYMinorAlphaBox.Size = new System.Drawing.Size(230, 20);
+            this.liveYMinorAlphaBox.Size = new System.Drawing.Size(238, 20);
             this.liveYMinorAlphaBox.TabIndex = 1;
             this.liveYMinorAlphaBox.Value = new decimal(new int[] {
             255,
@@ -2934,7 +2934,7 @@ namespace Physics_Data_Debug
             0,
             131072});
             this.liveYMinorWidthBox.Location = new System.Drawing.Point(2, 13);
-            this.liveYMinorWidthBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveYMinorWidthBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveYMinorWidthBox.Maximum = new decimal(new int[] {
             10,
             0,
@@ -3052,7 +3052,7 @@ namespace Physics_Data_Debug
             this.Y1MinorEnabledCheckBoxRow.Controls.Add(this.Y1MinorEnabledCheckBox);
             this.Y1MinorEnabledCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.Y1MinorEnabledCheckBoxRow.Location = new System.Drawing.Point(0, 253);
-            this.Y1MinorEnabledCheckBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Y1MinorEnabledCheckBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.Y1MinorEnabledCheckBoxRow.Name = "Y1MinorEnabledCheckBoxRow";
             this.Y1MinorEnabledCheckBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Y1MinorEnabledCheckBoxRow.Size = new System.Drawing.Size(242, 22);
@@ -3106,7 +3106,7 @@ namespace Physics_Data_Debug
             this.liveYMajorDashBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.liveYMajorDashBox.IntegralHeight = false;
             this.liveYMajorDashBox.Location = new System.Drawing.Point(2, 12);
-            this.liveYMajorDashBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveYMajorDashBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveYMajorDashBox.Name = "liveYMajorDashBox";
             this.liveYMajorDashBox.Size = new System.Drawing.Size(117, 21);
             this.liveYMajorDashBox.TabIndex = 1;
@@ -3140,7 +3140,7 @@ namespace Physics_Data_Debug
             // 
             this.liveYMajorAlphaBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.liveYMajorAlphaBox.Location = new System.Drawing.Point(2, 13);
-            this.liveYMajorAlphaBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveYMajorAlphaBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveYMajorAlphaBox.Maximum = new decimal(new int[] {
             255,
             0,
@@ -3232,7 +3232,7 @@ namespace Physics_Data_Debug
             0,
             131072});
             this.liveYMajorWidthBox.Location = new System.Drawing.Point(2, 13);
-            this.liveYMajorWidthBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liveYMajorWidthBox.Margin = new System.Windows.Forms.Padding(2);
             this.liveYMajorWidthBox.Maximum = new decimal(new int[] {
             10,
             0,
@@ -3527,9 +3527,9 @@ namespace Physics_Data_Debug
             this.Y1SelectionComboBoxRow.Controls.Add(this.Y1SelectionComboBox);
             this.Y1SelectionComboBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.Y1SelectionComboBoxRow.Location = new System.Drawing.Point(0, 22);
-            this.Y1SelectionComboBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Y1SelectionComboBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.Y1SelectionComboBoxRow.Name = "Y1SelectionComboBoxRow";
-            this.Y1SelectionComboBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.Y1SelectionComboBoxRow.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Y1SelectionComboBoxRow.Size = new System.Drawing.Size(242, 33);
             this.Y1SelectionComboBoxRow.TabIndex = 10;
             // 
@@ -3538,10 +3538,10 @@ namespace Physics_Data_Debug
             this.Y1SelectionComboBoxRowLabel.AutoEllipsis = true;
             this.Y1SelectionComboBoxRowLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Y1SelectionComboBoxRowLabel.ForeColor = System.Drawing.Color.White;
-            this.Y1SelectionComboBoxRowLabel.Location = new System.Drawing.Point(6, 0);
+            this.Y1SelectionComboBoxRowLabel.Location = new System.Drawing.Point(2, 0);
             this.Y1SelectionComboBoxRowLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Y1SelectionComboBoxRowLabel.Name = "Y1SelectionComboBoxRowLabel";
-            this.Y1SelectionComboBoxRowLabel.Size = new System.Drawing.Size(230, 12);
+            this.Y1SelectionComboBoxRowLabel.Size = new System.Drawing.Size(238, 12);
             this.Y1SelectionComboBoxRowLabel.TabIndex = 0;
             this.Y1SelectionComboBoxRowLabel.Text = "Y selection";
             // 
@@ -3551,7 +3551,7 @@ namespace Physics_Data_Debug
             this.Y1DefaultsCheckBoxRow.Controls.Add(this.Y1DefaultsCheckBox);
             this.Y1DefaultsCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.Y1DefaultsCheckBoxRow.Location = new System.Drawing.Point(0, 0);
-            this.Y1DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Y1DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.Y1DefaultsCheckBoxRow.Name = "Y1DefaultsCheckBoxRow";
             this.Y1DefaultsCheckBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Y1DefaultsCheckBoxRow.Size = new System.Drawing.Size(242, 22);
@@ -3563,9 +3563,9 @@ namespace Physics_Data_Debug
             this.zAxisSettingsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zAxisSettingsGroup.ForeColor = System.Drawing.Color.White;
             this.zAxisSettingsGroup.Location = new System.Drawing.Point(746, 2);
-            this.zAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.zAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1);
             this.zAxisSettingsGroup.Name = "zAxisSettingsGroup";
-            this.zAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2);
             this.zAxisSettingsGroup.Size = new System.Drawing.Size(246, 422);
             this.zAxisSettingsGroup.TabIndex = 3;
             this.zAxisSettingsGroup.TabStop = false;
@@ -3582,7 +3582,7 @@ namespace Physics_Data_Debug
             this.zAxisSettingsPanel.Controls.Add(this.Z1DefaultsCheckBoxRow);
             this.zAxisSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zAxisSettingsPanel.Location = new System.Drawing.Point(2, 15);
-            this.zAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.zAxisSettingsPanel.Name = "zAxisSettingsPanel";
             this.zAxisSettingsPanel.Size = new System.Drawing.Size(242, 405);
             this.zAxisSettingsPanel.TabIndex = 0;
@@ -3725,7 +3725,7 @@ namespace Physics_Data_Debug
             // 
             this.gradientStepsNumericUpDown.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gradientStepsNumericUpDown.Location = new System.Drawing.Point(2, 13);
-            this.gradientStepsNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gradientStepsNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.gradientStepsNumericUpDown.Maximum = new decimal(new int[] {
             64,
             0,
@@ -3819,9 +3819,9 @@ namespace Physics_Data_Debug
             this.Z1SelectionComboBoxRow.Controls.Add(this.Z1SelectionComboBox);
             this.Z1SelectionComboBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.Z1SelectionComboBoxRow.Location = new System.Drawing.Point(0, 22);
-            this.Z1SelectionComboBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Z1SelectionComboBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.Z1SelectionComboBoxRow.Name = "Z1SelectionComboBoxRow";
-            this.Z1SelectionComboBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.Z1SelectionComboBoxRow.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Z1SelectionComboBoxRow.Size = new System.Drawing.Size(242, 33);
             this.Z1SelectionComboBoxRow.TabIndex = 3;
             // 
@@ -3830,10 +3830,10 @@ namespace Physics_Data_Debug
             this.Z1SelectionComboBoxRowLabel.AutoEllipsis = true;
             this.Z1SelectionComboBoxRowLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Z1SelectionComboBoxRowLabel.ForeColor = System.Drawing.Color.White;
-            this.Z1SelectionComboBoxRowLabel.Location = new System.Drawing.Point(6, 0);
+            this.Z1SelectionComboBoxRowLabel.Location = new System.Drawing.Point(2, 0);
             this.Z1SelectionComboBoxRowLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Z1SelectionComboBoxRowLabel.Name = "Z1SelectionComboBoxRowLabel";
-            this.Z1SelectionComboBoxRowLabel.Size = new System.Drawing.Size(230, 12);
+            this.Z1SelectionComboBoxRowLabel.Size = new System.Drawing.Size(238, 12);
             this.Z1SelectionComboBoxRowLabel.TabIndex = 0;
             this.Z1SelectionComboBoxRowLabel.Text = "Z selection";
             // 
@@ -3843,7 +3843,7 @@ namespace Physics_Data_Debug
             this.Z1DefaultsCheckBoxRow.Controls.Add(this.Z1DefaultsCheckBox);
             this.Z1DefaultsCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.Z1DefaultsCheckBoxRow.Location = new System.Drawing.Point(0, 0);
-            this.Z1DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Z1DefaultsCheckBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.Z1DefaultsCheckBoxRow.Name = "Z1DefaultsCheckBoxRow";
             this.Z1DefaultsCheckBoxRow.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Z1DefaultsCheckBoxRow.Size = new System.Drawing.Size(242, 22);
@@ -3860,12 +3860,25 @@ namespace Physics_Data_Debug
             this.settingsActionsPanel.Controls.Add(this.SettingsProfilesHost);
             this.settingsActionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.settingsActionsPanel.Location = new System.Drawing.Point(0, 0);
-            this.settingsActionsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsActionsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.settingsActionsPanel.Name = "settingsActionsPanel";
-            this.settingsActionsPanel.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.settingsActionsPanel.Padding = new System.Windows.Forms.Padding(4);
             this.settingsActionsPanel.Size = new System.Drawing.Size(1002, 32);
             this.settingsActionsPanel.TabIndex = 1;
             this.settingsActionsPanel.WrapContents = false;
+            // 
+            // settingsApplyFiltersButton
+            // 
+            this.settingsApplyFiltersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.settingsApplyFiltersButton.ForeColor = System.Drawing.Color.White;
+            this.settingsApplyFiltersButton.Location = new System.Drawing.Point(122, 5);
+            this.settingsApplyFiltersButton.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.settingsApplyFiltersButton.Name = "settingsApplyFiltersButton";
+            this.settingsApplyFiltersButton.Size = new System.Drawing.Size(85, 23);
+            this.settingsApplyFiltersButton.TabIndex = 0;
+            this.settingsApplyFiltersButton.Text = "Apply Filters";
+            this.settingsApplyFiltersButton.UseVisualStyleBackColor = false;
+            this.settingsApplyFiltersButton.Click += new System.EventHandler(this.settingsApplyFiltersButton_Click);
             // 
             // SettingsProfilesHost
             // 
@@ -3881,7 +3894,7 @@ namespace Physics_Data_Debug
             this.settingsTabs.Controls.Add(this.filterSettingsTab);
             this.settingsTabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsTabs.Location = new System.Drawing.Point(0, 32);
-            this.settingsTabs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsTabs.Margin = new System.Windows.Forms.Padding(2);
             this.settingsTabs.Name = "settingsTabs";
             this.settingsTabs.SelectedIndex = 0;
             this.settingsTabs.Size = new System.Drawing.Size(1002, 452);
@@ -3892,7 +3905,7 @@ namespace Physics_Data_Debug
             this.chartSettingsTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.chartSettingsTab.Controls.Add(this.settingsSectionsLayout);
             this.chartSettingsTab.Location = new System.Drawing.Point(4, 22);
-            this.chartSettingsTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartSettingsTab.Margin = new System.Windows.Forms.Padding(2);
             this.chartSettingsTab.Name = "chartSettingsTab";
             this.chartSettingsTab.Size = new System.Drawing.Size(994, 426);
             this.chartSettingsTab.TabIndex = 0;
@@ -3903,7 +3916,7 @@ namespace Physics_Data_Debug
             this.filterSettingsTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.filterSettingsTab.Controls.Add(this.filterSettingsRows);
             this.filterSettingsTab.Location = new System.Drawing.Point(4, 22);
-            this.filterSettingsTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filterSettingsTab.Margin = new System.Windows.Forms.Padding(2);
             this.filterSettingsTab.Name = "filterSettingsTab";
             this.filterSettingsTab.Size = new System.Drawing.Size(994, 426);
             this.filterSettingsTab.TabIndex = 1;
@@ -3917,7 +3930,7 @@ namespace Physics_Data_Debug
             this.filterSettingsRows.Controls.Add(this.filterExtraPlaceholder, 0, 1);
             this.filterSettingsRows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterSettingsRows.Location = new System.Drawing.Point(0, 0);
-            this.filterSettingsRows.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filterSettingsRows.Margin = new System.Windows.Forms.Padding(2);
             this.filterSettingsRows.Name = "filterSettingsRows";
             this.filterSettingsRows.RowCount = 2;
             this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
@@ -3930,9 +3943,9 @@ namespace Physics_Data_Debug
             this.filterAxisPlaceholder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterAxisPlaceholder.ForeColor = System.Drawing.Color.White;
             this.filterAxisPlaceholder.Location = new System.Drawing.Point(2, 2);
-            this.filterAxisPlaceholder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filterAxisPlaceholder.Margin = new System.Windows.Forms.Padding(2);
             this.filterAxisPlaceholder.Name = "filterAxisPlaceholder";
-            this.filterAxisPlaceholder.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filterAxisPlaceholder.Padding = new System.Windows.Forms.Padding(2);
             this.filterAxisPlaceholder.Size = new System.Drawing.Size(990, 100);
             this.filterAxisPlaceholder.TabIndex = 0;
             this.filterAxisPlaceholder.TabStop = false;
@@ -3943,26 +3956,13 @@ namespace Physics_Data_Debug
             this.filterExtraPlaceholder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterExtraPlaceholder.ForeColor = System.Drawing.Color.White;
             this.filterExtraPlaceholder.Location = new System.Drawing.Point(2, 106);
-            this.filterExtraPlaceholder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filterExtraPlaceholder.Margin = new System.Windows.Forms.Padding(2);
             this.filterExtraPlaceholder.Name = "filterExtraPlaceholder";
-            this.filterExtraPlaceholder.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filterExtraPlaceholder.Padding = new System.Windows.Forms.Padding(2);
             this.filterExtraPlaceholder.Size = new System.Drawing.Size(990, 318);
             this.filterExtraPlaceholder.TabIndex = 1;
             this.filterExtraPlaceholder.TabStop = false;
             this.filterExtraPlaceholder.Text = "Ten additional telemetry filters";
-            // 
-            // settingsApplyFiltersButton
-            // 
-            this.settingsApplyFiltersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.settingsApplyFiltersButton.ForeColor = System.Drawing.Color.White;
-            this.settingsApplyFiltersButton.Location = new System.Drawing.Point(122, 5);
-            this.settingsApplyFiltersButton.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.settingsApplyFiltersButton.Name = "settingsApplyFiltersButton";
-            this.settingsApplyFiltersButton.Size = new System.Drawing.Size(85, 23);
-            this.settingsApplyFiltersButton.TabIndex = 0;
-            this.settingsApplyFiltersButton.Text = "Apply Filters";
-            this.settingsApplyFiltersButton.UseVisualStyleBackColor = false;
-            this.settingsApplyFiltersButton.Click += new System.EventHandler(this.settingsApplyFiltersButton_Click);
             // 
             // Form4WheelsSettings
             // 
