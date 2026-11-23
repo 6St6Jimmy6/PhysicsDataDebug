@@ -241,9 +241,9 @@ namespace Physics_Data_Debug
             this.LoadCurrentValuesButton.ForeColor = System.Drawing.Color.White;
             this.LoadCurrentValuesButton.Location = new System.Drawing.Point(370, 5);
             this.LoadCurrentValuesButton.Margin = new System.Windows.Forms.Padding(4, 2, 8, 2);
-            this.LoadCurrentValuesButton.MinimumSize = new System.Drawing.Size(176, 38);
+            this.LoadCurrentValuesButton.MinimumSize = new System.Drawing.Size(176, 30);
             this.LoadCurrentValuesButton.Name = "LoadCurrentValuesButton";
-            this.LoadCurrentValuesButton.Size = new System.Drawing.Size(176, 38);
+            this.LoadCurrentValuesButton.Size = new System.Drawing.Size(176, 30);
             this.LoadCurrentValuesButton.TabIndex = 367;
             this.LoadCurrentValuesButton.Text = "Load Current Values";
             this.LoadCurrentValuesButton.UseVisualStyleBackColor = false;
@@ -286,9 +286,9 @@ namespace Physics_Data_Debug
             this.applyChartSettingsButton.ForeColor = System.Drawing.Color.White;
             this.applyChartSettingsButton.Location = new System.Drawing.Point(10, 5);
             this.applyChartSettingsButton.Margin = new System.Windows.Forms.Padding(4, 2, 8, 2);
-            this.applyChartSettingsButton.MinimumSize = new System.Drawing.Size(152, 38);
+            this.applyChartSettingsButton.MinimumSize = new System.Drawing.Size(152, 30);
             this.applyChartSettingsButton.Name = "applyChartSettingsButton";
-            this.applyChartSettingsButton.Size = new System.Drawing.Size(152, 38);
+            this.applyChartSettingsButton.Size = new System.Drawing.Size(152, 30);
             this.applyChartSettingsButton.TabIndex = 362;
             this.applyChartSettingsButton.Text = "Apply Chart Settings";
             this.applyChartSettingsButton.UseVisualStyleBackColor = false;
@@ -300,9 +300,9 @@ namespace Physics_Data_Debug
             this.applyAndClearChartsButton.ForeColor = System.Drawing.Color.White;
             this.applyAndClearChartsButton.Location = new System.Drawing.Point(174, 5);
             this.applyAndClearChartsButton.Margin = new System.Windows.Forms.Padding(4, 2, 8, 2);
-            this.applyAndClearChartsButton.MinimumSize = new System.Drawing.Size(184, 38);
+            this.applyAndClearChartsButton.MinimumSize = new System.Drawing.Size(184, 30);
             this.applyAndClearChartsButton.Name = "applyAndClearChartsButton";
-            this.applyAndClearChartsButton.Size = new System.Drawing.Size(184, 38);
+            this.applyAndClearChartsButton.Size = new System.Drawing.Size(184, 30);
             this.applyAndClearChartsButton.TabIndex = 363;
             this.applyAndClearChartsButton.Text = "Clear Charts and Apply";
             this.applyAndClearChartsButton.UseVisualStyleBackColor = false;
@@ -821,12 +821,12 @@ namespace Physics_Data_Debug
             this.settingsSectionsLayout.Controls.Add(this.xAxisSettingsGroup, 1, 0);
             this.settingsSectionsLayout.Controls.Add(this.yAxisSettingsGroup, 2, 0);
             this.settingsSectionsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsSectionsLayout.Location = new System.Drawing.Point(0, 46);
+            this.settingsSectionsLayout.Location = new System.Drawing.Point(0, 40);
             this.settingsSectionsLayout.Name = "settingsSectionsLayout";
             this.settingsSectionsLayout.Padding = new System.Windows.Forms.Padding(2);
             this.settingsSectionsLayout.RowCount = 1;
             this.settingsSectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.settingsSectionsLayout.Size = new System.Drawing.Size(744, 435);
+            this.settingsSectionsLayout.Size = new System.Drawing.Size(744, 431);
             this.settingsSectionsLayout.TabIndex = 0;
             // 
             // settingsSidebarGroup
@@ -839,7 +839,7 @@ namespace Physics_Data_Debug
             this.settingsSidebarGroup.Margin = new System.Windows.Forms.Padding(2);
             this.settingsSidebarGroup.Name = "settingsSidebarGroup";
             this.settingsSidebarGroup.Padding = new System.Windows.Forms.Padding(6);
-            this.settingsSidebarGroup.Size = new System.Drawing.Size(158, 427);
+            this.settingsSidebarGroup.Size = new System.Drawing.Size(158, 423);
             this.settingsSidebarGroup.TabIndex = 0;
             this.settingsSidebarGroup.TabStop = false;
             this.settingsSidebarGroup.Text = "Chart and Data Settings";
@@ -868,7 +868,7 @@ namespace Physics_Data_Debug
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.settingsSidebarPanel.Size = new System.Drawing.Size(146, 401);
+            this.settingsSidebarPanel.Size = new System.Drawing.Size(146, 397);
             this.settingsSidebarPanel.TabIndex = 0;
             // 
             // DefaultsCheckBoxRow
@@ -980,7 +980,7 @@ namespace Physics_Data_Debug
             this.BackgroundColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
             this.BackgroundColorComboBoxRow.Name = "BackgroundColorComboBoxRow";
             this.BackgroundColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BackgroundColorComboBoxRow.Size = new System.Drawing.Size(140, 192);
+            this.BackgroundColorComboBoxRow.Size = new System.Drawing.Size(140, 188);
             this.BackgroundColorComboBoxRow.TabIndex = 0;
             // 
             // BackgroundColorComboBoxRowLabel
@@ -1005,7 +1005,7 @@ namespace Physics_Data_Debug
             this.xAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(2);
             this.xAxisSettingsGroup.Name = "xAxisSettingsGroup";
             this.xAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(6);
-            this.xAxisSettingsGroup.Size = new System.Drawing.Size(284, 427);
+            this.xAxisSettingsGroup.Size = new System.Drawing.Size(284, 423);
             this.xAxisSettingsGroup.TabIndex = 1;
             this.xAxisSettingsGroup.TabStop = false;
             this.xAxisSettingsGroup.Text = "X Axis";
@@ -1018,7 +1018,7 @@ namespace Physics_Data_Debug
             this.xAxisScrollHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xAxisScrollHost.Location = new System.Drawing.Point(6, 20);
             this.xAxisScrollHost.Name = "xAxisScrollHost";
-            this.xAxisScrollHost.Size = new System.Drawing.Size(272, 401);
+            this.xAxisScrollHost.Size = new System.Drawing.Size(272, 397);
             this.xAxisScrollHost.TabIndex = 0;
             // 
             // xAxisSettingsPanel
@@ -1475,7 +1475,7 @@ namespace Physics_Data_Debug
             this.yAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(2);
             this.yAxisSettingsGroup.Name = "yAxisSettingsGroup";
             this.yAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(6);
-            this.yAxisSettingsGroup.Size = new System.Drawing.Size(286, 427);
+            this.yAxisSettingsGroup.Size = new System.Drawing.Size(286, 423);
             this.yAxisSettingsGroup.TabIndex = 2;
             this.yAxisSettingsGroup.TabStop = false;
             this.yAxisSettingsGroup.Text = "Y Axis";
@@ -1488,7 +1488,7 @@ namespace Physics_Data_Debug
             this.yAxisScrollHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yAxisScrollHost.Location = new System.Drawing.Point(6, 20);
             this.yAxisScrollHost.Name = "yAxisScrollHost";
-            this.yAxisScrollHost.Size = new System.Drawing.Size(274, 401);
+            this.yAxisScrollHost.Size = new System.Drawing.Size(274, 397);
             this.yAxisScrollHost.TabIndex = 0;
             // 
             // yAxisSettingsPanel
@@ -2031,7 +2031,7 @@ namespace Physics_Data_Debug
             this.settingsActionsPanel.Location = new System.Drawing.Point(0, 0);
             this.settingsActionsPanel.Name = "settingsActionsPanel";
             this.settingsActionsPanel.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.settingsActionsPanel.Size = new System.Drawing.Size(744, 46);
+            this.settingsActionsPanel.Size = new System.Drawing.Size(744, 40);
             this.settingsActionsPanel.TabIndex = 1;
             this.settingsActionsPanel.WrapContents = false;
             // 
@@ -2040,8 +2040,9 @@ namespace Physics_Data_Debug
             this.SettingsProfilesHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.SettingsProfilesHost.Location = new System.Drawing.Point(558, 5);
             this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.SettingsProfilesHost.MinimumSize = new System.Drawing.Size(128, 30);
             this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(128, 38);
+            this.SettingsProfilesHost.Size = new System.Drawing.Size(128, 30);
             this.SettingsProfilesHost.TabIndex = 368;
             // 
             // FormGForceSettings
@@ -2049,13 +2050,13 @@ namespace Physics_Data_Debug
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(744, 481);
+            this.ClientSize = new System.Drawing.Size(744, 471);
             this.Controls.Add(this.settingsSectionsLayout);
             this.Controls.Add(this.settingsActionsPanel);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(6);
-            this.MinimumSize = new System.Drawing.Size(760, 520);
+            this.MinimumSize = new System.Drawing.Size(760, 510);
             this.Name = "FormGForceSettings";
             this.Text = "FormGForceSettings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGForceSettings_FormClosing);
