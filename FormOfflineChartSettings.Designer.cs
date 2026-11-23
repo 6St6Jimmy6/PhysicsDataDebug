@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,7 +9,11 @@ namespace Physics_Data_Debug
         private System.ComponentModel.IContainer components = null;
         private TableLayoutPanel settingsColumns;
         private Panel actionsPanel, SettingsProfilesHost;
+        private Panel filterSettingsPanel;
+        private TableLayoutPanel filterSettingsRows;
+        private GroupBox filterAxisPlaceholder, filterExtraPlaceholder;
         private Button applyButton;
+        private Button applyFiltersButton;
         private GroupBox chartStyleGroup;
         private TableLayoutPanel styleFields;
         private ComboBox schemeComboBox;
@@ -238,2206 +242,3769 @@ namespace Physics_Data_Debug
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            Name = "FormOfflineChartSettings";
-            Text = "Offline chart settings";
-            MinimumSize = new Size(870,530);
-            ClientSize = new Size(1200,710);
-            BackColor = Color.FromArgb(24,24,24);
-            ForeColor = Color.White;
-            StartPosition = FormStartPosition.CenterParent;
-            actionsPanel = new Panel();
-            actionsPanel.Name = "settingsActionsPanel";
-            actionsPanel.Dock = DockStyle.Top;
-            actionsPanel.Height = 48;
-            actionsPanel.BackColor = Color.FromArgb(35,35,35);
-            applyButton = new Button();
-            applyButton.Name = "applyButton";
-            applyButton.BackColor = Color.FromArgb(60,60,60);
-            applyButton.ForeColor = Color.White;
-            applyButton.UseVisualStyleBackColor = false;
-            applyButton.Text = "Apply Settings";
-            applyButton.Location = new Point(10,9);
-            applyButton.Size = new Size(135,30);
-            SettingsProfilesHost = new Panel();
-            SettingsProfilesHost.Name = "SettingsProfilesHost";
-            SettingsProfilesHost.Location = new Point(151,0);
-            SettingsProfilesHost.Size = new Size(140,46);
-            applyButton.Click += ApplyButton_Click;
-            actionsPanel.Controls.Add(applyButton);
-            actionsPanel.Controls.Add(SettingsProfilesHost);
+            this.actionsPanel = new System.Windows.Forms.Panel();
+            this.applyButton = new System.Windows.Forms.Button();
+            this.applyFiltersButton = new System.Windows.Forms.Button();
+            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.settingsColumns = new System.Windows.Forms.TableLayoutPanel();
+            this.chartStyleGroup = new System.Windows.Forms.GroupBox();
+            this.styleFields = new System.Windows.Forms.TableLayoutPanel();
+            this.styleChartLayoutRow = new System.Windows.Forms.TableLayoutPanel();
+            this.chartTypeComboBoxRow = new System.Windows.Forms.Panel();
+            this.chartTypeComboBoxLabel = new System.Windows.Forms.Label();
+            this.chartTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.layoutComboBoxRow = new System.Windows.Forms.Panel();
+            this.layoutComboBoxLabel = new System.Windows.Forms.Label();
+            this.layoutComboBox = new System.Windows.Forms.ComboBox();
+            this.styleMarkerRow = new System.Windows.Forms.TableLayoutPanel();
+            this.markerComboBoxRow = new System.Windows.Forms.Panel();
+            this.markerComboBoxLabel = new System.Windows.Forms.Label();
+            this.markerComboBox = new System.Windows.Forms.ComboBox();
+            this.markerSizeNumericRow = new System.Windows.Forms.Panel();
+            this.markerSizeNumericLabel = new System.Windows.Forms.Label();
+            this.markerSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.styleAppearanceRow = new System.Windows.Forms.TableLayoutPanel();
+            this.backgroundComboBoxRow = new System.Windows.Forms.Panel();
+            this.backgroundComboBoxLabel = new System.Windows.Forms.Label();
+            this.backgroundComboBox = new System.Windows.Forms.ComboBox();
+            this.paletteAlphaNumericRow = new System.Windows.Forms.Panel();
+            this.paletteAlphaNumericLabel = new System.Windows.Forms.Label();
+            this.paletteAlphaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.styleOptionsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.paletteDividerNumericRow = new System.Windows.Forms.Panel();
+            this.paletteDividerNumericLabel = new System.Windows.Forms.Label();
+            this.paletteDividerNumeric = new System.Windows.Forms.NumericUpDown();
+            this.tooltipDelayNumericRow = new System.Windows.Forms.Panel();
+            this.tooltipDelayNumericLabel = new System.Windows.Forms.Label();
+            this.tooltipDelayNumeric = new System.Windows.Forms.NumericUpDown();
+            this.styleTogglesRow = new System.Windows.Forms.TableLayoutPanel();
+            this.absoluteCheckBoxRow = new System.Windows.Forms.Panel();
+            this.absoluteCheckBox = new System.Windows.Forms.CheckBox();
+            this.tooltipEnableCheckBoxRow = new System.Windows.Forms.Panel();
+            this.tooltipEnableCheckBox = new System.Windows.Forms.CheckBox();
+            this.styleCursorTogglesRow = new System.Windows.Forms.TableLayoutPanel();
+            this.cursorEnabledCheckBoxRow = new System.Windows.Forms.Panel();
+            this.cursorEnabledCheckBox = new System.Windows.Forms.CheckBox();
+            this.cursorZoomCheckBoxRow = new System.Windows.Forms.Panel();
+            this.cursorZoomCheckBox = new System.Windows.Forms.CheckBox();
+            this.styleCursorColorsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.cursorColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.cursorColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.cursorColorComboBox = new System.Windows.Forms.ComboBox();
+            this.cursorAlphaNumericRow = new System.Windows.Forms.Panel();
+            this.cursorAlphaNumericLabel = new System.Windows.Forms.Label();
+            this.cursorAlphaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.styleCursorStrokeRow = new System.Windows.Forms.TableLayoutPanel();
+            this.cursorWidthNumericRow = new System.Windows.Forms.Panel();
+            this.cursorWidthNumericLabel = new System.Windows.Forms.Label();
+            this.cursorWidthNumeric = new System.Windows.Forms.NumericUpDown();
+            this.cursorDashComboBoxRow = new System.Windows.Forms.Panel();
+            this.cursorDashComboBoxLabel = new System.Windows.Forms.Label();
+            this.cursorDashComboBox = new System.Windows.Forms.ComboBox();
+            this.xAxisGroup = new System.Windows.Forms.GroupBox();
+            this.xFields = new System.Windows.Forms.TableLayoutPanel();
+            this.xDefaultsButtonRow = new System.Windows.Forms.Panel();
+            this.xDefaultsButton = new System.Windows.Forms.Button();
+            this.xColumnComboBoxRow = new System.Windows.Forms.Panel();
+            this.xColumnComboBoxLabel = new System.Windows.Forms.Label();
+            this.xColumnComboBox = new System.Windows.Forms.ComboBox();
+            this.xModeRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xAutoCheckBoxRow = new System.Windows.Forms.Panel();
+            this.xAutoCheckBox = new System.Windows.Forms.CheckBox();
+            this.xLogCheckBoxRow = new System.Windows.Forms.Panel();
+            this.xLogCheckBox = new System.Windows.Forms.CheckBox();
+            this.xLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xMinimumBoxRow = new System.Windows.Forms.Panel();
+            this.xMinimumBoxLabel = new System.Windows.Forms.Label();
+            this.xMinimumBox = new System.Windows.Forms.TextBox();
+            this.xMaximumBoxRow = new System.Windows.Forms.Panel();
+            this.xMaximumBoxLabel = new System.Windows.Forms.Label();
+            this.xMaximumBox = new System.Windows.Forms.TextBox();
+            this.xTicksRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xGridIntervalBoxRow = new System.Windows.Forms.Panel();
+            this.xGridIntervalBoxLabel = new System.Windows.Forms.Label();
+            this.xGridIntervalBox = new System.Windows.Forms.TextBox();
+            this.xDecimalsNumericRow = new System.Windows.Forms.Panel();
+            this.xDecimalsNumericLabel = new System.Windows.Forms.Label();
+            this.xDecimalsNumeric = new System.Windows.Forms.NumericUpDown();
+            this.xMajorGridRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xGridColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.xGridColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.xGridColorComboBox = new System.Windows.Forms.ComboBox();
+            this.xGridWidthNumericRow = new System.Windows.Forms.Panel();
+            this.xGridWidthNumericLabel = new System.Windows.Forms.Label();
+            this.xGridWidthNumeric = new System.Windows.Forms.NumericUpDown();
+            this.xMajorStyleRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xGridDashComboBoxRow = new System.Windows.Forms.Panel();
+            this.xGridDashComboBoxLabel = new System.Windows.Forms.Label();
+            this.xGridDashComboBox = new System.Windows.Forms.ComboBox();
+            this.xGridAlphaNumericRow = new System.Windows.Forms.Panel();
+            this.xGridAlphaNumericLabel = new System.Windows.Forms.Label();
+            this.xGridAlphaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.xMinorGridRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xMinorCheckBoxRow = new System.Windows.Forms.Panel();
+            this.xMinorCheckBox = new System.Windows.Forms.CheckBox();
+            this.xMinorColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.xMinorColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.xMinorColorComboBox = new System.Windows.Forms.ComboBox();
+            this.xMinorStrokeRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xMinorWidthNumericRow = new System.Windows.Forms.Panel();
+            this.xMinorWidthNumericLabel = new System.Windows.Forms.Label();
+            this.xMinorWidthNumeric = new System.Windows.Forms.NumericUpDown();
+            this.xMinorDashComboBoxRow = new System.Windows.Forms.Panel();
+            this.xMinorDashComboBoxLabel = new System.Windows.Forms.Label();
+            this.xMinorDashComboBox = new System.Windows.Forms.ComboBox();
+            this.xMinorOpacityRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xMinorAlphaNumericRow = new System.Windows.Forms.Panel();
+            this.xMinorAlphaNumericLabel = new System.Windows.Forms.Label();
+            this.xMinorAlphaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.xLogBaseBoxRow = new System.Windows.Forms.Panel();
+            this.xLogBaseBoxLabel = new System.Windows.Forms.Label();
+            this.xLogBaseBox = new System.Windows.Forms.TextBox();
+            this.xFontRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xFontComboBoxRow = new System.Windows.Forms.Panel();
+            this.xFontComboBoxLabel = new System.Windows.Forms.Label();
+            this.xFontComboBox = new System.Windows.Forms.ComboBox();
+            this.xFontSizeNumericRow = new System.Windows.Forms.Panel();
+            this.xFontSizeNumericLabel = new System.Windows.Forms.Label();
+            this.xFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.xFontColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.xFontColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.xFontColorComboBox = new System.Windows.Forms.ComboBox();
+            this.yAxisGroup = new System.Windows.Forms.GroupBox();
+            this.yFields = new System.Windows.Forms.TableLayoutPanel();
+            this.yDefaultsButtonRow = new System.Windows.Forms.Panel();
+            this.yDefaultsButton = new System.Windows.Forms.Button();
+            this.yColumnComboBoxRow = new System.Windows.Forms.Panel();
+            this.yColumnComboBoxLabel = new System.Windows.Forms.Label();
+            this.yColumnComboBox = new System.Windows.Forms.ComboBox();
+            this.yModeRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yAutoCheckBoxRow = new System.Windows.Forms.Panel();
+            this.yAutoCheckBox = new System.Windows.Forms.CheckBox();
+            this.yLogCheckBoxRow = new System.Windows.Forms.Panel();
+            this.yLogCheckBox = new System.Windows.Forms.CheckBox();
+            this.yLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yMinimumBoxRow = new System.Windows.Forms.Panel();
+            this.yMinimumBoxLabel = new System.Windows.Forms.Label();
+            this.yMinimumBox = new System.Windows.Forms.TextBox();
+            this.yMaximumBoxRow = new System.Windows.Forms.Panel();
+            this.yMaximumBoxLabel = new System.Windows.Forms.Label();
+            this.yMaximumBox = new System.Windows.Forms.TextBox();
+            this.yTicksRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yGridIntervalBoxRow = new System.Windows.Forms.Panel();
+            this.yGridIntervalBoxLabel = new System.Windows.Forms.Label();
+            this.yGridIntervalBox = new System.Windows.Forms.TextBox();
+            this.yDecimalsNumericRow = new System.Windows.Forms.Panel();
+            this.yDecimalsNumericLabel = new System.Windows.Forms.Label();
+            this.yDecimalsNumeric = new System.Windows.Forms.NumericUpDown();
+            this.yMajorGridRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yGridColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.yGridColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.yGridColorComboBox = new System.Windows.Forms.ComboBox();
+            this.yGridWidthNumericRow = new System.Windows.Forms.Panel();
+            this.yGridWidthNumericLabel = new System.Windows.Forms.Label();
+            this.yGridWidthNumeric = new System.Windows.Forms.NumericUpDown();
+            this.yMajorStyleRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yGridDashComboBoxRow = new System.Windows.Forms.Panel();
+            this.yGridDashComboBoxLabel = new System.Windows.Forms.Label();
+            this.yGridDashComboBox = new System.Windows.Forms.ComboBox();
+            this.yGridAlphaNumericRow = new System.Windows.Forms.Panel();
+            this.yGridAlphaNumericLabel = new System.Windows.Forms.Label();
+            this.yGridAlphaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.yMinorGridRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yMinorCheckBoxRow = new System.Windows.Forms.Panel();
+            this.yMinorCheckBox = new System.Windows.Forms.CheckBox();
+            this.yMinorColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.yMinorColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.yMinorColorComboBox = new System.Windows.Forms.ComboBox();
+            this.yMinorStrokeRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yMinorWidthNumericRow = new System.Windows.Forms.Panel();
+            this.yMinorWidthNumericLabel = new System.Windows.Forms.Label();
+            this.yMinorWidthNumeric = new System.Windows.Forms.NumericUpDown();
+            this.yMinorDashComboBoxRow = new System.Windows.Forms.Panel();
+            this.yMinorDashComboBoxLabel = new System.Windows.Forms.Label();
+            this.yMinorDashComboBox = new System.Windows.Forms.ComboBox();
+            this.yMinorOpacityRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yMinorAlphaNumericRow = new System.Windows.Forms.Panel();
+            this.yMinorAlphaNumericLabel = new System.Windows.Forms.Label();
+            this.yMinorAlphaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.yLogBaseBoxRow = new System.Windows.Forms.Panel();
+            this.yLogBaseBoxLabel = new System.Windows.Forms.Label();
+            this.yLogBaseBox = new System.Windows.Forms.TextBox();
+            this.yFontRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yFontComboBoxRow = new System.Windows.Forms.Panel();
+            this.yFontComboBoxLabel = new System.Windows.Forms.Label();
+            this.yFontComboBox = new System.Windows.Forms.ComboBox();
+            this.yFontSizeNumericRow = new System.Windows.Forms.Panel();
+            this.yFontSizeNumericLabel = new System.Windows.Forms.Label();
+            this.yFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.yFontColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.yFontColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.yFontColorComboBox = new System.Windows.Forms.ComboBox();
+            this.zAxisGroup = new System.Windows.Forms.GroupBox();
+            this.zFields = new System.Windows.Forms.TableLayoutPanel();
+            this.zDefaultsButtonRow = new System.Windows.Forms.Panel();
+            this.zDefaultsButton = new System.Windows.Forms.Button();
+            this.zColumnComboBoxRow = new System.Windows.Forms.Panel();
+            this.zColumnComboBoxLabel = new System.Windows.Forms.Label();
+            this.zColumnComboBox = new System.Windows.Forms.ComboBox();
+            this.zAutoCheckBoxRow = new System.Windows.Forms.Panel();
+            this.zAutoCheckBox = new System.Windows.Forms.CheckBox();
+            this.zLimitsRow = new System.Windows.Forms.TableLayoutPanel();
+            this.zMinimumBoxRow = new System.Windows.Forms.Panel();
+            this.zMinimumBoxLabel = new System.Windows.Forms.Label();
+            this.zMinimumBox = new System.Windows.Forms.TextBox();
+            this.zMaximumBoxRow = new System.Windows.Forms.Panel();
+            this.zMaximumBoxLabel = new System.Windows.Forms.Label();
+            this.zMaximumBox = new System.Windows.Forms.TextBox();
+            this.zColorRow = new System.Windows.Forms.TableLayoutPanel();
+            this.schemeComboBoxRow = new System.Windows.Forms.Panel();
+            this.schemeComboBoxLabel = new System.Windows.Forms.Label();
+            this.schemeComboBox = new System.Windows.Forms.ComboBox();
+            this.bandsNumericRow = new System.Windows.Forms.Panel();
+            this.bandsNumericLabel = new System.Windows.Forms.Label();
+            this.bandsNumeric = new System.Windows.Forms.NumericUpDown();
+            this.filterSettingsPanel = new System.Windows.Forms.Panel();
+            this.filterSettingsRows = new System.Windows.Forms.TableLayoutPanel();
+            this.filterAxisPlaceholder = new System.Windows.Forms.GroupBox();
+            this.filterExtraPlaceholder = new System.Windows.Forms.GroupBox();
+            this.actionsPanel.SuspendLayout();
+            this.settingsColumns.SuspendLayout();
+            this.chartStyleGroup.SuspendLayout();
+            this.styleFields.SuspendLayout();
+            this.styleChartLayoutRow.SuspendLayout();
+            this.chartTypeComboBoxRow.SuspendLayout();
+            this.layoutComboBoxRow.SuspendLayout();
+            this.styleMarkerRow.SuspendLayout();
+            this.markerComboBoxRow.SuspendLayout();
+            this.markerSizeNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.markerSizeNumeric)).BeginInit();
+            this.styleAppearanceRow.SuspendLayout();
+            this.backgroundComboBoxRow.SuspendLayout();
+            this.paletteAlphaNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paletteAlphaNumeric)).BeginInit();
+            this.styleOptionsRow.SuspendLayout();
+            this.paletteDividerNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paletteDividerNumeric)).BeginInit();
+            this.tooltipDelayNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tooltipDelayNumeric)).BeginInit();
+            this.styleTogglesRow.SuspendLayout();
+            this.absoluteCheckBoxRow.SuspendLayout();
+            this.tooltipEnableCheckBoxRow.SuspendLayout();
+            this.styleCursorTogglesRow.SuspendLayout();
+            this.cursorEnabledCheckBoxRow.SuspendLayout();
+            this.cursorZoomCheckBoxRow.SuspendLayout();
+            this.styleCursorColorsRow.SuspendLayout();
+            this.cursorColorComboBoxRow.SuspendLayout();
+            this.cursorAlphaNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cursorAlphaNumeric)).BeginInit();
+            this.styleCursorStrokeRow.SuspendLayout();
+            this.cursorWidthNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cursorWidthNumeric)).BeginInit();
+            this.cursorDashComboBoxRow.SuspendLayout();
+            this.xAxisGroup.SuspendLayout();
+            this.xFields.SuspendLayout();
+            this.xDefaultsButtonRow.SuspendLayout();
+            this.xColumnComboBoxRow.SuspendLayout();
+            this.xModeRow.SuspendLayout();
+            this.xAutoCheckBoxRow.SuspendLayout();
+            this.xLogCheckBoxRow.SuspendLayout();
+            this.xLimitsRow.SuspendLayout();
+            this.xMinimumBoxRow.SuspendLayout();
+            this.xMaximumBoxRow.SuspendLayout();
+            this.xTicksRow.SuspendLayout();
+            this.xGridIntervalBoxRow.SuspendLayout();
+            this.xDecimalsNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xDecimalsNumeric)).BeginInit();
+            this.xMajorGridRow.SuspendLayout();
+            this.xGridColorComboBoxRow.SuspendLayout();
+            this.xGridWidthNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xGridWidthNumeric)).BeginInit();
+            this.xMajorStyleRow.SuspendLayout();
+            this.xGridDashComboBoxRow.SuspendLayout();
+            this.xGridAlphaNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xGridAlphaNumeric)).BeginInit();
+            this.xMinorGridRow.SuspendLayout();
+            this.xMinorCheckBoxRow.SuspendLayout();
+            this.xMinorColorComboBoxRow.SuspendLayout();
+            this.xMinorStrokeRow.SuspendLayout();
+            this.xMinorWidthNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xMinorWidthNumeric)).BeginInit();
+            this.xMinorDashComboBoxRow.SuspendLayout();
+            this.xMinorOpacityRow.SuspendLayout();
+            this.xMinorAlphaNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xMinorAlphaNumeric)).BeginInit();
+            this.xLogBaseBoxRow.SuspendLayout();
+            this.xFontRow.SuspendLayout();
+            this.xFontComboBoxRow.SuspendLayout();
+            this.xFontSizeNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xFontSizeNumeric)).BeginInit();
+            this.xFontColorComboBoxRow.SuspendLayout();
+            this.yAxisGroup.SuspendLayout();
+            this.yFields.SuspendLayout();
+            this.yDefaultsButtonRow.SuspendLayout();
+            this.yColumnComboBoxRow.SuspendLayout();
+            this.yModeRow.SuspendLayout();
+            this.yAutoCheckBoxRow.SuspendLayout();
+            this.yLogCheckBoxRow.SuspendLayout();
+            this.yLimitsRow.SuspendLayout();
+            this.yMinimumBoxRow.SuspendLayout();
+            this.yMaximumBoxRow.SuspendLayout();
+            this.yTicksRow.SuspendLayout();
+            this.yGridIntervalBoxRow.SuspendLayout();
+            this.yDecimalsNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yDecimalsNumeric)).BeginInit();
+            this.yMajorGridRow.SuspendLayout();
+            this.yGridColorComboBoxRow.SuspendLayout();
+            this.yGridWidthNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yGridWidthNumeric)).BeginInit();
+            this.yMajorStyleRow.SuspendLayout();
+            this.yGridDashComboBoxRow.SuspendLayout();
+            this.yGridAlphaNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yGridAlphaNumeric)).BeginInit();
+            this.yMinorGridRow.SuspendLayout();
+            this.yMinorCheckBoxRow.SuspendLayout();
+            this.yMinorColorComboBoxRow.SuspendLayout();
+            this.yMinorStrokeRow.SuspendLayout();
+            this.yMinorWidthNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yMinorWidthNumeric)).BeginInit();
+            this.yMinorDashComboBoxRow.SuspendLayout();
+            this.yMinorOpacityRow.SuspendLayout();
+            this.yMinorAlphaNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yMinorAlphaNumeric)).BeginInit();
+            this.yLogBaseBoxRow.SuspendLayout();
+            this.yFontRow.SuspendLayout();
+            this.yFontComboBoxRow.SuspendLayout();
+            this.yFontSizeNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yFontSizeNumeric)).BeginInit();
+            this.yFontColorComboBoxRow.SuspendLayout();
+            this.zAxisGroup.SuspendLayout();
+            this.zFields.SuspendLayout();
+            this.zDefaultsButtonRow.SuspendLayout();
+            this.zColumnComboBoxRow.SuspendLayout();
+            this.zAutoCheckBoxRow.SuspendLayout();
+            this.zLimitsRow.SuspendLayout();
+            this.zMinimumBoxRow.SuspendLayout();
+            this.zMaximumBoxRow.SuspendLayout();
+            this.zColorRow.SuspendLayout();
+            this.schemeComboBoxRow.SuspendLayout();
+            this.bandsNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bandsNumeric)).BeginInit();
+            this.filterSettingsPanel.SuspendLayout();
+            this.filterSettingsRows.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // actionsPanel
+            // 
+            this.actionsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.actionsPanel.Controls.Add(this.applyButton);
+            this.actionsPanel.Controls.Add(this.applyFiltersButton);
+            this.actionsPanel.Controls.Add(this.SettingsProfilesHost);
+            this.actionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.actionsPanel.Location = new System.Drawing.Point(0, 0);
+            this.actionsPanel.Name = "actionsPanel";
+            this.actionsPanel.Size = new System.Drawing.Size(1401, 48);
+            this.actionsPanel.TabIndex = 2;
+            // 
+            // applyButton
+            // 
+            this.applyButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.applyButton.ForeColor = System.Drawing.Color.White;
+            this.applyButton.Location = new System.Drawing.Point(10, 9);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(135, 30);
+            this.applyButton.TabIndex = 0;
+            this.applyButton.Text = "Apply Settings";
+            this.applyButton.UseVisualStyleBackColor = false;
+            // 
+            // applyFiltersButton
+            // 
+            this.applyFiltersButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.applyFiltersButton.ForeColor = System.Drawing.Color.White;
+            this.applyFiltersButton.Location = new System.Drawing.Point(152, 9);
+            this.applyFiltersButton.Name = "applyFiltersButton";
+            this.applyFiltersButton.Size = new System.Drawing.Size(133, 30);
+            this.applyFiltersButton.TabIndex = 1;
+            this.applyFiltersButton.Text = "Apply Filters";
+            this.applyFiltersButton.UseVisualStyleBackColor = false;
+            // 
+            // SettingsProfilesHost
+            // 
+            this.SettingsProfilesHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.SettingsProfilesHost.Location = new System.Drawing.Point(295, 0);
+            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
+            this.SettingsProfilesHost.Size = new System.Drawing.Size(140, 46);
+            this.SettingsProfilesHost.TabIndex = 2;
+            // 
+            // settingsColumns
+            // 
+            this.settingsColumns.AutoScroll = true;
+            this.settingsColumns.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.settingsColumns.ColumnCount = 4;
+            this.settingsColumns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.settingsColumns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.settingsColumns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.settingsColumns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.settingsColumns.Controls.Add(this.chartStyleGroup, 0, 0);
+            this.settingsColumns.Controls.Add(this.xAxisGroup, 1, 0);
+            this.settingsColumns.Controls.Add(this.yAxisGroup, 2, 0);
+            this.settingsColumns.Controls.Add(this.zAxisGroup, 3, 0);
+            this.settingsColumns.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsColumns.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.settingsColumns.Location = new System.Drawing.Point(0, 303);
+            this.settingsColumns.Name = "settingsColumns";
+            this.settingsColumns.Padding = new System.Windows.Forms.Padding(8);
+            this.settingsColumns.RowCount = 1;
+            this.settingsColumns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.settingsColumns.Size = new System.Drawing.Size(1401, 407);
+            this.settingsColumns.TabIndex = 0;
+            // 
+            // chartStyleGroup
+            // 
+            this.chartStyleGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.chartStyleGroup.Controls.Add(this.styleFields);
+            this.chartStyleGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartStyleGroup.ForeColor = System.Drawing.Color.White;
+            this.chartStyleGroup.Location = new System.Drawing.Point(13, 13);
+            this.chartStyleGroup.Margin = new System.Windows.Forms.Padding(5);
+            this.chartStyleGroup.Name = "chartStyleGroup";
+            this.chartStyleGroup.Padding = new System.Windows.Forms.Padding(8);
+            this.chartStyleGroup.Size = new System.Drawing.Size(336, 381);
+            this.chartStyleGroup.TabIndex = 0;
+            this.chartStyleGroup.TabStop = false;
+            this.chartStyleGroup.Text = "Chart and data settings";
+            // 
+            // styleFields
+            // 
+            this.styleFields.AutoScroll = true;
+            this.styleFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleFields.ColumnCount = 1;
+            this.styleFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleFields.Controls.Add(this.styleChartLayoutRow, 0, 0);
+            this.styleFields.Controls.Add(this.styleMarkerRow, 0, 1);
+            this.styleFields.Controls.Add(this.styleAppearanceRow, 0, 2);
+            this.styleFields.Controls.Add(this.styleOptionsRow, 0, 3);
+            this.styleFields.Controls.Add(this.styleTogglesRow, 0, 4);
+            this.styleFields.Controls.Add(this.styleCursorTogglesRow, 0, 5);
+            this.styleFields.Controls.Add(this.styleCursorColorsRow, 0, 6);
+            this.styleFields.Controls.Add(this.styleCursorStrokeRow, 0, 7);
+            this.styleFields.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleFields.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.styleFields.Location = new System.Drawing.Point(8, 21);
+            this.styleFields.Name = "styleFields";
+            this.styleFields.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.styleFields.RowCount = 8;
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.styleFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.styleFields.Size = new System.Drawing.Size(320, 352);
+            this.styleFields.TabIndex = 0;
+            // 
+            // styleChartLayoutRow
+            // 
+            this.styleChartLayoutRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleChartLayoutRow.ColumnCount = 2;
+            this.styleChartLayoutRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleChartLayoutRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleChartLayoutRow.Controls.Add(this.chartTypeComboBoxRow, 0, 0);
+            this.styleChartLayoutRow.Controls.Add(this.layoutComboBoxRow, 1, 0);
+            this.styleChartLayoutRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleChartLayoutRow.Location = new System.Drawing.Point(3, 0);
+            this.styleChartLayoutRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleChartLayoutRow.Name = "styleChartLayoutRow";
+            this.styleChartLayoutRow.RowCount = 1;
+            this.styleChartLayoutRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleChartLayoutRow.Size = new System.Drawing.Size(297, 50);
+            this.styleChartLayoutRow.TabIndex = 0;
+            // 
+            // chartTypeComboBoxRow
+            // 
+            this.chartTypeComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.chartTypeComboBoxRow.Controls.Add(this.chartTypeComboBoxLabel);
+            this.chartTypeComboBoxRow.Controls.Add(this.chartTypeComboBox);
+            this.chartTypeComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartTypeComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.chartTypeComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.chartTypeComboBoxRow.Name = "chartTypeComboBoxRow";
+            this.chartTypeComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.chartTypeComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.chartTypeComboBoxRow.TabIndex = 0;
+            // 
+            // chartTypeComboBoxLabel
+            // 
+            this.chartTypeComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartTypeComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.chartTypeComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.chartTypeComboBoxLabel.Name = "chartTypeComboBoxLabel";
+            this.chartTypeComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.chartTypeComboBoxLabel.TabIndex = 0;
+            this.chartTypeComboBoxLabel.Text = "Chart type";
+            // 
+            // chartTypeComboBox
+            // 
+            this.chartTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartTypeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.chartTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.chartTypeComboBox.ForeColor = System.Drawing.Color.White;
+            this.chartTypeComboBox.IntegralHeight = false;
+            this.chartTypeComboBox.Location = new System.Drawing.Point(9, 25);
+            this.chartTypeComboBox.Name = "chartTypeComboBox";
+            this.chartTypeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.chartTypeComboBox.TabIndex = 1;
+            // 
+            // layoutComboBoxRow
+            // 
+            this.layoutComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.layoutComboBoxRow.Controls.Add(this.layoutComboBoxLabel);
+            this.layoutComboBoxRow.Controls.Add(this.layoutComboBox);
+            this.layoutComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutComboBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.layoutComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.layoutComboBoxRow.Name = "layoutComboBoxRow";
+            this.layoutComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.layoutComboBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.layoutComboBoxRow.TabIndex = 1;
+            // 
+            // layoutComboBoxLabel
+            // 
+            this.layoutComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.layoutComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.layoutComboBoxLabel.Name = "layoutComboBoxLabel";
+            this.layoutComboBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.layoutComboBoxLabel.TabIndex = 0;
+            this.layoutComboBoxLabel.Text = "Dataset layout";
+            // 
+            // layoutComboBox
+            // 
+            this.layoutComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.layoutComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.layoutComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.layoutComboBox.ForeColor = System.Drawing.Color.White;
+            this.layoutComboBox.IntegralHeight = false;
+            this.layoutComboBox.Location = new System.Drawing.Point(9, 25);
+            this.layoutComboBox.Name = "layoutComboBox";
+            this.layoutComboBox.Size = new System.Drawing.Size(122, 21);
+            this.layoutComboBox.TabIndex = 1;
+            // 
+            // styleMarkerRow
+            // 
+            this.styleMarkerRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleMarkerRow.ColumnCount = 2;
+            this.styleMarkerRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleMarkerRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleMarkerRow.Controls.Add(this.markerComboBoxRow, 0, 0);
+            this.styleMarkerRow.Controls.Add(this.markerSizeNumericRow, 1, 0);
+            this.styleMarkerRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleMarkerRow.Location = new System.Drawing.Point(3, 50);
+            this.styleMarkerRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleMarkerRow.Name = "styleMarkerRow";
+            this.styleMarkerRow.RowCount = 1;
+            this.styleMarkerRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleMarkerRow.Size = new System.Drawing.Size(297, 50);
+            this.styleMarkerRow.TabIndex = 1;
+            // 
+            // markerComboBoxRow
+            // 
+            this.markerComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.markerComboBoxRow.Controls.Add(this.markerComboBoxLabel);
+            this.markerComboBoxRow.Controls.Add(this.markerComboBox);
+            this.markerComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.markerComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.markerComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.markerComboBoxRow.Name = "markerComboBoxRow";
+            this.markerComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.markerComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.markerComboBoxRow.TabIndex = 0;
+            // 
+            // markerComboBoxLabel
+            // 
+            this.markerComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.markerComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.markerComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.markerComboBoxLabel.Name = "markerComboBoxLabel";
+            this.markerComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.markerComboBoxLabel.TabIndex = 0;
+            this.markerComboBoxLabel.Text = "Marker style";
+            // 
+            // markerComboBox
+            // 
+            this.markerComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.markerComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.markerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.markerComboBox.ForeColor = System.Drawing.Color.White;
+            this.markerComboBox.IntegralHeight = false;
+            this.markerComboBox.Location = new System.Drawing.Point(9, 25);
+            this.markerComboBox.Name = "markerComboBox";
+            this.markerComboBox.Size = new System.Drawing.Size(121, 21);
+            this.markerComboBox.TabIndex = 1;
+            // 
+            // markerSizeNumericRow
+            // 
+            this.markerSizeNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.markerSizeNumericRow.Controls.Add(this.markerSizeNumericLabel);
+            this.markerSizeNumericRow.Controls.Add(this.markerSizeNumeric);
+            this.markerSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.markerSizeNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.markerSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.markerSizeNumericRow.Name = "markerSizeNumericRow";
+            this.markerSizeNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.markerSizeNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.markerSizeNumericRow.TabIndex = 1;
+            // 
+            // markerSizeNumericLabel
+            // 
+            this.markerSizeNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.markerSizeNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.markerSizeNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.markerSizeNumericLabel.Name = "markerSizeNumericLabel";
+            this.markerSizeNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.markerSizeNumericLabel.TabIndex = 0;
+            this.markerSizeNumericLabel.Text = "Marker size";
+            // 
+            // markerSizeNumeric
+            // 
+            this.markerSizeNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.markerSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.markerSizeNumeric.ForeColor = System.Drawing.Color.White;
+            this.markerSizeNumeric.Location = new System.Drawing.Point(9, 25);
+            this.markerSizeNumeric.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.markerSizeNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.markerSizeNumeric.Name = "markerSizeNumeric";
+            this.markerSizeNumeric.Size = new System.Drawing.Size(122, 20);
+            this.markerSizeNumeric.TabIndex = 1;
+            this.markerSizeNumeric.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // styleAppearanceRow
+            // 
+            this.styleAppearanceRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleAppearanceRow.ColumnCount = 2;
+            this.styleAppearanceRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleAppearanceRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleAppearanceRow.Controls.Add(this.backgroundComboBoxRow, 0, 0);
+            this.styleAppearanceRow.Controls.Add(this.paletteAlphaNumericRow, 1, 0);
+            this.styleAppearanceRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleAppearanceRow.Location = new System.Drawing.Point(3, 100);
+            this.styleAppearanceRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleAppearanceRow.Name = "styleAppearanceRow";
+            this.styleAppearanceRow.RowCount = 1;
+            this.styleAppearanceRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleAppearanceRow.Size = new System.Drawing.Size(297, 50);
+            this.styleAppearanceRow.TabIndex = 2;
+            // 
+            // backgroundComboBoxRow
+            // 
+            this.backgroundComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.backgroundComboBoxRow.Controls.Add(this.backgroundComboBoxLabel);
+            this.backgroundComboBoxRow.Controls.Add(this.backgroundComboBox);
+            this.backgroundComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.backgroundComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.backgroundComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.backgroundComboBoxRow.Name = "backgroundComboBoxRow";
+            this.backgroundComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.backgroundComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.backgroundComboBoxRow.TabIndex = 0;
+            // 
+            // backgroundComboBoxLabel
+            // 
+            this.backgroundComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.backgroundComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.backgroundComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.backgroundComboBoxLabel.Name = "backgroundComboBoxLabel";
+            this.backgroundComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.backgroundComboBoxLabel.TabIndex = 0;
+            this.backgroundComboBoxLabel.Text = "Chart background";
+            // 
+            // backgroundComboBox
+            // 
+            this.backgroundComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.backgroundComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.backgroundComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.backgroundComboBox.ForeColor = System.Drawing.Color.White;
+            this.backgroundComboBox.IntegralHeight = false;
+            this.backgroundComboBox.Location = new System.Drawing.Point(9, 25);
+            this.backgroundComboBox.Name = "backgroundComboBox";
+            this.backgroundComboBox.Size = new System.Drawing.Size(121, 21);
+            this.backgroundComboBox.TabIndex = 1;
+            // 
+            // paletteAlphaNumericRow
+            // 
+            this.paletteAlphaNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.paletteAlphaNumericRow.Controls.Add(this.paletteAlphaNumericLabel);
+            this.paletteAlphaNumericRow.Controls.Add(this.paletteAlphaNumeric);
+            this.paletteAlphaNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paletteAlphaNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.paletteAlphaNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.paletteAlphaNumericRow.Name = "paletteAlphaNumericRow";
+            this.paletteAlphaNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.paletteAlphaNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.paletteAlphaNumericRow.TabIndex = 1;
+            // 
+            // paletteAlphaNumericLabel
+            // 
+            this.paletteAlphaNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paletteAlphaNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.paletteAlphaNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.paletteAlphaNumericLabel.Name = "paletteAlphaNumericLabel";
+            this.paletteAlphaNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.paletteAlphaNumericLabel.TabIndex = 0;
+            this.paletteAlphaNumericLabel.Text = "Color alpha";
+            // 
+            // paletteAlphaNumeric
+            // 
+            this.paletteAlphaNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paletteAlphaNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.paletteAlphaNumeric.ForeColor = System.Drawing.Color.White;
+            this.paletteAlphaNumeric.Location = new System.Drawing.Point(9, 25);
+            this.paletteAlphaNumeric.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.paletteAlphaNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.paletteAlphaNumeric.Name = "paletteAlphaNumeric";
+            this.paletteAlphaNumeric.Size = new System.Drawing.Size(122, 20);
+            this.paletteAlphaNumeric.TabIndex = 1;
+            this.paletteAlphaNumeric.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // styleOptionsRow
+            // 
+            this.styleOptionsRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleOptionsRow.ColumnCount = 2;
+            this.styleOptionsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleOptionsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleOptionsRow.Controls.Add(this.paletteDividerNumericRow, 0, 0);
+            this.styleOptionsRow.Controls.Add(this.tooltipDelayNumericRow, 1, 0);
+            this.styleOptionsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleOptionsRow.Location = new System.Drawing.Point(3, 150);
+            this.styleOptionsRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleOptionsRow.Name = "styleOptionsRow";
+            this.styleOptionsRow.RowCount = 1;
+            this.styleOptionsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleOptionsRow.Size = new System.Drawing.Size(297, 50);
+            this.styleOptionsRow.TabIndex = 3;
+            // 
+            // paletteDividerNumericRow
+            // 
+            this.paletteDividerNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.paletteDividerNumericRow.Controls.Add(this.paletteDividerNumericLabel);
+            this.paletteDividerNumericRow.Controls.Add(this.paletteDividerNumeric);
+            this.paletteDividerNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paletteDividerNumericRow.Location = new System.Drawing.Point(0, 0);
+            this.paletteDividerNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.paletteDividerNumericRow.Name = "paletteDividerNumericRow";
+            this.paletteDividerNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.paletteDividerNumericRow.Size = new System.Drawing.Size(148, 50);
+            this.paletteDividerNumericRow.TabIndex = 0;
+            // 
+            // paletteDividerNumericLabel
+            // 
+            this.paletteDividerNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paletteDividerNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.paletteDividerNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.paletteDividerNumericLabel.Name = "paletteDividerNumericLabel";
+            this.paletteDividerNumericLabel.Size = new System.Drawing.Size(122, 20);
+            this.paletteDividerNumericLabel.TabIndex = 0;
+            this.paletteDividerNumericLabel.Text = "Color intensity divider";
+            // 
+            // paletteDividerNumeric
+            // 
+            this.paletteDividerNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paletteDividerNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.paletteDividerNumeric.ForeColor = System.Drawing.Color.White;
+            this.paletteDividerNumeric.Location = new System.Drawing.Point(9, 25);
+            this.paletteDividerNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.paletteDividerNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.paletteDividerNumeric.Name = "paletteDividerNumeric";
+            this.paletteDividerNumeric.Size = new System.Drawing.Size(121, 20);
+            this.paletteDividerNumeric.TabIndex = 1;
+            this.paletteDividerNumeric.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // tooltipDelayNumericRow
+            // 
+            this.tooltipDelayNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.tooltipDelayNumericRow.Controls.Add(this.tooltipDelayNumericLabel);
+            this.tooltipDelayNumericRow.Controls.Add(this.tooltipDelayNumeric);
+            this.tooltipDelayNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tooltipDelayNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.tooltipDelayNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.tooltipDelayNumericRow.Name = "tooltipDelayNumericRow";
+            this.tooltipDelayNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tooltipDelayNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.tooltipDelayNumericRow.TabIndex = 1;
+            // 
+            // tooltipDelayNumericLabel
+            // 
+            this.tooltipDelayNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tooltipDelayNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.tooltipDelayNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.tooltipDelayNumericLabel.Name = "tooltipDelayNumericLabel";
+            this.tooltipDelayNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.tooltipDelayNumericLabel.TabIndex = 0;
+            this.tooltipDelayNumericLabel.Text = "Point hover delay (milliseconds)";
+            // 
+            // tooltipDelayNumeric
+            // 
+            this.tooltipDelayNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tooltipDelayNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.tooltipDelayNumeric.ForeColor = System.Drawing.Color.White;
+            this.tooltipDelayNumeric.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.tooltipDelayNumeric.Location = new System.Drawing.Point(9, 25);
+            this.tooltipDelayNumeric.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.tooltipDelayNumeric.Name = "tooltipDelayNumeric";
+            this.tooltipDelayNumeric.Size = new System.Drawing.Size(122, 20);
+            this.tooltipDelayNumeric.TabIndex = 1;
+            this.tooltipDelayNumeric.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
+            // styleTogglesRow
+            // 
+            this.styleTogglesRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleTogglesRow.ColumnCount = 2;
+            this.styleTogglesRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleTogglesRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleTogglesRow.Controls.Add(this.absoluteCheckBoxRow, 0, 0);
+            this.styleTogglesRow.Controls.Add(this.tooltipEnableCheckBoxRow, 1, 0);
+            this.styleTogglesRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleTogglesRow.Location = new System.Drawing.Point(3, 200);
+            this.styleTogglesRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleTogglesRow.Name = "styleTogglesRow";
+            this.styleTogglesRow.RowCount = 1;
+            this.styleTogglesRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleTogglesRow.Size = new System.Drawing.Size(297, 40);
+            this.styleTogglesRow.TabIndex = 4;
+            // 
+            // absoluteCheckBoxRow
+            // 
+            this.absoluteCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.absoluteCheckBoxRow.Controls.Add(this.absoluteCheckBox);
+            this.absoluteCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.absoluteCheckBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.absoluteCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.absoluteCheckBoxRow.Name = "absoluteCheckBoxRow";
+            this.absoluteCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.absoluteCheckBoxRow.Size = new System.Drawing.Size(148, 40);
+            this.absoluteCheckBoxRow.TabIndex = 0;
+            // 
+            // absoluteCheckBox
+            // 
+            this.absoluteCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.absoluteCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.absoluteCheckBox.Checked = true;
+            this.absoluteCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.absoluteCheckBox.ForeColor = System.Drawing.Color.White;
+            this.absoluteCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.absoluteCheckBox.Name = "absoluteCheckBox";
+            this.absoluteCheckBox.Size = new System.Drawing.Size(123, 28);
+            this.absoluteCheckBox.TabIndex = 0;
+            this.absoluteCheckBox.Text = "Absolute X / Y / Z values";
+            this.absoluteCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // tooltipEnableCheckBoxRow
+            // 
+            this.tooltipEnableCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.tooltipEnableCheckBoxRow.Controls.Add(this.tooltipEnableCheckBox);
+            this.tooltipEnableCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tooltipEnableCheckBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.tooltipEnableCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.tooltipEnableCheckBoxRow.Name = "tooltipEnableCheckBoxRow";
+            this.tooltipEnableCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tooltipEnableCheckBoxRow.Size = new System.Drawing.Size(149, 40);
+            this.tooltipEnableCheckBoxRow.TabIndex = 1;
+            // 
+            // tooltipEnableCheckBox
+            // 
+            this.tooltipEnableCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tooltipEnableCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.tooltipEnableCheckBox.Checked = true;
+            this.tooltipEnableCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tooltipEnableCheckBox.ForeColor = System.Drawing.Color.White;
+            this.tooltipEnableCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.tooltipEnableCheckBox.Name = "tooltipEnableCheckBox";
+            this.tooltipEnableCheckBox.Size = new System.Drawing.Size(124, 28);
+            this.tooltipEnableCheckBox.TabIndex = 0;
+            this.tooltipEnableCheckBox.Text = "Show XYZ point tooltips";
+            this.tooltipEnableCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // styleCursorTogglesRow
+            // 
+            this.styleCursorTogglesRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleCursorTogglesRow.ColumnCount = 2;
+            this.styleCursorTogglesRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleCursorTogglesRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleCursorTogglesRow.Controls.Add(this.cursorEnabledCheckBoxRow, 0, 0);
+            this.styleCursorTogglesRow.Controls.Add(this.cursorZoomCheckBoxRow, 1, 0);
+            this.styleCursorTogglesRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleCursorTogglesRow.Location = new System.Drawing.Point(3, 240);
+            this.styleCursorTogglesRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleCursorTogglesRow.Name = "styleCursorTogglesRow";
+            this.styleCursorTogglesRow.RowCount = 1;
+            this.styleCursorTogglesRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleCursorTogglesRow.Size = new System.Drawing.Size(297, 40);
+            this.styleCursorTogglesRow.TabIndex = 5;
+            // 
+            // cursorEnabledCheckBoxRow
+            // 
+            this.cursorEnabledCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorEnabledCheckBoxRow.Controls.Add(this.cursorEnabledCheckBox);
+            this.cursorEnabledCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cursorEnabledCheckBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.cursorEnabledCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.cursorEnabledCheckBoxRow.Name = "cursorEnabledCheckBoxRow";
+            this.cursorEnabledCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cursorEnabledCheckBoxRow.Size = new System.Drawing.Size(148, 40);
+            this.cursorEnabledCheckBoxRow.TabIndex = 0;
+            // 
+            // cursorEnabledCheckBox
+            // 
+            this.cursorEnabledCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorEnabledCheckBox.ForeColor = System.Drawing.Color.White;
+            this.cursorEnabledCheckBox.Location = new System.Drawing.Point(5, 9);
+            this.cursorEnabledCheckBox.Name = "cursorEnabledCheckBox";
+            this.cursorEnabledCheckBox.Size = new System.Drawing.Size(208, 25);
+            this.cursorEnabledCheckBox.TabIndex = 0;
+            this.cursorEnabledCheckBox.Text = "Enable X / Y cursors";
+            this.cursorEnabledCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // cursorZoomCheckBoxRow
+            // 
+            this.cursorZoomCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorZoomCheckBoxRow.Controls.Add(this.cursorZoomCheckBox);
+            this.cursorZoomCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cursorZoomCheckBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.cursorZoomCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.cursorZoomCheckBoxRow.Name = "cursorZoomCheckBoxRow";
+            this.cursorZoomCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cursorZoomCheckBoxRow.Size = new System.Drawing.Size(149, 40);
+            this.cursorZoomCheckBoxRow.TabIndex = 1;
+            // 
+            // cursorZoomCheckBox
+            // 
+            this.cursorZoomCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorZoomCheckBox.ForeColor = System.Drawing.Color.White;
+            this.cursorZoomCheckBox.Location = new System.Drawing.Point(5, 9);
+            this.cursorZoomCheckBox.Name = "cursorZoomCheckBox";
+            this.cursorZoomCheckBox.Size = new System.Drawing.Size(208, 25);
+            this.cursorZoomCheckBox.TabIndex = 0;
+            this.cursorZoomCheckBox.Text = "Enable X / Y drag zoom";
+            this.cursorZoomCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // styleCursorColorsRow
+            // 
+            this.styleCursorColorsRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleCursorColorsRow.ColumnCount = 2;
+            this.styleCursorColorsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleCursorColorsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleCursorColorsRow.Controls.Add(this.cursorColorComboBoxRow, 0, 0);
+            this.styleCursorColorsRow.Controls.Add(this.cursorAlphaNumericRow, 1, 0);
+            this.styleCursorColorsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleCursorColorsRow.Location = new System.Drawing.Point(3, 280);
+            this.styleCursorColorsRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleCursorColorsRow.Name = "styleCursorColorsRow";
+            this.styleCursorColorsRow.RowCount = 1;
+            this.styleCursorColorsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleCursorColorsRow.Size = new System.Drawing.Size(297, 50);
+            this.styleCursorColorsRow.TabIndex = 6;
+            // 
+            // cursorColorComboBoxRow
+            // 
+            this.cursorColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorColorComboBoxRow.Controls.Add(this.cursorColorComboBoxLabel);
+            this.cursorColorComboBoxRow.Controls.Add(this.cursorColorComboBox);
+            this.cursorColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cursorColorComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.cursorColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.cursorColorComboBoxRow.Name = "cursorColorComboBoxRow";
+            this.cursorColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cursorColorComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.cursorColorComboBoxRow.TabIndex = 0;
+            // 
+            // cursorColorComboBoxLabel
+            // 
+            this.cursorColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.cursorColorComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.cursorColorComboBoxLabel.Name = "cursorColorComboBoxLabel";
+            this.cursorColorComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.cursorColorComboBoxLabel.TabIndex = 0;
+            this.cursorColorComboBoxLabel.Text = "Cursor color";
+            // 
+            // cursorColorComboBox
+            // 
+            this.cursorColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cursorColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cursorColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.cursorColorComboBox.IntegralHeight = false;
+            this.cursorColorComboBox.Location = new System.Drawing.Point(9, 25);
+            this.cursorColorComboBox.Name = "cursorColorComboBox";
+            this.cursorColorComboBox.Size = new System.Drawing.Size(121, 21);
+            this.cursorColorComboBox.TabIndex = 1;
+            // 
+            // cursorAlphaNumericRow
+            // 
+            this.cursorAlphaNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorAlphaNumericRow.Controls.Add(this.cursorAlphaNumericLabel);
+            this.cursorAlphaNumericRow.Controls.Add(this.cursorAlphaNumeric);
+            this.cursorAlphaNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cursorAlphaNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.cursorAlphaNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.cursorAlphaNumericRow.Name = "cursorAlphaNumericRow";
+            this.cursorAlphaNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cursorAlphaNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.cursorAlphaNumericRow.TabIndex = 1;
+            // 
+            // cursorAlphaNumericLabel
+            // 
+            this.cursorAlphaNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorAlphaNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.cursorAlphaNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.cursorAlphaNumericLabel.Name = "cursorAlphaNumericLabel";
+            this.cursorAlphaNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.cursorAlphaNumericLabel.TabIndex = 0;
+            this.cursorAlphaNumericLabel.Text = "Cursor color alpha (0-255)";
+            // 
+            // cursorAlphaNumeric
+            // 
+            this.cursorAlphaNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorAlphaNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cursorAlphaNumeric.ForeColor = System.Drawing.Color.White;
+            this.cursorAlphaNumeric.Location = new System.Drawing.Point(9, 25);
+            this.cursorAlphaNumeric.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.cursorAlphaNumeric.Name = "cursorAlphaNumeric";
+            this.cursorAlphaNumeric.Size = new System.Drawing.Size(122, 20);
+            this.cursorAlphaNumeric.TabIndex = 1;
+            this.cursorAlphaNumeric.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // styleCursorStrokeRow
+            // 
+            this.styleCursorStrokeRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.styleCursorStrokeRow.ColumnCount = 2;
+            this.styleCursorStrokeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleCursorStrokeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.styleCursorStrokeRow.Controls.Add(this.cursorWidthNumericRow, 0, 0);
+            this.styleCursorStrokeRow.Controls.Add(this.cursorDashComboBoxRow, 1, 0);
+            this.styleCursorStrokeRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.styleCursorStrokeRow.Location = new System.Drawing.Point(3, 330);
+            this.styleCursorStrokeRow.Margin = new System.Windows.Forms.Padding(0);
+            this.styleCursorStrokeRow.Name = "styleCursorStrokeRow";
+            this.styleCursorStrokeRow.RowCount = 1;
+            this.styleCursorStrokeRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.styleCursorStrokeRow.Size = new System.Drawing.Size(297, 50);
+            this.styleCursorStrokeRow.TabIndex = 7;
+            // 
+            // cursorWidthNumericRow
+            // 
+            this.cursorWidthNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorWidthNumericRow.Controls.Add(this.cursorWidthNumericLabel);
+            this.cursorWidthNumericRow.Controls.Add(this.cursorWidthNumeric);
+            this.cursorWidthNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cursorWidthNumericRow.Location = new System.Drawing.Point(0, 0);
+            this.cursorWidthNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.cursorWidthNumericRow.Name = "cursorWidthNumericRow";
+            this.cursorWidthNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cursorWidthNumericRow.Size = new System.Drawing.Size(148, 50);
+            this.cursorWidthNumericRow.TabIndex = 0;
+            // 
+            // cursorWidthNumericLabel
+            // 
+            this.cursorWidthNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorWidthNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.cursorWidthNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.cursorWidthNumericLabel.Name = "cursorWidthNumericLabel";
+            this.cursorWidthNumericLabel.Size = new System.Drawing.Size(122, 20);
+            this.cursorWidthNumericLabel.TabIndex = 0;
+            this.cursorWidthNumericLabel.Text = "Cursor width";
+            // 
+            // cursorWidthNumeric
+            // 
+            this.cursorWidthNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorWidthNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cursorWidthNumeric.DecimalPlaces = 2;
+            this.cursorWidthNumeric.ForeColor = System.Drawing.Color.White;
+            this.cursorWidthNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.cursorWidthNumeric.Location = new System.Drawing.Point(9, 25);
+            this.cursorWidthNumeric.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.cursorWidthNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.cursorWidthNumeric.Name = "cursorWidthNumeric";
+            this.cursorWidthNumeric.Size = new System.Drawing.Size(121, 20);
+            this.cursorWidthNumeric.TabIndex = 1;
+            this.cursorWidthNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // cursorDashComboBoxRow
+            // 
+            this.cursorDashComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.cursorDashComboBoxRow.Controls.Add(this.cursorDashComboBoxLabel);
+            this.cursorDashComboBoxRow.Controls.Add(this.cursorDashComboBox);
+            this.cursorDashComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cursorDashComboBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.cursorDashComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.cursorDashComboBoxRow.Name = "cursorDashComboBoxRow";
+            this.cursorDashComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cursorDashComboBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.cursorDashComboBoxRow.TabIndex = 1;
+            // 
+            // cursorDashComboBoxLabel
+            // 
+            this.cursorDashComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorDashComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.cursorDashComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.cursorDashComboBoxLabel.Name = "cursorDashComboBoxLabel";
+            this.cursorDashComboBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.cursorDashComboBoxLabel.TabIndex = 0;
+            this.cursorDashComboBoxLabel.Text = "Cursor dash style";
+            // 
+            // cursorDashComboBox
+            // 
+            this.cursorDashComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cursorDashComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cursorDashComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cursorDashComboBox.ForeColor = System.Drawing.Color.White;
+            this.cursorDashComboBox.IntegralHeight = false;
+            this.cursorDashComboBox.Location = new System.Drawing.Point(9, 25);
+            this.cursorDashComboBox.Name = "cursorDashComboBox";
+            this.cursorDashComboBox.Size = new System.Drawing.Size(122, 21);
+            this.cursorDashComboBox.TabIndex = 1;
+            // 
+            // xAxisGroup
+            // 
+            this.xAxisGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xAxisGroup.Controls.Add(this.xFields);
+            this.xAxisGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xAxisGroup.ForeColor = System.Drawing.Color.White;
+            this.xAxisGroup.Location = new System.Drawing.Point(359, 13);
+            this.xAxisGroup.Margin = new System.Windows.Forms.Padding(5);
+            this.xAxisGroup.Name = "xAxisGroup";
+            this.xAxisGroup.Padding = new System.Windows.Forms.Padding(8);
+            this.xAxisGroup.Size = new System.Drawing.Size(336, 381);
+            this.xAxisGroup.TabIndex = 1;
+            this.xAxisGroup.TabStop = false;
+            this.xAxisGroup.Text = "X axis";
+            // 
+            // xFields
+            // 
+            this.xFields.AutoScroll = true;
+            this.xFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xFields.ColumnCount = 1;
+            this.xFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xFields.Controls.Add(this.xDefaultsButtonRow, 0, 0);
+            this.xFields.Controls.Add(this.xColumnComboBoxRow, 0, 1);
+            this.xFields.Controls.Add(this.xModeRow, 0, 2);
+            this.xFields.Controls.Add(this.xLimitsRow, 0, 3);
+            this.xFields.Controls.Add(this.xTicksRow, 0, 4);
+            this.xFields.Controls.Add(this.xMajorGridRow, 0, 5);
+            this.xFields.Controls.Add(this.xMajorStyleRow, 0, 6);
+            this.xFields.Controls.Add(this.xMinorGridRow, 0, 7);
+            this.xFields.Controls.Add(this.xMinorStrokeRow, 0, 8);
+            this.xFields.Controls.Add(this.xMinorOpacityRow, 0, 9);
+            this.xFields.Controls.Add(this.xFontRow, 0, 10);
+            this.xFields.Controls.Add(this.xFontColorComboBoxRow, 0, 11);
+            this.xFields.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xFields.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.xFields.Location = new System.Drawing.Point(8, 21);
+            this.xFields.Name = "xFields";
+            this.xFields.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.xFields.RowCount = 12;
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.xFields.Size = new System.Drawing.Size(320, 352);
+            this.xFields.TabIndex = 0;
+            // 
+            // xDefaultsButtonRow
+            // 
+            this.xDefaultsButtonRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xDefaultsButtonRow.Controls.Add(this.xDefaultsButton);
+            this.xDefaultsButtonRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xDefaultsButtonRow.Location = new System.Drawing.Point(3, 0);
+            this.xDefaultsButtonRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xDefaultsButtonRow.Name = "xDefaultsButtonRow";
+            this.xDefaultsButtonRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xDefaultsButtonRow.Size = new System.Drawing.Size(297, 40);
+            this.xDefaultsButtonRow.TabIndex = 0;
+            // 
+            // xDefaultsButton
+            // 
+            this.xDefaultsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xDefaultsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.xDefaultsButton.ForeColor = System.Drawing.Color.White;
+            this.xDefaultsButton.Location = new System.Drawing.Point(10, 6);
+            this.xDefaultsButton.Name = "xDefaultsButton";
+            this.xDefaultsButton.Size = new System.Drawing.Size(272, 30);
+            this.xDefaultsButton.TabIndex = 0;
+            this.xDefaultsButton.Text = "Restore X defaults";
+            this.xDefaultsButton.UseVisualStyleBackColor = false;
+            // 
+            // xColumnComboBoxRow
+            // 
+            this.xColumnComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xColumnComboBoxRow.Controls.Add(this.xColumnComboBoxLabel);
+            this.xColumnComboBoxRow.Controls.Add(this.xColumnComboBox);
+            this.xColumnComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xColumnComboBoxRow.Location = new System.Drawing.Point(3, 40);
+            this.xColumnComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xColumnComboBoxRow.Name = "xColumnComboBoxRow";
+            this.xColumnComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xColumnComboBoxRow.Size = new System.Drawing.Size(297, 50);
+            this.xColumnComboBoxRow.TabIndex = 1;
+            // 
+            // xColumnComboBoxLabel
+            // 
+            this.xColumnComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xColumnComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xColumnComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xColumnComboBoxLabel.Name = "xColumnComboBoxLabel";
+            this.xColumnComboBoxLabel.Size = new System.Drawing.Size(271, 20);
+            this.xColumnComboBoxLabel.TabIndex = 0;
+            this.xColumnComboBoxLabel.Text = "X column";
+            // 
+            // xColumnComboBox
+            // 
+            this.xColumnComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xColumnComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xColumnComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xColumnComboBox.ForeColor = System.Drawing.Color.White;
+            this.xColumnComboBox.IntegralHeight = false;
+            this.xColumnComboBox.Location = new System.Drawing.Point(9, 25);
+            this.xColumnComboBox.Name = "xColumnComboBox";
+            this.xColumnComboBox.Size = new System.Drawing.Size(270, 21);
+            this.xColumnComboBox.TabIndex = 1;
+            // 
+            // xModeRow
+            // 
+            this.xModeRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xModeRow.ColumnCount = 2;
+            this.xModeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xModeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xModeRow.Controls.Add(this.xAutoCheckBoxRow, 0, 0);
+            this.xModeRow.Controls.Add(this.xLogCheckBoxRow, 1, 0);
+            this.xModeRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xModeRow.Location = new System.Drawing.Point(3, 90);
+            this.xModeRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xModeRow.Name = "xModeRow";
+            this.xModeRow.RowCount = 1;
+            this.xModeRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xModeRow.Size = new System.Drawing.Size(297, 40);
+            this.xModeRow.TabIndex = 2;
+            // 
+            // xAutoCheckBoxRow
+            // 
+            this.xAutoCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xAutoCheckBoxRow.Controls.Add(this.xAutoCheckBox);
+            this.xAutoCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xAutoCheckBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xAutoCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xAutoCheckBoxRow.Name = "xAutoCheckBoxRow";
+            this.xAutoCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xAutoCheckBoxRow.Size = new System.Drawing.Size(148, 40);
+            this.xAutoCheckBoxRow.TabIndex = 0;
+            // 
+            // xAutoCheckBox
+            // 
+            this.xAutoCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xAutoCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xAutoCheckBox.Checked = true;
+            this.xAutoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.xAutoCheckBox.ForeColor = System.Drawing.Color.White;
+            this.xAutoCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.xAutoCheckBox.Name = "xAutoCheckBox";
+            this.xAutoCheckBox.Size = new System.Drawing.Size(123, 28);
+            this.xAutoCheckBox.TabIndex = 0;
+            this.xAutoCheckBox.Text = "Auto-scale X";
+            this.xAutoCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // xLogCheckBoxRow
+            // 
+            this.xLogCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xLogCheckBoxRow.Controls.Add(this.xLogCheckBox);
+            this.xLogCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xLogCheckBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.xLogCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xLogCheckBoxRow.Name = "xLogCheckBoxRow";
+            this.xLogCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xLogCheckBoxRow.Size = new System.Drawing.Size(149, 40);
+            this.xLogCheckBoxRow.TabIndex = 1;
+            // 
+            // xLogCheckBox
+            // 
+            this.xLogCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xLogCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xLogCheckBox.ForeColor = System.Drawing.Color.White;
+            this.xLogCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.xLogCheckBox.Name = "xLogCheckBox";
+            this.xLogCheckBox.Size = new System.Drawing.Size(124, 28);
+            this.xLogCheckBox.TabIndex = 0;
+            this.xLogCheckBox.Text = "Logarithmic X axis";
+            this.xLogCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // xLimitsRow
+            // 
+            this.xLimitsRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xLimitsRow.ColumnCount = 2;
+            this.xLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xLimitsRow.Controls.Add(this.xMinimumBoxRow, 0, 0);
+            this.xLimitsRow.Controls.Add(this.xMaximumBoxRow, 1, 0);
+            this.xLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xLimitsRow.Location = new System.Drawing.Point(3, 130);
+            this.xLimitsRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xLimitsRow.Name = "xLimitsRow";
+            this.xLimitsRow.RowCount = 1;
+            this.xLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xLimitsRow.Size = new System.Drawing.Size(297, 50);
+            this.xLimitsRow.TabIndex = 3;
+            // 
+            // xMinimumBoxRow
+            // 
+            this.xMinimumBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinimumBoxRow.Controls.Add(this.xMinimumBoxLabel);
+            this.xMinimumBoxRow.Controls.Add(this.xMinimumBox);
+            this.xMinimumBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinimumBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xMinimumBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinimumBoxRow.Name = "xMinimumBoxRow";
+            this.xMinimumBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xMinimumBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.xMinimumBoxRow.TabIndex = 0;
+            // 
+            // xMinimumBoxLabel
+            // 
+            this.xMinimumBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinimumBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xMinimumBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xMinimumBoxLabel.Name = "xMinimumBoxLabel";
+            this.xMinimumBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.xMinimumBoxLabel.TabIndex = 0;
+            this.xMinimumBoxLabel.Text = "X minimum";
+            // 
+            // xMinimumBox
+            // 
+            this.xMinimumBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinimumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xMinimumBox.ForeColor = System.Drawing.Color.White;
+            this.xMinimumBox.Location = new System.Drawing.Point(9, 25);
+            this.xMinimumBox.Name = "xMinimumBox";
+            this.xMinimumBox.Size = new System.Drawing.Size(121, 20);
+            this.xMinimumBox.TabIndex = 1;
+            // 
+            // xMaximumBoxRow
+            // 
+            this.xMaximumBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMaximumBoxRow.Controls.Add(this.xMaximumBoxLabel);
+            this.xMaximumBoxRow.Controls.Add(this.xMaximumBox);
+            this.xMaximumBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMaximumBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.xMaximumBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMaximumBoxRow.Name = "xMaximumBoxRow";
+            this.xMaximumBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xMaximumBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.xMaximumBoxRow.TabIndex = 1;
+            // 
+            // xMaximumBoxLabel
+            // 
+            this.xMaximumBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMaximumBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xMaximumBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xMaximumBoxLabel.Name = "xMaximumBoxLabel";
+            this.xMaximumBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.xMaximumBoxLabel.TabIndex = 0;
+            this.xMaximumBoxLabel.Text = "X maximum";
+            // 
+            // xMaximumBox
+            // 
+            this.xMaximumBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMaximumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xMaximumBox.ForeColor = System.Drawing.Color.White;
+            this.xMaximumBox.Location = new System.Drawing.Point(9, 25);
+            this.xMaximumBox.Name = "xMaximumBox";
+            this.xMaximumBox.Size = new System.Drawing.Size(122, 20);
+            this.xMaximumBox.TabIndex = 1;
+            // 
+            // xTicksRow
+            // 
+            this.xTicksRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xTicksRow.ColumnCount = 2;
+            this.xTicksRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xTicksRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xTicksRow.Controls.Add(this.xGridIntervalBoxRow, 0, 0);
+            this.xTicksRow.Controls.Add(this.xDecimalsNumericRow, 1, 0);
+            this.xTicksRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xTicksRow.Location = new System.Drawing.Point(3, 180);
+            this.xTicksRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xTicksRow.Name = "xTicksRow";
+            this.xTicksRow.RowCount = 1;
+            this.xTicksRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xTicksRow.Size = new System.Drawing.Size(297, 50);
+            this.xTicksRow.TabIndex = 4;
+            // 
+            // xGridIntervalBoxRow
+            // 
+            this.xGridIntervalBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xGridIntervalBoxRow.Controls.Add(this.xGridIntervalBoxLabel);
+            this.xGridIntervalBoxRow.Controls.Add(this.xGridIntervalBox);
+            this.xGridIntervalBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xGridIntervalBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xGridIntervalBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xGridIntervalBoxRow.Name = "xGridIntervalBoxRow";
+            this.xGridIntervalBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xGridIntervalBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.xGridIntervalBoxRow.TabIndex = 0;
+            // 
+            // xGridIntervalBoxLabel
+            // 
+            this.xGridIntervalBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridIntervalBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xGridIntervalBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xGridIntervalBoxLabel.Name = "xGridIntervalBoxLabel";
+            this.xGridIntervalBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.xGridIntervalBoxLabel.TabIndex = 0;
+            this.xGridIntervalBoxLabel.Text = "Major grid interval (0 = auto)";
+            // 
+            // xGridIntervalBox
+            // 
+            this.xGridIntervalBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridIntervalBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xGridIntervalBox.ForeColor = System.Drawing.Color.White;
+            this.xGridIntervalBox.Location = new System.Drawing.Point(9, 25);
+            this.xGridIntervalBox.Name = "xGridIntervalBox";
+            this.xGridIntervalBox.Size = new System.Drawing.Size(121, 20);
+            this.xGridIntervalBox.TabIndex = 1;
+            // 
+            // xDecimalsNumericRow
+            // 
+            this.xDecimalsNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xDecimalsNumericRow.Controls.Add(this.xDecimalsNumericLabel);
+            this.xDecimalsNumericRow.Controls.Add(this.xDecimalsNumeric);
+            this.xDecimalsNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xDecimalsNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.xDecimalsNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xDecimalsNumericRow.Name = "xDecimalsNumericRow";
+            this.xDecimalsNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xDecimalsNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.xDecimalsNumericRow.TabIndex = 1;
+            // 
+            // xDecimalsNumericLabel
+            // 
+            this.xDecimalsNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xDecimalsNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.xDecimalsNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.xDecimalsNumericLabel.Name = "xDecimalsNumericLabel";
+            this.xDecimalsNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.xDecimalsNumericLabel.TabIndex = 0;
+            this.xDecimalsNumericLabel.Text = "Label decimals";
+            // 
+            // xDecimalsNumeric
+            // 
+            this.xDecimalsNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xDecimalsNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xDecimalsNumeric.ForeColor = System.Drawing.Color.White;
+            this.xDecimalsNumeric.Location = new System.Drawing.Point(9, 25);
+            this.xDecimalsNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.xDecimalsNumeric.Name = "xDecimalsNumeric";
+            this.xDecimalsNumeric.Size = new System.Drawing.Size(122, 20);
+            this.xDecimalsNumeric.TabIndex = 1;
+            this.xDecimalsNumeric.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // xMajorGridRow
+            // 
+            this.xMajorGridRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMajorGridRow.ColumnCount = 2;
+            this.xMajorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMajorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMajorGridRow.Controls.Add(this.xGridColorComboBoxRow, 0, 0);
+            this.xMajorGridRow.Controls.Add(this.xGridWidthNumericRow, 1, 0);
+            this.xMajorGridRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMajorGridRow.Location = new System.Drawing.Point(3, 230);
+            this.xMajorGridRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMajorGridRow.Name = "xMajorGridRow";
+            this.xMajorGridRow.RowCount = 1;
+            this.xMajorGridRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xMajorGridRow.Size = new System.Drawing.Size(297, 50);
+            this.xMajorGridRow.TabIndex = 5;
+            // 
+            // xGridColorComboBoxRow
+            // 
+            this.xGridColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xGridColorComboBoxRow.Controls.Add(this.xGridColorComboBoxLabel);
+            this.xGridColorComboBoxRow.Controls.Add(this.xGridColorComboBox);
+            this.xGridColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xGridColorComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xGridColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xGridColorComboBoxRow.Name = "xGridColorComboBoxRow";
+            this.xGridColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xGridColorComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.xGridColorComboBoxRow.TabIndex = 0;
+            // 
+            // xGridColorComboBoxLabel
+            // 
+            this.xGridColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xGridColorComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xGridColorComboBoxLabel.Name = "xGridColorComboBoxLabel";
+            this.xGridColorComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.xGridColorComboBoxLabel.TabIndex = 0;
+            this.xGridColorComboBoxLabel.Text = "Major grid color";
+            // 
+            // xGridColorComboBox
+            // 
+            this.xGridColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xGridColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xGridColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.xGridColorComboBox.IntegralHeight = false;
+            this.xGridColorComboBox.Location = new System.Drawing.Point(9, 25);
+            this.xGridColorComboBox.Name = "xGridColorComboBox";
+            this.xGridColorComboBox.Size = new System.Drawing.Size(121, 21);
+            this.xGridColorComboBox.TabIndex = 1;
+            // 
+            // xGridWidthNumericRow
+            // 
+            this.xGridWidthNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xGridWidthNumericRow.Controls.Add(this.xGridWidthNumericLabel);
+            this.xGridWidthNumericRow.Controls.Add(this.xGridWidthNumeric);
+            this.xGridWidthNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xGridWidthNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.xGridWidthNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xGridWidthNumericRow.Name = "xGridWidthNumericRow";
+            this.xGridWidthNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xGridWidthNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.xGridWidthNumericRow.TabIndex = 1;
+            // 
+            // xGridWidthNumericLabel
+            // 
+            this.xGridWidthNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridWidthNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.xGridWidthNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.xGridWidthNumericLabel.Name = "xGridWidthNumericLabel";
+            this.xGridWidthNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.xGridWidthNumericLabel.TabIndex = 0;
+            this.xGridWidthNumericLabel.Text = "Major grid width";
+            // 
+            // xGridWidthNumeric
+            // 
+            this.xGridWidthNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridWidthNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xGridWidthNumeric.DecimalPlaces = 2;
+            this.xGridWidthNumeric.ForeColor = System.Drawing.Color.White;
+            this.xGridWidthNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xGridWidthNumeric.Location = new System.Drawing.Point(9, 25);
+            this.xGridWidthNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.xGridWidthNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xGridWidthNumeric.Name = "xGridWidthNumeric";
+            this.xGridWidthNumeric.Size = new System.Drawing.Size(122, 20);
+            this.xGridWidthNumeric.TabIndex = 1;
+            this.xGridWidthNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // xMajorStyleRow
+            // 
+            this.xMajorStyleRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMajorStyleRow.ColumnCount = 2;
+            this.xMajorStyleRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMajorStyleRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMajorStyleRow.Controls.Add(this.xGridDashComboBoxRow, 0, 0);
+            this.xMajorStyleRow.Controls.Add(this.xGridAlphaNumericRow, 1, 0);
+            this.xMajorStyleRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMajorStyleRow.Location = new System.Drawing.Point(3, 280);
+            this.xMajorStyleRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMajorStyleRow.Name = "xMajorStyleRow";
+            this.xMajorStyleRow.RowCount = 1;
+            this.xMajorStyleRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xMajorStyleRow.Size = new System.Drawing.Size(297, 50);
+            this.xMajorStyleRow.TabIndex = 6;
+            // 
+            // xGridDashComboBoxRow
+            // 
+            this.xGridDashComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xGridDashComboBoxRow.Controls.Add(this.xGridDashComboBoxLabel);
+            this.xGridDashComboBoxRow.Controls.Add(this.xGridDashComboBox);
+            this.xGridDashComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xGridDashComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xGridDashComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xGridDashComboBoxRow.Name = "xGridDashComboBoxRow";
+            this.xGridDashComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xGridDashComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.xGridDashComboBoxRow.TabIndex = 0;
+            // 
+            // xGridDashComboBoxLabel
+            // 
+            this.xGridDashComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridDashComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xGridDashComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xGridDashComboBoxLabel.Name = "xGridDashComboBoxLabel";
+            this.xGridDashComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.xGridDashComboBoxLabel.TabIndex = 0;
+            this.xGridDashComboBoxLabel.Text = "Major grid / tick dash style";
+            // 
+            // xGridDashComboBox
+            // 
+            this.xGridDashComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridDashComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xGridDashComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xGridDashComboBox.ForeColor = System.Drawing.Color.White;
+            this.xGridDashComboBox.IntegralHeight = false;
+            this.xGridDashComboBox.Location = new System.Drawing.Point(9, 25);
+            this.xGridDashComboBox.Name = "xGridDashComboBox";
+            this.xGridDashComboBox.Size = new System.Drawing.Size(121, 21);
+            this.xGridDashComboBox.TabIndex = 1;
+            // 
+            // xGridAlphaNumericRow
+            // 
+            this.xGridAlphaNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xGridAlphaNumericRow.Controls.Add(this.xGridAlphaNumericLabel);
+            this.xGridAlphaNumericRow.Controls.Add(this.xGridAlphaNumeric);
+            this.xGridAlphaNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xGridAlphaNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.xGridAlphaNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xGridAlphaNumericRow.Name = "xGridAlphaNumericRow";
+            this.xGridAlphaNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xGridAlphaNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.xGridAlphaNumericRow.TabIndex = 1;
+            // 
+            // xGridAlphaNumericLabel
+            // 
+            this.xGridAlphaNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridAlphaNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.xGridAlphaNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.xGridAlphaNumericLabel.Name = "xGridAlphaNumericLabel";
+            this.xGridAlphaNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.xGridAlphaNumericLabel.TabIndex = 0;
+            this.xGridAlphaNumericLabel.Text = "Major grid / tick alpha (0-255)";
+            // 
+            // xGridAlphaNumeric
+            // 
+            this.xGridAlphaNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xGridAlphaNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xGridAlphaNumeric.ForeColor = System.Drawing.Color.White;
+            this.xGridAlphaNumeric.Location = new System.Drawing.Point(9, 25);
+            this.xGridAlphaNumeric.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.xGridAlphaNumeric.Name = "xGridAlphaNumeric";
+            this.xGridAlphaNumeric.Size = new System.Drawing.Size(122, 20);
+            this.xGridAlphaNumeric.TabIndex = 1;
+            this.xGridAlphaNumeric.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // xMinorGridRow
+            // 
+            this.xMinorGridRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorGridRow.ColumnCount = 2;
+            this.xMinorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMinorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMinorGridRow.Controls.Add(this.xMinorCheckBoxRow, 0, 0);
+            this.xMinorGridRow.Controls.Add(this.xMinorColorComboBoxRow, 1, 0);
+            this.xMinorGridRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorGridRow.Location = new System.Drawing.Point(3, 330);
+            this.xMinorGridRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorGridRow.Name = "xMinorGridRow";
+            this.xMinorGridRow.RowCount = 1;
+            this.xMinorGridRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xMinorGridRow.Size = new System.Drawing.Size(297, 50);
+            this.xMinorGridRow.TabIndex = 7;
+            // 
+            // xMinorCheckBoxRow
+            // 
+            this.xMinorCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorCheckBoxRow.Controls.Add(this.xMinorCheckBox);
+            this.xMinorCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorCheckBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xMinorCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorCheckBoxRow.Name = "xMinorCheckBoxRow";
+            this.xMinorCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xMinorCheckBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.xMinorCheckBoxRow.TabIndex = 0;
+            // 
+            // xMinorCheckBox
+            // 
+            this.xMinorCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorCheckBox.ForeColor = System.Drawing.Color.White;
+            this.xMinorCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.xMinorCheckBox.Name = "xMinorCheckBox";
+            this.xMinorCheckBox.Size = new System.Drawing.Size(123, 28);
+            this.xMinorCheckBox.TabIndex = 0;
+            this.xMinorCheckBox.Text = "Minor grid";
+            this.xMinorCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // xMinorColorComboBoxRow
+            // 
+            this.xMinorColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorColorComboBoxRow.Controls.Add(this.xMinorColorComboBoxLabel);
+            this.xMinorColorComboBoxRow.Controls.Add(this.xMinorColorComboBox);
+            this.xMinorColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorColorComboBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.xMinorColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorColorComboBoxRow.Name = "xMinorColorComboBoxRow";
+            this.xMinorColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xMinorColorComboBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.xMinorColorComboBoxRow.TabIndex = 1;
+            // 
+            // xMinorColorComboBoxLabel
+            // 
+            this.xMinorColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xMinorColorComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xMinorColorComboBoxLabel.Name = "xMinorColorComboBoxLabel";
+            this.xMinorColorComboBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.xMinorColorComboBoxLabel.TabIndex = 0;
+            this.xMinorColorComboBoxLabel.Text = "Minor grid color";
+            // 
+            // xMinorColorComboBox
+            // 
+            this.xMinorColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xMinorColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xMinorColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.xMinorColorComboBox.IntegralHeight = false;
+            this.xMinorColorComboBox.Location = new System.Drawing.Point(9, 25);
+            this.xMinorColorComboBox.Name = "xMinorColorComboBox";
+            this.xMinorColorComboBox.Size = new System.Drawing.Size(122, 21);
+            this.xMinorColorComboBox.TabIndex = 1;
+            // 
+            // xMinorStrokeRow
+            // 
+            this.xMinorStrokeRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorStrokeRow.ColumnCount = 2;
+            this.xMinorStrokeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMinorStrokeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMinorStrokeRow.Controls.Add(this.xMinorWidthNumericRow, 0, 0);
+            this.xMinorStrokeRow.Controls.Add(this.xMinorDashComboBoxRow, 1, 0);
+            this.xMinorStrokeRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorStrokeRow.Location = new System.Drawing.Point(3, 380);
+            this.xMinorStrokeRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorStrokeRow.Name = "xMinorStrokeRow";
+            this.xMinorStrokeRow.RowCount = 1;
+            this.xMinorStrokeRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xMinorStrokeRow.Size = new System.Drawing.Size(297, 50);
+            this.xMinorStrokeRow.TabIndex = 8;
+            // 
+            // xMinorWidthNumericRow
+            // 
+            this.xMinorWidthNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorWidthNumericRow.Controls.Add(this.xMinorWidthNumericLabel);
+            this.xMinorWidthNumericRow.Controls.Add(this.xMinorWidthNumeric);
+            this.xMinorWidthNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorWidthNumericRow.Location = new System.Drawing.Point(0, 0);
+            this.xMinorWidthNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorWidthNumericRow.Name = "xMinorWidthNumericRow";
+            this.xMinorWidthNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xMinorWidthNumericRow.Size = new System.Drawing.Size(148, 50);
+            this.xMinorWidthNumericRow.TabIndex = 0;
+            // 
+            // xMinorWidthNumericLabel
+            // 
+            this.xMinorWidthNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorWidthNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.xMinorWidthNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.xMinorWidthNumericLabel.Name = "xMinorWidthNumericLabel";
+            this.xMinorWidthNumericLabel.Size = new System.Drawing.Size(122, 20);
+            this.xMinorWidthNumericLabel.TabIndex = 0;
+            this.xMinorWidthNumericLabel.Text = "Minor grid width";
+            // 
+            // xMinorWidthNumeric
+            // 
+            this.xMinorWidthNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorWidthNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xMinorWidthNumeric.DecimalPlaces = 2;
+            this.xMinorWidthNumeric.ForeColor = System.Drawing.Color.White;
+            this.xMinorWidthNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xMinorWidthNumeric.Location = new System.Drawing.Point(9, 25);
+            this.xMinorWidthNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.xMinorWidthNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xMinorWidthNumeric.Name = "xMinorWidthNumeric";
+            this.xMinorWidthNumeric.Size = new System.Drawing.Size(121, 20);
+            this.xMinorWidthNumeric.TabIndex = 1;
+            this.xMinorWidthNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // xMinorDashComboBoxRow
+            // 
+            this.xMinorDashComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorDashComboBoxRow.Controls.Add(this.xMinorDashComboBoxLabel);
+            this.xMinorDashComboBoxRow.Controls.Add(this.xMinorDashComboBox);
+            this.xMinorDashComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorDashComboBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.xMinorDashComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorDashComboBoxRow.Name = "xMinorDashComboBoxRow";
+            this.xMinorDashComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xMinorDashComboBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.xMinorDashComboBoxRow.TabIndex = 1;
+            // 
+            // xMinorDashComboBoxLabel
+            // 
+            this.xMinorDashComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorDashComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xMinorDashComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xMinorDashComboBoxLabel.Name = "xMinorDashComboBoxLabel";
+            this.xMinorDashComboBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.xMinorDashComboBoxLabel.TabIndex = 0;
+            this.xMinorDashComboBoxLabel.Text = "Minor grid / tick dash style";
+            // 
+            // xMinorDashComboBox
+            // 
+            this.xMinorDashComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorDashComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xMinorDashComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xMinorDashComboBox.ForeColor = System.Drawing.Color.White;
+            this.xMinorDashComboBox.IntegralHeight = false;
+            this.xMinorDashComboBox.Location = new System.Drawing.Point(9, 25);
+            this.xMinorDashComboBox.Name = "xMinorDashComboBox";
+            this.xMinorDashComboBox.Size = new System.Drawing.Size(122, 21);
+            this.xMinorDashComboBox.TabIndex = 1;
+            // 
+            // xMinorOpacityRow
+            // 
+            this.xMinorOpacityRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorOpacityRow.ColumnCount = 2;
+            this.xMinorOpacityRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMinorOpacityRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xMinorOpacityRow.Controls.Add(this.xMinorAlphaNumericRow, 0, 0);
+            this.xMinorOpacityRow.Controls.Add(this.xLogBaseBoxRow, 1, 0);
+            this.xMinorOpacityRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorOpacityRow.Location = new System.Drawing.Point(3, 430);
+            this.xMinorOpacityRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorOpacityRow.Name = "xMinorOpacityRow";
+            this.xMinorOpacityRow.RowCount = 1;
+            this.xMinorOpacityRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xMinorOpacityRow.Size = new System.Drawing.Size(297, 50);
+            this.xMinorOpacityRow.TabIndex = 9;
+            // 
+            // xMinorAlphaNumericRow
+            // 
+            this.xMinorAlphaNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xMinorAlphaNumericRow.Controls.Add(this.xMinorAlphaNumericLabel);
+            this.xMinorAlphaNumericRow.Controls.Add(this.xMinorAlphaNumeric);
+            this.xMinorAlphaNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xMinorAlphaNumericRow.Location = new System.Drawing.Point(0, 0);
+            this.xMinorAlphaNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xMinorAlphaNumericRow.Name = "xMinorAlphaNumericRow";
+            this.xMinorAlphaNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xMinorAlphaNumericRow.Size = new System.Drawing.Size(148, 50);
+            this.xMinorAlphaNumericRow.TabIndex = 0;
+            // 
+            // xMinorAlphaNumericLabel
+            // 
+            this.xMinorAlphaNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorAlphaNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.xMinorAlphaNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.xMinorAlphaNumericLabel.Name = "xMinorAlphaNumericLabel";
+            this.xMinorAlphaNumericLabel.Size = new System.Drawing.Size(122, 20);
+            this.xMinorAlphaNumericLabel.TabIndex = 0;
+            this.xMinorAlphaNumericLabel.Text = "Minor grid / tick alpha (0-255)";
+            // 
+            // xMinorAlphaNumeric
+            // 
+            this.xMinorAlphaNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xMinorAlphaNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xMinorAlphaNumeric.ForeColor = System.Drawing.Color.White;
+            this.xMinorAlphaNumeric.Location = new System.Drawing.Point(9, 25);
+            this.xMinorAlphaNumeric.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.xMinorAlphaNumeric.Name = "xMinorAlphaNumeric";
+            this.xMinorAlphaNumeric.Size = new System.Drawing.Size(121, 20);
+            this.xMinorAlphaNumeric.TabIndex = 1;
+            this.xMinorAlphaNumeric.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // xLogBaseBoxRow
+            // 
+            this.xLogBaseBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xLogBaseBoxRow.Controls.Add(this.xLogBaseBoxLabel);
+            this.xLogBaseBoxRow.Controls.Add(this.xLogBaseBox);
+            this.xLogBaseBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xLogBaseBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.xLogBaseBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xLogBaseBoxRow.Name = "xLogBaseBoxRow";
+            this.xLogBaseBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xLogBaseBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.xLogBaseBoxRow.TabIndex = 1;
+            // 
+            // xLogBaseBoxLabel
+            // 
+            this.xLogBaseBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xLogBaseBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xLogBaseBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xLogBaseBoxLabel.Name = "xLogBaseBoxLabel";
+            this.xLogBaseBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.xLogBaseBoxLabel.TabIndex = 0;
+            this.xLogBaseBoxLabel.Text = "Logarithmic base";
+            // 
+            // xLogBaseBox
+            // 
+            this.xLogBaseBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xLogBaseBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xLogBaseBox.ForeColor = System.Drawing.Color.White;
+            this.xLogBaseBox.Location = new System.Drawing.Point(9, 25);
+            this.xLogBaseBox.Name = "xLogBaseBox";
+            this.xLogBaseBox.Size = new System.Drawing.Size(122, 20);
+            this.xLogBaseBox.TabIndex = 1;
+            // 
+            // xFontRow
+            // 
+            this.xFontRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xFontRow.ColumnCount = 2;
+            this.xFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xFontRow.Controls.Add(this.xFontComboBoxRow, 0, 0);
+            this.xFontRow.Controls.Add(this.xFontSizeNumericRow, 1, 0);
+            this.xFontRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xFontRow.Location = new System.Drawing.Point(3, 480);
+            this.xFontRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xFontRow.Name = "xFontRow";
+            this.xFontRow.RowCount = 1;
+            this.xFontRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xFontRow.Size = new System.Drawing.Size(297, 50);
+            this.xFontRow.TabIndex = 10;
+            // 
+            // xFontComboBoxRow
+            // 
+            this.xFontComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xFontComboBoxRow.Controls.Add(this.xFontComboBoxLabel);
+            this.xFontComboBoxRow.Controls.Add(this.xFontComboBox);
+            this.xFontComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xFontComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xFontComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xFontComboBoxRow.Name = "xFontComboBoxRow";
+            this.xFontComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xFontComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.xFontComboBoxRow.TabIndex = 0;
+            // 
+            // xFontComboBoxLabel
+            // 
+            this.xFontComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xFontComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xFontComboBoxLabel.Name = "xFontComboBoxLabel";
+            this.xFontComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.xFontComboBoxLabel.TabIndex = 0;
+            this.xFontComboBoxLabel.Text = "Axis font family";
+            // 
+            // xFontComboBox
+            // 
+            this.xFontComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xFontComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xFontComboBox.ForeColor = System.Drawing.Color.White;
+            this.xFontComboBox.IntegralHeight = false;
+            this.xFontComboBox.Location = new System.Drawing.Point(9, 25);
+            this.xFontComboBox.Name = "xFontComboBox";
+            this.xFontComboBox.Size = new System.Drawing.Size(121, 21);
+            this.xFontComboBox.TabIndex = 1;
+            // 
+            // xFontSizeNumericRow
+            // 
+            this.xFontSizeNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xFontSizeNumericRow.Controls.Add(this.xFontSizeNumericLabel);
+            this.xFontSizeNumericRow.Controls.Add(this.xFontSizeNumeric);
+            this.xFontSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xFontSizeNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.xFontSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xFontSizeNumericRow.Name = "xFontSizeNumericRow";
+            this.xFontSizeNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xFontSizeNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.xFontSizeNumericRow.TabIndex = 1;
+            // 
+            // xFontSizeNumericLabel
+            // 
+            this.xFontSizeNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontSizeNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.xFontSizeNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.xFontSizeNumericLabel.Name = "xFontSizeNumericLabel";
+            this.xFontSizeNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.xFontSizeNumericLabel.TabIndex = 0;
+            this.xFontSizeNumericLabel.Text = "Axis font size";
+            // 
+            // xFontSizeNumeric
+            // 
+            this.xFontSizeNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xFontSizeNumeric.DecimalPlaces = 2;
+            this.xFontSizeNumeric.ForeColor = System.Drawing.Color.White;
+            this.xFontSizeNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xFontSizeNumeric.Location = new System.Drawing.Point(9, 25);
+            this.xFontSizeNumeric.Maximum = new decimal(new int[] {
+            36,
+            0,
+            0,
+            0});
+            this.xFontSizeNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xFontSizeNumeric.Name = "xFontSizeNumeric";
+            this.xFontSizeNumeric.Size = new System.Drawing.Size(122, 20);
+            this.xFontSizeNumeric.TabIndex = 1;
+            this.xFontSizeNumeric.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            // 
+            // xFontColorComboBoxRow
+            // 
+            this.xFontColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xFontColorComboBoxRow.Controls.Add(this.xFontColorComboBoxLabel);
+            this.xFontColorComboBoxRow.Controls.Add(this.xFontColorComboBox);
+            this.xFontColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xFontColorComboBoxRow.Location = new System.Drawing.Point(3, 530);
+            this.xFontColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xFontColorComboBoxRow.Name = "xFontColorComboBoxRow";
+            this.xFontColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.xFontColorComboBoxRow.Size = new System.Drawing.Size(297, 50);
+            this.xFontColorComboBoxRow.TabIndex = 11;
+            // 
+            // xFontColorComboBoxLabel
+            // 
+            this.xFontColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xFontColorComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.xFontColorComboBoxLabel.Name = "xFontColorComboBoxLabel";
+            this.xFontColorComboBoxLabel.Size = new System.Drawing.Size(271, 20);
+            this.xFontColorComboBoxLabel.TabIndex = 0;
+            this.xFontColorComboBoxLabel.Text = "Axis font color";
+            // 
+            // xFontColorComboBox
+            // 
+            this.xFontColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xFontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xFontColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.xFontColorComboBox.IntegralHeight = false;
+            this.xFontColorComboBox.Location = new System.Drawing.Point(9, 25);
+            this.xFontColorComboBox.Name = "xFontColorComboBox";
+            this.xFontColorComboBox.Size = new System.Drawing.Size(270, 21);
+            this.xFontColorComboBox.TabIndex = 1;
+            // 
+            // yAxisGroup
+            // 
+            this.yAxisGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yAxisGroup.Controls.Add(this.yFields);
+            this.yAxisGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yAxisGroup.ForeColor = System.Drawing.Color.White;
+            this.yAxisGroup.Location = new System.Drawing.Point(705, 13);
+            this.yAxisGroup.Margin = new System.Windows.Forms.Padding(5);
+            this.yAxisGroup.Name = "yAxisGroup";
+            this.yAxisGroup.Padding = new System.Windows.Forms.Padding(8);
+            this.yAxisGroup.Size = new System.Drawing.Size(336, 381);
+            this.yAxisGroup.TabIndex = 2;
+            this.yAxisGroup.TabStop = false;
+            this.yAxisGroup.Text = "Y axis";
+            // 
+            // yFields
+            // 
+            this.yFields.AutoScroll = true;
+            this.yFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yFields.ColumnCount = 1;
+            this.yFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yFields.Controls.Add(this.yDefaultsButtonRow, 0, 0);
+            this.yFields.Controls.Add(this.yColumnComboBoxRow, 0, 1);
+            this.yFields.Controls.Add(this.yModeRow, 0, 2);
+            this.yFields.Controls.Add(this.yLimitsRow, 0, 3);
+            this.yFields.Controls.Add(this.yTicksRow, 0, 4);
+            this.yFields.Controls.Add(this.yMajorGridRow, 0, 5);
+            this.yFields.Controls.Add(this.yMajorStyleRow, 0, 6);
+            this.yFields.Controls.Add(this.yMinorGridRow, 0, 7);
+            this.yFields.Controls.Add(this.yMinorStrokeRow, 0, 8);
+            this.yFields.Controls.Add(this.yMinorOpacityRow, 0, 9);
+            this.yFields.Controls.Add(this.yFontRow, 0, 10);
+            this.yFields.Controls.Add(this.yFontColorComboBoxRow, 0, 11);
+            this.yFields.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yFields.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.yFields.Location = new System.Drawing.Point(8, 21);
+            this.yFields.Name = "yFields";
+            this.yFields.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.yFields.RowCount = 12;
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.yFields.Size = new System.Drawing.Size(320, 352);
+            this.yFields.TabIndex = 0;
+            // 
+            // yDefaultsButtonRow
+            // 
+            this.yDefaultsButtonRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yDefaultsButtonRow.Controls.Add(this.yDefaultsButton);
+            this.yDefaultsButtonRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yDefaultsButtonRow.Location = new System.Drawing.Point(3, 0);
+            this.yDefaultsButtonRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yDefaultsButtonRow.Name = "yDefaultsButtonRow";
+            this.yDefaultsButtonRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yDefaultsButtonRow.Size = new System.Drawing.Size(297, 40);
+            this.yDefaultsButtonRow.TabIndex = 0;
+            // 
+            // yDefaultsButton
+            // 
+            this.yDefaultsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yDefaultsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.yDefaultsButton.ForeColor = System.Drawing.Color.White;
+            this.yDefaultsButton.Location = new System.Drawing.Point(10, 6);
+            this.yDefaultsButton.Name = "yDefaultsButton";
+            this.yDefaultsButton.Size = new System.Drawing.Size(272, 30);
+            this.yDefaultsButton.TabIndex = 0;
+            this.yDefaultsButton.Text = "Restore Y defaults";
+            this.yDefaultsButton.UseVisualStyleBackColor = false;
+            // 
+            // yColumnComboBoxRow
+            // 
+            this.yColumnComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yColumnComboBoxRow.Controls.Add(this.yColumnComboBoxLabel);
+            this.yColumnComboBoxRow.Controls.Add(this.yColumnComboBox);
+            this.yColumnComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yColumnComboBoxRow.Location = new System.Drawing.Point(3, 40);
+            this.yColumnComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yColumnComboBoxRow.Name = "yColumnComboBoxRow";
+            this.yColumnComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yColumnComboBoxRow.Size = new System.Drawing.Size(297, 50);
+            this.yColumnComboBoxRow.TabIndex = 1;
+            // 
+            // yColumnComboBoxLabel
+            // 
+            this.yColumnComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yColumnComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yColumnComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yColumnComboBoxLabel.Name = "yColumnComboBoxLabel";
+            this.yColumnComboBoxLabel.Size = new System.Drawing.Size(271, 20);
+            this.yColumnComboBoxLabel.TabIndex = 0;
+            this.yColumnComboBoxLabel.Text = "Y column";
+            // 
+            // yColumnComboBox
+            // 
+            this.yColumnComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yColumnComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yColumnComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yColumnComboBox.ForeColor = System.Drawing.Color.White;
+            this.yColumnComboBox.IntegralHeight = false;
+            this.yColumnComboBox.Location = new System.Drawing.Point(9, 25);
+            this.yColumnComboBox.Name = "yColumnComboBox";
+            this.yColumnComboBox.Size = new System.Drawing.Size(270, 21);
+            this.yColumnComboBox.TabIndex = 1;
+            // 
+            // yModeRow
+            // 
+            this.yModeRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yModeRow.ColumnCount = 2;
+            this.yModeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yModeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yModeRow.Controls.Add(this.yAutoCheckBoxRow, 0, 0);
+            this.yModeRow.Controls.Add(this.yLogCheckBoxRow, 1, 0);
+            this.yModeRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yModeRow.Location = new System.Drawing.Point(3, 90);
+            this.yModeRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yModeRow.Name = "yModeRow";
+            this.yModeRow.RowCount = 1;
+            this.yModeRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yModeRow.Size = new System.Drawing.Size(297, 40);
+            this.yModeRow.TabIndex = 2;
+            // 
+            // yAutoCheckBoxRow
+            // 
+            this.yAutoCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yAutoCheckBoxRow.Controls.Add(this.yAutoCheckBox);
+            this.yAutoCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yAutoCheckBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yAutoCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yAutoCheckBoxRow.Name = "yAutoCheckBoxRow";
+            this.yAutoCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yAutoCheckBoxRow.Size = new System.Drawing.Size(148, 40);
+            this.yAutoCheckBoxRow.TabIndex = 0;
+            // 
+            // yAutoCheckBox
+            // 
+            this.yAutoCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yAutoCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yAutoCheckBox.Checked = true;
+            this.yAutoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.yAutoCheckBox.ForeColor = System.Drawing.Color.White;
+            this.yAutoCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.yAutoCheckBox.Name = "yAutoCheckBox";
+            this.yAutoCheckBox.Size = new System.Drawing.Size(123, 28);
+            this.yAutoCheckBox.TabIndex = 0;
+            this.yAutoCheckBox.Text = "Auto-scale Y";
+            this.yAutoCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // yLogCheckBoxRow
+            // 
+            this.yLogCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yLogCheckBoxRow.Controls.Add(this.yLogCheckBox);
+            this.yLogCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yLogCheckBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.yLogCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yLogCheckBoxRow.Name = "yLogCheckBoxRow";
+            this.yLogCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yLogCheckBoxRow.Size = new System.Drawing.Size(149, 40);
+            this.yLogCheckBoxRow.TabIndex = 1;
+            // 
+            // yLogCheckBox
+            // 
+            this.yLogCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yLogCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yLogCheckBox.ForeColor = System.Drawing.Color.White;
+            this.yLogCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.yLogCheckBox.Name = "yLogCheckBox";
+            this.yLogCheckBox.Size = new System.Drawing.Size(124, 28);
+            this.yLogCheckBox.TabIndex = 0;
+            this.yLogCheckBox.Text = "Logarithmic Y axis";
+            this.yLogCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // yLimitsRow
+            // 
+            this.yLimitsRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yLimitsRow.ColumnCount = 2;
+            this.yLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yLimitsRow.Controls.Add(this.yMinimumBoxRow, 0, 0);
+            this.yLimitsRow.Controls.Add(this.yMaximumBoxRow, 1, 0);
+            this.yLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yLimitsRow.Location = new System.Drawing.Point(3, 130);
+            this.yLimitsRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yLimitsRow.Name = "yLimitsRow";
+            this.yLimitsRow.RowCount = 1;
+            this.yLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yLimitsRow.Size = new System.Drawing.Size(297, 50);
+            this.yLimitsRow.TabIndex = 3;
+            // 
+            // yMinimumBoxRow
+            // 
+            this.yMinimumBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinimumBoxRow.Controls.Add(this.yMinimumBoxLabel);
+            this.yMinimumBoxRow.Controls.Add(this.yMinimumBox);
+            this.yMinimumBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinimumBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yMinimumBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinimumBoxRow.Name = "yMinimumBoxRow";
+            this.yMinimumBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yMinimumBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.yMinimumBoxRow.TabIndex = 0;
+            // 
+            // yMinimumBoxLabel
+            // 
+            this.yMinimumBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinimumBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yMinimumBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yMinimumBoxLabel.Name = "yMinimumBoxLabel";
+            this.yMinimumBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.yMinimumBoxLabel.TabIndex = 0;
+            this.yMinimumBoxLabel.Text = "Y minimum";
+            // 
+            // yMinimumBox
+            // 
+            this.yMinimumBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinimumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yMinimumBox.ForeColor = System.Drawing.Color.White;
+            this.yMinimumBox.Location = new System.Drawing.Point(9, 25);
+            this.yMinimumBox.Name = "yMinimumBox";
+            this.yMinimumBox.Size = new System.Drawing.Size(121, 20);
+            this.yMinimumBox.TabIndex = 1;
+            // 
+            // yMaximumBoxRow
+            // 
+            this.yMaximumBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMaximumBoxRow.Controls.Add(this.yMaximumBoxLabel);
+            this.yMaximumBoxRow.Controls.Add(this.yMaximumBox);
+            this.yMaximumBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMaximumBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.yMaximumBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMaximumBoxRow.Name = "yMaximumBoxRow";
+            this.yMaximumBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yMaximumBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.yMaximumBoxRow.TabIndex = 1;
+            // 
+            // yMaximumBoxLabel
+            // 
+            this.yMaximumBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMaximumBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yMaximumBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yMaximumBoxLabel.Name = "yMaximumBoxLabel";
+            this.yMaximumBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.yMaximumBoxLabel.TabIndex = 0;
+            this.yMaximumBoxLabel.Text = "Y maximum";
+            // 
+            // yMaximumBox
+            // 
+            this.yMaximumBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMaximumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yMaximumBox.ForeColor = System.Drawing.Color.White;
+            this.yMaximumBox.Location = new System.Drawing.Point(9, 25);
+            this.yMaximumBox.Name = "yMaximumBox";
+            this.yMaximumBox.Size = new System.Drawing.Size(122, 20);
+            this.yMaximumBox.TabIndex = 1;
+            // 
+            // yTicksRow
+            // 
+            this.yTicksRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yTicksRow.ColumnCount = 2;
+            this.yTicksRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yTicksRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yTicksRow.Controls.Add(this.yGridIntervalBoxRow, 0, 0);
+            this.yTicksRow.Controls.Add(this.yDecimalsNumericRow, 1, 0);
+            this.yTicksRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yTicksRow.Location = new System.Drawing.Point(3, 180);
+            this.yTicksRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yTicksRow.Name = "yTicksRow";
+            this.yTicksRow.RowCount = 1;
+            this.yTicksRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yTicksRow.Size = new System.Drawing.Size(297, 50);
+            this.yTicksRow.TabIndex = 4;
+            // 
+            // yGridIntervalBoxRow
+            // 
+            this.yGridIntervalBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yGridIntervalBoxRow.Controls.Add(this.yGridIntervalBoxLabel);
+            this.yGridIntervalBoxRow.Controls.Add(this.yGridIntervalBox);
+            this.yGridIntervalBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yGridIntervalBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yGridIntervalBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yGridIntervalBoxRow.Name = "yGridIntervalBoxRow";
+            this.yGridIntervalBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yGridIntervalBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.yGridIntervalBoxRow.TabIndex = 0;
+            // 
+            // yGridIntervalBoxLabel
+            // 
+            this.yGridIntervalBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridIntervalBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yGridIntervalBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yGridIntervalBoxLabel.Name = "yGridIntervalBoxLabel";
+            this.yGridIntervalBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.yGridIntervalBoxLabel.TabIndex = 0;
+            this.yGridIntervalBoxLabel.Text = "Major grid interval (0 = auto)";
+            // 
+            // yGridIntervalBox
+            // 
+            this.yGridIntervalBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridIntervalBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yGridIntervalBox.ForeColor = System.Drawing.Color.White;
+            this.yGridIntervalBox.Location = new System.Drawing.Point(9, 25);
+            this.yGridIntervalBox.Name = "yGridIntervalBox";
+            this.yGridIntervalBox.Size = new System.Drawing.Size(121, 20);
+            this.yGridIntervalBox.TabIndex = 1;
+            // 
+            // yDecimalsNumericRow
+            // 
+            this.yDecimalsNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yDecimalsNumericRow.Controls.Add(this.yDecimalsNumericLabel);
+            this.yDecimalsNumericRow.Controls.Add(this.yDecimalsNumeric);
+            this.yDecimalsNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yDecimalsNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.yDecimalsNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yDecimalsNumericRow.Name = "yDecimalsNumericRow";
+            this.yDecimalsNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yDecimalsNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.yDecimalsNumericRow.TabIndex = 1;
+            // 
+            // yDecimalsNumericLabel
+            // 
+            this.yDecimalsNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yDecimalsNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.yDecimalsNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.yDecimalsNumericLabel.Name = "yDecimalsNumericLabel";
+            this.yDecimalsNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.yDecimalsNumericLabel.TabIndex = 0;
+            this.yDecimalsNumericLabel.Text = "Label decimals";
+            // 
+            // yDecimalsNumeric
+            // 
+            this.yDecimalsNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yDecimalsNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yDecimalsNumeric.ForeColor = System.Drawing.Color.White;
+            this.yDecimalsNumeric.Location = new System.Drawing.Point(9, 25);
+            this.yDecimalsNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.yDecimalsNumeric.Name = "yDecimalsNumeric";
+            this.yDecimalsNumeric.Size = new System.Drawing.Size(122, 20);
+            this.yDecimalsNumeric.TabIndex = 1;
+            this.yDecimalsNumeric.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // yMajorGridRow
+            // 
+            this.yMajorGridRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMajorGridRow.ColumnCount = 2;
+            this.yMajorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMajorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMajorGridRow.Controls.Add(this.yGridColorComboBoxRow, 0, 0);
+            this.yMajorGridRow.Controls.Add(this.yGridWidthNumericRow, 1, 0);
+            this.yMajorGridRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMajorGridRow.Location = new System.Drawing.Point(3, 230);
+            this.yMajorGridRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMajorGridRow.Name = "yMajorGridRow";
+            this.yMajorGridRow.RowCount = 1;
+            this.yMajorGridRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yMajorGridRow.Size = new System.Drawing.Size(297, 50);
+            this.yMajorGridRow.TabIndex = 5;
+            // 
+            // yGridColorComboBoxRow
+            // 
+            this.yGridColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yGridColorComboBoxRow.Controls.Add(this.yGridColorComboBoxLabel);
+            this.yGridColorComboBoxRow.Controls.Add(this.yGridColorComboBox);
+            this.yGridColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yGridColorComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yGridColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yGridColorComboBoxRow.Name = "yGridColorComboBoxRow";
+            this.yGridColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yGridColorComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.yGridColorComboBoxRow.TabIndex = 0;
+            // 
+            // yGridColorComboBoxLabel
+            // 
+            this.yGridColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yGridColorComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yGridColorComboBoxLabel.Name = "yGridColorComboBoxLabel";
+            this.yGridColorComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.yGridColorComboBoxLabel.TabIndex = 0;
+            this.yGridColorComboBoxLabel.Text = "Major grid color";
+            // 
+            // yGridColorComboBox
+            // 
+            this.yGridColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yGridColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yGridColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.yGridColorComboBox.IntegralHeight = false;
+            this.yGridColorComboBox.Location = new System.Drawing.Point(9, 25);
+            this.yGridColorComboBox.Name = "yGridColorComboBox";
+            this.yGridColorComboBox.Size = new System.Drawing.Size(121, 21);
+            this.yGridColorComboBox.TabIndex = 1;
+            // 
+            // yGridWidthNumericRow
+            // 
+            this.yGridWidthNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yGridWidthNumericRow.Controls.Add(this.yGridWidthNumericLabel);
+            this.yGridWidthNumericRow.Controls.Add(this.yGridWidthNumeric);
+            this.yGridWidthNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yGridWidthNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.yGridWidthNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yGridWidthNumericRow.Name = "yGridWidthNumericRow";
+            this.yGridWidthNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yGridWidthNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.yGridWidthNumericRow.TabIndex = 1;
+            // 
+            // yGridWidthNumericLabel
+            // 
+            this.yGridWidthNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridWidthNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.yGridWidthNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.yGridWidthNumericLabel.Name = "yGridWidthNumericLabel";
+            this.yGridWidthNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.yGridWidthNumericLabel.TabIndex = 0;
+            this.yGridWidthNumericLabel.Text = "Major grid width";
+            // 
+            // yGridWidthNumeric
+            // 
+            this.yGridWidthNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridWidthNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yGridWidthNumeric.DecimalPlaces = 2;
+            this.yGridWidthNumeric.ForeColor = System.Drawing.Color.White;
+            this.yGridWidthNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yGridWidthNumeric.Location = new System.Drawing.Point(9, 25);
+            this.yGridWidthNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.yGridWidthNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yGridWidthNumeric.Name = "yGridWidthNumeric";
+            this.yGridWidthNumeric.Size = new System.Drawing.Size(122, 20);
+            this.yGridWidthNumeric.TabIndex = 1;
+            this.yGridWidthNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // yMajorStyleRow
+            // 
+            this.yMajorStyleRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMajorStyleRow.ColumnCount = 2;
+            this.yMajorStyleRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMajorStyleRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMajorStyleRow.Controls.Add(this.yGridDashComboBoxRow, 0, 0);
+            this.yMajorStyleRow.Controls.Add(this.yGridAlphaNumericRow, 1, 0);
+            this.yMajorStyleRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMajorStyleRow.Location = new System.Drawing.Point(3, 280);
+            this.yMajorStyleRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMajorStyleRow.Name = "yMajorStyleRow";
+            this.yMajorStyleRow.RowCount = 1;
+            this.yMajorStyleRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yMajorStyleRow.Size = new System.Drawing.Size(297, 50);
+            this.yMajorStyleRow.TabIndex = 6;
+            // 
+            // yGridDashComboBoxRow
+            // 
+            this.yGridDashComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yGridDashComboBoxRow.Controls.Add(this.yGridDashComboBoxLabel);
+            this.yGridDashComboBoxRow.Controls.Add(this.yGridDashComboBox);
+            this.yGridDashComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yGridDashComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yGridDashComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yGridDashComboBoxRow.Name = "yGridDashComboBoxRow";
+            this.yGridDashComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yGridDashComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.yGridDashComboBoxRow.TabIndex = 0;
+            // 
+            // yGridDashComboBoxLabel
+            // 
+            this.yGridDashComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridDashComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yGridDashComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yGridDashComboBoxLabel.Name = "yGridDashComboBoxLabel";
+            this.yGridDashComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.yGridDashComboBoxLabel.TabIndex = 0;
+            this.yGridDashComboBoxLabel.Text = "Major grid / tick dash style";
+            // 
+            // yGridDashComboBox
+            // 
+            this.yGridDashComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridDashComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yGridDashComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yGridDashComboBox.ForeColor = System.Drawing.Color.White;
+            this.yGridDashComboBox.IntegralHeight = false;
+            this.yGridDashComboBox.Location = new System.Drawing.Point(9, 25);
+            this.yGridDashComboBox.Name = "yGridDashComboBox";
+            this.yGridDashComboBox.Size = new System.Drawing.Size(121, 21);
+            this.yGridDashComboBox.TabIndex = 1;
+            // 
+            // yGridAlphaNumericRow
+            // 
+            this.yGridAlphaNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yGridAlphaNumericRow.Controls.Add(this.yGridAlphaNumericLabel);
+            this.yGridAlphaNumericRow.Controls.Add(this.yGridAlphaNumeric);
+            this.yGridAlphaNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yGridAlphaNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.yGridAlphaNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yGridAlphaNumericRow.Name = "yGridAlphaNumericRow";
+            this.yGridAlphaNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yGridAlphaNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.yGridAlphaNumericRow.TabIndex = 1;
+            // 
+            // yGridAlphaNumericLabel
+            // 
+            this.yGridAlphaNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridAlphaNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.yGridAlphaNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.yGridAlphaNumericLabel.Name = "yGridAlphaNumericLabel";
+            this.yGridAlphaNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.yGridAlphaNumericLabel.TabIndex = 0;
+            this.yGridAlphaNumericLabel.Text = "Major grid / tick alpha (0-255)";
+            // 
+            // yGridAlphaNumeric
+            // 
+            this.yGridAlphaNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yGridAlphaNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yGridAlphaNumeric.ForeColor = System.Drawing.Color.White;
+            this.yGridAlphaNumeric.Location = new System.Drawing.Point(9, 25);
+            this.yGridAlphaNumeric.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.yGridAlphaNumeric.Name = "yGridAlphaNumeric";
+            this.yGridAlphaNumeric.Size = new System.Drawing.Size(122, 20);
+            this.yGridAlphaNumeric.TabIndex = 1;
+            this.yGridAlphaNumeric.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // yMinorGridRow
+            // 
+            this.yMinorGridRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorGridRow.ColumnCount = 2;
+            this.yMinorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMinorGridRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMinorGridRow.Controls.Add(this.yMinorCheckBoxRow, 0, 0);
+            this.yMinorGridRow.Controls.Add(this.yMinorColorComboBoxRow, 1, 0);
+            this.yMinorGridRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorGridRow.Location = new System.Drawing.Point(3, 330);
+            this.yMinorGridRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorGridRow.Name = "yMinorGridRow";
+            this.yMinorGridRow.RowCount = 1;
+            this.yMinorGridRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yMinorGridRow.Size = new System.Drawing.Size(297, 50);
+            this.yMinorGridRow.TabIndex = 7;
+            // 
+            // yMinorCheckBoxRow
+            // 
+            this.yMinorCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorCheckBoxRow.Controls.Add(this.yMinorCheckBox);
+            this.yMinorCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorCheckBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yMinorCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorCheckBoxRow.Name = "yMinorCheckBoxRow";
+            this.yMinorCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yMinorCheckBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.yMinorCheckBoxRow.TabIndex = 0;
+            // 
+            // yMinorCheckBox
+            // 
+            this.yMinorCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorCheckBox.ForeColor = System.Drawing.Color.White;
+            this.yMinorCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.yMinorCheckBox.Name = "yMinorCheckBox";
+            this.yMinorCheckBox.Size = new System.Drawing.Size(123, 28);
+            this.yMinorCheckBox.TabIndex = 0;
+            this.yMinorCheckBox.Text = "Minor grid";
+            this.yMinorCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // yMinorColorComboBoxRow
+            // 
+            this.yMinorColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorColorComboBoxRow.Controls.Add(this.yMinorColorComboBoxLabel);
+            this.yMinorColorComboBoxRow.Controls.Add(this.yMinorColorComboBox);
+            this.yMinorColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorColorComboBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.yMinorColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorColorComboBoxRow.Name = "yMinorColorComboBoxRow";
+            this.yMinorColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yMinorColorComboBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.yMinorColorComboBoxRow.TabIndex = 1;
+            // 
+            // yMinorColorComboBoxLabel
+            // 
+            this.yMinorColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yMinorColorComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yMinorColorComboBoxLabel.Name = "yMinorColorComboBoxLabel";
+            this.yMinorColorComboBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.yMinorColorComboBoxLabel.TabIndex = 0;
+            this.yMinorColorComboBoxLabel.Text = "Minor grid color";
+            // 
+            // yMinorColorComboBox
+            // 
+            this.yMinorColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yMinorColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yMinorColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.yMinorColorComboBox.IntegralHeight = false;
+            this.yMinorColorComboBox.Location = new System.Drawing.Point(9, 25);
+            this.yMinorColorComboBox.Name = "yMinorColorComboBox";
+            this.yMinorColorComboBox.Size = new System.Drawing.Size(122, 21);
+            this.yMinorColorComboBox.TabIndex = 1;
+            // 
+            // yMinorStrokeRow
+            // 
+            this.yMinorStrokeRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorStrokeRow.ColumnCount = 2;
+            this.yMinorStrokeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMinorStrokeRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMinorStrokeRow.Controls.Add(this.yMinorWidthNumericRow, 0, 0);
+            this.yMinorStrokeRow.Controls.Add(this.yMinorDashComboBoxRow, 1, 0);
+            this.yMinorStrokeRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorStrokeRow.Location = new System.Drawing.Point(3, 380);
+            this.yMinorStrokeRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorStrokeRow.Name = "yMinorStrokeRow";
+            this.yMinorStrokeRow.RowCount = 1;
+            this.yMinorStrokeRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yMinorStrokeRow.Size = new System.Drawing.Size(297, 50);
+            this.yMinorStrokeRow.TabIndex = 8;
+            // 
+            // yMinorWidthNumericRow
+            // 
+            this.yMinorWidthNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorWidthNumericRow.Controls.Add(this.yMinorWidthNumericLabel);
+            this.yMinorWidthNumericRow.Controls.Add(this.yMinorWidthNumeric);
+            this.yMinorWidthNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorWidthNumericRow.Location = new System.Drawing.Point(0, 0);
+            this.yMinorWidthNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorWidthNumericRow.Name = "yMinorWidthNumericRow";
+            this.yMinorWidthNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yMinorWidthNumericRow.Size = new System.Drawing.Size(148, 50);
+            this.yMinorWidthNumericRow.TabIndex = 0;
+            // 
+            // yMinorWidthNumericLabel
+            // 
+            this.yMinorWidthNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorWidthNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.yMinorWidthNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.yMinorWidthNumericLabel.Name = "yMinorWidthNumericLabel";
+            this.yMinorWidthNumericLabel.Size = new System.Drawing.Size(122, 20);
+            this.yMinorWidthNumericLabel.TabIndex = 0;
+            this.yMinorWidthNumericLabel.Text = "Minor grid width";
+            // 
+            // yMinorWidthNumeric
+            // 
+            this.yMinorWidthNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorWidthNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yMinorWidthNumeric.DecimalPlaces = 2;
+            this.yMinorWidthNumeric.ForeColor = System.Drawing.Color.White;
+            this.yMinorWidthNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yMinorWidthNumeric.Location = new System.Drawing.Point(9, 25);
+            this.yMinorWidthNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.yMinorWidthNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yMinorWidthNumeric.Name = "yMinorWidthNumeric";
+            this.yMinorWidthNumeric.Size = new System.Drawing.Size(121, 20);
+            this.yMinorWidthNumeric.TabIndex = 1;
+            this.yMinorWidthNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // yMinorDashComboBoxRow
+            // 
+            this.yMinorDashComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorDashComboBoxRow.Controls.Add(this.yMinorDashComboBoxLabel);
+            this.yMinorDashComboBoxRow.Controls.Add(this.yMinorDashComboBox);
+            this.yMinorDashComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorDashComboBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.yMinorDashComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorDashComboBoxRow.Name = "yMinorDashComboBoxRow";
+            this.yMinorDashComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yMinorDashComboBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.yMinorDashComboBoxRow.TabIndex = 1;
+            // 
+            // yMinorDashComboBoxLabel
+            // 
+            this.yMinorDashComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorDashComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yMinorDashComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yMinorDashComboBoxLabel.Name = "yMinorDashComboBoxLabel";
+            this.yMinorDashComboBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.yMinorDashComboBoxLabel.TabIndex = 0;
+            this.yMinorDashComboBoxLabel.Text = "Minor grid / tick dash style";
+            // 
+            // yMinorDashComboBox
+            // 
+            this.yMinorDashComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorDashComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yMinorDashComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yMinorDashComboBox.ForeColor = System.Drawing.Color.White;
+            this.yMinorDashComboBox.IntegralHeight = false;
+            this.yMinorDashComboBox.Location = new System.Drawing.Point(9, 25);
+            this.yMinorDashComboBox.Name = "yMinorDashComboBox";
+            this.yMinorDashComboBox.Size = new System.Drawing.Size(122, 21);
+            this.yMinorDashComboBox.TabIndex = 1;
+            // 
+            // yMinorOpacityRow
+            // 
+            this.yMinorOpacityRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorOpacityRow.ColumnCount = 2;
+            this.yMinorOpacityRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMinorOpacityRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yMinorOpacityRow.Controls.Add(this.yMinorAlphaNumericRow, 0, 0);
+            this.yMinorOpacityRow.Controls.Add(this.yLogBaseBoxRow, 1, 0);
+            this.yMinorOpacityRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorOpacityRow.Location = new System.Drawing.Point(3, 430);
+            this.yMinorOpacityRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorOpacityRow.Name = "yMinorOpacityRow";
+            this.yMinorOpacityRow.RowCount = 1;
+            this.yMinorOpacityRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yMinorOpacityRow.Size = new System.Drawing.Size(297, 50);
+            this.yMinorOpacityRow.TabIndex = 9;
+            // 
+            // yMinorAlphaNumericRow
+            // 
+            this.yMinorAlphaNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yMinorAlphaNumericRow.Controls.Add(this.yMinorAlphaNumericLabel);
+            this.yMinorAlphaNumericRow.Controls.Add(this.yMinorAlphaNumeric);
+            this.yMinorAlphaNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yMinorAlphaNumericRow.Location = new System.Drawing.Point(0, 0);
+            this.yMinorAlphaNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yMinorAlphaNumericRow.Name = "yMinorAlphaNumericRow";
+            this.yMinorAlphaNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yMinorAlphaNumericRow.Size = new System.Drawing.Size(148, 50);
+            this.yMinorAlphaNumericRow.TabIndex = 0;
+            // 
+            // yMinorAlphaNumericLabel
+            // 
+            this.yMinorAlphaNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorAlphaNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.yMinorAlphaNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.yMinorAlphaNumericLabel.Name = "yMinorAlphaNumericLabel";
+            this.yMinorAlphaNumericLabel.Size = new System.Drawing.Size(122, 20);
+            this.yMinorAlphaNumericLabel.TabIndex = 0;
+            this.yMinorAlphaNumericLabel.Text = "Minor grid / tick alpha (0-255)";
+            // 
+            // yMinorAlphaNumeric
+            // 
+            this.yMinorAlphaNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yMinorAlphaNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yMinorAlphaNumeric.ForeColor = System.Drawing.Color.White;
+            this.yMinorAlphaNumeric.Location = new System.Drawing.Point(9, 25);
+            this.yMinorAlphaNumeric.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.yMinorAlphaNumeric.Name = "yMinorAlphaNumeric";
+            this.yMinorAlphaNumeric.Size = new System.Drawing.Size(121, 20);
+            this.yMinorAlphaNumeric.TabIndex = 1;
+            this.yMinorAlphaNumeric.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // yLogBaseBoxRow
+            // 
+            this.yLogBaseBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yLogBaseBoxRow.Controls.Add(this.yLogBaseBoxLabel);
+            this.yLogBaseBoxRow.Controls.Add(this.yLogBaseBox);
+            this.yLogBaseBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yLogBaseBoxRow.Location = new System.Drawing.Point(148, 0);
+            this.yLogBaseBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yLogBaseBoxRow.Name = "yLogBaseBoxRow";
+            this.yLogBaseBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yLogBaseBoxRow.Size = new System.Drawing.Size(149, 50);
+            this.yLogBaseBoxRow.TabIndex = 1;
+            // 
+            // yLogBaseBoxLabel
+            // 
+            this.yLogBaseBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yLogBaseBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yLogBaseBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yLogBaseBoxLabel.Name = "yLogBaseBoxLabel";
+            this.yLogBaseBoxLabel.Size = new System.Drawing.Size(123, 20);
+            this.yLogBaseBoxLabel.TabIndex = 0;
+            this.yLogBaseBoxLabel.Text = "Logarithmic base";
+            // 
+            // yLogBaseBox
+            // 
+            this.yLogBaseBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yLogBaseBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yLogBaseBox.ForeColor = System.Drawing.Color.White;
+            this.yLogBaseBox.Location = new System.Drawing.Point(9, 25);
+            this.yLogBaseBox.Name = "yLogBaseBox";
+            this.yLogBaseBox.Size = new System.Drawing.Size(122, 20);
+            this.yLogBaseBox.TabIndex = 1;
+            // 
+            // yFontRow
+            // 
+            this.yFontRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yFontRow.ColumnCount = 2;
+            this.yFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yFontRow.Controls.Add(this.yFontComboBoxRow, 0, 0);
+            this.yFontRow.Controls.Add(this.yFontSizeNumericRow, 1, 0);
+            this.yFontRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yFontRow.Location = new System.Drawing.Point(3, 480);
+            this.yFontRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yFontRow.Name = "yFontRow";
+            this.yFontRow.RowCount = 1;
+            this.yFontRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yFontRow.Size = new System.Drawing.Size(297, 50);
+            this.yFontRow.TabIndex = 10;
+            // 
+            // yFontComboBoxRow
+            // 
+            this.yFontComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yFontComboBoxRow.Controls.Add(this.yFontComboBoxLabel);
+            this.yFontComboBoxRow.Controls.Add(this.yFontComboBox);
+            this.yFontComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yFontComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yFontComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yFontComboBoxRow.Name = "yFontComboBoxRow";
+            this.yFontComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yFontComboBoxRow.Size = new System.Drawing.Size(148, 50);
+            this.yFontComboBoxRow.TabIndex = 0;
+            // 
+            // yFontComboBoxLabel
+            // 
+            this.yFontComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yFontComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yFontComboBoxLabel.Name = "yFontComboBoxLabel";
+            this.yFontComboBoxLabel.Size = new System.Drawing.Size(122, 20);
+            this.yFontComboBoxLabel.TabIndex = 0;
+            this.yFontComboBoxLabel.Text = "Axis font family";
+            // 
+            // yFontComboBox
+            // 
+            this.yFontComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yFontComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yFontComboBox.ForeColor = System.Drawing.Color.White;
+            this.yFontComboBox.IntegralHeight = false;
+            this.yFontComboBox.Location = new System.Drawing.Point(9, 25);
+            this.yFontComboBox.Name = "yFontComboBox";
+            this.yFontComboBox.Size = new System.Drawing.Size(121, 21);
+            this.yFontComboBox.TabIndex = 1;
+            // 
+            // yFontSizeNumericRow
+            // 
+            this.yFontSizeNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yFontSizeNumericRow.Controls.Add(this.yFontSizeNumericLabel);
+            this.yFontSizeNumericRow.Controls.Add(this.yFontSizeNumeric);
+            this.yFontSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yFontSizeNumericRow.Location = new System.Drawing.Point(148, 0);
+            this.yFontSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yFontSizeNumericRow.Name = "yFontSizeNumericRow";
+            this.yFontSizeNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yFontSizeNumericRow.Size = new System.Drawing.Size(149, 50);
+            this.yFontSizeNumericRow.TabIndex = 1;
+            // 
+            // yFontSizeNumericLabel
+            // 
+            this.yFontSizeNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontSizeNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.yFontSizeNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.yFontSizeNumericLabel.Name = "yFontSizeNumericLabel";
+            this.yFontSizeNumericLabel.Size = new System.Drawing.Size(123, 20);
+            this.yFontSizeNumericLabel.TabIndex = 0;
+            this.yFontSizeNumericLabel.Text = "Axis font size";
+            // 
+            // yFontSizeNumeric
+            // 
+            this.yFontSizeNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yFontSizeNumeric.DecimalPlaces = 2;
+            this.yFontSizeNumeric.ForeColor = System.Drawing.Color.White;
+            this.yFontSizeNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yFontSizeNumeric.Location = new System.Drawing.Point(9, 25);
+            this.yFontSizeNumeric.Maximum = new decimal(new int[] {
+            36,
+            0,
+            0,
+            0});
+            this.yFontSizeNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yFontSizeNumeric.Name = "yFontSizeNumeric";
+            this.yFontSizeNumeric.Size = new System.Drawing.Size(122, 20);
+            this.yFontSizeNumeric.TabIndex = 1;
+            this.yFontSizeNumeric.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            // 
+            // yFontColorComboBoxRow
+            // 
+            this.yFontColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yFontColorComboBoxRow.Controls.Add(this.yFontColorComboBoxLabel);
+            this.yFontColorComboBoxRow.Controls.Add(this.yFontColorComboBox);
+            this.yFontColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yFontColorComboBoxRow.Location = new System.Drawing.Point(3, 530);
+            this.yFontColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yFontColorComboBoxRow.Name = "yFontColorComboBoxRow";
+            this.yFontColorComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.yFontColorComboBoxRow.Size = new System.Drawing.Size(297, 50);
+            this.yFontColorComboBoxRow.TabIndex = 11;
+            // 
+            // yFontColorComboBoxLabel
+            // 
+            this.yFontColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yFontColorComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.yFontColorComboBoxLabel.Name = "yFontColorComboBoxLabel";
+            this.yFontColorComboBoxLabel.Size = new System.Drawing.Size(271, 20);
+            this.yFontColorComboBoxLabel.TabIndex = 0;
+            this.yFontColorComboBoxLabel.Text = "Axis font color";
+            // 
+            // yFontColorComboBox
+            // 
+            this.yFontColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yFontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yFontColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.yFontColorComboBox.IntegralHeight = false;
+            this.yFontColorComboBox.Location = new System.Drawing.Point(9, 25);
+            this.yFontColorComboBox.Name = "yFontColorComboBox";
+            this.yFontColorComboBox.Size = new System.Drawing.Size(270, 21);
+            this.yFontColorComboBox.TabIndex = 1;
+            // 
+            // zAxisGroup
+            // 
+            this.zAxisGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zAxisGroup.Controls.Add(this.zFields);
+            this.zAxisGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zAxisGroup.ForeColor = System.Drawing.Color.White;
+            this.zAxisGroup.Location = new System.Drawing.Point(1051, 13);
+            this.zAxisGroup.Margin = new System.Windows.Forms.Padding(5);
+            this.zAxisGroup.Name = "zAxisGroup";
+            this.zAxisGroup.Padding = new System.Windows.Forms.Padding(8);
+            this.zAxisGroup.Size = new System.Drawing.Size(337, 381);
+            this.zAxisGroup.TabIndex = 3;
+            this.zAxisGroup.TabStop = false;
+            this.zAxisGroup.Text = "Z / color axis";
+            // 
+            // zFields
+            // 
+            this.zFields.AutoScroll = true;
+            this.zFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zFields.ColumnCount = 1;
+            this.zFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.zFields.Controls.Add(this.zDefaultsButtonRow, 0, 0);
+            this.zFields.Controls.Add(this.zColumnComboBoxRow, 0, 1);
+            this.zFields.Controls.Add(this.zAutoCheckBoxRow, 0, 2);
+            this.zFields.Controls.Add(this.zLimitsRow, 0, 3);
+            this.zFields.Controls.Add(this.zColorRow, 0, 4);
+            this.zFields.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zFields.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.zFields.Location = new System.Drawing.Point(8, 21);
+            this.zFields.Name = "zFields";
+            this.zFields.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.zFields.RowCount = 5;
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.zFields.Size = new System.Drawing.Size(321, 352);
+            this.zFields.TabIndex = 0;
+            // 
+            // zDefaultsButtonRow
+            // 
+            this.zDefaultsButtonRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zDefaultsButtonRow.Controls.Add(this.zDefaultsButton);
+            this.zDefaultsButtonRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zDefaultsButtonRow.Location = new System.Drawing.Point(3, 0);
+            this.zDefaultsButtonRow.Margin = new System.Windows.Forms.Padding(0);
+            this.zDefaultsButtonRow.Name = "zDefaultsButtonRow";
+            this.zDefaultsButtonRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.zDefaultsButtonRow.Size = new System.Drawing.Size(315, 40);
+            this.zDefaultsButtonRow.TabIndex = 0;
+            // 
+            // zDefaultsButton
+            // 
+            this.zDefaultsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zDefaultsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.zDefaultsButton.ForeColor = System.Drawing.Color.White;
+            this.zDefaultsButton.Location = new System.Drawing.Point(10, 6);
+            this.zDefaultsButton.Name = "zDefaultsButton";
+            this.zDefaultsButton.Size = new System.Drawing.Size(290, 30);
+            this.zDefaultsButton.TabIndex = 0;
+            this.zDefaultsButton.Text = "Restore Z defaults";
+            this.zDefaultsButton.UseVisualStyleBackColor = false;
+            // 
+            // zColumnComboBoxRow
+            // 
+            this.zColumnComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zColumnComboBoxRow.Controls.Add(this.zColumnComboBoxLabel);
+            this.zColumnComboBoxRow.Controls.Add(this.zColumnComboBox);
+            this.zColumnComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zColumnComboBoxRow.Location = new System.Drawing.Point(3, 40);
+            this.zColumnComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.zColumnComboBoxRow.Name = "zColumnComboBoxRow";
+            this.zColumnComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.zColumnComboBoxRow.Size = new System.Drawing.Size(315, 50);
+            this.zColumnComboBoxRow.TabIndex = 1;
+            // 
+            // zColumnComboBoxLabel
+            // 
+            this.zColumnComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zColumnComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.zColumnComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.zColumnComboBoxLabel.Name = "zColumnComboBoxLabel";
+            this.zColumnComboBoxLabel.Size = new System.Drawing.Size(289, 20);
+            this.zColumnComboBoxLabel.TabIndex = 0;
+            this.zColumnComboBoxLabel.Text = "Z column (colors)";
+            // 
+            // zColumnComboBox
+            // 
+            this.zColumnComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zColumnComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.zColumnComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.zColumnComboBox.ForeColor = System.Drawing.Color.White;
+            this.zColumnComboBox.IntegralHeight = false;
+            this.zColumnComboBox.Location = new System.Drawing.Point(9, 25);
+            this.zColumnComboBox.Name = "zColumnComboBox";
+            this.zColumnComboBox.Size = new System.Drawing.Size(288, 21);
+            this.zColumnComboBox.TabIndex = 1;
+            // 
+            // zAutoCheckBoxRow
+            // 
+            this.zAutoCheckBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zAutoCheckBoxRow.Controls.Add(this.zAutoCheckBox);
+            this.zAutoCheckBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zAutoCheckBoxRow.Location = new System.Drawing.Point(3, 90);
+            this.zAutoCheckBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.zAutoCheckBoxRow.Name = "zAutoCheckBoxRow";
+            this.zAutoCheckBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.zAutoCheckBoxRow.Size = new System.Drawing.Size(315, 40);
+            this.zAutoCheckBoxRow.TabIndex = 2;
+            // 
+            // zAutoCheckBox
+            // 
+            this.zAutoCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zAutoCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zAutoCheckBox.Checked = true;
+            this.zAutoCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.zAutoCheckBox.ForeColor = System.Drawing.Color.White;
+            this.zAutoCheckBox.Location = new System.Drawing.Point(10, 10);
+            this.zAutoCheckBox.Name = "zAutoCheckBox";
+            this.zAutoCheckBox.Size = new System.Drawing.Size(290, 28);
+            this.zAutoCheckBox.TabIndex = 0;
+            this.zAutoCheckBox.Text = "Auto-scale Z";
+            this.zAutoCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // zLimitsRow
+            // 
+            this.zLimitsRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zLimitsRow.ColumnCount = 2;
+            this.zLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.zLimitsRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.zLimitsRow.Controls.Add(this.zMinimumBoxRow, 0, 0);
+            this.zLimitsRow.Controls.Add(this.zMaximumBoxRow, 1, 0);
+            this.zLimitsRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zLimitsRow.Location = new System.Drawing.Point(3, 130);
+            this.zLimitsRow.Margin = new System.Windows.Forms.Padding(0);
+            this.zLimitsRow.Name = "zLimitsRow";
+            this.zLimitsRow.RowCount = 1;
+            this.zLimitsRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.zLimitsRow.Size = new System.Drawing.Size(315, 50);
+            this.zLimitsRow.TabIndex = 3;
+            // 
+            // zMinimumBoxRow
+            // 
+            this.zMinimumBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zMinimumBoxRow.Controls.Add(this.zMinimumBoxLabel);
+            this.zMinimumBoxRow.Controls.Add(this.zMinimumBox);
+            this.zMinimumBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zMinimumBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.zMinimumBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.zMinimumBoxRow.Name = "zMinimumBoxRow";
+            this.zMinimumBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.zMinimumBoxRow.Size = new System.Drawing.Size(157, 50);
+            this.zMinimumBoxRow.TabIndex = 0;
+            // 
+            // zMinimumBoxLabel
+            // 
+            this.zMinimumBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zMinimumBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.zMinimumBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.zMinimumBoxLabel.Name = "zMinimumBoxLabel";
+            this.zMinimumBoxLabel.Size = new System.Drawing.Size(131, 20);
+            this.zMinimumBoxLabel.TabIndex = 0;
+            this.zMinimumBoxLabel.Text = "Color minimum";
+            // 
+            // zMinimumBox
+            // 
+            this.zMinimumBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zMinimumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.zMinimumBox.ForeColor = System.Drawing.Color.White;
+            this.zMinimumBox.Location = new System.Drawing.Point(9, 25);
+            this.zMinimumBox.Name = "zMinimumBox";
+            this.zMinimumBox.Size = new System.Drawing.Size(130, 20);
+            this.zMinimumBox.TabIndex = 1;
+            // 
+            // zMaximumBoxRow
+            // 
+            this.zMaximumBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zMaximumBoxRow.Controls.Add(this.zMaximumBoxLabel);
+            this.zMaximumBoxRow.Controls.Add(this.zMaximumBox);
+            this.zMaximumBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zMaximumBoxRow.Location = new System.Drawing.Point(157, 0);
+            this.zMaximumBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.zMaximumBoxRow.Name = "zMaximumBoxRow";
+            this.zMaximumBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.zMaximumBoxRow.Size = new System.Drawing.Size(158, 50);
+            this.zMaximumBoxRow.TabIndex = 1;
+            // 
+            // zMaximumBoxLabel
+            // 
+            this.zMaximumBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zMaximumBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.zMaximumBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.zMaximumBoxLabel.Name = "zMaximumBoxLabel";
+            this.zMaximumBoxLabel.Size = new System.Drawing.Size(132, 20);
+            this.zMaximumBoxLabel.TabIndex = 0;
+            this.zMaximumBoxLabel.Text = "Color maximum";
+            // 
+            // zMaximumBox
+            // 
+            this.zMaximumBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zMaximumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.zMaximumBox.ForeColor = System.Drawing.Color.White;
+            this.zMaximumBox.Location = new System.Drawing.Point(9, 25);
+            this.zMaximumBox.Name = "zMaximumBox";
+            this.zMaximumBox.Size = new System.Drawing.Size(131, 20);
+            this.zMaximumBox.TabIndex = 1;
+            // 
+            // zColorRow
+            // 
+            this.zColorRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.zColorRow.ColumnCount = 2;
+            this.zColorRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.zColorRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.zColorRow.Controls.Add(this.schemeComboBoxRow, 0, 0);
+            this.zColorRow.Controls.Add(this.bandsNumericRow, 1, 0);
+            this.zColorRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zColorRow.Location = new System.Drawing.Point(3, 180);
+            this.zColorRow.Margin = new System.Windows.Forms.Padding(0);
+            this.zColorRow.Name = "zColorRow";
+            this.zColorRow.RowCount = 1;
+            this.zColorRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.zColorRow.Size = new System.Drawing.Size(315, 172);
+            this.zColorRow.TabIndex = 4;
+            // 
+            // schemeComboBoxRow
+            // 
+            this.schemeComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.schemeComboBoxRow.Controls.Add(this.schemeComboBoxLabel);
+            this.schemeComboBoxRow.Controls.Add(this.schemeComboBox);
+            this.schemeComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.schemeComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.schemeComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.schemeComboBoxRow.Name = "schemeComboBoxRow";
+            this.schemeComboBoxRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.schemeComboBoxRow.Size = new System.Drawing.Size(157, 172);
+            this.schemeComboBoxRow.TabIndex = 0;
+            // 
+            // schemeComboBoxLabel
+            // 
+            this.schemeComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.schemeComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.schemeComboBoxLabel.Location = new System.Drawing.Point(9, 2);
+            this.schemeComboBoxLabel.Name = "schemeComboBoxLabel";
+            this.schemeComboBoxLabel.Size = new System.Drawing.Size(131, 20);
+            this.schemeComboBoxLabel.TabIndex = 0;
+            this.schemeComboBoxLabel.Text = "Color scheme";
+            // 
+            // schemeComboBox
+            // 
+            this.schemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.schemeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.schemeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.schemeComboBox.ForeColor = System.Drawing.Color.White;
+            this.schemeComboBox.IntegralHeight = false;
+            this.schemeComboBox.Location = new System.Drawing.Point(9, 25);
+            this.schemeComboBox.Name = "schemeComboBox";
+            this.schemeComboBox.Size = new System.Drawing.Size(130, 21);
+            this.schemeComboBox.TabIndex = 1;
+            // 
+            // bandsNumericRow
+            // 
+            this.bandsNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.bandsNumericRow.Controls.Add(this.bandsNumericLabel);
+            this.bandsNumericRow.Controls.Add(this.bandsNumeric);
+            this.bandsNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bandsNumericRow.Location = new System.Drawing.Point(157, 0);
+            this.bandsNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.bandsNumericRow.Name = "bandsNumericRow";
+            this.bandsNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bandsNumericRow.Size = new System.Drawing.Size(158, 172);
+            this.bandsNumericRow.TabIndex = 1;
+            // 
+            // bandsNumericLabel
+            // 
+            this.bandsNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bandsNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.bandsNumericLabel.Location = new System.Drawing.Point(9, 2);
+            this.bandsNumericLabel.Name = "bandsNumericLabel";
+            this.bandsNumericLabel.Size = new System.Drawing.Size(132, 20);
+            this.bandsNumericLabel.TabIndex = 0;
+            this.bandsNumericLabel.Text = "Gradient bands";
+            // 
+            // bandsNumeric
+            // 
+            this.bandsNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bandsNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.bandsNumeric.ForeColor = System.Drawing.Color.White;
+            this.bandsNumeric.Location = new System.Drawing.Point(9, 25);
+            this.bandsNumeric.Maximum = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.bandsNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.bandsNumeric.Name = "bandsNumeric";
+            this.bandsNumeric.Size = new System.Drawing.Size(131, 20);
+            this.bandsNumeric.TabIndex = 1;
+            this.bandsNumeric.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // filterSettingsPanel
+            // 
+            this.filterSettingsPanel.AutoScroll = true;
+            this.filterSettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.filterSettingsPanel.Controls.Add(this.filterSettingsRows);
+            this.filterSettingsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.filterSettingsPanel.Location = new System.Drawing.Point(0, 48);
+            this.filterSettingsPanel.Name = "filterSettingsPanel";
+            this.filterSettingsPanel.Padding = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.filterSettingsPanel.Size = new System.Drawing.Size(1401, 255);
+            this.filterSettingsPanel.TabIndex = 1;
+            // 
+            // filterSettingsRows
+            // 
+            this.filterSettingsRows.ColumnCount = 1;
+            this.filterSettingsRows.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.filterSettingsRows.Controls.Add(this.filterAxisPlaceholder, 0, 0);
+            this.filterSettingsRows.Controls.Add(this.filterExtraPlaceholder, 0, 1);
+            this.filterSettingsRows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterSettingsRows.Location = new System.Drawing.Point(6, 3);
+            this.filterSettingsRows.Name = "filterSettingsRows";
+            this.filterSettingsRows.RowCount = 2;
+            this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.filterSettingsRows.Size = new System.Drawing.Size(1389, 249);
+            this.filterSettingsRows.TabIndex = 0;
+            // 
+            // filterAxisPlaceholder
+            // 
+            this.filterAxisPlaceholder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.filterAxisPlaceholder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterAxisPlaceholder.ForeColor = System.Drawing.Color.White;
+            this.filterAxisPlaceholder.Location = new System.Drawing.Point(3, 3);
+            this.filterAxisPlaceholder.Name = "filterAxisPlaceholder";
+            this.filterAxisPlaceholder.Size = new System.Drawing.Size(1383, 118);
+            this.filterAxisPlaceholder.TabIndex = 0;
+            this.filterAxisPlaceholder.TabStop = false;
+            this.filterAxisPlaceholder.Text = "Current X / Y / Z axis filters";
+            // 
+            // filterExtraPlaceholder
+            // 
+            this.filterExtraPlaceholder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.filterExtraPlaceholder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterExtraPlaceholder.ForeColor = System.Drawing.Color.White;
+            this.filterExtraPlaceholder.Location = new System.Drawing.Point(3, 127);
+            this.filterExtraPlaceholder.Name = "filterExtraPlaceholder";
+            this.filterExtraPlaceholder.Size = new System.Drawing.Size(1383, 119);
+            this.filterExtraPlaceholder.TabIndex = 1;
+            this.filterExtraPlaceholder.TabStop = false;
+            this.filterExtraPlaceholder.Text = "Additional selectable filters (10)";
+            // 
+            // FormOfflineChartSettings
+            // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.ClientSize = new System.Drawing.Size(1401, 710);
+            this.Controls.Add(this.settingsColumns);
+            this.Controls.Add(this.filterSettingsPanel);
+            this.Controls.Add(this.actionsPanel);
+            this.ForeColor = System.Drawing.Color.White;
+            this.MinimumSize = new System.Drawing.Size(870, 530);
+            this.Name = "FormOfflineChartSettings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Offline chart settings";
+            this.actionsPanel.ResumeLayout(false);
+            this.settingsColumns.ResumeLayout(false);
+            this.chartStyleGroup.ResumeLayout(false);
+            this.styleFields.ResumeLayout(false);
+            this.styleChartLayoutRow.ResumeLayout(false);
+            this.chartTypeComboBoxRow.ResumeLayout(false);
+            this.layoutComboBoxRow.ResumeLayout(false);
+            this.styleMarkerRow.ResumeLayout(false);
+            this.markerComboBoxRow.ResumeLayout(false);
+            this.markerSizeNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.markerSizeNumeric)).EndInit();
+            this.styleAppearanceRow.ResumeLayout(false);
+            this.backgroundComboBoxRow.ResumeLayout(false);
+            this.paletteAlphaNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.paletteAlphaNumeric)).EndInit();
+            this.styleOptionsRow.ResumeLayout(false);
+            this.paletteDividerNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.paletteDividerNumeric)).EndInit();
+            this.tooltipDelayNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tooltipDelayNumeric)).EndInit();
+            this.styleTogglesRow.ResumeLayout(false);
+            this.absoluteCheckBoxRow.ResumeLayout(false);
+            this.tooltipEnableCheckBoxRow.ResumeLayout(false);
+            this.styleCursorTogglesRow.ResumeLayout(false);
+            this.cursorEnabledCheckBoxRow.ResumeLayout(false);
+            this.cursorZoomCheckBoxRow.ResumeLayout(false);
+            this.styleCursorColorsRow.ResumeLayout(false);
+            this.cursorColorComboBoxRow.ResumeLayout(false);
+            this.cursorAlphaNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cursorAlphaNumeric)).EndInit();
+            this.styleCursorStrokeRow.ResumeLayout(false);
+            this.cursorWidthNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cursorWidthNumeric)).EndInit();
+            this.cursorDashComboBoxRow.ResumeLayout(false);
+            this.xAxisGroup.ResumeLayout(false);
+            this.xFields.ResumeLayout(false);
+            this.xDefaultsButtonRow.ResumeLayout(false);
+            this.xColumnComboBoxRow.ResumeLayout(false);
+            this.xModeRow.ResumeLayout(false);
+            this.xAutoCheckBoxRow.ResumeLayout(false);
+            this.xLogCheckBoxRow.ResumeLayout(false);
+            this.xLimitsRow.ResumeLayout(false);
+            this.xMinimumBoxRow.ResumeLayout(false);
+            this.xMinimumBoxRow.PerformLayout();
+            this.xMaximumBoxRow.ResumeLayout(false);
+            this.xMaximumBoxRow.PerformLayout();
+            this.xTicksRow.ResumeLayout(false);
+            this.xGridIntervalBoxRow.ResumeLayout(false);
+            this.xGridIntervalBoxRow.PerformLayout();
+            this.xDecimalsNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xDecimalsNumeric)).EndInit();
+            this.xMajorGridRow.ResumeLayout(false);
+            this.xGridColorComboBoxRow.ResumeLayout(false);
+            this.xGridWidthNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xGridWidthNumeric)).EndInit();
+            this.xMajorStyleRow.ResumeLayout(false);
+            this.xGridDashComboBoxRow.ResumeLayout(false);
+            this.xGridAlphaNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xGridAlphaNumeric)).EndInit();
+            this.xMinorGridRow.ResumeLayout(false);
+            this.xMinorCheckBoxRow.ResumeLayout(false);
+            this.xMinorColorComboBoxRow.ResumeLayout(false);
+            this.xMinorStrokeRow.ResumeLayout(false);
+            this.xMinorWidthNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xMinorWidthNumeric)).EndInit();
+            this.xMinorDashComboBoxRow.ResumeLayout(false);
+            this.xMinorOpacityRow.ResumeLayout(false);
+            this.xMinorAlphaNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xMinorAlphaNumeric)).EndInit();
+            this.xLogBaseBoxRow.ResumeLayout(false);
+            this.xLogBaseBoxRow.PerformLayout();
+            this.xFontRow.ResumeLayout(false);
+            this.xFontComboBoxRow.ResumeLayout(false);
+            this.xFontSizeNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xFontSizeNumeric)).EndInit();
+            this.xFontColorComboBoxRow.ResumeLayout(false);
+            this.yAxisGroup.ResumeLayout(false);
+            this.yFields.ResumeLayout(false);
+            this.yDefaultsButtonRow.ResumeLayout(false);
+            this.yColumnComboBoxRow.ResumeLayout(false);
+            this.yModeRow.ResumeLayout(false);
+            this.yAutoCheckBoxRow.ResumeLayout(false);
+            this.yLogCheckBoxRow.ResumeLayout(false);
+            this.yLimitsRow.ResumeLayout(false);
+            this.yMinimumBoxRow.ResumeLayout(false);
+            this.yMinimumBoxRow.PerformLayout();
+            this.yMaximumBoxRow.ResumeLayout(false);
+            this.yMaximumBoxRow.PerformLayout();
+            this.yTicksRow.ResumeLayout(false);
+            this.yGridIntervalBoxRow.ResumeLayout(false);
+            this.yGridIntervalBoxRow.PerformLayout();
+            this.yDecimalsNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yDecimalsNumeric)).EndInit();
+            this.yMajorGridRow.ResumeLayout(false);
+            this.yGridColorComboBoxRow.ResumeLayout(false);
+            this.yGridWidthNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yGridWidthNumeric)).EndInit();
+            this.yMajorStyleRow.ResumeLayout(false);
+            this.yGridDashComboBoxRow.ResumeLayout(false);
+            this.yGridAlphaNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yGridAlphaNumeric)).EndInit();
+            this.yMinorGridRow.ResumeLayout(false);
+            this.yMinorCheckBoxRow.ResumeLayout(false);
+            this.yMinorColorComboBoxRow.ResumeLayout(false);
+            this.yMinorStrokeRow.ResumeLayout(false);
+            this.yMinorWidthNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yMinorWidthNumeric)).EndInit();
+            this.yMinorDashComboBoxRow.ResumeLayout(false);
+            this.yMinorOpacityRow.ResumeLayout(false);
+            this.yMinorAlphaNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yMinorAlphaNumeric)).EndInit();
+            this.yLogBaseBoxRow.ResumeLayout(false);
+            this.yLogBaseBoxRow.PerformLayout();
+            this.yFontRow.ResumeLayout(false);
+            this.yFontComboBoxRow.ResumeLayout(false);
+            this.yFontSizeNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yFontSizeNumeric)).EndInit();
+            this.yFontColorComboBoxRow.ResumeLayout(false);
+            this.zAxisGroup.ResumeLayout(false);
+            this.zFields.ResumeLayout(false);
+            this.zDefaultsButtonRow.ResumeLayout(false);
+            this.zColumnComboBoxRow.ResumeLayout(false);
+            this.zAutoCheckBoxRow.ResumeLayout(false);
+            this.zLimitsRow.ResumeLayout(false);
+            this.zMinimumBoxRow.ResumeLayout(false);
+            this.zMinimumBoxRow.PerformLayout();
+            this.zMaximumBoxRow.ResumeLayout(false);
+            this.zMaximumBoxRow.PerformLayout();
+            this.zColorRow.ResumeLayout(false);
+            this.schemeComboBoxRow.ResumeLayout(false);
+            this.bandsNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bandsNumeric)).EndInit();
+            this.filterSettingsPanel.ResumeLayout(false);
+            this.filterSettingsRows.ResumeLayout(false);
+            this.ResumeLayout(false);
 
-            settingsColumns = new TableLayoutPanel();
-            settingsColumns.Name = "settingsSectionsLayout";
-            settingsColumns.Dock = DockStyle.Fill;
-            settingsColumns.ColumnCount = 4;
-            settingsColumns.RowCount = 1;
-            settingsColumns.AutoScroll = true;
-            settingsColumns.Padding = new Padding(8);
-            settingsColumns.BackColor = BackColor;
-            settingsColumns.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            settingsColumns.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,25F));
-            settingsColumns.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,25F));
-            settingsColumns.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,25F));
-            settingsColumns.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,25F));
-            settingsColumns.RowStyles.Add(new RowStyle(SizeType.Percent,100F));
-
-            chartStyleGroup = new GroupBox();
-            chartStyleGroup.Name = "chartStyleGroup";
-            chartStyleGroup.Text = "Chart and data settings";
-            chartStyleGroup.Dock = DockStyle.Fill;
-            chartStyleGroup.ForeColor = Color.White;
-            chartStyleGroup.Margin = new Padding(5);
-            chartStyleGroup.Padding = new Padding(8);
-            styleFields = new TableLayoutPanel();
-            styleFields.Name = "styleFields";
-            styleFields.Dock = DockStyle.Fill;
-            styleFields.AutoScroll = true;
-            styleFields.ColumnCount = 1;
-            styleFields.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            styleFields.RowCount = 8;
-            styleFields.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            styleFields.BackColor = Color.FromArgb(24,24,24);
-                                    styleFields.Padding = new Padding(3,0,3,0);
-            chartStyleGroup.Controls.Add(styleFields);
-            settingsColumns.Controls.Add(chartStyleGroup,0,0);
-            schemeComboBoxRow = new Panel();
-            schemeComboBoxRow.Name = "schemeComboBoxRow";
-            schemeComboBoxRow.Size = new Size(225,57);
-            schemeComboBoxRow.Margin = new Padding(3,5,3,5);
-            schemeComboBox = new ComboBox();
-            schemeComboBox.Name = "schemeComboBox";
-            schemeComboBoxLabel = new Label();
-            schemeComboBoxLabel.Name = "schemeComboBoxLabel";
-            schemeComboBoxLabel.Text = "Color scheme";
-            schemeComboBoxLabel.ForeColor = Color.White;
-            schemeComboBoxLabel.Location = new Point(5,2);
-            schemeComboBoxLabel.Size = new Size(207,20);
-            schemeComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            schemeComboBoxRow.Controls.Add(schemeComboBoxLabel);
-            schemeComboBox.Location = new Point(5,25);
-            schemeComboBox.Size = new Size(206,25);
-            schemeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            schemeComboBox.IntegralHeight = false;
-            schemeComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            schemeComboBoxRow.Controls.Add(schemeComboBox);
-            chartTypeComboBoxRow = new Panel();
-            chartTypeComboBoxRow.Name = "chartTypeComboBoxRow";
-            chartTypeComboBoxRow.Size = new Size(225,57);
-            chartTypeComboBoxRow.Margin = new Padding(3,5,3,5);
-            chartTypeComboBox = new ComboBox();
-            chartTypeComboBox.Name = "chartTypeComboBox";
-            chartTypeComboBoxLabel = new Label();
-            chartTypeComboBoxLabel.Name = "chartTypeComboBoxLabel";
-            chartTypeComboBoxLabel.Text = "Chart type";
-            chartTypeComboBoxLabel.ForeColor = Color.White;
-            chartTypeComboBoxLabel.Location = new Point(5,2);
-            chartTypeComboBoxLabel.Size = new Size(207,20);
-            chartTypeComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            chartTypeComboBoxRow.Controls.Add(chartTypeComboBoxLabel);
-            chartTypeComboBox.Location = new Point(5,25);
-            chartTypeComboBox.Size = new Size(206,25);
-            chartTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            chartTypeComboBox.IntegralHeight = false;
-            chartTypeComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            chartTypeComboBoxRow.Controls.Add(chartTypeComboBox);
-            markerComboBoxRow = new Panel();
-            markerComboBoxRow.Name = "markerComboBoxRow";
-            markerComboBoxRow.Size = new Size(225,57);
-            markerComboBoxRow.Margin = new Padding(3,5,3,5);
-            markerComboBox = new ComboBox();
-            markerComboBox.Name = "markerComboBox";
-            markerComboBoxLabel = new Label();
-            markerComboBoxLabel.Name = "markerComboBoxLabel";
-            markerComboBoxLabel.Text = "Marker style";
-            markerComboBoxLabel.ForeColor = Color.White;
-            markerComboBoxLabel.Location = new Point(5,2);
-            markerComboBoxLabel.Size = new Size(207,20);
-            markerComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            markerComboBoxRow.Controls.Add(markerComboBoxLabel);
-            markerComboBox.Location = new Point(5,25);
-            markerComboBox.Size = new Size(206,25);
-            markerComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            markerComboBox.IntegralHeight = false;
-            markerComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            markerComboBoxRow.Controls.Add(markerComboBox);
-            bandsNumericRow = new Panel();
-            bandsNumericRow.Name = "bandsNumericRow";
-            bandsNumericRow.Size = new Size(225,57);
-            bandsNumericRow.Margin = new Padding(3,5,3,5);
-            bandsNumeric = new NumericUpDown();
-            bandsNumeric.Name = "bandsNumeric";
-            bandsNumericLabel = new Label();
-            bandsNumericLabel.Name = "bandsNumericLabel";
-            bandsNumericLabel.Text = "Gradient bands";
-            bandsNumericLabel.ForeColor = Color.White;
-            bandsNumericLabel.Location = new Point(5,2);
-            bandsNumericLabel.Size = new Size(207,20);
-            bandsNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            bandsNumericRow.Controls.Add(bandsNumericLabel);
-            bandsNumeric.Location = new Point(5,25);
-            bandsNumeric.Size = new Size(206,25);
-            bandsNumeric.Minimum = 1;
-            bandsNumeric.Maximum = 64;
-            bandsNumeric.Value = 10;
-            bandsNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            bandsNumericRow.Controls.Add(bandsNumeric);
-            markerSizeNumericRow = new Panel();
-            markerSizeNumericRow.Name = "markerSizeNumericRow";
-            markerSizeNumericRow.Size = new Size(225,57);
-            markerSizeNumericRow.Margin = new Padding(3,5,3,5);
-            markerSizeNumeric = new NumericUpDown();
-            markerSizeNumeric.Name = "markerSizeNumeric";
-            markerSizeNumericLabel = new Label();
-            markerSizeNumericLabel.Name = "markerSizeNumericLabel";
-            markerSizeNumericLabel.Text = "Marker size";
-            markerSizeNumericLabel.ForeColor = Color.White;
-            markerSizeNumericLabel.Location = new Point(5,2);
-            markerSizeNumericLabel.Size = new Size(207,20);
-            markerSizeNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            markerSizeNumericRow.Controls.Add(markerSizeNumericLabel);
-            markerSizeNumeric.Location = new Point(5,25);
-            markerSizeNumeric.Size = new Size(206,25);
-            markerSizeNumeric.Minimum = 1;
-            markerSizeNumeric.Maximum = 20;
-            markerSizeNumeric.Value = 4;
-            markerSizeNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            markerSizeNumericRow.Controls.Add(markerSizeNumeric);
-            paletteAlphaNumericRow = new Panel();
-            paletteAlphaNumericRow.Name = "paletteAlphaNumericRow";
-            paletteAlphaNumericRow.Size = new Size(225,57);
-            paletteAlphaNumericRow.Margin = new Padding(3,5,3,5);
-            paletteAlphaNumeric = new NumericUpDown();
-            paletteAlphaNumeric.Name = "paletteAlphaNumeric";
-            paletteAlphaNumericLabel = new Label();
-            paletteAlphaNumericLabel.Name = "paletteAlphaNumericLabel";
-            paletteAlphaNumericLabel.Text = "Color alpha";
-            paletteAlphaNumericLabel.ForeColor = Color.White;
-            paletteAlphaNumericLabel.Location = new Point(5,2);
-            paletteAlphaNumericLabel.Size = new Size(207,20);
-            paletteAlphaNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            paletteAlphaNumericRow.Controls.Add(paletteAlphaNumericLabel);
-            paletteAlphaNumeric.Location = new Point(5,25);
-            paletteAlphaNumeric.Size = new Size(206,25);
-            paletteAlphaNumeric.Minimum = 1;
-            paletteAlphaNumeric.Maximum = 255;
-            paletteAlphaNumeric.Value = 255;
-            paletteAlphaNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            paletteAlphaNumericRow.Controls.Add(paletteAlphaNumeric);
-            paletteDividerNumericRow = new Panel();
-            paletteDividerNumericRow.Name = "paletteDividerNumericRow";
-            paletteDividerNumericRow.Size = new Size(225,57);
-            paletteDividerNumericRow.Margin = new Padding(3,5,3,5);
-            paletteDividerNumeric = new NumericUpDown();
-            paletteDividerNumeric.Name = "paletteDividerNumeric";
-            paletteDividerNumericLabel = new Label();
-            paletteDividerNumericLabel.Name = "paletteDividerNumericLabel";
-            paletteDividerNumericLabel.Text = "Color intensity divider";
-            paletteDividerNumericLabel.ForeColor = Color.White;
-            paletteDividerNumericLabel.Location = new Point(5,2);
-            paletteDividerNumericLabel.Size = new Size(207,20);
-            paletteDividerNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            paletteDividerNumericRow.Controls.Add(paletteDividerNumericLabel);
-            paletteDividerNumeric.Location = new Point(5,25);
-            paletteDividerNumeric.Size = new Size(206,25);
-            paletteDividerNumeric.Minimum = 1;
-            paletteDividerNumeric.Maximum = 8;
-            paletteDividerNumeric.Value = 2;
-            paletteDividerNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            paletteDividerNumericRow.Controls.Add(paletteDividerNumeric);
-            backgroundComboBoxRow = new Panel();
-            backgroundComboBoxRow.Name = "backgroundComboBoxRow";
-            backgroundComboBoxRow.Size = new Size(225,57);
-            backgroundComboBoxRow.Margin = new Padding(3,5,3,5);
-            backgroundComboBox = new ComboBox();
-            backgroundComboBox.Name = "backgroundComboBox";
-            backgroundComboBoxLabel = new Label();
-            backgroundComboBoxLabel.Name = "backgroundComboBoxLabel";
-            backgroundComboBoxLabel.Text = "Chart background";
-            backgroundComboBoxLabel.ForeColor = Color.White;
-            backgroundComboBoxLabel.Location = new Point(5,2);
-            backgroundComboBoxLabel.Size = new Size(207,20);
-            backgroundComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            backgroundComboBoxRow.Controls.Add(backgroundComboBoxLabel);
-            backgroundComboBox.Location = new Point(5,25);
-            backgroundComboBox.Size = new Size(206,25);
-            backgroundComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            backgroundComboBox.IntegralHeight = false;
-            backgroundComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            backgroundComboBoxRow.Controls.Add(backgroundComboBox);
-            layoutComboBoxRow = new Panel();
-            layoutComboBoxRow.Name = "layoutComboBoxRow";
-            layoutComboBoxRow.Size = new Size(225,57);
-            layoutComboBoxRow.Margin = new Padding(3,5,3,5);
-            layoutComboBox = new ComboBox();
-            layoutComboBox.Name = "layoutComboBox";
-            layoutComboBoxLabel = new Label();
-            layoutComboBoxLabel.Name = "layoutComboBoxLabel";
-            layoutComboBoxLabel.Text = "Dataset layout";
-            layoutComboBoxLabel.ForeColor = Color.White;
-            layoutComboBoxLabel.Location = new Point(5,2);
-            layoutComboBoxLabel.Size = new Size(207,20);
-            layoutComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            layoutComboBoxRow.Controls.Add(layoutComboBoxLabel);
-            layoutComboBox.Location = new Point(5,25);
-            layoutComboBox.Size = new Size(206,25);
-            layoutComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            layoutComboBox.IntegralHeight = false;
-            layoutComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            layoutComboBoxRow.Controls.Add(layoutComboBox);
-            absoluteCheckBoxRow = new Panel();
-            absoluteCheckBoxRow.Name = "absoluteCheckBoxRow";
-            absoluteCheckBoxRow.Size = new Size(225,40);
-            absoluteCheckBoxRow.Margin = new Padding(3,5,3,5);
-            absoluteCheckBox = new CheckBox();
-            absoluteCheckBox.Name = "absoluteCheckBox";
-            absoluteCheckBox.Text = "Absolute X / Y / Z values";
-            absoluteCheckBox.Location = new Point(6,10);
-            absoluteCheckBox.Size = new Size(208,28);
-            absoluteCheckBox.ForeColor = Color.White;
-            absoluteCheckBox.Checked = true;
-            absoluteCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            absoluteCheckBoxRow.Controls.Add(absoluteCheckBox);
-            tooltipEnableCheckBoxRow = new Panel();
-            tooltipEnableCheckBoxRow.Name = "tooltipEnableCheckBoxRow";
-            tooltipEnableCheckBoxRow.Size = new Size(225,40);
-            tooltipEnableCheckBoxRow.Margin = new Padding(3,5,3,5);
-            tooltipEnableCheckBox = new CheckBox();
-            tooltipEnableCheckBox.Name = "tooltipEnableCheckBox";
-            tooltipEnableCheckBox.Text = "Show XYZ point tooltips";
-            tooltipEnableCheckBox.Checked = true;
-            tooltipEnableCheckBox.ForeColor = Color.White;
-            tooltipEnableCheckBox.Location = new Point(6,10);
-            tooltipEnableCheckBox.Size = new Size(208,28);
-            tooltipEnableCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            tooltipEnableCheckBoxRow.Controls.Add(tooltipEnableCheckBox);
-            tooltipDelayNumericRow = new Panel();
-            tooltipDelayNumericRow.Name = "tooltipDelayNumericRow";
-            tooltipDelayNumericRow.Size = new Size(225,57);
-            tooltipDelayNumericRow.Margin = new Padding(3,5,3,5);
-            tooltipDelayNumeric = new NumericUpDown();
-            tooltipDelayNumeric.Name = "tooltipDelayNumeric";
-            tooltipDelayNumericLabel = new Label();
-            tooltipDelayNumericLabel.Name = "tooltipDelayNumericLabel";
-            tooltipDelayNumericLabel.Text = "Point hover delay (milliseconds)";
-            tooltipDelayNumericLabel.ForeColor = Color.White;
-            tooltipDelayNumericLabel.Location = new Point(5,2);
-            tooltipDelayNumericLabel.Size = new Size(207,20);
-            tooltipDelayNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            tooltipDelayNumericRow.Controls.Add(tooltipDelayNumericLabel);
-            tooltipDelayNumeric.Location = new Point(5,25);
-            tooltipDelayNumeric.Size = new Size(206,25);
-            tooltipDelayNumeric.Minimum = 0;
-            tooltipDelayNumeric.Maximum = 10000;
-            tooltipDelayNumeric.Increment = 100;
-            tooltipDelayNumeric.Value = 500;
-            tooltipDelayNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            tooltipDelayNumericRow.Controls.Add(tooltipDelayNumeric);
-            xAxisGroup = new GroupBox();
-            xAxisGroup.Name = "xAxisGroup";
-            xAxisGroup.Text = "X axis";
-            xAxisGroup.Dock = DockStyle.Fill;
-            xAxisGroup.ForeColor = Color.White;
-            xAxisGroup.Margin = new Padding(5);
-            xAxisGroup.Padding = new Padding(8);
-            xFields = new TableLayoutPanel();
-            xFields.Name = "xFields";
-            xFields.Dock = DockStyle.Fill;
-            xFields.AutoScroll = true;
-            xFields.ColumnCount = 1;
-            xFields.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            xFields.RowCount = 12;
-            xFields.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            xFields.BackColor = Color.FromArgb(24,24,24);
-                                    xFields.Padding = new Padding(3,0,3,0);
-            xAxisGroup.Controls.Add(xFields);
-            settingsColumns.Controls.Add(xAxisGroup,1,0);
-            xColumnComboBoxRow = new Panel();
-            xColumnComboBoxRow.Name = "xColumnComboBoxRow";
-            xColumnComboBoxRow.Size = new Size(225,57);
-            xColumnComboBoxRow.Margin = new Padding(3,5,3,5);
-            xColumnComboBox = new ComboBox();
-            xColumnComboBox.Name = "xColumnComboBox";
-            xColumnComboBoxLabel = new Label();
-            xColumnComboBoxLabel.Name = "xColumnComboBoxLabel";
-            xColumnComboBoxLabel.Text = "X column";
-            xColumnComboBoxLabel.ForeColor = Color.White;
-            xColumnComboBoxLabel.Location = new Point(5,2);
-            xColumnComboBoxLabel.Size = new Size(207,20);
-            xColumnComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xColumnComboBoxRow.Controls.Add(xColumnComboBoxLabel);
-            xColumnComboBox.Location = new Point(5,25);
-            xColumnComboBox.Size = new Size(206,25);
-            xColumnComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            xColumnComboBox.IntegralHeight = false;
-            xColumnComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xColumnComboBoxRow.Controls.Add(xColumnComboBox);
-            xAutoCheckBoxRow = new Panel();
-            xAutoCheckBoxRow.Name = "xAutoCheckBoxRow";
-            xAutoCheckBoxRow.Size = new Size(225,40);
-            xAutoCheckBoxRow.Margin = new Padding(3,5,3,5);
-            xAutoCheckBox = new CheckBox();
-            xAutoCheckBox.Name = "xAutoCheckBox";
-            xAutoCheckBox.Text = "Auto-scale X";
-            xAutoCheckBox.Location = new Point(6,10);
-            xAutoCheckBox.Size = new Size(208,28);
-            xAutoCheckBox.ForeColor = Color.White;
-            xAutoCheckBox.Checked = true;
-            xAutoCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xAutoCheckBoxRow.Controls.Add(xAutoCheckBox);
-            xMinimumBoxRow = new Panel();
-            xMinimumBoxRow.Name = "xMinimumBoxRow";
-            xMinimumBoxRow.Size = new Size(225,57);
-            xMinimumBoxRow.Margin = new Padding(3,5,3,5);
-            xMinimumBox = new TextBox();
-            xMinimumBox.Name = "xMinimumBox";
-            xMinimumBoxLabel = new Label();
-            xMinimumBoxLabel.Name = "xMinimumBoxLabel";
-            xMinimumBoxLabel.Text = "X minimum";
-            xMinimumBoxLabel.ForeColor = Color.White;
-            xMinimumBoxLabel.Location = new Point(5,2);
-            xMinimumBoxLabel.Size = new Size(207,20);
-            xMinimumBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinimumBoxRow.Controls.Add(xMinimumBoxLabel);
-            xMinimumBox.Location = new Point(5,25);
-            xMinimumBox.Size = new Size(206,25);
-            xMinimumBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinimumBoxRow.Controls.Add(xMinimumBox);
-            xMaximumBoxRow = new Panel();
-            xMaximumBoxRow.Name = "xMaximumBoxRow";
-            xMaximumBoxRow.Size = new Size(225,57);
-            xMaximumBoxRow.Margin = new Padding(3,5,3,5);
-            xMaximumBox = new TextBox();
-            xMaximumBox.Name = "xMaximumBox";
-            xMaximumBoxLabel = new Label();
-            xMaximumBoxLabel.Name = "xMaximumBoxLabel";
-            xMaximumBoxLabel.Text = "X maximum";
-            xMaximumBoxLabel.ForeColor = Color.White;
-            xMaximumBoxLabel.Location = new Point(5,2);
-            xMaximumBoxLabel.Size = new Size(207,20);
-            xMaximumBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMaximumBoxRow.Controls.Add(xMaximumBoxLabel);
-            xMaximumBox.Location = new Point(5,25);
-            xMaximumBox.Size = new Size(206,25);
-            xMaximumBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMaximumBoxRow.Controls.Add(xMaximumBox);
-            xGridIntervalBoxRow = new Panel();
-            xGridIntervalBoxRow.Name = "xGridIntervalBoxRow";
-            xGridIntervalBoxRow.Size = new Size(225,57);
-            xGridIntervalBoxRow.Margin = new Padding(3,5,3,5);
-            xGridIntervalBox = new TextBox();
-            xGridIntervalBox.Name = "xGridIntervalBox";
-            xGridIntervalBoxLabel = new Label();
-            xGridIntervalBoxLabel.Name = "xGridIntervalBoxLabel";
-            xGridIntervalBoxLabel.Text = "Major grid interval (0 = auto)";
-            xGridIntervalBoxLabel.ForeColor = Color.White;
-            xGridIntervalBoxLabel.Location = new Point(5,2);
-            xGridIntervalBoxLabel.Size = new Size(207,20);
-            xGridIntervalBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridIntervalBoxRow.Controls.Add(xGridIntervalBoxLabel);
-            xGridIntervalBox.Location = new Point(5,25);
-            xGridIntervalBox.Size = new Size(206,25);
-            xGridIntervalBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridIntervalBoxRow.Controls.Add(xGridIntervalBox);
-            xDecimalsNumericRow = new Panel();
-            xDecimalsNumericRow.Name = "xDecimalsNumericRow";
-            xDecimalsNumericRow.Size = new Size(225,57);
-            xDecimalsNumericRow.Margin = new Padding(3,5,3,5);
-            xDecimalsNumeric = new NumericUpDown();
-            xDecimalsNumeric.Name = "xDecimalsNumeric";
-            xDecimalsNumericLabel = new Label();
-            xDecimalsNumericLabel.Name = "xDecimalsNumericLabel";
-            xDecimalsNumericLabel.Text = "Label decimals";
-            xDecimalsNumericLabel.ForeColor = Color.White;
-            xDecimalsNumericLabel.Location = new Point(5,2);
-            xDecimalsNumericLabel.Size = new Size(207,20);
-            xDecimalsNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xDecimalsNumericRow.Controls.Add(xDecimalsNumericLabel);
-            xDecimalsNumeric.Location = new Point(5,25);
-            xDecimalsNumeric.Size = new Size(206,25);
-            xDecimalsNumeric.Minimum = 0;
-            xDecimalsNumeric.Maximum = 8;
-            xDecimalsNumeric.Value = 2;
-            xDecimalsNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xDecimalsNumericRow.Controls.Add(xDecimalsNumeric);
-            xMinorCheckBoxRow = new Panel();
-            xMinorCheckBoxRow.Name = "xMinorCheckBoxRow";
-            xMinorCheckBoxRow.Size = new Size(225,40);
-            xMinorCheckBoxRow.Margin = new Padding(3,5,3,5);
-            xMinorCheckBox = new CheckBox();
-            xMinorCheckBox.Name = "xMinorCheckBox";
-            xMinorCheckBox.Text = "Minor grid";
-            xMinorCheckBox.Location = new Point(6,10);
-            xMinorCheckBox.Size = new Size(208,28);
-            xMinorCheckBox.ForeColor = Color.White;
-            xMinorCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorCheckBoxRow.Controls.Add(xMinorCheckBox);
-            xGridColorComboBoxRow = new Panel();
-            xGridColorComboBoxRow.Name = "xGridColorComboBoxRow";
-            xGridColorComboBoxRow.Size = new Size(225,57);
-            xGridColorComboBoxRow.Margin = new Padding(3,5,3,5);
-            xGridColorComboBox = new ComboBox();
-            xGridColorComboBox.Name = "xGridColorComboBox";
-            xGridColorComboBoxLabel = new Label();
-            xGridColorComboBoxLabel.Name = "xGridColorComboBoxLabel";
-            xGridColorComboBoxLabel.Text = "Major grid color";
-            xGridColorComboBoxLabel.ForeColor = Color.White;
-            xGridColorComboBoxLabel.Location = new Point(5,2);
-            xGridColorComboBoxLabel.Size = new Size(207,20);
-            xGridColorComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridColorComboBoxRow.Controls.Add(xGridColorComboBoxLabel);
-            xGridColorComboBox.Location = new Point(5,25);
-            xGridColorComboBox.Size = new Size(206,25);
-            xGridColorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            xGridColorComboBox.IntegralHeight = false;
-            xGridColorComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridColorComboBoxRow.Controls.Add(xGridColorComboBox);
-            xGridWidthNumericRow = new Panel();
-            xGridWidthNumericRow.Name = "xGridWidthNumericRow";
-            xGridWidthNumericRow.Size = new Size(225,57);
-            xGridWidthNumericRow.Margin = new Padding(3,5,3,5);
-            xGridWidthNumeric = new NumericUpDown();
-            xGridWidthNumeric.Name = "xGridWidthNumeric";
-            xGridWidthNumericLabel = new Label();
-            xGridWidthNumericLabel.Name = "xGridWidthNumericLabel";
-            xGridWidthNumericLabel.Text = "Major grid width";
-            xGridWidthNumericLabel.ForeColor = Color.White;
-            xGridWidthNumericLabel.Location = new Point(5,2);
-            xGridWidthNumericLabel.Size = new Size(207,20);
-            xGridWidthNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridWidthNumericRow.Controls.Add(xGridWidthNumericLabel);
-            xGridWidthNumeric.Location = new Point(5,25);
-            xGridWidthNumeric.Size = new Size(206,25);
-            xGridWidthNumeric.Minimum = 1;
-            xGridWidthNumeric.Maximum = 8;
-            xGridWidthNumeric.Value = 1;
-            xGridWidthNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridWidthNumericRow.Controls.Add(xGridWidthNumeric);
-            xMinorColorComboBoxRow = new Panel();
-            xMinorColorComboBoxRow.Name = "xMinorColorComboBoxRow";
-            xMinorColorComboBoxRow.Size = new Size(225,57);
-            xMinorColorComboBoxRow.Margin = new Padding(3,5,3,5);
-            xMinorColorComboBox = new ComboBox();
-            xMinorColorComboBox.Name = "xMinorColorComboBox";
-            xMinorColorComboBoxLabel = new Label();
-            xMinorColorComboBoxLabel.Name = "xMinorColorComboBoxLabel";
-            xMinorColorComboBoxLabel.Text = "Minor grid color";
-            xMinorColorComboBoxLabel.ForeColor = Color.White;
-            xMinorColorComboBoxLabel.Location = new Point(5,2);
-            xMinorColorComboBoxLabel.Size = new Size(207,20);
-            xMinorColorComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorColorComboBoxRow.Controls.Add(xMinorColorComboBoxLabel);
-            xMinorColorComboBox.Location = new Point(5,25);
-            xMinorColorComboBox.Size = new Size(206,25);
-            xMinorColorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            xMinorColorComboBox.IntegralHeight = false;
-            xMinorColorComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorColorComboBoxRow.Controls.Add(xMinorColorComboBox);
-            xMinorWidthNumericRow = new Panel();
-            xMinorWidthNumericRow.Name = "xMinorWidthNumericRow";
-            xMinorWidthNumericRow.Size = new Size(225,57);
-            xMinorWidthNumericRow.Margin = new Padding(3,5,3,5);
-            xMinorWidthNumeric = new NumericUpDown();
-            xMinorWidthNumeric.Name = "xMinorWidthNumeric";
-            xMinorWidthNumericLabel = new Label();
-            xMinorWidthNumericLabel.Name = "xMinorWidthNumericLabel";
-            xMinorWidthNumericLabel.Text = "Minor grid width";
-            xMinorWidthNumericLabel.ForeColor = Color.White;
-            xMinorWidthNumericLabel.Location = new Point(5,2);
-            xMinorWidthNumericLabel.Size = new Size(207,20);
-            xMinorWidthNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorWidthNumericRow.Controls.Add(xMinorWidthNumericLabel);
-            xMinorWidthNumeric.Location = new Point(5,25);
-            xMinorWidthNumeric.Size = new Size(206,25);
-            xMinorWidthNumeric.Minimum = 1;
-            xMinorWidthNumeric.Maximum = 8;
-            xMinorWidthNumeric.Value = 1;
-            xMinorWidthNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorWidthNumericRow.Controls.Add(xMinorWidthNumeric);
-            xFontComboBoxRow = new Panel();
-            xFontComboBoxRow.Name = "xFontComboBoxRow";
-            xFontComboBoxRow.Size = new Size(225,57);
-            xFontComboBoxRow.Margin = new Padding(3,5,3,5);
-            xFontComboBox = new ComboBox();
-            xFontComboBox.Name = "xFontComboBox";
-            xFontComboBoxLabel = new Label();
-            xFontComboBoxLabel.Name = "xFontComboBoxLabel";
-            xFontComboBoxLabel.Text = "Axis font family";
-            xFontComboBoxLabel.ForeColor = Color.White;
-            xFontComboBoxLabel.Location = new Point(5,2);
-            xFontComboBoxLabel.Size = new Size(207,20);
-            xFontComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xFontComboBoxRow.Controls.Add(xFontComboBoxLabel);
-            xFontComboBox.Location = new Point(5,25);
-            xFontComboBox.Size = new Size(206,25);
-            xFontComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            xFontComboBox.IntegralHeight = false;
-            xFontComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xFontComboBoxRow.Controls.Add(xFontComboBox);
-            xFontSizeNumericRow = new Panel();
-            xFontSizeNumericRow.Name = "xFontSizeNumericRow";
-            xFontSizeNumericRow.Size = new Size(225,57);
-            xFontSizeNumericRow.Margin = new Padding(3,5,3,5);
-            xFontSizeNumeric = new NumericUpDown();
-            xFontSizeNumeric.Name = "xFontSizeNumeric";
-            xFontSizeNumericLabel = new Label();
-            xFontSizeNumericLabel.Name = "xFontSizeNumericLabel";
-            xFontSizeNumericLabel.Text = "Axis font size";
-            xFontSizeNumericLabel.ForeColor = Color.White;
-            xFontSizeNumericLabel.Location = new Point(5,2);
-            xFontSizeNumericLabel.Size = new Size(207,20);
-            xFontSizeNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xFontSizeNumericRow.Controls.Add(xFontSizeNumericLabel);
-            xFontSizeNumeric.Location = new Point(5,25);
-            xFontSizeNumeric.Size = new Size(206,25);
-            xFontSizeNumeric.Minimum = 6;
-            xFontSizeNumeric.Maximum = 36;
-            xFontSizeNumeric.Value = 9;
-            xFontSizeNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xFontSizeNumericRow.Controls.Add(xFontSizeNumeric);
-            xFontColorComboBoxRow = new Panel();
-            xFontColorComboBoxRow.Name = "xFontColorComboBoxRow";
-            xFontColorComboBoxRow.Size = new Size(225,57);
-            xFontColorComboBoxRow.Margin = new Padding(3,5,3,5);
-            xFontColorComboBox = new ComboBox();
-            xFontColorComboBox.Name = "xFontColorComboBox";
-            xFontColorComboBoxLabel = new Label();
-            xFontColorComboBoxLabel.Name = "xFontColorComboBoxLabel";
-            xFontColorComboBoxLabel.Text = "Axis font color";
-            xFontColorComboBoxLabel.ForeColor = Color.White;
-            xFontColorComboBoxLabel.Location = new Point(5,2);
-            xFontColorComboBoxLabel.Size = new Size(207,20);
-            xFontColorComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xFontColorComboBoxRow.Controls.Add(xFontColorComboBoxLabel);
-            xFontColorComboBox.Location = new Point(5,25);
-            xFontColorComboBox.Size = new Size(206,25);
-            xFontColorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            xFontColorComboBox.IntegralHeight = false;
-            xFontColorComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xFontColorComboBoxRow.Controls.Add(xFontColorComboBox);
-            xLogCheckBoxRow = new Panel();
-            xLogCheckBoxRow.Name = "xLogCheckBoxRow";
-            xLogCheckBoxRow.Size = new Size(225,40);
-            xLogCheckBoxRow.Margin = new Padding(3,5,3,5);
-            xLogCheckBox = new CheckBox();
-            xLogCheckBox.Name = "xLogCheckBox";
-            xLogCheckBox.Text = "Logarithmic X axis";
-            xLogCheckBox.Location = new Point(6,10);
-            xLogCheckBox.Size = new Size(208,28);
-            xLogCheckBox.ForeColor = Color.White;
-            xLogCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xLogCheckBoxRow.Controls.Add(xLogCheckBox);
-            xLogBaseBoxRow = new Panel();
-            xLogBaseBoxRow.Name = "xLogBaseBoxRow";
-            xLogBaseBoxRow.Size = new Size(225,57);
-            xLogBaseBoxRow.Margin = new Padding(3,5,3,5);
-            xLogBaseBox = new TextBox();
-            xLogBaseBox.Name = "xLogBaseBox";
-            xLogBaseBoxLabel = new Label();
-            xLogBaseBoxLabel.Name = "xLogBaseBoxLabel";
-            xLogBaseBoxLabel.Text = "Logarithmic base";
-            xLogBaseBoxLabel.ForeColor = Color.White;
-            xLogBaseBoxLabel.Location = new Point(5,2);
-            xLogBaseBoxLabel.Size = new Size(207,20);
-            xLogBaseBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xLogBaseBoxRow.Controls.Add(xLogBaseBoxLabel);
-            xLogBaseBox.Location = new Point(5,25);
-            xLogBaseBox.Size = new Size(206,25);
-            xLogBaseBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xLogBaseBoxRow.Controls.Add(xLogBaseBox);
-            xDefaultsButtonRow = new Panel();
-            xDefaultsButtonRow.Name = "xDefaultsButtonRow";
-            xDefaultsButtonRow.Size = new Size(225,44);
-            xDefaultsButtonRow.Margin = new Padding(3,5,3,5);
-            xDefaultsButton = new Button();
-            xDefaultsButton.Name = "xDefaultsButton";
-            xDefaultsButton.BackColor = Color.FromArgb(60,60,60);
-            xDefaultsButton.ForeColor = Color.White;
-            xDefaultsButton.UseVisualStyleBackColor = false;
-            xDefaultsButton.Text = "Restore X defaults";
-            xDefaultsButton.Location = new Point(6,6);
-            xDefaultsButton.Size = new Size(208,30);
-            xDefaultsButton.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xDefaultsButtonRow.Controls.Add(xDefaultsButton);
-            yAxisGroup = new GroupBox();
-            yAxisGroup.Name = "yAxisGroup";
-            yAxisGroup.Text = "Y axis";
-            yAxisGroup.Dock = DockStyle.Fill;
-            yAxisGroup.ForeColor = Color.White;
-            yAxisGroup.Margin = new Padding(5);
-            yAxisGroup.Padding = new Padding(8);
-            yFields = new TableLayoutPanel();
-            yFields.Name = "yFields";
-            yFields.Dock = DockStyle.Fill;
-            yFields.AutoScroll = true;
-            yFields.ColumnCount = 1;
-            yFields.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            yFields.RowCount = 12;
-            yFields.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            yFields.BackColor = Color.FromArgb(24,24,24);
-                                    yFields.Padding = new Padding(3,0,3,0);
-            yAxisGroup.Controls.Add(yFields);
-            settingsColumns.Controls.Add(yAxisGroup,2,0);
-            yColumnComboBoxRow = new Panel();
-            yColumnComboBoxRow.Name = "yColumnComboBoxRow";
-            yColumnComboBoxRow.Size = new Size(225,57);
-            yColumnComboBoxRow.Margin = new Padding(3,5,3,5);
-            yColumnComboBox = new ComboBox();
-            yColumnComboBox.Name = "yColumnComboBox";
-            yColumnComboBoxLabel = new Label();
-            yColumnComboBoxLabel.Name = "yColumnComboBoxLabel";
-            yColumnComboBoxLabel.Text = "Y column";
-            yColumnComboBoxLabel.ForeColor = Color.White;
-            yColumnComboBoxLabel.Location = new Point(5,2);
-            yColumnComboBoxLabel.Size = new Size(207,20);
-            yColumnComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yColumnComboBoxRow.Controls.Add(yColumnComboBoxLabel);
-            yColumnComboBox.Location = new Point(5,25);
-            yColumnComboBox.Size = new Size(206,25);
-            yColumnComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            yColumnComboBox.IntegralHeight = false;
-            yColumnComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yColumnComboBoxRow.Controls.Add(yColumnComboBox);
-            yAutoCheckBoxRow = new Panel();
-            yAutoCheckBoxRow.Name = "yAutoCheckBoxRow";
-            yAutoCheckBoxRow.Size = new Size(225,40);
-            yAutoCheckBoxRow.Margin = new Padding(3,5,3,5);
-            yAutoCheckBox = new CheckBox();
-            yAutoCheckBox.Name = "yAutoCheckBox";
-            yAutoCheckBox.Text = "Auto-scale Y";
-            yAutoCheckBox.Location = new Point(6,10);
-            yAutoCheckBox.Size = new Size(208,28);
-            yAutoCheckBox.ForeColor = Color.White;
-            yAutoCheckBox.Checked = true;
-            yAutoCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yAutoCheckBoxRow.Controls.Add(yAutoCheckBox);
-            yMinimumBoxRow = new Panel();
-            yMinimumBoxRow.Name = "yMinimumBoxRow";
-            yMinimumBoxRow.Size = new Size(225,57);
-            yMinimumBoxRow.Margin = new Padding(3,5,3,5);
-            yMinimumBox = new TextBox();
-            yMinimumBox.Name = "yMinimumBox";
-            yMinimumBoxLabel = new Label();
-            yMinimumBoxLabel.Name = "yMinimumBoxLabel";
-            yMinimumBoxLabel.Text = "Y minimum";
-            yMinimumBoxLabel.ForeColor = Color.White;
-            yMinimumBoxLabel.Location = new Point(5,2);
-            yMinimumBoxLabel.Size = new Size(207,20);
-            yMinimumBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinimumBoxRow.Controls.Add(yMinimumBoxLabel);
-            yMinimumBox.Location = new Point(5,25);
-            yMinimumBox.Size = new Size(206,25);
-            yMinimumBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinimumBoxRow.Controls.Add(yMinimumBox);
-            yMaximumBoxRow = new Panel();
-            yMaximumBoxRow.Name = "yMaximumBoxRow";
-            yMaximumBoxRow.Size = new Size(225,57);
-            yMaximumBoxRow.Margin = new Padding(3,5,3,5);
-            yMaximumBox = new TextBox();
-            yMaximumBox.Name = "yMaximumBox";
-            yMaximumBoxLabel = new Label();
-            yMaximumBoxLabel.Name = "yMaximumBoxLabel";
-            yMaximumBoxLabel.Text = "Y maximum";
-            yMaximumBoxLabel.ForeColor = Color.White;
-            yMaximumBoxLabel.Location = new Point(5,2);
-            yMaximumBoxLabel.Size = new Size(207,20);
-            yMaximumBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMaximumBoxRow.Controls.Add(yMaximumBoxLabel);
-            yMaximumBox.Location = new Point(5,25);
-            yMaximumBox.Size = new Size(206,25);
-            yMaximumBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMaximumBoxRow.Controls.Add(yMaximumBox);
-            yGridIntervalBoxRow = new Panel();
-            yGridIntervalBoxRow.Name = "yGridIntervalBoxRow";
-            yGridIntervalBoxRow.Size = new Size(225,57);
-            yGridIntervalBoxRow.Margin = new Padding(3,5,3,5);
-            yGridIntervalBox = new TextBox();
-            yGridIntervalBox.Name = "yGridIntervalBox";
-            yGridIntervalBoxLabel = new Label();
-            yGridIntervalBoxLabel.Name = "yGridIntervalBoxLabel";
-            yGridIntervalBoxLabel.Text = "Major grid interval (0 = auto)";
-            yGridIntervalBoxLabel.ForeColor = Color.White;
-            yGridIntervalBoxLabel.Location = new Point(5,2);
-            yGridIntervalBoxLabel.Size = new Size(207,20);
-            yGridIntervalBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridIntervalBoxRow.Controls.Add(yGridIntervalBoxLabel);
-            yGridIntervalBox.Location = new Point(5,25);
-            yGridIntervalBox.Size = new Size(206,25);
-            yGridIntervalBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridIntervalBoxRow.Controls.Add(yGridIntervalBox);
-            yDecimalsNumericRow = new Panel();
-            yDecimalsNumericRow.Name = "yDecimalsNumericRow";
-            yDecimalsNumericRow.Size = new Size(225,57);
-            yDecimalsNumericRow.Margin = new Padding(3,5,3,5);
-            yDecimalsNumeric = new NumericUpDown();
-            yDecimalsNumeric.Name = "yDecimalsNumeric";
-            yDecimalsNumericLabel = new Label();
-            yDecimalsNumericLabel.Name = "yDecimalsNumericLabel";
-            yDecimalsNumericLabel.Text = "Label decimals";
-            yDecimalsNumericLabel.ForeColor = Color.White;
-            yDecimalsNumericLabel.Location = new Point(5,2);
-            yDecimalsNumericLabel.Size = new Size(207,20);
-            yDecimalsNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yDecimalsNumericRow.Controls.Add(yDecimalsNumericLabel);
-            yDecimalsNumeric.Location = new Point(5,25);
-            yDecimalsNumeric.Size = new Size(206,25);
-            yDecimalsNumeric.Minimum = 0;
-            yDecimalsNumeric.Maximum = 8;
-            yDecimalsNumeric.Value = 2;
-            yDecimalsNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yDecimalsNumericRow.Controls.Add(yDecimalsNumeric);
-            yMinorCheckBoxRow = new Panel();
-            yMinorCheckBoxRow.Name = "yMinorCheckBoxRow";
-            yMinorCheckBoxRow.Size = new Size(225,40);
-            yMinorCheckBoxRow.Margin = new Padding(3,5,3,5);
-            yMinorCheckBox = new CheckBox();
-            yMinorCheckBox.Name = "yMinorCheckBox";
-            yMinorCheckBox.Text = "Minor grid";
-            yMinorCheckBox.Location = new Point(6,10);
-            yMinorCheckBox.Size = new Size(208,28);
-            yMinorCheckBox.ForeColor = Color.White;
-            yMinorCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorCheckBoxRow.Controls.Add(yMinorCheckBox);
-            yGridColorComboBoxRow = new Panel();
-            yGridColorComboBoxRow.Name = "yGridColorComboBoxRow";
-            yGridColorComboBoxRow.Size = new Size(225,57);
-            yGridColorComboBoxRow.Margin = new Padding(3,5,3,5);
-            yGridColorComboBox = new ComboBox();
-            yGridColorComboBox.Name = "yGridColorComboBox";
-            yGridColorComboBoxLabel = new Label();
-            yGridColorComboBoxLabel.Name = "yGridColorComboBoxLabel";
-            yGridColorComboBoxLabel.Text = "Major grid color";
-            yGridColorComboBoxLabel.ForeColor = Color.White;
-            yGridColorComboBoxLabel.Location = new Point(5,2);
-            yGridColorComboBoxLabel.Size = new Size(207,20);
-            yGridColorComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridColorComboBoxRow.Controls.Add(yGridColorComboBoxLabel);
-            yGridColorComboBox.Location = new Point(5,25);
-            yGridColorComboBox.Size = new Size(206,25);
-            yGridColorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            yGridColorComboBox.IntegralHeight = false;
-            yGridColorComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridColorComboBoxRow.Controls.Add(yGridColorComboBox);
-            yGridWidthNumericRow = new Panel();
-            yGridWidthNumericRow.Name = "yGridWidthNumericRow";
-            yGridWidthNumericRow.Size = new Size(225,57);
-            yGridWidthNumericRow.Margin = new Padding(3,5,3,5);
-            yGridWidthNumeric = new NumericUpDown();
-            yGridWidthNumeric.Name = "yGridWidthNumeric";
-            yGridWidthNumericLabel = new Label();
-            yGridWidthNumericLabel.Name = "yGridWidthNumericLabel";
-            yGridWidthNumericLabel.Text = "Major grid width";
-            yGridWidthNumericLabel.ForeColor = Color.White;
-            yGridWidthNumericLabel.Location = new Point(5,2);
-            yGridWidthNumericLabel.Size = new Size(207,20);
-            yGridWidthNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridWidthNumericRow.Controls.Add(yGridWidthNumericLabel);
-            yGridWidthNumeric.Location = new Point(5,25);
-            yGridWidthNumeric.Size = new Size(206,25);
-            yGridWidthNumeric.Minimum = 1;
-            yGridWidthNumeric.Maximum = 8;
-            yGridWidthNumeric.Value = 1;
-            yGridWidthNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridWidthNumericRow.Controls.Add(yGridWidthNumeric);
-            yMinorColorComboBoxRow = new Panel();
-            yMinorColorComboBoxRow.Name = "yMinorColorComboBoxRow";
-            yMinorColorComboBoxRow.Size = new Size(225,57);
-            yMinorColorComboBoxRow.Margin = new Padding(3,5,3,5);
-            yMinorColorComboBox = new ComboBox();
-            yMinorColorComboBox.Name = "yMinorColorComboBox";
-            yMinorColorComboBoxLabel = new Label();
-            yMinorColorComboBoxLabel.Name = "yMinorColorComboBoxLabel";
-            yMinorColorComboBoxLabel.Text = "Minor grid color";
-            yMinorColorComboBoxLabel.ForeColor = Color.White;
-            yMinorColorComboBoxLabel.Location = new Point(5,2);
-            yMinorColorComboBoxLabel.Size = new Size(207,20);
-            yMinorColorComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorColorComboBoxRow.Controls.Add(yMinorColorComboBoxLabel);
-            yMinorColorComboBox.Location = new Point(5,25);
-            yMinorColorComboBox.Size = new Size(206,25);
-            yMinorColorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            yMinorColorComboBox.IntegralHeight = false;
-            yMinorColorComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorColorComboBoxRow.Controls.Add(yMinorColorComboBox);
-            yMinorWidthNumericRow = new Panel();
-            yMinorWidthNumericRow.Name = "yMinorWidthNumericRow";
-            yMinorWidthNumericRow.Size = new Size(225,57);
-            yMinorWidthNumericRow.Margin = new Padding(3,5,3,5);
-            yMinorWidthNumeric = new NumericUpDown();
-            yMinorWidthNumeric.Name = "yMinorWidthNumeric";
-            yMinorWidthNumericLabel = new Label();
-            yMinorWidthNumericLabel.Name = "yMinorWidthNumericLabel";
-            yMinorWidthNumericLabel.Text = "Minor grid width";
-            yMinorWidthNumericLabel.ForeColor = Color.White;
-            yMinorWidthNumericLabel.Location = new Point(5,2);
-            yMinorWidthNumericLabel.Size = new Size(207,20);
-            yMinorWidthNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorWidthNumericRow.Controls.Add(yMinorWidthNumericLabel);
-            yMinorWidthNumeric.Location = new Point(5,25);
-            yMinorWidthNumeric.Size = new Size(206,25);
-            yMinorWidthNumeric.Minimum = 1;
-            yMinorWidthNumeric.Maximum = 8;
-            yMinorWidthNumeric.Value = 1;
-            yMinorWidthNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorWidthNumericRow.Controls.Add(yMinorWidthNumeric);
-            yFontComboBoxRow = new Panel();
-            yFontComboBoxRow.Name = "yFontComboBoxRow";
-            yFontComboBoxRow.Size = new Size(225,57);
-            yFontComboBoxRow.Margin = new Padding(3,5,3,5);
-            yFontComboBox = new ComboBox();
-            yFontComboBox.Name = "yFontComboBox";
-            yFontComboBoxLabel = new Label();
-            yFontComboBoxLabel.Name = "yFontComboBoxLabel";
-            yFontComboBoxLabel.Text = "Axis font family";
-            yFontComboBoxLabel.ForeColor = Color.White;
-            yFontComboBoxLabel.Location = new Point(5,2);
-            yFontComboBoxLabel.Size = new Size(207,20);
-            yFontComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yFontComboBoxRow.Controls.Add(yFontComboBoxLabel);
-            yFontComboBox.Location = new Point(5,25);
-            yFontComboBox.Size = new Size(206,25);
-            yFontComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            yFontComboBox.IntegralHeight = false;
-            yFontComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yFontComboBoxRow.Controls.Add(yFontComboBox);
-            yFontSizeNumericRow = new Panel();
-            yFontSizeNumericRow.Name = "yFontSizeNumericRow";
-            yFontSizeNumericRow.Size = new Size(225,57);
-            yFontSizeNumericRow.Margin = new Padding(3,5,3,5);
-            yFontSizeNumeric = new NumericUpDown();
-            yFontSizeNumeric.Name = "yFontSizeNumeric";
-            yFontSizeNumericLabel = new Label();
-            yFontSizeNumericLabel.Name = "yFontSizeNumericLabel";
-            yFontSizeNumericLabel.Text = "Axis font size";
-            yFontSizeNumericLabel.ForeColor = Color.White;
-            yFontSizeNumericLabel.Location = new Point(5,2);
-            yFontSizeNumericLabel.Size = new Size(207,20);
-            yFontSizeNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yFontSizeNumericRow.Controls.Add(yFontSizeNumericLabel);
-            yFontSizeNumeric.Location = new Point(5,25);
-            yFontSizeNumeric.Size = new Size(206,25);
-            yFontSizeNumeric.Minimum = 6;
-            yFontSizeNumeric.Maximum = 36;
-            yFontSizeNumeric.Value = 9;
-            yFontSizeNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yFontSizeNumericRow.Controls.Add(yFontSizeNumeric);
-            yFontColorComboBoxRow = new Panel();
-            yFontColorComboBoxRow.Name = "yFontColorComboBoxRow";
-            yFontColorComboBoxRow.Size = new Size(225,57);
-            yFontColorComboBoxRow.Margin = new Padding(3,5,3,5);
-            yFontColorComboBox = new ComboBox();
-            yFontColorComboBox.Name = "yFontColorComboBox";
-            yFontColorComboBoxLabel = new Label();
-            yFontColorComboBoxLabel.Name = "yFontColorComboBoxLabel";
-            yFontColorComboBoxLabel.Text = "Axis font color";
-            yFontColorComboBoxLabel.ForeColor = Color.White;
-            yFontColorComboBoxLabel.Location = new Point(5,2);
-            yFontColorComboBoxLabel.Size = new Size(207,20);
-            yFontColorComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yFontColorComboBoxRow.Controls.Add(yFontColorComboBoxLabel);
-            yFontColorComboBox.Location = new Point(5,25);
-            yFontColorComboBox.Size = new Size(206,25);
-            yFontColorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            yFontColorComboBox.IntegralHeight = false;
-            yFontColorComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yFontColorComboBoxRow.Controls.Add(yFontColorComboBox);
-            yLogCheckBoxRow = new Panel();
-            yLogCheckBoxRow.Name = "yLogCheckBoxRow";
-            yLogCheckBoxRow.Size = new Size(225,40);
-            yLogCheckBoxRow.Margin = new Padding(3,5,3,5);
-            yLogCheckBox = new CheckBox();
-            yLogCheckBox.Name = "yLogCheckBox";
-            yLogCheckBox.Text = "Logarithmic Y axis";
-            yLogCheckBox.Location = new Point(6,10);
-            yLogCheckBox.Size = new Size(208,28);
-            yLogCheckBox.ForeColor = Color.White;
-            yLogCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yLogCheckBoxRow.Controls.Add(yLogCheckBox);
-            yLogBaseBoxRow = new Panel();
-            yLogBaseBoxRow.Name = "yLogBaseBoxRow";
-            yLogBaseBoxRow.Size = new Size(225,57);
-            yLogBaseBoxRow.Margin = new Padding(3,5,3,5);
-            yLogBaseBox = new TextBox();
-            yLogBaseBox.Name = "yLogBaseBox";
-            yLogBaseBoxLabel = new Label();
-            yLogBaseBoxLabel.Name = "yLogBaseBoxLabel";
-            yLogBaseBoxLabel.Text = "Logarithmic base";
-            yLogBaseBoxLabel.ForeColor = Color.White;
-            yLogBaseBoxLabel.Location = new Point(5,2);
-            yLogBaseBoxLabel.Size = new Size(207,20);
-            yLogBaseBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yLogBaseBoxRow.Controls.Add(yLogBaseBoxLabel);
-            yLogBaseBox.Location = new Point(5,25);
-            yLogBaseBox.Size = new Size(206,25);
-            yLogBaseBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yLogBaseBoxRow.Controls.Add(yLogBaseBox);
-            yDefaultsButtonRow = new Panel();
-            yDefaultsButtonRow.Name = "yDefaultsButtonRow";
-            yDefaultsButtonRow.Size = new Size(225,44);
-            yDefaultsButtonRow.Margin = new Padding(3,5,3,5);
-            yDefaultsButton = new Button();
-            yDefaultsButton.Name = "yDefaultsButton";
-            yDefaultsButton.BackColor = Color.FromArgb(60,60,60);
-            yDefaultsButton.ForeColor = Color.White;
-            yDefaultsButton.UseVisualStyleBackColor = false;
-            yDefaultsButton.Text = "Restore Y defaults";
-            yDefaultsButton.Location = new Point(6,6);
-            yDefaultsButton.Size = new Size(208,30);
-            yDefaultsButton.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yDefaultsButtonRow.Controls.Add(yDefaultsButton);
-            zAxisGroup = new GroupBox();
-            zAxisGroup.Name = "zAxisGroup";
-            zAxisGroup.Text = "Z / color axis";
-            zAxisGroup.Dock = DockStyle.Fill;
-            zAxisGroup.ForeColor = Color.White;
-            zAxisGroup.Margin = new Padding(5);
-            zAxisGroup.Padding = new Padding(8);
-            zFields = new TableLayoutPanel();
-            zFields.Name = "zFields";
-            zFields.Dock = DockStyle.Fill;
-            zFields.AutoScroll = true;
-            zFields.ColumnCount = 1;
-            zFields.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            zFields.RowCount = 5;
-            zFields.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            zFields.BackColor = Color.FromArgb(24,24,24);
-                                    zFields.Padding = new Padding(3,0,3,0);
-            zAxisGroup.Controls.Add(zFields);
-            settingsColumns.Controls.Add(zAxisGroup,3,0);
-            zColumnComboBoxRow = new Panel();
-            zColumnComboBoxRow.Name = "zColumnComboBoxRow";
-            zColumnComboBoxRow.Size = new Size(225,57);
-            zColumnComboBoxRow.Margin = new Padding(3,5,3,5);
-            zColumnComboBox = new ComboBox();
-            zColumnComboBox.Name = "zColumnComboBox";
-            zColumnComboBoxLabel = new Label();
-            zColumnComboBoxLabel.Name = "zColumnComboBoxLabel";
-            zColumnComboBoxLabel.Text = "Z column (colors)";
-            zColumnComboBoxLabel.ForeColor = Color.White;
-            zColumnComboBoxLabel.Location = new Point(5,2);
-            zColumnComboBoxLabel.Size = new Size(207,20);
-            zColumnComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zColumnComboBoxRow.Controls.Add(zColumnComboBoxLabel);
-            zColumnComboBox.Location = new Point(5,25);
-            zColumnComboBox.Size = new Size(206,25);
-            zColumnComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            zColumnComboBox.IntegralHeight = false;
-            zColumnComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zColumnComboBoxRow.Controls.Add(zColumnComboBox);
-            zAutoCheckBoxRow = new Panel();
-            zAutoCheckBoxRow.Name = "zAutoCheckBoxRow";
-            zAutoCheckBoxRow.Size = new Size(225,40);
-            zAutoCheckBoxRow.Margin = new Padding(3,5,3,5);
-            zAutoCheckBox = new CheckBox();
-            zAutoCheckBox.Name = "zAutoCheckBox";
-            zAutoCheckBox.Text = "Auto-scale Z";
-            zAutoCheckBox.Location = new Point(6,10);
-            zAutoCheckBox.Size = new Size(208,28);
-            zAutoCheckBox.ForeColor = Color.White;
-            zAutoCheckBox.Checked = true;
-            zAutoCheckBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zAutoCheckBoxRow.Controls.Add(zAutoCheckBox);
-            zMinimumBoxRow = new Panel();
-            zMinimumBoxRow.Name = "zMinimumBoxRow";
-            zMinimumBoxRow.Size = new Size(225,57);
-            zMinimumBoxRow.Margin = new Padding(3,5,3,5);
-            zMinimumBox = new TextBox();
-            zMinimumBox.Name = "zMinimumBox";
-            zMinimumBoxLabel = new Label();
-            zMinimumBoxLabel.Name = "zMinimumBoxLabel";
-            zMinimumBoxLabel.Text = "Color minimum";
-            zMinimumBoxLabel.ForeColor = Color.White;
-            zMinimumBoxLabel.Location = new Point(5,2);
-            zMinimumBoxLabel.Size = new Size(207,20);
-            zMinimumBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zMinimumBoxRow.Controls.Add(zMinimumBoxLabel);
-            zMinimumBox.Location = new Point(5,25);
-            zMinimumBox.Size = new Size(206,25);
-            zMinimumBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zMinimumBoxRow.Controls.Add(zMinimumBox);
-            zMaximumBoxRow = new Panel();
-            zMaximumBoxRow.Name = "zMaximumBoxRow";
-            zMaximumBoxRow.Size = new Size(225,57);
-            zMaximumBoxRow.Margin = new Padding(3,5,3,5);
-            zMaximumBox = new TextBox();
-            zMaximumBox.Name = "zMaximumBox";
-            zMaximumBoxLabel = new Label();
-            zMaximumBoxLabel.Name = "zMaximumBoxLabel";
-            zMaximumBoxLabel.Text = "Color maximum";
-            zMaximumBoxLabel.ForeColor = Color.White;
-            zMaximumBoxLabel.Location = new Point(5,2);
-            zMaximumBoxLabel.Size = new Size(207,20);
-            zMaximumBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zMaximumBoxRow.Controls.Add(zMaximumBoxLabel);
-            zMaximumBox.Location = new Point(5,25);
-            zMaximumBox.Size = new Size(206,25);
-            zMaximumBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zMaximumBoxRow.Controls.Add(zMaximumBox);
-            zDefaultsButtonRow = new Panel();
-            zDefaultsButtonRow.Name = "zDefaultsButtonRow";
-            zDefaultsButtonRow.Size = new Size(225,44);
-            zDefaultsButtonRow.Margin = new Padding(3,5,3,5);
-            zDefaultsButton = new Button();
-            zDefaultsButton.Name = "zDefaultsButton";
-            zDefaultsButton.BackColor = Color.FromArgb(60,60,60);
-            zDefaultsButton.ForeColor = Color.White;
-            zDefaultsButton.UseVisualStyleBackColor = false;
-            zDefaultsButton.Text = "Restore Z defaults";
-            zDefaultsButton.Location = new Point(6,6);
-            zDefaultsButton.Size = new Size(208,30);
-            zDefaultsButton.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            zDefaultsButtonRow.Controls.Add(zDefaultsButton);
-            // Additional Designer-visible controls. All are placed explicitly in
-            // their section; no runtime coordinate-guessing is involved.
-            cursorEnabledCheckBoxRow = new Panel();
-            cursorEnabledCheckBoxRow.Name = "cursorEnabledCheckBoxRow";
-            cursorEnabledCheckBoxRow.Size = new Size(225,40);
-            cursorEnabledCheckBoxRow.Margin = new Padding(3,5,3,5);
-            cursorEnabledCheckBox = new CheckBox();
-            cursorEnabledCheckBox.Name = "cursorEnabledCheckBox";
-            cursorEnabledCheckBox.Text = "Enable X / Y cursors";
-            cursorEnabledCheckBox.ForeColor = Color.White;
-            cursorEnabledCheckBox.Location = new Point(5,9);
-            cursorEnabledCheckBox.Size = new Size(208,25);
-            cursorEnabledCheckBoxRow.Controls.Add(cursorEnabledCheckBox);
-            cursorZoomCheckBoxRow = new Panel();
-            cursorZoomCheckBoxRow.Name = "cursorZoomCheckBoxRow";
-            cursorZoomCheckBoxRow.Size = new Size(225,40);
-            cursorZoomCheckBoxRow.Margin = new Padding(3,5,3,5);
-            cursorZoomCheckBox = new CheckBox();
-            cursorZoomCheckBox.Name = "cursorZoomCheckBox";
-            cursorZoomCheckBox.Text = "Enable X / Y drag zoom";
-            cursorZoomCheckBox.ForeColor = Color.White;
-            cursorZoomCheckBox.Location = new Point(5,9);
-            cursorZoomCheckBox.Size = new Size(208,25);
-            cursorZoomCheckBoxRow.Controls.Add(cursorZoomCheckBox);
-            cursorColorComboBoxRow = new Panel();
-            cursorColorComboBoxRow.Name = "cursorColorComboBoxRow";
-            cursorColorComboBoxRow.Size = new Size(225,57);
-            cursorColorComboBoxRow.Margin = new Padding(3,5,3,5);
-            cursorColorComboBox = new ComboBox();
-            cursorColorComboBox.Name = "cursorColorComboBox";
-            cursorColorComboBoxLabel = new Label();
-            cursorColorComboBoxLabel.Name = "cursorColorComboBoxLabel";
-            cursorColorComboBoxLabel.Text = "Cursor color";
-            cursorColorComboBoxLabel.ForeColor = Color.White;
-            cursorColorComboBoxLabel.Location = new Point(5,2);
-            cursorColorComboBoxLabel.Size = new Size(207,20);
-            cursorColorComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorColorComboBoxRow.Controls.Add(cursorColorComboBoxLabel);
-            cursorColorComboBox.Location = new Point(5,25);
-            cursorColorComboBox.Size = new Size(206,25);
-            cursorColorComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorColorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            cursorColorComboBox.IntegralHeight = false;
-            cursorColorComboBoxRow.Controls.Add(cursorColorComboBox);
-            cursorAlphaNumericRow = new Panel();
-            cursorAlphaNumericRow.Name = "cursorAlphaNumericRow";
-            cursorAlphaNumericRow.Size = new Size(225,57);
-            cursorAlphaNumericRow.Margin = new Padding(3,5,3,5);
-            cursorAlphaNumeric = new NumericUpDown();
-            cursorAlphaNumeric.Name = "cursorAlphaNumeric";
-            cursorAlphaNumericLabel = new Label();
-            cursorAlphaNumericLabel.Name = "cursorAlphaNumericLabel";
-            cursorAlphaNumericLabel.Text = "Cursor color alpha (0-255)";
-            cursorAlphaNumericLabel.ForeColor = Color.White;
-            cursorAlphaNumericLabel.Location = new Point(5,2);
-            cursorAlphaNumericLabel.Size = new Size(207,20);
-            cursorAlphaNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorAlphaNumericRow.Controls.Add(cursorAlphaNumericLabel);
-            cursorAlphaNumeric.Location = new Point(5,25);
-            cursorAlphaNumeric.Size = new Size(206,25);
-            cursorAlphaNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorAlphaNumeric.Minimum = 0;
-            cursorAlphaNumeric.Maximum = 255;
-            cursorAlphaNumeric.Value = 255;
-            cursorAlphaNumericRow.Controls.Add(cursorAlphaNumeric);
-            cursorWidthNumericRow = new Panel();
-            cursorWidthNumericRow.Name = "cursorWidthNumericRow";
-            cursorWidthNumericRow.Size = new Size(225,57);
-            cursorWidthNumericRow.Margin = new Padding(3,5,3,5);
-            cursorWidthNumeric = new NumericUpDown();
-            cursorWidthNumeric.Name = "cursorWidthNumeric";
-            cursorWidthNumericLabel = new Label();
-            cursorWidthNumericLabel.Name = "cursorWidthNumericLabel";
-            cursorWidthNumericLabel.Text = "Cursor width";
-            cursorWidthNumericLabel.ForeColor = Color.White;
-            cursorWidthNumericLabel.Location = new Point(5,2);
-            cursorWidthNumericLabel.Size = new Size(207,20);
-            cursorWidthNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorWidthNumericRow.Controls.Add(cursorWidthNumericLabel);
-            cursorWidthNumeric.Location = new Point(5,25);
-            cursorWidthNumeric.Size = new Size(206,25);
-            cursorWidthNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorWidthNumeric.Minimum = 0.25m;
-            cursorWidthNumeric.Maximum = 20;
-            cursorWidthNumeric.Value = 1;
-            cursorWidthNumeric.DecimalPlaces = 2;
-            cursorWidthNumeric.Increment = 0.25m;
-            cursorWidthNumericRow.Controls.Add(cursorWidthNumeric);
-            cursorDashComboBoxRow = new Panel();
-            cursorDashComboBoxRow.Name = "cursorDashComboBoxRow";
-            cursorDashComboBoxRow.Size = new Size(225,57);
-            cursorDashComboBoxRow.Margin = new Padding(3,5,3,5);
-            cursorDashComboBox = new ComboBox();
-            cursorDashComboBox.Name = "cursorDashComboBox";
-            cursorDashComboBoxLabel = new Label();
-            cursorDashComboBoxLabel.Name = "cursorDashComboBoxLabel";
-            cursorDashComboBoxLabel.Text = "Cursor dash style";
-            cursorDashComboBoxLabel.ForeColor = Color.White;
-            cursorDashComboBoxLabel.Location = new Point(5,2);
-            cursorDashComboBoxLabel.Size = new Size(207,20);
-            cursorDashComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorDashComboBoxRow.Controls.Add(cursorDashComboBoxLabel);
-            cursorDashComboBox.Location = new Point(5,25);
-            cursorDashComboBox.Size = new Size(206,25);
-            cursorDashComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            cursorDashComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            cursorDashComboBox.IntegralHeight = false;
-            cursorDashComboBoxRow.Controls.Add(cursorDashComboBox);
-            xGridDashComboBoxRow = new Panel();
-            xGridDashComboBoxRow.Name = "xGridDashComboBoxRow";
-            xGridDashComboBoxRow.Size = new Size(225,57);
-            xGridDashComboBoxRow.Margin = new Padding(3,5,3,5);
-            xGridDashComboBox = new ComboBox();
-            xGridDashComboBox.Name = "xGridDashComboBox";
-            xGridDashComboBoxLabel = new Label();
-            xGridDashComboBoxLabel.Name = "xGridDashComboBoxLabel";
-            xGridDashComboBoxLabel.Text = "Major grid / tick dash style";
-            xGridDashComboBoxLabel.ForeColor = Color.White;
-            xGridDashComboBoxLabel.Location = new Point(5,2);
-            xGridDashComboBoxLabel.Size = new Size(207,20);
-            xGridDashComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridDashComboBoxRow.Controls.Add(xGridDashComboBoxLabel);
-            xGridDashComboBox.Location = new Point(5,25);
-            xGridDashComboBox.Size = new Size(206,25);
-            xGridDashComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridDashComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            xGridDashComboBox.IntegralHeight = false;
-            xGridDashComboBoxRow.Controls.Add(xGridDashComboBox);
-            xGridAlphaNumericRow = new Panel();
-            xGridAlphaNumericRow.Name = "xGridAlphaNumericRow";
-            xGridAlphaNumericRow.Size = new Size(225,57);
-            xGridAlphaNumericRow.Margin = new Padding(3,5,3,5);
-            xGridAlphaNumeric = new NumericUpDown();
-            xGridAlphaNumeric.Name = "xGridAlphaNumeric";
-            xGridAlphaNumericLabel = new Label();
-            xGridAlphaNumericLabel.Name = "xGridAlphaNumericLabel";
-            xGridAlphaNumericLabel.Text = "Major grid / tick alpha (0-255)";
-            xGridAlphaNumericLabel.ForeColor = Color.White;
-            xGridAlphaNumericLabel.Location = new Point(5,2);
-            xGridAlphaNumericLabel.Size = new Size(207,20);
-            xGridAlphaNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridAlphaNumericRow.Controls.Add(xGridAlphaNumericLabel);
-            xGridAlphaNumeric.Location = new Point(5,25);
-            xGridAlphaNumeric.Size = new Size(206,25);
-            xGridAlphaNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xGridAlphaNumeric.Minimum = 0;
-            xGridAlphaNumeric.Maximum = 255;
-            xGridAlphaNumeric.Value = 255;
-            xGridAlphaNumericRow.Controls.Add(xGridAlphaNumeric);
-            xMinorDashComboBoxRow = new Panel();
-            xMinorDashComboBoxRow.Name = "xMinorDashComboBoxRow";
-            xMinorDashComboBoxRow.Size = new Size(225,57);
-            xMinorDashComboBoxRow.Margin = new Padding(3,5,3,5);
-            xMinorDashComboBox = new ComboBox();
-            xMinorDashComboBox.Name = "xMinorDashComboBox";
-            xMinorDashComboBoxLabel = new Label();
-            xMinorDashComboBoxLabel.Name = "xMinorDashComboBoxLabel";
-            xMinorDashComboBoxLabel.Text = "Minor grid / tick dash style";
-            xMinorDashComboBoxLabel.ForeColor = Color.White;
-            xMinorDashComboBoxLabel.Location = new Point(5,2);
-            xMinorDashComboBoxLabel.Size = new Size(207,20);
-            xMinorDashComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorDashComboBoxRow.Controls.Add(xMinorDashComboBoxLabel);
-            xMinorDashComboBox.Location = new Point(5,25);
-            xMinorDashComboBox.Size = new Size(206,25);
-            xMinorDashComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorDashComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            xMinorDashComboBox.IntegralHeight = false;
-            xMinorDashComboBoxRow.Controls.Add(xMinorDashComboBox);
-            xMinorAlphaNumericRow = new Panel();
-            xMinorAlphaNumericRow.Name = "xMinorAlphaNumericRow";
-            xMinorAlphaNumericRow.Size = new Size(225,57);
-            xMinorAlphaNumericRow.Margin = new Padding(3,5,3,5);
-            xMinorAlphaNumeric = new NumericUpDown();
-            xMinorAlphaNumeric.Name = "xMinorAlphaNumeric";
-            xMinorAlphaNumericLabel = new Label();
-            xMinorAlphaNumericLabel.Name = "xMinorAlphaNumericLabel";
-            xMinorAlphaNumericLabel.Text = "Minor grid / tick alpha (0-255)";
-            xMinorAlphaNumericLabel.ForeColor = Color.White;
-            xMinorAlphaNumericLabel.Location = new Point(5,2);
-            xMinorAlphaNumericLabel.Size = new Size(207,20);
-            xMinorAlphaNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorAlphaNumericRow.Controls.Add(xMinorAlphaNumericLabel);
-            xMinorAlphaNumeric.Location = new Point(5,25);
-            xMinorAlphaNumeric.Size = new Size(206,25);
-            xMinorAlphaNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            xMinorAlphaNumeric.Minimum = 0;
-            xMinorAlphaNumeric.Maximum = 255;
-            xMinorAlphaNumeric.Value = 255;
-            xMinorAlphaNumericRow.Controls.Add(xMinorAlphaNumeric);
-            yGridDashComboBoxRow = new Panel();
-            yGridDashComboBoxRow.Name = "yGridDashComboBoxRow";
-            yGridDashComboBoxRow.Size = new Size(225,57);
-            yGridDashComboBoxRow.Margin = new Padding(3,5,3,5);
-            yGridDashComboBox = new ComboBox();
-            yGridDashComboBox.Name = "yGridDashComboBox";
-            yGridDashComboBoxLabel = new Label();
-            yGridDashComboBoxLabel.Name = "yGridDashComboBoxLabel";
-            yGridDashComboBoxLabel.Text = "Major grid / tick dash style";
-            yGridDashComboBoxLabel.ForeColor = Color.White;
-            yGridDashComboBoxLabel.Location = new Point(5,2);
-            yGridDashComboBoxLabel.Size = new Size(207,20);
-            yGridDashComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridDashComboBoxRow.Controls.Add(yGridDashComboBoxLabel);
-            yGridDashComboBox.Location = new Point(5,25);
-            yGridDashComboBox.Size = new Size(206,25);
-            yGridDashComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridDashComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            yGridDashComboBox.IntegralHeight = false;
-            yGridDashComboBoxRow.Controls.Add(yGridDashComboBox);
-            yGridAlphaNumericRow = new Panel();
-            yGridAlphaNumericRow.Name = "yGridAlphaNumericRow";
-            yGridAlphaNumericRow.Size = new Size(225,57);
-            yGridAlphaNumericRow.Margin = new Padding(3,5,3,5);
-            yGridAlphaNumeric = new NumericUpDown();
-            yGridAlphaNumeric.Name = "yGridAlphaNumeric";
-            yGridAlphaNumericLabel = new Label();
-            yGridAlphaNumericLabel.Name = "yGridAlphaNumericLabel";
-            yGridAlphaNumericLabel.Text = "Major grid / tick alpha (0-255)";
-            yGridAlphaNumericLabel.ForeColor = Color.White;
-            yGridAlphaNumericLabel.Location = new Point(5,2);
-            yGridAlphaNumericLabel.Size = new Size(207,20);
-            yGridAlphaNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridAlphaNumericRow.Controls.Add(yGridAlphaNumericLabel);
-            yGridAlphaNumeric.Location = new Point(5,25);
-            yGridAlphaNumeric.Size = new Size(206,25);
-            yGridAlphaNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yGridAlphaNumeric.Minimum = 0;
-            yGridAlphaNumeric.Maximum = 255;
-            yGridAlphaNumeric.Value = 255;
-            yGridAlphaNumericRow.Controls.Add(yGridAlphaNumeric);
-            yMinorDashComboBoxRow = new Panel();
-            yMinorDashComboBoxRow.Name = "yMinorDashComboBoxRow";
-            yMinorDashComboBoxRow.Size = new Size(225,57);
-            yMinorDashComboBoxRow.Margin = new Padding(3,5,3,5);
-            yMinorDashComboBox = new ComboBox();
-            yMinorDashComboBox.Name = "yMinorDashComboBox";
-            yMinorDashComboBoxLabel = new Label();
-            yMinorDashComboBoxLabel.Name = "yMinorDashComboBoxLabel";
-            yMinorDashComboBoxLabel.Text = "Minor grid / tick dash style";
-            yMinorDashComboBoxLabel.ForeColor = Color.White;
-            yMinorDashComboBoxLabel.Location = new Point(5,2);
-            yMinorDashComboBoxLabel.Size = new Size(207,20);
-            yMinorDashComboBoxLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorDashComboBoxRow.Controls.Add(yMinorDashComboBoxLabel);
-            yMinorDashComboBox.Location = new Point(5,25);
-            yMinorDashComboBox.Size = new Size(206,25);
-            yMinorDashComboBox.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorDashComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            yMinorDashComboBox.IntegralHeight = false;
-            yMinorDashComboBoxRow.Controls.Add(yMinorDashComboBox);
-            yMinorAlphaNumericRow = new Panel();
-            yMinorAlphaNumericRow.Name = "yMinorAlphaNumericRow";
-            yMinorAlphaNumericRow.Size = new Size(225,57);
-            yMinorAlphaNumericRow.Margin = new Padding(3,5,3,5);
-            yMinorAlphaNumeric = new NumericUpDown();
-            yMinorAlphaNumeric.Name = "yMinorAlphaNumeric";
-            yMinorAlphaNumericLabel = new Label();
-            yMinorAlphaNumericLabel.Name = "yMinorAlphaNumericLabel";
-            yMinorAlphaNumericLabel.Text = "Minor grid / tick alpha (0-255)";
-            yMinorAlphaNumericLabel.ForeColor = Color.White;
-            yMinorAlphaNumericLabel.Location = new Point(5,2);
-            yMinorAlphaNumericLabel.Size = new Size(207,20);
-            yMinorAlphaNumericLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorAlphaNumericRow.Controls.Add(yMinorAlphaNumericLabel);
-            yMinorAlphaNumeric.Location = new Point(5,25);
-            yMinorAlphaNumeric.Size = new Size(206,25);
-            yMinorAlphaNumeric.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-            yMinorAlphaNumeric.Minimum = 0;
-            yMinorAlphaNumeric.Maximum = 255;
-            yMinorAlphaNumeric.Value = 255;
-            yMinorAlphaNumericRow.Controls.Add(yMinorAlphaNumeric);
-            // Designer-owned grouped rows: use Document Outline to move existing ...Row Panels
-            // between these named TableLayoutPanels. The layout is not built on Load.
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            styleChartLayoutRow = new TableLayoutPanel();
-            styleChartLayoutRow.Name = "styleChartLayoutRow";
-            styleChartLayoutRow.Dock = DockStyle.Fill;
-            styleChartLayoutRow.Margin = new Padding(0);
-            styleChartLayoutRow.Padding = new Padding(0);
-            styleChartLayoutRow.BackColor = Color.FromArgb(24,24,24);
-            styleChartLayoutRow.ColumnCount = 2;
-            styleChartLayoutRow.RowCount = 1;
-            styleChartLayoutRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleChartLayoutRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleChartLayoutRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            chartTypeComboBoxRow.Dock = DockStyle.Fill;
-            chartTypeComboBoxRow.Margin = new Padding(0);
-            chartTypeComboBoxRow.Padding = new Padding(4,0,4,0);
-            styleChartLayoutRow.Controls.Add(chartTypeComboBoxRow, 0, 0);
-            layoutComboBoxRow.Dock = DockStyle.Fill;
-            layoutComboBoxRow.Margin = new Padding(0);
-            layoutComboBoxRow.Padding = new Padding(4,0,4,0);
-            styleChartLayoutRow.Controls.Add(layoutComboBoxRow, 1, 0);
-            styleFields.Controls.Add(styleChartLayoutRow, 0, 0);
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            styleMarkerRow = new TableLayoutPanel();
-            styleMarkerRow.Name = "styleMarkerRow";
-            styleMarkerRow.Dock = DockStyle.Fill;
-            styleMarkerRow.Margin = new Padding(0);
-            styleMarkerRow.Padding = new Padding(0);
-            styleMarkerRow.BackColor = Color.FromArgb(24,24,24);
-            styleMarkerRow.ColumnCount = 2;
-            styleMarkerRow.RowCount = 1;
-            styleMarkerRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleMarkerRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleMarkerRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            markerComboBoxRow.Dock = DockStyle.Fill;
-            markerComboBoxRow.Margin = new Padding(0);
-            markerComboBoxRow.Padding = new Padding(4,0,4,0);
-            styleMarkerRow.Controls.Add(markerComboBoxRow, 0, 0);
-            markerSizeNumericRow.Dock = DockStyle.Fill;
-            markerSizeNumericRow.Margin = new Padding(0);
-            markerSizeNumericRow.Padding = new Padding(4,0,4,0);
-            styleMarkerRow.Controls.Add(markerSizeNumericRow, 1, 0);
-            styleFields.Controls.Add(styleMarkerRow, 0, 1);
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            styleAppearanceRow = new TableLayoutPanel();
-            styleAppearanceRow.Name = "styleAppearanceRow";
-            styleAppearanceRow.Dock = DockStyle.Fill;
-            styleAppearanceRow.Margin = new Padding(0);
-            styleAppearanceRow.Padding = new Padding(0);
-            styleAppearanceRow.BackColor = Color.FromArgb(24,24,24);
-            styleAppearanceRow.ColumnCount = 2;
-            styleAppearanceRow.RowCount = 1;
-            styleAppearanceRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleAppearanceRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleAppearanceRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            backgroundComboBoxRow.Dock = DockStyle.Fill;
-            backgroundComboBoxRow.Margin = new Padding(0);
-            backgroundComboBoxRow.Padding = new Padding(4,0,4,0);
-            styleAppearanceRow.Controls.Add(backgroundComboBoxRow, 0, 0);
-            paletteAlphaNumericRow.Dock = DockStyle.Fill;
-            paletteAlphaNumericRow.Margin = new Padding(0);
-            paletteAlphaNumericRow.Padding = new Padding(4,0,4,0);
-            styleAppearanceRow.Controls.Add(paletteAlphaNumericRow, 1, 0);
-            styleFields.Controls.Add(styleAppearanceRow, 0, 2);
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            styleOptionsRow = new TableLayoutPanel();
-            styleOptionsRow.Name = "styleOptionsRow";
-            styleOptionsRow.Dock = DockStyle.Fill;
-            styleOptionsRow.Margin = new Padding(0);
-            styleOptionsRow.Padding = new Padding(0);
-            styleOptionsRow.BackColor = Color.FromArgb(24,24,24);
-            styleOptionsRow.ColumnCount = 2;
-            styleOptionsRow.RowCount = 1;
-            styleOptionsRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleOptionsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleOptionsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            paletteDividerNumericRow.Dock = DockStyle.Fill;
-            paletteDividerNumericRow.Margin = new Padding(0);
-            paletteDividerNumericRow.Padding = new Padding(4,0,4,0);
-            styleOptionsRow.Controls.Add(paletteDividerNumericRow, 0, 0);
-            tooltipDelayNumericRow.Dock = DockStyle.Fill;
-            tooltipDelayNumericRow.Margin = new Padding(0);
-            tooltipDelayNumericRow.Padding = new Padding(4,0,4,0);
-            styleOptionsRow.Controls.Add(tooltipDelayNumericRow, 1, 0);
-            styleFields.Controls.Add(styleOptionsRow, 0, 3);
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            styleTogglesRow = new TableLayoutPanel();
-            styleTogglesRow.Name = "styleTogglesRow";
-            styleTogglesRow.Dock = DockStyle.Fill;
-            styleTogglesRow.Margin = new Padding(0);
-            styleTogglesRow.Padding = new Padding(0);
-            styleTogglesRow.BackColor = Color.FromArgb(24,24,24);
-            styleTogglesRow.ColumnCount = 2;
-            styleTogglesRow.RowCount = 1;
-            styleTogglesRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleTogglesRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleTogglesRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            absoluteCheckBoxRow.Dock = DockStyle.Fill;
-            absoluteCheckBoxRow.Margin = new Padding(0);
-            absoluteCheckBoxRow.Padding = new Padding(4,0,4,0);
-            styleTogglesRow.Controls.Add(absoluteCheckBoxRow, 0, 0);
-            tooltipEnableCheckBoxRow.Dock = DockStyle.Fill;
-            tooltipEnableCheckBoxRow.Margin = new Padding(0);
-            tooltipEnableCheckBoxRow.Padding = new Padding(4,0,4,0);
-            styleTogglesRow.Controls.Add(tooltipEnableCheckBoxRow, 1, 0);
-            styleFields.Controls.Add(styleTogglesRow, 0, 4);
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            styleCursorTogglesRow = new TableLayoutPanel();
-            styleCursorTogglesRow.Name = "styleCursorTogglesRow";
-            styleCursorTogglesRow.Dock = DockStyle.Fill;
-            styleCursorTogglesRow.Margin = new Padding(0);
-            styleCursorTogglesRow.Padding = new Padding(0);
-            styleCursorTogglesRow.BackColor = Color.FromArgb(24,24,24);
-            styleCursorTogglesRow.ColumnCount = 2;
-            styleCursorTogglesRow.RowCount = 1;
-            styleCursorTogglesRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleCursorTogglesRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleCursorTogglesRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            cursorEnabledCheckBoxRow.Dock = DockStyle.Fill;
-            cursorEnabledCheckBoxRow.Margin = new Padding(0);
-            cursorEnabledCheckBoxRow.Padding = new Padding(4,0,4,0);
-            styleCursorTogglesRow.Controls.Add(cursorEnabledCheckBoxRow, 0, 0);
-            cursorZoomCheckBoxRow.Dock = DockStyle.Fill;
-            cursorZoomCheckBoxRow.Margin = new Padding(0);
-            cursorZoomCheckBoxRow.Padding = new Padding(4,0,4,0);
-            styleCursorTogglesRow.Controls.Add(cursorZoomCheckBoxRow, 1, 0);
-            styleFields.Controls.Add(styleCursorTogglesRow, 0, 5);
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            styleCursorColorsRow = new TableLayoutPanel();
-            styleCursorColorsRow.Name = "styleCursorColorsRow";
-            styleCursorColorsRow.Dock = DockStyle.Fill;
-            styleCursorColorsRow.Margin = new Padding(0);
-            styleCursorColorsRow.Padding = new Padding(0);
-            styleCursorColorsRow.BackColor = Color.FromArgb(24,24,24);
-            styleCursorColorsRow.ColumnCount = 2;
-            styleCursorColorsRow.RowCount = 1;
-            styleCursorColorsRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleCursorColorsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleCursorColorsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            cursorColorComboBoxRow.Dock = DockStyle.Fill;
-            cursorColorComboBoxRow.Margin = new Padding(0);
-            cursorColorComboBoxRow.Padding = new Padding(4,0,4,0);
-            styleCursorColorsRow.Controls.Add(cursorColorComboBoxRow, 0, 0);
-            cursorAlphaNumericRow.Dock = DockStyle.Fill;
-            cursorAlphaNumericRow.Margin = new Padding(0);
-            cursorAlphaNumericRow.Padding = new Padding(4,0,4,0);
-            styleCursorColorsRow.Controls.Add(cursorAlphaNumericRow, 1, 0);
-            styleFields.Controls.Add(styleCursorColorsRow, 0, 6);
-            styleFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            styleCursorStrokeRow = new TableLayoutPanel();
-            styleCursorStrokeRow.Name = "styleCursorStrokeRow";
-            styleCursorStrokeRow.Dock = DockStyle.Fill;
-            styleCursorStrokeRow.Margin = new Padding(0);
-            styleCursorStrokeRow.Padding = new Padding(0);
-            styleCursorStrokeRow.BackColor = Color.FromArgb(24,24,24);
-            styleCursorStrokeRow.ColumnCount = 2;
-            styleCursorStrokeRow.RowCount = 1;
-            styleCursorStrokeRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            styleCursorStrokeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            styleCursorStrokeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            cursorWidthNumericRow.Dock = DockStyle.Fill;
-            cursorWidthNumericRow.Margin = new Padding(0);
-            cursorWidthNumericRow.Padding = new Padding(4,0,4,0);
-            styleCursorStrokeRow.Controls.Add(cursorWidthNumericRow, 0, 0);
-            cursorDashComboBoxRow.Dock = DockStyle.Fill;
-            cursorDashComboBoxRow.Margin = new Padding(0);
-            cursorDashComboBoxRow.Padding = new Padding(4,0,4,0);
-            styleCursorStrokeRow.Controls.Add(cursorDashComboBoxRow, 1, 0);
-            styleFields.Controls.Add(styleCursorStrokeRow, 0, 7);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            xDefaultsButtonRow.Dock = DockStyle.Fill;
-            xDefaultsButtonRow.Margin = new Padding(0);
-            xDefaultsButtonRow.Padding = new Padding(4,0,4,0);
-            xFields.Controls.Add(xDefaultsButtonRow, 0, 0);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xColumnComboBoxRow.Dock = DockStyle.Fill;
-            xColumnComboBoxRow.Margin = new Padding(0);
-            xColumnComboBoxRow.Padding = new Padding(4,0,4,0);
-            xFields.Controls.Add(xColumnComboBoxRow, 0, 1);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            xModeRow = new TableLayoutPanel();
-            xModeRow.Name = "xModeRow";
-            xModeRow.Dock = DockStyle.Fill;
-            xModeRow.Margin = new Padding(0);
-            xModeRow.Padding = new Padding(0);
-            xModeRow.BackColor = Color.FromArgb(24,24,24);
-            xModeRow.ColumnCount = 2;
-            xModeRow.RowCount = 1;
-            xModeRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xModeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xModeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xAutoCheckBoxRow.Dock = DockStyle.Fill;
-            xAutoCheckBoxRow.Margin = new Padding(0);
-            xAutoCheckBoxRow.Padding = new Padding(4,0,4,0);
-            xModeRow.Controls.Add(xAutoCheckBoxRow, 0, 0);
-            xLogCheckBoxRow.Dock = DockStyle.Fill;
-            xLogCheckBoxRow.Margin = new Padding(0);
-            xLogCheckBoxRow.Padding = new Padding(4,0,4,0);
-            xModeRow.Controls.Add(xLogCheckBoxRow, 1, 0);
-            xFields.Controls.Add(xModeRow, 0, 2);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xLimitsRow = new TableLayoutPanel();
-            xLimitsRow.Name = "xLimitsRow";
-            xLimitsRow.Dock = DockStyle.Fill;
-            xLimitsRow.Margin = new Padding(0);
-            xLimitsRow.Padding = new Padding(0);
-            xLimitsRow.BackColor = Color.FromArgb(24,24,24);
-            xLimitsRow.ColumnCount = 2;
-            xLimitsRow.RowCount = 1;
-            xLimitsRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xLimitsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xLimitsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMinimumBoxRow.Dock = DockStyle.Fill;
-            xMinimumBoxRow.Margin = new Padding(0);
-            xMinimumBoxRow.Padding = new Padding(4,0,4,0);
-            xLimitsRow.Controls.Add(xMinimumBoxRow, 0, 0);
-            xMaximumBoxRow.Dock = DockStyle.Fill;
-            xMaximumBoxRow.Margin = new Padding(0);
-            xMaximumBoxRow.Padding = new Padding(4,0,4,0);
-            xLimitsRow.Controls.Add(xMaximumBoxRow, 1, 0);
-            xFields.Controls.Add(xLimitsRow, 0, 3);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xTicksRow = new TableLayoutPanel();
-            xTicksRow.Name = "xTicksRow";
-            xTicksRow.Dock = DockStyle.Fill;
-            xTicksRow.Margin = new Padding(0);
-            xTicksRow.Padding = new Padding(0);
-            xTicksRow.BackColor = Color.FromArgb(24,24,24);
-            xTicksRow.ColumnCount = 2;
-            xTicksRow.RowCount = 1;
-            xTicksRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xTicksRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xTicksRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xGridIntervalBoxRow.Dock = DockStyle.Fill;
-            xGridIntervalBoxRow.Margin = new Padding(0);
-            xGridIntervalBoxRow.Padding = new Padding(4,0,4,0);
-            xTicksRow.Controls.Add(xGridIntervalBoxRow, 0, 0);
-            xDecimalsNumericRow.Dock = DockStyle.Fill;
-            xDecimalsNumericRow.Margin = new Padding(0);
-            xDecimalsNumericRow.Padding = new Padding(4,0,4,0);
-            xTicksRow.Controls.Add(xDecimalsNumericRow, 1, 0);
-            xFields.Controls.Add(xTicksRow, 0, 4);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xMajorGridRow = new TableLayoutPanel();
-            xMajorGridRow.Name = "xMajorGridRow";
-            xMajorGridRow.Dock = DockStyle.Fill;
-            xMajorGridRow.Margin = new Padding(0);
-            xMajorGridRow.Padding = new Padding(0);
-            xMajorGridRow.BackColor = Color.FromArgb(24,24,24);
-            xMajorGridRow.ColumnCount = 2;
-            xMajorGridRow.RowCount = 1;
-            xMajorGridRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xMajorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMajorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xGridColorComboBoxRow.Dock = DockStyle.Fill;
-            xGridColorComboBoxRow.Margin = new Padding(0);
-            xGridColorComboBoxRow.Padding = new Padding(4,0,4,0);
-            xMajorGridRow.Controls.Add(xGridColorComboBoxRow, 0, 0);
-            xGridWidthNumericRow.Dock = DockStyle.Fill;
-            xGridWidthNumericRow.Margin = new Padding(0);
-            xGridWidthNumericRow.Padding = new Padding(4,0,4,0);
-            xMajorGridRow.Controls.Add(xGridWidthNumericRow, 1, 0);
-            xFields.Controls.Add(xMajorGridRow, 0, 5);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xMajorStyleRow = new TableLayoutPanel();
-            xMajorStyleRow.Name = "xMajorStyleRow";
-            xMajorStyleRow.Dock = DockStyle.Fill;
-            xMajorStyleRow.Margin = new Padding(0);
-            xMajorStyleRow.Padding = new Padding(0);
-            xMajorStyleRow.BackColor = Color.FromArgb(24,24,24);
-            xMajorStyleRow.ColumnCount = 2;
-            xMajorStyleRow.RowCount = 1;
-            xMajorStyleRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xMajorStyleRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMajorStyleRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xGridDashComboBoxRow.Dock = DockStyle.Fill;
-            xGridDashComboBoxRow.Margin = new Padding(0);
-            xGridDashComboBoxRow.Padding = new Padding(4,0,4,0);
-            xMajorStyleRow.Controls.Add(xGridDashComboBoxRow, 0, 0);
-            xGridAlphaNumericRow.Dock = DockStyle.Fill;
-            xGridAlphaNumericRow.Margin = new Padding(0);
-            xGridAlphaNumericRow.Padding = new Padding(4,0,4,0);
-            xMajorStyleRow.Controls.Add(xGridAlphaNumericRow, 1, 0);
-            xFields.Controls.Add(xMajorStyleRow, 0, 6);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xMinorGridRow = new TableLayoutPanel();
-            xMinorGridRow.Name = "xMinorGridRow";
-            xMinorGridRow.Dock = DockStyle.Fill;
-            xMinorGridRow.Margin = new Padding(0);
-            xMinorGridRow.Padding = new Padding(0);
-            xMinorGridRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorGridRow.ColumnCount = 2;
-            xMinorGridRow.RowCount = 1;
-            xMinorGridRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xMinorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMinorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMinorCheckBoxRow.Dock = DockStyle.Fill;
-            xMinorCheckBoxRow.Margin = new Padding(0);
-            xMinorCheckBoxRow.Padding = new Padding(4,0,4,0);
-            xMinorGridRow.Controls.Add(xMinorCheckBoxRow, 0, 0);
-            xMinorColorComboBoxRow.Dock = DockStyle.Fill;
-            xMinorColorComboBoxRow.Margin = new Padding(0);
-            xMinorColorComboBoxRow.Padding = new Padding(4,0,4,0);
-            xMinorGridRow.Controls.Add(xMinorColorComboBoxRow, 1, 0);
-            xFields.Controls.Add(xMinorGridRow, 0, 7);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xMinorStrokeRow = new TableLayoutPanel();
-            xMinorStrokeRow.Name = "xMinorStrokeRow";
-            xMinorStrokeRow.Dock = DockStyle.Fill;
-            xMinorStrokeRow.Margin = new Padding(0);
-            xMinorStrokeRow.Padding = new Padding(0);
-            xMinorStrokeRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorStrokeRow.ColumnCount = 2;
-            xMinorStrokeRow.RowCount = 1;
-            xMinorStrokeRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xMinorStrokeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMinorStrokeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMinorWidthNumericRow.Dock = DockStyle.Fill;
-            xMinorWidthNumericRow.Margin = new Padding(0);
-            xMinorWidthNumericRow.Padding = new Padding(4,0,4,0);
-            xMinorStrokeRow.Controls.Add(xMinorWidthNumericRow, 0, 0);
-            xMinorDashComboBoxRow.Dock = DockStyle.Fill;
-            xMinorDashComboBoxRow.Margin = new Padding(0);
-            xMinorDashComboBoxRow.Padding = new Padding(4,0,4,0);
-            xMinorStrokeRow.Controls.Add(xMinorDashComboBoxRow, 1, 0);
-            xFields.Controls.Add(xMinorStrokeRow, 0, 8);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xMinorOpacityRow = new TableLayoutPanel();
-            xMinorOpacityRow.Name = "xMinorOpacityRow";
-            xMinorOpacityRow.Dock = DockStyle.Fill;
-            xMinorOpacityRow.Margin = new Padding(0);
-            xMinorOpacityRow.Padding = new Padding(0);
-            xMinorOpacityRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorOpacityRow.ColumnCount = 2;
-            xMinorOpacityRow.RowCount = 1;
-            xMinorOpacityRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xMinorOpacityRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMinorOpacityRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xMinorAlphaNumericRow.Dock = DockStyle.Fill;
-            xMinorAlphaNumericRow.Margin = new Padding(0);
-            xMinorAlphaNumericRow.Padding = new Padding(4,0,4,0);
-            xMinorOpacityRow.Controls.Add(xMinorAlphaNumericRow, 0, 0);
-            xLogBaseBoxRow.Dock = DockStyle.Fill;
-            xLogBaseBoxRow.Margin = new Padding(0);
-            xLogBaseBoxRow.Padding = new Padding(4,0,4,0);
-            xMinorOpacityRow.Controls.Add(xLogBaseBoxRow, 1, 0);
-            xFields.Controls.Add(xMinorOpacityRow, 0, 9);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xFontRow = new TableLayoutPanel();
-            xFontRow.Name = "xFontRow";
-            xFontRow.Dock = DockStyle.Fill;
-            xFontRow.Margin = new Padding(0);
-            xFontRow.Padding = new Padding(0);
-            xFontRow.BackColor = Color.FromArgb(24,24,24);
-            xFontRow.ColumnCount = 2;
-            xFontRow.RowCount = 1;
-            xFontRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            xFontRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xFontRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            xFontComboBoxRow.Dock = DockStyle.Fill;
-            xFontComboBoxRow.Margin = new Padding(0);
-            xFontComboBoxRow.Padding = new Padding(4,0,4,0);
-            xFontRow.Controls.Add(xFontComboBoxRow, 0, 0);
-            xFontSizeNumericRow.Dock = DockStyle.Fill;
-            xFontSizeNumericRow.Margin = new Padding(0);
-            xFontSizeNumericRow.Padding = new Padding(4,0,4,0);
-            xFontRow.Controls.Add(xFontSizeNumericRow, 1, 0);
-            xFields.Controls.Add(xFontRow, 0, 10);
-            xFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            xFontColorComboBoxRow.Dock = DockStyle.Fill;
-            xFontColorComboBoxRow.Margin = new Padding(0);
-            xFontColorComboBoxRow.Padding = new Padding(4,0,4,0);
-            xFields.Controls.Add(xFontColorComboBoxRow, 0, 11);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            yDefaultsButtonRow.Dock = DockStyle.Fill;
-            yDefaultsButtonRow.Margin = new Padding(0);
-            yDefaultsButtonRow.Padding = new Padding(4,0,4,0);
-            yFields.Controls.Add(yDefaultsButtonRow, 0, 0);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yColumnComboBoxRow.Dock = DockStyle.Fill;
-            yColumnComboBoxRow.Margin = new Padding(0);
-            yColumnComboBoxRow.Padding = new Padding(4,0,4,0);
-            yFields.Controls.Add(yColumnComboBoxRow, 0, 1);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            yModeRow = new TableLayoutPanel();
-            yModeRow.Name = "yModeRow";
-            yModeRow.Dock = DockStyle.Fill;
-            yModeRow.Margin = new Padding(0);
-            yModeRow.Padding = new Padding(0);
-            yModeRow.BackColor = Color.FromArgb(24,24,24);
-            yModeRow.ColumnCount = 2;
-            yModeRow.RowCount = 1;
-            yModeRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yModeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yModeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yAutoCheckBoxRow.Dock = DockStyle.Fill;
-            yAutoCheckBoxRow.Margin = new Padding(0);
-            yAutoCheckBoxRow.Padding = new Padding(4,0,4,0);
-            yModeRow.Controls.Add(yAutoCheckBoxRow, 0, 0);
-            yLogCheckBoxRow.Dock = DockStyle.Fill;
-            yLogCheckBoxRow.Margin = new Padding(0);
-            yLogCheckBoxRow.Padding = new Padding(4,0,4,0);
-            yModeRow.Controls.Add(yLogCheckBoxRow, 1, 0);
-            yFields.Controls.Add(yModeRow, 0, 2);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yLimitsRow = new TableLayoutPanel();
-            yLimitsRow.Name = "yLimitsRow";
-            yLimitsRow.Dock = DockStyle.Fill;
-            yLimitsRow.Margin = new Padding(0);
-            yLimitsRow.Padding = new Padding(0);
-            yLimitsRow.BackColor = Color.FromArgb(24,24,24);
-            yLimitsRow.ColumnCount = 2;
-            yLimitsRow.RowCount = 1;
-            yLimitsRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yLimitsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yLimitsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMinimumBoxRow.Dock = DockStyle.Fill;
-            yMinimumBoxRow.Margin = new Padding(0);
-            yMinimumBoxRow.Padding = new Padding(4,0,4,0);
-            yLimitsRow.Controls.Add(yMinimumBoxRow, 0, 0);
-            yMaximumBoxRow.Dock = DockStyle.Fill;
-            yMaximumBoxRow.Margin = new Padding(0);
-            yMaximumBoxRow.Padding = new Padding(4,0,4,0);
-            yLimitsRow.Controls.Add(yMaximumBoxRow, 1, 0);
-            yFields.Controls.Add(yLimitsRow, 0, 3);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yTicksRow = new TableLayoutPanel();
-            yTicksRow.Name = "yTicksRow";
-            yTicksRow.Dock = DockStyle.Fill;
-            yTicksRow.Margin = new Padding(0);
-            yTicksRow.Padding = new Padding(0);
-            yTicksRow.BackColor = Color.FromArgb(24,24,24);
-            yTicksRow.ColumnCount = 2;
-            yTicksRow.RowCount = 1;
-            yTicksRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yTicksRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yTicksRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yGridIntervalBoxRow.Dock = DockStyle.Fill;
-            yGridIntervalBoxRow.Margin = new Padding(0);
-            yGridIntervalBoxRow.Padding = new Padding(4,0,4,0);
-            yTicksRow.Controls.Add(yGridIntervalBoxRow, 0, 0);
-            yDecimalsNumericRow.Dock = DockStyle.Fill;
-            yDecimalsNumericRow.Margin = new Padding(0);
-            yDecimalsNumericRow.Padding = new Padding(4,0,4,0);
-            yTicksRow.Controls.Add(yDecimalsNumericRow, 1, 0);
-            yFields.Controls.Add(yTicksRow, 0, 4);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yMajorGridRow = new TableLayoutPanel();
-            yMajorGridRow.Name = "yMajorGridRow";
-            yMajorGridRow.Dock = DockStyle.Fill;
-            yMajorGridRow.Margin = new Padding(0);
-            yMajorGridRow.Padding = new Padding(0);
-            yMajorGridRow.BackColor = Color.FromArgb(24,24,24);
-            yMajorGridRow.ColumnCount = 2;
-            yMajorGridRow.RowCount = 1;
-            yMajorGridRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yMajorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMajorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yGridColorComboBoxRow.Dock = DockStyle.Fill;
-            yGridColorComboBoxRow.Margin = new Padding(0);
-            yGridColorComboBoxRow.Padding = new Padding(4,0,4,0);
-            yMajorGridRow.Controls.Add(yGridColorComboBoxRow, 0, 0);
-            yGridWidthNumericRow.Dock = DockStyle.Fill;
-            yGridWidthNumericRow.Margin = new Padding(0);
-            yGridWidthNumericRow.Padding = new Padding(4,0,4,0);
-            yMajorGridRow.Controls.Add(yGridWidthNumericRow, 1, 0);
-            yFields.Controls.Add(yMajorGridRow, 0, 5);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yMajorStyleRow = new TableLayoutPanel();
-            yMajorStyleRow.Name = "yMajorStyleRow";
-            yMajorStyleRow.Dock = DockStyle.Fill;
-            yMajorStyleRow.Margin = new Padding(0);
-            yMajorStyleRow.Padding = new Padding(0);
-            yMajorStyleRow.BackColor = Color.FromArgb(24,24,24);
-            yMajorStyleRow.ColumnCount = 2;
-            yMajorStyleRow.RowCount = 1;
-            yMajorStyleRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yMajorStyleRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMajorStyleRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yGridDashComboBoxRow.Dock = DockStyle.Fill;
-            yGridDashComboBoxRow.Margin = new Padding(0);
-            yGridDashComboBoxRow.Padding = new Padding(4,0,4,0);
-            yMajorStyleRow.Controls.Add(yGridDashComboBoxRow, 0, 0);
-            yGridAlphaNumericRow.Dock = DockStyle.Fill;
-            yGridAlphaNumericRow.Margin = new Padding(0);
-            yGridAlphaNumericRow.Padding = new Padding(4,0,4,0);
-            yMajorStyleRow.Controls.Add(yGridAlphaNumericRow, 1, 0);
-            yFields.Controls.Add(yMajorStyleRow, 0, 6);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yMinorGridRow = new TableLayoutPanel();
-            yMinorGridRow.Name = "yMinorGridRow";
-            yMinorGridRow.Dock = DockStyle.Fill;
-            yMinorGridRow.Margin = new Padding(0);
-            yMinorGridRow.Padding = new Padding(0);
-            yMinorGridRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorGridRow.ColumnCount = 2;
-            yMinorGridRow.RowCount = 1;
-            yMinorGridRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yMinorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMinorGridRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMinorCheckBoxRow.Dock = DockStyle.Fill;
-            yMinorCheckBoxRow.Margin = new Padding(0);
-            yMinorCheckBoxRow.Padding = new Padding(4,0,4,0);
-            yMinorGridRow.Controls.Add(yMinorCheckBoxRow, 0, 0);
-            yMinorColorComboBoxRow.Dock = DockStyle.Fill;
-            yMinorColorComboBoxRow.Margin = new Padding(0);
-            yMinorColorComboBoxRow.Padding = new Padding(4,0,4,0);
-            yMinorGridRow.Controls.Add(yMinorColorComboBoxRow, 1, 0);
-            yFields.Controls.Add(yMinorGridRow, 0, 7);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yMinorStrokeRow = new TableLayoutPanel();
-            yMinorStrokeRow.Name = "yMinorStrokeRow";
-            yMinorStrokeRow.Dock = DockStyle.Fill;
-            yMinorStrokeRow.Margin = new Padding(0);
-            yMinorStrokeRow.Padding = new Padding(0);
-            yMinorStrokeRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorStrokeRow.ColumnCount = 2;
-            yMinorStrokeRow.RowCount = 1;
-            yMinorStrokeRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yMinorStrokeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMinorStrokeRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMinorWidthNumericRow.Dock = DockStyle.Fill;
-            yMinorWidthNumericRow.Margin = new Padding(0);
-            yMinorWidthNumericRow.Padding = new Padding(4,0,4,0);
-            yMinorStrokeRow.Controls.Add(yMinorWidthNumericRow, 0, 0);
-            yMinorDashComboBoxRow.Dock = DockStyle.Fill;
-            yMinorDashComboBoxRow.Margin = new Padding(0);
-            yMinorDashComboBoxRow.Padding = new Padding(4,0,4,0);
-            yMinorStrokeRow.Controls.Add(yMinorDashComboBoxRow, 1, 0);
-            yFields.Controls.Add(yMinorStrokeRow, 0, 8);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yMinorOpacityRow = new TableLayoutPanel();
-            yMinorOpacityRow.Name = "yMinorOpacityRow";
-            yMinorOpacityRow.Dock = DockStyle.Fill;
-            yMinorOpacityRow.Margin = new Padding(0);
-            yMinorOpacityRow.Padding = new Padding(0);
-            yMinorOpacityRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorOpacityRow.ColumnCount = 2;
-            yMinorOpacityRow.RowCount = 1;
-            yMinorOpacityRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yMinorOpacityRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMinorOpacityRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yMinorAlphaNumericRow.Dock = DockStyle.Fill;
-            yMinorAlphaNumericRow.Margin = new Padding(0);
-            yMinorAlphaNumericRow.Padding = new Padding(4,0,4,0);
-            yMinorOpacityRow.Controls.Add(yMinorAlphaNumericRow, 0, 0);
-            yLogBaseBoxRow.Dock = DockStyle.Fill;
-            yLogBaseBoxRow.Margin = new Padding(0);
-            yLogBaseBoxRow.Padding = new Padding(4,0,4,0);
-            yMinorOpacityRow.Controls.Add(yLogBaseBoxRow, 1, 0);
-            yFields.Controls.Add(yMinorOpacityRow, 0, 9);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yFontRow = new TableLayoutPanel();
-            yFontRow.Name = "yFontRow";
-            yFontRow.Dock = DockStyle.Fill;
-            yFontRow.Margin = new Padding(0);
-            yFontRow.Padding = new Padding(0);
-            yFontRow.BackColor = Color.FromArgb(24,24,24);
-            yFontRow.ColumnCount = 2;
-            yFontRow.RowCount = 1;
-            yFontRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            yFontRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yFontRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            yFontComboBoxRow.Dock = DockStyle.Fill;
-            yFontComboBoxRow.Margin = new Padding(0);
-            yFontComboBoxRow.Padding = new Padding(4,0,4,0);
-            yFontRow.Controls.Add(yFontComboBoxRow, 0, 0);
-            yFontSizeNumericRow.Dock = DockStyle.Fill;
-            yFontSizeNumericRow.Margin = new Padding(0);
-            yFontSizeNumericRow.Padding = new Padding(4,0,4,0);
-            yFontRow.Controls.Add(yFontSizeNumericRow, 1, 0);
-            yFields.Controls.Add(yFontRow, 0, 10);
-            yFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            yFontColorComboBoxRow.Dock = DockStyle.Fill;
-            yFontColorComboBoxRow.Margin = new Padding(0);
-            yFontColorComboBoxRow.Padding = new Padding(4,0,4,0);
-            yFields.Controls.Add(yFontColorComboBoxRow, 0, 11);
-            zFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            zDefaultsButtonRow.Dock = DockStyle.Fill;
-            zDefaultsButtonRow.Margin = new Padding(0);
-            zDefaultsButtonRow.Padding = new Padding(4,0,4,0);
-            zFields.Controls.Add(zDefaultsButtonRow, 0, 0);
-            zFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            zColumnComboBoxRow.Dock = DockStyle.Fill;
-            zColumnComboBoxRow.Margin = new Padding(0);
-            zColumnComboBoxRow.Padding = new Padding(4,0,4,0);
-            zFields.Controls.Add(zColumnComboBoxRow, 0, 1);
-            zFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            zAutoCheckBoxRow.Dock = DockStyle.Fill;
-            zAutoCheckBoxRow.Margin = new Padding(0);
-            zAutoCheckBoxRow.Padding = new Padding(4,0,4,0);
-            zFields.Controls.Add(zAutoCheckBoxRow, 0, 2);
-            zFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            zLimitsRow = new TableLayoutPanel();
-            zLimitsRow.Name = "zLimitsRow";
-            zLimitsRow.Dock = DockStyle.Fill;
-            zLimitsRow.Margin = new Padding(0);
-            zLimitsRow.Padding = new Padding(0);
-            zLimitsRow.BackColor = Color.FromArgb(24,24,24);
-            zLimitsRow.ColumnCount = 2;
-            zLimitsRow.RowCount = 1;
-            zLimitsRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            zLimitsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            zLimitsRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            zMinimumBoxRow.Dock = DockStyle.Fill;
-            zMinimumBoxRow.Margin = new Padding(0);
-            zMinimumBoxRow.Padding = new Padding(4,0,4,0);
-            zLimitsRow.Controls.Add(zMinimumBoxRow, 0, 0);
-            zMaximumBoxRow.Dock = DockStyle.Fill;
-            zMaximumBoxRow.Margin = new Padding(0);
-            zMaximumBoxRow.Padding = new Padding(4,0,4,0);
-            zLimitsRow.Controls.Add(zMaximumBoxRow, 1, 0);
-            zFields.Controls.Add(zLimitsRow, 0, 3);
-            zFields.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
-            zColorRow = new TableLayoutPanel();
-            zColorRow.Name = "zColorRow";
-            zColorRow.Dock = DockStyle.Fill;
-            zColorRow.Margin = new Padding(0);
-            zColorRow.Padding = new Padding(0);
-            zColorRow.BackColor = Color.FromArgb(24,24,24);
-            zColorRow.ColumnCount = 2;
-            zColorRow.RowCount = 1;
-            zColorRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            zColorRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            zColorRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0000F));
-            schemeComboBoxRow.Dock = DockStyle.Fill;
-            schemeComboBoxRow.Margin = new Padding(0);
-            schemeComboBoxRow.Padding = new Padding(4,0,4,0);
-            zColorRow.Controls.Add(schemeComboBoxRow, 0, 0);
-            bandsNumericRow.Dock = DockStyle.Fill;
-            bandsNumericRow.Margin = new Padding(0);
-            bandsNumericRow.Padding = new Padding(4,0,4,0);
-            zColorRow.Controls.Add(bandsNumericRow, 1, 0);
-            zFields.Controls.Add(zColorRow, 0, 4);
-            // Quarter-step input precision; WinForms Chart itself rounds widths
-            // to device pixels. Font sizes render with fractional point sizes.
-            xFontSizeNumeric.Minimum = 0.25m;
-            xFontSizeNumeric.DecimalPlaces = 2;
-            xFontSizeNumeric.Increment = 0.25m;
-            yFontSizeNumeric.Minimum = 0.25m;
-            yFontSizeNumeric.DecimalPlaces = 2;
-            yFontSizeNumeric.Increment = 0.25m;
-            xGridWidthNumeric.Minimum = 0.25m;
-            xGridWidthNumeric.DecimalPlaces = 2;
-            xGridWidthNumeric.Increment = 0.25m;
-            yGridWidthNumeric.Minimum = 0.25m;
-            yGridWidthNumeric.DecimalPlaces = 2;
-            yGridWidthNumeric.Increment = 0.25m;
-            xMinorWidthNumeric.Minimum = 0.25m;
-            xMinorWidthNumeric.DecimalPlaces = 2;
-            xMinorWidthNumeric.Increment = 0.25m;
-            yMinorWidthNumeric.Minimum = 0.25m;
-            yMinorWidthNumeric.DecimalPlaces = 2;
-            yMinorWidthNumeric.Increment = 0.25m;
-            tooltipDelayNumeric.Value = 1000;
-
-            // Explicit design-time dark palette (also applies when the Designer is open).
-            SettingsProfilesHost.BackColor = Color.FromArgb(35,35,35);
-            settingsColumns.BackColor = Color.FromArgb(24,24,24);
-            chartStyleGroup.BackColor = Color.FromArgb(24,24,24);
-            xAxisGroup.BackColor = Color.FromArgb(24,24,24);
-            yAxisGroup.BackColor = Color.FromArgb(24,24,24);
-            zAxisGroup.BackColor = Color.FromArgb(24,24,24);
-            absoluteCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            backgroundComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            bandsNumericRow.BackColor = Color.FromArgb(24,24,24);
-            chartTypeComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            cursorAlphaNumericRow.BackColor = Color.FromArgb(24,24,24);
-            cursorColorComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            cursorDashComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            cursorEnabledCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            cursorWidthNumericRow.BackColor = Color.FromArgb(24,24,24);
-            cursorZoomCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            layoutComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            markerComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            markerSizeNumericRow.BackColor = Color.FromArgb(24,24,24);
-            paletteAlphaNumericRow.BackColor = Color.FromArgb(24,24,24);
-            paletteDividerNumericRow.BackColor = Color.FromArgb(24,24,24);
-            schemeComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            tooltipDelayNumericRow.BackColor = Color.FromArgb(24,24,24);
-            tooltipEnableCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xAutoCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xColumnComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xDecimalsNumericRow.BackColor = Color.FromArgb(24,24,24);
-            xDefaultsButtonRow.BackColor = Color.FromArgb(24,24,24);
-            xFontColorComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xFontComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xFontSizeNumericRow.BackColor = Color.FromArgb(24,24,24);
-            xGridAlphaNumericRow.BackColor = Color.FromArgb(24,24,24);
-            xGridColorComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xGridDashComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xGridIntervalBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xGridWidthNumericRow.BackColor = Color.FromArgb(24,24,24);
-            xLogBaseBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xLogCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xMaximumBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xMinimumBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorAlphaNumericRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorColorComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorDashComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            xMinorWidthNumericRow.BackColor = Color.FromArgb(24,24,24);
-            yAutoCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yColumnComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yDecimalsNumericRow.BackColor = Color.FromArgb(24,24,24);
-            yDefaultsButtonRow.BackColor = Color.FromArgb(24,24,24);
-            yFontColorComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yFontComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yFontSizeNumericRow.BackColor = Color.FromArgb(24,24,24);
-            yGridAlphaNumericRow.BackColor = Color.FromArgb(24,24,24);
-            yGridColorComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yGridDashComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yGridIntervalBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yGridWidthNumericRow.BackColor = Color.FromArgb(24,24,24);
-            yLogBaseBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yLogCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yMaximumBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yMinimumBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorAlphaNumericRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorColorComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorDashComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            yMinorWidthNumericRow.BackColor = Color.FromArgb(24,24,24);
-            zAutoCheckBoxRow.BackColor = Color.FromArgb(24,24,24);
-            zColumnComboBoxRow.BackColor = Color.FromArgb(24,24,24);
-            zDefaultsButtonRow.BackColor = Color.FromArgb(24,24,24);
-            zMaximumBoxRow.BackColor = Color.FromArgb(24,24,24);
-            zMinimumBoxRow.BackColor = Color.FromArgb(24,24,24);
-            applyButton.BackColor = Color.FromArgb(60,60,60);
-            applyButton.ForeColor = Color.White;
-            applyButton.UseVisualStyleBackColor = false;
-            schemeComboBox.BackColor = Color.FromArgb(43,43,43);
-            schemeComboBox.ForeColor = Color.White;
-            chartTypeComboBox.BackColor = Color.FromArgb(43,43,43);
-            chartTypeComboBox.ForeColor = Color.White;
-            markerComboBox.BackColor = Color.FromArgb(43,43,43);
-            markerComboBox.ForeColor = Color.White;
-            bandsNumeric.BackColor = Color.FromArgb(43,43,43);
-            bandsNumeric.ForeColor = Color.White;
-            markerSizeNumeric.BackColor = Color.FromArgb(43,43,43);
-            markerSizeNumeric.ForeColor = Color.White;
-            paletteAlphaNumeric.BackColor = Color.FromArgb(43,43,43);
-            paletteAlphaNumeric.ForeColor = Color.White;
-            paletteDividerNumeric.BackColor = Color.FromArgb(43,43,43);
-            paletteDividerNumeric.ForeColor = Color.White;
-            backgroundComboBox.BackColor = Color.FromArgb(43,43,43);
-            backgroundComboBox.ForeColor = Color.White;
-            layoutComboBox.BackColor = Color.FromArgb(43,43,43);
-            layoutComboBox.ForeColor = Color.White;
-            tooltipEnableCheckBox.BackColor = Color.FromArgb(24,24,24);
-            tooltipEnableCheckBox.UseVisualStyleBackColor = false;
-            tooltipEnableCheckBox.ForeColor = Color.White;
-            tooltipDelayNumeric.BackColor = Color.FromArgb(43,43,43);
-            tooltipDelayNumeric.ForeColor = Color.White;
-            absoluteCheckBox.BackColor = Color.FromArgb(24,24,24);
-            absoluteCheckBox.UseVisualStyleBackColor = false;
-            absoluteCheckBox.ForeColor = Color.White;
-            xColumnComboBox.BackColor = Color.FromArgb(43,43,43);
-            xColumnComboBox.ForeColor = Color.White;
-            xAutoCheckBox.BackColor = Color.FromArgb(24,24,24);
-            xAutoCheckBox.UseVisualStyleBackColor = false;
-            xAutoCheckBox.ForeColor = Color.White;
-            xMinimumBox.BackColor = Color.FromArgb(43,43,43);
-            xMinimumBox.ForeColor = Color.White;
-            xMaximumBox.BackColor = Color.FromArgb(43,43,43);
-            xMaximumBox.ForeColor = Color.White;
-            xGridIntervalBox.BackColor = Color.FromArgb(43,43,43);
-            xGridIntervalBox.ForeColor = Color.White;
-            xDecimalsNumeric.BackColor = Color.FromArgb(43,43,43);
-            xDecimalsNumeric.ForeColor = Color.White;
-            xMinorCheckBox.BackColor = Color.FromArgb(24,24,24);
-            xMinorCheckBox.UseVisualStyleBackColor = false;
-            xMinorCheckBox.ForeColor = Color.White;
-            xGridColorComboBox.BackColor = Color.FromArgb(43,43,43);
-            xGridColorComboBox.ForeColor = Color.White;
-            xGridWidthNumeric.BackColor = Color.FromArgb(43,43,43);
-            xGridWidthNumeric.ForeColor = Color.White;
-            xMinorColorComboBox.BackColor = Color.FromArgb(43,43,43);
-            xMinorColorComboBox.ForeColor = Color.White;
-            xMinorWidthNumeric.BackColor = Color.FromArgb(43,43,43);
-            xMinorWidthNumeric.ForeColor = Color.White;
-            xFontComboBox.BackColor = Color.FromArgb(43,43,43);
-            xFontComboBox.ForeColor = Color.White;
-            xFontSizeNumeric.BackColor = Color.FromArgb(43,43,43);
-            xFontSizeNumeric.ForeColor = Color.White;
-            xFontColorComboBox.BackColor = Color.FromArgb(43,43,43);
-            xFontColorComboBox.ForeColor = Color.White;
-            xLogCheckBox.BackColor = Color.FromArgb(24,24,24);
-            xLogCheckBox.UseVisualStyleBackColor = false;
-            xLogCheckBox.ForeColor = Color.White;
-            xLogBaseBox.BackColor = Color.FromArgb(43,43,43);
-            xLogBaseBox.ForeColor = Color.White;
-            xDefaultsButton.BackColor = Color.FromArgb(60,60,60);
-            xDefaultsButton.ForeColor = Color.White;
-            xDefaultsButton.UseVisualStyleBackColor = false;
-            yColumnComboBox.BackColor = Color.FromArgb(43,43,43);
-            yColumnComboBox.ForeColor = Color.White;
-            yAutoCheckBox.BackColor = Color.FromArgb(24,24,24);
-            yAutoCheckBox.UseVisualStyleBackColor = false;
-            yAutoCheckBox.ForeColor = Color.White;
-            yMinimumBox.BackColor = Color.FromArgb(43,43,43);
-            yMinimumBox.ForeColor = Color.White;
-            yMaximumBox.BackColor = Color.FromArgb(43,43,43);
-            yMaximumBox.ForeColor = Color.White;
-            yGridIntervalBox.BackColor = Color.FromArgb(43,43,43);
-            yGridIntervalBox.ForeColor = Color.White;
-            yDecimalsNumeric.BackColor = Color.FromArgb(43,43,43);
-            yDecimalsNumeric.ForeColor = Color.White;
-            yMinorCheckBox.BackColor = Color.FromArgb(24,24,24);
-            yMinorCheckBox.UseVisualStyleBackColor = false;
-            yMinorCheckBox.ForeColor = Color.White;
-            yGridColorComboBox.BackColor = Color.FromArgb(43,43,43);
-            yGridColorComboBox.ForeColor = Color.White;
-            yGridWidthNumeric.BackColor = Color.FromArgb(43,43,43);
-            yGridWidthNumeric.ForeColor = Color.White;
-            yMinorColorComboBox.BackColor = Color.FromArgb(43,43,43);
-            yMinorColorComboBox.ForeColor = Color.White;
-            yMinorWidthNumeric.BackColor = Color.FromArgb(43,43,43);
-            yMinorWidthNumeric.ForeColor = Color.White;
-            yFontComboBox.BackColor = Color.FromArgb(43,43,43);
-            yFontComboBox.ForeColor = Color.White;
-            yFontSizeNumeric.BackColor = Color.FromArgb(43,43,43);
-            yFontSizeNumeric.ForeColor = Color.White;
-            yFontColorComboBox.BackColor = Color.FromArgb(43,43,43);
-            yFontColorComboBox.ForeColor = Color.White;
-            yLogCheckBox.BackColor = Color.FromArgb(24,24,24);
-            yLogCheckBox.UseVisualStyleBackColor = false;
-            yLogCheckBox.ForeColor = Color.White;
-            yLogBaseBox.BackColor = Color.FromArgb(43,43,43);
-            yLogBaseBox.ForeColor = Color.White;
-            yDefaultsButton.BackColor = Color.FromArgb(60,60,60);
-            yDefaultsButton.ForeColor = Color.White;
-            yDefaultsButton.UseVisualStyleBackColor = false;
-            zColumnComboBox.BackColor = Color.FromArgb(43,43,43);
-            zColumnComboBox.ForeColor = Color.White;
-            zAutoCheckBox.BackColor = Color.FromArgb(24,24,24);
-            zAutoCheckBox.UseVisualStyleBackColor = false;
-            zAutoCheckBox.ForeColor = Color.White;
-            zMinimumBox.BackColor = Color.FromArgb(43,43,43);
-            zMinimumBox.ForeColor = Color.White;
-            zMaximumBox.BackColor = Color.FromArgb(43,43,43);
-            zMaximumBox.ForeColor = Color.White;
-            zDefaultsButton.BackColor = Color.FromArgb(60,60,60);
-            zDefaultsButton.ForeColor = Color.White;
-            zDefaultsButton.UseVisualStyleBackColor = false;
-            cursorEnabledCheckBox.BackColor = Color.FromArgb(24,24,24);
-            cursorEnabledCheckBox.UseVisualStyleBackColor = false;
-            cursorEnabledCheckBox.ForeColor = Color.White;
-            cursorZoomCheckBox.BackColor = Color.FromArgb(24,24,24);
-            cursorZoomCheckBox.UseVisualStyleBackColor = false;
-            cursorZoomCheckBox.ForeColor = Color.White;
-            cursorColorComboBox.BackColor = Color.FromArgb(43,43,43);
-            cursorColorComboBox.ForeColor = Color.White;
-            cursorAlphaNumeric.BackColor = Color.FromArgb(43,43,43);
-            cursorAlphaNumeric.ForeColor = Color.White;
-            cursorWidthNumeric.BackColor = Color.FromArgb(43,43,43);
-            cursorWidthNumeric.ForeColor = Color.White;
-            cursorDashComboBox.BackColor = Color.FromArgb(43,43,43);
-            cursorDashComboBox.ForeColor = Color.White;
-            xGridDashComboBox.BackColor = Color.FromArgb(43,43,43);
-            xGridDashComboBox.ForeColor = Color.White;
-            xGridAlphaNumeric.BackColor = Color.FromArgb(43,43,43);
-            xGridAlphaNumeric.ForeColor = Color.White;
-            xMinorDashComboBox.BackColor = Color.FromArgb(43,43,43);
-            xMinorDashComboBox.ForeColor = Color.White;
-            xMinorAlphaNumeric.BackColor = Color.FromArgb(43,43,43);
-            xMinorAlphaNumeric.ForeColor = Color.White;
-            yGridDashComboBox.BackColor = Color.FromArgb(43,43,43);
-            yGridDashComboBox.ForeColor = Color.White;
-            yGridAlphaNumeric.BackColor = Color.FromArgb(43,43,43);
-            yGridAlphaNumeric.ForeColor = Color.White;
-            yMinorDashComboBox.BackColor = Color.FromArgb(43,43,43);
-            yMinorDashComboBox.ForeColor = Color.White;
-            yMinorAlphaNumeric.BackColor = Color.FromArgb(43,43,43);
-            yMinorAlphaNumeric.ForeColor = Color.White;
-
-            Controls.Add(settingsColumns);
-            Controls.Add(actionsPanel);
         }
     }
 }

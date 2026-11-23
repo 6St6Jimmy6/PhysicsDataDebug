@@ -15,7 +15,7 @@ namespace Physics_Data_Debug
     /// wheel-relative measurement resolves independently for FL/FR/RL/RR.
     /// The Designer owns the toolbar, five selection rows and chart container.
     /// </summary>
-    public partial class FormTireTemperatures : Form
+    public partial class FormLiveTimeChart : Form
     {
         private sealed class TimeSample
         {
@@ -43,7 +43,7 @@ namespace Physics_Data_Debug
         private static readonly string[] DefaultSelections =
             { "TreadTemperature", "InnerTemperature", "SlipRatio", "VerticalLoad", "SlipAngleDeg" };
 
-        public FormTireTemperatures()
+        public FormLiveTimeChart()
         {
             InitializeComponent();
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
@@ -105,7 +105,7 @@ namespace Physics_Data_Debug
         {
             // This form is the public chart. The separate Settings form owns the
             // appearance controls and is safe to construct without a Chart handle.
-            using (var settings = new FormTireTemperaturesSettings())
+            using (var settings = new FormLiveTimeChartSettings())
             {
                 JsonFormSettings.EnsureFactoryDefaults(settings);
                 JsonFormSettings.LoadAllSettings(settings);
@@ -159,14 +159,19 @@ namespace Physics_Data_Debug
 
         private void UpdateWheelCheckboxColors()
         {
-            for (int track = 0; track < 5; track++)
-                for (int wheel = 0; wheel < 4; wheel++)
-                {
-                    // The colored name doubles as the series legend.
-                    Color color = options.WheelColors[wheel];
-                    wheelVisible[track, wheel].ForeColor = Color.FromArgb(
-                        Math.Max((int)color.R, 105), Math.Max((int)color.G, 105), Math.Max((int)color.B, 105));
-                }
+            // Color-coded wheel headers are Designer-owned; these values change
+            // only when the user applies appearance settings. Checkboxes beneath
+            // them have no repeated text, so four columns remain readable at DPI scaling.
+            Label[] wheelHeaders = { header2, header3, header4, header5 };
+            for (int wheel = 0; wheel < 4; wheel++)
+            {
+                Color color = options.WheelColors[wheel];
+                Color visible = Color.FromArgb(Math.Max((int)color.R, 105),
+                    Math.Max((int)color.G, 105), Math.Max((int)color.B, 105));
+                wheelHeaders[wheel].ForeColor = visible;
+                for (int track = 0; track < 5; track++)
+                    wheelVisible[track, wheel].ForeColor = visible;
+            }
         }
 
         private double DisplayX(double seconds) =>
@@ -420,7 +425,7 @@ namespace Physics_Data_Debug
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            using (var settings = new FormTireTemperaturesSettings())
+            using (var settings = new FormLiveTimeChartSettings())
             {
                 JsonFormSettings.LoadAllSettings(settings);
                 if (settings.ShowDialog(this) != DialogResult.OK) return;

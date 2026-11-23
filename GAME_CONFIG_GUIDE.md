@@ -314,3 +314,32 @@ than silently guessing memory addresses. Correctly formatted but incorrect
 offsets can still read invalid memory: test new fields in game and keep a
 working backup. No full Windows live-process test was performed for this
 schema migration.
+
+## Live Data display names and measurement units
+
+Every schema 2 `fields` or `calculated` entry may include presentation metadata:
+
+```json
+"FrontLift": {
+  "offset": "0x...",
+  "displayName": "Front Lift",
+  "unit": "N",
+  "unitName": "newtons"
+}
+```
+
+The `offset` in this example is illustrative: preserve the actual address in
+WreckfestGameMemoryConfig.json. `displayName` is shown in Live Data; it never
+renames the source field or CSV/logging header. `unit` is the short symbol
+beside its live value, and `unitName` is the full text displayed on hover.
+The shipped config includes display names for all raw and calculated fields,
+and units for measurements whose units are known. Leave the unit blank for
+unitless quantities or quantities whose physical meaning is not verified.
+
+The Live Data form now has a category/measurement checkbox tree. Checking
+Aerodynamics selects its drag and lift fields; individual fields may be
+unchecked separately. Every monitored measurement occupies one row; tire and
+suspension measurements display four wheel values on that row. Selections are
+stored in `%APPDATA%\PhysicsDataDebug\Settings\LiveMonitorSelections.json`.
+Fields added to the active JSON appear automatically the next time the config
+is reloaded or the app is opened.

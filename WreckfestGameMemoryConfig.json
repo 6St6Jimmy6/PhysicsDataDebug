@@ -22,7 +22,12 @@
         "RR": "0x24F0"
       },
       "fields": {
-        "MomentOfInertia": "0x28",
+        "MomentOfInertia": {
+          "offset": "0x28",
+          "displayName": "Moment Of Inertia",
+          "unit": "kg·m²",
+          "unitName": "kilogram square metres"
+        },
         "AngularVelocity": {
           "offset": "0x2C",
           "axisDefaults": {
@@ -33,35 +38,133 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Angular Velocity",
+          "unit": "rad/s",
+          "unitName": "radians per second"
         },
-        "TireStaticPivotX": "0x380",
-        "TireStaticPivotY": "0x384",
-        "TireStaticPivotZ": "0x388",
-        "TireM11": "0x390",
-        "TireM12": "0x394",
-        "TireM13": "0x398",
-        "TireM14": "0x39C",
-        "TireM21": "0x3A0",
-        "TireM22": "0x3A4",
-        "TireM23": "0x3A8",
-        "TireM24": "0x3AC",
-        "TireM31": "0x3B0",
-        "TireM32": "0x3B4",
-        "TireM33": "0x3B8",
-        "TireM34": "0x3BC",
-        "TireM41": "0x3C0",
-        "TireM42": "0x3C4",
-        "TireM43": "0x3C8",
-        "TireM44": "0x3CC",
-        "TireMass": "0x410",
-        "TireRadius": "0x414",
-        "TireWidth": "0x418",
-        "TireSpringRate": "0x41C",
-        "TireDamperRate": "0x420",
-        "TireMaxDeflection": "0x424",
-        "ThermalAirTransfer": "0x428",
-        "ThermalInnerTransfer": "0x42C",
+        "TireStaticPivotX": {
+          "offset": "0x380",
+          "displayName": "Tire Static Pivot X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "TireStaticPivotY": {
+          "offset": "0x384",
+          "displayName": "Tire Static Pivot Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "TireStaticPivotZ": {
+          "offset": "0x388",
+          "displayName": "Tire Static Pivot Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "TireM11": {
+          "offset": "0x390",
+          "displayName": "Tire M11"
+        },
+        "TireM12": {
+          "offset": "0x394",
+          "displayName": "Tire M12"
+        },
+        "TireM13": {
+          "offset": "0x398",
+          "displayName": "Tire M13"
+        },
+        "TireM14": {
+          "offset": "0x39C",
+          "displayName": "Tire M14"
+        },
+        "TireM21": {
+          "offset": "0x3A0",
+          "displayName": "Tire M21"
+        },
+        "TireM22": {
+          "offset": "0x3A4",
+          "displayName": "Tire M22"
+        },
+        "TireM23": {
+          "offset": "0x3A8",
+          "displayName": "Tire M23"
+        },
+        "TireM24": {
+          "offset": "0x3AC",
+          "displayName": "Tire M24"
+        },
+        "TireM31": {
+          "offset": "0x3B0",
+          "displayName": "Tire M31"
+        },
+        "TireM32": {
+          "offset": "0x3B4",
+          "displayName": "Tire M32"
+        },
+        "TireM33": {
+          "offset": "0x3B8",
+          "displayName": "Tire M33"
+        },
+        "TireM34": {
+          "offset": "0x3BC",
+          "displayName": "Tire M34"
+        },
+        "TireM41": {
+          "offset": "0x3C0",
+          "displayName": "Tire M41"
+        },
+        "TireM42": {
+          "offset": "0x3C4",
+          "displayName": "Tire M42"
+        },
+        "TireM43": {
+          "offset": "0x3C8",
+          "displayName": "Tire M43"
+        },
+        "TireM44": {
+          "offset": "0x3CC",
+          "displayName": "Tire M44"
+        },
+        "TireMass": {
+          "offset": "0x410",
+          "displayName": "Tire Mass"
+        },
+        "TireRadius": {
+          "offset": "0x414",
+          "displayName": "Tire Radius",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "TireWidth": {
+          "offset": "0x418",
+          "displayName": "Tire Width",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "TireSpringRate": {
+          "offset": "0x41C",
+          "displayName": "Tire Spring Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "TireDamperRate": {
+          "offset": "0x420",
+          "displayName": "Tire Damper Rate",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "TireMaxDeflection": {
+          "offset": "0x424",
+          "displayName": "Tire Max Deflection"
+        },
+        "ThermalAirTransfer": {
+          "offset": "0x428",
+          "displayName": "Thermal Air Transfer"
+        },
+        "ThermalInnerTransfer": {
+          "offset": "0x42C",
+          "displayName": "Thermal Inner Transfer"
+        },
         "TreadTemperature": {
           "offset": "0x434",
           "axisDefaults": {
@@ -71,7 +174,10 @@
             "decimals": 0,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Tread Temperature",
+          "unit": "°C",
+          "unitName": "degrees Celsius"
         },
         "InnerTemperature": {
           "offset": "0x438",
@@ -82,7 +188,10 @@
             "decimals": 0,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Inner Temperature",
+          "unit": "°C",
+          "unitName": "degrees Celsius"
         },
         "VerticalDeflection": {
           "offset": "0x43C",
@@ -93,7 +202,10 @@
             "decimals": 3,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Vertical Deflection",
+          "unit": "m",
+          "unitName": "metres"
         },
         "LoadedRadius": {
           "offset": "0x44C",
@@ -104,7 +216,10 @@
             "decimals": 3,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Loaded Radius",
+          "unit": "N",
+          "unitName": "newtons"
         },
         "EffectiveRadius": {
           "offset": "0x450",
@@ -115,7 +230,10 @@
             "decimals": 3,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Effective Radius",
+          "unit": "m",
+          "unitName": "metres"
         },
         "LongitudinalSlipSpeed": {
           "offset": "0x454",
@@ -127,7 +245,10 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Longitudinal Slip Speed",
+          "unit": "m/s",
+          "unitName": "metres per second"
         },
         "LateralSlipSpeed": {
           "offset": "0x458",
@@ -139,9 +260,17 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Lateral Slip Speed",
+          "unit": "m/s",
+          "unitName": "metres per second"
         },
-        "RadiansTireMoved": "0x45C",
+        "RadiansTireMoved": {
+          "offset": "0x45C",
+          "displayName": "Radians Tire Moved",
+          "unit": "rad",
+          "unitName": "radians"
+        },
         "CurrentContactBrakeTorque": {
           "offset": "0x484",
           "axisDefaults": {
@@ -151,9 +280,17 @@
             "decimals": 0,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Current Contact Brake Torque",
+          "unit": "Nm",
+          "unitName": "newton metres"
         },
-        "CurrentContactHandBrakeTorque": "0x484",
+        "CurrentContactHandBrakeTorque": {
+          "offset": "0x484",
+          "displayName": "Current Contact Hand Brake Torque",
+          "unit": "Nm",
+          "unitName": "newton metres"
+        },
         "CurrentContactBrakeTorqueMax": {
           "offset": "0x48C",
           "axisDefaults": {
@@ -163,7 +300,10 @@
             "decimals": 0,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Current Contact Brake Torque Max",
+          "unit": "Nm",
+          "unitName": "newton metres"
         },
         "VerticalLoad": {
           "offset": "0x490",
@@ -174,11 +314,29 @@
             "decimals": 0,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Vertical Load",
+          "unit": "N",
+          "unitName": "newtons"
         },
-        "TireContactX": "0x4AC",
-        "TireContactY": "0x4B0",
-        "TireContactZ": "0x4B4",
+        "TireContactX": {
+          "offset": "0x4AC",
+          "displayName": "Tire Contact X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "TireContactY": {
+          "offset": "0x4B0",
+          "displayName": "Tire Contact Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "TireContactZ": {
+          "offset": "0x4B4",
+          "displayName": "Tire Contact Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
         "LateralLoad": {
           "offset": "0x4B8",
           "axisDefaults": {
@@ -189,7 +347,10 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Lateral Load",
+          "unit": "N",
+          "unitName": "newtons"
         },
         "LongitudinalLoad": {
           "offset": "0x4C0",
@@ -201,7 +362,10 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Longitudinal Load",
+          "unit": "N",
+          "unitName": "newtons"
         },
         "Mx": {
           "offset": "0x4CC",
@@ -213,7 +377,10 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Mx",
+          "unit": "Nm",
+          "unitName": "newton metres"
         },
         "Mz": {
           "offset": "0x4D0",
@@ -225,7 +392,10 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Mz",
+          "unit": "Nm",
+          "unitName": "newton metres"
         },
         "My": {
           "offset": "0x4D4",
@@ -237,11 +407,17 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "My",
+          "unit": "Nm",
+          "unitName": "newton metres"
         },
         "SlipAngleRad": {
           "offset": "0xBF0",
-          "absolute": true
+          "absolute": true,
+          "displayName": "Slip Angle Rad",
+          "unit": "rad",
+          "unitName": "radians"
         },
         "SlipRatio": {
           "offset": "0xBF4",
@@ -253,10 +429,17 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Slip Ratio"
         },
-        "LateralResistance": "0xBF8",
-        "LongitudinalResistance": "0xBFC",
+        "LateralResistance": {
+          "offset": "0xBF8",
+          "displayName": "Lateral Resistance"
+        },
+        "LongitudinalResistance": {
+          "offset": "0xBFC",
+          "displayName": "Longitudinal Resistance"
+        },
         "ContactLength": {
           "offset": "0xC1C",
           "axisDefaults": {
@@ -266,7 +449,10 @@
             "decimals": 3,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Contact Length",
+          "unit": "m",
+          "unitName": "metres"
         },
         "TravelSpeed": {
           "offset": "0xC20",
@@ -278,21 +464,33 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Travel Speed",
+          "unit": "m/s",
+          "unitName": "metres per second"
         }
       },
       "calculated": {
         "CasterAngleRad": {
           "absolute": true,
-          "expression": "casterAngle(TireM11, TireM12, TireM13, TireM14, TireM21, TireM22, TireM23, TireM24, TireM31, TireM32, TireM33, TireM34, TireM41, TireM42, TireM43, TireM44)"
+          "expression": "casterAngle(TireM11, TireM12, TireM13, TireM14, TireM21, TireM22, TireM23, TireM24, TireM31, TireM32, TireM33, TireM34, TireM41, TireM42, TireM43, TireM44)",
+          "displayName": "Caster Angle Rad",
+          "unit": "rad",
+          "unitName": "radians"
         },
         "CasterAngleDeg": {
           "absolute": true,
-          "expression": "CasterAngleRad * 180 / pi"
+          "expression": "CasterAngleRad * 180 / pi",
+          "displayName": "Caster Angle Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         },
         "CamberAngleRad": {
           "absolute": true,
-          "expression": "camberAngle(TireM11, TireM12, TireM13, TireM14, TireM21, TireM22, TireM23, TireM24, TireM31, TireM32, TireM33, TireM34, TireM41, TireM42, TireM43, TireM44)"
+          "expression": "camberAngle(TireM11, TireM12, TireM13, TireM14, TireM21, TireM22, TireM23, TireM24, TireM31, TireM32, TireM33, TireM34, TireM41, TireM42, TireM43, TireM44)",
+          "displayName": "Camber Angle Rad",
+          "unit": "rad",
+          "unitName": "radians"
         },
         "CamberAngleDeg": {
           "axisDefaults": {
@@ -304,11 +502,17 @@
             "minorIntervalFraction": 2
           },
           "absolute": true,
-          "expression": "CamberAngleRad * 180 / pi"
+          "expression": "CamberAngleRad * 180 / pi",
+          "displayName": "Camber Angle Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         },
         "SteerAngleRad": {
           "absolute": true,
-          "expression": "steerAngle(TireM11, TireM12, TireM13, TireM14, TireM21, TireM22, TireM23, TireM24, TireM31, TireM32, TireM33, TireM34, TireM41, TireM42, TireM43, TireM44)"
+          "expression": "steerAngle(TireM11, TireM12, TireM13, TireM14, TireM21, TireM22, TireM23, TireM24, TireM31, TireM32, TireM33, TireM34, TireM41, TireM42, TireM43, TireM44)",
+          "displayName": "Steer Angle Rad",
+          "unit": "rad",
+          "unitName": "radians"
         },
         "SteerAngleDeg": {
           "axisDefaults": {
@@ -320,7 +524,10 @@
             "minorIntervalFraction": 2
           },
           "absolute": true,
-          "expression": "SteerAngleRad * 180 / pi"
+          "expression": "SteerAngleRad * 180 / pi",
+          "displayName": "Steer Angle Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         },
         "LateralFriction": {
           "axisDefaults": {
@@ -332,7 +539,8 @@
             "minorIntervalFraction": 2
           },
           "absolute": true,
-          "expression": "div0(LateralLoad, VerticalLoad)"
+          "expression": "div0(LateralLoad, VerticalLoad)",
+          "displayName": "Lateral Friction"
         },
         "LongitudinalFriction": {
           "axisDefaults": {
@@ -344,7 +552,8 @@
             "minorIntervalFraction": 2
           },
           "absolute": true,
-          "expression": "div0(LongitudinalLoad, VerticalLoad)"
+          "expression": "div0(LongitudinalLoad, VerticalLoad)",
+          "displayName": "Longitudinal Friction"
         },
         "TotalFriction": {
           "axisDefaults": {
@@ -355,7 +564,8 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "expression": "hypot(LateralFriction, LongitudinalFriction)"
+          "expression": "hypot(LateralFriction, LongitudinalFriction)",
+          "displayName": "Total Friction"
         },
         "TotalFrictionAngleDeg": {
           "axisDefaults": {
@@ -366,7 +576,8 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "expression": "frictionAngleDeg(LateralFriction, LongitudinalFriction)"
+          "expression": "frictionAngleDeg(LateralFriction, LongitudinalFriction)",
+          "displayName": "Total Friction Angle Deg"
         },
         "SlipAngleDeg": {
           "axisDefaults": {
@@ -378,58 +589,82 @@
             "minorIntervalFraction": 2
           },
           "absolute": true,
-          "expression": "SlipAngleRad * 180 / pi"
+          "expression": "SlipAngleRad * 180 / pi",
+          "displayName": "Slip Angle Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         },
         "RollingResistance": {
-          "expression": "div0(Mx, VerticalLoad)"
+          "expression": "div0(Mx, VerticalLoad)",
+          "displayName": "Rolling Resistance"
         },
         "PneumaticTrail": {
-          "expression": "div0(Mz, LateralLoad)"
+          "expression": "div0(Mz, LateralLoad)",
+          "displayName": "Pneumatic Trail",
+          "unit": "m",
+          "unitName": "metres"
         },
         "TreadTemperatureKelvins": {
-          "expression": "TreadTemperature + 273.15"
+          "expression": "TreadTemperature + 273.15",
+          "displayName": "Tread Temperature Kelvins",
+          "unit": "K",
+          "unitName": "kelvin"
         },
         "Log10aT": {
-          "builtin": true
+          "builtin": true,
+          "displayName": "Log10a T"
         },
         "LateralAdhesionGrip": {
-          "expression": "adhesionGrip(Log10aT, LateralSlipSpeed)"
+          "expression": "adhesionGrip(Log10aT, LateralSlipSpeed)",
+          "displayName": "Lateral Adhesion Grip"
         },
         "LateralMicroGrip": {
-          "expression": "microGrip(Log10aT, LateralSlipSpeed)"
+          "expression": "microGrip(Log10aT, LateralSlipSpeed)",
+          "displayName": "Lateral Micro Grip"
         },
         "LateralMacroGrip": {
-          "expression": "macroGrip(Log10aT, LateralSlipSpeed)"
+          "expression": "macroGrip(Log10aT, LateralSlipSpeed)",
+          "displayName": "Lateral Macro Grip"
         },
         "WLF_LateralSlidingFrictionGripMultiplier": {
-          "expression": "LateralAdhesionGrip + LateralMicroGrip + LateralMacroGrip"
+          "expression": "LateralAdhesionGrip + LateralMicroGrip + LateralMacroGrip",
+          "displayName": "WLF Lateral Sliding Friction Grip Multiplier"
         },
         "LongitudinalAdhesionGrip": {
-          "expression": "adhesionGrip(Log10aT, LongitudinalSlipSpeed)"
+          "expression": "adhesionGrip(Log10aT, LongitudinalSlipSpeed)",
+          "displayName": "Longitudinal Adhesion Grip"
         },
         "LongitudinalMicroGrip": {
-          "expression": "microGrip(Log10aT, LongitudinalSlipSpeed)"
+          "expression": "microGrip(Log10aT, LongitudinalSlipSpeed)",
+          "displayName": "Longitudinal Micro Grip"
         },
         "LongitudinalMacroGrip": {
-          "expression": "macroGrip(Log10aT, LongitudinalSlipSpeed)"
+          "expression": "macroGrip(Log10aT, LongitudinalSlipSpeed)",
+          "displayName": "Longitudinal Macro Grip"
         },
         "WLF_LongitudinalSlidingFrictionGripMultiplier": {
-          "expression": "LongitudinalAdhesionGrip + LongitudinalMicroGrip + LongitudinalMacroGrip"
+          "expression": "LongitudinalAdhesionGrip + LongitudinalMicroGrip + LongitudinalMacroGrip",
+          "displayName": "WLF Longitudinal Sliding Friction Grip Multiplier"
         },
         "LateralLoadSensGripMultiplier": {
-          "expression": "loadSensGrip(VerticalLoad, -0.05, 10300)"
+          "expression": "loadSensGrip(VerticalLoad, -0.05, 10300)",
+          "displayName": "Lateral Load Sens Grip Multiplier"
         },
         "LongitudinalLoadSensGripMultiplier": {
-          "expression": "LateralLoadSensGripMultiplier"
+          "expression": "LateralLoadSensGripMultiplier",
+          "displayName": "Longitudinal Load Sens Grip Multiplier"
         },
         "LateralFrictionNoMultis": {
-          "expression": "LateralFriction / (WLF_LateralSlidingFrictionGripMultiplier * LateralLoadSensGripMultiplier)"
+          "expression": "LateralFriction / (WLF_LateralSlidingFrictionGripMultiplier * LateralLoadSensGripMultiplier)",
+          "displayName": "Lateral Friction No Multis"
         },
         "LongitudinalFrictionNoMultis": {
-          "expression": "LongitudinalFriction / (WLF_LongitudinalSlidingFrictionGripMultiplier * LongitudinalLoadSensGripMultiplier)"
+          "expression": "LongitudinalFriction / (WLF_LongitudinalSlidingFrictionGripMultiplier * LongitudinalLoadSensGripMultiplier)",
+          "displayName": "Longitudinal Friction No Multis"
         },
         "TotalFrictionNoMultis": {
-          "expression": "hypot(LateralFrictionNoMultis, LongitudinalFrictionNoMultis)"
+          "expression": "hypot(LateralFrictionNoMultis, LongitudinalFrictionNoMultis)",
+          "displayName": "Total Friction No Multis"
         }
       }
     },
@@ -443,19 +678,82 @@
         "RR": "0x120"
       },
       "fields": {
-        "SpringRate": "0xE80",
-        "ProgressiveRate": "0xE84",
-        "BumpLimitsX": "0xE88",
-        "BumpLimitsY": "0xE8C",
-        "ReboundLimitsX": "0xE90",
-        "ReboundLimitsY": "0xE94",
-        "BumpDampX": "0xE98",
-        "ReboundDampX": "0xE9C",
-        "BumpDampY": "0xEA0",
-        "ReboundDampY": "0xEA4",
-        "ExpansionLimitFromZero": "0xEA8",
-        "CompressionLimitFromZero": "0xEAC",
-        "ReboundEndPosition": "0xEB0",
+        "SpringRate": {
+          "offset": "0xE80",
+          "displayName": "Spring Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "ProgressiveRate": {
+          "offset": "0xE84",
+          "displayName": "Progressive Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "BumpLimitsX": {
+          "offset": "0xE88",
+          "displayName": "Bump Limits X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BumpLimitsY": {
+          "offset": "0xE8C",
+          "displayName": "Bump Limits Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundLimitsX": {
+          "offset": "0xE90",
+          "displayName": "Rebound Limits X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundLimitsY": {
+          "offset": "0xE94",
+          "displayName": "Rebound Limits Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BumpDampX": {
+          "offset": "0xE98",
+          "displayName": "Bump Damp X",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "ReboundDampX": {
+          "offset": "0xE9C",
+          "displayName": "Rebound Damp X",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "BumpDampY": {
+          "offset": "0xEA0",
+          "displayName": "Bump Damp Y",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "ReboundDampY": {
+          "offset": "0xEA4",
+          "displayName": "Rebound Damp Y",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "ExpansionLimitFromZero": {
+          "offset": "0xEA8",
+          "displayName": "Expansion Limit From Zero",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "CompressionLimitFromZero": {
+          "offset": "0xEAC",
+          "displayName": "Compression Limit From Zero",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundEndPosition": {
+          "offset": "0xEB0",
+          "displayName": "Rebound End Position"
+        },
         "SuspensionLength": {
           "offset": "0xEB4",
           "axisDefaults": {
@@ -465,7 +763,10 @@
             "decimals": 4,
             "minorEnabled": true,
             "minorIntervalFraction": 2
-          }
+          },
+          "displayName": "Suspension Length",
+          "unit": "m",
+          "unitName": "metres"
         },
         "SuspensionVelocity": {
           "offset": "0xEB8",
@@ -477,15 +778,51 @@
             "minorEnabled": true,
             "minorIntervalFraction": 2
           },
-          "absolute": true
+          "absolute": true,
+          "displayName": "Suspension Velocity",
+          "unit": "m/s",
+          "unitName": "metres per second"
         },
-        "BumpStopLength": "0xEBC",
-        "ReboundStartPosition": "0xEC0",
-        "BumpStopRate": "0xEC4",
-        "ReboundRate": "0xEC8",
-        "BumpStopDamp": "0xECC",
-        "BumpStopRateGainDeflectionSquared": "0xED0",
-        "BumpStopDampGainDeflectionSquared": "0xED4"
+        "BumpStopLength": {
+          "offset": "0xEBC",
+          "displayName": "Bump Stop Length",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundStartPosition": {
+          "offset": "0xEC0",
+          "displayName": "Rebound Start Position"
+        },
+        "BumpStopRate": {
+          "offset": "0xEC4",
+          "displayName": "Bump Stop Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "ReboundRate": {
+          "offset": "0xEC8",
+          "displayName": "Rebound Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "BumpStopDamp": {
+          "offset": "0xECC",
+          "displayName": "Bump Stop Damp",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "BumpStopRateGainDeflectionSquared": {
+          "offset": "0xED0",
+          "displayName": "Bump Stop Rate Gain Deflection Squared",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BumpStopDampGainDeflectionSquared": {
+          "offset": "0xED4",
+          "displayName": "Bump Stop Damp Gain Deflection Squared",
+          "unit": "m",
+          "unitName": "metres"
+        }
       }
     },
     "suspension2": {
@@ -498,29 +835,142 @@
         "RR": "0x5C"
       },
       "fields": {
-        "SomeDistanceOffsetByRideHeight": "0xAACE40",
-        "ReboundEndPosition": "0xAACE44",
-        "SuspensionMaxLength": "0xAACE48",
-        "RideHeight": "0xAACE4C",
-        "SpringRate": "0xAACE50",
-        "BumpLimitsX": "0xAACE54",
-        "BumpLimitsY": "0xAACE58",
-        "BumpDampX": "0xAACE5C",
-        "BumpDampY": "0xAACE60",
-        "ReboundLimitsX": "0xAACE64",
-        "ReboundLimitsY": "0xAACE68",
-        "ReboundDampX": "0xAACE6C",
-        "ReboundDampY": "0xAACE70",
-        "BumpStopLength": "0xAACE74",
-        "BumpStopRate": "0xAACE78",
-        "BumpStopDamp": "0xAACE7C",
-        "BumpStopRateGainDeflectionSquared": "0xAACE80",
-        "BumpStopDampGainDeflectionSquared": "0xAACE84",
-        "ReboundLength": "0xAACE88",
-        "ReboundRate": "0xAACE8C",
-        "ProgressiveRate": "0xAACE90",
-        "RollbarStiffness": "0xAACE94",
-        "CamberAngleRadians": "0xAACE98"
+        "SomeDistanceOffsetByRideHeight": {
+          "offset": "0xAACE40",
+          "displayName": "Some Distance Offset By Ride Height",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundEndPosition": {
+          "offset": "0xAACE44",
+          "displayName": "Rebound End Position"
+        },
+        "SuspensionMaxLength": {
+          "offset": "0xAACE48",
+          "displayName": "Suspension Max Length",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "RideHeight": {
+          "offset": "0xAACE4C",
+          "displayName": "Ride Height",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpringRate": {
+          "offset": "0xAACE50",
+          "displayName": "Spring Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "BumpLimitsX": {
+          "offset": "0xAACE54",
+          "displayName": "Bump Limits X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BumpLimitsY": {
+          "offset": "0xAACE58",
+          "displayName": "Bump Limits Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BumpDampX": {
+          "offset": "0xAACE5C",
+          "displayName": "Bump Damp X",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "BumpDampY": {
+          "offset": "0xAACE60",
+          "displayName": "Bump Damp Y",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "ReboundLimitsX": {
+          "offset": "0xAACE64",
+          "displayName": "Rebound Limits X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundLimitsY": {
+          "offset": "0xAACE68",
+          "displayName": "Rebound Limits Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundDampX": {
+          "offset": "0xAACE6C",
+          "displayName": "Rebound Damp X",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "ReboundDampY": {
+          "offset": "0xAACE70",
+          "displayName": "Rebound Damp Y",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "BumpStopLength": {
+          "offset": "0xAACE74",
+          "displayName": "Bump Stop Length",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BumpStopRate": {
+          "offset": "0xAACE78",
+          "displayName": "Bump Stop Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "BumpStopDamp": {
+          "offset": "0xAACE7C",
+          "displayName": "Bump Stop Damp",
+          "unit": "N·s/m",
+          "unitName": "newton seconds per metre"
+        },
+        "BumpStopRateGainDeflectionSquared": {
+          "offset": "0xAACE80",
+          "displayName": "Bump Stop Rate Gain Deflection Squared",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BumpStopDampGainDeflectionSquared": {
+          "offset": "0xAACE84",
+          "displayName": "Bump Stop Damp Gain Deflection Squared",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundLength": {
+          "offset": "0xAACE88",
+          "displayName": "Rebound Length",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "ReboundRate": {
+          "offset": "0xAACE8C",
+          "displayName": "Rebound Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "ProgressiveRate": {
+          "offset": "0xAACE90",
+          "displayName": "Progressive Rate",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "RollbarStiffness": {
+          "offset": "0xAACE94",
+          "displayName": "Rollbar Stiffness",
+          "unit": "N/m",
+          "unitName": "newtons per metre"
+        },
+        "CamberAngleRadians": {
+          "offset": "0xAACE98",
+          "displayName": "Camber Angle Radians",
+          "unit": "rad",
+          "unitName": "radians"
+        }
       }
     },
     "suspensionGeometry": {
@@ -533,148 +983,742 @@
         "RR": "0x800CA0"
       },
       "fields": {
-        "SpindleUpperFrontArmX": "0x12A0",
-        "SpindleUpperFrontArmY": "0x12A4",
-        "SpindleUpperFrontArmZ": "0x12A8",
-        "SpindleUpperFrontArmW": "0x12AC",
-        "BodyUpperFrontArmX": "0x12B0",
-        "BodyUpperFrontArmY": "0x12B4",
-        "BodyUpperFrontArmZ": "0x12B8",
-        "BodyUpperFrontArmW": "0x12BC",
-        "UnknownUpperFrontArmX": "0x12C0",
-        "UnknownUpperFrontArmY": "0x12C4",
-        "UnknownUpperFrontArmZ": "0x12C8",
-        "UnknownUpperFrontArmW": "0x12CC",
-        "SpindleUpperRearArmX": "0x1340",
-        "SpindleUpperRearArmY": "0x1344",
-        "SpindleUpperRearArmZ": "0x1348",
-        "SpindleUpperRearArmW": "0x134C",
-        "BodyUpperRearArmX": "0x1350",
-        "BodyUpperRearArmY": "0x1354",
-        "BodyUpperRearArmZ": "0x1358",
-        "BodyUpperRearArmW": "0x135C",
-        "UnknownUpperRearArmX": "0x1360",
-        "UnknownUpperRearArmY": "0x1364",
-        "UnknownUpperRearArmZ": "0x1368",
-        "UnknownUpperRearArmW": "0x136C",
-        "SpindleLowerFrontArmX": "0x13E0",
-        "SpindleLowerFrontArmY": "0x13E4",
-        "SpindleLowerFrontArmZ": "0x13E8",
-        "SpindleLowerFrontArmW": "0x13EC",
-        "BodyLowerFrontArmX": "0x13F0",
-        "BodyLowerFrontArmY": "0x13F4",
-        "BodyLowerFrontArmZ": "0x13F8",
-        "BodyLowerFrontArmW": "0x13FC",
-        "UnknownLowerFrontArmX": "0x1400",
-        "UnknownLowerFrontArmY": "0x1404",
-        "UnknownLowerFrontArmZ": "0x1408",
-        "UnknownLowerFrontArmW": "0x140C",
-        "SpindleLowerRearArmX": "0x1480",
-        "SpindleLowerRearArmY": "0x1484",
-        "SpindleLowerRearArmZ": "0x1488",
-        "SpindleLowerRearArmW": "0x148C",
-        "BodyLowerRearArmX": "0x1490",
-        "BodyLowerRearArmY": "0x1494",
-        "BodyLowerRearArmZ": "0x1498",
-        "BodyLowerRearArmW": "0x149C",
-        "UnknownLowerRearArmX": "0x14A0",
-        "UnknownLowerRearArmY": "0x14A4",
-        "UnknownLowerRearArmZ": "0x14A8",
-        "UnknownLowerRearArmW": "0x14AC",
-        "SpindleSteeringRodX": "0x1520",
-        "SpindleSteeringRodY": "0x1524",
-        "SpindleSteeringRodZ": "0x1528",
-        "SpindleSteeringRodW": "0x152C",
-        "BodySteeringRodX": "0x1530",
-        "BodySteeringRodY": "0x1534",
-        "BodySteeringRodZ": "0x1538",
-        "BodySteeringRodW": "0x153C",
-        "UnknownSteeringRodX": "0x1540",
-        "UnknownSteeringRodY": "0x1544",
-        "UnknownSteeringRodZ": "0x1548",
-        "UnknownSteeringRodW": "0x154C",
-        "SpindlePushRodX": "0x1640",
-        "SpindlePushRodY": "0x1644",
-        "SpindlePushRodZ": "0x1648",
-        "SpindlePushRodW": "0x164C",
-        "BodyPushRodX": "0x1650",
-        "BodyPushRodY": "0x1654",
-        "BodyPushRodZ": "0x1658",
-        "BodyPushRodW": "0x165C",
-        "UnknownPushRod1": "0x1660",
-        "UnknownPushRod2": "0x1664",
-        "UnknownPushRod3": "0x1668",
-        "UnknownPushRod4": "0x166C",
-        "UnknownPushRod5": "0x1670",
-        "UnknownPushRod6": "0x1674",
-        "UnknownPushRod7": "0x1678",
-        "XYZSpindleUpperFrontArmX": "0x1550",
-        "XYZSpindleUpperFrontArmY": "0x1554",
-        "XYZSpindleUpperFrontArmZ": "0x1558",
-        "XYZBodyUpperFrontArmX": "0x155C",
-        "XYZBodyUpperFrontArmY": "0x1560",
-        "XYZBodyUpperFrontArmZ": "0x1564",
-        "XYZSpindleUpperRearArmX": "0x1568",
-        "XYZSpindleUpperRearArmY": "0x156C",
-        "XYZSpindleUpperRearArmZ": "0x1570",
-        "XYZBodyUpperRearArmX": "0x1574",
-        "XYZBodyUpperRearArmY": "0x1578",
-        "XYZBodyUpperRearArmZ": "0x157C",
-        "XYZSpindleLowerFrontArmX": "0x1580",
-        "XYZSpindleLowerFrontArmY": "0x1584",
-        "XYZSpindleLowerFrontArmZ": "0x1588",
-        "XYZBodyLowerFrontArmX": "0x158C",
-        "XYZBodyLowerFrontArmY": "0x1590",
-        "XYZBodyLowerFrontArmZ": "0x1594",
-        "XYZSpindleRearFrontArmX": "0x1598",
-        "XYZSpindleRearFrontArmY": "0x159C",
-        "XYZSpindleRearFrontArmZ": "0x15A0",
-        "XYZBodyLowerRearArmX": "0x15A4",
-        "XYZBodyLowerRearArmY": "0x15A8",
-        "XYZBodyLowerRearArmZ": "0x15AC",
-        "XYZSpindleSteeringRodX": "0x15B0",
-        "XYZSpindleSteeringRodY": "0x15B4",
-        "XYZSpindleSteeringRodZ": "0x15B8",
-        "XYZBodySteeringRodX": "0x15BC",
-        "XYZBodySteeringRodY": "0x15C0",
-        "XYZBodySteeringRodZ": "0x15C4",
-        "XYZUnknownSteeringRodX": "0x15C8",
-        "XYZUnknownSteeringRodY": "0x15CC",
-        "XYZUnknownSteeringRodZ": "0x15D0",
-        "XYZUnknownSteeringRodW": "0x15D4",
-        "XYZSpindlePushRodX": "0x167C",
-        "XYZSpindlePushRodY": "0x1680",
-        "XYZSpindlePushRodZ": "0x1684",
-        "XYZBodyPushRodX": "0x1688",
-        "XYZBodyPushRodY": "0x168C",
-        "XYZBodyPushRodZ": "0x1690",
-        "XYZUnknownPushRod1": "0x1694",
-        "XYZUnknownPushRod2": "0x1698",
-        "XYZUnknownPushRod3": "0x169C",
-        "XYZUnknownPushRod4": "0x16A0",
-        "XYZUnknownPushRod5": "0x16A4",
-        "XYZUnknownPushRod6": "0x16A8",
-        "XYZUnknownPushRod7": "0x16AC",
-        "XYZUnknownPushRod8": "0x16B0",
-        "XYZUnknownPushRod9": "0x16B4",
-        "XYZUnknownPushRod10": "0x16B8",
-        "XYZUnknownPushRod11": "0x16BC",
-        "XYZUnknownPushRod12": "0x16C0",
-        "XYZUnknownPushRod13": "0x16C4",
-        "XYZUnknownPushRod14": "0x16C8",
-        "XYZUnknownPushRod15": "0x16CC",
-        "XYZUnknownPushRod16": "0x16D0",
-        "XYZUnknownPushRod17": "0x16D4",
-        "XYZUnknownPushRod18": "0x16D8"
+        "SpindleUpperFrontArmX": {
+          "offset": "0x12A0",
+          "displayName": "Spindle Upper Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleUpperFrontArmY": {
+          "offset": "0x12A4",
+          "displayName": "Spindle Upper Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleUpperFrontArmZ": {
+          "offset": "0x12A8",
+          "displayName": "Spindle Upper Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleUpperFrontArmW": {
+          "offset": "0x12AC",
+          "displayName": "Spindle Upper Front Arm W"
+        },
+        "BodyUpperFrontArmX": {
+          "offset": "0x12B0",
+          "displayName": "Body Upper Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyUpperFrontArmY": {
+          "offset": "0x12B4",
+          "displayName": "Body Upper Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyUpperFrontArmZ": {
+          "offset": "0x12B8",
+          "displayName": "Body Upper Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyUpperFrontArmW": {
+          "offset": "0x12BC",
+          "displayName": "Body Upper Front Arm W"
+        },
+        "UnknownUpperFrontArmX": {
+          "offset": "0x12C0",
+          "displayName": "Unknown Upper Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownUpperFrontArmY": {
+          "offset": "0x12C4",
+          "displayName": "Unknown Upper Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownUpperFrontArmZ": {
+          "offset": "0x12C8",
+          "displayName": "Unknown Upper Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownUpperFrontArmW": {
+          "offset": "0x12CC",
+          "displayName": "Unknown Upper Front Arm W"
+        },
+        "SpindleUpperRearArmX": {
+          "offset": "0x1340",
+          "displayName": "Spindle Upper Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleUpperRearArmY": {
+          "offset": "0x1344",
+          "displayName": "Spindle Upper Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleUpperRearArmZ": {
+          "offset": "0x1348",
+          "displayName": "Spindle Upper Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleUpperRearArmW": {
+          "offset": "0x134C",
+          "displayName": "Spindle Upper Rear Arm W"
+        },
+        "BodyUpperRearArmX": {
+          "offset": "0x1350",
+          "displayName": "Body Upper Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyUpperRearArmY": {
+          "offset": "0x1354",
+          "displayName": "Body Upper Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyUpperRearArmZ": {
+          "offset": "0x1358",
+          "displayName": "Body Upper Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyUpperRearArmW": {
+          "offset": "0x135C",
+          "displayName": "Body Upper Rear Arm W"
+        },
+        "UnknownUpperRearArmX": {
+          "offset": "0x1360",
+          "displayName": "Unknown Upper Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownUpperRearArmY": {
+          "offset": "0x1364",
+          "displayName": "Unknown Upper Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownUpperRearArmZ": {
+          "offset": "0x1368",
+          "displayName": "Unknown Upper Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownUpperRearArmW": {
+          "offset": "0x136C",
+          "displayName": "Unknown Upper Rear Arm W"
+        },
+        "SpindleLowerFrontArmX": {
+          "offset": "0x13E0",
+          "displayName": "Spindle Lower Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleLowerFrontArmY": {
+          "offset": "0x13E4",
+          "displayName": "Spindle Lower Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleLowerFrontArmZ": {
+          "offset": "0x13E8",
+          "displayName": "Spindle Lower Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleLowerFrontArmW": {
+          "offset": "0x13EC",
+          "displayName": "Spindle Lower Front Arm W"
+        },
+        "BodyLowerFrontArmX": {
+          "offset": "0x13F0",
+          "displayName": "Body Lower Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyLowerFrontArmY": {
+          "offset": "0x13F4",
+          "displayName": "Body Lower Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyLowerFrontArmZ": {
+          "offset": "0x13F8",
+          "displayName": "Body Lower Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyLowerFrontArmW": {
+          "offset": "0x13FC",
+          "displayName": "Body Lower Front Arm W"
+        },
+        "UnknownLowerFrontArmX": {
+          "offset": "0x1400",
+          "displayName": "Unknown Lower Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownLowerFrontArmY": {
+          "offset": "0x1404",
+          "displayName": "Unknown Lower Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownLowerFrontArmZ": {
+          "offset": "0x1408",
+          "displayName": "Unknown Lower Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownLowerFrontArmW": {
+          "offset": "0x140C",
+          "displayName": "Unknown Lower Front Arm W"
+        },
+        "SpindleLowerRearArmX": {
+          "offset": "0x1480",
+          "displayName": "Spindle Lower Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleLowerRearArmY": {
+          "offset": "0x1484",
+          "displayName": "Spindle Lower Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleLowerRearArmZ": {
+          "offset": "0x1488",
+          "displayName": "Spindle Lower Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleLowerRearArmW": {
+          "offset": "0x148C",
+          "displayName": "Spindle Lower Rear Arm W"
+        },
+        "BodyLowerRearArmX": {
+          "offset": "0x1490",
+          "displayName": "Body Lower Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyLowerRearArmY": {
+          "offset": "0x1494",
+          "displayName": "Body Lower Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyLowerRearArmZ": {
+          "offset": "0x1498",
+          "displayName": "Body Lower Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyLowerRearArmW": {
+          "offset": "0x149C",
+          "displayName": "Body Lower Rear Arm W"
+        },
+        "UnknownLowerRearArmX": {
+          "offset": "0x14A0",
+          "displayName": "Unknown Lower Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownLowerRearArmY": {
+          "offset": "0x14A4",
+          "displayName": "Unknown Lower Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownLowerRearArmZ": {
+          "offset": "0x14A8",
+          "displayName": "Unknown Lower Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownLowerRearArmW": {
+          "offset": "0x14AC",
+          "displayName": "Unknown Lower Rear Arm W"
+        },
+        "SpindleSteeringRodX": {
+          "offset": "0x1520",
+          "displayName": "Spindle Steering Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleSteeringRodY": {
+          "offset": "0x1524",
+          "displayName": "Spindle Steering Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleSteeringRodZ": {
+          "offset": "0x1528",
+          "displayName": "Spindle Steering Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindleSteeringRodW": {
+          "offset": "0x152C",
+          "displayName": "Spindle Steering Rod W"
+        },
+        "BodySteeringRodX": {
+          "offset": "0x1530",
+          "displayName": "Body Steering Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodySteeringRodY": {
+          "offset": "0x1534",
+          "displayName": "Body Steering Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodySteeringRodZ": {
+          "offset": "0x1538",
+          "displayName": "Body Steering Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodySteeringRodW": {
+          "offset": "0x153C",
+          "displayName": "Body Steering Rod W"
+        },
+        "UnknownSteeringRodX": {
+          "offset": "0x1540",
+          "displayName": "Unknown Steering Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownSteeringRodY": {
+          "offset": "0x1544",
+          "displayName": "Unknown Steering Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownSteeringRodZ": {
+          "offset": "0x1548",
+          "displayName": "Unknown Steering Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "UnknownSteeringRodW": {
+          "offset": "0x154C",
+          "displayName": "Unknown Steering Rod W"
+        },
+        "SpindlePushRodX": {
+          "offset": "0x1640",
+          "displayName": "Spindle Push Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindlePushRodY": {
+          "offset": "0x1644",
+          "displayName": "Spindle Push Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindlePushRodZ": {
+          "offset": "0x1648",
+          "displayName": "Spindle Push Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "SpindlePushRodW": {
+          "offset": "0x164C",
+          "displayName": "Spindle Push Rod W"
+        },
+        "BodyPushRodX": {
+          "offset": "0x1650",
+          "displayName": "Body Push Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyPushRodY": {
+          "offset": "0x1654",
+          "displayName": "Body Push Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyPushRodZ": {
+          "offset": "0x1658",
+          "displayName": "Body Push Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "BodyPushRodW": {
+          "offset": "0x165C",
+          "displayName": "Body Push Rod W"
+        },
+        "UnknownPushRod1": {
+          "offset": "0x1660",
+          "displayName": "Unknown Push Rod1"
+        },
+        "UnknownPushRod2": {
+          "offset": "0x1664",
+          "displayName": "Unknown Push Rod2"
+        },
+        "UnknownPushRod3": {
+          "offset": "0x1668",
+          "displayName": "Unknown Push Rod3"
+        },
+        "UnknownPushRod4": {
+          "offset": "0x166C",
+          "displayName": "Unknown Push Rod4"
+        },
+        "UnknownPushRod5": {
+          "offset": "0x1670",
+          "displayName": "Unknown Push Rod5"
+        },
+        "UnknownPushRod6": {
+          "offset": "0x1674",
+          "displayName": "Unknown Push Rod6"
+        },
+        "UnknownPushRod7": {
+          "offset": "0x1678",
+          "displayName": "Unknown Push Rod7"
+        },
+        "XYZSpindleUpperFrontArmX": {
+          "offset": "0x1550",
+          "displayName": "XYZ Spindle Upper Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleUpperFrontArmY": {
+          "offset": "0x1554",
+          "displayName": "XYZ Spindle Upper Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleUpperFrontArmZ": {
+          "offset": "0x1558",
+          "displayName": "XYZ Spindle Upper Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyUpperFrontArmX": {
+          "offset": "0x155C",
+          "displayName": "XYZ Body Upper Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyUpperFrontArmY": {
+          "offset": "0x1560",
+          "displayName": "XYZ Body Upper Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyUpperFrontArmZ": {
+          "offset": "0x1564",
+          "displayName": "XYZ Body Upper Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleUpperRearArmX": {
+          "offset": "0x1568",
+          "displayName": "XYZ Spindle Upper Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleUpperRearArmY": {
+          "offset": "0x156C",
+          "displayName": "XYZ Spindle Upper Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleUpperRearArmZ": {
+          "offset": "0x1570",
+          "displayName": "XYZ Spindle Upper Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyUpperRearArmX": {
+          "offset": "0x1574",
+          "displayName": "XYZ Body Upper Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyUpperRearArmY": {
+          "offset": "0x1578",
+          "displayName": "XYZ Body Upper Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyUpperRearArmZ": {
+          "offset": "0x157C",
+          "displayName": "XYZ Body Upper Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleLowerFrontArmX": {
+          "offset": "0x1580",
+          "displayName": "XYZ Spindle Lower Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleLowerFrontArmY": {
+          "offset": "0x1584",
+          "displayName": "XYZ Spindle Lower Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleLowerFrontArmZ": {
+          "offset": "0x1588",
+          "displayName": "XYZ Spindle Lower Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyLowerFrontArmX": {
+          "offset": "0x158C",
+          "displayName": "XYZ Body Lower Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyLowerFrontArmY": {
+          "offset": "0x1590",
+          "displayName": "XYZ Body Lower Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyLowerFrontArmZ": {
+          "offset": "0x1594",
+          "displayName": "XYZ Body Lower Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleRearFrontArmX": {
+          "offset": "0x1598",
+          "displayName": "XYZ Spindle Rear Front Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleRearFrontArmY": {
+          "offset": "0x159C",
+          "displayName": "XYZ Spindle Rear Front Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleRearFrontArmZ": {
+          "offset": "0x15A0",
+          "displayName": "XYZ Spindle Rear Front Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyLowerRearArmX": {
+          "offset": "0x15A4",
+          "displayName": "XYZ Body Lower Rear Arm X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyLowerRearArmY": {
+          "offset": "0x15A8",
+          "displayName": "XYZ Body Lower Rear Arm Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyLowerRearArmZ": {
+          "offset": "0x15AC",
+          "displayName": "XYZ Body Lower Rear Arm Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleSteeringRodX": {
+          "offset": "0x15B0",
+          "displayName": "XYZ Spindle Steering Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleSteeringRodY": {
+          "offset": "0x15B4",
+          "displayName": "XYZ Spindle Steering Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindleSteeringRodZ": {
+          "offset": "0x15B8",
+          "displayName": "XYZ Spindle Steering Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodySteeringRodX": {
+          "offset": "0x15BC",
+          "displayName": "XYZ Body Steering Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodySteeringRodY": {
+          "offset": "0x15C0",
+          "displayName": "XYZ Body Steering Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodySteeringRodZ": {
+          "offset": "0x15C4",
+          "displayName": "XYZ Body Steering Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZUnknownSteeringRodX": {
+          "offset": "0x15C8",
+          "displayName": "XYZ Unknown Steering Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZUnknownSteeringRodY": {
+          "offset": "0x15CC",
+          "displayName": "XYZ Unknown Steering Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZUnknownSteeringRodZ": {
+          "offset": "0x15D0",
+          "displayName": "XYZ Unknown Steering Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZUnknownSteeringRodW": {
+          "offset": "0x15D4",
+          "displayName": "XYZ Unknown Steering Rod W"
+        },
+        "XYZSpindlePushRodX": {
+          "offset": "0x167C",
+          "displayName": "XYZ Spindle Push Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindlePushRodY": {
+          "offset": "0x1680",
+          "displayName": "XYZ Spindle Push Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZSpindlePushRodZ": {
+          "offset": "0x1684",
+          "displayName": "XYZ Spindle Push Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyPushRodX": {
+          "offset": "0x1688",
+          "displayName": "XYZ Body Push Rod X",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyPushRodY": {
+          "offset": "0x168C",
+          "displayName": "XYZ Body Push Rod Y",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZBodyPushRodZ": {
+          "offset": "0x1690",
+          "displayName": "XYZ Body Push Rod Z",
+          "unit": "m",
+          "unitName": "metres"
+        },
+        "XYZUnknownPushRod1": {
+          "offset": "0x1694",
+          "displayName": "XYZ Unknown Push Rod1"
+        },
+        "XYZUnknownPushRod2": {
+          "offset": "0x1698",
+          "displayName": "XYZ Unknown Push Rod2"
+        },
+        "XYZUnknownPushRod3": {
+          "offset": "0x169C",
+          "displayName": "XYZ Unknown Push Rod3"
+        },
+        "XYZUnknownPushRod4": {
+          "offset": "0x16A0",
+          "displayName": "XYZ Unknown Push Rod4"
+        },
+        "XYZUnknownPushRod5": {
+          "offset": "0x16A4",
+          "displayName": "XYZ Unknown Push Rod5"
+        },
+        "XYZUnknownPushRod6": {
+          "offset": "0x16A8",
+          "displayName": "XYZ Unknown Push Rod6"
+        },
+        "XYZUnknownPushRod7": {
+          "offset": "0x16AC",
+          "displayName": "XYZ Unknown Push Rod7"
+        },
+        "XYZUnknownPushRod8": {
+          "offset": "0x16B0",
+          "displayName": "XYZ Unknown Push Rod8"
+        },
+        "XYZUnknownPushRod9": {
+          "offset": "0x16B4",
+          "displayName": "XYZ Unknown Push Rod9"
+        },
+        "XYZUnknownPushRod10": {
+          "offset": "0x16B8",
+          "displayName": "XYZ Unknown Push Rod10"
+        },
+        "XYZUnknownPushRod11": {
+          "offset": "0x16BC",
+          "displayName": "XYZ Unknown Push Rod11"
+        },
+        "XYZUnknownPushRod12": {
+          "offset": "0x16C0",
+          "displayName": "XYZ Unknown Push Rod12"
+        },
+        "XYZUnknownPushRod13": {
+          "offset": "0x16C4",
+          "displayName": "XYZ Unknown Push Rod13"
+        },
+        "XYZUnknownPushRod14": {
+          "offset": "0x16C8",
+          "displayName": "XYZ Unknown Push Rod14"
+        },
+        "XYZUnknownPushRod15": {
+          "offset": "0x16CC",
+          "displayName": "XYZ Unknown Push Rod15"
+        },
+        "XYZUnknownPushRod16": {
+          "offset": "0x16D0",
+          "displayName": "XYZ Unknown Push Rod16"
+        },
+        "XYZUnknownPushRod17": {
+          "offset": "0x16D4",
+          "displayName": "XYZ Unknown Push Rod17"
+        },
+        "XYZUnknownPushRod18": {
+          "offset": "0x16D8",
+          "displayName": "XYZ Unknown Push Rod18"
+        }
       }
     },
     "bodyMass": {
       "base": "vehicle",
       "prefix": "VEH",
       "fields": {
-        "SprungMass": "0xAACE08",
-        "UnsprungMass": "0xAACE0C",
-        "CenterOfMassHeight": "0xAACE20"
+        "SprungMass": {
+          "offset": "0xAACE08",
+          "displayName": "Sprung Mass",
+          "unit": "kg",
+          "unitName": "kilograms"
+        },
+        "UnsprungMass": {
+          "offset": "0xAACE0C",
+          "displayName": "Unsprung Mass",
+          "unit": "kg",
+          "unitName": "kilograms"
+        },
+        "CenterOfMassHeight": {
+          "offset": "0xAACE20",
+          "displayName": "Center Of Mass Height",
+          "unit": "m",
+          "unitName": "metres"
+        }
       }
     },
     "bodyRotation": {
@@ -686,87 +1730,121 @@
       "fields": {
         "BodyM11": {
           "offset": "0x0",
-          "alias": "M11"
+          "alias": "M11",
+          "displayName": "Body M11"
         },
         "BodyM12": {
           "offset": "0x4",
-          "alias": "M12"
+          "alias": "M12",
+          "displayName": "Body M12"
         },
         "BodyM13": {
           "offset": "0x8",
-          "alias": "M13"
+          "alias": "M13",
+          "displayName": "Body M13"
         },
         "BodyM14": {
           "offset": "0xC",
-          "alias": "M14"
+          "alias": "M14",
+          "displayName": "Body M14"
         },
         "BodyM21": {
           "offset": "0x10",
-          "alias": "M21"
+          "alias": "M21",
+          "displayName": "Body M21"
         },
         "BodyM22": {
           "offset": "0x14",
-          "alias": "M22"
+          "alias": "M22",
+          "displayName": "Body M22"
         },
         "BodyM23": {
           "offset": "0x18",
-          "alias": "M23"
+          "alias": "M23",
+          "displayName": "Body M23"
         },
         "BodyM24": {
           "offset": "0x1C",
-          "alias": "M24"
+          "alias": "M24",
+          "displayName": "Body M24"
         },
         "BodyM31": {
           "offset": "0x20",
-          "alias": "M31"
+          "alias": "M31",
+          "displayName": "Body M31"
         },
         "BodyM32": {
           "offset": "0x24",
-          "alias": "M32"
+          "alias": "M32",
+          "displayName": "Body M32"
         },
         "BodyM33": {
           "offset": "0x28",
-          "alias": "M33"
+          "alias": "M33",
+          "displayName": "Body M33"
         },
         "BodyM34": {
           "offset": "0x2C",
-          "alias": "M34"
+          "alias": "M34",
+          "displayName": "Body M34"
         },
         "BodyM41": {
           "offset": "0x30",
-          "alias": "M41"
+          "alias": "M41",
+          "displayName": "Body M41"
         },
         "BodyM42": {
           "offset": "0x34",
-          "alias": "M42"
+          "alias": "M42",
+          "displayName": "Body M42"
         },
         "BodyM43": {
           "offset": "0x38",
-          "alias": "M43"
+          "alias": "M43",
+          "displayName": "Body M43"
         },
         "BodyM44": {
           "offset": "0x3C",
-          "alias": "M44"
+          "alias": "M44",
+          "displayName": "Body M44"
         }
       },
       "calculated": {
         "PitchRad": {
-          "expression": "pitchAngle(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44)"
+          "expression": "pitchAngle(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44)",
+          "displayName": "Pitch Rad",
+          "unit": "rad",
+          "unitName": "radians"
         },
         "PitchDeg": {
-          "expression": "PitchRad * 180 / pi"
+          "expression": "PitchRad * 180 / pi",
+          "displayName": "Pitch Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         },
         "YawRad": {
-          "expression": "yawAngle(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44)"
+          "expression": "yawAngle(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44)",
+          "displayName": "Yaw Rad",
+          "unit": "rad",
+          "unitName": "radians"
         },
         "YawDeg": {
-          "expression": "YawRad * 180 / pi"
+          "expression": "YawRad * 180 / pi",
+          "displayName": "Yaw Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         },
         "RollRad": {
-          "expression": "rollAngle(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44)"
+          "expression": "rollAngle(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44)",
+          "displayName": "Roll Rad",
+          "unit": "rad",
+          "unitName": "radians"
         },
         "RollDeg": {
-          "expression": "RollRad * 180 / pi"
+          "expression": "RollRad * 180 / pi",
+          "displayName": "Roll Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         }
       }
     },
@@ -774,54 +1852,91 @@
       "base": "acceleration",
       "prefix": "ACC",
       "fields": {
-        "XAccelerationWorld": "0x48",
-        "YAccelerationWorld": "0x4C",
-        "ZAccelerationWorld": "0x50"
+        "XAccelerationWorld": {
+          "offset": "0x48",
+          "displayName": "X Acceleration World"
+        },
+        "YAccelerationWorld": {
+          "offset": "0x4C",
+          "displayName": "Y Acceleration World"
+        },
+        "ZAccelerationWorld": {
+          "offset": "0x50",
+          "displayName": "Z Acceleration World"
+        }
       },
       "calculated": {
         "Body_ZAccelerationLocal": {
           "alias": "ZAccelerationLocal",
-          "expression": "localZ(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XAccelerationWorld, YAccelerationWorld, ZAccelerationWorld)"
+          "expression": "localZ(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XAccelerationWorld, YAccelerationWorld, ZAccelerationWorld)",
+          "displayName": "Body Z Acceleration Local"
         },
         "Body_XZGAngleDeg": {
           "alias": "XZGAngleDeg",
-          "expression": "XZGAngleRad * 180 / pi"
+          "expression": "XZGAngleRad * 180 / pi",
+          "displayName": "Body XZG Angle Deg",
+          "unit": "deg",
+          "unitName": "degrees"
         },
         "XAccelerationLocal": {
-          "expression": "localX(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XAccelerationWorld, YAccelerationWorld, ZAccelerationWorld)"
+          "expression": "localX(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XAccelerationWorld, YAccelerationWorld, ZAccelerationWorld)",
+          "displayName": "X Acceleration Local"
         },
         "YAccelerationLocal": {
-          "expression": "localY(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XAccelerationWorld, YAccelerationWorld, ZAccelerationWorld)"
+          "expression": "localY(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XAccelerationWorld, YAccelerationWorld, ZAccelerationWorld)",
+          "displayName": "Y Acceleration Local"
         },
         "XZAccelerationAngleRad": {
-          "expression": "xzAngleRad(XAccelerationLocal, Body_ZAccelerationLocal)"
+          "expression": "xzAngleRad(XAccelerationLocal, Body_ZAccelerationLocal)",
+          "displayName": "XZ Acceleration Angle Rad"
         },
         "XZAccelerationAngleDeg": {
-          "expression": "XZAccelerationAngleRad * 180 / pi"
+          "expression": "XZAccelerationAngleRad * 180 / pi",
+          "displayName": "XZ Acceleration Angle Deg"
         },
         "XZAcceleration": {
-          "expression": "hypot(XAccelerationLocal, Body_ZAccelerationLocal)"
+          "expression": "hypot(XAccelerationLocal, Body_ZAccelerationLocal)",
+          "displayName": "XZ Acceleration"
         },
         "XYZAcceleration": {
-          "expression": "hypot(XZAcceleration, YAccelerationLocal)"
+          "expression": "hypot(XZAcceleration, YAccelerationLocal)",
+          "displayName": "XYZ Acceleration"
         },
         "XG": {
-          "expression": "XAccelerationLocal / 9.80665"
+          "expression": "XAccelerationLocal / 9.80665",
+          "displayName": "XG",
+          "unit": "g",
+          "unitName": "multiples of standard gravity"
         },
         "YG": {
-          "expression": "YAccelerationLocal / 9.80665"
+          "expression": "YAccelerationLocal / 9.80665",
+          "displayName": "YG",
+          "unit": "g",
+          "unitName": "multiples of standard gravity"
         },
         "ZG": {
-          "expression": "Body_ZAccelerationLocal / 9.80665"
+          "expression": "Body_ZAccelerationLocal / 9.80665",
+          "displayName": "ZG",
+          "unit": "g",
+          "unitName": "multiples of standard gravity"
         },
         "XZG": {
-          "expression": "hypot(XG, ZG)"
+          "expression": "hypot(XG, ZG)",
+          "displayName": "XZG",
+          "unit": "g",
+          "unitName": "multiples of standard gravity"
         },
         "XYZG": {
-          "expression": "hypot(YG, XZG)"
+          "expression": "hypot(YG, XZG)",
+          "displayName": "XYZG",
+          "unit": "g",
+          "unitName": "multiples of standard gravity"
         },
         "XZGAngleRad": {
-          "expression": "normalizeXZAngle(XZAccelerationAngleRad)"
+          "expression": "normalizeXZAngle(XZAccelerationAngleRad)",
+          "displayName": "XZG Angle Rad",
+          "unit": "rad",
+          "unitName": "radians"
         }
       }
     },
@@ -829,21 +1944,55 @@
       "base": "vehicle",
       "prefix": "AERO",
       "fields": {
-        "XDragWorld": "0xAACF20",
-        "YDragWorld": "0xAACF24",
-        "ZDragWorld": "0xAACF28",
-        "FrontLift": "0xAACF2C",
-        "RearLift": "0xAACF30"
+        "XDragWorld": {
+          "offset": "0xAACF20",
+          "displayName": "X Drag World",
+          "unit": "N",
+          "unitName": "newtons"
+        },
+        "YDragWorld": {
+          "offset": "0xAACF24",
+          "displayName": "Y Drag World",
+          "unit": "N",
+          "unitName": "newtons"
+        },
+        "ZDragWorld": {
+          "offset": "0xAACF28",
+          "displayName": "Z Drag World",
+          "unit": "N",
+          "unitName": "newtons"
+        },
+        "FrontLift": {
+          "offset": "0xAACF2C",
+          "displayName": "Front Lift",
+          "unit": "N",
+          "unitName": "newtons"
+        },
+        "RearLift": {
+          "offset": "0xAACF30",
+          "displayName": "Rear Lift",
+          "unit": "N",
+          "unitName": "newtons"
+        }
       },
       "calculated": {
         "XDragLocal": {
-          "expression": "localX(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XDragWorld, YDragWorld, ZDragWorld)"
+          "expression": "localX(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XDragWorld, YDragWorld, ZDragWorld)",
+          "displayName": "X Drag Local",
+          "unit": "N",
+          "unitName": "newtons"
         },
         "YDragLocal": {
-          "expression": "localY(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XDragWorld, YDragWorld, ZDragWorld)"
+          "expression": "localY(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XDragWorld, YDragWorld, ZDragWorld)",
+          "displayName": "Y Drag Local",
+          "unit": "N",
+          "unitName": "newtons"
         },
         "ZDragLocal": {
-          "expression": "localZ(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XDragWorld, YDragWorld, ZDragWorld)"
+          "expression": "localZ(BodyM11, BodyM12, BodyM13, BodyM14, BodyM21, BodyM22, BodyM23, BodyM24, BodyM31, BodyM32, BodyM33, BodyM34, BodyM41, BodyM42, BodyM43, BodyM44, XDragWorld, YDragWorld, ZDragWorld)",
+          "displayName": "Z Drag Local",
+          "unit": "N",
+          "unitName": "newtons"
         }
       }
     },
@@ -853,36 +2002,63 @@
       "fields": {
         "EngineRPM": {
           "offset": "0x38",
-          "alias": "RPM"
+          "alias": "RPM",
+          "displayName": "Engine RPM",
+          "unit": "rpm",
+          "unitName": "revolutions per minute"
         },
         "EngineRPMAxle": {
           "offset": "0x3C",
-          "alias": "RPMAxle"
+          "alias": "RPMAxle",
+          "displayName": "Engine Axle RPM",
+          "unit": "rpm",
+          "unitName": "revolutions per minute"
         },
         "EngineTorqueNm": {
           "offset": "0x44",
-          "alias": "TorqueNm"
+          "alias": "TorqueNm",
+          "displayName": "Engine Torque Nm",
+          "unit": "Nm",
+          "unitName": "newton metres"
         },
         "Speed": {
           "offset": "0x70",
-          "alias": "TravelSpeed"
+          "alias": "TravelSpeed",
+          "displayName": "Speed",
+          "unit": "m/s",
+          "unitName": "metres per second"
         }
       },
       "calculated": {
         "EngineTorqueLbFt": {
-          "expression": "EngineTorqueNm * 0.7375621493"
+          "expression": "EngineTorqueNm * 0.7375621493",
+          "displayName": "Engine Torque Lb Ft",
+          "unit": "lb·ft",
+          "unitName": "pound-feet"
         },
         "EnginePowerKW": {
-          "expression": "EngineTorqueNm * EngineRPM / 9548.8"
+          "expression": "EngineTorqueNm * EngineRPM / 9548.8",
+          "displayName": "Engine Power KW",
+          "unit": "kW",
+          "unitName": "kilowatts"
         },
         "EnginePowerHP": {
-          "expression": "EngineTorqueLbFt * EngineRPM / 5252.1"
+          "expression": "EngineTorqueLbFt * EngineRPM / 5252.1",
+          "displayName": "Engine Power HP",
+          "unit": "hp",
+          "unitName": "horsepower"
         },
         "EnginePowerPS": {
-          "expression": "EnginePowerHP * 0.986"
+          "expression": "EnginePowerHP * 0.986",
+          "displayName": "Engine Power PS",
+          "unit": "PS",
+          "unitName": "metric horsepower"
         },
         "EnginePowerBHP": {
-          "expression": "EnginePowerKW * 1.34102"
+          "expression": "EnginePowerKW * 1.34102",
+          "displayName": "Engine Power BHP",
+          "unit": "hp",
+          "unitName": "horsepower"
         }
       }
     },
@@ -893,28 +2069,42 @@
         "DifferentialOpenPrimaryLeft": {
           "offset": "0xD94",
           "type": "int32",
-          "alias": "OpenPrimaryLeft"
+          "alias": "OpenPrimaryLeft",
+          "displayName": "Differential Open Primary Left"
         },
         "DifferentialVelocityRadPrimaryLeft": {
           "offset": "0xD98",
-          "alias": "VelocityRadPrimaryLeft"
+          "alias": "VelocityRadPrimaryLeft",
+          "displayName": "Differential Velocity Rad Primary Left",
+          "unit": "rad/s",
+          "unitName": "radians per second"
         },
         "DifferentialTorquePrimaryLeft": {
           "offset": "0xD9C",
-          "alias": "TorquePrimaryLeft"
+          "alias": "TorquePrimaryLeft",
+          "displayName": "Differential Torque Primary Left",
+          "unit": "Nm",
+          "unitName": "newton metres"
         },
         "DifferentialOpenPrimaryRight": {
           "offset": "0xDF4",
           "type": "int32",
-          "alias": "OpenPrimaryRight"
+          "alias": "OpenPrimaryRight",
+          "displayName": "Differential Open Primary Right"
         },
         "DifferentialVelocityRadPrimaryRight": {
           "offset": "0xDF8",
-          "alias": "VelocityRadPrimaryRight"
+          "alias": "VelocityRadPrimaryRight",
+          "displayName": "Differential Velocity Rad Primary Right",
+          "unit": "rad/s",
+          "unitName": "radians per second"
         },
         "DifferentialTorquePrimaryRight": {
           "offset": "0xDFC",
-          "alias": "TorquePrimaryRight"
+          "alias": "TorquePrimaryRight",
+          "displayName": "Differential Torque Primary Right",
+          "unit": "Nm",
+          "unitName": "newton metres"
         }
       }
     },
@@ -924,7 +2114,10 @@
       "fields": {
         "RaceTime": {
           "offset": "0x14",
-          "type": "int32"
+          "type": "int32",
+          "displayName": "Race Time",
+          "unit": "ms",
+          "unitName": "milliseconds"
         }
       }
     }

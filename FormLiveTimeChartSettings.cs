@@ -10,14 +10,14 @@ namespace Physics_Data_Debug
 {
     /// <summary>Independent, designer-editable appearance settings for the live
     /// five-lane time chart. All controls use the normal JSON form settings.</summary>
-    public partial class FormTireTemperaturesSettings : Form
+    public partial class FormLiveTimeChartSettings : Form
     {
         internal readonly ComboBox[] ColorChoices;
         internal readonly CheckBox[] AutomaticY;
         internal readonly NumericUpDown[] MinimumY;
         internal readonly NumericUpDown[] MaximumY;
 
-        public FormTireTemperaturesSettings()
+        public FormLiveTimeChartSettings()
         {
             InitializeComponent();
             ColorChoices = new[] { chartBackgroundCombo, plotBackgroundCombo,
@@ -28,17 +28,14 @@ namespace Physics_Data_Debug
             MaximumY = new[] { plot1YMax, plot2YMax, plot3YMax, plot4YMax, plot5YMax };
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
 
-            historyUnitCombo.Items.AddRange(new object[] { "Seconds", "Minutes" });
-            timeAxisUnitCombo.Items.AddRange(new object[] { "Seconds", "Minutes" });
-            plotStyleCombo.Items.AddRange(new object[] { "FastLine", "Line", "Spline" });
-            historyUnitCombo.SelectedItem = "Seconds";
-            timeAxisUnitCombo.SelectedItem = "Seconds";
-            plotStyleCombo.SelectedItem = "FastLine";
+            fontNameCombo.Items.Clear(); // Designer includes a small preview list.
             fontNameCombo.Items.AddRange(FontFamily.Families.Select(f => (object)f.Name).ToArray());
             fontNameCombo.SelectedItem = "Arial";
             if (fontNameCombo.SelectedIndex < 0 && fontNameCombo.Items.Count > 0)
                 fontNameCombo.SelectedIndex = 0;
 
+            // Replace Designer swatch placeholders with the complete color palette.
+            foreach (ComboBox combo in ColorChoices) combo.Items.Clear();
             ChartSettingsUi.AddColors(ColorChoices);
             foreach (ComboBox combo in ColorChoices)
             {

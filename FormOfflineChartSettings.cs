@@ -45,7 +45,28 @@ namespace Physics_Data_Debug
             FillMissingAxisBounds();
         }
 
+        /// <summary>Displays the existing thirteen chart filters in this settings
+        /// window. Keeping the same controls preserves saved filter values.</summary>
+        internal void HostFilterGroups(GroupBox axis, GroupBox extra)
+        {
+            filterSettingsRows.Controls.Remove(filterAxisPlaceholder);
+            filterSettingsRows.Controls.Remove(filterExtraPlaceholder);
+            filterAxisPlaceholder.Visible = false;
+            filterExtraPlaceholder.Visible = false;
+            filterSettingsRows.Controls.Add(axis, 0, 0);
+            filterSettingsRows.Controls.Add(extra, 0, 1);
+            axis.Dock = DockStyle.Fill;
+            extra.Dock = DockStyle.Fill;
+            axis.Visible = true;
+            extra.Visible = true;
+        }
+
         private void ApplyButton_Click(object sender, EventArgs e) => ApplyChanges();
+
+        private void ApplyFiltersButton_Click(object sender, EventArgs e)
+        {
+            if (ownerChart != null) ownerChart.ApplyFiltersFromSettings();
+        }
 
         private void PopulateOptions()
         {

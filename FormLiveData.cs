@@ -36,14 +36,15 @@ namespace Physics_Data_Debug
                 System.ComponentModel.LicenseUsageMode.Designtime)
                 return;
             originalWindowTitle = Text;
-            InitializeTireLabels();
 
-            foreach (Control control in new Control[] { textBox1, textBox2, textBox3,
-                textBox4, textBox5, textBox6, label16, label17, label22, label23, label37 })
-                control.Visible = debugEnabled;
+            // The old dashboard labels were removed from the Designer.
+            // Only the six optional debug text boxes remain in the debug workspace.
             foreach (TextBox box in new[] { textBox1, textBox2, textBox3,
                 textBox4, textBox5, textBox6 })
+            {
+                box.Visible = debugEnabled;
                 box.Enabled = debugEnabled;
+            }
 
             logInterval_textBox.Text = LiveData.TickInterval.ToString();
 
@@ -62,15 +63,8 @@ namespace Physics_Data_Debug
             UpdateGameConfigTitle();
             JsonFormSettings.AttachProfileButton(this, ApplyVersionSelection);
             InitializeDesignerLayoutBehavior();
+            InitializeMonitor();
 
-            foreach (BoundTireLabel binding in boundTireLabels)
-            {
-                Label l = binding.Label;
-                l.TextAlign = ContentAlignment.TopRight;
-                l.BackColor = Color.Transparent;
-                l.ForeColor = Color.White;
-                l.Enabled = true;
-            }
 
             if (FirstTimeLoad == false)
             {
@@ -202,6 +196,7 @@ namespace Physics_Data_Debug
                 finally { GameVersionComboBox.EndUpdate(); }
                 ApplyVersionSelection();
                 UpdateGameConfigTitle();
+                RebuildMonitorFields();
                 JsonFormSettings.SaveAllSettings(this);
             }
             catch (Exception ex) when (IsGameConfigFileError(ex)) { ShowGameConfigError(ex); }
@@ -254,83 +249,6 @@ namespace Physics_Data_Debug
             to4WheelsButton.Visible = !LiveData._4WheelsOpen;
             toSuspensionStaticValues.Visible = !LiveData.FormSuspensionStaticValuesOpen;
             toSuspensionGeometry.Visible = !LiveData.FormSuspensionGeometryOpen;
-        }
-        private sealed class TireLabelField
-        {
-            public readonly string Suffix;
-            public readonly GameMemoryField Offset;
-            public readonly int Decimals;
-
-            public TireLabelField(string suffix, GameMemoryField offset, int decimals = 2)
-            {
-                Suffix = suffix;
-                Offset = offset;
-                Decimals = decimals;
-            }
-        }
-
-        private static readonly TireLabelField[] TireFields =
-        {
-            new TireLabelField("AngularVelocity", GameMemoryConfig.Field("WF_TireDataOffset", "AngularVelocity")),
-            new TireLabelField("ContactLength", GameMemoryConfig.Field("WF_TireDataOffset", "ContactLength"), 8),
-            new TireLabelField("CurrentContactBrakeTorque", GameMemoryConfig.Field("WF_TireDataOffset", "CurrentContactBrakeTorque")),
-            new TireLabelField("MaxCurrentContactBrakeTorque", GameMemoryConfig.Field("WF_TireDataOffset", "CurrentContactBrakeTorqueMax")),
-            new TireLabelField("Deflection", GameMemoryConfig.Field("WF_TireDataOffset", "VerticalDeflection"), 8),
-            new TireLabelField("EffectiveRadius", GameMemoryConfig.Field("WF_TireDataOffset", "EffectiveRadius"), 8),
-            new TireLabelField("LateralLoad", GameMemoryConfig.Field("WF_TireDataOffset", "LateralLoad")),
-            new TireLabelField("LoadedRadius", GameMemoryConfig.Field("WF_TireDataOffset", "LoadedRadius"), 8),
-            new TireLabelField("LongitudinalLoad", GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalLoad")),
-            new TireLabelField("SlipRatio", GameMemoryConfig.Field("WF_TireDataOffset", "SlipRatio")),
-            new TireLabelField("TravelSpeed", GameMemoryConfig.Field("WF_TireDataOffset", "TravelSpeed")),
-            new TireLabelField("VerticalLoad", GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad")),
-            new TireLabelField("LateralFriction", GameMemoryConfig.Field("WF_TireDataOffset", "LateralFriction"), 6),
-            new TireLabelField("LongitudinalFriction", GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalFriction"), 6),
-            new TireLabelField("TreadTemperature", GameMemoryConfig.Field("WF_TireDataOffset", "TreadTemperature")),
-            new TireLabelField("InnerTemperature", GameMemoryConfig.Field("WF_TireDataOffset", "InnerTemperature")),
-            new TireLabelField("SlipAngleDeg", GameMemoryConfig.Field("WF_TireDataOffset", "SlipAngleDeg")),
-            new TireLabelField("TotalFriction", GameMemoryConfig.Field("WF_TireDataOffset", "TotalFriction")),
-            new TireLabelField("TotalFrictionAngle", GameMemoryConfig.Field("WF_TireDataOffset", "TotalFrictionAngleDeg")),
-            new TireLabelField("LateralSlipSpeed", GameMemoryConfig.Field("WF_TireDataOffset", "LateralSlipSpeed")),
-            new TireLabelField("LongitudinalSlipSpeed", GameMemoryConfig.Field("WF_TireDataOffset", "LongitudinalSlipSpeed")),
-            new TireLabelField("CamberAngle", GameMemoryConfig.Field("WF_TireDataOffset", "CamberAngleDeg"), 3),
-            new TireLabelField("TireSteerAngle", GameMemoryConfig.Field("WF_TireDataOffset", "SteerAngleDeg"), 3),
-            new TireLabelField("SuspensionLength", GameMemoryConfig.Field("WF_Suspension1DataOffset", "SuspensionLength"), 4),
-            new TireLabelField("SuspensionVelocity", GameMemoryConfig.Field("WF_Suspension1DataOffset", "SuspensionVelocity"), 4),
-            new TireLabelField("Mx", GameMemoryConfig.Field("WF_TireDataOffset", "Mx")),
-            new TireLabelField("Mz", GameMemoryConfig.Field("WF_TireDataOffset", "Mz")),
-            new TireLabelField("My", GameMemoryConfig.Field("WF_TireDataOffset", "My")),
-            new TireLabelField("PneumaticTrail", GameMemoryConfig.Field("WF_TireDataOffset", "PneumaticTrail"), 6),
-            new TireLabelField("RollingResistance", GameMemoryConfig.Field("WF_TireDataOffset", "RollingResistance"), 5)
-        };
-
-        private sealed class BoundTireLabel
-        {
-            public Label Label;
-            public string Wheel;
-            public TireLabelField Field;
-        }
-        private readonly List<BoundTireLabel> boundTireLabels = new List<BoundTireLabel>();
-
-        private void InitializeTireLabels()
-        {
-            foreach (string wheel in new[]
-                { TelemetryPrefix.FL, TelemetryPrefix.FR, TelemetryPrefix.RL, TelemetryPrefix.RR })
-            {
-                foreach (TireLabelField field in TireFields)
-                {
-                    string name = "label_" + wheel + "_" + field.Suffix;
-                    Label label = Controls.Find(name, true).OfType<Label>().FirstOrDefault();
-                    if (label == null) throw new InvalidOperationException("Missing tire label: " + name);
-                    boundTireLabels.Add(new BoundTireLabel { Label = label, Wheel = wheel, Field = field });
-                }
-            }
-        }
-
-        private void UpdateTireLabels()
-        {
-            foreach (BoundTireLabel binding in boundTireLabels)
-                LiveData.SetValueInLabel(binding.Label, binding.Wheel,
-                    binding.Field.Offset, binding.Field.Decimals);
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
         //Current slide speed in m/s
@@ -498,70 +416,6 @@ namespace Physics_Data_Debug
             
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
-        private void TextBoxUpdates()
-        {
-            WLFMultiplier();
-            if (debugEnabled) WLFMultiplierTBWriter();
-            //SomeCFaStiffnessTester();
-
-            /*
-            textBox1.Text = "X: " + LiveData.TXAccel + "\r\n" + "Y: " + LiveData.TYAccel + "\r\n" + "Z: " + LiveData.TZAccel;
-            textBox2.Text = "R11: " + LiveData.R11Accel + "\r\n" + "R12: " + LiveData.R12Accel + "\r\n" + "R13: " + LiveData.R13Accel;
-            textBox3.Text = "R21: " + LiveData.R21Accel + "\r\n" + "R22: " + LiveData.R22Accel + "\r\n" + "R23: " + LiveData.R23Accel;
-            textBox4.Text = "R31: " + LiveData.R31Accel + "\r\n" + "R32: " + LiveData.R32Accel + "\r\n" + "R33: " + LiveData.R33Accel;
-            textBox5.Text = "X: " + LiveData.Q1Accel + "\r\n" + "Y: " + LiveData.Q2Accel + "\r\n" + "Z: " + LiveData.Q3Accel + "\r\n" + "W: " + LiveData.Q4Accel + "\r\n" + "A1: " + LiveData.A1Accel + "\r\n" + "A2: " + LiveData.A2Accel;
-            textBox6.Text = "RY°: " + Math.Round(LiveData.rotationYDeg, 2) + "\r\n" + "RY°r: " + Math.Round(LiveData.rotationYRad, 2) + "\r\n" + "gX: " + Math.Round(LiveData.XG, 2) + "\r\n" + "gY: " + Math.Round(LiveData.YG, 2) + "\r\n" + "gZ: " + Math.Round(LiveData.ZG, 2) + "\r\n" + "XZ°: " + Math.Round(LiveData.XZAccelerationAngleDeg, 2) + "\r\n" + "XZ°r: " + Math.Round(LiveData.XZAccelerationAngleRad, 2) + "\r\n" + "gXZ: " +
-                Math.Round(LiveData.XZG, 2) + "\r\n" + "gXZ°: " + Math.Round(LiveData.XZGAngleDeg, 2) + "\r\n" + "gXZ°r: " + Math.Round(LiveData.XZGAngleRad, 2);
-            */
-            //textBox1.Text = "Front Left Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FL_CamberAngleDeg, 3);
-            //textBox2.Text = "Front Right Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.FR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.FR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.FR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.FR_CamberAngleDeg, 3);
-            //textBox3.Text = "Rear Left Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RL_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RL_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RL_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RL_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RL_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RL_CamberAngleDeg, 3);
-            //textBox4.Text = "Rear Right Angles" + "\r\n" + "Caster: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RR_TirePitchAngleRad), 3) + " | " + Math.Round(LiveData.RR_CasterAngleDeg, 3) + "\r\n" + "Toe: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RR_TireYawAngleRad), 3) + " | " + Math.Round(LiveData.RR_SteerAngleDeg, 3) + "\r\n" + "Camber: " + Math.Round(TelemetryFormulas.RadToDeg(LiveData.RR_TireRollAngleRad), 3) + " | " + Math.Round(LiveData.RR_CamberAngleDeg, 3);
-            //textBox5.Text = LiveData.FL_TireData[0].ToString() + "\r\n" + LiveData.FL_TireData[1].ToString() + "\r\n" + LiveData.FL_TireData[2].ToString() + "\r\n" + LiveData.FL_TireData[3].ToString();
-
-            // Chassis, Engine and Differential stuff
-            CurrentSpeed.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "Speed"), 2);
-            CurrentAcceleration.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XYZAcceleration"), 2);
-            CurrentGForce.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XYZG"), 2);
-            CurrentXDrag.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "XDragLocal"), 2, "X: ");
-            CurrentYDrag.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "YDragLocal"), 2, "Y: ");
-            CurrentZDrag.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "ZDragLocal"), 2, "Z: ");
-            double dragX = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "XDragLocal"));
-            double dragY = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "YDragLocal"));
-            double dragZ = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "ZDragLocal"));
-            CurrentTotalDrag.Text = "Total: " + Math.Round(
-                Math.Sqrt(dragX * dragX + dragY * dragY + dragZ * dragZ), 2);
-            CurrentFrontLift.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "FrontLift"), 2, "Front: ");
-            CurrentRearLift.Text = LiveData.ValueString(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_AeroDataOffset", "RearLift"), 2, "Rear: ");
-            CurrentEngineRPM.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EngineRPM"), 0, "", " RPM");
-            CurrentEngineRPMAxle.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EngineRPMAxle"), 0, "(", ") RPM");
-            CurrentEngineTorque.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EngineTorqueNm"), 2, "", " Nm");
-            CurrentEnginePower.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_EngineDataOffset", "EnginePowerKW"), 2, "", " kW");
-            CurrentLeftDifferentialSpeedRad.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialVelocityRadPrimaryLeft"), 2, "", " rad/s");
-            CurrentLeftDifferentialTorque.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialTorquePrimaryLeft"), 2, "", " Nm");
-            int diffPrimClosed = LiveData.GetFullListDataValue(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialOpenPrimaryLeft"));
-            if (diffPrimClosed != 0)
-            {
-                CurrentLeftDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
-            }
-            else
-            {
-               CurrentLeftDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
-            }
-
-            CurrentRightDifferentialSpeedRad.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialVelocityRadPrimaryRight"), 2, "", " rad/s");
-            CurrentRightDifferentialTorque.Text = LiveData.ValueString(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialTorquePrimaryRight"), 2, "", " Nm");
-            int diffSecClosed = LiveData.GetFullListDataValue(TelemetryPrefix.Powertrain, GameMemoryConfig.Field("WF_DifferentialDataOffset", "DifferentialOpenPrimaryRight"));
-            if (diffSecClosed != 0)
-            {
-                CurrentRightDifferentialOpen.Text = "Locked";// !=0 means differential is locked. ==0 means it's open
-            }
-            else
-            {
-                CurrentRightDifferentialOpen.Text = "Open";// !=0 means differential is locked. ==0 means it's open
-            }
-            UpdateTireLabels();
-        }
         private void UpdateFormData()
         {
             ButtonVisibilities();
@@ -656,7 +510,7 @@ namespace Physics_Data_Debug
         {
             OpenTemperaturesChart.Visible = false;
             LiveData.TemperaturesChartOpen = true;
-            FormTireTemperatures s = new FormTireTemperatures();
+            FormLiveTimeChart s = new FormLiveTimeChart();
             s.Show();
         }
         private void toSuspensionStaticValuesButton_Click(object sender, EventArgs e)
@@ -854,10 +708,10 @@ namespace Physics_Data_Debug
                     startFileLoggingButton.Tag = dataLogger.LastStopReason;
             }
             //ButtonVisibilities();
-            if (checkBox1.Checked == true)
-            {
-                TextBoxUpdates();
-            }
+            // Only update the fields the user chose to monitor. The previous
+            // The old fixed-label refresh would have updated unused legacy controls
+            // and eagerly calculated values that were not selected.
+            UpdateMonitorValues();
             TickTime.Text = "Tick time " + LiveData.ElapsedTime + " ms";
             if (!dataLogger.IsRunning && !string.IsNullOrEmpty(dataLogger.LastStopReason))
                 TickTime.Text += " | Logging stopped: " + dataLogger.LastStopReason;

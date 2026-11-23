@@ -529,6 +529,7 @@ namespace Physics_Data_Debug
                 SelectVersion(versions.FirstOrDefault(v => v.Id == preferredVersion) ?? versions[0]);
                 LogData.RebuildColumns();
                 TelemetryFormulas.ValidateConfiguration();
+                TelemetryMetadata.LoadFromFile(configPath);
                 TelemetrySelections = (new[] { "None" }).Concat(
                     LogData.AllColumns.Select(column => column.Header)).ToArray();
 

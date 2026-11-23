@@ -148,19 +148,28 @@ namespace Physics_Data_Debug
             else
                 buttonPosition = new Point(Math.Max(4, buttonHost.ClientSize.Width - 120), 5);
 
-            var button = new Button
+            // If the Designer already owns a Profiles button, attach behavior
+            // to that button instead of creating a second runtime-only button.
+            // Existing forms without one continue using the old fallback.
+            Button button = form.Controls.Find("SettingsProfilesButton", true)
+                .OfType<Button>().FirstOrDefault();
+            bool designerOwnedButton = button != null;
+            if (!designerOwnedButton)
             {
-                Name = "SettingsProfilesButton",
-                Text = "Profiles ▼",
-                Width = 112,
-                Height = 28,
-                Location = buttonPosition,
-                Anchor = AnchorStyles.Top | AnchorStyles.Left,
-                TabStop = false,
-                ContextMenuStrip = menu
-            };
+                button = new Button
+                {
+                    Name = "SettingsProfilesButton",
+                    Text = "Profiles ▼",
+                    Width = 112,
+                    Height = 28,
+                    Location = buttonPosition,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left,
+                    TabStop = false
+                };
+                buttonHost.Controls.Add(button);
+            }
+            button.ContextMenuStrip = menu;
             button.Click += (sender, args) => menu.Show(button, 0, button.Height);
-            buttonHost.Controls.Add(button);
             // Keep Profiles visible inside the Designer-owned Four Wheels settings action bar.
             if (profileHost != null && (form is Form4WheelsSettings ||
                 form is FormGForceSettings || form is FormOfflineChartSettings ||
@@ -171,10 +180,10 @@ namespace Physics_Data_Debug
             }
             // Live Data uses a dark sidebar; match its other action buttons.
             // Keep the normal Windows styling for light-theme settings forms.
-            if (form is FormLiveData || form is Form4WheelsSettings ||
+            if (!designerOwnedButton && (form is FormLiveData || form is Form4WheelsSettings ||
                 form is FormOfflineChartSettings || form is FormGForceSettings || form is FormLogSettings ||
                 form is Form4Wheels ||
-                form is FormOfflineChart)
+                form is FormOfflineChart))
             {
                 button.UseVisualStyleBackColor = false;
                 button.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);

@@ -711,8 +711,25 @@ namespace Physics_Data_Debug
             toSettingsButton.Visible = false;
             Form4WheelsSettings.SettingsOpen = true;
             Form4WheelsSettings s1 = new Form4WheelsSettings();
-            s1.Show();
+            s1.HostFilterGroups(this, axisFiltersGroup, extraFiltersGroup,
+                noTireContactLimiterEnabledCheckBox);
+            s1.Show(this);
         }
+        /// <summary>Return the live filter controls to their non-visible parking
+        /// cells before the settings dialog is disposed. The chart retains their
+        /// state, so closing/reopening Settings does not reset selections.</summary>
+        internal void ReturnHostedFilterGroups(GroupBox axis, GroupBox extra,
+            CheckBox noContact)
+        {
+            axis.Visible = false;
+            extra.Visible = false;
+            mainLayout.Controls.Add(axis, 0, 1);
+            mainLayout.Controls.Add(extra, 0, 2);
+            actionButtonsFlow.Controls.Remove(noContact);
+            UpdateAllLimiters();
+            JsonFormSettings.SaveAllSettings(this);
+        }
+
         private void refreshAndApplyButton_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
@@ -745,11 +762,6 @@ namespace Physics_Data_Debug
             UpdateAllLimiters();
         }
 
-        private void applyLimitersButton_Click(object sender, EventArgs e)
-        {
-            UpdateAllLimiters();
-            JsonFormSettings.SaveAllSettings(this);
-        }
         #endregion
         // ----- Consolidated chart/settings members -----
 

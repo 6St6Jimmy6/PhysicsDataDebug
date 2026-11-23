@@ -1,4 +1,4 @@
-﻿
+
 namespace Physics_Data_Debug
 {
     partial class FormGForce
@@ -261,11 +261,11 @@ namespace Physics_Data_Debug
             this.chartAndBar.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
             // A fixed-width TableLayoutPanel avoids the SplitContainer's stale
             // SplitterDistance being scaled with the form (which made chart2 huge).
-            // The 72-pixel right column is 40% narrower than the 120px Four Wheels legend.
+            // The right-side chart uses a narrow fixed 46-pixel column.
             // Editable directly in Visual Studio Designer under chartAndBar.
             this.chartAndBar.ColumnCount = 2;
             this.chartAndBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.chartAndBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.chartAndBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.chartAndBar.RowCount = 1;
             this.chartAndBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.chartAndBar.Margin = new System.Windows.Forms.Padding(0);

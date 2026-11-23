@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -75,7 +75,8 @@ namespace Physics_Data_Debug
         private void ImportFilesButton_Click(object sender, EventArgs e) => ImportFiles();
         private void RemoveFilesButton_Click(object sender, EventArgs e) => RemoveSelectedFiles();
         private void SettingsButton_Click(object sender, EventArgs e) => ShowSettings();
-        private void ApplyFiltersButton_Click(object sender, EventArgs e) => Redraw();
+
+        internal void ApplyFiltersFromSettings() => Redraw();
 
         private void ChartAndLegend_SizeChanged(object sender, EventArgs e)
         {
@@ -343,7 +344,21 @@ namespace Physics_Data_Debug
                     "Offline chart",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
-            using (var dialog = new FormOfflineChartSettings(this,options)) dialog.ShowDialog(this);
+            // Filter rows live in this settings dialog while it is open. Move
+            // them back before disposal so the chart/filter model survives.
+            using (var dialog = new FormOfflineChartSettings(this, options))
+            {
+                dialog.HostFilterGroups(axisFiltersGroup, extraFiltersGroup);
+                try { dialog.ShowDialog(this); }
+                finally
+                {
+                    axisFiltersGroup.Visible = false;
+                    extraFiltersGroup.Visible = false;
+                    mainLayout.Controls.Add(axisFiltersGroup, 0, 1);
+                    mainLayout.Controls.Add(extraFiltersGroup, 0, 2);
+                    // Changes made in the settings window take effect on Apply.
+                }
+            }
         }
 
         private static bool TryBound(string text, bool minimum, out double value)

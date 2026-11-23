@@ -97,6 +97,7 @@
     <Compile Include="WreckfestVersionDetector.cs" />
     <Compile Include="CalculatedTelemetry.cs" />
     <Compile Include="TelemetryNames.cs" />
+    <Compile Include="TelemetryMetadata.cs" />
     <Compile Include="FourWheelsFieldSelection.cs" />
     <Compile Include="TelemetryFormulas.cs" />
     <Compile Include="TelemetryExpression.cs" />
@@ -166,6 +167,10 @@
     <Compile Include="FormLiveData.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormLiveData.Monitor.cs">
+      <DependentUpon>FormLiveData.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormLiveData.Layout.cs">
       <DependentUpon>FormLiveData.cs</DependentUpon>
       <SubType>Form</SubType>
@@ -195,17 +200,17 @@
     <Compile Include="FormTireStaticValues.Designer.cs">
       <DependentUpon>FormTireStaticValues.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTireTemperatures.cs">
+    <Compile Include="FormLiveTimeChart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTireTemperatures.Designer.cs">
-      <DependentUpon>FormTireTemperatures.cs</DependentUpon>
+    <Compile Include="FormLiveTimeChart.Designer.cs">
+      <DependentUpon>FormLiveTimeChart.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTireTemperaturesSettings.cs">
+    <Compile Include="FormLiveTimeChartSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTireTemperaturesSettings.Designer.cs">
-      <DependentUpon>FormTireTemperaturesSettings.cs</DependentUpon>
+    <Compile Include="FormLiveTimeChartSettings.Designer.cs">
+      <DependentUpon>FormLiveTimeChartSettings.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ChartLimiterRow.resx">
       <DependentUpon>ChartLimiterRow.cs</DependentUpon>
@@ -226,11 +231,17 @@
     <EmbeddedResource Include="FormLiveData.resx">
       <DependentUpon>FormLiveData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLiveTimeChartSettings.resx">
+      <DependentUpon>FormLiveTimeChartSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogSettings.resx">
       <DependentUpon>FormLogSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOfflineChart.resx">
       <DependentUpon>FormOfflineChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOfflineChartSettings.resx">
+      <DependentUpon>FormOfflineChartSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSuspensionGeometry.resx">
       <DependentUpon>FormSuspensionGeometry.cs</DependentUpon>
@@ -241,8 +252,8 @@
     <EmbeddedResource Include="FormTireStaticValues.resx">
       <DependentUpon>FormTireStaticValues.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTireTemperatures.resx">
-      <DependentUpon>FormTireTemperatures.cs</DependentUpon>
+    <EmbeddedResource Include="FormLiveTimeChart.resx">
+      <DependentUpon>FormLiveTimeChart.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -271,9 +282,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="physics_debug_icon_big.ico" />
-    <EmbeddedResource Include="FormTireTemperaturesSettings.resx">
-      <DependentUpon>FormTireTemperaturesSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WreckfestGameMemoryConfig.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-
+﻿
 namespace Physics_Data_Debug
 {
     partial class Form4Wheels
@@ -38,13 +38,9 @@ namespace Physics_Data_Debug
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title frontPreviewTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title rearPreviewTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.refreshAndClearButton = new System.Windows.Forms.Button();
             this.toSettingsButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -55,7 +51,6 @@ namespace Physics_Data_Debug
             this.filterActionsPanel = new System.Windows.Forms.Panel();
             this.actionColumns = new System.Windows.Forms.TableLayoutPanel();
             this.actionButtonsFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.applyLimitersButton = new System.Windows.Forms.Button();
             this.noTireContactLimiterEnabledCheckBox = new System.Windows.Forms.CheckBox();
             this.SettingsProfilesHost = new System.Windows.Forms.Panel();
             this.axisFiltersGroup = new System.Windows.Forms.GroupBox();
@@ -204,7 +199,7 @@ namespace Physics_Data_Debug
             series1.Points.Add(dataPoint1);
             series1.Points.Add(dataPoint2);
             this.GradientChart.Series.Add(series1);
-            this.GradientChart.Size = new System.Drawing.Size(194, 810);
+            this.GradientChart.Size = new System.Drawing.Size(120, 810);
             this.GradientChart.TabIndex = 304;
             this.GradientChart.Text = "chart5";
             title1.ForeColor = System.Drawing.Color.White;
@@ -218,20 +213,53 @@ namespace Physics_Data_Debug
             chartArea2.AxisX2.Title = "X2";
             chartArea2.AxisY.Title = "Y1 1";
             chartArea2.AxisY2.Title = "Y2";
+            chartArea2.BackColor = System.Drawing.Color.Black;
+            chartArea2.AxisX.LabelStyle.Enabled = false;
+            chartArea2.AxisY.LabelStyle.Enabled = false;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisY.MajorGrid.Enabled = false;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.Black;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.Black;
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.X = 0F;
+            chartArea2.Position.Y = 0F;
+            chartArea2.Position.Width = 100F;
+            chartArea2.Position.Height = 50F;
             chartArea2.Name = "ChartArea1";
             chartArea3.AxisX.Title = "X1 2";
             chartArea3.AxisY.Title = "Y1 2";
+            chartArea3.BackColor = System.Drawing.Color.Black;
+            chartArea3.AxisX.LabelStyle.Enabled = false;
+            chartArea3.AxisY.LabelStyle.Enabled = false;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisY.MajorGrid.Enabled = false;
+            chartArea3.AxisX.LineColor = System.Drawing.Color.Black;
+            chartArea3.AxisY.LineColor = System.Drawing.Color.Black;
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.X = 0F;
+            chartArea3.Position.Y = 50F;
+            chartArea3.Position.Width = 100F;
+            chartArea3.Position.Height = 50F;
             chartArea3.Name = "ChartArea2";
-            chartArea4.AxisX.Title = "X1 3";
-            chartArea4.AxisY.Title = "Y1 3";
-            chartArea4.Name = "ChartArea3";
-            chartArea5.AxisX.Title = "X1 4";
-            chartArea5.AxisY.Title = "Y1 4";
-            chartArea5.Name = "ChartArea4";
             this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.ChartAreas.Add(chartArea3);
-            this.chart1.ChartAreas.Add(chartArea4);
-            this.chart1.ChartAreas.Add(chartArea5);
+            // Preview the default Front/Rear chart layout in the Designer.
+            // Runtime clears these Titles and builds the selected dataset layout.
+            frontPreviewTitle.Text = "Front Tires";
+            frontPreviewTitle.DockedToChartArea = "ChartArea1";
+            frontPreviewTitle.IsDockedInsideChartArea = true;
+            frontPreviewTitle.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            frontPreviewTitle.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            frontPreviewTitle.ForeColor = System.Drawing.Color.White;
+            rearPreviewTitle.Text = "Rear Tires";
+            rearPreviewTitle.DockedToChartArea = "ChartArea2";
+            rearPreviewTitle.IsDockedInsideChartArea = true;
+            rearPreviewTitle.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            rearPreviewTitle.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            rearPreviewTitle.ForeColor = System.Drawing.Color.White;
+            this.chart1.Titles.Add(frontPreviewTitle);
+            this.chart1.Titles.Add(rearPreviewTitle);
+            this.chart1.BackColor = System.Drawing.Color.Black;
             this.chart1.MinimumSize = new System.Drawing.Size(10, 10);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Enabled = false;
@@ -240,23 +268,7 @@ namespace Physics_Data_Debug
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Margin = new System.Windows.Forms.Padding(6);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series3.ChartArea = "ChartArea2";
-            series3.Legend = "Legend1";
-            series3.Name = "Series2";
-            series4.ChartArea = "ChartArea3";
-            series4.Legend = "Legend1";
-            series4.Name = "Series3";
-            series5.ChartArea = "ChartArea4";
-            series5.Legend = "Legend1";
-            series5.Name = "Series4";
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Size = new System.Drawing.Size(2051, 810);
+            this.chart1.Size = new System.Drawing.Size(2125, 810);
             this.chart1.TabIndex = 308;
             this.chart1.Text = "chart1";
             // 
@@ -276,8 +288,8 @@ namespace Physics_Data_Debug
             this.mainLayout.Padding = new System.Windows.Forms.Padding(5);
             this.mainLayout.RowCount = 5;
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 230F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 230F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.mainLayout.Size = new System.Drawing.Size(2267, 1393);
@@ -314,8 +326,6 @@ namespace Physics_Data_Debug
             this.actionButtonsFlow.Controls.Add(this.toSettingsButton);
             this.actionButtonsFlow.Controls.Add(this.refreshAndClearButton);
             this.actionButtonsFlow.Controls.Add(this.buttonPause);
-            this.actionButtonsFlow.Controls.Add(this.applyLimitersButton);
-            this.actionButtonsFlow.Controls.Add(this.noTireContactLimiterEnabledCheckBox);
             this.actionButtonsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actionButtonsFlow.Location = new System.Drawing.Point(3, 3);
             this.actionButtonsFlow.Name = "actionButtonsFlow";
@@ -323,23 +333,6 @@ namespace Physics_Data_Debug
             this.actionButtonsFlow.Size = new System.Drawing.Size(1945, 63);
             this.actionButtonsFlow.TabIndex = 0;
             this.actionButtonsFlow.WrapContents = false;
-            // 
-            // applyLimitersButton
-            // 
-            this.applyLimitersButton.Location = new System.Drawing.Point(404, 9);
-            this.applyLimitersButton.Margin = new System.Windows.Forms.Padding(6);
-            this.applyLimitersButton.Name = "applyLimitersButton";
-            this.applyLimitersButton.AutoSize = true;
-            this.applyLimitersButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
-            this.applyLimitersButton.MinimumSize = new System.Drawing.Size(165, 40);
-            this.applyLimitersButton.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
-            this.applyLimitersButton.Size = new System.Drawing.Size(136, 40);
-            this.applyLimitersButton.TabIndex = 333;
-            this.applyLimitersButton.Text = "Apply Limiters";
-            this.applyLimitersButton.UseVisualStyleBackColor = false;
-            this.applyLimitersButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.applyLimitersButton.ForeColor = System.Drawing.Color.White;
-            this.applyLimitersButton.Click += new System.EventHandler(this.applyLimitersButton_Click);
             // 
             // noTireContactLimiterEnabledCheckBox
             // 
@@ -374,6 +367,7 @@ namespace Physics_Data_Debug
             this.axisFiltersGroup.TabIndex = 352;
             this.axisFiltersGroup.TabStop = false;
             this.axisFiltersGroup.Text = "Current chart axes — each follows its selected X / Y / Z field";
+            this.axisFiltersGroup.Visible = false;
             // 
             // axisFiltersFlow
             // 
@@ -430,6 +424,7 @@ namespace Physics_Data_Debug
             this.extraFiltersGroup.TabIndex = 353;
             this.extraFiltersGroup.TabStop = false;
             this.extraFiltersGroup.Text = "Additional telemetry filters — choose up to 10 measurements";
+            this.extraFiltersGroup.Visible = false;
             // 
             // extraFiltersFlow
             // 
@@ -567,7 +562,7 @@ namespace Physics_Data_Debug
             this.chartAndLegend.Panel2.Controls.Add(this.GradientChart);
             this.chartAndLegend.Panel2MinSize = 60;
             this.chartAndLegend.Size = new System.Drawing.Size(2251, 810);
-            this.chartAndLegend.SplitterDistance = 2075;
+            this.chartAndLegend.SplitterDistance = 2125;
             this.chartAndLegend.SplitterWidth = 6;
             this.chartAndLegend.TabIndex = 354;
             // 
@@ -578,7 +573,7 @@ namespace Physics_Data_Debug
             this.chartScrollPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartScrollPanel.Location = new System.Drawing.Point(0, 0);
             this.chartScrollPanel.Name = "chartScrollPanel";
-            this.chartScrollPanel.Size = new System.Drawing.Size(2051, 810);
+            this.chartScrollPanel.Size = new System.Drawing.Size(2125, 810);
             this.chartScrollPanel.TabIndex = 350;
             // 
             // chartStatusLabel
@@ -659,6 +654,5 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Panel extraFilterHost09;
         private System.Windows.Forms.Panel extraFilterHost10;
         private System.Windows.Forms.CheckBox noTireContactLimiterEnabledCheckBox;
-        private System.Windows.Forms.Button applyLimitersButton;
     }
 }

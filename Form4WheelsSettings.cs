@@ -15,6 +15,38 @@ namespace Physics_Data_Debug
     {
 
         private readonly ComboBoxFontStore comboFonts = new ComboBoxFontStore();
+        private Form4Wheels hostedFilterChart;
+        private GroupBox hostedAxisFilters;
+        private GroupBox hostedExtraFilters;
+        private CheckBox hostedNoContact;
+
+        internal void HostFilterGroups(Form4Wheels owner, GroupBox axis,
+            GroupBox extra, CheckBox noContact)
+        {
+            hostedFilterChart = owner;
+            hostedAxisFilters = axis;
+            hostedExtraFilters = extra;
+            hostedNoContact = noContact;
+            filterSettingsRows.Controls.Remove(filterAxisPlaceholder);
+            filterSettingsRows.Controls.Remove(filterExtraPlaceholder);
+            filterSettingsRows.Controls.Add(axis, 0, 0);
+            filterSettingsRows.Controls.Add(extra, 0, 1);
+            axis.Dock = DockStyle.Fill;
+            extra.Dock = DockStyle.Fill;
+            axis.Visible = true;
+            extra.Visible = true;
+            noContact.Visible = true;
+            noContact.Margin = new Padding(12, 5, 5, 3);
+            //filterActionPanel.Controls.Add(noContact);
+        }
+
+        private void settingsApplyFiltersButton_Click(object sender, EventArgs e)
+        {
+            if (hostedFilterChart == null) return;
+            hostedFilterChart.UpdateAllLimiters();
+            JsonFormSettings.SaveAllSettings(this);
+        }
+
 
         public Form4WheelsSettings()
         {
@@ -332,6 +364,13 @@ namespace Physics_Data_Debug
         {
             SettingsOpen = false;
             JsonFormSettings.SaveAllSettings(this);
+            if (hostedFilterChart != null && !hostedFilterChart.IsDisposed)
+            {
+                //filterActionPanel.Controls.Remove(hostedNoContact);
+                hostedFilterChart.ReturnHostedFilterGroups(hostedAxisFilters,
+                    hostedExtraFilters, hostedNoContact);
+                hostedFilterChart = null;
+            }
         }
         private void Form_4WheelsSettings_Load(object sender, EventArgs e)
         {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -12,7 +12,7 @@ namespace Physics_Data_Debug
         private Panel toolbarPanel, dataSelectPanel, SettingsProfilesHost;
         private TableLayoutPanel toolbarLayout;
         private FlowLayoutPanel toolbarButtonsFlow;
-        private Button importFilesButton, removeFilesButton, settingsButton, applyFiltersButton;
+        private Button importFilesButton, removeFilesButton, settingsButton;
         private CheckedListBox importedFilesList;
         private Label statusLabel, datasetsLabel;
         private GroupBox axisFiltersGroup, extraFiltersGroup;
@@ -38,7 +38,6 @@ namespace Physics_Data_Debug
             this.importFilesButton = new System.Windows.Forms.Button();
             this.removeFilesButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.applyFiltersButton = new System.Windows.Forms.Button();
             this.SettingsProfilesHost = new System.Windows.Forms.Panel();
             this.dataSelectPanel = new System.Windows.Forms.Panel();
             this.importedFilesList = new System.Windows.Forms.CheckedListBox();
@@ -83,7 +82,7 @@ namespace Physics_Data_Debug
             // 
             // mainLayout
             // 
-            this.mainLayout.BackColor = System.Drawing.Color.FromArgb(19, 19, 19);
+            this.mainLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
             this.mainLayout.ColumnCount = 1;
             this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.Controls.Add(this.toolbarPanel, 0, 0);
@@ -99,8 +98,8 @@ namespace Physics_Data_Debug
             this.mainLayout.Padding = new System.Windows.Forms.Padding(5);
             this.mainLayout.RowCount = 5;
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.mainLayout.Size = new System.Drawing.Size(1164, 1009);
@@ -115,122 +114,106 @@ namespace Physics_Data_Debug
             this.toolbarPanel.Name = "toolbarPanel";
             this.toolbarPanel.Size = new System.Drawing.Size(1148, 104);
             this.toolbarPanel.TabIndex = 0;
-            //
-            // toolbarLayout - a fixed-width Profiles host stays at the right edge.
-            // The dataset selector spans both columns on its own row.
-            //
-            this.toolbarLayout.Name = "toolbarLayout";
-            this.toolbarLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolbarLayout.Margin = new System.Windows.Forms.Padding(0);
-            this.toolbarLayout.Padding = new System.Windows.Forms.Padding(0);
-            this.toolbarLayout.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            // 
+            // toolbarLayout
+            // 
+            this.toolbarLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.toolbarLayout.ColumnCount = 2;
             this.toolbarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.toolbarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
+            this.toolbarLayout.Controls.Add(this.toolbarButtonsFlow, 0, 0);
+            this.toolbarLayout.Controls.Add(this.dataSelectPanel, 0, 1);
+            this.toolbarLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolbarLayout.Location = new System.Drawing.Point(0, 0);
+            this.toolbarLayout.Margin = new System.Windows.Forms.Padding(0);
+            this.toolbarLayout.Name = "toolbarLayout";
             this.toolbarLayout.RowCount = 2;
             this.toolbarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.toolbarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.toolbarLayout.Controls.Add(this.toolbarButtonsFlow, 0, 0);
-            this.toolbarLayout.Controls.Add(this.SettingsProfilesHost, 1, 0);
-            this.toolbarLayout.Controls.Add(this.dataSelectPanel, 0, 1);
-            this.toolbarLayout.SetColumnSpan(this.dataSelectPanel, 2);
-            //
-            // toolbarButtonsFlow - actions can scroll when the form is very narrow
-            // without covering the pinned Profiles button.
-            //
-            this.toolbarButtonsFlow.Name = "toolbarButtonsFlow";
-            this.toolbarButtonsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolbarButtonsFlow.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.toolbarButtonsFlow.Margin = new System.Windows.Forms.Padding(0);
-            this.toolbarButtonsFlow.WrapContents = false;
+            this.toolbarLayout.Size = new System.Drawing.Size(1148, 104);
+            this.toolbarLayout.TabIndex = 0;
+            // 
+            // toolbarButtonsFlow
+            // 
             this.toolbarButtonsFlow.AutoScroll = true;
-            this.toolbarButtonsFlow.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            this.toolbarButtonsFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.toolbarButtonsFlow.Controls.Add(this.importFilesButton);
             this.toolbarButtonsFlow.Controls.Add(this.removeFilesButton);
             this.toolbarButtonsFlow.Controls.Add(this.settingsButton);
-            this.toolbarButtonsFlow.Controls.Add(this.applyFiltersButton);
+            this.toolbarButtonsFlow.Controls.Add(this.SettingsProfilesHost);
+            this.toolbarButtonsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolbarButtonsFlow.Location = new System.Drawing.Point(0, 0);
+            this.toolbarButtonsFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.toolbarButtonsFlow.Name = "toolbarButtonsFlow";
+            this.toolbarButtonsFlow.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.toolbarButtonsFlow.Size = new System.Drawing.Size(974, 47);
+            this.toolbarButtonsFlow.TabIndex = 0;
+            this.toolbarButtonsFlow.WrapContents = false;
             // 
             // importFilesButton
             // 
-            this.importFilesButton.Location = new System.Drawing.Point(10, 8);
-            this.importFilesButton.Name = "importFilesButton";
             this.importFilesButton.AutoSize = true;
-            this.importFilesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
+            this.importFilesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.importFilesButton.ForeColor = System.Drawing.Color.White;
+            this.importFilesButton.Location = new System.Drawing.Point(8, 7);
             this.importFilesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            this.importFilesButton.Name = "importFilesButton";
             this.importFilesButton.Padding = new System.Windows.Forms.Padding(8, 1, 8, 1);
             this.importFilesButton.Size = new System.Drawing.Size(135, 34);
             this.importFilesButton.TabIndex = 0;
-            this.importFilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.importFilesButton.ForeColor = System.Drawing.Color.White;
-            this.importFilesButton.UseVisualStyleBackColor = false;
             this.importFilesButton.Text = "Load CSV / TXT...";
+            this.importFilesButton.UseVisualStyleBackColor = false;
             this.importFilesButton.Click += new System.EventHandler(this.ImportFilesButton_Click);
             // 
             // removeFilesButton
             // 
-            this.removeFilesButton.Location = new System.Drawing.Point(154, 8);
-            this.removeFilesButton.Name = "removeFilesButton";
             this.removeFilesButton.AutoSize = true;
-            this.removeFilesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
+            this.removeFilesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.removeFilesButton.ForeColor = System.Drawing.Color.White;
+            this.removeFilesButton.Location = new System.Drawing.Point(151, 7);
             this.removeFilesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            this.removeFilesButton.Name = "removeFilesButton";
             this.removeFilesButton.Padding = new System.Windows.Forms.Padding(8, 1, 8, 1);
             this.removeFilesButton.Size = new System.Drawing.Size(140, 34);
             this.removeFilesButton.TabIndex = 1;
-            this.removeFilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.removeFilesButton.ForeColor = System.Drawing.Color.White;
-            this.removeFilesButton.UseVisualStyleBackColor = false;
             this.removeFilesButton.Text = "Remove selected";
+            this.removeFilesButton.UseVisualStyleBackColor = false;
             this.removeFilesButton.Click += new System.EventHandler(this.RemoveFilesButton_Click);
             // 
             // settingsButton
             // 
-            this.settingsButton.Location = new System.Drawing.Point(303, 8);
-            this.settingsButton.Name = "settingsButton";
             this.settingsButton.AutoSize = true;
-            this.settingsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
+            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.settingsButton.ForeColor = System.Drawing.Color.White;
+            this.settingsButton.Location = new System.Drawing.Point(299, 7);
             this.settingsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            this.settingsButton.Name = "settingsButton";
             this.settingsButton.Padding = new System.Windows.Forms.Padding(8, 1, 8, 1);
             this.settingsButton.Size = new System.Drawing.Size(125, 34);
             this.settingsButton.TabIndex = 2;
-            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.settingsButton.ForeColor = System.Drawing.Color.White;
-            this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Text = "Chart settings";
+            this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
-            // 
-            // applyFiltersButton
-            // 
-            this.applyFiltersButton.Location = new System.Drawing.Point(436, 8);
-            this.applyFiltersButton.Name = "applyFiltersButton";
-            this.applyFiltersButton.AutoSize = true;
-            this.applyFiltersButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
-            this.applyFiltersButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 3);
-            this.applyFiltersButton.Padding = new System.Windows.Forms.Padding(8, 1, 8, 1);
-            this.applyFiltersButton.Size = new System.Drawing.Size(123, 34);
-            this.applyFiltersButton.TabIndex = 3;
-            this.applyFiltersButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.applyFiltersButton.ForeColor = System.Drawing.Color.White;
-            this.applyFiltersButton.UseVisualStyleBackColor = false;
-            this.applyFiltersButton.Text = "Apply filters";
-            this.applyFiltersButton.Click += new System.EventHandler(this.ApplyFiltersButton_Click);
             // 
             // SettingsProfilesHost
             // 
             this.SettingsProfilesHost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SettingsProfilesHost.Location = new System.Drawing.Point(434, 5);
             this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(162, 41);
+            this.SettingsProfilesHost.Size = new System.Drawing.Size(162, 36);
             this.SettingsProfilesHost.TabIndex = 4;
             // 
             // dataSelectPanel
             // 
-            this.dataSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataSelectPanel.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.toolbarLayout.SetColumnSpan(this.dataSelectPanel, 2);
             this.dataSelectPanel.Controls.Add(this.importedFilesList);
             this.dataSelectPanel.Controls.Add(this.datasetsLabel);
-            this.dataSelectPanel.Location = new System.Drawing.Point(10, 50);
+            this.dataSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataSelectPanel.Location = new System.Drawing.Point(10, 47);
+            this.dataSelectPanel.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.dataSelectPanel.Name = "dataSelectPanel";
-            this.dataSelectPanel.Size = new System.Drawing.Size(1128, 53);
+            this.dataSelectPanel.Size = new System.Drawing.Size(1128, 57);
             this.dataSelectPanel.TabIndex = 5;
             // 
             // importedFilesList
@@ -244,7 +227,7 @@ namespace Physics_Data_Debug
             this.importedFilesList.IntegralHeight = false;
             this.importedFilesList.Location = new System.Drawing.Point(0, 20);
             this.importedFilesList.Name = "importedFilesList";
-            this.importedFilesList.Size = new System.Drawing.Size(1128, 33);
+            this.importedFilesList.Size = new System.Drawing.Size(1128, 37);
             this.importedFilesList.TabIndex = 0;
             // 
             // datasetsLabel
@@ -259,17 +242,18 @@ namespace Physics_Data_Debug
             // 
             // axisFiltersGroup
             // 
-            this.axisFiltersGroup.Controls.Add(this.axisFiltersFlow);
             this.axisFiltersGroup.BackColor = System.Drawing.Color.Black;
+            this.axisFiltersGroup.Controls.Add(this.axisFiltersFlow);
             this.axisFiltersGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axisFiltersGroup.ForeColor = System.Drawing.Color.White;
             this.axisFiltersGroup.Location = new System.Drawing.Point(8, 118);
             this.axisFiltersGroup.Name = "axisFiltersGroup";
             this.axisFiltersGroup.Padding = new System.Windows.Forms.Padding(8);
-            this.axisFiltersGroup.Size = new System.Drawing.Size(1148, 124);
+            this.axisFiltersGroup.Size = new System.Drawing.Size(1148, 1);
             this.axisFiltersGroup.TabIndex = 1;
             this.axisFiltersGroup.TabStop = false;
             this.axisFiltersGroup.Text = "Current X / Y / Z axis filters";
+            this.axisFiltersGroup.Visible = false;
             // 
             // axisFiltersFlow
             // 
@@ -279,9 +263,9 @@ namespace Physics_Data_Debug
             this.axisFiltersFlow.Controls.Add(this.axisYFilterHost);
             this.axisFiltersFlow.Controls.Add(this.axisZFilterHost);
             this.axisFiltersFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisFiltersFlow.Location = new System.Drawing.Point(8, 32);
+            this.axisFiltersFlow.Location = new System.Drawing.Point(8, 21);
             this.axisFiltersFlow.Name = "axisFiltersFlow";
-            this.axisFiltersFlow.Size = new System.Drawing.Size(1132, 84);
+            this.axisFiltersFlow.Size = new System.Drawing.Size(1132, 0);
             this.axisFiltersFlow.TabIndex = 0;
             // 
             // axisXFilterHost
@@ -313,17 +297,18 @@ namespace Physics_Data_Debug
             // 
             // extraFiltersGroup
             // 
-            this.extraFiltersGroup.Controls.Add(this.extraFiltersFlow);
             this.extraFiltersGroup.BackColor = System.Drawing.Color.Black;
+            this.extraFiltersGroup.Controls.Add(this.extraFiltersFlow);
             this.extraFiltersGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extraFiltersGroup.ForeColor = System.Drawing.Color.White;
-            this.extraFiltersGroup.Location = new System.Drawing.Point(8, 248);
+            this.extraFiltersGroup.Location = new System.Drawing.Point(8, 118);
             this.extraFiltersGroup.Name = "extraFiltersGroup";
             this.extraFiltersGroup.Padding = new System.Windows.Forms.Padding(8);
-            this.extraFiltersGroup.Size = new System.Drawing.Size(1148, 124);
+            this.extraFiltersGroup.Size = new System.Drawing.Size(1148, 1);
             this.extraFiltersGroup.TabIndex = 2;
             this.extraFiltersGroup.TabStop = false;
             this.extraFiltersGroup.Text = "Additional selectable filters (10)";
+            this.extraFiltersGroup.Visible = false;
             // 
             // extraFiltersFlow
             // 
@@ -340,9 +325,9 @@ namespace Physics_Data_Debug
             this.extraFiltersFlow.Controls.Add(this.extraFilterHost09);
             this.extraFiltersFlow.Controls.Add(this.extraFilterHost10);
             this.extraFiltersFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extraFiltersFlow.Location = new System.Drawing.Point(8, 32);
+            this.extraFiltersFlow.Location = new System.Drawing.Point(8, 21);
             this.extraFiltersFlow.Name = "extraFiltersFlow";
-            this.extraFiltersFlow.Size = new System.Drawing.Size(1132, 84);
+            this.extraFiltersFlow.Size = new System.Drawing.Size(1132, 0);
             this.extraFiltersFlow.TabIndex = 0;
             // 
             // extraFilterHost01
@@ -440,7 +425,7 @@ namespace Physics_Data_Debug
             this.chartAndLegend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.chartAndLegend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartAndLegend.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.chartAndLegend.Location = new System.Drawing.Point(8, 378);
+            this.chartAndLegend.Location = new System.Drawing.Point(8, 118);
             this.chartAndLegend.Name = "chartAndLegend";
             // 
             // chartAndLegend.Panel1
@@ -450,29 +435,29 @@ namespace Physics_Data_Debug
             // chartAndLegend.Panel2
             // 
             this.chartAndLegend.Panel2.Controls.Add(this.GradientChart);
-            this.chartAndLegend.Size = new System.Drawing.Size(1148, 591);
-            this.chartAndLegend.SplitterDistance = 1048;
+            this.chartAndLegend.Size = new System.Drawing.Size(1148, 851);
+            this.chartAndLegend.SplitterDistance = 1046;
             this.chartAndLegend.SplitterWidth = 6;
             this.chartAndLegend.TabIndex = 3;
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Black;
-            this.chart1.MinimumSize = new System.Drawing.Size(10, 10);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart1.Location = new System.Drawing.Point(0, 0);
+            this.chart1.MinimumSize = new System.Drawing.Size(10, 10);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(1048, 591);
+            this.chart1.Size = new System.Drawing.Size(1046, 851);
             this.chart1.TabIndex = 0;
             // 
             // GradientChart
             // 
             this.GradientChart.BackColor = System.Drawing.Color.Black;
-            this.GradientChart.MinimumSize = new System.Drawing.Size(10, 10);
             this.GradientChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GradientChart.Location = new System.Drawing.Point(0, 0);
+            this.GradientChart.MinimumSize = new System.Drawing.Size(10, 10);
             this.GradientChart.Name = "GradientChart";
-            this.GradientChart.Size = new System.Drawing.Size(94, 591);
+            this.GradientChart.Size = new System.Drawing.Size(96, 851);
             this.GradientChart.TabIndex = 0;
             // 
             // statusLabel
@@ -500,6 +485,7 @@ namespace Physics_Data_Debug
             this.toolbarPanel.ResumeLayout(false);
             this.toolbarLayout.ResumeLayout(false);
             this.toolbarButtonsFlow.ResumeLayout(false);
+            this.toolbarButtonsFlow.PerformLayout();
             this.dataSelectPanel.ResumeLayout(false);
             this.axisFiltersGroup.ResumeLayout(false);
             this.axisFiltersFlow.ResumeLayout(false);
