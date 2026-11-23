@@ -348,6 +348,15 @@ namespace Physics_Data_Debug
                 statusLabel.Text = "Waiting for Wreckfest telemetry (Get Process in Live Data).";
                 return;
             }
+            // A stopped or unavailable race clock must not add time-series points.
+            // Keep the accumulated chart history visible while the game is paused.
+            if (!LiveData.RaceTimeAdvanced)
+            {
+                statusLabel.Text = LiveData.RaceTimeAvailable
+                    ? "RaceTime stopped (menu / paused) — chart history preserved."
+                    : "RaceTime unavailable — chart history preserved.";
+                return;
+            }
             // RaceTime is milliseconds. Do not use a frame counter or wall clock.
             double nowSeconds = LiveData.RaceTime / 1000.0;
             if (!IsFinite(nowSeconds) || nowSeconds < 0) return;

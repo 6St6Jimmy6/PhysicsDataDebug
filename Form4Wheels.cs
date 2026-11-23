@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -691,12 +691,15 @@ namespace Physics_Data_Debug
             JsonFormSettings.SaveAllSettings(this);
             LiveData._4WheelsOpen = false;
         }
+        private int lastPlottedTelemetryGeneration = -1;
         private void timer1_Tick(object sender, EventArgs e)
         {
             ButtonLabelVisibilities();
             UpdateFollowedAxes();
-            if (LiveData.ElapsedTime > 0 && !PauseUpdate)
+            if (LiveData.RaceTimeAdvanced && !PauseUpdate &&
+                lastPlottedTelemetryGeneration != LiveData.TelemetryGeneration)
             {
+                lastPlottedTelemetryGeneration = LiveData.TelemetryGeneration;
                 xyzAxisSelection = new List<string> { Form4WheelsSettings.X1Selection, Form4WheelsSettings.Y1Selection, Form4WheelsSettings.Z1Selection };
                 PlotAllWheels(chart1, xyzAxisSelection, xyzAxisLimiterSelection);
             }
@@ -985,11 +988,13 @@ namespace Physics_Data_Debug
             if (xyzValues == null || xyzValues.Count < 3 || limiter == null || limiter.Count != configured.Length)
                 throw new ArgumentException("Three X/Y/Z values and one value per enabled filter are required.");
 
-            if (NoTireContactLimiterEnabled && noTireContactLimiter == 0)
-                return;
+            if (NoTireContactLimiterEnabled &&
+                (noTireContactLimiter == 0 || float.IsNaN(noTireContactLimiter) ||
+                 float.IsInfinity(noTireContactLimiter))) return;
 
             for (int i = 0; i < configured.Length; i++)
-                if (OverTheChosenLimiter(limiter[i], configured[i].Selection,
+                if (float.IsNaN(limiter[i]) || float.IsInfinity(limiter[i]) ||
+                    OverTheChosenLimiter(limiter[i], configured[i].Selection,
                         configured[i].Maximum, configured[i].Minimum))
                     return;
 
@@ -997,6 +1002,11 @@ namespace Physics_Data_Debug
             float x = Form4WheelsSettings.AbsoluteValues ? Math.Abs(xyzValues[0]) : xyzValues[0];
             float y = Form4WheelsSettings.AbsoluteValues ? Math.Abs(xyzValues[1]) : xyzValues[1];
             float z = Form4WheelsSettings.AbsoluteValues ? Math.Abs(xyzValues[2]) : xyzValues[2];
+            // When a game structure has not been initialized, the reader marks
+            // its fields unavailable. Never append NaN/Infinity to a live chart.
+            if (float.IsNaN(x) || float.IsInfinity(x) ||
+                float.IsNaN(y) || float.IsInfinity(y) ||
+                float.IsNaN(z) || float.IsInfinity(z)) return;
 
             if (!Histories.TryGetValue(seriesName, out WheelPlotHistory history))
             {

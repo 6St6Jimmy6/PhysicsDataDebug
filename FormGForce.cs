@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -98,20 +98,27 @@ namespace Physics_Data_Debug
         {
             LiveData.GForceOpen = false;
         }
+        private int lastChartTelemetryGeneration = -1;
+        private int lastHistoryTelemetryGeneration = -1;
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             ButtonVisibilities();
             UpdateSnapshotInterval();
-            if (LiveData.ElapsedTime > 0)
+            if (LiveData.RaceTimeAdvanced &&
+                lastChartTelemetryGeneration != LiveData.TelemetryGeneration)
             {
+                lastChartTelemetryGeneration = LiveData.TelemetryGeneration;
                 PlotPolarChart(chart1);
                 PlotUpDownChart(chart2);
             }
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (LiveData.ElapsedTime > 0)
+            if (LiveData.RaceTimeAdvanced &&
+                lastHistoryTelemetryGeneration != LiveData.TelemetryGeneration)
             {
+                lastHistoryTelemetryGeneration = LiveData.TelemetryGeneration;
                 InfiniteHistoryPolarChart(chart1);
             }
         }
@@ -284,7 +291,14 @@ namespace Physics_Data_Debug
             Series series = chart.Series[CurrentSeriesName];
             int limit = Math.Max(2, FormGForceSettings.HistoryAmountPoints);
             var colors = Palette;
-            // Reconfigure the previous live marker as an ordinary trail dot.
+            double angle = FormGForceSettings.X1AngleType == "Degrees"
+                ? LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "Body_XZGAngleDeg"))
+                : LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZGAngleRad"));
+            double magnitude = Math.Round(
+                LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZG")), 2);
+            if (double.IsNaN(angle) || double.IsInfinity(angle) ||
+                double.IsNaN(magnitude) || double.IsInfinity(magnitude)) return;
+            // Preserve the last good live marker if the new sample is missing.
             if (series.Points.Count > 0)
             {
                 DataPoint previous = series.Points[series.Points.Count - 1];
@@ -292,12 +306,6 @@ namespace Physics_Data_Debug
                 previous.MarkerColor = HistoryColor(previous.YValues[0], colors);
                 previous.IsValueShownAsLabel = false;
             }
-
-            double angle = FormGForceSettings.X1AngleType == "Degrees"
-                ? LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "Body_XZGAngleDeg"))
-                : LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZGAngleRad"));
-            double magnitude = Math.Round(
-                LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "XZG")), 2);
             series.Points.AddXY(angle, magnitude);
             while (series.Points.Count > limit)
                 series.Points.RemoveAt(0);
@@ -387,10 +395,11 @@ namespace Physics_Data_Debug
         public static void PlotUpDownChart(Chart chart)
         {
             Series series = chart.Series[CurrentSeriesName];
-            series.Points.Clear();
-            series.Color = FormGForceSettings.MarkerColor;
             double value = Math.Round(
                 LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_BodyAccelDataOffset", "YG")), 2);
+            if (double.IsNaN(value) || double.IsInfinity(value)) return;
+            series.Points.Clear();
+            series.Color = FormGForceSettings.MarkerColor;
             series.Points.AddXY(0.3, value);
             series.Points.AddXY(0.7, value);
             series.Points[series.Points.Count - 1].IsValueShownAsLabel = true;

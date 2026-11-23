@@ -102,7 +102,8 @@ namespace Physics_Data_Debug
 
         public void LogToFile()
         {
-            if (!LiveData.Logging || !timer.IsRunning || writer == null) return;
+            if (!LiveData.Logging || !timer.IsRunning || writer == null ||
+                !LiveData.RaceTimeAdvanced || !LiveData.RaceTimeAvailable) return;
             CheckLimits();
             if (!timer.IsRunning) return;
             for (int i = 0; i < filters.Length; i++)
@@ -114,7 +115,18 @@ namespace Physics_Data_Debug
                 if (double.IsNaN(value) || double.IsInfinity(value) ||
                     (filters[i].Outside ? inside : !inside)) return;
             }
-            string line = LogData.ValuesLine(columns, delimiter);
+            // Read selected channels only once: the same values are validated
+            // and written, so partially unavailable samples never become log rows.
+            var textValues = new string[columns.Length];
+            for (int i = 0; i < columns.Length; i++)
+            {
+                object raw = columns[i].Read();
+                if (raw == null) return;
+                double value = Convert.ToDouble(raw, CultureInfo.InvariantCulture);
+                if (double.IsNaN(value) || double.IsInfinity(value)) return;
+                textValues[i] = Convert.ToString(raw, CultureInfo.InvariantCulture);
+            }
+            string line = string.Join(delimiter.ToString(), textValues);
             long size = LineBytes(line);
             if (limitBytes > 0 && writtenBytes + size > limitBytes)
             {

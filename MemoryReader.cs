@@ -14,6 +14,10 @@ namespace Physics_Data_Debug
         // Unconfigured gaps are never consumed. Share one read-only placeholder
         // rather than allocating hundreds of small arrays per wheel and tick.
         private static readonly byte[] UnreadFourBytes = new byte[sizeof(float)];
+        // Missing Wreckfest structures are common while the game is in its menu.
+        // One shared sentinel distinguishes unavailable fields from legitimate zeroes,
+        // including int32 fields such as RaceTime.
+        internal static readonly byte[] UnavailableFourBytes = BitConverter.GetBytes(float.NaN);
         private readonly ulong moduleBase;
         public Process TargetProcess => process;
 
@@ -181,6 +185,38 @@ namespace Physics_Data_Debug
                 sideOffset, extraOffsets, start, size, GameMemoryConfig.ReadRanges(chunkGroup));
         }
 
+        private ulong NextPointerAddress(ulong address, int offset)
+        {
+            // Null pointers are normal until an in-race object has been created.
+            // Do not dereference null + a field offset (e.g. 0x38).
+            ulong pointer = ReadMemory<ulong>(address);
+            if (pointer < 0x10000UL)
+                throw new Win32Exception(487, "Wreckfest telemetry pointer is not initialized.");
+            return unchecked(pointer + (ulong)unchecked((uint)offset));
+        }
+
+        private static List<byte[]> UnavailableChunk(int size)
+        {
+            var chunk = new List<byte[]>(size / sizeof(float));
+            for (int i = 0; i < size / sizeof(float); i++) chunk.Add(UnavailableFourBytes);
+            return chunk;
+        }
+
+        private List<byte[]> ReadOptionalChunk(TelemetryMemorySnapshot sample, string section,
+            string baseName, long versionShift, string sideGroup, string sideName,
+            string chunkGroup, string extraPointerName = null)
+        {
+            try { return ReadChunk(baseName, versionShift, sideGroup, sideName, chunkGroup, extraPointerName); }
+            catch (Win32Exception)
+            {
+                // Read the remaining independent memory sections on this tick.
+                // The next tick retries the actual pointer; no stale data is reused.
+                sample.UnavailableSections++;
+                if (sample.FirstUnavailableSection == null) sample.FirstUnavailableSection = section;
+                return UnavailableChunk(GameMemoryConfig.Int(chunkGroup, "ChunkSize"));
+            }
+        }
+
         private List<byte[]> ReadSparseMemoryChunk(ulong baseAddress, long versionShift,
             int sideOffset, int[] extraOffsets, int start, int size,
             IReadOnlyList<MemoryReadRange> ranges)
@@ -192,8 +228,8 @@ namespace Physics_Data_Debug
             ulong address = GetBaseAddress(unchecked((ulong)((long)baseAddress + versionShift)));
             // Each pointerOffsets entry dereferences the previous address.
             foreach (int offset in extraOffsets)
-                address = unchecked(ReadMemory<ulong>(address) + (ulong)unchecked((uint)offset));
-            address = unchecked(ReadMemory<ulong>(address) + (ulong)unchecked((uint)sideOffset));
+                address = NextPointerAddress(address, offset);
+            address = NextPointerAddress(address, sideOffset);
             var result = new List<byte[]>(size / sizeof(float));
             for (int i = 0; i < size / sizeof(float); i++) result.Add(UnreadFourBytes);
             foreach (MemoryReadRange range in ranges)
@@ -233,41 +269,54 @@ namespace Physics_Data_Debug
             var sample = new TelemetryMemorySnapshot();
             GetTimingSpan(out int timingStart, out int timingSize);
             sample.TimingStart = timingStart;
-            sample.Timing = ReadSparseMemoryChunk(GameMemoryConfig.Address("RaceTime"), baseShift,
-                0, Array.Empty<int>(), timingStart, timingSize,
-                GameMemoryConfig.ReadRanges("WF_TimeDataOffset"));
+            try
+            {
+                sample.Timing = ReadSparseMemoryChunk(GameMemoryConfig.Address("RaceTime"), baseShift,
+                    0, Array.Empty<int>(), timingStart, timingSize,
+                    GameMemoryConfig.ReadRanges("WF_TimeDataOffset"));
+                sample.TimingAvailable = true;
+            }
+            catch (Win32Exception)
+            {
+                sample.Timing = UnavailableChunk(timingSize);
+                sample.UnavailableSections++;
+                sample.FirstUnavailableSection = "RaceTime";
+            }
 
-            sample.BodyMass = ReadChunk("Suspension2", baseShift,
+            // Menu-time engine/body data may be accessible before tire and
+            // suspension objects exist. A missing section must not cancel the
+            // complete snapshot or disconnect the reader.
+            sample.BodyMass = ReadOptionalChunk(sample, "Body mass", "Suspension2", baseShift,
                 "WF_BodyMassSide", "AllSides", "WF_MassDataChunks");
-            sample.BodyRotation = ReadChunk("BodyLocationHeading", baseShift,
+            sample.BodyRotation = ReadOptionalChunk(sample, "Body rotation", "BodyLocationHeading", baseShift,
                 "WF_BodyRotationSide", "AllSides", "WF_BodyRotationChunks", "Offset1");
-            sample.BodyAcceleration = ReadChunk("Acceleration", baseShift,
+            sample.BodyAcceleration = ReadOptionalChunk(sample, "Acceleration", "Acceleration", baseShift,
                 "WF_BodyAccelSide", "AllSides", "WF_BodyAccelDataChunks");
-            sample.BodyAero = ReadChunk("Aero", baseShift,
+            sample.BodyAero = ReadOptionalChunk(sample, "Aerodynamics", "Aero", baseShift,
                 "WF_AeroSide", "AllSides", "WF_AeroDataChunks");
-            sample.Engine = ReadChunk("Engine", baseShift,
+            sample.Engine = ReadOptionalChunk(sample, "Engine", "Engine", baseShift,
                 "WF_EngineSide", "AllSides", "WF_EngineDataChunks");
-            sample.Differential = ReadChunk("Differential", baseShift,
+            sample.Differential = ReadOptionalChunk(sample, "Differential", "Differential", baseShift,
                 "WF_DifferentialSide", "Left", "WF_DifferentialDataChunks");
 
-            sample.FrontLeft = ReadWheel("FL", baseShift);
-            sample.FrontRight = ReadWheel("FR", baseShift);
-            sample.RearLeft = ReadWheel("RL", baseShift);
-            sample.RearRight = ReadWheel("RR", baseShift);
+            sample.FrontLeft = ReadWheel(sample, "FL", baseShift);
+            sample.FrontRight = ReadWheel(sample, "FR", baseShift);
+            sample.RearLeft = ReadWheel(sample, "RL", baseShift);
+            sample.RearRight = ReadWheel(sample, "RR", baseShift);
             return sample;
         }
 
-        private WheelMemoryBlock ReadWheel(string wheel, long versionShift)
+        private WheelMemoryBlock ReadWheel(TelemetryMemorySnapshot sample, string wheel, long versionShift)
         {
             return new WheelMemoryBlock
             {
-                Tire = ReadChunk("Tire", versionShift,
+                Tire = ReadOptionalChunk(sample, wheel + " tire", "Tire", versionShift,
                     "WF_TireSide", wheel, "WF_TireDataChunks", "Offset1"),
-                Suspension = ReadChunk("Suspension1", versionShift,
+                Suspension = ReadOptionalChunk(sample, wheel + " suspension", "Suspension1", versionShift,
                     "WF_Suspension1DataSideOffset", wheel, "WF_Suspension1DataChunks"),
-                Geometry = ReadChunk("SuspensionGeometry", versionShift,
+                Geometry = ReadOptionalChunk(sample, wheel + " geometry", "SuspensionGeometry", versionShift,
                     "WF_SuspensionGeometrySideOffsets", wheel, "WF_SuspensionGeometryDataChunks"),
-                Suspension2 = ReadChunk("Suspension2", versionShift,
+                Suspension2 = ReadOptionalChunk(sample, wheel + " suspension 2", "Suspension2", versionShift,
                     "WF_Suspension2DataSideOffset", wheel, "WF_Suspension2DataChunks")
             };
         }
@@ -338,6 +387,9 @@ namespace Physics_Data_Debug
     internal sealed class TelemetryMemorySnapshot
     {
         public int TimingStart;
+        public bool TimingAvailable;
+        public int UnavailableSections;
+        public string FirstUnavailableSection;
         public List<byte[]> Timing;
         public List<byte[]> BodyRotation, BodyAcceleration, BodyAero, BodyMass;
         public List<byte[]> Engine, Differential;

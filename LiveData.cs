@@ -26,6 +26,14 @@ namespace Physics_Data_Debug
         #region Data
         public static int None { get; set; } = 1;
         public static int RaceTime { get; set; }
+        // The memory reader keeps sampling menu-visible telemetry even when RaceTime
+        // is stopped. Only race-scoped charts and logging use this gate.
+        public static bool RaceTimeAvailable { get; private set; }
+        public static bool RaceTimeAdvanced { get; private set; }
+        public static int UnavailableMemorySections { get; private set; }
+        public static string FirstUnavailableMemorySection { get; private set; } = "";
+        private static bool previousRaceTimeValid;
+        private static int previousRaceTime;
         public static List<byte[]> Timing_TimeData { get; set; }
         private static int TimingDataStart;
         public static List<byte[]> Body_RotationData { get; set; }
@@ -69,6 +77,19 @@ namespace Physics_Data_Debug
         {
             reader?.Close();
             reader = null;
+            ResetRaceClock();
+        }
+
+        private static void ResetRaceClock()
+        {
+            RaceTime = 0;
+            ElapsedTime = 0;
+            RaceTimeAvailable = false;
+            RaceTimeAdvanced = false;
+            previousRaceTimeValid = false;
+            previousRaceTime = 0;
+            UnavailableMemorySections = 0;
+            FirstUnavailableMemorySection = "";
         }
 
         public static readonly int[] RaceTimeArray = new int[3];
@@ -188,9 +209,13 @@ namespace Physics_Data_Debug
         }
         public static int GetElapsedTime()
         {
-            RaceTimeArray[RaceTimeArray.Length - 1] = RaceTime;
-            Array.Copy(RaceTimeArray, 1, RaceTimeArray, 0, RaceTimeArray.Length - 1);
-            return RaceTimeArray[1] - RaceTimeArray[0];
+            // A newly attached, unreadable, paused or reset race clock must not
+            // produce a phantom sample. A reset becomes the new baseline.
+            long delta = previousRaceTimeValid && RaceTimeAvailable
+                ? (long)RaceTime - previousRaceTime : 0L;
+            previousRaceTime = RaceTime;
+            previousRaceTimeValid = RaceTimeAvailable;
+            return delta > 0L ? (int)Math.Min(delta, int.MaxValue) : 0;
         }
 
         /// <summary>Initialize the telemetry lists in their stable prefix order.</summary>
@@ -228,10 +253,13 @@ namespace Physics_Data_Debug
                 GameMemoryConfig.Int("WF_AeroDataChunks", "DataStart"), Body_AeroData,
                 GameMemoryConfig.Int("WF_MassDataChunks", "DataStart"), Body_MassData);
             UpdateTimingDataValues(TelemetryPrefix.Timing, FullDataList, TimingDataStart, Timing_TimeData);
-            RaceTime = (int)GetFullListDataValue(TelemetryPrefix.Timing,
-                GameMemoryConfig.Field("WF_TimeDataOffset", "RaceTime"));
-            // Time between ticks is only meaningful while the in-game clock advances.
+            if (RaceTimeAvailable)
+                RaceTime = (int)GetFullListDataValue(TelemetryPrefix.Timing,
+                    GameMemoryConfig.Field("WF_TimeDataOffset", "RaceTime"));
+            else RaceTime = 0;
+            // Paused/menu time does not block refreshing any other measurement.
             ElapsedTime = GetElapsedTime();
+            RaceTimeAdvanced = RaceTimeAvailable && ElapsedTime > 0;
 
             // All four wheels use the same chunk starts. Resolve them once per
             // sample, while still honoring any newly selected game profile.
@@ -261,6 +289,9 @@ namespace Physics_Data_Debug
         {
             if (reader == null) return;
             TelemetryMemorySnapshot sample = reader.ReadSample(baseAddrUpdt);
+            RaceTimeAvailable = sample.TimingAvailable;
+            UnavailableMemorySections = sample.UnavailableSections;
+            FirstUnavailableMemorySection = sample.FirstUnavailableSection ?? "";
             unchecked { TelemetryGeneration++; }
 
             TimingDataStart = sample.TimingStart;
@@ -309,6 +340,12 @@ namespace Physics_Data_Debug
                 if (index < 0 || index >= byteData.Count)
                     throw new InvalidOperationException("Configured offset for " + group + "." + memberName + " is outside its memory chunk.");
                 byte[] valueByteArray = byteData[index];
+                if (ReferenceEquals(valueByteArray, MemoryReader.UnavailableFourBytes))
+                {
+                    target[ii].Value = double.NaN;
+                    ii++;
+                    continue;
+                }
                 if (GameMemoryConfig.IsInt32Field(group, memberName))
                 { target[ii].Value = BitConverter.ToInt32(valueByteArray, 0); }
                 else

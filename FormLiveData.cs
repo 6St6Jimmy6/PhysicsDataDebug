@@ -693,7 +693,9 @@ namespace Physics_Data_Debug
                 return;
             }
             ValuesGet = true;
-            try { dataLogger.LogToFile(); }
+            // Continue updating the JSON-driven monitor in the menu. Only
+            // record samples when the in-game RaceTime has advanced.
+            try { if (LiveData.RaceTimeAdvanced) dataLogger.LogToFile(); }
             catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException ||
                                        ex is InvalidOperationException || ex is System.Security.SecurityException)
             {
@@ -712,7 +714,12 @@ namespace Physics_Data_Debug
             // The old fixed-label refresh would have updated unused legacy controls
             // and eagerly calculated values that were not selected.
             UpdateMonitorValues();
-            TickTime.Text = "Tick time " + LiveData.ElapsedTime + " ms";
+            TickTime.Text = LiveData.RaceTimeAdvanced
+                ? "Race tick " + LiveData.ElapsedTime + " ms"
+                : (LiveData.RaceTimeAvailable ? "RaceTime paused / menu" : "RaceTime unavailable");
+            if (LiveData.UnavailableMemorySections > 0)
+                TickTime.Text += " | " + LiveData.UnavailableMemorySections +
+                    " memory sections unavailable (" + LiveData.FirstUnavailableMemorySection + ")";
             if (!dataLogger.IsRunning && !string.IsNullOrEmpty(dataLogger.LastStopReason))
                 TickTime.Text += " | Logging stopped: " + dataLogger.LastStopReason;
             timer1.Interval = LiveData.TickInterval;
