@@ -25,21 +25,21 @@ Each viewport initially fits its own axle geometry, then locks its camera framin
 
 ## Legend
 
-Each 3D viewport can show a compact legend overlay. It explains the main suspension colors and the most important markers:
+Each 3D viewport can show a compact legend overlay when valid geometry is available. Legend is enabled by default. The overlay may omit lower entries when the viewport is too short; enlarge the window or use the point hover tooltips to inspect individual markers. It explains the main suspension colors and the most important markers:
 
 - **Upper arm** — teal
 - **Lower arm** — orange
 - **Steering rod** — red/pink
 - **Push rod** — purple
-- **Upright / hub** — light grey
+- **Upright / hub** — light grey upright and darker grey hub link
 - **Left wheel / tire** — green
 - **Right wheel / tire** — blue
-- **Colored pickup point** — arm/body/spindle joint markers
-- **Wheel pivot** — the tire pivot point used as the spindle/tire reference
-- **XY instant center (projected)** — projected front-view instant-center construction
-- **XY roll center (projected)** — projected axle roll-center construction
-- **Vehicle CoM height** — center-of-mass height marker
-- **Axes** — `X` lateral, `Y` vertical, `Z` longitudinal
+- **Colored pickup point** — arm/body/spindle joint markers use their corresponding arm color; the legend uses a neutral example dot
+- **Wheel pivot** — the tire pivot point used as the spindle/tire reference; green for left, blue for right
+- **XY instant center (projected)** — grey-blue dot, projected front-view instant-center construction
+- **XY roll center (projected)** — lime green dot, projected axle roll-center construction
+- **Vehicle CoM height** — bright light-green dot, center-of-mass height marker
+- **Axes** — `X` lateral (red), `Y` vertical (green), `Z` longitudinal (blue), shown with Grid enabled
 
 The projected instant center and roll center are still the existing **XY constructions** placed into the 3D drawing for reference. They are not full 3D kinematic solutions.
 
@@ -64,4 +64,4 @@ The normal per-form `JsonFormSettings` system saves all toolbar numeric inputs a
 
 ## Testing notes
 
-After rebuilding the .NET Framework 4.7.2 solution in Visual Studio, verify the Designer, try all view presets, orbit/zoom and tooltip display in game, and watch the geometry move under steering and suspension load. In particular, compare `Rotate spindle offsets` on/off: axis conventions may need tuning with real telemetry. Windows runtime and live Wreckfest correctness have not been tested by this documentation change.
+After rebuilding the .NET Framework 4.7.2 solution in Visual Studio, verify the Designer, try all view presets, orbit/zoom and tooltip display in game, and watch the geometry move under steering and suspension load. In particular, compare `Rotate spindle offsets` on/off: axis conventions may need tuning with real telemetry. Also verify the Legend toggle, its saved state after restarting, and that all legend entries fit at your normal viewport size. Windows compilation, runtime rendering and live Wreckfest correctness have not been verified in this documentation audit.

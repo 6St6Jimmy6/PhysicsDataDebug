@@ -1,5 +1,7 @@
 # G-Force X/Y Arial default selection fix (17 Nov 2026)
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Root cause
 
 The X and Y default values were already declared as `new FontFamily("Arial")`, but the fonts are data-bound `FontFamily` instances. Setting `ComboBox.SelectedItem` to a separately instantiated FontFamily object was not reliable; the list could keep its first installed font (such as Agency FB). The original `CheckedChanged` handlers also changed only static flags, not the visible font selection. Old autosave/factory profile values could then restore an unintended font while the Defaults checkbox remained checked.

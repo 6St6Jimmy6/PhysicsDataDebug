@@ -1,5 +1,7 @@
 # Live Data layout is now editable in the Visual Studio Designer
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 This revision is based on the user-supplied `PhysicsDataDebug(1).zip` and retains
 its hand-tuned `FormRowLayout` constants, telemetry control names, and settings.
 

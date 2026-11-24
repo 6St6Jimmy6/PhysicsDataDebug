@@ -1,5 +1,7 @@
 # Telemetry formulas cleanup — 2026-11-14
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 This update continues from `PhysicsDataDebug_MemoryReader_Refactor_2026-11-12.zip`.
 
 ## Fixed

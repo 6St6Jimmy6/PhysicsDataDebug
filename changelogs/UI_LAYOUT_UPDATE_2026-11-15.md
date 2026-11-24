@@ -1,5 +1,7 @@
 # WinForms UI layout changes — 2026-11-15
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 Changes are in the Designer-visible controls and their backing code.
 
 ## Form4Wheels

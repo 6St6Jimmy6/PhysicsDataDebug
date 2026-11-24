@@ -1,5 +1,7 @@
 # Four Wheels settings designer conversion
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 - `Form4WheelsSettings.Designer.cs` owns every row, label, input, top action bar and Profiles host.
 - No controls are repositioned or created by `ArrangeLiveSettings()` at runtime. That method and the former dynamic layout class have been removed.
 - Edit `settingsSectionsLayout` columns in the WinForms Designer, or open `settingsSidebarPanel`, `xAxisSettingsPanel`, `yAxisSettingsPanel`, and `zAxisSettingsPanel` in Document Outline to select each row.

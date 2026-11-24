@@ -1,5 +1,7 @@
 # Memory reader / static-state refactor (2026-11-12)
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Structure
 
 - `MemoryReader.cs` replaces `MemoryHelper.cs` in the project. `Physics_Data_Debug.MemoryReader` is an **instance** attached to one Wreckfest process; it owns the process connection and its cached handle and module base.

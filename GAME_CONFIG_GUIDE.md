@@ -25,8 +25,7 @@ while memory capture is stopped. Alternatively restart the app.
 
 Store any number of named game-memory JSON files in the Settings folder, for
 example `WreckfestGameMemoryConfig.json` and
-`WreckfestBetaGameMemoryConfig.json`. On the Live Data form, next to **Select
-Game Version**, use **Config ▼**:
+`WreckfestBetaGameMemoryConfig.json`. On the Live Data form, in **Game version and configuration**, use **Config ▼**:
 
 - **Load game configuration...** — select any JSON. If it is outside the
   Settings folder, a uniquely named copy is imported there first.
@@ -42,8 +41,7 @@ before switching. The available game versions and telemetry lists rebuild
 from the newly loaded configuration. The selected filename is recorded in
 `ActiveGameMemoryConfig.json` and restored automatically on later launches.
 The regular `FormLiveData.json` independently remembers which **version** you
-selected within that configuration. The original offsets and version options
-are unchanged.
+selected within that configuration. The selected configuration supplies its own offsets and version options.
 
 `ActiveGameMemoryConfig.json` is also editable. For example:
 
@@ -243,7 +241,7 @@ The reader determines each category's minimum/maximum configured raw offsets
 and builds small, contiguous read ranges from neighboring fields. It no longer
 reads all the unused bytes between far-away offsets. It preserves a virtual
 indexed 4-byte layout internally so the existing charts and formulas continue
-to resolve field positions correctly.
+to resolve raw field positions correctly. Calculated fields do not occupy raw memory slots. `LiveData` caches raw field decoding plans and `MemoryReader` caches the timing span, invalidating these caches on memory-layout revision changes.
 
 The optional `readOptimization` section controls how nearby reads merge:
 

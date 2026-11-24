@@ -1,5 +1,7 @@
 # Live/Offline/G-Force layout corrections (2026-11-17)
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 - Form4Wheels: action buttons now auto-size to text with explicit minimum widths and padding. Existing no-wrap scrolling toolbar and right-hand Profiles host remain.
 - FormOfflineChart: designer-owned `toolbarLayout` (2 columns x 2 rows) with `toolbarButtonsFlow` and a dedicated right-hand `SettingsProfilesHost`; file list spans the entire second row. No obsolete manual toolbar resize handler. Profiles remain visible while the left action row scrolls if necessary.
 - FormOfflineChart: GroupBox backgrounds explicitly black.

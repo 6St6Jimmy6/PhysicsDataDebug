@@ -20,18 +20,20 @@ examples include:
 | --- | --- |
 | `FormLiveData.json` | Game-version selection, refresh interval, window settings |
 | `LiveMonitorSelections.json` | Selected measurements in the JSON-driven Live Data monitor (separate from per-form snapshots) |
-| `Form4Wheels.json` | Live chart controls, limiter states and window settings |
-| `Form4WheelsSettings.json` | X/Y/Z measurements, chart appearance, dataset layout and related settings |
+| `Form4Wheels.json` | Live chart window settings and captured Settings-owned limiter states |
+| `Form4WheelsSettings.json` | X/Y/Z measurements, chart appearance, dataset layout and Settings-owned filters |
 | `FormGForceSettings.json` | G-Force axis and appearance options |
-| `FormOfflineChart.json` | Offline chart window and filter controls |
-| `FormOfflineChartSettings.json` | Offline axis, dataset layout, appearance and cursor settings |
+| `FormOfflineChart.json` | Offline chart window and captured Settings-owned filter states |
+| `FormOfflineChartSettings.json` | Offline axis, dataset layout, appearance, cursor settings and Settings-owned filters |
 | `FormLogSettings.json` | Logging-tree field selection, output folder, delimiter, ten filters and time/size limits |
 | `FormLiveTimeChart.json` | Up to five plotted measurements, enabled lanes and individual wheel visibility |
 | `FormLiveTimeChartSettings.json` | Time window, time units, update interval, colors, grid and per-lane Y ranges |
-| `FormSuspensionGeometry.json` | Geometry chart axis bounds and update interval |
+| `FormSuspensionGeometry.json` | 3D camera azimuth/elevation/zoom, refresh interval, perspective, grid, point names, legend and spindle rotation |
 
 This table lists the relevant current implementations, not a guarantee that
 every file exists before its form has been used.
+
+The live and offline filter rows now belong directly to their respective Settings designers. `JsonFormSettings` also captures/restores those rows through the main chart snapshot to preserve existing filter keys and profiles. Normal chart-appearance restoration skips filter controls until the chart restores its filters. No manual relocation of old filter keys is required. Older settings without the new `legendCheckBox` key retain the Suspension Geometry Designer default (checked).
 
 **Game memory:** `WreckfestGameMemoryConfig.json` supplies versions, addresses,
 raw/calculated fields and defaults. The active configuration filename is

@@ -12,8 +12,10 @@ fields have **no physical memory offset**.
 - A derived field normally has an `expression`. During configuration loading,
   `GameMemoryConfig.cs` parses the entries, `TelemetryExpression.cs` compiles the
   expressions, and `TelemetryFormulas.cs` validates their dependencies.
-- `CalculatedTelemetry.cs` maintains compatibility with older calculated-field
-  indexes and names. It is **not** the place where a new schema 2 arithmetic
+- `CalculatedTelemetry.cs` maintains ordered calculated-field names, including
+  legacy built-ins and JSON extensions. The obsolete calculated-field memory
+  indexes have been removed; a calculated `DataItem` has no raw memory index.
+  It is **not** the place where a new schema 2 arithmetic
   formula must be registered.
 - The supplied configuration contains **56** calculated fields: **55 JSON
   expressions**, and the specialized `Log10aT` WLF calculation marked
@@ -29,7 +31,10 @@ offsets in each category. The `readOptimization.maxGapBytes` and
 `readOptimization.maxReadBytes` options control how close fields are grouped.
 A virtual four-byte indexed layout is retained for older `LiveData` consumers;
 this does **not** mean the reader still fetches one fixed chunk for every
-category. Calculations are evaluated when a chart, log column, filter, or
+category. `LiveData` caches raw field offset/type read plans and `MemoryReader`
+caches the timing span, keyed by the memory-layout revision. Plans are rebuilt
+after a configuration or version change. The shared lookup caches retain
+canonical and group-qualified names. Calculations are evaluated when a chart, log column, filter, or
 monitor requests them, rather than eagerly materializing all calculated fields.
 
 Adding a new field to an existing configured category generally requires only

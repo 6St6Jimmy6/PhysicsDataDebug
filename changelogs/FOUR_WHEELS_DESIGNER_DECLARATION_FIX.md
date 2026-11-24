@@ -1,5 +1,7 @@
 # Four Wheels Settings — Visual Studio Designer control declaration fix
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 The previous version initialized 21 live chart appearance controls in `Form4WheelsSettings.Designer.cs` but declared their private fields in `Form4WheelsSettings.Appearance.cs`. It also declared `gradientStepsNumericUpDown` in `Form4WheelsSettings.cs`. Although C# partial classes compile in this arrangement, the WinForms Designer could not resolve the fields while loading the form.
 
 ## Fix

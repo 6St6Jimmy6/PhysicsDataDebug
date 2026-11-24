@@ -1,5 +1,7 @@
 # Settings designer layout update — 2026-11-17
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Forms changed
 
 - `FormOfflineChartSettings.Designer.cs`: 4 equally sized chart/data, X, Y and Z/color columns; 37 rows, including 28 named horizontal 2-setting groups. Original 65 setting panel wrappers have been kept and moved into designer-owned TableLayoutPanels. The old one-setting-per-row FlowLayoutPanels were replaced by designer-owned, scrollable TableLayoutPanels.

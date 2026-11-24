@@ -1,5 +1,7 @@
 # Live chart-area headers
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 The fixed pixel-positioned wheel labels above `Form4Wheels.chart1` have been removed.
 `Form4Wheels.SetChartsForForm()` now attaches a `Title` to each created `ChartArea`
 using `DockedToChartArea` and `IsDockedInsideChartArea = false`. Titles

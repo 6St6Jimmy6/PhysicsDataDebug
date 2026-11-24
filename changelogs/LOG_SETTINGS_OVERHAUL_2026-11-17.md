@@ -1,5 +1,7 @@
 # Logging settings overhaul
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## New selection model
 - The `checkedListBoxLogging` choices come from the active `WreckfestGameMemoryConfig.json` through `GameMemoryConfig.Members(...)`, rather than the 29 old hardcoded designer entries.
 - Covers timing, body rotation, body acceleration, aero, body mass, engine, differential, tire, suspension 1, suspension geometry, and suspension 2, including calculated fields registered by `CalculatedTelemetry`.

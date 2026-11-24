@@ -1,5 +1,7 @@
 # FormLogSettings WinForms Designer fix
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Root cause
 Visual Studio could not load the project-specific `Physics_Data_Debug.LogFilterRow` for the ten filter rows.
 When that type could not resolve from the design-time assembly, the form Designer also marked all ten dependent fields as unassigned.

@@ -1,5 +1,7 @@
 # Tire / Suspension Static Values – Designer layout update
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 Both static-value pages are now laid out **entirely in their `.Designer.cs` files**. The old
 `FormPanelLayout.OrganizeWheelValues` calls were removed from their constructors.
 Their former fixed screen positions are no longer consulted at runtime.

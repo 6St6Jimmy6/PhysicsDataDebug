@@ -1,5 +1,7 @@
 # Suspension Geometry layout / axis update
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 - Removed four unused, oversized geometry TextBoxes (FL/FR/RL/RR); these were made visible on startup and forced the form to scroll.
 - Removed the two empty ChartAreas (`Left`, `Right`) added after `FrontSuspension` and `RearSuspension`.
 - Replaced fixed chart positioning with `DockStyle.Fill` and `AutoScroll = false`.

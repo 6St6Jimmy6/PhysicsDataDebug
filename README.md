@@ -4,7 +4,9 @@ A Windows desktop application for inspecting, charting, and logging physics tele
 
 The application also includes an **Offline Four Wheels / CSV Chart**, which can plot imported files without connecting to the game.
 
-## Example pictures (4 wheels is  bit outdated outdated)
+## Example pictures
+
+These screenshots are from earlier builds; the current layout may differ.
 ![LiveData page](https://github.com/user-attachments/assets/ac6a893e-7061-4b0f-8282-2e17cbecb5c4)
 ![4wheels_gradient](https://github.com/user-attachments/assets/b9b06097-d5fb-41b0-ab7a-59061e778523)
 
@@ -37,7 +39,7 @@ The application also includes an **Offline Four Wheels / CSV Chart**, which can 
 - **Tire Static Values** — tire dimensions, spring/damper, thermal, and mass/inertia data.
 - **Suspension Static Values** — spring, travel-limit, damping/rebound, and bump-stop data.
 - **Suspension Geometry** — front and rear suspension geometry visualization.
-- **Live Time Chart** (`FormTireTemperatures`) — up to five stacked telemetry plots sharing RaceTime.
+- **Live Time Chart** (`FormLiveTimeChart`) — up to five stacked telemetry plots sharing RaceTime.
 - **Offline Four Wheels / CSV Chart** — imported-file plotting without a live game connection.
 - **Log Settings** — choose recorded channels, filters, output directory, and logging limits.
 
@@ -66,7 +68,7 @@ The live **Four Wheels** chart supports:
 
 **Measurement choice is independent of dataset layout.** Select a wheel measurement once—for example, `SlipRatio`, `SlipAngleDeg`, or `LateralFriction`—and the dataset layout determines which of **FL / FR / RL / RR** is drawn and where. Single-wheel layouts use the same unprefixed wheel choices. Shared measurements remain prefixed, such as `ENG_RPM`, `BODY_YawDeg`, and `TIME_RaceTime`.
 
-`Form4WheelsSettings` uses dark, Designer-editable setting groups. Its **Chart Settings** tab holds the appearance and axis controls. Its **Filters** tab holds all 13 filters and their **Apply Filters** action; the filter controls are no longer on the main chart window. Chart settings have separate **Apply Chart Settings** and **Clear Charts and Apply** actions, allowing changes without necessarily discarding history.
+`Form4WheelsSettings` uses dark, Designer-editable setting groups. Its **Chart Settings** tab holds the appearance and axis controls. Its **Filters** tab holds all 13 filters and the live-only **No tire contact limiter**; use **Apply Filters** in the Settings action bar. The filter rows are owned by the Settings Designer, not the main chart window. Chart settings have separate **Apply Chart Settings** and **Clear Charts and Apply** actions, allowing changes without necessarily discarding history. Live and offline Cartesian axis lines inherit the parallel major grid's color, alpha, width and dash style; exterior tick marks are disabled.
 
 ### G-Force
 
@@ -94,19 +96,19 @@ Each wheel has its own scrolling region and labeled parameter groups. The groups
 `FormSuspensionGeometry` shows two **live 3D wireframe views** for the front (FL/FR) and rear (RL/RR) suspension. It uses X, Y, and Z positions for body-side suspension pickups, spindle-side joints, steering and push rods, wheel pivots and tire outlines. You can inspect the geometry from any angle.
 - **Left-drag** either view to rotate both front and rear cameras, **right/middle-drag** to pan a view, and use the **mouse wheel** to zoom. Hover over a joint to see its name and X/Y/Z coordinates in metres.
 - Toolbar controls adjust **Azimuth**, **Elevation**, **Zoom (%)**, and **Update (ms)**; preset **Front**, **Side**, **Top**, **Isometric**, and **Reset view** buttons restore useful viewpoints.
-- Toggle **Perspective**, the ground **Grid**, **Point names**, and **Rotate spindle offsets** (uses the game's tire orientation matrix to turn local spindle offsets into the wheel's orientation).
-- Green/cyan tire outlines distinguish left/right wheels. Upper arms, lower arms, steering rods, and pushrods have different colors. The previous 2D instant-center/roll-center calculations remain available as explicitly labeled **XY projections**, not as genuine 3D roll-axis solutions.
+- Toggle **Perspective**, the ground **Grid**, **Point names**, **Legend**, and **Rotate spindle offsets** (uses the game's tire orientation matrix to turn local spindle offsets into the wheel's orientation).
+- Green/blue tire outlines distinguish left/right wheels. Upper arms, lower arms, steering rods, and pushrods have different colors. The in-view legend identifies the arm colors, pickup points, wheel pivots, projected centers and vehicle center-of-mass height. The previous 2D instant-center/roll-center calculations remain available as explicitly labeled **XY projections**, not as genuine 3D roll-axis solutions.
 
 The update interval defaults to **100** ms and can be set from **10** to **10,000** ms. Camera settings and display choices are saved in `FormSuspensionGeometry.json`. The view continues to refresh available suspension data even when RaceTime is paused. Missing or invalid points are skipped instead of drawing them at zero.
-The 3D wireframe uses the existing vehicle-relative data conventions from the previous 2D chart. The tire-matrix rotation can be disabled for comparison with the original untranslated spindle offsets. See SUSPENSION_3D_GUIDE.md for usage and geometry assumptions.
+The 3D wireframe uses the existing vehicle-relative data conventions from the previous 2D chart. The tire-matrix rotation can be disabled for comparison with the original untranslated spindle offsets. See [SUSPENSION_3D_GUIDE.md](SUSPENSION_3D_GUIDE.md) for usage and geometry assumptions.
 
 ### Live Time Chart (previously Tire Temperatures)
 
-`FormTireTemperatures` now provides a **MoTeC-style live time history** rather than four fixed temperature plots. Up to **five** independently enabled plot lanes share one time axis. Every plot selects one measurement (for example `SlipRatio`, `TreadTemperature`, `ACC_XG`, or `ENG_RPM`) and displays any combination of **FL, FR, RL, RR** in that lane. Per-lane wheel checkboxes control visibility without changing the selected measurement. Shared vehicle telemetry is drawn once rather than duplicated across wheel channels.
+`FormLiveTimeChart` (formerly `FormTireTemperatures`) provides a **MoTeC-style live time history** rather than four fixed temperature plots. Up to **five** independently enabled plot lanes share one time axis. Every plot selects one measurement (for example `SlipRatio`, `TreadTemperature`, `ACC_XG`, or `ENG_RPM`) and displays any combination of **FL, FR, RL, RR** in that lane. Per-lane wheel checkboxes control visibility without changing the selected measurement. Shared vehicle telemetry is drawn once rather than duplicated across wheel channels.
 
 **X always uses `TIME_RaceTime`.** Wreckfest supplies it in **milliseconds**; the chart converts this to seconds internally and can label the X axis in seconds or minutes. The visible backwards-looking history window is adjustable in seconds or minutes. A new **Live Time Chart Settings** dialog controls the window, refresh rate, series type, line thickness and markers, grid and text appearance, independent wheel/vehicle colors (including custom hex colors), and automatic or fixed Y ranges for each plot.
 
-The chart provides **Start / Resume**, **Pause**, and **Clear History** actions. RaceTime pauses do not create duplicate points, and a RaceTime reset clears the previous session. Track choices and settings persist through the existing per-form JSON settings system.
+The chart provides **Resume**, **Pause**, and **Clear History** actions. RaceTime pauses do not create duplicate points, and a RaceTime reset clears the previous session. Track choices and settings persist through the existing per-form JSON settings system.
 
 See [LIVE_TIME_CHART_GUIDE.md](LIVE_TIME_CHART_GUIDE.md).
 
@@ -122,7 +124,7 @@ Use **Offline Chart** to visualize recorded or imported delimited telemetry with
 
 The selectors follow the same rule as live Four Wheels: a wheel measurement such as `SlipAngleDeg` appears **once**, without a wheel prefix. The dataset layout resolves `FL_SlipAngleDeg`, `FR_SlipAngleDeg`, `RL_SlipAngleDeg`, and `RR_SlipAngleDeg` from the imported file as needed. Shared measurements such as `TIME_RaceTime` keep their prefixes. Combined logs and older individual-wheel files are supported; imported file headers are not rewritten.
 
-**All 13 chart filters and the Apply Filters button are inside `FormOfflineChartSettings`**, between the Settings action controls and the other chart options—not on the main Offline Chart window. Applying filters changes the displayed points without altering the source file.
+**All 13 chart filter rows are owned by `FormOfflineChartSettings.Designer.cs`**, in the filter section below its action bar. **Apply Filters** is in that action bar; no filter panels are parked on the main Offline Chart window. Applying filters changes the displayed points without altering the source file.
 
 Some WinForms chart types require multiple Y values and cannot be rendered from a single X/Y/Z row; these combinations are reported instead of being treated as ordinary single-Y plots.
 
@@ -185,8 +187,8 @@ Where available, the **Profiles** menu allows you to:
 
 1. Save the current settings as a named profile.
 2. Load a previously saved profile.
-3. Restore factory defaults.
-4. Open the settings folder.
+3. Restore factory defaults or recover the previous autosave (`.bak`).
+4. Reset one form or all form settings/profiles (with archival and restart), or open the settings folder.
 
 Factory-default snapshots are created only if missing, so upgrading the program does not silently replace an existing baseline. On first use, legacy registry preferences may be imported into JSON; ongoing settings are stored in JSON rather than written back to the registry.
 
@@ -233,7 +235,7 @@ Most chart settings use a consistent dark theme, searchable ComboBoxes, and grou
 
 The grouped settings, tire/suspension static-value pages, and geometry toolbar are primarily **Designer-owned WinForms controls**. They can be inspected and rearranged through **Visual Studio → View → Other Windows → Document Outline**. Some dynamic measurement and filter choices are intentionally populated at runtime from the JSON configuration or imported file headers.
 
-The `tools` directory, if present in a source package, contains optional Python source-validation scripts. It is **not required** to build or run the application.
+The current source package has no `tools` directory. No Python validation scripts are required to build or run the application. The filter rows in both chart Settings designers share `ChartLimiterRow.Designer.cs`; `ChartLimiterRowHost.cs` is obsolete and absent from this build.
 
 ## Building and troubleshooting
 
@@ -255,7 +257,10 @@ If attaching or drawing geometry causes an exception, inspect the **exception ty
 - [LIVE_TIME_CHART_GUIDE.md](LIVE_TIME_CHART_GUIDE.md) — synchronized live time-history charts.
 - [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md) — prefixes, combined logs, and measurement selectors.
 - [LAZY_TELEMETRY_GUIDE.md](LAZY_TELEMETRY_GUIDE.md) — telemetry-reading architecture and performance.
-- [OPTIMIZATION_REVIEW.md](changelogs/OPTIMIZATION_REVIEW.md) — development notes and further refactoring opportunities.
+- [SUSPENSION_3D_GUIDE.md](SUSPENSION_3D_GUIDE.md) — 3D camera, geometry, legend and coordinate assumptions.
+- [REFACTOR_NOTES.md](REFACTOR_NOTES.md) — current refactoring and validation limitations.
+- [Current build changes](changelogs/CURRENT_BUILD_2026-11-24.md) — filter ownership, chart axes, 3D suspension and documentation.
+- [Historical changelogs](changelogs/README.md) — earlier implementation records, not current instructions.
 
 ## Acknowledgments
 

@@ -1,5 +1,7 @@
 # Four Wheels settings rows and toolbar appearance — 2026-11-16
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Cause of overwide settings controls
 
 The 65 Designer-owned measurement/settings rows were `Panel`s whose initial width was the WinForms default 200 px. Each row contained controls placed at x=12 with a width of 240 or 250 px and left/right anchoring. WinForms computed incorrect (negative) right-side anchor distances, so later resizing could make controls wider than their parent panels. This hid ComboBox dropdown arrows and could trigger horizontal scrolling.

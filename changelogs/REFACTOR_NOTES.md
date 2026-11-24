@@ -1,5 +1,7 @@
 # Four-wheel plotting refactor
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 The initial update refactored the **4 Wheels** plotting and color-gradient
 subsystem. Later work also covers the game-memory reader and G-force charts.
 

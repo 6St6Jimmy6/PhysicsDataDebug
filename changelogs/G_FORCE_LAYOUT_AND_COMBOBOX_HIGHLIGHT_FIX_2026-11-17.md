@@ -1,5 +1,7 @@
 # G-Force layout, settings alignment, and ComboBox highlight fix
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## FormGForceSettings
 - The form and X/Y chart settings default to Arial (instead of GenericSansSerif).
 - Labeled input controls use top/left/right anchoring instead of `DockStyle.Bottom`, so the last ComboBox stays immediately under its label if the form is enlarged.

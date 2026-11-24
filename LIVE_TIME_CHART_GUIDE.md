@@ -6,7 +6,7 @@ Open it from **Live Data > Live Time Chart** after connecting to Wreckfest with 
 
 ## What a plot represents
 
-- All plot lanes use the same X coordinate: **RaceTime** from the game, measured in milliseconds. The chart stores the X coordinate in seconds and can label it in **seconds or minutes**.
+- All plot lanes use the same X coordinate: **`TIME_RaceTime`** from the game, measured in milliseconds. The chart stores the X coordinate in seconds and can label it in **seconds or minutes**.
 - Check a plot number (1–5) to enable its chart area, then choose a **Y measurement** from the dropdown. Up to five enabled plots stack vertically, aligned to the same X axis. Only the bottom plot shows time labels.
 - For a wheel measurement such as `SlipAngleDeg`, that plot contains four individual series: `FL_`, `FR_`, `RL_`, `RR_`. The four checkboxes beside the selected field hide or show **that plot's** wheel series independently.
 - Shared vehicle measurements such as `ENG_RPM`, `ACC_XG`, and `TIME_RaceTime` appear only once in their plot. The wheel checkboxes are disabled for shared measurements.
@@ -36,7 +36,7 @@ Click **Apply Settings** to keep existing time samples while rebuilding the disp
 
 ## Live behavior
 
-- Start/Resume begins updating the chart; Pause stops chart sampling without clearing the screen. Clear History removes all retained samples.
+- Resume begins updating the chart; Pause stops chart sampling without clearing the screen. Clear History removes all retained samples.
 - The chart shows only the last `Visible history` amount. Older samples are discarded, and the maximum-points setting caps memory usage during very high sampling rates.
 - An unchanged RaceTime (paused game) does not create duplicate samples. A backwards jump in RaceTime (new race/session) clears the old data.
 - The game-memory sample refresh runs in the Live Data form. Changing the chart timer rate does **not** make Wreckfest memory refresh faster; it only changes how often the chart samples the latest available values.
@@ -46,7 +46,7 @@ Click **Apply Settings** to keep existing time samples while rebuilding the disp
 
 `FormLiveTimeChart` and `FormLiveTimeChartSettings` use standard WinForms controls (`Chart`, `TableLayoutPanel`, `ComboBox`, `CheckBox`, and `NumericUpDown`) owned by their `.Designer.cs` files. The individual five selector rows and grouped settings can be edited in Visual Studio Designer.
 
-The plotted values are resolved through `LogData.AllColumns` and `LiveData`;
+Retained samples use a value type with four wheel values rather than a separate array per sample. The plotted values are resolved through `LogData.AllColumns` and `LiveData`;
 calculated telemetry uses the active JSON schema 2 expressions and shared
 formula evaluator. No separate tire-temperature-only memory reader is
 required. Default chart areas and selector rows are represented in the

@@ -1,5 +1,7 @@
 # Live Four Wheels — compact Z legend and label precision
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 The live Four Wheels Z gradient legend now defaults to a compact **170 px** panel. The previous `Shown` handler increased the legend width by adding 175 px to the panel minimum, overriding the narrower Designer sizing. That handler has been replaced with a width application based on the user-selected setting.
 
 Open **Form4WheelsSettings → Z / Color Axis** for two new inputs:

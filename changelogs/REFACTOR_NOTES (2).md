@@ -13,13 +13,19 @@ Baseline: `PhysicsDataDebug(5).zip`. Target framework and language remain .NET F
 - Reused fixed wheel-selection lists and logging buffers; removed unused data-item metadata and a redundant log formatting method; reduced live time-chart sample allocations by storing four values in a value type.
 - Removed the unused G-force `SetArrays` compatibility stub. Disposed the offline settings font collection. Delayed the live scatter chart's timer until its first chart layout is ready.
 
-## Applying the changed-files archive
+## Subsequent changes in the current source
 
-Extract over the original source directory, replacing existing files. Delete `ChartLimiterRowHost.cs` manually; its Compile entry is already removed from the updated project. The full-source archive already omits it. Back up the original source before applying. The full-source archive excludes `.git`, `.vs`, `bin`, and `obj`; it is not a compiled binary release.
+- Live and offline Cartesian axes now use the parallel major grid style, with exterior major/minor ticks disabled (`ChartAppearance.cs`).
+- Suspension Geometry uses two interactive 3D wireframe viewports, with a Designer-owned toolbar, camera controls, point inspection and a toggleable legend. See [SUSPENSION_3D_GUIDE.md](SUSPENSION_3D_GUIDE.md).
+- The current documentation audit changes Markdown only; it does not constitute a new code refactoring or Windows build. See [current build changes](changelogs/CURRENT_BUILD_2026-11-24.md).
+
+## Applying the original refactoring changed-files archive
+
+For the original refactoring patch against `PhysicsDataDebug(5).zip`, extract over the original source directory, replacing existing files. The later documentation-only patch requires no source deletion and should be applied to the suspension-legend build. Delete `ChartLimiterRowHost.cs` manually; its Compile entry is already removed from the updated project. The full-source archive already omits it. Back up the original source before applying. The full-source archive excludes `.git`, `.vs`, `bin`, and `obj`; it is not a compiled binary release.
 
 ## Validation and limitations
 
-Source-level checks: every project Compile/EmbeddedResource/None/Content entry exists; every C# source file is included in the project; all changed C# files passed a lexical delimiter-balance check; each settings designer owns exactly 13 filter rows and neither main chart designer owns any; the only removed source file is `ChartLimiterRowHost.cs`. No Windows compiler, .NET Framework 4.7.2 reference assemblies, or Visual Studio WinForms designer are available in the execution environment. A successful build, runtime behavior, designer rendering and measured performance have therefore not been verified.
+Original refactoring source-level checks: every project Compile/EmbeddedResource/None/Content entry exists; every C# source file is included in the project; all changed C# files passed a lexical delimiter-balance check; each settings designer owns exactly 13 filter rows and neither main chart designer owns any; the only removed source file is `ChartLimiterRowHost.cs`. No Windows compiler, .NET Framework 4.7.2 reference assemblies, or Visual Studio WinForms designer are available in the execution environment. A successful build, runtime behavior, designer rendering and measured performance have therefore not been verified.
 
 On Windows, use a Visual Studio Developer Command Prompt with the .NET Framework 4.7.2 targeting pack:
 

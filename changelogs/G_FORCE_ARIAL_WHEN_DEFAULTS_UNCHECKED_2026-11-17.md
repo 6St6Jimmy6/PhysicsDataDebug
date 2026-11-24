@@ -1,5 +1,7 @@
 # G-Force startup font selection with Defaults unchecked
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 - Both G-Force font ComboBoxes now explicitly select Arial immediately after binding the installed-font list; the list's first item is never used as an implicit default.
 - The initial custom (Defaults unchecked) model font is still Arial, independently of each Defaults checkbox.
 - Older autosaves and older factory profiles might contain `Agency FB` because it was selected automatically from the bound font list. On load, unversioned legacy snapshots containing that value for either G-Force axis are corrected to Arial, including when Defaults is unchecked. Other saved font values remain unchanged.

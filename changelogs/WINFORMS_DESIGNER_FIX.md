@@ -1,5 +1,7 @@
 # Form4Wheels and FormOfflineChart designer-loading fix
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 The parent Form designers no longer instantiate `ChartLimiterRow` directly.
 Each of the 13 filter slots is a normal WinForms `Panel` with the same size,
 margin and ordering. These panels are visible in Document Outline and can be

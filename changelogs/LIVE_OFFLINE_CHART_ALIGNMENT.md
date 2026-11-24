@@ -1,5 +1,7 @@
 # Four Wheels / Offline Chart alignment (2026-11-14)
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Version selection
 `FormLiveData` starts with the **Automatic (Wreckfest_x64.exe)** entry selected. A manual version explicitly saved in a user profile remains loadable and is restored on startup; the existing JSON-based manual version path is unchanged. Bundled versions include `V1_285308` and the corrected `V1_308438`.
 

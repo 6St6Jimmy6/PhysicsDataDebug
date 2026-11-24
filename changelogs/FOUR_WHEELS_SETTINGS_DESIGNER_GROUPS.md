@@ -1,5 +1,7 @@
 # Form4WheelsSettings — Designer-editable grouped controls
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 This layout uses normal **WinForms Designer controls**, not a runtime-generated settings screen. The four outer groups remain **25% each** in `settingsSectionsLayout` and retain independent vertical scrolling.
 
 ## Open and edit in Visual Studio

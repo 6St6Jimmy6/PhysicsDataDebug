@@ -1,5 +1,7 @@
 # Optimization pass (2026-11-11)
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 This pass focuses on work repeated by the telemetry timer and preserves
 existing game-memory field names, chart series, log columns, JSON profile
 formats, and public methods. It intentionally **does not remove unused

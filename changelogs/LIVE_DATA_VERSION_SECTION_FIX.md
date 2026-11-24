@@ -1,5 +1,7 @@
 # Game Version selector layout fix (2026-11-15)
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 - FormLiveData Designer now owns a `gameVersionFieldsLayout` TableLayoutPanel
   inside `gameVersionSection`. Columns: remaining width + fixed 94-pixel
   Config column. Rows: version/config, Profiles, detection status.

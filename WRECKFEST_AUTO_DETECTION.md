@@ -2,7 +2,7 @@
 
 ## Live Data UI
 
-`Select Version Number` now offers **Automatic (Wreckfest_x64.exe)** above
+The version dropdown in **Game version and configuration** offers **Automatic (Wreckfest_x64.exe)** above
 all JSON-defined manual versions. Automatic is the default on a fresh set of
 form settings. Older saved settings are respected: previously saved manual
 versions remain manual. Select Auto explicitly if desired. Profiles remember
@@ -11,7 +11,7 @@ which mode was selected.
 On **Get Process / Refresh Process**, Auto finds the attached process, opens the
 real executable via `Process.MainModule.FileName`, and scans it once. Successful
 detection shows the detected `V1_<build>` and computed shift under the selector
-and in the window title. It never performs file scans in the sampling timer.
+and in the window title. It never performs file scans in the sampling timer. Version/configuration changes also invalidate the cached raw-field read plans and timing span.
 
 If detection fails (signature changed, no file access, ambiguous signature),
 the connection is stopped and an error is displayed. The user can choose a

@@ -1,5 +1,7 @@
 # Four Wheels settings: equal columns and responsive rows
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 The Visual Studio WinForms Designer owns the layout. In `Form4WheelsSettings.Designer.cs`:
 
 - `settingsSectionsLayout` has **four Percent columns of 25% each**. Select the table in the Designer and choose **Edit Rows and Columns…** to change them. There is no second assignment later in `InitializeComponent`.

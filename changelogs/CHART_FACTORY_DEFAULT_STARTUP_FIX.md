@@ -1,5 +1,7 @@
 # Fix: zero-width WinForms chart during factory-default startup
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Symptom
 
 `JsonFormSettings.EnsureFactoryDefaults<T>()` threw `TargetInvocationException`,

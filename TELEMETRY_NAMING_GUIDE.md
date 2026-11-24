@@ -2,7 +2,7 @@
 
 Every recording writes **one** `Telemetry_yyyyMMdd_HHmmss.txt` file into the configured Logs directory.
 The file is a semicolon-delimited table by default, with **one row per sampled tick**.
-The same row contains all four wheels and one copy of each global value.
+A row contains one value per selected column, potentially including all four wheels and one copy of each selected global value.
 
 ## Public column prefixes
 
@@ -37,7 +37,7 @@ Both **Four Wheels** and **Offline Chart** select wheel measurements without
 wheel prefixes: `SlipRatio`, `SlipAngleDeg`, `Suspension1SpringRate`, etc. The
 **dataset layout** selects FL, FR, RL or RR, and chooses how their chart areas
 are grouped. Single-wheel layouts keep the very same measurement choices.
-Shared values such as `ENG_RPM` remain prefixed. X/Y/Z and chart filter
+Shared values such as `ENG_RPM` remain prefixed. Live Time Chart uses the same relative wheel names, with per-lane wheel visibility in place of a dataset layout. X/Y/Z and chart filter
 selectors follow this rule, including older saved selections migrated from
 `FR_SlipRatio` to `SlipRatio`.
 

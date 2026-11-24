@@ -2,10 +2,10 @@
 
 ## Opening and importing
 
-1. Open Live Data and click **Offline CSV Chart** in the navigation bar.
+1. Open Live Data and click **Offline Chart** in the navigation bar.
 2. Click **Load CSV / TXT...** and select one or more exported telemetry files.
 3. Check/uncheck file names to overlay or hide them; select one and use **Remove selected** to unload it.
-4. Click **Chart Settings**, choose X, Y, Z measurements (wheel measurements have no `FL_`/`FR_`/`RL_`/`RR_` prefix), choose a dataset layout, and click **Apply Settings**. The thirteen filters and their **Apply Filters** action are in this settings window.
+4. Click **Chart settings**, choose X, Y, Z measurements (wheel measurements have no `FL_`/`FR_`/`RL_`/`RR_` prefix), choose a dataset layout, and click **Apply Settings**. The thirteen filters and their **Apply Filters** action are in this settings window.
 5. The plot rebuilds from the *original imported rows* whenever an axis, color, chart type, limiter or file visibility is changed.
 
 The importer automatically detects `;`, comma, tab, and `|` separators, handles
@@ -13,7 +13,7 @@ quoted cells, UTF-8 BOM and a trailing delimiter, and accepts both `1,23` and
 `1.23` numeric decimal notation. It supports `.csv`, `.txt`, `.tsv`, `.log` and
 other delimited files through the **All files** filter. The first nonempty
 record must contain column headers; headers need *not* match any game-memory
-JSON names. Exact header spelling is retained, and repeated headers are
+JSON names. Original files are not modified; legacy wheel headers are normalized in memory, and repeated headers are
 uniquely suffixed with `(2)`, `(3)`, etc. Non-numeric cells are considered
 missing data. A file whose selected X/Y/Z or enabled filter header is absent
 is not plotted, but remains loaded.
@@ -21,11 +21,12 @@ is not plotted, but remains loaded.
 ## Layout and filters
 
 - `FormOfflineChart.Designer.cs` owns the file list, chart and legend. Its
-  existing filter groups are **hidden parking controls** when Settings is
-  closed; they do not occupy space above the chart.
-- Opening **FormOfflineChartSettings** temporarily hosts those same groups in
-  its filter section, between the action buttons and the chart settings. They
-  return to the chart form when the dialog closes, retaining their values.
+  filter controls have been removed from that Designer.
+- `FormOfflineChartSettings.Designer.cs` directly owns the three axis rows and
+  ten additional rows in its filter section, below the action bar. Each row is
+  a reusable `ChartLimiterRow`, whose internal layout is editable in
+  `ChartLimiterRow.Designer.cs`. The Settings instance is retained for the
+  lifetime of the chart; no runtime reparenting or parking is needed.
 - The three fixed filters always follow the chosen axes. Each of the 13 filters
   has its own enabled checkbox, Min, Max and Defaults action.
 - **Apply Filters**, in the Settings window, redraws without dropping rows
@@ -53,8 +54,8 @@ styles, and logarithmic axes. The Settings window has **Apply Settings** for
 chart options and **Apply Filters** to redraw using the current filter values.
 There is no live-history limit or separate Clear/Apply control.
 
-`GradientPalette.cs` provides the same three gradient schemes as live Four
-Wheels. The Z legend represents the selected Z column; axes and filters are
+`GradientPalette.cs` provides the same 24 named gradient schemes as live Four
+Wheels (including reversed variants). The Z legend represents the selected Z column; axes and filters are
 mapped from headers, not from compiled Wreckfest enums.
 
 ## Saving settings
@@ -64,7 +65,7 @@ The existing `JsonFormSettings` utility saves these two Forms separately:
 - `%APPDATA%\PhysicsDataDebug\Settings\FormOfflineChart.json`
 - `%APPDATA%\PhysicsDataDebug\Settings\FormOfflineChartSettings.json`
 
-The **Profiles** menu on either Form can save, load or restore factory settings.
+The main chart snapshot captures the Settings-owned filter controls using their existing control-name keys. The Settings snapshot also captures its own controls. During normal restoration of chart appearance, filter values are restored separately from the main chart snapshot once imported headers are available. The **Profiles** menu on either form can save, load or restore factory settings.
 Chart settings are reapplied after the first file import on a later launch, so
 you do not need to open the settings dialog merely to restore the previous
 column choices. The data files themselves are *not* serialized into JSON; use
@@ -79,7 +80,8 @@ Load CSV/TXT to import them in a new session.
 - Enable an extra `VerticalLoad` filter and tighten Min/Max; verify the visible
   count drops, then disable the filter and verify the points return.
 - Set a custom X/Y range, test Z color limits, and save/reload a JSON profile.
-- Reopen the app, load a log, verify last saved axes and palette apply.
+- Reopen the app, load a log, verify last saved axes, palette and filters apply.
+- Inspect both axes with contrasting grid colors and minor grids enabled: exterior tick marks should be absent and the axis lines should match their parallel major grids.
 
 This is a WinForms/.NET Framework 4.7.2 application. Build and interactive
 visual testing must be completed in Visual Studio on Windows.
@@ -105,8 +107,10 @@ When a dataset, filter, selected column, axis or chart type is changed and the c
   `Default` scheme is shown as **Blue Red**; old saved profiles still work.
   All additional gradient schemes include a reversed option.
 - X and Y major/minor grid settings now each have independent dash style and
-  alpha. Grid tick marks follow their grid's color, alpha, width, and dash.
-  The defaults are Solid major and Dash minor.
+  alpha. Exterior major/minor tick marks are disabled. The horizontal X axis
+  inherits the Y major grid style and the vertical Y axis inherits the X major
+  grid style (color including alpha, width and dash). The defaults are Solid
+  major and Dash minor. The same shared styling is used in live Four Wheels.
 - Shared cursor controls under **Chart and data settings** adjust enabled,
   zoomable, line color, alpha, width, and dash. Drag mostly left/right to zoom X,
   mostly up/down to zoom Y. Applying settings redraws and resets the current zoom.

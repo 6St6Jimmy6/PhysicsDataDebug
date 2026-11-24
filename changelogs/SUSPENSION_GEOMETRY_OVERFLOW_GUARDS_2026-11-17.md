@@ -1,5 +1,7 @@
 # Suspension Geometry - Overflow guards (2026-11-17)
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 ## Symptom
 
 After opening Suspension Geometry and selecting **Get Process** on Live Data, an unhandled `System.OverflowException` appeared at `Application.Run(main)`. That is the top-level WinForms message loop, not the definitive throw site. Without the VS exception call stack, the exact failing method cannot be proven.

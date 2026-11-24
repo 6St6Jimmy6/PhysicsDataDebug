@@ -1,5 +1,7 @@
 # G-Force settings workflow aligned to Form4Wheels
 
+> **Historical changelog:** describes an earlier source revision. Some layouts, file names and implementation details have since changed. For current behavior, see the [project README](../README.md) and [current build changes](CURRENT_BUILD_2026-11-24.md).
+
 - Program.Main restores `FormGForceSettings.RestoreSavedModel()` before chart creation.
 - `FormGForce` no longer applies chart properties inside its constructor. Like `Form4Wheels`, it configures the charts in `Shown` after real layout is ready. Both timers start only after this initialization.
 - `FormGForceSettings` now uses one `ApplySettings(bool clearHistory)` path, shared by:
