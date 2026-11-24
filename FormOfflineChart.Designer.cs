@@ -274,7 +274,7 @@ namespace Physics_Data_Debug
             this.axisXFilterHost.Location = new System.Drawing.Point(5, 5);
             this.axisXFilterHost.Margin = new System.Windows.Forms.Padding(5);
             this.axisXFilterHost.Name = "axisXFilterHost";
-            this.axisXFilterHost.Size = new System.Drawing.Size(355, 85);
+            this.axisXFilterHost.Size = new System.Drawing.Size(355, 63);
             this.axisXFilterHost.TabIndex = 0;
             // 
             // axisYFilterHost
@@ -283,7 +283,7 @@ namespace Physics_Data_Debug
             this.axisYFilterHost.Location = new System.Drawing.Point(370, 5);
             this.axisYFilterHost.Margin = new System.Windows.Forms.Padding(5);
             this.axisYFilterHost.Name = "axisYFilterHost";
-            this.axisYFilterHost.Size = new System.Drawing.Size(355, 85);
+            this.axisYFilterHost.Size = new System.Drawing.Size(355, 63);
             this.axisYFilterHost.TabIndex = 1;
             // 
             // axisZFilterHost
@@ -292,7 +292,7 @@ namespace Physics_Data_Debug
             this.axisZFilterHost.Location = new System.Drawing.Point(735, 5);
             this.axisZFilterHost.Margin = new System.Windows.Forms.Padding(5);
             this.axisZFilterHost.Name = "axisZFilterHost";
-            this.axisZFilterHost.Size = new System.Drawing.Size(355, 85);
+            this.axisZFilterHost.Size = new System.Drawing.Size(355, 63);
             this.axisZFilterHost.TabIndex = 2;
             // 
             // extraFiltersGroup
@@ -336,7 +336,7 @@ namespace Physics_Data_Debug
             this.extraFilterHost01.Location = new System.Drawing.Point(5, 5);
             this.extraFilterHost01.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost01.Name = "extraFilterHost01";
-            this.extraFilterHost01.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost01.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost01.TabIndex = 0;
             // 
             // extraFilterHost02
@@ -345,7 +345,7 @@ namespace Physics_Data_Debug
             this.extraFilterHost02.Location = new System.Drawing.Point(370, 5);
             this.extraFilterHost02.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost02.Name = "extraFilterHost02";
-            this.extraFilterHost02.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost02.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost02.TabIndex = 1;
             // 
             // extraFilterHost03
@@ -354,70 +354,70 @@ namespace Physics_Data_Debug
             this.extraFilterHost03.Location = new System.Drawing.Point(735, 5);
             this.extraFilterHost03.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost03.Name = "extraFilterHost03";
-            this.extraFilterHost03.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost03.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost03.TabIndex = 2;
             // 
             // extraFilterHost04
             // 
             this.extraFilterHost04.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost04.Location = new System.Drawing.Point(5, 100);
+            this.extraFilterHost04.Location = new System.Drawing.Point(5, 78);
             this.extraFilterHost04.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost04.Name = "extraFilterHost04";
-            this.extraFilterHost04.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost04.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost04.TabIndex = 3;
             // 
             // extraFilterHost05
             // 
             this.extraFilterHost05.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost05.Location = new System.Drawing.Point(370, 100);
+            this.extraFilterHost05.Location = new System.Drawing.Point(370, 78);
             this.extraFilterHost05.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost05.Name = "extraFilterHost05";
-            this.extraFilterHost05.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost05.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost05.TabIndex = 4;
             // 
             // extraFilterHost06
             // 
             this.extraFilterHost06.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost06.Location = new System.Drawing.Point(735, 100);
+            this.extraFilterHost06.Location = new System.Drawing.Point(735, 78);
             this.extraFilterHost06.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost06.Name = "extraFilterHost06";
-            this.extraFilterHost06.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost06.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost06.TabIndex = 5;
             // 
             // extraFilterHost07
             // 
             this.extraFilterHost07.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost07.Location = new System.Drawing.Point(5, 195);
+            this.extraFilterHost07.Location = new System.Drawing.Point(5, 151);
             this.extraFilterHost07.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost07.Name = "extraFilterHost07";
-            this.extraFilterHost07.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost07.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost07.TabIndex = 6;
             // 
             // extraFilterHost08
             // 
             this.extraFilterHost08.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost08.Location = new System.Drawing.Point(370, 195);
+            this.extraFilterHost08.Location = new System.Drawing.Point(370, 151);
             this.extraFilterHost08.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost08.Name = "extraFilterHost08";
-            this.extraFilterHost08.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost08.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost08.TabIndex = 7;
             // 
             // extraFilterHost09
             // 
             this.extraFilterHost09.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost09.Location = new System.Drawing.Point(735, 195);
+            this.extraFilterHost09.Location = new System.Drawing.Point(735, 151);
             this.extraFilterHost09.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost09.Name = "extraFilterHost09";
-            this.extraFilterHost09.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost09.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost09.TabIndex = 8;
             // 
             // extraFilterHost10
             // 
             this.extraFilterHost10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost10.Location = new System.Drawing.Point(5, 290);
+            this.extraFilterHost10.Location = new System.Drawing.Point(5, 224);
             this.extraFilterHost10.Margin = new System.Windows.Forms.Padding(5);
             this.extraFilterHost10.Name = "extraFilterHost10";
-            this.extraFilterHost10.Size = new System.Drawing.Size(355, 85);
+            this.extraFilterHost10.Size = new System.Drawing.Size(355, 63);
             this.extraFilterHost10.TabIndex = 9;
             // 
             // chartAndLegend
@@ -436,7 +436,7 @@ namespace Physics_Data_Debug
             // 
             this.chartAndLegend.Panel2.Controls.Add(this.GradientChart);
             this.chartAndLegend.Size = new System.Drawing.Size(1148, 851);
-            this.chartAndLegend.SplitterDistance = 1046;
+            this.chartAndLegend.SplitterDistance = 1044;
             this.chartAndLegend.SplitterWidth = 6;
             this.chartAndLegend.TabIndex = 3;
             // 
@@ -447,7 +447,7 @@ namespace Physics_Data_Debug
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.MinimumSize = new System.Drawing.Size(10, 10);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(1046, 851);
+            this.chart1.Size = new System.Drawing.Size(1044, 851);
             this.chart1.TabIndex = 0;
             // 
             // GradientChart
@@ -457,7 +457,7 @@ namespace Physics_Data_Debug
             this.GradientChart.Location = new System.Drawing.Point(0, 0);
             this.GradientChart.MinimumSize = new System.Drawing.Size(10, 10);
             this.GradientChart.Name = "GradientChart";
-            this.GradientChart.Size = new System.Drawing.Size(96, 851);
+            this.GradientChart.Size = new System.Drawing.Size(98, 851);
             this.GradientChart.TabIndex = 0;
             // 
             // statusLabel

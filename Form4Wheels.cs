@@ -726,11 +726,6 @@ namespace Physics_Data_Debug
                 PlotAllWheels(chart1, xyzAxisSelection, xyzAxisLimiterSelection);
             }
         }
-        #region BUTTONS, BOXES etc.
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         private void toSettingsButton_Click(object sender, EventArgs e)
         {
             toSettingsButton.Visible = false;
@@ -786,8 +781,6 @@ namespace Physics_Data_Debug
         {
             UpdateAllLimiters();
         }
-
-        #endregion
 
         private static readonly Dictionary<string, WheelPlotHistory> Histories =
             new Dictionary<string, WheelPlotHistory>(StringComparer.Ordinal);

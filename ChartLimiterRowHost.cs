@@ -19,8 +19,8 @@ namespace Physics_Data_Debug
             var row = new ChartLimiterRow
             {
                 Name = host.Name.Replace("Host", "Row"),
-                Dock = DockStyle.Fill,
-                Margin = Padding.Empty
+                Dock = DockStyle.Top,
+                Margin = Padding.Empty,
             };
             host.Controls.Clear();
             host.Controls.Add(row);

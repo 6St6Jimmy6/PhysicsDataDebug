@@ -1329,7 +1329,7 @@ namespace Physics_Data_Debug
             this.settingsSectionsLayout.Padding = new System.Windows.Forms.Padding(1);
             this.settingsSectionsLayout.RowCount = 1;
             this.settingsSectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.settingsSectionsLayout.Size = new System.Drawing.Size(994, 426);
+            this.settingsSectionsLayout.Size = new System.Drawing.Size(994, 402);
             this.settingsSectionsLayout.TabIndex = 0;
             // 
             // settingsSidebarGroup
@@ -1341,7 +1341,7 @@ namespace Physics_Data_Debug
             this.settingsSidebarGroup.Margin = new System.Windows.Forms.Padding(1);
             this.settingsSidebarGroup.Name = "settingsSidebarGroup";
             this.settingsSidebarGroup.Padding = new System.Windows.Forms.Padding(2);
-            this.settingsSidebarGroup.Size = new System.Drawing.Size(246, 422);
+            this.settingsSidebarGroup.Size = new System.Drawing.Size(246, 398);
             this.settingsSidebarGroup.TabIndex = 0;
             this.settingsSidebarGroup.TabStop = false;
             this.settingsSidebarGroup.Text = "Chart and data settings";
@@ -1364,7 +1364,7 @@ namespace Physics_Data_Debug
             this.settingsSidebarPanel.Location = new System.Drawing.Point(2, 15);
             this.settingsSidebarPanel.Margin = new System.Windows.Forms.Padding(2);
             this.settingsSidebarPanel.Name = "settingsSidebarPanel";
-            this.settingsSidebarPanel.Size = new System.Drawing.Size(242, 405);
+            this.settingsSidebarPanel.Size = new System.Drawing.Size(242, 381);
             this.settingsSidebarPanel.TabIndex = 0;
             // 
             // sidebarCursorStyleRow
@@ -2054,7 +2054,7 @@ namespace Physics_Data_Debug
             this.xAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1);
             this.xAxisSettingsGroup.Name = "xAxisSettingsGroup";
             this.xAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2);
-            this.xAxisSettingsGroup.Size = new System.Drawing.Size(246, 422);
+            this.xAxisSettingsGroup.Size = new System.Drawing.Size(246, 398);
             this.xAxisSettingsGroup.TabIndex = 1;
             this.xAxisSettingsGroup.TabStop = false;
             this.xAxisSettingsGroup.Text = "X axis";
@@ -2079,7 +2079,7 @@ namespace Physics_Data_Debug
             this.xAxisSettingsPanel.Location = new System.Drawing.Point(2, 15);
             this.xAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.xAxisSettingsPanel.Name = "xAxisSettingsPanel";
-            this.xAxisSettingsPanel.Size = new System.Drawing.Size(242, 405);
+            this.xAxisSettingsPanel.Size = new System.Drawing.Size(242, 381);
             this.xAxisSettingsPanel.TabIndex = 0;
             // 
             // liveXMinorAlphaBoxRow
@@ -2810,7 +2810,7 @@ namespace Physics_Data_Debug
             this.yAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1);
             this.yAxisSettingsGroup.Name = "yAxisSettingsGroup";
             this.yAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2);
-            this.yAxisSettingsGroup.Size = new System.Drawing.Size(246, 422);
+            this.yAxisSettingsGroup.Size = new System.Drawing.Size(246, 398);
             this.yAxisSettingsGroup.TabIndex = 2;
             this.yAxisSettingsGroup.TabStop = false;
             this.yAxisSettingsGroup.Text = "Y axis";
@@ -2835,7 +2835,7 @@ namespace Physics_Data_Debug
             this.yAxisSettingsPanel.Location = new System.Drawing.Point(2, 15);
             this.yAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.yAxisSettingsPanel.Name = "yAxisSettingsPanel";
-            this.yAxisSettingsPanel.Size = new System.Drawing.Size(242, 405);
+            this.yAxisSettingsPanel.Size = new System.Drawing.Size(242, 381);
             this.yAxisSettingsPanel.TabIndex = 0;
             // 
             // liveYMinorAlphaBoxRow
@@ -3566,7 +3566,7 @@ namespace Physics_Data_Debug
             this.zAxisSettingsGroup.Margin = new System.Windows.Forms.Padding(1);
             this.zAxisSettingsGroup.Name = "zAxisSettingsGroup";
             this.zAxisSettingsGroup.Padding = new System.Windows.Forms.Padding(2);
-            this.zAxisSettingsGroup.Size = new System.Drawing.Size(246, 422);
+            this.zAxisSettingsGroup.Size = new System.Drawing.Size(246, 398);
             this.zAxisSettingsGroup.TabIndex = 3;
             this.zAxisSettingsGroup.TabStop = false;
             this.zAxisSettingsGroup.Text = "Z / color axis";
@@ -3584,7 +3584,7 @@ namespace Physics_Data_Debug
             this.zAxisSettingsPanel.Location = new System.Drawing.Point(2, 15);
             this.zAxisSettingsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.zAxisSettingsPanel.Name = "zAxisSettingsPanel";
-            this.zAxisSettingsPanel.Size = new System.Drawing.Size(242, 405);
+            this.zAxisSettingsPanel.Size = new System.Drawing.Size(242, 381);
             this.zAxisSettingsPanel.TabIndex = 0;
             // 
             // zAxisLegendRow
@@ -3897,7 +3897,7 @@ namespace Physics_Data_Debug
             this.settingsTabs.Margin = new System.Windows.Forms.Padding(2);
             this.settingsTabs.Name = "settingsTabs";
             this.settingsTabs.SelectedIndex = 0;
-            this.settingsTabs.Size = new System.Drawing.Size(1002, 452);
+            this.settingsTabs.Size = new System.Drawing.Size(1002, 428);
             this.settingsTabs.TabIndex = 0;
             // 
             // chartSettingsTab
@@ -3907,7 +3907,7 @@ namespace Physics_Data_Debug
             this.chartSettingsTab.Location = new System.Drawing.Point(4, 22);
             this.chartSettingsTab.Margin = new System.Windows.Forms.Padding(2);
             this.chartSettingsTab.Name = "chartSettingsTab";
-            this.chartSettingsTab.Size = new System.Drawing.Size(994, 426);
+            this.chartSettingsTab.Size = new System.Drawing.Size(994, 402);
             this.chartSettingsTab.TabIndex = 0;
             this.chartSettingsTab.Text = "Chart Settings";
             // 
@@ -3918,7 +3918,7 @@ namespace Physics_Data_Debug
             this.filterSettingsTab.Location = new System.Drawing.Point(4, 22);
             this.filterSettingsTab.Margin = new System.Windows.Forms.Padding(2);
             this.filterSettingsTab.Name = "filterSettingsTab";
-            this.filterSettingsTab.Size = new System.Drawing.Size(994, 426);
+            this.filterSettingsTab.Size = new System.Drawing.Size(994, 402);
             this.filterSettingsTab.TabIndex = 1;
             this.filterSettingsTab.Text = "Filters";
             // 
@@ -3933,33 +3933,33 @@ namespace Physics_Data_Debug
             this.filterSettingsRows.Margin = new System.Windows.Forms.Padding(2);
             this.filterSettingsRows.Name = "filterSettingsRows";
             this.filterSettingsRows.RowCount = 2;
-            this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.filterSettingsRows.Size = new System.Drawing.Size(994, 426);
+            this.filterSettingsRows.Size = new System.Drawing.Size(994, 402);
             this.filterSettingsRows.TabIndex = 0;
             // 
             // filterAxisPlaceholder
             // 
-            this.filterAxisPlaceholder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterAxisPlaceholder.Dock = System.Windows.Forms.DockStyle.Top;
             this.filterAxisPlaceholder.ForeColor = System.Drawing.Color.White;
             this.filterAxisPlaceholder.Location = new System.Drawing.Point(2, 2);
             this.filterAxisPlaceholder.Margin = new System.Windows.Forms.Padding(2);
             this.filterAxisPlaceholder.Name = "filterAxisPlaceholder";
             this.filterAxisPlaceholder.Padding = new System.Windows.Forms.Padding(2);
-            this.filterAxisPlaceholder.Size = new System.Drawing.Size(990, 100);
+            this.filterAxisPlaceholder.Size = new System.Drawing.Size(990, 96);
             this.filterAxisPlaceholder.TabIndex = 0;
             this.filterAxisPlaceholder.TabStop = false;
             this.filterAxisPlaceholder.Text = "X / Y / Z axis filters";
             // 
             // filterExtraPlaceholder
             // 
-            this.filterExtraPlaceholder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterExtraPlaceholder.Dock = System.Windows.Forms.DockStyle.Top;
             this.filterExtraPlaceholder.ForeColor = System.Drawing.Color.White;
-            this.filterExtraPlaceholder.Location = new System.Drawing.Point(2, 106);
+            this.filterExtraPlaceholder.Location = new System.Drawing.Point(2, 102);
             this.filterExtraPlaceholder.Margin = new System.Windows.Forms.Padding(2);
             this.filterExtraPlaceholder.Name = "filterExtraPlaceholder";
             this.filterExtraPlaceholder.Padding = new System.Windows.Forms.Padding(2);
-            this.filterExtraPlaceholder.Size = new System.Drawing.Size(990, 318);
+            this.filterExtraPlaceholder.Size = new System.Drawing.Size(990, 298);
             this.filterExtraPlaceholder.TabIndex = 1;
             this.filterExtraPlaceholder.TabStop = false;
             this.filterExtraPlaceholder.Text = "Ten additional telemetry filters";
@@ -3969,7 +3969,7 @@ namespace Physics_Data_Debug
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(1002, 484);
+            this.ClientSize = new System.Drawing.Size(1002, 460);
             this.Controls.Add(this.settingsTabs);
             this.Controls.Add(this.settingsActionsPanel);
             this.ForeColor = System.Drawing.Color.White;
