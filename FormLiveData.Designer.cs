@@ -13,14 +13,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Front Lift");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Rear Lift");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Aerodynamics", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Engine");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Tire");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Suspension 1");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Front Lift");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Rear Lift");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Aerodynamics", new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode14});
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Engine");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Tire");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Suspension 1");
             this.liveDataMainLayout = new System.Windows.Forms.TableLayoutPanel();
             this.navigationPagesPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.OpenTemperaturesChart = new System.Windows.Forms.Button();
@@ -45,7 +45,6 @@
             this.getProcessButton = new System.Windows.Forms.Button();
             this.startFileLoggingButton = new System.Windows.Forms.Button();
             this.toLogSettingsButton = new System.Windows.Forms.Button();
-            this.toTestChartPageButton = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.logInterval_textBox = new System.Windows.Forms.TextBox();
             this.TickTime = new System.Windows.Forms.Label();
@@ -276,9 +275,9 @@
             this.sidebarSectionsLayout.Location = new System.Drawing.Point(0, 0);
             this.sidebarSectionsLayout.Name = "sidebarSectionsLayout";
             this.sidebarSectionsLayout.RowCount = 2;
-            this.sidebarSectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 206F));
-            this.sidebarSectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 275F));
-            this.sidebarSectionsLayout.Size = new System.Drawing.Size(250, 481);
+            this.sidebarSectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.sidebarSectionsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+            this.sidebarSectionsLayout.Size = new System.Drawing.Size(250, 390);
             this.sidebarSectionsLayout.TabIndex = 0;
             // 
             // gameVersionSection
@@ -289,7 +288,7 @@
             this.gameVersionSection.Location = new System.Drawing.Point(3, 3);
             this.gameVersionSection.Name = "gameVersionSection";
             this.gameVersionSection.Padding = new System.Windows.Forms.Padding(8);
-            this.gameVersionSection.Size = new System.Drawing.Size(244, 200);
+            this.gameVersionSection.Size = new System.Drawing.Size(244, 174);
             this.gameVersionSection.TabIndex = 0;
             this.gameVersionSection.TabStop = false;
             this.gameVersionSection.Text = "Game version and configuration";
@@ -310,7 +309,7 @@
             this.gameVersionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.gameVersionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.gameVersionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.gameVersionFieldsLayout.Size = new System.Drawing.Size(228, 171);
+            this.gameVersionFieldsLayout.Size = new System.Drawing.Size(228, 145);
             this.gameVersionFieldsLayout.TabIndex = 0;
             // 
             // GameVersionComboBox
@@ -349,7 +348,7 @@
             this.versionDetectionStatus.ForeColor = System.Drawing.Color.Gainsboro;
             this.versionDetectionStatus.Location = new System.Drawing.Point(3, 108);
             this.versionDetectionStatus.Name = "versionDetectionStatus";
-            this.versionDetectionStatus.Size = new System.Drawing.Size(222, 63);
+            this.versionDetectionStatus.Size = new System.Drawing.Size(222, 44);
             this.versionDetectionStatus.TabIndex = 3;
             this.versionDetectionStatus.Text = "Auto: detects on Get Process";
             // 
@@ -358,10 +357,10 @@
             this.sessionLoggingSection.Controls.Add(this.sessionFieldsLayout);
             this.sessionLoggingSection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sessionLoggingSection.ForeColor = System.Drawing.Color.White;
-            this.sessionLoggingSection.Location = new System.Drawing.Point(3, 209);
+            this.sessionLoggingSection.Location = new System.Drawing.Point(3, 183);
             this.sessionLoggingSection.Name = "sessionLoggingSection";
             this.sessionLoggingSection.Padding = new System.Windows.Forms.Padding(8);
-            this.sessionLoggingSection.Size = new System.Drawing.Size(244, 269);
+            this.sessionLoggingSection.Size = new System.Drawing.Size(244, 204);
             this.sessionLoggingSection.TabIndex = 1;
             this.sessionLoggingSection.TabStop = false;
             this.sessionLoggingSection.Text = "Session and logging";
@@ -374,21 +373,20 @@
             this.sessionFieldsLayout.Controls.Add(this.getProcessButton, 0, 0);
             this.sessionFieldsLayout.Controls.Add(this.startFileLoggingButton, 0, 1);
             this.sessionFieldsLayout.Controls.Add(this.toLogSettingsButton, 0, 2);
-            this.sessionFieldsLayout.Controls.Add(this.toTestChartPageButton, 0, 3);
-            this.sessionFieldsLayout.Controls.Add(this.label15, 0, 4);
-            this.sessionFieldsLayout.Controls.Add(this.logInterval_textBox, 1, 4);
-            this.sessionFieldsLayout.Controls.Add(this.TickTime, 0, 5);
+            this.sessionFieldsLayout.Controls.Add(this.label15, 0, 3);
+            this.sessionFieldsLayout.Controls.Add(this.logInterval_textBox, 1, 3);
+            this.sessionFieldsLayout.Controls.Add(this.TickTime, 0, 4);
             this.sessionFieldsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sessionFieldsLayout.Location = new System.Drawing.Point(8, 21);
             this.sessionFieldsLayout.Name = "sessionFieldsLayout";
-            this.sessionFieldsLayout.RowCount = 6;
+            this.sessionFieldsLayout.RowCount = 5;
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.sessionFieldsLayout.Size = new System.Drawing.Size(228, 240);
+            this.sessionFieldsLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.sessionFieldsLayout.Size = new System.Drawing.Size(228, 175);
             this.sessionFieldsLayout.TabIndex = 0;
             // 
             // getProcessButton
@@ -433,25 +431,11 @@
             this.toLogSettingsButton.UseVisualStyleBackColor = false;
             this.toLogSettingsButton.Click += new System.EventHandler(this.toSettingsButton_Click);
             // 
-            // toTestChartPageButton
-            // 
-            this.toTestChartPageButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.sessionFieldsLayout.SetColumnSpan(this.toTestChartPageButton, 2);
-            this.toTestChartPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toTestChartPageButton.ForeColor = System.Drawing.Color.White;
-            this.toTestChartPageButton.Location = new System.Drawing.Point(3, 114);
-            this.toTestChartPageButton.Name = "toTestChartPageButton";
-            this.toTestChartPageButton.Size = new System.Drawing.Size(222, 26);
-            this.toTestChartPageButton.TabIndex = 3;
-            this.toTestChartPageButton.Text = "Test Chart";
-            this.toTestChartPageButton.UseVisualStyleBackColor = false;
-            this.toTestChartPageButton.Click += new System.EventHandler(this.toTestChartPageButton_Click);
-            // 
             // label15
             // 
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(3, 143);
+            this.label15.Location = new System.Drawing.Point(3, 111);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(119, 32);
             this.label15.TabIndex = 4;
@@ -463,7 +447,7 @@
             this.logInterval_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.logInterval_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logInterval_textBox.ForeColor = System.Drawing.Color.White;
-            this.logInterval_textBox.Location = new System.Drawing.Point(128, 146);
+            this.logInterval_textBox.Location = new System.Drawing.Point(128, 114);
             this.logInterval_textBox.Name = "logInterval_textBox";
             this.logInterval_textBox.Size = new System.Drawing.Size(97, 20);
             this.logInterval_textBox.TabIndex = 5;
@@ -476,9 +460,9 @@
             this.sessionFieldsLayout.SetColumnSpan(this.TickTime, 2);
             this.TickTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TickTime.ForeColor = System.Drawing.Color.Silver;
-            this.TickTime.Location = new System.Drawing.Point(3, 175);
+            this.TickTime.Location = new System.Drawing.Point(3, 143);
             this.TickTime.Name = "TickTime";
-            this.TickTime.Size = new System.Drawing.Size(222, 65);
+            this.TickTime.Size = new System.Drawing.Size(222, 43);
             this.TickTime.TabIndex = 6;
             this.TickTime.Text = "Tick time —";
             // 
@@ -556,23 +540,23 @@
             this.monitorFieldTree.ForeColor = System.Drawing.Color.White;
             this.monitorFieldTree.Location = new System.Drawing.Point(3, 16);
             this.monitorFieldTree.Name = "monitorFieldTree";
-            treeNode1.Name = "";
-            treeNode1.Text = "Front Lift";
-            treeNode2.Name = "";
-            treeNode2.Text = "Rear Lift";
-            treeNode3.Name = "";
-            treeNode3.Text = "Aerodynamics";
-            treeNode4.Name = "";
-            treeNode4.Text = "Engine";
-            treeNode5.Name = "";
-            treeNode5.Text = "Tire";
-            treeNode6.Name = "";
-            treeNode6.Text = "Suspension 1";
+            treeNode13.Name = "";
+            treeNode13.Text = "Front Lift";
+            treeNode14.Name = "";
+            treeNode14.Text = "Rear Lift";
+            treeNode15.Name = "";
+            treeNode15.Text = "Aerodynamics";
+            treeNode16.Name = "";
+            treeNode16.Text = "Engine";
+            treeNode17.Name = "";
+            treeNode17.Text = "Tire";
+            treeNode18.Name = "";
+            treeNode18.Text = "Suspension 1";
             this.monitorFieldTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode15,
+            treeNode16,
+            treeNode17,
+            treeNode18});
             this.monitorFieldTree.Size = new System.Drawing.Size(184, 659);
             this.monitorFieldTree.TabIndex = 0;
             // 
@@ -869,7 +853,6 @@
         private System.Windows.Forms.Button getProcessButton;
         private System.Windows.Forms.Button startFileLoggingButton;
         private System.Windows.Forms.Button toLogSettingsButton;
-        private System.Windows.Forms.Button toTestChartPageButton;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox logInterval_textBox;
         private System.Windows.Forms.Label TickTime;
