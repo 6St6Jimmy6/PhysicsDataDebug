@@ -91,17 +91,14 @@ Each wheel has its own scrolling region and labeled parameter groups. The groups
 
 ### Suspension Geometry
 
-Displays front and rear suspension geometry. A compact toolbar lets you adjust:
+`FormSuspensionGeometry` shows two **live 3D wireframe views** for the front (FL/FR) and rear (RL/RR) suspension. It uses X, Y, and Z positions for body-side suspension pickups, spindle-side joints, steering and push rods, wheel pivots and tire outlines. You can inspect the geometry from any angle.
+- **Left-drag** either view to rotate both front and rear cameras, **right/middle-drag** to pan a view, and use the **mouse wheel** to zoom. Hover over a joint to see its name and X/Y/Z coordinates in metres.
+- Toolbar controls adjust **Azimuth**, **Elevation**, **Zoom (%)**, and **Update (ms)**; preset **Front**, **Side**, **Top**, **Isometric**, and **Reset view** buttons restore useful viewpoints.
+- Toggle **Perspective**, the ground **Grid**, **Point names**, and **Rotate spindle offsets** (uses the game's tire orientation matrix to turn local spindle offsets into the wheel's orientation).
+- Green/cyan tire outlines distinguish left/right wheels. Upper arms, lower arms, steering rods, and pushrods have different colors. The previous 2D instant-center/roll-center calculations remain available as explicitly labeled **XY projections**, not as genuine 3D roll-axis solutions.
 
-| Setting | Default |
-| --- | ---: |
-| X minimum | -1.5 |
-| X maximum | 1.5 |
-| Y minimum | -0.5 |
-| Y maximum | 1.5 |
-| Update interval | 100 ms |
-
-The X/Y limits apply to both charts. The update interval controls the geometry timer and can be set from **10 to 10,000 ms**. Values are saved in the per-form settings JSON. Invalid or undefined geometric intersections are omitted from the plot rather than being passed to the chart renderer.
+The update interval defaults to **100** ms and can be set from **10** to **10,000** ms. Camera settings and display choices are saved in `FormSuspensionGeometry.json`. The view continues to refresh available suspension data even when RaceTime is paused. Missing or invalid points are skipped instead of drawing them at zero.
+The 3D wireframe uses the existing vehicle-relative data conventions from the previous 2D chart. The tire-matrix rotation can be disabled for comparison with the original untranslated spindle offsets. See SUSPENSION_3D_GUIDE.md for usage and geometry assumptions.
 
 ### Live Time Chart (previously Tire Temperatures)
 

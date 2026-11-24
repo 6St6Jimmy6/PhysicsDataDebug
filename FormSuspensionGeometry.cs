@@ -1,23 +1,30 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Physics_Data_Debug
 {
+    /// <summary>
+    /// Live XYZ suspension wireframe. Body mount points and dynamic wheel pivots
+    /// use the same frame/height offsets as the former XY geometry chart.
+    /// Mouse orbit and zoom are shared by the Front/Rear viewport pair.
+    /// </summary>
     public partial class FormSuspensionGeometry : Form
     {
-        // Both charts use the same coordinate limits. The values and update interval
-        // are edited in the Designer-owned top toolbar and persisted with the form.
-        private bool chartInitialized;
-        private bool isRestoringSettings;
+        private bool restoringSettings;
+        private bool updatingCamera;
+        private bool started;
+
+        private static readonly Color UpperColor = Color.FromArgb(70, 213, 177);
+        private static readonly Color LowerColor = Color.FromArgb(243, 175, 88);
+        private static readonly Color SteeringColor = Color.FromArgb(241, 109, 128);
+        private static readonly Color PushRodColor = Color.FromArgb(192, 142, 242);
+        private static readonly Color UprightColor = Color.FromArgb(219, 225, 233);
+        private static readonly Color LeftWheelColor = Color.FromArgb(120, 209, 120);
+        private static readonly Color RightWheelColor = Color.FromArgb(102, 174, 251);
 
         public FormSuspensionGeometry()
         {
@@ -26,2122 +33,338 @@ namespace Physics_Data_Debug
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
                 return;
 
-            // Save untouched controls as factory defaults before restoring autosaved values.
+            front3DView.CameraChanged += View_CameraChanged;
+            rear3DView.CameraChanged += View_CameraChanged;
             JsonFormSettings.EnsureFactoryDefaults(this);
             Shown += FormSuspensionGeometry_Shown;
         }
 
-        private void FormSuspensionGeometry_Shown(object sender, EventArgs e)
-        {
-            if (chartInitialized) return;
-            SetChart(chart1);
-            chartInitialized = true;
-            ApplyAxisSettings();
-            ApplyUpdateInterval();
-            timer1.Enabled = true;
-        }
-
-        private void SuspensionGeometrySetting_ValueChanged(object sender, EventArgs e)
-        {
-            if (isRestoringSettings) return;
-            ApplyUpdateInterval();
-            if (chartInitialized) ApplyAxisSettings();
-        }
-
-        private void ApplyUpdateInterval()
-        {
-            int interval = Decimal.ToInt32(updateIntervalNumericUpDown.Value);
-            if (interval > 0) timer1.Interval = interval;
-        }
-
-        private void ApplyAxisSettings()
-        {
-            double xMin = (double)axisXMinimumNumericUpDown.Value;
-            double xMax = (double)axisXMaximumNumericUpDown.Value;
-            double yMin = (double)axisYMinimumNumericUpDown.Value;
-            double yMax = (double)axisYMaximumNumericUpDown.Value;
-            bool xValid = xMin < xMax;
-            bool yValid = yMin < yMax;
-            axisXMinimumNumericUpDown.BackColor = xValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
-            axisXMaximumNumericUpDown.BackColor = xValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
-            axisYMinimumNumericUpDown.BackColor = yValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
-            axisYMaximumNumericUpDown.BackColor = yValid ? Color.FromArgb(38, 38, 38) : Color.FromArgb(105, 35, 35);
-            if (!chartInitialized || !xValid || !yValid) return;
-            foreach (string name in new[] { "FrontSuspension", "RearSuspension" })
-            {
-                ChartArea area = chart1.ChartAreas.FindByName(name);
-                if (area == null) continue;
-                // Order can matter when replacing an existing scale with a new
-                // range entirely outside it. Auto first, then apply the pair.
-                area.AxisX.Minimum = double.NaN;
-                area.AxisX.Maximum = double.NaN;
-                area.AxisY.Minimum = double.NaN;
-                area.AxisY.Maximum = double.NaN;
-                area.AxisX.Minimum = xMin;
-                area.AxisX.Maximum = xMax;
-                area.AxisY.Minimum = yMin;
-                area.AxisY.Maximum = yMax;
-                area.AxisX.Interval = NiceAxisInterval(xMax - xMin);
-                area.AxisY.Interval = NiceAxisInterval(yMax - yMin);
-            }
-        }
-
-        private static double NiceAxisInterval(double range)
-        {
-            double desired = range / 6d;
-            if (!IsFinite(desired) || desired <= 0d) return 0.5d;
-            double magnitude = Math.Pow(10d, Math.Floor(Math.Log10(desired)));
-            double fraction = desired / magnitude;
-            return (fraction <= 1d ? 1d : fraction <= 2d ? 2d : fraction <= 5d ? 5d : 10d) * magnitude;
-        }
-
-        void FrontRearChartSet(Chart chartName, string sideName, string suspension, string legendName, Color textColor, Color chartLineColors)
-        {
-            #region ChartAreas
-            chartName.ChartAreas.Add(sideName + suspension);
-            chartName.ChartAreas[sideName + suspension].BackColor = Color.Transparent;
-
-            #region AxisX
-            chartName.ChartAreas[sideName + suspension].AxisX.TitleForeColor = textColor;
-            chartName.ChartAreas[sideName + suspension].AxisX.LabelStyle.ForeColor = textColor;
-            chartName.ChartAreas[sideName + suspension].AxisX.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisX.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisX.MajorGrid.Enabled = true;
-            chartName.ChartAreas[sideName + suspension].AxisX.MajorGrid.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisX.MajorTickMark.Enabled = true;
-            chartName.ChartAreas[sideName + suspension].AxisX.MajorTickMark.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisX.MajorTickMark.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.Enabled = true;
-            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dot;
-
-            chartName.ChartAreas[sideName + suspension].AxisX.MinorGrid.Enabled = false;
-            chartName.ChartAreas[sideName + suspension].AxisX.MinorTickMark.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisX.MinorTickMark.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisX.Crossing = double.NaN;
-            chartName.ChartAreas[sideName + suspension].AxisX.Interval = 0.5d;
-            chartName.ChartAreas[sideName + suspension].AxisX.Maximum = 1.5;
-            chartName.ChartAreas[sideName + suspension].AxisX.Minimum = -1.5;
-            #endregion
-
-            #region AxisY
-            chartName.ChartAreas[sideName + suspension].AxisY.TitleForeColor = textColor;
-            chartName.ChartAreas[sideName + suspension].AxisY.LabelStyle.ForeColor = textColor;
-            chartName.ChartAreas[sideName + suspension].AxisY.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisY.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisY.MajorGrid.Enabled = true;
-            chartName.ChartAreas[sideName + suspension].AxisY.MajorGrid.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisY.MajorTickMark.Enabled = true;
-            chartName.ChartAreas[sideName + suspension].AxisY.MajorTickMark.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisY.MajorTickMark.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.Enabled = true;
-            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.LineDashStyle = ChartDashStyle.Dot;
-
-            chartName.ChartAreas[sideName + suspension].AxisY.MinorGrid.Enabled = false;
-            chartName.ChartAreas[sideName + suspension].AxisY.MinorTickMark.LineColor = chartLineColors;
-            chartName.ChartAreas[sideName + suspension].AxisY.MinorTickMark.LineDashStyle = ChartDashStyle.Dash;
-
-            chartName.ChartAreas[sideName + suspension].AxisY.Crossing = double.NaN;
-            chartName.ChartAreas[sideName + suspension].AxisY.Interval = 0.5d;
-            chartName.ChartAreas[sideName + suspension].AxisY.Maximum = 1.5;
-            chartName.ChartAreas[sideName + suspension].AxisY.Minimum = -0.5;
-            #endregion
-            #endregion
-
-            #region Titles
-            chartName.Titles.Add(sideName + suspension).Name = sideName + suspension;//Why the hell this needs to be done this way?
-            chartName.Titles[sideName + suspension].ForeColor = textColor;
-            chartName.Titles[sideName + suspension].Text = sideName + " " + suspension;
-            chartName.Titles[sideName + suspension].DockedToChartArea = sideName + suspension;
-            chartName.Titles[sideName + suspension].IsDockedInsideChartArea = false;
-            #endregion
-
-            #region Series
-            string seriesName = "";
-            string legendText = "";
-            #region CenterOfMassHeight
-            seriesName = "CenterOfMassHeight";
-            legendText = "CenterOfMassHeight";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            { 
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            { 
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false; 
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 10;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            #endregion
-
-            #region RollCenterXY
-            legendText = "RollCenterXY";
-            seriesName = "RollCenterXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-        }
-            else
-            { 
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false; 
-            }
-    chartName.Series[sideName + seriesName].LegendText = legendText;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 64, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 64, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 6;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            #endregion
-
-            #region RideHeight
-            legendText = "RideHeight";
-            seriesName = "RideHeight";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(64, 64, 255);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(64, 64, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(64, 64, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 6;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            #endregion
-            FLRRSeriesChartSet(chartName, sideName, suspension, legendName, textColor);
-            /*
-            #region FL
-
-            #region FLTirePivotXY
-            legendText = "TirePivotXY";
-            seriesName = "FLTirePivotXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 2;
-            chartName.Series[sideName + seriesName].MarkerSize = 8;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            #endregion
-
-            #region FLUpperFrontArmXY
-            legendText = "UpperFrontArmXY";
-            seriesName = "FLUpperFrontArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FLUpperRearArmXY
-            legendText = "UpperRearArmXY";
-            seriesName = "FLUpperRearArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FLUpperArmMidpointXY
-            legendText = "UpperArmMidpointXY";
-            seriesName = "FLUpperArmMidpointXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FLLowerFrontArmXY
-            legendText = "LowerFrontArmXY";
-            seriesName = "FLLowerFrontArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FLLowerRearArmXY
-            legendText = "LowerRearArmXY";
-            seriesName = "FLLowerRearArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FLLowerArmMidpointXY
-            legendText = "LowerArmMidpointXY";
-            seriesName = "FLLowerArmMidpointXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FLSteeringRodXY
-            legendText = "SteeringRodXY";
-            seriesName = "FLSteeringRodXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FLInstantCenterXY
-            legendText = "InstantCenterXY";
-            seriesName = "FLInstantCenterXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            chartName.Series[sideName + seriesName].Points[1].MarkerSize = 10;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[2].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FLRollCenterLine
-            legendText = "RollCenterLine";
-            seriesName = "FLRollCenterLine";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            #endregion
-            #endregion
-
-            #region FR
-            #region FRTirePivotXY
-            legendText = "TirePivotXY";
-            seriesName = "FRTirePivotXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 2;
-            chartName.Series[sideName + seriesName].MarkerSize = 8;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            #endregion
-
-            #region FRUpperFrontArmXY
-            legendText = "UpperFrontArmXY";
-            seriesName = "FRUpperFrontArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FRUpperRearArmXY
-            legendText = "UpperRearArmXY";
-            seriesName = "FRUpperRearArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FRUpperArmMidpointXY
-            legendText = "UpperArmMidpointXY";
-            seriesName = "FRUpperArmMidpointXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FRLowerFrontArmXY
-            legendText = "LowerFrontArmXY";
-            seriesName = "FRLowerFrontArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FRLowerRearArmXY
-            legendText = "LowerRearArmXY";
-            seriesName = "FRLowerRearArmXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FRLowerArmMidpointXY
-            legendText = "LowerArmMidpointXY";
-            seriesName = "FRLowerArmMidpointXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FRSteeringRodXY
-            legendText = "SteeringRodXY";
-            seriesName = "FRSteeringRodXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FRInstantCenterXY
-            legendText = "InstantCenterXY";
-            seriesName = "FRInstantCenterXY";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            chartName.Series[sideName + seriesName].Points[1].MarkerSize = 10;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[2].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FRRollCenterLine
-            legendText = "RollCenterLine";
-            seriesName = "FRRollCenterLine";
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-{
-    chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-}
-chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            #endregion
-            #endregion
-            */
-            #endregion
-
-        }
-        void FLRRSeriesChartSet(Chart chartName, string sideName, string suspension, string legendName, Color textColor)
-        {
-            string cornerNameLeft;
-            string cornerNameRight;
-            string seriesName;
-            string legendText;
-
-            if (sideName == "Front")
-            {
-                cornerNameLeft = "FL";
-                cornerNameRight = "FR";
-            }
-            else
-            {
-                cornerNameLeft = "RL";
-                cornerNameRight = "RR";
-            }
-
-            #region FL
-
-            #region FLTirePivotXY
-            legendText = "TirePivotXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 2;
-            chartName.Series[sideName + seriesName].MarkerSize = 8;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            #endregion
-
-            #region FLUpperFrontArmXY
-            legendText = "UpperFrontArmXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FLUpperRearArmXY
-            legendText = "UpperRearArmXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FLUpperArmMidpointXY
-            legendText = "UpperArmMidpointXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FLLowerFrontArmXY
-            legendText = "LowerFrontArmXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FLLowerRearArmXY
-            legendText = "LowerRearArmXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FLLowerArmMidpointXY
-            legendText = "LowerArmMidpointXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FLSteeringRodXY
-            legendText = "SteeringRodXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FLInstantCenterXY
-            legendText = "InstantCenterXY";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            chartName.Series[sideName + seriesName].Points[1].MarkerSize = 10;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[2].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FLRollCenterLine
-            legendText = "RollCenterLine";
-            seriesName = cornerNameLeft + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = true;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            #endregion
-            #endregion
-
-            #region FR
-            #region FRTirePivotXY
-            legendText = "TirePivotXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Point;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 2;
-            chartName.Series[sideName + seriesName].MarkerSize = 8;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            #endregion
-
-            #region FRUpperFrontArmXY
-            legendText = "UpperFrontArmXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FRUpperRearArmXY
-            legendText = "UpperRearArmXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 0, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FRUpperArmMidpointXY
-            legendText = "UpperArmMidpointXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FRLowerFrontArmXY
-            legendText = "LowerFrontArmXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FRLowerRearArmXY
-            legendText = "LowerRearArmXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(255, 255, 0);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FRLowerArmMidpointXY
-            legendText = "LowerArmMidpointXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 3;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[1].Color = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.Transparent;
-            #endregion
-
-            #region FRSteeringRodXY
-            legendText = "SteeringRodXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.FromArgb(0, 255, 255);
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 4;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            #endregion
-
-            #region FRInstantCenterXY
-            legendText = "InstantCenterXY";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(128, 128, 128);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            chartName.Series[sideName + seriesName].Points[0].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].Points[1].IsValueShownAsLabel = true;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.Circle;
-            chartName.Series[sideName + seriesName].Points[1].MarkerSize = 10;
-            chartName.Series[sideName + seriesName].Points[1].MarkerColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[1].MarkerBorderColor = Color.FromArgb(128, 0, 0);
-            chartName.Series[sideName + seriesName].Points[2].IsValueShownAsLabel = false;
-            #endregion
-
-            #region FRRollCenterLine
-            legendText = "RollCenterLine";
-            seriesName = cornerNameRight + legendText;
-            chartName.Series.Add(sideName + seriesName);
-            chartName.Series[sideName + seriesName].ChartArea = sideName + suspension;
-            chartName.Series[sideName + seriesName].ChartType = SeriesChartType.Line;
-            chartName.Series[sideName + seriesName].LabelForeColor = textColor;
-            chartName.Series[sideName + seriesName].IsValueShownAsLabel = false;
-            chartName.Series[sideName + seriesName].LabelFormat = "{0:N3}";
-            chartName.Series[sideName + seriesName].SmartLabelStyle.CalloutLineColor = textColor;
-            chartName.Series[sideName + seriesName].Legend = legendName;
-            if (sideName == "Front")
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            else
-            {
-                chartName.Series[sideName + seriesName].IsVisibleInLegend = false;
-            }
-            chartName.Series[sideName + seriesName].LegendText = legendText;
-            chartName.Series[sideName + seriesName].Color = Color.FromArgb(0, 64, 0);
-            chartName.Series[sideName + seriesName].MarkerColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderColor = Color.Transparent;
-            chartName.Series[sideName + seriesName].MarkerBorderWidth = 0;
-            chartName.Series[sideName + seriesName].MarkerSize = 5;
-            chartName.Series[sideName + seriesName].MarkerStyle = MarkerStyle.None;
-            if (chartName.Series[sideName + seriesName].Points.Count == 0)
-            {
-                chartName.Series[sideName + seriesName].Points.Add();
-                chartName.Series[sideName + seriesName].Points.Add();
-            }
-            #endregion
-            #endregion
-        }
-        void SetChart(Chart chartName)
-        {
-            chartName.BackColor = Color.Transparent;
-
-            chartName.Series.Clear();
-            chartName.ChartAreas.Clear();
-            chartName.Titles.Clear();
-            chartName.Legends.Clear();
-
-            string sideName;
-            string suspension;
-            string legendName = "Legend1";
-            Color textColor = Color.Gainsboro;
-            Color chartLineColors = Color.FromArgb(85, 85, 85);
-            #region Legends
-            chartName.Legends.Add(legendName);
-            chartName.Legends[legendName].ForeColor = textColor;
-            chartName.Legends[legendName].BackColor = Color.Transparent;
-            chartName.Legends[legendName].Docking = Docking.Bottom;
-            #endregion
-
-            #region Front Suspension
-            sideName = "Front";
-            suspension = "Suspension";
-            FrontRearChartSet(chart1, sideName, suspension, legendName, textColor, chartLineColors);
-            #endregion
-
-            #region Rear Suspension
-            sideName = "Rear";
-            suspension = "Suspension";
-            FrontRearChartSet(chart1, sideName, suspension, legendName, textColor, chartLineColors);
-            #endregion
-
-
-
-        }
-        Vector4 SuspensionGeometry(string chartSideName, string side, bool isStatic, Chart chart)
-        {
-            float rideHeight = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
-            SetGeometryPoint(chart.Series[chartSideName + "RideHeight"].Points[0], 0.000000000000000000000000000000000000001d, 0.000000000000000000000000000000000000001d + rideHeight);
-
-            float centerOfMassHeight = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_MassDataOffset", "CenterOfMassHeight"));
-            SetGeometryPoint(chart.Series[chartSideName + "CenterOfMassHeight"].Points[0], 0.000000000000000000000000000000000000001d, 0.000000000000000000000000000000000000001d + centerOfMassHeight);
-
-            #region TirePivot
-            Vector4 staticTirePivot = StaticTirePivot(side, rideHeight, centerOfMassHeight);
-            Vector4 dynamicTirePivot = DynamicTirePivot(side, rideHeight, centerOfMassHeight);
-            TirePivotChartPoints(chartSideName, side, staticTirePivot, dynamicTirePivot, chart, "TirePivotXY", isStatic);
-            #endregion
-
-            #region UpperFront
-            Vector4 staticBodyUpperFrontArm = StaticBodyArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperFrontArmW"),
-                rideHeight, centerOfMassHeight);
-            Vector4 staticSpindleUpperFrontArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmW"),
-                staticTirePivot);
-            Vector4 dynamicSpindleUpperFrontArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperFrontArmW"),
-                dynamicTirePivot);
-            ArmChartPoints(chartSideName, side, staticBodyUpperFrontArm, staticSpindleUpperFrontArm, dynamicSpindleUpperFrontArm, chart, "UpperFrontArmXY", isStatic);
-            #endregion
-
-            #region UpperRear
-            Vector4 staticBodyUpperRearArm = StaticBodyArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyUpperRearArmW"),
-                rideHeight, centerOfMassHeight);
-            Vector4 staticSpindleUpperRearArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmW"),
-                staticTirePivot);
-            Vector4 dynamicSpindleUpperRearArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleUpperRearArmW"),
-                dynamicTirePivot);
-            ArmChartPoints(chartSideName, side, staticBodyUpperRearArm, staticSpindleUpperRearArm, dynamicSpindleUpperRearArm, chart, "UpperRearArmXY", isStatic);
-            #endregion
-
-            #region LowerFront
-            Vector4 staticBodyLowerFrontArm = StaticBodyArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerFrontArmW"),
-                rideHeight, centerOfMassHeight);
-            Vector4 staticSpindleLowerFrontArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmW"),
-                staticTirePivot);
-            Vector4 dynamicSpindleLowerFrontArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerFrontArmW"),
-                dynamicTirePivot);
-            ArmChartPoints(chartSideName, side, staticBodyLowerFrontArm, staticSpindleLowerFrontArm, dynamicSpindleLowerFrontArm, chart, "LowerFrontArmXY", isStatic);
-            #endregion
-
-            #region LowerRear
-            Vector4 staticBodyLowerRearArm = StaticBodyArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodyLowerRearArmW"),
-                rideHeight, centerOfMassHeight);
-            Vector4 staticSpindleLowerRearArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmW"),
-                staticTirePivot);
-            Vector4 dynamicSpindleLowerRearArm = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleLowerRearArmW"),
-                dynamicTirePivot);
-            ArmChartPoints(chartSideName, side, staticBodyLowerRearArm, staticSpindleLowerRearArm, dynamicSpindleLowerRearArm, chart, "LowerRearArmXY", isStatic);
-            #endregion
-
-            #region SteeringRod
-            Vector4 staticBodySteeringRod = StaticBodyArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "BodySteeringRodW"),
-                rideHeight, centerOfMassHeight);
-            Vector4 staticSpindleSteeringRod = SpindleArmPivot(side,
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodX"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodY"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodZ"),
-                GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodW"),
-                staticTirePivot);
-            Vector4 dynamicSpindleSteeringRod = new Vector4
-            {
-                X = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodX")) + dynamicTirePivot.X,//?? Needs also to + tire X rotation and offset the offset with that
-                Y = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodY")) + dynamicTirePivot.Y,// Needs also to + tire Y rotation and offset the offset with that
-                Z = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodZ")) + dynamicTirePivot.Z,//?? Needs also to + tire Z rotation and offset the offset with that
-                W = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_SuspensionGeometryDataOffset", "SpindleSteeringRodW")) + dynamicTirePivot.W
-            };
-            ArmChartPoints(chartSideName, side, staticBodySteeringRod, staticSpindleSteeringRod, dynamicSpindleSteeringRod, chart, "SteeringRodXY", isStatic);
-            #endregion
-
-            #region InstantCenter
-
-            #region UpperArmMidpoint
-            Vector4 bodyUpperArmMidpoint = MidPointArm(staticBodyUpperFrontArm, staticBodyUpperRearArm);
-            ArmMidpointChartPoints(chartSideName, side, bodyUpperArmMidpoint, staticSpindleUpperFrontArm, dynamicSpindleUpperFrontArm, chart, "UpperArmMidpointXY", isStatic);
-            #endregion
-            #region LowerArmMidpoint
-            Vector4 bodyLowerArmMidpoint = MidPointArm(staticBodyLowerFrontArm, staticBodyLowerRearArm);
-            ArmMidpointChartPoints(chartSideName, side, bodyLowerArmMidpoint, staticSpindleLowerFrontArm, dynamicSpindleLowerFrontArm, chart, "LowerArmMidpointXY", isStatic);
-            #endregion
-
-            #region InstantCenter
-            //https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
-            Vector4 instantCenter = XYLineIntersectionVector(
-            dynamicSpindleLowerFrontArm,
-            bodyLowerArmMidpoint,
-            dynamicSpindleUpperFrontArm,
-            bodyUpperArmMidpoint);
-
-            string InstantCenterXY = chartSideName + side + "InstantCenterXY";
-            SetGeometryPoint(chart.Series[InstantCenterXY].Points[0], bodyUpperArmMidpoint.X, bodyUpperArmMidpoint.Y);
-            SetGeometryPoint(chart.Series[InstantCenterXY].Points[1], instantCenter.X, instantCenter.Y);
-            SetGeometryPoint(chart.Series[InstantCenterXY].Points[2], bodyLowerArmMidpoint.X, bodyLowerArmMidpoint.Y);
-            #endregion
-
-            #endregion
-            return instantCenter;
-        }
-        Vector4 StaticTirePivot(string side, float rideHeight, float centerOfMassHeight)
-        {
-            return new Vector4
-            {
-                X = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireStaticPivotX")),
-                Y = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireStaticPivotY")) + rideHeight + centerOfMassHeight,
-                Z = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireStaticPivotZ")),
-                W = 1,
-            };
-        }
-        Vector4 DynamicTirePivot(string side, float rideHeight, float centerOfMassHeight)
-        {
-            return new Vector4
-            {
-                X = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM41")),
-                Y = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM42")) + rideHeight + centerOfMassHeight,
-                Z = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM43")),
-                W = LiveData.GetFullListDataValue(side, GameMemoryConfig.Field("WF_TireDataOffset", "TireM44"))
-            };
-        }
-        void TirePivotChartPoints(string chartSideName, string side, Vector4 staticTirePivot, Vector4 dynamicTirePivot, Chart chart, string seriesName, bool isStatic)
-        {
-            string fullSeriesName = chartSideName + side + seriesName;
-            if (isStatic == true)
-            {
-                SetGeometryPoint(chart.Series[fullSeriesName].Points[0], staticTirePivot.X, staticTirePivot.Y);
-            }
-            else
-            {
-                SetGeometryPoint(chart.Series[fullSeriesName].Points[0], dynamicTirePivot.X, dynamicTirePivot.Y);
-            }
-        }
-        Vector4 StaticBodyArmPivot(string side, GameMemoryField x, GameMemoryField y, GameMemoryField z, GameMemoryField w, float rideHeight, float centerOfMassHeight)
-        {
-            return new Vector4
-            {
-                X = LiveData.GetFullListDataValue(side, x),
-                Y = LiveData.GetFullListDataValue(side, y) + rideHeight + centerOfMassHeight,
-                Z = LiveData.GetFullListDataValue(side, z),
-                W = LiveData.GetFullListDataValue(side, w)
-            };
-        }
-        Vector4 SpindleArmPivot(string side, GameMemoryField x, GameMemoryField y, GameMemoryField z, GameMemoryField w, Vector4 tirePivot)
-        {
-            return new Vector4
-            {
-                X = LiveData.GetFullListDataValue(side, x) + tirePivot.X,
-                Y = LiveData.GetFullListDataValue(side, y) + tirePivot.Y,
-                Z = LiveData.GetFullListDataValue(side, z) + tirePivot.Z,
-                W = LiveData.GetFullListDataValue(side, w)/* + tirePivot.W*///??
-            };
-        }
-        void ArmChartPoints(string chartSideName, string side, Vector4 staticBodyArm, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
-        {
-            string fullSeriesName = chartSideName + side + seriesName;
-            SetGeometryPoint(chart.Series[fullSeriesName].Points[0], staticBodyArm.X, staticBodyArm.Y);
-            if (isStatic == true)
-            {
-                SetGeometryPoint(chart.Series[fullSeriesName].Points[1], staticSpindleArm.X, staticSpindleArm.Y);
-            }
-            else
-            {
-                SetGeometryPoint(chart.Series[fullSeriesName].Points[1], dynamicSpindleArm.X, dynamicSpindleArm.Y);
-            }
-        }
-        void ArmMidpointChartPoints(string chartSideName, string side, Vector4 bodyArmMidpoint, Vector4 staticSpindleArm, Vector4 dynamicSpindleArm, Chart chart, string seriesName, bool isStatic)
-        {
-            string fullSeriesName = chartSideName + side + seriesName;
-            SetGeometryPoint(chart1.Series[fullSeriesName].Points[0], bodyArmMidpoint.X, bodyArmMidpoint.Y);
-
-            if (isStatic == true)
-            {
-                SetGeometryPoint(chart1.Series[fullSeriesName].Points[1], staticSpindleArm.X, staticSpindleArm.Y);
-            }
-            else
-            {
-                SetGeometryPoint(chart1.Series[fullSeriesName].Points[1], dynamicSpindleArm.X, dynamicSpindleArm.Y);
-            }
-        }
-        void SuspensionRollCenter(string chartSideName, bool isStatic, Chart chart, Vector4 instantCenterFL, Vector4 instantCenterFR)
-        {
-            string cornerNameLeft;
-            string cornerNameRight;
-            float rideHeightLeft;
-            float rideHeightRight;
-
-            if (chartSideName == "Front")
-            {
-                cornerNameLeft = "FL";
-                rideHeightLeft = LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
-                cornerNameRight = "FR";
-                rideHeightRight = LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
-            }
-            else
-            {
-                cornerNameLeft = "RL";
-                rideHeightLeft = LiveData.GetFullListDataValue(TelemetryPrefix.RL, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
-                cornerNameRight = "RR";
-                rideHeightRight = LiveData.GetFullListDataValue(TelemetryPrefix.RR, GameMemoryConfig.Field("WF_Suspension2DataOffset", "RideHeight"));
-            }
-
-            float centerOfMassHeight = LiveData.GetFullListDataValue(TelemetryPrefix.Body, GameMemoryConfig.Field("WF_MassDataOffset", "CenterOfMassHeight"));
-            Vector4 dynamicTirePivotFL = DynamicTirePivot(TelemetryPrefix.FL, rideHeightLeft, centerOfMassHeight);
-
-            #region Left
-            Vector4 tireMiddleContactPointFL = new Vector4
-            {
-                X = dynamicTirePivotFL.X,
-                Y = dynamicTirePivotFL.Y - LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "TireRadius"))/* - LiveData.GetFullListDataValue(TelemetryPrefix.FL, GameMemoryConfig.Field("WF_TireDataOffset", "LoadedRadius"))*/,
-                Z = dynamicTirePivotFL.Z,
-                W = dynamicTirePivotFL.W,
-            };
-            Vector4 dynamicTirePivotFR = DynamicTirePivot(TelemetryPrefix.FR, rideHeightRight, centerOfMassHeight);
-            #endregion
-            #region Right
-            Vector4 tireMiddleContactPointFR = new Vector4
-            {
-                X = dynamicTirePivotFR.X,
-                Y = dynamicTirePivotFR.Y - LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_TireDataOffset", "TireRadius"))/* - LiveData.GetFullListDataValue(TelemetryPrefix.FR, GameMemoryConfig.Field("WF_TireDataOffset", "LoadedRadius"))*/,
-                Z = dynamicTirePivotFR.Z,
-                W = dynamicTirePivotFR.W,
-            };
-            #endregion
-            #region RollCenter
-            Vector4 rollCenter = XYLineIntersectionVector(
-                instantCenterFL,
-                tireMiddleContactPointFL,
-                instantCenterFR,
-                tireMiddleContactPointFR);
-            string rollCenterXY = chartSideName + "RollCenterXY";
-            SetGeometryPoint(chart.Series[rollCenterXY].Points[0], rollCenter.X, rollCenter.Y);
-
-            string FLRCLine = chartSideName + cornerNameLeft + "RollCenterLine";
-            SetGeometryPoint(chart.Series[FLRCLine].Points[0], instantCenterFL.X, instantCenterFL.Y);
-            SetGeometryPoint(chart.Series[FLRCLine].Points[1], tireMiddleContactPointFL.X, tireMiddleContactPointFL.Y);
-
-            string FRRCLine = chartSideName + cornerNameRight + "RollCenterLine";
-            SetGeometryPoint(chart.Series[FRRCLine].Points[0], instantCenterFR.X, instantCenterFR.Y);
-            SetGeometryPoint(chart.Series[FRRCLine].Points[1], tireMiddleContactPointFR.X, tireMiddleContactPointFR.Y);
-
-            #endregion
-        }
-        Vector4 MidPointArm(Vector4 frontArm, Vector4 rearArm)
-        {
-            return new Vector4
-            {
-                X = (frontArm.X + rearArm.X) / 2,
-                Y = (frontArm.Y + rearArm.Y) / 2,
-                Z = 0,
-                W = 1,
-            };
-        }
-        // Use a determinant instead of slope division: vertical arm lines are
-        // valid geometry, while parallel/coincident lines have NO finite point
-        // of intersection. The previous m=(dy/dx) calculation could produce
-        // Infinity/NaN and crash System.Windows.Forms.DataVisualization during paint.
-        private static Vector4 XYLineIntersectionVector(
-            Vector4 vector1, Vector4 vector2, Vector4 vector3, Vector4 vector4)
-        {
-            double dx1 = (double)vector2.X - vector1.X;
-            double dy1 = (double)vector2.Y - vector1.Y;
-            double dx2 = (double)vector4.X - vector3.X;
-            double dy2 = (double)vector4.Y - vector3.Y;
-            double len1 = Math.Sqrt(dx1 * dx1 + dy1 * dy1);
-            double len2 = Math.Sqrt(dx2 * dx2 + dy2 * dy2);
-            double determinant = dx1 * dy2 - dy1 * dx2;
-            if (!IsFinite(len1) || !IsFinite(len2) ||
-                len1 < 1e-7 || len2 < 1e-7 ||
-                !IsFinite(determinant) ||
-                Math.Abs(determinant) <= 1e-7 * len1 * len2)
-                return new Vector4(float.NaN, float.NaN, 0f, 1f);
-
-            double xOffset = (double)vector3.X - vector1.X;
-            double yOffset = (double)vector3.Y - vector1.Y;
-            double t = (xOffset * dy2 - yOffset * dx2) / determinant;
-            double x = vector1.X + t * dx1;
-            double y = vector1.Y + t * dy1;
-            if (!IsFinite(x) || !IsFinite(y) ||
-                Math.Abs(x) > 1000000d || Math.Abs(y) > 1000000d)
-                return new Vector4(float.NaN, float.NaN, 0f, 1f);
-            return new Vector4((float)x, (float)y, 0f, 1f);
-        }
-
-        private static bool IsFinite(double value) =>
-            !double.IsNaN(value) && !double.IsInfinity(value);
-
-        // Never submit NaN/Infinity or extreme intersection coordinates to
-        // WinForms Chart. An invalid geometric point is omitted, not drawn at
-        // (0, 0). A later valid sample restores it automatically.
-        private static void SetGeometryPoint(DataPoint point, double x, double y)
-        {
-            bool valid = IsFinite(x) && IsFinite(y) &&
-                         Math.Abs(x) <= 1000000d && Math.Abs(y) <= 1000000d;
-            if (!valid)
-            {
-                point.XValue = 0d;
-                point.YValues = new double[] { 0d };
-                point.IsEmpty = true;
-                return;
-            }
-            point.XValue = x;
-            point.YValues = new double[] { y };
-            point.IsEmpty = false;
-        }
         private void FormSuspensionGeometry_Load(object sender, EventArgs e)
         {
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode)
                 return;
-            isRestoringSettings = true;
+            restoringSettings = true;
             try { JsonFormSettings.LoadAllSettings(this); }
-            finally { isRestoringSettings = false; }
-            ApplyUpdateInterval();
+            finally { restoringSettings = false; }
+            ApplyViewSettings();
             LiveData.FormSuspensionGeometryOpen = true;
         }
+
+        private void FormSuspensionGeometry_Shown(object sender, EventArgs e)
+        {
+            if (started) return;
+            started = true;
+            ApplyViewSettings();
+            timer1.Enabled = true;
+        }
+
         private void FormSuspensionGeometry_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Enabled = false;
             JsonFormSettings.SaveAllSettings(this);
             LiveData.FormSuspensionGeometryOpen = false;
         }
+
+        private void SettingsValueChanged(object sender, EventArgs e)
+        {
+            if (!restoringSettings && !updatingCamera) ApplyViewSettings();
+        }
+
+        private void ApplyViewSettings()
+        {
+            if (restoringSettings) return;
+            int ms = Decimal.ToInt32(updateIntervalNumericUpDown.Value);
+            if (ms >= 10) timer1.Interval = ms;
+            float azimuth = (float)azimuthNumericUpDown.Value;
+            float elevation = (float)elevationNumericUpDown.Value;
+            float zoom = (float)(zoomNumericUpDown.Value / 100m);
+            foreach (Suspension3DView view in new[] { front3DView, rear3DView })
+            {
+                view.SetCamera(azimuth, elevation, zoom);
+                view.Perspective = perspectiveCheckBox.Checked;
+                view.ShowGrid = gridCheckBox.Checked;
+                view.ShowPointNames = labelsCheckBox.Checked;
+                view.Invalidate();
+            }
+        }
+
+        private void View_CameraChanged(object sender, SuspensionCameraChangedEventArgs e)
+        {
+            if (updatingCamera || restoringSettings) return;
+            updatingCamera = true;
+            try
+            {
+                azimuthNumericUpDown.Value = Clamp(Math.Round(e.Azimuth, 1), azimuthNumericUpDown);
+                elevationNumericUpDown.Value = Clamp(Math.Round(e.Elevation, 1), elevationNumericUpDown);
+                zoomNumericUpDown.Value = Clamp(Math.Round(e.Zoom, 0), zoomNumericUpDown);
+            }
+            finally { updatingCamera = false; }
+            ApplyViewSettings();
+        }
+
+        private static decimal Clamp(decimal value, NumericUpDown control) =>
+            Math.Min(control.Maximum, Math.Max(control.Minimum, value));
+
+        private void ViewPreset_Click(object sender, EventArgs e)
+        {
+            if (sender == frontViewButton) SetCamera(0, 0, 100);
+            else if (sender == sideViewButton) SetCamera(90, 0, 100);
+            else if (sender == topViewButton) SetCamera(0, 89, 100);
+            else SetCamera(32, 20, 100);
+            front3DView.ResetPan();
+            rear3DView.ResetPan();
+            if (sender == resetViewButton)
+            {
+                front3DView.ResetFraming();
+                rear3DView.ResetFraming();
+            }
+        }
+
+        private void SetCamera(decimal azimuth, decimal elevation, decimal zoom)
+        {
+            azimuthNumericUpDown.Value = Clamp(azimuth, azimuthNumericUpDown);
+            elevationNumericUpDown.Value = Clamp(elevation, elevationNumericUpDown);
+            zoomNumericUpDown.Value = Clamp(zoom, zoomNumericUpDown);
+            ApplyViewSettings();
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // Unlike race charts, geometry may be inspected in the Wreckfest menu.
+            // A missing/uninitialized telemetry section is skipped, not fatal.
             if (LiveData.Process == null || !FormLiveData.ProcessGet ||
-                !FormLiveData.FirstTimeLoad || LiveData.FullDataList.Count == 0 ||
-                !FormLiveData.ValuesGet) return;
+                !FormLiveData.FirstTimeLoad || !FormLiveData.ValuesGet ||
+                LiveData.FullDataList.Count == 0) return;
 
             try
             {
-                Vector4 instantCenterFL = SuspensionGeometry("Front", TelemetryPrefix.FL, false, chart1);
-                Vector4 instantCenterFR = SuspensionGeometry("Front", TelemetryPrefix.FR, false, chart1);
-                SuspensionRollCenter("Front", false, chart1, instantCenterFL, instantCenterFR);
+                front3DView.Scene = CaptureAxle("FL", "FR");
+                rear3DView.Scene = CaptureAxle("RL", "RR");
+            }
+            catch (InvalidOperationException) { /* transient memory/config switch */ }
+            catch (ArgumentOutOfRangeException) { /* incomplete memory snapshot */ }
+            catch (KeyNotFoundException) { /* field unavailable in a custom config */ }
+            // Other unexpected exceptions should remain visible to the debugger.
+        }
 
-                Vector4 instantCenterRL = SuspensionGeometry("Rear", TelemetryPrefix.RL, false, chart1);
-                Vector4 instantCenterRR = SuspensionGeometry("Rear", TelemetryPrefix.RR, false, chart1);
-                SuspensionRollCenter("Rear", false, chart1, instantCenterRL, instantCenterRR);
-            }
-            catch (OverflowException ex)
+        private sealed class ProjectedWheel
+        {
+            public Vector3 Pivot = new Vector3(float.NaN);
+            public Vector3 TireContact = new Vector3(float.NaN);
+            public Vector3 InstantCenter = new Vector3(float.NaN);
+        }
+
+        private Suspension3DScene CaptureAxle(string left, string right)
+        {
+            var scene = new Suspension3DScene();
+            ProjectedWheel leftWheel = CaptureWheel(scene, left, LeftWheelColor);
+            ProjectedWheel rightWheel = CaptureWheel(scene, right, RightWheelColor);
+            if (Suspension3DScene.Valid(leftWheel.TireContact) &&
+                Suspension3DScene.Valid(rightWheel.TireContact) &&
+                Suspension3DScene.Valid(leftWheel.InstantCenter) &&
+                Suspension3DScene.Valid(rightWheel.InstantCenter) &&
+                TryIntersectionXY(leftWheel.InstantCenter, leftWheel.TireContact,
+                    rightWheel.InstantCenter, rightWheel.TireContact, out Vector3 rollCenter))
             {
-                timer1.Enabled = false;
-                MessageBox.Show(this,
-                    "A numeric overflow occurred while updating suspension geometry. " +
-                    "This chart's timer has been stopped.\n\n" + ex.ToString(),
-                    "Suspension geometry update error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // The original chart calculated roll center only in XY. Place
+                // that XY projection on the axle's average Z plane; this is
+                // NOT a mathematically derived 3D suspension roll axis.
+                rollCenter.Z = (leftWheel.Pivot.Z + rightWheel.Pivot.Z) * 0.5f;
+                if (Vector3.Distance(rollCenter, leftWheel.Pivot) < 10f)
+                    scene.AddPoint(rollCenter, Color.LimeGreen, "XY roll center (projected)");
             }
+            float centerOfMass = Read(TelemetryPrefix.Body, "WF_MassDataOffset", "CenterOfMassHeight");
+            if (Finite(centerOfMass) && Math.Abs(centerOfMass) < 10f &&
+                Suspension3DScene.Valid(leftWheel.Pivot) && Suspension3DScene.Valid(rightWheel.Pivot))
+                scene.AddPoint(new Vector3(0f, centerOfMass,
+                    (leftWheel.Pivot.Z + rightWheel.Pivot.Z) * 0.5f),
+                    Color.FromArgb(124, 255, 117), "Vehicle center-of-mass height");
+            return scene;
+        }
+
+        private ProjectedWheel CaptureWheel(Suspension3DScene scene, string prefix, Color wheelColor)
+        {
+            var projection = new ProjectedWheel();
+            float height = Read(prefix, "WF_Suspension2DataOffset", "RideHeight") +
+                           Read(TelemetryPrefix.Body, "WF_MassDataOffset", "CenterOfMassHeight");
+            Vector3 pivot = ReadVector(prefix, "WF_TireDataOffset", "TireM4", "1", "2", "3");
+            if (Suspension3DScene.Valid(pivot) && Finite(height))
+                pivot.Y += height;
+            else
+                pivot = new Vector3(float.NaN);
+
+            projection.Pivot = pivot;
+            float[,] orientation = ReadWheelRotation(prefix);
+            bool rotate = rotateSpindleCheckBox.Checked && orientation != null;
+
+            // Body positions are fixed relative to the car; spindle positions
+            // move with the tire pivot. The optional rotation handles camber/toe
+            // when the tire matrix is valid. Disable it for legacy XYZ matching.
+            var body = new Dictionary<string, Vector3>();
+            var spindle = new Dictionary<string, Vector3>();
+            string[] arms = { "UpperFrontArm", "UpperRearArm", "LowerFrontArm", "LowerRearArm", "SteeringRod", "PushRod" };
+            foreach (string arm in arms)
+            {
+                Vector3 bodyPoint = ReadVector(prefix, "WF_SuspensionGeometryDataOffset", "Body" + arm, "X", "Y", "Z");
+                Vector3 spindleOffset = ReadVector(prefix, "WF_SuspensionGeometryDataOffset", "Spindle" + arm, "X", "Y", "Z");
+                if (Suspension3DScene.Valid(bodyPoint) && Finite(height)) bodyPoint.Y += height;
+                else bodyPoint = new Vector3(float.NaN);
+                if (Suspension3DScene.Valid(spindleOffset) && Suspension3DScene.Valid(pivot))
+                    spindleOffset = pivot + (rotate ? Transform(spindleOffset, orientation) : spindleOffset);
+                else spindleOffset = new Vector3(float.NaN);
+                // In the menu, partially initialized structures can hold wild
+                // coordinates. Exclude outliers instead of shrinking the view.
+                if (Suspension3DScene.Valid(pivot) && Suspension3DScene.Valid(bodyPoint) &&
+                    Vector3.Distance(bodyPoint, pivot) > 25f) bodyPoint = new Vector3(float.NaN);
+                if (Suspension3DScene.Valid(pivot) && Suspension3DScene.Valid(spindleOffset) &&
+                    Vector3.Distance(spindleOffset, pivot) > 25f) spindleOffset = new Vector3(float.NaN);
+                body[arm] = bodyPoint;
+                spindle[arm] = spindleOffset;
+
+                Color color = arm.StartsWith("Upper", StringComparison.Ordinal) ? UpperColor :
+                              arm.StartsWith("Lower", StringComparison.Ordinal) ? LowerColor :
+                              arm == "SteeringRod" ? SteeringColor : PushRodColor;
+                scene.AddLine(bodyPoint, spindleOffset, color, prefix + " " + arm, 2.3f);
+                scene.AddPoint(bodyPoint, color, prefix + " body " + arm);
+                scene.AddPoint(spindleOffset, color, prefix + " spindle " + arm);
+            }
+
+            // Wishbone outlines (front/rear pickups) and an upright between the
+            // mean upper/lower joints make the assembly easier to interpret in 3D.
+            Join(scene, body, "UpperFrontArm", "UpperRearArm", UpperColor, prefix + " upper chassis");
+            Join(scene, spindle, "UpperFrontArm", "UpperRearArm", UpperColor, prefix + " upper spindle");
+            Join(scene, body, "LowerFrontArm", "LowerRearArm", LowerColor, prefix + " lower chassis");
+            Join(scene, spindle, "LowerFrontArm", "LowerRearArm", LowerColor, prefix + " lower spindle");
+            Vector3 upper = Midpoint(spindle["UpperFrontArm"], spindle["UpperRearArm"]);
+            Vector3 lower = Midpoint(spindle["LowerFrontArm"], spindle["LowerRearArm"]);
+            scene.AddLine(upper, lower, UprightColor, prefix + " upright", 3f);
+            scene.AddLine(lower, pivot, Color.FromArgb(146, 160, 173), prefix + " hub", 1.7f);
+            scene.AddPoint(pivot, wheelColor, prefix + " wheel pivot");
+            AddTireWireframe(scene, prefix, pivot, orientation, wheelColor);
+
+            Vector3 upperBody = Midpoint(body["UpperFrontArm"], body["UpperRearArm"]);
+            Vector3 lowerBody = Midpoint(body["LowerFrontArm"], body["LowerRearArm"]);
+            if (TryIntersectionXY(spindle["LowerFrontArm"], lowerBody,
+                                  spindle["UpperFrontArm"], upperBody, out Vector3 instantCenter) &&
+                Suspension3DScene.Valid(pivot) &&
+                Vector3.Distance(instantCenter, pivot) < 10f)
+            {
+                instantCenter.Z = pivot.Z;
+                projection.InstantCenter = instantCenter;
+                scene.AddPoint(instantCenter, Color.FromArgb(155, 170, 180),
+                    prefix + " XY instant center (projected)");
+            }
+            float radius = Read(prefix, "WF_TireDataOffset", "TireRadius");
+            if (Suspension3DScene.Valid(pivot) && Finite(radius) && radius > 0 && radius < 2f)
+                projection.TireContact = pivot - new Vector3(0f, radius, 0f);
+            return projection;
+        }
+
+        // The existing instant/roll-center construction is fundamentally a
+        // 2D front-view operation; retain it as an explicitly labeled projection.
+        private static bool TryIntersectionXY(Vector3 a, Vector3 b, Vector3 c, Vector3 d, out Vector3 intersection)
+        {
+            intersection = new Vector3(float.NaN);
+            if (!Suspension3DScene.Valid(a) || !Suspension3DScene.Valid(b) ||
+                !Suspension3DScene.Valid(c) || !Suspension3DScene.Valid(d)) return false;
+            double dx1 = b.X - (double)a.X, dy1 = b.Y - (double)a.Y;
+            double dx2 = d.X - (double)c.X, dy2 = d.Y - (double)c.Y;
+            double det = dx1 * dy2 - dy1 * dx2;
+            double len = Math.Sqrt((dx1 * dx1 + dy1 * dy1) * (dx2 * dx2 + dy2 * dy2));
+            if (len < 1e-8 || Math.Abs(det) < 1e-7 * len) return false;
+            double t = ((c.X - (double)a.X) * dy2 - (c.Y - (double)a.Y) * dx2) / det;
+            double x = a.X + t * dx1, y = a.Y + t * dy1;
+            if (double.IsNaN(x) || double.IsNaN(y) || double.IsInfinity(x) ||
+                double.IsInfinity(y) || Math.Abs(x) > 100f || Math.Abs(y) > 100f) return false;
+            intersection = new Vector3((float)x, (float)y, (a.Z + b.Z) * 0.5f);
+            return true;
+        }
+
+        private static void Join(Suspension3DScene scene, Dictionary<string, Vector3> items,
+            string a, string b, Color color, string name)
+        {
+            scene.AddLine(items[a], items[b], color, name, 1.65f);
+        }
+
+        private static Vector3 Midpoint(Vector3 a, Vector3 b) =>
+            Suspension3DScene.Valid(a) && Suspension3DScene.Valid(b) ?
+            (a + b) * 0.5f : new Vector3(float.NaN);
+
+        private void AddTireWireframe(Suspension3DScene scene, string prefix, Vector3 pivot,
+            float[,] rotation, Color wheelColor)
+        {
+            if (!Suspension3DScene.Valid(pivot)) return;
+            float radius = Read(prefix, "WF_TireDataOffset", "TireRadius");
+            float width = Read(prefix, "WF_TireDataOffset", "TireWidth");
+            if (!Finite(radius) || radius <= 0f || radius > 2f) return;
+            if (!Finite(width) || width <= 0f || width > 1.5f) width = 0.20f;
+            const int sections = 28;
+            for (int i = 0; i < sections; i++)
+            {
+                float a = (float)(i * Math.PI * 2d / sections);
+                float b = (float)((i + 1) * Math.PI * 2d / sections);
+                foreach (int side in new[] { -1, 1 })
+                {
+                    Vector3 p = new Vector3(side * width * 0.5f, radius * (float)Math.Cos(a), radius * (float)Math.Sin(a));
+                    Vector3 q = new Vector3(side * width * 0.5f, radius * (float)Math.Cos(b), radius * (float)Math.Sin(b));
+                    if (rotation != null) { p = Transform(p, rotation); q = Transform(q, rotation); }
+                    scene.AddLine(pivot + p, pivot + q, wheelColor, prefix + " tire", 1.25f);
+                    if (i % 4 == 0 && side == -1)
+                    {
+                        Vector3 other = new Vector3(width * 0.5f, radius * (float)Math.Cos(a), radius * (float)Math.Sin(a));
+                        if (rotation != null) other = Transform(other, rotation);
+                        scene.AddLine(pivot + p, pivot + other, wheelColor, prefix + " tread", 1f);
+                    }
+                }
+            }
+        }
+
+        private float[,] ReadWheelRotation(string prefix)
+        {
+            var matrix = new float[3, 3];
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                {
+                    float value = Read(prefix, "WF_TireDataOffset", "TireM" + (i + 1) + (j + 1));
+                    if (!Finite(value) || Math.Abs(value) > 2f) return null;
+                    matrix[i, j] = value;
+                }
+            // Reject zero/garbage matrices while the game is entering a session.
+            for (int i = 0; i < 3; i++)
+            {
+                float length = 0;
+                for (int j = 0; j < 3; j++) length += matrix[i, j] * matrix[i, j];
+                if (length < 0.5f || length > 1.5f) return null;
+            }
+            return matrix;
+        }
+
+        // System.Numerics Matrix4x4 uses row-vector conventions, matching the
+        // game's TireM11..TireM33 matrix layout used by the current model.
+        private static Vector3 Transform(Vector3 p, float[,] m) =>
+            new Vector3(
+                p.X * m[0, 0] + p.Y * m[1, 0] + p.Z * m[2, 0],
+                p.X * m[0, 1] + p.Y * m[1, 1] + p.Z * m[2, 1],
+                p.X * m[0, 2] + p.Y * m[1, 2] + p.Z * m[2, 2]);
+
+        private static bool Finite(float v) => !float.IsNaN(v) && !float.IsInfinity(v);
+
+        private static Vector3 ReadVector(string prefix, string category, string baseName,
+            string xSuffix, string ySuffix, string zSuffix) =>
+            new Vector3(Read(prefix, category, baseName + xSuffix),
+                        Read(prefix, category, baseName + ySuffix),
+                        Read(prefix, category, baseName + zSuffix));
+
+        private static float Read(string prefix, string category, string member)
+        {
+            try
+            {
+                return LiveData.GetFullListFloatValue(prefix, GameMemoryConfig.Field(category, member));
+            }
+            catch (KeyNotFoundException) { return float.NaN; }
+            catch (ArgumentOutOfRangeException) { return float.NaN; }
+            catch (IndexOutOfRangeException) { return float.NaN; }
+            catch (ArgumentException) { return float.NaN; }
         }
     }
 }

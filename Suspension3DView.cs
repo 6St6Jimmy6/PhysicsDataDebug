@@ -1,0 +1,488 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Numerics;
+using System.Windows.Forms;
+
+namespace Physics_Data_Debug
+{
+    // A lightweight 3D wireframe renderer. The geometry is real XYZ data; only
+    // the final screen projection is two-dimensional. No additional libraries,
+    // OpenGL drivers or native dependencies are required by the .NET 4.7.2 app.
+    public sealed class Suspension3DScene
+    {
+        public sealed class Segment
+        {
+            public Vector3 A;
+            public Vector3 B;
+            public Color Color;
+            public float Width;
+            public string Name;
+        }
+
+        public sealed class Marker
+        {
+            public Vector3 Position;
+            public Color Color;
+            public string Name;
+        }
+
+        public readonly List<Segment> Segments = new List<Segment>();
+        public readonly List<Marker> Markers = new List<Marker>();
+
+        public void AddLine(Vector3 a, Vector3 b, Color color, string name, float width = 2f)
+        {
+            if (!Valid(a) || !Valid(b)) return;
+            Segments.Add(new Segment { A = a, B = b, Color = color, Width = width, Name = name });
+        }
+
+        public void AddPoint(Vector3 position, Color color, string name)
+        {
+            if (!Valid(position)) return;
+            Markers.Add(new Marker { Position = position, Color = color, Name = name });
+        }
+
+        public static bool Valid(Vector3 p) =>
+            Finite(p.X) && Finite(p.Y) && Finite(p.Z) &&
+            Math.Abs(p.X) < 100000f && Math.Abs(p.Y) < 100000f && Math.Abs(p.Z) < 100000f;
+
+        private static bool Finite(float v) => !float.IsNaN(v) && !float.IsInfinity(v);
+
+        public bool GetBounds(out Vector3 minimum, out Vector3 maximum)
+        {
+            minimum = new Vector3(float.MaxValue);
+            maximum = new Vector3(float.MinValue);
+            int count = 0;
+            foreach (Segment segment in Segments)
+            {
+                minimum = Vector3.Min(minimum, Vector3.Min(segment.A, segment.B));
+                maximum = Vector3.Max(maximum, Vector3.Max(segment.A, segment.B));
+                count += 2;
+            }
+            foreach (Marker marker in Markers)
+            {
+                minimum = Vector3.Min(minimum, marker.Position);
+                maximum = Vector3.Max(maximum, marker.Position);
+                count++;
+            }
+            return count > 0;
+        }
+    }
+
+    public sealed class SuspensionCameraChangedEventArgs : EventArgs
+    {
+        public decimal Azimuth { get; }
+        public decimal Elevation { get; }
+        public decimal Zoom { get; }
+
+        public SuspensionCameraChangedEventArgs(decimal azimuth, decimal elevation, decimal zoom)
+        {
+            Azimuth = azimuth;
+            Elevation = elevation;
+            Zoom = zoom;
+        }
+    }
+
+    /// <summary>
+    /// Mouse left-drag: orbit; right/middle-drag: pan; wheel: zoom.
+    /// Camera values can be edited in the Designer-owned form toolbar.
+    /// </summary>
+    public sealed class Suspension3DView : Control
+    {
+        private readonly ToolTip pointToolTip = new ToolTip();
+        private Suspension3DScene scene = new Suspension3DScene();
+        private bool dragging;
+        private MouseButtons dragButton;
+        private Point previousMouse;
+        private PointF pan;
+        private string lastTooltip = "";
+        private float azimuth = 32f;
+        private float elevation = 20f;
+        private float zoom = 1f;
+
+        // Keep the camera fixed in the vehicle's lateral reference frame.
+        // Re-fitting to the live scene bounds every tick made the entire
+        // suspension drift across the screen as the car steered/rolled.
+        private Vector3 frameCenter;
+        private float frameRadius = 1f;
+        private bool frameLocked;
+
+        public event EventHandler<SuspensionCameraChangedEventArgs> CameraChanged;
+
+        public Suspension3DView()
+        {
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint |
+                     ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
+            BackColor = Color.FromArgb(12, 14, 18);
+            ForeColor = Color.Gainsboro;
+            Font = new Font("Arial", 9f);
+            TabStop = true;
+            pointToolTip.AutoPopDelay = 7500;
+            pointToolTip.InitialDelay = 300;
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                scene = MakeDesignerPreview();
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Suspension3DScene Scene
+        {
+            get => scene;
+            set { scene = value ?? new Suspension3DScene(); Invalidate(); }
+        }
+
+        [DefaultValue(false)]
+        public bool Perspective { get; set; }
+
+        [DefaultValue(true)]
+        public bool ShowGrid { get; set; } = true;
+
+        [DefaultValue(false)]
+        public bool ShowPointNames { get; set; }
+
+        [DefaultValue("SUSPENSION")]
+        public string ViewTitle { get; set; } = "SUSPENSION";
+
+        [Browsable(false)]
+        public float Azimuth => azimuth;
+        [Browsable(false)]
+        public float Elevation => elevation;
+        [Browsable(false)]
+        public float Zoom => zoom;
+
+        public void SetCamera(float newAzimuth, float newElevation, float newZoom)
+        {
+            azimuth = ((newAzimuth % 360f) + 360f) % 360f;
+            elevation = Math.Max(-89f, Math.Min(89f, newElevation));
+            zoom = Math.Max(0.20f, Math.Min(8f, newZoom));
+            Invalidate();
+        }
+
+        public void ResetPan()
+        {
+            pan = PointF.Empty;
+            Invalidate();
+        }
+
+        // Recalculate the one-time camera framing after a new car/session is
+        // selected. Normal telemetry updates never move the camera center.
+        public void ResetFraming()
+        {
+            frameLocked = false;
+            Invalidate();
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            if (e.Button != MouseButtons.Left && e.Button != MouseButtons.Right &&
+                e.Button != MouseButtons.Middle) return;
+            Focus();
+            dragging = true;
+            dragButton = e.Button;
+            previousMouse = e.Location;
+            Capture = true;
+            Cursor = Cursors.SizeAll;
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            if (e.Button != dragButton) return;
+            dragging = false;
+            Capture = false;
+            Cursor = Cursors.Default;
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (dragging)
+            {
+                int dx = e.X - previousMouse.X;
+                int dy = e.Y - previousMouse.Y;
+                previousMouse = e.Location;
+                if (dragButton == MouseButtons.Left)
+                {
+                    SetCamera(azimuth + dx * 0.55f, elevation + dy * 0.55f, zoom);
+                    RaiseCameraChanged();
+                }
+                else
+                {
+                    pan.X += dx;
+                    pan.Y += dy;
+                    Invalidate();
+                }
+                return;
+            }
+            Suspension3DScene.Marker nearest = null;
+            float bestDistance = 110f;
+            if (TryProjection(out Vector3 center, out float radius, out float pixelScale))
+            {
+                foreach (Suspension3DScene.Marker marker in scene.Markers)
+                {
+                    PointF screen = Project(marker.Position, center, radius, pixelScale);
+                    float px = screen.X - e.X;
+                    float py = screen.Y - e.Y;
+                    float distSquared = px * px + py * py;
+                    if (distSquared < bestDistance)
+                    {
+                        bestDistance = distSquared;
+                        nearest = marker;
+                    }
+                }
+            }
+            string message = nearest == null ? "" :
+                nearest.Name + "\nX: " + nearest.Position.X.ToString("F3") + " m" +
+                "\nY: " + nearest.Position.Y.ToString("F3") + " m" +
+                "\nZ: " + nearest.Position.Z.ToString("F3") + " m";
+            if (message == lastTooltip) return;
+            lastTooltip = message;
+            pointToolTip.SetToolTip(this, message);
+        }
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            base.OnMouseWheel(e);
+            SetCamera(azimuth, elevation, zoom * (float)Math.Pow(1.12, e.Delta / 120d));
+            RaiseCameraChanged();
+        }
+
+        private void RaiseCameraChanged()
+        {
+            CameraChanged?.Invoke(this, new SuspensionCameraChangedEventArgs(
+                (decimal)azimuth, (decimal)elevation, (decimal)(zoom * 100f)));
+        }
+
+        private bool TryProjection(out Vector3 center, out float radius, out float pixelScale)
+        {
+            center = Vector3.Zero;
+            radius = 1f;
+            pixelScale = 1f;
+            if (ClientSize.Width <= 4 || ClientSize.Height <= 4 ||
+                !scene.GetBounds(out Vector3 min, out Vector3 max)) return false;
+
+            if (!frameLocked)
+            {
+                Vector3 midpoint = (min + max) * 0.5f;
+                // Never follow the live lateral bounds: X = 0 is the fixed
+                // vehicle centerline, including while the wheels are turning.
+                frameCenter = new Vector3(0f, midpoint.Y, midpoint.Z);
+                Vector3 extent = max - min;
+                float lateralReach = Math.Max(Math.Abs(min.X), Math.Abs(max.X));
+                frameRadius = Math.Max(0.3f,
+                    Math.Max(lateralReach, Math.Max(extent.Y, extent.Z) * 0.5f));
+
+                // While only part of the menu-time geometry is available,
+                // keep fitting provisionally. Lock only once both wheel pivots
+                // are present so temporary unreadable fields cannot fix a
+                // misleading camera center or scale for the whole session.
+                frameLocked = HasCompleteAxle(scene);
+            }
+
+            center = frameCenter;
+            radius = frameRadius;
+            pixelScale = (Math.Min(ClientSize.Width, ClientSize.Height) * 0.34f / radius) * zoom;
+            return true;
+        }
+
+        private static bool HasCompleteAxle(Suspension3DScene geometry)
+        {
+            Vector3? firstPivot = null;
+            foreach (Suspension3DScene.Marker marker in geometry.Markers)
+            {
+                if (marker.Name == null ||
+                    !marker.Name.EndsWith(" wheel pivot", StringComparison.Ordinal))
+                    continue;
+                if (!firstPivot.HasValue)
+                    firstPivot = marker.Position;
+                else
+                {
+                    float distance = Vector3.Distance(firstPivot.Value, marker.Position);
+                    return geometry.Segments.Count >= 8 && distance > 0.35f && distance < 8f;
+                }
+            }
+            return false;
+        }
+
+        private float Depth(Vector3 p, Vector3 center)
+        {
+            float yaw = azimuth * (float)(Math.PI / 180d);
+            float elev = elevation * (float)(Math.PI / 180d);
+            Vector3 d = p - center;
+            float z1 = d.X * (float)Math.Sin(yaw) + d.Z * (float)Math.Cos(yaw);
+            return d.Y * (float)Math.Sin(elev) + z1 * (float)Math.Cos(elev);
+        }
+
+        private PointF Project(Vector3 p, Vector3 center, float radius, float pixelScale)
+        {
+            float yaw = azimuth * (float)(Math.PI / 180d);
+            float elev = elevation * (float)(Math.PI / 180d);
+            Vector3 d = p - center;
+            float xx = d.X * (float)Math.Cos(yaw) - d.Z * (float)Math.Sin(yaw);
+            float z1 = d.X * (float)Math.Sin(yaw) + d.Z * (float)Math.Cos(yaw);
+            float yy = d.Y * (float)Math.Cos(elev) - z1 * (float)Math.Sin(elev);
+            float depth = d.Y * (float)Math.Sin(elev) + z1 * (float)Math.Cos(elev);
+            float persp = 1f;
+            if (Perspective)
+            {
+                float cameraDistance = radius * 5f;
+                persp = cameraDistance / Math.Max(radius * 0.5f, cameraDistance - depth);
+            }
+            return new PointF(ClientSize.Width * 0.5f + pan.X + xx * pixelScale * persp,
+                              ClientSize.Height * 0.53f + pan.Y - yy * pixelScale * persp);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
+            g.Clear(BackColor);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            using (var headerBrush = new SolidBrush(Color.FromArgb(230, 235, 239)))
+                g.DrawString(ViewTitle, Font, headerBrush, 11f, 8f);
+
+            if (!TryProjection(out Vector3 center, out float radius, out float scale))
+            {
+                using (var hintBrush = new SolidBrush(Color.FromArgb(155, 165, 178)))
+                    g.DrawString("Waiting for suspension geometry data", Font, hintBrush, 12f, 36f);
+                DrawHint(g);
+                return;
+            }
+
+            if (ShowGrid) DrawGrid(g, center, radius, scale);
+
+            // Painter's sorting gives an intuitive rear-to-front wireframe even
+            // when arms overlap. It is not a solid-surface/occlusion renderer.
+            foreach (Suspension3DScene.Segment segment in scene.Segments.OrderBy(s =>
+                (Depth(s.A, center) + Depth(s.B, center)) * 0.5f))
+            {
+                PointF a = Project(segment.A, center, radius, scale);
+                PointF b = Project(segment.B, center, radius, scale);
+                if (!Finite(a) || !Finite(b)) continue;
+                using (var pen = new Pen(segment.Color, segment.Width))
+                    g.DrawLine(pen, a, b);
+            }
+
+            // Points and labels are drawn last for legibility.
+            foreach (Suspension3DScene.Marker marker in scene.Markers.OrderBy(m => Depth(m.Position, center)))
+            {
+                PointF pt = Project(marker.Position, center, radius, scale);
+                if (!Finite(pt)) continue;
+                using (var brush = new SolidBrush(marker.Color))
+                    g.FillEllipse(brush, pt.X - 3, pt.Y - 3, 6, 6);
+                if (ShowPointNames)
+                {
+                    using (var brush = new SolidBrush(Color.FromArgb(210, 225, 228, 234)))
+                        g.DrawString(marker.Name, Font, brush, pt.X + 6, pt.Y - 8);
+                }
+            }
+            DrawHint(g);
+        }
+
+        private static bool Finite(PointF p) =>
+            !float.IsNaN(p.X) && !float.IsInfinity(p.X) &&
+            !float.IsNaN(p.Y) && !float.IsInfinity(p.Y) &&
+            Math.Abs(p.X) < 1000000f && Math.Abs(p.Y) < 1000000f;
+
+        private void DrawGrid(Graphics g, Vector3 center, float radius, float scale)
+        {
+            // The grid lies on the vehicle's XZ plane at Y = 0. X is lateral,
+            // Y is vertical, Z is longitudinal. Axis arrows are tinted RGB.
+            float step = radius < 1.5f ? 0.25f : radius < 4f ? 0.5f : 1f;
+            float half = Math.Min(12f, Math.Max(1.5f, radius * 1.4f));
+            float minX = (float)Math.Floor((center.X - half) / step) * step;
+            float minZ = (float)Math.Floor((center.Z - half) / step) * step;
+            float maxX = center.X + half;
+            float maxZ = center.Z + half;
+            using (var pen = new Pen(Color.FromArgb(37, 82, 93, 112), 1f))
+            {
+                for (float x = minX; x <= maxX; x += step)
+                    DrawSegment(g, pen, new Vector3(x, 0f, minZ), new Vector3(x, 0f, maxZ), center, radius, scale);
+                for (float z = minZ; z <= maxZ; z += step)
+                    DrawSegment(g, pen, new Vector3(minX, 0f, z), new Vector3(maxX, 0f, z), center, radius, scale);
+            }
+            DrawAxis(g, center, radius, scale, Vector3.UnitX, Color.FromArgb(240, 120, 120), "X");
+            DrawAxis(g, center, radius, scale, Vector3.UnitY, Color.FromArgb(155, 235, 150), "Y");
+            DrawAxis(g, center, radius, scale, Vector3.UnitZ, Color.FromArgb(110, 170, 255), "Z");
+        }
+
+        private void DrawAxis(Graphics g, Vector3 center, float radius, float scale,
+            Vector3 direction, Color color, string name)
+        {
+            Vector3 start = new Vector3(center.X, 0f, center.Z);
+            Vector3 end = start + direction * Math.Max(0.35f, radius * 0.55f);
+            using (var pen = new Pen(color, 2f))
+                DrawSegment(g, pen, start, end, center, radius, scale);
+            PointF projected = Project(end, center, radius, scale);
+            if (Finite(projected))
+                using (var brush = new SolidBrush(color))
+                    g.DrawString(name, Font, brush, projected.X + 3, projected.Y + 3);
+        }
+
+        private void DrawSegment(Graphics g, Pen pen, Vector3 a, Vector3 b,
+            Vector3 center, float radius, float scale)
+        {
+            PointF aa = Project(a, center, radius, scale);
+            PointF bb = Project(b, center, radius, scale);
+            if (Finite(aa) && Finite(bb)) g.DrawLine(pen, aa, bb);
+        }
+
+        private void DrawHint(Graphics g)
+        {
+            const string hint = "Drag: orbit   Right-drag: pan   Wheel: zoom   Hover: XYZ";
+            SizeF size = g.MeasureString(hint, Font);
+            using (var brush = new SolidBrush(Color.FromArgb(153, 164, 179)))
+                g.DrawString(hint, Font, brush,
+                    10f, Math.Max(30f, ClientSize.Height - size.Height - 6f));
+        }
+
+        private static Suspension3DScene MakeDesignerPreview()
+        {
+            var demo = new Suspension3DScene();
+            Color upper = Color.FromArgb(73, 211, 178);
+            Color lower = Color.FromArgb(242, 173, 91);
+            Color steering = Color.FromArgb(238, 115, 126);
+            foreach (int sign in new[] { -1, 1 })
+            {
+                float x = sign * 0.65f;
+                Vector3 bodyUpperFront = new Vector3(x * 0.45f, 0.8f, -0.16f);
+                Vector3 bodyUpperRear = new Vector3(x * 0.45f, 0.8f, 0.16f);
+                Vector3 bodyLowerFront = new Vector3(x * 0.42f, 0.3f, -0.20f);
+                Vector3 bodyLowerRear = new Vector3(x * 0.42f, 0.3f, 0.20f);
+                Vector3 spindleUpper = new Vector3(x, 0.72f, 0f);
+                Vector3 spindleLower = new Vector3(x, 0.22f, 0f);
+                demo.AddLine(bodyUpperFront, spindleUpper, upper, "Upper front arm");
+                demo.AddLine(bodyUpperRear, spindleUpper, upper, "Upper rear arm");
+                demo.AddLine(bodyLowerFront, spindleLower, lower, "Lower front arm");
+                demo.AddLine(bodyLowerRear, spindleLower, lower, "Lower rear arm");
+                demo.AddLine(bodyUpperFront, bodyUpperRear, upper, "Upper chassis joints");
+                demo.AddLine(bodyLowerFront, bodyLowerRear, lower, "Lower chassis joints");
+                demo.AddLine(spindleLower, spindleUpper, Color.Gainsboro, "Upright");
+                demo.AddLine(new Vector3(x * 0.4f, 0.52f, 0.16f), new Vector3(x, 0.5f, 0.13f),
+                    steering, "Steering rod");
+                for (int i = 0; i < 24; i++)
+                {
+                    double a = 2d * Math.PI * i / 24d;
+                    double b = 2d * Math.PI * (i + 1) / 24d;
+                    Vector3 p = new Vector3(x, 0.47f + 0.28f * (float)Math.Cos(a), 0.28f * (float)Math.Sin(a));
+                    Vector3 q = new Vector3(x, 0.47f + 0.28f * (float)Math.Cos(b), 0.28f * (float)Math.Sin(b));
+                    demo.AddLine(p, q, Color.FromArgb(117, 146, 172), "Wheel", 1.4f);
+                }
+                demo.AddPoint(spindleUpper, Color.White, sign < 0 ? "FL upper spindle" : "FR upper spindle");
+                demo.AddPoint(spindleLower, Color.White, sign < 0 ? "FL lower spindle" : "FR lower spindle");
+            }
+            return demo;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) pointToolTip.Dispose();
+            base.Dispose(disposing);
+        }
+    }
+}

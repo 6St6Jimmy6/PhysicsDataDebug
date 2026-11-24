@@ -1,4 +1,4 @@
-﻿namespace Physics_Data_Debug
+namespace Physics_Data_Debug
 {
     partial class FormSuspensionGeometry
     {
@@ -6,7 +6,7 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null)) components.Dispose();
+            if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
 
@@ -14,460 +14,406 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.settingsToolbar = new System.Windows.Forms.TableLayoutPanel();
-            this.xMinimumGroup = new System.Windows.Forms.TableLayoutPanel();
-            this.xMinimumLabel = new System.Windows.Forms.Label();
-            this.axisXMinimumNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.xMaximumGroup = new System.Windows.Forms.TableLayoutPanel();
-            this.xMaximumLabel = new System.Windows.Forms.Label();
-            this.axisXMaximumNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.yMinimumGroup = new System.Windows.Forms.TableLayoutPanel();
-            this.yMinimumLabel = new System.Windows.Forms.Label();
-            this.axisYMinimumNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.yMaximumGroup = new System.Windows.Forms.TableLayoutPanel();
-            this.yMaximumLabel = new System.Windows.Forms.Label();
-            this.axisYMaximumNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.intervalGroup = new System.Windows.Forms.TableLayoutPanel();
+            this.cameraFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.azimuthLabel = new System.Windows.Forms.Label();
+            this.azimuthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.elevationLabel = new System.Windows.Forms.Label();
+            this.elevationNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.zoomLabel = new System.Windows.Forms.Label();
+            this.zoomNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.intervalLabel = new System.Windows.Forms.Label();
             this.updateIntervalNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.resetViewButton = new System.Windows.Forms.Button();
+            this.displayFlow = new System.Windows.Forms.FlowLayoutPanel();
+            this.perspectiveCheckBox = new System.Windows.Forms.CheckBox();
+            this.gridCheckBox = new System.Windows.Forms.CheckBox();
+            this.labelsCheckBox = new System.Windows.Forms.CheckBox();
+            this.rotateSpindleCheckBox = new System.Windows.Forms.CheckBox();
+            this.frontViewButton = new System.Windows.Forms.Button();
+            this.sideViewButton = new System.Windows.Forms.Button();
+            this.topViewButton = new System.Windows.Forms.Button();
+            this.isometricViewButton = new System.Windows.Forms.Button();
+            this.sceneLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.front3DView = new Physics_Data_Debug.Suspension3DView();
+            this.rear3DView = new Physics_Data_Debug.Suspension3DView();
             this.settingsToolbar.SuspendLayout();
-            this.xMinimumGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisXMinimumNumericUpDown)).BeginInit();
-            this.xMaximumGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisXMaximumNumericUpDown)).BeginInit();
-            this.yMinimumGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisYMinimumNumericUpDown)).BeginInit();
-            this.yMaximumGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisYMaximumNumericUpDown)).BeginInit();
-            this.intervalGroup.SuspendLayout();
+            this.cameraFlow.SuspendLayout();
+            this.displayFlow.SuspendLayout();
+            this.sceneLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.azimuthNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elevationNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateIntervalNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
             // 
-            this.timer1.Interval = 50;
+            this.timer1.Interval = 100;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.Maximum = 1.5D;
-            chartArea1.AxisX.Minimum = -1.5D;
-            chartArea1.AxisY.Maximum = 1.5D;
-            chartArea1.AxisY.Minimum = -0.5D;
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "FrontSuspension";
-            chartArea2.AxisX.Maximum = 1.5D;
-            chartArea2.AxisX.Minimum = -1.5D;
-            chartArea2.AxisY.Maximum = 1.5D;
-            chartArea2.AxisY.Minimum = -0.5D;
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "RearSuspension";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.ChartAreas.Add(chartArea2);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart1.Location = new System.Drawing.Point(0, 37);
-            this.chart1.Margin = new System.Windows.Forms.Padding(0);
-            this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(840, 597);
-            this.chart1.TabIndex = 1;
             // 
             // settingsToolbar
             // 
-            this.settingsToolbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.settingsToolbar.ColumnCount = 5;
-            this.settingsToolbar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.settingsToolbar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.settingsToolbar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.settingsToolbar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.settingsToolbar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.settingsToolbar.Controls.Add(this.xMinimumGroup, 0, 0);
-            this.settingsToolbar.Controls.Add(this.xMaximumGroup, 1, 0);
-            this.settingsToolbar.Controls.Add(this.yMinimumGroup, 2, 0);
-            this.settingsToolbar.Controls.Add(this.yMaximumGroup, 3, 0);
-            this.settingsToolbar.Controls.Add(this.intervalGroup, 4, 0);
+            this.settingsToolbar.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            this.settingsToolbar.ColumnCount = 1;
+            this.settingsToolbar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.settingsToolbar.Controls.Add(this.cameraFlow, 0, 0);
+            this.settingsToolbar.Controls.Add(this.displayFlow, 0, 1);
             this.settingsToolbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.settingsToolbar.Location = new System.Drawing.Point(0, 0);
             this.settingsToolbar.Margin = new System.Windows.Forms.Padding(0);
             this.settingsToolbar.Name = "settingsToolbar";
-            this.settingsToolbar.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.settingsToolbar.RowCount = 1;
-            this.settingsToolbar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.settingsToolbar.Size = new System.Drawing.Size(840, 37);
+            this.settingsToolbar.RowCount = 2;
+            this.settingsToolbar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.settingsToolbar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.settingsToolbar.Size = new System.Drawing.Size(940, 80);
             this.settingsToolbar.TabIndex = 0;
             // 
-            // xMinimumGroup
+            // cameraFlow
             // 
-            this.xMinimumGroup.ColumnCount = 2;
-            this.xMinimumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.xMinimumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.xMinimumGroup.Controls.Add(this.xMinimumLabel, 0, 0);
-            this.xMinimumGroup.Controls.Add(this.axisXMinimumNumericUpDown, 1, 0);
-            this.xMinimumGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xMinimumGroup.Location = new System.Drawing.Point(5, 4);
-            this.xMinimumGroup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.xMinimumGroup.Name = "xMinimumGroup";
-            this.xMinimumGroup.RowCount = 1;
-            this.xMinimumGroup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.xMinimumGroup.Size = new System.Drawing.Size(162, 29);
-            this.xMinimumGroup.TabIndex = 0;
+            this.cameraFlow.AutoScroll = true;
+            this.cameraFlow.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
+            this.cameraFlow.Controls.Add(this.azimuthLabel);
+            this.cameraFlow.Controls.Add(this.azimuthNumericUpDown);
+            this.cameraFlow.Controls.Add(this.elevationLabel);
+            this.cameraFlow.Controls.Add(this.elevationNumericUpDown);
+            this.cameraFlow.Controls.Add(this.zoomLabel);
+            this.cameraFlow.Controls.Add(this.zoomNumericUpDown);
+            this.cameraFlow.Controls.Add(this.intervalLabel);
+            this.cameraFlow.Controls.Add(this.updateIntervalNumericUpDown);
+            this.cameraFlow.Controls.Add(this.resetViewButton);
+            this.cameraFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cameraFlow.Location = new System.Drawing.Point(0, 0);
+            this.cameraFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.cameraFlow.Name = "cameraFlow";
+            this.cameraFlow.Padding = new System.Windows.Forms.Padding(5, 6, 4, 1);
+            this.cameraFlow.Size = new System.Drawing.Size(940, 40);
+            this.cameraFlow.TabIndex = 0;
+            this.cameraFlow.WrapContents = false;
             // 
-            // xMinimumLabel
+            // azimuthLabel
             // 
-            this.xMinimumLabel.AutoSize = true;
-            this.xMinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xMinimumLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.xMinimumLabel.Location = new System.Drawing.Point(2, 0);
-            this.xMinimumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.xMinimumLabel.Name = "xMinimumLabel";
-            this.xMinimumLabel.Size = new System.Drawing.Size(64, 29);
-            this.xMinimumLabel.TabIndex = 0;
-            this.xMinimumLabel.Text = "X minimum";
-            this.xMinimumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.azimuthLabel.AutoSize = true;
+            this.azimuthLabel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.azimuthLabel.Margin = new System.Windows.Forms.Padding(4, 6, 2, 0);
+            this.azimuthLabel.Name = "azimuthLabel";
+            this.azimuthLabel.Text = "Azimuth";
             // 
-            // axisXMinimumNumericUpDown
+            // azimuthNumericUpDown
             // 
-            this.axisXMinimumNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.axisXMinimumNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.axisXMinimumNumericUpDown.DecimalPlaces = 3;
-            this.axisXMinimumNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisXMinimumNumericUpDown.ForeColor = System.Drawing.Color.White;
-            this.axisXMinimumNumericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.axisXMinimumNumericUpDown.Location = new System.Drawing.Point(70, 2);
-            this.axisXMinimumNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.axisXMinimumNumericUpDown.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.axisXMinimumNumericUpDown.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.axisXMinimumNumericUpDown.Name = "axisXMinimumNumericUpDown";
-            this.axisXMinimumNumericUpDown.Size = new System.Drawing.Size(90, 20);
-            this.axisXMinimumNumericUpDown.TabIndex = 1;
-            this.axisXMinimumNumericUpDown.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            -2147418112});
-            this.axisXMinimumNumericUpDown.ValueChanged += new System.EventHandler(this.SuspensionGeometrySetting_ValueChanged);
+            this.azimuthNumericUpDown.BackColor = System.Drawing.Color.FromArgb(38, 38, 38);
+            this.azimuthNumericUpDown.DecimalPlaces = 1;
+            this.azimuthNumericUpDown.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
+            this.azimuthNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.azimuthNumericUpDown.Location = new System.Drawing.Point(64, 7);
+            this.azimuthNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 1, 9, 2);
+            this.azimuthNumericUpDown.Maximum = new decimal(new int[] { 359, 0, 0, 0 });
+            this.azimuthNumericUpDown.Name = "azimuthNumericUpDown";
+            this.azimuthNumericUpDown.Size = new System.Drawing.Size(63, 20);
+            this.azimuthNumericUpDown.TabIndex = 1;
+            this.azimuthNumericUpDown.Value = new decimal(new int[] { 32, 0, 0, 0 });
+            this.azimuthNumericUpDown.ValueChanged += new System.EventHandler(this.SettingsValueChanged);
             // 
-            // xMaximumGroup
+            // elevationLabel
             // 
-            this.xMaximumGroup.ColumnCount = 2;
-            this.xMaximumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.xMaximumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.xMaximumGroup.Controls.Add(this.xMaximumLabel, 0, 0);
-            this.xMaximumGroup.Controls.Add(this.axisXMaximumNumericUpDown, 1, 0);
-            this.xMaximumGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xMaximumGroup.Location = new System.Drawing.Point(171, 4);
-            this.xMaximumGroup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.xMaximumGroup.Name = "xMaximumGroup";
-            this.xMaximumGroup.RowCount = 1;
-            this.xMaximumGroup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.xMaximumGroup.Size = new System.Drawing.Size(162, 29);
-            this.xMaximumGroup.TabIndex = 1;
+            this.elevationLabel.AutoSize = true;
+            this.elevationLabel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.elevationLabel.Margin = new System.Windows.Forms.Padding(4, 6, 2, 0);
+            this.elevationLabel.Name = "elevationLabel";
+            this.elevationLabel.Text = "Elevation";
             // 
-            // xMaximumLabel
+            // elevationNumericUpDown
             // 
-            this.xMaximumLabel.AutoSize = true;
-            this.xMaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xMaximumLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.xMaximumLabel.Location = new System.Drawing.Point(2, 0);
-            this.xMaximumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.xMaximumLabel.Name = "xMaximumLabel";
-            this.xMaximumLabel.Size = new System.Drawing.Size(64, 29);
-            this.xMaximumLabel.TabIndex = 0;
-            this.xMaximumLabel.Text = "X maximum";
-            this.xMaximumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.elevationNumericUpDown.BackColor = System.Drawing.Color.FromArgb(38, 38, 38);
+            this.elevationNumericUpDown.DecimalPlaces = 1;
+            this.elevationNumericUpDown.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
+            this.elevationNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.elevationNumericUpDown.Location = new System.Drawing.Point(211, 7);
+            this.elevationNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 1, 9, 2);
+            this.elevationNumericUpDown.Maximum = new decimal(new int[] { 89, 0, 0, 0 });
+            this.elevationNumericUpDown.Minimum = new decimal(new int[] { 89, 0, 0, -2147483648 });
+            this.elevationNumericUpDown.Name = "elevationNumericUpDown";
+            this.elevationNumericUpDown.Size = new System.Drawing.Size(63, 20);
+            this.elevationNumericUpDown.TabIndex = 3;
+            this.elevationNumericUpDown.Value = new decimal(new int[] { 20, 0, 0, 0 });
+            this.elevationNumericUpDown.ValueChanged += new System.EventHandler(this.SettingsValueChanged);
             // 
-            // axisXMaximumNumericUpDown
+            // zoomLabel
             // 
-            this.axisXMaximumNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.axisXMaximumNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.axisXMaximumNumericUpDown.DecimalPlaces = 3;
-            this.axisXMaximumNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisXMaximumNumericUpDown.ForeColor = System.Drawing.Color.White;
-            this.axisXMaximumNumericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.axisXMaximumNumericUpDown.Location = new System.Drawing.Point(70, 2);
-            this.axisXMaximumNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.axisXMaximumNumericUpDown.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.axisXMaximumNumericUpDown.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.axisXMaximumNumericUpDown.Name = "axisXMaximumNumericUpDown";
-            this.axisXMaximumNumericUpDown.Size = new System.Drawing.Size(90, 20);
-            this.axisXMaximumNumericUpDown.TabIndex = 1;
-            this.axisXMaximumNumericUpDown.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            65536});
-            this.axisXMaximumNumericUpDown.ValueChanged += new System.EventHandler(this.SuspensionGeometrySetting_ValueChanged);
+            this.zoomLabel.AutoSize = true;
+            this.zoomLabel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.zoomLabel.Margin = new System.Windows.Forms.Padding(4, 6, 2, 0);
+            this.zoomLabel.Name = "zoomLabel";
+            this.zoomLabel.Text = "Zoom %";
             // 
-            // yMinimumGroup
+            // zoomNumericUpDown
             // 
-            this.yMinimumGroup.ColumnCount = 2;
-            this.yMinimumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.yMinimumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.yMinimumGroup.Controls.Add(this.yMinimumLabel, 0, 0);
-            this.yMinimumGroup.Controls.Add(this.axisYMinimumNumericUpDown, 1, 0);
-            this.yMinimumGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yMinimumGroup.Location = new System.Drawing.Point(337, 4);
-            this.yMinimumGroup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.yMinimumGroup.Name = "yMinimumGroup";
-            this.yMinimumGroup.RowCount = 1;
-            this.yMinimumGroup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.yMinimumGroup.Size = new System.Drawing.Size(162, 29);
-            this.yMinimumGroup.TabIndex = 2;
-            // 
-            // yMinimumLabel
-            // 
-            this.yMinimumLabel.AutoSize = true;
-            this.yMinimumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yMinimumLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.yMinimumLabel.Location = new System.Drawing.Point(2, 0);
-            this.yMinimumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.yMinimumLabel.Name = "yMinimumLabel";
-            this.yMinimumLabel.Size = new System.Drawing.Size(64, 29);
-            this.yMinimumLabel.TabIndex = 0;
-            this.yMinimumLabel.Text = "Y minimum";
-            this.yMinimumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // axisYMinimumNumericUpDown
-            // 
-            this.axisYMinimumNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.axisYMinimumNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.axisYMinimumNumericUpDown.DecimalPlaces = 3;
-            this.axisYMinimumNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisYMinimumNumericUpDown.ForeColor = System.Drawing.Color.White;
-            this.axisYMinimumNumericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.axisYMinimumNumericUpDown.Location = new System.Drawing.Point(70, 2);
-            this.axisYMinimumNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.axisYMinimumNumericUpDown.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.axisYMinimumNumericUpDown.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.axisYMinimumNumericUpDown.Name = "axisYMinimumNumericUpDown";
-            this.axisYMinimumNumericUpDown.Size = new System.Drawing.Size(90, 20);
-            this.axisYMinimumNumericUpDown.TabIndex = 1;
-            this.axisYMinimumNumericUpDown.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            -2147418112});
-            this.axisYMinimumNumericUpDown.ValueChanged += new System.EventHandler(this.SuspensionGeometrySetting_ValueChanged);
-            // 
-            // yMaximumGroup
-            // 
-            this.yMaximumGroup.ColumnCount = 2;
-            this.yMaximumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.yMaximumGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.yMaximumGroup.Controls.Add(this.yMaximumLabel, 0, 0);
-            this.yMaximumGroup.Controls.Add(this.axisYMaximumNumericUpDown, 1, 0);
-            this.yMaximumGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yMaximumGroup.Location = new System.Drawing.Point(503, 4);
-            this.yMaximumGroup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.yMaximumGroup.Name = "yMaximumGroup";
-            this.yMaximumGroup.RowCount = 1;
-            this.yMaximumGroup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.yMaximumGroup.Size = new System.Drawing.Size(162, 29);
-            this.yMaximumGroup.TabIndex = 3;
-            // 
-            // yMaximumLabel
-            // 
-            this.yMaximumLabel.AutoSize = true;
-            this.yMaximumLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yMaximumLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.yMaximumLabel.Location = new System.Drawing.Point(2, 0);
-            this.yMaximumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.yMaximumLabel.Name = "yMaximumLabel";
-            this.yMaximumLabel.Size = new System.Drawing.Size(64, 29);
-            this.yMaximumLabel.TabIndex = 0;
-            this.yMaximumLabel.Text = "Y maximum";
-            this.yMaximumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // axisYMaximumNumericUpDown
-            // 
-            this.axisYMaximumNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.axisYMaximumNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.axisYMaximumNumericUpDown.DecimalPlaces = 3;
-            this.axisYMaximumNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisYMaximumNumericUpDown.ForeColor = System.Drawing.Color.White;
-            this.axisYMaximumNumericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.axisYMaximumNumericUpDown.Location = new System.Drawing.Point(70, 2);
-            this.axisYMaximumNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.axisYMaximumNumericUpDown.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.axisYMaximumNumericUpDown.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.axisYMaximumNumericUpDown.Name = "axisYMaximumNumericUpDown";
-            this.axisYMaximumNumericUpDown.Size = new System.Drawing.Size(90, 20);
-            this.axisYMaximumNumericUpDown.TabIndex = 1;
-            this.axisYMaximumNumericUpDown.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            65536});
-            this.axisYMaximumNumericUpDown.ValueChanged += new System.EventHandler(this.SuspensionGeometrySetting_ValueChanged);
-            // 
-            // intervalGroup
-            // 
-            this.intervalGroup.ColumnCount = 2;
-            this.intervalGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.intervalGroup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.intervalGroup.Controls.Add(this.intervalLabel, 0, 0);
-            this.intervalGroup.Controls.Add(this.updateIntervalNumericUpDown, 1, 0);
-            this.intervalGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.intervalGroup.Location = new System.Drawing.Point(669, 4);
-            this.intervalGroup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.intervalGroup.Name = "intervalGroup";
-            this.intervalGroup.RowCount = 1;
-            this.intervalGroup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.intervalGroup.Size = new System.Drawing.Size(166, 29);
-            this.intervalGroup.TabIndex = 4;
+            this.zoomNumericUpDown.BackColor = System.Drawing.Color.FromArgb(38, 38, 38);
+            this.zoomNumericUpDown.ForeColor = System.Drawing.Color.White;
+            this.zoomNumericUpDown.Location = new System.Drawing.Point(345, 7);
+            this.zoomNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 1, 9, 2);
+            this.zoomNumericUpDown.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
+            this.zoomNumericUpDown.Minimum = new decimal(new int[] { 20, 0, 0, 0 });
+            this.zoomNumericUpDown.Name = "zoomNumericUpDown";
+            this.zoomNumericUpDown.Size = new System.Drawing.Size(67, 20);
+            this.zoomNumericUpDown.TabIndex = 5;
+            this.zoomNumericUpDown.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            this.zoomNumericUpDown.ValueChanged += new System.EventHandler(this.SettingsValueChanged);
             // 
             // intervalLabel
             // 
             this.intervalLabel.AutoSize = true;
-            this.intervalLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.intervalLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.intervalLabel.Location = new System.Drawing.Point(2, 0);
-            this.intervalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.intervalLabel.Margin = new System.Windows.Forms.Padding(4, 6, 2, 0);
             this.intervalLabel.Name = "intervalLabel";
-            this.intervalLabel.Size = new System.Drawing.Size(64, 29);
-            this.intervalLabel.TabIndex = 0;
-            this.intervalLabel.Text = "Update (ms)";
-            this.intervalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.intervalLabel.Text = "Update ms";
             // 
             // updateIntervalNumericUpDown
             // 
-            this.updateIntervalNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.updateIntervalNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.updateIntervalNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateIntervalNumericUpDown.BackColor = System.Drawing.Color.FromArgb(38, 38, 38);
             this.updateIntervalNumericUpDown.ForeColor = System.Drawing.Color.White;
-            this.updateIntervalNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.updateIntervalNumericUpDown.Location = new System.Drawing.Point(70, 2);
-            this.updateIntervalNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.updateIntervalNumericUpDown.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.updateIntervalNumericUpDown.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.updateIntervalNumericUpDown.Increment = new decimal(new int[] { 10, 0, 0, 0 });
+            this.updateIntervalNumericUpDown.Location = new System.Drawing.Point(512, 7);
+            this.updateIntervalNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 1, 9, 2);
+            this.updateIntervalNumericUpDown.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            this.updateIntervalNumericUpDown.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             this.updateIntervalNumericUpDown.Name = "updateIntervalNumericUpDown";
-            this.updateIntervalNumericUpDown.Size = new System.Drawing.Size(94, 20);
-            this.updateIntervalNumericUpDown.TabIndex = 1;
-            this.updateIntervalNumericUpDown.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.updateIntervalNumericUpDown.ValueChanged += new System.EventHandler(this.SuspensionGeometrySetting_ValueChanged);
+            this.updateIntervalNumericUpDown.Size = new System.Drawing.Size(75, 20);
+            this.updateIntervalNumericUpDown.TabIndex = 7;
+            this.updateIntervalNumericUpDown.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            this.updateIntervalNumericUpDown.ValueChanged += new System.EventHandler(this.SettingsValueChanged);
+            // 
+            // resetViewButton
+            // 
+            this.resetViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
+            this.resetViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resetViewButton.ForeColor = System.Drawing.Color.White;
+            this.resetViewButton.Location = new System.Drawing.Point(605, 6);
+            this.resetViewButton.Margin = new System.Windows.Forms.Padding(4, 0, 2, 0);
+            this.resetViewButton.Name = "resetViewButton";
+            this.resetViewButton.Size = new System.Drawing.Size(105, 27);
+            this.resetViewButton.TabIndex = 8;
+            this.resetViewButton.Text = "Reset view";
+            this.resetViewButton.UseVisualStyleBackColor = false;
+            this.resetViewButton.Click += new System.EventHandler(this.ViewPreset_Click);
+            // 
+            // displayFlow
+            // 
+            this.displayFlow.AutoScroll = true;
+            this.displayFlow.BackColor = System.Drawing.Color.FromArgb(27, 27, 27);
+            this.displayFlow.Controls.Add(this.perspectiveCheckBox);
+            this.displayFlow.Controls.Add(this.gridCheckBox);
+            this.displayFlow.Controls.Add(this.labelsCheckBox);
+            this.displayFlow.Controls.Add(this.rotateSpindleCheckBox);
+            this.displayFlow.Controls.Add(this.frontViewButton);
+            this.displayFlow.Controls.Add(this.sideViewButton);
+            this.displayFlow.Controls.Add(this.topViewButton);
+            this.displayFlow.Controls.Add(this.isometricViewButton);
+            this.displayFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.displayFlow.Location = new System.Drawing.Point(0, 40);
+            this.displayFlow.Margin = new System.Windows.Forms.Padding(0);
+            this.displayFlow.Name = "displayFlow";
+            this.displayFlow.Padding = new System.Windows.Forms.Padding(7, 4, 4, 1);
+            this.displayFlow.Size = new System.Drawing.Size(940, 40);
+            this.displayFlow.TabIndex = 1;
+            this.displayFlow.WrapContents = false;
+            // 
+            // perspectiveCheckBox
+            // 
+            this.perspectiveCheckBox.AutoSize = true;
+            this.perspectiveCheckBox.ForeColor = System.Drawing.Color.White;
+            this.perspectiveCheckBox.Location = new System.Drawing.Point(10, 11);
+            this.perspectiveCheckBox.Margin = new System.Windows.Forms.Padding(3, 7, 10, 0);
+            this.perspectiveCheckBox.Name = "perspectiveCheckBox";
+            this.perspectiveCheckBox.Text = "Perspective";
+            this.perspectiveCheckBox.Checked = true;
+            this.perspectiveCheckBox.UseVisualStyleBackColor = true;
+            this.perspectiveCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
+            // 
+            // gridCheckBox
+            // 
+            this.gridCheckBox.AutoSize = true;
+            this.gridCheckBox.ForeColor = System.Drawing.Color.White;
+            this.gridCheckBox.Location = new System.Drawing.Point(115, 11);
+            this.gridCheckBox.Margin = new System.Windows.Forms.Padding(3, 7, 10, 0);
+            this.gridCheckBox.Name = "gridCheckBox";
+            this.gridCheckBox.Text = "Grid";
+            this.gridCheckBox.Checked = true;
+            this.gridCheckBox.UseVisualStyleBackColor = true;
+            this.gridCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
+            // 
+            // labelsCheckBox
+            // 
+            this.labelsCheckBox.AutoSize = true;
+            this.labelsCheckBox.ForeColor = System.Drawing.Color.White;
+            this.labelsCheckBox.Location = new System.Drawing.Point(173, 11);
+            this.labelsCheckBox.Margin = new System.Windows.Forms.Padding(3, 7, 10, 0);
+            this.labelsCheckBox.Name = "labelsCheckBox";
+            this.labelsCheckBox.Text = "Point names";
+            this.labelsCheckBox.UseVisualStyleBackColor = true;
+            this.labelsCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
+            // 
+            // rotateSpindleCheckBox
+            // 
+            this.rotateSpindleCheckBox.AutoSize = true;
+            this.rotateSpindleCheckBox.ForeColor = System.Drawing.Color.White;
+            this.rotateSpindleCheckBox.Location = new System.Drawing.Point(277, 11);
+            this.rotateSpindleCheckBox.Margin = new System.Windows.Forms.Padding(3, 7, 10, 0);
+            this.rotateSpindleCheckBox.Name = "rotateSpindleCheckBox";
+            this.rotateSpindleCheckBox.Text = "Rotate spindle offsets";
+            this.rotateSpindleCheckBox.Checked = true;
+            this.rotateSpindleCheckBox.UseVisualStyleBackColor = true;
+            this.rotateSpindleCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
+            // 
+            // frontViewButton
+            // 
+            this.frontViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
+            this.frontViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.frontViewButton.ForeColor = System.Drawing.Color.White;
+            this.frontViewButton.Location = new System.Drawing.Point(463, 4);
+            this.frontViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.frontViewButton.Name = "frontViewButton";
+            this.frontViewButton.Size = new System.Drawing.Size(65, 28);
+            this.frontViewButton.TabIndex = 4;
+            this.frontViewButton.Text = "Front";
+            this.frontViewButton.UseVisualStyleBackColor = false;
+            this.frontViewButton.Click += new System.EventHandler(this.ViewPreset_Click);
+            // 
+            // sideViewButton
+            // 
+            this.sideViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
+            this.sideViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sideViewButton.ForeColor = System.Drawing.Color.White;
+            this.sideViewButton.Location = new System.Drawing.Point(534, 4);
+            this.sideViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.sideViewButton.Name = "sideViewButton";
+            this.sideViewButton.Size = new System.Drawing.Size(65, 28);
+            this.sideViewButton.TabIndex = 5;
+            this.sideViewButton.Text = "Side";
+            this.sideViewButton.UseVisualStyleBackColor = false;
+            this.sideViewButton.Click += new System.EventHandler(this.ViewPreset_Click);
+            // 
+            // topViewButton
+            // 
+            this.topViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
+            this.topViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.topViewButton.ForeColor = System.Drawing.Color.White;
+            this.topViewButton.Location = new System.Drawing.Point(605, 4);
+            this.topViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.topViewButton.Name = "topViewButton";
+            this.topViewButton.Size = new System.Drawing.Size(65, 28);
+            this.topViewButton.TabIndex = 6;
+            this.topViewButton.Text = "Top";
+            this.topViewButton.UseVisualStyleBackColor = false;
+            this.topViewButton.Click += new System.EventHandler(this.ViewPreset_Click);
+            // 
+            // isometricViewButton
+            // 
+            this.isometricViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
+            this.isometricViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.isometricViewButton.ForeColor = System.Drawing.Color.White;
+            this.isometricViewButton.Location = new System.Drawing.Point(676, 4);
+            this.isometricViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.isometricViewButton.Name = "isometricViewButton";
+            this.isometricViewButton.Size = new System.Drawing.Size(88, 28);
+            this.isometricViewButton.TabIndex = 7;
+            this.isometricViewButton.Text = "Isometric";
+            this.isometricViewButton.UseVisualStyleBackColor = false;
+            this.isometricViewButton.Click += new System.EventHandler(this.ViewPreset_Click);
+            // 
+            // sceneLayout
+            // 
+            this.sceneLayout.BackColor = System.Drawing.Color.FromArgb(28, 28, 28);
+            this.sceneLayout.ColumnCount = 1;
+            this.sceneLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.sceneLayout.Controls.Add(this.front3DView, 0, 0);
+            this.sceneLayout.Controls.Add(this.rear3DView, 0, 1);
+            this.sceneLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sceneLayout.Location = new System.Drawing.Point(0, 80);
+            this.sceneLayout.Margin = new System.Windows.Forms.Padding(0);
+            this.sceneLayout.Name = "sceneLayout";
+            this.sceneLayout.Padding = new System.Windows.Forms.Padding(3);
+            this.sceneLayout.RowCount = 2;
+            this.sceneLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.sceneLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.sceneLayout.Size = new System.Drawing.Size(940, 620);
+            this.sceneLayout.TabIndex = 1;
+            // 
+            // front3DView
+            // 
+            this.front3DView.BackColor = System.Drawing.Color.FromArgb(12, 14, 18);
+            this.front3DView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.front3DView.ForeColor = System.Drawing.Color.Gainsboro;
+            this.front3DView.Location = new System.Drawing.Point(5, 5);
+            this.front3DView.Margin = new System.Windows.Forms.Padding(2);
+            this.front3DView.Name = "front3DView";
+            this.front3DView.Size = new System.Drawing.Size(930, 304);
+            this.front3DView.TabIndex = 0;
+            this.front3DView.ViewTitle = "FRONT SUSPENSION — FL / FR";
+            // 
+            // rear3DView
+            // 
+            this.rear3DView.BackColor = System.Drawing.Color.FromArgb(12, 14, 18);
+            this.rear3DView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rear3DView.ForeColor = System.Drawing.Color.Gainsboro;
+            this.rear3DView.Location = new System.Drawing.Point(5, 313);
+            this.rear3DView.Margin = new System.Windows.Forms.Padding(2);
+            this.rear3DView.Name = "rear3DView";
+            this.rear3DView.Size = new System.Drawing.Size(930, 302);
+            this.rear3DView.TabIndex = 1;
+            this.rear3DView.ViewTitle = "REAR SUSPENSION — RL / RR";
             // 
             // FormSuspensionGeometry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(840, 634);
-            this.Controls.Add(this.chart1);
+            this.ClientSize = new System.Drawing.Size(940, 700);
+            this.Controls.Add(this.sceneLayout);
             this.Controls.Add(this.settingsToolbar);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(642, 414);
+            this.MinimumSize = new System.Drawing.Size(700, 490);
             this.Name = "FormSuspensionGeometry";
-            this.Text = "Suspension Geometry";
+            this.Text = "Suspension Geometry — 3D";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSuspensionGeometry_FormClosing);
             this.Load += new System.EventHandler(this.FormSuspensionGeometry_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.settingsToolbar.ResumeLayout(false);
-            this.xMinimumGroup.ResumeLayout(false);
-            this.xMinimumGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisXMinimumNumericUpDown)).EndInit();
-            this.xMaximumGroup.ResumeLayout(false);
-            this.xMaximumGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisXMaximumNumericUpDown)).EndInit();
-            this.yMinimumGroup.ResumeLayout(false);
-            this.yMinimumGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisYMinimumNumericUpDown)).EndInit();
-            this.yMaximumGroup.ResumeLayout(false);
-            this.yMaximumGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axisYMaximumNumericUpDown)).EndInit();
-            this.intervalGroup.ResumeLayout(false);
-            this.intervalGroup.PerformLayout();
+            this.cameraFlow.ResumeLayout(false);
+            this.cameraFlow.PerformLayout();
+            this.displayFlow.ResumeLayout(false);
+            this.displayFlow.PerformLayout();
+            this.sceneLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.azimuthNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elevationNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateIntervalNumericUpDown)).EndInit();
             this.ResumeLayout(false);
-
         }
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TableLayoutPanel settingsToolbar;
-        private System.Windows.Forms.TableLayoutPanel xMinimumGroup;
-        private System.Windows.Forms.TableLayoutPanel xMaximumGroup;
-        private System.Windows.Forms.TableLayoutPanel yMinimumGroup;
-        private System.Windows.Forms.TableLayoutPanel yMaximumGroup;
-        private System.Windows.Forms.TableLayoutPanel intervalGroup;
-        private System.Windows.Forms.Label xMinimumLabel;
-        private System.Windows.Forms.Label xMaximumLabel;
-        private System.Windows.Forms.Label yMinimumLabel;
-        private System.Windows.Forms.Label yMaximumLabel;
+        private System.Windows.Forms.FlowLayoutPanel cameraFlow;
+        private System.Windows.Forms.FlowLayoutPanel displayFlow;
+        private System.Windows.Forms.TableLayoutPanel sceneLayout;
+        private Suspension3DView front3DView;
+        private Suspension3DView rear3DView;
+        private System.Windows.Forms.Label azimuthLabel;
+        private System.Windows.Forms.Label elevationLabel;
+        private System.Windows.Forms.Label zoomLabel;
         private System.Windows.Forms.Label intervalLabel;
-        private System.Windows.Forms.NumericUpDown axisXMinimumNumericUpDown;
-        private System.Windows.Forms.NumericUpDown axisXMaximumNumericUpDown;
-        private System.Windows.Forms.NumericUpDown axisYMinimumNumericUpDown;
-        private System.Windows.Forms.NumericUpDown axisYMaximumNumericUpDown;
+        private System.Windows.Forms.NumericUpDown azimuthNumericUpDown;
+        private System.Windows.Forms.NumericUpDown elevationNumericUpDown;
+        private System.Windows.Forms.NumericUpDown zoomNumericUpDown;
         private System.Windows.Forms.NumericUpDown updateIntervalNumericUpDown;
+        private System.Windows.Forms.Button resetViewButton;
+        private System.Windows.Forms.Button frontViewButton;
+        private System.Windows.Forms.Button sideViewButton;
+        private System.Windows.Forms.Button topViewButton;
+        private System.Windows.Forms.Button isometricViewButton;
+        private System.Windows.Forms.CheckBox perspectiveCheckBox;
+        private System.Windows.Forms.CheckBox gridCheckBox;
+        private System.Windows.Forms.CheckBox labelsCheckBox;
+        private System.Windows.Forms.CheckBox rotateSpindleCheckBox;
     }
 }
