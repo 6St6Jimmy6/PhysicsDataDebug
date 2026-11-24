@@ -16,7 +16,7 @@ namespace Physics_Data_Debug
         // ----- Consolidated chart/settings members -----
 
         public static bool SettingsOpen { get; set; } = false;
-        public static SeriesChartType SeriesChartType { get; set; } = SeriesChartType.Point;
+        public static SeriesChartType SeriesChartType { get; set; } = SeriesChartType.FastPoint;
         /// <summary>
         /// Some Font size max mins
         /// </summary>

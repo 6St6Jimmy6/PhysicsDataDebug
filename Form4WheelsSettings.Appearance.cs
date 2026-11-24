@@ -65,7 +65,7 @@ namespace Physics_Data_Debug
         private void ApplyLiveAppearance()
         {
             if (!Enum.TryParse(liveChartTypeBox.Text, out System.Windows.Forms.DataVisualization.Charting.SeriesChartType type))
-                type = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                type = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
             // Live history holds one Y value. Multi-Y chart types cannot draw it.
             if (!ChartAppearance.CanDrawLiveXYZ(type))
                 throw new ArgumentException(type + " needs more than one Y value per point.");
