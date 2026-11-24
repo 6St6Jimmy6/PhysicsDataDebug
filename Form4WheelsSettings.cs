@@ -223,7 +223,7 @@ namespace Physics_Data_Debug
         internal CheckBox NoContactFilter => noTireContactLimiterEnabledCheckBox;
 
         internal void BindFilterChart(Form4Wheels owner) => filterChart = owner;
-
+        #region Chart Appearance
         /// <summary>
         /// Live-only chart appearance settings. The setting controls and their rows
         /// are declared in Form4WheelsSettings.Designer.cs, with the same compact
@@ -312,7 +312,7 @@ namespace Physics_Data_Debug
             CursorWidth = liveCursorWidthBox.Value;
             if (Enum.TryParse(liveCursorDashBox.Text, out ChartDashStyle cd)) CursorDash = cd;
         }
-
+        #endregion
 
         private void settingsApplyFiltersButton_Click(object sender, EventArgs e)
         {
