@@ -71,6 +71,7 @@ The live **Four Wheels** chart supports:
 `Form4WheelsSettings` uses dark, Designer-editable setting groups. Its **Chart Settings** tab holds the appearance and axis controls. Its **Filters** tab holds all 13 filters and the live-only **No tire contact limiter**; use **Apply Filters** in the Settings action bar. The filter rows are owned by the Settings Designer, not the main chart window. Chart settings have separate **Apply Chart Settings** and **Clear Charts and Apply** actions, allowing changes without necessarily discarding history. Live and offline Cartesian axis lines inherit the parallel major grid's color, alpha, width and dash style; exterior tick marks are disabled.
 
 ### G-Force
+![GForce page](https://github.com/user-attachments/assets/1e894ee1-7850-4251-962f-2d70a3c24269)
 
 The G-Force page shows a polar acceleration chart alongside a narrower vertical acceleration visualization. **G-Force Settings** provides background and marker colors, axis fonts, angle units (degrees/radians), grid styling, history limits, and color schemes.
 
@@ -92,7 +93,7 @@ Both static-value windows use a **2 × 2 wheel layout**:
 Each wheel has its own scrolling region and labeled parameter groups. The groups are defined in the WinForms Designer rather than being reconstructed from control coordinates at runtime.
 
 ### Suspension Geometry
-
+![3DSuspensionGeometry page](https://github.com/user-attachments/assets/414de6d6-55d8-4251-beb4-f502733dc62e)
 `FormSuspensionGeometry` shows two **live 3D wireframe views** for the front (FL/FR) and rear (RL/RR) suspension. It uses X, Y, and Z positions for body-side suspension pickups, spindle-side joints, steering and push rods, wheel pivots and tire outlines. You can inspect the geometry from any angle.
 - **Left-drag** either view to rotate both front and rear cameras, **right/middle-drag** to pan a view, and use the **mouse wheel** to zoom. Hover over a joint to see its name and X/Y/Z coordinates in metres.
 - Toolbar controls adjust **Azimuth**, **Elevation**, **Zoom (%)**, and **Update (ms)**; preset **Front**, **Side**, **Top**, **Isometric**, and **Reset view** buttons restore useful viewpoints.
@@ -113,6 +114,7 @@ The chart provides **Resume**, **Pause**, and **Clear History** actions. RaceTim
 See [LIVE_TIME_CHART_GUIDE.md](LIVE_TIME_CHART_GUIDE.md).
 
 ## Offline Four Wheels / CSV Chart
+![OfflineChart page](https://github.com/user-attachments/assets/1c743ce6-ec69-4f5e-9c06-403cac49efe3)
 
 Use **Offline Chart** to visualize recorded or imported delimited telemetry without Wreckfest running.
 
@@ -131,6 +133,7 @@ Some WinForms chart types require multiple Y values and cannot be rendered from 
 For details, see [OFFLINE_CHART_GUIDE.md](OFFLINE_CHART_GUIDE.md) and [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).
 
 ## Logging telemetry
+![LogSettings](https://github.com/user-attachments/assets/82fc5c65-bc6a-4a49-a592-8d8709c0ecf0)
 
 Open **Log Settings** from Live Data, choose the channels to record, and select **Start Logging**.
 The logger records **one synchronized file per session**, rather than four separate wheel files.
