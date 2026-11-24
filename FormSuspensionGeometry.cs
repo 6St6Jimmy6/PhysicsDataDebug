@@ -84,6 +84,7 @@ namespace Physics_Data_Debug
                 view.Perspective = perspectiveCheckBox.Checked;
                 view.ShowGrid = gridCheckBox.Checked;
                 view.ShowPointNames = labelsCheckBox.Checked;
+                view.ShowLegend = legendCheckBox.Checked;
                 view.Invalidate();
             }
         }

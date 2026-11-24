@@ -83,7 +83,6 @@
     <Compile Include="ChartLimiterRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ChartLimiterRowHost.cs" />
     <Compile Include="ChartLimiterRow.Designer.cs">
       <DependentUpon>ChartLimiterRow.cs</DependentUpon>
     </Compile>

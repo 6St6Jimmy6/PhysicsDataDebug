@@ -15,11 +15,6 @@ namespace Physics_Data_Debug
         private Button importFilesButton, removeFilesButton, settingsButton;
         private CheckedListBox importedFilesList;
         private Label statusLabel, datasetsLabel;
-        private GroupBox axisFiltersGroup, extraFiltersGroup;
-        private FlowLayoutPanel axisFiltersFlow, extraFiltersFlow;
-        private Panel axisXFilterHost, axisYFilterHost, axisZFilterHost;
-        private Panel extraFilterHost01, extraFilterHost02, extraFilterHost03, extraFilterHost04, extraFilterHost05,
-            extraFilterHost06, extraFilterHost07, extraFilterHost08, extraFilterHost09, extraFilterHost10;
         private SplitContainer chartAndLegend;
         private Chart chart1, GradientChart;
 
@@ -42,23 +37,6 @@ namespace Physics_Data_Debug
             this.dataSelectPanel = new System.Windows.Forms.Panel();
             this.importedFilesList = new System.Windows.Forms.CheckedListBox();
             this.datasetsLabel = new System.Windows.Forms.Label();
-            this.axisFiltersGroup = new System.Windows.Forms.GroupBox();
-            this.axisFiltersFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.axisXFilterHost = new System.Windows.Forms.Panel();
-            this.axisYFilterHost = new System.Windows.Forms.Panel();
-            this.axisZFilterHost = new System.Windows.Forms.Panel();
-            this.extraFiltersGroup = new System.Windows.Forms.GroupBox();
-            this.extraFiltersFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.extraFilterHost01 = new System.Windows.Forms.Panel();
-            this.extraFilterHost02 = new System.Windows.Forms.Panel();
-            this.extraFilterHost03 = new System.Windows.Forms.Panel();
-            this.extraFilterHost04 = new System.Windows.Forms.Panel();
-            this.extraFilterHost05 = new System.Windows.Forms.Panel();
-            this.extraFilterHost06 = new System.Windows.Forms.Panel();
-            this.extraFilterHost07 = new System.Windows.Forms.Panel();
-            this.extraFilterHost08 = new System.Windows.Forms.Panel();
-            this.extraFilterHost09 = new System.Windows.Forms.Panel();
-            this.extraFilterHost10 = new System.Windows.Forms.Panel();
             this.chartAndLegend = new System.Windows.Forms.SplitContainer();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.GradientChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -68,10 +46,6 @@ namespace Physics_Data_Debug
             this.toolbarLayout.SuspendLayout();
             this.toolbarButtonsFlow.SuspendLayout();
             this.dataSelectPanel.SuspendLayout();
-            this.axisFiltersGroup.SuspendLayout();
-            this.axisFiltersFlow.SuspendLayout();
-            this.extraFiltersGroup.SuspendLayout();
-            this.extraFiltersFlow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartAndLegend)).BeginInit();
             this.chartAndLegend.Panel1.SuspendLayout();
             this.chartAndLegend.Panel2.SuspendLayout();
@@ -86,20 +60,16 @@ namespace Physics_Data_Debug
             this.mainLayout.ColumnCount = 1;
             this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.Controls.Add(this.toolbarPanel, 0, 0);
-            this.mainLayout.Controls.Add(this.axisFiltersGroup, 0, 1);
-            this.mainLayout.Controls.Add(this.extraFiltersGroup, 0, 2);
-            this.mainLayout.Controls.Add(this.chartAndLegend, 0, 3);
-            this.mainLayout.Controls.Add(this.statusLabel, 0, 4);
+            this.mainLayout.Controls.Add(this.chartAndLegend, 0, 1);
+            this.mainLayout.Controls.Add(this.statusLabel, 0, 2);
             this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayout.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.mainLayout.Location = new System.Drawing.Point(0, 0);
             this.mainLayout.Margin = new System.Windows.Forms.Padding(0);
             this.mainLayout.Name = "mainLayout";
             this.mainLayout.Padding = new System.Windows.Forms.Padding(5);
-            this.mainLayout.RowCount = 5;
+            this.mainLayout.RowCount = 3;
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.mainLayout.Size = new System.Drawing.Size(1164, 1009);
@@ -240,186 +210,6 @@ namespace Physics_Data_Debug
             this.datasetsLabel.TabIndex = 1;
             this.datasetsLabel.Text = "Imported files (check to display):";
             // 
-            // axisFiltersGroup
-            // 
-            this.axisFiltersGroup.BackColor = System.Drawing.Color.Black;
-            this.axisFiltersGroup.Controls.Add(this.axisFiltersFlow);
-            this.axisFiltersGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisFiltersGroup.ForeColor = System.Drawing.Color.White;
-            this.axisFiltersGroup.Location = new System.Drawing.Point(8, 118);
-            this.axisFiltersGroup.Name = "axisFiltersGroup";
-            this.axisFiltersGroup.Padding = new System.Windows.Forms.Padding(8);
-            this.axisFiltersGroup.Size = new System.Drawing.Size(1148, 1);
-            this.axisFiltersGroup.TabIndex = 1;
-            this.axisFiltersGroup.TabStop = false;
-            this.axisFiltersGroup.Text = "Current X / Y / Z axis filters";
-            this.axisFiltersGroup.Visible = false;
-            // 
-            // axisFiltersFlow
-            // 
-            this.axisFiltersFlow.AutoScroll = true;
-            this.axisFiltersFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.axisFiltersFlow.Controls.Add(this.axisXFilterHost);
-            this.axisFiltersFlow.Controls.Add(this.axisYFilterHost);
-            this.axisFiltersFlow.Controls.Add(this.axisZFilterHost);
-            this.axisFiltersFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisFiltersFlow.Location = new System.Drawing.Point(8, 21);
-            this.axisFiltersFlow.Name = "axisFiltersFlow";
-            this.axisFiltersFlow.Size = new System.Drawing.Size(1132, 0);
-            this.axisFiltersFlow.TabIndex = 0;
-            // 
-            // axisXFilterHost
-            // 
-            this.axisXFilterHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.axisXFilterHost.Location = new System.Drawing.Point(5, 5);
-            this.axisXFilterHost.Margin = new System.Windows.Forms.Padding(5);
-            this.axisXFilterHost.Name = "axisXFilterHost";
-            this.axisXFilterHost.Size = new System.Drawing.Size(355, 63);
-            this.axisXFilterHost.TabIndex = 0;
-            // 
-            // axisYFilterHost
-            // 
-            this.axisYFilterHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.axisYFilterHost.Location = new System.Drawing.Point(370, 5);
-            this.axisYFilterHost.Margin = new System.Windows.Forms.Padding(5);
-            this.axisYFilterHost.Name = "axisYFilterHost";
-            this.axisYFilterHost.Size = new System.Drawing.Size(355, 63);
-            this.axisYFilterHost.TabIndex = 1;
-            // 
-            // axisZFilterHost
-            // 
-            this.axisZFilterHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.axisZFilterHost.Location = new System.Drawing.Point(735, 5);
-            this.axisZFilterHost.Margin = new System.Windows.Forms.Padding(5);
-            this.axisZFilterHost.Name = "axisZFilterHost";
-            this.axisZFilterHost.Size = new System.Drawing.Size(355, 63);
-            this.axisZFilterHost.TabIndex = 2;
-            // 
-            // extraFiltersGroup
-            // 
-            this.extraFiltersGroup.BackColor = System.Drawing.Color.Black;
-            this.extraFiltersGroup.Controls.Add(this.extraFiltersFlow);
-            this.extraFiltersGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extraFiltersGroup.ForeColor = System.Drawing.Color.White;
-            this.extraFiltersGroup.Location = new System.Drawing.Point(8, 118);
-            this.extraFiltersGroup.Name = "extraFiltersGroup";
-            this.extraFiltersGroup.Padding = new System.Windows.Forms.Padding(8);
-            this.extraFiltersGroup.Size = new System.Drawing.Size(1148, 1);
-            this.extraFiltersGroup.TabIndex = 2;
-            this.extraFiltersGroup.TabStop = false;
-            this.extraFiltersGroup.Text = "Additional selectable filters (10)";
-            this.extraFiltersGroup.Visible = false;
-            // 
-            // extraFiltersFlow
-            // 
-            this.extraFiltersFlow.AutoScroll = true;
-            this.extraFiltersFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost01);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost02);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost03);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost04);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost05);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost06);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost07);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost08);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost09);
-            this.extraFiltersFlow.Controls.Add(this.extraFilterHost10);
-            this.extraFiltersFlow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extraFiltersFlow.Location = new System.Drawing.Point(8, 21);
-            this.extraFiltersFlow.Name = "extraFiltersFlow";
-            this.extraFiltersFlow.Size = new System.Drawing.Size(1132, 0);
-            this.extraFiltersFlow.TabIndex = 0;
-            // 
-            // extraFilterHost01
-            // 
-            this.extraFilterHost01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost01.Location = new System.Drawing.Point(5, 5);
-            this.extraFilterHost01.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost01.Name = "extraFilterHost01";
-            this.extraFilterHost01.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost01.TabIndex = 0;
-            // 
-            // extraFilterHost02
-            // 
-            this.extraFilterHost02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost02.Location = new System.Drawing.Point(370, 5);
-            this.extraFilterHost02.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost02.Name = "extraFilterHost02";
-            this.extraFilterHost02.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost02.TabIndex = 1;
-            // 
-            // extraFilterHost03
-            // 
-            this.extraFilterHost03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost03.Location = new System.Drawing.Point(735, 5);
-            this.extraFilterHost03.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost03.Name = "extraFilterHost03";
-            this.extraFilterHost03.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost03.TabIndex = 2;
-            // 
-            // extraFilterHost04
-            // 
-            this.extraFilterHost04.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost04.Location = new System.Drawing.Point(5, 78);
-            this.extraFilterHost04.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost04.Name = "extraFilterHost04";
-            this.extraFilterHost04.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost04.TabIndex = 3;
-            // 
-            // extraFilterHost05
-            // 
-            this.extraFilterHost05.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost05.Location = new System.Drawing.Point(370, 78);
-            this.extraFilterHost05.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost05.Name = "extraFilterHost05";
-            this.extraFilterHost05.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost05.TabIndex = 4;
-            // 
-            // extraFilterHost06
-            // 
-            this.extraFilterHost06.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost06.Location = new System.Drawing.Point(735, 78);
-            this.extraFilterHost06.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost06.Name = "extraFilterHost06";
-            this.extraFilterHost06.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost06.TabIndex = 5;
-            // 
-            // extraFilterHost07
-            // 
-            this.extraFilterHost07.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost07.Location = new System.Drawing.Point(5, 151);
-            this.extraFilterHost07.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost07.Name = "extraFilterHost07";
-            this.extraFilterHost07.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost07.TabIndex = 6;
-            // 
-            // extraFilterHost08
-            // 
-            this.extraFilterHost08.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost08.Location = new System.Drawing.Point(370, 151);
-            this.extraFilterHost08.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost08.Name = "extraFilterHost08";
-            this.extraFilterHost08.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost08.TabIndex = 7;
-            // 
-            // extraFilterHost09
-            // 
-            this.extraFilterHost09.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost09.Location = new System.Drawing.Point(735, 151);
-            this.extraFilterHost09.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost09.Name = "extraFilterHost09";
-            this.extraFilterHost09.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost09.TabIndex = 8;
-            // 
-            // extraFilterHost10
-            // 
-            this.extraFilterHost10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.extraFilterHost10.Location = new System.Drawing.Point(5, 224);
-            this.extraFilterHost10.Margin = new System.Windows.Forms.Padding(5);
-            this.extraFilterHost10.Name = "extraFilterHost10";
-            this.extraFilterHost10.Size = new System.Drawing.Size(355, 63);
-            this.extraFilterHost10.TabIndex = 9;
-            // 
             // chartAndLegend
             // 
             this.chartAndLegend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -487,10 +277,6 @@ namespace Physics_Data_Debug
             this.toolbarButtonsFlow.ResumeLayout(false);
             this.toolbarButtonsFlow.PerformLayout();
             this.dataSelectPanel.ResumeLayout(false);
-            this.axisFiltersGroup.ResumeLayout(false);
-            this.axisFiltersFlow.ResumeLayout(false);
-            this.extraFiltersGroup.ResumeLayout(false);
-            this.extraFiltersFlow.ResumeLayout(false);
             this.chartAndLegend.Panel1.ResumeLayout(false);
             this.chartAndLegend.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartAndLegend)).EndInit();

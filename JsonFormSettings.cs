@@ -70,7 +70,7 @@ namespace Physics_Data_Debug
             catch (Exception ex) when (IsFileError(ex)) { ShowError("save", FileFor(form), ex); }
         }
 
-        public static void LoadAllSettings(Form form)
+        public static void LoadAllSettings(Form form, bool includeSettingsFilters = true)
         {
             if (suppressAutosavesUntilRestart) return;
             string path = FileFor(form);
@@ -78,7 +78,7 @@ namespace Physics_Data_Debug
             {
                 if (!File.Exists(path) && !File.Exists(RegistryImportDisabledFile))
                     ImportLegacyRegistryOnce(form, path);
-                if (File.Exists(path)) Apply(form, ReadFile(path, form.Name));
+                if (File.Exists(path)) Apply(form, ReadFile(path, form.Name), includeSettingsFilters);
             }
             catch (Exception ex) when (IsFileError(ex)) { ShowError("load", path, ex); }
         }
@@ -396,6 +396,8 @@ namespace Physics_Data_Debug
                 if (interval != null) state.Controls[interval.Name] = interval.Text;
             }
             else CaptureChildren(form, state.Controls);
+            Control filters = ChartFilterRoot(form);
+            if (filters != null) CaptureChildren(filters, state.Controls);
             if (form is FormGForceSettings)
                 state.Controls[GForceFontSelectionVersionKey] = "1";
             return state;
@@ -405,6 +407,13 @@ namespace Physics_Data_Debug
         // NumericUpDown contain implementation-owned child text boxes; those are
         // NOT independently saved settings. Recursing into them can overwrite
         // every numeric input with the same internally named editor text.
+        private static Control ChartFilterRoot(Form form)
+        {
+            if (form is Form4Wheels live) return live.FilterSettingsRoot;
+            if (form is FormOfflineChart offline) return offline.FilterSettingsRoot;
+            return null;
+        }
+
         private static bool IsSettingsContainer(Control control) =>
             control is Panel || control is GroupBox || control is TabControl ||
             control is SplitContainer || control is UserControl ||
@@ -456,7 +465,7 @@ namespace Physics_Data_Debug
             }
         }
 
-        private static void Apply(Form form, FormSnapshot state)
+        private static void Apply(Form form, FormSnapshot state, bool includeSettingsFilters = true)
         {
             if (state.Left.HasValue && state.Top.HasValue &&
                 state.Width.GetValueOrDefault() > 100 && state.Height.GetValueOrDefault() > 100)
@@ -478,7 +487,9 @@ namespace Physics_Data_Debug
                 RestoreLegacyGForceFont(state.Controls, "X1ComboBoxFonts");
                 RestoreLegacyGForceFont(state.Controls, "Y1ComboBoxFonts");
             }
-            ApplyChildren(form, state.Controls);
+            ApplyChildren(form, state.Controls, includeSettingsFilters);
+            Control filters = ChartFilterRoot(form);
+            if (filters != null) ApplyChildren(filters, state.Controls);
             if (state.WindowState == "Maximized") form.WindowState = FormWindowState.Maximized;
         }
 
@@ -491,13 +502,14 @@ namespace Physics_Data_Debug
                 values[controlName] = "Arial";
         }
 
-        private static void ApplyChildren(Control parent, IDictionary<string, string> values)
+        private static void ApplyChildren(Control parent, IDictionary<string, string> values, bool includeSettingsFilters = true)
         {
             foreach (Control child in parent.Controls)
             {
+                if (!includeSettingsFilters && child.Name == "filterSettingsRows") continue;
                 if (string.IsNullOrEmpty(child.Name))
                 {
-                    if (IsSettingsContainer(child)) ApplyChildren(child, values);
+                    if (IsSettingsContainer(child)) ApplyChildren(child, values, includeSettingsFilters);
                     continue;
                 }
                 if (child is CheckedListBox checks)
@@ -556,7 +568,7 @@ namespace Physics_Data_Debug
                     else if (child is TextBoxBase text) text.Text = saved;
                     else if (child is ListBox list) list.Text = saved;
                 }
-                if (IsSettingsContainer(child)) ApplyChildren(child, values);
+                if (IsSettingsContainer(child)) ApplyChildren(child, values, includeSettingsFilters);
             }
         }
 

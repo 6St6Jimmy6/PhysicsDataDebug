@@ -18,6 +18,7 @@ namespace Physics_Data_Debug
             public string Wheel { get; }
             public GameMemoryField Field { get; }
             public string OldDisplay { get; }
+            private readonly string sourcePrefix;
 
             internal Column(string group, string label, string member, string wheel)
             {
@@ -28,14 +29,14 @@ namespace Physics_Data_Debug
                 Header = TelemetryNames.Name(group, member, wheel);
                 OldDisplay = label + " / " + member;
                 Field = GameMemoryConfig.Field(group, member);
+                sourcePrefix = wheel ?? (group == "WF_TimeDataOffset" ? TelemetryPrefix.Timing :
+                    (group == "WF_EngineDataOffset" || group == "WF_DifferentialDataOffset"
+                    ? TelemetryPrefix.Powertrain : TelemetryPrefix.Body));
             }
 
             public object Read()
             {
-                string prefix = Wheel ?? (Group == "WF_TimeDataOffset" ? TelemetryPrefix.Timing :
-                    (Group == "WF_EngineDataOffset" || Group == "WF_DifferentialDataOffset"
-                    ? TelemetryPrefix.Powertrain : TelemetryPrefix.Body));
-                try { return LiveData.GetFullListDataValue(prefix, Field); }
+                try { return LiveData.GetFullListObjectValue(sourcePrefix, Field); }
                 catch (KeyNotFoundException) { return double.NaN; }
                 catch (InvalidOperationException) { return double.NaN; }
             }
@@ -120,8 +121,5 @@ namespace Physics_Data_Debug
         public static string HeaderLine(IEnumerable<Column> selected, char delimiter) =>
             string.Join(delimiter.ToString(), selected.Select(c => c.Header));
 
-        public static string ValuesLine(IEnumerable<Column> selected, char delimiter) =>
-            string.Join(delimiter.ToString(), selected.Select(c =>
-                Convert.ToString(c.Read(), CultureInfo.InvariantCulture)));
     }
 }

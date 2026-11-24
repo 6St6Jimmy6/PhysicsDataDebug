@@ -106,7 +106,8 @@ namespace Physics_Data_Debug
                 results.Leave += (sender, args) => active?.CheckFocusAfterEvent();
                 form.Deactivate += Form_Deactivate;
                 form.Resize += (sender, args) => Hide();
-                form.FormClosed += (sender, args) => Dispose();
+                form.VisibleChanged += (sender, args) => { if (!form.Visible) Hide(); };
+                form.Disposed += (sender, args) => Dispose();
             }
 
             internal bool IsFor(SearchBehavior behavior) =>
@@ -187,10 +188,12 @@ namespace Physics_Data_Debug
 
             internal void Hide(SearchBehavior behavior = null)
             {
-                if (disposed || (behavior != null && !ReferenceEquals(active, behavior)))
+                if (disposed || results.IsDisposed || (behavior != null && !ReferenceEquals(active, behavior)))
                     return;
                 if (!results.Visible)
                 {
+                    results.Visible = false;
+                    results.Items.Clear();
                     active = null;
                     return;
                 }

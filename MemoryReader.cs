@@ -311,24 +311,33 @@ namespace Physics_Data_Debug
             };
         }
 
+        private static int timingSpanRevision = -1;
+        private static int cachedTimingStart, cachedTimingSize;
+
         private static void GetTimingSpan(out int dataStart, out int byteCount)
         {
-            const string group = "WF_TimeDataOffset";
-            IReadOnlyList<string> names = GameMemoryConfig.Members(group);
-            if (names.Count == 0)
-                throw new InvalidOperationException("No timing fields configured in " + group + ".");
-            int first = int.MaxValue, last = int.MinValue;
-            foreach (string name in names)
+            if (timingSpanRevision != GameMemoryConfig.MemoryLayoutRevision)
             {
-                int offset = GameMemoryConfig.Int(group, name);
-                first = Math.Min(first, offset);
-                last = Math.Max(last, offset);
+                const string group = "WF_TimeDataOffset";
+                int first = int.MaxValue, last = int.MinValue;
+                foreach (string name in GameMemoryConfig.Members(group))
+                {
+                    if (CalculatedTelemetry.IsCalculated(group, name)) continue;
+                    int offset = GameMemoryConfig.Int(group, name);
+                    first = Math.Min(first, offset);
+                    last = Math.Max(last, offset);
+                }
+                if (first > last)
+                    throw new InvalidOperationException("No raw timing fields configured in " + group + ".");
+                long size = (long)last - first + sizeof(int);
+                if (size <= 0 || size > 1024 * 1024 || size % sizeof(int) != 0)
+                    throw new InvalidOperationException("Invalid timing field offsets in " + group + ".");
+                cachedTimingStart = first;
+                cachedTimingSize = (int)size;
+                timingSpanRevision = GameMemoryConfig.MemoryLayoutRevision;
             }
-            long size = (long)last - first + sizeof(int);
-            if (size <= 0 || size > 1024 * 1024 || size % sizeof(int) != 0)
-                throw new InvalidOperationException("Invalid timing field offsets in " + group + ".");
-            dataStart = first;
-            byteCount = (int)size;
+            dataStart = cachedTimingStart;
+            byteCount = cachedTimingSize;
         }
 
         /// <summary>Find and take ownership of the first matching process, disposing unused Process objects.</summary>

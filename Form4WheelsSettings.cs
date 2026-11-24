@@ -217,38 +217,20 @@ namespace Physics_Data_Debug
         public static float Z1Min { get; set; } = Z1DefaultMin;
 
         private readonly ComboBoxFontStore comboFonts = new ComboBoxFontStore();
-        private Form4Wheels hostedFilterChart;
-        private GroupBox hostedAxisFilters;
-        private GroupBox hostedExtraFilters;
-        private CheckBox hostedNoContact;
+        private Form4Wheels filterChart;
+        internal ChartLimiterRow[] FilterRows { get; private set; }
+        internal Control FilterSettingsRoot => filterSettingsRows;
+        internal CheckBox NoContactFilter => noTireContactLimiterEnabledCheckBox;
 
-        internal void HostFilterGroups(Form4Wheels owner, GroupBox axis,
-            GroupBox extra, CheckBox noContact)
-        {
-            hostedFilterChart = owner;
-            hostedAxisFilters = axis;
-            hostedExtraFilters = extra;
-            hostedNoContact = noContact;
-            filterSettingsRows.Controls.Remove(filterAxisPlaceholder);
-            filterSettingsRows.Controls.Remove(filterExtraPlaceholder);
-            filterSettingsRows.Controls.Add(axis, 0, 0);
-            filterSettingsRows.Controls.Add(extra, 0, 1);
-            axis.Dock = DockStyle.Fill;
-            extra.Dock = DockStyle.Fill;
-            axis.Visible = true;
-            extra.Visible = true;
-            noContact.Visible = true;
-            noContact.Margin = new Padding(12, 5, 5, 3);
-            //filterActionPanel.Controls.Add(noContact);
-        }
+        internal void BindFilterChart(Form4Wheels owner) => filterChart = owner;
 
         private void settingsApplyFiltersButton_Click(object sender, EventArgs e)
         {
-            if (hostedFilterChart == null) return;
-            hostedFilterChart.UpdateAllLimiters();
+            if (filterChart == null) return;
+            filterChart.UpdateAllLimiters();
+            JsonFormSettings.SaveAllSettings(filterChart);
             JsonFormSettings.SaveAllSettings(this);
         }
-
 
         public Form4WheelsSettings()
         {
@@ -257,6 +239,7 @@ namespace Physics_Data_Debug
             // profile initialization while Visual Studio is rendering the form.
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return;
+            FilterRows = ChartLimiterRow.ConfigureRows(new[] { axisXFilterRow, axisYFilterRow, axisZFilterRow, extraFilterRow01, extraFilterRow02, extraFilterRow03, extraFilterRow04, extraFilterRow05, extraFilterRow06, extraFilterRow07, extraFilterRow08, extraFilterRow09, extraFilterRow10 }, "ChartFilter");
             Disposed += (sender, args) => comboFonts.Dispose();
             ChartSettingsUi.ConfigureFontFamilies(X1ComboBoxFonts, Y1ComboBoxFonts);
             ChartSettingsUi.ConfigureOwnerDraw(true, MarkerColorComboBox, BackgroundColorComboBox,
@@ -295,7 +278,7 @@ namespace Physics_Data_Debug
         {
             using (var settings = new Form4WheelsSettings())
             {
-                JsonFormSettings.LoadAllSettings(settings);
+                JsonFormSettings.LoadAllSettings(settings, includeSettingsFilters: false);
                 settings.RefreshAxisChoices();
                 AbsoluteValues = settings.AbsoluteValuesCheckBox.Checked;
                 settings.ApplyControlsToModel();
@@ -566,18 +549,22 @@ namespace Physics_Data_Debug
         {
             SettingsOpen = false;
             JsonFormSettings.SaveAllSettings(this);
-            if (hostedFilterChart != null && !hostedFilterChart.IsDisposed)
+            if (filterChart != null && !filterChart.IsDisposed)
             {
-                //filterActionPanel.Controls.Remove(hostedNoContact);
-                hostedFilterChart.ReturnHostedFilterGroups(hostedAxisFilters,
-                    hostedExtraFilters, hostedNoContact);
-                hostedFilterChart = null;
+                filterChart.UpdateAllLimiters();
+                JsonFormSettings.SaveAllSettings(filterChart);
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    e.Cancel = true;
+                    Hide();
+                }
             }
         }
-        private void Form_4WheelsSettings_Load(object sender, EventArgs e)
+
+        internal void PrepareForShow()
         {
             SettingsOpen = true;
-            JsonFormSettings.LoadAllSettings(this);
+            JsonFormSettings.LoadAllSettings(this, includeSettingsFilters: false);
             RefreshAxisChoices();
             AbsoluteValues = AbsoluteValuesCheckBox.Checked;
             ApplySettings(clearHistory: false);

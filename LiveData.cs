@@ -108,11 +108,11 @@ namespace Physics_Data_Debug
             public List<DataItem> Source;
             public int Count;
             public DataItem First;
-            public Dictionary<string, DataItem> ByName;
-            public Dictionary<string, DataItem> ByQualifiedName;
+            public Dictionary<string, DataItem> Fields;
+            public Dictionary<string, DataItem> ChartFields;
         }
-        private static readonly Dictionary<int, DataListLookup> FieldLookups =
-            new Dictionary<int, DataListLookup>();
+        private static readonly DataListLookup[] FieldLookups = new DataListLookup[TelemetryPrefix.Order.Length];
+        private static readonly int[] SharedChartPrefixes = { 0, 5, 6 };
         private static readonly CultureInfo TelemetryTextCulture = CultureInfo.GetCultureInfo("en-US");
         private static int PrefixIndex(string prefix)
         {
@@ -121,45 +121,95 @@ namespace Physics_Data_Debug
             return index;
         }
 
-        private static DataListLookup BuildLookup(List<DataItem> fields)
+        private static DataListLookup BuildLookup(List<DataItem> fields, string prefix)
         {
-            var byName = new Dictionary<string, DataItem>(StringComparer.Ordinal);
-            var byQualifiedName = new Dictionary<string, DataItem>(StringComparer.Ordinal);
+            var raw = new Dictionary<string, DataItem>(StringComparer.Ordinal);
+            var chart = new Dictionary<string, DataItem>(StringComparer.Ordinal);
+            bool wheel = TelemetryNames.Wheels.Contains(prefix);
+            string prefixName = prefix + "_";
+            // Canonical logger headers disambiguate duplicated suspension members.
+            var canonicalByMember = wheel ? LogData.AllColumns.Where(c => c.Wheel == prefix)
+                .ToDictionary(c => c.Group + "." + c.Member, c => c.Header, StringComparer.Ordinal) : null;
             foreach (DataItem item in fields)
             {
-                if (!byName.ContainsKey(item.Name))
-                    byName.Add(item.Name, item);
-
-                if (item.SourceGroup != null)
-                    byQualifiedName[item.SourceGroup + "." + item.Name] = item;
+                if (!raw.ContainsKey(item.Name)) raw.Add(item.Name, item);
+                if (item.SourceGroup != null) raw[item.SourceGroup + "." + item.Name] = item;
+                if (!item.Name.StartsWith(prefixName, StringComparison.Ordinal)) continue;
+                string member = item.Name.Substring(prefixName.Length);
+                if (!chart.ContainsKey(member)) chart.Add(member, item);
+                if (item.SourceGroup == null) continue;
+                if (wheel)
+                {
+                    if (canonicalByMember.TryGetValue(item.SourceGroup + "." + member, out string canonical))
+                    {
+                        chart[canonical] = item;
+                        chart[TelemetryNames.RelativeWheelName(canonical)] = item;
+                    }
+                }
+                else
+                {
+                    string canonical = TelemetryNames.Name(item.SourceGroup, member);
+                    if (!chart.ContainsKey(canonical)) chart.Add(canonical, item);
+                }
             }
             return new DataListLookup
             {
-                Source = fields,
-                Count = fields.Count,
-                First = fields.Count == 0 ? null : fields[0],
-                ByName = byName,
-                ByQualifiedName = byQualifiedName
+                Source = fields, Count = fields.Count, First = fields.Count == 0 ? null : fields[0],
+                Fields = raw, ChartFields = chart
             };
         }
 
-        public static dynamic GetFullListDataValue(string prefix, GameMemoryField dataValueToFind)
+        private static DataListLookup GetLookup(int index)
         {
-            int index = PrefixIndex(prefix);
             List<DataItem> fields = FullDataList[index];
-            if (!FieldLookups.TryGetValue(index, out DataListLookup lookup) ||
-                !ReferenceEquals(lookup.Source, fields) || lookup.Count != fields.Count ||
+            DataListLookup lookup = FieldLookups[index];
+            if (lookup == null || !ReferenceEquals(lookup.Source, fields) || lookup.Count != fields.Count ||
                 (fields.Count > 0 && !ReferenceEquals(lookup.First, fields[0])))
-            {
-                lookup = BuildLookup(fields);
-                FieldLookups[index] = lookup;
-            }
+                FieldLookups[index] = lookup = BuildLookup(fields, TelemetryPrefix.Order[index]);
+            return lookup;
+        }
+
+        public static dynamic GetFullListDataValue(string prefix, GameMemoryField dataValueToFind) =>
+            GetFullListObjectValue(prefix, dataValueToFind);
+
+        internal static object GetFullListObjectValue(string prefix, GameMemoryField dataValueToFind)
+        {
+            var fields = GetLookup(PrefixIndex(prefix)).Fields;
             string name = prefix + "_" + dataValueToFind;
-            if (!lookup.ByQualifiedName.TryGetValue(dataValueToFind.Group + "." + name, out DataItem item) &&
-                !lookup.ByName.TryGetValue(name, out item))
+            if (!fields.TryGetValue(dataValueToFind.Group + "." + name, out DataItem item) &&
+                !fields.TryGetValue(name, out item))
                 throw new KeyNotFoundException("Telemetry value not found: " + name);
             return item.Value;
         }
+
+        private static bool TrySharedChartField(string name, out DataItem item)
+        {
+            if (name != null)
+                foreach (int index in SharedChartPrefixes)
+                    if (GetLookup(index).ChartFields.TryGetValue(name, out item)) return true;
+            item = null;
+            return false;
+        }
+
+        internal readonly struct ChartValueReader
+        {
+            private readonly Dictionary<string, DataItem> wheelFields;
+            internal ChartValueReader(Dictionary<string, DataItem> fields) { wheelFields = fields; }
+
+            internal float Read(string selected, int none)
+            {
+                string relative = TelemetryNames.RelativeWheelName(selected);
+                DataItem item;
+                if ((relative != null && wheelFields.TryGetValue(relative, out item)) ||
+                    TrySharedChartField(selected, out item) ||
+                    (relative != selected && TrySharedChartField(relative, out item)))
+                    return Convert.ToSingle(item.Value);
+                return none;
+            }
+        }
+
+        internal static ChartValueReader GetChartReader(string prefix) =>
+            new ChartValueReader(GetLookup(PrefixIndex(prefix)).ChartFields);
 
         // The historical getter returns dynamic because source fields can be
         // float32 or int32. At call sites that need a specific numeric type,
@@ -168,7 +218,7 @@ namespace Physics_Data_Debug
         // update into a RuntimeBinderException (double -> float).
         public static float GetFullListFloatValue(string prefix, GameMemoryField field)
         {
-            object value = GetFullListDataValue(prefix, field);
+            object value = GetFullListObjectValue(prefix, field);
             if (value == null) return float.NaN;
             try { return Convert.ToSingle(value, CultureInfo.InvariantCulture); }
             catch (InvalidCastException) { return float.NaN; }
@@ -178,24 +228,57 @@ namespace Physics_Data_Debug
 
         public static double GetFullListDoubleValue(string prefix, GameMemoryField field)
         {
-            object value = GetFullListDataValue(prefix, field);
+            object value = GetFullListObjectValue(prefix, field);
             if (value == null) return double.NaN;
             try { return Convert.ToDouble(value, CultureInfo.InvariantCulture); }
             catch (InvalidCastException) { return double.NaN; }
             catch (FormatException) { return double.NaN; }
             catch (OverflowException) { return double.NaN; }
         }
-        private static int GetConfiguredDataIndex(int start, GameMemoryField value)
+        private readonly struct RawFieldRead
         {
-            // Calculated fields live immediately AFTER the raw bytes, regardless
-            // of how large a future game version makes that raw memory chunk.
-            if (CalculatedTelemetry.TryDataIndex(value.Group, value.Name, out int calculatedIndex))
-                return calculatedIndex;
-            int distance = checked(GameMemoryConfig.Int(value) - start);
-            if (distance < 0 || distance % sizeof(float) != 0)
-                throw new InvalidOperationException("Invalid configured 4-byte data offset: " + value.Group + "." + value.Name);
-            return distance / sizeof(float);
+            internal readonly int Position, ByteIndex;
+            internal readonly bool IsInt32;
+            internal readonly string Name;
+            internal RawFieldRead(int position, int byteIndex, bool isInt32, string name)
+            { Position = position; ByteIndex = byteIndex; IsInt32 = isInt32; Name = name; }
         }
+
+        private sealed class FieldReadPlan
+        {
+            internal int DataStart, MemberCount;
+            internal RawFieldRead[] Reads;
+        }
+
+        private static readonly Dictionary<string, FieldReadPlan> ReadPlans =
+            new Dictionary<string, FieldReadPlan>(StringComparer.Ordinal);
+        private static int readPlanRevision = -1;
+
+        private static FieldReadPlan GetReadPlan(string group, int dataStart)
+        {
+            if (readPlanRevision != GameMemoryConfig.MemoryLayoutRevision)
+            {
+                ReadPlans.Clear();
+                readPlanRevision = GameMemoryConfig.MemoryLayoutRevision;
+            }
+            if (ReadPlans.TryGetValue(group, out FieldReadPlan plan) && plan.DataStart == dataStart)
+                return plan;
+            var members = GameMemoryConfig.Members(group);
+            var reads = new List<RawFieldRead>(members.Count);
+            for (int i = 0; i < members.Count; i++)
+            {
+                string member = members[i];
+                if (CalculatedTelemetry.IsCalculated(group, member)) continue;
+                int distance = checked(GameMemoryConfig.Int(group, member) - dataStart);
+                if (distance < 0 || distance % sizeof(float) != 0)
+                    throw new InvalidOperationException("Invalid configured 4-byte data offset: " + group + "." + member);
+                reads.Add(new RawFieldRead(i, distance / sizeof(float), GameMemoryConfig.IsInt32Field(group, member), member));
+            }
+            plan = new FieldReadPlan { DataStart = dataStart, MemberCount = members.Count, Reads = reads.ToArray() };
+            ReadPlans[group] = plan;
+            return plan;
+        }
+
         public static string ValueString(string prefix, GameMemoryField dataValue, int roundDigits = 9, string preText = "", string afterText = "")
         {
             return preText + Math.Round(GetFullListDataValue(prefix, dataValue), roundDigits).ToString(TelemetryTextCulture) + afterText;
@@ -233,7 +316,7 @@ namespace Physics_Data_Debug
                 GenerateTireDataList(wheel, FullDataList);
             GeneratePowertrainDataList(TelemetryPrefix.Powertrain, FullDataList);
             GenerateTimingDataList(TelemetryPrefix.Timing, FullDataList);
-            FieldLookups.Clear();
+            Array.Clear(FieldLookups, 0, FieldLookups.Length);
         }
 
         /// <summary>
@@ -243,7 +326,7 @@ namespace Physics_Data_Debug
         public static void ReinitializeDataLists()
         {
             FullDataList.Clear();
-            FieldLookups.Clear();
+            Array.Clear(FieldLookups, 0, FieldLookups.Length);
             InitializeDataLists();
         }
 
@@ -330,42 +413,30 @@ namespace Physics_Data_Debug
             List<List<DataItem>> fullList, List<byte[]> byteData, int dataStart, string group)
         {
             List<DataItem> target = fullList[PrefixIndex(prefix)];
-            // Group members are sorted by baseline JSON offsets. Version changes
-            // affect where values are read, but not their order in telemetry lists.
-            foreach (string memberName in GameMemoryConfig.Members(group))
+            // The plan is shared by all four wheels and rebuilt only when the
+            // active config/version (or chunk start) changes. Lazy calculations
+            // have no entry in the raw-memory read plan.
+            FieldReadPlan plan = GetReadPlan(group, dataStart);
+            foreach (RawFieldRead read in plan.Reads)
             {
-                if (CalculatedTelemetry.IsCalculated(group, memberName))
-                {
-                    // The corresponding DataItem computes this value on demand.
-                    ii++;
-                    continue;
-                }
-                int index = GetConfiguredDataIndex(dataStart, GameMemoryConfig.Field(group, memberName));
-                if (index < 0 || index >= byteData.Count)
-                    throw new InvalidOperationException("Configured offset for " + group + "." + memberName + " is outside its memory chunk.");
-                byte[] valueByteArray = byteData[index];
-                if (ReferenceEquals(valueByteArray, MemoryReader.UnavailableFourBytes))
-                {
-                    // These are float32 raw fields. Keep the missing-value
-                    // sentinel float32 too: dynamic consumers may require a
-                    // float parameter (e.g. Form4Wheels.ListSeries).
-                    target[ii].Value = float.NaN;
-                    ii++;
-                    continue;
-                }
-                if (GameMemoryConfig.IsInt32Field(group, memberName))
-                { target[ii].Value = BitConverter.ToInt32(valueByteArray, 0); }
+                if (read.ByteIndex < 0 || read.ByteIndex >= byteData.Count)
+                    throw new InvalidOperationException("Configured offset for " + group + "." + read.Name + " is outside its memory chunk.");
+                byte[] bytes = byteData[read.ByteIndex];
+                DataItem item = target[ii + read.Position];
+                if (ReferenceEquals(bytes, MemoryReader.UnavailableFourBytes))
+                    item.Value = float.NaN;
+                else if (read.IsInt32)
+                    item.Value = BitConverter.ToInt32(bytes, 0);
                 else
-                { target[ii].Value = BitConverter.ToSingle(valueByteArray, 0); }
-                ii++;
+                    item.Value = BitConverter.ToSingle(bytes, 0);
             }
-            return ii;
+            return ii + plan.MemberCount;
         }
         private static void AddConfiguredItems(string prefix, List<DataItem> list, string group)
         {
             foreach (string name in GameMemoryConfig.Members(group))
             {
-                var field = new DataItem { Id = list.Count, Name = prefix + "_" + name, SourceGroup = group };
+                var field = new DataItem { Name = prefix + "_" + name, SourceGroup = group };
                 if (CalculatedTelemetry.IsCalculated(group, name))
                 {
                     string formulaName = name;

@@ -94,6 +94,7 @@ namespace Physics_Data_Debug
         public static IReadOnlyList<GameVersionProfile> Versions => versions;
         public static GameVersionProfile ActiveVersion { get; private set; } =
             versions.FirstOrDefault(version => version.Id == "V1_308438") ?? versions[0];
+        internal static int MemoryLayoutRevision { get; private set; }
         public static string LoadWarning { get; private set; }
         public static string SettingsDirectory => JsonFormSettings.DirectoryPath;
         public static string ActiveFileName { get; private set; } = DefaultFileName;
@@ -495,9 +496,7 @@ namespace Physics_Data_Debug
             var oldSelections = TelemetrySelections;
             int oldGradientSteps = FormGForceSettings.GradientSteps;
             int oldMaxPoints = FormGForceSettings.MaxInfiniteHistoryPoints;
-            var oldCalculations = CalculatedTelemetry.Groups.ToDictionary(
-                group => group, group => CalculatedTelemetry.Names(group).ToList(),
-                StringComparer.Ordinal);
+            var oldCalculations = CalculatedTelemetry.Snapshot();
             try
             {
                 versions = configuredVersions;
@@ -556,7 +555,8 @@ namespace Physics_Data_Debug
                 TelemetrySelections = oldSelections;
                 FormGForceSettings.GradientSteps = oldGradientSteps;
                 FormGForceSettings.MaxInfiniteHistoryPoints = oldMaxPoints;
-                CalculatedTelemetry.Configure(oldCalculations);
+                CalculatedTelemetry.Restore(oldCalculations);
+                unchecked { MemoryLayoutRevision++; }
                 TelemetryFormulas.Configure(oldExpressions);
                 if (oldMembers.Count > 0) LogData.RebuildColumns();
                 throw;
@@ -587,6 +587,7 @@ namespace Physics_Data_Debug
             // Build the optimized read plan once per selected game version.
             configuredReadRanges = BuildReadRanges(selected);
             ActiveVersion = version;
+            unchecked { MemoryLayoutRevision++; }
         }
 
         // Compatibility with JSON profiles created before the build-number typo was found.

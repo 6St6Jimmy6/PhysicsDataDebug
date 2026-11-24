@@ -30,6 +30,7 @@ namespace Physics_Data_Debug
             this.perspectiveCheckBox = new System.Windows.Forms.CheckBox();
             this.gridCheckBox = new System.Windows.Forms.CheckBox();
             this.labelsCheckBox = new System.Windows.Forms.CheckBox();
+            this.legendCheckBox = new System.Windows.Forms.CheckBox();
             this.rotateSpindleCheckBox = new System.Windows.Forms.CheckBox();
             this.frontViewButton = new System.Windows.Forms.Button();
             this.sideViewButton = new System.Windows.Forms.Button();
@@ -205,6 +206,7 @@ namespace Physics_Data_Debug
             this.displayFlow.Controls.Add(this.perspectiveCheckBox);
             this.displayFlow.Controls.Add(this.gridCheckBox);
             this.displayFlow.Controls.Add(this.labelsCheckBox);
+            this.displayFlow.Controls.Add(this.legendCheckBox);
             this.displayFlow.Controls.Add(this.rotateSpindleCheckBox);
             this.displayFlow.Controls.Add(this.frontViewButton);
             this.displayFlow.Controls.Add(this.sideViewButton);
@@ -254,11 +256,23 @@ namespace Physics_Data_Debug
             this.labelsCheckBox.UseVisualStyleBackColor = true;
             this.labelsCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
             // 
+            // legendCheckBox
+            // 
+            this.legendCheckBox.AutoSize = true;
+            this.legendCheckBox.ForeColor = System.Drawing.Color.White;
+            this.legendCheckBox.Location = new System.Drawing.Point(277, 11);
+            this.legendCheckBox.Margin = new System.Windows.Forms.Padding(3, 7, 10, 0);
+            this.legendCheckBox.Name = "legendCheckBox";
+            this.legendCheckBox.Text = "Legend";
+            this.legendCheckBox.Checked = true;
+            this.legendCheckBox.UseVisualStyleBackColor = true;
+            this.legendCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
+            // 
             // rotateSpindleCheckBox
             // 
             this.rotateSpindleCheckBox.AutoSize = true;
             this.rotateSpindleCheckBox.ForeColor = System.Drawing.Color.White;
-            this.rotateSpindleCheckBox.Location = new System.Drawing.Point(277, 11);
+            this.rotateSpindleCheckBox.Location = new System.Drawing.Point(356, 11);
             this.rotateSpindleCheckBox.Margin = new System.Windows.Forms.Padding(3, 7, 10, 0);
             this.rotateSpindleCheckBox.Name = "rotateSpindleCheckBox";
             this.rotateSpindleCheckBox.Text = "Rotate spindle offsets";
@@ -271,7 +285,7 @@ namespace Physics_Data_Debug
             this.frontViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
             this.frontViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.frontViewButton.ForeColor = System.Drawing.Color.White;
-            this.frontViewButton.Location = new System.Drawing.Point(463, 4);
+            this.frontViewButton.Location = new System.Drawing.Point(542, 4);
             this.frontViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.frontViewButton.Name = "frontViewButton";
             this.frontViewButton.Size = new System.Drawing.Size(65, 28);
@@ -285,7 +299,7 @@ namespace Physics_Data_Debug
             this.sideViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
             this.sideViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sideViewButton.ForeColor = System.Drawing.Color.White;
-            this.sideViewButton.Location = new System.Drawing.Point(534, 4);
+            this.sideViewButton.Location = new System.Drawing.Point(613, 4);
             this.sideViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.sideViewButton.Name = "sideViewButton";
             this.sideViewButton.Size = new System.Drawing.Size(65, 28);
@@ -299,7 +313,7 @@ namespace Physics_Data_Debug
             this.topViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
             this.topViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.topViewButton.ForeColor = System.Drawing.Color.White;
-            this.topViewButton.Location = new System.Drawing.Point(605, 4);
+            this.topViewButton.Location = new System.Drawing.Point(684, 4);
             this.topViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.topViewButton.Name = "topViewButton";
             this.topViewButton.Size = new System.Drawing.Size(65, 28);
@@ -313,7 +327,7 @@ namespace Physics_Data_Debug
             this.isometricViewButton.BackColor = System.Drawing.Color.FromArgb(52, 52, 52);
             this.isometricViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.isometricViewButton.ForeColor = System.Drawing.Color.White;
-            this.isometricViewButton.Location = new System.Drawing.Point(676, 4);
+            this.isometricViewButton.Location = new System.Drawing.Point(755, 4);
             this.isometricViewButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.isometricViewButton.Name = "isometricViewButton";
             this.isometricViewButton.Size = new System.Drawing.Size(88, 28);
@@ -414,6 +428,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.CheckBox perspectiveCheckBox;
         private System.Windows.Forms.CheckBox gridCheckBox;
         private System.Windows.Forms.CheckBox labelsCheckBox;
+        private System.Windows.Forms.CheckBox legendCheckBox;
         private System.Windows.Forms.CheckBox rotateSpindleCheckBox;
     }
 }

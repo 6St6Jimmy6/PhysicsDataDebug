@@ -44,7 +44,7 @@ namespace Physics_Data_Debug
             // 
             this.filterEnabledCheckBox.AutoSize = true;
             this.filterEnabledCheckBox.ForeColor = System.Drawing.Color.White;
-            this.filterEnabledCheckBox.Location = new System.Drawing.Point(6, 16);
+            this.filterEnabledCheckBox.Location = new System.Drawing.Point(6, 17);
             this.filterEnabledCheckBox.Name = "filterEnabledCheckBox";
             this.filterEnabledCheckBox.Size = new System.Drawing.Size(59, 17);
             this.filterEnabledCheckBox.TabIndex = 1;
@@ -57,7 +57,7 @@ namespace Physics_Data_Debug
             this.selectionComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.selectionComboBox.ForeColor = System.Drawing.Color.White;
             this.selectionComboBox.FormattingEnabled = true;
-            this.selectionComboBox.Location = new System.Drawing.Point(76, 12);
+            this.selectionComboBox.Location = new System.Drawing.Point(76, 13);
             this.selectionComboBox.Name = "selectionComboBox";
             this.selectionComboBox.Size = new System.Drawing.Size(268, 21);
             this.selectionComboBox.TabIndex = 2;
@@ -125,7 +125,7 @@ namespace Physics_Data_Debug
             this.Controls.Add(this.maximumLabel);
             this.Controls.Add(this.maximumTextBox);
             this.Controls.Add(this.defaultsButton);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ChartLimiterRow";
             this.Size = new System.Drawing.Size(355, 63);
             this.ResumeLayout(false);

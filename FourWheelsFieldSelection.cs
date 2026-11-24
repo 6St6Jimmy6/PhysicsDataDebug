@@ -30,19 +30,29 @@ namespace Physics_Data_Debug
             }
         }
 
-        internal static IEnumerable<string> WheelsForLayout(string layout)
+        private static readonly IReadOnlyList<string> AllWheels = Array.AsReadOnly(new[] { "FL", "RL", "FR", "RR" });
+        private static readonly IReadOnlyList<string> Front = Array.AsReadOnly(new[] { "FL", "FR" });
+        private static readonly IReadOnlyList<string> Rear = Array.AsReadOnly(new[] { "RL", "RR" });
+        private static readonly IReadOnlyList<string> Left = Array.AsReadOnly(new[] { "FL", "RL" });
+        private static readonly IReadOnlyList<string> Right = Array.AsReadOnly(new[] { "FR", "RR" });
+        private static readonly IReadOnlyList<string> FrontLeft = Array.AsReadOnly(new[] { "FL" });
+        private static readonly IReadOnlyList<string> FrontRight = Array.AsReadOnly(new[] { "FR" });
+        private static readonly IReadOnlyList<string> RearLeft = Array.AsReadOnly(new[] { "RL" });
+        private static readonly IReadOnlyList<string> RearRight = Array.AsReadOnly(new[] { "RR" });
+
+        internal static IReadOnlyList<string> WheelsForLayout(string layout)
         {
             switch (layout)
             {
-                case "Front Left": return new[] { "FL" };
-                case "Front Right": return new[] { "FR" };
-                case "Rear Left": return new[] { "RL" };
-                case "Rear Right": return new[] { "RR" };
-                case "Front Only": return new[] { "FL", "FR" };
-                case "Rear Only": return new[] { "RL", "RR" };
-                case "Left Only": return new[] { "FL", "RL" };
-                case "Right Only": return new[] { "FR", "RR" };
-                default: return new[] { "FL", "RL", "FR", "RR" };
+                case "Front Left": return FrontLeft;
+                case "Front Right": return FrontRight;
+                case "Rear Left": return RearLeft;
+                case "Rear Right": return RearRight;
+                case "Front Only": return Front;
+                case "Rear Only": return Rear;
+                case "Left Only": return Left;
+                case "Right Only": return Right;
+                default: return AllWheels;
             }
         }
 

@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel;
+using System.Globalization;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Physics_Data_Debug
@@ -16,10 +18,15 @@ namespace Physics_Data_Debug
             InitializeComponent();
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CheckBox EnabledBox => filterEnabledCheckBox;
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ComboBox SelectionBox => selectionComboBox;
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public TextBox MinimumBox => minimumTextBox;
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public TextBox MaximumBox => maximumTextBox;
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Button ResetButton => defaultsButton;
 
         [Category("Appearance")]
@@ -30,7 +37,38 @@ namespace Physics_Data_Debug
             set => axisLabel.Text = value;
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string SelectedField => selectionComboBox.SelectedItem as string;
+
+        internal static ChartLimiterRow[] ConfigureRows(ChartLimiterRow[] rows, string prefix)
+        {
+            for (int i = 0; i < rows.Length; i++)
+                rows[i].Configure(prefix + (i + 1).ToString("00", CultureInfo.InvariantCulture),
+                    i < 3, rows[i].Title);
+            return rows;
+        }
+
+        internal static bool TryBound(string text, bool minimum, out double value)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                value = minimum ? double.NegativeInfinity : double.PositiveInfinity;
+                return true;
+            }
+            return (double.TryParse(text, NumberStyles.Float, CultureInfo.CurrentCulture, out value) ||
+                    double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out value)) &&
+                   !double.IsNaN(value);
+        }
+
+        internal bool TryGetBounds(out double minimum, out double maximum)
+        {
+            bool validMin = TryBound(MinimumBox.Text, true, out minimum);
+            bool validMax = TryBound(MaximumBox.Text, false, out maximum);
+            bool reversed = validMin && validMax && minimum > maximum;
+            MinimumBox.BackColor = validMin && !reversed ? Color.FromArgb(42, 42, 42) : Color.FromArgb(110, 35, 35);
+            MaximumBox.BackColor = validMax && !reversed ? Color.FromArgb(42, 42, 42) : Color.FromArgb(110, 35, 35);
+            return validMin && validMax && !reversed;
+        }
 
         public void Configure(string prefix, bool followsAxis, string description)
         {

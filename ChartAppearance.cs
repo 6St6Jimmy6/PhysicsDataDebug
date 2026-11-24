@@ -17,7 +17,7 @@ namespace Physics_Data_Debug
         public static Color WithAlpha(Color color, int alpha) =>
             Color.FromArgb(Math.Max(0, Math.Min(255, alpha)), color);
 
-        public static void ConfigureGrid(Grid grid, TickMark tick, Color color,
+        public static void ConfigureGrid(Grid grid, Color color,
             int alpha, decimal width, ChartDashStyle dash)
         {
             Color tint = WithAlpha(color, alpha);
@@ -25,9 +25,25 @@ namespace Physics_Data_Debug
             grid.LineColor = tint;
             grid.LineWidth = pixels;
             grid.LineDashStyle = dash;
-            tick.LineColor = tint;
-            tick.LineWidth = pixels;
-            tick.LineDashStyle = dash;
+        }
+
+        /// <summary>
+        /// Cartesian axis lines run in the same direction as the opposite
+        /// axis's grid. Keep them visually consistent and omit exterior ticks.
+        /// </summary>
+        public static void ConfigureCartesianAxisLines(ChartArea area)
+        {
+            ConfigureAxisLine(area.AxisX, area.AxisY.MajorGrid);
+            ConfigureAxisLine(area.AxisY, area.AxisX.MajorGrid);
+        }
+
+        private static void ConfigureAxisLine(Axis axis, Grid parallelGrid)
+        {
+            axis.LineColor = parallelGrid.LineColor;
+            axis.LineWidth = parallelGrid.LineWidth;
+            axis.LineDashStyle = parallelGrid.LineDashStyle;
+            axis.MajorTickMark.Enabled = false;
+            axis.MinorTickMark.Enabled = false;
         }
 
         public static void ConfigureCursor(Cursor cursor, bool enabled, bool zoomable,

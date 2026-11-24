@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -149,12 +149,6 @@ namespace Physics_Data_Debug
 
         private const string CurrentSeriesName = "Series1";
         private const string HistorySeriesName = "SeriesHistory";
-
-        public static void SetArrays()
-        {
-            // Kept for existing callers. Chart points now hold the live history,
-            // eliminating the two arrays and their per-frame copies.
-        }
 
         public static void ClearSeriesHistory(Chart chart)
         {

@@ -18,6 +18,8 @@ namespace Physics_Data_Debug
         private readonly List<DelimitedTelemetryFile> files = new List<DelimitedTelemetryFile>();
         private OfflineChartOptions options = new OfflineChartOptions();
         private ChartLimiterRow[] filters;
+        private FormOfflineChartSettings settingsForm;
+        internal Control FilterSettingsRoot => settingsForm?.FilterSettingsRoot;
         private bool loadingControls;
         private bool loadedSavedFilters;
         private bool loadedSavedChartOptions;
@@ -49,7 +51,9 @@ namespace Physics_Data_Debug
             // and stretches the file list automatically without manual resizing.
             // Click handlers remain in the .Designer.cs file.
             chartAndLegend.SizeChanged += ChartAndLegend_SizeChanged;
+            settingsForm = new FormOfflineChartSettings(this, options);
             InitializeFilters();
+            Disposed += (s,e) => settingsForm.Dispose();
             JsonFormSettings.EnsureFactoryDefaults(this);
             JsonFormSettings.AttachProfileButton(this, Redraw);
             ComboBoxBehaviors.EnableSearch(this);
@@ -91,33 +95,12 @@ namespace Physics_Data_Debug
 
         private void InitializeFilters()
         {
-            filters = new[]
-            {
-                ChartLimiterRowHost.Mount(axisXFilterHost),
-                ChartLimiterRowHost.Mount(axisYFilterHost),
-                ChartLimiterRowHost.Mount(axisZFilterHost),
-                ChartLimiterRowHost.Mount(extraFilterHost01),
-                ChartLimiterRowHost.Mount(extraFilterHost02),
-                ChartLimiterRowHost.Mount(extraFilterHost03),
-                ChartLimiterRowHost.Mount(extraFilterHost04),
-                ChartLimiterRowHost.Mount(extraFilterHost05),
-                ChartLimiterRowHost.Mount(extraFilterHost06),
-                ChartLimiterRowHost.Mount(extraFilterHost07),
-                ChartLimiterRowHost.Mount(extraFilterHost08),
-                ChartLimiterRowHost.Mount(extraFilterHost09),
-                ChartLimiterRowHost.Mount(extraFilterHost10)
-            };
+            filters = settingsForm.FilterRows;
             loadingControls = true;
             for (int i = 0; i < filters.Length; i++)
             {
                 int index = i;
                 var filter = filters[i];
-                bool followsAxis = i < 3;
-                string title = followsAxis ? new[] { "X axis", "Y axis", "Z axis" }[i] + " (follows chart)"
-                    : "Extra " + (i - 2);
-                filter.Configure("OfflineFilter" + (i + 1).ToString("00",Invariant),followsAxis,title);
-                filter.EnabledBox.Checked = false;
-                filter.EnabledBox.CheckedChanged += (s,e) => { /* Apply filters to redraw */ };
                 filter.ResetButton.Click += (s,e) => ResetFilter(index);
                 filter.SelectionBox.SelectionChangeCommitted += (s,e) => ResetFilter(index);
             }
@@ -315,8 +298,8 @@ namespace Physics_Data_Debug
                         // updated profile: this file may have different columns.
                         // The user's saved selections belong to the original file.
                         loadedSavedChartOptions = true;
-                        using (var settings = new FormOfflineChartSettings(this, options))
-                            settings.ApplySavedSettings();
+                        settingsForm.Prepare(options);
+                        settingsForm.ApplySavedSettings();
                     }
                     Redraw();
                 }
@@ -344,29 +327,8 @@ namespace Physics_Data_Debug
                     "Offline chart",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
-            // Filter rows live in this settings dialog while it is open. Move
-            // them back before disposal so the chart/filter model survives.
-            using (var dialog = new FormOfflineChartSettings(this, options))
-            {
-                dialog.HostFilterGroups(axisFiltersGroup, extraFiltersGroup);
-                try { dialog.ShowDialog(this); }
-                finally
-                {
-                    axisFiltersGroup.Visible = false;
-                    extraFiltersGroup.Visible = false;
-                    mainLayout.Controls.Add(axisFiltersGroup, 0, 1);
-                    mainLayout.Controls.Add(extraFiltersGroup, 0, 2);
-                    // Changes made in the settings window take effect on Apply.
-                }
-            }
-        }
-
-        private static bool TryBound(string text, bool minimum, out double value)
-        {
-            if (string.IsNullOrWhiteSpace(text))
-            { value = minimum ? double.NegativeInfinity : double.PositiveInfinity; return true; }
-            return (double.TryParse(text,NumberStyles.Float,CultureInfo.CurrentCulture,out value) ||
-                    double.TryParse(text,NumberStyles.Float,Invariant,out value)) && !double.IsNaN(value);
+            settingsForm.Prepare(options);
+            settingsForm.ShowDialog(this);
         }
 
         private bool TryCollectFilters(out List<ActiveFilter> active)
@@ -382,12 +344,8 @@ namespace Physics_Data_Debug
                 if (!filter.EnabledBox.Checked) continue;
                 string field = filter.SelectedField ?? filter.SelectionBox.Text;
                 if (string.IsNullOrEmpty(field) || field == "None") continue;
-                bool validMin = TryBound(filter.MinimumBox.Text,true,out double min);
-                bool validMax = TryBound(filter.MaximumBox.Text,false,out double max);
-                if (!validMin || !validMax || min > max)
+                if (!filter.TryGetBounds(out double min, out double max))
                 {
-                    if (!validMin || min > max) filter.MinimumBox.BackColor = Color.FromArgb(110, 35, 35);
-                    if (!validMax || min > max) filter.MaximumBox.BackColor = Color.FromArgb(110, 35, 35);
                     statusLabel.Text = "Invalid minimum/maximum in " + filter.Title + ". Fix the highlighted values.";
                     return false;
                 }
@@ -404,14 +362,6 @@ namespace Physics_Data_Debug
             return t <= 0 ? 1 : t >= 1 ? bands : Math.Min(bands,(int)Math.Floor(t * bands) + 1);
         }
 
-        private static int PixelWidth(decimal width) => ChartAppearance.PixelWidth(width);
-
-        private static Color WithAlpha(Color color, int alpha) => ChartAppearance.WithAlpha(color, alpha);
-
-        private static void ConfigureGrid(Grid grid, TickMark tick, Color color,
-            int alpha, decimal width, ChartDashStyle dash) =>
-            ChartAppearance.ConfigureGrid(grid, tick, color, alpha, width, dash);
-
         private static void SetAxis(Axis axis, string title, double? min, double? max,
             int decimals, double interval, bool minor, bool logarithmic, double logBase,
             string fontFamily, decimal fontSize, Color fontColor,
@@ -425,12 +375,10 @@ namespace Physics_Data_Debug
             axis.LabelStyle.ForeColor = fontColor;
             axis.LabelStyle.Font = new Font(fontFamily, (float)fontSize, FontStyle.Regular);
             axis.LabelStyle.Format = "F" + decimals.ToString(Invariant);
-            axis.LineColor = gridColor;
-            ConfigureGrid(axis.MajorGrid, axis.MajorTickMark, gridColor,
+            ChartAppearance.ConfigureGrid(axis.MajorGrid, gridColor,
                 gridAlpha, gridWidth, gridDash);
             axis.MinorGrid.Enabled = minor;
-            axis.MinorTickMark.Enabled = minor;
-            ConfigureGrid(axis.MinorGrid, axis.MinorTickMark, minorColor,
+            ChartAppearance.ConfigureGrid(axis.MinorGrid, minorColor,
                 minorAlpha, minorWidth, minorDash);
             axis.Minimum = min ?? double.NaN;
             axis.Maximum = max ?? double.NaN;
@@ -460,6 +408,7 @@ namespace Physics_Data_Debug
                 options.YGridColor, options.YGridAlpha, options.YGridWidth, options.YGridDashStyle,
                 options.YMinorColor, options.YMinorAlpha, options.YMinorWidth, options.YMinorDashStyle,
                 options.CursorEnabled && options.CursorZoomable);
+            ChartAppearance.ConfigureCartesianAxisLines(area);
         }
 
         private void UpdateGradient(double minimum, double maximum, List<Color> palette)

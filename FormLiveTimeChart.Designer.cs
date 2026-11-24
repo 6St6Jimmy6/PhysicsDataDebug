@@ -113,7 +113,7 @@ namespace Physics_Data_Debug
             this.rootLayout.Name = "rootLayout";
             this.rootLayout.Padding = new System.Windows.Forms.Padding(4);
             this.rootLayout.RowCount = 4;
-            this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 167F));
             this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.rootLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
@@ -131,7 +131,7 @@ namespace Physics_Data_Debug
             this.toolbarLayout.Margin = new System.Windows.Forms.Padding(0);
             this.toolbarLayout.Name = "toolbarLayout";
             this.toolbarLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
-            this.toolbarLayout.Size = new System.Drawing.Size(1252, 53);
+            this.toolbarLayout.Size = new System.Drawing.Size(1252, 37);
             this.toolbarLayout.TabIndex = 0;
             // 
             // actionsPanel
@@ -153,10 +153,10 @@ namespace Physics_Data_Debug
             // 
             this.startButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.startButton.ForeColor = System.Drawing.Color.White;
-            this.startButton.Location = new System.Drawing.Point(8, 4);
-            this.startButton.Margin = new System.Windows.Forms.Padding(2, 2, 7, 2);
+            this.startButton.Location = new System.Drawing.Point(7, 3);
+            this.startButton.Margin = new System.Windows.Forms.Padding(1, 1, 7, 1);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(145, 38);
+            this.startButton.Size = new System.Drawing.Size(145, 30);
             this.startButton.TabIndex = 0;
             this.startButton.Text = "Resume";
             this.startButton.UseVisualStyleBackColor = false;
@@ -166,10 +166,10 @@ namespace Physics_Data_Debug
             // 
             this.stopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.stopButton.ForeColor = System.Drawing.Color.White;
-            this.stopButton.Location = new System.Drawing.Point(162, 4);
-            this.stopButton.Margin = new System.Windows.Forms.Padding(2, 2, 7, 2);
+            this.stopButton.Location = new System.Drawing.Point(160, 3);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(1, 1, 7, 1);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(98, 38);
+            this.stopButton.Size = new System.Drawing.Size(98, 30);
             this.stopButton.TabIndex = 1;
             this.stopButton.Text = "Pause";
             this.stopButton.UseVisualStyleBackColor = false;
@@ -179,10 +179,10 @@ namespace Physics_Data_Debug
             // 
             this.clearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.clearButton.ForeColor = System.Drawing.Color.White;
-            this.clearButton.Location = new System.Drawing.Point(269, 4);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(2, 2, 7, 2);
+            this.clearButton.Location = new System.Drawing.Point(266, 3);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(1, 1, 7, 1);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(142, 38);
+            this.clearButton.Size = new System.Drawing.Size(142, 30);
             this.clearButton.TabIndex = 2;
             this.clearButton.Text = "Clear History";
             this.clearButton.UseVisualStyleBackColor = false;
@@ -192,10 +192,10 @@ namespace Physics_Data_Debug
             // 
             this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.settingsButton.ForeColor = System.Drawing.Color.White;
-            this.settingsButton.Location = new System.Drawing.Point(420, 4);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(2, 2, 7, 2);
+            this.settingsButton.Location = new System.Drawing.Point(416, 3);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(1, 1, 7, 1);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(155, 38);
+            this.settingsButton.Size = new System.Drawing.Size(155, 30);
             this.settingsButton.TabIndex = 3;
             this.settingsButton.Text = "Chart Settings";
             this.settingsButton.UseVisualStyleBackColor = false;
@@ -248,7 +248,7 @@ namespace Physics_Data_Debug
             this.trackLayout.Controls.Add(this.track5RL, 4, 5);
             this.trackLayout.Controls.Add(this.track5RR, 5, 5);
             this.trackLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackLayout.Location = new System.Drawing.Point(7, 60);
+            this.trackLayout.Location = new System.Drawing.Point(7, 44);
             this.trackLayout.Name = "trackLayout";
             this.trackLayout.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.trackLayout.RowCount = 6;
@@ -794,10 +794,10 @@ namespace Physics_Data_Debug
             this.chartTimeSeries.ChartAreas.Add(chartArea1);
             this.chartTimeSeries.ChartAreas.Add(chartArea2);
             this.chartTimeSeries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartTimeSeries.Location = new System.Drawing.Point(4, 227);
+            this.chartTimeSeries.Location = new System.Drawing.Point(4, 211);
             this.chartTimeSeries.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.chartTimeSeries.Name = "chartTimeSeries";
-            this.chartTimeSeries.Size = new System.Drawing.Size(1252, 637);
+            this.chartTimeSeries.Size = new System.Drawing.Size(1252, 653);
             this.chartTimeSeries.TabIndex = 2;
             title1.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             title1.DockedToChartArea = "Plot1";

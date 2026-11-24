@@ -17,10 +17,40 @@ namespace Physics_Data_Debug
     /// </summary>
     public partial class FormLiveTimeChart : Form
     {
-        private sealed class TimeSample
+        private struct TimeSample
         {
-            internal double Seconds;
-            internal double[] Values;
+            internal readonly double Seconds;
+            private double fl, fr, rl, rr;
+
+            internal TimeSample(double seconds)
+            {
+                Seconds = seconds;
+                fl = fr = rl = rr = double.NaN;
+            }
+
+            internal double Value(int wheel)
+            {
+                switch (wheel)
+                {
+                    case 0: return fl;
+                    case 1: return fr;
+                    case 2: return rl;
+                    case 3: return rr;
+                    default: throw new ArgumentOutOfRangeException(nameof(wheel));
+                }
+            }
+
+            internal void SetValue(int wheel, double value)
+            {
+                switch (wheel)
+                {
+                    case 0: fl = value; break;
+                    case 1: fr = value; break;
+                    case 2: rl = value; break;
+                    case 3: rr = value; break;
+                    default: throw new ArgumentOutOfRangeException(nameof(wheel));
+                }
+            }
         }
 
         private sealed class TrackHistory
@@ -305,7 +335,7 @@ namespace Physics_Data_Debug
                         chartTimeSeries.Series.Add(series);
                         foreach (TimeSample sample in tracks[index].Samples)
                         {
-                            double y = sample.Values[wheel];
+                            double y = sample.Value(wheel);
                             if (IsFinite(y)) series.Points.AddXY(DisplayX(sample.Seconds), y);
                         }
                     }
@@ -373,8 +403,7 @@ namespace Physics_Data_Debug
             {
                 TrackHistory track = tracks[trackIndex];
                 if (!trackEnabled[trackIndex].Checked || track.Selection == "None") continue;
-                var sample = new TimeSample { Seconds = nowSeconds, Values =
-                    new[] { double.NaN, double.NaN, double.NaN, double.NaN } };
+                var sample = new TimeSample(nowSeconds);
                 for (int wheel = 0; wheel < (track.Shared ? 1 : 4); wheel++)
                 {
                     LogData.Column source = track.Sources[wheel];
@@ -382,7 +411,7 @@ namespace Physics_Data_Debug
                     try
                     {
                         double value = source.ReadDouble();
-                        if (IsFinite(value)) sample.Values[wheel] = value;
+                        if (IsFinite(value)) sample.SetValue(wheel, value);
                     }
                     catch (ArithmeticException) { }
                     catch (FormatException) { }
@@ -397,7 +426,7 @@ namespace Physics_Data_Debug
                 {
                     Series series = chartTimeSeries.Series.FindByName(SeriesName(trackIndex, wheel));
                     if (series == null) continue;
-                    double value = sample.Values[wheel];
+                    double value = sample.Value(wheel);
                     if (IsFinite(value)) series.Points.AddXY(DisplayX(nowSeconds), value);
                     while (series.Points.Count > 0 &&
                         (series.Points[0].XValue < DisplayX(cutoff) ||

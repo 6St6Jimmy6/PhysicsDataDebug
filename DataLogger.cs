@@ -21,6 +21,9 @@ namespace Physics_Data_Debug
         private LogData.Column[] filterColumns;
         private LogRangeFilter[] filters;
         private char delimiter;
+        private string delimiterText;
+        private string[] textValues;
+        private static readonly int NewLineBytes = Encoding.UTF8.GetByteCount(Environment.NewLine);
         private int limitSeconds;
         private long limitBytes;
         private long writtenBytes;
@@ -51,6 +54,8 @@ namespace Physics_Data_Debug
             filters = active.ToArray();
             filterColumns = selectedFilterColumns.ToArray();
             delimiter = LogSettings.Delimiter;
+            delimiterText = delimiter.ToString();
+            textValues = new string[columns.Length];
             limitSeconds = LogSettings.TimeLimitSeconds;
             limitBytes = LogSettings.TotalSizeLimitBytes;
             writtenBytes = 0;
@@ -90,7 +95,7 @@ namespace Physics_Data_Debug
         }
 
         private static long LineBytes(string line) =>
-            Encoding.UTF8.GetByteCount(line) + Encoding.UTF8.GetByteCount(Environment.NewLine);
+            Encoding.UTF8.GetByteCount(line) + NewLineBytes;
 
         private void CheckLimits()
         {
@@ -117,7 +122,6 @@ namespace Physics_Data_Debug
             }
             // Read selected channels only once: the same values are validated
             // and written, so partially unavailable samples never become log rows.
-            var textValues = new string[columns.Length];
             for (int i = 0; i < columns.Length; i++)
             {
                 object raw = columns[i].Read();
@@ -126,7 +130,7 @@ namespace Physics_Data_Debug
                 if (double.IsNaN(value) || double.IsInfinity(value)) return;
                 textValues[i] = Convert.ToString(raw, CultureInfo.InvariantCulture);
             }
-            string line = string.Join(delimiter.ToString(), textValues);
+            string line = string.Join(delimiterText, textValues);
             long size = LineBytes(line);
             if (limitBytes > 0 && writtenBytes + size > limitBytes)
             {

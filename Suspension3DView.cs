@@ -143,6 +143,9 @@ namespace Physics_Data_Debug
         [DefaultValue(false)]
         public bool ShowPointNames { get; set; }
 
+        [DefaultValue(true)]
+        public bool ShowLegend { get; set; } = true;
+
         [DefaultValue("SUSPENSION")]
         public string ViewTitle { get; set; } = "SUSPENSION";
 
@@ -381,6 +384,8 @@ namespace Physics_Data_Debug
                         g.DrawString(marker.Name, Font, brush, pt.X + 6, pt.Y - 8);
                 }
             }
+
+            if (ShowLegend) DrawLegend(g);
             DrawHint(g);
         }
 
@@ -430,6 +435,103 @@ namespace Physics_Data_Debug
             PointF aa = Project(a, center, radius, scale);
             PointF bb = Project(b, center, radius, scale);
             if (Finite(aa) && Finite(bb)) g.DrawLine(pen, aa, bb);
+        }
+
+        private void DrawLegend(Graphics g)
+        {
+            LegendEntry[] entries =
+            {
+                new LegendEntry("Upper arm", Color.FromArgb(73, 211, 178), true, false),
+                new LegendEntry("Lower arm", Color.FromArgb(242, 173, 91), true, false),
+                new LegendEntry("Steering rod", Color.FromArgb(238, 115, 126), true, false),
+                new LegendEntry("Push rod", Color.FromArgb(192, 142, 242), true, false),
+                new LegendEntry("Upright / hub", Color.FromArgb(219, 225, 233), true, false),
+                new LegendEntry("Left wheel / tire", Color.FromArgb(120, 209, 120), true, false),
+                new LegendEntry("Right wheel / tire", Color.FromArgb(102, 174, 251), true, false),
+                new LegendEntry("Colored pickup point", Color.FromArgb(235, 235, 235), false, true),
+                new LegendEntry("Wheel pivot", Color.FromArgb(120, 209, 120), false, true),
+                new LegendEntry("XY instant center (projected)", Color.FromArgb(155, 170, 180), false, true),
+                new LegendEntry("XY roll center (projected)", Color.LimeGreen, false, true),
+                new LegendEntry("Vehicle CoM height", Color.FromArgb(124, 255, 117), false, true)
+            };
+
+            const string axisText = "Axes: X lateral, Y vertical, Z longitudinal";
+            const float width = 245f;
+            const float rowHeight = 17f;
+            const float padding = 10f;
+            const float swatchWidth = 22f;
+            const float sectionGap = 7f;
+            float height = padding * 2f + 18f + sectionGap +
+                entries.Length * rowHeight + sectionGap + 18f + 16f;
+            RectangleF box = new RectangleF(
+                Math.Max(8f, ClientSize.Width - width - 10f),
+                30f,
+                width,
+                Math.Min(height, Math.Max(120f, ClientSize.Height - 42f)));
+
+            using (var background = new SolidBrush(Color.FromArgb(185, 10, 12, 18)))
+            using (var borderPen = new Pen(Color.FromArgb(130, 86, 98, 114)))
+            using (var titleBrush = new SolidBrush(Color.FromArgb(236, 240, 245)))
+            using (var textBrush = new SolidBrush(Color.FromArgb(212, 221, 229)))
+            using (var smallBrush = new SolidBrush(Color.FromArgb(165, 180, 194)))
+            using (var fontBold = new Font(Font, FontStyle.Bold))
+            using (var smallFont = new Font(Font.FontFamily, Math.Max(7f, Font.Size - 1f), FontStyle.Regular))
+            {
+                g.FillRectangle(background, box);
+                g.DrawRectangle(borderPen, box.X, box.Y, box.Width, box.Height);
+
+                float x = box.X + padding;
+                float y = box.Y + padding;
+                g.DrawString("Legend", fontBold, titleBrush, x, y);
+                y += 18f + sectionGap * 0.5f;
+
+                foreach (LegendEntry entry in entries)
+                {
+                    if (y + rowHeight > box.Bottom - 28f) break;
+                    float midY = y + rowHeight * 0.5f;
+                    using (var symbolPen = new Pen(entry.Color, entry.IsLine ? 2.2f : 1.6f))
+                    using (var symbolBrush = new SolidBrush(entry.Color))
+                    {
+                        if (entry.IsLine)
+                        {
+                            g.DrawLine(symbolPen, x, midY, x + swatchWidth, midY);
+                            if (entry.IsPoint)
+                                g.FillEllipse(symbolBrush, x + swatchWidth * 0.5f - 3f, midY - 3f, 6f, 6f);
+                        }
+                        else
+                        {
+                            g.FillEllipse(symbolBrush, x + swatchWidth * 0.5f - 4f, midY - 4f, 8f, 8f);
+                            g.DrawEllipse(symbolPen, x + swatchWidth * 0.5f - 4f, midY - 4f, 8f, 8f);
+                        }
+                    }
+                    g.DrawString(entry.Text, Font, textBrush, x + swatchWidth + 8f, y - 1f);
+                    y += rowHeight;
+                }
+
+                y += sectionGap * 0.35f;
+                if (y + 28f < box.Bottom)
+                {
+                    g.DrawString(axisText, smallFont, smallBrush, x, y);
+                    y += 14f;
+                    g.DrawString("Hover any point for its name and XYZ position.", smallFont, smallBrush, x, y);
+                }
+            }
+        }
+
+        private sealed class LegendEntry
+        {
+            public string Text;
+            public Color Color;
+            public bool IsLine;
+            public bool IsPoint;
+
+            public LegendEntry(string text, Color color, bool isLine, bool isPoint)
+            {
+                Text = text;
+                Color = color;
+                IsLine = isLine;
+                IsPoint = isPoint;
+            }
         }
 
         private void DrawHint(Graphics g)

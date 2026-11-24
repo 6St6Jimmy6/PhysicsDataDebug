@@ -16,7 +16,7 @@ namespace Physics_Data_Debug
     public partial class FormOfflineChartSettings : Form
     {
         private readonly FormOfflineChart ownerChart;
-        private readonly OfflineChartOptions startingOptions;
+        private OfflineChartOptions startingOptions;
         private static readonly CultureInfo Invariant = CultureInfo.InvariantCulture;
 
         public FormOfflineChartSettings() : this(null, new OfflineChartOptions()) { }
@@ -26,10 +26,13 @@ namespace Physics_Data_Debug
             ownerChart = chart;
             startingOptions = options.Clone();
             InitializeComponent();
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+                return;
+            FilterRows = ChartLimiterRow.ConfigureRows(new[] { axisXFilterRow, axisYFilterRow, axisZFilterRow, extraFilterRow01, extraFilterRow02, extraFilterRow03, extraFilterRow04, extraFilterRow05, extraFilterRow06, extraFilterRow07, extraFilterRow08, extraFilterRow09, extraFilterRow10 }, "OfflineFilter");
             PopulateOptions();
             DisplayOptions(startingOptions);
             JsonFormSettings.EnsureFactoryDefaults(this);
-            JsonFormSettings.LoadAllSettings(this);
+            JsonFormSettings.LoadAllSettings(this, includeSettingsFilters: false);
             JsonFormSettings.AttachProfileButton(this, ApplyChanges);
             ComboBoxBehaviors.EnableSearch(this);
             xDefaultsButton.Click += (s,e) => ResetAxis(0);
@@ -45,20 +48,16 @@ namespace Physics_Data_Debug
             FillMissingAxisBounds();
         }
 
-        /// <summary>Displays the existing thirteen chart filters in this settings
-        /// window. Keeping the same controls preserves saved filter values.</summary>
-        internal void HostFilterGroups(GroupBox axis, GroupBox extra)
+        internal ChartLimiterRow[] FilterRows { get; private set; }
+        internal Control FilterSettingsRoot => filterSettingsRows;
+
+        internal void Prepare(OfflineChartOptions options)
         {
-            filterSettingsRows.Controls.Remove(filterAxisPlaceholder);
-            filterSettingsRows.Controls.Remove(filterExtraPlaceholder);
-            filterAxisPlaceholder.Visible = false;
-            filterExtraPlaceholder.Visible = false;
-            filterSettingsRows.Controls.Add(axis, 0, 0);
-            filterSettingsRows.Controls.Add(extra, 0, 1);
-            axis.Dock = DockStyle.Fill;
-            extra.Dock = DockStyle.Fill;
-            axis.Visible = true;
-            extra.Visible = true;
+            startingOptions = options.Clone();
+            PopulateColumns();
+            DisplayOptions(startingOptions);
+            JsonFormSettings.LoadAllSettings(this, includeSettingsFilters: false);
+            UpdateAutoVisibility();
         }
 
         private void ApplyButton_Click(object sender, EventArgs e) => ApplyChanges();
@@ -68,11 +67,19 @@ namespace Physics_Data_Debug
             if (ownerChart != null) ownerChart.ApplyFiltersFromSettings();
         }
 
+        private void PopulateColumns()
+        {
+            var columns = ownerChart != null ? ownerChart.GetColumnNames().Cast<object>().ToArray() : Array.Empty<object>();
+            foreach (ComboBox box in new[] { xColumnComboBox, yColumnComboBox, zColumnComboBox })
+            {
+                box.Items.Clear();
+                box.Items.AddRange(columns);
+            }
+        }
+
         private void PopulateOptions()
         {
-            var columns = ownerChart != null ? ownerChart.GetColumnNames().ToArray() : new string[0];
-            foreach (ComboBox box in new[] { xColumnComboBox, yColumnComboBox, zColumnComboBox })
-                box.Items.AddRange(columns.Cast<object>().ToArray());
+            PopulateColumns();
             schemeComboBox.Items.AddRange(GradientPalette.AvailableSchemes.Cast<object>().ToArray());
             chartTypeComboBox.Items.AddRange(Enum.GetNames(typeof(SeriesChartType)).Cast<object>().ToArray());
             markerComboBox.Items.AddRange(new object[] { "Circle", "Square", "Diamond", "Triangle", "Cross", "Star4", "Star5", "None" });
@@ -87,9 +94,10 @@ namespace Physics_Data_Debug
                 xFontColorComboBox, yFontColorComboBox,
                 xGridColorComboBox, yGridColorComboBox, xMinorColorComboBox,
                 yMinorColorComboBox, cursorColorComboBox);
-            var fonts = new InstalledFontCollection().Families
-                .Select(font => font.Name).Distinct(StringComparer.OrdinalIgnoreCase)
-                .OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase).Cast<object>().ToArray();
+            object[] fonts;
+            using (var installed = new InstalledFontCollection())
+                fonts = installed.Families.Select(font => font.Name).Distinct(StringComparer.OrdinalIgnoreCase)
+                    .OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase).Cast<object>().ToArray();
             foreach (var box in new[] { xFontComboBox, yFontComboBox })
             {
                 box.Items.AddRange(fonts);

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,29 +19,10 @@ namespace Physics_Data_Debug
         private readonly ChartZoomBehavior chartZoom;
         private bool? displayedSettingsOpen;
         private string displayedZSelection;
-        public static bool LimitersEnabled { get; set; } = false;
-        public static bool NoTireContactLimiterEnabled { get; set; } = false;
-        public static string X1LimiterSelection { get; set; } = Form4WheelsSettings.X1Selection;
-        public static string Y1LimiterSelection { get; set; } = Form4WheelsSettings.Y1Selection;
-        public static string Z1LimiterSelection { get; set; } = Form4WheelsSettings.Z1Selection;
-
-        public static double X1LimiterDefaultMin { get; set; } = Form4WheelsSettings.X1DefaultMin;
-        public static double Y1LimiterDefaultMin { get; set; } = Form4WheelsSettings.Y1DefaultMin;
-        public static double Z1LimiterDefaultMin { get; set; } = Form4WheelsSettings.Z1DefaultMin;
-
-        public static double X1LimiterDefaultMax { get; set; } = Form4WheelsSettings.X1DefaultMax;
-        public static double Y1LimiterDefaultMax { get; set; } = Form4WheelsSettings.Y1DefaultMax;
-        public static double Z1LimiterDefaultMax { get; set; } = Form4WheelsSettings.Z1DefaultMax;
-
-        public static double X1LimiterMin { get; set; } = Form4WheelsSettings.X1DefaultMin;
-        public static double Y1LimiterMin { get; set; } = Form4WheelsSettings.Y1DefaultMin;
-        public static double Z1LimiterMin { get; set; } = Form4WheelsSettings.Z1DefaultMin;
-
-        public static double X1LimiterMax { get; set; } = Form4WheelsSettings.X1DefaultMax;
-        public static double Y1LimiterMax { get; set; } = Form4WheelsSettings.Y1DefaultMax;
-        public static double Z1LimiterMax { get; set; } = Form4WheelsSettings.Z1DefaultMax;
-        public static List<string> xyzAxisSelection { get; set; } = new List<string> { Form4WheelsSettings.X1Selection, Form4WheelsSettings.Y1Selection, Form4WheelsSettings.Z1Selection };
-        public static List<string> xyzAxisLimiterSelection { get; set; } = new List<string> { X1LimiterSelection, Y1LimiterSelection, Z1LimiterSelection };
+        private Form4WheelsSettings settingsForm;
+        internal Control FilterSettingsRoot => settingsForm?.FilterSettingsRoot;
+        private static bool NoTireContactLimiterEnabled;
+        private static readonly List<string> xyzAxisSelection = new List<string> { "", "", "" };
 
         // ----- Consolidated chart/settings members -----
         public static int Alpha { get; set; } = 255;
@@ -68,10 +49,10 @@ namespace Physics_Data_Debug
         public Form4Wheels()
         {
             InitializeComponent();
+            timer1.Enabled = false;
             if (System.ComponentModel.LicenseManager.UsageMode ==
                 System.ComponentModel.LicenseUsageMode.Designtime || DesignMode)
             {
-                timer1.Enabled = false;
                 return;
             }
             chartZoom = new ChartZoomBehavior(chart1, () =>
@@ -83,10 +64,15 @@ namespace Physics_Data_Debug
             {
                 SetChartsForForm();
                 ApplyLegendWidth();
+                timer1.Enabled = true;
             };
             PauseUpdate = false;
             timer1.Interval = 50;
+            settingsForm = new Form4WheelsSettings();
+            settingsForm.BindFilterChart(this);
             InitializeChartFilters();
+            FormClosing += (sender, args) => JsonFormSettings.SaveAllSettings(this);
+            Disposed += (sender, args) => settingsForm.Dispose();
             // Capture untouched controls before Form4Wheels_Load restores JSON.
             JsonFormSettings.EnsureFactoryDefaults(this);
             ComboBoxBehaviors.EnableSearch(this);
@@ -312,42 +298,6 @@ namespace Physics_Data_Debug
                 //Form4WheelsSettings.Z1MinorIntervalFraction = (int)axisDefaultSelectionDefaults[5];
             }
         }
-        private void X1LimiterAxisToDefaults(bool defaultsSelected, List<object> axisDefaultSelectionDefaults)
-        {
-            if (defaultsSelected == false)
-            {
-                X1LimiterMax = (float)axisDefaultSelectionDefaults[0];
-                X1LimiterMin = (float)axisDefaultSelectionDefaults[1];
-                //Form4WheelsSettings.X1MajorInterval = (double)axisDefaultSelectionDefaults[2];
-                //Form4WheelsSettings.X1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
-                //Form4WheelsSettings.X1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
-                //Form4WheelsSettings.X1MinorIntervalFraction = (int)axisDefaultSelectionDefaults[5];
-            }
-        }
-        private void Y1LimiterAxisToDefaults(bool defaultsSelected, List<object> axisDefaultSelectionDefaults)
-        {
-            if (defaultsSelected == false)
-            {
-                Y1LimiterMax = (float)axisDefaultSelectionDefaults[0];
-                Y1LimiterMin = (float)axisDefaultSelectionDefaults[1];
-                //Form4WheelsSettings.X1MajorInterval = (double)axisDefaultSelectionDefaults[2];
-                //Form4WheelsSettings.X1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
-                //Form4WheelsSettings.X1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
-                //Form4WheelsSettings.X1MinorIntervalFraction = (int)axisDefaultSelectionDefaults[5];
-            }
-        }
-        private void Z1LimiterAxisToDefaults(bool defaultsSelected, List<object> axisDefaultSelectionDefaults)
-        {
-            if (defaultsSelected == false)
-            {
-                Z1LimiterMax = (float)axisDefaultSelectionDefaults[0];
-                Z1LimiterMin = (float)axisDefaultSelectionDefaults[1];
-                //Form4WheelsSettings.X1MajorInterval = (double)axisDefaultSelectionDefaults[2];
-                //Form4WheelsSettings.X1MajorDecimals = (int)axisDefaultSelectionDefaults[3];
-                //Form4WheelsSettings.X1MinorEnabled = (bool)axisDefaultSelectionDefaults[4];
-                //Form4WheelsSettings.X1MinorIntervalFraction = (int)axisDefaultSelectionDefaults[5];
-            }
-        }
         public static void AddChart(Chart chartName, string chartAreaName)
         {
             // Shared layouts (All In One / Front-Rear) use the same area for
@@ -377,7 +327,6 @@ namespace Physics_Data_Debug
 
             area.AxisX.MajorGrid.LineWidth = Form4WheelsSettings.X1MajorLineWidth;
             area.AxisX.MajorGrid.LineColor = Form4WheelsSettings.X1MajorColor;
-            area.AxisY.LineColor = Color.Transparent;// Need to do this for this specific line, because it's over the X axis lines.
 
             area.AxisX.MinorGrid.Enabled = Form4WheelsSettings.X1MinorEnabled;
             area.AxisX.MinorGrid.LineDashStyle = Form4WheelsSettings.X1MinorDashStyle;
@@ -434,22 +383,21 @@ namespace Physics_Data_Debug
             area.CursorY.Interval = 0.01;
             area.CursorY.LineColor = Form4WheelsSettings.MarkerColor;
 
-            // Shared styling with the offline chart, including tick marks and
-            // independently configured major/minor alpha and line patterns.
-            ChartAppearance.ConfigureGrid(area.AxisX.MajorGrid, area.AxisX.MajorTickMark,
+            // Shared styling with the offline chart, including independently
+            // configured major/minor alpha and line patterns.
+            ChartAppearance.ConfigureGrid(area.AxisX.MajorGrid,
                 Form4WheelsSettings.X1MajorColor, Form4WheelsSettings.XMajorAlpha,
                 Form4WheelsSettings.XMajorWidth, Form4WheelsSettings.XMajorDashStyle);
-            ChartAppearance.ConfigureGrid(area.AxisX.MinorGrid, area.AxisX.MinorTickMark,
+            ChartAppearance.ConfigureGrid(area.AxisX.MinorGrid,
                 Form4WheelsSettings.X1MinorColor, Form4WheelsSettings.XMinorAlpha,
                 Form4WheelsSettings.XMinorWidth, Form4WheelsSettings.X1MinorDashStyle);
-            ChartAppearance.ConfigureGrid(area.AxisY.MajorGrid, area.AxisY.MajorTickMark,
+            ChartAppearance.ConfigureGrid(area.AxisY.MajorGrid,
                 Form4WheelsSettings.Y1MajorColor, Form4WheelsSettings.YMajorAlpha,
                 Form4WheelsSettings.YMajorWidth, Form4WheelsSettings.YMajorDashStyle);
-            ChartAppearance.ConfigureGrid(area.AxisY.MinorGrid, area.AxisY.MinorTickMark,
+            ChartAppearance.ConfigureGrid(area.AxisY.MinorGrid,
                 Form4WheelsSettings.Y1MinorColor, Form4WheelsSettings.YMinorAlpha,
                 Form4WheelsSettings.YMinorWidth, Form4WheelsSettings.Y1MinorDashStyle);
-            area.AxisX.MinorTickMark.Enabled = Form4WheelsSettings.X1MinorEnabled;
-            area.AxisY.MinorTickMark.Enabled = Form4WheelsSettings.Y1MinorEnabled;
+            ChartAppearance.ConfigureCartesianAxisLines(area);
             ChartAppearance.ConfigureZoom(area, Form4WheelsSettings.LiveCursorEnabled,
                 Form4WheelsSettings.LiveCursorZoomable,
                 Form4WheelsSettings.CursorColor, Form4WheelsSettings.CursorAlpha,
@@ -710,7 +658,6 @@ namespace Physics_Data_Debug
         private void Form4Wheels_FormClosed(object sender, FormClosedEventArgs e)
         {
             chartZoom.Dispose();
-            JsonFormSettings.SaveAllSettings(this);
             LiveData._4WheelsOpen = false;
         }
         private int lastPlottedTelemetryGeneration = -1;
@@ -722,32 +669,17 @@ namespace Physics_Data_Debug
                 lastPlottedTelemetryGeneration != LiveData.TelemetryGeneration)
             {
                 lastPlottedTelemetryGeneration = LiveData.TelemetryGeneration;
-                xyzAxisSelection = new List<string> { Form4WheelsSettings.X1Selection, Form4WheelsSettings.Y1Selection, Form4WheelsSettings.Z1Selection };
-                PlotAllWheels(chart1, xyzAxisSelection, xyzAxisLimiterSelection);
+                xyzAxisSelection[0] = Form4WheelsSettings.X1Selection;
+                xyzAxisSelection[1] = Form4WheelsSettings.Y1Selection;
+                xyzAxisSelection[2] = Form4WheelsSettings.Z1Selection;
+                PlotAllWheels(chart1, xyzAxisSelection);
             }
         }
         private void toSettingsButton_Click(object sender, EventArgs e)
         {
             toSettingsButton.Visible = false;
-            Form4WheelsSettings.SettingsOpen = true;
-            Form4WheelsSettings s1 = new Form4WheelsSettings();
-            s1.HostFilterGroups(this, axisFiltersGroup, extraFiltersGroup,
-                noTireContactLimiterEnabledCheckBox);
-            s1.Show(this);
-        }
-        /// <summary>Return the live filter controls to their non-visible parking
-        /// cells before the settings dialog is disposed. The chart retains their
-        /// state, so closing/reopening Settings does not reset selections.</summary>
-        internal void ReturnHostedFilterGroups(GroupBox axis, GroupBox extra,
-            CheckBox noContact)
-        {
-            axis.Visible = false;
-            extra.Visible = false;
-            mainLayout.Controls.Add(axis, 0, 1);
-            mainLayout.Controls.Add(extra, 0, 2);
-            actionButtonsFlow.Controls.Remove(noContact);
-            UpdateAllLimiters();
-            JsonFormSettings.SaveAllSettings(this);
+            settingsForm.PrepareForShow();
+            settingsForm.Show(this);
         }
 
         private void refreshAndApplyButton_Click(object sender, EventArgs e)
@@ -777,30 +709,8 @@ namespace Physics_Data_Debug
                 buttonPause.Text = "Pause Update";
             }
         }
-        private void noTireContactLimiterEnabledCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateAllLimiters();
-        }
-
         private static readonly Dictionary<string, WheelPlotHistory> Histories =
             new Dictionary<string, WheelPlotHistory>(StringComparer.Ordinal);
-        private static readonly string[] PrefixOrder = TelemetryPrefix.Order;
-        // A separate index per wheel avoids rebuilding on every timer tick.
-        // The canonical name index also disambiguates identically named
-        // suspension fields using the same headers as the single-file logger.
-        private sealed class WheelFieldIndex
-        {
-            public List<DataItem> Source;
-            public int Count;
-            public DataItem First;
-            public Dictionary<string, int> Names;
-        }
-        private static readonly Dictionary<string, WheelFieldIndex> WheelFieldIndexes =
-            new Dictionary<string, WheelFieldIndex>(StringComparer.Ordinal);
-        private static Dictionary<string, DataItem> sharedFieldIndex;
-        private static List<DataItem>[] indexedSharedLists;
-        private static int[] indexedSharedCounts;
-
         public static void ClearListDataHistory()
         {
             foreach (WheelPlotHistory history in Histories.Values)
@@ -820,190 +730,40 @@ namespace Physics_Data_Debug
             }
         }
 
-        public static List<float> ListSelections(List<string> xyzSelection, int none,
-                                                  string prefix)
+        private static void PlotAllWheels(Chart chart, List<string> selections)
         {
-            var xyzValues = new List<float>(xyzSelection.Count);
-            int prefixIndex = Array.IndexOf(PrefixOrder, prefix);
-            if (prefixIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(prefix));
-
-            var data = LiveData.FullDataList[prefixIndex];
-            if (!WheelFieldIndexes.TryGetValue(prefix, out WheelFieldIndex wheelFields) ||
-                !ReferenceEquals(wheelFields.Source, data) ||
-                wheelFields.Count != data.Count ||
-                (data.Count > 0 && !ReferenceEquals(wheelFields.First, data[0])))
-            {
-                var names = new Dictionary<string, int>(StringComparer.Ordinal);
-                var canonicalByMember = LogData.AllColumns
-                    .Where(column => column.Wheel == prefix)
-                    .ToDictionary(column => column.Group + "." + column.Member,
-                        column => column.Header, StringComparer.Ordinal);
-
-                string prefixName = prefix + "_";
-                for (int i = 0; i < data.Count; i++)
-                {
-                    DataItem item = data[i];
-                    if (!item.Name.StartsWith(prefixName, StringComparison.Ordinal))
-                        continue;
-
-                    string raw = item.Name.Substring(prefixName.Length);
-                    // Original member keys remain available for older profiles.
-                    if (!names.ContainsKey(raw)) names.Add(raw, i);
-                    if (item.SourceGroup != null &&
-                        canonicalByMember.TryGetValue(item.SourceGroup + "." + raw,
-                            out string canonical))
-                    {
-                        names[canonical] = i;
-                        names[TelemetryNames.RelativeWheelName(canonical)] = i;
-                    }
-                }
-
-                wheelFields = new WheelFieldIndex
-                {
-                    Source = data,
-                    Count = data.Count,
-                    First = data.Count > 0 ? data[0] : null,
-                    Names = names
-                };
-                WheelFieldIndexes[prefix] = wheelFields;
-            }
-            Dictionary<string, int> tireFieldIndex = wheelFields.Names;
-
-            // The selector also offers shared Body, Powertrain and Timing data.
-            // Index their DataItem references, so changes in Value are visible
-            // without repeatedly scanning every field during plotting.
-            EnsureSharedFieldIndex();
-
-            foreach (string selected in xyzSelection)
-            {
-                // A relative wheel measurement (SlipRatio) is resolved in
-                // the current wheel's data list. Historical FL_/FR_ choices
-                // are also treated as wheel-relative while plotting.
-                string relative = TelemetryNames.RelativeWheelName(selected);
-                if (relative != null &&
-                    tireFieldIndex.TryGetValue(relative, out int wheelIndex))
-                {
-                    xyzValues.Add(Convert.ToSingle(data[wheelIndex].Value));
-                }
-                else if (selected != null &&
-                    sharedFieldIndex.TryGetValue(selected, out DataItem shared))
-                {
-                    xyzValues.Add(Convert.ToSingle(shared.Value));
-                }
-                else if (relative != null &&
-                    sharedFieldIndex.TryGetValue(relative, out shared))
-                {
-                    // Compatibility with old unprefixed global settings.
-                    xyzValues.Add(Convert.ToSingle(shared.Value));
-                }
-                else
-                {
-                    xyzValues.Add(none);
-                }
-            }
-            return xyzValues;
+            // Dataset layout controls which wheels generate history.
+            var wheels = FourWheelsFieldSelection.WheelsForLayout(Form4WheelsSettings.WheelChartsSelect);
+            if (wheels.Contains("FL")) PlotWheel(chart, TelemetryPrefix.FL, FL_SeriesString, selections);
+            if (wheels.Contains("FR")) PlotWheel(chart, TelemetryPrefix.FR, FR_SeriesString, selections);
+            if (wheels.Contains("RL")) PlotWheel(chart, TelemetryPrefix.RL, RL_SeriesString, selections);
+            if (wheels.Contains("RR")) PlotWheel(chart, TelemetryPrefix.RR, RR_SeriesString, selections);
         }
 
-        private static void EnsureSharedFieldIndex()
-        {
-            int[] positions = { 0, 5, 6 }; // Body, Powertrain, Timing
-            bool changed = sharedFieldIndex == null;
-            for (int i = 0; i < positions.Length && !changed; i++)
-            {
-                var list = LiveData.FullDataList[positions[i]];
-                changed = !ReferenceEquals(indexedSharedLists[i], list) ||
-                          indexedSharedCounts[i] != list.Count;
-            }
-            if (!changed) return;
+        private static bool IsFinite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
 
-            sharedFieldIndex = new Dictionary<string, DataItem>(StringComparer.Ordinal);
-            indexedSharedLists = new List<DataItem>[positions.Length];
-            indexedSharedCounts = new int[positions.Length];
-            for (int i = 0; i < positions.Length; i++)
-            {
-                int prefixIndex = positions[i];
-                List<DataItem> list = LiveData.FullDataList[prefixIndex];
-                indexedSharedLists[i] = list;
-                indexedSharedCounts[i] = list.Count;
-                string prefix = PrefixOrder[prefixIndex] + "_";
-                foreach (DataItem item in list)
-                {
-                    if (item.Name.StartsWith(prefix, StringComparison.Ordinal))
-                    {
-                        string key = item.Name.Substring(prefix.Length);
-                        if (!sharedFieldIndex.ContainsKey(key)) sharedFieldIndex.Add(key, item);
-                        if (item.SourceGroup != null)
-                        {
-                            string canonical = TelemetryNames.Name(item.SourceGroup, key);
-                            if (!sharedFieldIndex.ContainsKey(canonical)) sharedFieldIndex.Add(canonical, item);
-                        }
-                    }
-                }
-            }
-        }
-
-        public static void PlotAllWheels(Chart chart, List<string> selections,
-                                         List<string> limiterSelections)
+        private static void PlotWheel(Chart chart, string wheel, string seriesName, List<string> selections)
         {
-            // Dataset layout controls which wheels generate history, not which
-            // wheel prefix appears in the X/Y/Z selectors.
-            var wheels = new HashSet<string>(FourWheelsFieldSelection.WheelsForLayout(
-                Form4WheelsSettings.WheelChartsSelect));
-            if (wheels.Contains("FL")) PlotWheel(chart, TelemetryPrefix.FL, FL_SeriesString, selections, limiterSelections);
-            if (wheels.Contains("FR")) PlotWheel(chart, TelemetryPrefix.FR, FR_SeriesString, selections, limiterSelections);
-            if (wheels.Contains("RL")) PlotWheel(chart, TelemetryPrefix.RL, RL_SeriesString, selections, limiterSelections);
-            if (wheels.Contains("RR")) PlotWheel(chart, TelemetryPrefix.RR, RR_SeriesString, selections, limiterSelections);
-        }
-
-        private static void PlotWheel(Chart chart, string wheel, string seriesName,
-                                      List<string> selections, List<string> limiterSelections)
-        {
-            List<float> xyz = ListSelections(selections, LiveData.None, wheel);
-            List<float> limiter = ListSelections(limiterSelections, LiveData.None, wheel);
             float verticalLoad = LiveData.GetFullListFloatValue(wheel,
                 GameMemoryConfig.Field("WF_TireDataOffset", "VerticalLoad"));
-            // Wheel memory may not exist yet on the first race tick. There is
-            // no point plotting X/Y/Z while the wheel's load is unavailable.
-            if (float.IsNaN(verticalLoad) || float.IsInfinity(verticalLoad)) return;
-            ListSeries(chart, seriesName, xyz, limiter, verticalLoad);
-        }
+            if (!IsFinite(verticalLoad) || (NoTireContactLimiterEnabled && verticalLoad == 0)) return;
 
-        public static bool OverTheChosenLimiter(float limiter, string limiterSelection,
-                                                 double limiterMax, double limiterMin)
-        {
-            if (GameMemoryConfig.AbsoluteValueFields.Contains(limiterSelection))
-                limiter = Math.Abs(limiter);
+            var reader = LiveData.GetChartReader(wheel);
+            // Reject filtered samples before reading/evaluating their chart axes.
+            foreach (ChartLimit filter in activeChartLimits)
+            {
+                float value = reader.Read(filter.Selection, LiveData.None);
+                if (!IsFinite(value)) return;
+                if (filter.Absolute) value = Math.Abs(value);
+                if (value < filter.Minimum || value > filter.Maximum) return;
+            }
 
-            return limiter > limiterMax || limiter < limiterMin;
-        }
-
-        public static void ListSeries(Chart chart, string seriesName, List<float> xyzValues,
-                                      List<float> limiter, float noTireContactLimiter)
-        {
-            ChartLimit[] configured = activeChartLimits;
-            if (xyzValues == null || xyzValues.Count < 3 || limiter == null || limiter.Count != configured.Length)
-                throw new ArgumentException("Three X/Y/Z values and one value per enabled filter are required.");
-
-            if (NoTireContactLimiterEnabled &&
-                (noTireContactLimiter == 0 || float.IsNaN(noTireContactLimiter) ||
-                 float.IsInfinity(noTireContactLimiter))) return;
-
-            for (int i = 0; i < configured.Length; i++)
-                if (float.IsNaN(limiter[i]) || float.IsInfinity(limiter[i]) ||
-                    OverTheChosenLimiter(limiter[i], configured[i].Selection,
-                        configured[i].Maximum, configured[i].Minimum))
-                    return;
-
-            // Preserve the original absolute-values behavior for both data and colors.
-            float x = Form4WheelsSettings.AbsoluteValues ? Math.Abs(xyzValues[0]) : xyzValues[0];
-            float y = Form4WheelsSettings.AbsoluteValues ? Math.Abs(xyzValues[1]) : xyzValues[1];
-            float z = Form4WheelsSettings.AbsoluteValues ? Math.Abs(xyzValues[2]) : xyzValues[2];
-            // When a game structure has not been initialized, the reader marks
-            // its fields unavailable. Never append NaN/Infinity to a live chart.
-            if (float.IsNaN(x) || float.IsInfinity(x) ||
-                float.IsNaN(y) || float.IsInfinity(y) ||
-                float.IsNaN(z) || float.IsInfinity(z)) return;
+            float x = reader.Read(selections[0], LiveData.None);
+            float y = reader.Read(selections[1], LiveData.None);
+            float z = reader.Read(selections[2], LiveData.None);
+            if (!IsFinite(x) || !IsFinite(y) || !IsFinite(z)) return;
+            if (Form4WheelsSettings.AbsoluteValues)
+            { x = Math.Abs(x); y = Math.Abs(y); z = Math.Abs(z); }
 
             if (!Histories.TryGetValue(seriesName, out WheelPlotHistory history))
             {
