@@ -3923,16 +3923,16 @@ namespace Physics_Data_Debug
             // 
             // SettingsProfilesButton
             // 
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
             this.SettingsProfilesButton.Location = new System.Drawing.Point(487, 5);
             this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.SettingsProfilesButton.Name = "SettingsProfilesButton";
-            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsProfilesButton.Text = "Profiles ▼";
-            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
-            this.SettingsProfilesButton.TabStop = false;
             this.SettingsProfilesButton.Size = new System.Drawing.Size(115, 23);
             this.SettingsProfilesButton.TabIndex = 524;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
             // 
             // settingsTabs
             // 
@@ -3943,7 +3943,7 @@ namespace Physics_Data_Debug
             this.settingsTabs.Margin = new System.Windows.Forms.Padding(2);
             this.settingsTabs.Name = "settingsTabs";
             this.settingsTabs.SelectedIndex = 0;
-            this.settingsTabs.Size = new System.Drawing.Size(1122, 428);
+            this.settingsTabs.Size = new System.Drawing.Size(1122, 462);
             this.settingsTabs.TabIndex = 0;
             // 
             // chartSettingsTab
@@ -3965,7 +3965,7 @@ namespace Physics_Data_Debug
             this.filterSettingsTab.Location = new System.Drawing.Point(4, 22);
             this.filterSettingsTab.Margin = new System.Windows.Forms.Padding(2);
             this.filterSettingsTab.Name = "filterSettingsTab";
-            this.filterSettingsTab.Size = new System.Drawing.Size(1114, 402);
+            this.filterSettingsTab.Size = new System.Drawing.Size(1114, 436);
             this.filterSettingsTab.TabIndex = 1;
             this.filterSettingsTab.Text = "Filters";
             // 
@@ -3984,7 +3984,7 @@ namespace Physics_Data_Debug
             this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.filterSettingsRows.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.filterSettingsRows.Size = new System.Drawing.Size(1114, 402);
+            this.filterSettingsRows.Size = new System.Drawing.Size(1114, 436);
             this.filterSettingsRows.TabIndex = 0;
             // 
             // noTireContactLimiterEnabledCheckBox
@@ -4071,7 +4071,7 @@ namespace Physics_Data_Debug
             this.extraFiltersGroup.Margin = new System.Windows.Forms.Padding(2);
             this.extraFiltersGroup.Name = "extraFiltersGroup";
             this.extraFiltersGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 8);
-            this.extraFiltersGroup.Size = new System.Drawing.Size(1110, 271);
+            this.extraFiltersGroup.Size = new System.Drawing.Size(1110, 305);
             this.extraFiltersGroup.TabIndex = 353;
             this.extraFiltersGroup.TabStop = false;
             this.extraFiltersGroup.Text = "Additional telemetry filters — choose up to 10 measurements";
@@ -4093,7 +4093,7 @@ namespace Physics_Data_Debug
             this.extraFiltersFlow.Location = new System.Drawing.Point(4, 17);
             this.extraFiltersFlow.Margin = new System.Windows.Forms.Padding(2);
             this.extraFiltersFlow.Name = "extraFiltersFlow";
-            this.extraFiltersFlow.Size = new System.Drawing.Size(1102, 246);
+            this.extraFiltersFlow.Size = new System.Drawing.Size(1102, 280);
             this.extraFiltersFlow.TabIndex = 0;
             // 
             // extraFilterRow01
@@ -4221,7 +4221,7 @@ namespace Physics_Data_Debug
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(1122, 460);
+            this.ClientSize = new System.Drawing.Size(1122, 494);
             this.Controls.Add(this.settingsTabs);
             this.Controls.Add(this.settingsActionsPanel);
             this.ForeColor = System.Drawing.Color.White;
