@@ -110,6 +110,14 @@ namespace Physics_Data_Debug
         private float frameRadius = 1f;
         private bool frameLocked;
 
+        // The ground-relative display frame is independent of the stored
+        // vehicle coordinates. Keep its camera center fixed between samples.
+        private bool levelFrameInitialized;
+        private Vector3 levelFrameCenter;
+        private bool levelProjection;
+        private double groundSlope, groundOffset;
+        private double groundCos = 1d, groundSin;
+
         public event EventHandler<SuspensionCameraChangedEventArgs> CameraChanged;
 
         public Suspension3DView()
@@ -246,6 +254,7 @@ namespace Physics_Data_Debug
         public void ResetFraming()
         {
             frameLocked = false;
+            levelFrameInitialized = false;
             Invalidate();
         }
 
@@ -298,7 +307,7 @@ namespace Physics_Data_Debug
             {
                 foreach (Suspension3DScene.Marker marker in scene.Markers)
                 {
-                    PointF screen = Project(marker.Position, center, radius, pixelScale);
+                    PointF screen = Project(ToViewPoint(marker.Position), center, radius, pixelScale);
                     float px = screen.X - e.X;
                     float py = screen.Y - e.Y;
                     float distSquared = px * px + py * py;
@@ -339,6 +348,21 @@ namespace Physics_Data_Debug
             if (ClientSize.Width <= 4 || ClientSize.Height <= 4 ||
                 !scene.GetBounds(out Vector3 min, out Vector3 max)) return false;
 
+            // Resolve the support plane once for this projection (also for
+            // hit-testing). The grid and all geometry use the same frame.
+            GetGroundPlane(out groundSlope, out groundOffset);
+            levelProjection = GroundFollowsTires;
+            if (levelProjection)
+            {
+                double angle = Math.Atan(groundSlope);
+                groundCos = Math.Cos(angle);
+                groundSin = Math.Sin(angle);
+            }
+            else
+            {
+                levelFrameInitialized = false;
+            }
+
             if (!frameLocked)
             {
                 Vector3 midpoint = (min + max) * 0.5f;
@@ -355,9 +379,16 @@ namespace Physics_Data_Debug
                 // are present so temporary unreadable fields cannot fix a
                 // misleading camera center or scale for the whole session.
                 frameLocked = HasCompleteAxle(scene);
+                levelFrameInitialized = false;
             }
 
-            center = frameCenter;
+            if (levelProjection && !levelFrameInitialized)
+            {
+                Vector3 leveled = ToViewPoint(frameCenter);
+                levelFrameCenter = new Vector3(0f, leveled.Y, leveled.Z);
+                levelFrameInitialized = true;
+            }
+            center = levelProjection ? levelFrameCenter : frameCenter;
             radius = frameRadius;
             pixelScale = (Math.Min(ClientSize.Width, ClientSize.Height) * 0.34f / radius) * zoom;
             return true;
@@ -380,6 +411,17 @@ namespace Physics_Data_Debug
                 }
             }
             return false;
+        }
+
+        // Translate the support plane to Y=0 and rotate by -atan(slope)
+        // about Z. This rigid transform preserves all distances and the
+        // contact of both tires. Raw scene data and hover XYZ stay unchanged.
+        private Vector3 ToViewPoint(Vector3 p)
+        {
+            if (!levelProjection) return p;
+            double y = p.Y - groundOffset;
+            return new Vector3((float)(groundCos * p.X + groundSin * y),
+                (float)(-groundSin * p.X + groundCos * y), p.Z);
         }
 
         private float Depth(Vector3 p, Vector3 center)
@@ -433,19 +475,19 @@ namespace Physics_Data_Debug
             // Painter's sorting gives an intuitive rear-to-front wireframe even
             // when arms overlap. It is not a solid-surface/occlusion renderer.
             foreach (Suspension3DScene.Segment segment in scene.Segments.OrderBy(s =>
-                (Depth(s.A, center) + Depth(s.B, center)) * 0.5f))
+                (Depth(ToViewPoint(s.A), center) + Depth(ToViewPoint(s.B), center)) * 0.5f))
             {
-                PointF a = Project(segment.A, center, radius, scale);
-                PointF b = Project(segment.B, center, radius, scale);
+                PointF a = Project(ToViewPoint(segment.A), center, radius, scale);
+                PointF b = Project(ToViewPoint(segment.B), center, radius, scale);
                 if (!Finite(a) || !Finite(b)) continue;
                 using (var pen = new Pen(segment.Color, segment.Width))
                     g.DrawLine(pen, a, b);
             }
 
             // Points and labels are drawn last for legibility.
-            foreach (Suspension3DScene.Marker marker in scene.Markers.OrderBy(m => Depth(m.Position, center)))
+            foreach (Suspension3DScene.Marker marker in scene.Markers.OrderBy(m => Depth(ToViewPoint(m.Position), center)))
             {
-                PointF pt = Project(marker.Position, center, radius, scale);
+                PointF pt = Project(ToViewPoint(marker.Position), center, radius, scale);
                 if (!Finite(pt)) continue;
                 using (var brush = new SolidBrush(marker.Color))
                     g.FillEllipse(brush, pt.X - 3, pt.Y - 3, 6, 6);
@@ -467,9 +509,11 @@ namespace Physics_Data_Debug
 
         private void DrawGrid(Graphics g, Vector3 center, float radius, float scale)
         {
-            // Fixed Y=0 by default, or a laterally tilted tire support plane.
-            // The XYZ arrows retain their vehicle-relative directions.
-            GetGroundPlane(out double slope, out double offset);
+            // Grid and axes are already expressed in display coordinates.
+            // In level mode they define the ground-relative frame (Y=0),
+            // so do not apply the suspension transform to them a second time.
+            double slope = levelProjection ? 0d : groundSlope;
+            double offset = levelProjection ? 0d : groundOffset;
             float step = radius < 1.5f ? 0.25f : radius < 4f ? 0.5f : 1f;
             float half = Math.Min(12f, Math.Max(1.5f, radius * 1.4f));
             float minX = (float)Math.Floor((center.X - half) / step) * step;

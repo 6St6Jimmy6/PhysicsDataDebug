@@ -6,7 +6,7 @@ Baseline: `PhysicsDataDebug(6).zip`.
 - Reconnected Offline Chart settings/filter Apply events, fixed font defaults and explicit minor-grid intervals, and added a software-projected interactive XYZ scatter view with optional independent color field.
 - Four Wheels history defaults to FastPoint; a chart rebuild/paint taking more than 5000 ms, or a subsequent telemetry plot/paint exceeding the configured tick by more than 1000 ms, triggers a FastPoint rebuild and autosave. Current marker is a separate Point. This is a post-render safeguard, not a cancellation mechanism for a hung UI thread.
 - G-force current/history marker sizes and update time are independently editable and persisted. Telemetry/chart refresh defaults are 50 ms; the G-force history snapshot timer remains derived from the history length.
-- Added ground-following grid to suspension geometry, fitting a laterally tilted common supporting plane to both rendered tires per axle.
+- Added ground-following grid to suspension geometry, fitting a laterally tilted common supporting plane to both rendered tires per axle. The same Ground follows tires checkbox automatically aligns that plane with the XZ axes by rotating the displayed suspension while preserving raw telemetry; no separate leveling checkbox is required.
 - Restoring factory defaults uses current values for the changed settings while retaining existing named profiles and autosaves.
 
 ## Windows verification checklist
@@ -16,6 +16,6 @@ Baseline: `PhysicsDataDebug(6).zip`.
 3. Load a CSV with multiple wheels and at least four numeric fields; Apply Settings and Apply Filters, verify axis/marker changes, minor grid subdivisions, and restored profiles. Switch to 3D, orbit/pan/zoom, check XYZ tooltips, enable the fourth color field, and switch back to 2D.
 4. On live Four Wheels, test FastPoint and another compatible history type, and verify fallback at the specified thresholds with a large history. Check that existing history remains.
 5. Change G-force current/history sizes and interval; verify old history is restyled and settings persist.
-6. Toggle suspension ground following under suspension movement. Check that the grid tilts to touch both tires, and the coordinates remain unchanged.
+6. Toggle suspension ground following under suspension movement. Enable Ground follows tires, choose Front, and verify the grid remains horizontal, both tires touch it, the X-axis coincides with it, and hover still reports original XYZ. Disable it to verify the original vehicle-relative display returns.
 
 No Windows compiler or running Wreckfest is available in the preparation environment; static source and archive checks do not replace those runtime tests.

@@ -16,13 +16,13 @@
 | Zoom (%) | Scale from 20% to 800% |
 | Update (ms) | Live refresh interval, 10–10,000 ms; default 50 |
 | Perspective | Enable/disable perspective (orthographic when off) |
-| Grid | Toggle the ground grid and vehicle-relative XYZ axes |
+| Grid | Toggle the ground grid and XYZ axes (ground-relative axes when Ground follows tires is active) |
 | Point names | Draw labels by points (hover labels work regardless) |
-| Ground follows tires | Translate and tilt the grid laterally to support both rendered tire outlines in each axle view, without moving the suspension points. Off by default. |
+| Ground follows tires | Fit the ground to both rendered tire outlines in each axle view and level the display around Z so the grid stays at Y = 0. Off by default. |
 | Legend | Show/hide the in-view legend overlay for colors, points and axes |
 | Rotate spindle offsets | Rotate wheel-local spindle offsets using `TireM11..TireM33` |
 
-Each viewport initially fits its own axle geometry, then locks its camera framing once both wheel pivots are available. The camera center stays on **X = 0** (vehicle centerline); subsequent suspension movement and steering do not cause automatic recentering or rescaling. Press **Reset view** to frame a new vehicle or session. The physical *relative* scale of front vs rear drawings may differ. The camera angles and zoom are shared; pan is independent. The toolbar and two viewports are owned by `FormSuspensionGeometry.Designer.cs` and visible in Visual Studio's Designer. The custom `Suspension3DView` displays a static example in the Designer; runtime uses live telemetry instead.
+Each viewport initially fits its own axle geometry, then locks its camera framing once both wheel pivots are available. The camera center stays on **X = 0** (vehicle-relative by default, ground-relative when Ground follows tires is active); subsequent suspension movement and steering do not cause automatic recentering or rescaling. Press **Reset view** to frame a new vehicle or session. The physical *relative* scale of front vs rear drawings may differ. The camera angles and zoom are shared; pan is independent. The toolbar and two viewports are owned by `FormSuspensionGeometry.Designer.cs` and visible in Visual Studio's Designer. The custom `Suspension3DView` displays a static example in the Designer; runtime uses live telemetry instead.
 
 ## Legend
 
@@ -46,7 +46,11 @@ The projected instant center and roll center are still the existing **XY constru
 
 ## Ground plane
 
-When Ground follows tires is enabled, each axle independently fits a common lower supporting plane to the two rendered tire outlines. The plane remains level along Z and tilts across X; both tires touch it without any wireframe vertices passing below it (within floating-point precision). With only one readable tire or overlapping lateral tire outlines, the grid falls back to horizontal support; with neither tire it remains at Y = 0. The XYZ arrows retain vehicle-relative directions, and point coordinates, roll-center calculations and suspension geometry are unchanged. This is a visual reference, not a measured road plane or a full vehicle pitch/roll estimate.
+When Ground follows tires is enabled, each axle independently fits a common lower supporting plane to the two rendered tire outlines. The plane remains level along Z and tilts across X; both tires touch it without any wireframe vertices passing below it (within floating-point precision). With only one readable tire or overlapping lateral tire outlines, the grid falls back to horizontal support; with neither tire it remains at Y = 0. With Ground follows tires disabled, the XYZ arrows retain vehicle-relative directions.
+
+The same **Ground follows tires** checkbox automatically enables a ground-relative display frame. The fitted plane `y = m*x + b` is translated by `-b` in Y and rotated by `-atan(m)` about Z, and the same rigid transform is applied to all suspension lines and markers. The grid and XYZ axes are drawn in the resulting ground-relative frame at Y = 0. In the Front preset, the grid aligns with the horizontal X-axis; normal 3D orbit and perspective still work. Both tires retain their fitted contact, and the body and suspension visibly roll relative to the ground. Each axle is leveled independently. The original telemetry XYZ shown on hover, calculated centers, and physical geometry remain unchanged. Turning Ground follows tires off restores the original vehicle-relative display and fixed Y = 0 grid. Its checked state is saved with the other settings; old separate leveling settings are no longer used.
+
+This is a visual reference, not a measured road plane or a full vehicle pitch/roll estimate.
 
 ## Geometry
 
