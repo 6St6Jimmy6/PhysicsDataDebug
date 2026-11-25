@@ -98,7 +98,56 @@ namespace Physics_Data_Debug
             UpdateFollowedAxes();
             UpdateAllLimiters();
         }
+        internal void PrepareFilterRestore( string layout, string[] selections, bool factoryDefaults)
+        {
+            if (filterRows == null)
+                return;
 
+            bool before = refreshingFilters;
+            refreshingFilters = true;
+
+            try
+            {
+                for (int i = 0; i < filterRows.Length; i++)
+                {
+                    ChartLimiterRow row = filterRows[i];
+
+                    Form4WheelsSettings.AxisSelectionComboboxAdd(
+                        row.SelectionBox, layout);
+
+                    if (factoryDefaults)
+                        row.EnabledBox.Checked = false;
+
+                    if (i < 3)
+                    {
+                        bool changed = !string.Equals(
+                            row.SelectedField,
+                            selections[i],
+                            StringComparison.Ordinal);
+
+                        row.SetField(selections[i]);
+
+                        if (changed || factoryDefaults)
+                            ResetFilterDefaults(row);
+                    }
+                    else if (factoryDefaults)
+                    {
+                        row.SetField("None");
+                        row.MinimumBox.Text = "";
+                        row.MaximumBox.Text = "";
+                    }
+                }
+
+                if (factoryDefaults)
+                    settingsForm.NoContactFilter.Checked = false;
+            }
+            finally
+            {
+                refreshingFilters = before;
+            }
+
+            UpdateAllLimiters();
+        }
         private void UpdateFollowedAxes(bool initial = false)
         {
             if (filterRows == null) return;

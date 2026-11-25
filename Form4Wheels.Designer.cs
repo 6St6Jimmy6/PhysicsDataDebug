@@ -30,17 +30,17 @@ namespace Physics_Data_Debug
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0.5D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 0.5D);
-            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0.5D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 0.5D);
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.refreshAndClearButton = new System.Windows.Forms.Button();
             this.toSettingsButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -51,7 +51,6 @@ namespace Physics_Data_Debug
             this.filterActionsPanel = new System.Windows.Forms.Panel();
             this.actionColumns = new System.Windows.Forms.TableLayoutPanel();
             this.actionButtonsFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.chartAndLegend = new System.Windows.Forms.SplitContainer();
             this.chartScrollPanel = new System.Windows.Forms.Panel();
             this.chartStatusLabel = new System.Windows.Forms.Label();
@@ -122,115 +121,115 @@ namespace Physics_Data_Debug
             // GradientChart
             // 
             this.GradientChart.BackColor = System.Drawing.Color.Transparent;
-            chartArea7.AxisX.Interval = 1D;
-            chartArea7.AxisX.LabelStyle.Enabled = false;
-            chartArea7.AxisX.LineColor = System.Drawing.Color.Maroon;
-            chartArea7.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea7.AxisX.MajorGrid.Enabled = false;
-            chartArea7.AxisX.MajorGrid.Interval = 1D;
-            chartArea7.AxisX.MajorGrid.IntervalOffset = 0D;
-            chartArea7.AxisX.MajorGrid.LineColor = System.Drawing.Color.Maroon;
-            chartArea7.AxisX.MajorTickMark.Enabled = false;
-            chartArea7.AxisX.MajorTickMark.Interval = 1D;
-            chartArea7.AxisX.Maximum = 1D;
-            chartArea7.AxisX.Minimum = 0D;
-            chartArea7.AxisX.Title = "phat";
-            chartArea7.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            chartArea7.AxisX.TitleForeColor = System.Drawing.Color.Transparent;
-            chartArea7.AxisX2.Title = "jou";
-            chartArea7.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            chartArea7.AxisX2.TitleForeColor = System.Drawing.Color.White;
-            chartArea7.AxisY.Interval = 1D;
-            chartArea7.AxisY.IsLabelAutoFit = false;
-            chartArea7.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea7.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea7.AxisY.MajorGrid.Interval = 1D;
-            chartArea7.AxisY.MajorTickMark.Enabled = false;
-            chartArea7.AxisY.Maximum = 10D;
-            chartArea7.AxisY.Minimum = -10D;
-            chartArea7.BackColor = System.Drawing.Color.Transparent;
-            chartArea7.Name = "ChartArea1";
-            this.GradientChart.ChartAreas.Add(chartArea7);
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.LabelStyle.Enabled = false;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.Maroon;
+            chartArea1.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorGrid.Interval = 1D;
+            chartArea1.AxisX.MajorGrid.IntervalOffset = 0D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Maroon;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisX.MajorTickMark.Interval = 1D;
+            chartArea1.AxisX.Maximum = 1D;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisX.Title = "phat";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisX2.Title = "jou";
+            chartArea1.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            chartArea1.AxisX2.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.Interval = 1D;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea1.AxisY.MajorGrid.Interval = 1D;
+            chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.Maximum = 10D;
+            chartArea1.AxisY.Minimum = -10D;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.GradientChart.ChartAreas.Add(chartArea1);
             this.GradientChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Enabled = false;
-            legend5.Name = "Legend1";
-            this.GradientChart.Legends.Add(legend5);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.GradientChart.Legends.Add(legend1);
             this.GradientChart.Location = new System.Drawing.Point(0, 0);
             this.GradientChart.Margin = new System.Windows.Forms.Padding(0);
             this.GradientChart.MinimumSize = new System.Drawing.Size(5, 5);
             this.GradientChart.Name = "GradientChart";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.Red;
-            series3.LabelForeColor = System.Drawing.Color.White;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            dataPoint5.IsValueShownAsLabel = false;
-            dataPoint5.LabelForeColor = System.Drawing.Color.White;
-            series3.Points.Add(dataPoint5);
-            series3.Points.Add(dataPoint6);
-            this.GradientChart.Series.Add(series3);
-            this.GradientChart.Size = new System.Drawing.Size(121, 486);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Red;
+            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            dataPoint1.IsValueShownAsLabel = false;
+            dataPoint1.LabelForeColor = System.Drawing.Color.White;
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            this.GradientChart.Series.Add(series1);
+            this.GradientChart.Size = new System.Drawing.Size(120, 486);
             this.GradientChart.TabIndex = 304;
             this.GradientChart.Text = "chart5";
-            title7.ForeColor = System.Drawing.Color.White;
-            title7.Name = "ZColorHeading";
-            title7.Text = "Z axis";
-            this.GradientChart.Titles.Add(title7);
+            title1.ForeColor = System.Drawing.Color.White;
+            title1.Name = "ZColorHeading";
+            title1.Text = "Z axis";
+            this.GradientChart.Titles.Add(title1);
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Black;
-            chartArea8.AxisX.LabelStyle.Enabled = false;
-            chartArea8.AxisX.MajorGrid.Enabled = false;
-            chartArea8.AxisX.Title = "X1 1";
-            chartArea8.AxisX2.Title = "X2";
-            chartArea8.AxisY.LabelStyle.Enabled = false;
-            chartArea8.AxisY.MajorGrid.Enabled = false;
-            chartArea8.AxisY.Title = "Y1 1";
-            chartArea8.AxisY2.Title = "Y2";
-            chartArea8.BackColor = System.Drawing.Color.Black;
-            chartArea8.Name = "ChartArea1";
-            chartArea8.Position.Auto = false;
-            chartArea8.Position.Height = 50F;
-            chartArea8.Position.Width = 100F;
-            chartArea9.AxisX.LabelStyle.Enabled = false;
-            chartArea9.AxisX.MajorGrid.Enabled = false;
-            chartArea9.AxisX.Title = "X1 2";
-            chartArea9.AxisY.LabelStyle.Enabled = false;
-            chartArea9.AxisY.MajorGrid.Enabled = false;
-            chartArea9.AxisY.Title = "Y1 2";
-            chartArea9.BackColor = System.Drawing.Color.Black;
-            chartArea9.Name = "ChartArea2";
-            chartArea9.Position.Auto = false;
-            chartArea9.Position.Height = 50F;
-            chartArea9.Position.Width = 100F;
-            chartArea9.Position.Y = 50F;
-            this.chart1.ChartAreas.Add(chartArea8);
-            this.chart1.ChartAreas.Add(chartArea9);
+            chartArea2.AxisX.LabelStyle.Enabled = false;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.Title = "X1 1";
+            chartArea2.AxisX2.Title = "X2";
+            chartArea2.AxisY.LabelStyle.Enabled = false;
+            chartArea2.AxisY.MajorGrid.Enabled = false;
+            chartArea2.AxisY.Title = "Y1 1";
+            chartArea2.AxisY2.Title = "Y2";
+            chartArea2.BackColor = System.Drawing.Color.Black;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 50F;
+            chartArea2.Position.Width = 100F;
+            chartArea3.AxisX.LabelStyle.Enabled = false;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.Title = "X1 2";
+            chartArea3.AxisY.LabelStyle.Enabled = false;
+            chartArea3.AxisY.MajorGrid.Enabled = false;
+            chartArea3.AxisY.Title = "Y1 2";
+            chartArea3.BackColor = System.Drawing.Color.Black;
+            chartArea3.Name = "ChartArea2";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 50F;
+            chartArea3.Position.Width = 100F;
+            chartArea3.Position.Y = 50F;
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Enabled = false;
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.MinimumSize = new System.Drawing.Size(5, 5);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(830, 486);
+            this.chart1.Size = new System.Drawing.Size(831, 486);
             this.chart1.TabIndex = 308;
             this.chart1.Text = "chart1";
-            title8.Alignment = System.Drawing.ContentAlignment.TopCenter;
-            title8.DockedToChartArea = "ChartArea1";
-            title8.ForeColor = System.Drawing.Color.White;
-            title8.Name = "Title1";
-            title8.Text = "Front Tires";
-            title9.Alignment = System.Drawing.ContentAlignment.TopCenter;
-            title9.DockedToChartArea = "ChartArea2";
-            title9.ForeColor = System.Drawing.Color.White;
-            title9.Name = "Title2";
-            title9.Text = "Rear Tires";
-            this.chart1.Titles.Add(title8);
-            this.chart1.Titles.Add(title9);
+            title2.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            title2.DockedToChartArea = "ChartArea1";
+            title2.ForeColor = System.Drawing.Color.White;
+            title2.Name = "Title1";
+            title2.Text = "Front Tires";
+            title3.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            title3.DockedToChartArea = "ChartArea2";
+            title3.ForeColor = System.Drawing.Color.White;
+            title3.Name = "Title2";
+            title3.Text = "Rear Tires";
+            this.chart1.Titles.Add(title2);
+            this.chart1.Titles.Add(title3);
             // 
             // mainLayout
             // 
@@ -284,7 +283,6 @@ namespace Physics_Data_Debug
             this.actionButtonsFlow.Controls.Add(this.toSettingsButton);
             this.actionButtonsFlow.Controls.Add(this.refreshAndClearButton);
             this.actionButtonsFlow.Controls.Add(this.buttonPause);
-            this.actionButtonsFlow.Controls.Add(this.SettingsProfilesButton);
             this.actionButtonsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actionButtonsFlow.Location = new System.Drawing.Point(2, 2);
             this.actionButtonsFlow.Margin = new System.Windows.Forms.Padding(2);
@@ -293,20 +291,6 @@ namespace Physics_Data_Debug
             this.actionButtonsFlow.Size = new System.Drawing.Size(950, 31);
             this.actionButtonsFlow.TabIndex = 0;
             this.actionButtonsFlow.WrapContents = false;
-            // 
-            // SettingsProfilesButton
-            // 
-            this.SettingsProfilesButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SettingsProfilesButton.Location = new System.Drawing.Point(257, 2);
-            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
-            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsProfilesButton.Text = "Profiles ▼";
-            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
-            this.SettingsProfilesButton.TabStop = false;
-            this.SettingsProfilesButton.Size = new System.Drawing.Size(146, 26);
-            this.SettingsProfilesButton.TabIndex = 1;
             // 
             // chartAndLegend
             // 
@@ -326,7 +310,7 @@ namespace Physics_Data_Debug
             this.chartAndLegend.Panel2.Controls.Add(this.GradientChart);
             this.chartAndLegend.Panel2MinSize = 60;
             this.chartAndLegend.Size = new System.Drawing.Size(954, 486);
-            this.chartAndLegend.SplitterDistance = 830;
+            this.chartAndLegend.SplitterDistance = 831;
             this.chartAndLegend.SplitterWidth = 3;
             this.chartAndLegend.TabIndex = 354;
             // 
@@ -338,7 +322,7 @@ namespace Physics_Data_Debug
             this.chartScrollPanel.Location = new System.Drawing.Point(0, 0);
             this.chartScrollPanel.Margin = new System.Windows.Forms.Padding(2);
             this.chartScrollPanel.Name = "chartScrollPanel";
-            this.chartScrollPanel.Size = new System.Drawing.Size(830, 486);
+            this.chartScrollPanel.Size = new System.Drawing.Size(831, 486);
             this.chartScrollPanel.TabIndex = 350;
             // 
             // chartStatusLabel
@@ -397,6 +381,5 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label chartStatusLabel;
         private System.Windows.Forms.Panel chartScrollPanel;
         private System.Windows.Forms.Panel filterActionsPanel;
-        private System.Windows.Forms.Button SettingsProfilesButton;
     }
 }

@@ -195,7 +195,7 @@ namespace Physics_Data_Debug
                 })
                 {
                     if (dialog.ShowDialog(form) != DialogResult.OK) return;
-                    ApplyProfileFile(form, dialog.FileName, afterLoad, beforeLoad, finallyLoad);
+                    ApplyProfileFile(form, dialog.FileName, afterLoad, beforeLoad, finallyLoad, allowLegacyLiveFilters: true);
                 }
             }
             catch (Exception ex) when (IsFileError(ex)) { ShowError("load profile", directory, ex); }
@@ -215,20 +215,37 @@ namespace Physics_Data_Debug
             catch (Exception ex) when (IsFileError(ex)) { ShowError("restore defaults", path, ex); }
         }
 
-        private static void ApplyProfileFile(Form form, string path, Action afterLoad,
-            Action beforeLoad, Action finallyLoad, bool factoryDefaults = false)
+        private static void ApplyProfileFile( Form form, string path, Action afterLoad, Action beforeLoad, Action finallyLoad, bool factoryDefaults = false, bool allowLegacyLiveFilters = false)
         {
-            FormSnapshot state = ReadFile(path, form.Name);
-            if (factoryDefaults) ApplyCurrentFactoryValues(form, state);
+            FormSnapshot state;
+            try
+            {
+                state = ReadFile(path, form.Name);
+            }
+            catch (FormatException) when (allowLegacyLiveFilters && form is Form4WheelsSettings)
+            {
+                FormSnapshot old = ReadFile(path, "Form4Wheels");
+
+                var keys = old.Controls.Keys.Where(IsFourWheelsFilterKey).ToArray();
+
+                if (keys.Length == 0)
+                    throw;
+                state = Capture(form);
+                foreach (string key in keys)
+                    state.Controls[key] = old.Controls[key];
+            }
+            if (factoryDefaults)
+                ApplyCurrentFactoryValues(form, state);
             beforeLoad?.Invoke();
             try
             {
-                Apply(form, state);
+                Apply(form, state, factoryDefaults: factoryDefaults);
                 afterLoad?.Invoke();
             }
-            finally { finallyLoad?.Invoke(); }
-            // Loading any profile also makes it the form's active autosave.
-            SaveAllSettings(form);
+            finally
+            {
+                finallyLoad?.Invoke();
+            }
         }
 
         private static void ApplyCurrentFactoryValues(Form form, FormSnapshot state)
@@ -376,9 +393,13 @@ namespace Physics_Data_Debug
                 if (version != null) state.Controls[version.Name] = ComboSelection(version);
                 if (interval != null) state.Controls[interval.Name] = interval.Text;
             }
-            else CaptureChildren(form, state.Controls);
-            Control filters = ChartFilterRoot(form);
-            if (filters != null) CaptureChildren(filters, state.Controls);
+            else if (!(form is Form4Wheels))
+            {
+                CaptureChildren(form, state.Controls);
+            }
+            Control filters = OfflineChartFilterRoot(form);
+            if (filters != null)
+                CaptureChildren(filters, state.Controls);
             if (form is FormGForceSettings)
                 state.Controls[GForceFontSelectionVersionKey] = "1";
             return state;
@@ -388,10 +409,11 @@ namespace Physics_Data_Debug
         // NumericUpDown contain implementation-owned child text boxes; those are
         // NOT independently saved settings. Recursing into them can overwrite
         // every numeric input with the same internally named editor text.
-        private static Control ChartFilterRoot(Form form)
+        private static Control OfflineChartFilterRoot(Form form)
         {
-            if (form is Form4Wheels live) return live.FilterSettingsRoot;
-            if (form is FormOfflineChart offline) return offline.FilterSettingsRoot;
+            if (form is FormOfflineChart offline)
+                return offline.FilterSettingsRoot;
+
             return null;
         }
 
@@ -446,7 +468,7 @@ namespace Physics_Data_Debug
             }
         }
 
-        private static void Apply(Form form, FormSnapshot state, bool includeSettingsFilters = true)
+        private static void Apply(Form form, FormSnapshot state, bool includeSettingsFilters = true, bool factoryDefaults = false)
         {
             if (state.Left.HasValue && state.Top.HasValue &&
                 state.Width.GetValueOrDefault() > 100 && state.Height.GetValueOrDefault() > 100)
@@ -468,9 +490,26 @@ namespace Physics_Data_Debug
                 RestoreLegacyGForceFont(state.Controls, "X1ComboBoxFonts");
                 RestoreLegacyGForceFont(state.Controls, "Y1ComboBoxFonts");
             }
-            ApplyChildren(form, state.Controls, includeSettingsFilters);
-            Control filters = ChartFilterRoot(form);
-            if (filters != null) ApplyChildren(filters, state.Controls);
+            if (form is Form4WheelsSettings liveSettings)
+            {
+                ApplyChildren( form, state.Controls, includeSettingsFilters: false);
+                if (includeSettingsFilters)
+                {
+                    liveSettings.PrepareFilterRestore(factoryDefaults);
+
+                    if (!factoryDefaults)
+                    {
+                        ApplyChildren(liveSettings.FilterSettingsRoot, state.Controls);
+                    }
+                }
+            }
+            else if (!(form is Form4Wheels))
+            {
+                ApplyChildren(form, state.Controls, includeSettingsFilters);
+            }
+            Control filters = OfflineChartFilterRoot(form);
+            if (filters != null)
+                ApplyChildren(filters, state.Controls);
             if (state.WindowState == "Maximized") form.WindowState = FormWindowState.Maximized;
         }
 
@@ -791,6 +830,78 @@ namespace Physics_Data_Debug
             {
                 // A denied/obsolete registry key is not an obstacle to JSON.
                 Debug.WriteLine("Legacy settings migration skipped: " + ex.Message);
+            }
+        }
+        private static bool IsFourWheelsFilterKey(string key)
+        {
+            if (key == "noTireContactLimiterEnabledCheckBox")
+                return true;
+
+            for (int i = 1; i <= 13; i++)
+            {
+                string prefix =
+                    "ChartFilter" + i.ToString("00", Culture);
+
+                if (key == prefix + "Enabled" ||
+                    key == prefix + "Selection" ||
+                    key == prefix + "Minimum" ||
+                    key == prefix + "Maximum")
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        internal static bool MigrateFourWheelsFilters(Form4WheelsSettings settings)
+        {
+            if (suppressAutosavesUntilRestart)
+                return false;
+
+            string oldPath = Path.Combine(
+                DirectoryPath, "Form4Wheels.json");
+
+            string newPath = FileFor(settings);
+
+            if (!File.Exists(oldPath))
+                return true;
+
+            try
+            {
+                FormSnapshot old =
+                    ReadFile(oldPath, "Form4Wheels");
+
+                var keys = old.Controls.Keys
+                    .Where(IsFourWheelsFilterKey)
+                    .ToArray();
+
+                if (keys.Length == 0)
+                    return true;
+
+                FormSnapshot target = File.Exists(newPath)
+                    ? ReadFile(newPath, settings.Name)
+                    : Capture(settings);
+
+                foreach (string key in keys)
+                    target.Controls[key] = old.Controls[key];
+
+                WriteFile(newPath, target);
+
+                foreach (string key in keys)
+                    old.Controls.Remove(key);
+
+                WriteFile(oldPath, old);
+
+                return true;
+            }
+            catch (Exception ex) when (IsFileError(ex))
+            {
+                ShowError(
+                    "migrate live chart filters",
+                    oldPath,
+                    ex);
+
+                return false;
             }
         }
     }

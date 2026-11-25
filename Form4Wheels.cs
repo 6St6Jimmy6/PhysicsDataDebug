@@ -20,7 +20,7 @@ namespace Physics_Data_Debug
         private bool? displayedSettingsOpen;
         private string displayedZSelection;
         private Form4WheelsSettings settingsForm;
-        internal Control FilterSettingsRoot => settingsForm?.FilterSettingsRoot;
+        private bool filterMigrationComplete;
         private static bool NoTireContactLimiterEnabled;
         private static readonly List<string> xyzAxisSelection = new List<string> { "", "", "" };
 
@@ -71,12 +71,19 @@ namespace Physics_Data_Debug
             settingsForm = new Form4WheelsSettings();
             settingsForm.BindFilterChart(this);
             InitializeChartFilters();
-            FormClosing += (sender, args) => JsonFormSettings.SaveAllSettings(this);
+
+            FormClosing += (sender, args) =>
+            {
+                JsonFormSettings.SaveAllSettings(settingsForm);
+
+                if (filterMigrationComplete)
+                    JsonFormSettings.SaveAllSettings(this);
+            };
+
             Disposed += (sender, args) => settingsForm.Dispose();
+
             // Capture untouched controls before Form4Wheels_Load restores JSON.
-            JsonFormSettings.EnsureFactoryDefaults(this);
             ComboBoxBehaviors.EnableSearch(this);
-            JsonFormSettings.AttachProfileButton(this, () => UpdateAllLimiters());
         }
 
         // Enum for later usage
@@ -688,6 +695,10 @@ namespace Physics_Data_Debug
         private void Form4Wheels_Load(object sender, EventArgs e)
         {
             JsonFormSettings.LoadAllSettings(this);
+            filterMigrationComplete = JsonFormSettings.MigrateFourWheelsFilters(settingsForm);
+
+            settingsForm.RestoreForChart();
+
             UpdateFollowedAxes();
             UpdateAllLimiters();
             LiveData._4WheelsOpen = true;
@@ -748,7 +759,10 @@ namespace Physics_Data_Debug
                 timer1.Enabled = true;
                 //timer2.Enabled = true;
             }
-            JsonFormSettings.SaveAllSettings(this);
+            JsonFormSettings.SaveAllSettings(settingsForm);
+
+            if (filterMigrationComplete)
+                JsonFormSettings.SaveAllSettings(this);
         }
         private void buttonPause_Click(object sender, EventArgs e)
         {

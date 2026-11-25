@@ -13,14 +13,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Front Lift");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Rear Lift");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Aerodynamics", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Engine");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Tire");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Suspension 1");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Front Lift");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Rear Lift");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Aerodynamics", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Engine");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Tire");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Suspension 1");
             this.liveDataMainLayout = new System.Windows.Forms.TableLayoutPanel();
             this.navigationPagesPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.OpenTemperaturesChart = new System.Windows.Forms.Button();
@@ -336,16 +336,16 @@
             // 
             // SettingsProfilesButton
             // 
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.SettingsProfilesButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
             this.SettingsProfilesButton.Location = new System.Drawing.Point(3, 73);
             this.SettingsProfilesButton.Name = "SettingsProfilesButton";
-            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsProfilesButton.Text = "Profiles ▼";
-            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
-            this.SettingsProfilesButton.TabStop = false;
             this.SettingsProfilesButton.Size = new System.Drawing.Size(222, 32);
             this.SettingsProfilesButton.TabIndex = 2;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
             // 
             // versionDetectionStatus
             // 
@@ -545,23 +545,23 @@
             this.monitorFieldTree.ForeColor = System.Drawing.Color.White;
             this.monitorFieldTree.Location = new System.Drawing.Point(3, 16);
             this.monitorFieldTree.Name = "monitorFieldTree";
-            treeNode13.Name = "";
-            treeNode13.Text = "Front Lift";
-            treeNode14.Name = "";
-            treeNode14.Text = "Rear Lift";
-            treeNode15.Name = "";
-            treeNode15.Text = "Aerodynamics";
-            treeNode16.Name = "";
-            treeNode16.Text = "Engine";
-            treeNode17.Name = "";
-            treeNode17.Text = "Tire";
-            treeNode18.Name = "";
-            treeNode18.Text = "Suspension 1";
+            treeNode1.Name = "";
+            treeNode1.Text = "Front Lift";
+            treeNode2.Name = "";
+            treeNode2.Text = "Rear Lift";
+            treeNode3.Name = "";
+            treeNode3.Text = "Aerodynamics";
+            treeNode4.Name = "";
+            treeNode4.Text = "Engine";
+            treeNode5.Name = "";
+            treeNode5.Text = "Tire";
+            treeNode6.Name = "";
+            treeNode6.Text = "Suspension 1";
             this.monitorFieldTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode16,
-            treeNode17,
-            treeNode18});
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6});
             this.monitorFieldTree.Size = new System.Drawing.Size(184, 659);
             this.monitorFieldTree.TabIndex = 0;
             // 

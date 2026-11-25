@@ -318,7 +318,6 @@ namespace Physics_Data_Debug
         {
             if (filterChart == null) return;
             filterChart.UpdateAllLimiters();
-            JsonFormSettings.SaveAllSettings(filterChart);
             JsonFormSettings.SaveAllSettings(this);
         }
 
@@ -354,7 +353,10 @@ namespace Physics_Data_Debug
             {
                 RefreshAxisChoices();
                 AbsoluteValues = AbsoluteValuesCheckBox.Checked;
-                ApplySettings(clearHistory: false);
+
+                ApplySettings(
+                    clearHistory: false,
+                    saveSettings: false);
             });
         }
 
@@ -638,11 +640,17 @@ namespace Physics_Data_Debug
         private void Form_4WheelsSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
             SettingsOpen = false;
-            JsonFormSettings.SaveAllSettings(this);
+
+            if (filterChart == null ||
+                filterChart.IsDisposed ||
+                e.CloseReason == CloseReason.UserClosing)
+            {
+                JsonFormSettings.SaveAllSettings(this);
+            }
+
             if (filterChart != null && !filterChart.IsDisposed)
             {
                 filterChart.UpdateAllLimiters();
-                JsonFormSettings.SaveAllSettings(filterChart);
                 if (e.CloseReason == CloseReason.UserClosing)
                 {
                     e.Cancel = true;
@@ -650,7 +658,32 @@ namespace Physics_Data_Debug
                 }
             }
         }
+        internal void RestoreForChart()
+        {
+            JsonFormSettings.LoadAllSettings(this);
 
+            RefreshAxisChoices();
+
+            AbsoluteValues = AbsoluteValuesCheckBox.Checked;
+
+            ApplyControlsToModel();
+
+            filterChart.RefreshFilterFieldChoices();
+        }
+        internal void PrepareFilterRestore(bool factoryDefaults)
+        {
+            RefreshAxisChoices();
+
+            filterChart?.PrepareFilterRestore(
+                WheelChartsSelectComboBox.Text,
+                new[]
+                {
+            X1SelectionComboBox.Text,
+            Y1SelectionComboBox.Text,
+            Z1SelectionComboBox.Text
+                },
+                factoryDefaults);
+        }
         internal void SetFastPointAfterFallback()
         {
             Select(liveChartTypeBox, System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint.ToString());
@@ -660,7 +693,6 @@ namespace Physics_Data_Debug
         internal void PrepareForShow()
         {
             SettingsOpen = true;
-            JsonFormSettings.LoadAllSettings(this, includeSettingsFilters: false);
             RefreshAxisChoices();
             AbsoluteValues = AbsoluteValuesCheckBox.Checked;
             ApplySettings(clearHistory: false);
@@ -682,14 +714,17 @@ namespace Physics_Data_Debug
         /// differs only in whether it discards the existing wheel histories.
         /// Suspend refreshes while the settings and chart series are changing.
         /// </summary>
-        private void ApplySettings(bool clearHistory)
+        private void ApplySettings(bool clearHistory, bool saveSettings = true)
         {
-            Form4Wheels form4Wheels = Application.OpenForms["Form4Wheels"] as Form4Wheels;
-            if (form4Wheels == null)
+            Form4Wheels form4Wheels = filterChart;
+
+            if (form4Wheels == null || form4Wheels.IsDisposed)
             {
-                // The settings can also be restored without an open chart.
                 ApplyControlsToModel();
-                JsonFormSettings.SaveAllSettings(this);
+
+                if (saveSettings)
+                    JsonFormSettings.SaveAllSettings(this);
+
                 return;
             }
             bool timerWasEnabled = form4Wheels.timer1.Enabled;
@@ -710,7 +745,8 @@ namespace Physics_Data_Debug
                 form4Wheels.ApplyLegendWidth();
                 form4Wheels.RefreshFilterFieldChoices();
                 LoadValuesInTextBox();
-                JsonFormSettings.SaveAllSettings(this);
+                if (saveSettings)
+                    JsonFormSettings.SaveAllSettings(this);
             }
             finally
             {
