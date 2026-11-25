@@ -38,7 +38,7 @@
             this.gameVersionFieldsLayout = new System.Windows.Forms.TableLayoutPanel();
             this.GameVersionComboBox = new System.Windows.Forms.ComboBox();
             this.GameConfigurationProfilesButton = new System.Windows.Forms.Button();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.versionDetectionStatus = new System.Windows.Forms.Label();
             this.sessionLoggingSection = new System.Windows.Forms.GroupBox();
             this.sessionFieldsLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -299,7 +299,7 @@
             this.gameVersionFieldsLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.gameVersionFieldsLayout.Controls.Add(this.GameVersionComboBox, 0, 0);
             this.gameVersionFieldsLayout.Controls.Add(this.GameConfigurationProfilesButton, 0, 1);
-            this.gameVersionFieldsLayout.Controls.Add(this.SettingsProfilesHost, 0, 2);
+            this.gameVersionFieldsLayout.Controls.Add(this.SettingsProfilesButton, 0, 2);
             this.gameVersionFieldsLayout.Controls.Add(this.versionDetectionStatus, 0, 3);
             this.gameVersionFieldsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameVersionFieldsLayout.Location = new System.Drawing.Point(8, 21);
@@ -334,13 +334,18 @@
             this.GameConfigurationProfilesButton.Text = "Config ▼";
             this.GameConfigurationProfilesButton.UseVisualStyleBackColor = false;
             // 
-            // SettingsProfilesHost
+            // SettingsProfilesButton
             // 
-            this.SettingsProfilesHost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(3, 73);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(222, 32);
-            this.SettingsProfilesHost.TabIndex = 2;
+            this.SettingsProfilesButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(3, 73);
+            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(222, 32);
+            this.SettingsProfilesButton.TabIndex = 2;
             // 
             // versionDetectionStatus
             // 
@@ -846,7 +851,7 @@
         private System.Windows.Forms.TableLayoutPanel gameVersionFieldsLayout;
         private System.Windows.Forms.ComboBox GameVersionComboBox;
         private System.Windows.Forms.Button GameConfigurationProfilesButton;
-        private System.Windows.Forms.Panel SettingsProfilesHost;
+        private System.Windows.Forms.Button SettingsProfilesButton;
         private System.Windows.Forms.Label versionDetectionStatus;
         private System.Windows.Forms.GroupBox sessionLoggingSection;
         private System.Windows.Forms.TableLayoutPanel sessionFieldsLayout;

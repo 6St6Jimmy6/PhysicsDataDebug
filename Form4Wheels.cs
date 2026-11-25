@@ -440,7 +440,7 @@ namespace Physics_Data_Debug
             chartName.Series[seriesName].ChartArea = chartAreaName;
             chartName.Series[seriesName].Color = Form4WheelsSettings.MarkerColor;
             chartName.Series[seriesName].MarkerColor = Form4WheelsSettings.MarkerColor;
-            chartName.Series[seriesName].ChartType = ChartType;
+            chartName.Series[seriesName].ChartType = SeriesChartType.Point;
             chartName.Series[seriesName].MarkerStyle = HistoryMarkerStyle;
             chartName.Series[seriesName].MarkerSize = MarkerSizeHistory;
             chartName.Series[seriesName].SmartLabelStyle.Enabled = false;
@@ -596,7 +596,44 @@ namespace Physics_Data_Debug
             title.Alignment = ContentAlignment.TopCenter;
         }
 
+        private bool recoveringChartType;
+
         public void SetChartsForForm()
+        {
+            bool measure = ChartType != SeriesChartType.FastPoint && !recoveringChartType;
+            var watch = measure ? System.Diagnostics.Stopwatch.StartNew() : null;
+            try
+            {
+                RebuildCharts();
+                if (measure) chart1.Refresh();
+            }
+            catch (Exception ex) when (measure && (ex is ArgumentException || ex is InvalidOperationException || ex is NotSupportedException || ex is NotImplementedException || ex is System.Runtime.InteropServices.ExternalException))
+            {
+                FallBackToFastPoint("Chart type could not be rendered: " + ex.Message);
+                return;
+            }
+            if (measure && watch.ElapsedMilliseconds > 5000)
+                FallBackToFastPoint("Initial chart loading exceeded 5 seconds.");
+        }
+
+        private void FallBackToFastPoint(string reason)
+        {
+            if (recoveringChartType || ChartType == SeriesChartType.FastPoint) return;
+            recoveringChartType = true;
+            try
+            {
+                ChartType = SeriesChartType.FastPoint;
+                Form4WheelsSettings.SeriesChartType = SeriesChartType.FastPoint;
+                settingsForm.SetFastPointAfterFallback();
+                RebuildCharts();
+                chart1.Invalidate();
+                System.Diagnostics.Debug.WriteLine(reason + " Reverted to FastPoint.");
+                Text = "Four Wheels - FastPoint fallback: " + reason;
+            }
+            finally { recoveringChartType = false; }
+        }
+
+        private void RebuildCharts()
         {
             ApplyAxisSelectionDefaults();
             GetColorSchemeColors();
@@ -672,7 +709,24 @@ namespace Physics_Data_Debug
                 xyzAxisSelection[0] = Form4WheelsSettings.X1Selection;
                 xyzAxisSelection[1] = Form4WheelsSettings.Y1Selection;
                 xyzAxisSelection[2] = Form4WheelsSettings.Z1Selection;
-                PlotAllWheels(chart1, xyzAxisSelection);
+                if (ChartType == SeriesChartType.FastPoint)
+                    PlotAllWheels(chart1, xyzAxisSelection);
+                else
+                {
+                    var watch = System.Diagnostics.Stopwatch.StartNew();
+                    try
+                    {
+                        PlotAllWheels(chart1, xyzAxisSelection);
+                        chart1.Refresh();
+                    }
+                    catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException || ex is NotSupportedException || ex is NotImplementedException || ex is System.Runtime.InteropServices.ExternalException)
+                    {
+                        FallBackToFastPoint("Live chart rendering failed: " + ex.Message);
+                        return;
+                    }
+                    if (watch.ElapsedMilliseconds > timer1.Interval + 1000L)
+                        FallBackToFastPoint("Render exceeded update interval by more than 1 second.");
+                }
             }
         }
         private void toSettingsButton_Click(object sender, EventArgs e)

@@ -143,3 +143,11 @@ prefixed sets of columns. Older files with unprefixed headers are accepted
 and normalized in memory during import; the original files remain unchanged.
 
 See [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).
+
+## Optional 3D scatter view (XYZ)
+
+Under **Z / color axis**, enable **3D point chart (XYZ)**, then Apply Settings. The selected X, Y and Z columns are actual numerical coordinates in the 3D projection. The 2D chart type selector is disabled in this mode; the regular WinForms series-depth visualization is not used. The color gradient is still based on Z unless **Use fourth field for color** is enabled. Select any available fourth column in the additional dropdown. The existing Z/color range, scheme, bands and alpha apply to the chosen color field. Z remains a geometric coordinate and uses the filtered data's range; use the Z limiter to restrict geometric depth. Both modes retain the original CSV rows.
+
+The 3D view honors the existing wheel layouts, filters, X/Y ranges, absolute values and logarithmic X/Y scaling. Left-drag orbits, right/middle-drag pans, mouse wheel zooms and double-click resets the view. Hover uses the configured tooltip delay and reports the file, XYZ and optional fourth color value. Pinning tooltips and WinForms cursor rectangle zoom are 2D-only. The 3D view uses a simple normalized axis grid and supports circle, square, diamond, triangle and cross markers; other marker shapes use square points. Very large datasets can still render slowly; no GPU acceleration is required or used.
+
+Fresh chart settings use **FastPoint** in 2D and **Arial** for X/Y fonts. Enabled minor grids use five subdivisions of each major interval, including automatically calculated major intervals. The Apply Settings and Apply Filters Designer click handlers are connected again.

@@ -28,7 +28,7 @@ namespace Physics_Data_Debug
 
             timer1.Enabled = false;
             timer2.Enabled = false;
-            timer1.Interval = 100;
+            timer1.Interval = FormGForceSettings.UpdateIntervalMs;
             Shown += (sender, args) =>
             {
                 ApplyChartSettings();
@@ -47,6 +47,7 @@ namespace Physics_Data_Debug
         /// </summary>
         public void ApplyChartSettings()
         {
+            timer1.Interval = FormGForceSettings.UpdateIntervalMs;
             UpdateSnapshotInterval();
             string angleType = FormGForceSettings.X1AngleType;
             // A polar point stores its X angle in the selected unit. When the
@@ -203,7 +204,7 @@ namespace Physics_Data_Debug
         {
             foreach (DataPoint point in series.Points)
             {
-                point.MarkerSize = 2;
+                point.MarkerSize = FormGForceSettings.HistoryMarkerSize;
                 point.MarkerColor = HistoryColor(point.YValues[0], colors);
                 point.IsValueShownAsLabel = false;
             }
@@ -296,7 +297,7 @@ namespace Physics_Data_Debug
             if (series.Points.Count > 0)
             {
                 DataPoint previous = series.Points[series.Points.Count - 1];
-                previous.MarkerSize = 2;
+                previous.MarkerSize = FormGForceSettings.HistoryMarkerSize;
                 previous.MarkerColor = HistoryColor(previous.YValues[0], colors);
                 previous.IsValueShownAsLabel = false;
             }
@@ -321,7 +322,7 @@ namespace Physics_Data_Debug
                     ChartType = SeriesChartType.Polar,
                     Color = Color.Transparent,
                     MarkerStyle = MarkerStyle.Circle,
-                    MarkerSize = 2,
+                    MarkerSize = FormGForceSettings.HistoryMarkerSize,
                     IsValueShownAsLabel = false
                 };
                 history.SmartLabelStyle.Enabled = false;
@@ -332,6 +333,7 @@ namespace Physics_Data_Debug
             foreach (DataPoint point in current.Points)
             {
                 int index = history.Points.AddXY(point.XValue, point.YValues[0]);
+                history.Points[index].MarkerSize = FormGForceSettings.HistoryMarkerSize;
                 history.Points[index].MarkerColor = HistoryColor(point.YValues[0], colors);
             }
             int maxPoints = FormGForceSettings.MaxInfiniteHistoryPoints;

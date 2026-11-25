@@ -9,7 +9,8 @@ namespace Physics_Data_Debug
     {
         private System.ComponentModel.IContainer components = null;
         private TableLayoutPanel mainLayout;
-        private Panel toolbarPanel, dataSelectPanel, SettingsProfilesHost;
+        private Panel toolbarPanel, dataSelectPanel;
+        private System.Windows.Forms.Button SettingsProfilesButton;
         private TableLayoutPanel toolbarLayout;
         private FlowLayoutPanel toolbarButtonsFlow;
         private Button importFilesButton, removeFilesButton, settingsButton;
@@ -33,7 +34,7 @@ namespace Physics_Data_Debug
             this.importFilesButton = new System.Windows.Forms.Button();
             this.removeFilesButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.dataSelectPanel = new System.Windows.Forms.Panel();
             this.importedFilesList = new System.Windows.Forms.CheckedListBox();
             this.datasetsLabel = new System.Windows.Forms.Label();
@@ -110,7 +111,7 @@ namespace Physics_Data_Debug
             this.toolbarButtonsFlow.Controls.Add(this.importFilesButton);
             this.toolbarButtonsFlow.Controls.Add(this.removeFilesButton);
             this.toolbarButtonsFlow.Controls.Add(this.settingsButton);
-            this.toolbarButtonsFlow.Controls.Add(this.SettingsProfilesHost);
+            this.toolbarButtonsFlow.Controls.Add(this.SettingsProfilesButton);
             this.toolbarButtonsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolbarButtonsFlow.Location = new System.Drawing.Point(0, 0);
             this.toolbarButtonsFlow.Margin = new System.Windows.Forms.Padding(0);
@@ -165,14 +166,19 @@ namespace Physics_Data_Debug
             this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
-            // SettingsProfilesHost
+            // SettingsProfilesButton
             // 
-            this.SettingsProfilesHost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(434, 5);
-            this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(162, 36);
-            this.SettingsProfilesHost.TabIndex = 4;
+            this.SettingsProfilesButton.Padding = new System.Windows.Forms.Padding(8, 1, 8, 1);
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(432, 7);
+            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 3);
+            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(125, 34);
+            this.SettingsProfilesButton.TabIndex = 4;
             // 
             // dataSelectPanel
             // 
@@ -269,6 +275,7 @@ namespace Physics_Data_Debug
             this.ForeColor = System.Drawing.Color.White;
             this.MinimumSize = new System.Drawing.Size(880, 680);
             this.Name = "FormOfflineChart";
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Offline Four Wheels / CSV Chart";
             this.mainLayout.ResumeLayout(false);

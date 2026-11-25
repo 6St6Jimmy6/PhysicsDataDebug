@@ -13,7 +13,7 @@ namespace Physics_Data_Debug
         {
             InitializeComponent();
             timer1.Enabled = true;
-            timer1.Interval = 100;
+            timer1.Interval = 50;
         }
         private void FormTireStaticValues_Load(object sender, EventArgs e)
         {

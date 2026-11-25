@@ -23,7 +23,7 @@ Open **Chart Settings** to change:
 | Visible history | 60 seconds | How far back from the latest RaceTime to display |
 | History unit | Seconds | Change to Minutes to enter longer windows conveniently |
 | X axis display | Seconds | Labels shown in seconds or minutes, independent of history-window unit |
-| Refresh interval | 100 ms | Timer rate for sampling the latest live telemetry snapshot |
+| Refresh interval | 50 ms | Timer rate for sampling the latest live telemetry snapshot |
 | Max points per trace | 10,000 | Memory/performance cap per plotted series |
 | Series type | FastLine | Alternatives: Line, Spline |
 | Line thickness | 2 px | Width of each wheel/channel series |

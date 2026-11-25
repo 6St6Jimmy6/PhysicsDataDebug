@@ -26,7 +26,10 @@ namespace Physics_Data_Debug
         private Physics_Data_Debug.ChartLimiterRow extraFilterRow10;
 
         private TableLayoutPanel settingsColumns;
-        private Panel actionsPanel, SettingsProfilesHost;
+        private CheckBox use3DCheckBox, useFourthColorCheckBox;
+        private ComboBox fourthColorComboBox;
+        private Panel actionsPanel;
+        private System.Windows.Forms.Button SettingsProfilesButton;
         private Panel filterSettingsPanel;
         private TableLayoutPanel filterSettingsRows;
         private Button applyButton;
@@ -258,7 +261,7 @@ namespace Physics_Data_Debug
             this.actionsPanel = new System.Windows.Forms.Panel();
             this.applyButton = new System.Windows.Forms.Button();
             this.applyFiltersButton = new System.Windows.Forms.Button();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.settingsColumns = new System.Windows.Forms.TableLayoutPanel();
             this.chartStyleGroup = new System.Windows.Forms.GroupBox();
             this.styleFields = new System.Windows.Forms.TableLayoutPanel();
@@ -457,6 +460,9 @@ namespace Physics_Data_Debug
             this.yFontComboBoxLabel = new System.Windows.Forms.Label();
             this.yFontComboBox = new System.Windows.Forms.ComboBox();
             this.zAxisGroup = new System.Windows.Forms.GroupBox();
+            this.use3DCheckBox = new System.Windows.Forms.CheckBox();
+            this.useFourthColorCheckBox = new System.Windows.Forms.CheckBox();
+            this.fourthColorComboBox = new System.Windows.Forms.ComboBox();
             this.zFields = new System.Windows.Forms.TableLayoutPanel();
             this.zDefaultsButtonRow = new System.Windows.Forms.Panel();
             this.zDefaultsButton = new System.Windows.Forms.Button();
@@ -635,7 +641,7 @@ namespace Physics_Data_Debug
             this.actionsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.actionsPanel.Controls.Add(this.applyButton);
             this.actionsPanel.Controls.Add(this.applyFiltersButton);
-            this.actionsPanel.Controls.Add(this.SettingsProfilesHost);
+            this.actionsPanel.Controls.Add(this.SettingsProfilesButton);
             this.actionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.actionsPanel.Location = new System.Drawing.Point(0, 0);
             this.actionsPanel.Name = "actionsPanel";
@@ -652,6 +658,7 @@ namespace Physics_Data_Debug
             this.applyButton.TabIndex = 0;
             this.applyButton.Text = "Apply Settings";
             this.applyButton.UseVisualStyleBackColor = false;
+            this.applyButton.Click += new System.EventHandler(this.ApplyButton_Click);
             // 
             // applyFiltersButton
             // 
@@ -663,14 +670,20 @@ namespace Physics_Data_Debug
             this.applyFiltersButton.TabIndex = 1;
             this.applyFiltersButton.Text = "Apply Filters";
             this.applyFiltersButton.UseVisualStyleBackColor = false;
+            this.applyFiltersButton.Click += new System.EventHandler(this.ApplyFiltersButton_Click);
             // 
-            // SettingsProfilesHost
+            // SettingsProfilesButton
             // 
-            this.SettingsProfilesHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(295, 0);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(140, 32);
-            this.SettingsProfilesHost.TabIndex = 2;
+
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(290, 2);
+            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(133, 30);
+            this.SettingsProfilesButton.TabIndex = 2;
             // 
             // settingsColumns
             // 
@@ -3524,12 +3537,31 @@ namespace Physics_Data_Debug
             this.zFields.Location = new System.Drawing.Point(2, 15);
             this.zFields.Name = "zFields";
             this.zFields.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.zFields.RowCount = 5;
+            this.zFields.RowCount = 8;
             this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.zFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.zFields.Controls.Add(this.use3DCheckBox, 0, 5);
+            this.zFields.Controls.Add(this.useFourthColorCheckBox, 0, 6);
+            this.zFields.Controls.Add(this.fourthColorComboBox, 0, 7);
+            this.use3DCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.use3DCheckBox.Name = "use3DCheckBox";
+            this.use3DCheckBox.Text = "3D point chart (XYZ)";
+            this.use3DCheckBox.ForeColor = System.Drawing.Color.White;
+            this.useFourthColorCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.useFourthColorCheckBox.Name = "useFourthColorCheckBox";
+            this.useFourthColorCheckBox.Text = "Use fourth field for color";
+            this.useFourthColorCheckBox.ForeColor = System.Drawing.Color.White;
+            this.fourthColorComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.fourthColorComboBox.Name = "fourthColorComboBox";
+            this.fourthColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fourthColorComboBox.BackColor = System.Drawing.Color.FromArgb(43, 43, 43);
+            this.fourthColorComboBox.ForeColor = System.Drawing.Color.White;
             this.zFields.Size = new System.Drawing.Size(262, 428);
             this.zFields.TabIndex = 0;
             // 

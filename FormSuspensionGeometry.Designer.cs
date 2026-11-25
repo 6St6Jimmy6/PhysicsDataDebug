@@ -31,6 +31,7 @@ namespace Physics_Data_Debug
             this.gridCheckBox = new System.Windows.Forms.CheckBox();
             this.labelsCheckBox = new System.Windows.Forms.CheckBox();
             this.legendCheckBox = new System.Windows.Forms.CheckBox();
+            this.groundPlaneCheckBox = new System.Windows.Forms.CheckBox();
             this.rotateSpindleCheckBox = new System.Windows.Forms.CheckBox();
             this.frontViewButton = new System.Windows.Forms.Button();
             this.sideViewButton = new System.Windows.Forms.Button();
@@ -51,7 +52,7 @@ namespace Physics_Data_Debug
             // 
             // timer1
             // 
-            this.timer1.Interval = 100;
+            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // settingsToolbar
@@ -182,7 +183,7 @@ namespace Physics_Data_Debug
             this.updateIntervalNumericUpDown.Name = "updateIntervalNumericUpDown";
             this.updateIntervalNumericUpDown.Size = new System.Drawing.Size(75, 20);
             this.updateIntervalNumericUpDown.TabIndex = 7;
-            this.updateIntervalNumericUpDown.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            this.updateIntervalNumericUpDown.Value = new decimal(new int[] { 50, 0, 0, 0 });
             this.updateIntervalNumericUpDown.ValueChanged += new System.EventHandler(this.SettingsValueChanged);
             // 
             // resetViewButton
@@ -207,6 +208,7 @@ namespace Physics_Data_Debug
             this.displayFlow.Controls.Add(this.gridCheckBox);
             this.displayFlow.Controls.Add(this.labelsCheckBox);
             this.displayFlow.Controls.Add(this.legendCheckBox);
+            this.displayFlow.Controls.Add(this.groundPlaneCheckBox);
             this.displayFlow.Controls.Add(this.rotateSpindleCheckBox);
             this.displayFlow.Controls.Add(this.frontViewButton);
             this.displayFlow.Controls.Add(this.sideViewButton);
@@ -268,6 +270,13 @@ namespace Physics_Data_Debug
             this.legendCheckBox.UseVisualStyleBackColor = true;
             this.legendCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
             // 
+            // groundPlaneCheckBox
+            this.groundPlaneCheckBox.AutoSize = true;
+            this.groundPlaneCheckBox.ForeColor = System.Drawing.Color.White;
+            this.groundPlaneCheckBox.Margin = new System.Windows.Forms.Padding(3, 7, 10, 0);
+            this.groundPlaneCheckBox.Name = "groundPlaneCheckBox";
+            this.groundPlaneCheckBox.Text = "Ground follows tires";
+            this.groundPlaneCheckBox.CheckedChanged += new System.EventHandler(this.SettingsValueChanged);
             // rotateSpindleCheckBox
             // 
             this.rotateSpindleCheckBox.AutoSize = true;
@@ -429,6 +438,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.CheckBox gridCheckBox;
         private System.Windows.Forms.CheckBox labelsCheckBox;
         private System.Windows.Forms.CheckBox legendCheckBox;
+        private System.Windows.Forms.CheckBox groundPlaneCheckBox;
         private System.Windows.Forms.CheckBox rotateSpindleCheckBox;
     }
 }

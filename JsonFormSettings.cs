@@ -111,10 +111,17 @@ namespace Physics_Data_Debug
             using (var form = new T()) EnsureFactoryDefaults(form);
         }
 
-        /// <summary>Add an unobtrusive Profiles button without changing Designer files.</summary>
+        /// <summary>Attach the shared profile menu to the Designer-owned button.</summary>
         public static void AttachProfileButton(Form form, Action afterLoad = null,
             Action beforeLoad = null, Action finallyLoad = null)
         {
+            Button button = form.Controls.Find("SettingsProfilesButton", true)
+                .OfType<Button>().FirstOrDefault();
+            if (button == null)
+            {
+                Debug.WriteLine("Missing Designer-owned SettingsProfilesButton on " + form.Name);
+                return;
+            }
             var menu = new ContextMenuStrip();
             menu.Items.Add("Save profile as...", null, (sender, args) => SaveProfileAs(form));
             menu.Items.Add("Load profile...", null, (sender, args) =>
@@ -131,65 +138,8 @@ namespace Physics_Data_Debug
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add("Open settings folder", null, (sender, args) => OpenSettingsFolder());
 
-            // Put the command beside the Settings dialogs' existing primary
-            // button. Their designer sizes exceed some screens, so a control
-            // anchored to the far right may otherwise start off-screen.
-            Point buttonPosition;
-            var profileHost = form.Controls.Find("SettingsProfilesHost", true).FirstOrDefault();
-            // Settings panels that formerly held a Close button still provide a
-            // reliable, Designer-owned place for Profiles after Close is removed.
-            var settingsSidebar = form.Controls.Find("settingsSidebarPanel", true).FirstOrDefault();
-            var apply = form.Controls.Find("FLApplyLogSettings", true).FirstOrDefault();
-            var buttonHost = profileHost ?? settingsSidebar ?? apply?.Parent ?? (Control)form;
-            if (profileHost != null || settingsSidebar != null)
-                buttonPosition = new Point(1, 4);
-            else if (apply != null)
-                buttonPosition = new Point(apply.Right + 10, Math.Max(4, apply.Top - 10));
-            else
-                buttonPosition = new Point(Math.Max(4, buttonHost.ClientSize.Width - 120), 5);
-
-            // If the Designer already owns a Profiles button, attach behavior
-            // to that button instead of creating a second runtime-only button.
-            // Existing forms without one continue using the old fallback.
-            Button button = form.Controls.Find("SettingsProfilesButton", true)
-                .OfType<Button>().FirstOrDefault();
-            bool designerOwnedButton = button != null;
-            if (!designerOwnedButton)
-            {
-                button = new Button
-                {
-                    Name = "SettingsProfilesButton",
-                    Text = "Profiles ▼",
-                    Width = 112,
-                    Height = 28,
-                    Location = buttonPosition,
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left,
-                    TabStop = false
-                };
-                buttonHost.Controls.Add(button);
-            }
             button.ContextMenuStrip = menu;
             button.Click += (sender, args) => menu.Show(button, 0, button.Height);
-            // Keep Profiles visible inside the Designer-owned Four Wheels settings action bar.
-            if (profileHost != null && (form is Form4WheelsSettings ||
-                form is FormGForceSettings || form is FormOfflineChartSettings ||
-                form is FormLogSettings))
-            {
-                button.Dock = DockStyle.Fill;
-                button.Location = Point.Empty;
-            }
-            // Live Data uses a dark sidebar; match its other action buttons.
-            // Keep the normal Windows styling for light-theme settings forms.
-            if (!designerOwnedButton && (form is FormLiveData || form is Form4WheelsSettings ||
-                form is FormOfflineChartSettings || form is FormGForceSettings || form is FormLogSettings ||
-                form is Form4Wheels ||
-                form is FormOfflineChart))
-            {
-                button.UseVisualStyleBackColor = false;
-                button.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
-                button.ForeColor = System.Drawing.Color.White;
-            }
-            button.BringToFront();
             // Available even when a large, scrollable form has the button
             // outside the currently visible region.
             form.KeyPreview = true;
@@ -261,14 +211,15 @@ namespace Physics_Data_Debug
                     "Settings profiles", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            try { ApplyProfileFile(form, path, afterLoad, beforeLoad, finallyLoad); }
+            try { ApplyProfileFile(form, path, afterLoad, beforeLoad, finallyLoad, true); }
             catch (Exception ex) when (IsFileError(ex)) { ShowError("restore defaults", path, ex); }
         }
 
         private static void ApplyProfileFile(Form form, string path, Action afterLoad,
-            Action beforeLoad, Action finallyLoad)
+            Action beforeLoad, Action finallyLoad, bool factoryDefaults = false)
         {
             FormSnapshot state = ReadFile(path, form.Name);
+            if (factoryDefaults) ApplyCurrentFactoryValues(form, state);
             beforeLoad?.Invoke();
             try
             {
@@ -278,6 +229,36 @@ namespace Physics_Data_Debug
             finally { finallyLoad?.Invoke(); }
             // Loading any profile also makes it the form's active autosave.
             SaveAllSettings(form);
+        }
+
+        private static void ApplyCurrentFactoryValues(Form form, FormSnapshot state)
+        {
+            // Older Factory Defaults.json snapshots were intentionally retained.
+            // Upgrade only the defaults changed by this build on explicit reset.
+            switch (form.Name)
+            {
+                case "Form4WheelsSettings":
+                    state.Controls["liveChartTypeBox"] = "FastPoint";
+                    break;
+                case "FormOfflineChartSettings":
+                    state.Controls["chartTypeComboBox"] = "FastPoint";
+                    state.Controls["xFontComboBox"] = "Arial";
+                    state.Controls["yFontComboBox"] = "Arial";
+                    state.Controls["use3DCheckBox"] = "false";
+                    state.Controls["useFourthColorCheckBox"] = "false";
+                    break;
+                case "FormGForceSettings":
+                    state.Controls["CurrentMarkerSizeNumeric"] = "5";
+                    state.Controls["HistoryMarkerSizeNumeric"] = "2";
+                    state.Controls["UpdateIntervalNumeric"] = "50";
+                    break;
+                case "FormLiveTimeChartSettings":
+                    state.Controls["updateIntervalNumeric"] = "50";
+                    break;
+                case "FormLiveData":
+                    state.Controls["logInterval_textBox"] = "50";
+                    break;
+            }
         }
 
         /// <summary>

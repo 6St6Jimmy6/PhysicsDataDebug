@@ -130,3 +130,7 @@ subsequent legacy registry import without deleting the old registry entries.
 For configuration offsets, expressions and `displayName` / `unit` metadata, see
 [GAME_CONFIG_GUIDE.md](GAME_CONFIG_GUIDE.md). For file-header prefixes, see
 [TELEMETRY_NAMING_GUIDE.md](TELEMETRY_NAMING_GUIDE.md).
+
+## Designer-owned profile buttons
+
+All forms using the shared profile menu now declare `SettingsProfilesButton` directly in their Designer. `JsonFormSettings.AttachProfileButton` attaches the menu and keyboard shortcut without creating, moving or resizing a runtime button. Existing named profiles and autosaves are preserved. Explicitly restoring factory defaults uses the current FastPoint/Arial/50 ms values where applicable, even when the cached factory snapshot was created by an older build.

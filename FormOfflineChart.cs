@@ -26,6 +26,7 @@ namespace Physics_Data_Debug
         private bool importingFiles;
         private readonly ChartPointInspector pointInspector;
         private readonly ChartZoomBehavior chartZoom;
+        private readonly OfflineScatter3D scatter3D;
         private static readonly CultureInfo Invariant = CultureInfo.InvariantCulture;
 
         private sealed class ActiveFilter
@@ -42,6 +43,8 @@ namespace Physics_Data_Debug
             if (System.ComponentModel.LicenseManager.UsageMode ==
                 System.ComponentModel.LicenseUsageMode.Designtime || DesignMode)
                 return;
+            scatter3D = new OfflineScatter3D { Dock = DockStyle.Fill, Visible = false, Name = "scatter3D" };
+            chartAndLegend.Panel1.Controls.Add(scatter3D);
             pointInspector = new ChartPointInspector(chart1, FormatPointTooltip);
             pointInspector.HoverDelayMilliseconds = options.PointTooltipDelayMs;
             pointInspector.Enabled = options.ShowPointTooltips;
@@ -80,7 +83,12 @@ namespace Physics_Data_Debug
         private void RemoveFilesButton_Click(object sender, EventArgs e) => RemoveSelectedFiles();
         private void SettingsButton_Click(object sender, EventArgs e) => ShowSettings();
 
-        internal void ApplyFiltersFromSettings() => Redraw();
+        internal bool ApplyFiltersFromSettings()
+        {
+            if (!TryCollectFilters(out List<ActiveFilter> active)) return false;
+            Redraw();
+            return true;
+        }
 
         private void ChartAndLegend_SizeChanged(object sender, EventArgs e)
         {
@@ -237,11 +245,26 @@ namespace Physics_Data_Debug
 
         internal void ApplyOptions(OfflineChartOptions newOptions)
         {
+            OfflineChartOptions previous = options;
             options = newOptions.Clone();
-            pointInspector.HoverDelayMilliseconds = options.PointTooltipDelayMs;
-            pointInspector.Enabled = options.ShowPointTooltips;
-            UpdateFollowedAxes();
-            Redraw();
+            try
+            {
+                pointInspector.HoverDelayMilliseconds = options.PointTooltipDelayMs;
+                pointInspector.Enabled = options.ShowPointTooltips;
+                UpdateFollowedAxes();
+                if (!TryCollectFilters(out List<ActiveFilter> active))
+                    throw new FormatException("Fix the invalid filter minimum/maximum before applying chart settings.");
+                Redraw();
+            }
+            catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException || ex is NotSupportedException || ex is FormatException)
+            {
+                options = previous;
+                pointInspector.HoverDelayMilliseconds = options.PointTooltipDelayMs;
+                pointInspector.Enabled = options.ShowPointTooltips;
+                UpdateFollowedAxes();
+                Redraw();
+                throw;
+            }
         }
 
         private void ImportFiles()
@@ -298,7 +321,7 @@ namespace Physics_Data_Debug
                         // updated profile: this file may have different columns.
                         // The user's saved selections belong to the original file.
                         loadedSavedChartOptions = true;
-                        settingsForm.Prepare(options);
+                        settingsForm.Prepare(options, restoreSaved: true);
                         settingsForm.ApplySavedSettings();
                     }
                     Redraw();
@@ -355,6 +378,45 @@ namespace Physics_Data_Debug
             return true;
         }
 
+        private static bool Finite(double value) => !double.IsNaN(value) && !double.IsInfinity(value);
+
+        // Auto major intervals cannot be reused as zero/auto for minor grids:
+        // WinForms may resolve both to the same step. Give enabled minor grids
+        // an explicit one-fifth subdivision of the major step.
+        private void SetAutomaticMinorInterval(Axis axis, ChartArea area, bool x, double requested)
+        {
+            if (!axis.MinorGrid.Enabled) return;
+            if (requested > 0) { axis.MinorGrid.Interval = requested / 5d; return; }
+            double min = axis.Minimum, max = axis.Maximum;
+            if (!Finite(min) || !Finite(max))
+            {
+                min = double.PositiveInfinity; max = double.NegativeInfinity;
+                foreach (Series series in chart1.Series)
+                    if (series.ChartArea == area.Name)
+                        foreach (DataPoint p in series.Points)
+                        {
+                            if (p.IsEmpty) continue;
+                            double value = x ? p.XValue : p.YValues[0];
+                            if (!Finite(value) || (axis.IsLogarithmic && value <= 0)) continue;
+                            min = Math.Min(min, value); max = Math.Max(max, value);
+                        }
+            }
+            double step = 1d;
+            if (!axis.IsLogarithmic && Finite(min) && Finite(max) && max > min)
+            {
+                double rough = (max - min) / 5d;
+                double power = Math.Pow(10d, Math.Floor(Math.Log10(rough)));
+                if (Finite(power) && power > 0)
+                {
+                    double scaled = rough / power;
+                    step = (scaled <= 1 ? 1 : scaled <= 2 ? 2 : scaled <= 5 ? 5 : 10) * power;
+                }
+            }
+            if (!Finite(step) || step <= 0) step = 1;
+            axis.Interval = axis.MajorGrid.Interval = step;
+            axis.MinorGrid.Interval = step / 5d;
+        }
+
         private static int ColorBand(double value, double min, double max, int bands)
         {
             if (max <= min || double.IsNaN(value)) return 1;
@@ -377,7 +439,9 @@ namespace Physics_Data_Debug
             axis.LabelStyle.Format = "F" + decimals.ToString(Invariant);
             ChartAppearance.ConfigureGrid(axis.MajorGrid, gridColor,
                 gridAlpha, gridWidth, gridDash);
+            axis.MajorGrid.Enabled = true;
             axis.MinorGrid.Enabled = minor;
+            axis.MinorGrid.Interval = interval > 0 ? interval / 5d : 0;
             ChartAppearance.ConfigureGrid(axis.MinorGrid, minorColor,
                 minorAlpha, minorWidth, minorDash);
             axis.Minimum = min ?? double.NaN;
@@ -426,8 +490,10 @@ namespace Physics_Data_Debug
             area.AxisY.LabelStyle.ForeColor = Color.White;
             area.AxisY.LineColor = Color.DarkGray;
             area.AxisY.MajorGrid.Enabled = false;
-            area.AxisY.Title = options.Z;
+            area.AxisY.Title = options.ColorField;
             area.AxisY.TitleForeColor = Color.White;
+            area.AxisY.TitleFont = new Font("Arial", 9f);
+            area.AxisY.LabelStyle.Font = new Font("Arial", 9f);
             area.AxisY.LabelStyle.Format = "G4";
             var dummy = new Series("Legend") { ChartArea = area.Name, ChartType = SeriesChartType.Line, Color = Color.Transparent };
             dummy.Points.AddXY(0,minimum);
@@ -482,13 +548,17 @@ namespace Physics_Data_Debug
         {
             if (loadingControls || filters == null) return;
             if (!TryCollectFilters(out List<ActiveFilter> active)) return;
-            if (!CanDrawWithXYZ(options.ChartType))
+            if (!options.Use3D && !CanDrawWithXYZ(options.ChartType))
             {
                 statusLabel.Text = options.ChartType + " needs more than one Y value per point. " +
                     "Choose another chart type, or add extra Y-column mappings in a future version.";
                 return;
             }
             pointInspector.Clear(); // No pinned point may reference a replaced series.
+            chart1.Visible = !options.Use3D;
+            scatter3D.Visible = options.Use3D;
+            scatter3D.SetData(new List<OfflineScatter3D.Plot>(), options);
+            var plots = new Dictionary<string, OfflineScatter3D.Plot>(StringComparer.Ordinal);
             chart1.SuspendLayout();
             try
             {
@@ -508,16 +578,16 @@ namespace Physics_Data_Debug
                 double zMin, zMax;
                 if (!options.ZMinimum.HasValue || !options.ZMaximum.HasValue)
                 {
-                    if (!TryGetFieldRange(options.Z,options.Absolute,out zMin,out zMax)) { zMin = 0; zMax = 1; }
+                    if (!TryGetFieldRange(options.ColorField,options.Absolute,out zMin,out zMax)) { zMin = 0; zMax = 1; }
                 }
                 else { zMin = options.ZMinimum.Value; zMax = options.ZMaximum.Value; }
                 if (zMax <= zMin) zMax = zMin + 1;
-                chart1.Legends.Add(new Legend("Datasets") { Docking = Docking.Top, ForeColor = Color.White,
+                if (!options.Use3D) chart1.Legends.Add(new Legend("Datasets") { Docking = Docking.Top, ForeColor = Color.White,
                     BackColor = Color.FromArgb(25,25,25) });
-                bool circular = options.ChartType == SeriesChartType.Pie ||
+                bool circular = !options.Use3D && (options.ChartType == SeriesChartType.Pie ||
                     options.ChartType == SeriesChartType.Doughnut ||
                     options.ChartType == SeriesChartType.Funnel ||
-                    options.ChartType == SeriesChartType.Pyramid;
+                    options.ChartType == SeriesChartType.Pyramid);
                 long matching = 0, skipped = 0;
                 for (int index = 0; index < visible.Count; index++)
                 {
@@ -525,7 +595,7 @@ namespace Physics_Data_Debug
                     // Resolve relative fields to each available wheel in this
                     // file. A single-wheel layout selects only that channel;
                     // global-only fields remain one dataset, not four copies.
-                    var requestedFields = new[] { options.X, options.Y, options.Z }
+                    var requestedFields = new[] { options.X, options.Y, options.Z, options.ColorField }
                         .Concat(active.Select(filter => filter.Field)).ToArray();
                     var availableWheels = file.AvailableWheels(requestedFields);
                     IEnumerable<string> selectedWheels = availableWheels.Count > 0
@@ -543,14 +613,25 @@ namespace Physics_Data_Debug
                     // incomplete data source leaves empty chart panels behind.
                     if (!file.TryWheelIndex(options.X, wheel, out int xIndex) ||
                         !file.TryWheelIndex(options.Y, wheel, out int yIndex) ||
-                        !file.TryWheelIndex(options.Z, wheel, out int zIndex))
+                        !file.TryWheelIndex(options.Z, wheel, out int zIndex) ||
+                        !file.TryWheelIndex(options.ColorField, wheel, out int colorIndex))
                     { skipped += file.Rows.Count; continue; }
                     var indices = new int[active.Count];
                     bool hasAll = true;
                     for (int i = 0; i < active.Count; i++)
                         if (!file.TryWheelIndex(active[i].Field, wheel, out indices[i])) hasAll = false;
                     if (!hasAll) { skipped += file.Rows.Count; continue; }
-                    if (chart1.ChartAreas.FindByName(areaName) == null)
+                    OfflineScatter3D.Plot plot = null;
+                    if (options.Use3D)
+                    {
+                        if (!plots.TryGetValue(areaName, out plot))
+                        {
+                            plot = new OfflineScatter3D.Plot(wheel == null ? "Shared telemetry" :
+                                FourWheelsFieldSelection.AreaTitle(options.Layout, wheel));
+                            plots.Add(areaName, plot);
+                        }
+                    }
+                    else if (chart1.ChartAreas.FindByName(areaName) == null)
                     {
                         var area = new ChartArea(areaName);
                         ConfigureArea(area);
@@ -567,13 +648,14 @@ namespace Physics_Data_Debug
                                 Alignment = ContentAlignment.TopCenter,
                                 BackColor = Color.Transparent,
                                 ForeColor = Color.White,
-                                Font = new Font("Segoe UI", 10f, FontStyle.Bold)
+                                Font = new Font("Arial", 10f, FontStyle.Bold)
                             });
                         }
                     }
 
+                    string datasetName = file.Name + (wheel == null ? "" : " [" + wheel + "]");
                     var series = new Series[options.Bands + 1];
-                    for (int band = 1; band <= (circular ? 1 : options.Bands); band++)
+                    for (int band = 1; !options.Use3D && band <= (circular ? 1 : options.Bands); band++)
                     {
                         var s = new Series(uniqueFileKey + GradientPalette.SeriesSuffix(band))
                         {
@@ -604,8 +686,8 @@ namespace Physics_Data_Debug
                     foreach (double[] row in file.Rows)
                     {
                         reader.SetRow(row);
-                        double x = reader.Value(xIndex), y = reader.Value(yIndex), z = reader.Value(zIndex);
-                        if (double.IsNaN(x) || double.IsNaN(y) || double.IsNaN(z)) { skipped++; gapPending = true; continue; }
+                        double x = reader.Value(xIndex), y = reader.Value(yIndex), z = reader.Value(zIndex), colorValue = reader.Value(colorIndex);
+                        if (!Finite(x) || !Finite(y) || !Finite(z) || !Finite(colorValue)) { skipped++; gapPending = true; continue; }
                         bool pass = true;
                         for (int f = 0; f < active.Count; f++)
                         {
@@ -615,13 +697,19 @@ namespace Physics_Data_Debug
                             { pass = false; break; }
                         }
                         if (!pass) { skipped++; gapPending = true; continue; }
-                        if (options.Absolute) { x = Math.Abs(x); y = Math.Abs(y); z = Math.Abs(z); }
+                        if (options.Absolute) { x = Math.Abs(x); y = Math.Abs(y); z = Math.Abs(z); colorValue = Math.Abs(colorValue); }
                         if ((options.XLogarithmic && x <= 0) || (options.YLogarithmic && y <= 0))
                         { skipped++; gapPending = true; continue; }
                         if ((options.XMinimum.HasValue && (x < options.XMinimum || x > options.XMaximum)) ||
                             (options.YMinimum.HasValue && (y < options.YMinimum || y > options.YMaximum)))
                         { skipped++; gapPending = true; continue; }
-                        int band = ColorBand(z,zMin,zMax,options.Bands);
+                        int band = ColorBand(colorValue,zMin,zMax,options.Bands);
+                        if (options.Use3D)
+                        {
+                            plot.Points.Add(new OfflineScatter3D.Sample(x, y, z, colorValue, palette[band], datasetName));
+                            matching++;
+                            continue;
+                        }
                         int seriesBand = circular ? 1 : band;
                         // For line styles, filtering and Z-color transitions must
                         // break old segments instead of joining disjoint samples.
@@ -644,13 +732,26 @@ namespace Physics_Data_Debug
                     }
                     } // wheel channel / combined telemetry source
                 }
-                if (chart1.ChartAreas.Count == 0)
+                if (options.Use3D)
+                {
+                    scatter3D.SetData(plots.Values.ToList(), options);
+                    UpdateGradient(zMin,zMax,palette);
+                }
+                else if (chart1.ChartAreas.Count == 0)
                 {
                     chart1.ChartAreas.Add(new ChartArea("Empty") { BackColor = options.Background });
                     GradientChart.Series.Clear(); GradientChart.ChartAreas.Clear();
                     GradientChart.Visible = false;
                 }
-                else UpdateGradient(zMin,zMax,palette);
+                else
+                {
+                    if (!circular) foreach (ChartArea area in chart1.ChartAreas)
+                    {
+                        SetAutomaticMinorInterval(area.AxisX, area, true, options.XGridInterval);
+                        SetAutomaticMinorInterval(area.AxisY, area, false, options.YGridInterval);
+                    }
+                    UpdateGradient(zMin,zMax,palette);
+                }
                 statusLabel.Text = visible.Count + " active file(s); " + matching.ToString("N0") +
                     " displayed points; " + skipped.ToString("N0") + " hidden or unavailable samples. Data retained in memory.";
             }

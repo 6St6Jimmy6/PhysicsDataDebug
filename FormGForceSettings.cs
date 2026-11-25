@@ -129,6 +129,8 @@ namespace Physics_Data_Debug
         public static int HistoryAmountPoints { get; set; } = DefaultHistoryAmountPoints;
         public static bool InfiniteHistoryEnabled { get; set; } = DefaultInfiniteHistoryEnabled;
         public static int MarkerSize { get; set; } = DefaultMarkerSize;
+        public static int HistoryMarkerSize { get; set; } = 2;
+        public static int UpdateIntervalMs { get; set; } = 50;
         public static string Scheme { get; set; } = DefaultScheme;
         public static Color MarkerColor { get; set; } = DefaultMarkerColor;
         /// <summary>
@@ -249,6 +251,9 @@ namespace Physics_Data_Debug
         }
         private void LoadOtherDefaults()
         {
+            CurrentMarkerSizeNumeric.Value = DefaultsCheckBox.Checked ? DefaultMarkerSize : MarkerSize;
+            HistoryMarkerSizeNumeric.Value = DefaultsCheckBox.Checked ? 2 : HistoryMarkerSize;
+            UpdateIntervalNumeric.Value = DefaultsCheckBox.Checked ? 50 : UpdateIntervalMs;
             //Default background color
             if (DefaultsCheckBox.Checked == true)
             {
@@ -483,6 +488,10 @@ namespace Physics_Data_Debug
                 InfiniteHistoryEnabled = InfiniteHistoryCheckBox.Checked;
                 Scheme = SchemeComboBox.Text;
             }
+
+            MarkerSize = (int)CurrentMarkerSizeNumeric.Value;
+            HistoryMarkerSize = (int)HistoryMarkerSizeNumeric.Value;
+            UpdateIntervalMs = (int)UpdateIntervalNumeric.Value;
 
             // X-Axis
             if (X1DefaultsCheckBox.Checked == true)

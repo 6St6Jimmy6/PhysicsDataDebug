@@ -146,6 +146,77 @@ namespace Physics_Data_Debug
         [DefaultValue(true)]
         public bool ShowLegend { get; set; } = true;
 
+        [DefaultValue(false)]
+        public bool GroundFollowsTires { get; set; }
+
+        // Fit a common lower supporting plane y = slope*x + offset to the
+        // two rendered tire outlines, with no longitudinal pitch. A line
+        // through the two vertically lowest vertices alone can cut into a
+        // cambered tire after the plane tilts. Instead, equalize the minimum
+        // of y - slope*x for each tire; every wireframe vertex is then on or
+        // above the plane and each tire has at least one contact vertex.
+        private void GetGroundPlane(out double slope, out double offset)
+        {
+            slope = 0d;
+            offset = 0d;
+            if (!GroundFollowsTires) return;
+
+            var left = new List<Vector3>();
+            var right = new List<Vector3>();
+            foreach (var segment in scene.Segments)
+            {
+                if (segment.Name == null || !segment.Name.EndsWith(" tire", StringComparison.Ordinal))
+                    continue;
+                List<Vector3> points;
+                if (segment.Name.StartsWith("FL ", StringComparison.Ordinal) ||
+                    segment.Name.StartsWith("RL ", StringComparison.Ordinal)) points = left;
+                else if (segment.Name.StartsWith("FR ", StringComparison.Ordinal) ||
+                         segment.Name.StartsWith("RR ", StringComparison.Ordinal)) points = right;
+                else continue;
+                points.Add(segment.A);
+                points.Add(segment.B);
+            }
+
+            if (left.Count == 0 && right.Count == 0) return;
+            offset = Math.Min(TireSupport(left, 0d), TireSupport(right, 0d));
+            if (left.Count == 0 || right.Count == 0) return;
+
+            // Use actual lateral order, not an assumed sign convention.
+            if (left.Min(p => p.X) > right.Min(p => p.X))
+            {
+                var swap = left;
+                left = right;
+                right = swap;
+            }
+            double gap = (double)right.Min(p => p.X) - left.Max(p => p.X);
+            // Incomplete/corrupt or overlapping tire outlines cannot safely
+            // use the monotonic two-tire fit. Retain a horizontal support.
+            if (gap <= 0.001d) return;
+            double minY = Math.Min(left.Min(p => p.Y), right.Min(p => p.Y));
+            double maxY = Math.Max(left.Max(p => p.Y), right.Max(p => p.Y));
+            double bound = (maxY - minY) / gap + 1d;
+            double lo = -bound, hi = bound;
+            for (int i = 0; i < 32; i++)
+            {
+                double mid = (lo + hi) * 0.5d;
+                if (TireSupport(left, mid) < TireSupport(right, mid)) lo = mid;
+                else hi = mid;
+            }
+            slope = (lo + hi) * 0.5d;
+            offset = Math.Min(TireSupport(left, slope), TireSupport(right, slope));
+        }
+
+        private static double TireSupport(List<Vector3> points, double slope)
+        {
+            double support = double.PositiveInfinity;
+            foreach (Vector3 p in points)
+                support = Math.Min(support, p.Y - slope * p.X);
+            return support;
+        }
+
+        private static Vector3 GroundPoint(float x, float z, double slope, double offset) =>
+            new Vector3(x, (float)(slope * x + offset), z);
+
         [DefaultValue("SUSPENSION")]
         public string ViewTitle { get; set; } = "SUSPENSION";
 
@@ -396,8 +467,9 @@ namespace Physics_Data_Debug
 
         private void DrawGrid(Graphics g, Vector3 center, float radius, float scale)
         {
-            // The grid lies on the vehicle's XZ plane at Y = 0. X is lateral,
-            // Y is vertical, Z is longitudinal. Axis arrows are tinted RGB.
+            // Fixed Y=0 by default, or a laterally tilted tire support plane.
+            // The XYZ arrows retain their vehicle-relative directions.
+            GetGroundPlane(out double slope, out double offset);
             float step = radius < 1.5f ? 0.25f : radius < 4f ? 0.5f : 1f;
             float half = Math.Min(12f, Math.Max(1.5f, radius * 1.4f));
             float minX = (float)Math.Floor((center.X - half) / step) * step;
@@ -407,19 +479,19 @@ namespace Physics_Data_Debug
             using (var pen = new Pen(Color.FromArgb(37, 82, 93, 112), 1f))
             {
                 for (float x = minX; x <= maxX; x += step)
-                    DrawSegment(g, pen, new Vector3(x, 0f, minZ), new Vector3(x, 0f, maxZ), center, radius, scale);
+                    DrawSegment(g, pen, GroundPoint(x, minZ, slope, offset), GroundPoint(x, maxZ, slope, offset), center, radius, scale);
                 for (float z = minZ; z <= maxZ; z += step)
-                    DrawSegment(g, pen, new Vector3(minX, 0f, z), new Vector3(maxX, 0f, z), center, radius, scale);
+                    DrawSegment(g, pen, GroundPoint(minX, z, slope, offset), GroundPoint(maxX, z, slope, offset), center, radius, scale);
             }
-            DrawAxis(g, center, radius, scale, Vector3.UnitX, Color.FromArgb(240, 120, 120), "X");
-            DrawAxis(g, center, radius, scale, Vector3.UnitY, Color.FromArgb(155, 235, 150), "Y");
-            DrawAxis(g, center, radius, scale, Vector3.UnitZ, Color.FromArgb(110, 170, 255), "Z");
+            Vector3 axisOrigin = GroundPoint(center.X, center.Z, slope, offset);
+            DrawAxis(g, center, radius, scale, axisOrigin, Vector3.UnitX, Color.FromArgb(240, 120, 120), "X");
+            DrawAxis(g, center, radius, scale, axisOrigin, Vector3.UnitY, Color.FromArgb(155, 235, 150), "Y");
+            DrawAxis(g, center, radius, scale, axisOrigin, Vector3.UnitZ, Color.FromArgb(110, 170, 255), "Z");
         }
 
         private void DrawAxis(Graphics g, Vector3 center, float radius, float scale,
-            Vector3 direction, Color color, string name)
+            Vector3 start, Vector3 direction, Color color, string name)
         {
-            Vector3 start = new Vector3(center.X, 0f, center.Z);
             Vector3 end = start + direction * Math.Max(0.35f, radius * 0.55f);
             using (var pen = new Pen(color, 2f))
                 DrawSegment(g, pen, start, end, center, radius, scale);
@@ -573,7 +645,7 @@ namespace Physics_Data_Debug
                     double b = 2d * Math.PI * (i + 1) / 24d;
                     Vector3 p = new Vector3(x, 0.47f + 0.28f * (float)Math.Cos(a), 0.28f * (float)Math.Sin(a));
                     Vector3 q = new Vector3(x, 0.47f + 0.28f * (float)Math.Cos(b), 0.28f * (float)Math.Sin(b));
-                    demo.AddLine(p, q, Color.FromArgb(117, 146, 172), "Wheel", 1.4f);
+                    demo.AddLine(p, q, Color.FromArgb(117, 146, 172), sign < 0 ? "FL tire" : "FR tire", 1.4f);
                 }
                 demo.AddPoint(spindleUpper, Color.White, sign < 0 ? "FL upper spindle" : "FR upper spindle");
                 demo.AddPoint(spindleLower, Color.White, sign < 0 ? "FL lower spindle" : "FR lower spindle");

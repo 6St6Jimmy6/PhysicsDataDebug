@@ -51,7 +51,7 @@ namespace Physics_Data_Debug
             this.filterActionsPanel = new System.Windows.Forms.Panel();
             this.actionColumns = new System.Windows.Forms.TableLayoutPanel();
             this.actionButtonsFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.chartAndLegend = new System.Windows.Forms.SplitContainer();
             this.chartScrollPanel = new System.Windows.Forms.Panel();
             this.chartStatusLabel = new System.Windows.Forms.Label();
@@ -284,7 +284,7 @@ namespace Physics_Data_Debug
             this.actionButtonsFlow.Controls.Add(this.toSettingsButton);
             this.actionButtonsFlow.Controls.Add(this.refreshAndClearButton);
             this.actionButtonsFlow.Controls.Add(this.buttonPause);
-            this.actionButtonsFlow.Controls.Add(this.SettingsProfilesHost);
+            this.actionButtonsFlow.Controls.Add(this.SettingsProfilesButton);
             this.actionButtonsFlow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actionButtonsFlow.Location = new System.Drawing.Point(2, 2);
             this.actionButtonsFlow.Margin = new System.Windows.Forms.Padding(2);
@@ -294,14 +294,19 @@ namespace Physics_Data_Debug
             this.actionButtonsFlow.TabIndex = 0;
             this.actionButtonsFlow.WrapContents = false;
             // 
-            // SettingsProfilesHost
+            // SettingsProfilesButton
             // 
-            this.SettingsProfilesHost.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(257, 2);
-            this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(146, 26);
-            this.SettingsProfilesHost.TabIndex = 1;
+            this.SettingsProfilesButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(257, 2);
+            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(146, 26);
+            this.SettingsProfilesButton.TabIndex = 1;
             // 
             // chartAndLegend
             // 
@@ -392,6 +397,6 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.Label chartStatusLabel;
         private System.Windows.Forms.Panel chartScrollPanel;
         private System.Windows.Forms.Panel filterActionsPanel;
-        private System.Windows.Forms.Panel SettingsProfilesHost;
+        private System.Windows.Forms.Button SettingsProfilesButton;
     }
 }

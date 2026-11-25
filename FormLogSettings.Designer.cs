@@ -14,7 +14,7 @@
         private System.Windows.Forms.GroupBox filtersGroup;
         private System.Windows.Forms.GroupBox outputGroup;
         private System.Windows.Forms.Panel filtersScrollPanel;
-        private System.Windows.Forms.Panel SettingsProfilesHost;
+        private System.Windows.Forms.Button SettingsProfilesButton;
         private System.Windows.Forms.Button FLApplyLogSettings;
         private System.Windows.Forms.Label toolbarInfoLabel;
         private System.Windows.Forms.Label selectionCountLabel;
@@ -130,7 +130,7 @@
             this.toolbarLayout = new System.Windows.Forms.TableLayoutPanel();
             this.FLApplyLogSettings = new System.Windows.Forms.Button();
             this.toolbarInfoLabel = new System.Windows.Forms.Label();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.contentLayout = new System.Windows.Forms.TableLayoutPanel();
             this.selectedFieldsGroup = new System.Windows.Forms.GroupBox();
             this.selectionsLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -302,7 +302,7 @@
             this.toolbarLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.toolbarLayout.Controls.Add(this.FLApplyLogSettings, 0, 0);
             this.toolbarLayout.Controls.Add(this.toolbarInfoLabel, 1, 0);
-            this.toolbarLayout.Controls.Add(this.SettingsProfilesHost, 2, 0);
+            this.toolbarLayout.Controls.Add(this.SettingsProfilesButton, 2, 0);
             this.toolbarLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolbarLayout.Location = new System.Drawing.Point(0, 0);
             this.toolbarLayout.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
@@ -337,14 +337,19 @@
             this.toolbarInfoLabel.Text = "Changes take effect when the next logging session starts";
             this.toolbarInfoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SettingsProfilesHost
+            // SettingsProfilesButton
             // 
-            this.SettingsProfilesHost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(504, 4);
-            this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(4);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(130, 28);
-            this.SettingsProfilesHost.TabIndex = 2;
+            this.SettingsProfilesButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(504, 4);
+            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(4);
+            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(130, 28);
+            this.SettingsProfilesButton.TabIndex = 2;
             // 
             // contentLayout
             // 

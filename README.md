@@ -270,3 +270,11 @@ If attaching or drawing geometry causes an exception, inspect the **exception ty
 - **Cartoons** — help with discovering and confirming the first in-game memory values.
 - **N4T4NM** and **iGutobreks** — earlier memory-helper code and usage.
 - **Rod Stephens** — the original registry-persistence example used in older versions.
+
+## Latest chart updates
+
+- Live Four Wheels uses FastPoint by default. Other history chart types are timed during initial rebuild/paint and subsequent telemetry updates; a rebuild taking over 5 s or a subsequent render exceeding the timer interval by over 1 s switches back to FastPoint and preserves history. The current marker remains a normal Point. The WinForms UI thread cannot interrupt a renderer that never returns.
+- Offline Chart restores the Settings and Filters Apply actions, uses Arial and FastPoint as fresh defaults, and subdivides enabled minor grids. Optional true XYZ scatter plotting supports a fourth color field using the existing Z/color palette controls. See [Offline Chart guide](OFFLINE_CHART_GUIDE.md).
+- G-force settings have independent current/history marker sizes and sampling interval. Fresh telemetry/chart update defaults are 50 ms; the G-force infinite-history snapshot timer and connection/status housekeeping remain intentionally separate.
+- Suspension Geometry can translate and tilt its grid across each axle to touch both rendered tire outlines, without changing their original XYZ coordinates. See [Suspension guide](SUSPENSION_3D_GUIDE.md).
+- Profiles buttons are Designer-owned on all eight forms that use the shared profile menu. Existing user-selected settings are not forcibly reset.

@@ -651,6 +651,12 @@ namespace Physics_Data_Debug
             }
         }
 
+        internal void SetFastPointAfterFallback()
+        {
+            Select(liveChartTypeBox, System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint.ToString());
+            JsonFormSettings.SaveAllSettings(this);
+        }
+
         internal void PrepareForShow()
         {
             SettingsOpen = true;

@@ -14,7 +14,7 @@ namespace Physics_Data_Debug
         }
         private TableLayoutPanel rootLayout, headerLayout, contentColumns;
         private FlowLayoutPanel actionButtons;
-        private Panel leftScroll, rightScroll, SettingsProfilesHost;
+        private Panel leftScroll, rightScroll;
         private TableLayoutPanel leftStack, rightStack, generalFields, appearanceFields, wheelColorFields, yRangeFields;
         private GroupBox generalGroup, appearanceGroup, wheelColorGroup, yRangeGroup;
         private Button applyButton, SettingsProfilesButton;
@@ -102,7 +102,7 @@ namespace Physics_Data_Debug
             this.headerLayout = new System.Windows.Forms.TableLayoutPanel();
             this.actionButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.applyButton = new System.Windows.Forms.Button();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+
             this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.contentColumns = new System.Windows.Forms.TableLayoutPanel();
             this.leftScroll = new System.Windows.Forms.Panel();
@@ -196,7 +196,7 @@ namespace Physics_Data_Debug
             this.rootLayout.SuspendLayout();
             this.headerLayout.SuspendLayout();
             this.actionButtons.SuspendLayout();
-            this.SettingsProfilesHost.SuspendLayout();
+
             this.contentColumns.SuspendLayout();
             this.leftScroll.SuspendLayout();
             this.leftStack.SuspendLayout();
@@ -261,7 +261,7 @@ namespace Physics_Data_Debug
             // actionButtons
             // 
             this.actionButtons.Controls.Add(this.applyButton);
-            this.actionButtons.Controls.Add(this.SettingsProfilesHost);
+            this.actionButtons.Controls.Add(this.SettingsProfilesButton);
             this.actionButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actionButtons.Location = new System.Drawing.Point(3, 1);
             this.actionButtons.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -284,24 +284,12 @@ namespace Physics_Data_Debug
             this.applyButton.UseVisualStyleBackColor = false;
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
-            // SettingsProfilesHost
-            // 
-            this.SettingsProfilesHost.Controls.Add(this.SettingsProfilesButton);
-            this.SettingsProfilesHost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(186, 0);
-            this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(0);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Padding = new System.Windows.Forms.Padding(0, 1, 0, 2);
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(127, 31);
-            this.SettingsProfilesHost.TabIndex = 1;
-            // 
             // SettingsProfilesButton
             // 
             this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.SettingsProfilesButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsProfilesButton.Location = new System.Drawing.Point(0, 1);
-            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(0);
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(186, 1);
+            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(2, 1, 8, 2);
             this.SettingsProfilesButton.Name = "SettingsProfilesButton";
             this.SettingsProfilesButton.Size = new System.Drawing.Size(127, 28);
             this.SettingsProfilesButton.TabIndex = 0;
@@ -528,7 +516,7 @@ namespace Physics_Data_Debug
             this.updateIntervalNumeric.Size = new System.Drawing.Size(172, 23);
             this.updateIntervalNumeric.TabIndex = 7;
             this.updateIntervalNumeric.Value = new decimal(new int[] {
-            100,
+            50,
             0,
             0,
             0});
@@ -1875,7 +1863,7 @@ namespace Physics_Data_Debug
             this.rootLayout.ResumeLayout(false);
             this.headerLayout.ResumeLayout(false);
             this.actionButtons.ResumeLayout(false);
-            this.SettingsProfilesHost.ResumeLayout(false);
+
             this.contentColumns.ResumeLayout(false);
             this.leftScroll.ResumeLayout(false);
             this.leftScroll.PerformLayout();

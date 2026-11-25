@@ -65,6 +65,15 @@ namespace Physics_Data_Debug
             this.Y1FontSizeComboBox = new System.Windows.Forms.ComboBox();
             this.Y1ComboBoxFonts = new System.Windows.Forms.ComboBox();
             this.Y1DefaultsCheckBox = new System.Windows.Forms.CheckBox();
+            this.CurrentMarkerSizeNumericRow = new System.Windows.Forms.Panel();
+            this.CurrentMarkerSizeNumericLabel = new System.Windows.Forms.Label();
+            this.CurrentMarkerSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.HistoryMarkerSizeNumericRow = new System.Windows.Forms.Panel();
+            this.HistoryMarkerSizeNumericLabel = new System.Windows.Forms.Label();
+            this.HistoryMarkerSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.UpdateIntervalNumericRow = new System.Windows.Forms.Panel();
+            this.UpdateIntervalNumericLabel = new System.Windows.Forms.Label();
+            this.UpdateIntervalNumeric = new System.Windows.Forms.NumericUpDown();
             this.HistoryAmountPointsMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.InfiniteHistoryCheckBox = new System.Windows.Forms.CheckBox();
             this.SchemeComboBox = new System.Windows.Forms.ComboBox();
@@ -158,7 +167,7 @@ namespace Physics_Data_Debug
             this.Y1MinorDashStyleComboBoxRow = new System.Windows.Forms.Panel();
             this.Y1MinorDashStyleComboBoxRowLabel = new System.Windows.Forms.Label();
             this.settingsActionsPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.settingsSectionsLayout.SuspendLayout();
             this.settingsSidebarGroup.SuspendLayout();
             this.settingsSidebarPanel.SuspendLayout();
@@ -852,22 +861,82 @@ namespace Physics_Data_Debug
             this.settingsSidebarPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.settingsSidebarPanel.Controls.Add(this.DefaultsCheckBoxRow, 0, 0);
             this.settingsSidebarPanel.Controls.Add(this.SchemeComboBoxRow, 0, 3);
-            this.settingsSidebarPanel.Controls.Add(this.MarkerColorComboBoxRow);
-            this.settingsSidebarPanel.Controls.Add(this.HistoryAmountPointsMaskedTextBoxRow);
-            this.settingsSidebarPanel.Controls.Add(this.InfiniteHistoryCheckBoxRow);
-            this.settingsSidebarPanel.Controls.Add(this.BackgroundColorComboBoxRow);
+            this.settingsSidebarPanel.Controls.Add(this.MarkerColorComboBoxRow, 0, 4);
+            this.settingsSidebarPanel.Controls.Add(this.HistoryAmountPointsMaskedTextBoxRow, 0, 2);
+            this.settingsSidebarPanel.Controls.Add(this.InfiniteHistoryCheckBoxRow, 0, 5);
+            this.settingsSidebarPanel.Controls.Add(this.BackgroundColorComboBoxRow, 0, 1);
             this.settingsSidebarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsSidebarPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.settingsSidebarPanel.Location = new System.Drawing.Point(6, 20);
             this.settingsSidebarPanel.Name = "settingsSidebarPanel";
             this.settingsSidebarPanel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.settingsSidebarPanel.RowCount = 6;
+            this.settingsSidebarPanel.RowCount = 9;
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.settingsSidebarPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.settingsSidebarPanel.Controls.Add(this.CurrentMarkerSizeNumericRow, 0, 6);
+            this.settingsSidebarPanel.Controls.Add(this.HistoryMarkerSizeNumericRow, 0, 7);
+            this.settingsSidebarPanel.Controls.Add(this.UpdateIntervalNumericRow, 0, 8);
+            this.CurrentMarkerSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CurrentMarkerSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.CurrentMarkerSizeNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.CurrentMarkerSizeNumericRow.Name = "CurrentMarkerSizeNumericRow";
+            this.CurrentMarkerSizeNumericRow.Controls.Add(this.CurrentMarkerSizeNumeric);
+            this.CurrentMarkerSizeNumericRow.Controls.Add(this.CurrentMarkerSizeNumericLabel);
+            this.CurrentMarkerSizeNumericLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CurrentMarkerSizeNumericLabel.Height = 19;
+            this.CurrentMarkerSizeNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.CurrentMarkerSizeNumericLabel.Text = "Current marker size";
+            this.CurrentMarkerSizeNumericLabel.Name = "CurrentMarkerSizeNumericLabel";
+            this.CurrentMarkerSizeNumeric.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CurrentMarkerSizeNumeric.BackColor = System.Drawing.Color.FromArgb(43, 43, 43);
+            this.CurrentMarkerSizeNumeric.ForeColor = System.Drawing.Color.White;
+            this.CurrentMarkerSizeNumeric.Name = "CurrentMarkerSizeNumeric";
+            this.CurrentMarkerSizeNumeric.Minimum = 1;
+            this.CurrentMarkerSizeNumeric.Maximum = 50;
+            this.CurrentMarkerSizeNumeric.Value = 5;
+            this.HistoryMarkerSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HistoryMarkerSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.HistoryMarkerSizeNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.HistoryMarkerSizeNumericRow.Name = "HistoryMarkerSizeNumericRow";
+            this.HistoryMarkerSizeNumericRow.Controls.Add(this.HistoryMarkerSizeNumeric);
+            this.HistoryMarkerSizeNumericRow.Controls.Add(this.HistoryMarkerSizeNumericLabel);
+            this.HistoryMarkerSizeNumericLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HistoryMarkerSizeNumericLabel.Height = 19;
+            this.HistoryMarkerSizeNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.HistoryMarkerSizeNumericLabel.Text = "History marker size";
+            this.HistoryMarkerSizeNumericLabel.Name = "HistoryMarkerSizeNumericLabel";
+            this.HistoryMarkerSizeNumeric.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HistoryMarkerSizeNumeric.BackColor = System.Drawing.Color.FromArgb(43, 43, 43);
+            this.HistoryMarkerSizeNumeric.ForeColor = System.Drawing.Color.White;
+            this.HistoryMarkerSizeNumeric.Name = "HistoryMarkerSizeNumeric";
+            this.HistoryMarkerSizeNumeric.Minimum = 1;
+            this.HistoryMarkerSizeNumeric.Maximum = 50;
+            this.HistoryMarkerSizeNumeric.Value = 2;
+            this.UpdateIntervalNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateIntervalNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.UpdateIntervalNumericRow.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.UpdateIntervalNumericRow.Name = "UpdateIntervalNumericRow";
+            this.UpdateIntervalNumericRow.Controls.Add(this.UpdateIntervalNumeric);
+            this.UpdateIntervalNumericRow.Controls.Add(this.UpdateIntervalNumericLabel);
+            this.UpdateIntervalNumericLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UpdateIntervalNumericLabel.Height = 19;
+            this.UpdateIntervalNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.UpdateIntervalNumericLabel.Text = "Update time (ms)";
+            this.UpdateIntervalNumericLabel.Name = "UpdateIntervalNumericLabel";
+            this.UpdateIntervalNumeric.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UpdateIntervalNumeric.BackColor = System.Drawing.Color.FromArgb(43, 43, 43);
+            this.UpdateIntervalNumeric.ForeColor = System.Drawing.Color.White;
+            this.UpdateIntervalNumeric.Name = "UpdateIntervalNumeric";
+            this.UpdateIntervalNumeric.Minimum = 10;
+            this.UpdateIntervalNumeric.Maximum = 10000;
+            this.UpdateIntervalNumeric.Value = 50;
             this.settingsSidebarPanel.Size = new System.Drawing.Size(146, 397);
             this.settingsSidebarPanel.TabIndex = 0;
             // 
@@ -2026,7 +2095,7 @@ namespace Physics_Data_Debug
             this.settingsActionsPanel.Controls.Add(this.applyChartSettingsButton);
             this.settingsActionsPanel.Controls.Add(this.applyAndClearChartsButton);
             this.settingsActionsPanel.Controls.Add(this.LoadCurrentValuesButton);
-            this.settingsActionsPanel.Controls.Add(this.SettingsProfilesHost);
+            this.settingsActionsPanel.Controls.Add(this.SettingsProfilesButton);
             this.settingsActionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.settingsActionsPanel.Location = new System.Drawing.Point(0, 0);
             this.settingsActionsPanel.Name = "settingsActionsPanel";
@@ -2035,15 +2104,20 @@ namespace Physics_Data_Debug
             this.settingsActionsPanel.TabIndex = 1;
             this.settingsActionsPanel.WrapContents = false;
             // 
-            // SettingsProfilesHost
+            // SettingsProfilesButton
             // 
-            this.SettingsProfilesHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(558, 5);
-            this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.SettingsProfilesHost.MinimumSize = new System.Drawing.Size(128, 30);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(128, 30);
-            this.SettingsProfilesHost.TabIndex = 368;
+
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(558, 5);
+            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.SettingsProfilesButton.MinimumSize = new System.Drawing.Size(128, 30);
+            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(128, 30);
+            this.SettingsProfilesButton.TabIndex = 368;
             // 
             // FormGForceSettings
             // 
@@ -2132,7 +2206,7 @@ namespace Physics_Data_Debug
         // The top-level containers are intentionally declared in the Designer.
         // Open View > Other Windows > Document Outline to move controls between sections.
         private System.Windows.Forms.FlowLayoutPanel settingsActionsPanel;
-        private System.Windows.Forms.Panel SettingsProfilesHost;
+        private System.Windows.Forms.Button SettingsProfilesButton;
         private System.Windows.Forms.Panel DefaultsCheckBoxRow;
         private System.Windows.Forms.Panel BackgroundColorComboBoxRow;
         private System.Windows.Forms.Label BackgroundColorComboBoxRowLabel;
@@ -2258,6 +2332,15 @@ namespace Physics_Data_Debug
         public System.Windows.Forms.ComboBox Y1FontSizeComboBox;
         public System.Windows.Forms.ComboBox Y1ComboBoxFonts;
         public System.Windows.Forms.CheckBox Y1DefaultsCheckBox;
+        private System.Windows.Forms.Panel CurrentMarkerSizeNumericRow;
+        private System.Windows.Forms.Label CurrentMarkerSizeNumericLabel;
+        private System.Windows.Forms.NumericUpDown CurrentMarkerSizeNumeric;
+        private System.Windows.Forms.Panel HistoryMarkerSizeNumericRow;
+        private System.Windows.Forms.Label HistoryMarkerSizeNumericLabel;
+        private System.Windows.Forms.NumericUpDown HistoryMarkerSizeNumeric;
+        private System.Windows.Forms.Panel UpdateIntervalNumericRow;
+        private System.Windows.Forms.Label UpdateIntervalNumericLabel;
+        private System.Windows.Forms.NumericUpDown UpdateIntervalNumeric;
         public System.Windows.Forms.MaskedTextBox HistoryAmountPointsMaskedTextBox;
         public System.Windows.Forms.CheckBox InfiniteHistoryCheckBox;
         public System.Windows.Forms.ComboBox SchemeComboBox;

@@ -38,3 +38,5 @@ The following records document earlier changes and are retained for development 
 - [UI_LAYOUT_UPDATE_2026-11-15](UI_LAYOUT_UPDATE_2026-11-15.md)
 - [WINFORMS_CHART_INITIALIZATION_FIX](WINFORMS_CHART_INITIALIZATION_FIX.md)
 - [WINFORMS_DESIGNER_FIX](WINFORMS_DESIGNER_FIX.md)
+
+- [2026-11-25 chart and Designer update](CURRENT_BUILD_2026-11-25.md) — latest revision based on PhysicsDataDebug(6).zip.

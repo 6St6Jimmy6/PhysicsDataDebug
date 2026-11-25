@@ -85,6 +85,7 @@ namespace Physics_Data_Debug
                 view.ShowGrid = gridCheckBox.Checked;
                 view.ShowPointNames = labelsCheckBox.Checked;
                 view.ShowLegend = legendCheckBox.Checked;
+                view.GroundFollowsTires = groundPlaneCheckBox.Checked;
                 view.Invalidate();
             }
         }

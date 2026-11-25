@@ -14,10 +14,11 @@
 | Reset view | Restore the isometric camera, 100% zoom, clear pan, and reframe the current axle geometry |
 | Azimuth / Elevation | Precise camera-angle inputs (degrees) |
 | Zoom (%) | Scale from 20% to 800% |
-| Update (ms) | Live refresh interval, 10–10,000 ms; default 100 |
+| Update (ms) | Live refresh interval, 10–10,000 ms; default 50 |
 | Perspective | Enable/disable perspective (orthographic when off) |
-| Grid | Toggle the horizontal XZ ground grid and XYZ axes |
+| Grid | Toggle the ground grid and vehicle-relative XYZ axes |
 | Point names | Draw labels by points (hover labels work regardless) |
+| Ground follows tires | Translate and tilt the grid laterally to support both rendered tire outlines in each axle view, without moving the suspension points. Off by default. |
 | Legend | Show/hide the in-view legend overlay for colors, points and axes |
 | Rotate spindle offsets | Rotate wheel-local spindle offsets using `TireM11..TireM33` |
 
@@ -42,6 +43,10 @@ Each 3D viewport can show a compact legend overlay when valid geometry is availa
 - **Axes** — `X` lateral (red), `Y` vertical (green), `Z` longitudinal (blue), shown with Grid enabled
 
 The projected instant center and roll center are still the existing **XY constructions** placed into the 3D drawing for reference. They are not full 3D kinematic solutions.
+
+## Ground plane
+
+When Ground follows tires is enabled, each axle independently fits a common lower supporting plane to the two rendered tire outlines. The plane remains level along Z and tilts across X; both tires touch it without any wireframe vertices passing below it (within floating-point precision). With only one readable tire or overlapping lateral tire outlines, the grid falls back to horizontal support; with neither tire it remains at Y = 0. The XYZ arrows retain vehicle-relative directions, and point coordinates, roll-center calculations and suspension geometry are unchanged. This is a visual reference, not a measured road plane or a full vehicle pitch/roll estimate.
 
 ## Geometry
 

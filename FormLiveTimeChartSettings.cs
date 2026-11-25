@@ -124,7 +124,7 @@ namespace Physics_Data_Debug
     {
         internal double HistorySeconds = 60;
         internal bool XAxisInMinutes;
-        internal int UpdateIntervalMs = 100;
+        internal int UpdateIntervalMs = 50;
         internal int MaxSamples = 10000;
         internal int LineWidth = 2;
         internal int MarkerSize = 0;

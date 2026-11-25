@@ -310,7 +310,7 @@ namespace Physics_Data_Debug
             this.Z1DefaultsCheckBoxRow = new System.Windows.Forms.Panel();
             this.settingsActionsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.settingsApplyFiltersButton = new System.Windows.Forms.Button();
-            this.SettingsProfilesHost = new System.Windows.Forms.Panel();
+            this.SettingsProfilesButton = new System.Windows.Forms.Button();
             this.settingsTabs = new System.Windows.Forms.TabControl();
             this.chartSettingsTab = new System.Windows.Forms.TabPage();
             this.filterSettingsTab = new System.Windows.Forms.TabPage();
@@ -3898,7 +3898,7 @@ namespace Physics_Data_Debug
             this.settingsActionsPanel.Controls.Add(this.settingsApplyFiltersButton);
             this.settingsActionsPanel.Controls.Add(this.applyAndClearChartsButton);
             this.settingsActionsPanel.Controls.Add(this.LoadCurrentValuesButton);
-            this.settingsActionsPanel.Controls.Add(this.SettingsProfilesHost);
+            this.settingsActionsPanel.Controls.Add(this.SettingsProfilesButton);
             this.settingsActionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.settingsActionsPanel.Location = new System.Drawing.Point(0, 0);
             this.settingsActionsPanel.Margin = new System.Windows.Forms.Padding(2);
@@ -3921,13 +3921,18 @@ namespace Physics_Data_Debug
             this.settingsApplyFiltersButton.UseVisualStyleBackColor = false;
             this.settingsApplyFiltersButton.Click += new System.EventHandler(this.settingsApplyFiltersButton_Click);
             // 
-            // SettingsProfilesHost
+            // SettingsProfilesButton
             // 
-            this.SettingsProfilesHost.Location = new System.Drawing.Point(487, 5);
-            this.SettingsProfilesHost.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(82, 24);
-            this.SettingsProfilesHost.TabIndex = 524;
+            this.SettingsProfilesButton.Location = new System.Drawing.Point(487, 5);
+            this.SettingsProfilesButton.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.SettingsProfilesButton.Name = "SettingsProfilesButton";
+            this.SettingsProfilesButton.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            this.SettingsProfilesButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsProfilesButton.Text = "Profiles ▼";
+            this.SettingsProfilesButton.UseVisualStyleBackColor = false;
+            this.SettingsProfilesButton.TabStop = false;
+            this.SettingsProfilesButton.Size = new System.Drawing.Size(115, 23);
+            this.SettingsProfilesButton.TabIndex = 524;
             // 
             // settingsTabs
             // 
@@ -4454,7 +4459,7 @@ namespace Physics_Data_Debug
         private System.Windows.Forms.TabPage filterSettingsTab;
         private System.Windows.Forms.TableLayoutPanel filterSettingsRows;
         private System.Windows.Forms.Button settingsApplyFiltersButton;
-        private System.Windows.Forms.Panel SettingsProfilesHost;
+        private System.Windows.Forms.Button SettingsProfilesButton;
         private System.Windows.Forms.TableLayoutPanel sidebarHistorySourceRow;
         private System.Windows.Forms.TableLayoutPanel sidebarHistoryStyleRow;
         private System.Windows.Forms.TableLayoutPanel sidebarColorsRow;

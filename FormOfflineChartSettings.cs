@@ -17,6 +17,7 @@ namespace Physics_Data_Debug
     {
         private readonly FormOfflineChart ownerChart;
         private OfflineChartOptions startingOptions;
+        private bool preparing;
         private static readonly CultureInfo Invariant = CultureInfo.InvariantCulture;
 
         public FormOfflineChartSettings() : this(null, new OfflineChartOptions()) { }
@@ -33,17 +34,21 @@ namespace Physics_Data_Debug
             DisplayOptions(startingOptions);
             JsonFormSettings.EnsureFactoryDefaults(this);
             JsonFormSettings.LoadAllSettings(this, includeSettingsFilters: false);
-            JsonFormSettings.AttachProfileButton(this, ApplyChanges);
+            JsonFormSettings.AttachProfileButton(this, ApplyChanges, () => preparing = true, () => { preparing = false; Update3DControls(false); });
             ComboBoxBehaviors.EnableSearch(this);
             xDefaultsButton.Click += (s,e) => ResetAxis(0);
             yDefaultsButton.Click += (s,e) => ResetAxis(1);
             zDefaultsButton.Click += (s,e) => ResetAxis(2);
             xColumnComboBox.SelectionChangeCommitted += (s,e) => ResetAxis(0);
             yColumnComboBox.SelectionChangeCommitted += (s,e) => ResetAxis(1);
-            zColumnComboBox.SelectionChangeCommitted += (s,e) => ResetAxis(2);
+            zColumnComboBox.SelectionChangeCommitted += (s,e) => { if (ColorFieldBox == zColumnComboBox) ResetAxis(2); };
             xAutoCheckBox.CheckedChanged += (s,e) => UpdateAutoVisibility();
             yAutoCheckBox.CheckedChanged += (s,e) => UpdateAutoVisibility();
             zAutoCheckBox.CheckedChanged += (s,e) => UpdateAutoVisibility();
+            use3DCheckBox.CheckedChanged += (s,e) => Update3DControls(true);
+            useFourthColorCheckBox.CheckedChanged += (s,e) => Update3DControls(true);
+            fourthColorComboBox.SelectionChangeCommitted += (s,e) => ResetAxis(2);
+            Update3DControls(false);
             UpdateAutoVisibility();
             FillMissingAxisBounds();
         }
@@ -51,26 +56,47 @@ namespace Physics_Data_Debug
         internal ChartLimiterRow[] FilterRows { get; private set; }
         internal Control FilterSettingsRoot => filterSettingsRows;
 
-        internal void Prepare(OfflineChartOptions options)
+        internal void Prepare(OfflineChartOptions options, bool restoreSaved = false)
         {
-            startingOptions = options.Clone();
-            PopulateColumns();
-            DisplayOptions(startingOptions);
-            JsonFormSettings.LoadAllSettings(this, includeSettingsFilters: false);
-            UpdateAutoVisibility();
+            preparing = true;
+            try
+            {
+                startingOptions = options.Clone();
+                PopulateColumns();
+                DisplayOptions(startingOptions);
+                if (restoreSaved) JsonFormSettings.LoadAllSettings(this, includeSettingsFilters: false);
+                Update3DControls(false);
+                UpdateAutoVisibility();
+            }
+            finally { preparing = false; }
+        }
+
+        private ComboBox ColorFieldBox => use3DCheckBox.Checked && useFourthColorCheckBox.Checked
+            ? fourthColorComboBox : zColumnComboBox;
+
+        private void Update3DControls(bool resetColorRange)
+        {
+            useFourthColorCheckBox.Enabled = use3DCheckBox.Checked;
+            fourthColorComboBox.Enabled = use3DCheckBox.Checked && useFourthColorCheckBox.Checked;
+            chartTypeComboBox.Enabled = !use3DCheckBox.Checked;
+            zAxisGroup.Text = use3DCheckBox.Checked ? "Z / color axis (3D)" : "Z / color axis";
+            if (resetColorRange && !preparing) ResetAxis(2);
         }
 
         private void ApplyButton_Click(object sender, EventArgs e) => ApplyChanges();
 
         private void ApplyFiltersButton_Click(object sender, EventArgs e)
         {
-            if (ownerChart != null) ownerChart.ApplyFiltersFromSettings();
+            if (ownerChart == null) return;
+            if (ownerChart.ApplyFiltersFromSettings()) JsonFormSettings.SaveAllSettings(ownerChart);
+            else MessageBox.Show(this, "Fix the highlighted filter minimum/maximum before applying.",
+                "Offline chart filters", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void PopulateColumns()
         {
             var columns = ownerChart != null ? ownerChart.GetColumnNames().Cast<object>().ToArray() : Array.Empty<object>();
-            foreach (ComboBox box in new[] { xColumnComboBox, yColumnComboBox, zColumnComboBox })
+            foreach (ComboBox box in new[] { xColumnComboBox, yColumnComboBox, zColumnComboBox, fourthColorComboBox })
             {
                 box.Items.Clear();
                 box.Items.AddRange(columns);
@@ -102,7 +128,7 @@ namespace Physics_Data_Debug
             {
                 box.Items.AddRange(fonts);
                 box.DrawMode = DrawMode.OwnerDrawFixed;
-                box.ItemHeight = box.Height- 6;
+                box.ItemHeight = box.Font.Height + 2;
                 box.MaxDropDownItems = 16;
                 box.DrawItem += DrawFontFamilyItem;
             }
@@ -129,12 +155,12 @@ namespace Physics_Data_Debug
             {
                 font = new Font(family, combo.Font.Size, FontStyle.Regular, GraphicsUnit.Point);
                 using (var ink = new SolidBrush(e.ForeColor))
-                    e.Graphics.DrawString(family, font, ink, e.Bounds.X + 4, e.Bounds.Y + 3);
+                    e.Graphics.DrawString(family, font, ink, e.Bounds.X + 4, e.Bounds.Y);
             }
             catch (ArgumentException)
             {
                 using (var ink = new SolidBrush(e.ForeColor))
-                    e.Graphics.DrawString(family, combo.Font, ink, e.Bounds.X + 4, e.Bounds.Y + 3);
+                    e.Graphics.DrawString(family, combo.Font, ink, e.Bounds.X + 4, e.Bounds.Y);
             }
             finally { font?.Dispose(); }
             e.DrawFocusRectangle();
@@ -153,6 +179,10 @@ namespace Physics_Data_Debug
             SetCombo(xColumnComboBox, o.X);
             SetCombo(yColumnComboBox, o.Y);
             SetCombo(zColumnComboBox, o.Z);
+            SetCombo(fourthColorComboBox, o.FourthColor);
+            use3DCheckBox.Checked = o.Use3D;
+            useFourthColorCheckBox.Checked = o.UseFourthColor;
+            Update3DControls(false);
             SetCombo(schemeComboBox, o.Scheme == "Default" ? "Blue Red" : o.Scheme);
             SetCombo(chartTypeComboBox, o.ChartType.ToString());
             SetCombo(markerComboBox, o.Marker.ToString());
@@ -224,7 +254,7 @@ namespace Physics_Data_Debug
         {
             FillOneAxis(xColumnComboBox, xMinimumBox, xMaximumBox);
             FillOneAxis(yColumnComboBox, yMinimumBox, yMaximumBox);
-            FillOneAxis(zColumnComboBox, zMinimumBox, zMaximumBox);
+            FillOneAxis(ColorFieldBox, zMinimumBox, zMaximumBox);
         }
 
         private void FillOneAxis(ComboBox field, TextBox minBox, TextBox maxBox)
@@ -245,7 +275,7 @@ namespace Physics_Data_Debug
 
         private void ResetAxis(int axis)
         {
-            ComboBox selected = axis == 0 ? xColumnComboBox : axis == 1 ? yColumnComboBox : zColumnComboBox;
+            ComboBox selected = axis == 0 ? xColumnComboBox : axis == 1 ? yColumnComboBox : ColorFieldBox;
             TextBox minimum = axis == 0 ? xMinimumBox : axis == 1 ? yMinimumBox : zMinimumBox;
             TextBox maximum = axis == 0 ? xMaximumBox : axis == 1 ? yMaximumBox : zMaximumBox;
             if (ownerChart != null && ownerChart.TryGetFieldRange(selected.Text, absoluteCheckBox.Checked, out double min, out double max))
@@ -290,6 +320,11 @@ namespace Physics_Data_Debug
                 result.X = xColumnComboBox.Text;
                 result.Y = yColumnComboBox.Text;
                 result.Z = zColumnComboBox.Text;
+                result.Use3D = use3DCheckBox.Checked;
+                result.UseFourthColor = result.Use3D && useFourthColorCheckBox.Checked;
+                result.FourthColor = fourthColorComboBox.Text;
+                if (result.UseFourthColor && string.IsNullOrWhiteSpace(result.FourthColor))
+                    throw new FormatException("Select a fourth field for the color axis.");
                 if (string.IsNullOrWhiteSpace(result.X) || string.IsNullOrWhiteSpace(result.Y) || string.IsNullOrWhiteSpace(result.Z))
                     throw new FormatException("Select an X, Y and Z column.");
                 result.Scheme = schemeComboBox.Text;
@@ -302,7 +337,7 @@ namespace Physics_Data_Debug
                 result.Absolute = absoluteCheckBox.Checked;
                 result.Layout = layoutComboBox.Text;
                 result.ChartType = (SeriesChartType)Enum.Parse(typeof(SeriesChartType),chartTypeComboBox.Text);
-                if (!FormOfflineChart.CanDrawWithXYZ(result.ChartType))
+                if (!result.Use3D && !FormOfflineChart.CanDrawWithXYZ(result.ChartType))
                     throw new FormatException(result.ChartType + " requires multiple Y fields. " +
                         "It is listed for completeness, but this XY/Z importer cannot draw it from one Y column.");
                 result.Marker = (MarkerStyle)Enum.Parse(typeof(MarkerStyle),markerComboBox.Text);
@@ -311,8 +346,8 @@ namespace Physics_Data_Debug
                 ReadBounds(xAutoCheckBox,xMinimumBox,xMaximumBox,"X axis",out result.XMinimum,out result.XMaximum);
                 ReadBounds(yAutoCheckBox,yMinimumBox,yMaximumBox,"Y axis",out result.YMinimum,out result.YMaximum);
                 ReadBounds(zAutoCheckBox,zMinimumBox,zMaximumBox,"Z axis",out result.ZMinimum,out result.ZMaximum);
-                if (!ParseDouble(xGridIntervalBox.Text,out result.XGridInterval) || result.XGridInterval < 0 ||
-                    !ParseDouble(yGridIntervalBox.Text,out result.YGridInterval) || result.YGridInterval < 0)
+                if (!ParseDouble(xGridIntervalBox.Text,out result.XGridInterval) || double.IsNaN(result.XGridInterval) || double.IsInfinity(result.XGridInterval) || result.XGridInterval < 0 ||
+                    !ParseDouble(yGridIntervalBox.Text,out result.YGridInterval) || double.IsNaN(result.YGridInterval) || double.IsInfinity(result.YGridInterval) || result.YGridInterval < 0)
                     throw new FormatException("Grid intervals must be positive numbers, or zero for automatic intervals.");
                 result.XMinorGrid = xMinorCheckBox.Checked;
                 result.YMinorGrid = yMinorCheckBox.Checked;
@@ -320,8 +355,8 @@ namespace Physics_Data_Debug
                 result.YDecimals = (int)yDecimalsNumeric.Value;
                 result.XLogarithmic = xLogCheckBox.Checked;
                 result.YLogarithmic = yLogCheckBox.Checked;
-                if (!ParseDouble(xLogBaseBox.Text,out result.XLogBase) || result.XLogBase <= 1 ||
-                    !ParseDouble(yLogBaseBox.Text,out result.YLogBase) || result.YLogBase <= 1)
+                if (!ParseDouble(xLogBaseBox.Text,out result.XLogBase) || double.IsNaN(result.XLogBase) || double.IsInfinity(result.XLogBase) || result.XLogBase <= 1 ||
+                    !ParseDouble(yLogBaseBox.Text,out result.YLogBase) || double.IsNaN(result.YLogBase) || double.IsInfinity(result.YLogBase) || result.YLogBase <= 1)
                     throw new FormatException("Logarithmic bases must be greater than 1.");
                 if (result.XLogarithmic && result.XMinimum.HasValue && result.XMinimum <= 0)
                     throw new FormatException("The X minimum must be greater than zero when using logarithmic X.");
