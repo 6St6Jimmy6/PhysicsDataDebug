@@ -105,9 +105,6 @@ namespace Physics_Data_Debug
         private NumericUpDown xFontSizeNumeric;
         private Panel xFontSizeNumericRow;
         private Label xFontSizeNumericLabel;
-        private ComboBox xFontColorComboBox;
-        private Panel xFontColorComboBoxRow;
-        private Label xFontColorComboBoxLabel;
         private CheckBox xLogCheckBox;
         private Panel xLogCheckBoxRow;
         private TextBox xLogBaseBox;
@@ -319,6 +316,13 @@ namespace Physics_Data_Debug
             this.cursorDashComboBox = new System.Windows.Forms.ComboBox();
             this.xAxisGroup = new System.Windows.Forms.GroupBox();
             this.xFields = new System.Windows.Forms.TableLayoutPanel();
+            this.xFontPropertiesRow = new System.Windows.Forms.TableLayoutPanel();
+            this.xFontSizeNumericRow = new System.Windows.Forms.Panel();
+            this.xFontSizeNumericLabel = new System.Windows.Forms.Label();
+            this.xFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.xFontColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.xFontColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.xFontColorComboBox = new System.Windows.Forms.ComboBox();
             this.xDefaultsButtonRow = new System.Windows.Forms.Panel();
             this.xDefaultsButton = new System.Windows.Forms.Button();
             this.xColumnComboBoxRow = new System.Windows.Forms.Panel();
@@ -381,14 +385,15 @@ namespace Physics_Data_Debug
             this.xFontComboBoxRow = new System.Windows.Forms.Panel();
             this.xFontComboBoxLabel = new System.Windows.Forms.Label();
             this.xFontComboBox = new System.Windows.Forms.ComboBox();
-            this.xFontSizeNumericRow = new System.Windows.Forms.Panel();
-            this.xFontSizeNumericLabel = new System.Windows.Forms.Label();
-            this.xFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
-            this.xFontColorComboBoxRow = new System.Windows.Forms.Panel();
-            this.xFontColorComboBoxLabel = new System.Windows.Forms.Label();
-            this.xFontColorComboBox = new System.Windows.Forms.ComboBox();
             this.yAxisGroup = new System.Windows.Forms.GroupBox();
             this.yFields = new System.Windows.Forms.TableLayoutPanel();
+            this.yFontColorRow = new System.Windows.Forms.TableLayoutPanel();
+            this.yFontSizeNumericRow = new System.Windows.Forms.Panel();
+            this.yFontSizeNumericLabel = new System.Windows.Forms.Label();
+            this.yFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
+            this.yFontColorComboBoxRow = new System.Windows.Forms.Panel();
+            this.yFontColorComboBoxLabel = new System.Windows.Forms.Label();
+            this.yFontColorComboBox = new System.Windows.Forms.ComboBox();
             this.yDefaultsButtonRow = new System.Windows.Forms.Panel();
             this.yDefaultsButton = new System.Windows.Forms.Button();
             this.yColumnComboBoxRow = new System.Windows.Forms.Panel();
@@ -451,12 +456,6 @@ namespace Physics_Data_Debug
             this.yFontComboBoxRow = new System.Windows.Forms.Panel();
             this.yFontComboBoxLabel = new System.Windows.Forms.Label();
             this.yFontComboBox = new System.Windows.Forms.ComboBox();
-            this.yFontSizeNumericRow = new System.Windows.Forms.Panel();
-            this.yFontSizeNumericLabel = new System.Windows.Forms.Label();
-            this.yFontSizeNumeric = new System.Windows.Forms.NumericUpDown();
-            this.yFontColorComboBoxRow = new System.Windows.Forms.Panel();
-            this.yFontColorComboBoxLabel = new System.Windows.Forms.Label();
-            this.yFontColorComboBox = new System.Windows.Forms.ComboBox();
             this.zAxisGroup = new System.Windows.Forms.GroupBox();
             this.zFields = new System.Windows.Forms.TableLayoutPanel();
             this.zDefaultsButtonRow = new System.Windows.Forms.Panel();
@@ -535,6 +534,10 @@ namespace Physics_Data_Debug
             this.cursorDashComboBoxRow.SuspendLayout();
             this.xAxisGroup.SuspendLayout();
             this.xFields.SuspendLayout();
+            this.xFontPropertiesRow.SuspendLayout();
+            this.xFontSizeNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xFontSizeNumeric)).BeginInit();
+            this.xFontColorComboBoxRow.SuspendLayout();
             this.xDefaultsButtonRow.SuspendLayout();
             this.xColumnComboBoxRow.SuspendLayout();
             this.xModeRow.SuspendLayout();
@@ -568,11 +571,12 @@ namespace Physics_Data_Debug
             this.xLogBaseBoxRow.SuspendLayout();
             this.xFontRow.SuspendLayout();
             this.xFontComboBoxRow.SuspendLayout();
-            this.xFontSizeNumericRow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xFontSizeNumeric)).BeginInit();
-            this.xFontColorComboBoxRow.SuspendLayout();
             this.yAxisGroup.SuspendLayout();
             this.yFields.SuspendLayout();
+            this.yFontColorRow.SuspendLayout();
+            this.yFontSizeNumericRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yFontSizeNumeric)).BeginInit();
+            this.yFontColorComboBoxRow.SuspendLayout();
             this.yDefaultsButtonRow.SuspendLayout();
             this.yColumnComboBoxRow.SuspendLayout();
             this.yModeRow.SuspendLayout();
@@ -606,9 +610,6 @@ namespace Physics_Data_Debug
             this.yLogBaseBoxRow.SuspendLayout();
             this.yFontRow.SuspendLayout();
             this.yFontComboBoxRow.SuspendLayout();
-            this.yFontSizeNumericRow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.yFontSizeNumeric)).BeginInit();
-            this.yFontColorComboBoxRow.SuspendLayout();
             this.zAxisGroup.SuspendLayout();
             this.zFields.SuspendLayout();
             this.zDefaultsButtonRow.SuspendLayout();
@@ -668,7 +669,7 @@ namespace Physics_Data_Debug
             this.SettingsProfilesHost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.SettingsProfilesHost.Location = new System.Drawing.Point(295, 0);
             this.SettingsProfilesHost.Name = "SettingsProfilesHost";
-            this.SettingsProfilesHost.Size = new System.Drawing.Size(140, 46);
+            this.SettingsProfilesHost.Size = new System.Drawing.Size(140, 32);
             this.SettingsProfilesHost.TabIndex = 2;
             // 
             // settingsColumns
@@ -1499,6 +1500,7 @@ namespace Physics_Data_Debug
             this.xFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.xFields.ColumnCount = 1;
             this.xFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xFields.Controls.Add(this.xFontPropertiesRow, 0, 11);
             this.xFields.Controls.Add(this.xDefaultsButtonRow, 0, 0);
             this.xFields.Controls.Add(this.xColumnComboBoxRow, 0, 1);
             this.xFields.Controls.Add(this.xModeRow, 0, 2);
@@ -1510,7 +1512,6 @@ namespace Physics_Data_Debug
             this.xFields.Controls.Add(this.xMinorStrokeRow, 0, 8);
             this.xFields.Controls.Add(this.xMinorOpacityRow, 0, 9);
             this.xFields.Controls.Add(this.xFontRow, 0, 10);
-            this.xFields.Controls.Add(this.xFontColorComboBoxRow, 0, 11);
             this.xFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xFields.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.xFields.Location = new System.Drawing.Point(2, 15);
@@ -1529,8 +1530,117 @@ namespace Physics_Data_Debug
             this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.xFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.xFields.Size = new System.Drawing.Size(355, 428);
             this.xFields.TabIndex = 0;
+            // 
+            // xFontPropertiesRow
+            // 
+            this.xFontPropertiesRow.ColumnCount = 2;
+            this.xFontPropertiesRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xFontPropertiesRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xFontPropertiesRow.Controls.Add(this.xFontSizeNumericRow, 1, 0);
+            this.xFontPropertiesRow.Controls.Add(this.xFontColorComboBoxRow, 0, 0);
+            this.xFontPropertiesRow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.xFontPropertiesRow.Location = new System.Drawing.Point(3, 470);
+            this.xFontPropertiesRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xFontPropertiesRow.Name = "xFontPropertiesRow";
+            this.xFontPropertiesRow.RowCount = 1;
+            this.xFontPropertiesRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xFontPropertiesRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.xFontPropertiesRow.Size = new System.Drawing.Size(332, 45);
+            this.xFontPropertiesRow.TabIndex = 1;
+            // 
+            // xFontSizeNumericRow
+            // 
+            this.xFontSizeNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xFontSizeNumericRow.Controls.Add(this.xFontSizeNumericLabel);
+            this.xFontSizeNumericRow.Controls.Add(this.xFontSizeNumeric);
+            this.xFontSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xFontSizeNumericRow.Location = new System.Drawing.Point(166, 0);
+            this.xFontSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xFontSizeNumericRow.Name = "xFontSizeNumericRow";
+            this.xFontSizeNumericRow.Size = new System.Drawing.Size(166, 45);
+            this.xFontSizeNumericRow.TabIndex = 1;
+            // 
+            // xFontSizeNumericLabel
+            // 
+            this.xFontSizeNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontSizeNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.xFontSizeNumericLabel.Location = new System.Drawing.Point(2, 2);
+            this.xFontSizeNumericLabel.Name = "xFontSizeNumericLabel";
+            this.xFontSizeNumericLabel.Size = new System.Drawing.Size(147, 15);
+            this.xFontSizeNumericLabel.TabIndex = 0;
+            this.xFontSizeNumericLabel.Text = "Axis font size";
+            // 
+            // xFontSizeNumeric
+            // 
+            this.xFontSizeNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xFontSizeNumeric.DecimalPlaces = 2;
+            this.xFontSizeNumeric.ForeColor = System.Drawing.Color.White;
+            this.xFontSizeNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xFontSizeNumeric.Location = new System.Drawing.Point(5, 20);
+            this.xFontSizeNumeric.Maximum = new decimal(new int[] {
+            36,
+            0,
+            0,
+            0});
+            this.xFontSizeNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.xFontSizeNumeric.Name = "xFontSizeNumeric";
+            this.xFontSizeNumeric.Size = new System.Drawing.Size(157, 20);
+            this.xFontSizeNumeric.TabIndex = 1;
+            this.xFontSizeNumeric.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            // 
+            // xFontColorComboBoxRow
+            // 
+            this.xFontColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.xFontColorComboBoxRow.Controls.Add(this.xFontColorComboBoxLabel);
+            this.xFontColorComboBoxRow.Controls.Add(this.xFontColorComboBox);
+            this.xFontColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xFontColorComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.xFontColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.xFontColorComboBoxRow.Name = "xFontColorComboBoxRow";
+            this.xFontColorComboBoxRow.Size = new System.Drawing.Size(166, 45);
+            this.xFontColorComboBoxRow.TabIndex = 11;
+            // 
+            // xFontColorComboBoxLabel
+            // 
+            this.xFontColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.xFontColorComboBoxLabel.Location = new System.Drawing.Point(2, 2);
+            this.xFontColorComboBoxLabel.Name = "xFontColorComboBoxLabel";
+            this.xFontColorComboBoxLabel.Size = new System.Drawing.Size(148, 15);
+            this.xFontColorComboBoxLabel.TabIndex = 0;
+            this.xFontColorComboBoxLabel.Text = "Axis font color";
+            // 
+            // xFontColorComboBox
+            // 
+            this.xFontColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xFontColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.xFontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.xFontColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.xFontColorComboBox.IntegralHeight = false;
+            this.xFontColorComboBox.Location = new System.Drawing.Point(5, 20);
+            this.xFontColorComboBox.Name = "xFontColorComboBox";
+            this.xFontColorComboBox.Size = new System.Drawing.Size(157, 21);
+            this.xFontColorComboBox.TabIndex = 1;
             // 
             // xDefaultsButtonRow
             // 
@@ -2226,7 +2336,7 @@ namespace Physics_Data_Debug
             this.xMinorDashComboBox.IntegralHeight = false;
             this.xMinorDashComboBox.Location = new System.Drawing.Point(5, 20);
             this.xMinorDashComboBox.Name = "xMinorDashComboBox";
-            this.xMinorDashComboBox.Size = new System.Drawing.Size(147, 21);
+            this.xMinorDashComboBox.Size = new System.Drawing.Size(157, 21);
             this.xMinorDashComboBox.TabIndex = 1;
             // 
             // xMinorOpacityRow
@@ -2327,17 +2437,17 @@ namespace Physics_Data_Debug
             // xFontRow
             // 
             this.xFontRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.xFontRow.ColumnCount = 2;
+            this.xFontRow.ColumnCount = 1;
             this.xFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.xFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.xFontRow.Controls.Add(this.xFontComboBoxRow, 0, 0);
-            this.xFontRow.Controls.Add(this.xFontSizeNumericRow, 1, 0);
             this.xFontRow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xFontRow.Location = new System.Drawing.Point(3, 425);
             this.xFontRow.Margin = new System.Windows.Forms.Padding(0);
             this.xFontRow.Name = "xFontRow";
             this.xFontRow.RowCount = 1;
             this.xFontRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.xFontRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.xFontRow.Size = new System.Drawing.Size(332, 45);
             this.xFontRow.TabIndex = 10;
             // 
@@ -2350,7 +2460,7 @@ namespace Physics_Data_Debug
             this.xFontComboBoxRow.Location = new System.Drawing.Point(0, 0);
             this.xFontComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
             this.xFontComboBoxRow.Name = "xFontComboBoxRow";
-            this.xFontComboBoxRow.Size = new System.Drawing.Size(166, 45);
+            this.xFontComboBoxRow.Size = new System.Drawing.Size(332, 45);
             this.xFontComboBoxRow.TabIndex = 0;
             // 
             // xFontComboBoxLabel
@@ -2360,7 +2470,7 @@ namespace Physics_Data_Debug
             this.xFontComboBoxLabel.ForeColor = System.Drawing.Color.White;
             this.xFontComboBoxLabel.Location = new System.Drawing.Point(2, 2);
             this.xFontComboBoxLabel.Name = "xFontComboBoxLabel";
-            this.xFontComboBoxLabel.Size = new System.Drawing.Size(148, 15);
+            this.xFontComboBoxLabel.Size = new System.Drawing.Size(314, 15);
             this.xFontComboBoxLabel.TabIndex = 0;
             this.xFontComboBoxLabel.Text = "Axis font family";
             // 
@@ -2374,99 +2484,8 @@ namespace Physics_Data_Debug
             this.xFontComboBox.IntegralHeight = false;
             this.xFontComboBox.Location = new System.Drawing.Point(5, 20);
             this.xFontComboBox.Name = "xFontComboBox";
-            this.xFontComboBox.Size = new System.Drawing.Size(147, 21);
+            this.xFontComboBox.Size = new System.Drawing.Size(323, 21);
             this.xFontComboBox.TabIndex = 1;
-            // 
-            // xFontSizeNumericRow
-            // 
-            this.xFontSizeNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.xFontSizeNumericRow.Controls.Add(this.xFontSizeNumericLabel);
-            this.xFontSizeNumericRow.Controls.Add(this.xFontSizeNumeric);
-            this.xFontSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xFontSizeNumericRow.Location = new System.Drawing.Point(166, 0);
-            this.xFontSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
-            this.xFontSizeNumericRow.Name = "xFontSizeNumericRow";
-            this.xFontSizeNumericRow.Size = new System.Drawing.Size(166, 45);
-            this.xFontSizeNumericRow.TabIndex = 1;
-            // 
-            // xFontSizeNumericLabel
-            // 
-            this.xFontSizeNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xFontSizeNumericLabel.ForeColor = System.Drawing.Color.White;
-            this.xFontSizeNumericLabel.Location = new System.Drawing.Point(2, 2);
-            this.xFontSizeNumericLabel.Name = "xFontSizeNumericLabel";
-            this.xFontSizeNumericLabel.Size = new System.Drawing.Size(147, 15);
-            this.xFontSizeNumericLabel.TabIndex = 0;
-            this.xFontSizeNumericLabel.Text = "Axis font size";
-            // 
-            // xFontSizeNumeric
-            // 
-            this.xFontSizeNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xFontSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.xFontSizeNumeric.DecimalPlaces = 2;
-            this.xFontSizeNumeric.ForeColor = System.Drawing.Color.White;
-            this.xFontSizeNumeric.Increment = new decimal(new int[] {
-            25,
-            0,
-            0,
-            131072});
-            this.xFontSizeNumeric.Location = new System.Drawing.Point(5, 20);
-            this.xFontSizeNumeric.Maximum = new decimal(new int[] {
-            36,
-            0,
-            0,
-            0});
-            this.xFontSizeNumeric.Minimum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            131072});
-            this.xFontSizeNumeric.Name = "xFontSizeNumeric";
-            this.xFontSizeNumeric.Size = new System.Drawing.Size(157, 20);
-            this.xFontSizeNumeric.TabIndex = 1;
-            this.xFontSizeNumeric.Value = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            // 
-            // xFontColorComboBoxRow
-            // 
-            this.xFontColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.xFontColorComboBoxRow.Controls.Add(this.xFontColorComboBoxLabel);
-            this.xFontColorComboBoxRow.Controls.Add(this.xFontColorComboBox);
-            this.xFontColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xFontColorComboBoxRow.Location = new System.Drawing.Point(3, 470);
-            this.xFontColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
-            this.xFontColorComboBoxRow.Name = "xFontColorComboBoxRow";
-            this.xFontColorComboBoxRow.Size = new System.Drawing.Size(332, 45);
-            this.xFontColorComboBoxRow.TabIndex = 11;
-            // 
-            // xFontColorComboBoxLabel
-            // 
-            this.xFontColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xFontColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
-            this.xFontColorComboBoxLabel.Location = new System.Drawing.Point(2, 2);
-            this.xFontColorComboBoxLabel.Name = "xFontColorComboBoxLabel";
-            this.xFontColorComboBoxLabel.Size = new System.Drawing.Size(314, 15);
-            this.xFontColorComboBoxLabel.TabIndex = 0;
-            this.xFontColorComboBoxLabel.Text = "Axis font color";
-            // 
-            // xFontColorComboBox
-            // 
-            this.xFontColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xFontColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.xFontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.xFontColorComboBox.ForeColor = System.Drawing.Color.White;
-            this.xFontColorComboBox.IntegralHeight = false;
-            this.xFontColorComboBox.Location = new System.Drawing.Point(5, 20);
-            this.xFontColorComboBox.Name = "xFontColorComboBox";
-            this.xFontColorComboBox.Size = new System.Drawing.Size(323, 21);
-            this.xFontColorComboBox.TabIndex = 1;
             // 
             // yAxisGroup
             // 
@@ -2489,6 +2508,7 @@ namespace Physics_Data_Debug
             this.yFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.yFields.ColumnCount = 1;
             this.yFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.yFields.Controls.Add(this.yFontColorRow, 0, 11);
             this.yFields.Controls.Add(this.yDefaultsButtonRow, 0, 0);
             this.yFields.Controls.Add(this.yColumnComboBoxRow, 0, 1);
             this.yFields.Controls.Add(this.yModeRow, 0, 2);
@@ -2500,7 +2520,6 @@ namespace Physics_Data_Debug
             this.yFields.Controls.Add(this.yMinorStrokeRow, 0, 8);
             this.yFields.Controls.Add(this.yMinorOpacityRow, 0, 9);
             this.yFields.Controls.Add(this.yFontRow, 0, 10);
-            this.yFields.Controls.Add(this.yFontColorComboBoxRow, 0, 11);
             this.yFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yFields.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.yFields.Location = new System.Drawing.Point(2, 15);
@@ -2521,6 +2540,114 @@ namespace Physics_Data_Debug
             this.yFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.yFields.Size = new System.Drawing.Size(355, 428);
             this.yFields.TabIndex = 0;
+            // 
+            // yFontColorRow
+            // 
+            this.yFontColorRow.ColumnCount = 2;
+            this.yFontColorRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yFontColorRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yFontColorRow.Controls.Add(this.yFontSizeNumericRow, 1, 0);
+            this.yFontColorRow.Controls.Add(this.yFontColorComboBoxRow, 0, 0);
+            this.yFontColorRow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.yFontColorRow.Location = new System.Drawing.Point(3, 470);
+            this.yFontColorRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yFontColorRow.Name = "yFontColorRow";
+            this.yFontColorRow.RowCount = 1;
+            this.yFontColorRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yFontColorRow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.yFontColorRow.Size = new System.Drawing.Size(332, 45);
+            this.yFontColorRow.TabIndex = 1;
+            // 
+            // yFontSizeNumericRow
+            // 
+            this.yFontSizeNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yFontSizeNumericRow.Controls.Add(this.yFontSizeNumericLabel);
+            this.yFontSizeNumericRow.Controls.Add(this.yFontSizeNumeric);
+            this.yFontSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yFontSizeNumericRow.Location = new System.Drawing.Point(166, 0);
+            this.yFontSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yFontSizeNumericRow.Name = "yFontSizeNumericRow";
+            this.yFontSizeNumericRow.Size = new System.Drawing.Size(166, 45);
+            this.yFontSizeNumericRow.TabIndex = 1;
+            // 
+            // yFontSizeNumericLabel
+            // 
+            this.yFontSizeNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontSizeNumericLabel.ForeColor = System.Drawing.Color.White;
+            this.yFontSizeNumericLabel.Location = new System.Drawing.Point(2, 2);
+            this.yFontSizeNumericLabel.Name = "yFontSizeNumericLabel";
+            this.yFontSizeNumericLabel.Size = new System.Drawing.Size(147, 15);
+            this.yFontSizeNumericLabel.TabIndex = 0;
+            this.yFontSizeNumericLabel.Text = "Axis font size";
+            // 
+            // yFontSizeNumeric
+            // 
+            this.yFontSizeNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yFontSizeNumeric.DecimalPlaces = 2;
+            this.yFontSizeNumeric.ForeColor = System.Drawing.Color.White;
+            this.yFontSizeNumeric.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yFontSizeNumeric.Location = new System.Drawing.Point(5, 20);
+            this.yFontSizeNumeric.Maximum = new decimal(new int[] {
+            36,
+            0,
+            0,
+            0});
+            this.yFontSizeNumeric.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.yFontSizeNumeric.Name = "yFontSizeNumeric";
+            this.yFontSizeNumeric.Size = new System.Drawing.Size(157, 20);
+            this.yFontSizeNumeric.TabIndex = 1;
+            this.yFontSizeNumeric.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            // 
+            // yFontColorComboBoxRow
+            // 
+            this.yFontColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.yFontColorComboBoxRow.Controls.Add(this.yFontColorComboBoxLabel);
+            this.yFontColorComboBoxRow.Controls.Add(this.yFontColorComboBox);
+            this.yFontColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yFontColorComboBoxRow.Location = new System.Drawing.Point(0, 0);
+            this.yFontColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
+            this.yFontColorComboBoxRow.Name = "yFontColorComboBoxRow";
+            this.yFontColorComboBoxRow.Size = new System.Drawing.Size(166, 45);
+            this.yFontColorComboBoxRow.TabIndex = 11;
+            // 
+            // yFontColorComboBoxLabel
+            // 
+            this.yFontColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.yFontColorComboBoxLabel.Location = new System.Drawing.Point(2, 2);
+            this.yFontColorComboBoxLabel.Name = "yFontColorComboBoxLabel";
+            this.yFontColorComboBoxLabel.Size = new System.Drawing.Size(148, 15);
+            this.yFontColorComboBoxLabel.TabIndex = 0;
+            this.yFontColorComboBoxLabel.Text = "Axis font color";
+            // 
+            // yFontColorComboBox
+            // 
+            this.yFontColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yFontColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.yFontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yFontColorComboBox.ForeColor = System.Drawing.Color.White;
+            this.yFontColorComboBox.IntegralHeight = false;
+            this.yFontColorComboBox.Location = new System.Drawing.Point(5, 20);
+            this.yFontColorComboBox.Name = "yFontColorComboBox";
+            this.yFontColorComboBox.Size = new System.Drawing.Size(157, 21);
+            this.yFontColorComboBox.TabIndex = 1;
             // 
             // yDefaultsButtonRow
             // 
@@ -3317,11 +3444,10 @@ namespace Physics_Data_Debug
             // yFontRow
             // 
             this.yFontRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.yFontRow.ColumnCount = 2;
+            this.yFontRow.ColumnCount = 1;
             this.yFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.yFontRow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.yFontRow.Controls.Add(this.yFontComboBoxRow, 0, 0);
-            this.yFontRow.Controls.Add(this.yFontSizeNumericRow, 1, 0);
             this.yFontRow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yFontRow.Location = new System.Drawing.Point(3, 425);
             this.yFontRow.Margin = new System.Windows.Forms.Padding(0);
@@ -3340,7 +3466,7 @@ namespace Physics_Data_Debug
             this.yFontComboBoxRow.Location = new System.Drawing.Point(0, 0);
             this.yFontComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
             this.yFontComboBoxRow.Name = "yFontComboBoxRow";
-            this.yFontComboBoxRow.Size = new System.Drawing.Size(166, 45);
+            this.yFontComboBoxRow.Size = new System.Drawing.Size(332, 45);
             this.yFontComboBoxRow.TabIndex = 0;
             // 
             // yFontComboBoxLabel
@@ -3350,7 +3476,7 @@ namespace Physics_Data_Debug
             this.yFontComboBoxLabel.ForeColor = System.Drawing.Color.White;
             this.yFontComboBoxLabel.Location = new System.Drawing.Point(2, 2);
             this.yFontComboBoxLabel.Name = "yFontComboBoxLabel";
-            this.yFontComboBoxLabel.Size = new System.Drawing.Size(148, 15);
+            this.yFontComboBoxLabel.Size = new System.Drawing.Size(314, 15);
             this.yFontComboBoxLabel.TabIndex = 0;
             this.yFontComboBoxLabel.Text = "Axis font family";
             // 
@@ -3364,99 +3490,8 @@ namespace Physics_Data_Debug
             this.yFontComboBox.IntegralHeight = false;
             this.yFontComboBox.Location = new System.Drawing.Point(5, 20);
             this.yFontComboBox.Name = "yFontComboBox";
-            this.yFontComboBox.Size = new System.Drawing.Size(157, 21);
+            this.yFontComboBox.Size = new System.Drawing.Size(323, 21);
             this.yFontComboBox.TabIndex = 1;
-            // 
-            // yFontSizeNumericRow
-            // 
-            this.yFontSizeNumericRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.yFontSizeNumericRow.Controls.Add(this.yFontSizeNumericLabel);
-            this.yFontSizeNumericRow.Controls.Add(this.yFontSizeNumeric);
-            this.yFontSizeNumericRow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yFontSizeNumericRow.Location = new System.Drawing.Point(166, 0);
-            this.yFontSizeNumericRow.Margin = new System.Windows.Forms.Padding(0);
-            this.yFontSizeNumericRow.Name = "yFontSizeNumericRow";
-            this.yFontSizeNumericRow.Size = new System.Drawing.Size(166, 45);
-            this.yFontSizeNumericRow.TabIndex = 1;
-            // 
-            // yFontSizeNumericLabel
-            // 
-            this.yFontSizeNumericLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.yFontSizeNumericLabel.ForeColor = System.Drawing.Color.White;
-            this.yFontSizeNumericLabel.Location = new System.Drawing.Point(2, 2);
-            this.yFontSizeNumericLabel.Name = "yFontSizeNumericLabel";
-            this.yFontSizeNumericLabel.Size = new System.Drawing.Size(147, 15);
-            this.yFontSizeNumericLabel.TabIndex = 0;
-            this.yFontSizeNumericLabel.Text = "Axis font size";
-            // 
-            // yFontSizeNumeric
-            // 
-            this.yFontSizeNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.yFontSizeNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.yFontSizeNumeric.DecimalPlaces = 2;
-            this.yFontSizeNumeric.ForeColor = System.Drawing.Color.White;
-            this.yFontSizeNumeric.Increment = new decimal(new int[] {
-            25,
-            0,
-            0,
-            131072});
-            this.yFontSizeNumeric.Location = new System.Drawing.Point(5, 20);
-            this.yFontSizeNumeric.Maximum = new decimal(new int[] {
-            36,
-            0,
-            0,
-            0});
-            this.yFontSizeNumeric.Minimum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            131072});
-            this.yFontSizeNumeric.Name = "yFontSizeNumeric";
-            this.yFontSizeNumeric.Size = new System.Drawing.Size(157, 20);
-            this.yFontSizeNumeric.TabIndex = 1;
-            this.yFontSizeNumeric.Value = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            // 
-            // yFontColorComboBoxRow
-            // 
-            this.yFontColorComboBoxRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.yFontColorComboBoxRow.Controls.Add(this.yFontColorComboBoxLabel);
-            this.yFontColorComboBoxRow.Controls.Add(this.yFontColorComboBox);
-            this.yFontColorComboBoxRow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yFontColorComboBoxRow.Location = new System.Drawing.Point(3, 470);
-            this.yFontColorComboBoxRow.Margin = new System.Windows.Forms.Padding(0);
-            this.yFontColorComboBoxRow.Name = "yFontColorComboBoxRow";
-            this.yFontColorComboBoxRow.Size = new System.Drawing.Size(332, 45);
-            this.yFontColorComboBoxRow.TabIndex = 11;
-            // 
-            // yFontColorComboBoxLabel
-            // 
-            this.yFontColorComboBoxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.yFontColorComboBoxLabel.ForeColor = System.Drawing.Color.White;
-            this.yFontColorComboBoxLabel.Location = new System.Drawing.Point(2, 2);
-            this.yFontColorComboBoxLabel.Name = "yFontColorComboBoxLabel";
-            this.yFontColorComboBoxLabel.Size = new System.Drawing.Size(314, 15);
-            this.yFontColorComboBoxLabel.TabIndex = 0;
-            this.yFontColorComboBoxLabel.Text = "Axis font color";
-            // 
-            // yFontColorComboBox
-            // 
-            this.yFontColorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.yFontColorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.yFontColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.yFontColorComboBox.ForeColor = System.Drawing.Color.White;
-            this.yFontColorComboBox.IntegralHeight = false;
-            this.yFontColorComboBox.Location = new System.Drawing.Point(5, 20);
-            this.yFontColorComboBox.Name = "yFontColorComboBox";
-            this.yFontColorComboBox.Size = new System.Drawing.Size(323, 21);
-            this.yFontColorComboBox.TabIndex = 1;
             // 
             // zAxisGroup
             // 
@@ -4050,6 +4085,10 @@ namespace Physics_Data_Debug
             this.cursorDashComboBoxRow.ResumeLayout(false);
             this.xAxisGroup.ResumeLayout(false);
             this.xFields.ResumeLayout(false);
+            this.xFontPropertiesRow.ResumeLayout(false);
+            this.xFontSizeNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xFontSizeNumeric)).EndInit();
+            this.xFontColorComboBoxRow.ResumeLayout(false);
             this.xDefaultsButtonRow.ResumeLayout(false);
             this.xColumnComboBoxRow.ResumeLayout(false);
             this.xModeRow.ResumeLayout(false);
@@ -4087,11 +4126,12 @@ namespace Physics_Data_Debug
             this.xLogBaseBoxRow.PerformLayout();
             this.xFontRow.ResumeLayout(false);
             this.xFontComboBoxRow.ResumeLayout(false);
-            this.xFontSizeNumericRow.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.xFontSizeNumeric)).EndInit();
-            this.xFontColorComboBoxRow.ResumeLayout(false);
             this.yAxisGroup.ResumeLayout(false);
             this.yFields.ResumeLayout(false);
+            this.yFontColorRow.ResumeLayout(false);
+            this.yFontSizeNumericRow.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yFontSizeNumeric)).EndInit();
+            this.yFontColorComboBoxRow.ResumeLayout(false);
             this.yDefaultsButtonRow.ResumeLayout(false);
             this.yColumnComboBoxRow.ResumeLayout(false);
             this.yModeRow.ResumeLayout(false);
@@ -4129,9 +4169,6 @@ namespace Physics_Data_Debug
             this.yLogBaseBoxRow.PerformLayout();
             this.yFontRow.ResumeLayout(false);
             this.yFontComboBoxRow.ResumeLayout(false);
-            this.yFontSizeNumericRow.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.yFontSizeNumeric)).EndInit();
-            this.yFontColorComboBoxRow.ResumeLayout(false);
             this.zAxisGroup.ResumeLayout(false);
             this.zFields.ResumeLayout(false);
             this.zDefaultsButtonRow.ResumeLayout(false);
@@ -4157,5 +4194,10 @@ namespace Physics_Data_Debug
         }
 
         private ComboBox layoutComboBox;
+        private TableLayoutPanel xFontPropertiesRow;
+        private Panel xFontColorComboBoxRow;
+        private Label xFontColorComboBoxLabel;
+        private ComboBox xFontColorComboBox;
+        private TableLayoutPanel yFontColorRow;
     }
 }

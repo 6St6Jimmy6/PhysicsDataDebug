@@ -102,7 +102,7 @@ namespace Physics_Data_Debug
             {
                 box.Items.AddRange(fonts);
                 box.DrawMode = DrawMode.OwnerDrawFixed;
-                box.ItemHeight = 25;
+                box.ItemHeight = box.Height- 6;
                 box.MaxDropDownItems = 16;
                 box.DrawItem += DrawFontFamilyItem;
             }
@@ -127,7 +127,7 @@ namespace Physics_Data_Debug
             Font font = null;
             try
             {
-                font = new Font(family, 10f, FontStyle.Regular, GraphicsUnit.Point);
+                font = new Font(family, combo.Font.Size, FontStyle.Regular, GraphicsUnit.Point);
                 using (var ink = new SolidBrush(e.ForeColor))
                     e.Graphics.DrawString(family, font, ink, e.Bounds.X + 4, e.Bounds.Y + 3);
             }

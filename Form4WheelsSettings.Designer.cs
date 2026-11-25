@@ -1353,7 +1353,7 @@ namespace Physics_Data_Debug
             // 
             // settingsSectionsLayout
             // 
-            this.settingsSectionsLayout.BackColor = this.BackColor;
+            this.settingsSectionsLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.settingsSectionsLayout.ColumnCount = 4;
             this.settingsSectionsLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.settingsSectionsLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -3945,6 +3945,7 @@ namespace Physics_Data_Debug
             // 
             this.chartSettingsTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.chartSettingsTab.Controls.Add(this.settingsSectionsLayout);
+            this.chartSettingsTab.ForeColor = System.Drawing.Color.White;
             this.chartSettingsTab.Location = new System.Drawing.Point(4, 22);
             this.chartSettingsTab.Margin = new System.Windows.Forms.Padding(2);
             this.chartSettingsTab.Name = "chartSettingsTab";
